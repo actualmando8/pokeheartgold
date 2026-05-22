@@ -1,3 +1,24 @@
+CompileFlags:
+    Add:
+        - -Iinclude
+        - -Isrc
+        - -Ifiles
+        - -Ilib/include
+        - -Ilib/include/cw
+        - -Ilib/include/nitro
+        - -Ilib/include/nnsys
+        - -Ilib/include/nitro/os
+        - -Iinclude/library
+        - -D__CLION_IDE__
+        - -DSDK_ARM9
+        - -DSDK_CW
+        - -DSDK_CODE_ARM
+        - -DSDK_TS
+        - -D_NITRO
+        - -D__arm
+        - -DPLATFORM_INTRINSIC_FUNCTION_BIT_CLZ32=__builtin_clz
+        - -Dwchar_t=__WCHAR_TYPE__
+        - -DPM_KEEP_ASSERTS
 If:
     PathMatch: ctx.c
 Index:
