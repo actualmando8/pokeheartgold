@@ -1,163 +1,32 @@
 #ifndef POKEHEARTGOLD_OVERLAY_99_H
 #define POKEHEARTGOLD_OVERLAY_99_H
 
-#include <global.h>
+#include "overlay_manager.h"
+#include "player_data.h"
+#include "pokedex.h"
+#include "pokeathlon/pokeathlon_save.h"
 
 // PokeathlonCourseRecord functions
 void PokeathlonCourseRecord_Init(void *args);
 void PokeathlonCourseRecord_Exit(void *data);
 void PokeathlonCourseRecord_Main(void *data);
 
-// PokeathlonEventRecord functions
-void PokeathlonEventRecord_Init(void *args);
-void PokeathlonEventRecord_Exit(void *data);
-void PokeathlonEventRecord_Main(void *data);
+typedef struct PokeathlonEventRecordArgs {
+    Pokeathlon_RecordsSolo *recordsSolo;
+    Pokeathlon_RecordsLink *recordsLink;
+    void *unk8;
+    PlayerProfile *profile;
+    BOOL unk10;
+} PokeathlonEventRecordArgs;
 
-// PokeathlonMedals functions
-void PokeathlonMedals_Init(void *args);
-void PokeathlonMedals_Exit(void *data);
-void PokeathlonMedals_Main(void *data);
+typedef struct PokeathlonCourseRecordArgs {
+    PokeathlonSave *pokeathlon;
+    BOOL unk4;
+} PokeathlonCourseRecordArgs;
 
-// ov99 internal functions
-void ov99_021E5B54(void *ptr);
-void ov99_021E5B70(void);
-void ov99_021E5B74(void);
-void ov99_021E5B7C(void);
-void ov99_021E5B90(void);
-void ov99_021E5BB4(void);
-void ov99_021E5BD8(void);
-void ov99_021E5C20(void);
-void ov99_021E5C4C(void);
-void ov99_021E5C88(void);
-void ov99_021E5D2C(void);
-void ov99_021E5D58(void);
-void ov99_021E5EB4(void);
-void ov99_021E5F74(void);
-void ov99_021E5FE8(void *ptr, s32 value);
-void ov99_021E6018(void *ptr, s32 value);
-void ov99_021E6050(void *ptr, s32 value);
-void ov99_021E607C(void *ptr);
-void ov99_021E6144(void *ptr);
-void ov99_021E6188(void);
-void ov99_021E6218(void);
-void ov99_021E6250(void *ptr);
-void ov99_021E6274(void *ptr);
-void ov99_021E6400(void *ptr);
-void ov99_021E6438(void *ptr);
-void ov99_021E64E0(void *ptr, s32 value);
-void ov99_021E6530(void *ptr, s32 value);
-void ov99_021E6638(void);
-void ov99_021E677C(void);
-void ov99_021E6840(void);
-void ov99_021E6888(void);
-void ov99_021E6938(void);
-void ov99_021E695C(void);
-void ov99_021E69D8(void);
-void ov99_021E6A70(void);
-void ov99_021E6A9C(void);
-void ov99_021E6C14(void);
-void ov99_021E6C30(void);
-void ov99_021E6CF4(void);
-void ov99_021E6D14(void);
-void ov99_021E6D34(void);
-void ov99_021E6F70(void);
-void ov99_021E6FA0(void);
-void ov99_021E6FD0(void);
-void ov99_021E7060(void);
-void ov99_021E7068(void);
-void ov99_021E7078(void);
-void ov99_021E7088(void);
-void ov99_021E7098(void);
-void ov99_021E70A8(void);
-void ov99_021E70B8(void);
-void ov99_021E70C8(void);
-void ov99_021E70D8(void);
-void ov99_021E70E8(void);
-void ov99_021E7100(void);
-void ov99_021E7124(void);
-void ov99_021E714C(void);
-void ov99_021E7150(void);
-void ov99_021E7158(void);
-void ov99_021E7180(void);
-void ov99_021E718C(void);
-void ov99_021E7198(void);
-void ov99_021E71B0(void);
-void ov99_021E71DC(void);
-void ov99_021E71E4(void);
-void ov99_021E7208(void);
-void ov99_021E723C(void);
-void ov99_021E724C(void);
-void ov99_021E7258(void);
-void ov99_021E728C(void);
-void ov99_021E72C0(void);
-void ov99_021E738C(void);
-void ov99_021E73E0(void);
-void ov99_021E7428(void);
-void ov99_021E7450(void);
-void ov99_021E7508(void);
-void ov99_021E7598(void);
-void ov99_021E76D8(void);
-void ov99_021E7758(void);
-void ov99_021E7794(void);
-void ov99_021E77D8(void);
-void ov99_021E7A54(void);
-void ov99_021E7A78(void);
-void ov99_021E7AB8(void);
-void ov99_021E7AD4(void);
-void ov99_021E7BC8(void);
-void ov99_021E7C58(void);
-void ov99_021E7CA8(void);
-void ov99_021E7CC8(void);
-void ov99_021E7CCC(void);
-void ov99_021E7CD8(void);
-void ov99_021E7CE4(void);
-void ov99_021E7D30(void);
-void ov99_021E7DA4(void);
-void ov99_021E7EBC(void);
-void ov99_021E7EF0(void);
-void ov99_021E7F64(void);
-void ov99_021E7F90(void);
-void ov99_021E80D0(void);
-void ov99_021E810C(void);
-void ov99_021E8198(void);
-void ov99_021E8224(void);
-void ov99_021E82E4(void);
-void ov99_021E84EC(void);
-void ov99_021E8518(void);
-void ov99_021E8544(void);
-void ov99_021E856C(void);
-void ov99_021E8590(void);
-void ov99_021E860C(void);
-void ov99_021E86D4(void);
-void ov99_021E875C(void);
-void ov99_021E8788(void);
-void ov99_021E87D0(void);
-void ov99_021E8818(void);
-void ov99_021E8828(void);
-void ov99_021E88D4(void);
-void ov99_021E88EC(void);
-void ov99_021E89A4(void);
-void ov99_021E89EC(void);
-void ov99_021E8C04(void);
-void ov99_021E8C50(void);
-void ov99_021E8C88(void);
-void ov99_021E8D5C(void);
-void ov99_021E8D88(void);
-void ov99_021E8EBC(void);
-void ov99_021E8F50(void);
-void ov99_021E8FEC(void);
-void ov99_021E9020(void);
-void ov99_021E9038(void);
-void ov99_021E90F4(void);
-void ov99_021E92EC(void);
-void ov99_021E93DC(void);
-void ov99_021E9418(void);
-void ov99_021E9430(void);
-void ov99_021E945C(void);
-void ov99_021E9464(void);
-void ov99_021E94CC(void);
-void ov99_021E94FC(void);
-void ov99_021E9508(void);
-void ov99_021E9518(void);
+typedef struct UnkStruct_0203EFA0 {
+    PokeathlonSave *pokeathlon;
+    PlayerProfile *profile;
+} UnkStruct_0203EFA0;
 
 #endif // POKEHEARTGOLD_OVERLAY_99_H
