@@ -1,7 +1,7 @@
 /* Decompiled from asm/unk_0200B150.s */
 #include "global.h"
 
-void OamManager_Create(void) {
+void *OamManager_Create(u32 fromOBJmain, u32 numOBJmain, u32 fromAffineMain, u32 numAffineMain, u32 fromOBJsub, u32 numOBJsub, u32 fromAffineSub, u32 numAffineSub, enum HeapID heapID) {
     // sub r4, r0, r4
     // sub r1, r1, r4
     // sub r2, r4, r2

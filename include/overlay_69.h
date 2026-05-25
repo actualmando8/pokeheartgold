@@ -6,7 +6,7 @@
 // Unknown structure used by overlay 69 (GeonetGlobe)
 // Based on analysis of GeonetGlobe_Init at 0x021E5900
 // Size: at least 0xC340 bytes based on field accesses
-typedef struct UnkStruct_021E5900 {
+struct UnkStruct_021E5900 {
     u32 field_0x0;          // Heap ID (0x31)
     u32 field_0x4;          // WiFi history pointer
     u32 field_0x8;          // Options address
@@ -34,7 +34,7 @@ typedef struct UnkStruct_021E5900 {
     u32 field_0xc328;
     u32 field_0xc334;
     u32 field_0xc33c;
-} UnkStruct_021E5900;
+};
 
 // GeonetGlobe_Init - Assembly: asm/overlay_69.s
 // Initializes the Geonet Globe overlay

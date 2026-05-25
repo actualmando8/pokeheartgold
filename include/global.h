@@ -4,6 +4,7 @@
 #include <MSL.h>
 #include <nitro.h>
 #include <nitro/code16.h>
+#include <cw/function_target.h>
 #include <nnsys.h>
 #include <stddef.h>
 #include <string.h>

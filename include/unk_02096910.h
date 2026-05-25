@@ -1,7 +1,7 @@
 #ifndef UNK_02096910_H
 #define UNK_02096910_H
 
-#include "types.h"
+#include "global.h"
 
 void sub_02096910(void *a1);
 void sub_02096924(u32 a1, void *a2, void *ctx);

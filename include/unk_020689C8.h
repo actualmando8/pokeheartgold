@@ -11,7 +11,7 @@ void sub_020689E8(void *header);
 void sub_020689F8(void *header);
 void *sub_02068A08(void *header, void *params, u32 a2, u32 a3);
 void sub_02068B0C(void *header, void *params);
-void sub_02068B48(void *entity);
+void sub_02068B48(u32 entity);
 void sub_02068B80(void *header);
 void sub_02068BAC(void *header);
 SysTask *sub_02068BDC(void *entity, u32 param);

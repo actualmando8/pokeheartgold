@@ -1,9 +1,8 @@
 #ifndef POKEHEARTGOLD_CAMERA_H
 #define POKEHEARTGOLD_CAMERA_H
 
-#include <nitro/fx.h>
-
 #include "global.h"
+#include <nitro/fx/fx_vec.h>
 
 #include "heap.h"
 

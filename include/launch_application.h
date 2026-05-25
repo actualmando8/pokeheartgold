@@ -1,6 +1,17 @@
 #ifndef POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
 #define POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
 
+// Forward declarations for types not yet defined in this project
+typedef struct ApricornBoxArgs ApricornBoxArgs;
+typedef struct UnownReportArgs UnownReportArgs;
+typedef struct BugContestSwapMonArgs BugContestSwapMonArgs;
+typedef struct UnkStruct_0203F074 UnkStruct_0203F074;
+typedef struct UnkStruct_0203FAB4 UnkStruct_0203FAB4;
+typedef struct UnkStruct_0203FCC4 UnkStruct_0203FCC4;
+typedef struct ScratchOffCardsArgs ScratchOffCardsArgs;
+typedef struct LegendaryCinematicArgs LegendaryCinematicArgs;
+typedef struct PokeathlonMedalsArgs PokeathlonMedalsArgs;
+
 #include "battle/battle_setup.h"
 #include "credits/credits.h"
 #include "pokeathlon/pokeathlon.h"
@@ -87,20 +98,8 @@ typedef struct UnkStruct_0203E8C8 {
     u16 unk2;
 } UnkStruct_0203E8C8;
 
-static inline void InitUnkStructScrCmd408(UnkOv67Args *data, u16 a1, u16 a2, ScriptContext *ctx) {
-    MI_CpuClear8(data, sizeof(UnkOv67Args));
-    data->unk_4 = a1;
-    data->unk_6 = a2;
-    data->saveData = ctx->fieldSystem->saveData;
-}
-
-static inline PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx) {
-    PCBoxArgs *ret = Heap_Alloc(HEAP_ID_FIELD2, sizeof(PCBoxArgs));
-    ret->saveData = ctx->fieldSystem->saveData;
-    ret->unk8 = ScriptReadByte(ctx);
-    ret->menuInputStatePtr = &ctx->fieldSystem->menuInputState;
-    return ret;
-}
+void InitUnkStructScrCmd408(UnkOv67Args *data, u16 a1, u16 a2, ScriptContext *ctx);
+PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx);
 
 UseMailArgs *UseMail_CreateArgs(FieldSystem *fieldSystem, int n, u8 mailId, enum HeapID heapID);
 ApricornBoxArgs *ApricornBox_LaunchApp(FieldSystem *fieldSystem, int a1);

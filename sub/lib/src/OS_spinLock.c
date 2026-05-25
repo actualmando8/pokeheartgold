@@ -175,7 +175,7 @@ asm s32 OS_UnLockCard(u16 lockID) {
     bx r1
 }
 
-BOOL OS_TryLockCard(u16 lockID) {
+s32 OS_TryLockCard(u16 lockID) {
     return OSi_DoTryLockByWord(lockID, (OSLockWord*)HW_CARD_LOCK_BUF, OSi_AllocateCardBus, FALSE);
 }
 

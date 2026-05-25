@@ -5,7 +5,7 @@
 
 // Unknown structure used by overlay 95 (Hatch Egg app)
 // Based on function analysis at addresses starting 0x021E5900
-typedef struct UnkStruct_021E5900 {
+struct UnkStruct_021E5900 {
     u32 field_0x0;
     u32 field_0x4;
     u32 field_0x8;
@@ -70,7 +70,7 @@ typedef struct UnkStruct_021E5900 {
     u32 field_0xf4;
     u32 field_0xf8;
     u32 field_0xfc;
-} UnkStruct_021E5900;
+};
 
 // ov95_021E5900 - Assembly: asm/overlay_95.s
 void ov95_021E5900(void);

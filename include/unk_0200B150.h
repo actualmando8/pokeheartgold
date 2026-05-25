@@ -3,7 +3,7 @@
 
 #include "global.h"
 
-void OamManager_Create(u32 r0, u32 r1, u32 r2, u32 r3);
+void *OamManager_Create(u32 fromOBJmain, u32 numOBJmain, u32 fromAffineMain, u32 numAffineMain, u32 fromOBJsub, u32 numOBJsub, u32 fromAffineSub, u32 numAffineSub, enum HeapID heapID);
 void sub_0200B194(u32 width, u32 height, u32 r2, u32 r3);
 void OamManager_ApplyAndResetBuffers(void);
 void OamManager_Free(void);

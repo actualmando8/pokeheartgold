@@ -2,7 +2,6 @@
 #define POKEHEARTGOLD_UNK_020552A4_H
 
 #include "task.h"
-
-void CallTask_RestoreOverworld(TaskManager *taskManager);
+#include "unk_02055244.h"
 
 #endif // POKEHEARTGOLD_UNK_020552A4_H

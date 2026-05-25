@@ -1,7 +1,7 @@
 #ifndef OVERLAY_58_H
 #define OVERLAY_58_H
 
-#include "types.h"
+#include "global.h"
 
 typedef struct ApricornBoxContext ApricornBoxContext;
 

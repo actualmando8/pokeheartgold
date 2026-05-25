@@ -3,6 +3,7 @@
 
 #include "constants/field_move_response.h"
 
+#include "save_arrays.h"
 #include "bag_types_def.h"
 #include "battle_regulation.h"
 #include "field_move.h"

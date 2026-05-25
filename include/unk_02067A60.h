@@ -38,7 +38,7 @@ void sub_02067AE4(struct UnkStruct_02067A60 *s);
 void sub_02067B88(struct UnkStruct_02067A60 *s);
 void sub_02067BA4(struct UnkStruct_02067A60 *s);
 void sub_02067BC0(struct UnkStruct_02067A60 *s);
-void FieldSystem_ClearFollowingTrainer(struct UnkStruct_02067A60 *s);
+void FieldSystem_ClearFollowingTrainer(FieldSystem *fieldSystem);
 void sub_02067BE8(struct UnkStruct_02067A60 *s);
 struct UnkStruct_02067BF8 *sub_02067BF8(enum HeapID heapID, FieldSystem *fieldSystem, Pokemon *pokemon, u16 a3, s16 a5, s16 a6);
 BOOL sub_02067C30(TaskManager *taskManager);

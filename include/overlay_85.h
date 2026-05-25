@@ -5,7 +5,7 @@
 
 // Unknown structure used by overlay 85 (Battle / Game feature)
 // Based on analysis at 0x021E5900
-typedef struct UnkStruct_021E5900 {
+struct UnkStruct_021E5900 {
     u32 field_0x0;          // Heap ID
     void *args;             // offset 0x4: OverlayManager_GetArgs()
     void *options;          // offset 0x8: Save_PlayerData_GetOptionsAddr()
@@ -21,7 +21,7 @@ typedef struct UnkStruct_021E5900 {
     u32 field_0x24c;        // Enemy Pokémon
     u32 field_0x250;        // Move selection
     u32 field_0x254;        // Turn counter
-} UnkStruct_021E5900;
+};
 
 // Battle_Init - Assembly: asm/overlay_85.s @ 0x021E5900
 // Initializes the battle/game overlay

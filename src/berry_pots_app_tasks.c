@@ -425,7 +425,7 @@ static int ov17_02203CC8(BerryPotsAppData *data) {
     return -1;
 }
 
-static u32 ov17_02203D00(BerryPotsAppData *data) {
+u32 ov17_02203D00(BerryPotsAppData *data) {
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[data->unk7C];
     switch (unk->growthStage) {
     case BERRY_POT_GROWTH_STAGE_NONE:

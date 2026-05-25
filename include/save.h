@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_SAVE_H
 #define POKEHEARTGOLD_SAVE_H
 
+#include "global.h"
 #include "constants/save_arrays.h"
 
 #include "heap.h"

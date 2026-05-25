@@ -5,6 +5,7 @@
 
 // Unknown structure used by overlay 86 (Frontier-related)
 // Based on analysis at 0x021E5900
+#ifndef UNKSTRUCT_021E5900_DEFINED
 typedef struct UnkStruct_021E5900 {
     u32 field_0x0;          // Heap ID
     void *args;             // offset 0x4: OverlayManager_GetArgs()
@@ -17,6 +18,8 @@ typedef struct UnkStruct_021E5900 {
     // Sprite system at offset 0x170
     // Message data at offset 0x1d0
 } UnkStruct_021E5900;
+#define UNKSTRUCT_021E5900_DEFINED
+#endif
 
 // FrontierApp_Init - Assembly: asm/overlay_86.s @ 0x021E5900
 // Initializes the Frontier overlay

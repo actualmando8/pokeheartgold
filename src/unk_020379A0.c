@@ -81,7 +81,7 @@ void sub_02037ADC(void) {
 
 
 
-void sub_02037B38(void) {
+BOOL sub_02037B38(u8 reel) {
     // cmp r2, #0
     // bne _02037B44
     // ldrb r1, [r2, r1]

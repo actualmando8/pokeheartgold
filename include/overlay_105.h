@@ -4,7 +4,7 @@
 #include <global.h>
 
 // Pokemon 3D View structure (similar to overlay_104)
-typedef struct UnkStruct_021E5900 {
+struct UnkStruct_021E5900 {
     void *camera;                 // 0x00 - camera pointer
     u8 field_0x4[0x98-0x4];       // 0x04 to 0x97 - data area
     u8 pokemonIndex;              // 0x9C
@@ -29,7 +29,7 @@ typedef struct UnkStruct_021E5900 {
     void *field_0x7C;            // 0x7C
     // Animation objects array at 0x80+
     void *animObjs[5];           // 0x80 - animation objects
-} UnkStruct_021E5900;
+};
 
 // ov105_021E5900 - Assembly: asm/overlay_105.s
 // Initialize Pokemon 3D view overlay

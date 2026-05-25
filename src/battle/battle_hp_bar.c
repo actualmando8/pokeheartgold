@@ -265,6 +265,7 @@ static void ov12_02264B94(BattleHpBar *hpBar);
 static void ov12_02264F00(BattleHpBar *hpBar, int a1);
 static void ov12_02264F44(BattleHpBar *hpBar, int x, int y);
 static void ov12_02265054(SysTask *task, void *data);
+static void ov12_02265DC4(SysTask *task, void *data);
 static void ov12_0226516C(BattleHpBar *hpBar);
 static void ov12_022652D0(BattleHpBar *hpBar);
 static void ov12_02265354(BattleHpBar *hpBar);

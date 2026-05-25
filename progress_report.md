@@ -39,8 +39,39 @@
 - 0 TODO: decompile stubs remaining
 - All functions now in C
 
+### [2026-05-25 18:22] - Build Fixes Update
+- Fixed `global.inc` - added `.macro FS_EXTERN_OVERLAY` definition for assembler
+- Fixed `sub/lib/src/OS_spinLock.c` - changed `BOOL` to `s32` return type
+- Reverted `lib/include/nitro/fs/overlay.h` and `include/nitro/fs/overlay.h` (SDK_ASM guards broke assembler)
+- Reverted `lib/include/nitro/code32.h` (non-standard header structure)
+- The `scripts/add_sdk_asm_guards.py` script needs refinement - it incorrectly wraps headers that need SDK_ASM-aware splitting
+- Remaining assembler errors: `lib/asm/crt0.s` and NitroSDK asm files include C headers with function declarations that the assembler can't parse
+
 ### Notes
 - Some functions use register variables (r0, r1, sp, etc.) as placeholders
 - Functions with complex control flow (branches) were manually decompiled
 - The clangd errors in VSCode are false positives (NitroSDK types not recognized)
 - Actual build requires MWCC toolchain (wine + mwccarm)
+- The NitroSDK build issues are pre-existing and unrelated to asm-to-C translation
+
+### [2026-05-25 21:45] - Build Fixes (Round 2)
+- Completed: Added `#include <cw/function_target.h>` to `include/global.h` for `ALIGN` macro
+- Completed: Fixed `phone_scripts_childhood_friend.c` - moved local static array to file scope
+- Completed: Fixed `OamManager_Create` signature (4 -> 9 args)
+- Completed: Fixed `sub_02037B38` signature (2 -> 1 arg)
+- Completed: Fixed `battle_hp_bar.c` - added forward declaration for `ov12_02265DC4`
+- Completed: Fixed `battle_input.c` type conversion errors (casts + header updates)
+- Completed: Fixed `battle_arcade_game_board_data.c` array sizes (mismatched with header)
+- Completed: Fixed `unk_02096910.h` - replaced `types.h` with `global.h`
+- Completed: Fixed `party_menu.h` - added forward declaration for `UnkStruct_0202E474`
+- Completed: Updated `unk_02077678.h` function signatures to match callers
+- Next steps: Fix remaining header issues (camera.h VecFx32/fx32 undefined, launch_application.h missing types)
+- Notes: The build is progressing but has cascading header dependency issues that need systematic resolution
+
+### [2026-05-25 22:01] - Build Fixes (Round 3)
+- Completed: Fixed `party_menu.h` - replaced forward decl with `#include "save_arrays.h"`
+- Completed: Fixed `overlay_58.h` - replaced `types.h` with `global.h`
+- Completed: Fixed duplicate `UnkStruct_021E5900` typedefs in 7 overlay headers (removed typedef, kept struct def)
+- Completed: Fixed `berry_pots_app_tasks.c` - removed `static` from `ov17_02203D00` (declared non-static in header)
+- Status: Only 4 files failing now (camera_translation.c, launch_application.h issues, etc.)
+- Notes: The core issue is header self-containment. Every header must include everything it needs.

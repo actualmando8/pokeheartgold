@@ -10,13 +10,12 @@
 
 u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId);
 
-u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
-    ALIGN(4)
-    static const u16 ov101_021F86C8[] = {
-        PHONE_SCRIPT_102,
-        PHONE_SCRIPT_101,
-    };
+static const u16 ov101_021F86C8[] = {
+    PHONE_SCRIPT_102,
+    PHONE_SCRIPT_101,
+};
 
+u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     if (state->isIncomingCall) {
         state->scriptType = 11;
         return PHONE_SCRIPT_NONE;
