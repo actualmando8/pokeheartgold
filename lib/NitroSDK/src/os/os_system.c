@@ -1,5 +1,10 @@
 #include <nitro.h>
 
+// Workaround: OS_IE_VBLANK not defined through include chain
+#ifndef OS_IE_VBLANK
+#define OS_IE_VBLANK (1UL << 0)
+#endif
+
 asm OSIntrMode OS_EnableInterrupts(void) {
     mrs r0, cpsr
     bic r1, r0, #HW_PSR_IRQ_DISABLE

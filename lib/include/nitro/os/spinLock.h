@@ -25,7 +25,7 @@ void OSi_FreeCartridgeBus(void);
 s32 OS_LockCard(u16 lockID);
 s32 OS_UnlockCard(u16 lockID);
 s32 OS_UnLockCard(u16 lockID);
-BOOL OS_TryLockCard(u16 lockID);
+s32 OS_TryLockCard(u16 lockID);
 u16 OS_ReadOwnerOfLockWord(OSLockWord * lock);
 s32 OS_UnLockCartridge(u16 lockID);
 s32 OS_GetLockID(void);

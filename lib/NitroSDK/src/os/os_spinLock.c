@@ -16,6 +16,12 @@ void OSi_FreeCartridgeBus(void);
 void OSi_AllocateCardBus(void);
 void OSi_FreeCardBus(void);
 
+s32 OSi_DoTryLockByWord(u16 lockID, OSLockWord *lockp, void (*ctrlFuncp)(void), BOOL disableFiq);
+s32 OSi_DoLockByWord(u16 lockID, OSLockWord *lockp, void (*ctrlFuncp)(void), BOOL disableFiq);
+s32 OSi_DoUnlockByWord(u16 lockID, OSLockWord *lockp, void (*ctrlFuncp)(void), BOOL disableFiq);
+s32 OS_UnLockCartridge(u16 lockID);
+s32 OS_UnLockCard(u16 lockID);
+
 // FIXME: This looks like it's meant to be a linker-inserted veneer, but I can't get it to insert properly yet
 #ifdef SDK_ARM9
 static inline void OSi_WaitByLoop(void) {
@@ -175,7 +181,7 @@ asm s32 OS_UnLockCard(u16 lockID) {
     bx r1
 }
 
-BOOL OS_TryLockCard(u16 lockID) {
+s32 OS_TryLockCard(u16 lockID) {
     return OSi_DoTryLockByWord(lockID, (OSLockWord*)HW_CARD_LOCK_BUF, OSi_AllocateCardBus, FALSE);
 }
 

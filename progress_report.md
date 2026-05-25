@@ -28,6 +28,14 @@
 - Completed: All 120 files with inline asm blocks
 - Completed: 10 remaining complex functions with branches
 - 0 #ifdef MWERKS blocks remaining
+
+### [2026-05-25 14:52] - Build Fixes
+- Completed: Fixed pre-existing build issues in NitroSDK headers and sources
+- Added `-I$(WORK_DIR)/lib/include/MSL_C` to MWCFLAGS for `<cstdio>` resolution
+- Added `#include <nitro/os/common/reset_shared.h>` to `lib/NitroSDK/src/os/os_reset.c`
+- Added forward declaration for `OsCountZeroBits` in `lib/NitroSDK/src/os/os_vramExclusive.c`
+- Added `#include "global.h"` and forward decl for `UnkStruct_0202E474` in `include/save_arrays.h`
+- Next steps: The build has pre-existing failures in NitroSDK sources (os_spinLock.c, os_system.c, etc.) that were present before the asm-to-C translation. These require deeper fixes to the NitroSDK source code itself.
 - 0 TODO: decompile stubs remaining
 - All functions now in C
 
