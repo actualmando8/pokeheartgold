@@ -12,13 +12,8 @@ void ov01_02203E40(void) {
 }
 
 void ov01_02203E64(void) {
-    /* Original at 0x02203E64 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_02203E94\n    add r0, r4, #0\n    bl ov01_021F1448\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_02203E94();
+    ov01_021F1448(r4);
 }
 
 void ov01_02203E74(void) {

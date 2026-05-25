@@ -2,13 +2,8 @@
 #include "global.h"
 
 void sub_02067A60(void) {
-    /* Original at 0x02067A60 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x24\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #0x24\n    bl MIi_CpuClearFast\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x24);
+    MIi_CpuClearFast(0, r0, 0x24);
 }
 
 void sub_02067A78(void) {

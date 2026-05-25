@@ -106,13 +106,8 @@ void sub_02017294(void) {
 }
 
 void sub_020172B4(void) {
-    /* Original at 0x020172B4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    bl sub_02017294\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_02017294\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02017294();
+    sub_02017294(r5, r4);
 }
 
 void sub_020172C8(void) {

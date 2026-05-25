@@ -71,14 +71,10 @@ void ov109_021E5B60(void) {
     #endif
 }
 
-void ov109_021E5B98(void) {
-    /* Original at 0x021E5B98 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02021238\n    add r0, r4, #0\n    bl ov109_021E5CE4\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov109_021E5B98(void) {
+    sub_02021238();
+    ov109_021E5CE4(r4);
+    return 1;
 }
 
 void ov109_021E5BAC(void) {
@@ -140,13 +136,11 @@ void ov109_021E5CB4(void) {
 }
 
 void ov109_021E5CE4(void) {
-    /* Original at 0x021E5CE4 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov109_021E6EC0\n    add r0, r4, #0\n    bl ov109_021E6DBC\n    add r0, r4, #0\n    bl ov109_021E6D2C\n    add r0, r4, #0\n    bl ov109_021E6C7C\n    add r0, r4, #0\n    bl ov109_021E6AFC\n    pop {r4, pc}"
-    );
-    #endif
+    ov109_021E6EC0();
+    ov109_021E6DBC(r4);
+    ov109_021E6D2C(r4);
+    ov109_021E6C7C(r4);
+    ov109_021E6AFC(r4);
 }
 
 void ov109_021E5D08(void) {

@@ -627,14 +627,8 @@ void ov03_02255C64(void) {
     ov03_02254054();
 }
 
-void ov03_02255C80(void) {
-    /* Original at 0x02255C80 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov03_02255C80(void) {
+    return 0;
 }
 
 void ov03_02255C84(void) {

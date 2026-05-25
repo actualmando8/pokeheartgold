@@ -1,14 +1,8 @@
 /* Decompiled from asm/unk_02037C94.s */
 #include "global.h"
 
-void sub_02037C94(void) {
-    /* Original at 0x02037C94 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x46\n    bx lr"
-    );
-    #endif
+u8 sub_02037C94(void) {
+    return 0x46;
 }
 
 void sub_02037C98(void) {
@@ -711,14 +705,8 @@ void sub_02038B9C(void) {
     #endif
 }
 
-void sub_02038C18(void) {
-    /* Original at 0x02038C18 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #6\n    bx lr"
-    );
-    #endif
+u8 sub_02038C18(void) {
+    return 6;
 }
 
 void sub_02038C1C(void) {
@@ -1266,13 +1254,8 @@ void sub_02039980(void) {
 }
 
 void sub_02039998(void) {
-    /* Original at 0x02039998 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl sub_0203993C\n    bl sub_02034044\n    pop {r3, pc}"
-    );
-    #endif
+    sub_0203993C();
+    sub_02034044();
 }
 
 void sub_020399A4(void) {
@@ -1576,13 +1559,11 @@ void sub_02039FD8(void) {
 }
 
 void sub_02039FFC(void) {
-    /* Original at 0x02039FFC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl LoadDwcOverlay\n    bl LoadOVY38\n    add r0, r4, #0\n    bl sub_02039FD8\n    add r4, r0, #0\n    bl UnloadDwcOverlay\n    bl UnloadOVY38\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    LoadDwcOverlay();
+    LoadOVY38();
+    sub_02039FD8(r4);
+    UnloadDwcOverlay();
+    UnloadOVY38();
 }
 
 void sub_0203A01C(void) {
@@ -1596,13 +1577,9 @@ void sub_0203A01C(void) {
 }
 
 void sub_0203A040(void) {
-    /* Original at 0x0203A040 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    bl sub_0202C08C\n    add r4, r0, #0\n    add r1, sp, #0\n    bl DWC_CreateExchangeToken\n    add r0, r4, #0\n    add r1, sp, #0\n    bl DWC_GetGsProfileId\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    sub_0202C08C();
+    DWC_CreateExchangeToken();
+    DWC_GetGsProfileId(r4);
 }
 
 void sub_0203A05C(void) {

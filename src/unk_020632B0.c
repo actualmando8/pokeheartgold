@@ -193,24 +193,12 @@ void sub_02063AFC(void) {
     #endif
 }
 
-void sub_02063B00(void) {
-    /* Original at 0x02063B00 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 sub_02063B00(void) {
+    return 0;
 }
 
-void sub_02063B04(void) {
-    /* Original at 0x02063B04 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 sub_02063B04(void) {
+    return 0;
 }
 
 void sub_02063B08(void) {
@@ -498,13 +486,9 @@ void sub_0206460C(void) {
 }
 
 void sub_02064618(void) {
-    /* Original at 0x02064618 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl SysTask_GetData\n    add r1, r0, #0\n    mov r0, #4\n    bl Heap_FreeExplicit\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    Heap_FreeExplicit(4, r0);
+    SysTask_Destroy(r4);
 }
 
 void sub_02064630(void) {

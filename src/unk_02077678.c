@@ -5,48 +5,24 @@ void sub_02077678(void) {
     GF_AssertFail();
 }
 
-void sub_02077690(void) {
-    /* Original at 0x02077690 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x4a\n    bx lr"
-    );
-    #endif
+u8 sub_02077690(void) {
+    return 0x4a;
 }
 
-void sub_02077694(void) {
-    /* Original at 0x02077694 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xf2\n    bx lr"
-    );
-    #endif
+u8 sub_02077694(void) {
+    return 0xf2;
 }
 
-void sub_02077698(void) {
-    /* Original at 0x02077698 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xf3\n    bx lr"
-    );
-    #endif
+u8 sub_02077698(void) {
+    return 0xf3;
 }
 
 void sub_0207769C(void) {
     GF_AssertFail();
 }
 
-void sub_020776B4(void) {
-    /* Original at 0x020776B4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #8\n    bx lr"
-    );
-    #endif
+u8 sub_020776B4(void) {
+    return 8;
 }
 
 void sub_020776B8(void) {
@@ -98,13 +74,8 @@ void sub_020777AC(void) {
 }
 
 void sub_020777B4(void) {
-    /* Original at 0x020777B4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    bl SpriteManager_UnloadCellObjById\n    add r0, r5, #0\n    add r1, r4, #0\n    bl SpriteManager_UnloadAnimObjById\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    SpriteManager_UnloadCellObjById();
+    SpriteManager_UnloadAnimObjById(r5, r4);
 }
 
 void sub_020777C8(void) {
@@ -129,14 +100,8 @@ void sub_02077818(void) {
     GF_AssertFail();
 }
 
-void sub_02077830(void) {
-    /* Original at 0x02077830 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #8\n    bx lr"
-    );
-    #endif
+u8 sub_02077830(void) {
+    return 8;
 }
 
 void sub_02077834(void) {

@@ -61,14 +61,8 @@ void ov49_02258994(void) {
     #endif
 }
 
-void ov49_022589A8(void) {
-    /* Original at 0x022589A8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x23\n    bx lr"
-    );
-    #endif
+u8 ov49_022589A8(void) {
+    return 0x23;
 }
 
 void ov49_022589AC(void) {
@@ -1586,13 +1580,8 @@ void ov49_0225AC74(void) {
 }
 
 void ov49_0225ACA8(void) {
-    /* Original at 0x0225ACA8 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov49_0225AAC8\n    add r0, r4, #0\n    mov r1, #2\n    bl SetWindowPaletteNum\n    pop {r4, pc}"
-    );
-    #endif
+    ov49_0225AAC8();
+    SetWindowPaletteNum(r4, 2);
 }
 
 void ov49_0225ACBC(void) {
@@ -1828,13 +1817,8 @@ void ov49_0225B2C0(void) {
 }
 
 void ov49_0225B2F0(void) {
-    /* Original at 0x0225B2F0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    mov r1, #2\n    mov r2, #0xe\n    bl ov49_0225B388\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov49_0225B24C\n    pop {r4, pc}"
-    );
-    #endif
+    ov49_0225B388(r1, 2, 0xe);
+    ov49_0225B24C(r4, r0);
 }
 
 void ov49_0225B308(void) {
@@ -4644,13 +4628,10 @@ void ov49_022652E8(void) {
 }
 
 void ov49_0226535C(void) {
-    /* Original at 0x0226535C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov49_0226571C\n    add r0, r4, #0\n    bl ov49_02265760\n    add r0, r4, #0\n    bl ov49_02265858\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov49_0226571C();
+    ov49_02265760(r4);
+    ov49_02265858(r4);
+    Heap_Free(r4);
 }
 
 void ov49_02265378(void) {
@@ -5744,13 +5725,8 @@ void ov49_02268A0C(void) {
 }
 
 void ov49_02268A6C(void) {
-    /* Original at 0x02268A6C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov49_02268DB0\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov49_02268DB0();
+    Heap_Free(r4);
 }
 
 void ov49_02268A7C(void) {

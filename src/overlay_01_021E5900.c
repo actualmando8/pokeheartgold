@@ -148,13 +148,8 @@ void ov01_021E61E0(void) {
 }
 
 void ov01_021E6214(void) {
-    /* Original at 0x021E6214 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl ObjCharTransfer_Destroy\n    bl ObjPlttTransfer_Destroy\n    pop {r3, pc}"
-    );
-    #endif
+    ObjCharTransfer_Destroy();
+    ObjPlttTransfer_Destroy();
 }
 
 void ov01_021E6220(void) {

@@ -66,13 +66,9 @@ void ov80_02239A74(void) {
 }
 
 void ov80_02239A98(void) {
-    /* Original at 0x02239A98 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl sub_020154D0\n    add r4, r0, #0\n    add r0, r5, #0\n    bl sub_02014EBC\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_020154D0();
+    sub_02014EBC(r5);
+    Heap_Free(r4);
 }
 
 void ov80_02239AB0(void) {

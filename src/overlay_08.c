@@ -1764,13 +1764,10 @@ void ov08_02223000(void) {
 }
 
 void ov08_022230CC(void) {
-    /* Original at 0x022230CC */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x17\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #6\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    GfGfx_EngineBTogglePlanes(0x17, 0);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 5);
+    FreeBgTilemapBuffer(r4, 6);
 }
 
 void ov08_022230F4(void) {
@@ -1848,13 +1845,10 @@ void ov08_02223374(void) {
 }
 
 void ov08_02223390(void) {
-    /* Original at 0x02223390 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    add r4, r3, #0\n    add r6, r0, #0\n    add r7, r2, #0\n    bl BattleSystem_GetBag\n    add r1, r5, #0\n    mov r2, #1\n    add r3, r4, #0\n    bl Bag_TakeItem\n    add r0, r6, #0\n    bl BattleSystem_GetBagCursor\n    add r1, r5, #0\n    add r2, r7, #0\n    bl BagCursor_Battle_SetLastUsedItem\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    BattleSystem_GetBag();
+    Bag_TakeItem(r5, 1, r4);
+    BattleSystem_GetBagCursor(r6);
+    BagCursor_Battle_SetLastUsedItem(r5, r7);
 }
 
 void ov08_022233B8(void) {
@@ -1988,13 +1982,9 @@ void ov08_022238F4(void) {
 }
 
 void ov08_022239B4(void) {
-    /* Original at 0x022239B4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov08_0222377C\n    add r0, r4, #0\n    bl ov08_022238F4\n    add r0, r4, #0\n    bl ov08_022237C4\n    pop {r4, pc}"
-    );
-    #endif
+    ov08_0222377C();
+    ov08_022238F4(r4);
+    ov08_022237C4(r4);
 }
 
 void ov08_022239CC(void) {
@@ -2088,13 +2078,12 @@ void ov08_02223CD4(void) {
 }
 
 void ov08_02223D08(void) {
-    /* Original at 0x02223D08 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov08_02223D34\n    add r0, r4, #0\n    bl ov08_02223D80\n    add r0, r4, #0\n    bl ov08_02223F14\n    add r0, r4, #0\n    bl ov08_022240A8\n    add r0, r4, #0\n    bl ov08_0222419C\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    pop {r4, pc}"
-    );
-    #endif
+    ov08_02223D34();
+    ov08_02223D80(r4);
+    ov08_02223F14(r4);
+    ov08_022240A8(r4);
+    ov08_0222419C(r4);
+    GfGfx_EngineBTogglePlanes(0x10, 1);
 }
 
 void ov08_02223D34(void) {

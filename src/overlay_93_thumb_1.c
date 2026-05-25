@@ -21,14 +21,11 @@ void ov93_0225C574(void) {
     #endif
 }
 
-void ov93_0225C6C0(void) {
-    /* Original at 0x0225C6C0 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl OverlayManager_GetData\n    add r0, r4, #0\n    bl OverlayManager_FreeData\n    mov r0, #0x75\n    bl Heap_Destroy\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov93_0225C6C0(void) {
+    OverlayManager_GetData();
+    OverlayManager_FreeData(r4);
+    Heap_Destroy(0x75);
+    return 1;
 }
 
 void ov93_0225C6D8(void) {

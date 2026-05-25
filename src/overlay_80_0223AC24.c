@@ -76,13 +76,8 @@ void ov80_0223ADC8(void) {
 }
 
 void ov80_0223ADF4(void) {
-    /* Original at 0x0223ADF4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x30\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x30\n    add r4, r0, #0\n    bl memset\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x30);
+    memset(0, 0x30);
 }
 
 void ov80_0223AE0C(void) {

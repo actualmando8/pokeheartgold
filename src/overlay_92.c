@@ -45,54 +45,24 @@ void ov92_0225C584(void) {
     #endif
 }
 
-void ov92_0225C588(void) {
-    /* Original at 0x0225C588 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov92_0225C588(void) {
+    return 0;
 }
 
-void ov92_0225C58C(void) {
-    /* Original at 0x0225C58C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #8\n    bx lr"
-    );
-    #endif
+u8 ov92_0225C58C(void) {
+    return 8;
 }
 
-void ov92_0225C590(void) {
-    /* Original at 0x0225C590 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #4\n    bx lr"
-    );
-    #endif
+u8 ov92_0225C590(void) {
+    return 4;
 }
 
-void ov92_0225C594(void) {
-    /* Original at 0x0225C594 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #8\n    bx lr"
-    );
-    #endif
+u8 ov92_0225C594(void) {
+    return 8;
 }
 
-void ov92_0225C598(void) {
-    /* Original at 0x0225C598 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x20\n    bx lr"
-    );
-    #endif
+u8 ov92_0225C598(void) {
+    return 0x20;
 }
 
 void ov92_0225C59C(void) {
@@ -105,24 +75,14 @@ void ov92_0225C59C(void) {
     #endif
 }
 
-void ov92_0225C5A4(void) {
-    /* Original at 0x0225C5A4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #5\n    bx lr"
-    );
-    #endif
+u8 ov92_0225C5A4(void) {
+    return 5;
 }
 
 void ov92_0225C5A8(void) {
-    /* Original at 0x0225C5A8 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl ov92_0225C59C\n    add r4, r0, #0\n    bl ov92_0225C5A4\n    add r1, r0, #0\n    add r0, r4, #0\n    add r2, r5, #0\n    bl sub_0203410C\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov92_0225C59C();
+    ov92_0225C5A4();
+    sub_0203410C(r4, r0, r5);
 }
 
 void ov92_0225C5C4(void) {
@@ -1252,11 +1212,6 @@ void ov92_022634F8(void) {
 }
 
 void ov92_02263824(void) {
-    /* Original at 0x02263824 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x40\n    add r4, r1, #0\n    add r1, sp, #0\n    bl ov92_022634F8\n    add r0, sp, #0\n    add r1, r4, #0\n    bl MTX_Copy44To43_\n    add sp, #0x40\n    pop {r4, pc}"
-    );
-    #endif
+    ov92_022634F8();
+    MTX_Copy44To43_(r4);
 }

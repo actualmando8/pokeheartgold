@@ -143,14 +143,8 @@ void ov01_021FC260(void) {
     #endif
 }
 
-void ov01_021FC2C4(void) {
-    /* Original at 0x021FC2C4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov01_021FC2C4(void) {
+    return 0;
 }
 
 void ov01_021FC2C8(void) {
@@ -173,14 +167,8 @@ void ov01_021FC2F0(void) {
     #endif
 }
 
-void GetHoneySweetScentWorkSize(void) {
-    /* Original at 0x021FC30C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xc\n    bx lr"
-    );
-    #endif
+u8 GetHoneySweetScentWorkSize(void) {
+    return 0xc;
 }
 
 void Task_HoneyOrSweetScent(void) {

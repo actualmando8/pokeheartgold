@@ -715,14 +715,10 @@ void ov93_022625BC(void) {
     #endif
 }
 
-void ov93_022626E8(void) {
-    /* Original at 0x022626E8 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl OverlayManager_GetData\n    add r0, r4, #0\n    bl OverlayManager_FreeData\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov93_022626E8(void) {
+    OverlayManager_GetData();
+    OverlayManager_FreeData(r4);
+    return 1;
 }
 
 void ov93_022626FC(void) {
@@ -735,24 +731,12 @@ void ov93_022626FC(void) {
     #endif
 }
 
-void ov93_02262710(void) {
-    /* Original at 0x02262710 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x14\n    bx lr"
-    );
-    #endif
+u8 ov93_02262710(void) {
+    return 0x14;
 }
 
-void ov93_02262714(void) {
-    /* Original at 0x02262714 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #4\n    bx lr"
-    );
-    #endif
+u8 ov93_02262714(void) {
+    return 4;
 }
 
 void ov93_02262718(void) {

@@ -94,13 +94,8 @@ void ov80_0222AE68(void) {
 }
 
 void ov80_0222AE6C(void) {
-    /* Original at 0x0222AE6C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #2\n    mov r1, #3\n    bl SetBgPriority\n    mov r0, #3\n    mov r1, #2\n    bl SetBgPriority\n    pop {r3, pc}"
-    );
-    #endif
+    SetBgPriority(2, 3);
+    SetBgPriority(3, 2);
 }
 
 void ov80_0222AE80(void) {

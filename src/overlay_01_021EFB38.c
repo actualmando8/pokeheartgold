@@ -396,13 +396,8 @@ void ov01_021F074C(void) {
 }
 
 void ov01_021F0768(void) {
-    /* Original at 0x021F0768 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x30\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x30\n    add r4, r0, #0\n    bl memset\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x30);
+    memset(0, 0x30);
 }
 
 void ov01_021F0780(void) {
@@ -430,13 +425,8 @@ void ov01_021F07E0(void) {
 }
 
 void ov01_021F0848(void) {
-    /* Original at 0x021F0848 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x30\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x30\n    add r4, r0, #0\n    bl memset\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x30);
+    memset(0, 0x30);
 }
 
 void ov01_021F0860(void) {
@@ -514,13 +504,8 @@ void ov01_021F0A4C(void) {
 }
 
 void ov01_021F0B44(void) {
-    /* Original at 0x021F0B44 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r0, #4\n    mov r1, #0xe8\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0xe8\n    add r4, r0, #0\n    bl memset\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(4, 0xe8);
+    memset(0, 0xe8);
 }
 
 void ov01_021F0B5C(void) {

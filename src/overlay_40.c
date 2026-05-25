@@ -516,13 +516,9 @@ void ov40_0222D800(void) {
 }
 
 void ov40_0222D874(void) {
-    /* Original at 0x0222D874 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    bl ov40_0222CFBC\n    add r0, r4, #0\n    bl ov40_0222CF94\n    add r0, r4, #0\n    bl ov40_0222CBC0\n    pop {r4, pc}"
-    );
-    #endif
+    ov40_0222CFBC(0);
+    ov40_0222CF94(r4);
+    ov40_0222CBC0(r4);
 }
 
 void ov40_0222D88C(void) {
@@ -832,33 +828,21 @@ void ov40_0222E690(void) {
 }
 
 void ov40_0222E79C(void) {
-    /* Original at 0x0222E79C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov40_0222E09C\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov40_0222E690\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov40_0222E510\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov40_0222E09C();
+    ov40_0222E690(r5, r4);
+    ov40_0222E510(r5, r4);
 }
 
 void ov40_0222E7B8(void) {
-    /* Original at 0x0222E7B8 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov40_0222E4A4\n    add r0, r5, #0\n    mov r1, #0\n    bl ov40_0222E7DC\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov40_0222E624\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov40_0222E4D4\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov40_0222E4A4();
+    ov40_0222E7DC(r5, 0);
+    ov40_0222E624(r5, r4);
+    ov40_0222E4D4(r5, r4);
 }
 
 void ov40_0222E7DC(void) {
-    /* Original at 0x0222E7DC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov40_0222E4C4\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov40_0222E618\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov40_0222E4C4();
+    ov40_0222E618(r5, r4);
 }
 
 void ov40_0222E7F0(void) {
@@ -972,13 +956,8 @@ void ov40_0222F6D0(void) {
 }
 
 void ov40_0222F720(void) {
-    /* Original at 0x0222F720 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x18\n    bl ClearWindowTilemapAndCopyToVram\n    add r4, #0x18\n    add r0, r4, #0\n    bl RemoveWindow\n    pop {r4, pc}"
-    );
-    #endif
+    ClearWindowTilemapAndCopyToVram();
+    RemoveWindow(r4);
 }
 
 void ov40_0222F734(void) {
@@ -1322,13 +1301,8 @@ void ov40_02230424(void) {
 }
 
 void ov40_02230638(void) {
-    /* Original at 0x02230638 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov40_0222FF74\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov40_02230424\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov40_0222FF74();
+    ov40_02230424(r5, r4);
 }
 
 void ov40_0223064C(void) {

@@ -554,23 +554,17 @@ void ov70_022391F0(void) {
 }
 
 void ov70_022392BC(void) {
-    /* Original at 0x022392BC */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #6\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #7\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(6);
+    FreeBgTilemapBuffer(r4, 5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 7);
 }
 
 void ov70_022392E0(void) {
-    /* Original at 0x022392E0 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_022392BC\n    add r0, r4, #0\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    ov70_022392BC();
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
 }
 
 void ov70_02239304(void) {
@@ -900,13 +894,11 @@ void ov70_02239EAC(void) {
 }
 
 void ov70_02239F78(void) {
-    /* Original at 0x02239F78 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_022392BC\n    add r0, r4, #0\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    ov70_022392BC();
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
+    FreeBgTilemapBuffer(r4, 3);
 }
 
 void ov70_02239FA4(void) {
@@ -1154,13 +1146,9 @@ void ov70_0223AB3C(void) {
 }
 
 void ov70_0223ABD8(void) {
-    /* Original at 0x0223ABD8 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_022392BC\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    ov70_022392BC();
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
 }
 
 void ov70_0223ABF4(void) {
@@ -1432,13 +1420,11 @@ void ov70_0223B7CC(void) {
 }
 
 void ov70_0223B8B4(void) {
-    /* Original at 0x0223B8B4 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_022392BC\n    add r0, r4, #0\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    ov70_022392BC();
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
+    FreeBgTilemapBuffer(r4, 3);
 }
 
 void ov70_0223B8E0(void) {
@@ -1980,13 +1966,11 @@ void ov70_0223CE44(void) {
 }
 
 void ov70_0223CF48(void) {
-    /* Original at 0x0223CF48 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_022392BC\n    add r0, r4, #0\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    ov70_022392BC();
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
+    FreeBgTilemapBuffer(r4, 3);
 }
 
 void ov70_0223CF74(void) {
@@ -2538,13 +2522,11 @@ void ov70_0223E954(void) {
 }
 
 void ov70_0223EA40(void) {
-    /* Original at 0x0223EA40 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_022392BC\n    add r0, r4, #0\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    ov70_022392BC();
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
+    FreeBgTilemapBuffer(r4, 3);
 }
 
 void ov70_0223EA6C(void) {
@@ -3042,13 +3024,11 @@ void ov70_0223FA08(void) {
 }
 
 void ov70_0223FB34(void) {
-    /* Original at 0x0223FB34 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
 }
 
 void ov70_0223FB60(void) {
@@ -3283,14 +3263,8 @@ void ov70_022405B4(void) {
     #endif
 }
 
-void ov70_0224063C(void) {
-    /* Original at 0x0224063C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #3\n    bx lr"
-    );
-    #endif
+u8 ov70_0224063C(void) {
+    return 3;
 }
 
 void ov70_02240640(void) {
@@ -3343,34 +3317,27 @@ void ov70_0224078C(void) {
     #endif
 }
 
-void ov70_022407E4(void) {
-    /* Original at 0x022407E4 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_0224078C\n    add r0, r4, #0\n    mov r1, #0x25\n    mov r2, #0x24\n    bl ov70_02238D84\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov70_02238E50\n    add r0, r4, #0\n    bl ov70_02238F80\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov70_022407E4(void) {
+    ov70_0224078C();
+    ov70_02238D84(r4, 0x25, 0x24);
+    ov70_02238E50(r4, 0, 0);
+    ov70_02238F80(r4);
+    return 3;
 }
 
-void ov70_0224080C(void) {
-    /* Original at 0x0224080C */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov70_0224078C\n    add r0, r4, #0\n    mov r1, #0x25\n    mov r2, #0x24\n    bl ov70_02238D84\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0\n    bl ov70_02238E50\n    add r0, r4, #0\n    bl ov70_02238F80\n    add r0, r4, #0\n    bl ov70_02241234\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov70_0224080C(void) {
+    ov70_0224078C();
+    ov70_02238D84(r4, 0x25, 0x24);
+    ov70_02238E50(r4, 1, 0);
+    ov70_02238F80(r4);
+    ov70_02241234(r4);
+    return 3;
 }
 
-void ov70_02240838(void) {
-    /* Original at 0x02240838 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0x25\n    mov r2, #0x1e\n    bl ov70_02238D84\n    add r0, r4, #0\n    mov r1, #0x21\n    mov r2, #0x24\n    bl ov70_02240D44\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov70_02240838(void) {
+    ov70_02238D84(0x25, 0x1e);
+    ov70_02240D44(r4, 0x21, 0x24);
+    return 3;
 }
 
 void ov70_02240854(void) {
@@ -4488,13 +4455,10 @@ void ov70_022441A4(void) {
 }
 
 void ov70_02244290(void) {
-    /* Original at 0x02244290 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
 }
 
 void ov70_022442B4(void) {

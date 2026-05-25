@@ -90,13 +90,9 @@ void sub_020698B8(void) {
 }
 
 void sub_020698D0(void) {
-    /* Original at 0x020698D0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_020698B8\n    add r0, r4, #0\n    bl sub_02069818\n    add r0, r4, #0\n    bl sub_0206979C\n    pop {r4, pc}"
-    );
-    #endif
+    sub_020698B8();
+    sub_02069818(r4);
+    sub_0206979C(r4);
 }
 
 void sub_020698E8(void) {
@@ -124,13 +120,8 @@ void sub_02069958(void) {
 }
 
 void sub_02069964(void) {
-    /* Original at 0x02069964 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl sub_02069958\n    add r0, r5, #0\n    add r1, r4, #0\n    bl NNS_G3dRenderObjInit\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02069958();
+    NNS_G3dRenderObjInit(r5, r4);
 }
 
 void sub_02069978(void) {
@@ -146,13 +137,8 @@ void sub_0206998C(void) {
 }
 
 void sub_02069998(void) {
-    /* Original at 0x02069998 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    bl sub_02069978\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0206998C\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02069978();
+    sub_0206998C(r5, r4);
 }
 
 void sub_020699AC(void) {

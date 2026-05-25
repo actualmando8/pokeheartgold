@@ -22,13 +22,8 @@ void ov01_021F73CC(void) {
 }
 
 void ov01_021F73F4(void) {
-    /* Original at 0x021F73F4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_0205F40C\n    add r1, r0, #0\n    add r0, r4, #0\n    add r1, r1, #4\n    bl ov01_021F95A8\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F40C();
+    ov01_021F95A8(r4, r0);
 }
 
 void ov01_021F7408(void) {
@@ -62,13 +57,8 @@ void ov01_021F7478(void) {
 }
 
 void ov01_021F74B4(void) {
-    /* Original at 0x021F74B4 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_0205F40C\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F95A8\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F40C();
+    ov01_021F95A8(r4, r0);
 }
 
 void ov01_021F74C8(void) {
@@ -660,23 +650,17 @@ void ov01_021F8C30(void) {
 }
 
 void ov01_021F8C3C(void) {
-    /* Original at 0x021F8C3C */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r1, r2, #0\n    bl ov01_021F8C00\n    add r0, r5, #0\n    bl sub_02023F70\n    add r6, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_02023EE0\n    add r0, r5, #0\n    add r1, r6, #0\n    bl sub_02023F40\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov01_021F8C00(r2);
+    sub_02023F70(r5);
+    sub_02023EE0(r5, r4);
+    sub_02023F40(r5, r6);
 }
 
 void ov01_021F8C64(void) {
-    /* Original at 0x021F8C64 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov01_021F8C30\n    add r0, r5, #0\n    bl sub_02023F70\n    add r6, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_02023EE0\n    add r0, r5, #0\n    add r1, r6, #0\n    bl sub_02023F40\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov01_021F8C30();
+    sub_02023F70(r5);
+    sub_02023EE0(r5, r4);
+    sub_02023F40(r5, r6);
 }
 
 void ov01_021F8C88(void) {

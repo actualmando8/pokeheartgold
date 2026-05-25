@@ -6,335 +6,28 @@ void sub_02078834(void) {
     /* Requires manual decompilation - 301 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, r5, r6, lr}
-    add r6, r0, #0
-    bl TaskManager_GetFieldSystem
-    add r5, r0, #0
-    add r0, r6, #0
-    bl TaskManager_GetEnvironment
-    add r4, r0, #0
-    ldr r1, [r4, #4]
-    cmp r1, #0x19
-    bls _0207884E
-    b _02078B1C
-    add r1, r1, r1
-    add r1, pc
-    ldrh r1, [r1, #6]
-    lsl r1, r1, #0x10
-    asr r1, r1, #0x10
-    add pc, r1
-    _0207885A: ; jump table
-    ldr r1, [r5, #0xc]
-    ldr r0, [r4]
-    str r1, [r0]
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    ldr r0, [r4]
-    ldr r0, [r0, #4]
-    cmp r0, #1
-    bne _020788E6
-    ldr r0, [r5, #0xc]
-    bl sub_0203A05C
-    cmp r0, #0
-    beq _020788E6
-    mov r0, #0xa
-    str r0, [r4, #4]
-    ldr r0, [r4, #8]
-    mov r1, #0
-    strh r1, [r0]
-    b _02078B20
-    ldr r1, _02078B24 ; =_02101290
-    ldr r2, [r4]
-    add r0, r6, #0
-    bl CallApplicationAsTask
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    ldr r0, [r5, #0xc]
-    bl sub_0203A05C
-    cmp r0, #0
-    beq _020788DE
-    ldr r0, [r5, #0xc]
-    bl Save_VarsFlags_Get
-    bl SetFlag970
-    ldr r0, [r4]
-    ldr r0, [r0, #4]
-    cmp r0, #0xf
-    bls _020788E8
-    b _02078B20
-    add r0, r0, r0
-    add r0, pc
-    ldrh r0, [r0, #6]
-    lsl r0, r0, #0x10
-    asr r0, r0, #0x10
-    add pc, r0
-    _020788F4: ; jump table
-    mov r0, #0
-    strb r0, [r4, #0xc]
-    strb r0, [r4, #0xd]
-    mov r0, #4
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0x32
-    strb r0, [r4, #0xc]
-    mov r0, #0
-    strb r0, [r4, #0xd]
-    mov r0, #4
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0x64
-    strb r0, [r4, #0xc]
-    mov r0, #0
-    strb r0, [r4, #0xd]
-    mov r0, #4
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0
-    strb r0, [r4, #0xc]
-    mov r0, #1
-    strb r0, [r4, #0xd]
-    mov r0, #4
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0x32
-    strb r0, [r4, #0xc]
-    mov r0, #1
-    strb r0, [r4, #0xd]
-    mov r0, #4
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0x64
-    strb r0, [r4, #0xc]
-    mov r0, #1
-    strb r0, [r4, #0xd]
-    mov r0, #4
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #6
-    str r0, [r4, #4]
-    b _02078B20
-    ldr r0, [r4, #8]
-    mov r1, #1
-    strh r1, [r0]
-    mov r0, #0xb
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #9
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0xc
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0xe
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0x12
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #0x16
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #8
-    str r0, [r4, #4]
-    b _02078B20
-    ldr r1, [r4]
-    ldrb r2, [r4, #0xc]
-    ldrb r3, [r4, #0xd]
-    ldr r1, [r1, #8]
-    add r0, r6, #0
-    bl CallTask_02050960
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #2
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r6, #0
-    bl CallTask_WirelessTrade
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    mov r0, #2
-    str r0, [r4, #4]
-    b _02078B20
-    ldr r2, _02078B28 ; =0x00040100
-    mov r0, #3
-    mov r1, #0x35
-    bl Heap_Create
-    bl LoadOVY13
-    mov r0, #0x35
-    bl ov13_0221BA00
-    mov r0, #0
-    bl OS_ResetSystem
-    b _02078B20
-    ldr r0, [r4]
-    bl Heap_Free
-    add r0, r4, #0
-    bl Heap_Free
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    mov r0, #1
-    pop {r4, r5, r6, pc}
-    mov r0, #0
-    bl sub_020378E4
-    add r0, r5, #0
-    mov r1, #0
-    bl sub_020968B0
-    str r0, [r4, #0x10]
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r5, #0
-    bl FieldSystem_ApplicationIsRunning
-    cmp r0, #0
-    bne _02078B20
-    ldr r0, [r4, #0x10]
-    bl Heap_Free
-    mov r0, #2
-    str r0, [r4, #4]
-    b _02078B20
-    add r1, r5, #0
-    mov r2, #0xb
-    mov r3, #1
-    bl sub_02078B9C
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r5, #0
-    bl FieldSystem_ApplicationIsRunning
-    cmp r0, #0
-    bne _02078B20
-    add r0, r4, #0
-    bl sub_02078BD8
-    str r0, [r4, #4]
-    b _02078B20
-    ldr r2, [r4, #0x14]
-    add r0, r5, #0
-    mov r1, #0xb
-    bl sub_02078C18
-    str r0, [r4, #0x10]
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r5, #0
-    bl FieldSystem_ApplicationIsRunning
-    cmp r0, #0
-    bne _02078B20
-    mov r0, #2
-    str r0, [r4, #4]
-    ldr r0, [r4, #0x10]
-    bl sub_02078C60
-    b _02078B20
-    add r1, r5, #0
-    mov r2, #0xb
-    mov r3, #2
-    bl sub_02078B9C
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r5, #0
-    bl FieldSystem_ApplicationIsRunning
-    cmp r0, #0
-    bne _02078B20
-    add r0, r4, #0
-    bl sub_02078BD8
-    str r0, [r4, #4]
-    b _02078B20
-    ldr r2, [r4, #0x14]
-    add r0, r5, #0
-    mov r1, #0xb
-    bl sub_02078C74
-    str r0, [r4, #0x10]
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r5, #0
-    bl FieldSystem_ApplicationIsRunning
-    cmp r0, #0
-    bne _02078B20
-    mov r0, #2
-    str r0, [r4, #4]
-    ldr r0, [r4, #0x10]
-    bl sub_02078CB4
-    b _02078B20
-    add r1, r5, #0
-    mov r2, #0xb
-    mov r3, #3
-    bl sub_02078B9C
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r5, #0
-    bl FieldSystem_ApplicationIsRunning
-    cmp r0, #0
-    bne _02078B20
-    add r0, r4, #0
-    bl sub_02078BD8
-    str r0, [r4, #4]
-    b _02078B20
-    ldr r2, [r4, #0x14]
-    add r0, r5, #0
-    mov r1, #0xb
-    bl sub_02078CC8
-    str r0, [r4, #0x10]
-    ldr r0, [r4, #4]
-    add r0, r0, #1
-    str r0, [r4, #4]
-    b _02078B20
-    add r0, r5, #0
-    bl FieldSystem_ApplicationIsRunning
-    cmp r0, #0
-    bne _02078B20
-    mov r0, #2
-    str r0, [r4, #4]
-    ldr r0, [r4, #0x10]
-    bl sub_02078D10
-    b _02078B20
-    mov r0, #1
-    pop {r4, r5, r6, pc}
-    mov r0, #0
-    pop {r4, r5, r6, pc}
-    _02078B24: .word _02101290
-    _02078B28: .word 0x00040100"
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r5, r0, #0\n    add r0, r6, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r1, [r4, #4]\n    cmp r1, #0x19\n    bls _0207884E\n    b _02078B1C\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0207885A: ; jump table\n    ldr r1, [r5, #0xc]\n    ldr r0, [r4]\n    str r1, [r0]\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    ldr r0, [r4]\n    ldr r0, [r0, #4]\n    cmp r0, #1\n    bne _020788E6\n    ldr r0, [r5, #0xc]\n    bl sub_0203A05C\n    cmp r0, #0\n    beq _020788E6\n    mov r0, #0xa\n    str r0, [r4, #4]\n    ldr r0, [r4, #8]\n    mov r1, #0\n    strh r1, [r0]\n    b _02078B20\n    ldr r1, _02078B24 ; =_02101290\n    ldr r2, [r4]\n    add r0, r6, #0\n    bl CallApplicationAsTask\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    ldr r0, [r5, #0xc]\n    bl sub_0203A05C\n    cmp r0, #0\n    beq _020788DE\n    ldr r0, [r5, #0xc]\n    bl Save_VarsFlags_Get\n    bl SetFlag970\n    ldr r0, [r4]\n    ldr r0, [r0, #4]\n    cmp r0, #0xf\n    bls _020788E8\n    b _02078B20\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _020788F4: ; jump table\n    mov r0, #0\n    strb r0, [r4, #0xc]\n    strb r0, [r4, #0xd]\n    mov r0, #4\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0x32\n    strb r0, [r4, #0xc]\n    mov r0, #0\n    strb r0, [r4, #0xd]\n    mov r0, #4\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0x64\n    strb r0, [r4, #0xc]\n    mov r0, #0\n    strb r0, [r4, #0xd]\n    mov r0, #4\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0\n    strb r0, [r4, #0xc]\n    mov r0, #1\n    strb r0, [r4, #0xd]\n    mov r0, #4\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0x32\n    strb r0, [r4, #0xc]\n    mov r0, #1\n    strb r0, [r4, #0xd]\n    mov r0, #4\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0x64\n    strb r0, [r4, #0xc]\n    mov r0, #1\n    strb r0, [r4, #0xd]\n    mov r0, #4\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #6\n    str r0, [r4, #4]\n    b _02078B20\n    ldr r0, [r4, #8]\n    mov r1, #1\n    strh r1, [r0]\n    mov r0, #0xb\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #9\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0xc\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0xe\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0x12\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #0x16\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #8\n    str r0, [r4, #4]\n    b _02078B20\n    ldr r1, [r4]\n    ldrb r2, [r4, #0xc]\n    ldrb r3, [r4, #0xd]\n    ldr r1, [r1, #8]\n    add r0, r6, #0\n    bl CallTask_02050960\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #2\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r6, #0\n    bl CallTask_WirelessTrade\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    mov r0, #2\n    str r0, [r4, #4]\n    b _02078B20\n    ldr r2, _02078B28 ; =0x00040100\n    mov r0, #3\n    mov r1, #0x35\n    bl Heap_Create\n    bl LoadOVY13\n    mov r0, #0x35\n    bl ov13_0221BA00\n    mov r0, #0\n    bl OS_ResetSystem\n    b _02078B20\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    mov r0, #1\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    bl sub_020378E4\n    add r0, r5, #0\n    mov r1, #0\n    bl sub_020968B0\n    str r0, [r4, #0x10]\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r5, #0\n    bl FieldSystem_ApplicationIsRunning\n    cmp r0, #0\n    bne _02078B20\n    ldr r0, [r4, #0x10]\n    bl Heap_Free\n    mov r0, #2\n    str r0, [r4, #4]\n    b _02078B20\n    add r1, r5, #0\n    mov r2, #0xb\n    mov r3, #1\n    bl sub_02078B9C\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r5, #0\n    bl FieldSystem_ApplicationIsRunning\n    cmp r0, #0\n    bne _02078B20\n    add r0, r4, #0\n    bl sub_02078BD8\n    str r0, [r4, #4]\n    b _02078B20\n    ldr r2, [r4, #0x14]\n    add r0, r5, #0\n    mov r1, #0xb\n    bl sub_02078C18\n    str r0, [r4, #0x10]\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r5, #0\n    bl FieldSystem_ApplicationIsRunning\n    cmp r0, #0\n    bne _02078B20\n    mov r0, #2\n    str r0, [r4, #4]\n    ldr r0, [r4, #0x10]\n    bl sub_02078C60\n    b _02078B20\n    add r1, r5, #0\n    mov r2, #0xb\n    mov r3, #2\n    bl sub_02078B9C\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r5, #0\n    bl FieldSystem_ApplicationIsRunning\n    cmp r0, #0\n    bne _02078B20\n    add r0, r4, #0\n    bl sub_02078BD8\n    str r0, [r4, #4]\n    b _02078B20\n    ldr r2, [r4, #0x14]\n    add r0, r5, #0\n    mov r1, #0xb\n    bl sub_02078C74\n    str r0, [r4, #0x10]\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r5, #0\n    bl FieldSystem_ApplicationIsRunning\n    cmp r0, #0\n    bne _02078B20\n    mov r0, #2\n    str r0, [r4, #4]\n    ldr r0, [r4, #0x10]\n    bl sub_02078CB4\n    b _02078B20\n    add r1, r5, #0\n    mov r2, #0xb\n    mov r3, #3\n    bl sub_02078B9C\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r5, #0\n    bl FieldSystem_ApplicationIsRunning\n    cmp r0, #0\n    bne _02078B20\n    add r0, r4, #0\n    bl sub_02078BD8\n    str r0, [r4, #4]\n    b _02078B20\n    ldr r2, [r4, #0x14]\n    add r0, r5, #0\n    mov r1, #0xb\n    bl sub_02078CC8\n    str r0, [r4, #0x10]\n    ldr r0, [r4, #4]\n    add r0, r0, #1\n    str r0, [r4, #4]\n    b _02078B20\n    add r0, r5, #0\n    bl FieldSystem_ApplicationIsRunning\n    cmp r0, #0\n    bne _02078B20\n    mov r0, #2\n    str r0, [r4, #4]\n    ldr r0, [r4, #0x10]\n    bl sub_02078D10\n    b _02078B20\n    mov r0, #1\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    pop {r4, r5, r6, pc}\n    _02078B24: .word _02101290\n    _02078B28: .word 0x00040100"
     );
     #endif
 }
 
 void sub_02078B2C(void) {
-    /* Original at 0x02078B2C */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}
-    mov r0, #0xb
-    mov r1, #0x18
-    bl Heap_AllocAtEnd
-    mov r1, #0
-    mov r2, #0x18
-    add r4, r0, #0
-    bl MI_CpuFill8
-    mov r0, #0xb
-    mov r1, #0xc
-    bl Heap_AllocAtEnd
-    mov r1, #0
-    mov r2, #0xc
-    str r0, [r4]
-    bl MI_CpuFill8
-    add r0, r4, #0
-    pop {r4, pc}"
-    );
-    #endif
+    void *r4;
+    r0 = 0xb;
+    r1 = 0x18;
+    Heap_AllocAtEnd(0xb, 0x18);
+    r1 = 0;
+    r2 = 0x18;
+    r4 = r0 + 0;
+    MI_CpuFill8();
+    r0 = 0xb;
+    r1 = 0xc;
+    Heap_AllocAtEnd(0xb, 0xc);
+    r1 = 0;
+    r2 = 0xc;
+    *(u32*)r4 = r0;
+    MI_CpuFill8();
+    r0 = r4 + 0;
 }
 
 void sub_02078B58(void) {
@@ -342,19 +35,7 @@ void sub_02078B58(void) {
     /* Requires manual decompilation - 13 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, lr}
-    add r4, r0, #0
-    bl sub_02078B2C
-    add r2, r0, #0
-    ldr r0, [r2]
-    mov r1, #2
-    str r1, [r0, #4]
-    ldr r1, _02078B74 ; =sub_02078834
-    add r0, r4, #0
-    bl TaskManager_Call
-    pop {r4, pc}
-    nop
-    _02078B74: .word sub_02078834"
+        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02078B2C\n    add r2, r0, #0\n    ldr r0, [r2]\n    mov r1, #2\n    str r1, [r0, #4]\n    ldr r1, _02078B74 ; =sub_02078834\n    add r0, r4, #0\n    bl TaskManager_Call\n    pop {r4, pc}\n    nop\n    _02078B74: .word sub_02078834"
     );
     #endif
 }
@@ -364,21 +45,7 @@ void sub_02078B78(void) {
     /* Requires manual decompilation - 15 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, lr}
-    add r5, r0, #0
-    add r4, r1, #0
-    bl sub_02078B2C
-    add r2, r0, #0
-    ldr r0, [r2]
-    mov r1, #1
-    str r1, [r0, #4]
-    ldr r1, _02078B98 ; =sub_02078834
-    add r0, r5, #0
-    str r4, [r2, #8]
-    bl TaskManager_Call
-    pop {r3, r4, r5, pc}
-    nop
-    _02078B98: .word sub_02078834"
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl sub_02078B2C\n    add r2, r0, #0\n    ldr r0, [r2]\n    mov r1, #1\n    str r1, [r0, #4]\n    ldr r1, _02078B98 ; =sub_02078834\n    add r0, r5, #0\n    str r4, [r2, #8]\n    bl TaskManager_Call\n    pop {r3, r4, r5, pc}\n    nop\n    _02078B98: .word sub_02078834"
     );
     #endif
 }
@@ -388,32 +55,7 @@ void sub_02078B9C(void) {
     /* Requires manual decompilation - 26 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, r5, r6, lr}
-    add r6, r0, #0
-    add r5, r1, #0
-    add r0, r2, #0
-    mov r1, #0xc
-    add r4, r3, #0
-    bl Heap_Alloc
-    add r2, r0, #0
-    strb r4, [r2]
-    mov r0, #2
-    strb r0, [r2, #1]
-    ldr r0, _02078BD0 ; =_0210125C
-    ldr r1, _02078BD4 ; =_02101280
-    ldrb r0, [r0, r4]
-    strb r0, [r2, #2]
-    mov r0, #0
-    strb r0, [r2, #3]
-    strb r0, [r2, #4]
-    ldr r0, [r5, #0xc]
-    str r0, [r2, #8]
-    add r0, r5, #0
-    str r2, [r6, #0x10]
-    bl FieldSystem_LaunchApplication
-    pop {r4, r5, r6, pc}
-    _02078BD0: .word _0210125C
-    _02078BD4: .word _02101280"
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    add r0, r2, #0\n    mov r1, #0xc\n    add r4, r3, #0\n    bl Heap_Alloc\n    add r2, r0, #0\n    strb r4, [r2]\n    mov r0, #2\n    strb r0, [r2, #1]\n    ldr r0, _02078BD0 ; =_0210125C\n    ldr r1, _02078BD4 ; =_02101280\n    ldrb r0, [r0, r4]\n    strb r0, [r2, #2]\n    mov r0, #0\n    strb r0, [r2, #3]\n    strb r0, [r2, #4]\n    ldr r0, [r5, #0xc]\n    str r0, [r2, #8]\n    add r0, r5, #0\n    str r2, [r6, #0x10]\n    bl FieldSystem_LaunchApplication\n    pop {r4, r5, r6, pc}\n    _02078BD0: .word _0210125C\n    _02078BD4: .word _02101280"
     );
     #endif
 }
@@ -423,36 +65,7 @@ void sub_02078BD8(void) {
     /* Requires manual decompilation - 30 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, lr}
-    add r4, r0, #0
-    ldr r0, [r4, #0x10]
-    ldrb r1, [r0, #3]
-    cmp r1, #1
-    bne _02078C04
-    ldrb r1, [r0]
-    cmp r1, #1
-    beq _02078BF2
-    cmp r1, #2
-    beq _02078BF8
-    cmp r1, #3
-    b _02078BFE
-    mov r1, #0x10
-    str r1, [r4, #4]
-    b _02078C08
-    mov r1, #0x14
-    str r1, [r4, #4]
-    b _02078C08
-    mov r1, #0x18
-    str r1, [r4, #4]
-    b _02078C08
-    mov r1, #1
-    str r1, [r4, #4]
-    ldrb r0, [r0, #4]
-    str r0, [r4, #0x14]
-    ldr r0, [r4, #0x10]
-    bl Heap_Free
-    ldr r0, [r4, #4]
-    pop {r4, pc}"
+        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    ldrb r1, [r0, #3]\n    cmp r1, #1\n    bne _02078C04\n    ldrb r1, [r0]\n    cmp r1, #1\n    beq _02078BF2\n    cmp r1, #2\n    beq _02078BF8\n    cmp r1, #3\n    b _02078BFE\n    mov r1, #0x10\n    str r1, [r4, #4]\n    b _02078C08\n    mov r1, #0x14\n    str r1, [r4, #4]\n    b _02078C08\n    mov r1, #0x18\n    str r1, [r4, #4]\n    b _02078C08\n    mov r1, #1\n    str r1, [r4, #4]\n    ldrb r0, [r0, #4]\n    str r0, [r4, #0x14]\n    ldr r0, [r4, #0x10]\n    bl Heap_Free\n    ldr r0, [r4, #4]\n    pop {r4, pc}"
     );
     #endif
 }
@@ -462,36 +75,7 @@ void sub_02078C18(void) {
     /* Requires manual decompilation - 30 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, r5, r6, lr}
-    add r5, r0, #0
-    add r0, r1, #0
-    mov r1, #0x3c
-    add r6, r2, #0
-    bl Heap_Alloc
-    add r4, r0, #0
-    mov r1, #0
-    mov r2, #0x3c
-    bl memset
-    add r0, r4, #0
-    add r0, #0x38
-    strb r6, [r0]
-    add r0, r4, #0
-    mov r1, #0
-    add r0, #0x39
-    strb r1, [r0]
-    ldr r0, [r5, #0xc]
-    mov r1, #2
-    str r0, [r4, #0x34]
-    ldr r0, _02078C58 ; =FS_OVERLAY_ID(OVY_90)
-    bl HandleLoadOverlay
-    ldr r1, _02078C5C ; =_02101260
-    add r0, r5, #0
-    add r2, r4, #0
-    bl FieldSystem_LaunchApplication
-    add r0, r4, #0
-    pop {r4, r5, r6, pc}
-    _02078C58: .word FS_OVERLAY_ID(OVY_90)
-    _02078C5C: .word _02101260"
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, r1, #0\n    mov r1, #0x3c\n    add r6, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x3c\n    bl memset\n    add r0, r4, #0\n    add r0, #0x38\n    strb r6, [r0]\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x39\n    strb r1, [r0]\n    ldr r0, [r5, #0xc]\n    mov r1, #2\n    str r0, [r4, #0x34]\n    ldr r0, _02078C58 ; =FS_OVERLAY_ID(OVY_90)\n    bl HandleLoadOverlay\n    ldr r1, _02078C5C ; =_02101260\n    add r0, r5, #0\n    add r2, r4, #0\n    bl FieldSystem_LaunchApplication\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}\n    _02078C58: .word FS_OVERLAY_ID(OVY_90)\n    _02078C5C: .word _02101260"
     );
     #endif
 }
@@ -501,13 +85,7 @@ void sub_02078C60(void) {
     /* Requires manual decompilation - 7 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, lr}
-    bl Heap_Free
-    ldr r0, _02078C70 ; =FS_OVERLAY_ID(OVY_90)
-    bl UnloadOverlayByID
-    pop {r3, pc}
-    nop
-    _02078C70: .word FS_OVERLAY_ID(OVY_90)"
+        "push {r3, lr}\n    bl Heap_Free\n    ldr r0, _02078C70 ; =FS_OVERLAY_ID(OVY_90)\n    bl UnloadOverlayByID\n    pop {r3, pc}\n    nop\n    _02078C70: .word FS_OVERLAY_ID(OVY_90)"
     );
     #endif
 }
@@ -517,32 +95,7 @@ void sub_02078C74(void) {
     /* Requires manual decompilation - 26 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, r5, r6, lr}
-    add r5, r0, #0
-    add r0, r1, #0
-    mov r1, #0x40
-    add r6, r2, #0
-    bl Heap_Alloc
-    add r4, r0, #0
-    mov r1, #0
-    mov r2, #0x40
-    bl memset
-    str r6, [r4, #0x3c]
-    mov r0, #0
-    str r0, [r4, #0x38]
-    ldr r0, [r5, #0xc]
-    mov r1, #2
-    str r0, [r4, #0x34]
-    ldr r0, _02078CAC ; =FS_OVERLAY_ID(OVY_90)
-    bl HandleLoadOverlay
-    ldr r1, _02078CB0 ; =_02101270
-    add r0, r5, #0
-    add r2, r4, #0
-    bl FieldSystem_LaunchApplication
-    add r0, r4, #0
-    pop {r4, r5, r6, pc}
-    _02078CAC: .word FS_OVERLAY_ID(OVY_90)
-    _02078CB0: .word _02101270"
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, r1, #0\n    mov r1, #0x40\n    add r6, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x40\n    bl memset\n    str r6, [r4, #0x3c]\n    mov r0, #0\n    str r0, [r4, #0x38]\n    ldr r0, [r5, #0xc]\n    mov r1, #2\n    str r0, [r4, #0x34]\n    ldr r0, _02078CAC ; =FS_OVERLAY_ID(OVY_90)\n    bl HandleLoadOverlay\n    ldr r1, _02078CB0 ; =_02101270\n    add r0, r5, #0\n    add r2, r4, #0\n    bl FieldSystem_LaunchApplication\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}\n    _02078CAC: .word FS_OVERLAY_ID(OVY_90)\n    _02078CB0: .word _02101270"
     );
     #endif
 }
@@ -552,13 +105,7 @@ void sub_02078CB4(void) {
     /* Requires manual decompilation - 7 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, lr}
-    bl Heap_Free
-    ldr r0, _02078CC4 ; =FS_OVERLAY_ID(OVY_90)
-    bl UnloadOverlayByID
-    pop {r3, pc}
-    nop
-    _02078CC4: .word FS_OVERLAY_ID(OVY_90)"
+        "push {r3, lr}\n    bl Heap_Free\n    ldr r0, _02078CC4 ; =FS_OVERLAY_ID(OVY_90)\n    bl UnloadOverlayByID\n    pop {r3, pc}\n    nop\n    _02078CC4: .word FS_OVERLAY_ID(OVY_90)"
     );
     #endif
 }
@@ -568,36 +115,7 @@ void sub_02078CC8(void) {
     /* Requires manual decompilation - 30 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, r5, r6, lr}
-    add r5, r0, #0
-    add r0, r1, #0
-    mov r1, #0x3c
-    add r6, r2, #0
-    bl Heap_Alloc
-    add r4, r0, #0
-    mov r1, #0
-    mov r2, #0x3c
-    bl MI_CpuFill8
-    add r0, r4, #0
-    add r0, #0x38
-    strb r6, [r0]
-    add r0, r4, #0
-    mov r1, #0
-    add r0, #0x39
-    strb r1, [r0]
-    ldr r0, [r5, #0xc]
-    mov r1, #2
-    str r0, [r4, #0x34]
-    ldr r0, _02078D08 ; =FS_OVERLAY_ID(OVY_90)
-    bl HandleLoadOverlay
-    ldr r1, _02078D0C ; =_021012A0
-    add r0, r5, #0
-    add r2, r4, #0
-    bl FieldSystem_LaunchApplication
-    add r0, r4, #0
-    pop {r4, r5, r6, pc}
-    _02078D08: .word FS_OVERLAY_ID(OVY_90)
-    _02078D0C: .word _021012A0"
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, r1, #0\n    mov r1, #0x3c\n    add r6, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x3c\n    bl MI_CpuFill8\n    add r0, r4, #0\n    add r0, #0x38\n    strb r6, [r0]\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x39\n    strb r1, [r0]\n    ldr r0, [r5, #0xc]\n    mov r1, #2\n    str r0, [r4, #0x34]\n    ldr r0, _02078D08 ; =FS_OVERLAY_ID(OVY_90)\n    bl HandleLoadOverlay\n    ldr r1, _02078D0C ; =_021012A0\n    add r0, r5, #0\n    add r2, r4, #0\n    bl FieldSystem_LaunchApplication\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}\n    _02078D08: .word FS_OVERLAY_ID(OVY_90)\n    _02078D0C: .word _021012A0"
     );
     #endif
 }
@@ -607,13 +125,7 @@ void sub_02078D10(void) {
     /* Requires manual decompilation - 7 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, lr}
-    bl Heap_Free
-    ldr r0, _02078D20 ; =FS_OVERLAY_ID(OVY_90)
-    bl UnloadOverlayByID
-    pop {r3, pc}
-    nop
-    _02078D20: .word FS_OVERLAY_ID(OVY_90)"
+        "push {r3, lr}\n    bl Heap_Free\n    ldr r0, _02078D20 ; =FS_OVERLAY_ID(OVY_90)\n    bl UnloadOverlayByID\n    pop {r3, pc}\n    nop\n    _02078D20: .word FS_OVERLAY_ID(OVY_90)"
     );
     #endif
 }
@@ -623,95 +135,7 @@ void sub_02078D24(void) {
     /* Requires manual decompilation - 89 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, lr}
-    add r4, r0, #0
-    bl sub_020398C8
-    mov r1, #0x24
-    ldrb r2, [r0, #0x1b]
-    mul r1, r4
-    add r0, r0, r1
-    add r0, #0x3f
-    ldrb r0, [r0]
-    cmp r2, #0xc
-    bne _02078D44
-    cmp r0, #5
-    bne _02078D44
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0xd
-    bne _02078D50
-    cmp r0, #6
-    bne _02078D50
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0xe
-    bne _02078D5C
-    cmp r0, #7
-    bne _02078D5C
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #9
-    bne _02078D68
-    cmp r0, #2
-    bne _02078D68
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0xa
-    bne _02078D74
-    cmp r0, #3
-    bne _02078D74
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0xb
-    bne _02078D80
-    cmp r0, #4
-    bne _02078D80
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0xf
-    bne _02078D8C
-    cmp r0, #8
-    bne _02078D8C
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0x13
-    bne _02078D98
-    cmp r0, #0x12
-    bne _02078D98
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0x15
-    bne _02078DA4
-    cmp r0, #0x14
-    bne _02078DA4
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0x17
-    bne _02078DB0
-    cmp r0, #0x16
-    bne _02078DB0
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0x19
-    bne _02078DBC
-    cmp r0, #0x18
-    bne _02078DBC
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0x1b
-    bne _02078DC8
-    cmp r0, #0x1a
-    bne _02078DC8
-    mov r0, #1
-    pop {r4, pc}
-    cmp r2, #0x10
-    bne _02078DD4
-    cmp r0, #1
-    bne _02078DD4
-    mov r0, #1
-    pop {r4, pc}
-    mov r0, #0
-    pop {r4, pc}"
+        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_020398C8\n    mov r1, #0x24\n    ldrb r2, [r0, #0x1b]\n    mul r1, r4\n    add r0, r0, r1\n    add r0, #0x3f\n    ldrb r0, [r0]\n    cmp r2, #0xc\n    bne _02078D44\n    cmp r0, #5\n    bne _02078D44\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0xd\n    bne _02078D50\n    cmp r0, #6\n    bne _02078D50\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0xe\n    bne _02078D5C\n    cmp r0, #7\n    bne _02078D5C\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #9\n    bne _02078D68\n    cmp r0, #2\n    bne _02078D68\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0xa\n    bne _02078D74\n    cmp r0, #3\n    bne _02078D74\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0xb\n    bne _02078D80\n    cmp r0, #4\n    bne _02078D80\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0xf\n    bne _02078D8C\n    cmp r0, #8\n    bne _02078D8C\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0x13\n    bne _02078D98\n    cmp r0, #0x12\n    bne _02078D98\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0x15\n    bne _02078DA4\n    cmp r0, #0x14\n    bne _02078DA4\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0x17\n    bne _02078DB0\n    cmp r0, #0x16\n    bne _02078DB0\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0x19\n    bne _02078DBC\n    cmp r0, #0x18\n    bne _02078DBC\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0x1b\n    bne _02078DC8\n    cmp r0, #0x1a\n    bne _02078DC8\n    mov r0, #1\n    pop {r4, pc}\n    cmp r2, #0x10\n    bne _02078DD4\n    cmp r0, #1\n    bne _02078DD4\n    mov r0, #1\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}"
     );
     #endif
 }

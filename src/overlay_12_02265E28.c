@@ -50,11 +50,7 @@ void ov12_02265FD4(void) {
 }
 
 void ov12_02266008(void) {
-    /* Original at 0x02266008 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov12_02265F68\n    add r0, r4, #0\n    bl ov12_02265F7C\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #0x10\n    bl MIi_CpuClearFast\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_02265F68();
+    ov12_02265F7C(r4);
+    MIi_CpuClearFast(0, r4, 0x10);
 }

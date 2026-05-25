@@ -16,13 +16,9 @@ void ov01_021FCD6C(void) {
 }
 
 void ov01_021FCD78(void) {
-    /* Original at 0x021FCD78 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl SysTask_GetData\n    bl Heap_Free\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    Heap_Free();
+    SysTask_Destroy(r4);
 }
 
 void ov01_021FCD8C(void) {

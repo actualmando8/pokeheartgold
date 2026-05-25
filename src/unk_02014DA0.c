@@ -220,13 +220,8 @@ void sub_02015300(void) {
 }
 
 void sub_02015340(void) {
-    /* Original at 0x02015340 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl sub_02015300\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02015300(r1);
+    SysTask_Destroy(r4);
 }
 
 void sub_02015354(void) {

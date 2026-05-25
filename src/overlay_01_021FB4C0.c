@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_021FB4C0(void) {
-    /* Original at 0x021FB4C0 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x1c\n    bl Heap_Alloc\n    add r4, r0, #0\n    bl ov01_021FB55C\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x1c);
+    ov01_021FB55C();
 }
 
 void ov01_021FB4D4(void) {

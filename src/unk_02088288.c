@@ -1,24 +1,13 @@
 /* Decompiled from asm/unk_02088288.s */
 #include "global.h"
 
-void sub_02088288(void) {
-    /* Original at 0x02088288 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 sub_02088288(void) {
+    return 1;
 }
 
 void sub_0208828C(void) {
-    /* Original at 0x0208828C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl Save_VarsFlags_Get\n    bl CheckFlag982\n    pop {r3, pc}"
-    );
-    #endif
+    Save_VarsFlags_Get();
+    CheckFlag982();
 }
 
 void PokemonSummary_Init(void) {
@@ -330,13 +319,10 @@ void sub_020897C0(void) {
 }
 
 void sub_020897F0(void) {
-    /* Original at 0x020897F0 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    mov r0, #0x13\n    add r6, r1, #0\n    add r7, r2, #0\n    bl AllocMonZeroed\n    add r4, r0, #0\n    add r0, r6, #0\n    add r1, r4, #0\n    bl CopyBoxPokemonToPokemon\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    bl sub_0208981C\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    AllocMonZeroed(0x13);
+    CopyBoxPokemonToPokemon(r6, r0);
+    sub_0208981C(r5, r4, r7);
+    Heap_Free(r4);
 }
 
 void sub_0208981C(void) {
@@ -689,44 +675,20 @@ void sub_0208AD34(void) {
     #endif
 }
 
-void sub_0208AD54(void) {
-    /* Original at 0x0208AD54 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x40\n    bx lr"
-    );
-    #endif
+u8 sub_0208AD54(void) {
+    return 0x40;
 }
 
-void sub_0208AD58(void) {
-    /* Original at 0x0208AD58 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x41\n    bx lr"
-    );
-    #endif
+u8 sub_0208AD58(void) {
+    return 0x41;
 }
 
-void sub_0208AD5C(void) {
-    /* Original at 0x0208AD5C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x3f\n    bx lr"
-    );
-    #endif
+u8 sub_0208AD5C(void) {
+    return 0x3f;
 }
 
-void sub_0208AD60(void) {
-    /* Original at 0x0208AD60 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x3e\n    bx lr"
-    );
-    #endif
+u8 sub_0208AD60(void) {
+    return 0x3e;
 }
 
 void Pokemon_GetStatusIconId(void) {

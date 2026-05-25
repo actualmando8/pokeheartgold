@@ -12,13 +12,9 @@ void ov01_021FD41C(void) {
 }
 
 void ov01_021FD440(void) {
-    /* Original at 0x021FD440 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_021FD47C\n    add r0, r4, #0\n    bl ov01_021FD60C\n    add r0, r4, #0\n    bl ov01_021F1448\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021FD47C();
+    ov01_021FD60C(r4);
+    ov01_021F1448(r4);
 }
 
 void ov01_021FD458(void) {

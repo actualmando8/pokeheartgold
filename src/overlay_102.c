@@ -31,14 +31,12 @@ void ov102_021E77F8(void) {
     #endif
 }
 
-void EasyChat_Exit(void) {
-    /* Original at 0x021E7868 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl OverlayManager_GetData\n    add r1, r4, #0\n    bl ov102_021E7A24\n    mov r0, #0x22\n    bl Heap_Destroy\n    mov r0, #0x23\n    bl Heap_Destroy\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 EasyChat_Exit(void) {
+    OverlayManager_GetData();
+    ov102_021E7A24(r4);
+    Heap_Destroy(0x22);
+    Heap_Destroy(0x23);
+    return 1;
 }
 
 void ov102_021E7888(void) {
@@ -1786,23 +1784,13 @@ void ov102_021EB654(void) {
 }
 
 void ov102_021EB664(void) {
-    /* Original at 0x021EB664 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #1\n    add r4, r0, #0\n    bl ov102_021EB3B4\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov102_021EB2EC\n    pop {r4, pc}"
-    );
-    #endif
+    ov102_021EB3B4(1);
+    ov102_021EB2EC(r4, 0, 0);
 }
 
 void ov102_021EB67C(void) {
-    /* Original at 0x021EB67C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    bl ov102_021EB3B4\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0\n    bl ov102_021EB2EC\n    pop {r4, pc}"
-    );
-    #endif
+    ov102_021EB3B4(0);
+    ov102_021EB2EC(r4, 1, 0);
 }
 
 void ov102_021EB694(void) {
@@ -2263,14 +2251,8 @@ void ov102_021EC478(void) {
     #endif
 }
 
-void ov102_021EC4A4(void) {
-    /* Original at 0x021EC4A4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x1b\n    bx lr"
-    );
-    #endif
+u8 ov102_021EC4A4(void) {
+    return 0x1b;
 }
 
 void ov102_021EC4A8(void) {

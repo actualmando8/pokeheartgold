@@ -249,14 +249,8 @@ void sub_02096FD0(void) {
     #endif
 }
 
-void sub_02096FE4(void) {
-    /* Original at 0x02096FE4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x18\n    bx lr"
-    );
-    #endif
+u8 sub_02096FE4(void) {
+    return 0x18;
 }
 
 void sub_02096FE8(void) {

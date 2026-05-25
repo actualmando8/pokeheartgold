@@ -162,13 +162,8 @@ void sub_02013910(void) {
 }
 
 void sub_02013938(void) {
-    /* Original at 0x02013938 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02013FA8\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02013FA8();
+    Heap_Free(r4);
 }
 
 void sub_02013948(void) {

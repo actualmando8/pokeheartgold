@@ -546,23 +546,13 @@ void ov48_02259E5C(void) {
 }
 
 void ov48_02259E78(void) {
-    /* Original at 0x02259E78 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x1c\n    mov r1, #1\n    bl sub_0200E5D4\n    add r4, #0x1c\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
 void ov48_02259E90(void) {
-    /* Original at 0x02259E90 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x1c\n    bl ScheduleWindowCopyToVram\n    add r4, #0x1c\n    mov r1, #0\n    add r0, r4, #0\n    mov r2, #0x1f\n    add r3, r1, #0\n    bl DrawFrameAndWindow1\n    pop {r4, pc}"
-    );
-    #endif
+    ScheduleWindowCopyToVram();
+    DrawFrameAndWindow1(r4, 0, 0x1f, 0);
 }
 
 void ov48_02259EAC(void) {

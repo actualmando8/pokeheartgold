@@ -270,13 +270,8 @@ void sub_0203088C(void) {
 }
 
 void sub_02030920(void) {
-    /* Original at 0x02030920 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x64\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x64\n    add r4, r0, #0\n    bl MI_CpuFill8\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x64);
+    MI_CpuFill8(0, 0x64);
 }
 
 void sub_02030938(void) {

@@ -62,13 +62,8 @@ void BagApp_GetRepelStepCountAddr(void) {
 }
 
 void BagApp_SetFlute(void) {
-    /* Original at 0x021F994C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl BagApp_GetSaveRoamers\n    add r1, r4, #0\n    bl RoamerSave_SetFlute\n    pop {r4, pc}"
-    );
-    #endif
+    BagApp_GetSaveRoamers();
+    RoamerSave_SetFlute(r4);
 }
 
 void ov15_021F995C(void) {
@@ -166,13 +161,8 @@ void ov15_021F9D8C(void) {
 }
 
 void ov15_021F9D9C(void) {
-    /* Original at 0x021F9D9C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r2, #0\n    bl TMHMGetMove\n    add r1, r0, #0\n    add r0, r5, #0\n    add r2, r4, #0\n    bl ReadMsgDataIntoString\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    TMHMGetMove(r2);
+    ReadMsgDataIntoString(r5, r0, r4);
 }
 
 void ov15_021F9DB4(void) {
@@ -749,14 +739,13 @@ void ov15_021FBD50(void) {
     #endif
 }
 
-void ov15_021FBF98(void) {
-    /* Original at 0x021FBF98 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov15_021FEEA4\n    add r0, r4, #0\n    bl ov15_02200428\n    add r0, r4, #0\n    bl ov15_021FFF24\n    add r0, r4, #0\n    bl ov15_021FF834\n    add r0, r4, #0\n    mov r1, #0\n    bl ov15_021FD788\n    mov r0, #8\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov15_021FBF98(void) {
+    ov15_021FEEA4();
+    ov15_02200428(r4);
+    ov15_021FFF24(r4);
+    ov15_021FF834(r4);
+    ov15_021FD788(r4, 0);
+    return 8;
 }
 
 void ov15_021FBFC0(void) {
@@ -1426,13 +1415,8 @@ void ov15_021FECA0(void) {
 }
 
 void ov15_021FECC4(void) {
-    /* Original at 0x021FECC4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r0, r4, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r0, r4, #0\n    bl ScheduleWindowCopyToVram\n    pop {r4, pc}"
-    );
-    #endif
+    FillWindowPixelBuffer(r1, 0);
+    ScheduleWindowCopyToVram(r4);
 }
 
 void ov15_021FECD8(void) {
@@ -1446,23 +1430,14 @@ void ov15_021FECD8(void) {
 }
 
 void ov15_021FED24(void) {
-    /* Original at 0x021FED24 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x24\n    mov r1, #1\n    bl ClearFrameAndWindow2\n    add r4, #0x24\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    ClearFrameAndWindow2(1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
 void ov15_021FED3C(void) {
-    /* Original at 0x021FED3C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov15_021FED24\n    add r0, r4, #0\n    bl ov15_021FE3E0\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov15_021FF97C\n    pop {r4, pc}"
-    );
-    #endif
+    ov15_021FED24();
+    ov15_021FE3E0(r4);
+    ov15_021FF97C(r4, 0, 0);
 }
 
 void ov15_021FED58(void) {

@@ -22,13 +22,8 @@ void ov01_021EAC30(void) {
 }
 
 void ov01_021EAC4C(void) {
-    /* Original at 0x021EAC4C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x34\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x34\n    add r4, r0, #0\n    bl MI_CpuFill8\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x34);
+    MI_CpuFill8(0, 0x34);
 }
 
 void ov01_021EAC64(void) {

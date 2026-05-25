@@ -6,70 +6,7 @@ void ov12_0226ADE0(void) {
     /* Requires manual decompilation - 64 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x18
-    add r5, r0, #0
-    add r4, r1, #0
-    mov r0, #8
-    mov r1, #5
-    add r7, r2, #0
-    bl NARC_New
-    add r6, r0, #0
-    str r6, [sp]
-    mov r0, #0x6e
-    str r0, [sp, #4]
-    mov r0, #0
-    str r0, [sp, #8]
-    mov r0, #1
-    str r0, [sp, #0xc]
-    str r0, [sp, #0x10]
-    ldr r0, _0226AE60 ; =0x00004E45
-    mov r1, #2
-    str r0, [sp, #0x14]
-    add r0, r7, #0
-    add r2, r5, #0
-    add r3, r4, #0
-    bl SpriteSystem_LoadPaletteBufferFromOpenNarc
-    mov r0, #1
-    str r0, [sp]
-    str r0, [sp, #4]
-    ldr r0, _0226AE64 ; =0x00004FBF
-    mov r3, #0x55
-    str r0, [sp, #8]
-    add r0, r5, #0
-    add r1, r4, #0
-    add r2, r6, #0
-    lsl r3, r3, #2
-    bl SpriteSystem_LoadCharResObjFromOpenNarc
-    mov r0, #1
-    str r0, [sp]
-    ldr r0, _0226AE68 ; =0x00004FB8
-    ldr r3, _0226AE6C ; =0x00000155
-    str r0, [sp, #4]
-    add r0, r5, #0
-    add r1, r4, #0
-    add r2, r6, #0
-    bl SpriteSystem_LoadCellResObjFromOpenNarc
-    mov r0, #1
-    str r0, [sp]
-    ldr r0, _0226AE70 ; =0x00004FAD
-    ldr r3, _0226AE74 ; =0x00000156
-    str r0, [sp, #4]
-    add r0, r5, #0
-    add r1, r4, #0
-    add r2, r6, #0
-    bl SpriteSystem_LoadAnimResObjFromOpenNarc
-    add r0, r6, #0
-    bl NARC_Delete
-    add sp, #0x18
-    pop {r3, r4, r5, r6, r7, pc}
-    nop
-    _0226AE60: .word 0x00004E45
-    _0226AE64: .word 0x00004FBF
-    _0226AE68: .word 0x00004FB8
-    _0226AE6C: .word 0x00000155
-    _0226AE70: .word 0x00004FAD
-    _0226AE74: .word 0x00000156"
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #8\n    mov r1, #5\n    add r7, r2, #0\n    bl NARC_New\n    add r6, r0, #0\n    str r6, [sp]\n    mov r0, #0x6e\n    str r0, [sp, #4]\n    mov r0, #0\n    str r0, [sp, #8]\n    mov r0, #1\n    str r0, [sp, #0xc]\n    str r0, [sp, #0x10]\n    ldr r0, _0226AE60 ; =0x00004E45\n    mov r1, #2\n    str r0, [sp, #0x14]\n    add r0, r7, #0\n    add r2, r5, #0\n    add r3, r4, #0\n    bl SpriteSystem_LoadPaletteBufferFromOpenNarc\n    mov r0, #1\n    str r0, [sp]\n    str r0, [sp, #4]\n    ldr r0, _0226AE64 ; =0x00004FBF\n    mov r3, #0x55\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    lsl r3, r3, #2\n    bl SpriteSystem_LoadCharResObjFromOpenNarc\n    mov r0, #1\n    str r0, [sp]\n    ldr r0, _0226AE68 ; =0x00004FB8\n    ldr r3, _0226AE6C ; =0x00000155\n    str r0, [sp, #4]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl SpriteSystem_LoadCellResObjFromOpenNarc\n    mov r0, #1\n    str r0, [sp]\n    ldr r0, _0226AE70 ; =0x00004FAD\n    ldr r3, _0226AE74 ; =0x00000156\n    str r0, [sp, #4]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl SpriteSystem_LoadAnimResObjFromOpenNarc\n    add r0, r6, #0\n    bl NARC_Delete\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0226AE60: .word 0x00004E45\n    _0226AE64: .word 0x00004FBF\n    _0226AE68: .word 0x00004FB8\n    _0226AE6C: .word 0x00000155\n    _0226AE70: .word 0x00004FAD\n    _0226AE74: .word 0x00000156"
     );
     #endif
 }
@@ -79,46 +16,22 @@ void ov12_0226AE78(void) {
     /* Requires manual decompilation - 18 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, lr}
-    ldr r1, _0226AE9C ; =0x00004FBF
-    add r4, r0, #0
-    bl SpriteManager_UnloadCharObjById
-    ldr r1, _0226AEA0 ; =0x00004E45
-    add r0, r4, #0
-    bl SpriteManager_UnloadPlttObjById
-    ldr r1, _0226AEA4 ; =0x00004FB8
-    add r0, r4, #0
-    bl SpriteManager_UnloadCellObjById
-    ldr r1, _0226AEA8 ; =0x00004FAD
-    add r0, r4, #0
-    bl SpriteManager_UnloadAnimObjById
-    pop {r4, pc}
-    _0226AE9C: .word 0x00004FBF
-    _0226AEA0: .word 0x00004E45
-    _0226AEA4: .word 0x00004FB8
-    _0226AEA8: .word 0x00004FAD"
+        "push {r4, lr}\n    ldr r1, _0226AE9C ; =0x00004FBF\n    add r4, r0, #0\n    bl SpriteManager_UnloadCharObjById\n    ldr r1, _0226AEA0 ; =0x00004E45\n    add r0, r4, #0\n    bl SpriteManager_UnloadPlttObjById\n    ldr r1, _0226AEA4 ; =0x00004FB8\n    add r0, r4, #0\n    bl SpriteManager_UnloadCellObjById\n    ldr r1, _0226AEA8 ; =0x00004FAD\n    add r0, r4, #0\n    bl SpriteManager_UnloadAnimObjById\n    pop {r4, pc}\n    _0226AE9C: .word 0x00004FBF\n    _0226AEA0: .word 0x00004E45\n    _0226AEA4: .word 0x00004FB8\n    _0226AEA8: .word 0x00004FAD"
     );
     #endif
 }
 
 void ov12_0226AEAC(void) {
-    /* Original at 0x0226AEAC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}
-    mov r0, #5
-    lsl r1, r0, #6
-    bl Heap_Alloc
-    mov r2, #5
-    mov r1, #0
-    lsl r2, r2, #6
-    add r4, r0, #0
-    bl MI_CpuFill8
-    add r0, r4, #0
-    pop {r4, pc}"
-    );
-    #endif
+    void *r4;
+    r0 = 5;
+    /* lsl r1, r0, #6 */
+    Heap_Alloc(5);
+    r2 = 5;
+    r1 = 0;
+    /* lsl r2, r2, #6 */
+    r4 = r0 + 0;
+    MI_CpuFill8();
+    r0 = r4 + 0;
 }
 
 void ov12_0226AEC8(void) {
@@ -126,15 +39,7 @@ void ov12_0226AEC8(void) {
     /* Requires manual decompilation - 9 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, lr}
-    add r4, r0, #0
-    ldr r0, [r4, #4]
-    cmp r0, #0
-    beq _0226AED6
-    bl GF_AssertFail
-    add r0, r4, #0
-    bl Heap_Free
-    pop {r4, pc}"
+        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    cmp r0, #0\n    beq _0226AED6\n    bl GF_AssertFail\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
     );
     #endif
 }
@@ -144,53 +49,7 @@ void ov12_0226AEE0(void) {
     /* Requires manual decompilation - 47 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x20
-    str r0, [sp, #0x14]
-    ldr r0, [sp, #0x38]
-    add r6, r1, #0
-    str r0, [sp, #0x38]
-    ldr r0, [sp, #0x3c]
-    str r2, [sp, #0x18]
-    str r0, [sp, #0x3c]
-    str r3, [sp, #0x1c]
-    bl ov12_0226AEAC
-    ldr r1, [sp, #0x3c]
-    ldr r2, [sp, #0x1c]
-    str r1, [sp]
-    ldr r3, [sp, #0x38]
-    add r1, r6, #0
-    add r7, r0, #0
-    bl ov12_0226AFEC
-    add r5, r7, #0
-    mov r4, #0
-    add r5, #0x1c
-    ldr r0, [sp, #0x14]
-    add r1, r6, #0
-    ldrb r0, [r0, r4]
-    bl ov12_0226B884
-    ldr r1, [sp, #0x1c]
-    ldr r3, [sp, #0x18]
-    str r1, [sp]
-    str r4, [sp, #4]
-    str r0, [sp, #8]
-    ldr r0, [sp, #0x38]
-    mov r1, #0x4f
-    str r0, [sp, #0xc]
-    ldr r0, [sp, #0x3c]
-    lsl r1, r1, #2
-    str r0, [sp, #0x10]
-    add r0, r5, #0
-    add r1, r7, r1
-    add r2, r6, #0
-    bl ov12_0226B29C
-    add r4, r4, #1
-    add r5, #0x30
-    cmp r4, #6
-    blt _0226AF0E
-    add r0, r7, #0
-    add sp, #0x20
-    pop {r3, r4, r5, r6, r7, pc}"
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #0x38]\n    add r6, r1, #0\n    str r0, [sp, #0x38]\n    ldr r0, [sp, #0x3c]\n    str r2, [sp, #0x18]\n    str r0, [sp, #0x3c]\n    str r3, [sp, #0x1c]\n    bl ov12_0226AEAC\n    ldr r1, [sp, #0x3c]\n    ldr r2, [sp, #0x1c]\n    str r1, [sp]\n    ldr r3, [sp, #0x38]\n    add r1, r6, #0\n    add r7, r0, #0\n    bl ov12_0226AFEC\n    add r5, r7, #0\n    mov r4, #0\n    add r5, #0x1c\n    ldr r0, [sp, #0x14]\n    add r1, r6, #0\n    ldrb r0, [r0, r4]\n    bl ov12_0226B884\n    ldr r1, [sp, #0x1c]\n    ldr r3, [sp, #0x18]\n    str r1, [sp]\n    str r4, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x38]\n    mov r1, #0x4f\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x3c]\n    lsl r1, r1, #2\n    str r0, [sp, #0x10]\n    add r0, r5, #0\n    add r1, r7, r1\n    add r2, r6, #0\n    bl ov12_0226B29C\n    add r4, r4, #1\n    add r5, #0x30\n    cmp r4, #6\n    blt _0226AF0E\n    add r0, r7, #0\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}"
     );
     #endif
 }
@@ -200,23 +59,7 @@ void ov12_0226AF48(void) {
     /* Requires manual decompilation - 17 instructions */
     #ifdef MWERKS
     asm(
-        "ldr r1, [r0, #4]
-    cmp r1, #0
-    bne _0226AF66
-    mov r2, #0
-    ldr r1, [r0, #0x20]
-    cmp r1, #0
-    bne _0226AF5E
-    add r2, r2, #1
-    add r0, #0x30
-    cmp r2, #6
-    blt _0226AF50
-    cmp r2, #6
-    bne _0226AF66
-    mov r0, #1
-    bx lr
-    mov r0, #0
-    bx lr"
+        "ldr r1, [r0, #4]\n    cmp r1, #0\n    bne _0226AF66\n    mov r2, #0\n    ldr r1, [r0, #0x20]\n    cmp r1, #0\n    bne _0226AF5E\n    add r2, r2, #1\n    add r0, #0x30\n    cmp r2, #6\n    blt _0226AF50\n    cmp r2, #6\n    bne _0226AF66\n    mov r0, #1\n    bx lr\n    mov r0, #0\n    bx lr"
     );
     #endif
 }
@@ -226,30 +69,7 @@ void ov12_0226AF6C(void) {
     /* Requires manual decompilation - 24 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    add r6, r0, #0
-    add r4, r1, #0
-    add r7, r2, #0
-    cmp r6, #0
-    bne _0226AF7C
-    bl GF_AssertFail
-    add r0, r6, #0
-    add r1, r4, #0
-    bl ov12_0226B144
-    add r5, r6, #0
-    mov r4, #0
-    add r5, #0x1c
-    add r6, #0x18
-    add r0, r5, #0
-    add r1, r4, #0
-    add r2, r7, #0
-    add r3, r6, #0
-    bl ov12_0226B694
-    add r4, r4, #1
-    add r5, #0x30
-    cmp r4, #6
-    blt _0226AF8C
-    pop {r3, r4, r5, r6, r7, pc}"
+        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    add r4, r1, #0\n    add r7, r2, #0\n    cmp r6, #0\n    bne _0226AF7C\n    bl GF_AssertFail\n    add r0, r6, #0\n    add r1, r4, #0\n    bl ov12_0226B144\n    add r5, r6, #0\n    mov r4, #0\n    add r5, #0x1c\n    add r6, #0x18\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    add r3, r6, #0\n    bl ov12_0226B694\n    add r4, r4, #1\n    add r5, #0x30\n    cmp r4, #6\n    blt _0226AF8C\n    pop {r3, r4, r5, r6, r7, pc}"
     );
     #endif
 }
@@ -259,23 +79,7 @@ void ov12_0226AFA4(void) {
     /* Requires manual decompilation - 17 instructions */
     #ifdef MWERKS
     asm(
-        "ldr r1, [r0, #4]
-    cmp r1, #0
-    bne _0226AFC2
-    mov r2, #0
-    ldr r1, [r0, #0x20]
-    cmp r1, #0
-    bne _0226AFBA
-    add r2, r2, #1
-    add r0, #0x30
-    cmp r2, #6
-    blt _0226AFAC
-    cmp r2, #6
-    bne _0226AFC2
-    mov r0, #1
-    bx lr
-    mov r0, #0
-    bx lr"
+        "ldr r1, [r0, #4]\n    cmp r1, #0\n    bne _0226AFC2\n    mov r2, #0\n    ldr r1, [r0, #0x20]\n    cmp r1, #0\n    bne _0226AFBA\n    add r2, r2, #1\n    add r0, #0x30\n    cmp r2, #6\n    blt _0226AFAC\n    cmp r2, #6\n    bne _0226AFC2\n    mov r0, #1\n    bx lr\n    mov r0, #0\n    bx lr"
     );
     #endif
 }
@@ -285,21 +89,7 @@ void ov12_0226AFC8(void) {
     /* Requires manual decompilation - 15 instructions */
     #ifdef MWERKS
     asm(
-        "push {r4, r5, r6, lr}
-    add r6, r0, #0
-    ldr r0, [r6]
-    bl Sprite_DeleteAndFreeResources
-    mov r4, #0
-    add r5, r6, #0
-    ldr r0, [r5, #0x1c]
-    bl Sprite_DeleteAndFreeResources
-    add r4, r4, #1
-    add r5, #0x30
-    cmp r4, #6
-    blt _0226AFD6
-    add r0, r6, #0
-    bl ov12_0226AEC8
-    pop {r4, r5, r6, pc}"
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    ldr r0, [r6]\n    bl Sprite_DeleteAndFreeResources\n    mov r4, #0\n    add r5, r6, #0\n    ldr r0, [r5, #0x1c]\n    bl Sprite_DeleteAndFreeResources\n    add r4, r4, #1\n    add r5, #0x30\n    cmp r4, #6\n    blt _0226AFD6\n    add r0, r6, #0\n    bl ov12_0226AEC8\n    pop {r4, r5, r6, pc}"
     );
     #endif
 }
@@ -309,77 +99,7 @@ void ov12_0226AFEC(void) {
     /* Requires manual decompilation - 71 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    add r5, r0, #0
-    ldr r0, [r5]
-    add r6, r1, #0
-    add r4, r2, #0
-    add r7, r3, #0
-    mov r1, #0
-    cmp r0, #0
-    bne _0226B006
-    ldr r0, [r5, #4]
-    cmp r0, #0
-    bne _0226B006
-    mov r1, #1
-    cmp r1, #0
-    bne _0226B00E
-    bl GF_AssertFail
-    add r0, r5, #0
-    mov r1, #0
-    mov r2, #0x1c
-    bl MI_CpuFill8
-    ldr r1, [sp, #0x18]
-    ldr r2, _0226B084 ; =ov12_0226EB38
-    add r0, r7, #0
-    bl SpriteSystem_NewSprite
-    str r0, [r5]
-    cmp r6, #0
-    ldr r0, [r5]
-    bne _0226B044
-    ldr r2, _0226B088 ; =ov12_0226EB28
-    lsl r3, r4, #1
-    ldrsh r2, [r2, r3]
-    mov r1, #0x16
-    lsl r1, r1, #4
-    bl ManagedSprite_SetPositionXY
-    ldr r0, [r5]
-    mov r1, #8
-    ldr r0, [r0]
-    bl Sprite_SetAnimCtrlSeq
-    b _0226B05C
-    ldr r2, _0226B08C ; =ov12_0226EB20
-    lsl r3, r4, #1
-    ldrsh r2, [r2, r3]
-    mov r1, #0x5f
-    mvn r1, r1
-    bl ManagedSprite_SetPositionXY
-    ldr r0, [r5]
-    mov r1, #7
-    ldr r0, [r0]
-    bl Sprite_SetAnimCtrlSeq
-    ldr r0, [r5]
-    ldr r0, [r0]
-    bl Sprite_TickFrame
-    str r6, [r5, #0xc]
-    mov r2, #0x7d
-    str r4, [r5, #0x10]
-    mov r0, #0
-    strb r0, [r5, #0x1a]
-    ldr r0, _0226B090 ; =ov12_0226B098
-    add r1, r5, #0
-    lsl r2, r2, #2
-    bl SysTask_CreateOnMainQueue
-    str r0, [r5, #4]
-    ldr r0, _0226B094 ; =0x00000711
-    bl PlaySE
-    pop {r3, r4, r5, r6, r7, pc}
-    nop
-    _0226B084: .word ov12_0226EB38
-    _0226B088: .word ov12_0226EB28
-    _0226B08C: .word ov12_0226EB20
-    _0226B090: .word ov12_0226B098
-    _0226B094: .word 0x00000711"
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r6, r1, #0\n    add r4, r2, #0\n    add r7, r3, #0\n    mov r1, #0\n    cmp r0, #0\n    bne _0226B006\n    ldr r0, [r5, #4]\n    cmp r0, #0\n    bne _0226B006\n    mov r1, #1\n    cmp r1, #0\n    bne _0226B00E\n    bl GF_AssertFail\n    add r0, r5, #0\n    mov r1, #0\n    mov r2, #0x1c\n    bl MI_CpuFill8\n    ldr r1, [sp, #0x18]\n    ldr r2, _0226B084 ; =ov12_0226EB38\n    add r0, r7, #0\n    bl SpriteSystem_NewSprite\n    str r0, [r5]\n    cmp r6, #0\n    ldr r0, [r5]\n    bne _0226B044\n    ldr r2, _0226B088 ; =ov12_0226EB28\n    lsl r3, r4, #1\n    ldrsh r2, [r2, r3]\n    mov r1, #0x16\n    lsl r1, r1, #4\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r5]\n    mov r1, #8\n    ldr r0, [r0]\n    bl Sprite_SetAnimCtrlSeq\n    b _0226B05C\n    ldr r2, _0226B08C ; =ov12_0226EB20\n    lsl r3, r4, #1\n    ldrsh r2, [r2, r3]\n    mov r1, #0x5f\n    mvn r1, r1\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r5]\n    mov r1, #7\n    ldr r0, [r0]\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Sprite_TickFrame\n    str r6, [r5, #0xc]\n    mov r2, #0x7d\n    str r4, [r5, #0x10]\n    mov r0, #0\n    strb r0, [r5, #0x1a]\n    ldr r0, _0226B090 ; =ov12_0226B098\n    add r1, r5, #0\n    lsl r2, r2, #2\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #4]\n    ldr r0, _0226B094 ; =0x00000711\n    bl PlaySE\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0226B084: .word ov12_0226EB38\n    _0226B088: .word ov12_0226EB28\n    _0226B08C: .word ov12_0226EB20\n    _0226B090: .word ov12_0226B098\n    _0226B094: .word 0x00000711"
     );
     #endif
 }
@@ -389,86 +109,7 @@ void ov12_0226B098(void) {
     /* Requires manual decompilation - 80 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, lr}
-    sub sp, #4
-    add r4, r1, #0
-    ldrb r1, [r4, #0x1a]
-    cmp r1, #0
-    beq _0226B0AA
-    cmp r1, #1
-    beq _0226B0C6
-    b _0226B12E
-    add r1, sp, #0
-    ldr r0, [r4]
-    add r1, #2
-    add r2, sp, #0
-    bl ManagedSprite_GetPositionXY
-    add r1, sp, #0
-    mov r0, #2
-    ldrsh r0, [r1, r0]
-    lsl r0, r0, #8
-    str r0, [r4, #0x14]
-    ldrb r0, [r4, #0x1a]
-    add r0, r0, #1
-    strb r0, [r4, #0x1a]
-    ldr r0, [r4, #0xc]
-    ldr r1, [r4, #0x14]
-    cmp r0, #0
-    bne _0226B0FE
-    mov r0, #0x12
-    lsl r0, r0, #8
-    sub r1, r1, r0
-    mov r0, #0xe
-    lsl r0, r0, #0xc
-    str r1, [r4, #0x14]
-    cmp r1, r0
-    bgt _0226B0E6
-    str r0, [r4, #0x14]
-    ldrb r0, [r4, #0x1a]
-    add r0, r0, #1
-    strb r0, [r4, #0x1a]
-    ldr r2, [r4, #0x10]
-    ldr r1, [r4, #0x14]
-    lsl r3, r2, #1
-    ldr r2, _0226B13C ; =ov12_0226EB28
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    add sp, #4
-    pop {r3, r4, pc}
-    mov r0, #0x12
-    lsl r0, r0, #8
-    add r1, r1, r0
-    mov r0, #2
-    lsl r0, r0, #0xc
-    str r1, [r4, #0x14]
-    cmp r1, r0
-    blt _0226B116
-    str r0, [r4, #0x14]
-    ldrb r0, [r4, #0x1a]
-    add r0, r0, #1
-    strb r0, [r4, #0x1a]
-    ldr r2, [r4, #0x10]
-    ldr r1, [r4, #0x14]
-    lsl r3, r2, #1
-    ldr r2, _0226B140 ; =ov12_0226EB20
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    add sp, #4
-    pop {r3, r4, pc}
-    bl SysTask_Destroy
-    mov r0, #0
-    str r0, [r4, #4]
-    add sp, #4
-    pop {r3, r4, pc}
-    nop
-    _0226B13C: .word ov12_0226EB28
-    _0226B140: .word ov12_0226EB20"
+        "push {r3, r4, lr}\n    sub sp, #4\n    add r4, r1, #0\n    ldrb r1, [r4, #0x1a]\n    cmp r1, #0\n    beq _0226B0AA\n    cmp r1, #1\n    beq _0226B0C6\n    b _0226B12E\n    add r1, sp, #0\n    ldr r0, [r4]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    lsl r0, r0, #8\n    str r0, [r4, #0x14]\n    ldrb r0, [r4, #0x1a]\n    add r0, r0, #1\n    strb r0, [r4, #0x1a]\n    ldr r0, [r4, #0xc]\n    ldr r1, [r4, #0x14]\n    cmp r0, #0\n    bne _0226B0FE\n    mov r0, #0x12\n    lsl r0, r0, #8\n    sub r1, r1, r0\n    mov r0, #0xe\n    lsl r0, r0, #0xc\n    str r1, [r4, #0x14]\n    cmp r1, r0\n    bgt _0226B0E6\n    str r0, [r4, #0x14]\n    ldrb r0, [r4, #0x1a]\n    add r0, r0, #1\n    strb r0, [r4, #0x1a]\n    ldr r2, [r4, #0x10]\n    ldr r1, [r4, #0x14]\n    lsl r3, r2, #1\n    ldr r2, _0226B13C ; =ov12_0226EB28\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    add sp, #4\n    pop {r3, r4, pc}\n    mov r0, #0x12\n    lsl r0, r0, #8\n    add r1, r1, r0\n    mov r0, #2\n    lsl r0, r0, #0xc\n    str r1, [r4, #0x14]\n    cmp r1, r0\n    blt _0226B116\n    str r0, [r4, #0x14]\n    ldrb r0, [r4, #0x1a]\n    add r0, r0, #1\n    strb r0, [r4, #0x1a]\n    ldr r2, [r4, #0x10]\n    ldr r1, [r4, #0x14]\n    lsl r3, r2, #1\n    ldr r2, _0226B140 ; =ov12_0226EB20\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    add sp, #4\n    pop {r3, r4, pc}\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #4]\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _0226B13C: .word ov12_0226EB28\n    _0226B140: .word ov12_0226EB20"
     );
     #endif
 }
@@ -478,33 +119,7 @@ void ov12_0226B144(void) {
     /* Requires manual decompilation - 27 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, lr}
-    add r5, r0, #0
-    ldr r0, [r5]
-    add r4, r1, #0
-    cmp r0, #0
-    beq _0226B156
-    ldr r0, [r5, #4]
-    cmp r0, #0
-    beq _0226B15A
-    bl GF_AssertFail
-    mov r0, #0
-    strb r0, [r5, #0x1a]
-    str r4, [r5, #8]
-    cmp r4, #0
-    bne _0226B168
-    mov r0, #4
-    b _0226B168
-    strb r0, [r5, #0x1b]
-    mov r2, #0x7d
-    ldr r0, _0226B17C ; =ov12_0226B180
-    add r1, r5, #0
-    lsl r2, r2, #2
-    bl SysTask_CreateOnMainQueue
-    str r0, [r5, #4]
-    pop {r3, r4, r5, pc}
-    nop
-    _0226B17C: .word ov12_0226B180"
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r4, r1, #0\n    cmp r0, #0\n    beq _0226B156\n    ldr r0, [r5, #4]\n    cmp r0, #0\n    beq _0226B15A\n    bl GF_AssertFail\n    mov r0, #0\n    strb r0, [r5, #0x1a]\n    str r4, [r5, #8]\n    cmp r4, #0\n    bne _0226B168\n    mov r0, #4\n    b _0226B168\n    strb r0, [r5, #0x1b]\n    mov r2, #0x7d\n    ldr r0, _0226B17C ; =ov12_0226B180\n    add r1, r5, #0\n    lsl r2, r2, #2\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #4]\n    pop {r3, r4, r5, pc}\n    nop\n    _0226B17C: .word ov12_0226B180"
     );
     #endif
 }
@@ -514,136 +129,7 @@ void ov12_0226B180(void) {
     /* Requires manual decompilation - 130 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, lr}
-    sub sp, #8
-    add r4, r1, #0
-    add r5, r0, #0
-    ldrb r0, [r4, #0x1a]
-    cmp r0, #0
-    beq _0226B198
-    cmp r0, #1
-    beq _0226B1CE
-    cmp r0, #2
-    beq _0226B1FC
-    b _0226B27A
-    add r1, sp, #4
-    ldr r0, [r4]
-    add r1, #2
-    add r2, sp, #4
-    bl ManagedSprite_GetPositionXY
-    add r1, sp, #4
-    mov r0, #2
-    ldrsh r1, [r1, r0]
-    lsl r0, r0, #0xb
-    mov r2, #0x3f
-    lsl r1, r1, #8
-    str r1, [r4, #0x14]
-    strh r0, [r4, #0x18]
-    mov r0, #0x18
-    ldrsh r0, [r4, r0]
-    mov r1, #0
-    asr r3, r0, #8
-    mov r0, #0x10
-    sub r0, r0, r3
-    str r0, [sp]
-    ldr r0, _0226B28C ; =0x04000050
-    bl G2x_SetBlendAlpha_
-    ldrb r0, [r4, #0x1a]
-    add r0, r0, #1
-    strb r0, [r4, #0x1a]
-    ldrb r0, [r4, #0x1b]
-    cmp r0, #0
-    beq _0226B1DC
-    sub r0, r0, #1
-    add sp, #8
-    strb r0, [r4, #0x1b]
-    pop {r3, r4, r5, pc}
-    mov r0, #0x18
-    ldrsh r0, [r4, r0]
-    asr r1, r0, #8
-    mov r0, #0x10
-    sub r0, r0, r1
-    lsl r0, r0, #8
-    orr r1, r0
-    ldr r0, _0226B290 ; =0x04000052
-    strh r1, [r0]
-    ldr r0, [r4]
-    mov r1, #1
-    bl ManagedSprite_SetOamMode
-    ldrb r0, [r4, #0x1a]
-    add r0, r0, #1
-    strb r0, [r4, #0x1a]
-    ldr r0, [r4, #8]
-    cmp r0, #0
-    bne _0226B240
-    ldr r0, [r4, #0xc]
-    ldr r1, [r4, #0x14]
-    cmp r0, #0
-    bne _0226B226
-    mov r0, #1
-    lsl r0, r0, #0xa
-    sub r1, r1, r0
-    str r1, [r4, #0x14]
-    ldr r2, [r4, #0x10]
-    lsl r1, r1, #8
-    lsl r3, r2, #1
-    ldr r2, _0226B294 ; =ov12_0226EB28
-    ldr r0, [r4]
-    ldrsh r2, [r2, r3]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    b _0226B240
-    mov r0, #1
-    lsl r0, r0, #0xa
-    add r1, r1, r0
-    str r1, [r4, #0x14]
-    ldr r2, [r4, #0x10]
-    lsl r1, r1, #8
-    lsl r3, r2, #1
-    ldr r2, _0226B298 ; =ov12_0226EB20
-    ldr r0, [r4]
-    ldrsh r2, [r2, r3]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    mov r1, #0x18
-    ldrsh r2, [r4, r1]
-    add r0, r1, #0
-    add r0, #0xe8
-    sub r0, r2, r0
-    strh r0, [r4, #0x18]
-    ldrsh r0, [r4, r1]
-    cmp r0, #0
-    bgt _0226B264
-    mov r1, #0
-    strh r1, [r4, #0x18]
-    ldr r0, [r4]
-    ldr r0, [r0]
-    bl thunk_Sprite_SetDrawFlag
-    ldrb r0, [r4, #0x1a]
-    add r0, r0, #1
-    strb r0, [r4, #0x1a]
-    mov r0, #0x18
-    ldrsh r0, [r4, r0]
-    add sp, #8
-    asr r1, r0, #8
-    mov r0, #0x10
-    sub r0, r0, r1
-    lsl r0, r0, #8
-    orr r1, r0
-    ldr r0, _0226B290 ; =0x04000052
-    strh r1, [r0]
-    pop {r3, r4, r5, pc}
-    bl BattleSystem_SetDefaultBlend
-    add r0, r5, #0
-    bl SysTask_Destroy
-    mov r0, #0
-    str r0, [r4, #4]
-    add sp, #8
-    pop {r3, r4, r5, pc}
-    _0226B28C: .word 0x04000050
-    _0226B290: .word 0x04000052
-    _0226B294: .word ov12_0226EB28
-    _0226B298: .word ov12_0226EB20"
+        "push {r3, r4, r5, lr}\n    sub sp, #8\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4, #0x1a]\n    cmp r0, #0\n    beq _0226B198\n    cmp r0, #1\n    beq _0226B1CE\n    cmp r0, #2\n    beq _0226B1FC\n    b _0226B27A\n    add r1, sp, #4\n    ldr r0, [r4]\n    add r1, #2\n    add r2, sp, #4\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #4\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    lsl r0, r0, #0xb\n    mov r2, #0x3f\n    lsl r1, r1, #8\n    str r1, [r4, #0x14]\n    strh r0, [r4, #0x18]\n    mov r0, #0x18\n    ldrsh r0, [r4, r0]\n    mov r1, #0\n    asr r3, r0, #8\n    mov r0, #0x10\n    sub r0, r0, r3\n    str r0, [sp]\n    ldr r0, _0226B28C ; =0x04000050\n    bl G2x_SetBlendAlpha_\n    ldrb r0, [r4, #0x1a]\n    add r0, r0, #1\n    strb r0, [r4, #0x1a]\n    ldrb r0, [r4, #0x1b]\n    cmp r0, #0\n    beq _0226B1DC\n    sub r0, r0, #1\n    add sp, #8\n    strb r0, [r4, #0x1b]\n    pop {r3, r4, r5, pc}\n    mov r0, #0x18\n    ldrsh r0, [r4, r0]\n    asr r1, r0, #8\n    mov r0, #0x10\n    sub r0, r0, r1\n    lsl r0, r0, #8\n    orr r1, r0\n    ldr r0, _0226B290 ; =0x04000052\n    strh r1, [r0]\n    ldr r0, [r4]\n    mov r1, #1\n    bl ManagedSprite_SetOamMode\n    ldrb r0, [r4, #0x1a]\n    add r0, r0, #1\n    strb r0, [r4, #0x1a]\n    ldr r0, [r4, #8]\n    cmp r0, #0\n    bne _0226B240\n    ldr r0, [r4, #0xc]\n    ldr r1, [r4, #0x14]\n    cmp r0, #0\n    bne _0226B226\n    mov r0, #1\n    lsl r0, r0, #0xa\n    sub r1, r1, r0\n    str r1, [r4, #0x14]\n    ldr r2, [r4, #0x10]\n    lsl r1, r1, #8\n    lsl r3, r2, #1\n    ldr r2, _0226B294 ; =ov12_0226EB28\n    ldr r0, [r4]\n    ldrsh r2, [r2, r3]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    b _0226B240\n    mov r0, #1\n    lsl r0, r0, #0xa\n    add r1, r1, r0\n    str r1, [r4, #0x14]\n    ldr r2, [r4, #0x10]\n    lsl r1, r1, #8\n    lsl r3, r2, #1\n    ldr r2, _0226B298 ; =ov12_0226EB20\n    ldr r0, [r4]\n    ldrsh r2, [r2, r3]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    mov r1, #0x18\n    ldrsh r2, [r4, r1]\n    add r0, r1, #0\n    add r0, #0xe8\n    sub r0, r2, r0\n    strh r0, [r4, #0x18]\n    ldrsh r0, [r4, r1]\n    cmp r0, #0\n    bgt _0226B264\n    mov r1, #0\n    strh r1, [r4, #0x18]\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl thunk_Sprite_SetDrawFlag\n    ldrb r0, [r4, #0x1a]\n    add r0, r0, #1\n    strb r0, [r4, #0x1a]\n    mov r0, #0x18\n    ldrsh r0, [r4, r0]\n    add sp, #8\n    asr r1, r0, #8\n    mov r0, #0x10\n    sub r0, r0, r1\n    lsl r0, r0, #8\n    orr r1, r0\n    ldr r0, _0226B290 ; =0x04000052\n    strh r1, [r0]\n    pop {r3, r4, r5, pc}\n    bl BattleSystem_SetDefaultBlend\n    add r0, r5, #0\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #4]\n    add sp, #8\n    pop {r3, r4, r5, pc}\n    _0226B28C: .word 0x04000050\n    _0226B290: .word 0x04000052\n    _0226B294: .word ov12_0226EB28\n    _0226B298: .word ov12_0226EB20"
     );
     #endif
 }
@@ -653,126 +139,7 @@ void ov12_0226B29C(void) {
     /* Requires manual decompilation - 120 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    add r5, r0, #0
-    ldr r0, [r5]
-    add r7, r1, #0
-    add r6, r2, #0
-    mov r1, #0
-    str r3, [sp]
-    ldr r4, [sp, #0x1c]
-    cmp r0, #0
-    bne _0226B2B8
-    ldr r0, [r5, #4]
-    cmp r0, #0
-    bne _0226B2B8
-    mov r1, #1
-    cmp r1, #0
-    bne _0226B2C0
-    bl GF_AssertFail
-    add r0, r5, #0
-    mov r1, #0
-    mov r2, #0x30
-    bl MI_CpuFill8
-    ldr r0, [sp, #0x24]
-    ldr r1, [sp, #0x28]
-    ldr r2, _0226B390 ; =ov12_0226EB6C
-    bl SpriteSystem_NewSprite
-    str r0, [r5]
-    cmp r6, #0
-    ldr r0, [r5]
-    bne _0226B2EE
-    ldr r2, [sp, #0x18]
-    mov r1, #0x45
-    lsl r3, r2, #1
-    ldr r2, _0226B394 ; =ov12_0226EB30
-    lsl r1, r1, #2
-    ldrsh r2, [r2, r3]
-    bl ManagedSprite_SetPositionXY
-    b _0226B2FE
-    ldr r2, [sp, #0x18]
-    mov r1, #0x13
-    lsl r3, r2, #1
-    ldr r2, _0226B398 ; =ov12_0226EB18
-    mvn r1, r1
-    ldrsh r2, [r2, r3]
-    bl ManagedSprite_SetPositionXY
-    ldr r0, [r5]
-    ldr r1, [sp, #0x20]
-    ldr r0, [r0]
-    bl Sprite_SetAnimCtrlSeq
-    ldr r0, [r5]
-    ldr r0, [r0]
-    bl Sprite_TickFrame
-    add r0, r5, #0
-    str r6, [r5, #8]
-    add r0, #0x2d
-    strb r4, [r0]
-    ldr r0, [sp, #0x18]
-    str r0, [r5, #0xc]
-    ldr r0, [sp, #0x20]
-    bl ov12_0226B8C4
-    add r1, r5, #0
-    add r1, #0x2e
-    strb r0, [r1]
-    ldr r0, [sp, #0x20]
-    str r7, [r5, #0x14]
-    cmp r0, #6
-    bne _0226B334
-    ldr r0, _0226B39C ; =0x00000713
-    b _0226B336
-    ldr r0, _0226B3A0 ; =0x00000712
-    strh r0, [r5, #0x2a]
-    cmp r6, #0
-    bne _0226B34A
-    lsl r0, r4, #4
-    add r0, #0xa2
-    str r0, [r5, #0x20]
-    mov r0, #0xf
-    mul r0, r4
-    add r0, #0x9c
-    b _0226B35C
-    lsl r1, r4, #4
-    mov r0, #0x5e
-    sub r0, r0, r1
-    str r0, [r5, #0x20]
-    mov r0, #0xf
-    add r1, r4, #0
-    mul r1, r0
-    mov r0, #0x64
-    sub r0, r0, r1
-    str r0, [r5, #0x24]
-    add r0, r5, #0
-    mov r1, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r0, [sp]
-    ldr r2, _0226B3A4 ; =0x000001F5
-    cmp r0, #0
-    bne _0226B382
-    lsl r0, r4, #1
-    add r0, r4, r0
-    add r0, r0, #5
-    strh r0, [r5, #0x28]
-    ldr r0, _0226B3A8 ; =ov12_0226B3B0
-    add r1, r5, #0
-    bl SysTask_CreateOnMainQueue
-    str r0, [r5, #4]
-    pop {r3, r4, r5, r6, r7, pc}
-    ldr r0, _0226B3AC ; =ov12_0226B5B0
-    strh r1, [r5, #0x28]
-    add r1, r5, #0
-    bl SysTask_CreateOnMainQueue
-    str r0, [r5, #4]
-    pop {r3, r4, r5, r6, r7, pc}
-    _0226B390: .word ov12_0226EB6C
-    _0226B394: .word ov12_0226EB30
-    _0226B398: .word ov12_0226EB18
-    _0226B39C: .word 0x00000713
-    _0226B3A0: .word 0x00000712
-    _0226B3A4: .word 0x000001F5
-    _0226B3A8: .word ov12_0226B3B0
-    _0226B3AC: .word ov12_0226B5B0"
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r7, r1, #0\n    add r6, r2, #0\n    mov r1, #0\n    str r3, [sp]\n    ldr r4, [sp, #0x1c]\n    cmp r0, #0\n    bne _0226B2B8\n    ldr r0, [r5, #4]\n    cmp r0, #0\n    bne _0226B2B8\n    mov r1, #1\n    cmp r1, #0\n    bne _0226B2C0\n    bl GF_AssertFail\n    add r0, r5, #0\n    mov r1, #0\n    mov r2, #0x30\n    bl MI_CpuFill8\n    ldr r0, [sp, #0x24]\n    ldr r1, [sp, #0x28]\n    ldr r2, _0226B390 ; =ov12_0226EB6C\n    bl SpriteSystem_NewSprite\n    str r0, [r5]\n    cmp r6, #0\n    ldr r0, [r5]\n    bne _0226B2EE\n    ldr r2, [sp, #0x18]\n    mov r1, #0x45\n    lsl r3, r2, #1\n    ldr r2, _0226B394 ; =ov12_0226EB30\n    lsl r1, r1, #2\n    ldrsh r2, [r2, r3]\n    bl ManagedSprite_SetPositionXY\n    b _0226B2FE\n    ldr r2, [sp, #0x18]\n    mov r1, #0x13\n    lsl r3, r2, #1\n    ldr r2, _0226B398 ; =ov12_0226EB18\n    mvn r1, r1\n    ldrsh r2, [r2, r3]\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r5]\n    ldr r1, [sp, #0x20]\n    ldr r0, [r0]\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Sprite_TickFrame\n    add r0, r5, #0\n    str r6, [r5, #8]\n    add r0, #0x2d\n    strb r4, [r0]\n    ldr r0, [sp, #0x18]\n    str r0, [r5, #0xc]\n    ldr r0, [sp, #0x20]\n    bl ov12_0226B8C4\n    add r1, r5, #0\n    add r1, #0x2e\n    strb r0, [r1]\n    ldr r0, [sp, #0x20]\n    str r7, [r5, #0x14]\n    cmp r0, #6\n    bne _0226B334\n    ldr r0, _0226B39C ; =0x00000713\n    b _0226B336\n    ldr r0, _0226B3A0 ; =0x00000712\n    strh r0, [r5, #0x2a]\n    cmp r6, #0\n    bne _0226B34A\n    lsl r0, r4, #4\n    add r0, #0xa2\n    str r0, [r5, #0x20]\n    mov r0, #0xf\n    mul r0, r4\n    add r0, #0x9c\n    b _0226B35C\n    lsl r1, r4, #4\n    mov r0, #0x5e\n    sub r0, r0, r1\n    str r0, [r5, #0x20]\n    mov r0, #0xf\n    add r1, r4, #0\n    mul r1, r0\n    mov r0, #0x64\n    sub r0, r0, r1\n    str r0, [r5, #0x24]\n    add r0, r5, #0\n    mov r1, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r0, [sp]\n    ldr r2, _0226B3A4 ; =0x000001F5\n    cmp r0, #0\n    bne _0226B382\n    lsl r0, r4, #1\n    add r0, r4, r0\n    add r0, r0, #5\n    strh r0, [r5, #0x28]\n    ldr r0, _0226B3A8 ; =ov12_0226B3B0\n    add r1, r5, #0\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _0226B3AC ; =ov12_0226B5B0\n    strh r1, [r5, #0x28]\n    add r1, r5, #0\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    _0226B390: .word ov12_0226EB6C\n    _0226B394: .word ov12_0226EB30\n    _0226B398: .word ov12_0226EB18\n    _0226B39C: .word 0x00000713\n    _0226B3A0: .word 0x00000712\n    _0226B3A4: .word 0x000001F5\n    _0226B3A8: .word ov12_0226B3B0\n    _0226B3AC: .word ov12_0226B5B0"
     );
     #endif
 }
@@ -782,240 +149,7 @@ void ov12_0226B3B0(void) {
     /* Requires manual decompilation - 234 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, lr}
-    add r4, r1, #0
-    add r5, r0, #0
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    cmp r0, #6
-    bls _0226B3C2
-    b _0226B592
-    add r0, r0, r0
-    add r0, pc
-    ldrh r0, [r0, #6]
-    lsl r0, r0, #0x10
-    asr r0, r0, #0x10
-    add pc, r0
-    _0226B3CE: ; jump table
-    add r1, sp, #0
-    ldr r0, [r4]
-    add r1, #2
-    add r2, sp, #0
-    bl ManagedSprite_GetPositionXY
-    add r1, sp, #0
-    mov r0, #2
-    ldrsh r0, [r1, r0]
-    lsl r0, r0, #8
-    str r0, [r4, #0x1c]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    mov r0, #0x28
-    ldrsh r0, [r4, r0]
-    cmp r0, #0
-    ble _0226B40E
-    sub r0, r0, #1
-    strh r0, [r4, #0x28]
-    pop {r3, r4, r5, pc}
-    ldr r0, [r4, #8]
-    ldr r1, [r4, #0x1c]
-    cmp r0, #0
-    bne _0226B452
-    mov r0, #0x12
-    lsl r0, r0, #8
-    sub r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r0, [r4, #0x24]
-    lsl r0, r0, #8
-    cmp r1, r0
-    bgt _0226B43C
-    str r0, [r4, #0x1c]
-    ldrh r0, [r4, #0x2a]
-    bl PlaySE
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r2, [r4, #0xc]
-    ldr r1, [r4, #0x1c]
-    lsl r3, r2, #1
-    ldr r2, _0226B5A8 ; =ov12_0226EB30
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    b _0226B486
-    mov r0, #0x12
-    lsl r0, r0, #8
-    add r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r0, [r4, #0x24]
-    lsl r0, r0, #8
-    cmp r1, r0
-    blt _0226B472
-    str r0, [r4, #0x1c]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r2, [r4, #0xc]
-    ldr r1, [r4, #0x1c]
-    lsl r3, r2, #1
-    ldr r2, _0226B5AC ; =ov12_0226EB18
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    ldr r0, [r4]
-    ldr r0, [r0]
-    bl Sprite_TickFrame
-    pop {r3, r4, r5, pc}
-    ldr r1, [r4, #0x14]
-    mov r0, #0
-    ldrsb r0, [r1, r0]
-    add r0, r0, #1
-    strb r0, [r1]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r1, [r4, #0x14]
-    mov r0, #0
-    ldrsb r0, [r1, r0]
-    cmp r0, #6
-    beq _0226B4BC
-    ldr r0, [r4]
-    ldr r0, [r0]
-    bl Sprite_TickFrame
-    pop {r3, r4, r5, pc}
-    ldr r0, [r4, #8]
-    cmp r0, #0
-    ldr r0, [r4]
-    bne _0226B4CE
-    ldr r0, [r0]
-    mov r1, #1
-    bl Sprite_SetAnimationFrame
-    b _0226B4D6
-    ldr r0, [r0]
-    mov r1, #1
-    bl Sprite_SetAnimationFrame
-    mov r0, #0
-    strh r0, [r4, #0x28]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    mov r0, #0x28
-    ldrsh r1, [r4, r0]
-    add r1, r1, #1
-    strh r1, [r4, #0x28]
-    ldrsh r0, [r4, r0]
-    cmp r0, #0
-    blt _0226B5A6
-    add r1, r4, #0
-    ldr r0, [r4]
-    add r1, #0x2e
-    ldrb r1, [r1]
-    ldr r0, [r0]
-    bl Sprite_SetAnimCtrlSeq
-    mov r0, #0
-    strh r0, [r4, #0x28]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r0, [r4, #8]
-    ldr r1, [r4, #0x1c]
-    cmp r0, #0
-    bne _0226B554
-    mov r0, #6
-    lsl r0, r0, #8
-    add r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r0, [r4, #0x20]
-    lsl r0, r0, #8
-    cmp r1, r0
-    blt _0226B53E
-    str r0, [r4, #0x1c]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r2, [r4, #0xc]
-    ldr r1, [r4, #0x1c]
-    lsl r3, r2, #1
-    ldr r2, _0226B5A8 ; =ov12_0226EB30
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    b _0226B588
-    mov r0, #6
-    lsl r0, r0, #8
-    sub r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r0, [r4, #0x20]
-    lsl r0, r0, #8
-    cmp r1, r0
-    bgt _0226B574
-    str r0, [r4, #0x1c]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r2, [r4, #0xc]
-    ldr r1, [r4, #0x1c]
-    lsl r3, r2, #1
-    ldr r2, _0226B5AC ; =ov12_0226EB18
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    ldr r0, [r4]
-    ldr r0, [r0]
-    bl Sprite_TickFrame
-    pop {r3, r4, r5, pc}
-    ldr r0, [r4]
-    mov r1, #0
-    ldr r0, [r0]
-    bl Sprite_SetAnimationFrame
-    add r0, r5, #0
-    bl SysTask_Destroy
-    mov r0, #0
-    str r0, [r4, #4]
-    pop {r3, r4, r5, pc}
-    _0226B5A8: .word ov12_0226EB30
-    _0226B5AC: .word ov12_0226EB18"
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    cmp r0, #6\n    bls _0226B3C2\n    b _0226B592\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0226B3CE: ; jump table\n    add r1, sp, #0\n    ldr r0, [r4]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    lsl r0, r0, #8\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    mov r0, #0x28\n    ldrsh r0, [r4, r0]\n    cmp r0, #0\n    ble _0226B40E\n    sub r0, r0, #1\n    strh r0, [r4, #0x28]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #8]\n    ldr r1, [r4, #0x1c]\n    cmp r0, #0\n    bne _0226B452\n    mov r0, #0x12\n    lsl r0, r0, #8\n    sub r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x24]\n    lsl r0, r0, #8\n    cmp r1, r0\n    bgt _0226B43C\n    str r0, [r4, #0x1c]\n    ldrh r0, [r4, #0x2a]\n    bl PlaySE\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r2, [r4, #0xc]\n    ldr r1, [r4, #0x1c]\n    lsl r3, r2, #1\n    ldr r2, _0226B5A8 ; =ov12_0226EB30\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    b _0226B486\n    mov r0, #0x12\n    lsl r0, r0, #8\n    add r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x24]\n    lsl r0, r0, #8\n    cmp r1, r0\n    blt _0226B472\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r2, [r4, #0xc]\n    ldr r1, [r4, #0x1c]\n    lsl r3, r2, #1\n    ldr r2, _0226B5AC ; =ov12_0226EB18\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl Sprite_TickFrame\n    pop {r3, r4, r5, pc}\n    ldr r1, [r4, #0x14]\n    mov r0, #0\n    ldrsb r0, [r1, r0]\n    add r0, r0, #1\n    strb r0, [r1]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r1, [r4, #0x14]\n    mov r0, #0\n    ldrsb r0, [r1, r0]\n    cmp r0, #6\n    beq _0226B4BC\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl Sprite_TickFrame\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #8]\n    cmp r0, #0\n    ldr r0, [r4]\n    bne _0226B4CE\n    ldr r0, [r0]\n    mov r1, #1\n    bl Sprite_SetAnimationFrame\n    b _0226B4D6\n    ldr r0, [r0]\n    mov r1, #1\n    bl Sprite_SetAnimationFrame\n    mov r0, #0\n    strh r0, [r4, #0x28]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    mov r0, #0x28\n    ldrsh r1, [r4, r0]\n    add r1, r1, #1\n    strh r1, [r4, #0x28]\n    ldrsh r0, [r4, r0]\n    cmp r0, #0\n    blt _0226B5A6\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x2e\n    ldrb r1, [r1]\n    ldr r0, [r0]\n    bl Sprite_SetAnimCtrlSeq\n    mov r0, #0\n    strh r0, [r4, #0x28]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r0, [r4, #8]\n    ldr r1, [r4, #0x1c]\n    cmp r0, #0\n    bne _0226B554\n    mov r0, #6\n    lsl r0, r0, #8\n    add r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x20]\n    lsl r0, r0, #8\n    cmp r1, r0\n    blt _0226B53E\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r2, [r4, #0xc]\n    ldr r1, [r4, #0x1c]\n    lsl r3, r2, #1\n    ldr r2, _0226B5A8 ; =ov12_0226EB30\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    b _0226B588\n    mov r0, #6\n    lsl r0, r0, #8\n    sub r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x20]\n    lsl r0, r0, #8\n    cmp r1, r0\n    bgt _0226B574\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r2, [r4, #0xc]\n    ldr r1, [r4, #0x1c]\n    lsl r3, r2, #1\n    ldr r2, _0226B5AC ; =ov12_0226EB18\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl Sprite_TickFrame\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4]\n    mov r1, #0\n    ldr r0, [r0]\n    bl Sprite_SetAnimationFrame\n    add r0, r5, #0\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #4]\n    pop {r3, r4, r5, pc}\n    _0226B5A8: .word ov12_0226EB30\n    _0226B5AC: .word ov12_0226EB18"
     );
     #endif
 }
@@ -1025,113 +159,7 @@ void ov12_0226B5B0(void) {
     /* Requires manual decompilation - 107 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, lr}
-    sub sp, #4
-    add r4, r1, #0
-    add r1, #0x2c
-    ldrb r1, [r1]
-    cmp r1, #0
-    beq _0226B5C8
-    cmp r1, #1
-    beq _0226B5F6
-    cmp r1, #2
-    beq _0226B606
-    b _0226B67E
-    add r1, sp, #0
-    ldr r0, [r4]
-    add r1, #2
-    add r2, sp, #0
-    bl ManagedSprite_GetPositionXY
-    add r1, sp, #0
-    mov r0, #2
-    ldrsh r0, [r1, r0]
-    mov r1, #0
-    lsl r0, r0, #8
-    str r0, [r4, #0x1c]
-    ldr r0, [r4]
-    ldr r0, [r0]
-    bl Sprite_SetAnimationFrame
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    mov r0, #0x28
-    ldrsh r0, [r4, r0]
-    cmp r0, #0
-    ble _0226B606
-    sub r0, r0, #1
-    add sp, #4
-    strh r0, [r4, #0x28]
-    pop {r3, r4, pc}
-    ldr r0, [r4, #8]
-    ldr r1, [r4, #0x1c]
-    cmp r0, #0
-    bne _0226B646
-    mov r0, #0x12
-    lsl r0, r0, #8
-    sub r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r0, [r4, #0x20]
-    lsl r0, r0, #8
-    cmp r1, r0
-    bgt _0226B62E
-    str r0, [r4, #0x1c]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r2, [r4, #0xc]
-    ldr r1, [r4, #0x1c]
-    lsl r3, r2, #1
-    ldr r2, _0226B68C ; =ov12_0226EB30
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    add sp, #4
-    pop {r3, r4, pc}
-    mov r0, #0x12
-    lsl r0, r0, #8
-    add r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r0, [r4, #0x20]
-    lsl r0, r0, #8
-    cmp r1, r0
-    blt _0226B666
-    str r0, [r4, #0x1c]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r2, [r4, #0xc]
-    ldr r1, [r4, #0x1c]
-    lsl r3, r2, #1
-    ldr r2, _0226B690 ; =ov12_0226EB18
-    lsl r1, r1, #8
-    ldrsh r2, [r2, r3]
-    ldr r0, [r4]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    add sp, #4
-    pop {r3, r4, pc}
-    bl SysTask_Destroy
-    mov r0, #0
-    str r0, [r4, #4]
-    add sp, #4
-    pop {r3, r4, pc}
-    nop
-    _0226B68C: .word ov12_0226EB30
-    _0226B690: .word ov12_0226EB18"
+        "push {r3, r4, lr}\n    sub sp, #4\n    add r4, r1, #0\n    add r1, #0x2c\n    ldrb r1, [r1]\n    cmp r1, #0\n    beq _0226B5C8\n    cmp r1, #1\n    beq _0226B5F6\n    cmp r1, #2\n    beq _0226B606\n    b _0226B67E\n    add r1, sp, #0\n    ldr r0, [r4]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    mov r1, #0\n    lsl r0, r0, #8\n    str r0, [r4, #0x1c]\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl Sprite_SetAnimationFrame\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    mov r0, #0x28\n    ldrsh r0, [r4, r0]\n    cmp r0, #0\n    ble _0226B606\n    sub r0, r0, #1\n    add sp, #4\n    strh r0, [r4, #0x28]\n    pop {r3, r4, pc}\n    ldr r0, [r4, #8]\n    ldr r1, [r4, #0x1c]\n    cmp r0, #0\n    bne _0226B646\n    mov r0, #0x12\n    lsl r0, r0, #8\n    sub r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x20]\n    lsl r0, r0, #8\n    cmp r1, r0\n    bgt _0226B62E\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r2, [r4, #0xc]\n    ldr r1, [r4, #0x1c]\n    lsl r3, r2, #1\n    ldr r2, _0226B68C ; =ov12_0226EB30\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    add sp, #4\n    pop {r3, r4, pc}\n    mov r0, #0x12\n    lsl r0, r0, #8\n    add r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x20]\n    lsl r0, r0, #8\n    cmp r1, r0\n    blt _0226B666\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r2, [r4, #0xc]\n    ldr r1, [r4, #0x1c]\n    lsl r3, r2, #1\n    ldr r2, _0226B690 ; =ov12_0226EB18\n    lsl r1, r1, #8\n    ldrsh r2, [r2, r3]\n    ldr r0, [r4]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    add sp, #4\n    pop {r3, r4, pc}\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #4]\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _0226B68C: .word ov12_0226EB30\n    _0226B690: .word ov12_0226EB18"
     );
     #endif
 }
@@ -1141,50 +169,7 @@ void ov12_0226B694(void) {
     /* Requires manual decompilation - 44 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    add r5, r0, #0
-    ldr r0, [r5]
-    add r6, r1, #0
-    add r7, r2, #0
-    add r4, r3, #0
-    cmp r0, #0
-    beq _0226B6AA
-    ldr r0, [r5, #4]
-    cmp r0, #0
-    beq _0226B6AE
-    bl GF_AssertFail
-    add r0, r5, #0
-    mov r1, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    cmp r7, #0
-    str r4, [r5, #0x18]
-    ldr r2, _0226B6EC ; =0x000001F5
-    bne _0226B6D8
-    lsl r0, r6, #1
-    add r0, r6, r0
-    strh r0, [r5, #0x28]
-    add r0, r5, #0
-    mov r1, #4
-    add r0, #0x2f
-    strb r1, [r0]
-    ldr r0, _0226B6F0 ; =ov12_0226B6F8
-    add r1, r5, #0
-    bl SysTask_CreateOnMainQueue
-    str r0, [r5, #4]
-    pop {r3, r4, r5, r6, r7, pc}
-    add r0, r5, #0
-    strh r1, [r5, #0x28]
-    add r0, #0x2f
-    strb r1, [r0]
-    ldr r0, _0226B6F4 ; =ov12_0226B82C
-    add r1, r5, #0
-    bl SysTask_CreateOnMainQueue
-    str r0, [r5, #4]
-    pop {r3, r4, r5, r6, r7, pc}
-    _0226B6EC: .word 0x000001F5
-    _0226B6F0: .word ov12_0226B6F8
-    _0226B6F4: .word ov12_0226B82C"
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r6, r1, #0\n    add r7, r2, #0\n    add r4, r3, #0\n    cmp r0, #0\n    beq _0226B6AA\n    ldr r0, [r5, #4]\n    cmp r0, #0\n    beq _0226B6AE\n    bl GF_AssertFail\n    add r0, r5, #0\n    mov r1, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    cmp r7, #0\n    str r4, [r5, #0x18]\n    ldr r2, _0226B6EC ; =0x000001F5\n    bne _0226B6D8\n    lsl r0, r6, #1\n    add r0, r6, r0\n    strh r0, [r5, #0x28]\n    add r0, r5, #0\n    mov r1, #4\n    add r0, #0x2f\n    strb r1, [r0]\n    ldr r0, _0226B6F0 ; =ov12_0226B6F8\n    add r1, r5, #0\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    strh r1, [r5, #0x28]\n    add r0, #0x2f\n    strb r1, [r0]\n    ldr r0, _0226B6F4 ; =ov12_0226B82C\n    add r1, r5, #0\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    _0226B6EC: .word 0x000001F5\n    _0226B6F0: .word ov12_0226B6F8\n    _0226B6F4: .word ov12_0226B82C"
     );
     #endif
 }
@@ -1194,149 +179,7 @@ void ov12_0226B6F8(void) {
     /* Requires manual decompilation - 143 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, lr}
-    add r4, r1, #0
-    ldr r1, [r4, #0x18]
-    add r5, r0, #0
-    mov r0, #0
-    ldrsh r1, [r1, r0]
-    cmp r1, #0
-    bne _0226B712
-    add r0, r4, #0
-    mov r1, #0x64
-    add r0, #0x2c
-    strb r1, [r0]
-    b _0226B73A
-    mov r0, #1
-    lsl r0, r0, #0xc
-    cmp r1, r0
-    bge _0226B73A
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    cmp r0, #0
-    beq _0226B73A
-    ldr r0, [r4]
-    cmp r0, #0
-    beq _0226B73A
-    bl ManagedSprite_GetOamMode
-    cmp r0, #1
-    beq _0226B73A
-    ldr r0, [r4]
-    mov r1, #1
-    bl ManagedSprite_SetOamMode
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    cmp r0, #2
-    bgt _0226B754
-    cmp r0, #0
-    blt _0226B808
-    beq _0226B758
-    cmp r0, #1
-    beq _0226B77C
-    cmp r0, #2
-    beq _0226B7A2
-    b _0226B808
-    cmp r0, #0x64
-    b _0226B808
-    add r1, sp, #0
-    ldr r0, [r4]
-    add r1, #2
-    add r2, sp, #0
-    bl ManagedSprite_GetPositionXY
-    add r1, sp, #0
-    mov r0, #2
-    ldrsh r0, [r1, r0]
-    lsl r0, r0, #8
-    str r0, [r4, #0x1c]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    add r0, r4, #0
-    add r0, #0x2f
-    ldrb r0, [r0]
-    cmp r0, #0
-    beq _0226B794
-    add r0, r4, #0
-    add r0, #0x2f
-    ldrb r0, [r0]
-    add r4, #0x2f
-    sub r0, r0, #1
-    strb r0, [r4]
-    pop {r3, r4, r5, pc}
-    mov r0, #0x28
-    ldrsh r0, [r4, r0]
-    cmp r0, #0
-    ble _0226B7A2
-    sub r0, r0, #1
-    strh r0, [r4, #0x28]
-    pop {r3, r4, r5, pc}
-    ldr r0, [r4, #8]
-    ldr r1, [r4, #0x1c]
-    cmp r0, #0
-    bne _0226B7C6
-    mov r0, #3
-    lsl r0, r0, #0xa
-    sub r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r2, [r4, #0xc]
-    lsl r1, r1, #8
-    lsl r3, r2, #1
-    ldr r2, _0226B820 ; =ov12_0226EB30
-    ldr r0, [r4]
-    ldrsh r2, [r2, r3]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    b _0226B7E0
-    mov r0, #3
-    lsl r0, r0, #0xa
-    add r1, r1, r0
-    str r1, [r4, #0x1c]
-    ldr r2, [r4, #0xc]
-    lsl r1, r1, #8
-    lsl r3, r2, #1
-    ldr r2, _0226B824 ; =ov12_0226EB18
-    ldr r0, [r4]
-    ldrsh r2, [r2, r3]
-    asr r1, r1, #0x10
-    bl ManagedSprite_SetPositionXY
-    ldr r1, [r4, #0x1c]
-    ldr r0, _0226B828 ; =0xFFFFF000
-    cmp r1, r0
-    blt _0226B7F0
-    mov r0, #0x11
-    lsl r0, r0, #0xc
-    cmp r1, r0
-    ble _0226B7FE
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r1, r0, #1
-    add r0, r4, #0
-    add r0, #0x2c
-    strb r1, [r0]
-    ldr r0, [r4]
-    ldr r0, [r0]
-    bl Sprite_TickFrame
-    pop {r3, r4, r5, pc}
-    ldr r0, [r4]
-    mov r1, #0
-    ldr r0, [r0]
-    bl thunk_Sprite_SetDrawFlag
-    add r0, r5, #0
-    bl SysTask_Destroy
-    mov r0, #0
-    str r0, [r4, #4]
-    pop {r3, r4, r5, pc}
-    nop
-    _0226B820: .word ov12_0226EB30
-    _0226B824: .word ov12_0226EB18
-    _0226B828: .word 0xFFFFF000"
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldr r1, [r4, #0x18]\n    add r5, r0, #0\n    mov r0, #0\n    ldrsh r1, [r1, r0]\n    cmp r1, #0\n    bne _0226B712\n    add r0, r4, #0\n    mov r1, #0x64\n    add r0, #0x2c\n    strb r1, [r0]\n    b _0226B73A\n    mov r0, #1\n    lsl r0, r0, #0xc\n    cmp r1, r0\n    bge _0226B73A\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0226B73A\n    ldr r0, [r4]\n    cmp r0, #0\n    beq _0226B73A\n    bl ManagedSprite_GetOamMode\n    cmp r0, #1\n    beq _0226B73A\n    ldr r0, [r4]\n    mov r1, #1\n    bl ManagedSprite_SetOamMode\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    cmp r0, #2\n    bgt _0226B754\n    cmp r0, #0\n    blt _0226B808\n    beq _0226B758\n    cmp r0, #1\n    beq _0226B77C\n    cmp r0, #2\n    beq _0226B7A2\n    b _0226B808\n    cmp r0, #0x64\n    b _0226B808\n    add r1, sp, #0\n    ldr r0, [r4]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    lsl r0, r0, #8\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x2f\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0226B794\n    add r0, r4, #0\n    add r0, #0x2f\n    ldrb r0, [r0]\n    add r4, #0x2f\n    sub r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    mov r0, #0x28\n    ldrsh r0, [r4, r0]\n    cmp r0, #0\n    ble _0226B7A2\n    sub r0, r0, #1\n    strh r0, [r4, #0x28]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #8]\n    ldr r1, [r4, #0x1c]\n    cmp r0, #0\n    bne _0226B7C6\n    mov r0, #3\n    lsl r0, r0, #0xa\n    sub r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r2, [r4, #0xc]\n    lsl r1, r1, #8\n    lsl r3, r2, #1\n    ldr r2, _0226B820 ; =ov12_0226EB30\n    ldr r0, [r4]\n    ldrsh r2, [r2, r3]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    b _0226B7E0\n    mov r0, #3\n    lsl r0, r0, #0xa\n    add r1, r1, r0\n    str r1, [r4, #0x1c]\n    ldr r2, [r4, #0xc]\n    lsl r1, r1, #8\n    lsl r3, r2, #1\n    ldr r2, _0226B824 ; =ov12_0226EB18\n    ldr r0, [r4]\n    ldrsh r2, [r2, r3]\n    asr r1, r1, #0x10\n    bl ManagedSprite_SetPositionXY\n    ldr r1, [r4, #0x1c]\n    ldr r0, _0226B828 ; =0xFFFFF000\n    cmp r1, r0\n    blt _0226B7F0\n    mov r0, #0x11\n    lsl r0, r0, #0xc\n    cmp r1, r0\n    ble _0226B7FE\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl Sprite_TickFrame\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4]\n    mov r1, #0\n    ldr r0, [r0]\n    bl thunk_Sprite_SetDrawFlag\n    add r0, r5, #0\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #4]\n    pop {r3, r4, r5, pc}\n    nop\n    _0226B820: .word ov12_0226EB30\n    _0226B824: .word ov12_0226EB18\n    _0226B828: .word 0xFFFFF000"
     );
     #endif
 }
@@ -1346,46 +189,7 @@ void ov12_0226B82C(void) {
     /* Requires manual decompilation - 40 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, lr}
-    add r4, r1, #0
-    ldr r1, [r4, #0x18]
-    add r5, r0, #0
-    mov r0, #0
-    ldrsh r0, [r1, r0]
-    cmp r0, #0
-    bne _0226B844
-    add r0, r4, #0
-    mov r1, #0x64
-    add r0, #0x2c
-    strb r1, [r0]
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    cmp r0, #0
-    beq _0226B856
-    cmp r0, #1
-    beq _0226B880
-    cmp r0, #0x64
-    b _0226B86C
-    ldr r0, [r4]
-    mov r1, #1
-    bl ManagedSprite_SetOamMode
-    add r0, r4, #0
-    add r0, #0x2c
-    ldrb r0, [r0]
-    add r4, #0x2c
-    add r0, r0, #1
-    strb r0, [r4]
-    pop {r3, r4, r5, pc}
-    ldr r0, [r4]
-    mov r1, #0
-    ldr r0, [r0]
-    bl thunk_Sprite_SetDrawFlag
-    add r0, r5, #0
-    bl SysTask_Destroy
-    mov r0, #0
-    str r0, [r4, #4]
-    pop {r3, r4, r5, pc}"
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldr r1, [r4, #0x18]\n    add r5, r0, #0\n    mov r0, #0\n    ldrsh r0, [r1, r0]\n    cmp r0, #0\n    bne _0226B844\n    add r0, r4, #0\n    mov r1, #0x64\n    add r0, #0x2c\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0226B856\n    cmp r0, #1\n    beq _0226B880\n    cmp r0, #0x64\n    b _0226B86C\n    ldr r0, [r4]\n    mov r1, #1\n    bl ManagedSprite_SetOamMode\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r4, #0x2c\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4]\n    mov r1, #0\n    ldr r0, [r0]\n    bl thunk_Sprite_SetDrawFlag\n    add r0, r5, #0\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #4]\n    pop {r3, r4, r5, pc}"
     );
     #endif
 }
@@ -1395,35 +199,7 @@ void ov12_0226B884(void) {
     /* Requires manual decompilation - 29 instructions */
     #ifdef MWERKS
     asm(
-        "cmp r0, #3
-    bhi _0226B89C
-    add r0, r0, r0
-    add r0, pc
-    ldrh r0, [r0, #6]
-    lsl r0, r0, #0x10
-    asr r0, r0, #0x10
-    add pc, r0
-    _0226B894: ; jump table
-    mov r0, #6
-    bx lr
-    cmp r1, #0
-    bne _0226B8A8
-    mov r0, #3
-    bx lr
-    mov r0, #0
-    bx lr
-    cmp r1, #0
-    bne _0226B8B4
-    mov r0, #5
-    bx lr
-    mov r0, #2
-    bx lr
-    cmp r1, #0
-    bne _0226B8C0
-    mov r0, #4
-    bx lr
-    mov r0, #1
-    bx lr"
+        "cmp r0, #3\n    bhi _0226B89C\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0226B894: ; jump table\n    mov r0, #6\n    bx lr\n    cmp r1, #0\n    bne _0226B8A8\n    mov r0, #3\n    bx lr\n    mov r0, #0\n    bx lr\n    cmp r1, #0\n    bne _0226B8B4\n    mov r0, #5\n    bx lr\n    mov r0, #2\n    bx lr\n    cmp r1, #0\n    bne _0226B8C0\n    mov r0, #4\n    bx lr\n    mov r0, #1\n    bx lr"
     );
     #endif
 }
@@ -1433,28 +209,7 @@ void ov12_0226B8C4(void) {
     /* Requires manual decompilation - 22 instructions */
     #ifdef MWERKS
     asm(
-        "cmp r0, #6
-    bhi _0226B8FA
-    add r1, r0, r0
-    add r1, pc
-    ldrh r1, [r1, #6]
-    lsl r1, r1, #0x10
-    asr r1, r1, #0x10
-    add pc, r1
-    _0226B8D4: ; jump table
-    bx lr
-    mov r0, #0
-    bx lr
-    mov r0, #3
-    bx lr
-    mov r0, #2
-    bx lr
-    mov r0, #5
-    bx lr
-    mov r0, #1
-    bx lr
-    mov r0, #4
-    bx lr"
+        "cmp r0, #6\n    bhi _0226B8FA\n    add r1, r0, r0\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0226B8D4: ; jump table\n    bx lr\n    mov r0, #0\n    bx lr\n    mov r0, #3\n    bx lr\n    mov r0, #2\n    bx lr\n    mov r0, #5\n    bx lr\n    mov r0, #1\n    bx lr\n    mov r0, #4\n    bx lr"
     );
     #endif
 }

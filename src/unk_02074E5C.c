@@ -21,14 +21,8 @@ void sub_02074EC4(void) {
     #endif
 }
 
-void sub_02074ED8(void) {
-    /* Original at 0x02074ED8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #4\n    bx lr"
-    );
-    #endif
+u8 sub_02074ED8(void) {
+    return 4;
 }
 
 void sub_02074EDC(void) {
@@ -49,14 +43,8 @@ void sub_02074EEC(void) {
     #endif
 }
 
-void sub_02074EF4(void) {
-    /* Original at 0x02074EF4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x34\n    bx lr"
-    );
-    #endif
+u8 sub_02074EF4(void) {
+    return 0x34;
 }
 
 void sub_02074EF8(void) {
@@ -410,13 +398,9 @@ void sub_020754C0(void) {
 }
 
 void sub_02075534(void) {
-    /* Original at 0x02075534 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r3, #0\n    add r0, r4, #0\n    mov r1, #0xff\n    bl ov12_0223BC14\n    add r0, r4, #0\n    mov r1, #0xff\n    bl ov12_0223BC20\n    add r0, r4, #0\n    mov r1, #1\n    bl ov12_0223BC2C\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0223BC14(r3, 0xff);
+    ov12_0223BC20(r4, 0xff);
+    ov12_0223BC2C(r4, 1);
 }
 
 void sub_02075554(void) {
@@ -439,12 +423,6 @@ void sub_020755B4(void) {
     #endif
 }
 
-void sub_020755E4(void) {
-    /* Original at 0x020755E4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x88\n    bx lr"
-    );
-    #endif
+u8 sub_020755E4(void) {
+    return 0x88;
 }

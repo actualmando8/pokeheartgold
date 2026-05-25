@@ -74,23 +74,15 @@ void sub_0207753C(void) {
 }
 
 void sub_02077584(void) {
-    /* Original at 0x02077584 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    add r7, r2, #0\n    bl sub_0207753C\n    add r4, r0, #0\n    add r0, r6, #0\n    add r1, r7, #0\n    add r2, r5, #0\n    bl sub_02015264\n    add r1, r0, #0\n    add r0, r4, #0\n    mov r2, #0xa\n    mov r3, #1\n    bl sub_0201526C\n    add r0, r4, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    sub_0207753C();
+    sub_02015264(r6, r7, r5);
+    sub_0201526C(r4, r0, 0xa, 1);
 }
 
 void sub_020775AC(void) {
-    /* Original at 0x020775AC */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl sub_020154D0\n    add r4, r0, #0\n    add r0, r5, #0\n    bl sub_02014EBC\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_020154D0();
+    sub_02014EBC(r5);
+    Heap_Free(r4);
 }
 
 void sub_020775C4(void) {

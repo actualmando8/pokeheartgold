@@ -206,11 +206,6 @@ void sub_0205B3B8(void) {
 }
 
 void sub_0205B3CC(void) {
-    /* Original at 0x0205B3CC */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_0205B3A0\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205B3A0();
+    Heap_Free(r4);
 }

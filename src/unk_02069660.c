@@ -42,13 +42,8 @@ void sub_020696E8(void) {
 }
 
 void sub_02069700(void) {
-    /* Original at 0x02069700 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl sub_020696E8\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    sub_020696E8(r1);
+    SysTask_Destroy(r4);
 }
 
 void sub_02069714(void) {
@@ -76,11 +71,7 @@ void sub_02069744(void) {
 }
 
 void sub_02069784(void) {
-    /* Original at 0x02069784 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02069744\n    add r0, r4, #0\n    bl sub_02069734\n    add r0, r4, #0\n    bl sub_02069660\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02069744();
+    sub_02069734(r4);
+    sub_02069660(r4);
 }

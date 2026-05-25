@@ -588,13 +588,8 @@ void ov43_0222B534(void) {
 }
 
 void ov43_0222B55C(void) {
-    /* Original at 0x0222B55C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x20\n    mov r1, #1\n    bl ClearFrameAndWindow2\n    add r4, #0x20\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    ClearFrameAndWindow2(1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
 void ov43_0222B574(void) {
@@ -852,13 +847,9 @@ void ov43_0222C5D8(void) {
 }
 
 void ov43_0222C600(void) {
-    /* Original at 0x0222C600 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xc8\n    mov r1, #1\n    bl ClearFrameAndWindow2\n    add r0, r4, #0\n    add r0, #0xc8\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r4, #0xb8\n    add r0, r4, #0\n    bl ScheduleWindowCopyToVram\n    pop {r4, pc}"
-    );
-    #endif
+    ClearFrameAndWindow2(1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
+    ScheduleWindowCopyToVram(r4);
 }
 
 void ov43_0222C620(void) {

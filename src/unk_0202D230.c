@@ -1,14 +1,8 @@
 /* Decompiled from asm/unk_0202D230.s */
 #include "global.h"
 
-void sub_0202D230(void) {
-    /* Original at 0x0202D230 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xe4\n    bx lr"
-    );
-    #endif
+u8 sub_0202D230(void) {
+    return 0xe4;
 }
 
 void sub_0202D234(void) {
@@ -232,13 +226,8 @@ void sub_0202D678(void) {
 }
 
 void sub_0202D6DC(void) {
-    /* Original at 0x0202D6DC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r4, #4\n    mov r1, #0\n    mov r2, #0xfa\n    bl MI_CpuFill8\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #4\n    bl MI_CpuFill8\n    pop {r4, pc}"
-    );
-    #endif
+    MI_CpuFill8(0, 0xfa);
+    MI_CpuFill8(r4, 0, 4);
 }
 
 void sub_0202D6F8(void) {

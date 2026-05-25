@@ -554,13 +554,9 @@ void ov91_0225DB44(void) {
 }
 
 void ov91_0225DB5C(void) {
-    /* Original at 0x0225DB5C */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xc\n    mov r1, #1\n    bl sub_0200E5D4\n    add r4, #0xc\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
+    GfGfx_EngineATogglePlanes(4, 0);
 }
 
 void ov91_0225DB7C(void) {
@@ -2091,34 +2087,18 @@ void ov91_02261B20(void) {
     #endif
 }
 
-void ov91_02261B28(void) {
-    /* Original at 0x02261B28 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #8\n    bx lr"
-    );
-    #endif
+u8 ov91_02261B28(void) {
+    return 8;
 }
 
 void ov91_02261B2C(void) {
-    /* Original at 0x02261B2C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl ov91_02261B20\n    add r4, r0, #0\n    bl ov91_02261B28\n    add r1, r0, #0\n    add r0, r4, #0\n    add r2, r5, #0\n    bl sub_0203410C\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov91_02261B20();
+    ov91_02261B28();
+    sub_0203410C(r4, r0, r5);
 }
 
-void ov91_02261B48(void) {
-    /* Original at 0x02261B48 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov91_02261B48(void) {
+    return 0;
 }
 
 void ov91_02261B4C(void) {
@@ -2159,42 +2139,18 @@ void ov91_02261BC8(void) {
     ov91_0225CAE0();
 }
 
-void ov91_02261BD8(void) {
-    /* Original at 0x02261BD8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x14\n    bx lr"
-    );
-    #endif
+u8 ov91_02261BD8(void) {
+    return 0x14;
 }
 
-void ov91_02261BDC(void) {
-    /* Original at 0x02261BDC */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x10\n    bx lr"
-    );
-    #endif
+u8 ov91_02261BDC(void) {
+    return 0x10;
 }
 
-void ov91_02261BE0(void) {
-    /* Original at 0x02261BE0 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #4\n    bx lr"
-    );
-    #endif
+u8 ov91_02261BE0(void) {
+    return 4;
 }
 
-void ov91_02261BE4(void) {
-    /* Original at 0x02261BE4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #4\n    bx lr"
-    );
-    #endif
+u8 ov91_02261BE4(void) {
+    return 4;
 }

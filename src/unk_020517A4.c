@@ -26,23 +26,12 @@ void BattleStartGetMusic(void) {
 }
 
 void BattleSetup_GetWildTransitionEffect(void) {
-    /* Original at 0x020517E8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl BattleSetup_GetTransitionAndMusicParam\n    add r1, r4, #0\n    bl BattleStartGetTransition\n    pop {r4, pc}"
-    );
-    #endif
+    BattleSetup_GetTransitionAndMusicParam();
+    BattleStartGetTransition(r4);
 }
 
-void sub_020517F8(void) {
-    /* Original at 0x020517F8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 sub_020517F8(void) {
+    return 1;
 }
 
 void BattleSetup_GetWildBattleMusic(void) {

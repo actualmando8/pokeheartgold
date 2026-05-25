@@ -13,6 +13,11 @@ SRC_DIR = os.path.join(PROJECT_DIR, "src")
 INC_DIR = os.path.join(PROJECT_DIR, "include")
 
 def get_asm(asm_file):
+    """Read asm from local file first, then try git."""
+    local_path = os.path.join(PROJECT_DIR, "asm", asm_file)
+    if os.path.exists(local_path):
+        with open(local_path) as f:
+            return f.read()
     try:
         r = subprocess.run(["git", "show", f"HEAD:asm/{asm_file}"],
                           capture_output=True, text=True, cwd=PROJECT_DIR, timeout=60)
@@ -105,6 +110,7 @@ def translate_linear_sequence(func):
     """
     Try to translate a linear sequence of function calls and stores.
     Returns C code or None if too complex.
+    ONLY translates functions that are pure call chains (no register arithmetic).
     """
     lines = func['lines']
     name = func['name']
@@ -124,9 +130,8 @@ def translate_linear_sequence(func):
     if has_loops(lines):
         return None
     
-    # Check for too many branches
-    branch_count = sum(1 for l in core if l.startswith(('bne ', 'beq ', 'blt ', 'blo ', 'bgt ', 'bhi ', 'bge ', 'bhs ')))
-    if branch_count > 4:
+    # Check for branches - can't handle those
+    if has_branches(core):
         return None
     
     # Check for data table references
@@ -134,233 +139,89 @@ def translate_linear_sequence(func):
         return None
     
     # Count bl calls
-    bl_calls = [l for l in core if l.startswith('bl ')]
-    if len(bl_calls) > 8:
+    bl_calls = []
+    for l in core:
+        m = re.match(r'bl\s+(\w+)', l)
+        if m:
+            bl_calls.append(m.group(1))
+    if len(bl_calls) > 6:
         return None
     
-    # Try to generate C code for linear sequences
-    if len(core) <= 20 and len(bl_calls) <= 6:
-        return translate_to_c(name, addr, core, lines)
+    # Check for non-call instructions that we can't handle
+    for l in core:
+        s = l.strip()
+        # Skip known safe patterns
+        if s.startswith(('bl ', 'mov ', 'add r')):
+            continue
+        # Reject anything else (str, ldr, cmp, etc.)
+        if s and not s.startswith(('push', 'pop', 'bx', 'nop')):
+            # Check if it's a simple register copy
+            if re.match(r'(mov|add)\s+r\d,\s*r\d(\s*,\s*#0)?$', s):
+                continue
+            return None
+    
+    # Only translate if we have bl calls and the function is simple enough
+    if len(bl_calls) >= 1 and len(core) <= 15:
+        return translate_call_chain(name, addr, core, lines)
     
     return None
 
-def translate_to_c(name, addr, core, all_lines):
+def translate_call_chain(name, addr, core, all_lines):
     """
-    Translate core instructions to C. Handles:
-    - mov/add/sub with immediates
-    - bl calls
-    - str/ldr/store instructions
-    - simple comparisons and branches
+    Translate a function that is a chain of function calls with register setup.
+    Generates proper C with call sequences.
     """
-    code = []
-    code.append(f"/* 0x{addr or '????????'} */")
-    
-    # Track register assignments
-    regs = {}
-    saved_regs = []
-    for l in all_lines:
-        m = re.match(r'push\s*\{([^}]+)\}', l.strip())
-        if m:
-            saved_regs = [r.strip() for r in m.group(1).split(',')]
-    
-    # Declare saved registers as locals
-    local_decls = []
-    for r in saved_regs:
-        if r != 'lr':
-            local_decls.append(f"    void *{r};")
-    
     body = []
+    regs = {}
     
-    i = 0
-    while i < len(core):
-        line = core[i].strip()
+    for line in core:
+        s = line.strip()
         
         # mov rX, #imm
-        m = re.match(r'mov\s+(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', line)
+        m = re.match(r'mov\s+(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', s)
         if m:
-            reg, val = m.group(1), parse_imm(m.group(2))
-            regs[reg] = val
-            body.append(f"    {reg} = {val};")
-            i += 1
+            regs[m.group(1)] = m.group(2)
             continue
         
-        # add rX, rY, #imm
-        m = re.match(r'add\s+(r\d),\s*(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', line)
+        # add rX, rY, #0 (copy)
+        m = re.match(r'add\s+(r\d),\s*(r\d),\s*#0', s)
         if m:
-            dst, src, imm = m.group(1), m.group(2), parse_imm(m.group(3))
-            regs[dst] = f"({regs.get(src, src)} + {imm})"
-            body.append(f"    {dst} = {regs.get(src, src)} + {imm};")
-            i += 1
+            regs[m.group(1)] = regs.get(m.group(2), m.group(2))
             continue
             
-        # add rX, rY, #0 (copy)
-        m = re.match(r'add\s+(r\d),\s*(r\d),\s*#0', line)
+        # mov rX, rY
+        m = re.match(r'mov\s+(r\d),\s*(r\d)', s)
         if m:
-            dst, src = m.group(1), m.group(2)
-            regs[dst] = regs.get(src, src)
-            body.append(f"    {dst} = {regs.get(src, src)};")
-            i += 1
-            continue
-        
-        # mov rX, rY (via add rX, rY, #0 or just mov)
-        m = re.match(r'mov\s+(r\d),\s*(r\d)', line)
-        if m:
-            dst, src = m.group(1), m.group(2)
-            regs[dst] = regs.get(src, src)
-            body.append(f"    {dst} = {regs.get(src, src)};")
-            i += 1
+            regs[m.group(1)] = regs.get(m.group(2), m.group(2))
             continue
         
         # bl function_call
-        m = re.match(r'bl\s+(\w+)', line)
+        m = re.match(r'bl\s+(\w+)', s)
         if m:
             target = m.group(1)
-            # Check if we have args in r0-r3
             args = []
             for r in ['r0', 'r1', 'r2', 'r3']:
                 if r in regs:
                     args.append(regs[r])
-                else:
-                    args.append(r)
             
-            # Only include args that were explicitly set
-            arg_hints = []
-            for r in ['r0', 'r1', 'r2', 'r3']:
-                if r in regs:
-                    arg_hints.append(r)
-            
-            if len(arg_hints) == 0:
-                call_str = f"{target}()"
-            elif len(arg_hints) == 1 and arg_hints[0] == 'r0':
-                call_str = f"{target}({regs.get('r0', 'r0')})"
-            elif len(arg_hints) == 2 and 'r0' in arg_hints and 'r1' in arg_hints:
-                call_str = f"{target}({regs['r0']}, {regs['r1']})"
-            elif len(arg_hints) == 3:
-                call_str = f"{target}({regs['r0']}, {regs['r1']}, {regs['r2']})"
+            if args:
+                body.append(f"    {target}({', '.join(args)});")
             else:
-                # Try to infer from mov patterns
-                call_str = f"{target}()"
-                if 'r0' in regs:
-                    call_str = f"{target}({regs['r0']})"
-                    if 'r1' in regs:
-                        call_str = f"{target}({regs['r0']}, {regs['r1']})"
-                        if 'r2' in regs:
-                            call_str = f"{target}({regs['r0']}, {regs['r1']}, {regs['r2']})"
-            
-            # Check return value usage
-            regs.clear()  # bl clobbers r0
-            body.append(f"    {call_str};")
-            i += 1
+                body.append(f"    {target}();")
+            regs.clear()
             continue
-        
-        # strb rX, [rY, #imm]
-        m = re.match(r'strb\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', line)
-        if m:
-            val_reg, base, off = m.group(1), m.group(2), parse_imm(m.group(3))
-            val = regs.get(val_reg, val_reg)
-            body.append(f"    ((u8*){regs.get(base, base)})[{off}] = {val};")
-            i += 1
-            continue
-            
-        # strh rX, [rY, #imm]
-        m = re.match(r'strh\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', line)
-        if m:
-            val_reg, base, off = m.group(1), m.group(2), parse_imm(m.group(3))
-            val = regs.get(val_reg, val_reg)
-            body.append(f"    ((u16*){regs.get(base, base)})[{off}] = {val};")
-            i += 1
-            continue
-        
-        # str rX, [rY, #imm]
-        m = re.match(r'str\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', line)
-        if m:
-            val_reg, base, off = m.group(1), m.group(2), parse_imm(m.group(3))
-            val = regs.get(val_reg, val_reg)
-            body.append(f"    ((u32*){regs.get(base, base)})[{off}] = {val};")
-            i += 1
-            continue
-        
-        # str rX, [rY]
-        m = re.match(r'str\s+(r\d),\s*\[(r\d)\]', line)
-        if m:
-            val_reg, base = m.group(1), m.group(2)
-            val = regs.get(val_reg, val_reg)
-            body.append(f"    *(u32*){regs.get(base, base)} = {val};")
-            i += 1
-            continue
-        
-        # strb rX, [rY]
-        m = re.match(r'strb\s+(r\d),\s*\[(r\d)\]', line)
-        if m:
-            val_reg, base = m.group(1), m.group(2)
-            val = regs.get(val_reg, val_reg)
-            body.append(f"    *(u8*){regs.get(base, base)} = {val};")
-            i += 1
-            continue
-        
-        # cmp rX, #imm
-        m = re.match(r'cmp\s+(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', line)
-        if m:
-            reg, val = m.group(1), parse_imm(m.group(2))
-            # Look ahead for branch
-            if i + 1 < len(core):
-                next_line = core[i+1].strip()
-                if next_line.startswith('beq '):
-                    target = next_line[4:].strip()
-                    # Check if target is return
-                    if i + 2 < len(core) and core[i+2].strip().startswith(('pop', 'bx')):
-                        body.append(f"    if ({regs.get(reg, reg)} == {val}) {{")
-                        i += 2
-                        continue
-                    else:
-                        body.append(f"    if ({regs.get(reg, reg)} == {val}) {{")
-                        body.append(f"        goto {target};")
-                        body.append(f"    }}")
-                        i += 2
-                        continue
-                elif next_line.startswith('bne '):
-                    target = next_line[4:].strip()
-                    if i + 2 < len(core) and core[i+2].strip().startswith(('pop', 'bx')):
-                        body.append(f"    if ({regs.get(reg, reg)} != {val}) {{")
-                        i += 2
-                        continue
-                    else:
-                        body.append(f"    if ({regs.get(reg, reg)} != {val}) {{")
-                        body.append(f"        goto {target};")
-                        body.append(f"    }}")
-                        i += 2
-                        continue
-                elif next_line.startswith(('blt ', 'blo ', 'bgt ', 'bhi ')):
-                    op = next_line[:3]
-                    target = next_line[3:].strip()
-                    op_map = {'blt': '<', 'blo': '<', 'bgt': '>', 'bhi': '>'}
-                    body.append(f"    if ({regs.get(reg, reg)} {op_map.get(op, '<')} {val}) {{")
-                    body.append(f"        goto {target};")
-                    body.append(f"    }}")
-                    i += 2
-                    continue
-            
-            i += 1
-            continue
-        
-        # mov r0, #0; pop {..., pc} -> return 0
-        if line.startswith('mov r0, #') and i + 1 < len(core):
-            next_line = core[i+1].strip()
-            if 'pc' in next_line and 'pop' in next_line:
-                m2 = re.match(r'mov r0, #(0x[0-9a-fA-F]+|\d+)', line)
-                if m2:
-                    body.append(f"    return {parse_imm(m2.group(1))};")
-                    i += 2
-                    continue
-        
-        # Unknown instruction - add as comment
-        body.append(f"    /* {line} */")
-        i += 1
     
     if not body:
         return None
     
-    return f"void {name}(void) {{\n" + "\n".join(local_decls + body) + "\n}"
+    # Check if last instruction sets r0 (return value)
+    last_core = core[-1] if core else ''
+    m = re.match(r'mov\s+r0,\s*#(0x[0-9a-fA-F]+|\d+)', last_core)
+    if m:
+        return f"u32 {name}(void) {{\n" + "\n".join(body) + f"\n    return {m.group(1)};\n}}", True
+    
+    return f"void {name}(void) {{\n" + "\n".join(body) + "\n}", True
+
 
 def translate_func(func):
     """Try to translate a function. Returns (c_code, was_translated)."""
@@ -380,6 +241,22 @@ def translate_func(func):
             target = m.group(1)
             if not target.startswith('r'):
                 bl_calls.append(target)
+    
+    # Type 0: Simple return value (mov r0, #imm; bx lr)
+    if len(core) == 1:
+        m = re.match(r'mov\s+r0,\s*#(0x[0-9a-fA-F]+|\d+)', core[0])
+        if m:
+            val = m.group(1)
+            # Check if value fits in u8
+            try:
+                int_val = int(val, 0)
+                if int_val <= 0xff:
+                    return f"u8 {name}(void) {{\n    return {val};\n}}", True
+                elif int_val <= 0xffff:
+                    return f"u16 {name}(void) {{\n    return {val};\n}}", True
+            except:
+                pass
+            return f"u32 {name}(void) {{\n    return {val};\n}}", True
     
     # Type 1: Single bl call, minimal overhead
     if len(bl_calls) == 1 and len(core) <= 5:
@@ -410,7 +287,7 @@ def translate_func(func):
     # Type 4: Multi-call linear sequence (no branches/loops)
     result = translate_linear_sequence(func)
     if result:
-        return result, True
+        return result  # already returns (code, True) tuple
     
     # Too complex - preserve as asm
     asm_block = '\\n    '.join(lines)
@@ -479,9 +356,17 @@ def process_file(c_file):
     return translated, total
 
 def main():
-    r = subprocess.run(["git", "ls-files", "asm/*.s"],
-                      capture_output=True, text=True, cwd=PROJECT_DIR)
-    asm_files = [f.replace('asm/', '').replace('.s', '.c') for f in r.stdout.strip().split('\n') if f]
+    # List asm files from local directory
+    asm_dir = os.path.join(PROJECT_DIR, "asm")
+    asm_files = []
+    if os.path.exists(asm_dir):
+        for f in sorted(os.listdir(asm_dir)):
+            if f.endswith('.s'):
+                asm_files.append(f.replace('.s', '.c'))
+    else:
+        r = subprocess.run(["git", "ls-files", "asm/*.s"],
+                          capture_output=True, text=True, cwd=PROJECT_DIR)
+        asm_files = [f.replace('asm/', '').replace('.s', '.c') for f in r.stdout.strip().split('\n') if f]
     
     total_trans = 0
     total_funcs = 0

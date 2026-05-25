@@ -468,13 +468,8 @@ void sub_020313C4(void) {
 }
 
 void sub_020314A4(void) {
-    /* Original at 0x020314A4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x80\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x80\n    add r4, r0, #0\n    bl MI_CpuFill8\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x80);
+    MI_CpuFill8(0, 0x80);
 }
 
 void sub_020314BC(void) {
@@ -492,13 +487,8 @@ void sub_020314C4(void) {
 }
 
 void sub_020315B8(void) {
-    /* Original at 0x020315B8 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r0, #0xf\n    bl String_New\n    add r1, r5, #0\n    mov r2, #0xf\n    add r4, r0, #0\n    bl CopyU16ArrayToStringN\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    String_New(0xf);
+    CopyU16ArrayToStringN(r5, 0xf);
 }
 
 void sub_020315D0(void) {

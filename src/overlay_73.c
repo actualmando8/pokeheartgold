@@ -86,13 +86,11 @@ void ov73_021E5ED4(void) {
 }
 
 void ov73_021E5F0C(void) {
-    /* Original at 0x021E5F0C */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
+    Heap_Free(r4);
 }
 
 void ov73_021E5F38(void) {
@@ -220,13 +218,8 @@ void ov73_021E66F0(void) {
 }
 
 void ov73_021E66F4(void) {
-    /* Original at 0x021E66F4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #2\n    bl ov73_021E670C\n    add r0, r5, #0\n    bl ov73_021E66F0\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov73_021E670C(2);
+    ov73_021E66F0(r5);
 }
 
 void ov73_021E670C(void) {
@@ -414,13 +407,9 @@ void ov73_021E6CC0(void) {
 }
 
 void ov73_021E6CDC(void) {
-    /* Original at 0x021E6CDC */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #5\n    mov r2, #0\n    bl ov73_021E756C\n    add r0, r5, #0\n    mov r1, #0xa\n    bl ov73_021E670C\n    add r0, r5, #0\n    bl ov73_021E66F0\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov73_021E756C(5, 0);
+    ov73_021E670C(r5, 0xa);
+    ov73_021E66F0(r5);
 }
 
 void ov73_021E6CFC(void) {
@@ -699,14 +688,8 @@ void ov73_021E77E8(void) {
     #endif
 }
 
-void ov73_021E7818(void) {
-    /* Original at 0x021E7818 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov73_021E7818(void) {
+    return 1;
 }
 
 void ov73_021E781C(void) {
@@ -729,14 +712,8 @@ void ov73_021E7870(void) {
     #endif
 }
 
-void ov73_021E795C(void) {
-    /* Original at 0x021E795C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x2c\n    bx lr"
-    );
-    #endif
+u8 ov73_021E795C(void) {
+    return 0x2c;
 }
 
 void ov73_021E7960(void) {
@@ -1158,13 +1135,10 @@ void ov73_021E8628(void) {
 }
 
 void ov73_021E870C(void) {
-    /* Original at 0x021E870C */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
 }
 
 void ov73_021E8730(void) {
@@ -1679,14 +1653,8 @@ void ov73_021E9CD8(void) {
     #endif
 }
 
-void ov73_021E9D10(void) {
-    /* Original at 0x021E9D10 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #3\n    bx lr"
-    );
-    #endif
+u8 ov73_021E9D10(void) {
+    return 3;
 }
 
 void ov73_021E9D14(void) {
@@ -1882,23 +1850,15 @@ void ov73_021EA218(void) {
 }
 
 void ov73_021EA25C(void) {
-    /* Original at 0x021EA25C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl Save_FriendGroup_Get\n    bl ov73_021E795C\n    pop {r3, pc}"
-    );
-    #endif
+    Save_FriendGroup_Get();
+    ov73_021E795C();
 }
 
 void ov73_021EA268(void) {
-    /* Original at 0x021EA268 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r2, #0\n    bl Save_FriendGroup_Get\n    add r6, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl Heap_AllocAtEnd\n    add r4, r0, #0\n    add r0, r6, #0\n    bl ov73_021E7960\n    add r1, r4, #0\n    add r2, r5, #0\n    bl MIi_CpuCopyFast\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Save_FriendGroup_Get();
+    Heap_AllocAtEnd(r4, r5);
+    ov73_021E7960(r6);
+    MIi_CpuCopyFast(r4, r5);
 }
 
 void ov73_021EA290(void) {
@@ -1912,23 +1872,15 @@ void ov73_021EA290(void) {
 }
 
 void ov73_021EA2A8(void) {
-    /* Original at 0x021EA2A8 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl Save_FashionData_Get\n    bl sub_0202B994\n    pop {r3, pc}"
-    );
-    #endif
+    Save_FashionData_Get();
+    sub_0202B994();
 }
 
 void ov73_021EA2B4(void) {
-    /* Original at 0x021EA2B4 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r2, #0\n    bl Save_FashionData_Get\n    add r6, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl Heap_AllocAtEnd\n    add r4, r0, #0\n    add r0, r6, #0\n    mov r1, #0\n    bl sub_0202B9B8\n    add r1, r4, #0\n    add r2, r5, #0\n    bl MIi_CpuCopyFast\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Save_FashionData_Get();
+    Heap_AllocAtEnd(r4, r5);
+    sub_0202B9B8(r6, 0);
+    MIi_CpuCopyFast(r4, r5);
 }
 
 void ov73_021EA2E0(void) {
@@ -1966,13 +1918,9 @@ void ov73_021EA324(void) {
 }
 
 void ov73_021EA348(void) {
-    /* Original at 0x021EA348 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r2, #0\n    add r6, r0, #0\n    add r0, r1, #0\n    add r1, r5, #0\n    bl Heap_AllocAtEnd\n    add r4, r0, #0\n    mov r1, #0\n    add r2, r5, #0\n    bl MI_CpuFill8\n    add r0, r6, #0\n    mov r1, #0\n    add r2, r4, #0\n    bl sub_02069528\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_AllocAtEnd(r1, r2);
+    MI_CpuFill8(0, r5);
+    sub_02069528(r6, 0, r4);
 }
 
 void ov73_021EA370(void) {

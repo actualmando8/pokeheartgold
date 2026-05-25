@@ -44,13 +44,8 @@ void sub_02014A8C(void) {
 }
 
 void sub_02014AA0(void) {
-    /* Original at 0x02014AA0 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #0\n    bl MI_StopDma\n    mov r0, #0\n    bl MI_WaitDma\n    pop {r3, pc}"
-    );
-    #endif
+    MI_StopDma(0);
+    MI_WaitDma(0);
 }
 
 void sub_02014AB0(void) {

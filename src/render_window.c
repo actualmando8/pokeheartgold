@@ -11,14 +11,8 @@ void sub_0200E398(void) {
     #endif
 }
 
-void sub_0200E3D8(void) {
-    /* Original at 0x0200E3D8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x19\n    bx lr"
-    );
-    #endif
+u8 sub_0200E3D8(void) {
+    return 0x19;
 }
 
 void LoadUserFrameGfx1(void) {
@@ -246,13 +240,8 @@ void sub_0200F3D0(void) {
 }
 
 void sub_0200F43C(void) {
-    /* Original at 0x0200F43C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl Heap_Free\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free(r1);
+    SysTask_Destroy(r4);
 }
 
 void sub_0200F450(void) {

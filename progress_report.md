@@ -5,7 +5,23 @@
 - **Decompiled to C**: 672 (source files)
 - **Remaining assembly files**: 0 (all converted to C)
 - **Fully decompiled**: 356 files (with complete C implementations)
-- **Partial (inline asm)**: 120 files (assembly preserved in asm blocks)
+- **Partial (inline asm)**: 253 files (assembly preserved in asm blocks)
+- **Total asm blocks remaining**: 15,220 (down from 17,794)
+
+## Recent Progress [2026-05-25 01:53]
+Completed:
+- Enhanced automation with scripts/enhanced_translate.py
+- Translated 2,861 functions across 217 files using enhanced patterns:
+  - Simple return-value functions (mov r0, #imm → return imm)
+  - Multi-call linear sequences (no branches/loops)
+  - Single bl-call wrappers with argument setup
+  - Trampoline functions (ldr + bx)
+- Manually translated unk_02078DD8.c (PlayerProfile struct allocator)
+
+**Automation Pipeline**:
+1. scripts/full_translate.py - Initial batch translation (2,310 simple wrappers)
+2. scripts/enhanced_translate.py - Enhanced patterns (2,861 total)
+3. Remaining 15,220 asm blocks require manual decompilation (loops, branches, data tables)
 
 ## Recent Progress [2026-05-25 01:22]
 Completed:

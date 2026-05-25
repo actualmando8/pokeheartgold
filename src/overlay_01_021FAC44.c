@@ -6,58 +6,7 @@ void ov01_021FAC44(void) {
     /* Requires manual decompilation - 52 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    add r7, r0, #0
-    mov r0, #4
-    mov r1, #0x20
-    bl Heap_Alloc
-    add r5, r0, #0
-    mov r4, #0
-    mov r1, #0xf
-    lsl r1, r1, #0xc
-    add r2, r4, #0
-    mul r2, r1
-    ldr r1, _021FACB0 ; =ov01_02209B70
-    lsl r0, r4, #2
-    add r1, r1, r2
-    add r6, r5, r0
-    str r1, [r5, r0]
-    ldr r0, [r5, r0]
-    cmp r0, #0
-    bne _021FAC70
-    mov r0, #0
-    pop {r3, r4, r5, r6, r7, pc}
-    cmp r7, #0
-    beq _021FAC8E
-    mov r1, #9
-    mov r0, #4
-    lsl r1, r1, #0xc
-    bl Heap_Alloc
-    str r0, [r6, #0x10]
-    cmp r0, #0
-    bne _021FAC88
-    mov r0, #0
-    pop {r3, r4, r5, r6, r7, pc}
-    mov r2, #9
-    lsl r2, r2, #0xc
-    b _021FAC94
-    mov r0, #0
-    str r0, [r6, #0x10]
-    add r2, r0, #0
-    mov r1, #0xf
-    add r0, r4, #0
-    lsl r1, r1, #0xc
-    add r3, r5, #0
-    bl ov01_021FACF8
-    add r0, r4, #1
-    lsl r0, r0, #0x18
-    lsr r4, r0, #0x18
-    cmp r4, #4
-    blo _021FAC54
-    add r0, r5, #0
-    pop {r3, r4, r5, r6, r7, pc}
-    nop
-    _021FACB0: .word ov01_02209B70"
+        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    mov r0, #4\n    mov r1, #0x20\n    bl Heap_Alloc\n    add r5, r0, #0\n    mov r4, #0\n    mov r1, #0xf\n    lsl r1, r1, #0xc\n    add r2, r4, #0\n    mul r2, r1\n    ldr r1, _021FACB0 ; =ov01_02209B70\n    lsl r0, r4, #2\n    add r1, r1, r2\n    add r6, r5, r0\n    str r1, [r5, r0]\n    ldr r0, [r5, r0]\n    cmp r0, #0\n    bne _021FAC70\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r7, #0\n    beq _021FAC8E\n    mov r1, #9\n    mov r0, #4\n    lsl r1, r1, #0xc\n    bl Heap_Alloc\n    str r0, [r6, #0x10]\n    cmp r0, #0\n    bne _021FAC88\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r2, #9\n    lsl r2, r2, #0xc\n    b _021FAC94\n    mov r0, #0\n    str r0, [r6, #0x10]\n    add r2, r0, #0\n    mov r1, #0xf\n    add r0, r4, #0\n    lsl r1, r1, #0xc\n    add r3, r5, #0\n    bl ov01_021FACF8\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #4\n    blo _021FAC54\n    add r0, r5, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _021FACB0: .word ov01_02209B70"
     );
     #endif
 }
@@ -67,78 +16,41 @@ void ov01_021FACB4(void) {
     /* Requires manual decompilation - 21 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    mov r4, #0
-    add r6, r0, #0
-    add r7, r4, #0
-    lsl r0, r4, #2
-    add r5, r6, r0
-    str r7, [r6, r0]
-    ldr r0, [r5, #0x10]
-    cmp r0, #0
-    beq _021FACD0
-    bl Heap_Free
-    mov r0, #0
-    str r0, [r5, #0x10]
-    add r0, r4, #1
-    lsl r0, r0, #0x18
-    lsr r4, r0, #0x18
-    cmp r4, #4
-    blo _021FACBC
-    add r0, r6, #0
-    bl Heap_Free
-    pop {r3, r4, r5, r6, r7, pc}"
+        "push {r3, r4, r5, r6, r7, lr}\n    mov r4, #0\n    add r6, r0, #0\n    add r7, r4, #0\n    lsl r0, r4, #2\n    add r5, r6, r0\n    str r7, [r6, r0]\n    ldr r0, [r5, #0x10]\n    cmp r0, #0\n    beq _021FACD0\n    bl Heap_Free\n    mov r0, #0\n    str r0, [r5, #0x10]\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #4\n    blo _021FACBC\n    add r0, r6, #0\n    bl Heap_Free\n    pop {r3, r4, r5, r6, r7, pc}"
     );
     #endif
 }
 
 void ov01_021FACE4(void) {
-    /* Original at 0x021FACE4 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "lsl r0, r0, #2
-    ldr r0, [r1, r0]
-    str r0, [r2]
-    bx lr"
-    );
-    #endif
+    /* lsl r0, r0, #2 */
+    /* ldr r0, [r1, r0] */
+    *(u32*)r2 = r0;
 }
 
 void ov01_021FACEC(void) {
-    /* Original at 0x021FACEC */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "lsl r0, r0, #2
-    add r0, r1, r0
-    ldr r0, [r0, #0x10]
-    str r0, [r2]
-    bx lr"
-    );
-    #endif
+    /* lsl r0, r0, #2 */
+    /* add r0, r1, r0 */
+    /* ldr r0, [r0, #0x10] */
+    *(u32*)r2 = r0;
 }
 
 void ov01_021FACF8(void) {
-    /* Original at 0x021FACF8 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    add r5, r3, #0
-    lsl r4, r0, #2
-    add r6, r1, #0
-    add r7, r2, #0
-    ldr r0, [r5, r4]
-    mov r1, #0
-    add r2, r6, #0
-    bl MI_CpuFill8
-    add r0, r5, r4
-    ldr r0, [r0, #0x10]
-    mov r1, #0
-    add r2, r7, #0
-    bl MI_CpuFill8
-    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    void *r3;
+    void *r4;
+    void *r5;
+    void *r6;
+    void *r7;
+    r5 = r3 + 0;
+    /* lsl r4, r0, #2 */
+    r6 = r1 + 0;
+    r7 = r2 + 0;
+    /* ldr r0, [r5, r4] */
+    r1 = 0;
+    r2 = (r1 + 0) + 0;
+    MI_CpuFill8();
+    /* add r0, r5, r4 */
+    /* ldr r0, [r0, #0x10] */
+    r1 = 0;
+    r2 = r7 + 0;
+    MI_CpuFill8();
 }

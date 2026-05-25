@@ -5,14 +5,8 @@ void SpawnIdToTableIndex(void) {
     GF_AssertFail(1);
 }
 
-void GetMomSpawnId(void) {
-    /* Original at 0x0203BA70 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 GetMomSpawnId(void) {
+    return 1;
 }
 
 void GetFlyWarpData(void) {

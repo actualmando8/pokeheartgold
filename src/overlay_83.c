@@ -390,13 +390,8 @@ void ov83_02240300(void) {
 }
 
 void ov83_02240334(void) {
-    /* Original at 0x02240334 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xb0\n    bl ov83_02241354\n    add r0, r4, #0\n    bl ov83_02242D5C\n    pop {r4, pc}"
-    );
-    #endif
+    ov83_02241354();
+    ov83_02242D5C(r4);
 }
 
 void ov83_02240348(void) {
@@ -736,13 +731,8 @@ void ov83_022412DC(void) {
 }
 
 void ov83_02241354(void) {
-    /* Original at 0x02241354 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #1\n    bl ClearFrameAndWindow2\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    ClearFrameAndWindow2(1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
 void ov83_02241368(void) {
@@ -874,13 +864,8 @@ void ov83_02241730(void) {
 }
 
 void ov83_0224175C(void) {
-    /* Original at 0x0224175C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xb0\n    bl ov83_02241354\n    add r0, r4, #0\n    bl ov83_022429E4\n    pop {r4, pc}"
-    );
-    #endif
+    ov83_02241354();
+    ov83_022429E4(r4);
 }
 
 void ov83_02241770(void) {
@@ -1526,13 +1511,8 @@ void ov83_02244C58(void) {
 }
 
 void ov83_02244C88(void) {
-    /* Original at 0x02244C88 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xc0\n    bl ov83_02245094\n    add r0, r4, #0\n    bl ov83_02246C70\n    pop {r4, pc}"
-    );
-    #endif
+    ov83_02245094();
+    ov83_02246C70(r4);
 }
 
 void ov83_02244C9C(void) {
@@ -1640,13 +1620,8 @@ void ov83_02245074(void) {
 }
 
 void ov83_02245094(void) {
-    /* Original at 0x02245094 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #1\n    bl ClearFrameAndWindow2\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    ClearFrameAndWindow2(1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
 void ov83_022450A8(void) {
@@ -1832,13 +1807,8 @@ void ov83_02245748(void) {
 }
 
 void ov83_02245824(void) {
-    /* Original at 0x02245824 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov83_02245748\n    add r0, r4, #0\n    add r4, #0x80\n    add r1, r4, #0\n    bl ov83_022448E4\n    pop {r4, pc}"
-    );
-    #endif
+    ov83_02245748();
+    ov83_022448E4(r4, r4);
 }
 
 void ov83_02245838(void) {
@@ -1950,13 +1920,9 @@ void ov83_02246114(void) {
 }
 
 void ov83_0224691C(void) {
-    /* Original at 0x0224691C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov83_02245D48\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov83_02246114\n    add r0, r5, #0\n    bl ov83_02246988\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov83_02245D48();
+    ov83_02246114(r5, r4);
+    ov83_02246988(r5);
 }
 
 void ov83_02246938(void) {
@@ -2456,13 +2422,8 @@ void ov83_02247AD4(void) {
 }
 
 void ov83_02247B04(void) {
-    /* Original at 0x02247B04 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl GridInputHandler_GetNextInput\n    add r2, r0, #0\n    add r0, r4, #0\n    mov r1, #0\n    add r3, r2, #0\n    bl GridInputHandler_SetNextLastUnk0FInputs\n    pop {r4, pc}"
-    );
-    #endif
+    GridInputHandler_GetNextInput();
+    GridInputHandler_SetNextLastUnk0FInputs(r4, 0, r0, r0);
 }
 
 void ov83_02247B1C(void) {

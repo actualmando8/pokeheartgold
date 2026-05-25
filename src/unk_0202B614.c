@@ -175,14 +175,8 @@ void Save_FashionData_sizeof(void) {
     #endif
 }
 
-void sub_0202B994(void) {
-    /* Original at 0x0202B994 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x74\n    bx lr"
-    );
-    #endif
+u8 sub_0202B994(void) {
+    return 0x74;
 }
 
 void sub_0202B998(void) {

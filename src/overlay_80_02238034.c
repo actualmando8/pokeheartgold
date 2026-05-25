@@ -61,14 +61,8 @@ void ov80_02238344(void) {
     #endif
 }
 
-void ov80_02238370(void) {
-    /* Original at 0x02238370 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x32\n    bx lr"
-    );
-    #endif
+u8 ov80_02238370(void) {
+    return 0x32;
 }
 
 void BattleArcade_MultiplayerCheck(void) {
@@ -92,13 +86,8 @@ void ov80_02238384(void) {
 }
 
 void ov80_022383A8(void) {
-    /* Original at 0x022383A8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r2, #0\n    add r5, r1, #0\n    add r1, r4, #0\n    bl ov80_02238384\n    add r0, r5, #0\n    add r1, r4, #0\n    bl Party_AddMon\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov80_02238384(r2);
+    Party_AddMon(r5, r4);
 }
 
 void ov80_022383C0(void) {

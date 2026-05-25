@@ -12,13 +12,8 @@ void FrontierScript_ReadVarPtr(void) {
 }
 
 void FrontierScript_ReadVar(void) {
-    /* Original at 0x0222BE10 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl FrontierScriptContext_ReadHalfWord\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov80_0222BE9C\n    pop {r4, pc}"
-    );
-    #endif
+    FrontierScriptContext_ReadHalfWord();
+    ov80_0222BE9C(r4, r0);
 }
 
 void ov80_0222BE24(void) {
@@ -35,14 +30,8 @@ void ov80_0222BE9C(void) {
     ov80_0222BE24();
 }
 
-void FrtCmd_000(void) {
-    /* Original at 0x0222BEB0 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 FrtCmd_000(void) {
+    return 0;
 }
 
 void FrtCmd_001(void) {
@@ -69,14 +58,8 @@ void FrtCmd_003(void) {
     #endif
 }
 
-void ov80_0222BEFC(void) {
-    /* Original at 0x0222BEFC */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov80_0222BEFC(void) {
+    return 1;
 }
 
 void FrtCmd_004(void) {
@@ -463,14 +446,8 @@ void FrtCmd_038(void) {
     #endif
 }
 
-void FrtCmd_039(void) {
-    /* Original at 0x0222C74C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 FrtCmd_039(void) {
+    return 0;
 }
 
 void FrtCmd_040(void) {
@@ -848,13 +825,9 @@ void FrtCmd_126(void) {
 }
 
 void ov80_0222D0D4(void) {
-    /* Original at 0x0222D0D4 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    add r3, r1, #0\n    mov r0, #1\n    mov r1, #0x1b\n    mov r2, #0xed\n    bl NewMsgDataFromNarc\n    add r5, r0, #0\n    add r1, r4, #0\n    bl NewString_ReadMsgData\n    add r4, r0, #0\n    add r0, r5, #0\n    bl DestroyMsgData\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    NewMsgDataFromNarc(1, 0x1b, 0xed, r1);
+    NewString_ReadMsgData(r4);
+    DestroyMsgData(r5);
 }
 
 void FrtCmd_127(void) {
@@ -1321,14 +1294,10 @@ void FrtCmd_200(void) {
     #endif
 }
 
-void FrtCmd_201(void) {
-    /* Original at 0x0222E160 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl FrontierScript_ReadVar\n    bl sub_020378E4\n    mov r0, #0\n    pop {r3, pc}"
-    );
-    #endif
+u32 FrtCmd_201(void) {
+    FrontierScript_ReadVar();
+    sub_020378E4();
+    return 0;
 }
 
 void FrtCmd_203(void) {

@@ -105,14 +105,8 @@ void sub_02037B6C(void) {
     #endif
 }
 
-void sub_02037B88(void) {
-    /* Original at 0x02037B88 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #2\n    bx lr"
-    );
-    #endif
+u8 sub_02037B88(void) {
+    return 2;
 }
 
 void sub_02037B8C(void) {

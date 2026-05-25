@@ -86,53 +86,28 @@ void ov12_02258EB4(void) {
 }
 
 void ov12_02258EE0(void) {
-    /* Original at 0x02258EE0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259968\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_02259968(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258EF4(void) {
-    /* Original at 0x02258EF4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259BA8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_02259BA8(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258F08(void) {
-    /* Original at 0x02258F08 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259D48\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_02259D48(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258F1C(void) {
-    /* Original at 0x02258F1C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259F30\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_02259F30(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258F30(void) {
-    /* Original at 0x02258F30 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A018\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A018(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258F44(void) {
@@ -146,63 +121,33 @@ void ov12_02258F44(void) {
 }
 
 void ov12_02258F68(void) {
-    /* Original at 0x02258F68 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A07C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A07C(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258F7C(void) {
-    /* Original at 0x02258F7C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A2A0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A2A0(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258F90(void) {
-    /* Original at 0x02258F90 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225A334\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A334();
+    ov12_02259928(r4);
 }
 
 void ov12_02258FA0(void) {
-    /* Original at 0x02258FA0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A37C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A37C(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258FB4(void) {
-    /* Original at 0x02258FB4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A414\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A414(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02258FC8(void) {
-    /* Original at 0x02258FC8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225A4DC\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A4DC();
+    ov12_02259928(r4);
 }
 
 void ov12_02258FD8(void) {
@@ -216,83 +161,43 @@ void ov12_02258FD8(void) {
 }
 
 void ov12_02259000(void) {
-    /* Original at 0x02259000 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A604\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A604(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259014(void) {
-    /* Original at 0x02259014 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A674\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A674(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259028(void) {
-    /* Original at 0x02259028 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A700\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A700(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_0225903C(void) {
-    /* Original at 0x0225903C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A7AC\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A7AC(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259050(void) {
-    /* Original at 0x02259050 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A818\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A818(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259064(void) {
-    /* Original at 0x02259064 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A85C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A85C(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259078(void) {
-    /* Original at 0x02259078 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A8C4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A8C4(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_0225908C(void) {
-    /* Original at 0x0225908C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A914\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A914(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022590A0(void) {
@@ -306,153 +211,78 @@ void ov12_022590A0(void) {
 }
 
 void ov12_022590D4(void) {
-    /* Original at 0x022590D4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A9E0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225A9E0(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022590E8(void) {
-    /* Original at 0x022590E8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AA6C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AA6C(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022590FC(void) {
-    /* Original at 0x022590FC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AAE0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AAE0(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259110(void) {
-    /* Original at 0x02259110 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225ABB8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225ABB8(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259124(void) {
-    /* Original at 0x02259124 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225ABE8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225ABE8();
+    ov12_02259928(r4);
 }
 
 void ov12_02259134(void) {
-    /* Original at 0x02259134 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AC1C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AC1C(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259148(void) {
-    /* Original at 0x02259148 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225ACB0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225ACB0(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_0225915C(void) {
-    /* Original at 0x0225915C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225ACE8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225ACE8(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259170(void) {
-    /* Original at 0x02259170 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AD44\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AD44(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259184(void) {
-    /* Original at 0x02259184 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AD9C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AD9C(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259198(void) {
-    /* Original at 0x02259198 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225ADF4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225ADF4();
+    ov12_02259928(r4);
 }
 
 void ov12_022591A8(void) {
-    /* Original at 0x022591A8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AE48\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AE48(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022591BC(void) {
-    /* Original at 0x022591BC */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225AEA0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AEA0();
+    ov12_02259928(r4);
 }
 
 void ov12_022591CC(void) {
-    /* Original at 0x022591CC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AED8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AED8(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022591E0(void) {
-    /* Original at 0x022591E0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AF74\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225AF74(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022591F4(void) {
@@ -496,23 +326,13 @@ void ov12_02259358(void) {
 }
 
 void ov12_022593D4(void) {
-    /* Original at 0x022593D4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B028\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B028(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022593E8(void) {
-    /* Original at 0x022593E8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B060\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B060(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022593FC(void) {
@@ -546,23 +366,13 @@ void ov12_02259514(void) {
 }
 
 void ov12_022595B8(void) {
-    /* Original at 0x022595B8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B0A0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B0A0(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022595CC(void) {
-    /* Original at 0x022595CC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B0E8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B0E8(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022595E0(void) {
@@ -626,43 +436,23 @@ void ov12_02259700(void) {
 }
 
 void ov12_02259724(void) {
-    /* Original at 0x02259724 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B200\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B200(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259738(void) {
-    /* Original at 0x02259738 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225B234\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B234();
+    ov12_02259928(r4);
 }
 
 void ov12_02259748(void) {
-    /* Original at 0x02259748 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225B26C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B26C();
+    ov12_02259928(r4);
 }
 
 void ov12_02259758(void) {
-    /* Original at 0x02259758 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225B2A4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B2A4();
+    ov12_02259928(r4);
 }
 
 void ov12_02259768(void) {
@@ -686,33 +476,18 @@ void ov12_0225978C(void) {
 }
 
 void ov12_022597B0(void) {
-    /* Original at 0x022597B0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B3A0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B3A0(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022597C4(void) {
-    /* Original at 0x022597C4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B3D4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B3D4(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022597D8(void) {
-    /* Original at 0x022597D8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B434\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B434(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_022597EC(void) {
@@ -746,13 +521,8 @@ void ov12_02259928(void) {
 }
 
 void ov12_02259930(void) {
-    /* Original at 0x02259930 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B454\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0225B454(r1);
+    ov12_02259928(r4);
 }
 
 void ov12_02259944(void) {
@@ -2110,23 +1880,15 @@ void ov12_02261E40(void) {
 }
 
 void ov12_02261EB8(void) {
-    /* Original at 0x02261EB8 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #1\n    bl ov12_0223BFFC\n    add r0, r4, #0\n    bl BattleSystem_GetBattleContext\n    add r1, r0, #0\n    add r0, r4, #0\n    bl BattleController_TryEmitExitRecording\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0223BFFC(1);
+    BattleSystem_GetBattleContext(r4);
+    BattleController_TryEmitExitRecording(r4, r0);
 }
 
 void ov12_02261ED4(void) {
-    /* Original at 0x02261ED4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #2\n    bl ov12_0223BFFC\n    add r0, r4, #0\n    bl BattleSystem_GetBattleContext\n    add r1, r0, #0\n    add r0, r4, #0\n    bl BattleController_TryEmitExitRecording\n    pop {r4, pc}"
-    );
-    #endif
+    ov12_0223BFFC(2);
+    BattleSystem_GetBattleContext(r4);
+    BattleController_TryEmitExitRecording(r4, r0);
 }
 
 void ov12_02261EF0(void) {

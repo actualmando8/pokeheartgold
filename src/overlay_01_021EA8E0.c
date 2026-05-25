@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_021EA8E0(void) {
-    /* Original at 0x021EA8E0 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r0, #4\n    mov r1, #0x48\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #0x48\n    bl MIi_CpuClear32\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(4, 0x48);
+    MIi_CpuClear32(0, r0, 0x48);
 }
 
 void ov01_021EA8FC(void) {

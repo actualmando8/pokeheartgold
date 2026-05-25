@@ -66,13 +66,8 @@ void ov80_0222A334(void) {
 }
 
 void ov80_0222A3BC(void) {
-    /* Original at 0x0222A3BC */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r2, #0\n    add r5, r1, #0\n    add r1, r4, #0\n    bl ov80_0222A334\n    add r0, r5, #0\n    add r1, r4, #0\n    bl Party_AddMon\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov80_0222A334(r2);
+    Party_AddMon(r5, r4);
 }
 
 void ov80_0222A3D4(void) {
@@ -106,13 +101,8 @@ void ov80_0222A43C(void) {
 }
 
 void ov80_0222A474(void) {
-    /* Original at 0x0222A474 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl ov80_02229F04\n    bl Heap_Free\n    pop {r3, pc}"
-    );
-    #endif
+    ov80_02229F04();
+    Heap_Free();
 }
 
 void ov80_0222A480(void) {
@@ -196,11 +186,6 @@ void ov80_0222A7EC(void) {
 }
 
 void ov80_0222A840(void) {
-    /* Original at 0x0222A840 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl Save_WiFiHistory_Get\n    bl sub_02039F68\n    pop {r3, pc}"
-    );
-    #endif
+    Save_WiFiHistory_Get();
+    sub_02039F68();
 }

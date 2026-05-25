@@ -12,13 +12,8 @@ void ov01_022051EC(void) {
 }
 
 void ov01_02205208(void) {
-    /* Original at 0x02205208 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_022052A4\n    add r0, r4, #0\n    bl ov01_021F1448\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_022052A4();
+    ov01_021F1448(r4);
 }
 
 void ov01_02205218(void) {
@@ -32,13 +27,9 @@ void ov01_02205218(void) {
 }
 
 void ov01_022052A4(void) {
-    /* Original at 0x022052A4 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #4\n    add r0, #0x38\n    bl Field3dModelAnimation_Unload\n    add r0, r4, #0\n    add r0, #0x24\n    add r1, r4, #4\n    bl Field3dModelAnimation_Unload\n    add r4, #0x14\n    add r0, r4, #0\n    bl Field3dModel_Unload\n    pop {r4, pc}"
-    );
-    #endif
+    Field3dModelAnimation_Unload();
+    Field3dModelAnimation_Unload(r4);
+    Field3dModel_Unload(r4);
 }
 
 void ov01_022052C4(void) {

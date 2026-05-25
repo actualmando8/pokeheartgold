@@ -140,23 +140,13 @@ void ov01_02205790(void) {
 }
 
 void ov01_022057C4(void) {
-    /* Original at 0x022057C4 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl FollowMon_GetMapObject\n    bl MapObject_CheckVisible\n    pop {r3, pc}"
-    );
-    #endif
+    FollowMon_GetMapObject();
+    MapObject_CheckVisible();
 }
 
 void ov01_022057D0(void) {
-    /* Original at 0x022057D0 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl FollowMon_GetMapObject\n    bl sub_020659B8\n    pop {r3, pc}"
-    );
-    #endif
+    FollowMon_GetMapObject();
+    sub_020659B8();
 }
 
 void ov01_022057DC(void) {

@@ -384,13 +384,8 @@ void ov01_022046C8(void) {
 }
 
 void ov01_022046D4(void) {
-    /* Original at 0x022046D4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl ov01_022046C8\n    add r1, r0, #0\n    add r0, r4, #0\n    bl NNS_FndAllocFromAllocator\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_022046C8(r1);
+    NNS_FndAllocFromAllocator(r4, r0);
 }
 
 void ov01_022046E8(void) {

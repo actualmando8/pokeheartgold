@@ -2,13 +2,11 @@
 #include "global.h"
 
 void sub_020658D4(void) {
-    /* Original at 0x020658D4 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0xc\n    bl sub_0205F370\n    add r1, r0, #0\n    add r0, r4, #0\n    bl sub_02065CD0\n    add r0, r4, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r4, #0\n    bl MapObject_ClearSingleMovement\n    add r0, r4, #0\n    mov r1, #0\n    bl MapObject_ClearFlag18\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F370(0xc);
+    sub_02065CD0(r4, r0);
+    sub_0205F328(r4, 0);
+    MapObject_ClearSingleMovement(r4);
+    MapObject_ClearFlag18(r4, 0);
 }
 
 void sub_02065900(void) {

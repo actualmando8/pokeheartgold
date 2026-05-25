@@ -80,13 +80,8 @@ void sub_0200FC60(void) {
 }
 
 void sub_0200FCDC(void) {
-    /* Original at 0x0200FCDC */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r0, r1, r2, r3}\n    push {r3, lr}\n    add r0, sp, #8\n    mov r1, #0\n    mov r2, #2\n    bl GX_LoadBGPltt\n    add r0, sp, #8\n    mov r1, #0\n    mov r2, #2\n    bl GXS_LoadBGPltt\n    pop {r3}\n    pop {r3}\n    add sp, #0x10\n    bx r3"
-    );
-    #endif
+    GX_LoadBGPltt(0, 2);
+    GXS_LoadBGPltt(0, 2);
 }
 
 void SetMasterBrightness(void) {

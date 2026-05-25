@@ -358,13 +358,8 @@ void ov45_0222A450(void) {
 }
 
 void ov45_0222A480(void) {
-    /* Original at 0x0222A480 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov45_0222E9E0\n    add r1, r0, #0\n    add r0, r5, #0\n    add r2, r4, #0\n    bl ov45_0222A450\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov45_0222E9E0();
+    ov45_0222A450(r5, r0, r4);
 }
 
 void ov45_0222A498(void) {
@@ -422,13 +417,8 @@ void ov45_0222A520(void) {
 }
 
 void ov45_0222A53C(void) {
-    /* Original at 0x0222A53C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl ov45_0222E9E0\n    bl ov45_0222EC68\n    pop {r3, pc}"
-    );
-    #endif
+    ov45_0222E9E0();
+    ov45_0222EC68();
 }
 
 void ov45_0222A548(void) {
@@ -2547,14 +2537,8 @@ void ov45_0222D434(void) {
     #endif
 }
 
-void ov45_0222D448(void) {
-    /* Original at 0x0222D448 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov45_0222D448(void) {
+    return 1;
 }
 
 void ov45_0222D44C(void) {
@@ -2740,23 +2724,13 @@ void ov45_0222D860(void) {
 }
 
 void ov45_0222D890(void) {
-    /* Original at 0x0222D890 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x5c\n    bl ov45_0222DFD0\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_0222DFD0();
+    Heap_Free(r4);
 }
 
 void ov45_0222D8A4(void) {
-    /* Original at 0x0222D8A4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x5c\n    bl ov45_0222E000\n    add r4, #8\n    add r0, r4, #0\n    mov r1, #0\n    bl ov45_0222DEA4\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_0222E000();
+    ov45_0222DEA4(r4, 0);
 }
 
 void ov45_0222D8BC(void) {
@@ -2774,13 +2748,8 @@ void ov45_0222D8C8(void) {
 }
 
 void ov45_0222D8D4(void) {
-    /* Original at 0x0222D8D4 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, #8\n    add r4, r1, #0\n    bl ov45_0222DF14\n    add r5, #8\n    add r6, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov45_0222DE74\n    add r0, r6, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov45_0222DF14();
+    ov45_0222DE74(r5, r4);
 }
 
 void ov45_0222D8F0(void) {
@@ -2970,23 +2939,14 @@ void ov45_0222DE3C(void) {
 }
 
 void ov45_0222DE58(void) {
-    /* Original at 0x0222DE58 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov45_0222DE3C\n    add r0, r5, #0\n    mov r1, #1\n    bl ov45_0222DEA4\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov45_0222DEB8\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov45_0222DE3C();
+    ov45_0222DEA4(r5, 1);
+    ov45_0222DEB8(r5, r4);
 }
 
 void ov45_0222DE74(void) {
-    /* Original at 0x0222DE74 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r2, #2\n    mov r3, #0\n    bl ov45_0222DE3C\n    add r0, r4, #0\n    mov r1, #2\n    bl ov45_0222DEA4\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_0222DE3C(2, 0);
+    ov45_0222DEA4(r4, 2);
 }
 
 void ov45_0222DE8C(void) {
@@ -3261,24 +3221,12 @@ void ov45_0222E584(void) {
     #endif
 }
 
-void ov45_0222E598(void) {
-    /* Original at 0x0222E598 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x14\n    bx lr"
-    );
-    #endif
+u8 ov45_0222E598(void) {
+    return 0x14;
 }
 
-void ov45_0222E59C(void) {
-    /* Original at 0x0222E59C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x14\n    bx lr"
-    );
-    #endif
+u8 ov45_0222E59C(void) {
+    return 0x14;
 }
 
 void ov45_0222E5A0(void) {

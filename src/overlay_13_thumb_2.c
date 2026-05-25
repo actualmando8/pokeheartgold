@@ -1406,13 +1406,9 @@ void ov13_02226C7C(void) {
 }
 
 void ov13_02226C94(void) {
-    /* Original at 0x02226C94 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x58\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    add r0, sp, #0\n    bl ov13_022262D0\n    add r0, sp, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov13_022262F8\n    add r0, r5, #0\n    add r1, sp, #0\n    bl ov13_02226370\n    add sp, #0x58\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov13_022262D0();
+    ov13_022262F8(r4, r6);
+    ov13_02226370(r5);
 }
 
 void ov13_02226CBC(void) {

@@ -47,14 +47,8 @@ void ov01_021EAF90(void) {
     #endif
 }
 
-void ov01_021EAF94(void) {
-    /* Original at 0x021EAF94 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov01_021EAF94(void) {
+    return 1;
 }
 
 void ov01_021EAF98(void) {
@@ -77,12 +71,6 @@ void ov01_021EAFB4(void) {
     #endif
 }
 
-void ov01_021EAFD0(void) {
-    /* Original at 0x021EAFD0 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov01_021EAFD0(void) {
+    return 1;
 }

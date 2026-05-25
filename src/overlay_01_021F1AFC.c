@@ -60,103 +60,63 @@ void ov01_021F1C70(void) {
 }
 
 void ov01_021F1C7C(void) {
-    /* Original at 0x021F1C7C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #5\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(5, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1C98(void) {
-    /* Original at 0x021F1C98 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #7\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(7, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1CB4(void) {
-    /* Original at 0x021F1CB4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #8\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(8, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1CD0(void) {
-    /* Original at 0x021F1CD0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #9\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(9, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1CEC(void) {
-    /* Original at 0x021F1CEC */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #0xa\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(0xa, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1D08(void) {
-    /* Original at 0x021F1D08 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #0xb\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(0xb, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1D24(void) {
-    /* Original at 0x021F1D24 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #0xc\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(0xc, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1D40(void) {
-    /* Original at 0x021F1D40 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #6\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(6, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1D5C(void) {
-    /* Original at 0x021F1D5C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #0xd\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(0xd, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1D78(void) {
-    /* Original at 0x021F1D78 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PlayerAvatar_GetGender\n    add r1, r0, #0\n    mov r0, #0xe\n    bl PlayerAvatar_GetSpriteByStateAndGender\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3084\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetGender();
+    PlayerAvatar_GetSpriteByStateAndGender(0xe, r0);
+    ov01_021F3084(r4, r0);
 }
 
 void ov01_021F1D94(void) {
@@ -309,14 +269,10 @@ void ov01_021F24F4(void) {
     #endif
 }
 
-void ov01_021F2538(void) {
-    /* Original at 0x021F2538 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    add r0, r1, #0\n    bl PlayerAvatar_GetMapObject\n    bl MapObject_AreBitsSetForMovementScriptInit\n    mov r0, #0\n    pop {r3, pc}"
-    );
-    #endif
+u32 ov01_021F2538(void) {
+    PlayerAvatar_GetMapObject(r1);
+    MapObject_AreBitsSetForMovementScriptInit();
+    return 0;
 }
 
 void ov01_021F2548(void) {
@@ -614,13 +570,10 @@ void ov01_021F2D68(void) {
 }
 
 void CallFieldTask_Whirlpool(void) {
-    /* Original at 0x021F2DA4 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x10\n    add r5, r2, #0\n    add r6, r1, #0\n    bl TaskManager_GetFieldSystem\n    add r4, r0, #0\n    add r1, r5, #0\n    bl ov01_021F3100\n    add r1, r0, #0\n    add r0, r4, #0\n    add r2, sp, #0\n    bl ov01_021F3040\n    add r0, r4, #0\n    add r1, r6, #0\n    add r2, sp, #0\n    bl ov01_021F2D68\n    add sp, #0x10\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    TaskManager_GetFieldSystem();
+    ov01_021F3100(r5);
+    ov01_021F3040(r4, r0);
+    ov01_021F2D68(r4, r6);
 }
 
 void ov01_021F2DD0(void) {
@@ -740,13 +693,8 @@ void ov01_021F3068(void) {
 }
 
 void ov01_021F3084(void) {
-    /* Original at 0x021F3084 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl PlayerAvatar_GetMapObject\n    add r1, r4, #0\n    bl ov01_021FA930\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetMapObject();
+    ov01_021FA930(r4);
 }
 
 void ov01_021F3094(void) {

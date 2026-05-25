@@ -267,14 +267,8 @@ void ov02_0224939C(void) {
     #endif
 }
 
-void ov02_022493EC(void) {
-    /* Original at 0x022493EC */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov02_022493EC(void) {
+    return 0;
 }
 
 void ov02_022493F0(void) {
@@ -324,13 +318,9 @@ void ov02_0224953C(void) {
 }
 
 void ov02_02249548(void) {
-    /* Original at 0x02249548 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl SysTask_GetData\n    bl ov02_0224957C\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    ov02_0224957C();
+    SysTask_Destroy(r4);
 }
 
 void ov02_0224955C(void) {
@@ -1155,14 +1145,8 @@ void ov02_0224ACE0(void) {
     #endif
 }
 
-void ov02_0224ADEC(void) {
-    /* Original at 0x0224ADEC */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov02_0224ADEC(void) {
+    return 0;
 }
 
 void ov02_0224ADF0(void) {
@@ -1205,14 +1189,8 @@ void ov02_0224B158(void) {
     #endif
 }
 
-void ov02_0224B294(void) {
-    /* Original at 0x0224B294 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov02_0224B294(void) {
+    return 0;
 }
 
 void ov02_0224B298(void) {
@@ -1298,13 +1276,9 @@ void ov02_0224B43C(void) {
 }
 
 void ov02_0224B448(void) {
-    /* Original at 0x0224B448 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl SysTask_GetData\n    bl Heap_Free\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    Heap_Free();
+    SysTask_Destroy(r4);
 }
 
 void ov02_0224B45C(void) {
@@ -1361,14 +1335,8 @@ void ov02_0224B664(void) {
     #endif
 }
 
-void ov02_0224B68C(void) {
-    /* Original at 0x0224B68C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov02_0224B68C(void) {
+    return 0;
 }
 
 void ov02_0224B690(void) {

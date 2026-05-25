@@ -2,13 +2,8 @@
 #include "global.h"
 
 void sub_0205FD20(void) {
-    /* Original at 0x0205FD20 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_0205F41C\n    add r0, r4, #0\n    bl sub_02063A14\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F41C();
+    sub_02063A14(r4);
 }
 
 void sub_0205FD30(void) {
@@ -472,13 +467,12 @@ void sub_02060F24(void) {
 }
 
 void sub_02060F78(void) {
-    /* Original at 0x02060F78 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl MapObject_GetXCoord\n    add r1, r0, #0\n    add r0, r4, #0\n    bl MapObject_SetPreviousX\n    add r0, r4, #0\n    bl MapObject_GetYCoord\n    add r1, r0, #0\n    add r0, r4, #0\n    bl MapObject_SetPreviousY\n    add r0, r4, #0\n    bl MapObject_GetZCoord\n    add r1, r0, #0\n    add r0, r4, #0\n    bl MapObject_SetPreviousZ\n    pop {r4, pc}"
-    );
-    #endif
+    MapObject_GetXCoord();
+    MapObject_SetPreviousX(r4, r0);
+    MapObject_GetYCoord(r4);
+    MapObject_SetPreviousY(r4, r0);
+    MapObject_GetZCoord(r4);
+    MapObject_SetPreviousZ(r4, r0);
 }
 
 void sub_02060FA8(void) {

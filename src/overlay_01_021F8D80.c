@@ -116,13 +116,8 @@ void ov01_021F90FC(void) {
 }
 
 void ov01_021F9140(void) {
-    /* Original at 0x021F9140 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0x14\n    bl sub_0205F3E8\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F9510\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F3E8(0x14);
+    ov01_021F9510(r4, r0);
 }
 
 void ov01_021F9154(void) {
@@ -156,13 +151,8 @@ void ov01_021F91A4(void) {
 }
 
 void ov01_021F91E4(void) {
-    /* Original at 0x021F91E4 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_0205F40C\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov01_021F95A8\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F40C();
+    ov01_021F95A8(r4, r0);
 }
 
 void ov01_021F91F8(void) {
@@ -186,23 +176,13 @@ void ov01_021F9250(void) {
 }
 
 void FldObjSys_OpenMModelNarc(void) {
-    /* Original at 0x021F927C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x51 ; NARC_data_mmodel_mmodel\n    mov r1, #4\n    bl NARC_New\n    add r1, r0, #0\n    add r0, r4, #0\n    bl MapObjectManager_SetMapModelNarc\n    pop {r4, pc}"
-    );
-    #endif
+    NARC_New(0x51, 4);
+    MapObjectManager_SetMapModelNarc(r4, r0);
 }
 
 void FldObjSys_CloseMModelNarc(void) {
-    /* Original at 0x021F9294 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl MapObjectManager_GetMapModelNarc\n    bl NARC_Delete\n    pop {r3, pc}"
-    );
-    #endif
+    MapObjectManager_GetMapModelNarc();
+    NARC_Delete();
 }
 
 void ov01_021F92A0(void) {
@@ -230,13 +210,8 @@ void GetMoveModelNoBySpriteId(void) {
 }
 
 void ov01_021F9318(void) {
-    /* Original at 0x021F9318 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl MapObject_GetSpriteID\n    bl ov01_021F9324\n    pop {r3, pc}"
-    );
-    #endif
+    MapObject_GetSpriteID();
+    ov01_021F9324();
 }
 
 void ov01_021F9324(void) {

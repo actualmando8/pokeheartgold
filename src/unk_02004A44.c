@@ -150,73 +150,52 @@ void sub_02005228(void) {
 }
 
 void sub_02005260(void) {
-    /* Original at 0x02005260 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x18\n    bl GF_SdatGetAttrPtr\n    bl Sound_Stop\n    bl Sound_ClearBGMPauseFlags\n    mov r0, #4\n    bl sub_02005060\n    add r0, r4, #0\n    bl PlayBGM\n    pop {r4, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0x18);
+    Sound_Stop();
+    Sound_ClearBGMPauseFlags();
+    sub_02005060(4);
+    PlayBGM(r4);
 }
 
 void sub_02005280(void) {
-    /* Original at 0x02005280 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x18\n    bl GF_SdatGetAttrPtr\n    bl Sound_Stop\n    mov r0, #6\n    bl sub_02005060\n    mov r0, #1\n    bl sub_020059E0\n    add r0, r4, #0\n    bl PlayBGM\n    pop {r4, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0x18);
+    Sound_Stop();
+    sub_02005060(6);
+    sub_020059E0(1);
+    PlayBGM(r4);
 }
 
 void sub_020052A4(void) {
-    /* Original at 0x020052A4 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x18\n    bl GF_SdatGetAttrPtr\n    bl Sound_Stop\n    mov r0, #7\n    bl sub_02005060\n    mov r0, #1\n    bl sub_020059E0\n    add r0, r4, #0\n    bl PlayBGM\n    pop {r4, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0x18);
+    Sound_Stop();
+    sub_02005060(7);
+    sub_020059E0(1);
+    PlayBGM(r4);
 }
 
 void sub_020052C8(void) {
-    /* Original at 0x020052C8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02005318\n    add r0, r4, #0\n    bl sub_02004B24\n    mov r0, #0x1c\n    bl GF_SdatGetAttrPtr\n    bl GF_Snd_SaveState\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02005318();
+    sub_02004B24(r4);
+    GF_SdatGetAttrPtr(0x1c);
+    GF_Snd_SaveState();
 }
 
 void sub_020052E4(void) {
-    /* Original at 0x020052E4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r0, #0x18\n    add r4, r1, #0\n    bl GF_SdatGetAttrPtr\n    bl Sound_Stop\n    add r0, r5, #0\n    bl sub_02005060\n    add r0, r4, #0\n    bl PlayBGM\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0x18);
+    Sound_Stop();
+    sub_02005060(r5);
+    PlayBGM(r4);
 }
 
 void BGM_SaveStateAndPlayNew(void) {
-    /* Original at 0x02005304 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl GetSoundDataPointer\n    bl sub_02005B20\n    add r0, r4, #0\n    bl PlayBGM\n    pop {r4, pc}"
-    );
-    #endif
+    GetSoundDataPointer();
+    sub_02005B20();
+    PlayBGM(r4);
 }
 
 void sub_02005318(void) {
-    /* Original at 0x02005318 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #4\n    bl sub_02005328\n    bl GF_Snd_LoadState\n    pop {r3, pc}"
-    );
-    #endif
+    sub_02005328(4);
+    GF_Snd_LoadState();
 }
 
 void sub_02005328(void) {
@@ -294,13 +273,9 @@ void GF_GetVolumeBySeqNo(void) {
 }
 
 void GF_SetVolumeBySeqNo(void) {
-    /* Original at 0x020054AC */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl GF_GetPlayerNoBySeq\n    bl GF_GetSndHandleByPlayerNo\n    add r1, r4, #0\n    bl GF_SndHandleSetInitialVolume\n    pop {r4, pc}"
-    );
-    #endif
+    GF_GetPlayerNoBySeq();
+    GF_GetSndHandleByPlayerNo();
+    GF_SndHandleSetInitialVolume(r4);
 }
 
 void GF_SndPlayerCountPlayingSeqByPlayerNo(void) {
@@ -322,13 +297,8 @@ void GF_NNS_SndPlayerGetSeqNo(void) {
 }
 
 void GF_GetBankInfoBySeqNo(void) {
-    /* Original at 0x020054F8 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl GF_GetBankBySeqNo\n    bl NNS_SndArcGetBankInfo\n    pop {r3, pc}"
-    );
-    #endif
+    GF_GetBankBySeqNo();
+    NNS_SndArcGetBankInfo();
 }
 
 void GF_GetBankBySeqNo(void) {
@@ -518,53 +488,29 @@ void sub_02005910(void) {
 }
 
 void GF_SndHandleSetTrackPitch(void) {
-    /* Original at 0x02005918 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl GF_GetSoundHandle\n    add r1, r5, #0\n    add r2, r4, #0\n    bl NNS_SndPlayerSetTrackPitch\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF_GetSoundHandle();
+    NNS_SndPlayerSetTrackPitch(r5, r4);
 }
 
 void sub_0200592C(void) {
-    /* Original at 0x0200592C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl GF_GetPlayerNoBySeq\n    bl GF_GetSndHandleByPlayerNo\n    add r1, r5, #0\n    add r2, r4, #0\n    bl GF_SndHandleSetTrackPitch\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF_GetPlayerNoBySeq();
+    GF_GetSndHandleByPlayerNo();
+    GF_SndHandleSetTrackPitch(r5, r4);
 }
 
 void sub_02005944(void) {
-    /* Original at 0x02005944 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl GF_GetSndHandleByPlayerNo\n    add r1, r5, #0\n    add r2, r4, #0\n    bl GF_SndHandleSetTrackPitch\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF_GetSndHandleByPlayerNo();
+    GF_SndHandleSetTrackPitch(r5, r4);
 }
 
 void GF_SndHandleSetTrackPan(void) {
-    /* Original at 0x02005958 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl GF_GetSoundHandle\n    add r1, r5, #0\n    add r2, r4, #0\n    bl NNS_SndPlayerSetTrackPan\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF_GetSoundHandle();
+    NNS_SndPlayerSetTrackPan(r5, r4);
 }
 
 void GF_SndHandleSetTempoRatio(void) {
-    /* Original at 0x0200596C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl GF_GetSoundHandle\n    add r1, r4, #0\n    bl NNS_SndPlayerSetTempoRatio\n    pop {r4, pc}"
-    );
-    #endif
+    GF_GetSoundHandle();
+    NNS_SndPlayerSetTempoRatio(r4);
 }
 
 void GF_SndSetMonoFlag(void) {

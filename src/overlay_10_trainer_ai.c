@@ -1018,23 +1018,15 @@ void ov10_0221EBAC(void) {
 }
 
 void ov10_0221EC08(void) {
-    /* Original at 0x0221EC08 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    mov r1, #1\n    bl ov10_0221EF24\n    add r0, r4, #0\n    bl ov10_0221EEF0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov10_0221EE28\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov10_0221EF24(r1, 1);
+    ov10_0221EEF0(r4);
+    ov10_0221EE28(r5, r4, r0);
 }
 
 void ov10_0221EC28(void) {
-    /* Original at 0x0221EC28 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r0, r4, #0\n    mov r1, #1\n    bl ov10_0221EF24\n    add r0, r4, #0\n    bl ov10_0221EEF0\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov10_0221EF24\n    pop {r4, pc}"
-    );
-    #endif
+    ov10_0221EF24(r1, 1);
+    ov10_0221EEF0(r4);
+    ov10_0221EF24(r4, r0);
 }
 
 void ov10_0221EC44(void) {

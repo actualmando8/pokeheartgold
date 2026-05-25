@@ -366,13 +366,8 @@ void sub_02094C08(void) {
 }
 
 void sub_02094C6C(void) {
-    /* Original at 0x02094C6C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    add r4, r2, #0\n    add r0, r3, #0\n    add r1, r6, #0\n    bl NARC_ReadWholeMember\n    add r0, r4, #0\n    add r1, r5, #0\n    bl NNS_G2dGetUnpackedBGCharacterData\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    NARC_ReadWholeMember(r3, r0);
+    NNS_G2dGetUnpackedBGCharacterData(r4, r5);
 }
 
 void sub_02094C88(void) {

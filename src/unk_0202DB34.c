@@ -5,14 +5,8 @@ void sub_0202DB34(void) {
     SaveArray_Get();
 }
 
-void sub_0202DB40(void) {
-    /* Original at 0x0202DB40 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xf8\n    bx lr"
-    );
-    #endif
+u8 sub_0202DB40(void) {
+    return 0xf8;
 }
 
 void sub_0202DB44(void) {

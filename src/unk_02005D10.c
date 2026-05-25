@@ -72,13 +72,11 @@ void StopBGM(void) {
 }
 
 void sub_02005EEC(void) {
-    /* Original at 0x02005EEC */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #0\n    bl SndRadio_StopSeq\n    mov r0, #0\n    bl sub_02004A60\n    mov r0, #0\n    bl GF_SetCurrentPlayingBGM\n    mov r0, #0\n    bl sub_02004AB8\n    mov r0, #0\n    bl GF_SndSetState\n    pop {r3, pc}"
-    );
-    #endif
+    SndRadio_StopSeq(0);
+    sub_02004A60(0);
+    GF_SetCurrentPlayingBGM(0);
+    sub_02004AB8(0);
+    GF_SndSetState(0);
 }
 
 void GF_SndStartFadeInBGM(void) {
@@ -106,13 +104,8 @@ void GF_SndGetFadeTimer(void) {
 }
 
 void sub_02005F94(void) {
-    /* Original at 0x02005F94 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl GF_GetPlayerNoBySeq\n    bl GF_SndPlayerCountPlayingSeqByPlayerNo\n    pop {r3, pc}"
-    );
-    #endif
+    GF_GetPlayerNoBySeq();
+    GF_SndPlayerCountPlayingSeqByPlayerNo();
 }
 
 void Sound_Stop(void) {
@@ -210,13 +203,8 @@ void StopSE(void) {
 }
 
 void sub_0200615C(void) {
-    /* Original at 0x0200615C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl GF_GetSoundHandle\n    add r1, r4, #0\n    bl NNS_SndPlayerStopSeq\n    pop {r4, pc}"
-    );
-    #endif
+    GF_GetSoundHandle();
+    NNS_SndPlayerStopSeq(r4);
 }
 
 void sub_0200616C(void) {
@@ -224,13 +212,8 @@ void sub_0200616C(void) {
 }
 
 void IsSEPlaying(void) {
-    /* Original at 0x02006184 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl GF_GetPlayerNoBySeq\n    bl GF_SndPlayerCountPlayingSeqByPlayerNo\n    pop {r3, pc}"
-    );
-    #endif
+    GF_GetPlayerNoBySeq();
+    GF_SndPlayerCountPlayingSeqByPlayerNo();
 }
 
 void sub_02006190(void) {
@@ -242,13 +225,10 @@ void GF_IsAnySEPlaying(void) {
 }
 
 void sub_020061B4(void) {
-    /* Original at 0x020061B4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl GF_GetPlayerNoBySeq\n    bl GF_GetSndHandleByPlayerNo\n    bl GF_GetSoundHandle\n    add r1, r5, #0\n    add r2, r4, #0\n    bl NNS_SndPlayerSetTrackPan\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF_GetPlayerNoBySeq();
+    GF_GetSndHandleByPlayerNo();
+    GF_GetSoundHandle();
+    NNS_SndPlayerSetTrackPan(r5, r4);
 }
 
 void sub_020061D0(void) {
@@ -316,13 +296,8 @@ void PlayCryEx(void) {
 }
 
 void sub_02006820(void) {
-    /* Original at 0x02006820 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r1, r2, #0\n    bl GF_SndHandleSetInitialVolume\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_02005464\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF_SndHandleSetInitialVolume(r1, r2);
+    sub_02005464(r5, r4);
 }
 
 void sub_02006838(void) {
@@ -426,13 +401,10 @@ void sub_02006B84(void) {
 }
 
 void sub_02006BB0(void) {
-    /* Original at 0x02006BB0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #2\n    bl GF_GetSoundHandle\n    add r1, r4, #0\n    bl NNS_SndPlayerStopSeq\n    mov r0, #6\n    bl sub_02005328\n    bl GF_Snd_LoadState\n    pop {r4, pc}"
-    );
-    #endif
+    GF_GetSoundHandle(2);
+    NNS_SndPlayerStopSeq(r4);
+    sub_02005328(6);
+    GF_Snd_LoadState();
 }
 
 void IsFanfarePlaying(void) {

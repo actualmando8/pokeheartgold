@@ -21,14 +21,8 @@ void ov28_0225D5EC(void) {
     #endif
 }
 
-void ov28_0225D624(void) {
-    /* Original at 0x0225D624 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov28_0225D624(void) {
+    return 1;
 }
 
 void ov28_0225D628(void) {
@@ -52,13 +46,9 @@ void ov28_0225D650(void) {
 }
 
 void ov28_0225D6E0(void) {
-    /* Original at 0x0225D6E0 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #6\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(6);
+    FreeBgTilemapBuffer(r4, 5);
+    FreeBgTilemapBuffer(r4, 4);
 }
 
 void ov28_0225D6FC(void) {

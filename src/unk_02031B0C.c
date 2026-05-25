@@ -1,24 +1,12 @@
 /* Decompiled from asm/unk_02031B0C.s */
 #include "global.h"
 
-void Save_ApricornBox_sizeof(void) {
-    /* Original at 0x02031B0C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x80\n    bx lr"
-    );
-    #endif
+u8 Save_ApricornBox_sizeof(void) {
+    return 0x80;
 }
 
-void sub_02031B10(void) {
-    /* Original at 0x02031B10 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x20\n    bx lr"
-    );
-    #endif
+u8 sub_02031B10(void) {
+    return 0x20;
 }
 
 void Save_ApricornBox_Get(void) {
@@ -26,13 +14,9 @@ void Save_ApricornBox_Get(void) {
 }
 
 void InitApricornBox(void) {
-    /* Original at 0x02031B20 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x80\n    bl MI_CpuFill8\n    add r0, r4, #0\n    add r0, #0xc\n    bl sub_02031B5C\n    add r0, r4, #0\n    bl sub_02031B3C\n    pop {r4, pc}"
-    );
-    #endif
+    MI_CpuFill8(0, 0x80);
+    sub_02031B5C(r4);
+    sub_02031B3C(r4);
 }
 
 void sub_02031B3C(void) {
@@ -322,11 +306,7 @@ void sub_02032588(void) {
 }
 
 void sub_020325CC(void) {
-    /* Original at 0x020325CC */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x20\n    bl MI_CpuFill8\n    add r0, r4, #0\n    add r0, #0x18\n    bl sub_02031B5C\n    add r4, #8\n    add r0, r4, #0\n    mov r1, #8\n    bl StringFillEOS\n    pop {r4, pc}"
-    );
-    #endif
+    MI_CpuFill8(0, 0x20);
+    sub_02031B5C(r4);
+    StringFillEOS(r4, 8);
 }

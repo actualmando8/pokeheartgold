@@ -31,14 +31,8 @@ void ov96_021E60D8(void) {
     #endif
 }
 
-void ov96_021E6104(void) {
-    /* Original at 0x021E6104 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x50\n    bx lr"
-    );
-    #endif
+u8 ov96_021E6104(void) {
+    return 0x50;
 }
 
 void ov96_021E6108(void) {
@@ -82,13 +76,8 @@ void ov96_021E61D8(void) {
 }
 
 void ov96_021E6290(void) {
-    /* Original at 0x021E6290 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    add r0, r3, #0\n    bl ov96_021EB5E8\n    add r3, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov96_021E61D8\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov96_021EB5E8(r3);
+    ov96_021E61D8(r5, r4, r6, r0);
 }
 
 void ov96_021E62AC(void) {
@@ -431,14 +420,10 @@ void ov96_021E6E38(void) {
     #endif
 }
 
-void ov96_021E6F18(void) {
-    /* Original at 0x021E6F18 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl PokeathlonCourse_ResetDataCopyArea\n    add r0, r4, #0\n    mov r1, #0x14\n    bl PokeathlonCourse_SetStateField07\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov96_021E6F18(void) {
+    PokeathlonCourse_ResetDataCopyArea();
+    PokeathlonCourse_SetStateField07(r4, 0x14);
+    return 0;
 }
 
 void ov96_021E6F2C(void) {
@@ -621,14 +606,8 @@ void ov96_021E7590(void) {
     #endif
 }
 
-void ov96_021E75B8(void) {
-    /* Original at 0x021E75B8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov96_021E75B8(void) {
+    return 0;
 }
 
 void ov96_021E75BC(void) {
@@ -1077,14 +1056,8 @@ void ov96_021E8A24(void) {
     #endif
 }
 
-void ov96_021E8A2C(void) {
-    /* Original at 0x021E8A2C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xc\n    bx lr"
-    );
-    #endif
+u8 ov96_021E8A2C(void) {
+    return 0xc;
 }
 
 void ov96_021E8A30(void) {
@@ -1296,13 +1269,9 @@ void ov96_021E92B0(void) {
 }
 
 void ov96_021E92D0(void) {
-    /* Original at 0x021E92D0 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl OamManager_Free\n    bl ObjCharTransfer_Destroy\n    bl ObjPlttTransfer_Destroy\n    pop {r3, pc}"
-    );
-    #endif
+    OamManager_Free();
+    ObjCharTransfer_Destroy();
+    ObjPlttTransfer_Destroy();
 }
 
 void ov96_021E92E0(void) {
@@ -1450,13 +1419,9 @@ void ov96_021E966C(void) {
 }
 
 void ov96_021E96F8(void) {
-    /* Original at 0x021E96F8 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r3, #0\n    add r0, r4, #0\n    add r1, r2, #0\n    bl ov96_021E5E04\n    add r0, r4, #0\n    mov r1, #1\n    bl PokeathlonCourse_SetStateTransitionType\n    add r0, r4, #0\n    mov r1, #1\n    bl PokeathlonCourse_SetStateField07\n    pop {r4, pc}"
-    );
-    #endif
+    ov96_021E5E04(r3, r2);
+    PokeathlonCourse_SetStateTransitionType(r4, 1);
+    PokeathlonCourse_SetStateField07(r4, 1);
 }
 
 void ov96_021E9718(void) {
@@ -1510,13 +1475,8 @@ void ov96_021E9820(void) {
 }
 
 void ov96_021E9858(void) {
-    /* Original at 0x021E9858 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r3, #0\n    add r0, r4, #0\n    mov r1, #0xa\n    bl PokeathlonCourse_SetStateTransitionType\n    add r0, r4, #0\n    mov r1, #0x12\n    bl PokeathlonCourse_SetStateField07\n    pop {r4, pc}"
-    );
-    #endif
+    PokeathlonCourse_SetStateTransitionType(r3, 0xa);
+    PokeathlonCourse_SetStateField07(r4, 0x12);
 }
 
 void ov96_021E9870(void) {
@@ -1530,13 +1490,9 @@ void ov96_021E9870(void) {
 }
 
 void ov96_021E98D0(void) {
-    /* Original at 0x021E98D0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r3, #0\n    add r5, r1, #0\n    add r4, r2, #0\n    add r0, r6, #0\n    bl PokeathlonCourse_GetDataCopyArea\n    add r0, #0xf0\n    add r1, r4, #0\n    add r2, r5, #0\n    bl memcpy\n    add r0, r6, #0\n    mov r1, #0x16\n    bl PokeathlonCourse_SetStateField07\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    PokeathlonCourse_GetDataCopyArea(r3);
+    memcpy(r4, r5);
+    PokeathlonCourse_SetStateField07(r6, 0x16);
 }
 
 void ov96_021E98F4(void) {
@@ -1550,13 +1506,10 @@ void ov96_021E98F4(void) {
 }
 
 void ov96_021E9994(void) {
-    /* Original at 0x021E9994 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r3, #0\n    add r0, r4, #0\n    bl PokeathlonCourse_GetDataCopyArea\n    add r0, r4, #0\n    bl ov96_021E5F24\n    add r0, r4, #0\n    mov r1, #0xd\n    bl PokeathlonCourse_SetStateTransitionType\n    add r0, r4, #0\n    mov r1, #0x1f\n    bl PokeathlonCourse_SetStateField07\n    pop {r4, pc}"
-    );
-    #endif
+    PokeathlonCourse_GetDataCopyArea(r3);
+    ov96_021E5F24(r4);
+    PokeathlonCourse_SetStateTransitionType(r4, 0xd);
+    PokeathlonCourse_SetStateField07(r4, 0x1f);
 }
 
 void ov96_021E99B8(void) {
@@ -1569,24 +1522,12 @@ void ov96_021E99B8(void) {
     #endif
 }
 
-void ov96_021E99F4(void) {
-    /* Original at 0x021E99F4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #4\n    bx lr"
-    );
-    #endif
+u8 ov96_021E99F4(void) {
+    return 4;
 }
 
-void ov96_021E99F8(void) {
-    /* Original at 0x021E99F8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x7c\n    bx lr"
-    );
-    #endif
+u8 ov96_021E99F8(void) {
+    return 0x7c;
 }
 
 void ov96_021E99FC(void) {
@@ -1603,34 +1544,16 @@ void ov96_021E9A04(void) {
     PlayerProfile_sizeof();
 }
 
-void ov96_021E9A10(void) {
-    /* Original at 0x021E9A10 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x74\n    bx lr"
-    );
-    #endif
+u8 ov96_021E9A10(void) {
+    return 0x74;
 }
 
-void ov96_021E9A14(void) {
-    /* Original at 0x021E9A14 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x26\n    bx lr"
-    );
-    #endif
+u8 ov96_021E9A14(void) {
+    return 0x26;
 }
 
-void ov96_021E9A18(void) {
-    /* Original at 0x021E9A18 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x60\n    bx lr"
-    );
-    #endif
+u8 ov96_021E9A18(void) {
+    return 0x60;
 }
 
 void ov96_021E9A1C(void) {
@@ -2166,13 +2089,8 @@ void ov96_021EB0CC(void) {
 }
 
 void ov96_021EB10C(void) {
-    /* Original at 0x021EB10C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl ov96_021EAA20\n    add r1, r5, #0\n    add r2, r4, #0\n    bl ov96_021E9204\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov96_021EAA20();
+    ov96_021E9204(r5, r4);
 }
 
 void ov96_021EB120(void) {
@@ -2969,34 +2887,16 @@ void ov96_021ED728(void) {
     #endif
 }
 
-void ov96_021ED748(void) {
-    /* Original at 0x021ED748 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xa\n    bx lr"
-    );
-    #endif
+u8 ov96_021ED748(void) {
+    return 0xa;
 }
 
-void ov96_021ED74C(void) {
-    /* Original at 0x021ED74C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x14\n    bx lr"
-    );
-    #endif
+u8 ov96_021ED74C(void) {
+    return 0x14;
 }
 
-void ov96_021ED750(void) {
-    /* Original at 0x021ED750 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xa\n    bx lr"
-    );
-    #endif
+u8 ov96_021ED750(void) {
+    return 0xa;
 }
 
 void ov96_021ED754(void) {
@@ -3607,14 +3507,8 @@ void ov96_021EEE0C(void) {
     #endif
 }
 
-void ov96_021EEEBC(void) {
-    /* Original at 0x021EEEBC */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov96_021EEEBC(void) {
+    return 1;
 }
 
 void ov96_021EEEC0(void) {
@@ -3738,13 +3632,9 @@ void ov96_021EF2A0(void) {
 }
 
 void ov96_021EF2AC(void) {
-    /* Original at 0x021EF2AC */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl PokeathlonCourse_GetSaveData\n    bl Save_VarsFlags_Get\n    mov r1, #0xef\n    bl Save_VarsFlags_CheckFlagInArray\n    pop {r3, pc}"
-    );
-    #endif
+    PokeathlonCourse_GetSaveData();
+    Save_VarsFlags_Get();
+    Save_VarsFlags_CheckFlagInArray(0xef);
 }
 
 void ov96_021EF2C0(void) {
@@ -3908,13 +3798,8 @@ void ov96_021EFA04(void) {
 }
 
 void ov96_021EFA28(void) {
-    /* Original at 0x021EFA28 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #8\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    pop {r3, pc}"
-    );
-    #endif
+    GfGfx_EngineBTogglePlanes(4, 0);
+    GfGfx_EngineBTogglePlanes(8, 0);
 }
 
 void ov96_021EFA3C(void) {
@@ -4276,13 +4161,9 @@ void ov96_021F27B8(void) {
 }
 
 void ov96_021F2814(void) {
-    /* Original at 0x021F2814 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x18\n    add r4, r1, #0\n    add r1, sp, #0xc\n    bl VEC_Normalize\n    add r0, r4, #0\n    add r1, sp, #0\n    bl VEC_Normalize\n    add r0, sp, #0xc\n    add r1, sp, #0\n    bl VEC_DotProduct\n    add sp, #0x18\n    pop {r4, pc}"
-    );
-    #endif
+    VEC_Normalize();
+    VEC_Normalize(r4);
+    VEC_DotProduct();
 }
 
 void ov96_021F2834(void) {
@@ -4490,13 +4371,8 @@ void ov96_021F2FEC(void) {
 }
 
 void ov96_021F30A4(void) {
-    /* Original at 0x021F30A4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x84\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x84\n    add r4, r0, #0\n    bl MI_CpuFill8\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x84);
+    MI_CpuFill8(0, 0x84);
 }
 
 void ov96_021F30BC(void) {
@@ -5306,13 +5182,10 @@ void ov96_021F61C8(void) {
 }
 
 void ov96_021F637C(void) {
-    /* Original at 0x021F637C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl Thunk_G3X_Reset\n    bl Camera_PushLookAtToNNSGlb\n    add r0, r4, #0\n    bl ov96_021F61C8\n    mov r0, #0\n    add r1, r0, #0\n    bl RequestSwap3DBuffers\n    pop {r4, pc}"
-    );
-    #endif
+    Thunk_G3X_Reset();
+    Camera_PushLookAtToNNSGlb();
+    ov96_021F61C8(r4);
+    RequestSwap3DBuffers(0, 0);
 }
 
 void ov96_021F6398(void) {
@@ -7014,13 +6887,8 @@ void ov96_021FC5E0(void) {
 }
 
 void ov96_021FC618(void) {
-    /* Original at 0x021FC618 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x84\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0x84\n    add r4, r0, #0\n    bl MI_CpuFill8\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x84);
+    MI_CpuFill8(0, 0x84);
 }
 
 void ov96_021FC630(void) {
@@ -10812,13 +10680,8 @@ void ov96_0220E8C0(void) {
 }
 
 void ov96_0220E960(void) {
-    /* Original at 0x0220E960 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    bl ov96_0220E890\n    add r0, r5, #4\n    add r1, r4, #0\n    bl ov96_0220E890\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov96_0220E890();
+    ov96_0220E890(r4);
 }
 
 void ov96_0220E974(void) {
@@ -11682,13 +11545,9 @@ void ov96_022134D4(void) {
 }
 
 void ov96_02213514(void) {
-    /* Original at 0x02213514 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x18\n    add r4, r1, #0\n    add r1, sp, #0xc\n    bl VEC_Normalize\n    add r0, r4, #0\n    add r1, sp, #0\n    bl VEC_Normalize\n    add r0, sp, #0xc\n    add r1, sp, #0\n    bl VEC_DotProduct\n    add sp, #0x18\n    pop {r4, pc}"
-    );
-    #endif
+    VEC_Normalize();
+    VEC_Normalize(r4);
+    VEC_DotProduct();
 }
 
 void ov96_02213534(void) {
@@ -12338,13 +12197,8 @@ void ov96_02215914(void) {
 }
 
 void ov96_02215944(void) {
-    /* Original at 0x02215944 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    bl ov96_02215914\n    add r0, r5, #4\n    add r1, r4, #0\n    bl ov96_02215914\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov96_02215914();
+    ov96_02215914(r4);
 }
 
 void ov96_02215958(void) {
@@ -13184,13 +13038,10 @@ void ov96_022194C4(void) {
 }
 
 void ov96_022195C8(void) {
-    /* Original at 0x022195C8 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov96_02219C30\n    add r0, r4, #0\n    mov r1, #0x3c\n    bl ov96_022196E4\n    add r0, r4, #0\n    mov r1, #0\n    bl ov96_02219A5C\n    add r0, r4, #0\n    bl ov96_02219B30\n    pop {r4, pc}"
-    );
-    #endif
+    ov96_02219C30();
+    ov96_022196E4(r4, 0x3c);
+    ov96_02219A5C(r4, 0);
+    ov96_02219B30(r4);
 }
 
 void ov96_022195E8(void) {
@@ -13586,13 +13437,8 @@ void ov96_0221A680(void) {
 }
 
 void ov96_0221A690(void) {
-    /* Original at 0x0221A690 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl _ffltu\n    bl ov96_0221A61C\n    pop {r3, pc}"
-    );
-    #endif
+    _ffltu();
+    ov96_0221A61C();
 }
 
 void ov96_0221A69C(void) {

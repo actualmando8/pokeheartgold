@@ -193,14 +193,8 @@ void ov01_021F6BA0(void) {
     ov34_0225D87C();
 }
 
-void ov01_021F6BAC(void) {
-    /* Original at 0x021F6BAC */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov01_021F6BAC(void) {
+    return 1;
 }
 
 void ov01_021F6BB0(void) {

@@ -12,23 +12,13 @@ void sub_020689C8(void) {
 }
 
 void sub_020689E8(void) {
-    /* Original at 0x020689E8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02068C5C\n    add r0, r4, #0\n    bl sub_02068C2C\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02068C5C();
+    sub_02068C2C(r4);
 }
 
 void sub_020689F8(void) {
-    /* Original at 0x020689F8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02068B80\n    add r0, r4, #0\n    bl sub_020689E8\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02068B80();
+    sub_020689E8(r4);
 }
 
 void sub_02068A08(void) {
@@ -286,13 +276,8 @@ void sub_02068D74(void) {
 }
 
 void sub_02068D78(void) {
-    /* Original at 0x02068D78 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl sub_02068D74\n    mov r1, #0\n    add r2, r4, #0\n    bl memset\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02068D74();
+    memset(0, r4);
 }
 
 void sub_02068D8C(void) {
@@ -385,14 +370,8 @@ void sub_02068DB8(void) {
     #endif
 }
 
-void sub_02068DC8(void) {
-    /* Original at 0x02068DC8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 sub_02068DC8(void) {
+    return 1;
 }
 
 void sub_02068DCC(void) {

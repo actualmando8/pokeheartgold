@@ -308,13 +308,8 @@ void FieldSystem_ShowMoneyBox(void) {
 }
 
 void MoneyBoxSys_Delete(void) {
-    /* Original at 0x021EEB38 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    bl sub_0200E5D4\n    add r0, r4, #0\n    mov r1, #1\n    bl WindowArray_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(0);
+    WindowArray_Delete(r4, 1);
 }
 
 void MoneyBoxSys_Update(void) {
@@ -338,13 +333,8 @@ void ov01_021EEC00(void) {
 }
 
 void ov01_021EEC68(void) {
-    /* Original at 0x021EEC68 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    bl sub_0200E5D4\n    add r0, r4, #0\n    mov r1, #1\n    bl WindowArray_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(0);
+    WindowArray_Delete(r4, 1);
 }
 
 void ov01_021EEC7C(void) {
@@ -368,13 +358,8 @@ void ov01_021EED60(void) {
 }
 
 void ov01_021EEE30(void) {
-    /* Original at 0x021EEE30 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    bl sub_0200E5D4\n    add r0, r4, #0\n    mov r1, #1\n    bl WindowArray_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(0);
+    WindowArray_Delete(r4, 1);
 }
 
 void ov01_021EEE44(void) {
@@ -408,23 +393,13 @@ void ov01_021EEF60(void) {
 }
 
 void ov01_021EEF68(void) {
-    /* Original at 0x021EEF68 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    mov r0, #4\n    mov r1, #1\n    bl AllocWindows\n    add r4, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov03_02256730\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    AllocWindows(4, 1);
+    ov03_02256730(r5, r0, r6);
 }
 
 void ov01_021EEF88(void) {
-    /* Original at 0x021EEF88 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    bl sub_0200E5D4\n    add r0, r4, #0\n    mov r1, #1\n    bl WindowArray_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(0);
+    WindowArray_Delete(r4, 1);
 }
 
 void ov01_021EEF9C(void) {

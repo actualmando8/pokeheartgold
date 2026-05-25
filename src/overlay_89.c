@@ -524,13 +524,8 @@ void ov89_0225AB64(void) {
 }
 
 void ov89_0225AC10(void) {
-    /* Original at 0x0225AC10 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xc\n    bl sub_02018068\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02018068();
+    Heap_Free(r4);
 }
 
 void ov89_0225AC24(void) {
@@ -651,14 +646,8 @@ void ov89_0225B010(void) {
     #endif
 }
 
-void ov89_0225B078(void) {
-    /* Original at 0x0225B078 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov89_0225B078(void) {
+    return 0;
 }
 
 void ov89_0225B07C(void) {

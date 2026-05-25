@@ -22,13 +22,9 @@ void MapObject_SetHeldMovement(void) {
 }
 
 void MapObject_ForceSetHeldMovement(void) {
-    /* Original at 0x0206217C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl MapObject_SetMovementCommand\n    add r0, r4, #0\n    mov r1, #0\n    bl MapObject_SetMovementStep\n    add r0, r4, #0\n    mov r1, #0x20\n    bl MapObject_ClearFlagsBits\n    pop {r4, pc}"
-    );
-    #endif
+    MapObject_SetMovementCommand();
+    MapObject_SetMovementStep(r4, 0);
+    MapObject_ClearFlagsBits(r4, 0x20);
 }
 
 void MapObject_IsMovementPaused(void) {
@@ -52,13 +48,10 @@ void MapObject_ClearHeldMovementIfActive(void) {
 }
 
 void MapObject_ClearHeldMovement(void) {
-    /* Original at 0x020621F0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0x10\n    bl MapObject_ClearFlagsBits\n    add r0, r4, #0\n    mov r1, #0x20\n    bl MapObject_SetFlagsBits\n    add r0, r4, #0\n    mov r1, #0xff\n    bl MapObject_SetMovementCommand\n    add r0, r4, #0\n    mov r1, #0\n    bl MapObject_SetMovementStep\n    pop {r4, pc}"
-    );
-    #endif
+    MapObject_ClearFlagsBits(0x10);
+    MapObject_SetFlagsBits(r4, 0x20);
+    MapObject_SetMovementCommand(r4, 0xff);
+    MapObject_SetMovementStep(r4, 0);
 }
 
 void EventObjectMovementMan_Create(void) {
@@ -127,14 +120,8 @@ void MovementScriptMachineSub_LoopCheck(void) {
     #endif
 }
 
-void MovementScriptMachineSub_Done(void) {
-    /* Original at 0x02062348 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 MovementScriptMachineSub_Done(void) {
+    return 0;
 }
 
 void sub_0206234C(void) {
@@ -212,13 +199,10 @@ void MapObjectMovementCmd098_Step2(void) {
 }
 
 void sub_0206247C(void) {
-    /* Original at 0x0206247C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl MapObject_SetFacingDirection\n    add r0, r4, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r4, #0\n    bl sub_02060F78\n    add r0, r4, #0\n    bl MapObject_IncrementMovementStep\n    pop {r4, pc}"
-    );
-    #endif
+    MapObject_SetFacingDirection();
+    sub_0205F328(r4, 0);
+    sub_02060F78(r4);
+    MapObject_IncrementMovementStep(r4);
 }
 
 void MapObjectMovementCmd000_Step0(void) {
@@ -683,24 +667,16 @@ void MapObjectMovementCmd070_Step0(void) {
     #endif
 }
 
-void MapObjectMovementCmd071_Step0(void) {
-    /* Original at 0x02062EF0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0x80\n    bl MapObject_SetFlagsBits\n    add r0, r4, #0\n    bl MapObject_IncrementMovementStep\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 MapObjectMovementCmd071_Step0(void) {
+    MapObject_SetFlagsBits(0x80);
+    MapObject_IncrementMovementStep(r4);
+    return 1;
 }
 
-void MapObjectMovementCmd072_Step0(void) {
-    /* Original at 0x02062F04 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0x80\n    bl MapObject_ClearFlagsBits\n    add r0, r4, #0\n    bl MapObject_IncrementMovementStep\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 MapObjectMovementCmd072_Step0(void) {
+    MapObject_ClearFlagsBits(0x80);
+    MapObject_IncrementMovementStep(r4);
+    return 1;
 }
 
 void MapObjectMovementCmd073_Step0(void) {
@@ -831,14 +807,11 @@ void MapObjectMovementCmd098_Step1(void) {
     sub_02062FEC(0, 1);
 }
 
-void MapObjectMovementCmd100_Step0(void) {
-    /* Original at 0x02063154 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #4\n    bl sub_0205F3C0\n    add r0, r4, #0\n    mov r1, #9\n    bl sub_0205F328\n    add r0, r4, #0\n    bl MapObject_IncrementMovementStep\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 MapObjectMovementCmd100_Step0(void) {
+    sub_0205F3C0(4);
+    sub_0205F328(r4, 9);
+    MapObject_IncrementMovementStep(r4);
+    return 0;
 }
 
 void MapObjectMovementCmd100_Step1(void) {
@@ -871,24 +844,18 @@ void MapObjectMovementCmd101_Step1(void) {
     #endif
 }
 
-void MapObjectMovementCmd102_Step0(void) {
-    /* Original at 0x02063258 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #4\n    bl sub_0205F3C0\n    add r0, r4, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r4, #0\n    bl MapObject_IncrementMovementStep\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 MapObjectMovementCmd102_Step0(void) {
+    sub_0205F3C0(4);
+    sub_0205F328(r4, 0);
+    MapObject_IncrementMovementStep(r4);
+    return 0;
 }
 
-void MapObjectMovementCmd104_Step0(void) {
-    /* Original at 0x02063274 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #4\n    bl sub_0205F3C0\n    add r0, r4, #0\n    mov r1, #1\n    bl sub_0205F328\n    add r0, r4, #0\n    bl MapObject_IncrementMovementStep\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 MapObjectMovementCmd104_Step0(void) {
+    sub_0205F3C0(4);
+    sub_0205F328(r4, 1);
+    MapObject_IncrementMovementStep(r4);
+    return 0;
 }
 
 void MapObjectMovementCmd102_Step1(void) {

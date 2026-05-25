@@ -364,13 +364,11 @@ void ov72_022389C8(void) {
 }
 
 void ov72_02238AEC(void) {
-    /* Original at 0x02238AEC */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #6\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #0\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(6);
+    FreeBgTilemapBuffer(r4, 5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 0);
 }
 
 void ov72_02238B18(void) {
@@ -895,14 +893,8 @@ void ov72_02239FD8(void) {
     #endif
 }
 
-void ov72_0223A010(void) {
-    /* Original at 0x0223A010 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #3\n    bx lr"
-    );
-    #endif
+u8 ov72_0223A010(void) {
+    return 3;
 }
 
 void ov72_0223A014(void) {
@@ -1215,34 +1207,16 @@ void ov72_0223ABB0(void) {
     #endif
 }
 
-void ov72_0223ABF4(void) {
-    /* Original at 0x0223ABF4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov72_0223ABF4(void) {
+    return 0;
 }
 
-void ov72_0223ABF8(void) {
-    /* Original at 0x0223ABF8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov72_0223ABF8(void) {
+    return 0;
 }
 
-void ov72_0223ABFC(void) {
-    /* Original at 0x0223ABFC */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov72_0223ABFC(void) {
+    return 0;
 }
 
 void ov72_0223AC00(void) {
@@ -1273,14 +1247,8 @@ void ov72_0223AC88(void) {
     IsPaletteFadeFinished(0, 0xb);
 }
 
-void ov72_0223ACA4(void) {
-    /* Original at 0x0223ACA4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov72_0223ACA4(void) {
+    return 1;
 }
 
 void ov72_0223ACA8(void) {
@@ -1393,14 +1361,8 @@ void ov72_0223AF7C(void) {
     #endif
 }
 
-void ov72_0223B084(void) {
-    /* Original at 0x0223B084 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov72_0223B084(void) {
+    return 0;
 }
 
 void ov72_0223B088(void) {
@@ -1434,13 +1396,10 @@ void ov72_0223B1C8(void) {
 }
 
 void ov72_0223B2C0(void) {
-    /* Original at 0x0223B2C0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x18\n    bl ClearWindowTilemapAndCopyToVram\n    add r0, r4, #0\n    add r0, #8\n    bl ClearWindowTilemapAndCopyToVram\n    add r0, r4, #0\n    add r0, #0x18\n    bl RemoveWindow\n    add r4, #8\n    add r0, r4, #0\n    bl RemoveWindow\n    pop {r4, pc}"
-    );
-    #endif
+    ClearWindowTilemapAndCopyToVram();
+    ClearWindowTilemapAndCopyToVram(r4);
+    RemoveWindow(r4);
+    RemoveWindow(r4);
 }
 
 void ov72_0223B2E4(void) {

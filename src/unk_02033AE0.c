@@ -345,34 +345,16 @@ void sub_020342B8(void) {
     #endif
 }
 
-void sub_020342C0(void) {
-    /* Original at 0x020342C0 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 sub_020342C0(void) {
+    return 0;
 }
 
-void sub_020342C4(void) {
-    /* Original at 0x020342C4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 sub_020342C4(void) {
+    return 1;
 }
 
-void sub_020342C8(void) {
-    /* Original at 0x020342C8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #2\n    bx lr"
-    );
-    #endif
+u8 sub_020342C8(void) {
+    return 2;
 }
 
 void sub_020342CC(void) {

@@ -32,13 +32,9 @@ void sub_0202E43C(void) {
 }
 
 void sub_0202E474(void) {
-    /* Original at 0x0202E474 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    bl sub_0202E48C\n    add r0, r4, #0\n    bl sub_0202E498\n    mov r0, #0x17\n    bl SaveSubstruct_UpdateCRC\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0202E48C(0);
+    sub_0202E498(r4);
+    SaveSubstruct_UpdateCRC(0x17);
 }
 
 void sub_0202E48C(void) {

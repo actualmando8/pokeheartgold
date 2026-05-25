@@ -615,14 +615,11 @@ void ov74_0222A560(void) {
     #endif
 }
 
-void ov74_0222A5AC(void) {
-    /* Original at 0x0222A5AC */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl OverlayManager_GetData\n    add r0, #0x38\n    mov r1, #0\n    bl ov74_02229F60\n    add r0, r4, #0\n    mov r1, #0xc4\n    mov r2, #0\n    bl ov74_0222A94C\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov74_0222A5AC(void) {
+    OverlayManager_GetData();
+    ov74_02229F60(0);
+    ov74_0222A94C(r4, 0xc4, 0);
+    return 3;
 }
 
 void ov74_0222A5CC(void) {
@@ -1004,23 +1001,13 @@ void ov74_0222BEF0(void) {
 }
 
 void ov74_0222BF08(void) {
-    /* Original at 0x0222BF08 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov74_0222BED8\n    add r0, r4, #0\n    bl ov74_0222BEF0\n    pop {r4, pc}"
-    );
-    #endif
+    ov74_0222BED8();
+    ov74_0222BEF0(r4);
 }
 
 void ov74_0222BF18(void) {
-    /* Original at 0x0222BF18 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #1\n    mov r1, #0\n    bl BG_SetMaskColor\n    mov r0, #5\n    mov r1, #0\n    bl BG_SetMaskColor\n    pop {r3, pc}"
-    );
-    #endif
+    BG_SetMaskColor(1, 0);
+    BG_SetMaskColor(5, 0);
 }
 
 void ov74_0222BF2C(void) {
@@ -1273,14 +1260,8 @@ void ov74_0222D448(void) {
     #endif
 }
 
-void ov74_0222D490(void) {
-    /* Original at 0x0222D490 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov74_0222D490(void) {
+    return 1;
 }
 
 void ov74_0222D494(void) {
@@ -1659,14 +1640,8 @@ void ov74_0222EDC0(void) {
     #endif
 }
 
-void ov74_0222EE08(void) {
-    /* Original at 0x0222EE08 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #1\n    bx lr"
-    );
-    #endif
+u8 ov74_0222EE08(void) {
+    return 1;
 }
 
 void ov74_0222EE0C(void) {
@@ -1709,14 +1684,8 @@ void ov74_0222EF18(void) {
     #endif
 }
 
-void ov74_0222EF64(void) {
-    /* Original at 0x0222EF64 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    bx lr"
-    );
-    #endif
+u8 ov74_0222EF64(void) {
+    return 0;
 }
 
 void ov74_0222EF68(void) {
@@ -1904,13 +1873,8 @@ void ov74_0222FD98(void) {
 }
 
 void ov74_0222FE4C(void) {
-    /* Original at 0x0222FE4C */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #4\n    bl ov74_02231070\n    bl ov74_02231724\n    pop {r3, pc}"
-    );
-    #endif
+    ov74_02231070(4);
+    ov74_02231724();
 }
 
 void ov74_0222FE5C(void) {
@@ -2362,13 +2326,9 @@ void ov74_02230D28(void) {
 }
 
 void ov74_02230D6C(void) {
-    /* Original at 0x02230D6C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl ov74_02231164\n    mov r0, #1\n    bl ov74_022310A0\n    bl ov74_02230A34\n    pop {r3, pc}"
-    );
-    #endif
+    ov74_02231164();
+    ov74_022310A0(1);
+    ov74_02230A34();
 }
 
 void ov74_02230D80(void) {
@@ -2657,14 +2617,8 @@ void ov74_022311CC(void) {
     ov74_0223105C();
 }
 
-void ov74_022311D8(void) {
-    /* Original at 0x022311D8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x38\n    bx lr"
-    );
-    #endif
+u8 ov74_022311D8(void) {
+    return 0x38;
 }
 
 void ov74_022311DC(void) {
@@ -2705,14 +2659,8 @@ void ov74_02231238(void) {
     #endif
 }
 
-void ov74_02231260(void) {
-    /* Original at 0x02231260 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x10\n    bx lr"
-    );
-    #endif
+u8 ov74_02231260(void) {
+    return 0x10;
 }
 
 void ov74_02231264(void) {
@@ -3130,13 +3078,8 @@ void ov74_02231E00(void) {
 }
 
 void ov74_02231E38(void) {
-    /* Original at 0x02231E38 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    add r4, r2, #0\n    add r0, r3, #0\n    add r1, r6, #0\n    bl NARC_ReadWholeMember\n    add r0, r4, #0\n    add r1, r5, #0\n    bl NNS_G2dGetUnpackedBGCharacterData\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    NARC_ReadWholeMember(r3, r0);
+    NNS_G2dGetUnpackedBGCharacterData(r4, r5);
 }
 
 void ov74_02231E54(void) {
@@ -4562,13 +4505,11 @@ void ov74_02236ABC(void) {
 }
 
 void ov74_02236AC8(void) {
-    /* Original at 0x02236AC8 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl sub_0203A914\n    bl sub_020394F4\n    bl UnloadOVY38\n    bl UnloadDwcOverlay\n    bl sub_02034DE0\n    pop {r3, pc}"
-    );
-    #endif
+    sub_0203A914();
+    sub_020394F4();
+    UnloadOVY38();
+    UnloadDwcOverlay();
+    sub_02034DE0();
 }
 
 void ov74_02236AE0(void) {

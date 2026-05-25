@@ -12,13 +12,8 @@ void ov01_021FED9C(void) {
 }
 
 void ov01_021FEDB8(void) {
-    /* Original at 0x021FEDB8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_021FEDF0\n    add r0, r4, #0\n    bl ov01_021F1448\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021FEDF0();
+    ov01_021F1448(r4);
 }
 
 void ov01_021FEDC8(void) {
@@ -32,13 +27,8 @@ void ov01_021FEDC8(void) {
 }
 
 void ov01_021FEDF0(void) {
-    /* Original at 0x021FEDF0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r4, #4\n    bl sub_02069784\n    add r4, #0x18\n    add r0, r4, #0\n    bl sub_020698D0\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02069784();
+    sub_020698D0(r4);
 }
 
 void ov01_021FEE04(void) {
@@ -76,11 +66,6 @@ void ov01_021FEEA8(void) {
 }
 
 void ov01_021FEED0(void) {
-    /* Original at 0x021FEED0 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    add r1, sp, #0\n    bl sub_02068DB8\n    add r4, #0x24\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_020699BC\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    sub_02068DB8();
+    sub_020699BC(r4);
 }

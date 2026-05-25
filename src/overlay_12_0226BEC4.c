@@ -6,42 +6,15 @@ void ov12_0226BEC4(void) {
     /* Requires manual decompilation - 18 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, lr}
-    add r5, r0, #0
-    mov r0, #5
-    mov r1, #8
-    bl Heap_Alloc
-    mov r1, #0
-    mov r2, #8
-    add r4, r0, #0
-    bl MI_CpuFill8
-    mov r2, #0xfa
-    ldr r0, _0226BEEC ; =ov12_0226BF04
-    add r1, r4, #0
-    lsl r2, r2, #2
-    str r5, [r4]
-    bl SysTask_CreateOnMainQueue
-    pop {r3, r4, r5, pc}
-    nop
-    _0226BEEC: .word ov12_0226BF04"
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #8\n    add r4, r0, #0\n    bl MI_CpuFill8\n    mov r2, #0xfa\n    ldr r0, _0226BEEC ; =ov12_0226BF04\n    add r1, r4, #0\n    lsl r2, r2, #2\n    str r5, [r4]\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, pc}\n    nop\n    _0226BEEC: .word ov12_0226BF04"
     );
     #endif
 }
 
 void ov12_0226BEF0(void) {
-    /* Original at 0x0226BEF0 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}
-    add r4, r0, #0
-    bl SysTask_GetData
-    bl Heap_Free
-    add r0, r4, #0
-    bl SysTask_Destroy
-    pop {r4, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    Heap_Free();
+    SysTask_Destroy(r4);
 }
 
 void ov12_0226BF04(void) {
@@ -49,95 +22,7 @@ void ov12_0226BF04(void) {
     /* Requires manual decompilation - 89 instructions */
     #ifdef MWERKS
     asm(
-        "push {r3, r4, r5, r6, r7, lr}
-    sub sp, #8
-    add r4, r1, #0
-    ldr r0, [r4]
-    bl BattleSystem_GetBattleInput
-    mov r1, #4
-    ldrsh r1, [r4, r1]
-    add r5, r0, #0
-    cmp r1, #4
-    bhi _0226BFCE
-    add r1, r1, r1
-    add r1, pc
-    ldrh r1, [r1, #6]
-    lsl r1, r1, #0x10
-    asr r1, r1, #0x10
-    add pc, r1
-    _0226BF26: ; jump table
-    cmp r5, #0
-    bne _0226BF38
-    bl GF_AssertFail
-    mov r0, #7
-    mov r1, #5
-    bl NARC_New
-    add r6, r0, #0
-    mov r0, #8
-    mov r1, #5
-    bl NARC_New
-    add r7, r0, #0
-    mov r0, #0
-    str r0, [sp]
-    str r0, [sp, #4]
-    add r0, r6, #0
-    add r1, r7, #0
-    add r2, r5, #0
-    mov r3, #0x12
-    bl BattleInput_ChangeMenu
-    add r0, r6, #0
-    bl NARC_Delete
-    add r0, r7, #0
-    bl NARC_Delete
-    mov r0, #4
-    ldrsh r0, [r4, r0]
-    add sp, #8
-    add r0, r0, #1
-    strh r0, [r4, #4]
-    pop {r3, r4, r5, r6, r7, pc}
-    bl BattleInput_CheckFeedbackDone
-    cmp r0, #1
-    bne _0226BFCE
-    mov r0, #4
-    ldrsh r0, [r4, r0]
-    add sp, #8
-    add r0, r0, #1
-    strh r0, [r4, #4]
-    pop {r3, r4, r5, r6, r7, pc}
-    ldr r0, [r4]
-    bl ov12_0223C080
-    cmp r0, #1
-    bne _0226BFCE
-    add r0, r5, #0
-    bl BattleInput_CheckTouch
-    cmp r0, #1
-    bne _0226BFCE
-    ldr r0, _0226BFD4 ; =0x000005DD
-    bl PlaySE
-    mov r0, #4
-    ldrsh r0, [r4, r0]
-    add sp, #8
-    add r0, r0, #1
-    strh r0, [r4, #4]
-    pop {r3, r4, r5, r6, r7, pc}
-    mov r0, #6
-    ldrsh r1, [r4, r0]
-    add r1, r1, #1
-    strh r1, [r4, #6]
-    ldrsh r0, [r4, r0]
-    cmp r0, #8
-    ble _0226BFCE
-    ldr r0, [r4]
-    mov r1, #0
-    bl ov12_0223BFFC
-    mov r0, #4
-    ldrsh r0, [r4, r0]
-    add r0, r0, #1
-    strh r0, [r4, #4]
-    add sp, #8
-    pop {r3, r4, r5, r6, r7, pc}
-    nop
-    _0226BFD4: .word 0x000005DD"
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r4, r1, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    mov r1, #4\n    ldrsh r1, [r4, r1]\n    add r5, r0, #0\n    cmp r1, #4\n    bhi _0226BFCE\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0226BF26: ; jump table\n    cmp r5, #0\n    bne _0226BF38\n    bl GF_AssertFail\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r6, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    add r0, r6, #0\n    add r1, r7, #0\n    add r2, r5, #0\n    mov r3, #0x12\n    bl BattleInput_ChangeMenu\n    add r0, r6, #0\n    bl NARC_Delete\n    add r0, r7, #0\n    bl NARC_Delete\n    mov r0, #4\n    ldrsh r0, [r4, r0]\n    add sp, #8\n    add r0, r0, #1\n    strh r0, [r4, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #1\n    bne _0226BFCE\n    mov r0, #4\n    ldrsh r0, [r4, r0]\n    add sp, #8\n    add r0, r0, #1\n    strh r0, [r4, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4]\n    bl ov12_0223C080\n    cmp r0, #1\n    bne _0226BFCE\n    add r0, r5, #0\n    bl BattleInput_CheckTouch\n    cmp r0, #1\n    bne _0226BFCE\n    ldr r0, _0226BFD4 ; =0x000005DD\n    bl PlaySE\n    mov r0, #4\n    ldrsh r0, [r4, r0]\n    add sp, #8\n    add r0, r0, #1\n    strh r0, [r4, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #6\n    ldrsh r1, [r4, r0]\n    add r1, r1, #1\n    strh r1, [r4, #6]\n    ldrsh r0, [r4, r0]\n    cmp r0, #8\n    ble _0226BFCE\n    ldr r0, [r4]\n    mov r1, #0\n    bl ov12_0223BFFC\n    mov r0, #4\n    ldrsh r0, [r4, r0]\n    add r0, r0, #1\n    strh r0, [r4, #4]\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0226BFD4: .word 0x000005DD"
     );
     #endif
 }

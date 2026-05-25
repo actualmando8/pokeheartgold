@@ -58,13 +58,8 @@ void ov01_021F141C(void) {
 }
 
 void ov01_021F1430(void) {
-    /* Original at 0x021F1430 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r4, r3, #0\n    bl ov01_021F141C\n    add r1, r4, #0\n    add r2, r5, #0\n    add r6, r0, #0\n    bl memset\n    add r0, r6, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov01_021F141C();
+    memset(r4, r5);
 }
 
 void ov01_021F1448(void) {
