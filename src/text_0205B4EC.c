@@ -44,10 +44,11 @@ void sub_0205B5A8(void) {
 
 
 
-void sub_0205B5B4(void) {
+u32 sub_0205B5B4(void *taskMgr, void *textData, void *options, u32 font) {
     // str r3, [sp]
     // str r0, [sp, #4]
     // str r3, [sp, #8]
+    return 0;
 }
 
 

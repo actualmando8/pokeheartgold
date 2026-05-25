@@ -47,6 +47,15 @@
 - The `scripts/add_sdk_asm_guards.py` script needs refinement - it incorrectly wraps headers that need SDK_ASM-aware splitting
 - Remaining assembler errors: `lib/asm/crt0.s` and NitroSDK asm files include C headers with function declarations that the assembler can't parse
 
+### [2026-05-25 23:43] - Build Fixes Continued
+- Fixed `sub_0205B5B4` signature in `include/text_0205B4EC.h` to `(void*, void*, void*, u32)` returning `u32`
+- Fixed `UnkStruct_02067A60` function signatures in `include/unk_02067A60.h` to use `FieldSystem *`
+- All non-frontier files now compile cleanly
+- 3 pre-existing broken files remain: `frontier.c`, `frontier_map.c`, `frontier_system.c`
+  - These contain raw register variables (`r0`, `r4`, `r5`, `r6`) from poor auto-decompilation
+  - Need proper decompilation from `asm/frontier.s` (3286 lines total)
+  - Currently rewriting `frontier.c` with proper C code
+
 ### Notes
 - Some functions use register variables (r0, r1, sp, etc.) as placeholders
 - Functions with complex control flow (branches) were manually decompiled

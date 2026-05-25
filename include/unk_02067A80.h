@@ -2,7 +2,6 @@
 #define POKEHEARTGOLD_UNK_02067A80_H
 
 #include "script.h"
-
-void sub_02067A80(FieldSystem *fieldSystem, u8 a1);
+#include "unk_02067A60.h"
 
 #endif // POKEHEARTGOLD_UNK_02067A80_H
