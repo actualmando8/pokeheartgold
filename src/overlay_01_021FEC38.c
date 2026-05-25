@@ -1,0 +1,86 @@
+/* Decompiled from asm/overlay_01_021FEC38.s */
+#include "global.h"
+
+void ov01_021FEC38(void) {
+    /* Original at 0x021FEC38 */
+    /* Requires manual decompilation - 11 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #0x3c\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    bl ov01_021FEC64\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov01_021FEC54(void) {
+    /* Original at 0x021FEC54 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_021FEC8C\n    add r0, r4, #0\n    bl ov01_021F1448\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov01_021FEC64(void) {
+    /* Original at 0x021FEC64 */
+    /* Requires manual decompilation - 18 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, lr}\n    sub sp, #4\n    mov r2, #0\n    add r4, r0, #0\n    str r2, [sp]\n    ldr r0, [r4]\n    add r1, r4, #4\n    mov r3, #0x1d\n    bl ov01_021F19F4\n    mov r2, #0\n    str r2, [sp]\n    ldr r0, [r4]\n    add r4, #0x18\n    add r1, r4, #0\n    mov r3, #0x86\n    bl ov01_021F1A18\n    add sp, #4\n    pop {r3, r4, pc}"
+    );
+    #endif
+}
+
+void ov01_021FEC8C(void) {
+    /* Original at 0x021FEC8C */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r4, #4\n    bl sub_02069784\n    add r4, #0x18\n    add r0, r4, #0\n    bl sub_020698D0\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov01_021FECA0(void) {
+    /* Original at 0x021FECA0 */
+    /* Requires manual decompilation - 50 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x1c\n    add r6, r1, #0\n    mov r1, #2\n    lsl r1, r1, #8\n    add r5, r0, #0\n    add r4, r2, #0\n    add r7, r3, #0\n    bl MapObject_TestFlagsBits\n    cmp r0, #1\n    beq _021FED0A\n    add r0, r5, #0\n    bl ov01_021F146C\n    mov r1, #6\n    str r0, [sp, #8]\n    bl ov01_021F1450\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    add r1, r7, #0\n    add r2, sp, #0x10\n    bl sub_020611C8\n    mov r0, #1\n    ldr r2, [sp, #0x18]\n    lsl r1, r4, #3\n    lsl r0, r0, #0xc\n    add r0, r1, r0\n    add r0, r2, r0\n    str r0, [sp, #0x18]\n    add r0, r5, #0\n    bl MapObject_GetPreviousYCoord\n    lsl r1, r0, #0xf\n    mov r0, #2\n    lsl r0, r0, #0xe\n    sub r0, r1, r0\n    str r0, [sp, #0x14]\n    add r0, r5, #0\n    mov r1, #2\n    bl MapObject_GetPriorityPlusValue\n    add r1, sp, #8\n    str r1, [sp]\n    str r0, [sp, #4]\n    ldr r0, [sp, #8]\n    ldr r1, _021FED10 ; =ov01_02209110\n    add r2, sp, #0x10\n    mov r3, #0\n    bl ov01_021F1620\n    add sp, #0x1c\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _021FED10: .word ov01_02209110"
+    );
+    #endif
+}
+
+void ov01_021FED14(void) {
+    /* Original at 0x021FED14 */
+    /* Requires manual decompilation - 24 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, lr}\n    sub sp, #4\n    add r4, r1, #0\n    bl sub_02068D98\n    ldr r3, [r0, #4]\n    ldr r1, [r0]\n    mov r0, #0\n    str r1, [r4, #0x78]\n    str r3, [r4, #0x7c]\n    str r0, [sp]\n    add r2, r3, #4\n    ldr r0, [r4, #0x78]\n    add r1, r4, #0\n    add r3, #0x18\n    bl ov01_021F1A34\n    ldr r1, [r4, #0x7c]\n    add r0, r4, #0\n    add r0, #0x24\n    add r1, r1, #4\n    add r2, r4, #0\n    bl sub_02069998\n    mov r0, #1\n    add sp, #4\n    pop {r3, r4, pc}"
+    );
+    #endif
+}
+
+void ov01_021FED4C(void) {
+    sub_020698D0();
+}
+
+void ov01_021FED58(void) {
+    /* Original at 0x021FED58 */
+    /* Requires manual decompilation - 16 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl sub_02069948\n    cmp r0, #1\n    bne _021FED70\n    add r0, r5, #0\n    bl ov01_021F1640\n    pop {r3, r4, r5, pc}\n    mov r1, #1\n    add r0, r4, #0\n    lsl r1, r1, #0xc\n    mov r2, #0\n    bl sub_020698E8\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov01_021FED80(void) {
+    /* Original at 0x021FED80 */
+    /* Requires manual decompilation - 11 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    add r1, sp, #0\n    bl sub_02068DB8\n    add r4, #0x24\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_020699BC\n    add sp, #0xc\n    pop {r3, r4, pc}"
+    );
+    #endif
+}

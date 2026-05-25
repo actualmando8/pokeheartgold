@@ -1,8 +1,21 @@
-#ifndef POKEHEARTGOLD_OVERLAY_01_021FE780_H
-#define POKEHEARTGOLD_OVERLAY_01_021FE780_H
+#ifndef GUARD_OVERLAY_01_021FE780_H
+#define GUARD_OVERLAY_01_021FE780_H
 
-#include "map_object_manager.h"
+#include "global.h"
 
-u32 ov01_021FE7DC(LocalMapObject *obj, u32 x, u32 y, u32 dir, u32 a4);
+extern u8 ov01_022090C4[12];
+extern u8 ov01_022090D0[12];
+extern u32 ov01_022090DC[];
 
-#endif // POKEHEARTGOLD_OVERLAY_01_021FE780_H
+void *ov01_021FE780(void *parent);
+void ov01_021FE79C(void *ctx);
+void ov01_021FE7AC(void *ctx);
+void ov01_021FE7D0(void *ctx);
+void ov01_021FE7DC(void *obj, s16 x, s16 z, u32 r3);
+u32 ov01_021FE868(void *obj, void *data);
+void ov01_021FE8B0(void *r0, void *data);
+void ov01_021FE8C8(void *obj, void *data);
+void ov01_021FE970(void *obj, void *data);
+void ov01_021FE9F4(void *ctx, void *data);
+
+#endif

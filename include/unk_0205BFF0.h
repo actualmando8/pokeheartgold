@@ -1,13 +1,15 @@
-#ifndef POKEHEARTGOLD_UNK_0205BFF0_H
-#define POKEHEARTGOLD_UNK_0205BFF0_H
+#ifndef GUARD_UNK_0205BFF0_H
+#define GUARD_UNK_0205BFF0_H
 
-int sub_0205BFF0(u8, u8);
-int sub_0205C048(u8, u8);
-u32 sub_0205C0CC(u8);
-int sub_0205C11C(u8);
-u32 sub_0205C144(u8 a0);
-u32 sub_0205C174(u8, u8);
-u32 sub_0205C1A0(u8);
-u32 sub_0205C1F0(u8);
+u16 sub_0205BFF0(u32 idx, u32 type);
+u16 sub_0205C01C(u32 idx, u32 type);
+u16 sub_0205C048(u32 idx, u32 type);
+u16 sub_0205C074(u32 idx, u32 type);
+u16 sub_0205C0A0(u32 type, u32 idx);
+u16 sub_0205C0CC(u32 type);
+u16 sub_0205C0F4(u32 type);
+u16 sub_0205C11C(u32 type);
+u8 sub_0205C144(u32 type);
+u16 sub_0205C174(u32 idx, u32 type);
 
-#endif // POKEHEARTGOLD_UNK_0205BFF0_H
+#endif // GUARD_UNK_0205BFF0_H

@@ -1,13 +1,19 @@
-#ifndef POKEHEARTGOLD_UNK_0200B150_H
-#define POKEHEARTGOLD_UNK_0200B150_H
+#ifndef GUARD_UNK_0200B150_H
+#define GUARD_UNK_0200B150_H
 
-#include "heap.h"
+#include "global.h"
 
-void sub_0200B27C(NNSG2dRenderSurface *surface, NNSG2dViewRect *rect, NNS_G2D_VRAM_TYPE type, NNSG2dRendererInstance *instance);
+void OamManager_Create(u32 r0, u32 r1, u32 r2, u32 r3);
+void sub_0200B194(u32 width, u32 height, u32 r2, u32 r3);
 void OamManager_ApplyAndResetBuffers(void);
 void OamManager_Free(void);
-void OamManager_Create(int, int, int, int, int, int, int, int, enum HeapID);
-void thunk_ClearMainOAM(enum HeapID heapID);
-void thunk_ClearSubOAM(enum HeapID heapID);
+void sub_0200B27C(void *r0, void *r1, u32 isMain, void *r3);
+void thunk_ClearMainOAM(void *oam);
+void thunk_ClearSubOAM(void *oam);
+void *sub_0200B2F0(void *oam, void *affine);
+void *sub_0200B310(void *oam, void *affine);
+void *sub_0200B334(void *affine);
+void *sub_0200B358(void *affine);
+extern u32 _021D0EB0;
 
-#endif // POKEHEARTGOLD_UNK_0200B150_H
+#endif

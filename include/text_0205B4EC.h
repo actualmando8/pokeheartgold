@@ -1,15 +1,16 @@
-#ifndef POKEHEARTGOLD_TEXT_0205B4EC_H
-#define POKEHEARTGOLD_TEXT_0205B4EC_H
+#ifndef GUARD_TEXT_0205B4EC_H
+#define GUARD_TEXT_0205B4EC_H
 
-#include "bg_window.h"
-#include "options.h"
-#include "pm_string.h"
+#include "global.h"
 
-void sub_0205B514(BgConfig *bgConfig, Window *window, int a2);
-void sub_0205B564(Window *window, Options *options);
-u8 sub_0205B5B4(Window *window, String *string, Options *options, BOOL speedupFlag);
-BOOL IsPrintFinished(u8 printerId);
-void sub_0205B5A8(Window *window);
-u32 sub_0205B5EC(Window *window, String *message, FontID fontId, u32 textFrame, u8 speedUpEnabled, u32 a4);
+void sub_0205B4EC(void *taskMgr, u32 resetPrinters);
+u32 sub_0205B514(u32 param1, u32 param2, u32 frameType);
+void sub_0205B564(void *window, void *taskMgr);
+void sub_0205B5A8(void *window);
+void sub_0205B5B4(void *taskMgr, u32 windowId, u32 textData, u32 font);
+void sub_0205B5EC(void *taskMgr, u32 windowId, u32 textData, u32 font);
+u32 IsPrintFinished(void);
+u32 sub_0205B63C(u32 param1, u32 windowId, u32 sizeType, u32 frameType);
+void sub_0205B6A0(void *window, void *taskMgr, u32 frameId);
 
-#endif // POKEHEARTGOLD_TEXT_0205B4EC_H
+#endif

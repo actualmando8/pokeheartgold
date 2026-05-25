@@ -1,0 +1,2150 @@
+/* Decompiled from asm/overlay_12_battle_controller_opponent.s */
+#include "global.h"
+
+void ov12_02258800(void) {
+    /* Original at 0x02258800 */
+    /* Requires manual decompilation - 424 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x94\n    str r1, [sp, #0x18]\n    add r7, r0, #0\n    bl BattleSystem_GetBattleContext\n    add r5, r0, #0\n    ldr r0, [sp, #0x18]\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #0x10\n    tst r0, r1\n    bne _0225882C\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    beq _02258830\n    str r4, [sp, #0x44]\n    b _0225883E\n    ldr r1, [sp, #0x18]\n    add r0, r7, #0\n    bl BattleSystem_GetBattlerIdPartner\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x44]\n    ldr r2, [sp, #0x18]\n    add r0, r7, #0\n    add r1, r5, #0\n    bl Battler_GetRandomOpposingBattlerId\n    lsl r0, r0, #0x18\n    lsr r6, r0, #0x18\n    ldr r1, [sp, #0x18]\n    add r0, r7, #0\n    bl BattleSystem_GetPartySize\n    str r0, [sp, #0x40]\n    mov r0, #0\n    str r0, [sp, #0x50]\n    add r0, r5, r4\n    str r0, [sp, #0x34]\n    ldr r0, [sp, #0x44]\n    add r0, r5, r0\n    str r0, [sp, #0x30]\n    mov r0, #0\n    str r0, [sp, #0x48]\n    mov r0, #6\n    str r0, [sp, #0x38]\n    ldr r0, [sp, #0x40]\n    ldr r4, [sp, #0x48]\n    cmp r0, #0\n    ble _02258968\n    ldr r1, [sp, #0x18]\n    add r0, r7, #0\n    add r2, r4, #0\n    bl BattleSystem_GetPartyMon\n    mov r1, #0xae\n    mov r2, #0\n    str r0, [sp, #0x68]\n    bl GetMonData\n    lsl r0, r0, #0x10\n    lsr r1, r0, #0x10\n    beq _02258950\n    ldr r0, _02258B8C ; =0x000001EE\n    cmp r1, r0\n    beq _02258950\n    ldr r0, [sp, #0x68]\n    mov r1, #0xa3\n    mov r2, #0\n    bl GetMonData\n    cmp r0, #0\n    beq _02258950\n    add r0, r4, #0\n    bl MaskOfFlagNo\n    ldr r1, [sp, #0x50]\n    tst r0, r1\n    bne _02258950\n    ldr r1, [sp, #0x34]\n    ldr r0, _02258B90 ; =0x0000219C\n    ldrb r0, [r1, r0]\n    cmp r4, r0\n    beq _02258950\n    ldr r1, [sp, #0x30]\n    ldr r0, _02258B90 ; =0x0000219C\n    ldrb r0, [r1, r0]\n    cmp r4, r0\n    beq _02258950\n    ldr r1, [sp, #0x34]\n    ldr r0, _02258B94 ; =0x000021A4\n    ldrb r0, [r1, r0]\n    cmp r4, r0\n    beq _02258950\n    ldr r1, [sp, #0x30]\n    ldr r0, _02258B94 ; =0x000021A4\n    ldrb r0, [r1, r0]\n    cmp r4, r0\n    beq _02258950\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #0x1b\n    mov r3, #0\n    bl GetBattlerVar\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x60]\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #0x1c\n    mov r3, #0\n    bl GetBattlerVar\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x5c]\n    ldr r0, [sp, #0x68]\n    mov r1, #0xb1\n    mov r2, #0\n    bl GetMonData\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x58]\n    ldr r0, [sp, #0x68]\n    mov r1, #0xb2\n    mov r2, #0\n    bl GetMonData\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x54]\n    ldr r0, [sp, #0x58]\n    ldr r1, [sp, #0x60]\n    ldr r2, [sp, #0x5c]\n    bl CalculateTypeEffectiveness\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x4c]\n    ldr r0, [sp, #0x54]\n    ldr r1, [sp, #0x60]\n    ldr r2, [sp, #0x5c]\n    bl CalculateTypeEffectiveness\n    ldr r1, [sp, #0x4c]\n    add r0, r1, r0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x4c]\n    ldr r1, [sp, #0x48]\n    cmp r1, r0\n    bhs _02258960\n    ldr r0, [sp, #0x4c]\n    str r0, [sp, #0x48]\n    lsl r0, r4, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x38]\n    b _02258960\n    add r0, r4, #0\n    bl MaskOfFlagNo\n    ldr r1, [sp, #0x50]\n    orr r0, r1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x50]\n    ldr r0, [sp, #0x40]\n    add r4, r4, #1\n    cmp r4, r0\n    blt _02258874\n    ldr r0, [sp, #0x38]\n    cmp r0, #6\n    beq _02258A30\n    ldr r1, [sp, #0x18]\n    ldr r2, [sp, #0x38]\n    add r0, r7, #0\n    bl BattleSystem_GetPartyMon\n    add r4, r0, #0\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r1, [sp, #0x20]\n    add r0, r4, #0\n    add r1, #0x36\n    mov r2, #0\n    bl GetMonData\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #0x3c]\n    ldr r3, [sp, #0x3c]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r4, #0\n    bl ov12_02258BB4\n    str r0, [sp, #0x6c]\n    ldr r0, [sp, #0x3c]\n    cmp r0, #0\n    beq _02258A08\n    mov r0, #0\n    str r0, [sp, #0x90]\n    add r0, r4, #0\n    mov r1, #0xa\n    mov r2, #0\n    bl GetMonData\n    str r0, [sp, #0x70]\n    add r0, r5, #0\n    add r1, r6, #0\n    bl GetBattlerAbility\n    str r0, [sp, #0x74]\n    add r0, r5, #0\n    add r1, r6, #0\n    bl GetBattlerHeldItemEffect\n    str r0, [sp, #0x78]\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #0x1b\n    mov r3, #0\n    bl GetBattlerVar\n    str r0, [sp, #0x7c]\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #0x1c\n    mov r3, #0\n    bl GetBattlerVar\n    ldr r1, [sp, #0x74]\n    ldr r2, [sp, #0x6c]\n    str r1, [sp]\n    ldr r1, [sp, #0x78]\n    ldr r3, [sp, #0x70]\n    str r1, [sp, #4]\n    ldr r1, [sp, #0x7c]\n    str r1, [sp, #8]\n    str r0, [sp, #0xc]\n    add r0, sp, #0x90\n    str r0, [sp, #0x10]\n    ldr r1, [sp, #0x3c]\n    add r0, r5, #0\n    bl ov12_02252054\n    ldr r1, [sp, #0x90]\n    mov r0, #2\n    tst r0, r1\n    bne _02258A12\n    ldr r0, [sp, #0x20]\n    add r0, r0, #1\n    str r0, [sp, #0x20]\n    cmp r0, #4\n    blt _0225897E\n    ldr r0, [sp, #0x20]\n    cmp r0, #4\n    bne _02258A2A\n    ldr r0, [sp, #0x38]\n    bl MaskOfFlagNo\n    ldr r1, [sp, #0x50]\n    orr r0, r1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x50]\n    b _02258A34\n    ldr r0, [sp, #0x38]\n    add sp, #0x94\n    pop {r4, r5, r6, r7, pc}\n    mov r0, #0x3f\n    str r0, [sp, #0x50]\n    ldr r0, [sp, #0x50]\n    cmp r0, #0x3f\n    beq _02258A3C\n    b _02258864\n    mov r0, #0\n    str r0, [sp, #0x28]\n    mov r0, #6\n    str r0, [sp, #0x2c]\n    ldr r0, [sp, #0x28]\n    str r0, [sp, #0x24]\n    ldr r0, [sp, #0x40]\n    cmp r0, #0\n    bgt _02258A50\n    b _02258B84\n    ldr r1, [sp, #0x18]\n    ldr r2, [sp, #0x24]\n    add r0, r7, #0\n    bl BattleSystem_GetPartyMon\n    mov r1, #0xae\n    mov r2, #0\n    str r0, [sp, #0x1c]\n    bl GetMonData\n    lsl r0, r0, #0x10\n    lsr r1, r0, #0x10\n    beq _02258A70\n    ldr r0, _02258B8C ; =0x000001EE\n    cmp r1, r0\n    bne _02258A72\n    b _02258B76\n    ldr r0, [sp, #0x1c]\n    mov r1, #0xa3\n    mov r2, #0\n    bl GetMonData\n    cmp r0, #0\n    beq _02258B76\n    ldr r0, _02258B90 ; =0x0000219C\n    ldr r1, [sp, #0x34]\n    ldrb r2, [r1, r0]\n    ldr r1, [sp, #0x24]\n    cmp r1, r2\n    beq _02258B76\n    ldr r1, [sp, #0x30]\n    ldrb r2, [r1, r0]\n    ldr r1, [sp, #0x24]\n    cmp r1, r2\n    beq _02258B76\n    add r2, r0, #0\n    ldr r1, [sp, #0x34]\n    add r2, #8\n    ldrb r2, [r1, r2]\n    ldr r1, [sp, #0x24]\n    cmp r1, r2\n    beq _02258B76\n    ldr r1, [sp, #0x30]\n    add r0, #8\n    ldrb r1, [r1, r0]\n    ldr r0, [sp, #0x24]\n    cmp r0, r1\n    beq _02258B76\n    mov r0, #0\n    str r0, [sp, #0x64]\n    ldr r0, [sp, #0x18]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x84]\n    ldr r0, [sp, #0x24]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x88]\n    ldr r1, [sp, #0x64]\n    ldr r0, [sp, #0x1c]\n    add r1, #0x36\n    mov r2, #0\n    bl GetMonData\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #0x8c]\n    ldr r2, [sp, #0x1c]\n    ldr r3, [sp, #0x8c]\n    add r0, r7, #0\n    add r1, r5, #0\n    bl ov12_02258BB4\n    str r0, [sp, #0x80]\n    ldr r0, [sp, #0x8c]\n    cmp r0, #0\n    beq _02258B5E\n    lsl r0, r0, #4\n    add r1, r5, r0\n    ldr r0, _02258B98 ; =0x000003E1\n    ldrb r0, [r1, r0]\n    cmp r0, #1\n    beq _02258B5E\n    add r0, r7, #0\n    add r1, r6, #0\n    bl BattleSystem_GetFieldSide\n    add r3, r0, #0\n    mov r0, #6\n    lsl r0, r0, #6\n    ldr r0, [r5, r0]\n    lsl r3, r3, #2\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x84]\n    add r4, r5, r3\n    str r0, [sp, #0xc]\n    mov r3, #0x6f\n    str r6, [sp, #0x10]\n    mov r0, #1\n    str r0, [sp, #0x14]\n    lsl r3, r3, #2\n    ldr r2, [sp, #0x8c]\n    ldr r3, [r4, r3]\n    add r0, r7, #0\n    add r1, r5, #0\n    bl CalcMoveDamage\n    lsl r0, r0, #0x18\n    lsr r1, r0, #0x18\n    mov r0, #0\n    str r0, [sp, #0x90]\n    ldr r0, [sp, #0x18]\n    ldr r3, [sp, #0x80]\n    str r0, [sp]\n    str r6, [sp, #4]\n    str r1, [sp, #8]\n    add r0, sp, #0x90\n    str r0, [sp, #0xc]\n    ldr r2, [sp, #0x8c]\n    add r0, r7, #0\n    add r1, r5, #0\n    bl ov12_02251D28\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x4c]\n    ldr r1, [sp, #0x90]\n    ldr r0, _02258B9C ; =0x00140808\n    tst r0, r1\n    beq _02258B5E\n    mov r0, #0\n    str r0, [sp, #0x4c]\n    ldr r1, [sp, #0x28]\n    ldr r0, [sp, #0x4c]\n    cmp r1, r0\n    bhs _02258B6C\n    str r0, [sp, #0x28]\n    ldr r0, [sp, #0x88]\n    str r0, [sp, #0x2c]\n    ldr r0, [sp, #0x64]\n    add r0, r0, #1\n    str r0, [sp, #0x64]\n    cmp r0, #4\n    blt _02258AC4\n    ldr r0, [sp, #0x24]\n    add r1, r0, #1\n    ldr r0, [sp, #0x40]\n    str r1, [sp, #0x24]\n    cmp r1, r0\n    bge _02258B84\n    b _02258A50\n    ldr r0, [sp, #0x2c]\n    add sp, #0x94\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02258B8C: .word 0x000001EE\n    _02258B90: .word 0x0000219C\n    _02258B94: .word 0x000021A4\n    _02258B98: .word 0x000003E1\n    _02258B9C: .word 0x00140808"
+    );
+    #endif
+}
+
+void ov12_02258BA0(void) {
+    BattleSystem_GetBattleContext();
+}
+
+void ov12_02258BB4(void) {
+    /* Original at 0x02258BB4 */
+    /* Requires manual decompilation - 194 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r4, r2, #0\n    ldr r2, _02258D6C ; =0x00000137\n    add r7, r0, #0\n    add r6, r1, #0\n    cmp r3, r2\n    bgt _02258BCE\n    blt _02258BC8\n    b _02258D12\n    cmp r3, #0xed\n    beq _02258C90\n    b _02258D64\n    add r0, r2, #0\n    add r0, #0x34\n    cmp r3, r0\n    bgt _02258BDE\n    add r2, #0x34\n    cmp r3, r2\n    beq _02258BE6\n    b _02258D64\n    add r2, #0x8a\n    cmp r3, r2\n    beq _02258C02\n    b _02258D64\n    add r0, r4, #0\n    mov r1, #6\n    mov r2, #0\n    bl GetMonData\n    add r1, r0, #0\n    lsl r1, r1, #0x10\n    add r0, r6, #0\n    lsr r1, r1, #0x10\n    mov r2, #0xc\n    bl GetItemVar\n    add r5, r0, #0\n    b _02258D66\n    add r0, r4, #0\n    mov r1, #6\n    mov r2, #0\n    bl GetMonData\n    add r1, r0, #0\n    lsl r1, r1, #0x10\n    add r0, r6, #0\n    lsr r1, r1, #0x10\n    mov r2, #1\n    bl GetItemVar\n    sub r0, #0x7e\n    cmp r0, #0xf\n    bhi _02258C8C\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02258C2C: ; jump table\n    mov r5, #1\n    b _02258D66\n    mov r5, #2\n    b _02258D66\n    mov r5, #3\n    b _02258D66\n    mov r5, #4\n    b _02258D66\n    mov r5, #5\n    b _02258D66\n    mov r5, #6\n    b _02258D66\n    mov r5, #7\n    b _02258D66\n    mov r5, #8\n    b _02258D66\n    mov r5, #0xa\n    b _02258D66\n    mov r5, #0xb\n    b _02258D66\n    mov r5, #0xc\n    b _02258D66\n    mov r5, #0xd\n    b _02258D66\n    mov r5, #0xe\n    b _02258D66\n    mov r5, #0xf\n    b _02258D66\n    mov r5, #0x10\n    b _02258D66\n    mov r5, #0x11\n    b _02258D66\n    mov r5, #0\n    b _02258D66\n    add r0, r4, #0\n    mov r1, #0x4b\n    mov r2, #0\n    bl GetMonData\n    add r5, r0, #0\n    add r0, r4, #0\n    mov r1, #0x4a\n    mov r2, #0\n    bl GetMonData\n    add r6, r0, #0\n    add r0, r4, #0\n    mov r1, #0x49\n    mov r2, #0\n    bl GetMonData\n    add r7, r0, #0\n    add r0, r4, #0\n    mov r1, #0x48\n    mov r2, #0\n    bl GetMonData\n    str r0, [sp, #4]\n    add r0, r4, #0\n    mov r1, #0x46\n    mov r2, #0\n    bl GetMonData\n    str r0, [sp, #8]\n    add r0, r4, #0\n    mov r1, #0x47\n    mov r2, #0\n    bl GetMonData\n    add r1, r0, #0\n    lsl r2, r6, #0x1f\n    lsl r0, r5, #0x1f\n    lsr r5, r2, #0x1b\n    lsl r2, r7, #0x1f\n    lsr r4, r2, #0x1c\n    ldr r2, [sp, #4]\n    lsl r1, r1, #0x1f\n    lsl r2, r2, #0x1f\n    lsr r3, r2, #0x1d\n    ldr r2, [sp, #8]\n    mov r6, #1\n    and r2, r6\n    lsr r1, r1, #0x1e\n    orr r1, r2\n    orr r1, r3\n    orr r1, r4\n    lsr r0, r0, #0x1a\n    orr r1, r5\n    orr r1, r0\n    mov r0, #0xf\n    mul r0, r1\n    mov r1, #0x3f\n    bl _s32_div_f\n    add r5, r0, #1\n    cmp r5, #9\n    blt _02258D66\n    add r5, r5, #1\n    b _02258D66\n    mov r2, #0xd\n    str r2, [sp]\n    mov r2, #8\n    mov r3, #0\n    bl CheckAbilityActive\n    cmp r0, #0\n    bne _02258D66\n    mov r0, #0x4c\n    str r0, [sp]\n    add r0, r7, #0\n    add r1, r6, #0\n    mov r2, #8\n    mov r3, #0\n    bl CheckAbilityActive\n    cmp r0, #0\n    bne _02258D66\n    mov r0, #6\n    lsl r0, r0, #6\n    ldr r0, [r6, r0]\n    ldr r1, _02258D70 ; =0x000080FF\n    tst r1, r0\n    beq _02258D66\n    mov r1, #3\n    tst r1, r0\n    beq _02258D4A\n    mov r5, #0xb\n    mov r1, #0xc\n    tst r1, r0\n    beq _02258D52\n    mov r5, #5\n    mov r1, #0x30\n    tst r1, r0\n    beq _02258D5A\n    mov r5, #0xa\n    mov r1, #0xc0\n    tst r0, r1\n    beq _02258D66\n    mov r5, #0xf\n    b _02258D66\n    mov r5, #0\n    add r0, r5, #0\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _02258D6C: .word 0x00000137\n    _02258D70: .word 0x000080FF"
+    );
+    #endif
+}
+
+void ov12_02258D74(void) {
+    /* Original at 0x02258D74 */
+    /* Requires manual decompilation - 27 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    mov r1, #0x6b\n    mov r0, #5\n    lsl r1, r1, #2\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r2, #0x6b\n    mov r0, #0\n    add r1, r4, #0\n    lsl r2, r2, #2\n    bl MIi_CpuClearFast\n    mov r0, #0x65\n    ldrb r1, [r5]\n    lsl r0, r0, #2\n    strb r1, [r4, r0]\n    ldrb r1, [r5, #1]\n    add r0, r0, #1\n    strb r1, [r4, r0]\n    mov r0, #0xb4\n    mov r1, #5\n    bl NARC_New\n    mov r1, #0x69\n    lsl r1, r1, #2\n    str r0, [r4, r1]\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02258DB0(void) {
+    /* Original at 0x02258DB0 */
+    /* Requires manual decompilation - 71 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x28\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #0x22\n    lsl r1, r1, #4\n    tst r0, r1\n    bne _02258E48\n    sub r1, #0x8b\n    ldrb r1, [r4, r1]\n    mov r0, #1\n    tst r0, r1\n    beq _02258DDC\n    add r0, r5, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    tst r0, r1\n    beq _02258E48\n    ldr r0, _02258E4C ; =0x00000195\n    ldr r1, _02258E50 ; =ov12_0226D120\n    ldrb r2, [r4, r0]\n    sub r0, r0, #1\n    ldrb r1, [r1, r2]\n    str r1, [sp]\n    mov r1, #5\n    str r1, [sp, #4]\n    mov r1, #4\n    str r1, [sp, #8]\n    ldrb r0, [r4, r0]\n    str r0, [sp, #0xc]\n    add r0, r5, #0\n    str r6, [sp, #0x10]\n    bl BattleSystem_GetSpriteSystem\n    str r0, [sp, #0x1c]\n    add r0, r5, #0\n    bl BattleSystem_GetPaletteData\n    str r0, [sp, #0x20]\n    mov r0, #0\n    str r0, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x14]\n    add r0, sp, #0\n    bl ov07_02233DB8\n    add r1, r4, #0\n    add r1, #0x88\n    str r0, [r1]\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #0x64\n    bl ov07_022344C4\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #2\n    bl ov07_022344D0\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #0\n    bl ov07_0223449C\n    add r4, #0x88\n    ldr r0, [r4]\n    mov r1, #0\n    bl ov07_022344C0\n    add sp, #0x28\n    pop {r4, r5, r6, pc}\n    _02258E4C: .word 0x00000195\n    _02258E50: .word ov12_0226D120"
+    );
+    #endif
+}
+
+void ov12_02258E54(void) {
+    /* Original at 0x02258E54 */
+    /* Requires manual decompilation - 19 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, lr}\n    add r2, r1, #0\n    add r2, #0x94\n    ldrb r2, [r2]\n    cmp r2, #0\n    beq _02258E76\n    mov r2, #0x6a\n    mov r3, #0\n    lsl r2, r2, #2\n    strb r3, [r1, r2]\n    add r2, r1, #0\n    add r2, #0x94\n    ldrb r2, [r2]\n    lsl r3, r2, #2\n    ldr r2, _02258E78 ; =ov12_0226D010\n    ldr r2, [r2, r3]\n    blx r2\n    pop {r3, pc}\n    _02258E78: .word ov12_0226D010"
+    );
+    #endif
+}
+
+void ov12_02258E7C(void) {
+    /* Original at 0x02258E7C */
+    /* Requires manual decompilation - 20 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    cmp r2, #2\n    beq _02258E8C\n    add r0, r4, #0\n    add r0, #0x28\n    bl BattleHpBar_FreeResources\n    ldr r0, [r4, #0x18]\n    cmp r0, #0\n    beq _02258E96\n    bl Sprite_DeleteAndFreeResources\n    add r0, r4, #0\n    bl ov12_02262014\n    mov r0, #0x69\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl NARC_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258EB0(void) {
+    /* Original at 0x02258EB0 */
+    /* Requires manual decompilation - 1 instructions */
+    #ifdef MWERKS
+    asm(
+        "bx lr"
+    );
+    #endif
+}
+
+void ov12_02258EB4(void) {
+    /* Original at 0x02258EB4 */
+    /* Requires manual decompilation - 18 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r1, #0x98\n    ldr r1, [r1]\n    add r5, r0, #0\n    bl BattleSystem_SetRandTemp\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov12_02259944\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #1\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02258EE0(void) {
+    /* Original at 0x02258EE0 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259968\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258EF4(void) {
+    /* Original at 0x02258EF4 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259BA8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258F08(void) {
+    /* Original at 0x02258F08 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259D48\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258F1C(void) {
+    /* Original at 0x02258F1C */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_02259F30\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258F30(void) {
+    /* Original at 0x02258F30 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A018\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258F44(void) {
+    /* Original at 0x02258F44 */
+    /* Requires manual decompilation - 14 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0x20]\n    bl Pokepic_Delete\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #7\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02258F68(void) {
+    /* Original at 0x02258F68 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A07C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258F7C(void) {
+    /* Original at 0x02258F7C */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A2A0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258F90(void) {
+    /* Original at 0x02258F90 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225A334\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258FA0(void) {
+    /* Original at 0x02258FA0 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A37C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258FB4(void) {
+    /* Original at 0x02258FB4 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A414\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258FC8(void) {
+    /* Original at 0x02258FC8 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225A4DC\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02258FD8(void) {
+    /* Original at 0x02258FD8 */
+    /* Requires manual decompilation - 16 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r6, r4, #0\n    add r6, #0x94\n    add r1, r6, #0\n    add r1, #0x29\n    ldrb r1, [r1]\n    add r5, r0, #0\n    bl ov12_0223BB6C\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov12_0225A524\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_02259000(void) {
+    /* Original at 0x02259000 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A604\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259014(void) {
+    /* Original at 0x02259014 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A674\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259028(void) {
+    /* Original at 0x02259028 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A700\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_0225903C(void) {
+    /* Original at 0x0225903C */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A7AC\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259050(void) {
+    /* Original at 0x02259050 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A818\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259064(void) {
+    /* Original at 0x02259064 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A85C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259078(void) {
+    /* Original at 0x02259078 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A8C4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_0225908C(void) {
+    /* Original at 0x0225908C */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A914\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022590A0(void) {
+    /* Original at 0x022590A0 */
+    /* Requires manual decompilation - 21 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0x20]\n    mov r1, #6\n    bl Pokepic_GetAttr\n    cmp r0, #1\n    bne _022590C2\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x17\n    bl ov12_0226430C\n    b _022590CA\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov12_0225A9B0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_022590D4(void) {
+    /* Original at 0x022590D4 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225A9E0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022590E8(void) {
+    /* Original at 0x022590E8 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AA6C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022590FC(void) {
+    /* Original at 0x022590FC */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AAE0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259110(void) {
+    /* Original at 0x02259110 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225ABB8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259124(void) {
+    /* Original at 0x02259124 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225ABE8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259134(void) {
+    /* Original at 0x02259134 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AC1C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259148(void) {
+    /* Original at 0x02259148 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225ACB0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_0225915C(void) {
+    /* Original at 0x0225915C */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225ACE8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259170(void) {
+    /* Original at 0x02259170 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AD44\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259184(void) {
+    /* Original at 0x02259184 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AD9C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259198(void) {
+    /* Original at 0x02259198 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225ADF4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022591A8(void) {
+    /* Original at 0x022591A8 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AE48\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022591BC(void) {
+    /* Original at 0x022591BC */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225AEA0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022591CC(void) {
+    /* Original at 0x022591CC */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AED8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022591E0(void) {
+    /* Original at 0x022591E0 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225AF74\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022591F4(void) {
+    /* Original at 0x022591F4 */
+    /* Requires manual decompilation - 97 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r6, r1, #0\n    mov r2, #0x65\n    add r6, #0x94\n    lsl r2, r2, #2\n    str r1, [sp, #4]\n    ldrb r1, [r1, r2]\n    ldrb r2, [r6, #1]\n    str r0, [sp]\n    lsl r2, r2, #0x1c\n    lsr r2, r2, #0x1c\n    bl BattleSystem_GetPartyMon\n    add r7, r0, #0\n    mov r0, #2\n    ldr r1, [r6, #0x1c]\n    lsl r0, r0, #0x14\n    tst r0, r1\n    bne _0225925C\n    add r0, r6, #0\n    add r5, r6, #0\n    str r0, [sp, #8]\n    add r0, #0x16\n    mov r4, #0\n    add r5, #0xe\n    str r0, [sp, #8]\n    add r0, r4, #0\n    bl MaskOfFlagNo\n    ldrb r1, [r6, #1]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x1c\n    tst r0, r1\n    bne _02259254\n    add r1, r4, #0\n    add r0, r7, #0\n    add r1, #0x36\n    add r2, r5, #0\n    bl SetMonData\n    ldr r2, [sp, #8]\n    add r1, r4, #0\n    add r0, r7, #0\n    add r1, #0x3a\n    add r2, r2, r4\n    bl SetMonData\n    add r4, r4, #1\n    add r5, r5, #2\n    cmp r4, #4\n    blt _0225922A\n    ldrb r0, [r6, #1]\n    lsl r0, r0, #0x1c\n    lsr r0, r0, #0x1c\n    bl MaskOfFlagNo\n    ldr r1, [r6, #8]\n    tst r0, r1\n    bne _02259278\n    add r2, r6, #0\n    add r0, r7, #0\n    mov r1, #6\n    add r2, #0xc\n    bl SetMonData\n    add r0, r7, #0\n    mov r1, #0xa3\n    add r2, r6, #2\n    bl SetMonData\n    add r0, r7, #0\n    mov r1, #0xa0\n    add r2, r6, #4\n    bl SetMonData\n    ldrh r0, [r6, #0x2a]\n    cmp r0, #0\n    beq _0225929E\n    add r2, r6, #0\n    add r0, r7, #0\n    mov r1, #0x70\n    add r2, #0x20\n    bl SetMonData\n    ldrh r0, [r6, #0x28]\n    cmp r0, #0\n    beq _022592B6\n    add r2, r6, #0\n    add r0, r7, #0\n    mov r1, #0xa\n    add r2, #0x24\n    bl SetMonData\n    add r0, r7, #0\n    bl CalcMonLevelAndStats\n    mov r2, #0x65\n    ldr r1, [sp, #4]\n    lsl r2, r2, #2\n    ldrb r1, [r1, r2]\n    ldrb r2, [r6]\n    ldr r0, [sp]\n    bl ov12_0226430C\n    ldr r0, [sp, #4]\n    bl ov12_02259928\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_022592D0(void) {
+    /* Original at 0x022592D0 */
+    /* Requires manual decompilation - 37 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl BattleSystem_GetBattleType\n    add r6, r0, #0\n    add r0, r5, #0\n    bl BattleSystem_GetBattleInput\n    ldr r2, _02259320 ; =0x00000196\n    ldrb r1, [r4, r2]\n    cmp r1, #0\n    bne _02259304\n    mov r1, #8\n    and r1, r6\n    bne _022592FC\n    cmp r1, #0\n    bne _02259304\n    sub r1, r2, #1\n    ldrb r1, [r4, r1]\n    cmp r1, #4\n    beq _02259304\n    ldr r1, _02259324 ; =0xFFFFF300\n    mov r2, #0\n    bl BattleInput_StartMenuScrollHorizontalTask\n    mov r1, #0x65\n    add r2, r4, #0\n    lsl r1, r1, #2\n    add r2, #0x94\n    ldrb r1, [r4, r1]\n    ldrb r2, [r2]\n    add r0, r5, #0\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}\n    nop\n    _02259320: .word 0x00000196\n    _02259324: .word 0xFFFFF300"
+    );
+    #endif
+}
+
+void ov12_02259328(void) {
+    /* Original at 0x02259328 */
+    /* Requires manual decompilation - 19 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r0, #0x28\n    bl ov12_02264EB4\n    add r0, r4, #0\n    bl ov12_02262014\n    mov r1, #0x65\n    add r2, r4, #0\n    lsl r1, r1, #2\n    add r2, #0x94\n    ldrb r1, [r4, r1]\n    ldrb r2, [r2]\n    add r0, r5, #0\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02259358(void) {
+    /* Original at 0x02259358 */
+    /* Requires manual decompilation - 55 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r7, r1, #0\n    mov r1, #0\n    str r1, [sp, #8]\n    mov r1, #0x65\n    lsl r1, r1, #2\n    add r4, r7, #0\n    ldrb r1, [r7, r1]\n    str r0, [sp]\n    add r4, #0x94\n    bl BattleSystem_GetPartySize\n    mov r5, #0\n    str r0, [sp, #4]\n    cmp r0, #0\n    ble _022593BA\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r7, r1]\n    ldr r0, [sp]\n    add r2, r5, #0\n    bl BattleSystem_GetPartyMon\n    ldrb r1, [r4, #1]\n    add r6, r0, #0\n    cmp r1, #0x68\n    bne _02259394\n    mov r0, #0\n    b _0225939C\n    mov r1, #0xa\n    mov r2, #0\n    bl GetMonData\n    ldrh r1, [r4, #2]\n    cmp r1, #0xd7\n    bne _022593A8\n    bne _022593B2\n    cmp r0, #0x2b\n    beq _022593B2\n    add r0, r6, #0\n    mov r1, #0xa0\n    add r2, sp, #8\n    bl SetMonData\n    ldr r0, [sp, #4]\n    add r5, r5, #1\n    cmp r5, r0\n    blt _0225937A\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r7, r1]\n    ldrb r2, [r4]\n    ldr r0, [sp]\n    bl ov12_0226430C\n    add r0, r7, #0\n    bl ov12_02259928\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_022593D4(void) {
+    /* Original at 0x022593D4 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B028\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022593E8(void) {
+    /* Original at 0x022593E8 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B060\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022593FC(void) {
+    /* Original at 0x022593FC */
+    /* Requires manual decompilation - 106 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    str r0, [sp, #0x10]\n    add r5, r1, #0\n    ldr r0, _022594F0 ; =0x00000195\n    add r4, r5, #0\n    ldrb r1, [r5, r0]\n    mov r0, #1\n    add r4, #0x94\n    tst r0, r1\n    beq _02259416\n    mov r6, #2\n    b _02259418\n    mov r6, #0\n    ldrb r0, [r4, #5]\n    lsl r3, r6, #0x18\n    lsr r3, r3, #0x18\n    str r0, [sp]\n    ldrb r0, [r4, #1]\n    str r0, [sp, #4]\n    ldr r0, [r4, #8]\n    str r0, [sp, #8]\n    ldrh r1, [r4, #2]\n    ldrb r2, [r4, #4]\n    add r0, sp, #0x14\n    bl GetMonSpriteCharAndPlttNarcIdsEx\n    ldr r0, [r5, #0x20]\n    bl Pokepic_GetTemplate\n    add r7, r0, #0\n    add r2, sp, #0x14\n    add r3, r7, #0\n    ldmia r2!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r2!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r5, #0x20]\n    bl Pokepic_ScheduleReloadFromNarc\n    ldr r0, [sp, #0x10]\n    bl ov12_0223A99C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    bl ov12_0223BB94\n    add r3, r0, #0\n    ldr r0, [r4, #8]\n    mov r2, #5\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r6, [sp, #8]\n    ldrh r0, [r7, #6]\n    str r0, [sp, #0xc]\n    ldrh r0, [r7]\n    ldrh r1, [r7, #2]\n    bl sub_02014540\n    ldr r0, [sp, #0x10]\n    bl ov12_0223A99C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrh r2, [r7]\n    bl ov12_0223BBA8\n    ldr r0, [sp, #0x10]\n    bl ov12_0223A99C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrh r2, [r7, #4]\n    bl ov12_0223BBC0\n    ldr r0, [r4, #8]\n    lsl r2, r6, #0x18\n    str r0, [sp]\n    ldrh r0, [r4, #2]\n    ldrb r1, [r4, #4]\n    ldrb r3, [r4, #1]\n    lsr r2, r2, #0x18\n    bl GetMonPicHeightBySpeciesGenderForm\n    add r6, r0, #0\n    ldr r0, [sp, #0x10]\n    bl ov12_0223A99C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    add r2, r6, #0\n    bl ov12_0223BBD8\n    ldr r0, _022594F0 ; =0x00000195\n    mov r1, #1\n    ldrb r0, [r5, r0]\n    bl ov07_02234B5C\n    add r2, r0, #0\n    ldr r0, [r5, #0x20]\n    mov r1, #1\n    add r2, r6, r2\n    bl Pokepic_SetAttr\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r4]\n    ldr r0, [sp, #0x10]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl ov12_02259928\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _022594F0: .word 0x00000195"
+    );
+    #endif
+}
+
+void ov12_022594F4(void) {
+    /* Original at 0x022594F4 */
+    /* Requires manual decompilation - 13 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl BattleSystem_SetBackground\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x2e\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02259514(void) {
+    /* Original at 0x02259514 */
+    /* Requires manual decompilation - 66 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    ldr r0, _022595B4 ; =0x00000196\n    add r4, r1, #0\n    ldrb r0, [r4, r0]\n    cmp r0, #0\n    bne _0225959A\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r6, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    add r0, r5, #0\n    bl BattleSystem_GetBattleInput\n    str r0, [sp, #8]\n    mov r3, #0\n    str r3, [sp]\n    ldr r2, [sp, #8]\n    add r0, r6, #0\n    add r1, r7, #0\n    str r3, [sp, #4]\n    bl BattleInput_ChangeMenu\n    ldr r0, [sp, #8]\n    mov r1, #0\n    bl BattleInput_Deadstriped_022698AC\n    add r0, r6, #0\n    bl NARC_Delete\n    add r0, r7, #0\n    bl NARC_Delete\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r4, r0]\n    cmp r1, r0\n    beq _02259586\n    add r0, r5, #0\n    bl BattleSystem_GetHpBar\n    bl ov12_02265D74\n    add r0, r4, #0\n    add r0, #0x28\n    bl ov12_02264EB4\n    ldr r0, [sp, #8]\n    bl BattleInput_DisableBallGauge\n    add r0, r4, #0\n    bl ov12_02262014\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x2f\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _022595B4: .word 0x00000196"
+    );
+    #endif
+}
+
+void ov12_022595B8(void) {
+    /* Original at 0x022595B8 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B0A0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022595CC(void) {
+    /* Original at 0x022595CC */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B0E8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022595E0(void) {
+    /* Original at 0x022595E0 */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r6, r4, #0\n    add r5, r0, #0\n    add r6, #0x94\n    bl BattleSystem_GetFieldSide\n    cmp r0, #0\n    beq _02259604\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov12_0225B120\n    b _02259612\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x32\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225961C(void) {
+    /* Original at 0x0225961C */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r6, r4, #0\n    add r5, r0, #0\n    add r6, #0x94\n    bl BattleSystem_GetFieldSide\n    cmp r0, #0\n    beq _02259640\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov12_0225B16C\n    b _0225964E\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x33\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_02259658(void) {
+    /* Original at 0x02259658 */
+    /* Requires manual decompilation - 23 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl BattleSystem_GetSpriteSystem\n    add r6, r0, #0\n    add r0, r5, #0\n    bl BattleSystem_GetSpriteManager\n    add r7, r0, #0\n    add r0, r5, #0\n    bl BattleSystem_GetPaletteData\n    add r2, r0, #0\n    add r0, r6, #0\n    add r1, r7, #0\n    bl ov12_0226ADE0\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x34\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_02259694(void) {
+    /* Original at 0x02259694 */
+    /* Requires manual decompilation - 14 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl BattleSystem_GetSpriteManager\n    bl ov12_0226AE78\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x35\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_022596B8(void) {
+    /* Original at 0x022596B8 */
+    /* Requires manual decompilation - 31 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r4, r5, #0\n    add r4, #0x94\n    ldrb r1, [r4, #1]\n    add r6, r0, #0\n    cmp r1, #0\n    ldr r1, _022596FC ; =0x00000196\n    bne _022596D8\n    ldrb r1, [r5, r1]\n    cmp r1, #0\n    bne _022596E4\n    ldrh r1, [r4, #2]\n    bl BattleSystem_GameStatIncrement\n    b _022596E4\n    ldrb r1, [r5, r1]\n    cmp r1, #0\n    beq _022596E4\n    ldrh r1, [r4, #2]\n    bl BattleSystem_GameStatIncrement\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r4]\n    add r0, r6, #0\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}\n    nop\n    _022596FC: .word 0x00000196"
+    );
+    #endif
+}
+
+void ov12_02259700(void) {
+    /* Original at 0x02259700 */
+    /* Requires manual decompilation - 14 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    ldrh r1, [r2, #2]\n    add r5, r0, #0\n    add r2, r2, #4\n    bl ov12_0223BF14\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov12_0225B1A8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02259724(void) {
+    /* Original at 0x02259724 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B200\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259738(void) {
+    /* Original at 0x02259738 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225B234\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259748(void) {
+    /* Original at 0x02259748 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225B26C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259758(void) {
+    /* Original at 0x02259758 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    bl ov12_0225B2A4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259768(void) {
+    /* Original at 0x02259768 */
+    /* Requires manual decompilation - 15 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r1, #0\n    add r4, r6, #0\n    add r4, #0x94\n    ldrh r1, [r4, #2]\n    add r5, r0, #0\n    add r2, r4, #4\n    bl ov12_0223BF14\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r4, #0\n    bl ov12_0225B2F8\n    add r0, r6, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225978C(void) {
+    /* Original at 0x0225978C */
+    /* Requires manual decompilation - 14 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    ldrh r1, [r2, #2]\n    add r5, r0, #0\n    add r2, r2, #4\n    bl ov12_0223BF14\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov12_0225B34C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_022597B0(void) {
+    /* Original at 0x022597B0 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B3A0\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022597C4(void) {
+    /* Original at 0x022597C4 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B3D4\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022597D8(void) {
+    /* Original at 0x022597D8 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B434\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_022597EC(void) {
+    /* Original at 0x022597EC */
+    /* Requires manual decompilation - 115 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    str r1, [sp, #4]\n    str r1, [sp, #0x10]\n    add r1, #0x94\n    str r1, [sp, #0x10]\n    ldr r2, [sp, #0x10]\n    mov r7, #0\n    ldrh r1, [r1, #2]\n    str r0, [sp]\n    add r2, #8\n    str r7, [sp, #8]\n    bl ov12_0223BF14\n    ldr r0, [sp]\n    bl BattleSystem_GetBattleType\n    mov r1, #0x80\n    tst r0, r1\n    beq _02259824\n    ldr r1, [sp, #0x10]\n    ldr r0, [sp]\n    ldr r1, [r1, #4]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    bl BattleSystem_SetBattleOutcomeFlags\n    b _022598DC\n    add r0, r7, #0\n    str r0, [sp, #0xc]\n    ldr r0, [sp]\n    bl BattleSystem_GetMaxBattlers\n    cmp r0, #0\n    ble _022598B2\n    ldr r0, [sp]\n    ldr r1, [sp, #0xc]\n    bl BattleSystem_GetParty\n    add r6, r0, #0\n    mov r5, #0\n    bl Party_GetCount\n    cmp r0, #0\n    ble _022598A0\n    add r0, r6, #0\n    add r1, r5, #0\n    bl Party_GetMonByIndex\n    mov r1, #5\n    mov r2, #0\n    add r4, r0, #0\n    bl GetMonData\n    cmp r0, #0\n    beq _02259894\n    add r0, r4, #0\n    mov r1, #0x4c\n    mov r2, #0\n    bl GetMonData\n    cmp r0, #0\n    bne _02259894\n    ldr r0, [sp]\n    ldr r1, [sp, #0xc]\n    bl BattleSystem_GetFieldSide\n    cmp r0, #0\n    beq _02259888\n    add r0, r4, #0\n    mov r1, #0xa3\n    mov r2, #0\n    bl GetMonData\n    ldr r1, [sp, #8]\n    add r0, r1, r0\n    str r0, [sp, #8]\n    b _02259894\n    add r0, r4, #0\n    mov r1, #0xa3\n    mov r2, #0\n    bl GetMonData\n    add r7, r7, r0\n    add r0, r6, #0\n    add r5, r5, #1\n    bl Party_GetCount\n    cmp r5, r0\n    blt _02259846\n    ldr r0, [sp, #0xc]\n    add r0, r0, #1\n    str r0, [sp, #0xc]\n    ldr r0, [sp]\n    bl BattleSystem_GetMaxBattlers\n    ldr r1, [sp, #0xc]\n    cmp r1, r0\n    blt _02259832\n    cmp r7, #0\n    bne _022598C6\n    ldr r0, [sp, #8]\n    cmp r0, #0\n    bne _022598C6\n    ldr r0, [sp]\n    mov r1, #3\n    bl BattleSystem_SetBattleOutcomeFlags\n    b _022598DC\n    cmp r7, #0\n    bne _022598D4\n    ldr r0, [sp]\n    mov r1, #2\n    bl BattleSystem_SetBattleOutcomeFlags\n    b _022598DC\n    ldr r0, [sp]\n    mov r1, #1\n    bl BattleSystem_SetBattleOutcomeFlags\n    mov r2, #0x65\n    ldr r1, [sp, #4]\n    lsl r2, r2, #2\n    ldrb r1, [r1, r2]\n    ldr r2, [sp, #0x10]\n    ldr r0, [sp]\n    ldrb r2, [r2]\n    bl ov12_0226430C\n    ldr r0, [sp, #4]\n    bl ov12_02259928\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_022598F8(void) {
+    /* Original at 0x022598F8 */
+    /* Requires manual decompilation - 19 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    mov r1, #0\n    add r5, r0, #0\n    bl BattleSystem_GetWindow\n    add r6, r0, #0\n    mov r1, #0xff\n    bl FillWindowPixelBuffer\n    add r0, r6, #0\n    bl CopyWindowPixelsToVram_TextMode\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x42\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_02259928(void) {
+    /* Original at 0x02259928 */
+    /* Requires manual decompilation - 4 instructions */
+    #ifdef MWERKS
+    asm(
+        "mov r1, #0\n    add r0, #0x94\n    strb r1, [r0]\n    bx lr"
+    );
+    #endif
+}
+
+void ov12_02259930(void) {
+    /* Original at 0x02259930 */
+    /* Requires manual decompilation - 8 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    bl ov12_0225B454\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02259944(void) {
+    /* Original at 0x02259944 */
+    /* Requires manual decompilation - 15 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #5\n    mov r1, #0x18\n    bl Heap_Alloc\n    add r1, r0, #0\n    str r4, [r1]\n    mov r2, #0\n    strb r2, [r1, #0x14]\n    strb r2, [r1, #0x15]\n    ldr r0, _02259964 ; =ov12_02260668\n    strb r2, [r1, #0x16]\n    bl SysTask_CreateOnMainQueue\n    pop {r4, pc}\n    _02259964: .word ov12_02260668"
+    );
+    #endif
+}
+
+void ov12_02259968(void) {
+    /* Original at 0x02259968 */
+    /* Requires manual decompilation - 256 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x6c\n    str r0, [sp, #0x24]\n    add r6, r1, #0\n    add r5, r2, #0\n    bl ov12_0223A8D4\n    str r0, [sp, #0x28]\n    ldr r0, [sp, #0x24]\n    bl BattleSystem_GetBattleType\n    mov r0, #5\n    mov r1, #0x30\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r2, #0\n    ldr r0, _02259B8C ; =0x00000195\n    strb r2, [r4, #0x12]\n    ldrb r0, [r6, r0]\n    mov r1, #1\n    tst r0, r1\n    beq _022599BE\n    mov r0, #2\n    strb r0, [r4, #0x13]\n    ldr r0, [sp, #0x24]\n    bl ov12_0223A8F4\n    str r0, [r4, #0xc]\n    ldr r1, _02259B8C ; =0x00000195\n    ldr r0, [r0]\n    ldrb r2, [r6, r1]\n    mov r1, #1\n    and r2, r1\n    add r3, r2, #0\n    mov r1, #6\n    mul r3, r1\n    ldr r1, _02259B90 ; =ov07_022377F4\n    mov r2, #0x58\n    ldrsh r1, [r1, r3]\n    bl ManagedSprite_SetPositionXY\n    b _022599E4\n    ldr r0, [sp, #0x24]\n    add r1, r2, #0\n    strb r2, [r4, #0x13]\n    bl ov12_0223A8F4\n    str r0, [r4, #0xc]\n    ldr r1, _02259B8C ; =0x00000195\n    ldr r0, [r0]\n    ldrb r2, [r6, r1]\n    mov r1, #1\n    and r2, r1\n    add r3, r2, #0\n    mov r1, #6\n    mul r3, r1\n    ldr r1, _02259B90 ; =ov07_022377F4\n    mov r2, #0x88\n    ldrsh r1, [r1, r3]\n    bl ManagedSprite_SetPositionXY\n    ldrb r0, [r5, #1]\n    lsl r0, r0, #0x1d\n    lsr r0, r0, #0x1f\n    beq _022599F0\n    mov r0, #1\n    b _022599F2\n    mov r0, #0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldrb r0, [r5, #1]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x1b\n    str r0, [sp, #4]\n    ldr r0, [r5, #4]\n    str r0, [sp, #8]\n    ldrb r2, [r5, #1]\n    ldrh r1, [r5, #2]\n    ldrb r3, [r4, #0x13]\n    lsl r2, r2, #0x1e\n    add r0, sp, #0x5c\n    lsr r2, r2, #0x1e\n    bl GetMonSpriteCharAndPlttNarcIdsEx\n    ldr r0, [r5, #4]\n    str r0, [sp]\n    ldrb r3, [r5, #1]\n    ldrh r0, [r5, #2]\n    ldrb r2, [r4, #0x13]\n    lsl r1, r3, #0x1e\n    lsl r3, r3, #0x18\n    lsr r1, r1, #0x1e\n    lsr r3, r3, #0x1b\n    bl GetMonPicHeightBySpeciesGenderForm\n    str r0, [sp, #0x2c]\n    mov r0, #0x69\n    lsl r0, r0, #2\n    add r1, sp, #0x30\n    ldrh r2, [r5, #2]\n    ldr r0, [r6, r0]\n    add r1, #2\n    bl sub_020729D8\n    mov r0, #0x69\n    lsl r0, r0, #2\n    add r1, sp, #0x30\n    ldrh r2, [r5, #2]\n    ldr r0, [r6, r0]\n    add r1, #1\n    bl sub_020729FC\n    mov r0, #0x69\n    lsl r0, r0, #2\n    ldrh r2, [r5, #2]\n    ldr r0, [r6, r0]\n    add r1, sp, #0x30\n    bl sub_02072A20\n    mov r3, #0x69\n    lsl r3, r3, #2\n    ldr r0, [r6, r3]\n    sub r3, #0xf\n    add r1, sp, #0x30\n    ldrh r2, [r5, #2]\n    ldrb r3, [r6, r3]\n    add r1, #3\n    bl NARC_ReadPokepicAnimScript\n    ldr r1, _02259B8C ; =0x00000195\n    mov r0, #6\n    ldrb r2, [r6, r1]\n    ldr r3, _02259B90 ; =ov07_022377F4\n    add r7, r2, #0\n    mul r7, r0\n    ldr r0, _02259B94 ; =ov07_022377F4 + 2\n    mov r2, #2\n    ldrsh r0, [r0, r7]\n    ldrsh r3, [r3, r7]\n    str r0, [sp]\n    ldr r0, _02259B98 ; =ov07_022377F4 + 4\n    ldrsh r0, [r0, r7]\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x2c]\n    str r0, [sp, #8]\n    add r0, sp, #0x30\n    ldrsb r2, [r0, r2]\n    str r2, [sp, #0xc]\n    mov r2, #1\n    ldrsb r2, [r0, r2]\n    str r2, [sp, #0x10]\n    ldrb r0, [r0]\n    add r2, sp, #0x5c\n    str r0, [sp, #0x14]\n    sub r0, r1, #1\n    ldrb r0, [r6, r0]\n    ldr r1, [sp, #0x28]\n    str r0, [sp, #0x18]\n    add r0, sp, #0x30\n    add r0, #3\n    str r0, [sp, #0x1c]\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #0x24]\n    bl ov12_022612A4\n    str r0, [r6, #0x20]\n    ldr r0, [r6, #0x20]\n    str r0, [r4, #8]\n    ldrb r0, [r4, #0x13]\n    cmp r0, #2\n    bne _02259AD2\n    mov r3, #0\n    str r3, [sp]\n    mov r1, #8\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    bl Pokepic_StartPaletteFade\n    ldrb r0, [r4, #0x13]\n    cmp r0, #2\n    bne _02259B12\n    ldr r0, [sp, #0x24]\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #0x40\n    tst r0, r1\n    beq _02259B12\n    ldr r0, [r4, #8]\n    mov r1, #1\n    bl Pokepic_GetAttr\n    add r7, r0, #0\n    ldr r0, [r4, #8]\n    mov r1, #0x2e\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #8]\n    mov r1, #0\n    mov r2, #0xc0\n    bl Pokepic_SetAttr\n    add r2, r7, #0\n    ldr r0, [r4, #8]\n    mov r1, #1\n    sub r2, #0x88\n    bl Pokepic_SetAttr\n    strh r7, [r4, #0x14]\n    b _02259B1E\n    ldr r0, _02259B8C ; =0x00000195\n    ldrb r0, [r6, r0]\n    lsl r1, r0, #2\n    ldr r0, _02259B9C ; =ov07_022377DC\n    ldrsh r0, [r0, r1]\n    strh r0, [r4, #0x14]\n    ldr r0, [sp, #0x24]\n    str r0, [r4]\n    str r6, [r4, #4]\n    ldrb r0, [r5]\n    strb r0, [r4, #0x10]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r6, r0]\n    add r0, r0, #1\n    strb r1, [r4, #0x11]\n    ldrh r1, [r5, #2]\n    strh r1, [r4, #0x16]\n    ldrb r1, [r5, #1]\n    lsl r1, r1, #0x18\n    lsr r2, r1, #0x1b\n    add r1, r4, #0\n    add r1, #0x2c\n    strb r2, [r1]\n    ldr r1, [r5, #8]\n    str r1, [r4, #0x18]\n    ldrb r0, [r6, r0]\n    str r0, [r4, #0x1c]\n    ldr r0, [r5, #4]\n    bl GetNatureFromPersonality\n    str r0, [r4, #0x24]\n    ldrb r0, [r5, #1]\n    lsl r0, r0, #0x1d\n    lsr r0, r0, #0x1f\n    str r0, [r4, #0x28]\n    ldrb r0, [r4, #0x13]\n    cmp r0, #2\n    bne _02259B78\n    ldr r0, [sp, #0x24]\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #0x40\n    tst r0, r1\n    beq _02259B78\n    ldr r0, _02259BA0 ; =ov12_0225B7B8\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    b _02259B82\n    ldr r0, _02259BA4 ; =ov12_0225B494\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    mov r0, #1\n    bl sub_02005B58\n    add sp, #0x6c\n    pop {r4, r5, r6, r7, pc}\n    _02259B8C: .word 0x00000195\n    _02259B90: .word ov07_022377F4\n    _02259B94: .word ov07_022377F4 + 2\n    _02259B98: .word ov07_022377F4 + 4\n    _02259B9C: .word ov07_022377DC\n    _02259BA0: .word ov12_0225B7B8\n    _02259BA4: .word ov12_0225B494"
+    );
+    #endif
+}
+
+void ov12_02259BA8(void) {
+    /* Original at 0x02259BA8 */
+    /* Requires manual decompilation - 190 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r7, r0, #0\n    add r6, r1, #0\n    add r5, r2, #0\n    bl BattleSystem_GetBattleType\n    mov r0, #5\n    mov r1, #0x9c\n    bl Heap_Alloc\n    add r4, r0, #0\n    ldr r0, _02259D3C ; =0x00000195\n    ldrb r1, [r6, r0]\n    mov r0, #1\n    tst r0, r1\n    beq _02259BCE\n    mov r1, #2\n    b _02259BD0\n    mov r1, #0\n    add r0, r4, #0\n    add r0, #0x84\n    strb r1, [r0]\n    ldrb r0, [r5, #1]\n    lsl r0, r0, #0x1d\n    lsr r0, r0, #0x1f\n    beq _02259BE2\n    mov r0, #1\n    b _02259BE4\n    mov r0, #0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldrb r0, [r5, #1]\n    add r3, r4, #0\n    add r3, #0x84\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x1b\n    str r0, [sp, #4]\n    ldr r0, [r5, #4]\n    str r0, [sp, #8]\n    ldrb r2, [r5, #1]\n    add r0, r4, #0\n    ldrh r1, [r5, #2]\n    lsl r2, r2, #0x1e\n    ldrb r3, [r3]\n    add r0, #0x14\n    lsr r2, r2, #0x1e\n    bl GetMonSpriteCharAndPlttNarcIdsEx\n    ldr r0, [r5, #4]\n    add r2, r4, #0\n    str r0, [sp]\n    ldrb r3, [r5, #1]\n    add r2, #0x84\n    ldrh r0, [r5, #2]\n    lsl r1, r3, #0x1e\n    lsl r3, r3, #0x18\n    ldrb r2, [r2]\n    lsr r1, r1, #0x1e\n    lsr r3, r3, #0x1b\n    bl GetMonPicHeightBySpeciesGenderForm\n    add r1, r4, #0\n    add r1, #0x85\n    strb r0, [r1]\n    mov r0, #0x69\n    lsl r0, r0, #2\n    add r1, r4, #0\n    ldrh r2, [r5, #2]\n    ldr r0, [r6, r0]\n    add r1, #0x90\n    bl sub_020729D8\n    mov r0, #0x69\n    lsl r0, r0, #2\n    add r1, r4, #0\n    ldrh r2, [r5, #2]\n    ldr r0, [r6, r0]\n    add r1, #0x91\n    bl sub_020729FC\n    mov r0, #0x69\n    lsl r0, r0, #2\n    add r1, r4, #0\n    ldrh r2, [r5, #2]\n    ldr r0, [r6, r0]\n    add r1, #0x93\n    bl sub_02072A20\n    add r0, r6, #0\n    bl ov12_02261284\n    str r7, [r4]\n    add r0, r4, #0\n    str r6, [r4, #4]\n    mov r1, #0\n    add r0, #0x83\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x96\n    strb r1, [r0]\n    add r0, r4, #0\n    ldrb r1, [r5]\n    add r0, #0x80\n    strb r1, [r0]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r2, [r6, r0]\n    add r1, r4, #0\n    add r1, #0x81\n    strb r2, [r1]\n    add r1, r4, #0\n    ldrh r2, [r5, #2]\n    add r1, #0x86\n    add r0, r0, #1\n    strh r2, [r1]\n    ldrb r1, [r5, #1]\n    lsl r1, r1, #0x18\n    lsr r2, r1, #0x1b\n    add r1, r4, #0\n    add r1, #0x97\n    strb r2, [r1]\n    ldrb r1, [r6, r0]\n    add r0, r4, #0\n    add r0, #0x82\n    strb r1, [r0]\n    add r0, r4, #0\n    ldr r1, [r5, #8]\n    add r0, #0x88\n    str r1, [r0]\n    add r0, r4, #0\n    ldr r1, [r5, #0xc]\n    add r0, #0x8c\n    strb r1, [r0]\n    ldr r0, [r5, #4]\n    bl GetNatureFromPersonality\n    add r1, r4, #0\n    add r1, #0x8d\n    strb r0, [r1]\n    add r0, r4, #0\n    ldr r1, [r5, #0x10]\n    add r0, #0x8e\n    strh r1, [r0]\n    ldrb r0, [r5, #1]\n    lsl r0, r0, #0x1d\n    lsr r1, r0, #0x1f\n    add r0, r4, #0\n    add r0, #0x92\n    strb r1, [r0]\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x94\n    strh r1, [r0]\n    mov r0, #1\n    bl sub_02005B58\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #0x65\n    lsl r1, r1, #2\n    add r5, r0, #0\n    ldrb r1, [r6, r1]\n    add r0, r7, #0\n    bl ov12_0223C140\n    cmp r0, #0xff\n    beq _02259D2C\n    mov r0, #2\n    tst r0, r5\n    beq _02259D1E\n    mov r0, #8\n    tst r0, r5\n    bne _02259D1E\n    ldr r0, _02259D3C ; =0x00000195\n    ldrb r0, [r6, r0]\n    cmp r0, #3\n    bls _02259D1E\n    ldr r0, _02259D40 ; =ov12_0225B960\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, _02259D44 ; =ov12_0225BE38\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, _02259D40 ; =ov12_0225B960\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02259D3C: .word 0x00000195\n    _02259D40: .word ov12_0225B960\n    _02259D44: .word ov12_0225BE38"
+    );
+    #endif
+}
+
+void ov12_02259D48(void) {
+    /* Original at 0x02259D48 */
+    /* Requires manual decompilation - 229 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    str r0, [sp, #0xc]\n    str r1, [sp, #0x10]\n    add r4, r2, #0\n    bl BattleSystem_GetBattleType\n    mov r0, #5\n    mov r1, #0x9c\n    bl Heap_Alloc\n    add r5, r0, #0\n    add r1, r5, #0\n    mov r0, #0\n    add r1, #0x83\n    strb r0, [r1]\n    ldr r2, _02259F24 ; =0x00000195\n    ldr r1, [sp, #0x10]\n    ldrb r2, [r1, r2]\n    mov r1, #1\n    tst r1, r2\n    beq _02259D7E\n    add r0, r5, #0\n    mov r1, #2\n    add r0, #0x84\n    strb r1, [r0]\n    b _02259D84\n    add r1, r5, #0\n    add r1, #0x84\n    strb r0, [r1]\n    ldrb r0, [r4, #1]\n    lsl r0, r0, #0x1d\n    lsr r0, r0, #0x1f\n    beq _02259D90\n    mov r0, #1\n    b _02259D92\n    mov r0, #0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldrb r0, [r4, #1]\n    add r3, r5, #0\n    add r3, #0x84\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x1b\n    str r0, [sp, #4]\n    ldr r0, [r4, #4]\n    str r0, [sp, #8]\n    ldrb r2, [r4, #1]\n    add r0, r5, #0\n    ldrh r1, [r4, #2]\n    lsl r2, r2, #0x1e\n    ldrb r3, [r3]\n    add r0, #0x14\n    lsr r2, r2, #0x1e\n    bl GetMonSpriteCharAndPlttNarcIdsEx\n    ldr r0, [r4, #4]\n    add r2, r5, #0\n    str r0, [sp]\n    ldrb r3, [r4, #1]\n    add r2, #0x84\n    ldrh r0, [r4, #2]\n    lsl r1, r3, #0x1e\n    lsl r3, r3, #0x18\n    ldrb r2, [r2]\n    lsr r1, r1, #0x1e\n    lsr r3, r3, #0x1b\n    bl GetMonPicHeightBySpeciesGenderForm\n    add r1, r5, #0\n    add r1, #0x85\n    strb r0, [r1]\n    mov r1, #0x69\n    ldr r0, [sp, #0x10]\n    lsl r1, r1, #2\n    ldr r0, [r0, r1]\n    add r1, r5, #0\n    ldrh r2, [r4, #2]\n    add r1, #0x90\n    bl sub_020729D8\n    mov r1, #0x69\n    ldr r0, [sp, #0x10]\n    lsl r1, r1, #2\n    ldr r0, [r0, r1]\n    add r1, r5, #0\n    ldrh r2, [r4, #2]\n    add r1, #0x91\n    bl sub_020729FC\n    mov r1, #0x69\n    ldr r0, [sp, #0x10]\n    lsl r1, r1, #2\n    ldr r0, [r0, r1]\n    add r1, r5, #0\n    ldrh r2, [r4, #2]\n    add r1, #0x93\n    bl sub_02072A20\n    ldr r0, [sp, #0x10]\n    bl ov12_02261284\n    ldr r0, [sp, #0xc]\n    str r0, [r5]\n    ldr r0, [sp, #0x10]\n    str r0, [r5, #4]\n    add r0, r5, #0\n    ldrb r1, [r4]\n    add r0, #0x80\n    strb r1, [r0]\n    mov r1, #0x65\n    ldr r0, [sp, #0x10]\n    lsl r1, r1, #2\n    ldrb r2, [r0, r1]\n    add r0, r5, #0\n    add r0, #0x81\n    strb r2, [r0]\n    add r0, r5, #0\n    ldrh r2, [r4, #2]\n    add r0, #0x86\n    add r1, r1, #1\n    strh r2, [r0]\n    ldrb r0, [r4, #1]\n    lsl r0, r0, #0x18\n    lsr r2, r0, #0x1b\n    add r0, r5, #0\n    add r0, #0x97\n    strb r2, [r0]\n    ldr r0, [sp, #0x10]\n    ldrb r1, [r0, r1]\n    add r0, r5, #0\n    add r0, #0x82\n    strb r1, [r0]\n    add r0, r5, #0\n    ldr r1, [r4, #8]\n    add r0, #0x88\n    str r1, [r0]\n    add r0, r5, #0\n    ldr r1, [r4, #0xc]\n    add r0, #0x8c\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    bl GetNatureFromPersonality\n    add r1, r5, #0\n    add r1, #0x8d\n    strb r0, [r1]\n    add r0, r5, #0\n    ldr r1, [r4, #0x10]\n    add r0, #0x8e\n    strh r1, [r0]\n    ldrb r0, [r4, #1]\n    lsl r0, r0, #0x1d\n    lsr r1, r0, #0x1f\n    add r0, r5, #0\n    add r0, #0x92\n    strb r1, [r0]\n    add r0, r5, #0\n    ldr r1, [r4, #0x14]\n    add r0, #0x94\n    strh r1, [r0]\n    add r1, r5, #0\n    mov r0, #0\n    add r1, #0x96\n    strb r0, [r1]\n    add r1, r5, #0\n    ldr r2, [r4, #0x4c]\n    add r1, #0x98\n    str r2, [r1]\n    mov ip, r4\n    add r7, r5, #0\n    add r6, r4, #0\n    add r1, r5, #0\n    mov r2, ip\n    add r2, #0x50\n    ldrh r3, [r2]\n    add r2, r7, #0\n    add r2, #0x40\n    strh r3, [r2]\n    add r2, r4, r0\n    add r2, #0x58\n    ldrb r3, [r2]\n    add r2, r5, r0\n    add r2, #0x48\n    strb r3, [r2]\n    add r2, r4, r0\n    add r2, #0x5c\n    ldrb r3, [r2]\n    add r2, r5, r0\n    add r2, #0x4c\n    strb r3, [r2]\n    add r2, r4, r0\n    add r2, #0x60\n    ldrb r3, [r2]\n    add r2, r5, r0\n    add r2, #0x50\n    strb r3, [r2]\n    ldr r2, [r6, #0x64]\n    add r0, r0, #1\n    str r2, [r1, #0x54]\n    mov r2, ip\n    add r2, r2, #2\n    mov ip, r2\n    add r7, r7, #2\n    add r6, r6, #4\n    add r1, r1, #4\n    cmp r0, #4\n    blt _02259EA4\n    mov r2, #0x65\n    ldr r1, [sp, #0x10]\n    lsl r2, r2, #2\n    ldrb r1, [r1, r2]\n    ldr r0, [sp, #0xc]\n    bl ov12_0223C140\n    cmp r0, #0xff\n    beq _02259F06\n    add r1, r5, #0\n    add r1, #0x8c\n    ldrb r1, [r1]\n    cmp r0, r1\n    beq _02259F14\n    ldr r0, _02259F28 ; =ov12_0225C18C\n    add r1, r5, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, _02259F2C ; =ov12_0225C6C8\n    add r1, r5, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02259F24: .word 0x00000195\n    _02259F28: .word ov12_0225C18C\n    _02259F2C: .word ov12_0225C6C8"
+    );
+    #endif
+}
+
+void ov12_02259F30(void) {
+    /* Original at 0x02259F30 */
+    /* Requires manual decompilation - 110 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    str r0, [sp]\n    str r1, [sp, #4]\n    mov r0, #5\n    mov r1, #0x78\n    str r2, [sp, #8]\n    bl Heap_Alloc\n    add r4, r0, #0\n    ldr r0, [sp]\n    add r7, r4, #0\n    str r0, [r4]\n    ldr r0, [sp, #4]\n    str r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    str r0, [r4, #8]\n    ldr r0, [sp, #8]\n    ldrb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x68\n    strb r1, [r0]\n    mov r1, #0x65\n    ldr r0, [sp, #4]\n    lsl r1, r1, #2\n    ldrb r2, [r0, r1]\n    add r0, r4, #0\n    add r0, #0x69\n    strb r2, [r0]\n    ldr r0, [sp, #4]\n    add r1, r1, #1\n    ldrb r1, [r0, r1]\n    add r0, r4, #0\n    add r0, #0x6a\n    strb r1, [r0]\n    add r1, r4, #0\n    mov r0, #0\n    add r1, #0x6b\n    strb r0, [r1]\n    ldr r1, [sp, #8]\n    ldrb r2, [r1, #1]\n    add r1, r4, #0\n    add r1, #0x6c\n    strb r2, [r1]\n    ldr r1, [sp, #8]\n    ldrh r2, [r1, #2]\n    add r1, r4, #0\n    add r1, #0x6e\n    strh r2, [r1]\n    ldr r1, [sp, #8]\n    add r2, r4, #0\n    ldr r1, [r1, #4]\n    str r1, [r4, #0x70]\n    ldr r1, [sp, #8]\n    ldr r1, [r1, #0x2c]\n    str r1, [r4, #0x74]\n    ldr r1, [sp, #8]\n    mov ip, r1\n    mov r3, ip\n    ldrh r3, [r3, #8]\n    strh r3, [r7, #0x28]\n    ldr r3, [sp, #8]\n    add r7, r7, #2\n    add r6, r3, r0\n    add r3, r4, r0\n    ldrb r5, [r6, #0x10]\n    add r3, #0x30\n    strb r5, [r3]\n    add r3, r4, r0\n    ldrb r5, [r6, #0x14]\n    add r3, #0x34\n    strb r5, [r3]\n    add r3, r4, r0\n    ldrb r5, [r6, #0x18]\n    add r3, #0x38\n    add r0, r0, #1\n    strb r5, [r3]\n    ldr r3, [r1, #0x1c]\n    add r1, r1, #4\n    str r3, [r2, #0x3c]\n    mov r3, ip\n    add r3, r3, #2\n    add r2, r2, #4\n    mov ip, r3\n    cmp r0, #4\n    blt _02259FA4\n    mov r2, #0x65\n    ldr r1, [sp, #4]\n    lsl r2, r2, #2\n    ldrb r1, [r1, r2]\n    ldr r0, [sp]\n    bl ov12_0223C140\n    cmp r0, #0xff\n    beq _02259FF4\n    ldr r1, [r4, #0x74]\n    cmp r0, r1\n    beq _0225A002\n    ldr r0, _0225A010 ; =ov12_0225C9BC\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, _0225A014 ; =ov12_0225CC58\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _0225A010: .word ov12_0225C9BC\n    _0225A014: .word ov12_0225CC58"
+    );
+    #endif
+}
+
+void ov12_0225A018(void) {
+    /* Original at 0x0225A018 */
+    /* Requires manual decompilation - 44 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    add r6, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r7, [r4]\n    ldr r0, [r5, #0x20]\n    str r0, [r4, #4]\n    ldrb r0, [r6]\n    strb r0, [r4, #8]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    add r0, r0, #1\n    strb r1, [r4, #9]\n    ldrb r0, [r5, r0]\n    mov r1, #0\n    add r3, r1, #0\n    strb r0, [r4, #0xa]\n    strb r1, [r4, #0xb]\n    ldrb r0, [r6, #1]\n    strb r0, [r4, #0xc]\n    ldrh r0, [r6, #2]\n    lsl r2, r0, #1\n    ldr r0, _0225A074 ; =ov12_0226D15A\n    ldrh r0, [r0, r2]\n    mov r2, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #4]\n    bl Pokepic_StartPaletteFade\n    ldr r0, [r4, #4]\n    mov r1, #0x2d\n    mov r2, #1\n    bl Pokepic_SetAttr\n    ldr r0, _0225A078 ; =ov12_0225CDB8\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225A074: .word ov12_0226D15A\n    _0225A078: .word ov12_0225CDB8"
+    );
+    #endif
+}
+
+void ov12_0225A07C(void) {
+    /* Original at 0x0225A07C */
+    /* Requires manual decompilation - 245 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x50\n    add r6, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x24\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r2, #0\n    ldr r0, _0225A288 ; =0x00000195\n    strb r2, [r4, #0x12]\n    ldrb r0, [r5, r0]\n    mov r1, #1\n    tst r0, r1\n    beq _0225A0C4\n    mov r0, #2\n    strb r0, [r4, #0x13]\n    add r0, r6, #0\n    bl ov12_0223A8F4\n    str r0, [r4, #8]\n    ldr r1, _0225A288 ; =0x00000195\n    ldr r0, [r0]\n    ldrb r2, [r5, r1]\n    mov r1, #1\n    and r1, r2\n    mov r2, #6\n    mul r2, r1\n    ldr r1, _0225A28C ; =ov07_022377F4\n    ldrsh r1, [r1, r2]\n    mov r2, #0x58\n    bl ManagedSprite_SetPositionXY\n    b _0225A0E8\n    add r0, r6, #0\n    add r1, r2, #0\n    strb r2, [r4, #0x13]\n    bl ov12_0223A8F4\n    str r0, [r4, #8]\n    ldr r1, _0225A288 ; =0x00000195\n    ldr r0, [r0]\n    ldrb r2, [r5, r1]\n    mov r1, #1\n    and r1, r2\n    mov r2, #6\n    mul r2, r1\n    ldr r1, _0225A28C ; =ov07_022377F4\n    ldrsh r1, [r1, r2]\n    mov r2, #0x88\n    bl ManagedSprite_SetPositionXY\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    bne _0225A10A\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #0x10\n    tst r0, r1\n    beq _0225A112\n    ldr r0, _0225A288 ; =0x00000195\n    ldrb r1, [r5, r0]\n    mov r0, #1\n    tst r0, r1\n    beq _0225A112\n    ldr r0, _0225A288 ; =0x00000195\n    ldrb r0, [r5, r0]\n    str r0, [sp, #0x10]\n    b _0225A11C\n    ldr r0, _0225A288 ; =0x00000195\n    ldrb r1, [r5, r0]\n    mov r0, #1\n    and r0, r1\n    str r0, [sp, #0x10]\n    mov r1, #0x65\n    ldrh r2, [r7, #2]\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    lsl r2, r2, #0x18\n    add r0, r6, #0\n    lsr r2, r2, #0x18\n    bl ov12_02261EF0\n    strh r0, [r7, #2]\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #0x65\n    lsl r1, r1, #2\n    str r0, [sp, #0x20]\n    mov r0, #0\n    str r0, [sp, #0x1c]\n    ldrb r1, [r5, r1]\n    add r0, r6, #0\n    bl ov12_0223C140\n    cmp r0, #0xff\n    beq _0225A166\n    ldr r0, [sp, #0x20]\n    mov r1, #2\n    tst r0, r1\n    beq _0225A162\n    ldr r0, [sp, #0x20]\n    mov r1, #8\n    tst r0, r1\n    bne _0225A162\n    mov r0, #0\n    str r0, [sp, #0x1c]\n    b _0225A166\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r1, [sp, #0x10]\n    mov r0, #6\n    mul r0, r1\n    ldr r1, _0225A28C ; =ov07_022377F4\n    ldr r3, _0225A288 ; =0x00000195\n    ldrsh r1, [r1, r0]\n    str r1, [sp, #0x14]\n    ldr r1, _0225A290 ; =ov07_022377F4 + 2\n    ldrsh r0, [r1, r0]\n    ldr r1, [sp, #0x10]\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x1c]\n    str r0, [sp]\n    ldr r0, [sp, #0x14]\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x18]\n    str r0, [sp, #8]\n    ldrh r2, [r7, #2]\n    ldrb r3, [r5, r3]\n    add r0, r6, #0\n    bl ov12_02261B2C\n    str r0, [r5, #0x18]\n    str r0, [r4, #0xc]\n    ldrb r0, [r4, #0x13]\n    cmp r0, #0\n    bne _0225A23A\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    cmp r0, #0\n    beq _0225A1E8\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    cmp r0, #0x20\n    beq _0225A1E8\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    lsl r1, r1, #8\n    cmp r0, r1\n    beq _0225A1E8\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    lsl r1, r1, #8\n    cmp r0, r1\n    beq _0225A1E8\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    lsl r1, r1, #0xa\n    cmp r0, r1\n    beq _0225A1E8\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    lsl r1, r1, #0xc\n    cmp r0, r1\n    bne _0225A23A\n    add r0, r6, #0\n    bl ov12_0223A8D4\n    str r0, [sp, #0x24]\n    ldrh r0, [r7, #2]\n    ldrb r1, [r4, #0x13]\n    add r2, sp, #0x28\n    bl sub_02070D84\n    ldr r1, [sp, #0x28]\n    add r0, sp, #0x28\n    strh r1, [r0, #0x18]\n    ldr r1, [sp, #0x3c]\n    ldr r2, [sp, #0x10]\n    strh r1, [r0, #0x1a]\n    ldr r1, [sp, #0x30]\n    add r3, sp, #0x40\n    strh r1, [r0, #0x1c]\n    mov r1, #0\n    strh r1, [r0, #0x1e]\n    mov r0, #6\n    mul r0, r2\n    ldr r2, _0225A294 ; =ov07_022377F4 + 4\n    strb r1, [r3, #8]\n    ldrsh r0, [r2, r0]\n    str r1, [sp, #0x4c]\n    str r0, [sp]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r5, r0]\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    str r1, [sp, #0xc]\n    add r1, r3, #0\n    ldr r0, [sp, #0x24]\n    ldr r2, [sp, #0x14]\n    ldr r3, [sp, #0x18]\n    bl PokepicManager_CreatePokepic\n    str r0, [r4, #4]\n    b _0225A23E\n    mov r0, #0\n    str r0, [r4, #4]\n    ldr r0, [sp, #0x10]\n    lsl r1, r0, #2\n    ldr r0, _0225A298 ; =ov07_022377DC\n    ldrsh r0, [r0, r1]\n    strh r0, [r4, #0x14]\n    str r6, [r4]\n    ldrb r0, [r7]\n    strb r0, [r4, #0x10]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    add r0, r0, #1\n    strb r1, [r4, #0x11]\n    ldrb r0, [r5, r0]\n    str r0, [r4, #0x18]\n    mov r0, #0\n    str r0, [r4, #0x20]\n    ldr r0, [r4, #0x18]\n    cmp r0, #0\n    beq _0225A26A\n    cmp r0, #2\n    bne _0225A27A\n    add r0, r6, #0\n    bl BattleSystem_GetBgConfig\n    mov r1, #3\n    mov r2, #2\n    mov r3, #0x84\n    bl BgSetPosTextAndCommit\n    ldr r0, _0225A29C ; =ov12_0225CE28\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x50\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225A288: .word 0x00000195\n    _0225A28C: .word ov07_022377F4\n    _0225A290: .word ov07_022377F4 + 2\n    _0225A294: .word ov07_022377F4 + 4\n    _0225A298: .word ov07_022377DC\n    _0225A29C: .word ov12_0225CE28"
+    );
+    #endif
+}
+
+void ov12_0225A2A0(void) {
+    /* Original at 0x0225A2A0 */
+    /* Requires manual decompilation - 64 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x1c\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #0\n    strb r0, [r4, #0xa]\n    str r6, [r4]\n    ldrb r1, [r7]\n    strb r1, [r4, #8]\n    ldrb r1, [r7, #1]\n    str r1, [r4, #0x10]\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r2, [r5, r1]\n    strb r2, [r4, #9]\n    str r5, [r4, #4]\n    add r2, r1, #1\n    ldrb r3, [r5, r2]\n    mov r2, #1\n    tst r2, r3\n    beq _0225A2DA\n    mov r1, #2\n    strb r1, [r4, #0xb]\n    b _0225A2FC\n    ldrb r1, [r5, r1]\n    add r0, r6, #0\n    bl BattleSystem_GetTrainer\n    add r2, r0, #0\n    mov r0, #0\n    strb r0, [r4, #0xb]\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r2, #1]\n    add r0, r6, #0\n    bl ov12_02261EF0\n    mov r1, #0\n    bl TrainerClassToBackpicID\n    str r0, [r4, #0xc]\n    add r0, r6, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    add r0, r6, #0\n    bl ov12_0223C140\n    cmp r0, #0xff\n    beq _0225A320\n    ldr r0, _0225A32C ; =ov12_0225D644\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _0225A330 ; =ov12_0225D138\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225A32C: .word ov12_0225D644\n    _0225A330: .word ov12_0225D138"
+    );
+    #endif
+}
+
+void ov12_0225A334(void) {
+    /* Original at 0x0225A334 */
+    /* Requires manual decompilation - 33 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r0, #0\n    strb r0, [r1, #0xa]\n    add r2, r4, #0\n    str r5, [r1]\n    add r2, #0x94\n    ldrb r2, [r2]\n    strb r2, [r1, #8]\n    mov r2, #0x65\n    lsl r2, r2, #2\n    ldrb r3, [r4, r2]\n    add r2, r2, #1\n    strb r3, [r1, #9]\n    str r4, [r1, #4]\n    ldrb r3, [r4, r2]\n    mov r2, #1\n    tst r2, r3\n    beq _0225A36A\n    mov r0, #2\n    b _0225A36A\n    strb r0, [r1, #0xb]\n    ldr r0, _0225A378 ; =ov12_0225D890\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, pc}\n    nop\n    _0225A378: .word ov12_0225D890"
+    );
+    #endif
+}
+
+void ov12_0225A37C(void) {
+    /* Original at 0x0225A37C */
+    /* Requires manual decompilation - 67 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r7, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov12_0223A8D4\n    mov r0, #5\n    mov r1, #0x10\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #0\n    ldr r1, _0225A400 ; =0x00000195\n    strb r0, [r4, #0xa]\n    ldrb r2, [r5, r1]\n    mov r1, #1\n    tst r1, r2\n    beq _0225A3A6\n    mov r0, #2\n    b _0225A3A6\n    strb r0, [r4, #0xb]\n    ldr r0, _0225A400 ; =0x00000195\n    mov r2, #0\n    ldrb r3, [r5, r0]\n    mov r0, #1\n    add r1, r3, #0\n    and r1, r0\n    mov r0, #6\n    str r2, [sp]\n    ldr r2, _0225A404 ; =ov07_022377F4 + 36\n    mul r0, r1\n    ldrsh r2, [r2, r0]\n    str r2, [sp, #4]\n    ldr r2, _0225A408 ; =ov07_022377F4 + 38\n    ldrsh r0, [r2, r0]\n    str r0, [sp, #8]\n    ldrh r2, [r6, #2]\n    add r0, r7, #0\n    bl ov12_02261B2C\n    str r0, [r5, #0x18]\n    str r0, [r4, #4]\n    ldr r3, _0225A400 ; =0x00000195\n    ldr r2, [r6, #4]\n    ldrb r0, [r5, r3]\n    lsl r2, r2, #1\n    lsl r0, r0, #0x1f\n    lsr r1, r0, #0x1d\n    ldr r0, _0225A40C ; =ov07_022377DC\n    add r0, r0, r1\n    ldrsh r0, [r2, r0]\n    add r1, r4, #0\n    mov r2, #0\n    strh r0, [r4, #0xc]\n    str r7, [r4]\n    ldrb r0, [r6]\n    strb r0, [r4, #8]\n    sub r0, r3, #1\n    ldrb r0, [r5, r0]\n    strb r0, [r4, #9]\n    ldr r0, _0225A410 ; =ov12_0225D990\n    bl SysTask_CreateOnMainQueue\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _0225A400: .word 0x00000195\n    _0225A404: .word ov07_022377F4 + 36\n    _0225A408: .word ov07_022377F4 + 38\n    _0225A40C: .word ov07_022377DC\n    _0225A410: .word ov12_0225D990"
+    );
+    #endif
+}
+
+void ov12_0225A414(void) {
+    /* Original at 0x0225A414 */
+    /* Requires manual decompilation - 92 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r1, #0\n    add r4, r6, #0\n    add r4, #0x28\n    add r7, r0, #0\n    add r5, r2, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #1\n    bl MIi_CpuClearFast\n    mov r0, #0x65\n    str r7, [r4, #0xc]\n    lsl r0, r0, #2\n    ldrb r1, [r6, r0]\n    add r0, r4, #0\n    add r0, #0x24\n    strb r1, [r0]\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    add r1, r0, #0\n    ldr r0, _0225A4D4 ; =0x00000195\n    ldrb r0, [r6, r0]\n    bl BattleHpBar_Util_GetBarTypeFromBattlerSide\n    add r1, r4, #0\n    add r1, #0x25\n    strb r0, [r1]\n    add r0, r4, #0\n    ldrb r1, [r5]\n    add r0, #0x4c\n    strb r1, [r0]\n    mov r0, #2\n    ldrsh r0, [r5, r0]\n    str r0, [r4, #0x28]\n    ldrh r0, [r5, #4]\n    str r0, [r4, #0x2c]\n    add r0, r4, #0\n    ldrb r1, [r5, #1]\n    add r0, #0x48\n    strb r1, [r0]\n    ldrb r0, [r5, #7]\n    lsl r0, r0, #0x19\n    lsr r1, r0, #0x1e\n    add r0, r4, #0\n    add r0, #0x49\n    strb r1, [r0]\n    mov r1, #0\n    str r1, [r4, #0x30]\n    ldr r0, [r5, #8]\n    str r0, [r4, #0x38]\n    ldr r0, [r5, #0xc]\n    str r0, [r4, #0x3c]\n    add r0, r4, #0\n    ldrb r2, [r5, #6]\n    add r0, #0x26\n    strb r2, [r0]\n    ldrb r0, [r5, #7]\n    lsl r0, r0, #0x1b\n    lsr r2, r0, #0x1b\n    add r0, r4, #0\n    add r0, #0x4a\n    strb r2, [r0]\n    ldrb r0, [r5, #7]\n    lsl r0, r0, #0x18\n    lsr r2, r0, #0x1f\n    add r0, r4, #0\n    add r0, #0x4b\n    strb r2, [r0]\n    add r0, r4, #0\n    ldrb r2, [r5, #0x14]\n    add r0, #0x4d\n    strb r2, [r0]\n    add r0, r4, #0\n    ldr r2, [r5, #0x10]\n    add r0, #0x27\n    strb r2, [r0]\n    add r0, r4, #0\n    bl BattleHpBar_SetEnabled\n    mov r2, #0\n    ldr r1, [r4, #0x28]\n    add r0, r4, #0\n    mvn r2, r2\n    bl ov12_0226498C\n    mov r2, #0xfa\n    ldr r0, _0225A4D8 ; =ov12_0225DA18\n    add r1, r4, #0\n    lsl r2, r2, #2\n    bl SysTask_CreateOnMainQueue\n    str r0, [r4, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225A4D4: .word 0x00000195\n    _0225A4D8: .word ov12_0225DA18"
+    );
+    #endif
+}
+
+void ov12_0225A4DC(void) {
+    /* Original at 0x0225A4DC */
+    /* Requires manual decompilation - 32 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r4, r5, #0\n    add r4, #0x28\n    add r6, r0, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #1\n    bl MIi_CpuClearFast\n    mov r0, #0x65\n    str r6, [r4, #0xc]\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    add r0, r4, #0\n    add r0, #0x24\n    strb r1, [r0]\n    add r5, #0x94\n    add r0, r4, #0\n    ldrb r1, [r5]\n    add r0, #0x4c\n    strb r1, [r0]\n    add r0, r4, #0\n    mov r1, #1\n    bl ov12_02264FB0\n    mov r2, #0xfa\n    ldr r0, _0225A520 ; =ov12_0225DA8C\n    add r1, r4, #0\n    lsl r2, r2, #2\n    bl SysTask_CreateOnMainQueue\n    str r0, [r4, #0x10]\n    pop {r4, r5, r6, pc}\n    _0225A520: .word ov12_0225DA8C"
+    );
+    #endif
+}
+
+void ov12_0225A524(void) {
+    /* Original at 0x0225A524 */
+    /* Requires manual decompilation - 109 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    str r1, [sp]\n    mov r0, #5\n    mov r1, #0x3c\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #0x3c\n    bl MIi_CpuClearFast\n    mov r2, #0\n    strb r2, [r4, #0xa]\n    strb r2, [r4, #0xb]\n    str r5, [r4]\n    ldrb r0, [r7]\n    mov r1, #0x65\n    lsl r1, r1, #2\n    strb r0, [r4, #8]\n    ldr r0, [sp]\n    add r5, r7, #0\n    ldrb r0, [r0, r1]\n    add r1, r1, #1\n    add r6, r4, #0\n    strb r0, [r4, #9]\n    ldr r0, [sp]\n    ldrb r1, [r0, r1]\n    add r0, r4, #0\n    add r0, #0x34\n    strb r1, [r0]\n    ldr r0, [sp]\n    add r0, #0x28\n    str r0, [r4, #4]\n    add r0, r4, #0\n    ldrb r1, [r7, #1]\n    add r0, #0x23\n    strb r1, [r0]\n    mov r0, #0x24\n    ldrsh r0, [r7, r0]\n    strh r0, [r4, #0x36]\n    ldrh r0, [r7, #0x26]\n    strh r0, [r4, #0x38]\n    add r0, r7, #0\n    add r0, #0x28\n    ldrb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x3a\n    strb r1, [r0]\n    add r0, r7, #0\n    add r0, #0x29\n    ldrb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x3b\n    strb r1, [r0]\n    mov r3, #0\n    add r0, r5, r3\n    ldrb r1, [r0, #8]\n    add r0, r6, r3\n    add r3, r3, #1\n    strb r1, [r0, #0x10]\n    cmp r3, #6\n    blt _0225A598\n    add r2, r2, #1\n    add r5, r5, #6\n    add r6, r6, #6\n    cmp r2, #2\n    blt _0225A596\n    mov r0, #0\n    add r3, r0, #0\n    add r2, r7, r0\n    ldrb r1, [r2, #8]\n    cmp r1, #2\n    bne _0225A5C2\n    add r1, r4, r0\n    strb r3, [r1, #0x1c]\n    b _0225A5C8\n    ldrb r2, [r2, #2]\n    add r1, r4, r0\n    strb r2, [r1, #0x1c]\n    add r0, r0, #1\n    cmp r0, #6\n    blt _0225A5B4\n    mov r3, #0\n    add r5, r7, #0\n    add r6, r4, #0\n    ldrh r0, [r5, #0x14]\n    add r2, r7, r3\n    add r5, r5, #2\n    strh r0, [r6, #0x24]\n    ldrb r1, [r2, #0x1c]\n    add r0, r4, r3\n    add r0, #0x2c\n    strb r1, [r0]\n    add r0, r4, r3\n    add r2, #0x20\n    ldrb r1, [r2]\n    add r0, #0x30\n    add r3, r3, #1\n    add r6, r6, #2\n    strb r1, [r0]\n    cmp r3, #4\n    blt _0225A5D4\n    ldr r0, [sp]\n    add r1, r4, #0\n    ldr r0, [r0]\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225A604(void) {
+    /* Original at 0x0225A604 */
+    /* Requires manual decompilation - 53 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    str r1, [sp]\n    mov r0, #5\n    mov r1, #0x24\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r3, r0, #0\n    mov r1, #0x65\n    mov r4, #0\n    add r0, #0x20\n    strb r4, [r0]\n    ldr r0, [sp]\n    str r5, [r3]\n    add r0, #0x94\n    ldrb r0, [r0]\n    lsl r1, r1, #2\n    add r5, r7, #0\n    strb r0, [r3, #0x1c]\n    ldr r0, [sp]\n    add r6, r3, #0\n    ldrb r0, [r0, r1]\n    add r1, r1, #1\n    strb r0, [r3, #0x1d]\n    ldr r0, [sp]\n    ldrb r0, [r0, r1]\n    strb r0, [r3, #0x1e]\n    ldr r0, [sp]\n    add r0, #0x28\n    str r0, [r3, #4]\n    ldrb r0, [r7, #1]\n    strb r0, [r3, #0x1f]\n    ldrh r0, [r5, #4]\n    add r2, r7, r4\n    add r1, r3, r4\n    strh r0, [r6, #0xc]\n    ldrb r0, [r2, #0xc]\n    add r4, r4, #1\n    add r5, r5, #2\n    strb r0, [r1, #0x14]\n    ldrb r0, [r2, #0x10]\n    add r6, r6, #2\n    cmp r4, #4\n    strb r0, [r1, #0x18]\n    blt _0225A646\n    ldrh r0, [r7, #2]\n    add r1, r3, #0\n    mov r2, #0\n    strh r0, [r3, #0x22]\n    ldr r0, [sp]\n    ldr r0, [r0, #4]\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225A674(void) {
+    /* Original at 0x0225A674 */
+    /* Requires manual decompilation - 64 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    str r0, [sp]\n    add r7, r1, #0\n    mov r0, #5\n    mov r1, #0x34\n    add r5, r2, #0\n    bl Heap_Alloc\n    add r6, r0, #0\n    mov r0, #0\n    strb r0, [r6, #0xf]\n    ldr r0, [sp]\n    str r0, [r6]\n    add r0, r7, #0\n    add r0, #0x94\n    ldrb r0, [r0]\n    strb r0, [r6, #0xc]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r7, r0]\n    add r0, r0, #1\n    strb r1, [r6, #0xd]\n    ldrb r0, [r7, r0]\n    strb r0, [r6, #0xe]\n    ldrh r0, [r5, #2]\n    strh r0, [r6, #0x30]\n    add r0, r7, #0\n    add r0, #0x28\n    str r0, [r6, #4]\n    add r0, r6, #0\n    ldrb r1, [r5, #1]\n    add r0, #0x32\n    strb r1, [r0]\n    ldr r0, [sp]\n    add r1, sp, #4\n    bl ov12_0223C1C4\n    ldr r0, [sp]\n    bl BattleSystem_GetMaxBattlers\n    add r4, r0, #0\n    ldr r0, [sp]\n    bl BattleSystem_GetBattleType\n    mov r0, #0\n    cmp r4, #0\n    ble _0225A6F0\n    add r1, r6, #0\n    ldrh r2, [r5, #4]\n    add r0, r0, #1\n    strh r2, [r1, #0x10]\n    ldrh r2, [r5, #6]\n    strh r2, [r1, #0x12]\n    ldrh r2, [r5, #8]\n    strh r2, [r1, #0x14]\n    ldrh r2, [r5, #0xa]\n    add r5, #8\n    strh r2, [r1, #0x16]\n    add r1, #8\n    cmp r0, r4\n    blt _0225A6D6\n    ldr r0, [r7, #8]\n    add r1, r6, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225A700(void) {
+    /* Original at 0x0225A700 */
+    /* Requires manual decompilation - 80 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r5, r0, #0\n    str r1, [sp]\n    mov r0, #5\n    mov r1, #0x34\n    str r2, [sp, #4]\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #5\n    mov r1, #0x34\n    bl Heap_Alloc\n    str r0, [r4, #8]\n    mov r0, #5\n    mov r1, #0x38\n    bl Heap_Alloc\n    ldr r1, [r4, #8]\n    str r0, [r1, #4]\n    mov r0, #5\n    bl SaveArray_Party_Alloc\n    ldr r1, [r4, #8]\n    mov r6, #0\n    ldr r1, [r1, #4]\n    ldr r3, [sp, #4]\n    str r0, [r1]\n    strb r6, [r4, #0xe]\n    str r5, [r4]\n    ldr r0, [sp, #4]\n    mov r1, #0x65\n    ldrb r0, [r0]\n    lsl r1, r1, #2\n    add r5, r4, #0\n    strb r0, [r4, #0xc]\n    ldr r0, [sp]\n    ldrb r0, [r0, r1]\n    add r1, r1, #1\n    strb r0, [r4, #0xd]\n    ldr r0, [sp]\n    ldrb r0, [r0, r1]\n    strb r0, [r4, #0xf]\n    ldr r0, [sp, #4]\n    ldrb r0, [r0, #1]\n    strb r0, [r4, #0x14]\n    ldr r0, [sp, #4]\n    ldrb r0, [r0, #2]\n    strb r0, [r4, #0x15]\n    ldr r0, [sp, #4]\n    ldrb r0, [r0, #3]\n    strb r0, [r4, #0x16]\n    ldr r0, [sp, #4]\n    ldr r1, [r4, #8]\n    add r7, r0, r6\n    ldrb r0, [r7, #4]\n    add r1, r1, r6\n    mov r2, #0\n    strb r0, [r1, #0xc]\n    add r0, r3, r2\n    ldrb r1, [r0, #8]\n    add r0, r5, r2\n    add r2, r2, #1\n    strb r1, [r0, #0x18]\n    cmp r2, #6\n    blt _0225A778\n    add r7, #0x20\n    ldrb r1, [r7]\n    add r0, r4, r6\n    add r0, #0x30\n    add r6, r6, #1\n    strb r1, [r0]\n    add r3, r3, #6\n    add r5, r5, #6\n    cmp r6, #4\n    blt _0225A76A\n    ldr r0, [sp]\n    add r1, r4, #0\n    ldr r0, [r0, #0xc]\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225A7AC(void) {
+    /* Original at 0x0225A7AC */
+    /* Requires manual decompilation - 51 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    str r1, [sp]\n    mov r0, #5\n    mov r1, #0x34\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r2, r0, #0\n    mov r3, #0\n    strb r3, [r2, #0xa]\n    str r4, [r2]\n    ldrb r0, [r7]\n    add r5, r7, #0\n    add r6, r2, #0\n    strb r0, [r2, #8]\n    ldrb r0, [r7, #1]\n    strb r0, [r2, #9]\n    ldrb r0, [r7, #2]\n    strb r0, [r2, #0xb]\n    ldr r0, [r7, #0x20]\n    str r0, [r2, #0x10]\n    ldrb r0, [r7, #3]\n    strb r0, [r2, #0x16]\n    add r0, r7, #0\n    strh r3, [r2, #0x14]\n    add r0, #0x24\n    ldrb r0, [r0]\n    strb r0, [r2, #0x18]\n    add r0, r7, r3\n    ldrb r1, [r0, #4]\n    add r0, r2, r3\n    mov r4, #0\n    strb r1, [r0, #0xc]\n    add r0, r5, r4\n    ldrb r1, [r0, #8]\n    add r0, r6, r4\n    add r4, r4, #1\n    strb r1, [r0, #0x1c]\n    cmp r4, #6\n    blt _0225A7F0\n    add r3, r3, #1\n    add r5, r5, #6\n    add r6, r6, #6\n    cmp r3, #4\n    blt _0225A7E6\n    ldr r0, [sp]\n    add r1, r2, #0\n    ldr r0, [r0, #0x10]\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225A818(void) {
+    /* Original at 0x0225A818 */
+    /* Requires manual decompilation - 31 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x1c\n    add r4, r2, #0\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #0xe]\n    str r6, [r1]\n    ldrb r0, [r4]\n    strb r0, [r1, #0xc]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r5, r0]\n    strb r0, [r1, #0xd]\n    add r0, r5, #0\n    add r0, #0x28\n    str r0, [r1, #4]\n    ldrh r0, [r4, #2]\n    str r0, [r1, #0x10]\n    ldrb r0, [r4, #1]\n    strb r0, [r1, #0xf]\n    ldr r0, [r4, #4]\n    strh r0, [r1, #0x18]\n    ldr r0, [r4, #8]\n    str r0, [r1, #0x14]\n    ldr r0, [r5, #0x14]\n    bl SysTask_CreateOnMainQueue\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225A85C(void) {
+    /* Original at 0x0225A85C */
+    /* Requires manual decompilation - 46 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r6, r0, #0\n    add r7, r1, #0\n    add r5, r2, #0\n    bl ov12_0223A934\n    str r0, [sp]\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r6, [r4]\n    ldrb r0, [r5]\n    mov r1, #0x65\n    lsl r1, r1, #2\n    strb r0, [r4, #4]\n    ldrb r0, [r7, r1]\n    strb r0, [r4, #5]\n    ldrh r2, [r5, #2]\n    lsl r0, r2, #1\n    add r2, r2, r0\n    add r0, sp, #4\n    strh r2, [r0, #2]\n    mov r2, #2\n    strb r2, [r0, #1]\n    ldrb r0, [r5, #1]\n    ldrb r1, [r7, r1]\n    lsl r0, r0, #8\n    orr r0, r1\n    str r0, [sp, #8]\n    add r0, r6, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r1, [sp]\n    add r0, r6, #0\n    add r2, sp, #4\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225A8C0 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225A8C0: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225A8C4(void) {
+    /* Original at 0x0225A8C4 */
+    /* Requires manual decompilation - 34 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    add r7, r2, #0\n    bl BattleSystem_GetMessageLoader\n    str r0, [sp]\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    add r0, r6, #0\n    str r5, [r4]\n    add r0, #0x94\n    ldrb r0, [r0]\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r1, [sp]\n    add r0, r5, #0\n    add r2, r7, #0\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225A910 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225A910: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225A914(void) {
+    /* Original at 0x0225A914 */
+    /* Requires manual decompilation - 73 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x70\n    add r4, r2, #0\n    bl Heap_Alloc\n    add r6, r0, #0\n    mov r1, #0\n    add r0, #0x6a\n    strb r1, [r0]\n    str r7, [r6]\n    add r0, r5, #0\n    str r5, [r6, #4]\n    add r0, #0x94\n    ldrb r1, [r0]\n    add r0, r6, #0\n    add r0, #0x68\n    strb r1, [r0]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    add r0, r6, #0\n    add r0, #0x69\n    strb r1, [r0]\n    add r0, r7, #0\n    bl ov12_0223A8DC\n    add r3, r6, #0\n    str r0, [r6, #0xc]\n    add r7, r4, #0\n    add r3, #0x10\n    mov r2, #0xb\n    ldmia r7!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _0225A958\n    ldr r0, [r5, #0x20]\n    str r0, [r6, #8]\n    ldr r0, [r4, #0x4c]\n    cmp r0, #1\n    bne _0225A978\n    ldr r0, [r4, #0x50]\n    cmp r0, #0x19\n    bne _0225A978\n    mov r0, #0x1a\n    mov r1, #1\n    lsl r0, r0, #4\n    str r1, [r5, r0]\n    ldr r0, [r4, #0x4c]\n    cmp r0, #1\n    bne _0225A98C\n    ldr r0, [r4, #0x50]\n    cmp r0, #0x1a\n    bne _0225A98C\n    mov r0, #0x1a\n    mov r1, #0\n    lsl r0, r0, #4\n    str r1, [r5, r0]\n    ldrh r0, [r4, #2]\n    add r1, r6, #0\n    add r1, #0x6c\n    str r0, [sp]\n    add r0, r6, #0\n    ldr r2, [r4, #0x4c]\n    ldr r3, [r4, #0x50]\n    add r0, #0x6b\n    bl ov12_02261D30\n    ldr r0, _0225A9AC ; =ov12_0225FD14\n    add r1, r6, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225A9AC: .word ov12_0225FD14"
+    );
+    #endif
+}
+
+void ov12_0225A9B0(void) {
+    /* Original at 0x0225A9B0 */
+    /* Requires manual decompilation - 21 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0xc\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #9]\n    str r5, [r1]\n    ldr r0, [r4, #0x20]\n    str r0, [r1, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r4, r0]\n    strb r0, [r1, #8]\n    ldr r0, _0225A9DC ; =ov12_0225FF80\n    strb r2, [r1, #0xa]\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, pc}\n    _0225A9DC: .word ov12_0225FF80"
+    );
+    #endif
+}
+
+void ov12_0225A9E0(void) {
+    /* Original at 0x0225A9E0 */
+    /* Requires manual decompilation - 62 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r1, #0\n    add r7, r0, #0\n    ldr r0, [r6, #0x2c]\n    add r5, r2, #0\n    cmp r0, #0\n    bne _0225A9F2\n    bl GF_AssertFail\n    add r4, r6, #0\n    add r4, #0x28\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #1\n    bl MI_CpuFill8\n    str r7, [r4, #0xc]\n    add r0, r4, #0\n    ldrb r1, [r5]\n    add r0, #0x4c\n    strb r1, [r0]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r6, r0]\n    add r0, r4, #0\n    add r0, #0x24\n    strb r1, [r0]\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    add r1, r0, #0\n    ldr r0, _0225AA60 ; =0x00000195\n    ldrb r0, [r6, r0]\n    bl BattleHpBar_Util_GetBarTypeFromBattlerSide\n    add r1, r4, #0\n    add r1, #0x25\n    strb r0, [r1]\n    mov r0, #2\n    ldrsh r0, [r5, r0]\n    str r0, [r4, #0x28]\n    ldrh r0, [r5, #4]\n    str r0, [r4, #0x2c]\n    ldr r0, [r5, #8]\n    str r0, [r4, #0x30]\n    add r0, r4, #0\n    ldrb r1, [r5, #1]\n    add r0, #0x48\n    strb r1, [r0]\n    ldr r1, [r5, #8]\n    ldr r0, _0225AA64 ; =0x00007FFF\n    cmp r1, r0\n    bne _0225AA50\n    mov r0, #0\n    str r0, [r4, #0x28]\n    str r0, [r4, #0x30]\n    mov r2, #0xfa\n    ldr r0, _0225AA68 ; =ov12_0225FFDC\n    add r1, r4, #0\n    lsl r2, r2, #2\n    bl SysTask_CreateOnMainQueue\n    str r0, [r4, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225AA60: .word 0x00000195\n    _0225AA64: .word 0x00007FFF\n    _0225AA68: .word ov12_0225FFDC"
+    );
+    #endif
+}
+
+void ov12_0225AA6C(void) {
+    /* Original at 0x0225AA6C */
+    /* Requires manual decompilation - 53 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r1, #0\n    add r7, r0, #0\n    ldr r0, [r6, #0x2c]\n    add r5, r2, #0\n    cmp r0, #0\n    bne _0225AA7E\n    bl GF_AssertFail\n    add r4, r6, #0\n    add r4, #0x28\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #1\n    bl MI_CpuFill8\n    str r7, [r4, #0xc]\n    add r0, r4, #0\n    ldrb r1, [r5]\n    add r0, #0x4c\n    strb r1, [r0]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r2, [r6, r0]\n    add r1, r4, #0\n    add r1, #0x24\n    strb r2, [r1]\n    ldr r1, [r5, #4]\n    add r0, r0, #1\n    str r1, [r4, #0x38]\n    ldr r1, [r5, #0xc]\n    str r1, [r4, #0x3c]\n    ldr r2, [r5, #8]\n    ldr r1, [r4, #0x38]\n    sub r1, r2, r1\n    str r1, [r4, #0x40]\n    ldrb r0, [r6, r0]\n    cmp r0, #0\n    bne _0225AACA\n    mov r2, #0xfa\n    ldr r0, _0225AADC ; =ov12_02260030\n    add r1, r4, #0\n    lsl r2, r2, #2\n    bl SysTask_CreateOnMainQueue\n    str r0, [r4, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r1, r4, #0\n    ldr r0, [r4, #0xc]\n    add r1, #0x24\n    add r4, #0x4c\n    ldrb r1, [r1]\n    ldrb r2, [r4]\n    bl ov12_0226430C\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225AADC: .word ov12_02260030"
+    );
+    #endif
+}
+
+void ov12_0225AAE0(void) {
+    /* Original at 0x0225AAE0 */
+    /* Requires manual decompilation - 104 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0x74\n    str r2, [sp]\n    bl Heap_Alloc\n    add r1, r0, #0\n    ldr r0, _0225ABB0 ; =0x00000195\n    ldrb r2, [r4, r0]\n    mov r0, #1\n    tst r0, r2\n    beq _0225AB00\n    mov r2, #2\n    b _0225AB02\n    mov r2, #0\n    add r0, r1, #0\n    add r0, #0x67\n    strb r2, [r0]\n    add r2, r1, #0\n    mov r0, #0\n    add r2, #0x66\n    strb r0, [r2]\n    str r5, [r1]\n    ldr r2, [sp]\n    str r4, [r1, #4]\n    ldrb r3, [r2]\n    add r2, r1, #0\n    add r2, #0x64\n    strb r3, [r2]\n    mov r2, #0x65\n    lsl r2, r2, #2\n    ldrb r3, [r4, r2]\n    add r2, r1, #0\n    add r2, #0x65\n    strb r3, [r2]\n    ldr r2, [r4, #0x20]\n    add r7, r1, #0\n    str r2, [r1, #8]\n    ldr r2, [sp]\n    ldrh r3, [r2, #2]\n    add r2, r1, #0\n    add r2, #0x68\n    strh r3, [r2]\n    ldr r2, [sp]\n    ldrb r3, [r2, #1]\n    add r2, r1, #0\n    add r2, #0x6a\n    strb r3, [r2]\n    ldr r2, [sp]\n    ldrb r3, [r2, #8]\n    add r2, r1, #0\n    add r2, #0x6b\n    strb r3, [r2]\n    ldr r2, [sp]\n    ldr r2, [r2, #4]\n    str r2, [r1, #0x6c]\n    ldr r2, [sp]\n    ldrb r3, [r2, #9]\n    add r2, r1, #0\n    add r2, #0x70\n    strh r3, [r2]\n    ldr r2, [sp]\n    ldrb r3, [r2, #0xa]\n    add r2, r1, #0\n    add r2, #0x72\n    strh r3, [r2]\n    ldr r2, [sp]\n    add r3, r1, #0\n    mov ip, r2\n    mov r4, ip\n    ldrh r4, [r4, #0xc]\n    strh r4, [r7, #0x24]\n    ldr r4, [sp]\n    add r7, r7, #2\n    add r6, r4, r0\n    add r4, r1, r0\n    ldrb r5, [r6, #0x14]\n    add r4, #0x2c\n    strb r5, [r4]\n    add r4, r1, r0\n    ldrb r5, [r6, #0x18]\n    add r4, #0x30\n    strb r5, [r4]\n    add r4, r1, r0\n    ldrb r5, [r6, #0x1c]\n    add r4, #0x34\n    add r0, r0, #1\n    strb r5, [r4]\n    ldr r4, [r2, #0x20]\n    add r2, r2, #4\n    str r4, [r3, #0x38]\n    mov r4, ip\n    add r4, r4, #2\n    add r3, r3, #4\n    mov ip, r4\n    cmp r0, #4\n    blt _0225AB6E\n    ldr r0, _0225ABB4 ; =ov12_022600F0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225ABB0: .word 0x00000195\n    _0225ABB4: .word ov12_022600F0"
+    );
+    #endif
+}
+
+void ov12_0225ABB8(void) {
+    /* Original at 0x0225ABB8 */
+    /* Requires manual decompilation - 21 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r2, #0\n    ldr r2, _0225ABE4 ; =0x00000195\n    mov r4, #1\n    ldrb r2, [r1, r2]\n    tst r2, r4\n    beq _0225ABCA\n    mov r4, #0x75\n    b _0225ABCC\n    sub r4, #0x76\n    mov r2, #0x65\n    lsl r2, r2, #2\n    ldrb r1, [r1, r2]\n    ldrb r2, [r5]\n    bl ov12_0226430C\n    ldrh r0, [r5, #2]\n    add r1, r4, #0\n    bl sub_0200602C\n    pop {r3, r4, r5, pc}\n    nop\n    _0225ABE4: .word 0x00000195"
+    );
+    #endif
+}
+
+void ov12_0225ABE8(void) {
+    /* Original at 0x0225ABE8 */
+    /* Requires manual decompilation - 23 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #6]\n    add r0, r4, #0\n    str r5, [r1]\n    add r0, #0x94\n    ldrb r0, [r0]\n    strb r0, [r1, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r4, r0]\n    strb r0, [r1, #5]\n    ldr r0, _0225AC18 ; =ov12_0226037C\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, pc}\n    nop\n    _0225AC18: .word ov12_0226037C"
+    );
+    #endif
+}
+
+void ov12_0225AC1C(void) {
+    /* Original at 0x0225AC1C */
+    /* Requires manual decompilation - 71 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0x68\n    str r2, [sp]\n    bl Heap_Alloc\n    add r1, r0, #0\n    str r5, [r1]\n    ldr r0, [sp]\n    str r4, [r1, #4]\n    ldrb r2, [r0]\n    add r0, r1, #0\n    add r0, #0x60\n    strb r2, [r0]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r2, [r4, r0]\n    add r0, r1, #0\n    add r0, #0x61\n    strb r2, [r0]\n    add r2, r1, #0\n    mov r0, #0\n    add r2, #0x62\n    strb r0, [r2]\n    ldr r2, [sp]\n    add r7, r1, #0\n    ldrb r3, [r2, #1]\n    add r2, r1, #0\n    add r2, #0x63\n    strb r3, [r2]\n    ldr r2, [sp]\n    add r3, r1, #0\n    ldrb r2, [r2, #2]\n    str r2, [r1, #0x64]\n    ldr r2, [sp]\n    mov ip, r2\n    mov r4, ip\n    ldrh r4, [r4, #4]\n    strh r4, [r7, #0x20]\n    ldr r4, [sp]\n    add r7, r7, #2\n    add r6, r4, r0\n    add r4, r1, r0\n    ldrb r5, [r6, #0xc]\n    add r4, #0x28\n    strb r5, [r4]\n    add r4, r1, r0\n    ldrb r5, [r6, #0x10]\n    add r4, #0x2c\n    strb r5, [r4]\n    add r4, r1, r0\n    ldrb r5, [r6, #0x14]\n    add r4, #0x30\n    add r0, r0, #1\n    strb r5, [r4]\n    ldr r4, [r2, #0x18]\n    add r2, r2, #4\n    str r4, [r3, #0x34]\n    mov r4, ip\n    add r4, r4, #2\n    add r3, r3, #4\n    mov ip, r4\n    cmp r0, #4\n    blt _0225AC68\n    ldr r0, _0225ACAC ; =ov12_02260418\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225ACAC: .word ov12_02260418"
+    );
+    #endif
+}
+
+void ov12_0225ACB0(void) {
+    /* Original at 0x0225ACB0 */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5, #0x2c]\n    add r4, r2, #0\n    cmp r0, #0\n    bne _0225ACC2\n    bl GF_AssertFail\n    ldrb r1, [r4, #1]\n    add r0, r5, #0\n    add r0, #0x72\n    strb r1, [r0]\n    add r0, r5, #0\n    mov r2, #1\n    ldr r1, [r5, #0x50]\n    add r0, #0x28\n    lsl r2, r2, #8\n    bl ov12_0226498C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r4]\n    add r0, r6, #0\n    bl ov12_0226430C\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225ACE8(void) {
+    /* Original at 0x0225ACE8 */
+    /* Requires manual decompilation - 40 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r5, r1, #0\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    add r6, r0, #0\n    add r7, r2, #0\n    bl BattleSystem_GetTrainerIndex\n    str r0, [sp, #4]\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r6, [r4]\n    ldrb r0, [r7]\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r5, r0]\n    strb r0, [r4, #5]\n    add r0, r6, #0\n    bl BattleSystem_GetTextFrameDelay\n    str r0, [sp]\n    mov r2, #0x65\n    lsl r2, r2, #2\n    ldrb r2, [r5, r2]\n    ldrb r3, [r7, #1]\n    ldr r1, [sp, #4]\n    add r0, r6, #0\n    bl BattleSystem_PrintTrainerMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225AD40 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225AD40: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225AD44(void) {
+    /* Original at 0x0225AD44 */
+    /* Requires manual decompilation - 37 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r0, #0\n    add r3, sp, #4\n    add r6, r1, #0\n    add r7, r2, #0\n    bl ov12_02261390\n    add r0, r5, #0\n    bl BattleSystem_GetMessageLoader\n    str r0, [sp]\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    ldrb r0, [r7]\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r1, [sp]\n    add r0, r5, #0\n    add r2, sp, #4\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225AD98 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225AD98: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225AD9C(void) {
+    /* Original at 0x0225AD9C */
+    /* Requires manual decompilation - 37 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r0, #0\n    add r3, sp, #4\n    add r6, r1, #0\n    add r7, r2, #0\n    bl ov12_02261464\n    add r0, r5, #0\n    bl BattleSystem_GetMessageLoader\n    str r0, [sp]\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    ldrb r0, [r7]\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r1, [sp]\n    add r0, r5, #0\n    add r2, sp, #4\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225ADF0 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225ADF0: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225ADF4(void) {
+    /* Original at 0x0225ADF4 */
+    /* Requires manual decompilation - 35 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    add r5, r0, #0\n    add r2, sp, #0\n    add r6, r1, #0\n    bl ov12_02261544\n    add r0, r5, #0\n    bl BattleSystem_GetMessageLoader\n    add r7, r0, #0\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    mov r0, #0x22\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, sp, #0\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225AE44 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}\n    _0225AE44: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225AE48(void) {
+    /* Original at 0x0225AE48 */
+    /* Requires manual decompilation - 37 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r0, #0\n    add r3, sp, #4\n    add r6, r1, #0\n    add r7, r2, #0\n    bl ov12_022615F0\n    add r0, r5, #0\n    bl BattleSystem_GetMessageLoader\n    str r0, [sp]\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    ldrb r0, [r7]\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r1, [sp]\n    add r0, r5, #0\n    add r2, sp, #4\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225AE9C ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225AE9C: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225AEA0(void) {
+    /* Original at 0x0225AEA0 */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0xc\n    bl Heap_Alloc\n    add r1, r0, #0\n    add r0, r4, #0\n    str r5, [r1]\n    add r0, #0x94\n    ldrb r0, [r0]\n    mov r2, #0\n    strb r0, [r1, #8]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r4, r0]\n    add r4, #0x28\n    strb r0, [r1, #9]\n    strb r2, [r1, #0xa]\n    ldr r0, _0225AED4 ; =ov12_02260584\n    str r4, [r1, #4]\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, pc}\n    nop\n    _0225AED4: .word ov12_02260584"
+    );
+    #endif
+}
+
+void ov12_0225AED8(void) {
+    /* Original at 0x0225AED8 */
+    /* Requires manual decompilation - 66 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    ldr r1, _0225AF6C ; =0x00000196\n    add r4, r2, #0\n    ldrb r2, [r5, r1]\n    add r6, r0, #0\n    cmp r2, #0\n    bne _0225AF2A\n    bl BattleSystem_GetMessageLoader\n    str r0, [sp]\n    mov r0, #5\n    mov r1, #0xc\n    bl Heap_Alloc\n    add r7, r0, #0\n    str r6, [r7]\n    ldrb r0, [r4]\n    strb r0, [r7, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r5, r0]\n    strb r0, [r7, #5]\n    mov r0, #0\n    strb r0, [r7, #7]\n    add r0, r6, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r1, [sp]\n    add r0, r6, #0\n    add r2, r4, #4\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r7, #6]\n    ldr r0, _0225AF70 ; =ov12_02260614\n    add r1, r7, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r2, #1\n    bne _0225AF46\n    sub r1, r1, #2\n    ldrb r1, [r5, r1]\n    bl ov12_02263A00\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r4]\n    add r0, r6, #0\n    bl ov12_0226430C\n    pop {r3, r4, r5, r6, r7, pc}\n    bl BattleSystem_GetBattleType\n    mov r1, #4\n    tst r0, r1\n    bne _0225AF5C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    add r0, r6, #0\n    bl ov12_02263A00\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r4]\n    add r0, r6, #0\n    bl ov12_0226430C\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225AF6C: .word 0x00000196\n    _0225AF70: .word ov12_02260614"
+    );
+    #endif
+}
+
+void ov12_0225AF74(void) {
+    /* Original at 0x0225AF74 */
+    /* Requires manual decompilation - 84 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r1, #0\n    add r4, r6, #0\n    add r4, #0x28\n    add r7, r0, #0\n    add r5, r2, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #1\n    bl MIi_CpuClearFast\n    mov r0, #0x65\n    str r7, [r4, #0xc]\n    lsl r0, r0, #2\n    ldrb r1, [r6, r0]\n    add r0, r4, #0\n    add r0, #0x24\n    strb r1, [r0]\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    add r1, r0, #0\n    ldr r0, _0225B024 ; =0x00000195\n    ldrb r0, [r6, r0]\n    bl BattleHpBar_Util_GetBarTypeFromBattlerSide\n    add r1, r4, #0\n    add r1, #0x25\n    strb r0, [r1]\n    add r0, r4, #0\n    ldrb r1, [r5]\n    add r0, #0x4c\n    mov r2, #0\n    strb r1, [r0]\n    mov r0, #2\n    ldrsh r0, [r5, r0]\n    str r0, [r4, #0x28]\n    ldrh r0, [r5, #4]\n    str r0, [r4, #0x2c]\n    add r0, r4, #0\n    ldrb r1, [r5, #1]\n    add r0, #0x48\n    strb r1, [r0]\n    ldrb r0, [r5, #7]\n    lsl r0, r0, #0x19\n    lsr r1, r0, #0x1e\n    add r0, r4, #0\n    add r0, #0x49\n    strb r1, [r0]\n    str r2, [r4, #0x30]\n    ldr r0, [r5, #8]\n    sub r2, #0x21\n    str r0, [r4, #0x38]\n    ldr r0, [r5, #0xc]\n    str r0, [r4, #0x3c]\n    add r0, r4, #0\n    ldrb r1, [r5, #6]\n    add r0, #0x26\n    strb r1, [r0]\n    ldrb r0, [r5, #7]\n    lsl r0, r0, #0x1b\n    lsr r1, r0, #0x1b\n    add r0, r4, #0\n    add r0, #0x4a\n    strb r1, [r0]\n    ldrb r0, [r5, #7]\n    lsl r0, r0, #0x18\n    lsr r1, r0, #0x1f\n    add r0, r4, #0\n    add r0, #0x4b\n    strb r1, [r0]\n    add r0, r4, #0\n    ldr r1, [r5, #0x10]\n    add r0, #0x27\n    strb r1, [r0]\n    ldr r1, [r4, #0x28]\n    add r0, r4, #0\n    bl ov12_0226498C\n    add r1, r4, #0\n    ldr r0, [r4, #0xc]\n    add r1, #0x24\n    add r4, #0x4c\n    ldrb r1, [r1]\n    ldrb r2, [r4]\n    bl ov12_0226430C\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225B024: .word 0x00000195"
+    );
+    #endif
+}
+
+void ov12_0225B028(void) {
+    /* Original at 0x0225B028 */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    add r4, r2, #0\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #0xa]\n    str r5, [r1]\n    ldrb r0, [r4]\n    strb r0, [r1, #8]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r1, #9]\n    ldrh r0, [r4, #2]\n    strh r0, [r1, #0xc]\n    ldrb r0, [r4, #1]\n    strb r0, [r1, #0xe]\n    ldr r0, _0225B05C ; =ov12_022609F8\n    bl SysTask_CreateOnMainQueue\n    pop {r4, r5, r6, pc}\n    _0225B05C: .word ov12_022609F8"
+    );
+    #endif
+}
+
+void ov12_0225B060(void) {
+    /* Original at 0x0225B060 */
+    /* Requires manual decompilation - 29 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    add r4, r2, #0\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #0xa]\n    str r6, [r1]\n    ldr r0, [r5, #0x20]\n    str r0, [r1, #4]\n    ldrb r0, [r4]\n    strb r0, [r1, #8]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r5, r0]\n    strb r0, [r1, #9]\n    ldrb r0, [r4, #1]\n    strb r0, [r1, #0xb]\n    strb r2, [r1, #0xc]\n    ldrb r0, [r4, #2]\n    strb r0, [r1, #0xd]\n    ldr r0, _0225B09C ; =ov12_02260B30\n    bl SysTask_CreateOnMainQueue\n    pop {r4, r5, r6, pc}\n    nop\n    _0225B09C: .word ov12_02260B30"
+    );
+    #endif
+}
+
+void ov12_0225B0A0(void) {
+    /* Original at 0x0225B0A0 */
+    /* Requires manual decompilation - 33 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    add r4, r2, #0\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r0, #0\n    strb r0, [r1, #7]\n    str r6, [r1]\n    ldrb r2, [r4]\n    strb r2, [r1, #4]\n    mov r2, #0x65\n    lsl r2, r2, #2\n    ldrb r3, [r5, r2]\n    add r2, r2, #1\n    strb r3, [r1, #5]\n    ldrb r2, [r5, r2]\n    strb r2, [r1, #6]\n    add r2, r4, r0\n    ldrb r3, [r2, #2]\n    add r2, r1, r0\n    add r0, r0, #1\n    strb r3, [r2, #8]\n    cmp r0, #6\n    blt _0225B0CA\n    ldr r0, _0225B0E4 ; =ov12_02260BA0\n    mov r2, #0\n    strb r2, [r1, #0xe]\n    bl SysTask_CreateOnMainQueue\n    pop {r4, r5, r6, pc}\n    _0225B0E4: .word ov12_02260BA0"
+    );
+    #endif
+}
+
+void ov12_0225B0E8(void) {
+    /* Original at 0x0225B0E8 */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    add r6, r2, #0\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #7]\n    str r5, [r1]\n    ldrb r0, [r6]\n    strb r0, [r1, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r3, [r4, r0]\n    add r0, r0, #1\n    strb r3, [r1, #5]\n    ldrb r0, [r4, r0]\n    strb r0, [r1, #6]\n    ldr r0, _0225B11C ; =ov12_02260C58\n    strb r2, [r1, #0xe]\n    bl SysTask_CreateOnMainQueue\n    pop {r4, r5, r6, pc}\n    _0225B11C: .word ov12_02260C58"
+    );
+    #endif
+}
+
+void ov12_0225B120(void) {
+    /* Original at 0x0225B120 */
+    /* Requires manual decompilation - 35 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    add r4, r2, #0\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r0, #0\n    strb r0, [r1, #7]\n    str r6, [r1]\n    ldrb r2, [r4]\n    strb r2, [r1, #4]\n    mov r2, #0x65\n    lsl r2, r2, #2\n    ldrb r3, [r5, r2]\n    add r2, r2, #1\n    strb r3, [r1, #5]\n    ldrb r2, [r5, r2]\n    strb r2, [r1, #6]\n    add r2, r4, r0\n    ldrb r3, [r2, #2]\n    add r2, r1, r0\n    add r0, r0, #1\n    strb r3, [r2, #8]\n    cmp r0, #6\n    blt _0225B14A\n    mov r0, #1\n    strb r0, [r1, #0xe]\n    ldr r0, _0225B168 ; =ov12_02260BA0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    pop {r4, r5, r6, pc}\n    nop\n    _0225B168: .word ov12_02260BA0"
+    );
+    #endif
+}
+
+void ov12_0225B16C(void) {
+    /* Original at 0x0225B16C */
+    /* Requires manual decompilation - 27 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    add r6, r2, #0\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #7]\n    str r5, [r1]\n    ldrb r0, [r6]\n    strb r0, [r1, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r3, [r4, r0]\n    add r0, r0, #1\n    strb r3, [r1, #5]\n    ldrb r0, [r4, r0]\n    strb r0, [r1, #6]\n    mov r0, #1\n    strb r0, [r1, #0xe]\n    ldr r0, _0225B1A4 ; =ov12_02260C58\n    bl SysTask_CreateOnMainQueue\n    pop {r4, r5, r6, pc}\n    nop\n    _0225B1A4: .word ov12_02260C58"
+    );
+    #endif
+}
+
+void ov12_0225B1A8(void) {
+    /* Original at 0x0225B1A8 */
+    /* Requires manual decompilation - 36 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, lr}\n    sub sp, #0x24\n    add r4, r1, #0\n    ldr r1, _0225B1F8 ; =0x00000196\n    add r5, r0, #0\n    ldrb r1, [r4, r1]\n    cmp r1, #0\n    bne _0225B1E6\n    bl BattleSystem_GetMessageLoader\n    add r1, r0, #0\n    ldr r2, _0225B1FC ; =0x0000039B\n    add r0, sp, #0\n    strh r2, [r0, #2]\n    mov r3, #0\n    strb r3, [r0, #1]\n    add r0, r5, #0\n    add r2, sp, #0\n    bl BattleSystem_PrintBattleMessage\n    add r0, r5, #0\n    mov r1, #0\n    bl BattleSystem_GetWindow\n    mov r1, #1\n    bl WaitingIcon_New\n    add r1, r0, #0\n    add r0, r5, #0\n    bl ov12_0223BB80\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    add r0, r5, #0\n    mov r2, #0x37\n    bl ov12_0226430C\n    add sp, #0x24\n    pop {r4, r5, pc}\n    _0225B1F8: .word 0x00000196\n    _0225B1FC: .word 0x0000039B"
+    );
+    #endif
+}
+
+void ov12_0225B200(void) {
+    /* Original at 0x0225B200 */
+    /* Requires manual decompilation - 22 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x50\n    mov r3, #0x65\n    add r4, r1, #0\n    lsl r3, r3, #2\n    add r6, r2, #0\n    ldrb r3, [r4, r3]\n    add r1, r6, #0\n    add r2, sp, #0\n    add r5, r0, #0\n    bl ov12_02261CA8\n    add r0, sp, #0\n    mov r1, #5\n    bl ov07_0223494C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    ldrb r2, [r6]\n    add r0, r5, #0\n    bl ov12_0226430C\n    add sp, #0x50\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225B234(void) {
+    /* Original at 0x0225B234 */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #0xe]\n    str r5, [r1]\n    add r0, r4, #0\n    str r4, [r1, #4]\n    add r0, #0x94\n    ldrb r0, [r0]\n    strb r0, [r1, #0xc]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r4, r0]\n    strb r0, [r1, #0xd]\n    ldr r0, [r4, #0x20]\n    str r0, [r1, #8]\n    ldr r0, _0225B268 ; =ov12_02260CDC\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, pc}\n    _0225B268: .word ov12_02260CDC"
+    );
+    #endif
+}
+
+void ov12_0225B26C(void) {
+    /* Original at 0x0225B26C */
+    /* Requires manual decompilation - 25 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #5\n    mov r1, #0x10\n    bl Heap_Alloc\n    add r1, r0, #0\n    mov r2, #0\n    strb r2, [r1, #0xe]\n    str r5, [r1]\n    add r0, r4, #0\n    str r4, [r1, #4]\n    add r0, #0x94\n    ldrb r0, [r0]\n    strb r0, [r1, #0xc]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r4, r0]\n    strb r0, [r1, #0xd]\n    ldr r0, [r4, #0x20]\n    str r0, [r1, #8]\n    ldr r0, _0225B2A0 ; =ov12_02260D28\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, pc}\n    _0225B2A0: .word ov12_02260D28"
+    );
+    #endif
+}
+
+void ov12_0225B2A4(void) {
+    /* Original at 0x0225B2A4 */
+    /* Requires manual decompilation - 35 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    add r5, r0, #0\n    add r2, sp, #0\n    add r6, r1, #0\n    bl ov12_02261928\n    add r0, r5, #0\n    bl BattleSystem_GetMessageLoader\n    add r7, r0, #0\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    mov r0, #0x3b\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, sp, #0\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225B2F4 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}\n    _0225B2F4: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225B2F8(void) {
+    /* Original at 0x0225B2F8 */
+    /* Requires manual decompilation - 35 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    add r5, r0, #0\n    add r3, sp, #0\n    add r6, r1, #0\n    bl ov12_022619E4\n    add r0, r5, #0\n    bl BattleSystem_GetMessageLoader\n    add r7, r0, #0\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    mov r0, #0x3c\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, sp, #0\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225B348 ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}\n    _0225B348: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225B34C(void) {
+    /* Original at 0x0225B34C */
+    /* Requires manual decompilation - 35 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    add r5, r0, #0\n    add r2, sp, #0\n    add r6, r1, #0\n    bl ov12_02261AD4\n    add r0, r5, #0\n    bl BattleSystem_GetMessageLoader\n    add r7, r0, #0\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    mov r0, #0x3d\n    strb r0, [r4, #4]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    strb r0, [r4, #5]\n    add r0, r5, #0\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, sp, #0\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #6]\n    ldr r0, _0225B39C ; =ov12_022605D0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}\n    _0225B39C: .word ov12_022605D0"
+    );
+    #endif
+}
+
+void ov12_0225B3A0(void) {
+    /* Original at 0x0225B3A0 */
+    /* Requires manual decompilation - 22 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x50\n    mov r3, #0x65\n    add r4, r1, #0\n    lsl r3, r3, #2\n    add r6, r2, #0\n    ldrb r3, [r4, r3]\n    add r1, r6, #0\n    add r2, sp, #0\n    add r5, r0, #0\n    bl ov12_02261CA8\n    add r0, sp, #0\n    mov r1, #5\n    bl ov07_02234A20\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r4, r1]\n    ldrb r2, [r6]\n    add r0, r5, #0\n    bl ov12_0226430C\n    add sp, #0x50\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225B3D4(void) {
+    /* Original at 0x0225B3D4 */
+    /* Requires manual decompilation - 40 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    ldr r0, _0225B424 ; =0x00000195\n    mov r1, #1\n    ldrb r0, [r5, r0]\n    add r4, r2, #0\n    tst r0, r1\n    beq _0225B3EA\n    mov r1, #0x75\n    b _0225B3EC\n    sub r1, #0x76\n    ldrb r0, [r4, #1]\n    cmp r0, #0\n    beq _0225B3FC\n    cmp r0, #1\n    beq _0225B40C\n    cmp r0, #2\n    beq _0225B404\n    b _0225B412\n    ldr r0, _0225B428 ; =0x000006FE\n    bl sub_0200602C\n    b _0225B412\n    ldr r0, _0225B42C ; =0x000006FC\n    bl sub_0200602C\n    b _0225B412\n    ldr r0, _0225B430 ; =0x000006FD\n    bl sub_0200602C\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r4]\n    add r0, r6, #0\n    bl ov12_0226430C\n    pop {r4, r5, r6, pc}\n    nop\n    _0225B424: .word 0x00000195\n    _0225B428: .word 0x000006FE\n    _0225B42C: .word 0x000006FC\n    _0225B430: .word 0x000006FD"
+    );
+    #endif
+}
+
+void ov12_0225B434(void) {
+    /* Original at 0x0225B434 */
+    /* Requires manual decompilation - 13 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r4, r2, #0\n    add r6, r0, #0\n    ldrh r0, [r4, #2]\n    add r5, r1, #0\n    bl PlayBGM\n    mov r1, #0x65\n    lsl r1, r1, #2\n    ldrb r1, [r5, r1]\n    ldrb r2, [r4]\n    add r0, r6, #0\n    bl ov12_0226430C\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225B454(void) {
+    /* Original at 0x0225B454 */
+    /* Requires manual decompilation - 28 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    add r7, r1, #0\n    mov r0, #5\n    mov r1, #0xc\n    add r5, r2, #0\n    bl Heap_Alloc\n    mov r1, #0\n    mov r2, #0xc\n    add r4, r0, #0\n    bl MI_CpuFill8\n    mov r2, #0\n    strb r2, [r4, #6]\n    str r6, [r4]\n    ldrb r0, [r5]\n    add r1, r4, #0\n    strb r0, [r4, #4]\n    ldrb r0, [r5, #1]\n    strb r0, [r4, #7]\n    mov r0, #0x65\n    strb r2, [r4, #8]\n    lsl r0, r0, #2\n    ldrb r0, [r7, r0]\n    strb r0, [r4, #5]\n    ldr r0, _0225B490 ; =ov12_02260D84\n    bl SysTask_CreateOnMainQueue\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225B490: .word ov12_02260D84"
+    );
+    #endif
+}
+
+void ov12_0225B494(void) {
+    /* Original at 0x0225B494 */
+    /* Requires manual decompilation - 356 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x70\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    ldrb r1, [r4, #0x12]\n    add r5, r0, #0\n    cmp r1, #4\n    bls _0225B4AC\n    b _0225B798\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225B4B8: ; jump table\n    mov r0, #0x1c\n    str r0, [r4, #0x20]\n    ldrb r0, [r4, #0x12]\n    add r0, r0, #1\n    strb r0, [r4, #0x12]\n    ldr r0, [r4, #0x20]\n    sub r0, r0, #1\n    str r0, [r4, #0x20]\n    bne _0225B5A0\n    ldrb r0, [r4, #0x12]\n    add r0, r0, #1\n    strb r0, [r4, #0x12]\n    ldrb r0, [r4, #0x13]\n    add r1, sp, #0x14\n    cmp r0, #2\n    ldr r0, [r4, #0xc]\n    beq _0225B4E6\n    b _0225B61A\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #0x14\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #0x1c]\n    cmp r0, #1\n    beq _0225B4FA\n    cmp r0, #3\n    bne _0225B51C\n    add r1, sp, #0x14\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    cmp r0, #0xc0\n    ldr r0, [r4, #0xc]\n    bge _0225B512\n    ldr r0, [r0]\n    mov r1, #8\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    b _0225B51C\n    ldr r0, [r0]\n    mov r1, #0xc0\n    mov r2, #0x58\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #0xc]\n    add r1, sp, #0x14\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #0x14\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #0x1c]\n    cmp r0, #1\n    bne _0225B540\n    add r3, sp, #0x14\n    mov r2, #2\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_SetAttr\n    b _0225B590\n    cmp r0, #3\n    bne _0225B56A\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_GetAttr\n    add r3, sp, #0x14\n    mov r2, #2\n    ldrsh r1, [r3, r2]\n    sub r0, r0, r1\n    strh r0, [r3, #2]\n    ldrsh r0, [r3, r2]\n    mov r1, #0\n    sub r0, #0x18\n    strh r0, [r3, #2]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #8]\n    neg r2, r2\n    bl Pokepic_AddAttr\n    b _0225B590\n    cmp r0, #5\n    bne _0225B590\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_GetAttr\n    add r3, sp, #0x14\n    mov r2, #2\n    ldrsh r1, [r3, r2]\n    sub r0, r1, r0\n    strh r0, [r3, #2]\n    ldrsh r0, [r3, r2]\n    mov r1, #0\n    sub r0, #0x10\n    strh r0, [r3, #2]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #8]\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_GetAttr\n    mov r1, #0x14\n    ldrsh r1, [r4, r1]\n    cmp r0, r1\n    bge _0225B5A2\n    b _0225B7B4\n    ldr r0, [r4, #8]\n    mov r1, #0x2c\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #8]\n    mov r1, #0x2d\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r2, #0x14\n    ldrsh r2, [r4, r2]\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r1, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r1, r0]\n    str r0, [sp]\n    ldrh r0, [r4, #0x16]\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    str r0, [sp, #8]\n    ldrb r0, [r4, #0x13]\n    str r0, [sp, #0xc]\n    ldr r0, [r4, #0x18]\n    str r0, [sp, #0x10]\n    ldrb r1, [r4, #0x11]\n    ldr r0, [r4]\n    ldr r2, [r4, #0x1c]\n    ldr r3, [r4, #8]\n    bl ov12_02261F38\n    ldr r0, [r4, #0x1c]\n    cmp r0, #1\n    beq _0225B5F6\n    cmp r0, #3\n    bne _0225B602\n    ldr r0, [r4, #0xc]\n    mov r1, #0xc0\n    ldr r0, [r0]\n    mov r2, #0x58\n    bl ManagedSprite_SetPositionXY\n    mov r2, #0\n    str r2, [sp]\n    ldr r0, [r4, #8]\n    mov r1, #8\n    add r3, r2, #0\n    bl Pokepic_StartPaletteFade\n    ldrb r0, [r4, #0x12]\n    add sp, #0x70\n    add r0, r0, #1\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #0x14\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #0x1c]\n    cmp r0, #0\n    beq _0225B62E\n    cmp r0, #2\n    bne _0225B650\n    add r0, sp, #0x14\n    mov r1, #2\n    ldrsh r0, [r0, r1]\n    cmp r0, #0x40\n    ldr r0, [r4, #0xc]\n    ble _0225B646\n    ldr r0, [r0]\n    sub r1, #0xa\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    b _0225B650\n    ldr r0, [r0]\n    mov r1, #0x40\n    mov r2, #0x88\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #0xc]\n    add r1, sp, #0x14\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #0x14\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #0x1c]\n    cmp r0, #0\n    bne _0225B674\n    add r3, sp, #0x14\n    mov r2, #2\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_SetAttr\n    b _0225B6C4\n    cmp r0, #2\n    bne _0225B69C\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_GetAttr\n    add r3, sp, #0x14\n    mov r2, #2\n    ldrsh r1, [r3, r2]\n    sub r0, r1, r0\n    strh r0, [r3, #2]\n    ldrsh r0, [r3, r2]\n    mov r1, #0\n    sub r0, #0x18\n    strh r0, [r3, #2]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #8]\n    bl Pokepic_AddAttr\n    b _0225B6C4\n    cmp r0, #4\n    bne _0225B6C4\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_GetAttr\n    add r3, sp, #0x14\n    mov r2, #2\n    ldrsh r1, [r3, r2]\n    sub r0, r0, r1\n    strh r0, [r3, #2]\n    ldrsh r0, [r3, r2]\n    mov r1, #0\n    sub r0, #0x10\n    strh r0, [r3, #2]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #8]\n    neg r2, r2\n    bl Pokepic_AddAttr\n    mov r0, #0x14\n    ldrsh r5, [r4, r0]\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl Pokepic_GetAttr\n    cmp r0, r5\n    bgt _0225B7B4\n    ldr r0, [r4, #8]\n    mov r1, #0\n    add r2, r5, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r1, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r1, r0]\n    str r0, [sp]\n    ldrh r0, [r4, #0x16]\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    str r0, [sp, #8]\n    ldrb r0, [r4, #0x13]\n    str r0, [sp, #0xc]\n    ldr r0, [r4, #0x18]\n    str r0, [sp, #0x10]\n    ldrb r1, [r4, #0x11]\n    ldr r0, [r4]\n    ldr r2, [r4, #0x1c]\n    ldr r3, [r4, #8]\n    bl ov12_02261F38\n    ldr r0, [r4, #0x1c]\n    cmp r0, #0\n    beq _0225B712\n    cmp r0, #2\n    bne _0225B71E\n    ldr r0, [r4, #0xc]\n    mov r1, #0x40\n    ldr r0, [r0]\n    mov r2, #0x88\n    bl ManagedSprite_SetPositionXY\n    ldrb r0, [r4, #0x12]\n    add sp, #0x70\n    add r0, r0, #1\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4]\n    bl ov12_0223B750\n    ldrb r1, [r4, #0x11]\n    bl sub_02017068\n    cmp r0, #1\n    bne _0225B7B4\n    ldr r0, [r4, #8]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    bne _0225B7B4\n    ldr r0, [r4, #0x28]\n    cmp r0, #0\n    beq _0225B774\n    ldrb r1, [r4, #0x11]\n    mov r0, #0xb\n    add r2, sp, #0x18\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x18\n    bl ov12_02261B80\n    mov r0, #4\n    add sp, #0x70\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    mov r0, #0xff\n    add sp, #0x70\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225B7B4\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    mov r0, #0xff\n    add sp, #0x70\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    bl sub_02005B58\n    ldrb r1, [r4, #0x11]\n    ldrb r2, [r4, #0x10]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x70\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225B7B8(void) {
+    /* Original at 0x0225B7B8 */
+    /* Requires manual decompilation - 183 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x70\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    ldrb r1, [r4, #0x12]\n    add r5, r0, #0\n    cmp r1, #4\n    bls _0225B7D0\n    b _0225B940\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225B7DC: ; jump table\n    mov r0, #0x1c\n    str r0, [r4, #0x20]\n    ldrb r0, [r4, #0x12]\n    add r0, r0, #1\n    strb r0, [r4, #0x12]\n    ldr r0, [r4, #0x20]\n    sub r0, r0, #1\n    str r0, [r4, #0x20]\n    beq _0225B7FA\n    b _0225B95C\n    ldrb r0, [r4, #0x12]\n    add r0, r0, #1\n    strb r0, [r4, #0x12]\n    ldr r0, [r4, #0xc]\n    add r1, sp, #0x14\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #0x14\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #0x1c]\n    cmp r0, #1\n    beq _0225B818\n    cmp r0, #3\n    bne _0225B83A\n    add r1, sp, #0x14\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    cmp r0, #0xc0\n    ldr r0, [r4, #0xc]\n    bge _0225B830\n    ldr r0, [r0]\n    mov r1, #8\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    b _0225B83A\n    ldr r0, [r0]\n    mov r1, #0xc0\n    mov r2, #0x58\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #0xc]\n    add r1, sp, #0x14\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #0x14\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #8]\n    mov r1, #1\n    mov r2, #4\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #8]\n    mov r1, #1\n    bl Pokepic_GetAttr\n    mov r1, #0x14\n    ldrsh r1, [r4, r1]\n    cmp r0, r1\n    blt _0225B95C\n    ldr r0, [r4, #8]\n    mov r1, #0x2c\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #8]\n    mov r1, #0x2d\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r2, #0x14\n    ldrsh r2, [r4, r2]\n    ldr r0, [r4, #8]\n    mov r1, #1\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r1, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r1, r0]\n    str r0, [sp]\n    ldrh r0, [r4, #0x16]\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    str r0, [sp, #8]\n    ldrb r0, [r4, #0x13]\n    str r0, [sp, #0xc]\n    ldr r0, [r4, #0x18]\n    str r0, [sp, #0x10]\n    ldrb r1, [r4, #0x11]\n    ldr r0, [r4]\n    ldr r2, [r4, #0x1c]\n    ldr r3, [r4, #8]\n    bl ov12_02261F38\n    ldr r0, [r4, #0xc]\n    mov r1, #0xc0\n    ldr r0, [r0]\n    mov r2, #0x58\n    bl ManagedSprite_SetPositionXY\n    mov r2, #0\n    str r2, [sp]\n    ldr r0, [r4, #8]\n    mov r1, #8\n    add r3, r2, #0\n    bl Pokepic_StartPaletteFade\n    ldrb r0, [r4, #0x12]\n    add sp, #0x70\n    add r0, r0, #1\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4]\n    bl ov12_0223B750\n    ldrb r1, [r4, #0x11]\n    bl sub_02017068\n    cmp r0, #1\n    bne _0225B95C\n    ldr r0, [r4, #8]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    bne _0225B95C\n    ldr r0, [r4, #0x28]\n    cmp r0, #0\n    beq _0225B91C\n    ldrb r1, [r4, #0x11]\n    mov r0, #0xb\n    add r2, sp, #0x18\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x18\n    bl ov12_02261B80\n    mov r0, #4\n    add sp, #0x70\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    mov r0, #0xff\n    add sp, #0x70\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225B95C\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    mov r0, #0xff\n    add sp, #0x70\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    bl sub_02005B58\n    ldrb r1, [r4, #0x11]\n    ldrb r2, [r4, #0x10]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x70\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225B960(void) {
+    /* Original at 0x0225B960 */
+    /* Requires manual decompilation - 550 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    sub sp, #0xb0\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    cmp r0, #7\n    bls _0225B974\n    b _0225BDFC\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225B980: ; jump table\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x96\n    strb r1, [r0]\n    str r1, [r4, #0x10]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    ldr r0, [r4]\n    beq _0225B9C8\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #0x20\n    tst r0, r1\n    bne _0225BA06\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225BA06\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FDFC\n    str r0, [r4, #0x10]\n    b _0225BA06\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #0x20\n    tst r0, r1\n    bne _0225BA06\n    ldr r0, [r4]\n    bl ov12_0223B688\n    cmp r0, #1\n    bne _0225B9F2\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225B9F2\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FDFC\n    str r0, [r4, #0x10]\n    b _0225BA06\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _0225BA06\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FDFC\n    str r0, [r4, #0x10]\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0xb0\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r1, sp, #0x4c\n    mov r0, #0\n    str r0, [r1]\n    str r0, [r1, #4]\n    str r0, [r1, #8]\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    add r1, r4, #0\n    add r2, r4, #0\n    str r0, [sp, #0x4c]\n    add r1, #0x81\n    add r2, #0x8c\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl BattleSystem_GetPartyMon\n    str r0, [sp, #0x54]\n    mov r0, #5\n    add r1, sp, #0x4c\n    bl ov07_02232694\n    str r0, [r4, #8]\n    bl ov07_022329B0\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0xb0\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233F20\n    cmp r0, #0\n    bne _0225BAA2\n    ldr r0, [r4, #8]\n    bl ov07_02232A04\n    cmp r0, #1\n    bne _0225BAA2\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233EA0\n    cmp r0, #1\n    bne _0225BAA2\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #4\n    bne _0225BAAC\n    add r0, r4, #0\n    add r0, #0x96\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x96\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x96\n    ldrb r0, [r0]\n    cmp r0, #0xc\n    bhs _0225BAA4\n    b _0225BE20\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x96\n    strb r1, [r0]\n    ldr r0, [r4]\n    bl ov12_0223A8D4\n    add r2, r4, #0\n    add r3, r4, #0\n    add r5, r0, #0\n    mov r0, #0x69\n    add r2, #0x86\n    add r3, #0x82\n    ldr r1, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r1, r0]\n    ldrh r2, [r2]\n    ldrb r3, [r3]\n    add r1, sp, #0x24\n    bl NARC_ReadPokepicAnimScript\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r3, [r0]\n    mov r0, #6\n    add r2, r4, #0\n    add r1, r3, #0\n    mul r1, r0\n    ldr r0, _0225BE24 ; =ov07_022377F4 + 2\n    add r2, #0x14\n    ldrsh r0, [r0, r1]\n    str r0, [sp]\n    ldr r0, _0225BE28 ; =ov07_022377F4 + 4\n    ldrsh r0, [r0, r1]\n    add r1, r5, #0\n    lsl r5, r3, #2\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x85\n    ldrb r0, [r0]\n    ldr r3, _0225BE2C ; =ov07_022377DC\n    str r0, [sp, #8]\n    mov r0, #0x90\n    ldrsb r0, [r4, r0]\n    ldrsh r3, [r3, r5]\n    str r0, [sp, #0xc]\n    mov r0, #0x91\n    ldrsb r0, [r4, r0]\n    str r0, [sp, #0x10]\n    add r0, r4, #0\n    add r0, #0x93\n    ldrb r0, [r0]\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r0, [r0]\n    str r0, [sp, #0x18]\n    add r0, sp, #0x24\n    str r0, [sp, #0x1c]\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r4]\n    bl ov12_022612A4\n    ldr r1, [r4, #4]\n    mov r2, #0\n    str r0, [r1, #0x20]\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    ldr r0, [r0, #0x20]\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0x2c\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #6\n    ldr r0, [r0, #0x20]\n    mov r2, #1\n    bl Pokepic_SetAttr\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    mov r3, #0\n    lsl r1, r0, #1\n    ldr r0, _0225BE30 ; =ov12_0226D15A\n    ldrh r0, [r0, r1]\n    mov r1, #0x10\n    add r2, r1, #0\n    str r0, [sp]\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_StartPaletteFade\n    ldr r0, [r4, #4]\n    mov r1, #6\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #8]\n    bl ov07_02232A44\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    ldr r0, _0225BE34 ; =0x00000706\n    bne _0225BB9A\n    mov r1, #0x75\n    bl sub_0200602C\n    b _0225BBA2\n    mov r1, #0x74\n    mvn r1, r1\n    bl sub_0200602C\n    ldr r0, [r4, #0x10]\n    cmp r0, #0\n    beq _0225BBB0\n    bl ov07_0221FE08\n    mov r0, #0\n    str r0, [r4, #0x10]\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0xb0\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233E88\n    cmp r0, #1\n    beq _0225BBDC\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x83\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    ldr r0, [r0, #0x20]\n    bl Pokepic_GetAttr\n    mov r1, #1\n    lsl r1, r1, #8\n    cmp r0, r1\n    bne _0225BC72\n    ldr r0, [r4, #8]\n    bl ov07_02232A54\n    cmp r0, #0\n    bne _0225BC72\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225BC0E\n    ldr r0, [r4, #4]\n    mov r1, #0x2d\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r3, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r3, r0]\n    add r1, r4, #0\n    str r0, [sp]\n    add r0, r4, #0\n    add r0, #0x86\n    ldrh r0, [r0]\n    add r2, r4, #0\n    add r1, #0x81\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x97\n    ldrb r0, [r0]\n    add r2, #0x82\n    str r0, [sp, #8]\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    str r0, [sp, #0xc]\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    str r0, [sp, #0x10]\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r3, [r3, #0x20]\n    bl ov12_02261F38\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    mov r2, #0\n    add r3, r2, #0\n    lsl r1, r0, #1\n    ldr r0, _0225BE30 ; =ov12_0226D15A\n    ldrh r0, [r0, r1]\n    mov r1, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_StartPaletteFade\n    mov r0, #5\n    add r4, #0x83\n    add sp, #0xb0\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    ldr r0, [r0, #0x20]\n    bl Pokepic_GetAttr\n    mov r2, #1\n    lsl r2, r2, #8\n    cmp r0, r2\n    ldr r0, [r4, #4]\n    blt _0225BD16\n    ldr r0, [r0, #0x20]\n    mov r1, #0xc\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r0, #0x20]\n    add r2, #0xf3\n    bl Pokepic_SetAttr\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225BCB2\n    ldr r0, [r4, #4]\n    mov r1, #0x2d\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r3, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r3, r0]\n    add r1, r4, #0\n    str r0, [sp]\n    add r0, r4, #0\n    add r0, #0x86\n    ldrh r0, [r0]\n    add r2, r4, #0\n    add r1, #0x81\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x97\n    ldrb r0, [r0]\n    add r2, #0x82\n    str r0, [sp, #8]\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    str r0, [sp, #0xc]\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    str r0, [sp, #0x10]\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r3, [r3, #0x20]\n    bl ov12_02261F38\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    mov r2, #0\n    mov r3, #1\n    lsl r1, r0, #1\n    ldr r0, _0225BE30 ; =ov12_0226D15A\n    ldrh r0, [r0, r1]\n    mov r1, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_StartPaletteFade\n    mov r0, #5\n    add r4, #0x83\n    add sp, #0xb0\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r0, #0x20]\n    mov r1, #0xc\n    mov r2, #0x20\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    ldr r0, [r0, #0x20]\n    mov r2, #0x20\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #4]\n    mov r1, #0x90\n    ldrsb r1, [r4, r1]\n    ldr r0, [r0, #0x20]\n    bl sub_0200914C\n    add sp, #0xb0\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #8]\n    bl ov07_02232A54\n    cmp r0, #0\n    bne _0225BE20\n    mov r0, #6\n    add r4, #0x83\n    add sp, #0xb0\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4]\n    bl ov12_0223B750\n    add r1, r4, #0\n    add r1, #0x81\n    ldrb r1, [r1]\n    bl sub_02017068\n    cmp r0, #1\n    bne _0225BE20\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    bne _0225BE20\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233ECC\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x88\n    str r1, [r0]\n    ldr r0, [r4, #8]\n    bl ov07_02232AB8\n    add r0, r4, #0\n    add r0, #0x92\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225BDCC\n    mov r0, #5\n    bl ov07_0221BEDC\n    str r0, [r4, #0x24]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0xb\n    add r2, sp, #0x58\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0x24]\n    add r3, sp, #0x58\n    bl ov12_02261B80\n    mov r0, #7\n    add r4, #0x83\n    add sp, #0xb0\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    mov r0, #0xff\n    add r4, #0x83\n    add sp, #0xb0\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C394\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225BE20\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C3C0\n    ldr r0, [r4, #0x24]\n    bl ov07_0221BFE0\n    mov r0, #0xff\n    add r4, #0x83\n    add sp, #0xb0\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    bl sub_02005B58\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x81\n    add r2, #0x80\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add sp, #0xb0\n    pop {r3, r4, r5, pc}\n    _0225BE24: .word ov07_022377F4 + 2\n    _0225BE28: .word ov07_022377F4 + 4\n    _0225BE2C: .word ov07_022377DC\n    _0225BE30: .word ov12_0226D15A\n    _0225BE34: .word 0x00000706"
+    );
+    #endif
+}
+
+void ov12_0225BE38(void) {
+    /* Original at 0x0225BE38 */
+    /* Requires manual decompilation - 378 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, lr}\n    sub sp, #0xfc\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    cmp r0, #6\n    bls _0225BE4C\n    b _0225C156\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225BE58: ; jump table\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x96\n    strb r1, [r0]\n    str r1, [r4, #0x10]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    ldr r0, [r4]\n    beq _0225BE9E\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #0x20\n    tst r0, r1\n    bne _0225BEDC\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225BEDC\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FDFC\n    str r0, [r4, #0x10]\n    b _0225BEDC\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #0x20\n    tst r0, r1\n    bne _0225BEDC\n    ldr r0, [r4]\n    bl ov12_0223B688\n    cmp r0, #1\n    bne _0225BEC8\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225BEC8\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FDFC\n    str r0, [r4, #0x10]\n    b _0225BEDC\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _0225BEDC\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FDFC\n    str r0, [r4, #0x10]\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0xfc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    cmp r0, #4\n    bne _0225BF18\n    add r0, r4, #0\n    add r0, #0x96\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x96\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x96\n    ldrb r0, [r0]\n    cmp r0, #0xc\n    bhs _0225BF10\n    b _0225C17A\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x96\n    strb r1, [r0]\n    ldr r0, [r4]\n    bl ov12_0223A8D4\n    add r2, r4, #0\n    add r3, r4, #0\n    add r5, r0, #0\n    mov r0, #0x69\n    add r2, #0x86\n    add r3, #0x82\n    ldr r1, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r1, r0]\n    ldrh r2, [r2]\n    ldrb r3, [r3]\n    add r1, sp, #0x24\n    bl NARC_ReadPokepicAnimScript\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r1, [r0]\n    mov r0, #6\n    add r2, r4, #0\n    add r3, r1, #0\n    mul r3, r0\n    ldr r0, _0225C180 ; =ov07_022377F4 + 38\n    add r1, r5, #0\n    ldrsh r0, [r0, r3]\n    ldr r5, _0225C184 ; =ov07_022377F4 + 36\n    add r2, #0x14\n    str r0, [sp]\n    ldr r0, _0225C188 ; =ov07_022377F4 + 4\n    ldrsh r0, [r0, r3]\n    ldrsh r3, [r5, r3]\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x85\n    ldrb r0, [r0]\n    str r0, [sp, #8]\n    mov r0, #0x90\n    ldrsb r0, [r4, r0]\n    str r0, [sp, #0xc]\n    mov r0, #0x91\n    ldrsb r0, [r4, r0]\n    str r0, [sp, #0x10]\n    add r0, r4, #0\n    add r0, #0x93\n    ldrb r0, [r0]\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r0, [r0]\n    str r0, [sp, #0x18]\n    add r0, sp, #0x24\n    str r0, [sp, #0x1c]\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r4]\n    bl ov12_022612A4\n    ldr r1, [r4, #4]\n    str r0, [r1, #0x20]\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r0, [r0, #0x20]\n    add r2, #0xf4\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r0, #0x20]\n    add r2, #0xf3\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0x2c\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #6\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x10]\n    cmp r0, #0\n    beq _0225BFD4\n    bl ov07_0221FE08\n    mov r0, #0\n    str r0, [r4, #0x10]\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0xfc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    mov r0, #5\n    bl ov07_0221BEDC\n    str r0, [r4, #0x24]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0x29\n    add r2, sp, #0xa4\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0x24]\n    add r3, sp, #0xa4\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0xfc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C394\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C3B0\n    cmp r0, #0\n    beq _0225C036\n    b _0225C17A\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C3C0\n    ldr r0, [r4, #0x24]\n    bl ov07_0221BFE0\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0xfc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225C068\n    ldr r0, [r4, #4]\n    mov r1, #0x2d\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r3, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r3, r0]\n    add r1, r4, #0\n    str r0, [sp]\n    add r0, r4, #0\n    add r0, #0x86\n    ldrh r0, [r0]\n    add r2, r4, #0\n    add r1, #0x81\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x97\n    ldrb r0, [r0]\n    add r2, #0x82\n    str r0, [sp, #8]\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    str r0, [sp, #0xc]\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    str r0, [sp, #0x10]\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r3, [r3, #0x20]\n    bl ov12_02261F38\n    mov r0, #5\n    add r4, #0x83\n    add sp, #0xfc\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    ldr r0, [r4]\n    bl ov12_0223B750\n    add r1, r4, #0\n    add r1, #0x81\n    ldrb r1, [r1]\n    bl sub_02017068\n    cmp r0, #1\n    bne _0225C17A\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    bne _0225C17A\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233ECC\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x88\n    str r1, [r0]\n    add r0, r4, #0\n    add r0, #0x92\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225C126\n    mov r0, #5\n    bl ov07_0221BEDC\n    str r0, [r4, #0x24]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0xb\n    add r2, sp, #0x4c\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0x24]\n    add r3, sp, #0x4c\n    bl ov12_02261B80\n    mov r0, #6\n    add r4, #0x83\n    add sp, #0xfc\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    mov r0, #0xff\n    add r4, #0x83\n    add sp, #0xfc\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C394\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225C17A\n    ldr r0, [r4, #0x24]\n    bl ov07_0221C3C0\n    ldr r0, [r4, #0x24]\n    bl ov07_0221BFE0\n    mov r0, #0xff\n    add r4, #0x83\n    add sp, #0xfc\n    strb r0, [r4]\n    pop {r4, r5, pc}\n    mov r0, #0\n    bl sub_02005B58\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x81\n    add r2, #0x80\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add sp, #0xfc\n    pop {r4, r5, pc}\n    nop\n    _0225C180: .word ov07_022377F4 + 38\n    _0225C184: .word ov07_022377F4 + 36\n    _0225C188: .word ov07_022377F4 + 4"
+    );
+    #endif
+}
+
+void ov12_0225C18C(void) {
+    /* Original at 0x0225C18C */
+    /* Requires manual decompilation - 594 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x1d8\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r1, r4, #0\n    add r1, #0x83\n    ldrb r1, [r1]\n    add r5, r0, #0\n    cmp r1, #0xb\n    bls _0225C1A8\n    b _0225C6A6\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225C1B4: ; jump table\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r1, [r0]\n    ldr r0, _0225C4FC ; =ov12_0226D120\n    ldrb r0, [r0, r1]\n    str r0, [sp, #0x58]\n    mov r0, #5\n    str r0, [sp, #0x5c]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r0, [r0]\n    str r0, [sp, #0x64]\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    str r0, [sp, #0x68]\n    ldr r0, [r4]\n    bl BattleSystem_GetSpriteSystem\n    str r0, [sp, #0x74]\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    str r0, [sp, #0x78]\n    mov r2, #1\n    mov r1, #0\n    add r0, r4, #0\n    str r2, [sp, #0x6c]\n    str r1, [sp, #0x70]\n    add r0, #0x94\n    ldrh r0, [r0]\n    cmp r0, #1\n    bne _0225C212\n    str r2, [sp, #0x60]\n    b _0225C214\n    str r1, [sp, #0x60]\n    add r0, sp, #0x58\n    bl ov07_02233DB8\n    str r0, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0223A8D4\n    add r2, r4, #0\n    add r3, r4, #0\n    add r5, r0, #0\n    mov r0, #0x69\n    add r2, #0x86\n    add r3, #0x82\n    ldr r1, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r1, r0]\n    ldrh r2, [r2]\n    ldrb r3, [r3]\n    add r1, sp, #0x30\n    bl NARC_ReadPokepicAnimScript\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r3, [r0]\n    mov r0, #6\n    add r2, r4, #0\n    add r1, r3, #0\n    mul r1, r0\n    ldr r0, _0225C500 ; =ov07_022377F4 + 2\n    add r2, #0x14\n    ldrsh r0, [r0, r1]\n    str r0, [sp]\n    ldr r0, _0225C504 ; =ov07_022377F4 + 4\n    ldrsh r0, [r0, r1]\n    add r1, r5, #0\n    lsl r5, r3, #2\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x85\n    ldrb r0, [r0]\n    ldr r3, _0225C508 ; =ov07_022377DC\n    str r0, [sp, #8]\n    mov r0, #0x90\n    ldrsb r0, [r4, r0]\n    ldrsh r3, [r3, r5]\n    str r0, [sp, #0xc]\n    mov r0, #0x91\n    ldrsb r0, [r4, r0]\n    str r0, [sp, #0x10]\n    add r0, r4, #0\n    add r0, #0x93\n    ldrb r0, [r0]\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r0, [r0]\n    str r0, [sp, #0x18]\n    add r0, sp, #0x30\n    str r0, [sp, #0x1c]\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r4]\n    bl ov12_022612A4\n    ldr r1, [r4, #4]\n    mov r2, #0\n    str r0, [r1, #0x20]\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    ldr r0, [r0, #0x20]\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0x2c\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #6\n    ldr r0, [r0, #0x20]\n    mov r2, #1\n    bl Pokepic_SetAttr\n    mov r0, #0\n    str r0, [r4, #0x10]\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FDFC\n    str r0, [r4, #0x10]\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1d8\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r1, sp, #0x24\n    mov r0, #0\n    str r0, [r1]\n    str r0, [r1, #4]\n    str r0, [r1, #8]\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r0, [r0]\n    add r1, r4, #0\n    add r2, r4, #0\n    str r0, [sp, #0x24]\n    add r1, #0x81\n    add r2, #0x8c\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl BattleSystem_GetPartyMon\n    str r0, [sp, #0x2c]\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    add r1, sp, #0x24\n    str r0, [sp, #0x28]\n    mov r0, #5\n    bl ov07_02232694\n    str r0, [r4, #8]\n    bl ov07_022329B0\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1d8\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #0xc]\n    bl ov07_02233F20\n    cmp r0, #0\n    beq _0225C346\n    add r0, r4, #0\n    add r0, #0x94\n    ldrh r0, [r0]\n    cmp r0, #0\n    beq _0225C35A\n    ldr r0, [r4, #8]\n    bl ov07_02232A04\n    cmp r0, #1\n    bne _0225C35A\n    ldr r0, [r4, #0xc]\n    bl ov07_02233EA0\n    cmp r0, #1\n    beq _0225C35C\n    b _0225C6C4\n    ldr r0, [r4, #0x10]\n    cmp r0, #0\n    beq _0225C366\n    bl ov07_0221FE08\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    mov r3, #0\n    lsl r1, r0, #1\n    ldr r0, _0225C50C ; =ov12_0226D15A\n    ldrh r0, [r0, r1]\n    mov r1, #0x10\n    add r2, r1, #0\n    str r0, [sp]\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_StartPaletteFade\n    ldr r0, [r4, #4]\n    mov r1, #6\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #8]\n    bl ov07_02232A44\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    ldr r0, _0225C510 ; =0x00000706\n    bne _0225C3A8\n    mov r1, #0x75\n    bl sub_0200602C\n    b _0225C3B0\n    mov r1, #0x74\n    mvn r1, r1\n    bl sub_0200602C\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1d8\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #0xc]\n    bl ov07_02233E88\n    cmp r0, #1\n    beq _0225C3D8\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x83\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    ldr r0, [r0, #0x20]\n    bl Pokepic_GetAttr\n    mov r1, #1\n    lsl r1, r1, #8\n    cmp r0, r1\n    bne _0225C46E\n    ldr r0, [r4, #8]\n    bl ov07_02232A54\n    cmp r0, #0\n    bne _0225C46E\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225C40A\n    ldr r0, [r4, #4]\n    mov r1, #0x2d\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r3, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r3, r0]\n    add r1, r4, #0\n    str r0, [sp]\n    add r0, r4, #0\n    add r0, #0x86\n    ldrh r0, [r0]\n    add r2, r4, #0\n    add r1, #0x81\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x97\n    ldrb r0, [r0]\n    add r2, #0x82\n    str r0, [sp, #8]\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    str r0, [sp, #0xc]\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    str r0, [sp, #0x10]\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r3, [r3, #0x20]\n    bl ov12_02261F38\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    mov r2, #0\n    add r3, r2, #0\n    lsl r1, r0, #1\n    ldr r0, _0225C50C ; =ov12_0226D15A\n    ldrh r0, [r0, r1]\n    mov r1, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_StartPaletteFade\n    mov r0, #5\n    add r4, #0x83\n    add sp, #0x1d8\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    ldr r0, [r0, #0x20]\n    bl Pokepic_GetAttr\n    mov r2, #1\n    lsl r2, r2, #8\n    cmp r0, r2\n    ldr r0, [r4, #4]\n    blt _0225C52C\n    ldr r0, [r0, #0x20]\n    mov r1, #0xc\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r0, #0x20]\n    add r2, #0xf3\n    bl Pokepic_SetAttr\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225C4AE\n    ldr r0, [r4, #4]\n    mov r1, #0x2d\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r3, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r3, r0]\n    add r1, r4, #0\n    str r0, [sp]\n    add r0, r4, #0\n    add r0, #0x86\n    ldrh r0, [r0]\n    add r2, r4, #0\n    add r1, #0x81\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x97\n    ldrb r0, [r0]\n    add r2, #0x82\n    str r0, [sp, #8]\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    str r0, [sp, #0xc]\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    str r0, [sp, #0x10]\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r3, [r3, #0x20]\n    bl ov12_02261F38\n    add r0, r4, #0\n    add r0, #0x8e\n    ldrh r0, [r0]\n    mov r2, #0\n    mov r3, #1\n    lsl r1, r0, #1\n    ldr r0, _0225C50C ; =ov12_0226D15A\n    b _0225C514\n    _0225C4FC: .word ov12_0226D120\n    _0225C500: .word ov07_022377F4 + 2\n    _0225C504: .word ov07_022377F4 + 4\n    _0225C508: .word ov07_022377DC\n    _0225C50C: .word ov12_0226D15A\n    _0225C510: .word 0x00000706\n    ldrh r0, [r0, r1]\n    mov r1, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_StartPaletteFade\n    mov r0, #5\n    add r4, #0x83\n    add sp, #0x1d8\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r0, #0x20]\n    mov r1, #0xc\n    mov r2, #0x20\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    ldr r0, [r0, #0x20]\n    mov r2, #0x20\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #4]\n    mov r1, #0x90\n    ldrsb r1, [r4, r1]\n    ldr r0, [r0, #0x20]\n    bl sub_0200914C\n    add sp, #0x1d8\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #8]\n    bl ov07_02232A54\n    cmp r0, #0\n    bne _0225C586\n    mov r0, #6\n    add r4, #0x83\n    add sp, #0x1d8\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4]\n    bl ov12_0223B750\n    add r1, r4, #0\n    add r1, #0x81\n    ldrb r1, [r1]\n    bl sub_02017068\n    cmp r0, #1\n    bne _0225C586\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    beq _0225C588\n    b _0225C6C4\n    ldr r0, [r4, #0xc]\n    bl ov07_02233ECC\n    ldr r0, [r4, #8]\n    bl ov07_02232AB8\n    add r0, r4, #0\n    add r0, #0x92\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225C5D0\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0xb\n    add r2, sp, #0x180\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x180\n    bl ov12_02261B80\n    mov r0, #7\n    add r4, #0x83\n    add sp, #0x1d8\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    mov r0, #8\n    add r4, #0x83\n    add sp, #0x1d8\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225C6C4\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1d8\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x98\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _0225C640\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0x128\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x128\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1d8\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    mov r0, #0xff\n    add r4, #0x83\n    add sp, #0x1d8\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r3, r4, #0\n    add r3, #0x81\n    ldrb r3, [r3]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x28\n    add r2, sp, #0xd8\n    bl ov12_02261CA8\n    add r0, sp, #0xd8\n    mov r1, #5\n    bl ov07_02234A20\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x80\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x80\n    bl ov12_02261B80\n    mov r0, #0x1a\n    ldr r1, [r4, #4]\n    mov r2, #1\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1d8\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x81\n    add r2, #0x80\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x1d8\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225C6C8(void) {
+    /* Original at 0x0225C6C8 */
+    /* Requires manual decompilation - 337 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x1fc\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r1, r4, #0\n    add r1, #0x83\n    ldrb r1, [r1]\n    add r5, r0, #0\n    cmp r1, #9\n    bls _0225C6E4\n    b _0225C98C\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225C6F0: ; jump table\n    ldr r0, [r4]\n    bl ov12_0223A8D4\n    add r2, r4, #0\n    add r3, r4, #0\n    add r5, r0, #0\n    mov r0, #0x69\n    add r2, #0x86\n    add r3, #0x82\n    ldr r1, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r1, r0]\n    ldrh r2, [r2]\n    ldrb r3, [r3]\n    add r1, sp, #0x24\n    bl NARC_ReadPokepicAnimScript\n    add r0, r4, #0\n    add r0, #0x82\n    ldrb r1, [r0]\n    mov r0, #6\n    add r2, r4, #0\n    add r3, r1, #0\n    mul r3, r0\n    ldr r0, _0225C9B0 ; =ov07_022377F4 + 38\n    add r1, r5, #0\n    ldrsh r0, [r0, r3]\n    ldr r5, _0225C9B4 ; =ov07_022377F4 + 36\n    add r2, #0x14\n    str r0, [sp]\n    ldr r0, _0225C9B8 ; =ov07_022377F4 + 4\n    ldrsh r0, [r0, r3]\n    ldrsh r3, [r5, r3]\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x85\n    ldrb r0, [r0]\n    str r0, [sp, #8]\n    mov r0, #0x90\n    ldrsb r0, [r4, r0]\n    str r0, [sp, #0xc]\n    mov r0, #0x91\n    ldrsb r0, [r4, r0]\n    str r0, [sp, #0x10]\n    add r0, r4, #0\n    add r0, #0x93\n    ldrb r0, [r0]\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r0, [r0]\n    str r0, [sp, #0x18]\n    add r0, sp, #0x24\n    str r0, [sp, #0x1c]\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r4]\n    bl ov12_022612A4\n    ldr r1, [r4, #4]\n    str r0, [r1, #0x20]\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r0, [r0, #0x20]\n    add r2, #0xf4\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r0, #0x20]\n    add r2, #0xf3\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #0x2c\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #4]\n    mov r1, #6\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1fc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0x29\n    add r2, sp, #0x1a4\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x1a4\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1fc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _0225C810\n    ldr r0, [r4, #4]\n    mov r1, #0x2d\n    ldr r0, [r0, #0x20]\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r0, #0x69\n    ldr r3, [r4, #4]\n    lsl r0, r0, #2\n    ldr r0, [r3, r0]\n    add r1, r4, #0\n    str r0, [sp]\n    add r0, r4, #0\n    add r0, #0x86\n    ldrh r0, [r0]\n    add r2, r4, #0\n    add r1, #0x81\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r0, #0x97\n    ldrb r0, [r0]\n    add r2, #0x82\n    str r0, [sp, #8]\n    add r0, r4, #0\n    add r0, #0x84\n    ldrb r0, [r0]\n    str r0, [sp, #0xc]\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    str r0, [sp, #0x10]\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r3, [r3, #0x20]\n    bl ov12_02261F38\n    mov r0, #4\n    add r4, #0x83\n    add sp, #0x1fc\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    ldr r0, [r4]\n    bl ov12_0223B750\n    add r1, r4, #0\n    add r1, #0x81\n    ldrb r1, [r1]\n    bl sub_02017068\n    cmp r0, #1\n    bne _0225C878\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    beq _0225C87A\n    b _0225C9AA\n    add r0, r4, #0\n    add r0, #0x92\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225C8B6\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0xb\n    add r2, sp, #0x14c\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x14c\n    bl ov12_02261B80\n    mov r0, #5\n    add r4, #0x83\n    add sp, #0x1fc\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    mov r0, #6\n    add r4, #0x83\n    add sp, #0x1fc\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225C9AA\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1fc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x98\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _0225C926\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0xf4\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0xf4\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1fc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    mov r0, #0xff\n    add r4, #0x83\n    add sp, #0x1fc\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r3, r4, #0\n    add r3, #0x81\n    ldrb r3, [r3]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x28\n    add r2, sp, #0xa4\n    bl ov12_02261CA8\n    add r0, sp, #0xa4\n    mov r1, #5\n    bl ov07_02234A20\n    add r0, r4, #0\n    add r0, #0x81\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x4c\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x4c\n    bl ov12_02261B80\n    mov r0, #0x1a\n    ldr r1, [r4, #4]\n    mov r2, #1\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x83\n    ldrb r0, [r0]\n    add r4, #0x83\n    add sp, #0x1fc\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x81\n    add r2, #0x80\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x1fc\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _0225C9B0: .word ov07_022377F4 + 38\n    _0225C9B4: .word ov07_022377F4 + 36\n    _0225C9B8: .word ov07_022377F4 + 4"
+    );
+    #endif
+}
+
+void ov12_0225C9BC(void) {
+    /* Original at 0x0225C9BC */
+    /* Requires manual decompilation - 287 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x178\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r1, r4, #0\n    add r1, #0x6b\n    ldrb r1, [r1]\n    add r5, r0, #0\n    cmp r1, #8\n    bhi _0225CAA6\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225C9E2: ; jump table\n    ldr r0, [r4, #0x70]\n    cmp r0, #0\n    beq _0225CA32\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0x120\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x120\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x178\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    mov r0, #4\n    add r4, #0x6b\n    add sp, #0x178\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r3, r4, #0\n    add r3, #0x69\n    ldrb r3, [r3]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x10\n    add r2, sp, #0xd0\n    bl ov12_02261CA8\n    add r0, sp, #0xd0\n    mov r1, #5\n    bl ov07_0223494C\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x78\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x78\n    bl ov12_02261B80\n    mov r0, #0x1a\n    ldr r1, [r4, #4]\n    mov r2, #0\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x178\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    beq _0225CAA8\n    b _0225CC42\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x178\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x6a\n    ldrb r5, [r0]\n    mov r0, #1\n    tst r0, r5\n    beq _0225CB06\n    ldr r0, _0225CC48 ; =ov12_0226D120\n    ldrb r0, [r0, r5]\n    str r0, [sp, #0x50]\n    mov r0, #5\n    str r0, [sp, #0x54]\n    str r0, [sp, #0x58]\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r0, [r0]\n    str r0, [sp, #0x5c]\n    add r0, r4, #0\n    add r0, #0x6e\n    ldrh r0, [r0]\n    str r0, [sp, #0x60]\n    ldr r0, [r4]\n    bl BattleSystem_GetSpriteSystem\n    str r0, [sp, #0x6c]\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    str r0, [sp, #0x70]\n    mov r0, #1\n    str r0, [sp, #0x64]\n    mov r0, #0\n    str r0, [sp, #0x68]\n    add r0, sp, #0x50\n    bl ov07_02233DB8\n    b _0225CB52\n    ldr r3, _0225CC4C ; =ov12_0226D128\n    add r2, sp, #0x10\n    add r6, r2, #0\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    lsl r0, r5, #2\n    ldr r0, [r6, r0]\n    str r0, [sp, #0x28]\n    mov r0, #5\n    str r0, [sp, #0x2c]\n    str r0, [sp, #0x30]\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r0, [r0]\n    str r0, [sp, #0x34]\n    add r0, r4, #0\n    add r0, #0x6e\n    ldrh r0, [r0]\n    str r0, [sp, #0x38]\n    ldr r0, [r4]\n    bl BattleSystem_GetSpriteSystem\n    str r0, [sp, #0x44]\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    str r0, [sp, #0x48]\n    mov r0, #1\n    str r0, [sp, #0x3c]\n    mov r0, #0\n    str r0, [sp, #0x40]\n    add r0, sp, #0x28\n    bl ov07_02233DB8\n    str r0, [r4, #0xc]\n    add r0, r4, #0\n    mov r1, #5\n    add r0, #0x6b\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x6e\n    ldrh r0, [r0]\n    mov r2, #0x10\n    lsl r1, r0, #1\n    ldr r0, _0225CC50 ; =ov12_0226D15A\n    ldrh r0, [r0, r1]\n    mov r1, #0\n    add r3, r1, #0\n    str r0, [sp]\n    ldr r0, [r4, #8]\n    bl Pokepic_StartPaletteFade\n    add r4, #0x6a\n    ldrb r0, [r4]\n    cmp r0, #5\n    bhi _0225CC42\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225CB8A: ; jump table\n    mov r1, #0x74\n    ldr r0, _0225CC54 ; =0x00000706\n    mvn r1, r1\n    bl sub_0200602C\n    add sp, #0x178\n    pop {r4, r5, r6, pc}\n    ldr r0, _0225CC54 ; =0x00000706\n    mov r1, #0x75\n    bl sub_0200602C\n    add sp, #0x178\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #8]\n    bl Pokepic_ResumePaletteFade\n    cmp r0, #0\n    bne _0225CC42\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x178\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r0, [r4, #8]\n    sub r2, #0x2c\n    bl Pokepic_AddAttr\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r4, #8]\n    sub r2, #0x2d\n    bl Pokepic_AddAttr\n    add r1, r4, #0\n    add r1, #0x6c\n    ldrb r1, [r1]\n    ldr r0, [r4, #8]\n    bl sub_0200914C\n    ldr r0, [r4, #8]\n    mov r1, #0xc\n    bl Pokepic_GetAttr\n    cmp r0, #0\n    bgt _0225CC42\n    ldr r0, [r4, #8]\n    bl Pokepic_Delete\n    mov r0, #7\n    add r4, #0x6b\n    add sp, #0x178\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #0xc]\n    bl ov07_02233E88\n    cmp r0, #0\n    bne _0225CC42\n    ldr r0, [r4, #0xc]\n    bl ov07_02233ECC\n    mov r0, #8\n    add r4, #0x6b\n    add sp, #0x178\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x69\n    add r2, #0x68\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x178\n    pop {r4, r5, r6, pc}\n    nop\n    _0225CC48: .word ov12_0226D120\n    _0225CC4C: .word ov12_0226D128\n    _0225CC50: .word ov12_0226D15A\n    _0225CC54: .word 0x00000706"
+    );
+    #endif
+}
+
+void ov12_0225CC58(void) {
+    /* Original at 0x0225CC58 */
+    /* Requires manual decompilation - 153 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x168\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r1, r4, #0\n    add r1, #0x6b\n    ldrb r1, [r1]\n    add r5, r0, #0\n    cmp r1, #7\n    bls _0225CC74\n    b _0225CDB4\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225CC80: ; jump table\n    ldr r0, [r4, #0x70]\n    cmp r0, #0\n    beq _0225CCCE\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0x110\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x110\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x168\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    mov r0, #4\n    add r4, #0x6b\n    add sp, #0x168\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r3, r4, #0\n    add r3, #0x69\n    ldrb r3, [r3]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x10\n    add r2, sp, #0xc0\n    bl ov12_02261CA8\n    add r0, sp, #0xc0\n    mov r1, #5\n    bl ov07_0223494C\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x68\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x68\n    bl ov12_02261B80\n    mov r0, #0x1a\n    ldr r1, [r4, #4]\n    mov r2, #0\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x168\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225CDB4\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x168\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0x2a\n    add r2, sp, #0x10\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x10\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    add r4, #0x6b\n    add sp, #0x168\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #8]\n    bl Pokepic_Delete\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x69\n    add r2, #0x68\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x168\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225CDB8(void) {
+    /* Original at 0x0225CDB8 */
+    /* Requires manual decompilation - 48 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4, #0xb]\n    cmp r0, #0\n    beq _0225CDCA\n    cmp r0, #1\n    beq _0225CE10\n    pop {r3, r4, r5, pc}\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r0, [r4, #4]\n    sub r2, #0x2c\n    bl Pokepic_AddAttr\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r4, #4]\n    sub r2, #0x2d\n    bl Pokepic_AddAttr\n    ldrb r0, [r4, #0xc]\n    cmp r0, #0\n    beq _0225CDF6\n    sub r0, r0, #1\n    strb r0, [r4, #0xc]\n    mov r1, #1\n    ldr r0, [r4, #4]\n    sub r2, r1, #2\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #4]\n    mov r1, #0xc\n    bl Pokepic_GetAttr\n    cmp r0, #0\n    bgt _0225CE26\n    ldr r0, [r4, #4]\n    bl Pokepic_Delete\n    ldrb r0, [r4, #0xb]\n    add r0, r0, #1\n    strb r0, [r4, #0xb]\n    pop {r3, r4, r5, pc}\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225CE28(void) {
+    /* Original at 0x0225CE28 */
+    /* Requires manual decompilation - 351 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #8\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    add r5, r0, #0\n    ldr r0, [r4, #0x20]\n    cmp r0, #0x21\n    bge _0225CE64\n    ldrb r0, [r4, #0x12]\n    cmp r0, #2\n    blo _0225CE64\n    ldr r0, [r4, #0x18]\n    cmp r0, #0\n    beq _0225CE4E\n    cmp r0, #2\n    bne _0225CE64\n    ldr r0, [r4]\n    bl BattleSystem_GetBgConfig\n    mov r1, #3\n    mov r2, #1\n    mov r3, #4\n    bl BgSetPosTextAndCommit\n    ldr r0, [r4, #0x20]\n    add r0, r0, #1\n    str r0, [r4, #0x20]\n    ldrb r0, [r4, #0x12]\n    cmp r0, #4\n    bls _0225CE6C\n    b _0225D132\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225CE78: ; jump table\n    ldr r0, [r4, #0xc]\n    bl ManagedSprite_GetNumFrames\n    cmp r0, #2\n    bls _0225CE9C\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl ManagedSprite_SetAnimationFrame\n    ldr r0, [r4, #0xc]\n    mov r1, #2\n    bl ManagedSprite_SetAnim\n    mov r0, #0x1c\n    str r0, [r4, #0x1c]\n    mov r0, #1\n    strb r0, [r4, #0x12]\n    ldr r0, [r4, #0x1c]\n    sub r0, r0, #1\n    str r0, [r4, #0x1c]\n    bne _0225CF9A\n    mov r0, #2\n    strb r0, [r4, #0x12]\n    ldr r0, [r4, #8]\n    add r1, sp, #4\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #4\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    ldr r0, [r4, #0xc]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    ldrb r0, [r4, #0x13]\n    cmp r0, #2\n    ldr r0, [r4, #0x18]\n    beq _0225CED4\n    b _0225CFEE\n    cmp r0, #1\n    beq _0225CEDC\n    cmp r0, #3\n    bne _0225CEFE\n    add r1, sp, #0\n    mov r0, #6\n    ldrsh r0, [r1, r0]\n    cmp r0, #0xc0\n    ldr r0, [r4, #8]\n    bge _0225CEF4\n    ldr r0, [r0]\n    mov r1, #8\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    b _0225CEFE\n    ldr r0, [r0]\n    mov r1, #0xc0\n    mov r2, #0x58\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #8]\n    add r1, sp, #4\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #4\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #0x18]\n    cmp r0, #1\n    beq _0225CF22\n    cmp r0, #3\n    bne _0225CF34\n    cmp r5, #3\n    beq _0225CF22\n    cmp r5, #0x83\n    beq _0225CF22\n    cmp r5, #7\n    bne _0225CF34\n    add r3, sp, #0\n    mov r1, #6\n    mov r2, #0\n    ldrsh r1, [r3, r1]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #0xc]\n    bl ManagedSprite_SetPositionXY\n    b _0225CF80\n    cmp r0, #3\n    bne _0225CF5E\n    add r2, sp, #0\n    mov r0, #2\n    mov r1, #6\n    ldrsh r3, [r2, r0]\n    ldrsh r0, [r2, r1]\n    sub r0, r3, r0\n    strh r0, [r2, #6]\n    ldrsh r0, [r2, r1]\n    sub r0, #0x18\n    strh r0, [r2, #6]\n    ldrsh r1, [r2, r1]\n    ldr r0, [r4, #0xc]\n    mov r2, #0\n    neg r1, r1\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    bl ManagedSprite_OffsetPositionXY\n    b _0225CF80\n    cmp r0, #5\n    bne _0225CF80\n    add r2, sp, #0\n    mov r1, #6\n    mov r0, #2\n    ldrsh r3, [r2, r1]\n    ldrsh r0, [r2, r0]\n    sub r0, r3, r0\n    strh r0, [r2, #6]\n    ldrsh r0, [r2, r1]\n    sub r0, #0x10\n    strh r0, [r2, #6]\n    ldrsh r1, [r2, r1]\n    ldr r0, [r4, #0xc]\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    add r1, sp, #0\n    ldr r0, [r4, #0xc]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    mov r0, #0x14\n    ldrsh r1, [r4, r0]\n    add r3, sp, #0\n    mov r0, #2\n    ldrsh r0, [r3, r0]\n    cmp r0, r1\n    bge _0225CF9C\n    b _0225D132\n    mov r2, #0\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #0xc]\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #0x18]\n    cmp r0, #1\n    beq _0225CFB0\n    cmp r0, #3\n    bne _0225CFBC\n    ldr r0, [r4, #8]\n    mov r1, #0xc0\n    ldr r0, [r0]\n    mov r2, #0x58\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #0xc]\n    bl ManagedSprite_GetNumFrames\n    cmp r0, #1\n    bls _0225CFE6\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl ManagedSprite_SetAnimationFrame\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl ManagedSprite_SetAnim\n    ldrh r1, [r4, #0x16]\n    mov r0, #1\n    add sp, #8\n    bic r1, r0\n    strh r1, [r4, #0x16]\n    mov r0, #3\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    mov r0, #4\n    add sp, #8\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    cmp r0, #0\n    beq _0225CFF6\n    cmp r0, #2\n    bne _0225D018\n    add r0, sp, #0\n    mov r1, #6\n    ldrsh r0, [r0, r1]\n    cmp r0, #0x40\n    ldr r0, [r4, #8]\n    ble _0225D00E\n    ldr r0, [r0]\n    sub r1, #0xe\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    b _0225D018\n    ldr r0, [r0]\n    mov r1, #0x40\n    mov r2, #0x88\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #8]\n    add r1, sp, #4\n    ldr r0, [r0]\n    add r1, #2\n    add r2, sp, #4\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #0x18]\n    cmp r0, #0\n    beq _0225D040\n    cmp r0, #2\n    bne _0225D052\n    cmp r5, #3\n    beq _0225D040\n    cmp r5, #0x83\n    beq _0225D040\n    cmp r5, #0x13\n    beq _0225D040\n    cmp r5, #7\n    bne _0225D052\n    add r3, sp, #0\n    mov r1, #6\n    mov r2, #0\n    ldrsh r1, [r3, r1]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #0xc]\n    bl ManagedSprite_SetPositionXY\n    b _0225D09E\n    cmp r0, #2\n    bne _0225D076\n    add r2, sp, #0\n    mov r1, #6\n    mov r0, #2\n    ldrsh r3, [r2, r1]\n    ldrsh r0, [r2, r0]\n    sub r0, r3, r0\n    strh r0, [r2, #6]\n    ldrsh r0, [r2, r1]\n    sub r0, #0x18\n    strh r0, [r2, #6]\n    ldrsh r1, [r2, r1]\n    ldr r0, [r4, #0xc]\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    b _0225D09E\n    cmp r0, #4\n    bne _0225D09E\n    add r2, sp, #0\n    mov r0, #2\n    mov r1, #6\n    ldrsh r3, [r2, r0]\n    ldrsh r0, [r2, r1]\n    sub r0, r3, r0\n    strh r0, [r2, #6]\n    ldrsh r0, [r2, r1]\n    sub r0, #0x10\n    strh r0, [r2, #6]\n    ldrsh r1, [r2, r1]\n    ldr r0, [r4, #0xc]\n    mov r2, #0\n    neg r1, r1\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    bl ManagedSprite_OffsetPositionXY\n    add r1, sp, #0\n    ldr r0, [r4, #0xc]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #4]\n    cmp r0, #0\n    beq _0225D0BC\n    add r3, sp, #0\n    mov r2, #2\n    ldrsh r2, [r3, r2]\n    mov r1, #0\n    bl Pokepic_SetAttr\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    mov r0, #0x14\n    ldrsh r0, [r4, r0]\n    cmp r1, r0\n    bgt _0225D132\n    ldr r0, [r4, #4]\n    cmp r0, #0\n    beq _0225D0D4\n    bl Pokepic_Delete\n    mov r1, #0x14\n    add r3, sp, #0\n    mov r2, #0\n    ldrsh r1, [r4, r1]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #0xc]\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #0x18]\n    cmp r0, #0\n    beq _0225D0EE\n    cmp r0, #2\n    bne _0225D0FA\n    ldr r0, [r4, #8]\n    mov r1, #0x40\n    ldr r0, [r0]\n    mov r2, #0x88\n    bl ManagedSprite_SetPositionXY\n    mov r0, #4\n    add sp, #8\n    strb r0, [r4, #0x12]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #0xc]\n    bl ManagedSprite_IsAnimated\n    cmp r0, #1\n    bne _0225D118\n    ldr r1, [r4, #0xc]\n    add r0, r4, #0\n    bl ov12_02261DC8\n    cmp r0, #0\n    beq _0225D132\n    mov r0, #4\n    strb r0, [r4, #0x12]\n    ldrb r1, [r4, #0x11]\n    ldrb r2, [r4, #0x10]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #8\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225D138(void) {
+    /* Original at 0x0225D138 */
+    /* Requires manual decompilation - 561 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x30\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    add r6, r0, #0\n    ldrb r0, [r4, #0xa]\n    cmp r0, #6\n    bls _0225D150\n    b _0225D62E\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225D15C: ; jump table\n    ldr r0, [r4, #0x10]\n    cmp r0, #0\n    bne _0225D178\n    mov r0, #1\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r0, #4\n    bhi _0225D192\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225D188: ; jump table\n    mov r0, #0xf\n    str r0, [sp, #8]\n    mov r0, #3\n    str r0, [r4, #0x18]\n    mov r0, #5\n    str r0, [sp, #0x18]\n    b _0225D1CA\n    mov r0, #0xc\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [r4, #0x18]\n    ldr r0, _0225D4F0 ; =0x00000401\n    str r0, [sp, #0x18]\n    b _0225D1CA\n    mov r0, #0xd\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [r4, #0x18]\n    ldr r0, _0225D4F4 ; =0x00000402\n    str r0, [sp, #0x18]\n    b _0225D1CA\n    mov r0, #0xf\n    str r0, [sp, #8]\n    mov r0, #3\n    str r0, [r4, #0x18]\n    mov r0, #1\n    lsl r0, r0, #0xa\n    str r0, [sp, #0x18]\n    mov r0, #5\n    str r0, [sp, #0xc]\n    mov r0, #4\n    str r0, [sp, #0x10]\n    ldrb r0, [r4, #9]\n    str r0, [sp, #0x14]\n    ldr r0, [r4]\n    bl BattleSystem_GetSpriteSystem\n    str r0, [sp, #0x24]\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    str r0, [sp, #0x28]\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r4]\n    str r0, [sp, #0x2c]\n    add r0, sp, #8\n    bl ov07_02233DB8\n    ldr r1, [r4, #4]\n    add r1, #0x88\n    str r0, [r1]\n    ldr r0, [r4, #4]\n    mov r1, #0x64\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_022344C4\n    ldr r0, [r4, #4]\n    mov r1, #2\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_022344D0\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_022344C0\n    ldr r0, [r4, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnimationFrame\n    ldr r0, [r4, #4]\n    mov r1, #1\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnim\n    ldr r0, [r4, #4]\n    mov r1, #1\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnimateFlag\n    mov r0, #3\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r0, [r4, #0xb]\n    cmp r0, #2\n    ldr r0, [r4, #4]\n    bne _0225D344\n    ldr r0, [r0, #0x18]\n    mov r1, #5\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    ldr r0, [r4, #4]\n    add r1, sp, #4\n    ldr r0, [r0, #0x18]\n    add r1, #2\n    add r2, sp, #4\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #4\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    cmp r0, #0xa0\n    blt _0225D2D6\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233F20\n    cmp r0, #0\n    beq _0225D2D6\n    ldr r0, [r4, #4]\n    mov r1, #1\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_0223449C\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233EFC\n    mov r0, #2\n    tst r0, r6\n    beq _0225D2E4\n    mov r0, #8\n    tst r0, r6\n    bne _0225D2E4\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    add r4, r0, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #1\n    bl ov07_0223449C\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #0\n    bl ov07_02233EFC\n    add r4, #0x88\n    ldr r0, [r4]\n    mov r1, #0xc\n    bl ov07_022344DC\n    add sp, #0x30\n    pop {r3, r4, r5, r6, r7, pc}\n    add r1, sp, #4\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    mov r0, #0x4a\n    lsl r0, r0, #2\n    cmp r1, r0\n    bge _0225D2E6\n    b _0225D62E\n    ldr r0, [r4]\n    bl BattleSystem_GetSpriteManager\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x18]\n    bl Sprite_DeleteAndFreeResources\n    ldr r0, [r4, #4]\n    mov r1, #0\n    str r1, [r0, #0x18]\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D4FC ; =0x00004E2F\n    add r1, r2, r1\n    bl SpriteManager_UnloadCharObjById\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D500 ; =0x00004E2A\n    add r1, r2, r1\n    bl SpriteManager_UnloadPlttObjById\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D504 ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadCellObjById\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D504 ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadAnimObjById\n    mov r0, #6\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r0, #0x18]\n    mov r1, #0\n    bl ManagedSprite_SetAnimationFrame\n    ldr r0, [r4, #4]\n    mov r1, #1\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnim\n    ldr r0, [r4, #4]\n    mov r1, #1\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnimateFlag\n    mov r0, #2\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    mov r1, #4\n    ldr r0, [r0, #0x18]\n    mvn r1, r1\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    ldr r0, [r4, #4]\n    add r1, sp, #4\n    ldr r0, [r0, #0x18]\n    add r1, #2\n    add r2, sp, #4\n    bl ManagedSprite_GetPositionXY\n    ldr r1, [r4, #4]\n    add r0, r1, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _0225D48E\n    ldr r0, [r1, #0x18]\n    bl ManagedSprite_GetAnimationFrame\n    ldr r1, [r4, #0xc]\n    str r0, [sp]\n    lsl r5, r0, #2\n    mov r0, #0x18\n    add r2, r1, #0\n    mul r2, r0\n    ldr r0, _0225D508 ; =ov12_0226D1E8\n    add r0, r0, r2\n    ldrsh r1, [r5, r0]\n    ldr r0, _0225D50C ; =0x00007FFF\n    cmp r1, r0\n    beq _0225D48E\n    ldr r0, [r4, #4]\n    mov r1, #1\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_0223449C\n    ldr r1, [r4, #0xc]\n    mov r0, #0x18\n    add r3, r1, #0\n    mul r3, r0\n    ldr r2, _0225D508 ; =ov12_0226D1E8\n    add r7, sp, #4\n    mov r1, #2\n    add r2, r2, r3\n    ldrsh r1, [r7, r1]\n    ldrsh r2, [r5, r2]\n    ldr r0, [r4, #4]\n    add r1, r1, r2\n    mov r2, #0\n    ldrsh r7, [r7, r2]\n    ldr r2, _0225D510 ; =ov12_0226D1EA\n    add r0, #0x88\n    add r2, r2, r3\n    ldrsh r2, [r5, r2]\n    lsl r1, r1, #0x10\n    ldr r0, [r0]\n    add r2, r7, r2\n    lsl r2, r2, #0x10\n    asr r1, r1, #0x10\n    asr r2, r2, #0x10\n    bl ov07_022344A8\n    ldr r0, [sp]\n    cmp r0, #3\n    bne _0225D48E\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233F20\n    cmp r0, #0\n    beq _0225D48E\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233EFC\n    ldr r0, [r4, #4]\n    mov r1, #1\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_022344C0\n    mov r0, #2\n    tst r0, r6\n    beq _0225D48E\n    mov r0, #8\n    tst r0, r6\n    bne _0225D48E\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    ldr r1, [r4, #0xc]\n    add r6, r0, #0\n    add r3, r1, #0\n    mov r0, #0x18\n    mul r3, r0\n    ldr r2, _0225D508 ; =ov12_0226D1E8\n    add r0, r6, #0\n    add r2, r2, r3\n    add r0, #0x88\n    add r7, sp, #4\n    mov r1, #2\n    ldrsh r1, [r7, r1]\n    ldrsh r2, [r5, r2]\n    ldr r0, [r0]\n    add r1, r1, r2\n    mov r2, #0\n    ldrsh r7, [r7, r2]\n    ldr r2, _0225D510 ; =ov12_0226D1EA\n    lsl r1, r1, #0x10\n    add r2, r2, r3\n    ldrsh r2, [r5, r2]\n    asr r1, r1, #0x10\n    add r2, r7, r2\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    bl ov07_022344A8\n    add r0, r6, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #1\n    bl ov07_0223449C\n    add r0, r6, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #0\n    bl ov07_02233EFC\n    add r6, #0x88\n    ldr r0, [r6]\n    mov r1, #1\n    bl ov07_022344C0\n    add r1, sp, #4\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    sub r0, #0x2a\n    cmp r1, r0\n    ble _0225D49C\n    b _0225D62E\n    ldr r0, [r4]\n    bl BattleSystem_GetSpriteManager\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x18]\n    bl Sprite_DeleteAndFreeResources\n    ldr r0, [r4, #4]\n    mov r1, #0\n    str r1, [r0, #0x18]\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D4FC ; =0x00004E2F\n    add r1, r2, r1\n    bl SpriteManager_UnloadCharObjById\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D500 ; =0x00004E2A\n    add r1, r2, r1\n    bl SpriteManager_UnloadPlttObjById\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D504 ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadCellObjById\n    ldr r2, [r4, #4]\n    ldr r1, _0225D4F8 ; =0x00000195\n    add r0, r5, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D504 ; =0x00004E27\n    b _0225D514\n    nop\n    _0225D4F0: .word 0x00000401\n    _0225D4F4: .word 0x00000402\n    _0225D4F8: .word 0x00000195\n    _0225D4FC: .word 0x00004E2F\n    _0225D500: .word 0x00004E2A\n    _0225D504: .word 0x00004E27\n    _0225D508: .word ov12_0226D1E8\n    _0225D50C: .word 0x00007FFF\n    _0225D510: .word ov12_0226D1EA\n    add r1, r2, r1\n    bl SpriteManager_UnloadAnimObjById\n    mov r0, #6\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    add r1, sp, #4\n    ldr r0, [r0, #0x18]\n    add r1, #2\n    add r2, sp, #4\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_GetAnimationFrame\n    add r7, r0, #0\n    cmp r7, #4\n    bne _0225D54A\n    mov r0, #8\n    str r0, [r4, #0x14]\n    mov r0, #4\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _0225D62E\n    ldr r2, [r4, #0xc]\n    mov r1, #0x18\n    add r5, r2, #0\n    mul r5, r1\n    ldr r1, _0225D634 ; =ov12_0226D1E8\n    lsl r6, r7, #2\n    add r1, r1, r5\n    ldrsh r1, [r6, r1]\n    ldr r2, _0225D638 ; =0x00007FFF\n    cmp r1, r2\n    beq _0225D62E\n    add r3, sp, #4\n    mov r2, #2\n    ldrsh r2, [r3, r2]\n    add r1, r2, r1\n    mov r2, #0\n    ldrsh r3, [r3, r2]\n    ldr r2, _0225D63C ; =ov12_0226D1EA\n    lsl r1, r1, #0x10\n    add r2, r2, r5\n    ldrsh r2, [r6, r2]\n    asr r1, r1, #0x10\n    add r2, r3, r2\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    bl ov07_022344A8\n    cmp r7, #3\n    bne _0225D62E\n    ldr r0, [r4, #4]\n    ldr r5, [r4, #0x18]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233F20\n    cmp r5, r0\n    beq _0225D62E\n    ldr r0, [r4, #4]\n    add r1, r5, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233EFC\n    ldr r0, [r4, #4]\n    mov r1, #1\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_022344D0\n    ldr r0, [r4, #4]\n    mov r1, #1\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_022344C0\n    ldr r0, [r4, #0x18]\n    cmp r0, #3\n    beq _0225D62E\n    ldr r0, _0225D640 ; =0x0000070A\n    bl PlaySE\n    add sp, #0x30\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #0x14]\n    sub r0, r0, #1\n    str r0, [r4, #0x14]\n    bne _0225D62E\n    ldr r0, [r4, #0x18]\n    cmp r0, #3\n    bne _0225D5E8\n    mov r0, #6\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #5\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233E88\n    cmp r0, #1\n    beq _0225D62E\n    ldr r0, [r4, #4]\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233ECC\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x88\n    str r1, [r0]\n    mov r0, #6\n    add sp, #0x30\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add sp, #0x30\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225D634: .word ov12_0226D1E8\n    _0225D638: .word 0x00007FFF\n    _0225D63C: .word ov12_0226D1EA\n    _0225D640: .word 0x0000070A"
+    );
+    #endif
+}
+
+void ov12_0225D644(void) {
+    /* Original at 0x0225D644 */
+    /* Requires manual decompilation - 254 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetBattleType\n    add r4, r0, #0\n    ldrb r0, [r5, #0xa]\n    cmp r0, #0\n    beq _0225D664\n    cmp r0, #1\n    beq _0225D71C\n    cmp r0, #2\n    bne _0225D662\n    b _0225D85A\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r0, [r5, #0xb]\n    cmp r0, #2\n    ldr r0, [r5, #4]\n    bne _0225D6F0\n    ldr r0, [r0, #0x18]\n    mov r1, #5\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    ldr r0, [r5, #4]\n    add r1, sp, #0\n    ldr r0, [r0, #0x18]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    mov r0, #0x4a\n    lsl r0, r0, #2\n    cmp r1, r0\n    bge _0225D694\n    b _0225D870\n    ldr r0, [r5]\n    bl BattleSystem_GetSpriteManager\n    add r4, r0, #0\n    ldr r0, [r5, #4]\n    ldr r0, [r0, #0x18]\n    bl Sprite_DeleteAndFreeResources\n    ldr r0, [r5, #4]\n    mov r1, #0\n    str r1, [r0, #0x18]\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D878 ; =0x00004E2F\n    add r1, r2, r1\n    bl SpriteManager_UnloadCharObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D87C ; =0x00004E2A\n    add r1, r2, r1\n    bl SpriteManager_UnloadPlttObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D880 ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadCellObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D880 ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadAnimObjById\n    mov r0, #2\n    strb r0, [r5, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r0, #0x18]\n    mov r1, #1\n    bl ManagedSprite_SetPriority\n    ldr r0, [r5, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnimationFrame\n    ldr r0, [r5, #4]\n    mov r1, #1\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnim\n    ldr r0, [r5, #4]\n    mov r1, #1\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_SetAnimateFlag\n    mov r0, #1\n    strb r0, [r5, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r5, #4]\n    mov r1, #4\n    ldr r0, [r0, #0x18]\n    mvn r1, r1\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    ldr r0, [r5, #4]\n    add r1, sp, #0\n    ldr r0, [r0, #0x18]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    ldr r0, [r5, #4]\n    add r1, r0, #0\n    add r1, #0x88\n    ldr r1, [r1]\n    cmp r1, #0\n    beq _0225D7F2\n    mov r1, #2\n    tst r1, r4\n    beq _0225D7F2\n    mov r1, #8\n    tst r1, r4\n    bne _0225D7F2\n    ldr r0, [r0, #0x18]\n    bl ManagedSprite_GetAnimationFrame\n    add r7, r0, #0\n    ldr r1, [r5, #0xc]\n    mov r0, #0x18\n    add r2, r1, #0\n    mul r2, r0\n    ldr r0, _0225D884 ; =ov12_0226D1E8\n    lsl r6, r7, #2\n    add r0, r0, r2\n    ldrsh r1, [r6, r0]\n    ldr r0, _0225D888 ; =0x00007FFF\n    cmp r1, r0\n    beq _0225D7F2\n    ldrb r1, [r5, #9]\n    ldr r0, [r5]\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetOpponentData\n    add r4, r0, #0\n    cmp r7, #3\n    bne _0225D7F2\n    add r0, #0x88\n    ldr r0, [r0]\n    bl ov07_02233F20\n    cmp r0, #0\n    beq _0225D7F2\n    ldr r1, [r5, #0xc]\n    mov r0, #0x18\n    add r3, r1, #0\n    mul r3, r0\n    ldr r2, _0225D884 ; =ov12_0226D1E8\n    add r7, sp, #0\n    mov r1, #2\n    add r2, r2, r3\n    ldrsh r1, [r7, r1]\n    ldrsh r2, [r6, r2]\n    add r0, r4, #0\n    add r0, #0x88\n    add r1, r1, r2\n    mov r2, #0\n    ldrsh r7, [r7, r2]\n    ldr r2, _0225D88C ; =ov12_0226D1EA\n    lsl r1, r1, #0x10\n    add r2, r2, r3\n    ldrsh r2, [r6, r2]\n    ldr r0, [r0]\n    asr r1, r1, #0x10\n    add r2, r7, r2\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    bl ov07_022344A8\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #1\n    bl ov07_0223449C\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #0\n    bl ov07_02233EFC\n    add r0, r4, #0\n    add r0, #0x88\n    ldr r0, [r0]\n    mov r1, #1\n    bl ov07_022344C0\n    add r4, #0x88\n    ldr r0, [r4]\n    mov r1, #1\n    bl ov07_022344D0\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    sub r0, #0x2a\n    cmp r1, r0\n    bgt _0225D870\n    ldr r0, [r5]\n    bl BattleSystem_GetSpriteManager\n    add r4, r0, #0\n    ldr r0, [r5, #4]\n    ldr r0, [r0, #0x18]\n    bl Sprite_DeleteAndFreeResources\n    ldr r0, [r5, #4]\n    mov r1, #0\n    str r1, [r0, #0x18]\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D878 ; =0x00004E2F\n    add r1, r2, r1\n    bl SpriteManager_UnloadCharObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D87C ; =0x00004E2A\n    add r1, r2, r1\n    bl SpriteManager_UnloadPlttObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D880 ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadCellObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D874 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D880 ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadAnimObjById\n    mov r0, #2\n    strb r0, [r5, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r5, #9]\n    ldrb r2, [r5, #8]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225D874: .word 0x00000195\n    _0225D878: .word 0x00004E2F\n    _0225D87C: .word 0x00004E2A\n    _0225D880: .word 0x00004E27\n    _0225D884: .word ov12_0226D1E8\n    _0225D888: .word 0x00007FFF\n    _0225D88C: .word ov12_0226D1EA"
+    );
+    #endif
+}
+
+void ov12_0225D890(void) {
+    /* Original at 0x0225D890 */
+    /* Requires manual decompilation - 111 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r5, r1, #0\n    add r6, r0, #0\n    ldrb r0, [r5, #0xa]\n    cmp r0, #0\n    beq _0225D8A6\n    cmp r0, #1\n    beq _0225D90E\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    ldrb r0, [r5, #0xb]\n    cmp r0, #2\n    ldr r0, [r5, #4]\n    bne _0225D8DE\n    ldr r0, [r0, #0x18]\n    mov r1, #5\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    ldr r0, [r5, #4]\n    add r1, sp, #0\n    ldr r0, [r0, #0x18]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    mov r0, #0x4a\n    lsl r0, r0, #2\n    cmp r1, r0\n    blt _0225D97A\n    ldrb r0, [r5, #0xa]\n    add sp, #4\n    add r0, r0, #1\n    strb r0, [r5, #0xa]\n    pop {r3, r4, r5, r6, pc}\n    mov r1, #4\n    ldr r0, [r0, #0x18]\n    mvn r1, r1\n    mov r2, #0\n    bl ManagedSprite_OffsetPositionXY\n    ldr r0, [r5, #4]\n    add r1, sp, #0\n    ldr r0, [r0, #0x18]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    add r1, sp, #0\n    mov r0, #2\n    ldrsh r1, [r1, r0]\n    sub r0, #0x2a\n    cmp r1, r0\n    bgt _0225D97A\n    ldrb r0, [r5, #0xa]\n    add sp, #4\n    add r0, r0, #1\n    strb r0, [r5, #0xa]\n    pop {r3, r4, r5, r6, pc}\n    ldr r0, [r5]\n    bl BattleSystem_GetSpriteManager\n    add r4, r0, #0\n    ldr r0, [r5, #4]\n    ldr r0, [r0, #0x18]\n    bl Sprite_DeleteAndFreeResources\n    ldr r0, [r5, #4]\n    mov r1, #0\n    str r1, [r0, #0x18]\n    ldr r2, [r5, #4]\n    ldr r1, _0225D980 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D984 ; =0x00004E2F\n    add r1, r2, r1\n    bl SpriteManager_UnloadCharObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D980 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D988 ; =0x00004E2A\n    add r1, r2, r1\n    bl SpriteManager_UnloadPlttObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D980 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D98C ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadCellObjById\n    ldr r2, [r5, #4]\n    ldr r1, _0225D980 ; =0x00000195\n    add r0, r4, #0\n    ldrb r2, [r2, r1]\n    ldr r1, _0225D98C ; =0x00004E27\n    add r1, r2, r1\n    bl SpriteManager_UnloadAnimObjById\n    ldrb r1, [r5, #9]\n    ldrb r2, [r5, #8]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _0225D980: .word 0x00000195\n    _0225D984: .word 0x00004E2F\n    _0225D988: .word 0x00004E2A\n    _0225D98C: .word 0x00004E27"
+    );
+    #endif
+}
+
+void ov12_0225D990(void) {
+    /* Original at 0x0225D990 */
+    /* Requires manual decompilation - 62 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4, #0xa]\n    cmp r0, #0\n    beq _0225D9A2\n    cmp r0, #1\n    beq _0225D9FE\n    pop {r3, r4, r5, pc}\n    add r1, sp, #0\n    ldr r0, [r4, #4]\n    add r1, #2\n    add r2, sp, #0\n    bl ManagedSprite_GetPositionXY\n    ldrb r0, [r4, #0xb]\n    add r2, sp, #0\n    cmp r0, #0\n    bne _0225D9D2\n    mov r1, #2\n    ldrsh r0, [r2, r1]\n    add r0, r0, #5\n    strh r0, [r2, #2]\n    mov r0, #0xc\n    ldrsh r3, [r4, r0]\n    ldrsh r0, [r2, r1]\n    cmp r0, r3\n    blt _0225D9EC\n    strh r3, [r2, #2]\n    ldrb r0, [r4, #0xa]\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    b _0225D9EC\n    mov r1, #2\n    ldrsh r0, [r2, r1]\n    sub r0, r0, #5\n    strh r0, [r2, #2]\n    mov r0, #0xc\n    ldrsh r3, [r4, r0]\n    ldrsh r0, [r2, r1]\n    cmp r0, r3\n    bgt _0225D9EC\n    strh r3, [r2, #2]\n    ldrb r0, [r4, #0xa]\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    add r3, sp, #0\n    mov r1, #2\n    mov r2, #0\n    ldrsh r1, [r3, r1]\n    ldrsh r2, [r3, r2]\n    ldr r0, [r4, #4]\n    bl ManagedSprite_SetPositionXY\n    pop {r3, r4, r5, pc}\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225DA18(void) {
+    /* Original at 0x0225DA18 */
+    /* Requires manual decompilation - 54 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4]\n    add r5, r0, #0\n    cmp r1, #0\n    beq _0225DA2A\n    cmp r1, #1\n    beq _0225DA5A\n    b _0225DA6E\n    add r0, r4, #0\n    add r0, #0x4d\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225DA42\n    add r0, r4, #0\n    add r0, #0x4d\n    ldrb r0, [r0]\n    add r4, #0x4d\n    sub r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r0, r4, #0\n    mov r1, #0\n    bl ov12_02264FB0\n    add r0, r4, #0\n    mov r1, #1\n    bl BattleHpBar_SetEnabled\n    ldrb r0, [r4]\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    lsl r0, r0, #0x1e\n    lsr r0, r0, #0x1f\n    cmp r0, #1\n    bne _0225DA8A\n    add r0, r1, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x24\n    add r2, #0x4c\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4, #0xc]\n    bl ov12_0226430C\n    mov r0, #0\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225DA8C(void) {
+    /* Original at 0x0225DA8C */
+    /* Requires manual decompilation - 32 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4]\n    add r5, r0, #0\n    cmp r1, #0\n    bne _0225DAAC\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    lsl r0, r0, #0x1e\n    lsr r0, r0, #0x1f\n    cmp r0, #1\n    bne _0225DAD0\n    add r0, r1, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x24\n    add r2, #0x4c\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4, #0xc]\n    bl ov12_0226430C\n    mov r0, #0\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add r0, r4, #0\n    mov r1, #0\n    bl BattleHpBar_SetEnabled\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225DAD4(void) {
+    /* Original at 0x0225DAD4 */
+    /* Requires manual decompilation - 670 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x58\n    add r4, r1, #0\n    add r7, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBgConfig\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    add r6, r0, #0\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    str r0, [sp, #0xc]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    add r5, r0, #0\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    ldrb r0, [r4, #9]\n    cmp r1, r0\n    beq _0225DB16\n    ldr r0, [r4]\n    bl BattleSystem_GetHpBar\n    str r0, [sp, #8]\n    b _0225DB1A\n    mov r0, #0\n    str r0, [sp, #8]\n    ldrb r0, [r4, #0xa]\n    cmp r0, #8\n    bls _0225DB22\n    b _0225E0FA\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225DB2E: ; jump table\n    mov r0, #0\n    add r1, r4, #0\n    add r2, sp, #0x40\n    ldrh r3, [r1, #0x24]\n    add r1, r1, #2\n    strh r3, [r2]\n    add r3, r4, r0\n    add r3, #0x2c\n    ldrb r3, [r3]\n    strh r3, [r2, #8]\n    add r3, r4, r0\n    add r3, #0x30\n    ldrb r3, [r3]\n    add r0, r0, #1\n    strh r3, [r2, #0x10]\n    add r2, r2, #2\n    cmp r0, #4\n    blt _0225DB46\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    add r1, r4, #0\n    add r1, #0x34\n    ldrb r1, [r1]\n    add r2, sp, #0x40\n    bl BattleInput_LoadFightMenuText\n    ldrb r0, [r4, #0xa]\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageLoader\n    add r6, r0, #0\n    mov r0, #1\n    lsl r0, r0, #0xa\n    add r1, r5, #0\n    tst r1, r0\n    beq _0225DC00\n    ldr r0, [r4]\n    bl ov12_0223BB04\n    cmp r0, #0\n    beq _0225DBA0\n    cmp r0, #1\n    beq _0225DBCC\n    add sp, #0x58\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #2\n    add r1, sp, #0x10\n    strb r0, [r1, #0xd]\n    add r0, r4, #0\n    add r0, #0x23\n    ldrb r0, [r0]\n    ldrb r2, [r4, #9]\n    mov r3, #0\n    lsl r0, r0, #8\n    orr r0, r2\n    str r0, [sp, #0x20]\n    ldr r0, _0225DED8 ; =0x00000399\n    add r2, sp, #0x1c\n    strh r0, [r1, #0xe]\n    ldr r0, [r4]\n    add r1, r6, #0\n    bl BattleSystem_PrintBattleMessage\n    mov r0, #3\n    add sp, #0x58\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #0\n    add r0, sp, #0x10\n    strb r1, [r0, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetTrainerGender\n    ldr r1, _0225DEDC ; =0x000004CA\n    add r1, r0, r1\n    add r0, sp, #0x10\n    strh r1, [r0, #0xe]\n    ldr r0, [r4]\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r0, [r4]\n    add r1, r6, #0\n    add r2, sp, #0x1c\n    bl BattleSystem_PrintBattleMessage\n    add r1, r4, #0\n    add r1, #0x35\n    strb r0, [r1]\n    mov r0, #2\n    add sp, #0x58\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #0x20\n    add r2, r5, #0\n    tst r2, r1\n    beq _0225DC20\n    mov r1, #8\n    add r0, sp, #0x10\n    strb r1, [r0, #0xd]\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetTrainerIndex\n    str r0, [sp, #0x20]\n    ldr r1, _0225DEE0 ; =0x0000039A\n    add r0, sp, #0x10\n    strh r1, [r0, #0xe]\n    b _0225DC56\n    lsl r1, r1, #4\n    tst r1, r5\n    beq _0225DC3E\n    mov r1, #8\n    add r0, sp, #0x10\n    strb r1, [r0, #0xd]\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetTrainerIndex\n    str r0, [sp, #0x20]\n    ldr r1, _0225DEE4 ; =0x000004C6\n    add r0, sp, #0x10\n    strh r1, [r0, #0xe]\n    b _0225DC56\n    add r2, r4, #0\n    mov r1, #2\n    add r3, sp, #0x10\n    strb r1, [r3, #0xd]\n    add r2, #0x23\n    ldrb r2, [r2]\n    ldrb r1, [r4, #9]\n    sub r0, #0x67\n    lsl r2, r2, #8\n    orr r1, r2\n    str r1, [sp, #0x20]\n    strh r0, [r3, #0xe]\n    ldr r0, [r4]\n    add r1, r6, #0\n    add r2, sp, #0x1c\n    mov r3, #0\n    bl BattleSystem_PrintBattleMessage\n    mov r0, #3\n    add sp, #0x58\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r4, #0\n    add r0, #0x35\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0225DC9C\n    mov r0, #3\n    add sp, #0x58\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    bl ov12_02264E84\n    ldr r0, [sp, #0xc]\n    ldr r1, [r4]\n    bl ov12_02261FD4\n    mov r0, #4\n    strb r0, [r4, #0xa]\n    add r0, r6, #0\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #0\n    bne _0225DC9E\n    b _0225E0FA\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r5, r0, #0\n    ldrb r1, [r4, #9]\n    add r0, sp, #0x10\n    add r2, r4, #0\n    strb r1, [r0, #1]\n    add r1, r4, #0\n    add r1, #0x34\n    ldrb r1, [r1]\n    add r2, #0x3b\n    strb r1, [r0]\n    add r1, r4, #0\n    add r1, #0x23\n    ldrb r1, [r1]\n    strb r1, [r0, #2]\n    mov r1, #0x36\n    ldrsh r1, [r4, r1]\n    strh r1, [r0, #4]\n    ldrh r1, [r4, #0x38]\n    strh r1, [r0, #6]\n    add r1, r4, #0\n    add r1, #0x3a\n    ldrb r1, [r1]\n    strb r1, [r0, #3]\n    ldrb r1, [r4, #9]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0223B580\n    add r1, sp, #0x10\n    strb r0, [r1, #8]\n    ldr r1, _0225DEE8 ; =0x00000197\n    ldr r0, [sp, #0xc]\n    ldrb r0, [r0, r1]\n    cmp r0, #0\n    beq _0225DDD2\n    add r0, r6, #0\n    mov r1, #1\n    bl BattleInput_Deadstriped_022698AC\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #1\n    tst r0, r1\n    beq _0225DD20\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #6\n    bl BattleInput_ChangeMenu\n    b _0225DDC8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    lsl r1, r1, #8\n    tst r0, r1\n    beq _0225DD44\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #0xa\n    bl BattleInput_ChangeMenu\n    b _0225DDC8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #0x20\n    tst r0, r1\n    beq _0225DD66\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #8\n    bl BattleInput_ChangeMenu\n    b _0225DDC8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    lsl r1, r1, #0xc\n    tst r0, r1\n    beq _0225DD8A\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #0x14\n    bl BattleInput_ChangeMenu\n    b _0225DDC8\n    add r0, sp, #0x10\n    ldrb r0, [r0]\n    cmp r0, #4\n    bne _0225DDB4\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    bne _0225DDB4\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #4\n    bl BattleInput_ChangeMenu\n    b _0225DDC8\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #3\n    bl BattleInput_ChangeMenu\n    ldr r0, [r4]\n    mov r1, #1\n    bl ov12_0223BB64\n    b _0225DE98\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #1\n    tst r0, r1\n    beq _0225DDF4\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #5\n    bl BattleInput_ChangeMenu\n    b _0225DE90\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    lsl r1, r1, #8\n    tst r0, r1\n    beq _0225DE18\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #9\n    bl BattleInput_ChangeMenu\n    b _0225DE90\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #0x20\n    tst r0, r1\n    beq _0225DE3A\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #7\n    bl BattleInput_ChangeMenu\n    b _0225DE90\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    lsl r1, r1, #0xc\n    tst r0, r1\n    beq _0225DE5E\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #0x13\n    bl BattleInput_ChangeMenu\n    b _0225DE90\n    add r0, sp, #0x10\n    ldrb r0, [r0]\n    cmp r0, #4\n    beq _0225DE7C\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #1\n    bl BattleInput_ChangeMenu\n    b _0225DE90\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    mov r3, #2\n    bl BattleInput_ChangeMenu\n    ldr r1, _0225DEE8 ; =0x00000197\n    ldr r0, [sp, #0xc]\n    mov r2, #1\n    strb r2, [r0, r1]\n    add r1, r4, #0\n    add r0, r6, #0\n    add r1, #0x1c\n    bl BattleInput_SetPartyExpPercents\n    add r1, r4, #0\n    add r2, r4, #0\n    add r0, r6, #0\n    add r1, #0x10\n    add r2, #0x16\n    bl BattleInput_UpdateBallGaugeAnimation\n    add r0, r6, #0\n    bl BattleInput_EnableBallGauge\n    add r0, r7, #0\n    bl NARC_Delete\n    add r0, r5, #0\n    bl NARC_Delete\n    ldr r0, [sp, #8]\n    cmp r0, #0\n    beq _0225DECC\n    bl ov12_02265D70\n    mov r0, #5\n    add sp, #0x58\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _0225DEEC ; =gSystem\n    b _0225DEF0\n    _0225DED8: .word 0x00000399\n    _0225DEDC: .word 0x000004CA\n    _0225DEE0: .word 0x0000039A\n    _0225DEE4: .word 0x000004C6\n    _0225DEE8: .word 0x00000197\n    _0225DEEC: .word gSystem\n    ldr r1, [r0, #0x48]\n    mov r0, #8\n    tst r0, r1\n    beq _0225DF1E\n    ldr r0, [r4]\n    mov r5, #0\n    bl BattleSystem_GetMaxBattlers\n    cmp r0, #0\n    ble _0225DF1E\n    ldr r0, [r4]\n    add r1, r5, #0\n    bl BattleSystem_GetOpponentData\n    add r0, #0x28\n    bl ov12_02264C84\n    ldr r0, [r4]\n    add r5, r5, #1\n    bl BattleSystem_GetMaxBattlers\n    cmp r5, r0\n    blt _0225DF04\n    add r0, r6, #0\n    bl BattleInput_CheckTouch\n    mov r1, #0\n    mvn r1, r1\n    str r0, [r4, #0xc]\n    cmp r0, r1\n    beq _0225DF50\n    mov r0, #0xa\n    strb r0, [r4, #0xb]\n    ldr r0, _0225E100 ; =0x000005DD\n    bl PlaySE\n    mov r0, #6\n    add sp, #0x58\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r6, #0\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #1\n    beq _0225DF52\n    ldr r0, [r4, #0xc]\n    cmp r0, #1\n    beq _0225DF52\n    b _0225E0FA\n    ldr r0, [r4, #0xc]\n    cmp r0, #4\n    bls _0225DF5A\n    b _0225E062\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225DF66: ; jump table\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #0x22\n    lsl r1, r1, #4\n    tst r0, r1\n    beq _0225E066\n    mov r0, #7\n    strb r0, [r4, #0xa]\n    b _0225E066\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r5, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r3, #0\n    str r3, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, r6, #0\n    str r3, [sp, #4]\n    bl BattleInput_ChangeMenu\n    add r0, r6, #0\n    mov r1, #0\n    bl BattleInput_Deadstriped_022698AC\n    ldr r0, [sp, #8]\n    bl ov12_02265D74\n    ldr r0, [r4, #4]\n    bl ov12_02264EB4\n    ldr r0, [sp, #0xc]\n    bl ov12_02262014\n    add r0, r5, #0\n    bl NARC_Delete\n    add r0, r7, #0\n    bl NARC_Delete\n    b _0225E066\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r5, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r3, #0\n    str r3, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, r6, #0\n    str r3, [sp, #4]\n    bl BattleInput_ChangeMenu\n    add r0, r6, #0\n    mov r1, #0\n    bl BattleInput_Deadstriped_022698AC\n    ldr r0, [sp, #8]\n    bl ov12_02265D74\n    ldr r0, [r4, #4]\n    bl ov12_02264EB4\n    ldr r0, [sp, #0xc]\n    bl ov12_02262014\n    add r0, r5, #0\n    bl NARC_Delete\n    add r0, r7, #0\n    bl NARC_Delete\n    b _0225E066\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r5, r0, #0\n    add r0, r6, #0\n    bl BattleInput_GetCancelRunFlag\n    cmp r0, #1\n    bne _0225E044\n    ldr r0, [sp, #8]\n    bl ov12_02265D74\n    mov r0, #0xff\n    str r0, [r4, #0xc]\n    mov r3, #0\n    str r3, [sp]\n    add r0, r7, #0\n    add r1, r5, #0\n    add r2, r6, #0\n    str r3, [sp, #4]\n    bl BattleInput_ChangeMenu\n    add r0, r7, #0\n    bl NARC_Delete\n    add r0, r5, #0\n    bl NARC_Delete\n    b _0225E066\n    bl GF_AssertFail\n    mov r0, #8\n    add sp, #0x58\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r6, #0\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #1\n    bne _0225E0FA\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r5, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r3, #0\n    str r3, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, r6, #0\n    str r3, [sp, #4]\n    bl BattleInput_ChangeMenu\n    add r0, r6, #0\n    mov r1, #0\n    bl BattleInput_Deadstriped_022698AC\n    ldr r0, [sp, #8]\n    bl ov12_02265D74\n    ldr r0, [r4, #4]\n    bl ov12_02264EB4\n    ldr r0, [sp, #0xc]\n    bl ov12_02262014\n    add r0, r6, #0\n    bl BattleInput_DisableBallGauge\n    mov r0, #8\n    strb r0, [r4, #0xa]\n    add r0, r5, #0\n    bl NARC_Delete\n    add r0, r7, #0\n    bl NARC_Delete\n    add sp, #0x58\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r6, #0\n    bl ov12_022698B0\n    cmp r0, #1\n    bne _0225E0FA\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    ldr r2, [r4, #0xc]\n    bl ov12_02262F24\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r7, #0\n    bl SysTask_Destroy\n    add sp, #0x58\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225E100: .word 0x000005DD"
+    );
+    #endif
+}
+
+void ov12_0225E104(void) {
+    /* Original at 0x0225E104 */
+    /* Requires manual decompilation - 19 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov10_022205BC\n    add r2, r0, #0\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl ov12_02262F24\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E134(void) {
+    /* Original at 0x0225E134 */
+    /* Requires manual decompilation - 12 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E154(void) {
+    /* Original at 0x0225E154 */
+    /* Requires manual decompilation - 50 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223B694\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleContext\n    mov r2, #0\n    ldrb r1, [r4, #9]\n    add r3, r2, #0\n    bl GetBattlerVar\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    mov r1, #0x1a\n    bl GetMonBaseStat\n    ldr r2, _0225E1CC ; =ov12_0226D140\n    lsl r1, r5, #1\n    ldrb r2, [r2, r1]\n    mul r2, r0\n    add r0, r2, #0\n    ldr r2, _0225E1D0 ; =ov12_0226D141\n    ldrb r1, [r2, r1]\n    bl _s32_div_f\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_Random\n    mov r1, #0xff\n    bl _s32_div_f\n    cmp r1, r5\n    ldr r0, [r4]\n    bgt _0225E1AC\n    ldrb r1, [r4, #9]\n    mov r2, #4\n    bl ov12_02262F24\n    b _0225E1B4\n    ldrb r1, [r4, #9]\n    mov r2, #5\n    bl ov12_02262F24\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    pop {r4, r5, r6, pc}\n    _0225E1CC: .word ov12_0226D140\n    _0225E1D0: .word ov12_0226D141"
+    );
+    #endif
+}
+
+void ov12_0225E1D4(void) {
+    /* Original at 0x0225E1D4 */
+    /* Requires manual decompilation - 16 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldr r0, [r4]\n    mov r2, #4\n    bl ov12_02262F24\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E1FC(void) {
+    /* Original at 0x0225E1FC */
+    /* Requires manual decompilation - 35 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldr r0, [r4]\n    add r2, sp, #0\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225E216\n    ldr r0, [r4]\n    bl ov12_02261ED4\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225E226\n    cmp r0, #4\n    bhi _0225E226\n    cmp r0, #2\n    bne _0225E22C\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    add r2, sp, #0\n    ldrb r1, [r4, #9]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_02262F24\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E250(void) {
+    /* Original at 0x0225E250 */
+    /* Requires manual decompilation - 185 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x4c\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBgConfig\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    add r7, r0, #0\n    ldrb r1, [r4, #0x1d]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    str r0, [sp, #0x10]\n    ldrb r1, [r4, #0x1d]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    ldrb r0, [r4, #0x1d]\n    cmp r1, r0\n    beq _0225E28A\n    ldr r0, [r4]\n    bl BattleSystem_GetHpBar\n    add r5, r0, #0\n    b _0225E28C\n    mov r5, #0\n    add r0, r4, #0\n    add r0, #0x20\n    ldrb r0, [r0]\n    cmp r0, #3\n    bls _0225E298\n    b _0225E3D0\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225E2A4: ; jump table\n    add r0, r7, #0\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #0\n    bne _0225E2B8\n    b _0225E3F8\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageLoader\n    add r1, r0, #0\n    mov r2, #2\n    add r0, sp, #0x14\n    strb r2, [r0, #0x15]\n    ldrb r2, [r4, #0x1f]\n    ldrb r3, [r4, #0x1d]\n    lsl r2, r2, #8\n    orr r2, r3\n    str r2, [sp, #0x2c]\n    ldr r2, _0225E3FC ; =0x00000399\n    mov r3, #0\n    strh r2, [r0, #0x16]\n    ldr r0, [r4]\n    add r2, sp, #0x28\n    bl BattleSystem_PrintBattleMessage\n    add r0, r7, #0\n    bl BattleInput_EnableBallGauge\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    str r0, [sp, #0xc]\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r5, sp, #0x14\n    str r0, [sp, #8]\n    mov r2, #0\n    add r3, r4, #0\n    add r6, r5, #0\n    ldrh r0, [r3, #0xc]\n    add r1, r4, r2\n    add r2, r2, #1\n    strh r0, [r5]\n    ldrb r0, [r1, #0x14]\n    add r3, r3, #2\n    add r5, r5, #2\n    strb r0, [r6, #8]\n    ldrb r0, [r1, #0x18]\n    strb r0, [r6, #0xc]\n    add r6, r6, #1\n    cmp r2, #4\n    blt _0225E300\n    ldrb r1, [r4, #0x1e]\n    add r0, sp, #0x14\n    add r2, r7, #0\n    strb r1, [r0, #0x10]\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x14\n    str r0, [sp, #4]\n    ldr r0, [sp, #0xc]\n    ldr r1, [sp, #8]\n    mov r3, #0xb\n    bl BattleInput_ChangeMenu\n    ldr r0, [sp, #0xc]\n    bl NARC_Delete\n    ldr r0, [sp, #8]\n    bl NARC_Delete\n    add r0, r4, #0\n    add r0, #0x20\n    ldrb r0, [r0]\n    add r4, #0x20\n    add sp, #0x4c\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, r7, pc}\n    add r0, r7, #0\n    bl BattleInput_CheckTouch\n    mov r1, #0\n    mvn r1, r1\n    str r0, [r4, #8]\n    cmp r0, r1\n    beq _0225E3F8\n    ldr r0, _0225E400 ; =0x000005DD\n    bl PlaySE\n    add r0, r4, #0\n    add r0, #0x20\n    ldrb r0, [r0]\n    add r4, #0x20\n    add sp, #0x4c\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, [r4, #8]\n    cmp r0, #0xff\n    beq _0225E3A8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    bne _0225E3A2\n    add r0, r7, #0\n    mov r1, #0\n    bl BattleInput_Deadstriped_022698AC\n    add r0, r5, #0\n    bl ov12_02265D74\n    ldr r0, [r4, #4]\n    bl ov12_02264EB4\n    ldr r0, [sp, #0x10]\n    bl ov12_02262014\n    add r0, r7, #0\n    bl BattleInput_DisableBallGauge\n    ldrb r1, [r4, #0x1d]\n    ldr r0, [r4]\n    ldr r2, [r4, #8]\n    bl ov12_02262FE0\n    add r0, r4, #0\n    add r0, #0x20\n    ldrb r0, [r0]\n    add r4, #0x20\n    add sp, #0x4c\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, r7, pc}\n    add r0, r4, #0\n    add r0, #0x20\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x20\n    strb r1, [r0]\n    add r0, r7, #0\n    bl ov12_022698B0\n    cmp r0, #1\n    bne _0225E3F8\n    ldr r0, [r4]\n    mov r1, #1\n    bl ov12_0223BB10\n    ldrb r1, [r4, #0x1d]\n    ldrb r2, [r4, #0x1c]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x4c\n    pop {r4, r5, r6, r7, pc}\n    _0225E3FC: .word 0x00000399\n    _0225E400: .word 0x000005DD"
+    );
+    #endif
+}
+
+void ov12_0225E404(void) {
+    /* Original at 0x0225E404 */
+    /* Requires manual decompilation - 85 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    add r6, r1, #0\n    str r0, [sp, #8]\n    ldr r0, [r6]\n    bl BattleSystem_GetBattleType\n    add r4, r0, #0\n    ldr r0, [r6]\n    bl BattleSystem_GetBattleContext\n    str r0, [sp, #0xc]\n    ldr r0, _0225E4C8 ; =0x00000101\n    tst r0, r4\n    bne _0225E43A\n    ldr r0, [r6]\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #1\n    tst r0, r1\n    bne _0225E43A\n    ldrb r1, [r6, #0x1d]\n    ldr r0, [r6]\n    bl BattleSystem_GetFieldSide\n    cmp r0, #0\n    bne _0225E44A\n    ldrb r1, [r6, #0x1d]\n    ldr r0, [r6]\n    bl ov10_0221BEF4\n    cmp r0, #0xff\n    beq _0225E4C2\n    add r4, r0, #1\n    b _0225E4A2\n    mov r7, #0\n    add r4, r7, #0\n    add r5, sp, #0x10\n    add r0, r4, #0\n    bl MaskOfFlagNo\n    ldrh r1, [r6, #0x22]\n    tst r0, r1\n    bne _0225E462\n    add r0, r4, #1\n    stmia r5!, {r0}\n    add r7, r7, #1\n    add r4, r4, #1\n    cmp r4, #4\n    blt _0225E450\n    ldr r0, [r6]\n    bl BattleSystem_Random\n    add r1, r7, #0\n    bl _s32_div_f\n    lsl r1, r1, #2\n    add r0, sp, #0x10\n    ldr r4, [r0, r1]\n    mov r0, #1\n    sub r3, r4, #1\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    lsl r3, r3, #1\n    add r3, r6, r3\n    ldrb r2, [r6, #0x1d]\n    ldrh r3, [r3, #0xc]\n    ldr r0, [r6]\n    ldr r1, [sp, #0xc]\n    bl ov12_022506D4\n    str r0, [sp]\n    ldrb r3, [r6, #0x1d]\n    ldr r0, [r6]\n    ldr r1, [sp, #0xc]\n    mov r2, #0xb\n    bl ov12_022582B8\n    ldrb r1, [r6, #0x1d]\n    ldr r0, [r6]\n    add r2, r4, #0\n    bl ov12_02262FE0\n    ldrb r1, [r6, #0x1d]\n    ldrb r2, [r6, #0x1c]\n    ldr r0, [r6]\n    bl ov12_0226430C\n    add r0, r6, #0\n    bl Heap_Free\n    ldr r0, [sp, #8]\n    bl SysTask_Destroy\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225E4C8: .word 0x00000101"
+    );
+    #endif
+}
+
+void ov12_0225E4CC(void) {
+    /* Original at 0x0225E4CC */
+    /* Requires manual decompilation - 12 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0x1d]\n    add r5, r0, #0\n    ldrb r2, [r4, #0x1c]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E4EC(void) {
+    /* Original at 0x0225E4EC */
+    /* Requires manual decompilation - 51 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r5, r1, #0\n    ldrb r1, [r5, #0x1d]\n    add r6, r0, #0\n    ldr r0, [r5]\n    add r2, sp, #0\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225E508\n    ldr r0, [r5]\n    bl ov12_02261ED4\n    add r0, sp, #0\n    ldrb r4, [r0]\n    cmp r4, #0\n    beq _0225E514\n    cmp r4, #4\n    bls _0225E51C\n    ldr r0, [r5]\n    bl ov12_02261EB8\n    b _0225E53E\n    ldr r0, [r5]\n    bl BattleSystem_GetBattleContext\n    ldrb r1, [r5, #0x1d]\n    add r2, r4, #5\n    mov r3, #0\n    bl GetBattlerVar\n    lsl r0, r0, #0x10\n    lsr r1, r0, #0x10\n    beq _0225E538\n    ldr r0, _0225E564 ; =0x000001D3\n    cmp r1, r0\n    bls _0225E53E\n    ldr r0, [r5]\n    bl ov12_02261EB8\n    add r2, sp, #0\n    ldrb r1, [r5, #0x1d]\n    ldrb r2, [r2]\n    ldr r0, [r5]\n    bl ov12_02262FE0\n    ldrb r1, [r5, #0x1d]\n    ldrb r2, [r5, #0x1c]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    _0225E564: .word 0x000001D3"
+    );
+    #endif
+}
+
+void ov12_0225E568(void) {
+    /* Original at 0x0225E568 */
+    /* Requires manual decompilation - 173 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x34\n    add r4, r1, #0\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    bl BattleSystem_GetBgConfig\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    add r7, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    add r5, r0, #0\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    ldrb r0, [r4, #0xd]\n    cmp r1, r0\n    beq _0225E5A2\n    ldr r0, [r4]\n    bl BattleSystem_GetHpBar\n    add r6, r0, #0\n    b _0225E5A4\n    mov r6, #0\n    ldrb r0, [r4, #0xf]\n    cmp r0, #3\n    bhi _0225E69A\n    add r1, r0, r0\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225E5B6: ; jump table\n    add r0, r5, #0\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #0\n    bne _0225E5CA\n    b _0225E6F4\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r2, sp, #0x10\n    add r6, r0, #0\n    mov r0, #0\n    add r1, r4, #0\n    add r2, #2\n    ldrh r3, [r1, #0x10]\n    add r0, r0, #1\n    strh r3, [r2]\n    ldrh r3, [r1, #0x12]\n    strh r3, [r2, #2]\n    ldrh r3, [r1, #0x14]\n    strh r3, [r2, #4]\n    ldrh r3, [r1, #0x16]\n    add r1, #8\n    strh r3, [r2, #6]\n    add r2, #8\n    cmp r0, #4\n    blt _0225E5E6\n    ldrb r1, [r4, #0xe]\n    add r0, sp, #0x30\n    add r0, #2\n    strb r1, [r0]\n    ldrh r0, [r4, #0x30]\n    ldrb r1, [r4, #0xe]\n    bl ov12_02266C84\n    add r1, sp, #0x30\n    add r1, #2\n    strb r0, [r1, #1]\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    add r0, #2\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r6, #0\n    add r2, r5, #0\n    mov r3, #0xc\n    bl BattleInput_ChangeMenu\n    add r0, r7, #0\n    bl NARC_Delete\n    add r0, r6, #0\n    bl NARC_Delete\n    ldrb r0, [r4, #0xf]\n    add sp, #0x34\n    add r0, r0, #1\n    strb r0, [r4, #0xf]\n    pop {r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    bl BattleInput_CheckTouch\n    mov r1, #0\n    mvn r1, r1\n    str r0, [r4, #8]\n    cmp r0, r1\n    beq _0225E6F4\n    ldr r0, _0225E6F8 ; =0x000005DD\n    bl PlaySE\n    ldrb r0, [r4, #0xf]\n    add sp, #0x34\n    add r0, r0, #1\n    strb r0, [r4, #0xf]\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, [r4, #8]\n    cmp r0, #0xff\n    beq _0225E68C\n    ldr r0, [r4, #4]\n    bl ov12_02264EB4\n    add r0, r7, #0\n    bl ov12_02262014\n    add r0, r6, #0\n    bl ov12_02265D74\n    add r0, r4, #0\n    add r0, #0x32\n    ldrb r0, [r0]\n    cmp r0, #1\n    bne _0225E68C\n    add r0, r5, #0\n    mov r1, #0\n    bl BattleInput_Deadstriped_022698AC\n    ldrb r0, [r4, #0xf]\n    add sp, #0x34\n    add r0, r0, #1\n    strb r0, [r4, #0xf]\n    pop {r4, r5, r6, r7, pc}\n    add r0, r0, #1\n    strb r0, [r4, #0xf]\n    add r0, r5, #0\n    bl ov12_022698B0\n    cmp r0, #1\n    bne _0225E6F4\n    ldr r0, [r4]\n    ldr r5, [r4, #8]\n    bl BattleSystem_GetBattleType\n    add r6, r0, #0\n    cmp r5, #0xff\n    beq _0225E6D4\n    ldr r0, [r4]\n    add r1, sp, #0xc\n    bl ov12_0223C1A0\n    mov r0, #2\n    tst r0, r6\n    ldr r0, [r4, #8]\n    beq _0225E6CC\n    add r1, r0, #1\n    add r0, sp, #0xc\n    ldrb r0, [r0, r1]\n    add r5, r0, #1\n    b _0225E6D4\n    sub r1, r0, #1\n    add r0, sp, #0xc\n    ldrb r0, [r0, r1]\n    add r5, r0, #1\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    add r2, r5, #0\n    bl ov12_0226311C\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    ldr r0, [sp, #8]\n    bl SysTask_Destroy\n    add sp, #0x34\n    pop {r4, r5, r6, r7, pc}\n    _0225E6F8: .word 0x000005DD"
+    );
+    #endif
+}
+
+void ov12_0225E6FC(void) {
+    /* Original at 0x0225E6FC */
+    /* Requires manual decompilation - 27 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetBattleContext\n    add r1, r0, #0\n    ldrb r3, [r5, #0xd]\n    ldr r0, [r5]\n    mov r2, #0xb\n    bl ov12_022581D4\n    add r4, r0, #1\n    cmp r4, #5\n    blt _0225E71E\n    bl GF_AssertFail\n    ldrb r1, [r5, #0xd]\n    ldr r0, [r5]\n    add r2, r4, #0\n    bl ov12_0226311C\n    ldrb r1, [r5, #0xd]\n    ldrb r2, [r5, #0xc]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E740(void) {
+    /* Original at 0x0225E740 */
+    /* Requires manual decompilation - 12 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E760(void) {
+    /* Original at 0x0225E760 */
+    /* Requires manual decompilation - 85 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r7, r0, #0\n    ldr r0, [r4]\n    add r2, sp, #0\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225E77A\n    ldr r0, [r4]\n    bl ov12_02261ED4\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225E786\n    cmp r0, #4\n    bls _0225E78E\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    b _0225E80C\n    sub r5, r0, #1\n    ldrh r0, [r4, #0x30]\n    cmp r0, #0x40\n    bgt _0225E7C4\n    bge _0225E80C\n    cmp r0, #0x10\n    bgt _0225E7C0\n    bge _0225E80C\n    cmp r0, #8\n    bhi _0225E80C\n    add r1, r0, r0\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225E7AE: ; jump table\n    cmp r0, #0x20\n    b _0225E80C\n    mov r2, #1\n    lsl r2, r2, #8\n    cmp r0, r2\n    bgt _0225E7D2\n    bge _0225E80C\n    cmp r0, #0x80\n    b _0225E80C\n    lsl r1, r2, #1\n    cmp r0, r1\n    bgt _0225E7DC\n    beq _0225E7F0\n    b _0225E80C\n    lsl r1, r2, #2\n    cmp r0, r1\n    b _0225E80C\n    ldrb r0, [r4, #0xd]\n    cmp r0, r5\n    bne _0225E80C\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    b _0225E80C\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetFieldSide\n    add r6, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    bl BattleSystem_GetFieldSide\n    cmp r6, r0\n    beq _0225E80C\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    add r2, sp, #0\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226311C\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r7, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225E830(void) {
+    /* Original at 0x0225E830 */
+    /* Requires manual decompilation - 1271 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x1fc\n    sub sp, #0x14\n    add r4, r1, #0\n    add r7, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    ldrb r1, [r4, #0xe]\n    add r5, r0, #0\n    cmp r1, #0x1e\n    bls _0225E84C\n    bl _0225F376\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225E858: ; jump table\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    bl BattleInput_GetKeyPressed\n    strb r0, [r4, #0x10]\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageIcon\n    mov r1, #1\n    bl sub_0201649C\n    mov r1, #0\n    mov r2, #3\n    str r1, [sp]\n    mov r0, #7\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #5\n    add r3, r1, #0\n    add r0, r5, #0\n    lsl r2, r2, #0xa\n    sub r3, #0xd\n    bl PaletteData_BeginPaletteFade\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0xa\n    add r3, r1, #0\n    ldr r2, _0225EC14 ; =0x0000FFFF\n    add r0, r5, #0\n    sub r3, #0x12\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _0225E9B4\n    ldr r0, [r4]\n    bl ov12_02237B0C\n    mov r0, #5\n    mov r1, #0x34\n    bl Heap_Alloc\n    str r0, [r4, #4]\n    mov r1, #0\n    mov r2, #0x34\n    bl memset\n    ldr r1, [r4]\n    ldr r0, [r4, #4]\n    str r1, [r0]\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetPlayerProfile\n    ldr r1, [r4, #4]\n    str r0, [r1, #4]\n    ldr r0, [r4, #4]\n    mov r1, #5\n    str r1, [r0, #0xc]\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x26\n    strb r1, [r0]\n    ldr r0, [r4]\n    bl BattleSystem_GetBag\n    ldr r1, [r4, #4]\n    str r0, [r1, #8]\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4, #4]\n    str r1, [r0, #0x10]\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0x10]\n    add r0, #0x25\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0x14]\n    add r0, #0x22\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0x15]\n    add r0, #0x23\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0x16]\n    add r0, #0x24\n    strb r1, [r0]\n    ldrb r0, [r4, #0xd]\n    add r0, r4, r0\n    add r0, #0x30\n    ldrb r1, [r0]\n    ldr r0, [r4, #4]\n    str r1, [r0, #0x18]\n    ldr r0, [r4, #4]\n    bl ov08_022225D4\n    add sp, #0x1fc\n    mov r0, #3\n    add sp, #0x14\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0x10]\n    add r0, #0x25\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    bl ov08_022225D4\n    ldrb r0, [r4, #0xe]\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    ldr r1, [r4, #4]\n    add r0, r1, #0\n    add r0, #0x26\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225E9B4\n    mov r0, #0\n    add r1, #0x26\n    strb r0, [r1]\n    ldr r0, [r4, #4]\n    add r0, #0x25\n    ldrb r0, [r0]\n    strb r0, [r4, #0x10]\n    ldr r1, [r4, #4]\n    ldrh r0, [r1, #0x1c]\n    cmp r0, #0\n    beq _0225E9E0\n    ldrb r0, [r1, #0x1e]\n    cmp r0, #3\n    bls _0225E9B8\n    bl _0225F376\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225E9C4: ; jump table\n    add sp, #0x1fc\n    mov r0, #4\n    add sp, #0x14\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    add sp, #0x1fc\n    mov r0, #6\n    add sp, #0x14\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    add sp, #0x1fc\n    mov r0, #6\n    add sp, #0x14\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetParty\n    str r0, [sp, #0x14]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    beq _0225EA16\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    bne _0225EA16\n    ldrb r1, [r4, #0xd]\n    mov r0, #1\n    add r7, r1, #0\n    and r7, r0\n    b _0225EA18\n    ldrb r7, [r4, #0xd]\n    ldr r0, [r4, #8]\n    mov r1, #6\n    ldr r0, [r0, #4]\n    ldr r0, [r0]\n    bl Party_InitWithMaxSize\n    ldr r0, [sp, #0x14]\n    mov r6, #0\n    bl Party_GetCount\n    cmp r0, #0\n    ble _0225EA66\n    mov r0, #6\n    mul r0, r7\n    add r5, r4, r0\n    ldrb r2, [r5, #0x18]\n    ldr r0, [r4]\n    add r1, r7, #0\n    bl BattleSystem_GetPartyMon\n    add r1, r0, #0\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldr r0, [r0]\n    bl Party_AddMon\n    ldr r1, [r4, #8]\n    ldrb r0, [r5, #0x18]\n    ldr r1, [r1, #4]\n    add r5, r5, #1\n    add r1, r1, r6\n    add r1, #0x2c\n    strb r0, [r1]\n    ldr r0, [sp, #0x14]\n    add r6, r6, #1\n    bl Party_GetCount\n    cmp r6, r0\n    blt _0225EA36\n    ldr r0, [r4, #8]\n    ldr r1, [r4]\n    ldr r0, [r0, #4]\n    str r1, [r0, #8]\n    ldr r0, [r4, #8]\n    mov r1, #5\n    ldr r0, [r0, #4]\n    str r1, [r0, #0xc]\n    ldr r1, [r4, #8]\n    mov r0, #0\n    ldr r1, [r1, #4]\n    strb r0, [r1, #0x11]\n    ldr r1, [r4, #8]\n    ldr r1, [r1, #4]\n    add r1, #0x36\n    strb r0, [r1]\n    ldr r1, [r4, #8]\n    ldr r1, [r1, #4]\n    strh r0, [r1, #0x24]\n    ldr r0, [r4, #8]\n    mov r1, #2\n    ldr r0, [r0, #4]\n    add r0, #0x35\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    ldrh r1, [r0, #0x1c]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    strh r1, [r0, #0x22]\n    ldr r0, [r4, #4]\n    ldrb r1, [r0, #0x1e]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    add r0, #0x33\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    ldr r1, [r0, #0x10]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    str r1, [r0, #0x28]\n    ldr r0, [r4, #8]\n    ldrb r1, [r4, #0x10]\n    ldr r0, [r0, #4]\n    add r0, #0x32\n    strb r1, [r0]\n    ldrb r0, [r4, #0xd]\n    ldr r2, [r4, #8]\n    add r0, r2, r0\n    ldrb r1, [r0, #0xc]\n    ldr r0, [r2, #4]\n    strb r1, [r0, #0x14]\n    ldrb r1, [r4, #0xd]\n    ldr r5, [r4, #8]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r0, r5, r0\n    ldrb r1, [r0, #0xc]\n    ldr r0, [r5, #4]\n    strb r1, [r0, #0x15]\n    ldrb r0, [r4, #0xf]\n    cmp r0, #4\n    bne _0225EAFC\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r0, r4, r0\n    add r0, #0x30\n    ldrb r1, [r0]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    str r1, [r0, #0x18]\n    ldrb r0, [r4, #0xd]\n    b _0225EB12\n    ldrb r0, [r4, #0xd]\n    add r0, r4, r0\n    add r0, #0x30\n    ldrb r1, [r0]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    str r1, [r0, #0x18]\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r0, r4, r0\n    add r0, #0x30\n    ldrb r1, [r0]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    str r1, [r0, #0x1c]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    bl ov10_0221BE20\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #8]\n    ldr r1, [r0, #4]\n    add r0, r1, #0\n    add r0, #0x36\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225EBC6\n    add r1, #0x32\n    ldrb r0, [r1]\n    mov r1, #0\n    strb r0, [r4, #0x10]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    add r0, #0x36\n    strb r1, [r0]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldrb r0, [r0, #0x11]\n    cmp r0, #6\n    bne _0225EB64\n    add sp, #0x1fc\n    mov r0, #2\n    add sp, #0x14\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    add sp, #0x1fc\n    mov r0, #6\n    add sp, #0x14\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4]\n    bl ov12_02237BB8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    ldrb r1, [r4, #0x10]\n    bl BattleInput_SetKeyPressed\n    mov r0, #7\n    str r0, [sp]\n    mov r0, #0\n    mov r1, #5\n    str r0, [sp, #4]\n    mov r2, #3\n    add r3, r1, #0\n    str r0, [sp, #8]\n    add r0, r5, #0\n    lsl r2, r2, #0xa\n    sub r3, #0xd\n    bl PaletteData_BeginPaletteFade\n    mov r0, #0x10\n    str r0, [sp]\n    mov r0, #0\n    mov r1, #0xa\n    str r0, [sp, #4]\n    add r3, r1, #0\n    str r0, [sp, #8]\n    ldr r2, _0225EC14 ; =0x0000FFFF\n    add r0, r5, #0\n    sub r3, #0x12\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    beq _0225EBC8\n    b _0225F376\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageIcon\n    mov r1, #0\n    bl sub_0201649C\n    ldr r0, [r4, #4]\n    ldrh r0, [r0, #0x1c]\n    cmp r0, #0\n    bne _0225EBDE\n    b _0225ED4A\n    mov r0, #9\n    strb r0, [r4, #0xe]\n    ldr r0, [r4, #4]\n    ldrb r1, [r0, #0x1e]\n    cmp r1, #3\n    bls _0225EBEC\n    b _0225ED4E\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225EBF8: ; jump table\n    ldrh r1, [r0, #0x1c]\n    ldr r0, _0225EC18 ; =0x0000FFE4\n    add r0, r1, r0\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    cmp r0, #1\n    bhi _0225EC1C\n    mov r0, #8\n    strb r0, [r4, #0xe]\n    b _0225ED4E\n    _0225EC14: .word 0x0000FFFF\n    _0225EC18: .word 0x0000FFE4\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldrb r0, [r0, #0x11]\n    cmp r0, #2\n    bhs _0225EC3A\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    cmp r0, #3\n    beq _0225EC44\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    cmp r0, #0x13\n    beq _0225EC44\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldrb r0, [r0, #0x11]\n    cmp r0, #1\n    bhs _0225EC8A\n    ldr r0, [r4, #4]\n    ldrh r0, [r0, #0x1c]\n    cmp r0, #0x17\n    ldr r0, [r4]\n    bne _0225EC6C\n    bl BattleSystem_AreBattleAnimationsOn\n    cmp r0, #1\n    bne _0225EC5C\n    mov r0, #0x11\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r1, #0x74\n    ldr r0, _0225EF7C ; =0x000005EC\n    mvn r1, r1\n    bl sub_0200602C\n    mov r0, #0x15\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    bl BattleSystem_AreBattleAnimationsOn\n    cmp r0, #1\n    bne _0225EC7A\n    mov r0, #0x19\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r1, #0x74\n    ldr r0, _0225EF7C ; =0x000005EC\n    mvn r1, r1\n    bl sub_0200602C\n    mov r0, #0x1d\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r0, #8\n    strb r0, [r4, #0xe]\n    b _0225ED4E\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldrb r0, [r0, #0x11]\n    cmp r0, #2\n    bhs _0225ECAE\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    cmp r0, #3\n    beq _0225ECB8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    cmp r0, #0x13\n    beq _0225ECB8\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldrb r0, [r0, #0x11]\n    cmp r0, #1\n    bhs _0225ECE8\n    ldr r0, [r4, #4]\n    mov r1, #0x26\n    ldrh r0, [r0, #0x1c]\n    mov r2, #5\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225ECE8\n    ldr r0, [r4]\n    bl BattleSystem_AreBattleAnimationsOn\n    cmp r0, #1\n    bne _0225ECD8\n    mov r0, #0x11\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r1, #0x74\n    ldr r0, _0225EF7C ; =0x000005EC\n    mvn r1, r1\n    bl sub_0200602C\n    mov r0, #0x15\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r0, #8\n    strb r0, [r4, #0xe]\n    b _0225ED4E\n    ldrh r1, [r0, #0x1c]\n    ldr r0, _0225EF80 ; =0x0000FFC1\n    add r0, r1, r0\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    cmp r0, #1\n    bhi _0225ED02\n    mov r0, #8\n    strb r0, [r4, #0xe]\n    b _0225ED4E\n    cmp r1, #0x37\n    ldr r0, [r4]\n    bne _0225ED26\n    bl BattleSystem_AreBattleAnimationsOn\n    cmp r0, #1\n    bne _0225ED16\n    mov r0, #0xd\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r1, #0x74\n    ldr r0, _0225EF7C ; =0x000005EC\n    mvn r1, r1\n    bl sub_0200602C\n    mov r0, #0xf\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    bl BattleSystem_AreBattleAnimationsOn\n    cmp r0, #1\n    bne _0225ED34\n    mov r0, #0xb\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r1, #0x74\n    ldr r0, _0225EF7C ; =0x000005EC\n    mvn r1, r1\n    bl sub_0200602C\n    mov r0, #0xf\n    strh r0, [r4, #0x12]\n    b _0225ED4E\n    mov r0, #8\n    strb r0, [r4, #0xe]\n    b _0225ED4E\n    mov r0, #8\n    strb r0, [r4, #0xe]\n    ldrb r0, [r4, #0xe]\n    cmp r0, #8\n    beq _0225EE32\n    ldr r0, [r4]\n    mov r1, #0\n    bl ov12_02237ED0\n    add sp, #0x1fc\n    add sp, #0x14\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r2, [r4, #4]\n    ldrh r0, [r2, #0x1c]\n    cmp r0, #0\n    bne _0225ED72\n    mov r1, #0xff\n    add r0, sp, #0x1c\n    strh r1, [r0]\n    b _0225ED8E\n    add r1, sp, #0x1c\n    strh r0, [r1]\n    ldrb r0, [r2, #0x1e]\n    strb r0, [r1, #2]\n    cmp r0, #1\n    bhi _0225ED8E\n    ldr r0, [r4, #8]\n    ldr r2, [r0, #4]\n    ldrb r0, [r2, #0x11]\n    add r0, r2, r0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r0, r0, #1\n    strb r0, [r1, #3]\n    add r3, sp, #0x1c\n    ldrb r1, [r4, #0xd]\n    mov r2, sp\n    ldrh r5, [r3]\n    ldr r0, [r4]\n    sub r2, r2, #4\n    strh r5, [r2]\n    ldrh r3, [r3, #2]\n    strh r3, [r2, #2]\n    ldr r2, [r2]\n    bl ov12_022632C0\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldr r0, [r0]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    ldr r0, [r4, #4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r7, #0\n    bl SysTask_Destroy\n    add sp, #0x1fc\n    add sp, #0x14\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r1, _0225EF84 ; =0x000004B6\n    add r0, sp, #0x8c\n    strh r1, [r0, #2]\n    mov r1, #5\n    strb r1, [r0, #1]\n    ldr r0, [r4, #4]\n    ldrh r0, [r0, #0x1c]\n    str r0, [sp, #0x90]\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageLoader\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r2, sp, #0x8c\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #0x11]\n    mov r0, #0x1e\n    strb r0, [r4, #0x17]\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r0, [r4, #0x11]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0225EE32\n    ldrb r0, [r4, #0x17]\n    sub r0, r0, #1\n    strb r0, [r4, #0x17]\n    ldrb r0, [r4, #0x17]\n    cmp r0, #0\n    beq _0225EE34\n    b _0225F376\n    ldrh r0, [r4, #0x12]\n    add sp, #0x1fc\n    add sp, #0x14\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r4, #0xd]\n    mov r0, #9\n    add r2, sp, #0x1b8\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r2, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r3, sp, #0x1b8\n    bl ov12_02261B80\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #8]\n    mov r1, #0\n    ldr r0, [r0, #4]\n    add r2, sp, #0x160\n    ldrb r0, [r0, #0x11]\n    mov r3, #1\n    lsl r5, r0, #1\n    mov r0, #9\n    str r0, [sp]\n    str r5, [sp, #4]\n    str r5, [sp, #8]\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    bl ov12_022643C8\n    ldr r0, [r4]\n    add r1, r5, #0\n    bl BattleSystem_GetOpponentData\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r2, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r3, sp, #0x160\n    bl ov12_02261B80\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    add r2, sp, #0x108\n    ldrh r0, [r0, #0x1c]\n    cmp r0, #0x37\n    bne _0225EF02\n    ldrb r0, [r4, #0xd]\n    mov r1, #0\n    add r3, r1, #0\n    str r1, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0x36\n    str r0, [sp, #0xc]\n    ldr r0, [r4]\n    bl ov12_022643C8\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r2, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r3, sp, #0x108\n    bl ov12_02261B80\n    b _0225EF6C\n    cmp r0, #0x38\n    bne _0225EF3A\n    ldrb r0, [r4, #0xd]\n    mov r1, #0\n    add r3, r1, #0\n    str r1, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0x74\n    str r0, [sp, #0xc]\n    ldr r0, [r4]\n    bl ov12_022643C8\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r2, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r3, sp, #0x108\n    bl ov12_02261B80\n    b _0225EF6C\n    ldrb r1, [r4, #0xd]\n    mov r0, #0xc\n    mov r3, #1\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    bl ov12_022643C8\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r2, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r3, sp, #0x108\n    bl ov12_02261B80\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r2, _0225EF88 ; =0x000004B3\n    b _0225EF8C\n    _0225EF7C: .word 0x000005EC\n    _0225EF80: .word 0x0000FFC1\n    _0225EF84: .word 0x000004B6\n    _0225EF88: .word 0x000004B3\n    add r0, sp, #0x68\n    strh r2, [r0, #2]\n    mov r1, #0xc\n    strb r1, [r0, #1]\n    ldrb r1, [r4, #0xd]\n    ldr r3, [r4, #8]\n    add r3, r3, r1\n    ldrb r3, [r3, #0xc]\n    lsl r3, r3, #8\n    orr r1, r3\n    str r1, [sp, #0x6c]\n    ldr r1, [r4, #4]\n    ldrh r1, [r1, #0x1c]\n    sub r1, #0x37\n    cmp r1, #7\n    bhi _0225EFFE\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225EFB8: ; jump table\n    mov r0, #1\n    str r0, [sp, #0x70]\n    b _0225EFFE\n    mov r0, #2\n    str r0, [sp, #0x70]\n    b _0225EFFE\n    mov r0, #3\n    str r0, [sp, #0x70]\n    b _0225EFFE\n    mov r0, #6\n    str r0, [sp, #0x70]\n    b _0225EFFE\n    mov r0, #4\n    str r0, [sp, #0x70]\n    b _0225EFFE\n    mov r0, #5\n    str r0, [sp, #0x70]\n    b _0225EFFE\n    add r1, r2, #1\n    strh r1, [r0, #2]\n    mov r1, #0\n    strb r1, [r0, #1]\n    b _0225EFFE\n    add r1, r2, #2\n    strh r1, [r0, #2]\n    mov r1, #2\n    strb r1, [r0, #1]\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageLoader\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r2, sp, #0x68\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #0x11]\n    mov r0, #0x1e\n    strb r0, [r4, #0x17]\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #8]\n    mov r1, #0\n    ldr r0, [r0, #4]\n    add r2, sp, #0xb0\n    ldrb r0, [r0, #0x11]\n    mov r3, #1\n    lsl r5, r0, #1\n    mov r0, #0xe\n    str r0, [sp]\n    str r5, [sp, #4]\n    str r5, [sp, #8]\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    bl ov12_022643C8\n    ldr r0, [r4]\n    add r1, r5, #0\n    bl BattleSystem_GetOpponentData\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r2, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r3, sp, #0xb0\n    bl ov12_02261B80\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #8]\n    ldr r1, [r0, #4]\n    ldrb r0, [r1, #0x11]\n    lsl r6, r0, #1\n    add r0, r1, r0\n    add r0, #0x2c\n    ldrb r7, [r0]\n    ldr r0, [r4]\n    add r1, r6, #0\n    bl BattleSystem_GetHpBar\n    mov r1, #0\n    mov r2, #1\n    add r5, r0, #0\n    bl MI_CpuFill8\n    ldr r0, [r4]\n    add r1, r6, #0\n    bl ov12_0223AB0C\n    str r0, [sp, #0x18]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    add r1, r0, #0\n    ldr r0, [sp, #0x18]\n    bl BattleHpBar_Util_GetBarTypeFromBattlerSide\n    add r1, r5, #0\n    add r1, #0x25\n    strb r0, [r1]\n    ldr r0, [r4]\n    add r1, r6, #0\n    add r2, r7, #0\n    bl BattleSystem_GetPartyMon\n    mov r1, #0xa3\n    mov r2, #0\n    add r6, r0, #0\n    bl GetMonData\n    ldr r1, [r4, #8]\n    mov r2, #0\n    ldr r1, [r1, #4]\n    ldrh r1, [r1, #0x20]\n    sub r0, r0, r1\n    str r0, [r5, #0x28]\n    add r0, r6, #0\n    mov r1, #0xa4\n    bl GetMonData\n    str r0, [r5, #0x2c]\n    ldr r0, [r4, #8]\n    mov r1, #0xa0\n    ldr r0, [r0, #4]\n    mov r2, #0\n    ldrh r0, [r0, #0x20]\n    str r0, [r5, #0x30]\n    add r0, r6, #0\n    bl GetMonData\n    cmp r0, #0\n    bne _0225F0F6\n    add r0, r5, #0\n    mov r1, #0\n    add r0, #0x4a\n    strb r1, [r0]\n    ldr r1, [r5, #0x30]\n    add r0, r5, #0\n    bl ov12_02264DCC\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r1, [r4, #8]\n    ldr r0, [r4]\n    ldr r1, [r1, #4]\n    ldrb r1, [r1, #0x11]\n    lsl r1, r1, #1\n    bl BattleSystem_GetHpBar\n    add r5, r0, #0\n    bl ov12_02264E00\n    mov r1, #0\n    mvn r1, r1\n    cmp r0, r1\n    beq _0225F128\n    b _0225F376\n    mov r2, #1\n    add r0, r5, #0\n    mov r1, #0\n    lsl r2, r2, #8\n    bl ov12_0226498C\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageLoader\n    add r5, r0, #0\n    ldr r0, [r4, #8]\n    ldr r1, [r0, #4]\n    ldrb r0, [r1, #0x11]\n    ldrh r1, [r1, #0x20]\n    lsl r0, r0, #1\n    cmp r1, #0\n    add r1, sp, #0x1c\n    beq _0225F178\n    ldr r2, _0225F37C ; =0x000004BE\n    strh r2, [r1, #0x2a]\n    mov r2, #0x11\n    add r1, sp, #0x44\n    strb r2, [r1, #1]\n    ldr r1, [r4, #8]\n    add r1, r1, r0\n    ldrb r1, [r1, #0xc]\n    lsl r1, r1, #8\n    orr r0, r1\n    str r0, [sp, #0x48]\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldrh r0, [r0, #0x20]\n    str r0, [sp, #0x4c]\n    b _0225F18E\n    ldr r2, _0225F380 ; =0x000004E2\n    strh r2, [r1, #0x2a]\n    mov r2, #2\n    add r1, sp, #0x44\n    strb r2, [r1, #1]\n    ldr r1, [r4, #8]\n    add r1, r1, r0\n    ldrb r1, [r1, #0xc]\n    lsl r1, r1, #8\n    orr r0, r1\n    str r0, [sp, #0x48]\n    ldr r0, [r4]\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r2, sp, #0x44\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #0x11]\n    mov r0, #0x1e\n    strb r0, [r4, #0x17]\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #8]\n    mov r5, #0\n    ldr r0, [r0, #4]\n    ldrb r0, [r0, #0x11]\n    lsl r7, r0, #1\n    ldr r0, [r4]\n    add r1, r7, #0\n    bl BattleSystem_GetHpBar\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #8]\n    add r1, r7, #0\n    ldr r3, [r0, #4]\n    ldr r0, [r4]\n    ldrb r2, [r3, #0x11]\n    add r2, r3, r2\n    add r2, #0x2c\n    ldrb r2, [r2]\n    bl BattleSystem_GetPartyMon\n    mov r1, #0xa0\n    add r2, r5, #0\n    bl GetMonData\n    cmp r0, #0\n    bne _0225F1EE\n    ldr r0, [sp, #0x10]\n    add r1, r5, #0\n    add r0, #0x4a\n    strb r1, [r0]\n    ldr r0, [sp, #0x10]\n    mov r2, #1\n    add r1, r0, #0\n    ldr r1, [r1, #0x28]\n    lsl r2, r2, #8\n    bl ov12_0226498C\n    mov r1, #2\n    add r0, sp, #0x1c\n    strb r1, [r0, #5]\n    ldr r0, [r4, #8]\n    mov r1, #0xf\n    add r0, r0, r7\n    ldrb r0, [r0, #0xc]\n    mov r2, #5\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [sp, #0x24]\n    ldr r0, [r4, #4]\n    ldrh r0, [r0, #0x1c]\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225F222\n    mov r6, #0\n    add r5, r5, #1\n    ldr r0, [r4, #4]\n    mov r1, #0x10\n    ldrh r0, [r0, #0x1c]\n    mov r2, #5\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225F236\n    mov r6, #1\n    add r5, r5, #1\n    ldr r0, [r4, #4]\n    mov r1, #0x11\n    ldrh r0, [r0, #0x1c]\n    mov r2, #5\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225F24A\n    mov r6, #2\n    add r5, r5, #1\n    ldr r0, [r4, #4]\n    mov r1, #0x12\n    ldrh r0, [r0, #0x1c]\n    mov r2, #5\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225F25E\n    mov r6, #3\n    add r5, r5, #1\n    ldr r0, [r4, #4]\n    mov r1, #0x13\n    ldrh r0, [r0, #0x1c]\n    mov r2, #5\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225F272\n    mov r6, #4\n    add r5, r5, #1\n    ldr r0, [r4, #4]\n    mov r1, #0x14\n    ldrh r0, [r0, #0x1c]\n    mov r2, #5\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225F286\n    mov r6, #5\n    add r5, r5, #1\n    ldr r0, [r4, #4]\n    mov r1, #0x15\n    ldrh r0, [r0, #0x1c]\n    mov r2, #5\n    bl GetItemAttr\n    cmp r0, #0\n    beq _0225F29A\n    mov r6, #6\n    add r5, r5, #1\n    cmp r5, #1\n    beq _0225F2A6\n    ldr r1, _0225F384 ; =0x000004CD\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    b _0225F2FA\n    cmp r6, #6\n    bhi _0225F2FA\n    add r0, r6, r6\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225F2B6: ; jump table\n    ldr r1, _0225F388 ; =0x000004BA\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    b _0225F2FA\n    ldr r1, _0225F38C ; =0x000004B7\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    b _0225F2FA\n    ldr r1, _0225F390 ; =0x000004B9\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    b _0225F2FA\n    ldr r1, _0225F394 ; =0x000004BB\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    b _0225F2FA\n    ldr r1, _0225F398 ; =0x000004B8\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    b _0225F2FA\n    ldr r1, _0225F39C ; =0x000004BC\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    b _0225F2FA\n    ldr r1, _0225F3A0 ; =0x000004BD\n    add r0, sp, #0x1c\n    strh r1, [r0, #6]\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageLoader\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r2, sp, #0x20\n    bl BattleSystem_PrintBattleMessage\n    strb r0, [r4, #0x11]\n    mov r0, #0x1e\n    strb r0, [r4, #0x17]\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    bl ov07_0221C394\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225F376\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    bl ov07_0221C3C0\n    ldrb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r0, [r4, #0x11]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0225F376\n    ldrb r0, [r4, #0x17]\n    sub r0, r0, #1\n    strb r0, [r4, #0x17]\n    ldrb r0, [r4, #0x17]\n    cmp r0, #0\n    bne _0225F376\n    ldr r0, [r4]\n    mov r1, #1\n    bl ov12_02237ED0\n    mov r0, #8\n    strb r0, [r4, #0xe]\n    add sp, #0x1fc\n    add sp, #0x14\n    pop {r3, r4, r5, r6, r7, pc}\n    _0225F37C: .word 0x000004BE\n    _0225F380: .word 0x000004E2\n    _0225F384: .word 0x000004CD\n    _0225F388: .word 0x000004BA\n    _0225F38C: .word 0x000004B7\n    _0225F390: .word 0x000004B9\n    _0225F394: .word 0x000004BB\n    _0225F398: .word 0x000004B8\n    _0225F39C: .word 0x000004BC\n    _0225F3A0: .word 0x000004BD"
+    );
+    #endif
+}
+
+void ov12_0225F3A4(void) {
+    /* Original at 0x0225F3A4 */
+    /* Requires manual decompilation - 36 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r5, r0, #0\n    mov r0, #1\n    add r3, sp, #0\n    strh r0, [r3]\n    add r4, r1, #0\n    mov r2, sp\n    ldrb r1, [r4, #0xd]\n    ldrh r6, [r3]\n    ldr r0, [r4]\n    sub r2, r2, #4\n    strh r6, [r2]\n    ldrh r3, [r3, #2]\n    strh r3, [r2, #2]\n    ldr r2, [r2]\n    bl ov12_022632C0\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldr r0, [r0]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225F3FC(void) {
+    /* Original at 0x0225F3FC */
+    /* Requires manual decompilation - 21 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldr r0, [r0]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225F434(void) {
+    /* Original at 0x0225F434 */
+    /* Requires manual decompilation - 73 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #8\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldr r0, [r4]\n    add r2, sp, #0\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225F450\n    ldr r0, [r4]\n    bl ov12_02261ED4\n    add r0, sp, #0\n    ldrb r1, [r0]\n    add r2, sp, #0\n    strh r1, [r0, #2]\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225F46A\n    ldr r0, [r4]\n    bl ov12_02261ED4\n    add r0, sp, #0\n    ldrb r1, [r0]\n    ldrh r2, [r0, #2]\n    lsl r1, r1, #8\n    orr r1, r2\n    strh r1, [r0, #2]\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    add r2, sp, #0\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225F48A\n    ldr r0, [r4]\n    bl ov12_02261ED4\n    add r3, sp, #0\n    ldrb r1, [r3]\n    mov r0, #0xf\n    mov r2, sp\n    and r0, r1\n    strb r0, [r3, #4]\n    mov r0, #0\n    strb r0, [r3, #5]\n    ldrb r1, [r4, #0xd]\n    ldrh r6, [r3, #2]\n    ldr r0, [r4]\n    sub r2, r2, #4\n    strh r6, [r2]\n    ldrh r3, [r3, #4]\n    strh r3, [r2, #2]\n    ldr r2, [r2]\n    bl ov12_022632C0\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldr r0, [r0]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add sp, #8\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_0225F4E0(void) {
+    /* Original at 0x0225F4E0 */
+    /* Requires manual decompilation - 419 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    ldrb r1, [r4, #0xa]\n    add r5, r0, #0\n    cmp r1, #3\n    bhi _0225F57C\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0225F502: ; jump table\n    ldr r0, [r4]\n    mov r1, #0\n    bl BattleSystem_GetWindow\n    add r6, r0, #0\n    mov r1, #0xff\n    bl FillWindowPixelBuffer\n    add r0, r6, #0\n    bl CopyWindowPixelsToVram_TextMode\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    bl BattleInput_GetKeyPressed\n    strb r0, [r4, #0x17]\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageIcon\n    mov r1, #1\n    bl sub_0201649C\n    mov r1, #0\n    mov r2, #3\n    str r1, [sp]\n    mov r0, #7\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #5\n    add r3, r1, #0\n    add r0, r5, #0\n    lsl r2, r2, #0xa\n    sub r3, #0xd\n    bl PaletteData_BeginPaletteFade\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0xa\n    add r3, r1, #0\n    ldr r2, _0225F870 ; =0x0000FFFF\n    add r0, r5, #0\n    sub r3, #0x12\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0xa]\n    add sp, #0x24\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r4, r5, r6, r7, pc}\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    beq _0225F57E\n    b _0225F8A6\n    ldr r0, [r4]\n    bl ov12_02237B0C\n    mov r0, #5\n    mov r1, #0x38\n    bl Heap_Alloc\n    str r0, [r4, #4]\n    mov r0, #5\n    bl SaveArray_Party_Alloc\n    ldr r1, [r4, #4]\n    str r0, [r1]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #0xc\n    and r0, r1\n    cmp r0, #0xc\n    beq _0225F5B2\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    cmp r0, #0xcb\n    beq _0225F5B2\n    b _0225F6C6\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl ov12_0223AB0C\n    cmp r0, #2\n    bne _0225F5CE\n    ldrb r0, [r4, #9]\n    str r0, [sp, #0x18]\n    ldr r0, [r4]\n    ldr r1, [sp, #0x18]\n    bl BattleSystem_GetBattlerIdPartner\n    str r0, [sp, #0x14]\n    b _0225F5DC\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    str r0, [sp, #0x18]\n    ldrb r0, [r4, #9]\n    str r0, [sp, #0x14]\n    mov r0, #5\n    bl AllocMonZeroed\n    add r6, r0, #0\n    mov r5, #0\n    ldr r0, [r4, #4]\n    add r1, r6, #0\n    ldr r0, [r0]\n    bl Party_AddMon\n    add r5, r5, #1\n    cmp r5, #6\n    blt _0225F5E6\n    add r0, r6, #0\n    bl Heap_Free\n    ldr r0, [r4]\n    ldr r1, [sp, #0x18]\n    mov r7, #0\n    bl BattleSystem_GetPartySize\n    cmp r0, #0\n    ble _0225F64E\n    ldr r0, [sp, #0x18]\n    mov r1, #6\n    mul r1, r0\n    add r5, r4, r1\n    add r6, r7, #0\n    ldrb r2, [r5, #0x1c]\n    ldr r0, [r4]\n    ldr r1, [sp, #0x18]\n    bl BattleSystem_GetPartyMon\n    str r0, [sp, #0x1c]\n    ldr r0, [r4, #4]\n    add r1, r6, #0\n    ldr r0, [r0]\n    bl Party_GetMonByIndex\n    add r1, r0, #0\n    ldr r0, [sp, #0x1c]\n    bl CopyPokemonToPokemon\n    ldr r0, [r4, #4]\n    ldrb r1, [r5, #0x1c]\n    add r0, r0, r6\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r0, [r4]\n    ldr r1, [sp, #0x18]\n    add r5, r5, #1\n    add r6, r6, #2\n    add r7, r7, #1\n    bl BattleSystem_GetPartySize\n    cmp r7, r0\n    blt _0225F614\n    ldr r0, [r4]\n    ldr r1, [sp, #0x14]\n    mov r6, #0\n    bl BattleSystem_GetPartySize\n    cmp r0, #0\n    ble _0225F6AA\n    ldr r0, [sp, #0x14]\n    mov r1, #6\n    mul r1, r0\n    mov r0, #1\n    add r5, r4, r1\n    str r0, [sp, #0xc]\n    add r7, r6, #0\n    ldrb r2, [r5, #0x1c]\n    ldr r0, [r4]\n    ldr r1, [sp, #0x14]\n    bl BattleSystem_GetPartyMon\n    str r0, [sp, #0x20]\n    ldr r0, [r4, #4]\n    ldr r1, [sp, #0xc]\n    ldr r0, [r0]\n    bl Party_GetMonByIndex\n    add r1, r0, #0\n    ldr r0, [sp, #0x20]\n    bl CopyPokemonToPokemon\n    ldr r0, [r4, #4]\n    ldrb r1, [r5, #0x1c]\n    add r0, r0, r7\n    add r0, #0x2d\n    strb r1, [r0]\n    ldr r0, [sp, #0xc]\n    ldr r1, [sp, #0x14]\n    add r0, r0, #2\n    str r0, [sp, #0xc]\n    ldr r0, [r4]\n    add r5, r5, #1\n    add r7, r7, #2\n    add r6, r6, #1\n    bl BattleSystem_GetPartySize\n    cmp r6, r0\n    blt _0225F66A\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl ov12_0223AB0C\n    cmp r0, #4\n    bne _0225F6BE\n    ldr r0, [r4, #4]\n    mov r1, #1\n    strb r1, [r0, #0x11]\n    b _0225F746\n    ldr r0, [r4, #4]\n    mov r1, #0\n    strb r1, [r0, #0x11]\n    b _0225F746\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    beq _0225F6E8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    bne _0225F6E8\n    ldrb r1, [r4, #9]\n    mov r0, #1\n    add r7, r1, #0\n    and r7, r0\n    b _0225F6EC\n    ldrb r1, [r4, #9]\n    add r7, r1, #0\n    ldr r0, [r4]\n    bl ov12_0223AB0C\n    cmp r0, #4\n    bne _0225F6FA\n    mov r1, #1\n    b _0225F6FC\n    mov r1, #0\n    ldr r0, [r4, #4]\n    strb r1, [r0, #0x11]\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetParty\n    str r0, [sp, #0x10]\n    mov r6, #0\n    bl Party_GetCount\n    cmp r0, #0\n    ble _0225F746\n    mov r0, #6\n    mul r0, r7\n    add r5, r4, r0\n    ldrb r2, [r5, #0x1c]\n    ldr r0, [r4]\n    add r1, r7, #0\n    bl BattleSystem_GetPartyMon\n    add r1, r0, #0\n    ldr r0, [r4, #4]\n    ldr r0, [r0]\n    bl Party_AddMon\n    ldr r0, [r4, #4]\n    ldrb r1, [r5, #0x1c]\n    add r0, r0, r6\n    add r0, #0x2c\n    strb r1, [r0]\n    ldr r0, [sp, #0x10]\n    add r5, r5, #1\n    add r6, r6, #1\n    bl Party_GetCount\n    cmp r6, r0\n    blt _0225F71A\n    ldr r1, [r4]\n    ldr r0, [r4, #4]\n    str r1, [r0, #8]\n    ldr r0, [r4, #4]\n    mov r1, #5\n    str r1, [r0, #0xc]\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x36\n    strb r1, [r0]\n    ldr r1, [r4, #0x10]\n    ldr r0, [r4, #4]\n    strh r1, [r0, #0x24]\n    ldrb r1, [r4, #0x16]\n    ldr r0, [r4, #4]\n    strb r1, [r0, #0x12]\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0xb]\n    add r0, #0x35\n    strb r1, [r0]\n    ldrh r1, [r4, #0x14]\n    ldr r0, [r4, #4]\n    strh r1, [r0, #0x22]\n    ldrb r1, [r4, #9]\n    ldr r0, [r4, #4]\n    str r1, [r0, #0x28]\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0x17]\n    add r0, #0x32\n    strb r1, [r0]\n    ldrb r0, [r4, #9]\n    bl MaskOfFlagNo\n    ldrb r1, [r4, #0x18]\n    tst r0, r1\n    bne _0225F796\n    ldrb r0, [r4, #9]\n    add r0, r4, r0\n    ldrb r1, [r0, #0xc]\n    b _0225F798\n    mov r1, #6\n    ldr r0, [r4, #4]\n    strb r1, [r0, #0x14]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    beq _0225F7B0\n    ldr r0, [r4, #4]\n    mov r1, #6\n    strb r1, [r0, #0x15]\n    b _0225F7DA\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    bl MaskOfFlagNo\n    ldrb r1, [r4, #0x18]\n    tst r0, r1\n    bne _0225F7D4\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r0, r4, r0\n    ldrb r1, [r0, #0xc]\n    ldr r0, [r4, #4]\n    strb r1, [r0, #0x15]\n    b _0225F7DA\n    ldr r0, [r4, #4]\n    mov r1, #6\n    strb r1, [r0, #0x15]\n    ldr r0, [r4, #4]\n    bl ov10_0221BE20\n    ldrb r0, [r4, #0xa]\n    add sp, #0x24\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    add r0, #0x36\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225F8A6\n    ldr r0, [r4]\n    bl ov12_02237BB8\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    ldr r1, [r4, #4]\n    add r1, #0x32\n    ldrb r1, [r1]\n    bl BattleInput_SetKeyPressed\n    mov r0, #7\n    str r0, [sp]\n    mov r0, #0\n    mov r1, #5\n    str r0, [sp, #4]\n    mov r2, #3\n    add r3, r1, #0\n    str r0, [sp, #8]\n    add r0, r5, #0\n    lsl r2, r2, #0xa\n    sub r3, #0xd\n    bl PaletteData_BeginPaletteFade\n    mov r0, #0x10\n    str r0, [sp]\n    mov r0, #0\n    mov r1, #0xa\n    str r0, [sp, #4]\n    add r3, r1, #0\n    str r0, [sp, #8]\n    ldr r2, _0225F870 ; =0x0000FFFF\n    add r0, r5, #0\n    sub r3, #0x12\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0xa]\n    add sp, #0x24\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r4, r5, r6, r7, pc}\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _0225F8A6\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageIcon\n    mov r1, #0\n    bl sub_0201649C\n    ldr r3, [r4, #4]\n    ldr r0, [r4]\n    ldrb r2, [r3, #0x11]\n    cmp r2, #6\n    bne _0225F874\n    ldrb r1, [r4, #9]\n    mov r2, #0xff\n    bl ov12_02263360\n    b _0225F882\n    nop\n    _0225F870: .word 0x0000FFFF\n    add r2, r3, r2\n    add r2, #0x2c\n    ldrb r2, [r2]\n    ldrb r1, [r4, #9]\n    add r2, r2, #1\n    bl ov12_02263360\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    ldr r0, [r4, #4]\n    ldr r0, [r0]\n    bl Heap_Free\n    ldr r0, [r4, #4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225F8AC(void) {
+    /* Original at 0x0225F8AC */
+    /* Requires manual decompilation - 76 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    str r0, [sp]\n    ldr r0, [r5]\n    bl BattleSystem_GetBattleType\n    mov r1, #0x10\n    ldrb r6, [r5, #9]\n    tst r1, r0\n    bne _0225F8C8\n    mov r1, #8\n    tst r0, r1\n    beq _0225F8CC\n    str r6, [sp, #4]\n    b _0225F8D6\n    ldr r0, [r5]\n    add r1, r6, #0\n    bl BattleSystem_GetBattlerIdPartner\n    str r0, [sp, #4]\n    ldr r0, [r5]\n    add r1, r6, #0\n    bl ov12_02258BA0\n    add r4, r0, #0\n    cmp r4, #6\n    bne _0225F93A\n    ldr r0, [r5]\n    add r1, r6, #0\n    bl ov12_02258800\n    add r4, r0, #0\n    cmp r4, #6\n    bne _0225F93A\n    ldrb r1, [r5, #9]\n    ldr r0, [r5]\n    bl BattleSystem_GetParty\n    str r0, [sp, #8]\n    mov r4, #0\n    bl Party_GetCount\n    cmp r0, #0\n    ble _0225F93A\n    ldr r0, [sp, #4]\n    add r7, r5, r6\n    add r6, r5, r0\n    ldrb r1, [r5, #9]\n    ldr r0, [r5]\n    add r2, r4, #0\n    bl BattleSystem_GetPartyMon\n    mov r1, #0xa3\n    mov r2, #0\n    bl GetMonData\n    cmp r0, #0\n    beq _0225F92E\n    ldrb r0, [r7, #0xc]\n    cmp r4, r0\n    beq _0225F92E\n    ldrb r0, [r6, #0xc]\n    cmp r4, r0\n    bne _0225F93A\n    ldr r0, [sp, #8]\n    add r4, r4, #1\n    bl Party_GetCount\n    cmp r4, r0\n    blt _0225F90C\n    ldrb r1, [r5, #9]\n    ldr r0, [r5]\n    add r2, r4, #1\n    bl ov12_02263360\n    ldrb r1, [r5, #9]\n    ldrb r2, [r5, #8]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    ldr r0, [sp]\n    bl SysTask_Destroy\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_0225F960(void) {
+    /* Original at 0x0225F960 */
+    /* Requires manual decompilation - 12 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225F980(void) {
+    /* Original at 0x0225F980 */
+    /* Requires manual decompilation - 81 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r6, r0, #0\n    ldr r0, [r4]\n    add r2, sp, #0\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225F99C\n    ldr r0, [r4]\n    bl ov12_02261ED4\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225F9A8\n    cmp r0, #6\n    bls _0225F9B0\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    b _0225FA18\n    ldrb r1, [r4, #9]\n    sub r5, r0, #1\n    ldr r0, [r4]\n    bl BattleSystem_GetParty\n    ldrb r1, [r4, #9]\n    add r1, r4, r1\n    ldrb r1, [r1, #0xc]\n    cmp r5, r1\n    beq _0225F9CA\n    ldrb r1, [r4, #0x16]\n    cmp r5, r1\n    bne _0225F9D2\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    b _0225FA18\n    add r1, sp, #0\n    ldrb r5, [r1]\n    bl Party_GetCount\n    cmp r5, r0\n    ldr r0, [r4]\n    ble _0225F9E6\n    bl ov12_02261EB8\n    b _0225FA18\n    ldrb r1, [r4, #9]\n    sub r2, r5, #1\n    bl BattleSystem_GetPartyMon\n    mov r1, #0xa3\n    mov r2, #0\n    add r5, r0, #0\n    bl GetMonData\n    cmp r0, #0\n    bne _0225FA02\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    add r0, r5, #0\n    mov r1, #0xae\n    mov r2, #0\n    bl GetMonData\n    ldr r1, _0225FA40 ; =0x000001EE\n    cmp r0, r1\n    bne _0225FA18\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    add r2, sp, #0\n    ldrb r1, [r4, #9]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_02263360\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _0225FA40: .word 0x000001EE"
+    );
+    #endif
+}
+
+void ov12_0225FA44(void) {
+    /* Original at 0x0225FA44 */
+    /* Requires manual decompilation - 237 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x38\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBgConfig\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleInput\n    add r5, r0, #0\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetOpponentData\n    str r0, [sp, #0xc]\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattlerIdPartner\n    add r1, r0, #0\n    ldrb r0, [r4, #0xd]\n    cmp r1, r0\n    beq _0225FA7E\n    ldr r0, [r4]\n    bl BattleSystem_GetHpBar\n    add r7, r0, #0\n    b _0225FA80\n    mov r7, #0\n    ldrb r0, [r4, #0xe]\n    cmp r0, #4\n    bhi _0225FB00\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225FA92: ; jump table\n    add r0, r5, #0\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #0\n    beq _0225FB00\n    ldr r0, [r4, #0x10]\n    cmp r0, #0\n    beq _0225FAE4\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageLoader\n    add r5, r0, #0\n    ldrb r0, [r4, #0xf]\n    cmp r0, #5\n    add r0, sp, #0x10\n    bne _0225FAC6\n    mov r1, #0x82\n    strb r1, [r0, #5]\n    ldr r0, [r4, #0x14]\n    str r0, [sp, #0x18]\n    b _0225FACA\n    mov r1, #0\n    strb r1, [r0, #5]\n    ldr r1, [r4, #0x10]\n    add r0, sp, #0x10\n    strh r1, [r0, #6]\n    ldr r0, [r4]\n    bl BattleSystem_GetTextFrameDelay\n    add r3, r0, #0\n    ldr r0, [r4]\n    add r1, r5, #0\n    add r2, sp, #0x14\n    bl BattleSystem_PrintBattleMessage\n    strh r0, [r4, #0x1a]\n    mov r0, #1\n    add sp, #0x38\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrh r0, [r4, #0x1a]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    beq _0225FB02\n    ldr r0, [r4, #0x10]\n    cmp r0, #0\n    beq _0225FB02\n    b _0225FC76\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    add r7, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r6, r0, #0\n    add r0, r5, #0\n    bl BattleInput_DisableBallGauge\n    ldrh r1, [r4, #0x18]\n    add r0, sp, #0x10\n    strh r1, [r0]\n    ldrb r0, [r4, #0xf]\n    cmp r0, #5\n    bhi _0225FBAE\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225FB34: ; jump table\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r6, #0\n    add r2, r5, #0\n    mov r3, #0xd\n    bl BattleInput_ChangeMenu\n    b _0225FBB2\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r6, #0\n    add r2, r5, #0\n    mov r3, #0xe\n    bl BattleInput_ChangeMenu\n    b _0225FBB2\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r6, #0\n    add r2, r5, #0\n    mov r3, #0xf\n    bl BattleInput_ChangeMenu\n    b _0225FBB2\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r6, #0\n    add r2, r5, #0\n    mov r3, #0x10\n    bl BattleInput_ChangeMenu\n    b _0225FBB2\n    mov r0, #0\n    str r0, [sp]\n    add r0, sp, #0x10\n    str r0, [sp, #4]\n    add r0, r7, #0\n    add r1, r6, #0\n    add r2, r5, #0\n    mov r3, #0x11\n    bl BattleInput_ChangeMenu\n    b _0225FBB2\n    bl GF_AssertFail\n    mov r0, #2\n    strb r0, [r4, #0xe]\n    add r0, r7, #0\n    bl NARC_Delete\n    add r0, r6, #0\n    bl NARC_Delete\n    add sp, #0x38\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    bl BattleInput_CheckTouch\n    mov r1, #0\n    mvn r1, r1\n    str r0, [r4, #8]\n    cmp r0, r1\n    beq _0225FC76\n    ldr r0, _0225FC7C ; =0x000005DD\n    bl PlaySE\n    mov r0, #3\n    add sp, #0x38\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    bl BattleInput_CheckFeedbackDone\n    cmp r0, #1\n    bne _0225FC76\n    mov r0, #7\n    mov r1, #5\n    bl NARC_New\n    str r0, [sp, #8]\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r6, r0, #0\n    ldr r0, [r4, #4]\n    bl ov12_02264EB4\n    ldr r0, [sp, #0xc]\n    bl ov12_02262014\n    add r0, r7, #0\n    bl ov12_02265D74\n    add r0, r5, #0\n    bl BattleInput_DisableBallGauge\n    mov r3, #0\n    str r3, [sp]\n    ldr r0, [sp, #8]\n    str r3, [sp, #4]\n    add r1, r6, #0\n    add r2, r5, #0\n    bl BattleInput_ChangeMenu\n    ldr r0, [r4, #8]\n    cmp r0, #1\n    bne _0225FC38\n    add r0, r5, #0\n    mov r1, #0\n    bl BattleInput_Deadstriped_022698AC\n    mov r0, #4\n    strb r0, [r4, #0xe]\n    ldr r0, [sp, #8]\n    bl NARC_Delete\n    add r0, r6, #0\n    bl NARC_Delete\n    add sp, #0x38\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    bl ov12_022698B0\n    cmp r0, #1\n    bne _0225FC76\n    ldrb r1, [r4, #0xd]\n    ldr r0, [r4]\n    ldr r2, [r4, #8]\n    bl ov12_02262F24\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x38\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225FC7C: .word 0x000005DD"
+    );
+    #endif
+}
+
+void ov12_0225FC80(void) {
+    /* Original at 0x0225FC80 */
+    /* Requires manual decompilation - 12 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225FCA0(void) {
+    /* Original at 0x0225FCA0 */
+    /* Requires manual decompilation - 12 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225FCC0(void) {
+    /* Original at 0x0225FCC0 */
+    /* Requires manual decompilation - 35 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldr r0, [r4]\n    add r2, sp, #0\n    bl ov12_0223BE0C\n    cmp r0, #1\n    bne _0225FCDA\n    ldr r0, [r4]\n    bl ov12_02261ED4\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225FCEA\n    cmp r0, #0xff\n    beq _0225FCF0\n    cmp r0, #1\n    beq _0225FCF0\n    ldr r0, [r4]\n    bl ov12_02261EB8\n    add r2, sp, #0\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_02262F24\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225FD14(void) {
+    /* Original at 0x0225FD14 */
+    /* Requires manual decompilation - 270 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    sub sp, #0x1fc\n    sub sp, #0x14\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r0, #0x6a\n    ldrb r0, [r0]\n    cmp r0, #0xa\n    bls _0225FD2A\n    b _0225FF78\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225FD36: ; jump table\n    ldrh r0, [r4, #0x1e]\n    lsl r0, r0, #0x1f\n    lsr r0, r0, #0x1f\n    beq _0225FD9A\n    ldr r0, [r4, #0x5c]\n    cmp r0, #0\n    bne _0225FD9A\n    ldr r0, [r4, #8]\n    mov r1, #6\n    bl Pokepic_GetAttr\n    cmp r0, #0\n    bne _0225FD9A\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0x1b8\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0xc]\n    add r3, sp, #0x1b8\n    bl ov12_02261B80\n    add sp, #0x1fc\n    mov r0, #1\n    add r4, #0x6a\n    add sp, #0x14\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add sp, #0x1fc\n    mov r0, #4\n    add r4, #0x6a\n    add sp, #0x14\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r3, r4, #0\n    add r3, #0x69\n    ldrb r3, [r3]\n    ldr r0, [r4]\n    add r1, #0x10\n    add r2, sp, #0x168\n    bl ov12_02261CA8\n    add r0, sp, #0x168\n    mov r1, #5\n    bl ov07_0223494C\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x110\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0xc]\n    add r3, sp, #0x110\n    bl ov12_02261B80\n    mov r0, #0x1a\n    add sp, #0x1fc\n    ldr r1, [r4, #4]\n    mov r2, #0\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x6a\n    ldrb r0, [r0]\n    add r4, #0x6a\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4]\n    mov r1, #2\n    bl BattleSystem_SetCriticalHpMusicFlag\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225FE1A\n    ldr r0, [r4]\n    bl BattleSystem_SetHpBarDisabled\n    add r0, r4, #0\n    add r0, #0x6c\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225FE30\n    ldr r0, [r4]\n    bl ov12_0223A8D4\n    mov r1, #1\n    bl PokepicManager_SetG3UpdateFlagsMask\n    add r3, r4, #0\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0xc]\n    add r3, #0x10\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x6a\n    ldrb r0, [r0]\n    add sp, #0x1fc\n    add r4, #0x6a\n    add r0, r0, #1\n    add sp, #0x14\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4]\n    mov r1, #0\n    bl BattleSystem_SetCriticalHpMusicFlag\n    add r0, r4, #0\n    add r0, #0x6b\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225FE68\n    ldr r0, [r4]\n    bl BattleSystem_SetHpBarEnabled\n    add r0, r4, #0\n    add r0, #0x6c\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0225FE7E\n    ldr r0, [r4]\n    bl ov12_0223A8D4\n    mov r1, #1\n    bl PokepicManager_ResetG3UpdateFlagsMask\n    ldrh r0, [r4, #0x1e]\n    lsl r0, r0, #0x1f\n    lsr r0, r0, #0x1f\n    beq _0225FECC\n    ldr r0, [r4, #0x5c]\n    cmp r0, #0\n    bne _0225FECC\n    ldr r0, [r4, #8]\n    mov r1, #6\n    bl Pokepic_GetAttr\n    cmp r0, #0\n    bne _0225FECC\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0xb8\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0xc]\n    add r3, sp, #0xb8\n    bl ov12_02261B80\n    add sp, #0x1fc\n    mov r0, #7\n    add r4, #0x6a\n    add sp, #0x14\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add sp, #0x1fc\n    mov r0, #0xa\n    add r4, #0x6a\n    add sp, #0x14\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r3, r4, #0\n    add r3, #0x69\n    ldrb r3, [r3]\n    ldr r0, [r4]\n    add r1, #0x10\n    add r2, sp, #0x68\n    bl ov12_02261CA8\n    add r0, sp, #0x68\n    mov r1, #5\n    bl ov07_02234A20\n    add r0, r4, #0\n    add r0, #0x69\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x10\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #0xc]\n    add r3, sp, #0x10\n    bl ov12_02261B80\n    mov r0, #0x1a\n    add sp, #0x1fc\n    ldr r1, [r4, #4]\n    mov r2, #1\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x6a\n    ldrb r0, [r0]\n    add r4, #0x6a\n    add sp, #0x14\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r2, r4, #0\n    add r1, #0x69\n    add r2, #0x68\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add sp, #0x1fc\n    add sp, #0x14\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #0xc]\n    bl ov07_0221C394\n    ldr r0, [r4, #0xc]\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0225FF78\n    ldr r0, [r4, #0xc]\n    bl ov07_0221C3C0\n    add r0, r4, #0\n    add r0, #0x6a\n    ldrb r0, [r0]\n    add r4, #0x6a\n    add r0, r0, #1\n    strb r0, [r4]\n    add sp, #0x1fc\n    add sp, #0x14\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225FF80(void) {
+    /* Original at 0x0225FF80 */
+    /* Requires manual decompilation - 40 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4, #9]\n    cmp r0, #6\n    bhs _0225FFBA\n    ldrb r0, [r4, #0xa]\n    cmp r0, #0\n    bne _0225FFB4\n    mov r0, #2\n    strb r0, [r4, #0xa]\n    ldrb r0, [r4, #9]\n    mov r1, #6\n    add r0, r0, #1\n    strb r0, [r4, #9]\n    ldr r0, [r4, #4]\n    bl Pokepic_GetAttr\n    add r3, r0, #0\n    mov r2, #1\n    ldr r0, [r4, #4]\n    mov r1, #6\n    eor r2, r3\n    bl Pokepic_SetAttr\n    pop {r3, r4, r5, pc}\n    sub r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #4]\n    mov r1, #6\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldrb r1, [r4, #8]\n    ldr r0, [r4]\n    mov r2, #0x17\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_0225FFDC(void) {
+    /* Original at 0x0225FFDC */
+    /* Requires manual decompilation - 37 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4]\n    cmp r0, #0\n    beq _0225FFEE\n    cmp r0, #1\n    beq _0225FFFC\n    b _02260012\n    ldr r1, [r4, #0x30]\n    add r0, r4, #0\n    bl ov12_02264DCC\n    ldrb r0, [r4]\n    add r0, r0, #1\n    strb r0, [r4]\n    add r0, r4, #0\n    bl ov12_02264E00\n    mov r1, #0\n    mvn r1, r1\n    cmp r0, r1\n    bne _0226002C\n    ldrb r0, [r4]\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r2, r4, #0\n    add r1, #0x24\n    add r2, #0x4c\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4, #0xc]\n    bl ov12_0226430C\n    mov r0, #0\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02260030(void) {
+    /* Original at 0x02260030 */
+    /* Requires manual decompilation - 88 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4]\n    cmp r0, #0\n    beq _02260046\n    cmp r0, #1\n    beq _02260062\n    cmp r0, #2\n    beq _022600A8\n    b _022600CE\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x4e\n    strb r1, [r0]\n    ldr r0, _022600EC ; =0x0000070B\n    bl PlaySE\n    ldr r1, [r4, #0x40]\n    add r0, r4, #0\n    bl ov12_02264E34\n    ldrb r0, [r4]\n    add r0, r0, #1\n    strb r0, [r4]\n    add r0, r4, #0\n    add r0, #0x4e\n    ldrb r0, [r0]\n    cmp r0, #8\n    bhs _0226007A\n    add r0, r4, #0\n    add r0, #0x4e\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x4e\n    strb r1, [r0]\n    add r0, r4, #0\n    bl ov12_02264E68\n    mov r1, #0\n    mvn r1, r1\n    cmp r0, r1\n    bne _022600E8\n    add r0, r4, #0\n    add r0, #0x4e\n    ldrb r0, [r0]\n    cmp r0, #8\n    blo _022600A0\n    ldr r0, _022600EC ; =0x0000070B\n    mov r1, #0\n    bl StopSE\n    mov r0, #0x64\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    ldrb r0, [r4]\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r0, r4, #0\n    add r0, #0x4e\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x4e\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4e\n    ldrb r0, [r0]\n    cmp r0, #8\n    blo _022600E8\n    ldr r0, _022600EC ; =0x0000070B\n    mov r1, #0\n    bl StopSE\n    mov r0, #0x64\n    strb r0, [r4]\n    pop {r3, r4, r5, pc}\n    add r2, r4, #0\n    add r1, #0x24\n    add r2, #0x4c\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4, #0xc]\n    bl ov12_0226430C\n    mov r0, #0\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}\n    nop\n    _022600EC: .word 0x0000070B"
+    );
+    #endif
+}
+
+void ov12_022600F0(void) {
+    /* Original at 0x022600F0 */
+    /* Requires manual decompilation - 287 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x114\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r1, r4, #0\n    add r1, #0x66\n    ldrb r1, [r1]\n    add r5, r0, #0\n    cmp r1, #0xa\n    bls _0226010C\n    b _02260374\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02260118: ; jump table\n    add r0, r4, #0\n    add r0, #0x70\n    ldrh r0, [r0]\n    cmp r0, #0\n    beq _02260170\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0xbc\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0xbc\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r4, #0x66\n    add sp, #0x114\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    mov r0, #4\n    add r4, #0x66\n    add sp, #0x114\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r3, r4, #0\n    add r3, #0x65\n    ldrb r3, [r3]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0xc\n    add r2, sp, #0x6c\n    bl ov12_02261CA8\n    add r0, sp, #0x6c\n    mov r1, #5\n    bl ov07_0223494C\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x14\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x14\n    bl ov12_02261B80\n    mov r0, #0x1a\n    ldr r1, [r4, #4]\n    mov r2, #0\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r4, #0x66\n    add sp, #0x114\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _02260254\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r4, #0x66\n    add sp, #0x114\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x67\n    ldrb r0, [r0]\n    cmp r0, #2\n    bne _02260208\n    mov r5, #0x75\n    b _0226020C\n    mov r5, #0x74\n    mvn r5, r5\n    add r1, r4, #0\n    add r1, #0x65\n    ldrb r1, [r1]\n    ldr r0, [r4]\n    bl BattleSystem_GetChatotVoice\n    str r5, [sp]\n    mov r1, #0x7f\n    str r1, [sp, #4]\n    add r1, r4, #0\n    add r1, #0x72\n    ldrh r1, [r1]\n    add r3, r4, #0\n    mov r2, #0\n    str r1, [sp, #8]\n    mov r1, #5\n    str r1, [sp, #0xc]\n    str r2, [sp, #0x10]\n    add r2, r4, #0\n    add r2, #0x68\n    add r3, #0x6b\n    ldrh r2, [r2]\n    ldrb r3, [r3]\n    bl sub_0207204C\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    bl IsCryFinished\n    cmp r0, #0\n    beq _02260256\n    b _02260374\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r4, #0x66\n    add sp, #0x114\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x67\n    ldrb r0, [r0]\n    cmp r0, #2\n    ldr r0, _02260378 ; =0x00000703\n    bne _0226027A\n    mov r1, #0x75\n    bl sub_0200602C\n    b _02260282\n    mov r1, #0x74\n    mvn r1, r1\n    bl sub_0200602C\n    ldr r0, [r4, #8]\n    mov r1, #0x29\n    bl Pokepic_GetAttr\n    cmp r0, #0\n    ble _02260298\n    mov r0, #7\n    add r4, #0x66\n    add sp, #0x114\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    mov r0, #8\n    add r4, #0x66\n    add sp, #0x114\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    ldr r0, [r4, #8]\n    mov r1, #0x29\n    bl Pokepic_GetAttr\n    add r5, r0, #0\n    sub r5, #8\n    bpl _022602B2\n    mov r5, #0\n    ldr r0, [r4, #8]\n    mov r1, #0x29\n    add r2, r5, #0\n    bl Pokepic_SetAttr\n    cmp r5, #0\n    bne _02260374\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    ldr r0, [r4, #0x6c]\n    add r1, r4, #0\n    str r0, [sp]\n    add r0, r4, #0\n    add r2, r4, #0\n    add r3, r4, #0\n    add r0, #0x68\n    add r1, #0x6a\n    add r2, #0x67\n    add r3, #0x6b\n    ldrh r0, [r0]\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldrb r3, [r3]\n    bl GetMonPicHeightBySpeciesGenderForm\n    mov r3, #0x50\n    sub r0, r3, r0\n    str r0, [sp]\n    mov r1, #0\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    bl Pokepic_SetVisible\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r4, #0x66\n    add sp, #0x114\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    ldr r0, [r4, #8]\n    mov r1, #1\n    bl Pokepic_GetAttr\n    add r2, r0, #0\n    ldr r0, [r4, #8]\n    mov r1, #1\n    add r2, #8\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #8]\n    mov r1, #0x12\n    bl Pokepic_GetAttr\n    add r5, r0, #0\n    sub r5, #8\n    bpl _02260332\n    mov r5, #0\n    ldr r0, [r4, #8]\n    mov r1, #0x12\n    add r2, r5, #0\n    bl Pokepic_SetAttr\n    cmp r5, #0\n    bne _02260374\n    ldr r0, [r4, #8]\n    bl Pokepic_Delete\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    add r4, #0x66\n    add sp, #0x114\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x65\n    add r2, #0x64\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x114\n    pop {r3, r4, r5, r6, pc}\n    _02260378: .word 0x00000703"
+    );
+    #endif
+}
+
+void ov12_0226037C(void) {
+    /* Original at 0x0226037C */
+    /* Requires manual decompilation - 66 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetPaletteData\n    add r4, r0, #0\n    ldr r0, [r5]\n    bl ov12_0223A8D4\n    add r7, r0, #0\n    ldrb r0, [r5, #6]\n    cmp r0, #0\n    beq _022603A6\n    cmp r0, #1\n    beq _022603E4\n    cmp r0, #2\n    beq _022603F8\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, [r5]\n    bl BattleSystem_GetMessageIcon\n    mov r1, #1\n    bl sub_0201649C\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldr r2, _02260414 ; =0x0000FFFF\n    add r0, r4, #0\n    mov r1, #0xf\n    mov r3, #1\n    bl PaletteData_BeginPaletteFade\n    mov r1, #0\n    add r0, r7, #0\n    mov r2, #0x10\n    add r3, r1, #0\n    str r1, [sp]\n    bl Pokepic_StartPaletteFadeAll\n    mov r0, #0\n    mov r1, #0x10\n    bl GF_SndStartFadeOutBGM\n    ldrb r0, [r5, #6]\n    add r0, r0, #1\n    strb r0, [r5, #6]\n    add r0, r4, #0\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _0226040E\n    ldrb r0, [r5, #6]\n    add sp, #0xc\n    add r0, r0, #1\n    strb r0, [r5, #6]\n    pop {r4, r5, r6, r7, pc}\n    ldrb r1, [r5, #5]\n    ldrb r2, [r5, #4]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02260414: .word 0x0000FFFF"
+    );
+    #endif
+}
+
+void ov12_02260418(void) {
+    /* Original at 0x02260418 */
+    /* Requires manual decompilation - 163 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    sub sp, #0x110\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223A8DC\n    add r1, r4, #0\n    add r1, #0x62\n    ldrb r1, [r1]\n    add r5, r0, #0\n    cmp r1, #4\n    bls _02260434\n    b _02260560\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02260440: ; jump table\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x20]\n    cmp r0, #0\n    beq _02260482\n    add r2, r4, #0\n    add r2, #0x63\n    ldrb r2, [r2]\n    mov r1, #6\n    bl Pokepic_SetAttr\n    add r0, r4, #0\n    add r0, #0x63\n    ldrb r0, [r0]\n    cmp r0, #1\n    bne _02260472\n    mov r0, #0xff\n    add r4, #0x62\n    add sp, #0x110\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x62\n    ldrb r0, [r0]\n    add r4, #0x62\n    add sp, #0x110\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    mov r0, #0xff\n    add r4, #0x62\n    add sp, #0x110\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #0x64]\n    cmp r0, #0\n    beq _022604D6\n    mov r0, #0x1a\n    ldr r1, [r4, #4]\n    lsl r0, r0, #4\n    ldr r0, [r1, r0]\n    cmp r0, #0\n    bne _022604D6\n    add r0, r4, #0\n    add r0, #0x61\n    ldrb r1, [r0]\n    mov r0, #0xf\n    add r2, sp, #0xb8\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0xb8\n    bl ov12_02261B80\n    add r0, r4, #0\n    add r0, #0x62\n    ldrb r0, [r0]\n    add r4, #0x62\n    add sp, #0x110\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    mov r0, #0xff\n    add r4, #0x62\n    add sp, #0x110\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r3, r4, #0\n    add r3, #0x61\n    ldrb r3, [r3]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #8\n    add r2, sp, #0x68\n    bl ov12_02261CA8\n    add r0, sp, #0x68\n    mov r1, #5\n    bl ov07_02234A20\n    add r0, r4, #0\n    add r0, #0x61\n    ldrb r1, [r0]\n    mov r0, #0x10\n    add r2, sp, #0x10\n    str r0, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    ldr r0, [r4]\n    mov r3, #1\n    bl ov12_022643C8\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    add r2, r5, #0\n    add r3, sp, #0x10\n    bl ov12_02261B80\n    mov r0, #0x1a\n    ldr r1, [r4, #4]\n    mov r2, #1\n    lsl r0, r0, #4\n    str r2, [r1, r0]\n    add r0, r4, #0\n    add r0, #0x62\n    ldrb r0, [r0]\n    add r4, #0x62\n    add sp, #0x110\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    bl ov07_0221C394\n    add r0, r5, #0\n    bl ov07_0221C3B0\n    cmp r0, #0\n    bne _0226057E\n    add r0, r5, #0\n    bl ov07_0221C3C0\n    add r0, r4, #0\n    add r0, #0x62\n    ldrb r0, [r0]\n    add r4, #0x62\n    add sp, #0x110\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, r5, r6, pc}\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x61\n    add r2, #0x60\n    ldrb r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x110\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_02260584(void) {
+    /* Original at 0x02260584 */
+    /* Requires manual decompilation - 32 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4, #0xa]\n    cmp r0, #0\n    beq _02260596\n    cmp r0, #1\n    beq _022605AC\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #4]\n    add r1, #0xb\n    bl BattleHpBar_BeginExpBarFullFlashEffect\n    ldr r0, _022605CC ; =0x0000070C\n    bl PlaySE\n    ldrb r0, [r4, #0xa]\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, pc}\n    ldrb r0, [r4, #0xb]\n    cmp r0, #1\n    bne _022605C8\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}\n    nop\n    _022605CC: .word 0x0000070C"
+    );
+    #endif
+}
+
+void ov12_022605D0(void) {
+    /* Original at 0x022605D0 */
+    /* Requires manual decompilation - 26 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BB78\n    cmp r0, #0\n    beq _022605F2\n    ldr r0, [r4]\n    bl ov12_0223BB78\n    bl sub_0200F450\n    ldr r0, [r4]\n    mov r1, #0\n    bl ov12_0223BB80\n    ldrb r0, [r4, #6]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _02260612\n    ldrb r1, [r4, #5]\n    ldrb r2, [r4, #4]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02260614(void) {
+    /* Original at 0x02260614 */
+    /* Requires manual decompilation - 37 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4, #7]\n    cmp r0, #0\n    beq _02260626\n    cmp r0, #1\n    beq _0226063C\n    pop {r3, r4, r5, pc}\n    ldrb r0, [r4, #6]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _02260666\n    ldrb r0, [r4, #7]\n    add r0, r0, #1\n    strb r0, [r4, #7]\n    mov r0, #0\n    strb r0, [r4, #8]\n    pop {r3, r4, r5, pc}\n    ldrb r0, [r4, #8]\n    add r0, r0, #1\n    strb r0, [r4, #8]\n    ldrb r0, [r4, #8]\n    cmp r0, #0x28\n    bne _02260666\n    ldrb r1, [r4, #5]\n    ldr r0, [r4]\n    bl ov12_02263A00\n    ldrb r1, [r4, #5]\n    ldrb r2, [r4, #4]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02260668(void) {
+    /* Original at 0x02260668 */
+    /* Requires manual decompilation - 379 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r4, r1, #0\n    add r6, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBgConfig\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    add r7, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetTerrainId\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetBackgroundId\n    lsl r1, r0, #2\n    ldr r0, _022609DC ; =ov12_0226D18C\n    ldr r0, [r0, r1]\n    str r0, [sp, #0xc]\n    ldrb r0, [r4, #0x15]\n    add r0, r0, #1\n    strb r0, [r4, #0x15]\n    ldrb r0, [r4, #0x14]\n    cmp r0, #5\n    bls _022606A2\n    b _022609D8\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _022606AE: ; jump table\n    mov r0, #5\n    mov r1, #0\n    bl ov07_0223458C\n    str r0, [r4, #4]\n    ldr r0, _022609E0 ; =ov12_0226D350\n    add r1, sp, #0x10\n    ldrb r5, [r0, r5]\n    mov r0, #1\n    str r0, [sp, #0x14]\n    str r5, [sp, #0x10]\n    ldr r0, [r4, #4]\n    bl ov07_022345C8\n    str r0, [r4, #8]\n    add r0, r5, #1\n    str r0, [sp, #0x10]\n    mov r0, #1\n    str r0, [sp, #0x14]\n    ldr r0, [r4, #4]\n    add r1, sp, #0x10\n    bl ov07_022345C8\n    str r0, [r4, #0xc]\n    ldr r0, [r4, #8]\n    bl ov07_02234694\n    ldr r0, _022609E4 ; =0x0000084F\n    bl PlaySE\n    mov r0, #1\n    strb r0, [r4, #0x14]\n    ldrb r0, [r4, #0x15]\n    cmp r0, #0xa\n    bne _02260734\n    mov r3, #0\n    str r3, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    ldr r0, [sp, #0xc]\n    ldr r2, _022609E8 ; =0x0000F3FF\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #8]\n    add r0, r7, #0\n    mov r1, #1\n    bl PaletteData_BeginPaletteFade\n    mov r3, #0\n    str r3, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    ldr r0, [sp, #0xc]\n    ldr r2, _022609EC ; =0x00003FFF\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #8]\n    add r0, r7, #0\n    mov r1, #4\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0x15]\n    cmp r0, #0xa\n    blo _0226077E\n    ldrb r0, [r4, #0x16]\n    cmp r0, #0x10\n    bhs _0226077E\n    add r0, r0, #1\n    strb r0, [r4, #0x16]\n    ldrb r0, [r4, #0x16]\n    cmp r0, #0x10\n    bls _0226074E\n    mov r0, #0x10\n    strb r0, [r4, #0x16]\n    add r0, r7, #0\n    mov r1, #1\n    bl PaletteData_GetFadedBuf\n    add r6, r0, #0\n    mov r0, #1\n    mov r5, #0\n    lsl r0, r0, #8\n    ldrb r2, [r4, #0x16]\n    mov r1, #0x1f\n    mul r1, r2\n    lsl r1, r1, #0xc\n    lsr r3, r1, #0x10\n    lsl r1, r3, #5\n    lsl r2, r3, #0xa\n    orr r1, r3\n    orr r2, r1\n    lsl r1, r5, #1\n    strh r2, [r6, r1]\n    add r1, r5, #1\n    lsl r1, r1, #0x10\n    lsr r5, r1, #0x10\n    cmp r5, r0\n    blo _0226075E\n    ldrb r0, [r4, #0x15]\n    cmp r0, #0x14\n    bne _0226078A\n    ldr r0, [r4, #0xc]\n    bl ov07_02234694\n    ldrb r0, [r4, #0x15]\n    cmp r0, #0x17\n    bne _02260798\n    mov r0, #0x85\n    lsl r0, r0, #4\n    bl PlaySE\n    ldrb r0, [r4, #0x15]\n    cmp r0, #0x1c\n    bne _0226088A\n    add r0, r7, #0\n    mov r1, #0\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAE0\n    add r1, r5, #0\n    mov r2, #0xe0\n    bl MIi_CpuCopy16\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    cmp r0, #0x4a\n    bne _022607DA\n    add r0, r7, #0\n    mov r1, #2\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0xa0\n    bl MIi_CpuCopy16\n    b _0226083C\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    beq _022607FE\n    add r0, r7, #0\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0xe0\n    bl MIi_CpuCopy16\n    b _0226083C\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    tst r0, r1\n    beq _02260824\n    add r0, r7, #0\n    mov r1, #2\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0xa0\n    bl MIi_CpuCopy16\n    b _0226083C\n    add r0, r7, #0\n    mov r1, #2\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0x80\n    bl MIi_CpuCopy16\n    mov r0, #0x10\n    str r0, [sp]\n    ldr r0, [sp, #0xc]\n    mov r3, #0\n    lsl r0, r0, #0x10\n    str r3, [sp, #4]\n    lsr r0, r0, #0x10\n    str r0, [sp, #8]\n    ldr r2, _022609E8 ; =0x0000F3FF\n    add r0, r7, #0\n    mov r1, #1\n    bl PaletteData_BeginPaletteFade\n    mov r0, #0x10\n    str r0, [sp]\n    ldr r0, [sp, #0xc]\n    mov r3, #0\n    lsl r0, r0, #0x10\n    str r3, [sp, #4]\n    lsr r0, r0, #0x10\n    str r0, [sp, #8]\n    ldr r2, _022609EC ; =0x00003FFF\n    add r0, r7, #0\n    mov r1, #4\n    bl PaletteData_BeginPaletteFade\n    mov r0, #0x10\n    str r0, [sp]\n    ldr r0, [sp, #0xc]\n    mov r3, #0\n    lsl r0, r0, #0x10\n    str r3, [sp, #4]\n    lsr r0, r0, #0x10\n    str r0, [sp, #8]\n    ldr r2, _022609F0 ; =0x0000FFFF\n    add r0, r7, #0\n    mov r1, #0xa\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0x15]\n    cmp r0, #0x32\n    blo _022608BA\n    mov r0, #0x10\n    str r0, [sp]\n    mov r3, #0\n    str r3, [sp, #4]\n    mov r2, #3\n    str r3, [sp, #8]\n    add r0, r7, #0\n    mov r1, #1\n    lsl r2, r2, #0xa\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0x14]\n    add sp, #0x18\n    add r0, r0, #1\n    strb r0, [r4, #0x14]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #0xc]\n    bl ov07_022346BC\n    cmp r0, #0\n    beq _022608BC\n    b _022609D8\n    ldr r0, [r4, #4]\n    bl ov07_02234604\n    ldrb r0, [r4, #0x14]\n    add sp, #0x18\n    add r0, r0, #1\n    strb r0, [r4, #0x14]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4]\n    bl BattleSystem_GetMessageIcon\n    mov r1, #0\n    bl sub_0201649C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r4, #4]\n    bl ov07_02234628\n    ldr r0, [r4, #4]\n    bl ov07_02234604\n    ldrb r0, [r4, #0x14]\n    add r0, r0, #1\n    strb r0, [r4, #0x14]\n    add r0, r7, #0\n    mov r1, #0\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAE0\n    add r1, r5, #0\n    mov r2, #0xe0\n    bl MIi_CpuCopy16\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    cmp r0, #0x4a\n    bne _02260936\n    add r0, r7, #0\n    mov r1, #2\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0xa0\n    bl MIi_CpuCopy16\n    b _02260998\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    beq _0226095A\n    add r0, r7, #0\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0xe0\n    bl MIi_CpuCopy16\n    b _02260998\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleType\n    mov r1, #1\n    tst r0, r1\n    beq _02260980\n    add r0, r7, #0\n    mov r1, #2\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0xa0\n    bl MIi_CpuCopy16\n    b _02260998\n    add r0, r7, #0\n    mov r1, #2\n    bl PaletteData_GetUnfadedBuf\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov12_0223BAEC\n    add r1, r5, #0\n    mov r2, #0x80\n    bl MIi_CpuCopy16\n    mov r3, #0\n    str r3, [sp]\n    ldr r0, _022609F4 ; =0x00007FFF\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    ldr r2, _022609F0 ; =0x0000FFFF\n    add r0, r7, #0\n    mov r1, #1\n    bl PaletteData_BeginPaletteFade\n    mov r3, #0\n    str r3, [sp]\n    ldr r2, _022609F0 ; =0x0000FFFF\n    str r3, [sp, #4]\n    str r2, [sp, #8]\n    add r0, r7, #0\n    mov r1, #4\n    lsr r2, r2, #2\n    bl PaletteData_BeginPaletteFade\n    mov r3, #0\n    str r3, [sp]\n    ldr r0, _022609F4 ; =0x00007FFF\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    ldr r2, _022609F0 ; =0x0000FFFF\n    add r0, r7, #0\n    mov r1, #0xa\n    bl PaletteData_BeginPaletteFade\n    mov r0, #3\n    strb r0, [r4, #0x14]\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    _022609DC: .word ov12_0226D18C\n    _022609E0: .word ov12_0226D350\n    _022609E4: .word 0x0000084F\n    _022609E8: .word 0x0000F3FF\n    _022609EC: .word 0x00003FFF\n    _022609F0: .word 0x0000FFFF\n    _022609F4: .word 0x00007FFF"
+    );
+    #endif
+}
+
+void ov12_022609F8(void) {
+    /* Original at 0x022609F8 */
+    /* Requires manual decompilation - 136 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl BattleSystem_GetPaletteData\n    ldrb r1, [r4, #0xa]\n    add r6, r0, #0\n    cmp r1, #3\n    bls _02260A10\n    b _02260B28\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02260A1C: ; jump table\n    mov r2, #0\n    str r2, [sp]\n    mov r1, #0x10\n    str r1, [sp, #4]\n    mov r1, #0xa\n    str r2, [sp, #8]\n    add r3, r1, #0\n    ldr r2, _02260B2C ; =0x0000FFFF\n    sub r3, #0x12\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0xa]\n    add sp, #0xc\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, pc}\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02260B28\n    ldr r0, [r4]\n    bl ov12_02237B0C\n    mov r0, #5\n    mov r1, #0x38\n    bl Heap_Alloc\n    str r0, [r4, #4]\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl BattleSystem_GetParty\n    ldr r1, [r4, #4]\n    mov r2, #3\n    str r0, [r1]\n    ldr r1, [r4]\n    ldr r0, [r4, #4]\n    str r1, [r0, #8]\n    ldr r0, [r4, #4]\n    mov r1, #5\n    str r1, [r0, #0xc]\n    ldrb r1, [r4, #0xe]\n    ldr r0, [r4, #4]\n    strb r1, [r0, #0x11]\n    ldrh r1, [r4, #0xc]\n    ldr r0, [r4, #4]\n    strh r1, [r0, #0x24]\n    ldr r1, [r4, #4]\n    mov r0, #0\n    add r1, #0x36\n    strb r0, [r1]\n    ldr r1, [r4, #4]\n    strb r0, [r1, #0x12]\n    ldr r1, [r4, #4]\n    add r1, #0x35\n    strb r2, [r1]\n    ldr r1, [r4, #4]\n    strh r0, [r1, #0x22]\n    ldrb r2, [r4, #9]\n    ldr r1, [r4, #4]\n    str r2, [r1, #0x28]\n    ldr r1, [r4, #4]\n    add r1, #0x32\n    strb r0, [r1]\n    ldr r0, [r4, #4]\n    bl ov10_0221BE20\n    ldrb r0, [r4, #0xa]\n    add sp, #0xc\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, pc}\n    ldr r0, [r4, #4]\n    add r0, #0x36\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _02260B28\n    ldr r0, [r4]\n    bl ov12_02237BB8\n    mov r0, #0x10\n    str r0, [sp]\n    mov r0, #0\n    mov r1, #0xa\n    str r0, [sp, #4]\n    add r3, r1, #0\n    str r0, [sp, #8]\n    ldr r2, _02260B2C ; =0x0000FFFF\n    add r0, r6, #0\n    sub r3, #0x12\n    bl PaletteData_BeginPaletteFade\n    ldrb r0, [r4, #0xa]\n    add sp, #0xc\n    add r0, r0, #1\n    strb r0, [r4, #0xa]\n    pop {r3, r4, r5, r6, pc}\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02260B28\n    ldr r0, [r4, #4]\n    add r0, #0x34\n    ldrb r2, [r0]\n    ldr r0, [r4]\n    cmp r2, #4\n    bne _02260B04\n    ldrb r1, [r4, #9]\n    mov r2, #0xff\n    bl ov12_02263360\n    b _02260B0C\n    ldrb r1, [r4, #9]\n    add r2, r2, #1\n    bl ov12_02263360\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    ldr r0, [r4, #4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add sp, #0xc\n    pop {r3, r4, r5, r6, pc}\n    _02260B2C: .word 0x0000FFFF"
+    );
+    #endif
+}
+
+void ov12_02260B30(void) {
+    /* Original at 0x02260B30 */
+    /* Requires manual decompilation - 50 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r0, #0\n    ldrb r0, [r5, #0xa]\n    cmp r0, #0\n    beq _02260B42\n    cmp r0, #1\n    beq _02260B86\n    pop {r3, r4, r5, pc}\n    ldrb r1, [r5, #0xc]\n    ldrb r0, [r5, #0xd]\n    cmp r1, r0\n    bne _02260B80\n    mov r0, #0\n    strb r0, [r5, #0xc]\n    ldr r0, [r5, #4]\n    mov r1, #0x28\n    bl Pokepic_GetAttr\n    add r4, r0, #0\n    ldrb r0, [r5, #0xb]\n    cmp r4, r0\n    ble _02260B62\n    sub r4, r4, #1\n    b _02260B68\n    cmp r4, r0\n    bge _02260B68\n    add r4, r4, #1\n    ldr r0, [r5, #4]\n    mov r1, #0x28\n    add r2, r4, #0\n    bl Pokepic_SetAttr\n    ldrb r0, [r5, #0xb]\n    cmp r4, r0\n    bne _02260B9C\n    ldrb r0, [r5, #0xa]\n    add r0, r0, #1\n    strb r0, [r5, #0xa]\n    pop {r3, r4, r5, pc}\n    add r0, r1, #1\n    strb r0, [r5, #0xc]\n    pop {r3, r4, r5, pc}\n    ldrb r1, [r5, #9]\n    ldrb r2, [r5, #8]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02260BA0(void) {
+    /* Original at 0x02260BA0 */
+    /* Requires manual decompilation - 81 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    ldrb r1, [r5, #5]\n    add r4, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetFieldSide\n    cmp r0, #0\n    bne _02260BB8\n    mov r6, #0\n    b _02260BBA\n    mov r6, #1\n    ldrb r0, [r5, #7]\n    cmp r0, #0\n    beq _02260BC6\n    cmp r0, #1\n    beq _02260C22\n    b _02260C3C\n    ldrb r0, [r5, #0xe]\n    cmp r0, #0\n    bne _02260BD4\n    mov r0, #0\n    str r0, [sp, #8]\n    mov r7, #1\n    b _02260BEE\n    mov r0, #1\n    str r0, [sp, #8]\n    ldrb r0, [r5, #6]\n    cmp r0, #3\n    beq _02260BE4\n    cmp r0, #5\n    beq _02260BE8\n    b _02260BEC\n    mov r7, #0\n    b _02260BEE\n    mov r7, #2\n    b _02260BEE\n    ldr r7, [sp, #8]\n    ldr r0, [r5]\n    bl BattleSystem_GetSpriteSystem\n    add r4, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetSpriteManager\n    str r4, [sp]\n    str r0, [sp, #4]\n    add r0, r5, #0\n    ldr r2, [sp, #8]\n    add r0, #8\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov12_0226AEE0\n    add r2, r0, #0\n    ldr r0, [r5]\n    add r1, r6, #0\n    bl ov12_0223A914\n    ldrb r0, [r5, #7]\n    add sp, #0xc\n    add r0, r0, #1\n    strb r0, [r5, #7]\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, [r5]\n    add r1, r6, #0\n    bl ov12_0223A908\n    bl ov12_0226AF48\n    cmp r0, #1\n    bne _02260C52\n    ldrb r0, [r5, #7]\n    add sp, #0xc\n    add r0, r0, #1\n    strb r0, [r5, #7]\n    pop {r4, r5, r6, r7, pc}\n    ldrb r1, [r5, #5]\n    ldrb r2, [r5, #4]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r4, #0\n    bl SysTask_Destroy\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_02260C58(void) {
+    /* Original at 0x02260C58 */
+    /* Requires manual decompilation - 56 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    ldrb r1, [r5, #5]\n    add r7, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetFieldSide\n    cmp r0, #0\n    bne _02260C6E\n    mov r4, #0\n    b _02260C70\n    mov r4, #1\n    ldr r0, [r5]\n    add r1, r4, #0\n    bl ov12_0223A908\n    ldrb r1, [r5, #7]\n    add r6, r0, #0\n    cmp r1, #0\n    beq _02260C86\n    cmp r1, #1\n    beq _02260CA2\n    b _02260CC2\n    ldrb r0, [r5, #0xe]\n    cmp r0, #0\n    bne _02260C90\n    mov r1, #0\n    b _02260C92\n    mov r1, #1\n    add r0, r6, #0\n    add r2, r1, #0\n    bl ov12_0226AF6C\n    ldrb r0, [r5, #7]\n    add r0, r0, #1\n    strb r0, [r5, #7]\n    pop {r3, r4, r5, r6, r7, pc}\n    bl ov12_0226AFA4\n    cmp r0, #1\n    bne _02260CD8\n    add r0, r6, #0\n    bl ov12_0226AFC8\n    ldr r0, [r5]\n    add r1, r4, #0\n    mov r2, #0\n    bl ov12_0223A914\n    ldrb r0, [r5, #7]\n    add r0, r0, #1\n    strb r0, [r5, #7]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r5, #5]\n    ldrb r2, [r5, #4]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r7, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_02260CDC(void) {
+    /* Original at 0x02260CDC */
+    /* Requires manual decompilation - 32 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldrb r0, [r4, #0xe]\n    cmp r0, #0\n    bne _02260D0E\n    ldr r0, [r4, #4]\n    add r0, #0x8c\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _02260CF6\n    bl GF_AssertFail\n    ldrb r2, [r4, #0xd]\n    ldr r0, [r4]\n    mov r1, #5\n    bl ov07_0221FB90\n    ldr r1, [r4, #4]\n    add r1, #0x8c\n    str r0, [r1]\n    ldrb r0, [r4, #0xe]\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, pc}\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02260D28(void) {
+    /* Original at 0x02260D28 */
+    /* Requires manual decompilation - 39 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    add r0, #0x8c\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _02260D3C\n    bl GF_AssertFail\n    ldr r0, [r4, #4]\n    add r0, #0x8c\n    ldr r0, [r0]\n    bl ov07_0221FE70\n    cmp r0, #3\n    bne _02260D56\n    ldrb r0, [r4, #0xe]\n    cmp r0, #5\n    bhs _02260D56\n    add r0, r0, #1\n    strb r0, [r4, #0xe]\n    pop {r3, r4, r5, pc}\n    ldr r0, [r4, #4]\n    ldrb r1, [r4, #0xd]\n    add r0, #0x8c\n    ldr r0, [r0]\n    bl ov07_0221FE3C\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x8c\n    str r1, [r0]\n    ldrb r1, [r4, #0xd]\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02260D84(void) {
+    /* Original at 0x02260D84 */
+    /* Requires manual decompilation - 127 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5]\n    bl BattleSystem_GetPaletteData\n    add r4, r0, #0\n    ldr r0, [r5]\n    bl ov12_0223A8D4\n    add r7, r0, #0\n    ldrb r0, [r5, #6]\n    cmp r0, #0\n    beq _02260DAE\n    cmp r0, #1\n    beq _02260DE0\n    cmp r0, #2\n    beq _02260E84\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r0, [r5, #7]\n    cmp r0, #0\n    bne _02260DD2\n    ldr r0, [r5]\n    bl BattleSystem_GetMessageIcon\n    mov r1, #1\n    bl sub_0201649C\n    ldr r0, _02260EA0 ; =0x0000FFFF\n    mov r1, #0\n    str r0, [sp]\n    add r0, r7, #0\n    mov r2, #0x10\n    add r3, r1, #0\n    bl Pokepic_StartPaletteFadeAll\n    b _02260DDA\n    mov r0, #0\n    mov r1, #0x10\n    bl GF_SndStartFadeOutBGM\n    ldrb r0, [r5, #6]\n    add r0, r0, #1\n    strb r0, [r5, #6]\n    ldrb r0, [r5, #7]\n    cmp r0, #0\n    ldrb r0, [r5, #8]\n    bne _02260E24\n    str r0, [sp]\n    ldr r0, _02260EA0 ; =0x0000FFFF\n    mov r1, #0\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r2, r1, #0\n    mov r3, #0xa0\n    bl PaletteData_BlendPalette\n    ldrb r0, [r5, #8]\n    mov r1, #0\n    mov r2, #0xc0\n    str r0, [sp]\n    ldr r0, _02260EA0 ; =0x0000FFFF\n    mov r3, #0x40\n    str r0, [sp, #4]\n    add r0, r4, #0\n    bl PaletteData_BlendPalette\n    ldrb r0, [r5, #8]\n    mov r1, #2\n    mov r2, #0\n    str r0, [sp]\n    ldr r0, _02260EA0 ; =0x0000FFFF\n    mov r3, #0xe0\n    str r0, [sp, #4]\n    add r0, r4, #0\n    bl PaletteData_BlendPalette\n    b _02260E62\n    str r0, [sp]\n    ldr r0, _02260EA0 ; =0x0000FFFF\n    mov r1, #0\n    str r0, [sp, #4]\n    add r0, r4, #0\n    mov r2, #0xa0\n    mov r3, #0x20\n    bl PaletteData_BlendPalette\n    ldrb r0, [r5, #8]\n    mov r1, #1\n    add r3, r1, #0\n    str r0, [sp]\n    ldr r0, _02260EA0 ; =0x0000FFFF\n    mov r2, #0\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r3, #0xff\n    bl PaletteData_BlendPalette\n    ldrb r0, [r5, #8]\n    mov r1, #3\n    add r3, r1, #0\n    str r0, [sp]\n    ldr r0, _02260EA0 ; =0x0000FFFF\n    mov r2, #0\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r3, #0xfd\n    bl PaletteData_BlendPalette\n    ldrb r1, [r5, #8]\n    add r0, r1, #1\n    strb r0, [r5, #8]\n    cmp r1, #0x10\n    bne _02260E9A\n    ldrb r0, [r5, #7]\n    cmp r0, #0\n    bne _02260E7A\n    mov r0, #0\n    add r1, r0, #0\n    bl ToggleBgLayer\n    ldrb r0, [r5, #6]\n    add sp, #8\n    add r0, r0, #1\n    strb r0, [r5, #6]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r5, #5]\n    ldrb r2, [r5, #4]\n    ldr r0, [r5]\n    bl ov12_0226430C\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r6, #0\n    bl SysTask_Destroy\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02260EA0: .word 0x0000FFFF"
+    );
+    #endif
+}
+
+void ov12_02260EA4(void) {
+    /* Original at 0x02260EA4 */
+    /* Requires manual decompilation - 439 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    bl BattleSystem_GetBattleType\n    add r4, r0, #0\n    add r0, r6, #0\n    bl BattleSystem_GetBattleSpecial\n    mov r1, #0x40\n    tst r1, r4\n    beq _02260F2C\n    mov r2, #0x65\n    lsl r2, r2, #2\n    ldrb r1, [r5, r2]\n    cmp r1, #0\n    beq _02260EE6\n    ldr r0, _022611E8 ; =ov12_0225E104\n    mov r1, #1\n    str r0, [r5]\n    ldr r0, _022611EC ; =ov12_0225E404\n    str r0, [r5, #4]\n    ldr r0, _022611F0 ; =ov12_0225E6FC\n    str r0, [r5, #8]\n    ldr r0, _022611F4 ; =ov12_0225F3A4\n    str r0, [r5, #0xc]\n    ldr r0, _022611F8 ; =ov12_0225F8AC\n    str r0, [r5, #0x10]\n    ldr r0, _022611FC ; =ov12_0225FC80\n    str r0, [r5, #0x14]\n    add r0, r2, #2\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    mov r1, #0x10\n    tst r0, r1\n    beq _02260F0C\n    ldr r0, _02261200 ; =ov12_0225E1FC\n    mov r1, #0\n    str r0, [r5]\n    ldr r0, _02261204 ; =ov12_0225E4EC\n    str r0, [r5, #4]\n    ldr r0, _02261208 ; =ov12_0225E760\n    str r0, [r5, #8]\n    ldr r0, _0226120C ; =ov12_0225F434\n    str r0, [r5, #0xc]\n    ldr r0, _02261210 ; =ov12_0225F980\n    str r0, [r5, #0x10]\n    ldr r0, _02261214 ; =ov12_0225FCC0\n    str r0, [r5, #0x14]\n    add r0, r2, #2\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r0, _02261218 ; =ov12_0225DAD4\n    mov r1, #0\n    str r0, [r5]\n    ldr r0, _0226121C ; =ov12_0225E250\n    str r0, [r5, #4]\n    ldr r0, _02261220 ; =ov12_0225E568\n    str r0, [r5, #8]\n    ldr r0, _02261224 ; =ov12_0225E830\n    str r0, [r5, #0xc]\n    ldr r0, _02261228 ; =ov12_0225F4E0\n    str r0, [r5, #0x10]\n    ldr r0, _0226122C ; =ov12_0225FA44\n    str r0, [r5, #0x14]\n    add r0, r2, #2\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    mov r1, #0x88\n    and r1, r4\n    cmp r1, #0x88\n    bne _02261006\n    ldr r2, _02261230 ; =0x00000195\n    mov r1, #1\n    ldrb r3, [r5, r2]\n    tst r1, r3\n    beq _02260F88\n    add r0, r6, #0\n    bl ov12_0223B688\n    cmp r0, #0\n    beq _02260F68\n    ldr r0, _022611E8 ; =ov12_0225E104\n    mov r1, #1\n    str r0, [r5]\n    ldr r0, _022611EC ; =ov12_0225E404\n    str r0, [r5, #4]\n    ldr r0, _022611F0 ; =ov12_0225E6FC\n    str r0, [r5, #8]\n    ldr r0, _022611F4 ; =ov12_0225F3A4\n    str r0, [r5, #0xc]\n    ldr r0, _022611F8 ; =ov12_0225F8AC\n    str r0, [r5, #0x10]\n    ldr r0, _022611FC ; =ov12_0225FC80\n    str r0, [r5, #0x14]\n    ldr r0, _02261234 ; =0x00000196\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r0, _02261238 ; =ov12_0225E134\n    mov r1, #2\n    str r0, [r5]\n    ldr r0, _0226123C ; =ov12_0225E4CC\n    str r0, [r5, #4]\n    ldr r0, _02261240 ; =ov12_0225E740\n    str r0, [r5, #8]\n    ldr r0, _02261244 ; =ov12_0225F3FC\n    str r0, [r5, #0xc]\n    ldr r0, _02261248 ; =ov12_0225F960\n    str r0, [r5, #0x10]\n    ldr r0, _0226124C ; =ov12_0225FCA0\n    str r0, [r5, #0x14]\n    ldr r0, _02261234 ; =0x00000196\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    mov r1, #0x10\n    tst r0, r1\n    beq _02260FAE\n    ldr r0, _02261200 ; =ov12_0225E1FC\n    mov r1, #0\n    str r0, [r5]\n    ldr r0, _02261204 ; =ov12_0225E4EC\n    str r0, [r5, #4]\n    ldr r0, _02261208 ; =ov12_0225E760\n    str r0, [r5, #8]\n    ldr r0, _0226120C ; =ov12_0225F434\n    str r0, [r5, #0xc]\n    ldr r0, _02261210 ; =ov12_0225F980\n    str r0, [r5, #0x10]\n    ldr r0, _02261214 ; =ov12_0225FCC0\n    str r0, [r5, #0x14]\n    add r0, r2, #1\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    add r0, r6, #0\n    bl ov12_0223BFC0\n    add r1, r0, #0\n    add r0, r6, #0\n    lsl r1, r1, #1\n    bl ov12_0223AB0C\n    ldr r1, _02261230 ; =0x00000195\n    ldrb r2, [r5, r1]\n    cmp r2, r0\n    beq _02260FE6\n    ldr r0, _02261238 ; =ov12_0225E134\n    mov r2, #2\n    str r0, [r5]\n    ldr r0, _0226123C ; =ov12_0225E4CC\n    str r0, [r5, #4]\n    ldr r0, _02261240 ; =ov12_0225E740\n    str r0, [r5, #8]\n    ldr r0, _02261244 ; =ov12_0225F3FC\n    str r0, [r5, #0xc]\n    ldr r0, _02261248 ; =ov12_0225F960\n    str r0, [r5, #0x10]\n    ldr r0, _0226124C ; =ov12_0225FCA0\n    str r0, [r5, #0x14]\n    add r0, r1, #1\n    strb r2, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r0, _02261218 ; =ov12_0225DAD4\n    mov r2, #0\n    str r0, [r5]\n    ldr r0, _0226121C ; =ov12_0225E250\n    str r0, [r5, #4]\n    ldr r0, _02261220 ; =ov12_0225E568\n    str r0, [r5, #8]\n    ldr r0, _02261224 ; =ov12_0225E830\n    str r0, [r5, #0xc]\n    ldr r0, _02261228 ; =ov12_0225F4E0\n    str r0, [r5, #0x10]\n    ldr r0, _0226122C ; =ov12_0225FA44\n    str r0, [r5, #0x14]\n    add r0, r1, #1\n    strb r2, [r5, r0]\n    pop {r4, r5, r6, pc}\n    mov r1, #8\n    tst r1, r4\n    beq _02261088\n    mov r1, #0x10\n    tst r0, r1\n    beq _02261032\n    ldr r0, _02261200 ; =ov12_0225E1FC\n    mov r1, #0\n    str r0, [r5]\n    ldr r0, _02261204 ; =ov12_0225E4EC\n    str r0, [r5, #4]\n    ldr r0, _02261208 ; =ov12_0225E760\n    str r0, [r5, #8]\n    ldr r0, _0226120C ; =ov12_0225F434\n    str r0, [r5, #0xc]\n    ldr r0, _02261210 ; =ov12_0225F980\n    str r0, [r5, #0x10]\n    ldr r0, _02261214 ; =ov12_0225FCC0\n    str r0, [r5, #0x14]\n    ldr r0, _02261234 ; =0x00000196\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    add r0, r6, #0\n    bl ov12_0223BFC0\n    add r1, r0, #0\n    add r0, r6, #0\n    bl ov12_0223AB0C\n    ldr r1, _02261230 ; =0x00000195\n    ldrb r2, [r5, r1]\n    cmp r2, r0\n    beq _02261068\n    ldr r0, _02261238 ; =ov12_0225E134\n    mov r2, #2\n    str r0, [r5]\n    ldr r0, _0226123C ; =ov12_0225E4CC\n    str r0, [r5, #4]\n    ldr r0, _02261240 ; =ov12_0225E740\n    str r0, [r5, #8]\n    ldr r0, _02261244 ; =ov12_0225F3FC\n    str r0, [r5, #0xc]\n    ldr r0, _02261248 ; =ov12_0225F960\n    str r0, [r5, #0x10]\n    ldr r0, _0226124C ; =ov12_0225FCA0\n    str r0, [r5, #0x14]\n    add r0, r1, #1\n    strb r2, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r0, _02261218 ; =ov12_0225DAD4\n    mov r2, #0\n    str r0, [r5]\n    ldr r0, _0226121C ; =ov12_0225E250\n    str r0, [r5, #4]\n    ldr r0, _02261220 ; =ov12_0225E568\n    str r0, [r5, #8]\n    ldr r0, _02261224 ; =ov12_0225E830\n    str r0, [r5, #0xc]\n    ldr r0, _02261228 ; =ov12_0225F4E0\n    str r0, [r5, #0x10]\n    ldr r0, _0226122C ; =ov12_0225FA44\n    str r0, [r5, #0x14]\n    add r0, r1, #1\n    strb r2, [r5, r0]\n    pop {r4, r5, r6, pc}\n    mov r1, #4\n    add r2, r4, #0\n    tst r2, r1\n    beq _02261100\n    mov r1, #0x10\n    tst r0, r1\n    beq _022610B6\n    ldr r0, _02261200 ; =ov12_0225E1FC\n    mov r1, #0\n    str r0, [r5]\n    ldr r0, _02261204 ; =ov12_0225E4EC\n    str r0, [r5, #4]\n    ldr r0, _02261208 ; =ov12_0225E760\n    str r0, [r5, #8]\n    ldr r0, _0226120C ; =ov12_0225F434\n    str r0, [r5, #0xc]\n    ldr r0, _02261210 ; =ov12_0225F980\n    str r0, [r5, #0x10]\n    ldr r0, _02261214 ; =ov12_0225FCC0\n    str r0, [r5, #0x14]\n    ldr r0, _02261234 ; =0x00000196\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r0, _02261230 ; =0x00000195\n    mov r1, #1\n    ldrb r2, [r5, r0]\n    tst r1, r2\n    beq _022610E0\n    ldr r1, _02261238 ; =ov12_0225E134\n    add r0, r0, #1\n    str r1, [r5]\n    ldr r1, _0226123C ; =ov12_0225E4CC\n    str r1, [r5, #4]\n    ldr r1, _02261240 ; =ov12_0225E740\n    str r1, [r5, #8]\n    ldr r1, _02261244 ; =ov12_0225F3FC\n    str r1, [r5, #0xc]\n    ldr r1, _02261248 ; =ov12_0225F960\n    str r1, [r5, #0x10]\n    ldr r1, _0226124C ; =ov12_0225FCA0\n    str r1, [r5, #0x14]\n    mov r1, #2\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r1, _02261218 ; =ov12_0225DAD4\n    add r0, r0, #1\n    str r1, [r5]\n    ldr r1, _0226121C ; =ov12_0225E250\n    str r1, [r5, #4]\n    ldr r1, _02261220 ; =ov12_0225E568\n    str r1, [r5, #8]\n    ldr r1, _02261224 ; =ov12_0225E830\n    str r1, [r5, #0xc]\n    ldr r1, _02261228 ; =ov12_0225F4E0\n    str r1, [r5, #0x10]\n    ldr r1, _0226122C ; =ov12_0225FA44\n    str r1, [r5, #0x14]\n    mov r1, #0\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    lsl r1, r1, #7\n    tst r1, r4\n    beq _0226113C\n    ldr r0, _02261230 ; =0x00000195\n    mov r1, #1\n    ldrb r2, [r5, r0]\n    tst r2, r1\n    beq _02261126\n    ldr r2, _02261250 ; =ov12_0225E1D4\n    add r0, r0, #1\n    str r2, [r5]\n    mov r2, #0\n    str r2, [r5, #4]\n    str r2, [r5, #8]\n    str r2, [r5, #0xc]\n    str r2, [r5, #0x10]\n    str r2, [r5, #0x14]\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r1, _02261218 ; =ov12_0225DAD4\n    add r0, r0, #1\n    str r1, [r5]\n    mov r1, #0\n    str r1, [r5, #4]\n    str r1, [r5, #8]\n    str r1, [r5, #0xc]\n    str r1, [r5, #0x10]\n    str r1, [r5, #0x14]\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    mov r1, #0x20\n    tst r1, r4\n    beq _0226117A\n    ldr r0, _02261230 ; =0x00000195\n    mov r1, #1\n    ldrb r2, [r5, r0]\n    tst r2, r1\n    beq _02261162\n    ldr r2, _02261254 ; =ov12_0225E154\n    add r0, r0, #1\n    str r2, [r5]\n    mov r2, #0\n    str r2, [r5, #4]\n    str r2, [r5, #8]\n    str r2, [r5, #0xc]\n    str r2, [r5, #0x10]\n    str r2, [r5, #0x14]\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r1, _02261218 ; =ov12_0225DAD4\n    mov r2, #0\n    str r1, [r5]\n    str r2, [r5, #4]\n    str r2, [r5, #8]\n    str r2, [r5, #0xc]\n    ldr r1, _0226122C ; =ov12_0225FA44\n    str r2, [r5, #0x10]\n    str r1, [r5, #0x14]\n    add r0, r0, #1\n    strb r2, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r2, _02261230 ; =0x00000195\n    mov r1, #1\n    ldrb r3, [r5, r2]\n    tst r3, r1\n    beq _022611A2\n    ldr r0, _022611E8 ; =ov12_0225E104\n    str r0, [r5]\n    ldr r0, _022611EC ; =ov12_0225E404\n    str r0, [r5, #4]\n    ldr r0, _022611F0 ; =ov12_0225E6FC\n    str r0, [r5, #8]\n    ldr r0, _022611F4 ; =ov12_0225F3A4\n    str r0, [r5, #0xc]\n    ldr r0, _022611F8 ; =ov12_0225F8AC\n    str r0, [r5, #0x10]\n    ldr r0, _022611FC ; =ov12_0225FC80\n    str r0, [r5, #0x14]\n    add r0, r2, #1\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    mov r1, #0x10\n    tst r0, r1\n    beq _022611C8\n    ldr r0, _02261200 ; =ov12_0225E1FC\n    mov r1, #0\n    str r0, [r5]\n    ldr r0, _02261204 ; =ov12_0225E4EC\n    str r0, [r5, #4]\n    ldr r0, _02261208 ; =ov12_0225E760\n    str r0, [r5, #8]\n    ldr r0, _0226120C ; =ov12_0225F434\n    str r0, [r5, #0xc]\n    ldr r0, _02261210 ; =ov12_0225F980\n    str r0, [r5, #0x10]\n    ldr r0, _02261214 ; =ov12_0225FCC0\n    str r0, [r5, #0x14]\n    add r0, r2, #1\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    ldr r0, _02261218 ; =ov12_0225DAD4\n    mov r1, #0\n    str r0, [r5]\n    ldr r0, _0226121C ; =ov12_0225E250\n    str r0, [r5, #4]\n    ldr r0, _02261220 ; =ov12_0225E568\n    str r0, [r5, #8]\n    ldr r0, _02261224 ; =ov12_0225E830\n    str r0, [r5, #0xc]\n    ldr r0, _02261228 ; =ov12_0225F4E0\n    str r0, [r5, #0x10]\n    ldr r0, _0226122C ; =ov12_0225FA44\n    str r0, [r5, #0x14]\n    add r0, r2, #1\n    strb r1, [r5, r0]\n    pop {r4, r5, r6, pc}\n    _022611E8: .word ov12_0225E104\n    _022611EC: .word ov12_0225E404\n    _022611F0: .word ov12_0225E6FC\n    _022611F4: .word ov12_0225F3A4\n    _022611F8: .word ov12_0225F8AC\n    _022611FC: .word ov12_0225FC80\n    _02261200: .word ov12_0225E1FC\n    _02261204: .word ov12_0225E4EC\n    _02261208: .word ov12_0225E760\n    _0226120C: .word ov12_0225F434\n    _02261210: .word ov12_0225F980\n    _02261214: .word ov12_0225FCC0\n    _02261218: .word ov12_0225DAD4\n    _0226121C: .word ov12_0225E250\n    _02261220: .word ov12_0225E568\n    _02261224: .word ov12_0225E830\n    _02261228: .word ov12_0225F4E0\n    _0226122C: .word ov12_0225FA44\n    _02261230: .word 0x00000195\n    _02261234: .word 0x00000196\n    _02261238: .word ov12_0225E134\n    _0226123C: .word ov12_0225E4CC\n    _02261240: .word ov12_0225E740\n    _02261244: .word ov12_0225F3FC\n    _02261248: .word ov12_0225F960\n    _0226124C: .word ov12_0225FCA0\n    _02261250: .word ov12_0225E1D4\n    _02261254: .word ov12_0225E154"
+    );
+    #endif
+}
+
+void ov12_02261258(void) {
+    /* Original at 0x02261258 */
+    /* Requires manual decompilation - 5 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldr r1, _02261260 ; =0x00000195\n    ldrb r0, [r0, r1]\n    bx lr\n    nop\n    _02261260: .word 0x00000195"
+    );
+    #endif
+}
+
+void ov12_02261264(void) {
+    /* Original at 0x02261264 */
+    /* Requires manual decompilation - 5 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldr r1, _0226126C ; =0x00000196\n    ldrb r0, [r0, r1]\n    bx lr\n    nop\n    _0226126C: .word 0x00000196"
+    );
+    #endif
+}
+
+void ov12_02261270(void) {
+    /* Original at 0x02261270 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldr r1, [r0, #0x20]\n    cmp r1, #0\n    bne _02261278\n    ldr r1, [r0, #0x1c]\n    add r0, r1, #0\n    bx lr"
+    );
+    #endif
+}
+
+void OpponentData_GetHpBar(void) {
+    /* Original at 0x0226127C */
+    /* Requires manual decompilation - 2 instructions */
+    #ifdef MWERKS
+    asm(
+        "add r0, #0x28\n    bx lr"
+    );
+    #endif
+}
+
+void ov12_02261280(void) {
+    /* Original at 0x02261280 */
+    /* Requires manual decompilation - 2 instructions */
+    #ifdef MWERKS
+    asm(
+        "add r0, #0x80\n    bx lr"
+    );
+    #endif
+}
+
+void ov12_02261284(void) {
+    /* Original at 0x02261284 */
+    /* Requires manual decompilation - 7 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldr r3, _02261290 ; =MI_CpuFill8\n    add r0, #0x80\n    mov r1, #0\n    mov r2, #8\n    bx r3\n    nop\n    _02261290: .word MI_CpuFill8"
+    );
+    #endif
+}
+
+void ov12_02261294(void) {
+    ManagedSprite_SetDrawFlag();
+}
+
+void ov12_022612A4(void) {
+    /* Original at 0x022612A4 */
+    /* Requires manual decompilation - 101 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    ldr r4, [sp, #0x50]\n    add r7, r0, #0\n    str r1, [sp, #0x14]\n    add r5, r2, #0\n    str r3, [sp, #0x18]\n    bl ov12_0223A99C\n    add r1, r4, #0\n    bl ov12_0223BB94\n    str r0, [sp, #0x20]\n    add r0, r7, #0\n    add r1, r4, #0\n    bl ov12_0223AB0C\n    add r6, r0, #0\n    mov r0, #1\n    and r0, r6\n    str r0, [sp, #0x1c]\n    beq _022612D4\n    mov r1, #2\n    b _022612D6\n    mov r1, #0\n    ldr r0, [r5, #0xc]\n    ldr r3, [sp, #0x20]\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldrh r0, [r5, #6]\n    mov r2, #5\n    str r0, [sp, #0xc]\n    ldrh r0, [r5]\n    ldrh r1, [r5, #2]\n    bl sub_02014540\n    add r0, r7, #0\n    bl ov12_0223A99C\n    ldrh r2, [r5]\n    add r1, r4, #0\n    bl ov12_0223BBA8\n    add r0, r7, #0\n    bl ov12_0223A99C\n    ldrh r2, [r5, #4]\n    add r1, r4, #0\n    bl ov12_0223BBC0\n    add r0, r7, #0\n    bl ov12_0223A99C\n    ldr r2, [sp, #0x40]\n    add r1, r4, #0\n    bl ov12_0223BBD8\n    ldr r0, [sp, #0x3c]\n    ldr r3, [sp, #0x40]\n    str r0, [sp]\n    str r4, [sp, #4]\n    str r4, [sp, #8]\n    ldr r0, [sp, #0x54]\n    ldr r4, [sp, #0x38]\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x58]\n    ldr r2, [sp, #0x18]\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x14]\n    add r1, r5, #0\n    add r3, r4, r3\n    bl PokepicManager_CreatePokepicAt\n    add r4, r0, #0\n    ldr r0, [sp, #0x1c]\n    cmp r0, #0\n    beq _0226138A\n    cmp r6, #1\n    ble _02261348\n    asr r6, r6, #1\n    add r0, r4, #0\n    mov r1, #0x2a\n    add r2, r6, #0\n    bl Pokepic_SetAttr\n    ldr r2, [sp, #0x4c]\n    add r0, r4, #0\n    mov r1, #0x2e\n    bl Pokepic_SetAttr\n    ldr r2, [sp, #0x38]\n    add r0, r4, #0\n    mov r1, #0x14\n    add r2, #0x24\n    bl Pokepic_SetAttr\n    ldr r2, [sp, #0x48]\n    add r0, r4, #0\n    mov r1, #0x15\n    bl Pokepic_SetAttr\n    ldr r3, [sp, #0x40]\n    mov r2, #0x24\n    add r0, r4, #0\n    mov r1, #0x16\n    sub r2, r2, r3\n    bl Pokepic_SetAttr\n    ldr r2, [sp, #0x44]\n    add r0, r4, #0\n    mov r1, #0x29\n    bl Pokepic_SetAttr\n    add r0, r4, #0\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_02261390(void) {
+    /* Original at 0x02261390 */
+    /* Requires manual decompilation - 97 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    ldr r1, _0226144C ; =0x00000195\n    add r6, r2, #0\n    ldrb r2, [r5, r1]\n    mov r1, #1\n    add r7, r0, #0\n    add r4, r3, #0\n    tst r1, r2\n    beq _022613EA\n    bl BattleSystem_GetBattleType\n    mov r1, #4\n    tst r0, r1\n    beq _022613CA\n    ldr r0, _02261450 ; =0x000003DE\n    strh r0, [r4, #2]\n    mov r0, #0x1b\n    strb r0, [r4, #1]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    str r1, [r4, #4]\n    ldrb r1, [r5, r0]\n    ldrb r0, [r6, #1]\n    lsl r0, r0, #8\n    orr r0, r1\n    str r0, [r4, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _02261454 ; =0x000003DD\n    strh r0, [r4, #2]\n    mov r0, #0x32\n    strb r0, [r4, #1]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    str r1, [r4, #4]\n    ldrb r1, [r5, r0]\n    str r1, [r4, #8]\n    ldrb r1, [r5, r0]\n    ldrb r0, [r6, #1]\n    lsl r0, r0, #8\n    orr r0, r1\n    str r0, [r4, #0xc]\n    pop {r3, r4, r5, r6, r7, pc}\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    bne _02261434\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #4\n    tst r0, r1\n    bne _02261434\n    ldrh r0, [r6, #2]\n    cmp r0, #0\n    bne _0226140E\n    mov r0, #0xf6\n    lsl r0, r0, #2\n    strh r0, [r4, #2]\n    b _02261438\n    cmp r0, #0x19\n    bhs _02261418\n    ldr r0, _02261458 ; =0x000003D9\n    strh r0, [r4, #2]\n    b _02261438\n    cmp r0, #0x32\n    bhs _02261424\n    mov r0, #0xf7\n    lsl r0, r0, #2\n    strh r0, [r4, #2]\n    b _02261438\n    cmp r0, #0x4b\n    bhs _0226142E\n    ldr r0, _0226145C ; =0x000003DA\n    strh r0, [r4, #2]\n    b _02261438\n    ldr r0, _02261460 ; =0x000003DB\n    strh r0, [r4, #2]\n    b _02261438\n    ldr r0, _02261458 ; =0x000003D9\n    strh r0, [r4, #2]\n    mov r0, #2\n    strb r0, [r4, #1]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    ldrb r0, [r6, #1]\n    lsl r0, r0, #8\n    orr r0, r1\n    str r0, [r4, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    _0226144C: .word 0x00000195\n    _02261450: .word 0x000003DE\n    _02261454: .word 0x000003DD\n    _02261458: .word 0x000003D9\n    _0226145C: .word 0x000003DA\n    _02261460: .word 0x000003DB"
+    );
+    #endif
+}
+
+void ov12_02261464(void) {
+    /* Original at 0x02261464 */
+    /* Requires manual decompilation - 101 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    ldr r1, _02261524 ; =0x00000195\n    add r6, r2, #0\n    ldrb r2, [r5, r1]\n    mov r1, #1\n    add r7, r0, #0\n    add r4, r3, #0\n    tst r1, r2\n    beq _022614C0\n    bl BattleSystem_GetBattleType\n    mov r1, #4\n    tst r0, r1\n    bne _022614A4\n    mov r0, #0xf3\n    lsl r0, r0, #2\n    strh r0, [r4, #2]\n    mov r0, #0x32\n    strb r0, [r4, #1]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    str r1, [r4, #4]\n    ldrb r1, [r5, r0]\n    str r1, [r4, #8]\n    ldrb r1, [r5, r0]\n    ldrb r0, [r6, #1]\n    lsl r0, r0, #8\n    orr r0, r1\n    str r0, [r4, #0xc]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _02261528 ; =0x000003CE\n    strh r0, [r4, #2]\n    mov r0, #0x1b\n    strb r0, [r4, #1]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    str r1, [r4, #4]\n    ldrb r1, [r5, r0]\n    ldrb r0, [r6, #1]\n    lsl r0, r0, #8\n    orr r0, r1\n    str r0, [r4, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    bne _0226150C\n    add r0, r7, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #4\n    tst r0, r1\n    bne _0226150C\n    ldrh r1, [r6, #2]\n    cmp r1, #0x64\n    bhs _022614E2\n    ldr r0, _0226152C ; =0x000003D6\n    strh r0, [r4, #2]\n    b _02261510\n    ldr r0, _02261530 ; =0x00000145\n    cmp r1, r0\n    bhs _022614EE\n    ldr r0, _02261534 ; =0x000003D7\n    strh r0, [r4, #2]\n    b _02261510\n    add r0, #0xe1\n    cmp r1, r0\n    bhs _022614FA\n    ldr r0, _02261538 ; =0x000003D5\n    strh r0, [r4, #2]\n    b _02261510\n    ldr r0, _0226153C ; =0x00000307\n    cmp r1, r0\n    bhs _02261506\n    add r0, #0xcd\n    strh r0, [r4, #2]\n    b _02261510\n    add r0, #0xcc\n    strh r0, [r4, #2]\n    b _02261510\n    ldr r0, _02261540 ; =0x000003D3\n    strh r0, [r4, #2]\n    mov r0, #2\n    strb r0, [r4, #1]\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r1, [r5, r0]\n    ldrb r0, [r6, #1]\n    lsl r0, r0, #8\n    orr r0, r1\n    str r0, [r4, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    _02261524: .word 0x00000195\n    _02261528: .word 0x000003CE\n    _0226152C: .word 0x000003D6\n    _02261530: .word 0x00000145\n    _02261534: .word 0x000003D7\n    _02261538: .word 0x000003D5\n    _0226153C: .word 0x00000307\n    _02261540: .word 0x000003D3"
+    );
+    #endif
+}
+
+void ov12_02261544(void) {
+    /* Original at 0x02261544 */
+    /* Requires manual decompilation - 79 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    add r5, r2, #0\n    bl BattleSystem_GetBattleType\n    add r4, r0, #0\n    mov r0, #2\n    tst r0, r4\n    beq _0226156A\n    add r0, r7, #0\n    mov r1, #3\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r6, r0, #0\n    add r0, r7, #0\n    mov r1, #5\n    bl BattleSystem_GetBattlerFromBattlerType\n    b _02261574\n    add r0, r7, #0\n    mov r1, #1\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r6, r0, #0\n    mov r1, #4\n    tst r1, r4\n    beq _022615B4\n    mov r1, #0x80\n    tst r1, r4\n    beq _02261594\n    mov r1, #0x3e\n    lsl r1, r1, #4\n    strh r1, [r5, #2]\n    mov r1, #0x3b\n    strb r1, [r5, #1]\n    str r6, [r5, #4]\n    str r6, [r5, #8]\n    str r0, [r5, #0xc]\n    str r0, [r5, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #8\n    add r2, r4, #0\n    tst r2, r1\n    beq _022615AA\n    ldr r1, _022615E4 ; =0x000003CB\n    strh r1, [r5, #2]\n    mov r1, #0x1a\n    strb r1, [r5, #1]\n    str r6, [r5, #4]\n    str r0, [r5, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _022615E8 ; =0x000003CA\n    strh r0, [r5, #2]\n    strb r1, [r5, #1]\n    str r6, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #0x10\n    tst r1, r4\n    bne _022615C0\n    mov r1, #8\n    tst r1, r4\n    beq _022615D4\n    mov r1, #0x3e\n    lsl r1, r1, #4\n    strh r1, [r5, #2]\n    mov r1, #0x3b\n    strb r1, [r5, #1]\n    str r6, [r5, #4]\n    str r6, [r5, #8]\n    str r0, [r5, #0xc]\n    str r0, [r5, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _022615EC ; =0x000003C9\n    strh r0, [r5, #2]\n    mov r0, #0x1e\n    strb r0, [r5, #1]\n    str r6, [r5, #4]\n    str r6, [r5, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _022615E4: .word 0x000003CB\n    _022615E8: .word 0x000003CA\n    _022615EC: .word 0x000003C9"
+    );
+    #endif
+}
+
+void ov12_022615F0(void) {
+    /* Original at 0x022615F0 */
+    /* Requires manual decompilation - 386 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    str r1, [sp, #4]\n    str r0, [sp]\n    add r6, r2, #0\n    add r4, r3, #0\n    bl BattleSystem_GetBattleType\n    str r0, [sp, #0x14]\n    ldr r2, _02261904 ; =0x00000195\n    ldr r0, [sp, #4]\n    ldrb r1, [r0, r2]\n    mov r0, #1\n    tst r0, r1\n    bne _02261610\n    b _02261758\n    ldr r0, [sp, #0x14]\n    mov r1, #2\n    and r0, r1\n    str r0, [sp, #0x10]\n    beq _0226162C\n    ldr r0, [sp, #4]\n    sub r1, r2, #1\n    ldrb r5, [r0, r1]\n    ldr r0, [sp]\n    add r1, r5, #0\n    bl BattleSystem_GetBattlerIdPartner\n    add r7, r0, #0\n    b _02261634\n    ldr r0, [sp, #4]\n    sub r1, r2, #1\n    ldrb r5, [r0, r1]\n    add r7, r5, #0\n    ldr r0, [sp, #0x14]\n    mov r1, #4\n    tst r0, r1\n    beq _022616DA\n    ldr r0, [sp, #0x14]\n    mov r1, #0x80\n    tst r0, r1\n    beq _0226166C\n    ldr r0, _02261908 ; =0x000003DF\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #0x3c\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    str r5, [r4, #8]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #0xc]\n    str r7, [r4, #0x10]\n    str r7, [r4, #0x14]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #0x18]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #0x14]\n    mov r1, #8\n    tst r0, r1\n    beq _0226169A\n    mov r0, #0x3d\n    lsl r0, r0, #4\n    strh r0, [r4, #2]\n    mov r0, #0x38\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    add sp, #0x18\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #8]\n    str r7, [r4, #0xc]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #0x10]\n    cmp r0, #0\n    beq _022616C2\n    ldr r0, _0226190C ; =0x000003CF\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #0x31\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #8]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #0xc]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _02261910 ; =0x000003CE\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #0x1b\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #0x14]\n    mov r1, #0x10\n    tst r0, r1\n    bne _022616EA\n    ldr r0, [sp, #0x14]\n    mov r1, #8\n    tst r0, r1\n    beq _02261712\n    ldr r0, _02261908 ; =0x000003DF\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #0x3c\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    str r5, [r4, #8]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #0xc]\n    str r7, [r4, #0x10]\n    str r7, [r4, #0x14]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #0x18]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #0x10]\n    cmp r0, #0\n    beq _0226173C\n    ldr r0, _02261914 ; =0x000003CD\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #0x39\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    str r5, [r4, #8]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #0xc]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0xf3\n    lsl r0, r0, #2\n    strh r0, [r4, #2]\n    mov r0, #0x32\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    str r5, [r4, #8]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    add sp, #0x18\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #0xc]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #0x14]\n    mov r1, #4\n    and r0, r1\n    str r0, [sp, #0xc]\n    beq _022617EC\n    ldr r0, [sp]\n    bl ov12_0223BFC0\n    lsl r0, r0, #0x18\n    lsr r2, r0, #0x18\n    ldr r0, [sp, #0x14]\n    mov r1, #8\n    and r0, r1\n    str r0, [sp, #8]\n    beq _022617C2\n    ldr r0, [sp]\n    add r1, r2, #0\n    bl ov12_0223BFCC\n    cmp r0, #3\n    bhi _02261832\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0226178E: ; jump table\n    ldr r0, [sp]\n    mov r1, #4\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r5, r0, #0\n    ldr r0, [sp]\n    mov r1, #2\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r7, r0, #0\n    b _02261832\n    ldr r0, [sp]\n    mov r1, #2\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r5, r0, #0\n    ldr r0, [sp]\n    mov r1, #4\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r7, r0, #0\n    b _02261832\n    ldr r0, [sp, #0x14]\n    mov r1, #2\n    tst r0, r1\n    beq _022617DE\n    ldr r0, [sp]\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r5, r0, #0\n    ldr r0, [sp]\n    mov r1, #4\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r7, r0, #0\n    b _02261832\n    ldr r0, [sp]\n    mov r1, #0\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r5, r0, #0\n    add r7, r5, #0\n    b _02261832\n    ldr r0, [sp, #0x14]\n    mov r1, #8\n    and r0, r1\n    str r0, [sp, #8]\n    beq _0226180E\n    ldr r1, [sp, #4]\n    sub r2, r2, #1\n    ldrb r1, [r1, r2]\n    ldr r0, [sp]\n    bl BattleSystem_GetBattlerIdPartner\n    add r5, r0, #0\n    mov r1, #0x65\n    ldr r0, [sp, #4]\n    lsl r1, r1, #2\n    ldrb r7, [r0, r1]\n    b _02261832\n    ldr r0, [sp, #0x14]\n    mov r1, #2\n    tst r0, r1\n    beq _0226182A\n    ldr r0, [sp]\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r5, r0, #0\n    ldr r0, [sp]\n    mov r1, #4\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r7, r0, #0\n    b _02261832\n    ldr r0, [sp, #4]\n    sub r1, r2, #1\n    ldrb r5, [r0, r1]\n    add r7, r5, #0\n    ldr r0, [sp, #0xc]\n    cmp r0, #0\n    beq _0226189C\n    ldr r0, [sp, #8]\n    cmp r0, #0\n    beq _02261860\n    ldr r0, _02261918 ; =0x000003D1\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #0x31\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #8]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #0xc]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #0x14]\n    mov r1, #2\n    tst r0, r1\n    beq _02261888\n    ldr r0, _0226191C ; =0x000003D2\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #9\n    strb r0, [r4, #1]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #4]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _02261920 ; =0x000003D3\n    add sp, #0x18\n    strh r0, [r4, #2]\n    strb r1, [r4, #1]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #8]\n    cmp r0, #0\n    beq _022618C6\n    ldr r0, _02261924 ; =0x000003E1\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #0x39\n    strb r0, [r4, #1]\n    str r5, [r4, #4]\n    str r5, [r4, #8]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #0xc]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #0x10]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #0x14]\n    mov r1, #2\n    tst r0, r1\n    beq _022618EE\n    ldr r0, _0226191C ; =0x000003D2\n    add sp, #0x18\n    strh r0, [r4, #2]\n    mov r0, #9\n    strb r0, [r4, #1]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #4]\n    add r0, r6, r7\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r7\n    str r0, [r4, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _02261920 ; =0x000003D3\n    strh r0, [r4, #2]\n    strb r1, [r4, #1]\n    add r0, r6, r5\n    ldrb r0, [r0, #4]\n    lsl r0, r0, #8\n    orr r0, r5\n    str r0, [r4, #4]\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02261904: .word 0x00000195\n    _02261908: .word 0x000003DF\n    _0226190C: .word 0x000003CF\n    _02261910: .word 0x000003CE\n    _02261914: .word 0x000003CD\n    _02261918: .word 0x000003D1\n    _0226191C: .word 0x000003D2\n    _02261920: .word 0x000003D3\n    _02261924: .word 0x000003E1"
+    );
+    #endif
+}
+
+void ov12_02261928(void) {
+    /* Original at 0x02261928 */
+    /* Requires manual decompilation - 84 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    str r0, [sp]\n    add r5, r2, #0\n    bl BattleSystem_GetBattleType\n    add r6, r0, #0\n    ldr r0, [sp]\n    bl BattleSystem_GetBattleOutcomeFlags\n    add r7, r0, #0\n    mov r0, #2\n    tst r0, r6\n    beq _02261956\n    ldr r0, [sp]\n    mov r1, #3\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r4, r0, #0\n    ldr r0, [sp]\n    mov r1, #5\n    bl BattleSystem_GetBattlerFromBattlerType\n    b _02261960\n    ldr r0, [sp]\n    mov r1, #1\n    bl BattleSystem_GetBattlerFromBattlerType\n    add r4, r0, #0\n    cmp r7, #1\n    beq _0226196E\n    cmp r7, #2\n    beq _0226198E\n    cmp r7, #3\n    beq _022619B0\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #8\n    add r2, r6, #0\n    tst r2, r1\n    beq _02261984\n    ldr r1, _022619D0 ; =0x00000312\n    strh r1, [r5, #2]\n    mov r1, #0x1a\n    strb r1, [r5, #1]\n    str r4, [r5, #4]\n    str r0, [r5, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _022619D4 ; =0x00000311\n    strh r0, [r5, #2]\n    strb r1, [r5, #1]\n    str r4, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #8\n    add r2, r6, #0\n    tst r2, r1\n    beq _022619A6\n    mov r1, #0xc5\n    lsl r1, r1, #2\n    strh r1, [r5, #2]\n    mov r1, #0x1a\n    strb r1, [r5, #1]\n    str r4, [r5, #4]\n    str r0, [r5, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _022619D8 ; =0x00000313\n    strh r0, [r5, #2]\n    strb r1, [r5, #1]\n    str r4, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #8\n    add r2, r6, #0\n    tst r2, r1\n    beq _022619C6\n    ldr r1, _022619DC ; =0x00000316\n    strh r1, [r5, #2]\n    mov r1, #0x1a\n    strb r1, [r5, #1]\n    str r4, [r5, #4]\n    str r0, [r5, #8]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _022619E0 ; =0x00000315\n    strh r0, [r5, #2]\n    strb r1, [r5, #1]\n    str r4, [r5, #4]\n    pop {r3, r4, r5, r6, r7, pc}\n    _022619D0: .word 0x00000312\n    _022619D4: .word 0x00000311\n    _022619D8: .word 0x00000313\n    _022619DC: .word 0x00000316\n    _022619E0: .word 0x00000315"
+    );
+    #endif
+}
+
+void ov12_022619E4(void) {
+    /* Original at 0x022619E4 */
+    /* Requires manual decompilation - 105 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    mov r6, #0\n    add r5, r0, #0\n    str r2, [sp]\n    add r7, r3, #0\n    str r6, [sp, #4]\n    add r4, r6, #0\n    bl BattleSystem_GetMaxBattlers\n    cmp r0, #0\n    ble _02261A2C\n    add r0, r4, #0\n    bl MaskOfFlagNo\n    ldr r1, [sp]\n    ldrb r1, [r1, #1]\n    tst r0, r1\n    beq _02261A20\n    add r0, r5, #0\n    add r1, r4, #0\n    bl BattleSystem_GetFieldSide\n    cmp r0, #0\n    beq _02261A1E\n    ldr r0, [sp, #4]\n    add r0, r0, #1\n    str r0, [sp, #4]\n    b _02261A20\n    add r6, r6, #1\n    add r0, r5, #0\n    add r4, r4, #1\n    bl BattleSystem_GetMaxBattlers\n    cmp r4, r0\n    blt _022619FC\n    cmp r6, #0\n    beq _02261A4A\n    ldr r0, [sp, #4]\n    cmp r0, #0\n    beq _02261A4A\n    ldr r0, _02261ACC ; =0x0000030D\n    mov r1, #0xc3\n    strh r0, [r7, #2]\n    mov r0, #0\n    strb r0, [r7, #1]\n    add r0, r5, #0\n    bl BattleSystem_SetBattleOutcomeFlags\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r6, #0\n    beq _02261A62\n    ldr r0, _02261ACC ; =0x0000030D\n    mov r1, #0xc2\n    strh r0, [r7, #2]\n    mov r0, #0\n    strb r0, [r7, #1]\n    add r0, r5, #0\n    bl BattleSystem_SetBattleOutcomeFlags\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #8\n    tst r0, r1\n    beq _02261A8E\n    mov r0, #0xc6\n    lsl r0, r0, #2\n    strh r0, [r7, #2]\n    mov r0, #0x1a\n    strb r0, [r7, #1]\n    add r0, r5, #0\n    mov r1, #3\n    bl BattleSystem_GetBattlerFromBattlerType\n    str r0, [r7, #4]\n    add r0, r5, #0\n    mov r1, #5\n    bl BattleSystem_GetBattlerFromBattlerType\n    str r0, [r7, #8]\n    b _02261ABE\n    add r0, r5, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #2\n    tst r0, r1\n    ldr r0, _02261AD0 ; =0x00000317\n    beq _02261AAE\n    strh r0, [r7, #2]\n    mov r0, #8\n    strb r0, [r7, #1]\n    add r0, r5, #0\n    mov r1, #3\n    bl BattleSystem_GetBattlerFromBattlerType\n    str r0, [r7, #4]\n    b _02261ABE\n    strh r0, [r7, #2]\n    mov r0, #8\n    strb r0, [r7, #1]\n    add r0, r5, #0\n    mov r1, #1\n    bl BattleSystem_GetBattlerFromBattlerType\n    str r0, [r7, #4]\n    add r0, r5, #0\n    mov r1, #0xc1\n    bl BattleSystem_SetBattleOutcomeFlags\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02261ACC: .word 0x0000030D\n    _02261AD0: .word 0x00000317"
+    );
+    #endif
+}
+
+void ov12_02261AD4(void) {
+    /* Original at 0x02261AD4 */
+    /* Requires manual decompilation - 38 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r6, r1, #0\n    mov r1, #0xef\n    add r4, r2, #0\n    lsl r1, r1, #2\n    strh r1, [r4, #2]\n    mov r1, #8\n    add r5, r0, #0\n    strb r1, [r4, #1]\n    bl BattleSystem_GetBattleType\n    mov r1, #4\n    tst r0, r1\n    beq _02261B1A\n    add r0, r5, #0\n    bl ov12_0223BFC0\n    add r1, r0, #0\n    add r0, r5, #0\n    bl ov12_0223BFCC\n    cmp r0, #0\n    beq _02261B0E\n    add r0, r5, #0\n    mov r1, #4\n    bl BattleSystem_GetBattlerFromBattlerType\n    str r0, [r4, #4]\n    b _02261B22\n    add r0, r5, #0\n    mov r1, #2\n    bl BattleSystem_GetBattlerFromBattlerType\n    str r0, [r4, #4]\n    b _02261B22\n    mov r0, #0x65\n    lsl r0, r0, #2\n    ldrb r0, [r6, r0]\n    str r0, [r4, #4]\n    add r0, r5, #0\n    mov r1, #0xc2\n    bl BattleSystem_SetBattleOutcomeFlags\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_02261B2C(void) {
+    /* Original at 0x02261B2C */
+    /* Requires manual decompilation - 38 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    add r7, r3, #0\n    bl BattleSystem_GetSpriteSystem\n    str r0, [sp, #0x1c]\n    add r0, r5, #0\n    bl BattleSystem_GetSpriteManager\n    str r0, [sp, #0x18]\n    add r0, r5, #0\n    bl BattleSystem_GetPaletteData\n    add r2, r0, #0\n    mov r0, #1\n    tst r0, r4\n    beq _02261B58\n    mov r1, #2\n    b _02261B5A\n    mov r1, #0\n    add r3, sp, #0x28\n    mov r0, #0x18\n    ldrsh r0, [r3, r0]\n    mov r4, #0x14\n    str r0, [sp]\n    str r6, [sp, #4]\n    str r1, [sp, #8]\n    ldr r0, [sp, #0x38]\n    ldr r1, [sp, #0x18]\n    str r0, [sp, #0xc]\n    str r7, [sp, #0x10]\n    mov r0, #5\n    str r0, [sp, #0x14]\n    ldrsh r3, [r3, r4]\n    ldr r0, [sp, #0x1c]\n    bl sub_02070C24\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_02261B80(void) {
+    /* Original at 0x02261B80 */
+    /* Requires manual decompilation - 134 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xac\n    str r0, [sp]\n    ldr r0, [r3, #0x4c]\n    str r1, [sp, #4]\n    str r2, [sp, #8]\n    str r3, [sp, #0xc]\n    cmp r0, #0\n    bne _02261B9E\n    mov r0, #0xa\n    str r0, [sp, #0x84]\n    add r0, r3, #0\n    ldrh r0, [r0, #2]\n    str r0, [sp, #0x18]\n    b _02261BA8\n    mov r0, #0x3d\n    str r0, [sp, #0x84]\n    add r0, r3, #0\n    ldr r0, [r0, #0x50]\n    str r0, [sp, #0x18]\n    ldr r0, [sp]\n    bl BattleSystem_GetBgConfig\n    str r0, [sp, #0x20]\n    ldr r0, [sp]\n    bl BattleSystem_GetPaletteData\n    str r0, [sp, #0x24]\n    ldr r0, [sp]\n    bl BattleSystem_GetSpriteSystem\n    add r5, sp, #0x1c\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0xc]\n    mov r4, #0\n    str r0, [sp, #0x14]\n    str r5, [sp, #0x10]\n    add r6, r5, #0\n    add r7, r0, #0\n    ldr r0, [sp]\n    add r1, r4, #0\n    bl ov12_0223BB88\n    str r0, [r5, #0xc]\n    ldr r0, [sp, #0x14]\n    ldrh r1, [r0, #0x18]\n    ldr r0, [sp, #0x10]\n    strh r1, [r0, #0x34]\n    ldr r0, [sp, #0xc]\n    add r0, r0, r4\n    add r0, #0x20\n    ldrb r1, [r0]\n    add r0, r6, #0\n    add r0, #0x3c\n    strb r1, [r0]\n    ldr r0, [sp, #0xc]\n    add r0, r0, r4\n    add r0, #0x24\n    ldrb r1, [r0]\n    add r0, r6, #0\n    add r0, #0x40\n    strb r1, [r0]\n    ldr r0, [sp, #0xc]\n    add r0, r0, r4\n    add r0, #0x28\n    ldrb r1, [r0]\n    add r0, r6, #0\n    add r0, #0x44\n    strb r1, [r0]\n    ldr r0, [r7, #0x2c]\n    add r4, r4, #1\n    str r0, [r5, #0x48]\n    ldr r0, [r7, #0x3c]\n    add r6, r6, #1\n    str r0, [r5, #0x58]\n    ldr r0, [sp, #0x14]\n    add r5, r5, #4\n    add r0, r0, #2\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #0x10]\n    add r7, r7, #4\n    add r0, r0, #2\n    str r0, [sp, #0x10]\n    cmp r4, #4\n    blt _02261BCE\n    ldr r0, [sp]\n    add r1, sp, #0x38\n    bl ov12_0223C1C4\n    ldr r0, [sp]\n    add r1, sp, #0x3c\n    bl ov12_0223C1F4\n    ldr r0, [sp]\n    bl BattleSystem_GetBattleType\n    mov r2, #0x65\n    str r0, [sp, #0x4c]\n    ldr r1, [sp, #4]\n    lsl r2, r2, #2\n    ldrb r1, [r1, r2]\n    ldr r0, [sp]\n    bl BattleSystem_GetChatotVoice\n    str r0, [sp, #0xa0]\n    ldr r0, [sp]\n    bl ov12_0223BAD0\n    str r0, [sp, #0xa4]\n    ldr r0, [sp]\n    bl ov12_0223BAD8\n    str r0, [sp, #0xa8]\n    mov r0, #7\n    str r0, [sp, #0x88]\n    ldr r0, [sp]\n    bl BattleSystem_GetBackgroundId\n    add r0, r0, #3\n    str r0, [sp, #0x8c]\n    ldr r0, [sp]\n    bl ov12_0223B52C\n    add r4, r0, #0\n    ldr r0, [sp]\n    bl BattleSystem_GetBackgroundId\n    lsl r1, r0, #1\n    add r0, r0, r1\n    add r0, #0xb0\n    add r0, r4, r0\n    str r0, [sp, #0x90]\n    mov r0, #2\n    str r0, [sp, #0x94]\n    mov r0, #0\n    ldr r2, [sp, #0x18]\n    str r0, [sp, #0x98]\n    mov r0, #8\n    str r0, [sp, #0x9c]\n    lsl r2, r2, #0x10\n    ldr r0, [sp, #8]\n    ldr r1, [sp, #0xc]\n    lsr r2, r2, #0x10\n    add r3, sp, #0x1c\n    bl ov07_0221C01C\n    add sp, #0xac\n    pop {r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_02261CA8(void) {
+    /* Original at 0x02261CA8 */
+    /* Requires manual decompilation - 64 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r6, r2, #0\n    add r7, r1, #0\n    str r3, [r6]\n    str r0, [sp]\n    str r3, [r6, #4]\n    mov r4, #0\n    add r5, r6, #0\n    str r7, [sp, #0xc]\n    str r6, [sp, #8]\n    str r7, [sp, #4]\n    ldr r0, [sp]\n    add r1, r4, #0\n    bl ov12_0223BB88\n    str r0, [r5, #8]\n    ldr r0, [sp, #0xc]\n    ldrh r1, [r0, #0x18]\n    ldr r0, [sp, #8]\n    strh r1, [r0, #0x28]\n    add r0, r7, r4\n    add r0, #0x20\n    ldrb r1, [r0]\n    add r0, r6, r4\n    add r0, #0x30\n    strb r1, [r0]\n    add r0, r7, r4\n    add r0, #0x24\n    ldrb r1, [r0]\n    add r0, r6, r4\n    add r0, #0x34\n    strb r1, [r0]\n    add r0, r7, r4\n    add r0, #0x28\n    ldrb r1, [r0]\n    add r0, r6, r4\n    add r0, #0x38\n    strb r1, [r0]\n    ldr r0, [sp, #4]\n    add r4, r4, #1\n    ldr r0, [r0, #0x2c]\n    str r0, [r5, #0x3c]\n    ldr r0, [sp, #0xc]\n    add r5, r5, #4\n    add r0, r0, #2\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #8]\n    add r0, r0, #2\n    str r0, [sp, #8]\n    ldr r0, [sp, #4]\n    add r0, r0, #4\n    str r0, [sp, #4]\n    cmp r4, #4\n    blt _02261CC0\n    add r1, r6, #0\n    ldr r0, [sp]\n    add r1, #0x4c\n    bl ov12_0223C1C4\n    add r6, #0x18\n    ldr r0, [sp]\n    add r1, r6, #0\n    bl ov12_0223C1F4\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}
+
+void ov12_02261D30(void) {
+    /* Original at 0x02261D30 */
+    /* Requires manual decompilation - 52 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    cmp r2, #0\n    bne _02261D6E\n    add r0, sp, #0\n    ldrh r6, [r0, #0x10]\n    mov r1, #9\n    add r0, r6, #0\n    bl GetMoveAttr\n    mov r1, #0x40\n    tst r0, r1\n    bne _02261D50\n    mov r0, #1\n    b _02261D52\n    mov r0, #0\n    strb r0, [r4]\n    add r0, r6, #0\n    mov r1, #9\n    bl GetMoveAttr\n    mov r1, #0x80\n    tst r0, r1\n    beq _02261D68\n    mov r0, #1\n    strb r0, [r5]\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    strb r0, [r5]\n    pop {r4, r5, r6, pc}\n    sub r3, #0x12\n    cmp r3, #0x15\n    bhi _02261DBE\n    add r0, r3, r3\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02261D80: ; jump table\n    mov r0, #1\n    strb r0, [r4]\n    mov r0, #0\n    strb r0, [r5]\n    pop {r4, r5, r6, pc}\n    mov r0, #1\n    strb r0, [r4]\n    strb r0, [r5]\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    strb r0, [r4]\n    strb r0, [r5]\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_02261DC8(void) {
+    /* Original at 0x02261DC8 */
+    /* Requires manual decompilation - 53 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0xc]\n    mov r4, #0\n    bl ManagedSprite_GetUserAttrForCurrentAnimFrame\n    cmp r0, #1\n    beq _02261DE0\n    ldr r1, _02261E38 ; =0x00000FFF\n    cmp r0, r1\n    beq _02261E0A\n    b _02261E0E\n    ldrh r1, [r5, #0x16]\n    lsl r0, r1, #0x1f\n    lsr r0, r0, #0x1f\n    bne _02261E34\n    mov r0, #1\n    bic r1, r0\n    mov r0, #1\n    orr r0, r1\n    strh r0, [r5, #0x16]\n    mov r0, #5\n    mov r1, #8\n    bl Heap_Alloc\n    add r1, r0, #0\n    add r2, r4, #0\n    str r2, [r1]\n    ldr r0, _02261E3C ; =ov12_02261E40\n    str r2, [r1, #4]\n    bl SysTask_CreateOnMainQueue\n    b _02261E34\n    mov r4, #1\n    b _02261E34\n    sub r1, #0xff\n    add r2, r0, #0\n    and r2, r1\n    mov r1, #1\n    lsl r1, r1, #8\n    cmp r2, r1\n    bne _02261E34\n    lsl r0, r0, #0x18\n    lsr r6, r0, #0x18\n    beq _02261E34\n    ldr r0, [r5, #0xc]\n    add r1, r4, #0\n    bl ManagedSprite_SetAnimationFrame\n    ldr r0, [r5, #0xc]\n    sub r1, r6, #1\n    bl ManagedSprite_SetAnim\n    mov r4, #1\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}\n    _02261E38: .word 0x00000FFF\n    _02261E3C: .word ov12_02261E40"
+    );
+    #endif
+}
+
+void ov12_02261E40(void) {
+    /* Original at 0x02261E40 */
+    /* Requires manual decompilation - 53 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    cmp r0, #0\n    beq _02261E56\n    cmp r0, #1\n    beq _02261E7E\n    cmp r0, #2\n    beq _02261EA0\n    pop {r3, r4, r5, pc}\n    mov r0, #1\n    bl IsBrightnessTransitionActive\n    cmp r0, #0\n    bne _02261E66\n    mov r0, #2\n    str r0, [r4]\n    pop {r3, r4, r5, pc}\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #4\n    mov r1, #0x10\n    mov r2, #0\n    mov r3, #0x3d\n    bl StartBrightnessTransition\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    pop {r3, r4, r5, pc}\n    mov r0, #1\n    bl IsBrightnessTransitionActive\n    cmp r0, #1\n    bne _02261EB6\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #4\n    mov r1, #0\n    mov r2, #0x10\n    mov r3, #0x3d\n    bl StartBrightnessTransition\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    pop {r3, r4, r5, pc}\n    mov r0, #1\n    bl IsBrightnessTransitionActive\n    cmp r0, #1\n    bne _02261EB6\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
+    );
+    #endif
+}
+
+void ov12_02261EB8(void) {
+    /* Original at 0x02261EB8 */
+    /* Requires manual decompilation - 10 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #1\n    bl ov12_0223BFFC\n    add r0, r4, #0\n    bl BattleSystem_GetBattleContext\n    add r1, r0, #0\n    add r0, r4, #0\n    bl BattleController_TryEmitExitRecording\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02261ED4(void) {
+    /* Original at 0x02261ED4 */
+    /* Requires manual decompilation - 10 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #2\n    bl ov12_0223BFFC\n    add r0, r4, #0\n    bl BattleSystem_GetBattleContext\n    add r1, r0, #0\n    add r0, r4, #0\n    bl BattleController_TryEmitExitRecording\n    pop {r4, pc}"
+    );
+    #endif
+}
+
+void ov12_02261EF0(void) {
+    /* Original at 0x02261EF0 */
+    /* Requires manual decompilation - 32 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    add r4, r2, #0\n    bl BattleSystem_GetBattleType\n    mov r1, #4\n    tst r0, r1\n    beq _02261F0A\n    cmp r4, #0\n    beq _02261F0E\n    cmp r4, #1\n    beq _02261F0E\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}\n    add r0, r5, #0\n    add r1, r6, #0\n    bl BattleSystem_GetPlayerProfile\n    bl PlayerProfile_GetVersion\n    cmp r0, #0\n    beq _02261F24\n    cmp r0, #0xc\n    beq _02261F2C\n    b _02261F32\n    add r4, #0x7d\n    lsl r0, r4, #0x18\n    lsr r4, r0, #0x18\n    b _02261F32\n    add r4, #0x7f\n    lsl r0, r4, #0x18\n    lsr r4, r0, #0x18\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
+    );
+    #endif
+}
+
+void ov12_02261F38(void) {
+    /* Original at 0x02261F38 */
+    /* Requires manual decompilation - 71 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r5, r1, #0\n    add r4, r2, #0\n    mov r2, #0\n    add r1, sp, #0x14\n    add r7, r0, #0\n    add r6, r3, #0\n    strb r2, [r1]\n    bl BattleSystem_AreBattleAnimationsOn\n    cmp r0, #1\n    bne _02261F8C\n    add r0, r6, #0\n    mov r1, #1\n    bl Pokepic_StartAnim\n    add r0, r7, #0\n    bl ov12_0223B750\n    add r1, r0, #0\n    ldr r0, [sp, #0x3c]\n    ldr r3, [sp, #0x34]\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    lsl r3, r3, #0x10\n    ldr r0, [sp, #0x30]\n    add r2, r6, #0\n    lsr r3, r3, #0x10\n    str r5, [sp, #8]\n    bl sub_0207294C\n    ldr r2, [sp, #0x34]\n    lsl r3, r4, #0x10\n    lsl r2, r2, #0x10\n    ldr r0, [sp, #0x30]\n    add r1, sp, #0x14\n    lsr r2, r2, #0x10\n    lsr r3, r3, #0x10\n    bl sub_020729A4\n    ldr r0, [sp, #0x3c]\n    cmp r0, #2\n    bne _02261F96\n    mov r4, #0x75\n    b _02261F9A\n    mov r4, #0x74\n    mvn r4, r4\n    add r0, sp, #0x14\n    ldrb r1, [r0]\n    cmp r1, #0\n    bne _02261FA6\n    mov r1, #8\n    strb r1, [r0]\n    add r0, r7, #0\n    add r1, r5, #0\n    bl BattleSystem_GetChatotVoice\n    ldr r2, [sp, #0x34]\n    str r4, [sp]\n    mov r1, #0x7f\n    str r1, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    mov r1, #5\n    str r1, [sp, #0xc]\n    add r1, sp, #0x14\n    ldrb r1, [r1]\n    lsl r2, r2, #0x10\n    ldr r3, [sp, #0x38]\n    str r1, [sp, #0x10]\n    ldr r1, [sp, #0x40]\n    lsr r2, r2, #0x10\n    bl sub_0207204C\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
+}

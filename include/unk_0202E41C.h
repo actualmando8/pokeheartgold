@@ -1,12 +1,13 @@
 #ifndef POKEHEARTGOLD_UNK_0202E41C_H
 #define POKEHEARTGOLD_UNK_0202E41C_H
 
-typedef struct UnkStruct_0202E474 {
-    u8 filler_000[12];
-    u8 unk_00C[192];
-    u8 unk_0CC[192];
-    u8 unk_18C[192];
-    u8 filler_24C[0x97C];
-} UnkStruct_0202E474;
+#include "global.h"
+
+u32 sub_0202E41C(void);
+void sub_0202E424(void *dest);
+void sub_0202E43C(void *dest);
+void sub_0202E474(void *dest);
+void sub_0202E48C(void *dest, u8 value);
+void sub_0202E498(void *dest, u8 value);
 
 #endif // POKEHEARTGOLD_UNK_0202E41C_H

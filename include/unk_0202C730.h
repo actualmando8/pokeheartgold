@@ -1,19 +1,28 @@
-#ifndef POKEHEARTGOLD_UNK_0202C730_H
-#define POKEHEARTGOLD_UNK_0202C730_H
+#ifndef GUARD_UNK_0202C730_H
+#define GUARD_UNK_0202C730_H
 
-#include "friend_group.h"
+#include "global.h"
 
-void sub_0202C7C0(SAV_FRIEND_GRP *saveGrp, u32 grpIdx, u32 a2);
-void sub_0202C78C(SAV_FRIEND_GRP *saveGrp, int a1);
-BOOL sub_0202C860(SAV_FRIEND_GRP *group, u16 a1);
-BOOL sub_0202C878(SAV_FRIEND_GRP *group, u16 a1);
-void sub_0202C738(SAV_FRIEND_GRP *group, u16 a1, int a2);
+extern u32 _021D2AF0;
 
-// return group->groups[a1].unk_24;
-u8 Save_FriendGroup_GetGroupId(SAV_FRIEND_GRP *group, int a1);
-void sub_0202C7F8(SAV_FRIEND_GRP *group, int a1, int a2, String *str);
-void sub_0202C824(SAV_FRIEND_GRP *group, int a1, u32 gender);
-void sub_0202C848(SAV_FRIEND_GRP *group, int a1, int a2);
-BOOL sub_0202C88C(SAV_FRIEND_GRP *group, u16 *a1);
+u32 Save_FriendGroup_sizeof(void);
+void sub_0202C738(void *dst, u32 dstIdx, void *src, u32 srcIdx);
+void Save_FriendGroup_Init(void *group);
+void sub_0202C78C(void *group, u32 count);
+u32 Save_FriendGroup_GetGroupId(void *group, u32 idx);
+void sub_0202C7C0(void *group, u32 idx, u32 groupId);
+void *sub_0202C7DC(void *obj);
+void *sub_0202C7E0(void *group, u32 idx, u32 isForm);
+void sub_0202C7F8(void *group, u32 idx, u32 isForm, u16 *str);
+void sub_0202C824(void *group, u32 idx, u8 form);
+u8 sub_0202C830(void *group, u32 idx);
+u8 sub_0202C83C(void *group, u32 idx);
+void sub_0202C848(void *group, u32 idx, u8 val);
+void *Save_FriendGroup_Get(SaveData *saveData);
+u32 sub_0202C860(void *group, u32 idx);
+u32 sub_0202C878(void *group, u32 idx, void *other);
+u32 sub_0202C88C(void *group, void *name);
+u32 sub_0202C8C4(void *entry);
+u32 sub_0202C8E4(void *a, void *b);
 
-#endif // POKEHEARTGOLD_UNK_0202C730_H
+#endif

@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_020551B8_H
 #define POKEHEARTGOLD_UNK_020551B8_H
 
-#include "task.h"
+#include "global.h"
 
-void sub_02055218(TaskManager *man, int effect, int bgm);
+BOOL sub_020551B8(void *task);
+void sub_02055218(void *param0, void *param1, void *task);
 
-#endif
+#endif // POKEHEARTGOLD_UNK_020551B8_H
