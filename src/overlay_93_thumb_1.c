@@ -117,13 +117,8 @@ void ov93_0225CFC0(void) {
 }
 
 void ov93_0225D064(void) {
-    /* Original at 0x0225D064 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x9c\n    ldr r0, [r0]\n    bl Camera_Delete\n    add r4, #0xa0\n    ldr r0, [r4]\n    bl Camera_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    Camera_Delete();
+    Camera_Delete();
 }
 
 void ov93_0225D07C(void) {
@@ -207,13 +202,9 @@ void ov93_0225D674(void) {
 }
 
 void ov93_0225D6E0(void) {
-    /* Original at 0x0225D6E0 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    add r0, #0xa4\n    ldr r0, [r0]\n    bl sub_020154D0\n    add r4, #0xa4\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl sub_02014EBC\n    add r0, r5, #0\n    bl Heap_Free\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_020154D0();
+    sub_02014EBC();
+    Heap_Free(r5);
 }
 
 void ov93_0225D700(void) {

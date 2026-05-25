@@ -38,13 +38,12 @@ void ov01_021F13EC(void) {
 }
 
 void ov01_021F13F4(void) {
-    /* Original at 0x021F13F4 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_021F15FC\n    add r0, r4, #0\n    bl ov01_021F1538\n    add r0, r4, #0\n    bl ov01_021F16B8\n    add r0, r4, #0\n    bl ov01_021F1490\n    ldr r0, [r4, #0x14]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F15FC();
+    ov01_021F1538(r4);
+    ov01_021F16B8(r4);
+    ov01_021F1490(r4);
+    Heap_Free(*((u32*)(r4 + 0x14)));
+    Heap_Free(r4);
 }
 
 void ov01_021F141C(void) {
@@ -101,13 +100,9 @@ void ov01_021F1478(void) {
 }
 
 void ov01_021F147C(void) {
-    /* Original at 0x021F147C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_021F1478\n    add r1, r0, #0\n    mov r0, #0x67\n    bl NARC_New\n    str r0, [r4, #0x18]\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F1478();
+    NARC_New(0x67, r0);
+    *((u32*)(r4 + 0x18)) = r0;
 }
 
 void ov01_021F1490(void) {
@@ -123,13 +118,9 @@ void ov01_021F14A8(void) {
 }
 
 void ov01_021F14B4(void) {
-    /* Original at 0x021F14B4 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x18]\n    add r5, r2, #0\n    add r6, r1, #0\n    bl NARC_GetMemberSize\n    add r1, r0, #0\n    add r0, r4, #0\n    add r2, r5, #0\n    bl ov01_021F141C\n    add r5, r0, #0\n    ldr r0, [r4, #0x18]\n    add r1, r6, #0\n    add r2, r5, #0\n    bl NARC_ReadWholeMember\n    add r0, r5, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    NARC_GetMemberSize(*((u32*)(r0 + 0x18)));
+    ov01_021F141C(r4, r0, r5);
+    NARC_ReadWholeMember(*((u32*)(r4 + 0x18)), r6, r0);
 }
 
 void ov01_021F14DC(void) {
@@ -187,23 +178,13 @@ void ov01_021F1588(void) {
 }
 
 void ov01_021F15A0(void) {
-    /* Original at 0x021F15A0 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0x17\n    str r1, [r0]\n    mov r1, #0\n    str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 0x17;
+    ((u32*)r0)[4] = 0;
 }
 
 void ov01_021F15AC(void) {
-    /* Original at 0x021F15AC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0]\n    str r2, [r0, #4]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r1;
+    ((u32*)r0)[4] = r2;
 }
 
 void ov01_021F15B4(void) {
@@ -283,13 +264,8 @@ void ov01_021F16EC(void) {
 }
 
 void ov01_021F1740(void) {
-    /* Original at 0x021F1740 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x20]\n    add r4, r2, #0\n    bl ov01_021F18A8\n    add r1, r0, #0\n    add r0, r5, #0\n    add r2, r4, #0\n    bl ov01_021F16EC\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F18A8(*((u32*)(r0 + 0x20)));
+    ov01_021F16EC(r5, r0, r4);
 }
 
 void ov01_021F1758(void) {
@@ -313,13 +289,8 @@ void ov01_021F17BC(void) {
 }
 
 void ov01_021F17F0(void) {
-    /* Original at 0x021F17F0 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x1c]\n    bl ov01_021F1448\n    ldr r0, [r4, #0x20]\n    bl ov01_021F1448\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F1448(*((u32*)(r0 + 0x1c)));
+    ov01_021F1448(*((u32*)(r4 + 0x20)));
 }
 
 void ov01_021F1804(void) {
@@ -389,13 +360,8 @@ void ov01_021F197C(void) {
 }
 
 void ov01_021F19B4(void) {
-    /* Original at 0x021F19B4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #8]\n    ldr r1, [r4, #4]\n    bl GF3dGfxRawResMan_LoadObjTexById\n    mov r0, #1\n    str r0, [r4]\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF3dGfxRawResMan_LoadObjTexById(*((u32*)(r1 + 8)), *((u32*)(r1 + 4)));
+    SysTask_Destroy(r5);
 }
 
 void ov01_021F19D0(void) {

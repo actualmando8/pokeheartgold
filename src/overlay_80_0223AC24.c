@@ -46,13 +46,8 @@ void ov80_0223AD88(void) {
 }
 
 void ov80_0223ADA4(void) {
-    /* Original at 0x0223ADA4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r1, #0x14]\n    ldr r1, [r1]\n    bl ov80_0223AD5C\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    ov80_0223AD5C(*((u32*)(r1 + 0x14)));
+    SysTask_Destroy(r4);
 }
 
 void ov80_0223ADB8(void) {
@@ -185,13 +180,10 @@ void ov80_0223B400(void) {
 }
 
 void ov80_0223B424(void) {
-    /* Original at 0x0223B424 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl sub_02014AD8\n    str r0, [r4]\n    mov r0, #0\n    str r0, [r4, #8]\n    add r0, r4, #0\n    bl ov80_0223B3EC\n    str r0, [r4, #4]\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02014AD8(r1);
+    *((u32*)(r4 + 8)) = 0;
+    ov80_0223B3EC(r4);
+    *((u32*)(r4 + 4)) = r0;
 }
 
 void ov80_0223B440(void) {
@@ -249,13 +241,8 @@ void ov80_0223B504(void) {
 }
 
 void ov80_0223B528(void) {
-    /* Original at 0x0223B528 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x1c]\n    bl sub_02014A8C\n    add r0, r4, #0\n    bl ov80_0223B504\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02014A8C(*((u32*)(r0 + 0x1c)));
+    ov80_0223B504(r4);
 }
 
 void ov80_0223B53C(void) {

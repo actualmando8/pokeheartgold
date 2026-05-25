@@ -71,13 +71,8 @@ void ov01_021FEB3C(void) {
 }
 
 void ov01_021FEB78(void) {
-    /* Original at 0x021FEB78 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r0, [r4, #0x1c]\n    bl ov01_021FEA38\n    ldr r0, [r4, #0x1c]\n    bl ov01_021FEAA0\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021FEA38(*((u32*)(r1 + 0x1c)));
+    ov01_021FEAA0(*((u32*)(r4 + 0x1c)));
 }
 
 void ov01_021FEB8C(void) {

@@ -152,13 +152,11 @@ void sub_020138E0(void) {
 }
 
 void sub_02013910(void) {
-    /* Original at 0x02013910 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r1, #0\n    add r5, r0, #0\n    add r0, r6, #0\n    mov r1, #0x18\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r4, [r4, #0xc]\n    str r4, [r4, #0x10]\n    ldrb r0, [r5, #7]\n    ldrb r1, [r5, #8]\n    add r2, r6, #0\n    add r3, r4, #0\n    bl sub_02013BD4\n    str r0, [r4, #0x14]\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_Alloc(r1, 0x18);
+    *((u32*)(r0 + 0xc)) = r0;
+    *((u32*)(r0 + 0x10)) = r0;
+    sub_02013BD4(*((u8*)(r5 + 7)), *((u8*)(r5 + 8)), r6, r0);
+    *((u32*)(r4 + 0x14)) = r0;
 }
 
 void sub_02013938(void) {

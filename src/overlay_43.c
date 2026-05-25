@@ -76,23 +76,16 @@ void ov43_0222A290(void) {
 }
 
 void ov43_0222A2F0(void) {
-    /* Original at 0x0222A2F0 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r0, #0\n    add r4, r1, #0\n    bl TextFlags_SetCanABSpeedUpPrint\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    ldr r0, [r4, #4]\n    ldr r1, [r5]\n    bl MenuInputStateMgr_SetState\n    ldr r0, [r5, #0x58]\n    bl String_Delete\n    ldr r0, [r5, #0x5c]\n    bl String_Delete\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    TextFlags_SetCanABSpeedUpPrint(0);
+    TextFlags_SetCanTouchSpeedUpPrint(0);
+    MenuInputStateMgr_SetState(*((u32*)(r4 + 4)));
+    String_Delete(*((u32*)(r5 + 0x58)));
+    String_Delete(*((u32*)(r5 + 0x5c)));
 }
 
 void ov43_0222A318(void) {
-    /* Original at 0x0222A318 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #9]\n    strb r2, [r0, #0xa]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[9] = r1;
+    ((u8*)r0)[0xa] = r2;
 }
 
 void ov43_0222A320(void) {
@@ -126,23 +119,12 @@ void ov43_0222A358(void) {
 }
 
 void ov43_0222A414(void) {
-    /* Original at 0x0222A414 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x60]\n    mov r1, #1\n    str r1, [r0, #0x64]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x60] = r1;
+    ((u32*)r0)[0x64] = 1;
 }
 
 void ov43_0222A41C(void) {
-    /* Original at 0x0222A41C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #0xb]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[0xb] = r1;
 }
 
 void ov43_0222A420(void) {
@@ -170,13 +152,9 @@ void ov43_0222A500(void) {
 }
 
 void ov43_0222A50C(void) {
-    /* Original at 0x0222A50C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    bl DoScheduledBgGpuUpdates\n    bl GF_RunVramTransferTasks\n    bl OamManager_ApplyAndResetBuffers\n    pop {r3, pc}"
-    );
-    #endif
+    DoScheduledBgGpuUpdates();
+    GF_RunVramTransferTasks();
+    OamManager_ApplyAndResetBuffers();
 }
 
 void ov43_0222A520(void) {
@@ -244,13 +222,9 @@ void ov43_0222A87C(void) {
 }
 
 void ov43_0222A8A8(void) {
-    /* Original at 0x0222A8A8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #4\n    bl FontID_Release\n    ldr r0, [r4, #0x54]\n    bl DestroyMsgData\n    ldr r0, [r4, #0x50]\n    bl MessageFormat_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    FontID_Release(4);
+    DestroyMsgData(*((u32*)(r4 + 0x54)));
+    MessageFormat_Delete(*((u32*)(r4 + 0x50)));
 }
 
 void ov43_0222A8C0(void) {
@@ -468,13 +442,10 @@ void ov43_0222B0A0(void) {
 }
 
 void ov43_0222B1D8(void) {
-    /* Original at 0x0222B1D8 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x3c]\n    bl String_Delete\n    add r0, r4, #0\n    add r0, #8\n    bl RemoveWindow\n    add r0, r4, #0\n    add r0, #0x20\n    bl RemoveWindow\n    ldr r0, [r4, #0x18]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    String_Delete(*((u32*)(r0 + 0x3c)));
+    RemoveWindow(r4);
+    RemoveWindow(r4);
+    Heap_Free(*((u32*)(r4 + 0x18)));
 }
 
 void ov43_0222B1FC(void) {
@@ -603,13 +574,9 @@ void ov43_0222B574(void) {
 }
 
 void ov43_0222B5A8(void) {
-    /* Original at 0x0222B5A8 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    add r6, r2, #0\n    add r7, r3, #0\n    bl Save_PlayerData_GetOptionsAddr\n    bl Options_GetTextFrameDelay\n    add r1, r5, #0\n    add r1, #0xe0\n    str r0, [r1]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    add r3, r7, #0\n    bl ov43_0222B944\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    Save_PlayerData_GetOptionsAddr(*((u32*)(r1 + 4)));
+    Options_GetTextFrameDelay();
+    ov43_0222B944(r5, r4, r6, r7);
 }
 
 void ov43_0222B5D0(void) {
@@ -1077,13 +1044,10 @@ void ov43_0222CE48(void) {
 }
 
 void ov43_0222D008(void) {
-    /* Original at 0x0222D008 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl RemoveWindow\n    add r0, r4, #0\n    add r0, #0x10\n    bl RemoveWindow\n    add r0, r4, #0\n    add r0, #0x20\n    bl RemoveWindow\n    ldr r0, [r4, #0x30]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    RemoveWindow();
+    RemoveWindow(r4);
+    RemoveWindow(r4);
+    Heap_Free(*((u32*)(r4 + 0x30)));
 }
 
 void ov43_0222D028(void) {
@@ -1117,13 +1081,10 @@ void ov43_0222D0F8(void) {
 }
 
 void ov43_0222D134(void) {
-    /* Original at 0x0222D134 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    add r6, r2, #0\n    add r7, r3, #0\n    bl Save_VarsFlags_Get\n    mov r1, #2\n    mov r2, #0x1b\n    bl Save_VarsFlags_FlypointFlagAction\n    str r0, [r5, #0x10]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    add r3, r7, #0\n    bl ov43_0222D584\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    Save_VarsFlags_Get(*((u32*)(r1 + 4)));
+    Save_VarsFlags_FlypointFlagAction(2, 0x1b);
+    *((u32*)(r5 + 0x10)) = r0;
+    ov43_0222D584(r5, r4, r6, r7);
 }
 
 void ov43_0222D15C(void) {

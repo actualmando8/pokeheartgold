@@ -36,13 +36,7 @@ void ov01_021FCDA8(void) {
 }
 
 void ov01_021FCDBC(void) {
-    /* Original at 0x021FCDBC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = 1;
 }
 
 void ov01_021FCDC4(void) {

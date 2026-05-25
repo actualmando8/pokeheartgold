@@ -139,13 +139,11 @@ void sub_0200FE14(void) {
 }
 
 void sub_0200FE78(void) {
-    /* Original at 0x0200FE78 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0]\n    str r2, [r0, #4]\n    str r3, [r0, #8]\n    str r2, [r0, #0xc]\n    str r3, [r0, #0x10]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r1;
+    ((u32*)r0)[4] = r2;
+    ((u32*)r0)[8] = r3;
+    ((u32*)r0)[0xc] = r2;
+    ((u32*)r0)[0x10] = r3;
 }
 
 void sub_0200FE84(void) {
@@ -219,23 +217,15 @@ void sub_0200FFB4(void) {
 }
 
 void sub_0200FFD8(void) {
-    /* Original at 0x0200FFD8 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #8]\n    ldr r3, [r4, #0xc]\n    bl sub_0200FEE4\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0200FEE4(*((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    SysTask_Destroy(r5);
+    Heap_Free(r4);
 }
 
 void sub_0200FFF8(void) {
-    /* Original at 0x0200FFF8 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    bl sub_0200FF5C\n    add r0, r5, #0\n    bl SysTask_Destroy\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0200FF5C(*((u32*)(r1 + 4)));
+    SysTask_Destroy(r5);
+    Heap_Free(r4);
 }
 
 void sub_02010014(void) {
@@ -269,13 +259,8 @@ void sub_0201002C(void) {
 }
 
 void sub_02010050(void) {
-    /* Original at 0x02010050 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r1, #0x10]\n    mov r1, #0\n    bl SetMasterBrightness\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    SetMasterBrightness(*((u32*)(r1 + 0x10)), 0);
+    SysTask_Destroy(r4);
 }
 
 void sub_02010064(void) {

@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_021FED9C(void) {
-    /* Original at 0x021FED9C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #0x3c\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    bl ov01_021FEDC8\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F1430(0x3c, 0, 0);
+    ov01_021FEDC8();
 }
 
 void ov01_021FEDB8(void) {
@@ -27,7 +22,7 @@ void ov01_021FEDC8(void) {
 }
 
 void ov01_021FEDF0(void) {
-    sub_02069784();
+    sub_02069784((r0 + 4));
     sub_020698D0(r4);
 }
 

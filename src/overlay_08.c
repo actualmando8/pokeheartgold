@@ -1791,13 +1791,10 @@ void ov08_022231E8(void) {
 }
 
 void ov08_02223228(void) {
-    /* Original at 0x02223228 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    bl DestroyMsgData\n    ldr r0, [r4, #0xc]\n    bl MessagePrinter_Delete\n    ldr r0, [r4, #0x14]\n    bl MessageFormat_Delete\n    ldr r0, [r4, #0x18]\n    bl String_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    DestroyMsgData(*((u32*)(r0 + 0x10)));
+    MessagePrinter_Delete(*((u32*)(r4 + 0xc)));
+    MessageFormat_Delete(*((u32*)(r4 + 0x14)));
+    String_Delete(*((u32*)(r4 + 0x18)));
 }
 
 void ov08_02223248(void) {
@@ -1835,13 +1832,8 @@ void ov08_02223368(void) {
 }
 
 void ov08_02223374(void) {
-    /* Original at 0x02223374 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r4, [r5]\n    ldr r0, [r4]\n    bl BattleSystem_GetBattleContext\n    add r1, r0, #0\n    ldr r0, [r5]\n    ldr r3, [r4, #0x10]\n    ldr r0, [r0]\n    mov r2, #2\n    bl ov12_022581D4\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    BattleSystem_GetBattleContext();
+    ov12_022581D4(r0, 2, *((u32*)(r4 + 0x10)));
 }
 
 void ov08_02223390(void) {
@@ -1882,13 +1874,8 @@ void ov08_02223454(void) {
 }
 
 void ov08_02223464(void) {
-    /* Original at 0x02223464 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #0\n    add r1, #0x30\n    ldrb r1, [r1]\n    ldr r0, [r4, #0x2c]\n    bl WindowArray_Delete\n    add r4, #0x1c\n    add r0, r4, #0\n    bl RemoveWindow\n    pop {r4, pc}"
-    );
-    #endif
+    WindowArray_Delete(*((u32*)(r0 + 0x2c)), r0);
+    RemoveWindow(r4);
 }
 
 void ov08_02223480(void) {
@@ -2237,13 +2224,10 @@ void ov08_02224134(void) {
 }
 
 void ov08_0222417C(void) {
-    /* Original at 0x0222417C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x34]\n    mov r1, #0\n    bl ov08_02224B90\n    ldr r0, [r4, #0x34]\n    bl ov08_02224BC0\n    ldr r0, [r4, #0x34]\n    bl ov08_02224B84\n    bl BattleCursor_Disable\n    pop {r4, pc}"
-    );
-    #endif
+    ov08_02224B90(*((u32*)(r0 + 0x34)), 0);
+    ov08_02224BC0(*((u32*)(r4 + 0x34)));
+    ov08_02224B84(*((u32*)(r4 + 0x34)));
+    BattleCursor_Disable();
 }
 
 void ov08_0222419C(void) {
@@ -2435,23 +2419,11 @@ void ov08_02224B8C(void) {
 }
 
 void ov08_02224B90(void) {
-    /* Original at 0x02224B90 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[8] = r1;
 }
 
 void ov08_02224B94(void) {
-    /* Original at 0x02224B94 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r1;
 }
 
 void ov08_02224B98(void) {
@@ -2465,13 +2437,8 @@ void ov08_02224B98(void) {
 }
 
 void ov08_02224BC0(void) {
-    /* Original at 0x02224BC0 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strb r1, [r0, #9]\n    mov r1, #0xff\n    strb r1, [r0, #0xa]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[9] = 0;
+    ((u8*)r0)[0xa] = 0xff;
 }
 
 void ov08_02224BCC(void) {
@@ -2485,13 +2452,7 @@ void ov08_02224BCC(void) {
 }
 
 void ov08_02224BF8(void) {
-    /* Original at 0x02224BF8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = r1;
 }
 
 void ov08_02224BFC(void) {

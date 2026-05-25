@@ -652,13 +652,12 @@ void ov01_021EC7AC(void) {
 }
 
 void ov01_021EC7C8(void) {
-    /* Original at 0x021EC7C8 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r2, #1\n    str r2, [r4, #0x24]\n    mov r1, #0\n    str r1, [r4, #0x28]\n    strh r1, [r4, #0x2c]\n    strh r2, [r4, #0x2e]\n    bl ov01_021EC828\n    ldr r0, [r4]\n    add r1, r4, #4\n    bl ov01_021EA8C4\n    pop {r4, pc}"
-    );
-    #endif
+    *((u32*)(r0 + 0x24)) = 1;
+    *((u32*)(r0 + 0x28)) = 0;
+    *((u16*)(r0 + 0x2c)) = 0;
+    *((u16*)(r0 + 0x2e)) = 1;
+    ov01_021EC828(0, 1);
+    ov01_021EA8C4((r4 + 4));
 }
 
 void ov01_021EC7E8(void) {

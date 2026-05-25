@@ -581,13 +581,8 @@ void ov83_02240D64(void) {
 }
 
 void ov83_02240DA8(void) {
-    /* Original at 0x02240DA8 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r3, #0\n    strb r3, [r0, #8]\n    str r2, [r1]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[8] = 0;
+    *(u32*)r1 = r2;
 }
 
 void ov83_02240DB0(void) {
@@ -1530,13 +1525,8 @@ void ov83_02244CCC(void) {
 }
 
 void ov83_02244CD4(void) {
-    /* Original at 0x02244CD4 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r3, #0\n    strb r3, [r0, #8]\n    str r2, [r1]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[8] = 0;
+    *(u32*)r1 = r2;
 }
 
 void ov83_02244CDC(void) {
@@ -2154,23 +2144,13 @@ void ov83_0224759C(void) {
 }
 
 void ov83_022475D4(void) {
-    /* Original at 0x022475D4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    add r4, r1, #0\n    mov r1, #0\n    bl Sprite_SetAnimationFrame\n    ldr r0, [r5, #4]\n    add r1, r4, #0\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Sprite_SetAnimationFrame(*((u32*)(r0 + 4)), 0);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 4)), r4);
 }
 
 void ov83_022475EC(void) {
-    /* Original at 0x022475EC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl Pokemon_GetIconPalette\n    add r1, r0, #0\n    ldr r0, [r4, #4]\n    bl Sprite_SetPalOffsetRespectVramOffset\n    pop {r4, pc}"
-    );
-    #endif
+    Pokemon_GetIconPalette(r1);
+    Sprite_SetPalOffsetRespectVramOffset(*((u32*)(r4 + 4)), r0);
 }
 
 void ov83_02247600(void) {
@@ -2260,13 +2240,7 @@ void ov83_022477C4(void) {
 }
 
 void ov83_022477E4(void) {
-    /* Original at 0x022477E4 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 0;
 }
 
 void ov83_022477EC(void) {

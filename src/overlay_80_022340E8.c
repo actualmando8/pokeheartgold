@@ -394,43 +394,19 @@ void ov80_022352BC(void) {
 }
 
 void ov80_022352C8(void) {
-    /* Original at 0x022352C8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = 1;
 }
 
 void ov80_022352D0(void) {
-    /* Original at 0x022352D0 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #7\n    str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = 7;
 }
 
 void ov80_022352D8(void) {
-    /* Original at 0x022352D8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #4\n    str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = 4;
 }
 
 void ov80_022352E0(void) {
-    /* Original at 0x022352E0 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #9\n    str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = 9;
 }
 
 void ov80_022352E8(void) {
@@ -464,13 +440,7 @@ void ov80_02235300(void) {
 }
 
 void ov80_0223530C(void) {
-    /* Original at 0x0223530C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    strb r1, [r0, #0x12]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[0x12] = 1;
 }
 
 void ov80_02235314(void) {
@@ -524,11 +494,8 @@ void ov80_02235324(void) {
 }
 
 void ov80_02235364(void) {
-    /* Original at 0x02235364 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r1, r2, #0\n    add r4, r3, #0\n    bl Party_GetMonByIndex\n    mov r1, #6\n    mov r2, #0\n    bl GetMonData\n    add r1, sp, #0\n    strh r0, [r1]\n    add r0, r5, #0\n    add r1, r4, #0\n    bl Party_GetMonByIndex\n    mov r1, #6\n    add r2, sp, #0\n    bl SetMonData\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Party_GetMonByIndex(r2);
+    GetMonData(6, 0);
+    Party_GetMonByIndex(r5, r4);
+    SetMonData(6);
 }

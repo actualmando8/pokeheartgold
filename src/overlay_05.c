@@ -580,13 +580,11 @@ void ov05_0221DB94(void) {
 }
 
 void ov05_0221DC34(void) {
-    /* Original at 0x0221DC34 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x1e\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    ldr r0, [r4, #0xc]\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    GfGfx_EngineATogglePlanes(0x1e, 0);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 3);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 2);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 1);
+    Heap_Free(*((u32*)(r4 + 0xc)));
 }
 
 void ov05_0221DC60(void) {

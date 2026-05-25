@@ -52,13 +52,8 @@ void BagApp_GetSaveRoamers(void) {
 }
 
 void BagApp_GetRepelStepCountAddr(void) {
-    /* Original at 0x021F993C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl BagApp_GetSaveRoamers\n    bl RoamerSave_GetRepelAddr\n    strb r4, [r0]\n    pop {r4, pc}"
-    );
-    #endif
+    BagApp_GetSaveRoamers();
+    RoamerSave_GetRepelAddr();
 }
 
 void BagApp_SetFlute(void) {

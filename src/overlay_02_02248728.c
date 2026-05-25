@@ -227,14 +227,12 @@ void ov02_022490BC(void) {
     #endif
 }
 
-void ov02_022491A8(void) {
-    /* Original at 0x022491A8 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x68]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    ldr r0, [r4, #0x60]\n    mov r1, #1\n    bl Sprite_SetAnimCtrlSeq\n    mov r0, #0\n    str r0, [r4, #4]\n    ldrb r0, [r4, #1]\n    add r0, r0, #1\n    strb r0, [r4, #1]\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov02_022491A8(void) {
+    Sprite_SetDrawFlag(*((u32*)(r0 + 0x68)), 0);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r4 + 0x60)), 1);
+    *((u32*)(r4 + 4)) = 0;
+    *((u8*)(r4 + 1)) = (*((u8*)(r4 + 1)) + 1);
+    return 1;
 }
 
 void ov02_022491CC(void) {
@@ -284,13 +282,8 @@ void ov02_02249420(void) {
 }
 
 void ov02_02249444(void) {
-    /* Original at 0x02249444 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r0, [r0, #0x40]\n    add r4, r1, #0\n    bl PlayerAvatar_GetMapObject\n    add r1, r4, #0\n    bl MapObject_SetVisible\n    pop {r4, pc}"
-    );
-    #endif
+    PlayerAvatar_GetMapObject(*((u32*)(r0 + 0x40)));
+    MapObject_SetVisible(r4);
 }
 
 void ov02_02249458(void) {
@@ -347,24 +340,16 @@ void ov02_02249584(void) {
     #endif
 }
 
-void ov02_022495B8(void) {
-    /* Original at 0x022495B8 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov02_02249EC0\n    add r0, r4, #0\n    bl ov02_02249CF0\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov02_022495B8(void) {
+    ov02_02249EC0();
+    ov02_02249CF0(r4);
+    return 0;
 }
 
-void ov02_022495D0(void) {
-    /* Original at 0x022495D0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov02_02249F6C\n    add r0, r4, #0\n    bl ov02_02249CF0\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov02_022495D0(void) {
+    ov02_02249F6C();
+    ov02_02249CF0(r4);
+    return 0;
 }
 
 void ov02_022495E8(void) {
@@ -480,13 +465,7 @@ void ov02_02249968(void) {
 }
 
 void ov02_0224997C(void) {
-    /* Original at 0x0224997C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #4]\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 1;
 }
 
 void ov02_02249984(void) {
@@ -533,28 +512,22 @@ void ov02_02249AC4(void) {
     ov02_0224A8D4(0);
 }
 
-void ov02_02249AD8(void) {
-    /* Original at 0x02249AD8 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov02_0224A4D0\n    add r0, r4, #0\n    bl ov02_02249D18\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov02_02249AD8(void) {
+    ov02_0224A4D0();
+    ov02_02249D18(r4);
+    return 0;
 }
 
 void ov02_02249AF0(void) {
     ov02_02249D40(0, 1, 0x85);
 }
 
-void ov02_02249B10(void) {
-    /* Original at 0x02249B10 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov02_0224AB58\n    add r0, r4, #0\n    bl ov02_0224AC38\n    add r0, r4, #0\n    bl ov02_0224A690\n    add r0, r4, #0\n    mov r1, #1\n    bl ov02_0224B6B0\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov02_02249B10(void) {
+    ov02_0224AB58();
+    ov02_0224AC38(r4);
+    ov02_0224A690(r4);
+    ov02_0224B6B0(r4, 1);
+    return 0;
 }
 
 void ov02_02249B38(void) {
@@ -842,53 +815,32 @@ void ov02_0224A63C(void) {
 }
 
 void ov02_0224A648(void) {
-    /* Original at 0x0224A648 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov02_0224A6A8\n    mov r0, #0\n    str r0, [r4, #0x2c]\n    add r0, r4, #0\n    bl ov02_0224A674\n    add r0, r4, #0\n    bl ov02_0224A67C\n    add r0, r4, #0\n    bl ov02_0224A66C\n    mov r0, #1\n    str r0, [r4, #0x2c]\n    pop {r4, pc}"
-    );
-    #endif
+    ov02_0224A6A8();
+    *((u32*)(r4 + 0x2c)) = 0;
+    ov02_0224A674(r4);
+    ov02_0224A67C(r4);
+    ov02_0224A66C(r4);
+    *((u32*)(r4 + 0x2c)) = 1;
 }
 
 void ov02_0224A66C(void) {
-    /* Original at 0x0224A66C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #0x30]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x30] = 1;
 }
 
 void ov02_0224A674(void) {
-    /* Original at 0x0224A674 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #0x30]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x30] = 0;
 }
 
 void ov02_0224A67C(void) {
-    /* Original at 0x0224A67C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0x18\n    str r1, [r0, #0x34]\n    mov r1, #0\n    str r1, [r0, #0x38]\n    mov r1, #0x17\n    str r1, [r0, #0x3c]\n    mov r1, #1\n    str r1, [r0, #0x40]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x34] = 0x18;
+    ((u32*)r0)[0x38] = 0;
+    ((u32*)r0)[0x3c] = 0x17;
+    ((u32*)r0)[0x40] = 1;
 }
 
 void ov02_0224A690(void) {
-    /* Original at 0x0224A690 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0x17\n    str r1, [r0, #0x3c]\n    mov r1, #1\n    str r1, [r0, #0x40]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x3c] = 0x17;
+    ((u32*)r0)[0x40] = 1;
 }
 
 void ov02_0224A69C(void) {
@@ -1087,14 +1039,13 @@ void ov02_0224AB9C(void) {
     #endif
 }
 
-void ov02_0224ABCC(void) {
-    /* Original at 0x0224ABCC */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r4, r1, #0\n    bl sub_02068D98\n    ldr r0, [r0]\n    add r1, sp, #0\n    str r0, [r4, #0x5c]\n    add r0, r5, #0\n    bl sub_02068DB8\n    mov r2, #0\n    ldr r0, [r4, #0x5c]\n    add r1, sp, #0\n    add r3, r2, #0\n    bl ov02_0224A468\n    str r0, [r4, #0x58]\n    mov r0, #1\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+u32 ov02_0224ABCC(void) {
+    sub_02068D98();
+    *((u32*)(r4 + 0x5c)) = r0;
+    sub_02068DB8(r5);
+    ov02_0224A468(*((u32*)(r4 + 0x5c)), 0, 0);
+    *((u32*)(r4 + 0x58)) = r0;
+    return 1;
 }
 
 void ov02_0224ABF8(void) {
@@ -1625,24 +1576,19 @@ void ov02_0224C14C(void) {
     #endif
 }
 
-void ov02_0224C1B8(void) {
-    /* Original at 0x0224C1B8 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r1, #0xc]\n    add r4, r2, #0\n    bl Save_LocalFieldData_Get\n    bl LocalFieldData_GetSpecialSpawnWarpPtr\n    add r1, r0, #0\n    ldr r2, [r4, #0xc]\n    add r0, r5, #0\n    bl sub_02053B04\n    mov r0, #2\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 ov02_0224C1B8(void) {
+    Save_LocalFieldData_Get(*((u32*)(r1 + 0xc)));
+    LocalFieldData_GetSpecialSpawnWarpPtr();
+    sub_02053B04(r5, r0, *((u32*)(r4 + 0xc)));
+    return 2;
 }
 
 void ov02_0224C1D8(void) {
-    /* Original at 0x0224C1D8 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, r1, #0\n    mov r1, #0x30\n    add r6, r2, #0\n    bl ov02_0224C660\n    add r4, r0, #0\n    str r6, [r4, #0xc]\n    str r5, [r4, #0x24]\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetMapObject\n    str r0, [r4, #0x20]\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov02_0224C660(r1, 0x30);
+    *((u32*)(r0 + 0xc)) = r6;
+    *((u32*)(r0 + 0x24)) = r5;
+    PlayerAvatar_GetMapObject(*((u32*)(r5 + 0x40)));
+    *((u32*)(r4 + 0x20)) = r0;
 }
 
 void ov02_0224C1F8(void) {
@@ -1715,14 +1661,11 @@ void Task_FieldDig(void) {
     #endif
 }
 
-void ov02_0224C4B4(void) {
-    /* Original at 0x0224C4B4 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    ldr r0, [r5, #0x40]\n    add r4, r2, #0\n    bl PlayerAvatar_GetGender\n    add r3, r0, #0\n    ldr r2, [r4, #0x28]\n    add r0, r5, #0\n    mov r1, #0\n    bl ov02_02249458\n    str r0, [r4, #0x18]\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 ov02_0224C4B4(void) {
+    PlayerAvatar_GetGender(*((u32*)(r1 + 0x40)));
+    ov02_02249458(r5, 0, *((u32*)(r4 + 0x28)), r0);
+    *((u32*)(r4 + 0x18)) = r0;
+    return 0;
 }
 
 void ov02_0224C4D8(void) {
@@ -1869,14 +1812,11 @@ void ov02_0224C9B8(void) {
     #endif
 }
 
-void ov02_0224CA38(void) {
-    /* Original at 0x0224CA38 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r1, #0xc]\n    add r4, r2, #0\n    bl Save_LocalFieldData_Get\n    bl LocalFieldData_GetSpecialSpawnWarpPtr\n    add r1, r0, #0\n    ldr r2, [r4, #0xc]\n    add r0, r5, #0\n    bl sub_02053B04\n    mov r0, #2\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 ov02_0224CA38(void) {
+    Save_LocalFieldData_Get(*((u32*)(r1 + 0xc)));
+    LocalFieldData_GetSpecialSpawnWarpPtr();
+    sub_02053B04(r5, r0, *((u32*)(r4 + 0xc)));
+    return 2;
 }
 
 void ov02_0224CA58(void) {
@@ -2230,13 +2170,8 @@ void ov02_0224D648(void) {
 }
 
 void ov02_0224D658(void) {
-    /* Original at 0x0224D658 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r2, #0\n    add r5, r1, #0\n    add r0, r4, #0\n    bl ov02_0224D1AC\n    ldr r0, [r5, #0x40]\n    add r1, r4, #0\n    bl ov02_0224D0AC\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov02_0224D1AC(r2);
+    ov02_0224D0AC(*((u32*)(r5 + 0x40)), r4);
 }
 
 void ov02_0224D670(void) {
@@ -2662,13 +2597,9 @@ void ov02_0224E31C(void) {
 }
 
 void ov02_0224E340(void) {
-    /* Original at 0x0224E340 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetXCoord\n    add r4, r0, #0\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetZCoord\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov02_0224E31C\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
+    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
+    ov02_0224E31C(r4, r0);
 }
 
 void ov02_0224E35C(void) {

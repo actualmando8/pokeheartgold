@@ -32,13 +32,9 @@ void ov12_0226BC68(void) {
 }
 
 void ov12_0226BCE4(void) {
-    /* Original at 0x0226BCE4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Sprite_DeleteAndFreeResources\n    ldr r0, [r4, #4]\n    bl SysTask_Destroy\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Sprite_DeleteAndFreeResources();
+    SysTask_Destroy(*((u32*)(r4 + 4)));
+    Heap_Free(r4);
 }
 
 void ov12_0226BCFC(void) {
@@ -56,23 +52,12 @@ void ov12_0226BD2C(void) {
 }
 
 void ov12_0226BD38(void) {
-    /* Original at 0x0226BD38 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #0\n    bl ManagedSprite_SetDrawFlag\n    add r0, r4, #0\n    bl ov12_0226BEB8\n    pop {r4, pc}"
-    );
-    #endif
+    ManagedSprite_SetDrawFlag(0);
+    ov12_0226BEB8(r4);
 }
 
 void ov12_0226BD4C(void) {
-    /* Original at 0x0226BD4C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0, #0x18]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0x18] = r1;
 }
 
 void ov12_0226BD50(void) {
@@ -96,11 +81,8 @@ void ov12_0226BD54(void) {
 }
 
 void ov12_0226BEB8(void) {
-    /* Original at 0x0226BEB8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #0x10]\n    strb r1, [r0, #0x1c]\n    strb r1, [r0, #0x1d]\n    strb r1, [r0, #0x1e]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x10] = 0;
+    ((u8*)r0)[0x1c] = 0;
+    ((u8*)r0)[0x1d] = 0;
+    ((u8*)r0)[0x1e] = 0;
 }

@@ -134,13 +134,8 @@ void ov90_02258AA8(void) {
 }
 
 void ov90_02258B24(void) {
-    /* Original at 0x02258B24 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #6]\n    mov r1, #1\n    strb r1, [r0, #7]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[6] = r1;
+    ((u8*)r0)[7] = 1;
 }
 
 void ov90_02258B2C(void) {
@@ -362,13 +357,10 @@ void ov90_022590CC(void) {
 }
 
 void ov90_02259158(void) {
-    /* Original at 0x02259158 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    bl SpriteList_Delete\n    bl ObjCharTransfer_Destroy\n    bl ObjPlttTransfer_Destroy\n    bl OamManager_Free\n    pop {r3, pc}"
-    );
-    #endif
+    SpriteList_Delete();
+    ObjCharTransfer_Destroy();
+    ObjPlttTransfer_Destroy();
+    OamManager_Free();
 }
 
 void ov90_02259170(void) {
@@ -390,13 +382,10 @@ void ov90_02259184(void) {
 }
 
 void ov90_022591D4(void) {
-    /* Original at 0x022591D4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    bl String_Delete\n    ldr r0, [r4, #8]\n    bl String_Delete\n    ldr r0, [r4, #4]\n    bl MessageFormat_Delete\n    ldr r0, [r4]\n    bl DestroyMsgData\n    pop {r4, pc}"
-    );
-    #endif
+    String_Delete(*((u32*)(r0 + 0xc)));
+    String_Delete(*((u32*)(r4 + 8)));
+    MessageFormat_Delete(*((u32*)(r4 + 4)));
+    DestroyMsgData();
 }
 
 void ov90_022591F4(void) {
@@ -456,13 +445,8 @@ void ov90_0225927C(void) {
 }
 
 void ov90_0225928C(void) {
-    /* Original at 0x0225928C */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r1, r2, #0\n    ldr r0, [r5]\n    ldr r2, [r5, #0xc]\n    bl ReadMsgDataIntoString\n    ldr r0, [r5, #4]\n    ldr r2, [r5, #0xc]\n    add r1, r4, #0\n    bl StringExpandPlaceholders\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ReadMsgDataIntoString(r2, *((u32*)(r0 + 0xc)));
+    StringExpandPlaceholders(*((u32*)(r5 + 4)), r4, *((u32*)(r5 + 0xc)));
 }
 
 void ov90_022592A8(void) {
@@ -652,13 +636,9 @@ void ov90_02259DAC(void) {
 }
 
 void ov90_02259E18(void) {
-    /* Original at 0x02259E18 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x14]\n    add r4, r1, #0\n    mov r1, #1\n    bl Sprite_SetDrawFlag\n    ldr r0, [r5, #0x14]\n    add r1, r4, #4\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, [r5, #0x14]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Sprite_SetDrawFlag(*((u32*)(r0 + 0x14)), 1);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 0x14)), (r4 + 4));
+    Sprite_SetAnimActiveFlag(*((u32*)(r5 + 0x14)), 1);
 }
 
 void ov90_02259E38(void) {
@@ -672,13 +652,8 @@ void ov90_02259E38(void) {
 }
 
 void ov90_02259E8C(void) {
-    /* Original at 0x02259E8C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl ScheduleWindowCopyToVram\n    ldr r0, [r4]\n    mov r1, #1\n    bl ScheduleBgTilemapBufferTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    ScheduleWindowCopyToVram();
+    ScheduleBgTilemapBufferTransfer(1);
 }
 
 void ov90_02259EA0(void) {
@@ -836,13 +811,8 @@ void ov90_0225A2B0(void) {
 }
 
 void ov90_0225A340(void) {
-    /* Original at 0x0225A340 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl RemoveWindow\n    ldr r0, [r4, #0x14]\n    bl String_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    RemoveWindow();
+    String_Delete(*((u32*)(r4 + 0x14)));
 }
 
 void ov90_0225A350(void) {
@@ -1054,13 +1024,8 @@ void ov90_0225B53C(void) {
 }
 
 void ov90_0225B594(void) {
-    /* Original at 0x0225B594 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r2, #1\n    strb r2, [r0, #0x1e]\n    strb r1, [r0, #0x1f]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[0x1e] = 1;
+    ((u8*)r0)[0x1f] = r1;
 }
 
 void ov90_0225B59C(void) {

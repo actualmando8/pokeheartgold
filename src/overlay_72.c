@@ -156,13 +156,9 @@ void ov72_02238124(void) {
 }
 
 void ov72_02238144(void) {
-    /* Original at 0x02238144 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl OverlayManager_GetArgs\n    mov r1, #0\n    str r0, [r4]\n    add r0, r4, #0\n    add r2, r1, #0\n    str r1, [r4, #0x10]\n    bl ov72_022387D0\n    pop {r4, pc}"
-    );
-    #endif
+    OverlayManager_GetArgs(r1);
+    *((u32*)(r4 + 0x10)) = 0;
+    ov72_022387D0(r4, 0, 0);
 }
 
 void ov72_02238160(void) {
@@ -226,13 +222,8 @@ void ov72_02238668(void) {
 }
 
 void ov72_02238680(void) {
-    /* Original at 0x02238680 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x1c]\n    str r2, [r0, #0x20]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x1c] = r1;
+    ((u32*)r0)[0x20] = r2;
 }
 
 void ov72_02238688(void) {
@@ -294,13 +285,8 @@ void ov72_022387C4(void) {
 }
 
 void ov72_022387D0(void) {
-    /* Original at 0x022387D0 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    str r2, [r0, #0x18]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
+    ((u32*)r0)[0x18] = r2;
 }
 
 void ov72_022387D8(void) {
@@ -589,14 +575,11 @@ void ov72_022396E8(void) {
     #endif
 }
 
-void ov72_02239760(void) {
-    /* Original at 0x02239760 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r2, r4, #0\n    add r2, #0x98\n    ldr r2, [r2]\n    mov r1, #1\n    bl ov72_0223A520\n    mov r0, #0xf\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #1\n    bl ov72_0223A41C\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov72_02239760(void) {
+    ov72_0223A520(1, r0);
+    *((u32*)(r4 + 0x1c)) = 0xf;
+    ov72_0223A41C(r4, 0, 1);
+    return 3;
 }
 
 void ov72_02239784(void) {
@@ -709,14 +692,11 @@ void ov72_02239B98(void) {
     #endif
 }
 
-void ov72_02239BC8(void) {
-    /* Original at 0x02239BC8 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r2, r4, #0\n    mov r1, #1\n    add r2, #0x94\n    str r1, [r2]\n    add r2, r1, #0\n    bl ov72_0223A41C\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0xa\n    bl ov72_0223A520\n    mov r0, #0x1f\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov72_02239BC8(void) {
+    ov72_0223A41C(1, 1);
+    ov72_0223A520(r4, 1, 0xa);
+    *((u32*)(r4 + 0x1c)) = 0x1f;
+    return 3;
 }
 
 void ov72_02239BEC(void) {
@@ -800,13 +780,7 @@ void ov72_02239E58(void) {
 }
 
 void ov72_02239E94(void) {
-    /* Original at 0x02239E94 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0x29\n    str r1, [r0, #0x1c]\n    mov r0, #3\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x1c] = 0x29;
 }
 
 void ov72_02239E9C(void) {
@@ -873,14 +847,11 @@ void ov72_02239F8C(void) {
     #endif
 }
 
-void ov72_02239FBC(void) {
-    /* Original at 0x02239FBC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov00_021EC8D8\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov72_022387D0\n    mov r0, #0x2b\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov72_02239FBC(void) {
+    ov00_021EC8D8();
+    ov72_022387D0(r4, 0, 0);
+    *((u32*)(r4 + 0x1c)) = 0x2b;
+    return 3;
 }
 
 void ov72_02239FD8(void) {
@@ -1403,13 +1374,8 @@ void ov72_0223B2C0(void) {
 }
 
 void ov72_0223B2E4(void) {
-    /* Original at 0x0223B2E4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    mov r1, #1\n    bl Sprite_SetDrawFlag\n    add r0, r4, #0\n    add r4, #0x2c\n    ldrb r1, [r4]\n    bl ov72_0223B2FC\n    pop {r4, pc}"
-    );
-    #endif
+    Sprite_SetDrawFlag(*((u32*)(r0 + 4)), 1);
+    ov72_0223B2FC(r4);
 }
 
 void ov72_0223B2FC(void) {

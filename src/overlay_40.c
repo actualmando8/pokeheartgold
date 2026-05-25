@@ -86,23 +86,14 @@ void ov40_0222BF64(void) {
 }
 
 void ov40_0222BF80(void) {
-    /* Original at 0x0222BF80 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #4]\n    mov r1, #0\n    str r1, [r0, #8]\n    str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = r1;
+    ((u32*)r0)[8] = 0;
+    ((u32*)r0)[0xc] = 0;
 }
 
 void ov40_0222BF8C(void) {
-    /* Original at 0x0222BF8C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #8]\n    mov r1, #0\n    str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = r1;
+    ((u32*)r0)[0xc] = 0;
 }
 
 void ov40_0222BF94(void) {
@@ -456,13 +447,9 @@ void ov40_0222D66C(void) {
 }
 
 void ov40_0222D6D0(void) {
-    /* Original at 0x0222D6D0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    bl sub_02013938\n    ldr r0, [r4, #8]\n    bl TextOBJ_Destroy\n    add r4, #0x10\n    add r0, r4, #0\n    bl sub_02021B5C\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02013938(*((u32*)(r0 + 0xc)));
+    TextOBJ_Destroy(*((u32*)(r4 + 8)));
+    sub_02021B5C(r4);
 }
 
 void ov40_0222D6EC(void) {
@@ -586,13 +573,7 @@ void ov40_0222DA84(void) {
 }
 
 void ov40_0222DAA8(void) {
-    /* Original at 0x0222DAA8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0x10\n    str r1, [r0]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 0x10;
 }
 
 void ov40_0222DAB0(void) {
@@ -975,13 +956,8 @@ void ov40_0222F740(void) {
 }
 
 void ov40_0222F858(void) {
-    /* Original at 0x0222F858 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    add r3, r1, #0\n    add r5, r2, #0\n    ldr r0, [r4, #0x2c]\n    mov r1, #0x80\n    add r2, r3, #0\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r4, #0x30]\n    mov r1, #0x80\n    add r2, r5, #0\n    bl ManagedSprite_SetPositionXY\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ManagedSprite_SetPositionXY(*((u32*)(r0 + 0x2c)), 0x80, r1, r1);
+    ManagedSprite_SetPositionXY(*((u32*)(r4 + 0x30)), 0x80, r5);
 }
 
 void ov40_0222F878(void) {
@@ -1025,13 +1001,8 @@ void ov40_0222F950(void) {
 }
 
 void ov40_0222F9C0(void) {
-    /* Original at 0x0222F9C0 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x18]\n    bl Sprite_DeleteAndFreeResources\n    ldr r0, [r4, #0x1c]\n    bl Sprite_DeleteAndFreeResources\n    pop {r4, pc}"
-    );
-    #endif
+    Sprite_DeleteAndFreeResources(*((u32*)(r0 + 0x18)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r4 + 0x1c)));
 }
 
 void ov40_0222F9D4(void) {
@@ -1107,13 +1078,10 @@ void ov40_0222FB40(void) {
 }
 
 void ov40_0222FB74(void) {
-    /* Original at 0x0222FB74 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov40_0222BC44\n    bl sub_0203A86C\n    mov r0, #1\n    str r0, [r4, #4]\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov40_0222BC44();
+    sub_0203A86C();
+    *((u32*)(r4 + 4)) = 1;
+    SysTask_Destroy(r5);
 }
 
 void ov40_0222FB90(void) {
@@ -1444,13 +1412,8 @@ void ov40_02230970(void) {
 }
 
 void ov40_022309CC(void) {
-    /* Original at 0x022309CC */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov40_0222D6D0\n    ldr r0, [r4, #4]\n    bl Sprite_DeleteAndFreeResources\n    pop {r4, pc}"
-    );
-    #endif
+    ov40_0222D6D0();
+    Sprite_DeleteAndFreeResources(*((u32*)(r4 + 4)));
 }
 
 void ov40_022309DC(void) {
@@ -1604,13 +1567,10 @@ void ov40_02231700(void) {
 }
 
 void ov40_0223172C(void) {
-    /* Original at 0x0223172C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl GF_AssertFail\n    mov r0, #1\n    str r0, [r4, #0x44]\n    add r0, r4, #0\n    mov r1, #0\n    bl ov40_0222BF80\n    add r0, r4, #0\n    bl ov40_0223169C\n    pop {r4, pc}"
-    );
-    #endif
+    GF_AssertFail();
+    *((u32*)(r4 + 0x44)) = 1;
+    ov40_0222BF80(r4, 0);
+    ov40_0223169C(r4);
 }
 
 void ov40_02231748(void) {

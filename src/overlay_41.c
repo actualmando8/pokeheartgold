@@ -12,13 +12,8 @@ void ov41_02245EA0(void) {
 }
 
 void ov41_02245ECC(void) {
-    /* Original at 0x02245ECC */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    Heap_Free(r4);
 }
 
 void ov41_02245EE0(void) {
@@ -169,23 +164,13 @@ void ov41_0224621C(void) {
 }
 
 void ov41_02246250(void) {
-    /* Original at 0x02246250 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldr r1, [r4]\n    ldr r2, [r4, #4]\n    add r5, r0, #0\n    bl ov41_0224683C\n    ldr r1, [r4, #8]\n    ldr r2, [r4, #0xc]\n    add r0, r5, #0\n    bl ov41_0224689C\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov41_0224683C(*((u32*)(r1 + 4)));
+    ov41_0224689C(r5, *((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)));
 }
 
 void ov41_0224626C(void) {
-    /* Original at 0x0224626C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl sub_02015EF4\n    ldr r0, [r4]\n    bl sub_02015F64\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02015EF4();
+    sub_02015F64();
 }
 
 void ov41_02246280(void) {
@@ -227,43 +212,23 @@ void ov41_02246344(void) {
 }
 
 void ov41_02246360(void) {
-    /* Original at 0x02246360 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x48]\n    bl SpriteResourceCollection_Find\n    add r1, r0, #0\n    ldr r0, [r4, #0x48]\n    bl DestroySingle2DGfxResObj\n    pop {r4, pc}"
-    );
-    #endif
+    SpriteResourceCollection_Find(*((u32*)(r0 + 0x48)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 0x48)), r0);
 }
 
 void ov41_02246374(void) {
-    /* Original at 0x02246374 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x4c]\n    bl SpriteResourceCollection_Find\n    add r1, r0, #0\n    ldr r0, [r4, #0x4c]\n    bl DestroySingle2DGfxResObj\n    pop {r4, pc}"
-    );
-    #endif
+    SpriteResourceCollection_Find(*((u32*)(r0 + 0x4c)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 0x4c)), r0);
 }
 
 void ov41_02246388(void) {
-    /* Original at 0x02246388 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x50]\n    bl SpriteResourceCollection_Find\n    add r1, r0, #0\n    ldr r0, [r4, #0x50]\n    bl DestroySingle2DGfxResObj\n    pop {r4, pc}"
-    );
-    #endif
+    SpriteResourceCollection_Find(*((u32*)(r0 + 0x50)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 0x50)), r0);
 }
 
 void ov41_0224639C(void) {
-    /* Original at 0x0224639C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x54]\n    bl SpriteResourceCollection_Find\n    add r1, r0, #0\n    ldr r0, [r4, #0x54]\n    bl DestroySingle2DGfxResObj\n    pop {r4, pc}"
-    );
-    #endif
+    SpriteResourceCollection_Find(*((u32*)(r0 + 0x54)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 0x54)), r0);
 }
 
 void ov41_022463B0(void) {
@@ -307,13 +272,9 @@ void ov41_0224642C(void) {
 }
 
 void ov41_02246494(void) {
-    /* Original at 0x02246494 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x40]\n    bl DoScheduledBgGpuUpdates\n    ldr r0, [r4, #0x20]\n    bl PokepicManager_HandleLoadImgAndOrPltt\n    bl OamManager_ApplyAndResetBuffers\n    pop {r4, pc}"
-    );
-    #endif
+    DoScheduledBgGpuUpdates(*((u32*)(r0 + 0x40)));
+    PokepicManager_HandleLoadImgAndOrPltt(*((u32*)(r4 + 0x20)));
+    OamManager_ApplyAndResetBuffers();
 }
 
 void ov41_022464AC(void) {
@@ -351,13 +312,13 @@ void ov41_02246544(void) {
 }
 
 void ov41_02246594(void) {
-    /* Original at 0x02246594 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov41_02246CB0\n    add r0, r4, #0\n    bl ov41_02246820\n    add r0, r4, #0\n    bl ov41_02246D2C\n    ldr r0, [r4, #4]\n    bl Heap_Free\n    mov r0, #0\n    str r0, [r4, #4]\n    ldr r0, [r4, #0x10]\n    bl Heap_Free\n    mov r0, #0\n    str r0, [r4, #0x10]\n    pop {r4, pc}"
-    );
-    #endif
+    ov41_02246CB0();
+    ov41_02246820(r4);
+    ov41_02246D2C(r4);
+    Heap_Free(*((u32*)(r4 + 4)));
+    *((u32*)(r4 + 4)) = 0;
+    Heap_Free(*((u32*)(r4 + 0x10)));
+    *((u32*)(r4 + 0x10)) = 0;
 }
 
 void ov41_022465C0(void) {
@@ -399,13 +360,8 @@ void ov41_02246698(void) {
 }
 
 void ov41_022466B8(void) {
-    /* Original at 0x022466B8 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0, #0x40]\n    bl DoScheduledBgGpuUpdates\n    bl OamManager_ApplyAndResetBuffers\n    pop {r3, pc}"
-    );
-    #endif
+    DoScheduledBgGpuUpdates(*((u32*)(r0 + 0x40)));
+    OamManager_ApplyAndResetBuffers();
 }
 
 void ov41_022466C8(void) {
@@ -516,13 +472,9 @@ void ov41_02246A50(void) {
 }
 
 void ov41_02246A7C(void) {
-    /* Original at 0x02246A7C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x38]\n    bl Heap_Free\n    ldr r0, [r4, #0x34]\n    bl GF2dGfxRawResObj_Destroy\n    mov r0, #0\n    str r0, [r4, #0x3c]\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free(*((u32*)(r0 + 0x38)));
+    GF2dGfxRawResObj_Destroy(*((u32*)(r4 + 0x34)));
+    *((u32*)(r4 + 0x3c)) = 0;
 }
 
 void ov41_02246A94(void) {
@@ -1098,17 +1050,13 @@ void ov41_022480C8(void) {
 }
 
 void ov41_022480E0(void) {
-    /* Original at 0x022480E0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r4, #4\n    bl ov41_02249A70\n    add r0, r4, #0\n    add r0, #0x14\n    bl ov41_02249A70\n    mov r0, #0\n    str r0, [r4, #0x24]\n    pop {r4, pc}"
-    );
-    #endif
+    ov41_02249A70((r0 + 4));
+    ov41_02249A70(r4);
+    *((u32*)(r4 + 0x24)) = 0;
 }
 
 void ov41_022480F8(void) {
-    ov41_02249BE8();
+    ov41_02249BE8((r0 + 4));
     ov41_02249BE8(r5, r4, r6);
 }
 
@@ -1645,13 +1593,8 @@ void ov41_02248F18(void) {
 }
 
 void ov41_02248F6C(void) {
-    /* Original at 0x02248F6C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl ov41_02248E28\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    ov41_02248E28(r4);
 }
 
 void ov41_02248F80(void) {
@@ -1869,23 +1812,13 @@ void ov41_02249774(void) {
 }
 
 void ov41_02249780(void) {
-    /* Original at 0x02249780 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r4, r1, #0\n    mov r1, #0\n    add r6, r2, #0\n    bl Pokepic_GetAttr\n    str r0, [r4]\n    ldr r0, [r5]\n    mov r1, #1\n    bl Pokepic_GetAttr\n    str r0, [r6]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Pokepic_GetAttr(0);
+    Pokepic_GetAttr(1);
 }
 
 void ov41_022497A0(void) {
-    /* Original at 0x022497A0 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x50\n    str r0, [r1]\n    str r0, [r2]\n    bx lr"
-    );
-    #endif
+    *(u32*)r1 = 0x50;
+    *(u32*)r2 = 0x50;
 }
 
 void ov41_022497A8(void) {
@@ -2257,13 +2190,9 @@ void ov41_0224A1A8(void) {
 }
 
 void ov41_0224A1C0(void) {
-    /* Original at 0x0224A1C0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov41_0224A1A8\n    ldr r0, [r4, #0x10]\n    bl FontOAM_Delete\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0x20\n    bl memset\n    pop {r4, pc}"
-    );
-    #endif
+    ov41_0224A1A8();
+    FontOAM_Delete(*((u32*)(r4 + 0x10)));
+    memset(r4, 0, 0x20);
 }
 
 void ov41_0224A1DC(void) {
@@ -2497,13 +2426,8 @@ void ov41_0224A9BC(void) {
 }
 
 void ov41_0224A9F8(void) {
-    /* Original at 0x0224A9F8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov41_0224A9BC\n    ldr r0, [r4, #0x10]\n    bl sub_02013728\n    pop {r4, pc}"
-    );
-    #endif
+    ov41_0224A9BC();
+    sub_02013728(*((u32*)(r4 + 0x10)));
 }
 
 void ov41_0224AA08(void) {
@@ -3017,13 +2941,8 @@ void AccessoryPortrait_Exit(void) {
 }
 
 void ov41_0224BBF0(void) {
-    /* Original at 0x0224BBF0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    bl ov41_0224B5C8\n    add r4, #0x14\n    add r0, r4, #0\n    bl ov41_022466B8\n    pop {r4, pc}"
-    );
-    #endif
+    ov41_0224B5C8(*((u32*)(r0 + 0x10)));
+    ov41_022466B8(r4);
 }
 
 void ov41_0224BC04(void) {

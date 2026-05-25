@@ -56,13 +56,9 @@ void ov01_021FC798(void) {
 }
 
 void ov01_021FC7C4(void) {
-    /* Original at 0x021FC7C4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r2, #0\n    add r5, r0, #0\n    bl ov01_021FCB14\n    add r0, r4, #0\n    bl MapObject_UnpauseMovement\n    mov r0, #1\n    str r0, [r5, #0xc]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021FCB14();
+    MapObject_UnpauseMovement(r4);
+    *((u32*)(r5 + 0xc)) = 1;
 }
 
 void ov01_021FC7DC(void) {
@@ -116,13 +112,10 @@ void ov01_021FC8E8(void) {
 }
 
 void ov01_021FC914(void) {
-    /* Original at 0x021FC914 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x24]\n    add r5, r2, #0\n    bl ov01_02200400\n    add r0, r5, #0\n    mov r1, #3\n    bl sub_0205F328\n    mov r0, #0\n    str r0, [r4, #0x10]\n    mov r1, #7\n    str r1, [r4, #0xc]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_02200400(*((u32*)(r0 + 0x24)));
+    sub_0205F328(r5, 3);
+    *((u32*)(r4 + 0x10)) = 0;
+    *((u32*)(r4 + 0xc)) = 7;
 }
 
 void ov01_021FC934(void) {
@@ -140,23 +133,16 @@ void ov01_021FC968(void) {
 }
 
 void ov01_021FC980(void) {
-    /* Original at 0x021FC980 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r2, #1\n    str r2, [r0, #8]\n    mov r1, #0xf\n    str r1, [r0, #0xc]\n    add r0, r2, #0\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = 1;
+    ((u32*)r0)[0xc] = 0xf;
 }
 
-void ov01_021FC98C(void) {
-    /* Original at 0x021FC98C */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r2, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r4, #0\n    mov r1, #0x33\n    bl ov01_021FCB90\n    mov r0, #0x10\n    str r0, [r4, #0x10]\n    mov r0, #0xe\n    str r0, [r4, #0xc]\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov01_021FC98C(void) {
+    sub_0205F328(r2, 0);
+    ov01_021FCB90(r4, 0x33);
+    *((u32*)(r4 + 0x10)) = 0x10;
+    *((u32*)(r4 + 0xc)) = 0xe;
+    return 1;
 }
 
 void ov01_021FC9AC(void) {
@@ -170,13 +156,8 @@ void ov01_021FC9AC(void) {
 }
 
 void ov01_021FC9DC(void) {
-    /* Original at 0x021FC9DC */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0x78\n    str r1, [r0, #0x10]\n    mov r1, #0xd\n    str r1, [r0, #0xc]\n    mov r0, #1\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x10] = 0x78;
+    ((u32*)r0)[0xc] = 0xd;
 }
 
 void ov01_021FC9E8(void) {
@@ -264,23 +245,16 @@ void ov01_021FCB14(void) {
 }
 
 void ov01_021FCB4C(void) {
-    /* Original at 0x021FCB4C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x34]\n    bl MessageFormat_Delete\n    ldr r0, [r4, #0x2c]\n    bl String_Delete\n    ldr r0, [r4, #0x30]\n    bl String_Delete\n    ldr r0, [r4, #0x48]\n    bl DestroyMsgData\n    pop {r4, pc}"
-    );
-    #endif
+    MessageFormat_Delete(*((u32*)(r0 + 0x34)));
+    String_Delete(*((u32*)(r4 + 0x2c)));
+    String_Delete(*((u32*)(r4 + 0x30)));
+    DestroyMsgData(*((u32*)(r4 + 0x48)));
 }
 
 void ov01_021FCB6C(void) {
-    /* Original at 0x021FCB6C */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r4, [r5, #0x20]\n    add r1, r5, #0\n    ldr r0, [r4, #8]\n    add r1, #0x38\n    mov r2, #3\n    bl sub_0205B514\n    ldr r0, [r4, #0xc]\n    bl Save_PlayerData_GetOptionsAddr\n    add r5, #0x38\n    add r1, r0, #0\n    add r0, r5, #0\n    bl sub_0205B564\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0205B514(*((u32*)(*((u32*)(r0 + 0x20)) + 8)), r0, 3);
+    Save_PlayerData_GetOptionsAddr(*((u32*)(r4 + 0xc)));
+    sub_0205B564(r5, r0);
 }
 
 void ov01_021FCB90(void) {

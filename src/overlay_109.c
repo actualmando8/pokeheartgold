@@ -52,13 +52,9 @@ void ov109_021E5A70(void) {
 }
 
 void ov109_021E5B40(void) {
-    /* Original at 0x021E5B40 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov109_021E5D5C\n    add r0, r4, #0\n    add r0, #0xc8\n    ldr r0, [r0]\n    bl Heap_Free\n    ldr r0, [r4, #0x10]\n    ldr r1, [r4, #0xc]\n    ldr r0, [r0, #8]\n    bl MenuInputStateMgr_SetState\n    pop {r4, pc}"
-    );
-    #endif
+    ov109_021E5D5C();
+    Heap_Free(r4);
+    MenuInputStateMgr_SetState(*((u32*)(*((u32*)(r4 + 0x10)) + 8)), *((u32*)(r4 + 0xc)));
 }
 
 void ov109_021E5B60(void) {
@@ -402,13 +398,9 @@ void ov109_021E6B5C(void) {
 }
 
 void ov109_021E6C7C(void) {
-    /* Original at 0x021E6C7C */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    bl Heap_Free\n    add r0, r4, #0\n    add r0, #0xb8\n    ldr r0, [r0]\n    bl Heap_Free\n    add r4, #0xb0\n    ldr r0, [r4]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    Heap_Free(r4);
+    Heap_Free();
 }
 
 void ov109_021E6C9C(void) {
@@ -472,23 +464,17 @@ void ov109_021E6E64(void) {
 }
 
 void ov109_021E6E9C(void) {
-    /* Original at 0x021E6E9C */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov109_021E6DE4\n    add r0, r4, #0\n    bl ov109_021E6EE4\n    ldr r0, [r4]\n    mov r1, #0\n    bl TouchscreenListMenuSpawner_Create\n    add r4, #0x80\n    str r0, [r4]\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    pop {r4, pc}"
-    );
-    #endif
+    ov109_021E6DE4();
+    ov109_021E6EE4(r4);
+    TouchscreenListMenuSpawner_Create(0);
+    GfGfx_EngineATogglePlanes(0x10, 1);
 }
 
 void ov109_021E6EC0(void) {
-    /* Original at 0x021E6EC0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x10\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    add r0, r4, #0\n    bl ov109_021E6F60\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    bl TouchscreenListMenuSpawner_Destroy\n    add r0, r4, #0\n    bl ov109_021E6E64\n    pop {r4, pc}"
-    );
-    #endif
+    GfGfx_EngineATogglePlanes(0x10, 0);
+    ov109_021E6F60(r4);
+    TouchscreenListMenuSpawner_Destroy(r4);
+    ov109_021E6E64(r4);
 }
 
 void ov109_021E6EE4(void) {

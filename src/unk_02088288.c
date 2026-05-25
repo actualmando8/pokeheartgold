@@ -666,13 +666,12 @@ void sub_0208ACDC(void) {
 }
 
 void sub_0208AD34(void) {
-    /* Original at 0x0208AD34 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl PlayerProfile_GetNamePtr\n    str r0, [r5, #8]\n    add r0, r4, #0\n    bl PlayerProfile_GetTrainerID\n    str r0, [r5, #0xc]\n    add r0, r4, #0\n    bl PlayerProfile_GetTrainerGender\n    strb r0, [r5, #0x10]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    PlayerProfile_GetNamePtr(r1);
+    *((u32*)(r5 + 8)) = r0;
+    PlayerProfile_GetTrainerID(r4);
+    *((u32*)(r5 + 0xc)) = r0;
+    PlayerProfile_GetTrainerGender(r4);
+    *((u8*)(r5 + 0x10)) = r0;
 }
 
 u8 sub_0208AD54(void) {

@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_02200858(void) {
-    /* Original at 0x02200858 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #0x6c\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    bl ov01_02200884\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F1430(0x6c, 0, 0);
+    ov01_02200884();
 }
 
 void ov01_02200874(void) {

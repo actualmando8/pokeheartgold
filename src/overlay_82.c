@@ -360,13 +360,8 @@ void ov82_0223F224(void) {
 }
 
 void ov82_0223F2F8(void) {
-    /* Original at 0x0223F2F8 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r3, #0\n    strb r3, [r0, #8]\n    str r2, [r1]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[8] = 0;
+    *(u32*)r1 = r2;
 }
 
 void ov82_0223F300(void) {
@@ -615,14 +610,10 @@ void ov82_0223FC48(void) {
     #endif
 }
 
-void ov82_0223FC9C(void) {
-    /* Original at 0x0223FC9C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    bl Sprite_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov82_0223FC9C(void) {
+    Sprite_Delete(*((u32*)(r0 + 0x10)));
+    Heap_Free(r4);
+    return 0;
 }
 
 void ov82_0223FCB0(void) {
@@ -650,13 +641,8 @@ void ov82_0223FCFC(void) {
 }
 
 void ov82_0223FD18(void) {
-    /* Original at 0x0223FD18 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl Pokemon_GetIconPalette\n    add r1, r0, #0\n    ldr r0, [r4, #0x10]\n    bl Sprite_SetPalOffsetRespectVramOffset\n    pop {r4, pc}"
-    );
-    #endif
+    Pokemon_GetIconPalette(r1);
+    Sprite_SetPalOffsetRespectVramOffset(*((u32*)(r4 + 0x10)), r0);
 }
 
 void ov82_0223FD2C(void) {

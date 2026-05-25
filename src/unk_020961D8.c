@@ -12,14 +12,9 @@ void sub_020961D8(void) {
 }
 
 void sub_02096248(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4, #0x10] */
-    EasyChat_FreeArgs();
-    /* ldr r0, [r4, #4] */
-    MessageFormat_Delete();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    EasyChat_FreeArgs(*((u32*)(r0 + 0x10)));
+    MessageFormat_Delete(*((u32*)(r4 + 4)));
+    Heap_Free(r4);
 }
 
 void sub_02096260(void) {

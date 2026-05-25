@@ -2821,13 +2821,8 @@ void ov18_021F6E98(void) {
 }
 
 void ov18_021F6EAC(void) {
-    /* Original at 0x021F6EAC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov18_021F6E58\n    ldr r0, [r4]\n    mov r1, #1\n    ldr r0, [r0, #0xc]\n    bl MenuInputStateMgr_SetState\n    pop {r4, pc}"
-    );
-    #endif
+    ov18_021F6E58();
+    MenuInputStateMgr_SetState(*((u32*)(r0 + 0xc)), 1);
 }
 
 void ov18_021F6EC0(void) {
@@ -2871,13 +2866,8 @@ void ov18_021F6F78(void) {
 }
 
 void ov18_021F6F8C(void) {
-    /* Original at 0x021F6F8C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov18_021F6F38\n    ldr r0, [r4]\n    mov r1, #1\n    ldr r0, [r0, #0xc]\n    bl MenuInputStateMgr_SetState\n    pop {r4, pc}"
-    );
-    #endif
+    ov18_021F6F38();
+    MenuInputStateMgr_SetState(*((u32*)(r0 + 0xc)), 1);
 }
 
 void ov18_021F6FA0(void) {
@@ -3021,13 +3011,8 @@ void ov18_021F74B0(void) {
 }
 
 void ov18_021F74C4(void) {
-    /* Original at 0x021F74C4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov18_021F7444\n    ldr r0, [r4]\n    mov r1, #1\n    ldr r0, [r0, #0xc]\n    bl MenuInputStateMgr_SetState\n    pop {r4, pc}"
-    );
-    #endif
+    ov18_021F7444();
+    MenuInputStateMgr_SetState(*((u32*)(r0 + 0xc)), 1);
 }
 
 void ov18_021F74D8(void) {
@@ -3071,13 +3056,8 @@ void ov18_021F7634(void) {
 }
 
 void ov18_021F7648(void) {
-    /* Original at 0x021F7648 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov18_021F75C8\n    ldr r0, [r4]\n    mov r1, #1\n    ldr r0, [r0, #0xc]\n    bl MenuInputStateMgr_SetState\n    pop {r4, pc}"
-    );
-    #endif
+    ov18_021F75C8();
+    MenuInputStateMgr_SetState(*((u32*)(r0 + 0xc)), 1);
 }
 
 void ov18_021F765C(void) {
@@ -3125,13 +3105,8 @@ void ov18_021F7720(void) {
 }
 
 void ov18_021F7734(void) {
-    /* Original at 0x021F7734 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov18_021F76E0\n    ldr r0, [r4]\n    mov r1, #1\n    ldr r0, [r0, #0xc]\n    bl MenuInputStateMgr_SetState\n    pop {r4, pc}"
-    );
-    #endif
+    ov18_021F76E0();
+    MenuInputStateMgr_SetState(*((u32*)(r0 + 0xc)), 1);
 }
 
 void ov18_021F7748(void) {
@@ -3473,13 +3448,12 @@ void ov18_021F89C8(void) {
 }
 
 void ov18_021F89D0(void) {
-    /* Original at 0x021F89D0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov18_021F91F0\n    add r0, r4, #0\n    bl ov18_021F8F10\n    add r0, r4, #0\n    bl ov18_021F8BEC\n    ldr r0, [r4, #0x1c]\n    bl NARC_Delete\n    ldr r0, [r4, #0x18]\n    bl SysTask_Destroy\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov18_021F91F0();
+    ov18_021F8F10(r4);
+    ov18_021F8BEC(r4);
+    NARC_Delete(*((u32*)(r4 + 0x1c)));
+    SysTask_Destroy(*((u32*)(r4 + 0x18)));
+    Heap_Free(r4);
 }
 
 void ov18_021F89F8(void) {
@@ -3513,13 +3487,9 @@ void ov18_021F8B10(void) {
 }
 
 void ov18_021F8BEC(void) {
-    /* Original at 0x021F8BEC */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(3);
+    FreeBgTilemapBuffer(2);
+    FreeBgTilemapBuffer(1);
 }
 
 void ov18_021F8C0C(void) {

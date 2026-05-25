@@ -75,13 +75,11 @@ void ov01_021F95CC(void) {
 }
 
 void ov01_021F9610(void) {
-    /* Original at 0x021F9610 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl sub_02023EB8\n    str r0, [r4]\n    add r0, r5, #0\n    bl sub_02023EF4\n    strh r0, [r4, #6]\n    add r0, r5, #0\n    bl sub_02023F30\n    str r0, [r4, #8]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02023EB8();
+    sub_02023EF4(r5);
+    *((u16*)(r4 + 6)) = r0;
+    sub_02023F30(r5);
+    *((u32*)(r4 + 8)) = r0;
 }
 
 void ov01_021F9630(void) {
@@ -120,13 +118,9 @@ void ov01_021F9698(void) {
 }
 
 void ov01_021F96E4(void) {
-    /* Original at 0x021F96E4 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov01_021F9798\n    add r1, r4, #0\n    add r1, #0xe4\n    ldr r1, [r1]\n    mov r0, #4\n    bl Heap_FreeExplicit\n    add r4, #0xf4\n    ldr r1, [r4]\n    mov r0, #4\n    bl Heap_FreeExplicit\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F9798();
+    Heap_FreeExplicit(4, r4);
+    Heap_FreeExplicit(4);
 }
 
 void ov01_021F9704(void) {
@@ -190,13 +184,10 @@ void ov01_021F9808(void) {
 }
 
 void ov01_021F9890(void) {
-    /* Original at 0x021F9890 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xf8\n    ldr r0, [r0]\n    bl ov01_021FC520\n    add r0, r4, #0\n    add r0, #0xfc\n    ldr r0, [r0]\n    bl ov01_021FC520\n    add r0, r4, #0\n    bl ov01_021FA1F4\n    bl GF3dGfxRawResMan_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021FC520();
+    ov01_021FC520(r4);
+    ov01_021FA1F4(r4);
+    GF3dGfxRawResMan_Destroy();
 }
 
 void ov01_021F98B4(void) {
@@ -674,13 +665,7 @@ void ov01_021FA1D0(void) {
 }
 
 void ov01_021FA1D8(void) {
-    /* Original at 0x021FA1D8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = r1;
 }
 
 void ov01_021FA1DC(void) {
@@ -754,13 +739,7 @@ void ov01_021FA204(void) {
 }
 
 void ov01_021FA208(void) {
-    /* Original at 0x021FA208 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = r1;
 }
 
 void ov01_021FA20C(void) {
@@ -774,13 +753,7 @@ void ov01_021FA20C(void) {
 }
 
 void ov01_021FA210(void) {
-    /* Original at 0x021FA210 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = r1;
 }
 
 void ov01_021FA214(void) {
@@ -794,13 +767,7 @@ void ov01_021FA214(void) {
 }
 
 void ov01_021FA218(void) {
-    /* Original at 0x021FA218 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x10]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x10] = r1;
 }
 
 void ov01_021FA21C(void) {
@@ -814,13 +781,7 @@ void ov01_021FA21C(void) {
 }
 
 void ov01_021FA220(void) {
-    /* Original at 0x021FA220 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
 }
 
 void ov01_021FA224(void) {
@@ -834,13 +795,7 @@ void ov01_021FA224(void) {
 }
 
 void ov01_021FA228(void) {
-    /* Original at 0x021FA228 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x18]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x18] = r1;
 }
 
 void ov01_021FA22C(void) {
@@ -854,13 +809,7 @@ void ov01_021FA22C(void) {
 }
 
 void ov01_021FA230(void) {
-    /* Original at 0x021FA230 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x1c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x1c] = r1;
 }
 
 void ov01_021FA234(void) {

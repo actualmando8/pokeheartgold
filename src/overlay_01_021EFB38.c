@@ -42,13 +42,9 @@ void ov01_021EFC94(void) {
 }
 
 void ov01_021EFCDC(void) {
-    /* Original at 0x021EFCDC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x20]\n    add r4, r1, #0\n    bl NARC_Delete\n    ldr r1, [r5, #0xc]\n    mov r0, #4\n    bl Heap_FreeExplicit\n    add r0, r4, #0\n    bl DestroySysTaskAndEnvironment\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    NARC_Delete(*((u32*)(r0 + 0x20)));
+    Heap_FreeExplicit(4, *((u32*)(r5 + 0xc)));
+    DestroySysTaskAndEnvironment(r4);
 }
 
 void ov01_021EFCF8(void) {
@@ -166,13 +162,8 @@ void ov01_021EFFBC(void) {
 }
 
 void ov01_021EFFD8(void) {
-    /* Original at 0x021EFFD8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r1, #0x14]\n    ldr r1, [r1]\n    bl ov01_021EFF90\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021EFF90(*((u32*)(r1 + 0x14)));
+    SysTask_Destroy(r4);
 }
 
 void ov01_021EFFEC(void) {
@@ -705,13 +696,8 @@ void ov01_021F1148(void) {
 }
 
 void ov01_021F1210(void) {
-    /* Original at 0x021F1210 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #8]\n    bl ov01_021E6048\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(*((u32*)(r0 + 8)), 2);
+    ov01_021E6048(*((u32*)(r4 + 8)));
 }
 
 void ov01_021F1224(void) {
@@ -755,23 +741,16 @@ void ov01_021F1290(void) {
 }
 
 void ov01_021F12B4(void) {
-    /* Original at 0x021F12B4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl sub_02014AD8\n    str r0, [r4]\n    mov r0, #0\n    str r0, [r4, #8]\n    add r0, r4, #0\n    bl ov01_021F127C\n    str r0, [r4, #4]\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02014AD8(r1);
+    *((u32*)(r4 + 8)) = 0;
+    ov01_021F127C(r4);
+    *((u32*)(r4 + 4)) = r0;
 }
 
 void ov01_021F12D0(void) {
-    /* Original at 0x021F12D0 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    bl SysTask_Destroy\n    ldr r0, [r4]\n    bl sub_02014B9C\n    ldr r0, [r4]\n    bl sub_02014BD8\n    pop {r4, pc}"
-    );
-    #endif
+    SysTask_Destroy(*((u32*)(r0 + 4)));
+    sub_02014B9C();
+    sub_02014BD8();
 }
 
 void ov01_021F12E8(void) {

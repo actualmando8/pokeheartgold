@@ -76,13 +76,9 @@ void ov27_0225A48C(void) {
 }
 
 void ov27_0225A4B8(void) {
-    /* Original at 0x0225A4B8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    bl FieldSystem_GetPlayerAvatar\n    bl PlayerAvatar_CheckRunningShoesLock\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov27_0225A468\n    pop {r4, pc}"
-    );
-    #endif
+    FieldSystem_GetPlayerAvatar(*((u32*)(r0 + 0x10)));
+    PlayerAvatar_CheckRunningShoesLock();
+    ov27_0225A468(r4, r0);
 }
 
 void ov27_0225A4D0(void) {
@@ -446,13 +442,9 @@ void ov27_0225BDAC(void) {
 }
 
 void ov27_0225BDC8(void) {
-    /* Original at 0x0225BDC8 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0, #0x10]\n    ldr r0, [r0, #0xc]\n    bl Save_LocalFieldData_Get\n    bl LocalFieldData_GetPlayer\n    bl PlayerSaveData_CheckRunningShoes\n    pop {r3, pc}"
-    );
-    #endif
+    Save_LocalFieldData_Get(*((u32*)(*((u32*)(r0 + 0x10)) + 0xc)));
+    LocalFieldData_GetPlayer();
+    PlayerSaveData_CheckRunningShoes();
 }
 
 void ov27_0225BDDC(void) {
@@ -526,13 +518,10 @@ void ov27_0225C01C(void) {
 }
 
 void ov27_0225C044(void) {
-    /* Original at 0x0225C044 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    ldr r0, [r0, #0xc]\n    bl Save_LocalFieldData_Get\n    bl LocalFieldData_GetSafariBallsCounter\n    add r3, r0, #0\n    ldrh r3, [r3]\n    add r0, r4, #0\n    mov r1, #0xe\n    mov r2, #0x13\n    bl ov27_0225BF84\n    add r0, r4, #0\n    bl ov27_0225C01C\n    pop {r4, pc}"
-    );
-    #endif
+    Save_LocalFieldData_Get(*((u32*)(*((u32*)(r0 + 0x10)) + 0xc)));
+    LocalFieldData_GetSafariBallsCounter();
+    ov27_0225BF84(r4, 0xe, 0x13, r0);
+    ov27_0225C01C(r4);
 }
 
 void ov27_0225C06C(void) {
@@ -754,33 +743,19 @@ void ov27_0225C8D0(void) {
 }
 
 void ov27_0225C914(void) {
-    /* Original at 0x0225C914 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #8\n    bl MessageFormat_New\n    str r0, [r4, #0x50]\n    mov r0, #0\n    mov r1, #0x1b\n    mov r2, #0xbf\n    mov r3, #8\n    bl NewMsgDataFromNarc\n    str r0, [r4, #0x4c]\n    pop {r4, pc}"
-    );
-    #endif
+    MessageFormat_New(8);
+    *((u32*)(r4 + 0x50)) = r0;
+    NewMsgDataFromNarc(0, 0x1b, 0xbf, 8);
+    *((u32*)(r4 + 0x4c)) = r0;
 }
 
 void ov27_0225C930(void) {
-    /* Original at 0x0225C930 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x4c]\n    bl DestroyMsgData\n    ldr r0, [r4, #0x50]\n    bl MessageFormat_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    DestroyMsgData(*((u32*)(r0 + 0x4c)));
+    MessageFormat_Delete(*((u32*)(r4 + 0x50)));
 }
 
 void ov27_0225C944(void) {
-    /* Original at 0x0225C944 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0]\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 1;
 }
 
 void ov27_0225C94C(void) {

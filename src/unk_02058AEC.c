@@ -356,13 +356,8 @@ void sub_02059FF8(void) {
 }
 
 void sub_0205A034(void) {
-    /* Original at 0x0205A034 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x10]\n    str r2, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x10] = r1;
+    ((u32*)r0)[0x14] = r2;
 }
 
 void sub_0205A03C(void) {

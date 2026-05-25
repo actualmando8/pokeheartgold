@@ -10,13 +10,8 @@ void ov01_021E90D4(void) {
 }
 
 void ov01_021E90DC(void) {
-    /* Original at 0x021E90DC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r0, [r2, #4]\n    str r1, [r2, #8]\n    bx lr"
-    );
-    #endif
+    ((u32*)r2)[4] = r0;
+    ((u32*)r2)[8] = r1;
 }
 
 void ov01_021E90E4(void) {
@@ -120,23 +115,15 @@ void ov01_021E9AE8(void) {
 }
 
 void ov01_021E9BB8(void) {
-    /* Original at 0x021E9BB8 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x58]\n    add r4, r1, #0\n    bl ov01_021E8F30\n    add r1, r0, #0\n    add r0, r5, #0\n    mov r2, #1\n    bl GetDoorSE\n    add r3, r0, #0\n    ldr r0, [r5, #0x58]\n    add r1, r4, #0\n    mov r2, #0\n    bl ov01_021E8E98\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021E8F30(*((u32*)(r0 + 0x58)));
+    GetDoorSE(r5, r0, 1);
+    ov01_021E8E98(*((u32*)(r5 + 0x58)), r4, 0, r0);
 }
 
 void ov01_021E9BDC(void) {
-    /* Original at 0x021E9BDC */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x58]\n    add r4, r1, #0\n    bl ov01_021E8F30\n    add r1, r0, #0\n    add r0, r5, #0\n    mov r2, #0\n    bl GetDoorSE\n    add r3, r0, #0\n    ldr r0, [r5, #0x58]\n    add r1, r4, #0\n    mov r2, #1\n    bl ov01_021E8E98\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021E8F30(*((u32*)(r0 + 0x58)));
+    GetDoorSE(r5, r0, 0);
+    ov01_021E8E98(*((u32*)(r5 + 0x58)), r4, 1, r0);
 }
 
 void ov01_021E9C00(void) {

@@ -32,13 +32,8 @@ void sub_020696C4(void) {
 }
 
 void sub_020696E8(void) {
-    /* Original at 0x020696E8 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    bl GF3dRender_AllocAndLoadTexResources\n    ldr r0, [r4, #8]\n    ldr r1, [r4, #0x10]\n    bl NNS_G3dBindMdlSet\n    mov r0, #1\n    str r0, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    GF3dRender_AllocAndLoadTexResources(*((u32*)(r0 + 0x10)));
+    NNS_G3dBindMdlSet(*((u32*)(r4 + 8)), *((u32*)(r4 + 0x10)));
 }
 
 void sub_02069700(void) {

@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_021FDA14(void) {
-    /* Original at 0x021FDA14 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #4\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    bl ov01_021FDA40\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F1430(4, 0, 0);
+    ov01_021FDA40();
 }
 
 void ov01_021FDA30(void) {
@@ -17,23 +12,13 @@ void ov01_021FDA30(void) {
 }
 
 void ov01_021FDA40(void) {
-    /* Original at 0x021FDA40 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #2\n    mov r2, #0x23\n    bl ov01_021F18D4\n    ldr r0, [r4]\n    mov r1, #0xd\n    mov r2, #0x69\n    bl ov01_021F18D4\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F18D4(2, 0x23);
+    ov01_021F18D4(0xd, 0x69);
 }
 
 void ov01_021FDA5C(void) {
-    /* Original at 0x021FDA5C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #2\n    bl ov01_021F18FC\n    ldr r0, [r4]\n    mov r1, #0xd\n    bl ov01_021F18FC\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F18FC(2);
+    ov01_021F18FC(0xd);
 }
 
 void ov01_021FDA74(void) {
@@ -155,13 +140,9 @@ void ov01_021FDF20(void) {
 }
 
 void ov01_021FDF64(void) {
-    /* Original at 0x021FDF64 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    add r1, sp, #0\n    bl sub_02068DB8\n    ldr r0, [r4, #0x3c]\n    add r1, sp, #0\n    bl sub_02023E50\n    ldr r0, [r4, #0x3c]\n    add r4, #0x40\n    add r1, r4, #0\n    bl sub_02023E78\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    sub_02068DB8();
+    sub_02023E50(*((u32*)(r4 + 0x3c)));
+    sub_02023E78(*((u32*)(r4 + 0x3c)), r4);
 }
 
 void ov01_021FDF88(void) {

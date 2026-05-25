@@ -32,7 +32,6 @@ void sub_020958C0(void) {
 }
 
 void sub_02095920(void) {
-    r0 = 0;
     *(u8*)r1 = 0;
     ((u8*)r1)[1] = 0;
     ((u8*)r1)[2] = 0;
@@ -89,7 +88,6 @@ void sub_02095A7C(void) {
 }
 
 void sub_02095AF8(void) {
-    r0 = 0;
     *(u8*)r1 = 0;
     ((u8*)r1)[1] = 0;
     ((u8*)r1)[2] = 0;
@@ -136,28 +134,13 @@ void sub_02095C90(void) {
 }
 
 void sub_02095CB8(void) {
-    void *r3;
-    void *r4;
-    void *r5;
-    void *r6;
-    void *r7;
-    r4 = r0 + 0;
-    r7 = r2 + 0;
-    sub_02095C90();
-    /* ldrb r1, [r4] */
-    r0 = 0xc;
-    /* ldr r5, [r4, #8] */
-    r6 = r1 + 0;
-    /* mul r6, r0 */
-    /* ldr r2, [r4, #0xc] */
-    r0 = r4 + 0;
-    /* lsl r1, r1, #2 */
-    /* add r4, r5, r6 */
-    /* add r1, r2, r1 */
-    /* ldr r2, [r5, r6] */
-    /* ldr r4, [r4, #8] */
-    r3 = r7 + 0;
-    /* blx r4 */
+    /* Original at 0x02095CB8 */
+    /* Requires manual decompilation - 19 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r7, r2, #0\n    bl sub_02095C90\n    ldrb r1, [r4]\n    mov r0, #0xc\n    ldr r5, [r4, #8]\n    add r6, r1, #0\n    mul r6, r0\n    ldr r2, [r4, #0xc]\n    add r0, r4, #0\n    lsl r1, r1, #2\n    add r4, r5, r6\n    add r1, r2, r1\n    ldr r2, [r5, r6]\n    ldr r4, [r4, #8]\n    add r3, r7, #0\n    blx r4\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
 }
 
 void sub_02095CE0(void) {
@@ -181,12 +164,8 @@ void sub_02095D1C(void) {
 }
 
 void sub_02095D2C(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4, #0xc] */
-    Heap_Free();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    Heap_Free(*((u32*)(r0 + 0xc)));
+    Heap_Free(r4);
 }
 
 void sub_02095D40(void) {
@@ -210,18 +189,21 @@ void sub_02095D88(void) {
 }
 
 void sub_02095DD8(void) {
-    /* ldrb r1, [r0] */
-    /* ldr r2, [r0, #8] */
-    r0 = 0xc;
-    /* mul r0, r1 */
-    /* ldr r0, [r2, r0] */
-    /* ldrb r0, [r0, #3] */
+    /* Original at 0x02095DD8 */
+    /* Requires manual decompilation - 7 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldrb r1, [r0]\n    ldr r2, [r0, #8]\n    mov r0, #0xc\n    mul r0, r1\n    ldr r0, [r2, r0]\n    ldrb r0, [r0, #3]\n    bx lr"
+    );
+    #endif
 }
 
 void sub_02095DE8(void) {
-    /* ldr r1, [r0, #0xc] */
-    /* ldrb r0, [r0] */
-    /* lsl r0, r0, #2 */
-    /* add r0, r1, r0 */
-    /* ldrb r0, [r0, #2] */
+    /* Original at 0x02095DE8 */
+    /* Requires manual decompilation - 6 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldr r1, [r0, #0xc]\n    ldrb r0, [r0]\n    lsl r0, r0, #2\n    add r0, r1, r0\n    ldrb r0, [r0, #2]\n    bx lr"
+    );
+    #endif
 }

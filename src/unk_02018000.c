@@ -12,13 +12,9 @@ void sub_02018030(void) {
 }
 
 void sub_0201804C(void) {
-    /* Original at 0x0201804C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0xc]\n    bl GF3dRender_AllocAndLoadTexResources\n    ldr r0, [r4]\n    ldr r1, [r4, #0xc]\n    bl GF3dRender_BindModelSet\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF3dRender_AllocAndLoadTexResources(*((u32*)(r1 + 0xc)));
+    GF3dRender_BindModelSet(*((u32*)(r4 + 0xc)));
+    SysTask_Destroy(r5);
 }
 
 void sub_02018068(void) {
@@ -138,13 +134,7 @@ void sub_02018288(void) {
 }
 
 void sub_020182A0(void) {
-    /* Original at 0x020182A0 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x6c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x6c] = r1;
 }
 
 void sub_020182A4(void) {
@@ -158,13 +148,9 @@ void sub_020182A4(void) {
 }
 
 void sub_020182A8(void) {
-    /* Original at 0x020182A8 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x54]\n    str r2, [r0, #0x58]\n    str r3, [r0, #0x5c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x54] = r1;
+    ((u32*)r0)[0x58] = r2;
+    ((u32*)r0)[0x5c] = r3;
 }
 
 void sub_020182B0(void) {
@@ -178,13 +164,9 @@ void sub_020182B0(void) {
 }
 
 void sub_020182C4(void) {
-    /* Original at 0x020182C4 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x60]\n    str r2, [r0, #0x64]\n    str r3, [r0, #0x68]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x60] = r1;
+    ((u32*)r0)[0x64] = r2;
+    ((u32*)r0)[0x68] = r3;
 }
 
 void sub_020182CC(void) {

@@ -142,13 +142,14 @@ void sub_02065CD0(void) {
 }
 
 void sub_02065CFC(void) {
-    /* Original at 0x02065CFC */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    bl MapObject_GetFieldSystem\n    bl FieldSystem_GetPlayerAvatar\n    mov r1, #1\n    add r4, r0, #0\n    strb r1, [r5, #1]\n    bl PlayerAvatar_GetXCoord\n    strh r0, [r5, #4]\n    add r0, r4, #0\n    bl PlayerAvatar_GetZCoord\n    strh r0, [r5, #6]\n    mov r0, #0xff\n    strh r0, [r5, #8]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MapObject_GetFieldSystem();
+    FieldSystem_GetPlayerAvatar();
+    *((u8*)(r5 + 1)) = 1;
+    PlayerAvatar_GetXCoord(1);
+    *((u16*)(r5 + 4)) = r0;
+    PlayerAvatar_GetZCoord(r4);
+    *((u16*)(r5 + 6)) = r0;
+    *((u16*)(r5 + 8)) = 0xff;
 }
 
 void sub_02065D24(void) {
@@ -162,13 +163,12 @@ void sub_02065D24(void) {
 }
 
 void sub_02065D58(void) {
-    /* Original at 0x02065D58 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    bl MapObject_GetFieldSystem\n    bl FieldSystem_GetPlayerAvatar\n    add r4, r0, #0\n    bl PlayerAvatar_GetXCoord\n    strh r0, [r5, #4]\n    add r0, r4, #0\n    bl PlayerAvatar_GetZCoord\n    strh r0, [r5, #6]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MapObject_GetFieldSystem();
+    FieldSystem_GetPlayerAvatar();
+    PlayerAvatar_GetXCoord();
+    *((u16*)(r5 + 4)) = r0;
+    PlayerAvatar_GetZCoord(r4);
+    *((u16*)(r5 + 6)) = r0;
 }
 
 void sub_02065D78(void) {
@@ -222,13 +222,11 @@ void sub_02065FBC(void) {
 }
 
 void sub_02065FFC(void) {
-    /* Original at 0x02065FFC */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r1, #0xc\n    add r5, r0, #0\n    bl sub_0205F370\n    add r4, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_02066150\n    add r0, r5, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r5, #0\n    bl MapObject_ClearSingleMovement\n    mov r0, #0\n    strb r0, [r4, #1]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0205F370(0xc);
+    sub_02066150(r5, r0);
+    sub_0205F328(r5, 0);
+    MapObject_ClearSingleMovement(r5);
+    *((u8*)(r4 + 1)) = 0;
 }
 
 void sub_02066024(void) {
@@ -296,13 +294,13 @@ void sub_02066150(void) {
 }
 
 void sub_020661CC(void) {
-    /* Original at 0x020661CC */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    mov r0, #1\n    add r4, r2, #0\n    strb r0, [r5, #1]\n    add r0, r4, #0\n    bl MapObject_GetXCoord\n    strh r0, [r5, #2]\n    add r0, r4, #0\n    bl MapObject_GetZCoord\n    strh r0, [r5, #4]\n    mov r0, #0xff\n    strh r0, [r5, #6]\n    str r4, [r5, #8]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    *((u8*)(r1 + 1)) = 1;
+    MapObject_GetXCoord(r2);
+    *((u16*)(r5 + 2)) = r0;
+    MapObject_GetZCoord(r4);
+    *((u16*)(r5 + 4)) = r0;
+    *((u16*)(r5 + 6)) = 0xff;
+    *((u32*)(r5 + 8)) = r4;
 }
 
 void sub_020661F0(void) {

@@ -410,13 +410,10 @@ void ov07_0221C8CC(void) {
 }
 
 void ov07_0221C910(void) {
-    /* Original at 0x0221C910 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x50\n    add r4, r0, #0\n    ldr r1, [r4, #0x18]\n    add r1, r1, #4\n    str r1, [r4, #0x18]\n    ldr r2, [r1]\n    add r1, r1, #4\n    str r1, [r4, #0x18]\n    add r1, sp, #0\n    bl ov07_0221C7B8\n    ldr r1, [r4]\n    add r0, sp, #0\n    bl ov07_0223494C\n    add sp, #0x50\n    pop {r4, pc}"
-    );
-    #endif
+    *((u32*)(r0 + 0x18)) = (*((u32*)(r0 + 0x18)) + 4);
+    *((u32*)(r0 + 0x18)) = ((*((u32*)(r0 + 0x18)) + 4) + 4);
+    ov07_0221C7B8(((*((u32*)(r0 + 0x18)) + 4) + 4));
+    ov07_0223494C();
 }
 
 void ov07_0221C934(void) {
@@ -2383,14 +2380,13 @@ void ov07_02221CE0(void) {
     ov07_0221F9A8();
 }
 
-void ov07_02221CEC(void) {
-    /* Original at 0x02221CEC */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    sub sp, #8\n    add r2, sp, #0\n    mov r0, #0\n    strh r0, [r2]\n    strh r0, [r2, #2]\n    strh r0, [r2, #4]\n    strh r0, [r2, #6]\n    ldr r0, [r1, #4]\n    bl sub_02015524\n    add r1, r0, #0\n    add r0, sp, #0\n    bl Camera_SetAnglePos\n    mov r0, #1\n    add sp, #8\n    pop {r3, pc}"
-    );
-    #endif
+u32 ov07_02221CEC(void) {
+    *((u16*)(r2 + 2)) = 0;
+    *((u16*)(r2 + 4)) = 0;
+    *((u16*)(r2 + 6)) = 0;
+    sub_02015524(*((u32*)(r1 + 4)));
+    Camera_SetAnglePos(r0);
+    return 1;
 }
 
 void ov07_02221D10(void) {
@@ -2453,24 +2449,18 @@ void ov07_02221E60(void) {
     #endif
 }
 
-void ov07_02221E9C(void) {
-    /* Original at 0x02221E9C */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    ldr r0, [r5, #4]\n    bl sub_02015524\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r1, [r5, #0x24]\n    add r2, sp, #0\n    bl ov07_02231D70\n    add r0, sp, #0\n    add r1, r4, #0\n    bl Camera_SetLookAtCamTarget\n    mov r0, #1\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+u32 ov07_02221E9C(void) {
+    sub_02015524(*((u32*)(r1 + 4)));
+    ov07_02231D70(*((u32*)(r5 + 0x24)));
+    Camera_SetLookAtCamTarget(r4);
+    return 1;
 }
 
-void ov07_02221EC4(void) {
-    /* Original at 0x02221EC4 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    ldr r0, [r5, #4]\n    bl sub_02015524\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r1, [r5, #0x28]\n    add r2, sp, #0\n    bl ov07_02231D70\n    add r0, sp, #0\n    add r1, r4, #0\n    bl Camera_SetLookAtCamTarget\n    mov r0, #1\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+u32 ov07_02221EC4(void) {
+    sub_02015524(*((u32*)(r1 + 4)));
+    ov07_02231D70(*((u32*)(r5 + 0x28)));
+    Camera_SetLookAtCamTarget(r4);
+    return 1;
 }
 
 void ov07_02221EEC(void) {
@@ -3014,13 +3004,8 @@ void ov07_02222BA4(void) {
 }
 
 void ov07_02222BC8(void) {
-    /* Original at 0x02222BC8 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x1c]\n    bl sub_02014A8C\n    add r0, r4, #0\n    bl ov07_02222BA4\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02014A8C(*((u32*)(r0 + 0x1c)));
+    ov07_02222BA4(r4);
 }
 
 void ov07_02222BDC(void) {
@@ -3068,13 +3053,8 @@ void ov07_02222C98(void) {
 }
 
 void ov07_02222CAC(void) {
-    /* Original at 0x02222CAC */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x1c]\n    bl sub_02014C08\n    ldr r0, [r4, #0x1c]\n    bl sub_02014C40\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02014C08(*((u32*)(r0 + 0x1c)));
+    sub_02014C40(*((u32*)(r4 + 0x1c)));
 }
 
 void ov07_02222CC0(void) {
@@ -5117,13 +5097,8 @@ void ov07_0222D56C(void) {
 }
 
 void ov07_0222D578(void) {
-    /* Original at 0x0222D578 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #1\n    bl ManagedSprite_SetDrawFlag\n    ldr r0, [r4]\n    mov r1, #1\n    bl ManagedSprite_SetAnimateFlag\n    pop {r4, pc}"
-    );
-    #endif
+    ManagedSprite_SetDrawFlag(1);
+    ManagedSprite_SetAnimateFlag(1);
 }
 
 void ov07_0222D590(void) {
@@ -6041,23 +6016,13 @@ void ov07_02231468(void) {
 }
 
 void ov07_02231514(void) {
-    /* Original at 0x02231514 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0, #0xc]\n    strh r2, [r0, #0xe]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0xc] = r1;
+    ((u16*)r0)[0xe] = r2;
 }
 
 void ov07_0223151C(void) {
-    /* Original at 0x0223151C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0, #0x14]\n    strh r2, [r0, #0x16]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0x14] = r1;
+    ((u16*)r0)[0x16] = r2;
 }
 
 void ov07_02231524(void) {
@@ -6081,13 +6046,10 @@ void ov07_022315C0(void) {
 }
 
 void ov07_0223172C(void) {
-    /* Original at 0x0223172C */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    mov r1, #7\n    str r1, [r4]\n    add r5, r0, #0\n    mov r1, #0\n    bl ov07_0221C4A8\n    str r0, [r4, #4]\n    add r0, r5, #0\n    mov r1, #1\n    bl ov07_0221C4A8\n    str r0, [r4, #8]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov07_0221C4A8(0);
+    *((u32*)(r4 + 4)) = r0;
+    ov07_0221C4A8(r5, 1);
+    *((u32*)(r4 + 8)) = r0;
 }
 
 void ov07_0223174C(void) {
@@ -6837,13 +6799,8 @@ void ov07_02232F30(void) {
 }
 
 void ov07_02232F58(void) {
-    /* Original at 0x02232F58 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0]\n    mov r1, #0\n    str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r1;
+    ((u32*)r0)[4] = 0;
 }
 
 void ov07_02232F60(void) {
@@ -6857,13 +6814,10 @@ void ov07_02232F60(void) {
 }
 
 void ov07_02232F74(void) {
-    /* Original at 0x02232F74 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    mov r1, #0\n    str r1, [r0, #8]\n    str r1, [r0, #0xc]\n    str r1, [r0, #0x10]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
+    ((u32*)r0)[8] = 0;
+    ((u32*)r0)[0xc] = 0;
+    ((u32*)r0)[0x10] = 0;
 }
 
 u8 ov07_02232F80(void) {
@@ -7133,13 +7087,7 @@ void ov07_02233EA0(void) {
 }
 
 void ov07_02233EB8(void) {
-    /* Original at 0x02233EB8 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
 }
 
 void ov07_02233EBC(void) {
@@ -7229,13 +7177,7 @@ void ov07_022344B4(void) {
 }
 
 void ov07_022344C0(void) {
-    /* Original at 0x022344C0 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x24]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x24] = r1;
 }
 
 void ov07_022344C4(void) {

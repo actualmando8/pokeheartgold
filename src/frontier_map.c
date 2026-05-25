@@ -338,13 +338,8 @@ void ov80_02239828(void) {
 }
 
 void ov80_022398E4(void) {
-    /* Original at 0x022398E4 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, #0x1c\n    add r6, r1, #0\n    add r4, r2, #0\n    bl ov42_022293A8\n    add r5, #0x1c\n    strh r0, [r4]\n    add r0, r5, #0\n    bl ov42_022293B0\n    strh r0, [r6]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov42_022293A8();
+    ov42_022293B0(r5);
 }
 
 void ov80_02239900(void) {

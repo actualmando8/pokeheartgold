@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_022006A8(void) {
-    /* Original at 0x022006A8 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #4\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    bl ov01_022006D4\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F1430(4, 0, 0);
+    ov01_022006D4();
 }
 
 void ov01_022006C4(void) {
@@ -27,13 +22,9 @@ void ov01_022006D4(void) {
 }
 
 void ov01_02200710(void) {
-    /* Original at 0x02200710 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #4\n    bl ov01_021F18FC\n    ldr r0, [r4]\n    mov r1, #3\n    bl ov01_021F1970\n    ldr r0, [r4]\n    mov r1, #4\n    bl ov01_021F18C8\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F18FC(4);
+    ov01_021F1970(3);
+    ov01_021F18C8(4);
 }
 
 void ov01_02200730(void) {

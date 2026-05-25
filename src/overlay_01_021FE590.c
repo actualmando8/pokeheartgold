@@ -73,13 +73,9 @@ void ov01_021FE6B4(void) {
 }
 
 void ov01_021FE6F4(void) {
-    /* Original at 0x021FE6F4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r0, [r4, #0x18]\n    bl sub_02023DA4\n    ldr r0, [r4, #0x10]\n    bl ov01_021FE5BC\n    ldr r0, [r4, #0x10]\n    bl ov01_021FE65C\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02023DA4(*((u32*)(r1 + 0x18)));
+    ov01_021FE5BC(*((u32*)(r4 + 0x10)));
+    ov01_021FE65C(*((u32*)(r4 + 0x10)));
 }
 
 void ov01_021FE70C(void) {
@@ -93,11 +89,6 @@ void ov01_021FE70C(void) {
 }
 
 void ov01_021FE768(void) {
-    /* Original at 0x021FE768 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    add r1, sp, #0\n    bl sub_02068DB8\n    ldr r0, [r4, #0x18]\n    add r1, sp, #0\n    bl sub_02023E50\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    sub_02068DB8();
+    sub_02023E50(*((u32*)(r4 + 0x18)));
 }

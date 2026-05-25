@@ -310,13 +310,13 @@ void ov93_02260E1C(void) {
 }
 
 void ov93_02260F14(void) {
-    /* Original at 0x02260F14 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r3, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0x10\n    bl MI_CpuFill8\n    bl sub_0203769C\n    strb r0, [r4]\n    strh r5, [r4, #2]\n    str r6, [r4, #4]\n    str r6, [r4, #8]\n    mov r0, #0\n    strb r0, [r4, #1]\n    strb r0, [r4, #0xc]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    MI_CpuFill8(r3, 0, 0x10);
+    sub_0203769C();
+    *((u16*)(r4 + 2)) = r5;
+    *((u32*)(r4 + 4)) = r6;
+    *((u32*)(r4 + 8)) = r6;
+    *((u8*)(r4 + 1)) = 0;
+    *((u8*)(r4 + 0xc)) = 0;
 }
 
 void ov93_02260F3C(void) {
@@ -414,13 +414,11 @@ void ov93_022614F4(void) {
 }
 
 void ov93_02261528(void) {
-    /* Original at 0x02261528 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #0x10]\n    mov r1, #0\n    strb r1, [r0, #0x11]\n    strb r1, [r0, #0x12]\n    str r1, [r0, #0x18]\n    strb r1, [r0, #0x15]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[0x10] = r1;
+    ((u8*)r0)[0x11] = 0;
+    ((u8*)r0)[0x12] = 0;
+    ((u32*)r0)[0x18] = 0;
+    ((u8*)r0)[0x15] = 0;
 }
 
 void ov93_02261538(void) {
@@ -434,13 +432,7 @@ void ov93_02261538(void) {
 }
 
 void ov93_0226154C(void) {
-    /* Original at 0x0226154C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0\n    strb r0, [r2, #0x15]\n    mov r0, #1\n    bx lr"
-    );
-    #endif
+    ((u8*)r2)[0x15] = 0;
 }
 
 void ov93_02261554(void) {
@@ -534,13 +526,8 @@ void ov93_02261EB8(void) {
 }
 
 void ov93_02261FB0(void) {
-    /* Original at 0x02261FB0 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl FontOAM_Delete\n    add r0, r4, #4\n    bl sub_02021B5C\n    mov r0, #0\n    str r0, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    FontOAM_Delete();
+    sub_02021B5C((r4 + 4));
 }
 
 void ov93_02261FC8(void) {
@@ -695,14 +682,11 @@ void ov93_02262540(void) {
     #endif
 }
 
-void ov93_02262598(void) {
-    /* Original at 0x02262598 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r1, #0xc\n    mov r2, #0x75\n    add r5, r0, #0\n    bl OverlayManager_CreateAndGetData\n    mov r1, #0\n    mov r2, #0xc\n    add r4, r0, #0\n    bl MI_CpuFill8\n    add r0, r5, #0\n    bl OverlayManager_GetArgs\n    str r0, [r4]\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 ov93_02262598(void) {
+    OverlayManager_CreateAndGetData(0xc, 0x75);
+    MI_CpuFill8(0, 0xc);
+    OverlayManager_GetArgs(r5);
+    return 1;
 }
 
 void ov93_022625BC(void) {

@@ -2,13 +2,9 @@
 #include "global.h"
 
 void ov01_02203A18(void) {
-    /* Original at 0x02203A18 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #8\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    mov r1, #0\n    str r1, [r4, #4]\n    bl ov01_02203B28\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F1430(8, 0, 0);
+    *((u32*)(r0 + 4)) = 0;
+    ov01_02203B28(0);
 }
 
 void ov01_02203A38(void) {
@@ -57,13 +53,10 @@ void ov01_02203B28(void) {
 }
 
 void ov01_02203B70(void) {
-    /* Original at 0x02203B70 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #0xc\n    bl ov01_021F18FC\n    ldr r0, [r4]\n    mov r1, #0xc\n    bl ov01_021F1924\n    ldr r0, [r4]\n    mov r1, #0xd\n    bl ov01_021F1970\n    ldr r0, [r4]\n    mov r1, #0xe\n    bl ov01_021F18C8\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F18FC(0xc);
+    ov01_021F1924(0xc);
+    ov01_021F1970(0xd);
+    ov01_021F18C8(0xe);
 }
 
 void ov01_02203B98(void) {
@@ -83,13 +76,9 @@ void ov01_02203BB4(void) {
 }
 
 void ov01_02203CA0(void) {
-    /* Original at 0x02203CA0 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r0, [r4, #0x3c]\n    bl sub_02023DA4\n    ldr r0, [r4, #0x54]\n    bl Heap_Free\n    ldr r0, [r4, #0x58]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02023DA4(*((u32*)(r1 + 0x3c)));
+    Heap_Free(*((u32*)(r4 + 0x54)));
+    Heap_Free(*((u32*)(r4 + 0x58)));
 }
 
 void ov01_02203CB8(void) {

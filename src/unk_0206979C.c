@@ -28,13 +28,10 @@ void sub_020697DC(void) {
 }
 
 void sub_02069800(void) {
-    /* Original at 0x02069800 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    bl sub_0206979C\n    add r0, r4, #0\n    mov r1, #0\n    str r4, [r5, #8]\n    bl NNS_G3dGetAnmByIdx\n    str r0, [r5, #0xc]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0206979C();
+    *((u32*)(r5 + 8)) = r4;
+    NNS_G3dGetAnmByIdx(r4, 0);
+    *((u32*)(r5 + 0xc)) = r0;
 }
 
 void sub_02069818(void) {
@@ -150,11 +147,6 @@ void sub_020699BC(void) {
 }
 
 void sub_020699D0(void) {
-    /* Original at 0x020699D0 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x24\n    add r4, r1, #0\n    add r6, r2, #0\n    add r5, r0, #0\n    ldrh r1, [r3]\n    ldrh r2, [r3, #2]\n    ldrh r3, [r3, #4]\n    add r0, sp, #0\n    bl sub_02020DA4\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    add r3, sp, #0\n    bl sub_020699AC\n    add sp, #0x24\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    sub_02020DA4();
+    sub_020699AC(r5, r4, r6);
 }

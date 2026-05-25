@@ -2,13 +2,10 @@
 #include "global.h"
 
 void ov80_02239960(void) {
-    /* Original at 0x02239960 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r1, #0x24\n    add r5, r0, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x24\n    bl MI_CpuFill8\n    strh r5, [r4, #0x20]\n    bl sub_02014DA0\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Heap_Alloc(0x24);
+    MI_CpuFill8(0, 0x24);
+    *((u16*)(r4 + 0x20)) = r5;
+    sub_02014DA0();
 }
 
 void ov80_02239980(void) {

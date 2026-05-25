@@ -6,13 +6,8 @@ void sub_02087A78(void) {
 }
 
 void sub_02087A84(void) {
-    /* Original at 0x02087A84 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0]\n    str r2, [r0, #4]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r1;
+    ((u32*)r0)[4] = r2;
 }
 
 void sub_02087A8C(void) {

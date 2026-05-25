@@ -757,33 +757,15 @@ void ov73_021E79F4(void) {
 }
 
 void ov73_021E7A74(void) {
-    /* Original at 0x021E7A74 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x12\n    lsl r0, r0, #4\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 4;
 }
 
 void ov73_021E7A7C(void) {
-    /* Original at 0x021E7A7C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x12\n    lsl r0, r0, #4\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 4;
 }
 
 void ov73_021E7A84(void) {
-    /* Original at 0x021E7A84 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x12\n    lsl r0, r0, #4\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 4;
 }
 
 void ov73_021E7A8C(void) {
@@ -951,13 +933,9 @@ void ov73_021E8128(void) {
 }
 
 void ov73_021E8148(void) {
-    /* Original at 0x021E8148 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r1, #0\n    bl OverlayManager_GetArgs\n    mov r1, #0\n    str r0, [r4]\n    add r0, r4, #0\n    add r2, r1, #0\n    str r1, [r4, #0x10]\n    bl ov73_021E844C\n    pop {r4, pc}"
-    );
-    #endif
+    OverlayManager_GetArgs(r1);
+    *((u32*)(r4 + 0x10)) = 0;
+    ov73_021E844C(r4, 0, 0);
 }
 
 void ov73_021E8164(void) {
@@ -1031,13 +1009,8 @@ void ov73_021E83D4(void) {
 }
 
 void ov73_021E83EC(void) {
-    /* Original at 0x021E83EC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x1c]\n    str r2, [r0, #0x20]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x1c] = r1;
+    ((u32*)r0)[0x20] = r2;
 }
 
 void ov73_021E83F4(void) {
@@ -1065,13 +1038,8 @@ void ov73_021E8440(void) {
 }
 
 void ov73_021E844C(void) {
-    /* Original at 0x021E844C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    str r2, [r0, #0x18]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
+    ((u32*)r0)[0x18] = r2;
 }
 
 void ov73_021E8454(void) {
@@ -1242,13 +1210,10 @@ void ov73_021E8CBC(void) {
 }
 
 void ov73_021E8D0C(void) {
-    /* Original at 0x021E8D0C */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x2c\n    mov r1, #2\n    mov r2, #1\n    mov r3, #0x14\n    bl ov00_021EC3F0\n    mov r0, #2\n    bl ov00_021EC454\n    bl ov00_021EC4A4\n    mov r0, #3\n    str r0, [r4, #0x1c]\n    pop {r4, pc}"
-    );
-    #endif
+    ov00_021EC3F0(2, 1, 0x14);
+    ov00_021EC454(2);
+    ov00_021EC4A4();
+    *((u32*)(r4 + 0x1c)) = 3;
 }
 
 void ov73_021E8D2C(void) {
@@ -1560,13 +1525,7 @@ void ov73_021E9B58(void) {
 }
 
 void ov73_021E9B94(void) {
-    /* Original at 0x021E9B94 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0x29\n    str r1, [r0, #0x1c]\n    mov r0, #3\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x1c] = 0x29;
 }
 
 void ov73_021E9B9C(void) {
@@ -1633,14 +1592,11 @@ void ov73_021E9C8C(void) {
     #endif
 }
 
-void ov73_021E9CBC(void) {
-    /* Original at 0x021E9CBC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov00_021EC8D8\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov73_021E844C\n    mov r0, #0x2b\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov73_021E9CBC(void) {
+    ov00_021EC8D8();
+    ov73_021E844C(r4, 0, 0);
+    *((u32*)(r4 + 0x1c)) = 0x2b;
+    return 3;
 }
 
 void ov73_021E9CD8(void) {
@@ -1862,13 +1818,8 @@ void ov73_021EA268(void) {
 }
 
 void ov73_021EA290(void) {
-    /* Original at 0x021EA290 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    bl Save_FriendGroup_Get\n    add r2, r0, #0\n    ldr r0, [r4, #8]\n    ldr r1, [r4, #0xc]\n    ldr r3, [r4, #0x10]\n    bl ov73_021E79F4\n    pop {r4, pc}"
-    );
-    #endif
+    Save_FriendGroup_Get(*((u32*)(r0 + 4)));
+    ov73_021E79F4(*((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)), r0, *((u32*)(r4 + 0x10)));
 }
 
 void ov73_021EA2A8(void) {

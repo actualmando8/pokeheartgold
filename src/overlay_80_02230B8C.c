@@ -11,24 +11,17 @@ void FrtCmd_139(void) {
     #endif
 }
 
-void FrtCmd_140(void) {
-    /* Original at 0x02230BE0 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl FrontierScript_ReadVar\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    add r1, r4, #0\n    bl ov80_022313C0\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_140(void) {
+    FrontierScript_ReadVar();
+    Frontier_GetData();
+    ov80_022313C0(r4);
+    return 0;
 }
 
-void FrtCmd_141(void) {
-    /* Original at 0x02230BFC */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    bl ov80_022314A0\n    mov r0, #0\n    pop {r3, pc}"
-    );
-    #endif
+u32 FrtCmd_141(void) {
+    Frontier_GetData();
+    ov80_022314A0();
+    return 0;
 }
 
 void FrtCmd_142(void) {
@@ -62,13 +55,8 @@ void FrtCmd_144(void) {
 }
 
 void ov80_02230D5C(void) {
-    /* Original at 0x02230D5C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    add r1, r4, #0\n    bl ov80_022314DC\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov80_022314DC(*((u32*)(r0 + 0x10)), r0);
+    Heap_Free(r4);
 }
 
 void FrtCmd_145(void) {
@@ -81,14 +69,10 @@ void FrtCmd_145(void) {
     #endif
 }
 
-void FrtCmd_146(void) {
-    /* Original at 0x02230FD4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl FrontierScript_ReadVarPtr\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    ldr r0, [r0, #0x14]\n    strh r0, [r4]\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_146(void) {
+    FrontierScript_ReadVarPtr();
+    Frontier_GetData();
+    return 0;
 }
 
 void FrtCmd_147(void) {
@@ -131,14 +115,11 @@ void FrtCmd_149(void) {
     #endif
 }
 
-void FrtCmd_118(void) {
-    /* Original at 0x022310A4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl FrontierScript_ReadVarPtr\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    add r1, r4, #0\n    bl ov80_0223151C\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_118(void) {
+    FrontierScript_ReadVarPtr();
+    Frontier_GetData();
+    ov80_0223151C(r4);
+    return 1;
 }
 
 u8 FrtCmd_199(void) {

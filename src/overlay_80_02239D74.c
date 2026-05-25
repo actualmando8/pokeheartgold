@@ -12,14 +12,9 @@ void ov80_02239D74(void) {
 }
 
 void ov80_02239DB8(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4] */
     ov80_02239EC4();
-    /* ldr r0, [r4, #4] */
-    ov80_02239F94();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    ov80_02239F94(*((u32*)(r4 + 4)));
+    Heap_Free(r4);
 }
 
 void ov80_02239DD0(void) {
@@ -33,12 +28,8 @@ void ov80_02239DD0(void) {
 }
 
 void ov80_02239EC4(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4] */
     SysTask_Destroy();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    Heap_Free(r4);
 }
 
 void ov80_02239ED8(void) {
@@ -62,12 +53,8 @@ void ov80_02239F48(void) {
 }
 
 void ov80_02239F94(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4] */
     SysTask_Destroy();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    Heap_Free(r4);
 }
 
 void ov80_02239FA8(void) {

@@ -12,13 +12,9 @@ void sub_02096C88(void) {
 }
 
 void sub_02096CC8(void) {
-    /* Original at 0x02096CC8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x4c]\n    bl Heap_Free\n    ldr r0, [r4, #0x50]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free(*((u32*)(r0 + 0x4c)));
+    Heap_Free(*((u32*)(r4 + 0x50)));
+    Heap_Free(r4);
 }
 
 void sub_02096CE0(void) {
@@ -32,13 +28,10 @@ void sub_02096CE0(void) {
 }
 
 void sub_02096CF4(void) {
-    /* Original at 0x02096CF4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #2\n    bl sub_02038C1C\n    bl sub_02037FF0\n    ldr r0, [r4]\n    ldr r0, [r0, #0x20]\n    bl sub_0205AD24\n    mov r0, #0\n    bl sub_0205A904\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02038C1C(2);
+    sub_02037FF0();
+    sub_0205AD24(*((u32*)(r0 + 0x20)));
+    sub_0205A904(0);
 }
 
 void sub_02096D14(void) {
@@ -254,13 +247,7 @@ u8 sub_02096FE4(void) {
 }
 
 void sub_02096FE8(void) {
-    /* Original at 0x02096FE8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x59\n    lsl r0, r0, #4\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 4;
 }
 
 void sub_02096FF0(void) {

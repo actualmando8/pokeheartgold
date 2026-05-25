@@ -22,38 +22,37 @@ void ov01_021EA73C(void) {
 }
 
 void ov01_021EA7E0(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4, #4] */
+    Heap_Free(*((u32*)(r0 + 4)));
     Heap_Free();
-    /* ldr r0, [r4] */
-    Heap_Free();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    Heap_Free(r4);
 }
 
 void ov01_021EA7F8(void) {
-    /* ldr r1, [r1] */
-    /* lsl r0, r0, #2 */
-    /* ldrh r0, [r1, r0] */
-    /* strh r0, [r2] */
+    /* Original at 0x021EA7F8 */
+    /* Requires manual decompilation - 5 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldr r1, [r1]\n    lsl r0, r0, #2\n    ldrh r0, [r1, r0]\n    strh r0, [r2]\n    bx lr"
+    );
+    #endif
 }
 
 void ov01_021EA804(void) {
-    void *r3;
-    void *r4;
-    /* lsl r4, r0, #2 */
-    /* ldr r0, [r1] */
-    /* ldrh r0, [r0, r4] */
-    /* strh r0, [r2] */
-    /* ldr r0, [r1] */
-    /* add r0, r0, r4 */
-    /* ldrh r0, [r0, #2] */
-    /* strh r0, [r3] */
+    /* Original at 0x021EA804 */
+    /* Requires manual decompilation - 11 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4}\n    lsl r4, r0, #2\n    ldr r0, [r1]\n    ldrh r0, [r0, r4]\n    strh r0, [r2]\n    ldr r0, [r1]\n    add r0, r0, r4\n    ldrh r0, [r0, #2]\n    strh r0, [r3]\n    pop {r3, r4}\n    bx lr"
+    );
+    #endif
 }
 
 void ov01_021EA81C(void) {
-    /* ldr r1, [r1, #4] */
-    /* lsl r0, r0, #2 */
-    /* add r0, r1, r0 */
+    /* Original at 0x021EA81C */
+    /* Requires manual decompilation - 4 instructions */
+    #ifdef MWERKS
+    asm(
+        "ldr r1, [r1, #4]\n    lsl r0, r0, #2\n    add r0, r1, r0\n    bx lr"
+    );
+    #endif
 }

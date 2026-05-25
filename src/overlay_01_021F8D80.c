@@ -58,13 +58,8 @@ void ov01_021F8FC0(void) {
 }
 
 void ov01_021F902C(void) {
-    /* Original at 0x021F902C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl sub_0205F40C\n    add r2, r0, #0\n    ldr r2, [r2]\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov01_02205808\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0205F40C(r1);
+    ov01_02205808(r5, r4, r0);
 }
 
 void ov01_021F9048(void) {

@@ -332,13 +332,7 @@ void ov74_02229DBC(void) {
 }
 
 void ov74_02229DCC(void) {
-    /* Original at 0x02229DCC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xd6\n    lsl r0, r0, #2\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 2;
 }
 
 void ov74_02229DD4(void) {
@@ -1926,13 +1920,11 @@ void ov74_0222FF28(void) {
 }
 
 void ov74_0222FF68(void) {
-    /* Original at 0x0222FF68 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    bl ov74_02231054\n    add r4, r0, #0\n    bl WM_GetDispersionBeaconPeriod\n    strh r0, [r4, #0x18]\n    bl WM_GetNextTgid\n    strh r0, [r4, #0xc]\n    pop {r4, pc}"
-    );
-    #endif
+    ov74_02231054();
+    WM_GetDispersionBeaconPeriod();
+    *((u16*)(r4 + 0x18)) = r0;
+    WM_GetNextTgid();
+    *((u16*)(r4 + 0xc)) = r0;
 }
 
 void ov74_0222FF80(void) {
@@ -2236,23 +2228,11 @@ void ov74_02230A4C(void) {
 }
 
 void ov74_02230A74(void) {
-    /* Original at 0x02230A74 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x17\n    lsl r0, r0, #6\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 6;
 }
 
 void ov74_02230A7C(void) {
-    /* Original at 0x02230A7C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x17\n    lsl r0, r0, #6\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 6;
 }
 
 void ov74_02230A84(void) {
@@ -2948,13 +2928,12 @@ void ov74_022317D8(void) {
 }
 
 void ov74_02231930(void) {
-    /* Original at 0x02231930 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x10]\n    bl Save_MigratedPokemon_Get\n    add r4, r0, #0\n    bl ov74_02233F68\n    add r1, r0, #0\n    add r0, r4, #0\n    bl MigratedPokemon_RecordMigration\n    mov r0, #4\n    bl sub_0201A728\n    ldr r0, [r5, #0x10]\n    bl SaveGameNormal\n    mov r0, #4\n    bl sub_0201A738\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Save_MigratedPokemon_Get(*((u32*)(r0 + 0x10)));
+    ov74_02233F68();
+    MigratedPokemon_RecordMigration(r4, r0);
+    sub_0201A728(4);
+    SaveGameNormal(*((u32*)(r5 + 0x10)));
+    sub_0201A738(4);
 }
 
 void ov74_0223195C(void) {
@@ -3867,33 +3846,19 @@ void ov74_02235414(void) {
 }
 
 void ov74_02235464(void) {
-    /* Original at 0x02235464 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x18]\n    str r2, [r0, #0x1c]\n    str r3, [r0, #0x28]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x18] = r1;
+    ((u32*)r0)[0x1c] = r2;
+    ((u32*)r0)[0x28] = r3;
 }
 
 void ov74_0223546C(void) {
-    /* Original at 0x0223546C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0]\n    str r2, [r0, #0x40]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r1;
+    ((u32*)r0)[0x40] = r2;
 }
 
 void ov74_02235474(void) {
-    /* Original at 0x02235474 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x20]\n    str r2, [r0, #0x24]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x20] = r1;
+    ((u32*)r0)[0x24] = r2;
 }
 
 void ov74_0223547C(void) {

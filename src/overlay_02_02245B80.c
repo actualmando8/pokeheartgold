@@ -236,23 +236,16 @@ void ov02_02246490(void) {
 }
 
 void ov02_0224650C(void) {
-    /* Original at 0x0224650C */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r1, #0\n    add r5, r0, #0\n    add r0, r6, #0\n    mov r1, #0x38\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x38\n    bl MI_CpuFill8\n    str r6, [r4]\n    add r0, r6, #0\n    str r5, [r4, #4]\n    bl Camera_New\n    str r0, [r4, #0x18]\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_Alloc(r1, 0x38);
+    MI_CpuFill8(0, 0x38);
+    *((u32*)(r4 + 4)) = r5;
+    Camera_New(r6);
+    *((u32*)(r4 + 0x18)) = r0;
 }
 
 void ov02_02246534(void) {
-    /* Original at 0x02246534 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x18]\n    bl Camera_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Camera_Delete(*((u32*)(r0 + 0x18)));
+    Heap_Free(r4);
 }
 
 void ov02_02246548(void) {

@@ -106,13 +106,10 @@ void ov28_0225D898(void) {
 }
 
 void ov28_0225D8D0(void) {
-    /* Original at 0x0225D8D0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov28_0225DBFC\n    add r0, r4, #0\n    bl ov28_0225DB54\n    add r0, r4, #0\n    bl ov28_0225D910\n    ldr r0, [r4, #0x24]\n    bl SpriteList_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    ov28_0225DBFC();
+    ov28_0225DB54(r4);
+    ov28_0225D910(r4);
+    SpriteList_Delete(*((u32*)(r4 + 0x24)));
 }
 
 void ov28_0225D8EC(void) {

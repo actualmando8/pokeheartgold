@@ -153,11 +153,23 @@ def translate_linear_sequence(func):
         # Skip known safe patterns
         if s.startswith(('bl ', 'mov ', 'add r')):
             continue
-        # Reject anything else (str, ldr, cmp, etc.)
+        # Simple register copy
+        if re.match(r'(mov|add)\s+r\d,\s*r\d(\s*,\s*#0)?$', s):
+            continue
+        # ldr from memory (not literal pool)
+        if re.match(r'ldr\s+r\d,\s*\[r\d', s):
+            continue
+        # ldrb/ldrh from memory
+        if re.match(r'ldr[bh]\s+r\d,\s*\[r\d', s):
+            continue
+        # str/strb/strh to memory
+        if re.match(r'str[bh]?\s+r\d,\s*\[r\d', s):
+            continue
+        # cmp
+        if s.startswith('cmp '):
+            continue
+        # Reject anything else
         if s and not s.startswith(('push', 'pop', 'bx', 'nop')):
-            # Check if it's a simple register copy
-            if re.match(r'(mov|add)\s+r\d,\s*r\d(\s*,\s*#0)?$', s):
-                continue
             return None
     
     # Only translate if we have bl calls and the function is simple enough
@@ -195,6 +207,48 @@ def translate_call_chain(name, addr, core, all_lines):
             regs[m.group(1)] = regs.get(m.group(2), m.group(2))
             continue
         
+        # add rX, rY, #imm
+        m = re.match(r'add\s+(r\d),\s*(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', s)
+        if m:
+            dst, src, imm = m.group(1), m.group(2), m.group(3)
+            regs[dst] = f"({regs.get(src, src)} + {imm})"
+            continue
+        
+        # ldr rX, [rY, #imm]
+        m = re.match(r'ldr\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            dst, base, off = m.group(1), m.group(2), m.group(3)
+            regs[dst] = f"*((u32*)({regs.get(base, base)} + {off}))"
+            continue
+            
+        # ldrb rX, [rY, #imm]
+        m = re.match(r'ldrb\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            dst, base, off = m.group(1), m.group(2), m.group(3)
+            regs[dst] = f"*((u8*)({regs.get(base, base)} + {off}))"
+            continue
+            
+        # str rX, [rY, #imm]
+        m = re.match(r'str\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            val, base, off = m.group(1), m.group(2), m.group(3)
+            body.append(f"    *((u32*)({regs.get(base, base)} + {off})) = {regs.get(val, val)};")
+            continue
+            
+        # strb rX, [rY, #imm]
+        m = re.match(r'strb\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            val, base, off = m.group(1), m.group(2), m.group(3)
+            body.append(f"    *((u8*)({regs.get(base, base)} + {off})) = {regs.get(val, val)};")
+            continue
+            
+        # strh rX, [rY, #imm]
+        m = re.match(r'strh\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            val, base, off = m.group(1), m.group(2), m.group(3)
+            body.append(f"    *((u16*)({regs.get(base, base)} + {off})) = {regs.get(val, val)};")
+            continue
+        
         # bl function_call
         m = re.match(r'bl\s+(\w+)', s)
         if m:
@@ -222,6 +276,119 @@ def translate_call_chain(name, addr, core, all_lines):
     
     return f"void {name}(void) {{\n" + "\n".join(body) + "\n}", True
 
+
+def translate_store_sequence(func):
+    """
+    Translate functions that are pure store sequences (no calls, no branches).
+    Pattern: mov rX, #val; str[bh] rX, [r0, #off]; str[bh] rX, [r0, #off2]; ...
+    """
+    lines = func['lines']
+    name = func['name']
+    addr = func['addr']
+    
+    # Filter out prologue/epilogue
+    core = []
+    for l in lines:
+        s = l.strip()
+        if s.startswith(('push', 'pop', 'bx ', 'nop', 'add sp', 'sub sp')):
+            continue
+        if re.match(r'^\w+:$', s):
+            continue
+        core.append(s)
+    
+    # Check for loops or branches - can't handle
+    if has_loops(lines) or has_branches(core):
+        return None
+    
+    # Check for bl calls - can't handle
+    if any(l.startswith('bl ') for l in core):
+        return None
+    
+    # Check for data table refs
+    if has_data_refs(lines):
+        return None
+    
+    # Check if all instructions are stores or register setup
+    body = []
+    val_reg = None
+    val_imm = None
+    
+    for line in core:
+        s = line.strip()
+        
+        # mov rX, #imm (value setup)
+        m = re.match(r'mov\s+(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', s)
+        if m:
+            val_reg = m.group(1)
+            val_imm = m.group(2)
+            continue
+        
+        # add rX, rY, #0 (register copy)
+        m = re.match(r'add\s+(r\d),\s*(r\d),\s*#0', s)
+        if m:
+            continue
+            
+        # strb rX, [r0, #off]
+        m = re.match(r'strb\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            reg, base, off = m.group(1), m.group(2), m.group(3)
+            val = val_imm if reg == val_reg else reg
+            body.append(f"    ((u8*){base})[{off}] = {val};")
+            continue
+        
+        # strh rX, [r0, #off]
+        m = re.match(r'strh\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            reg, base, off = m.group(1), m.group(2), m.group(3)
+            val = val_imm if reg == val_reg else reg
+            body.append(f"    ((u16*){base})[{off}] = {val};")
+            continue
+        
+        # str rX, [r0, #off]
+        m = re.match(r'str\s+(r\d),\s*\[(r\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', s)
+        if m:
+            reg, base, off = m.group(1), m.group(2), m.group(3)
+            val = val_imm if reg == val_reg else reg
+            body.append(f"    ((u32*){base})[{off}] = {val};")
+            continue
+        
+        # str[bh] rX, [r0]
+        m = re.match(r'strb\s+(r\d),\s*\[(r\d)\]', s)
+        if m:
+            reg, base = m.group(1), m.group(2)
+            val = val_imm if reg == val_reg else reg
+            body.append(f"    *(u8*){base} = {val};")
+            continue
+        
+        m = re.match(r'strh\s+(r\d),\s*\[(r\d)\]', s)
+        if m:
+            reg, base = m.group(1), m.group(2)
+            val = val_imm if reg == val_reg else reg
+            body.append(f"    *(u16*){base} = {val};")
+            continue
+        
+        m = re.match(r'str\s+(r\d),\s*\[(r\d)\]', s)
+        if m:
+            reg, base = m.group(1), m.group(2)
+            val = val_imm if reg == val_reg else reg
+            body.append(f"    *(u32*){base} = {val};")
+            continue
+        
+        # lsl rX, rY, #imm (shift)
+        m = re.match(r'lsl\s+(r\d),\s*(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', s)
+        if m:
+            dst, src, imm = m.group(1), m.group(2), m.group(3)
+            body.append(f"    {dst} = {src} << {imm};")
+            val_reg = dst
+            continue
+        
+        # Unknown - reject
+        return None
+    
+    if not body:
+        return None
+    
+    return f"void {name}(void) {{\n" + "\n".join(body) + "\n}", True
 
 def translate_func(func):
     """Try to translate a function. Returns (c_code, was_translated)."""
@@ -288,6 +455,11 @@ def translate_func(func):
     result = translate_linear_sequence(func)
     if result:
         return result  # already returns (code, True) tuple
+    
+    # Type 5: Store-only sequences (memset-like patterns)
+    result = translate_store_sequence(func)
+    if result:
+        return result
     
     # Too complex - preserve as asm
     asm_block = '\\n    '.join(lines)

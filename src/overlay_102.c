@@ -100,23 +100,17 @@ void ov102_021E7A0C(void) {
 }
 
 void ov102_021E7A24(void) {
-    /* Original at 0x021E7A24 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    ldr r0, [r5]\n    ldr r1, [r5, #0x74]\n    bl sub_02090E5C\n    ldr r0, [r5, #0x40]\n    bl TouchHitboxController_Destroy\n    ldr r0, [r5, #0x14]\n    bl ov102_021E9144\n    ldr r0, [r5, #0x18]\n    bl sub_020918C0\n    add r0, r4, #0\n    bl OverlayManager_FreeData\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02090E5C(*((u32*)(r0 + 0x74)));
+    TouchHitboxController_Destroy(*((u32*)(r5 + 0x40)));
+    ov102_021E9144(*((u32*)(r5 + 0x14)));
+    sub_020918C0(*((u32*)(r5 + 0x18)));
+    OverlayManager_FreeData(r4);
 }
 
 void ov102_021E7A4C(void) {
-    /* Original at 0x021E7A4C */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x20]\n    mov r1, #0\n    str r1, [r0, #0x1c]\n    str r1, [r0, #0x78]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x20] = r1;
+    ((u32*)r0)[0x1c] = 0;
+    ((u32*)r0)[0x78] = 0;
 }
 
 void ov102_021E7A58(void) {
@@ -554,23 +548,12 @@ void ov102_021E8D1C(void) {
 }
 
 void ov102_021E8D50(void) {
-    /* Original at 0x021E8D50 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x2c]\n    mov r1, #0\n    str r1, [r0, #0x28]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x2c] = r1;
+    ((u32*)r0)[0x28] = 0;
 }
 
 void ov102_021E8D58(void) {
-    /* Original at 0x021E8D58 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #0x2c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x2c] = 0;
 }
 
 void ov102_021E8D60(void) {
@@ -618,13 +601,8 @@ void ov102_021E8F14(void) {
 }
 
 void ov102_021E8F5C(void) {
-    /* Original at 0x021E8F5C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r2, [r0]\n    strb r1, [r0, #1]\n    bx lr"
-    );
-    #endif
+    *(u8*)r0 = r2;
+    ((u8*)r0)[1] = r1;
 }
 
 void ov102_021E8F64(void) {
@@ -1552,13 +1530,9 @@ void ov102_021EAF50(void) {
 }
 
 void ov102_021EAF5C(void) {
-    /* Original at 0x021EAF5C */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x60]\n    add r4, r1, #0\n    bl Sprite_SetDrawFlag\n    ldr r0, [r5, #0x64]\n    add r1, r4, #0\n    bl Sprite_SetDrawFlag\n    add r0, r5, #0\n    mov r1, #1\n    bl ov102_021EB088\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Sprite_SetDrawFlag(*((u32*)(r0 + 0x60)));
+    Sprite_SetDrawFlag(*((u32*)(r5 + 0x64)), r4);
+    ov102_021EB088(r5, 1);
 }
 
 void ov102_021EAF7C(void) {
@@ -1652,13 +1626,9 @@ void ov102_021EB1A4(void) {
 }
 
 void ov102_021EB1E0(void) {
-    /* Original at 0x021EB1E0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov102_021EB29C\n    ldr r0, [r4, #0x14]\n    bl DestroyMsgData\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov102_021EB29C();
+    DestroyMsgData(*((u32*)(r4 + 0x14)));
+    Heap_Free(r4);
 }
 
 void ov102_021EB1F8(void) {

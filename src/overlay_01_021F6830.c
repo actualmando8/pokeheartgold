@@ -128,13 +128,8 @@ void ov01_021F6ABC(void) {
 }
 
 void ov01_021F6AEC(void) {
-    /* Original at 0x021F6AEC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    add r0, #0xd8\n    ldr r0, [r0]\n    bl SysTask_GetData\n    ldr r0, [r0, #4]\n    bl SysTask_GetData\n    ldr r0, [r0]\n    pop {r3, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    SysTask_GetData(*((u32*)(r0 + 4)));
 }
 
 void ov01_021F6B00(void) {
@@ -146,33 +141,18 @@ void ov01_021F6B10(void) {
 }
 
 void ov01_021F6B20(void) {
-    /* Original at 0x021F6B20 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    add r0, #0xd8\n    ldr r0, [r0]\n    bl SysTask_GetData\n    ldr r0, [r0, #4]\n    bl SysTask_GetData\n    add r0, #0xc\n    pop {r3, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    SysTask_GetData(*((u32*)(r0 + 4)));
 }
 
 void ov01_021F6B34(void) {
-    /* Original at 0x021F6B34 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r0, #0xd8\n    ldr r0, [r0]\n    add r5, r1, #0\n    add r4, r2, #0\n    bl SysTask_GetData\n    ldr r0, [r0, #4]\n    add r1, r5, #0\n    add r2, r4, #0\n    bl ov27_0225C41C\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    ov27_0225C41C(*((u32*)(r0 + 4)), r5, r4);
 }
 
 void ov01_021F6B50(void) {
-    /* Original at 0x021F6B50 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    add r0, #0xd8\n    ldr r0, [r0]\n    bl SysTask_GetData\n    ldr r0, [r0, #4]\n    bl ov27_0225A2CC\n    pop {r3, pc}"
-    );
-    #endif
+    SysTask_GetData();
+    ov27_0225A2CC(*((u32*)(r0 + 4)));
 }
 
 void ov01_021F6B64(void) {

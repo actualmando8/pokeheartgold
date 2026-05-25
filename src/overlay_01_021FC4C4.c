@@ -100,21 +100,11 @@ void ov01_021FC644(void) {
 }
 
 void ov01_021FC65C(void) {
-    /* Original at 0x021FC65C */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r2, [r0]\n    str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r2;
+    ((u32*)r0)[4] = r1;
 }
 
 void ov01_021FC664(void) {
-    /* Original at 0x021FC664 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0]\n    str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 0;
+    ((u32*)r0)[4] = 0;
 }

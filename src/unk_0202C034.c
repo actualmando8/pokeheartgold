@@ -2,13 +2,7 @@
 #include "global.h"
 
 void sub_0202C034(void) {
-    /* Original at 0x0202C034 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x23\n    lsl r0, r0, #6\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 6;
 }
 
 void sub_0202C03C(void) {

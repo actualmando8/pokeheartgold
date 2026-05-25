@@ -1,24 +1,17 @@
 /* Decompiled from asm/overlay_80_02235900.s */
 #include "global.h"
 
-void FrtCmd_170(void) {
-    /* Original at 0x02235900 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl Frontier_GetLaunchArgs\n    ldr r0, [r0, #8]\n    bl ov80_02235FC8\n    add r1, r0, #0\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl Frontier_SetData\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 FrtCmd_170(void) {
+    Frontier_GetLaunchArgs();
+    ov80_02235FC8(*((u32*)(r0 + 8)));
+    Frontier_SetData(r0);
+    return 0;
 }
 
-void FrtCmd_171(void) {
-    /* Original at 0x02235920 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    bl ov80_02235FEC\n    mov r0, #0\n    pop {r3, pc}"
-    );
-    #endif
+u32 FrtCmd_171(void) {
+    Frontier_GetData();
+    ov80_02235FEC();
+    return 0;
 }
 
 void FrtCmd_172(void) {
@@ -101,14 +94,10 @@ void FrtCmd_176(void) {
     #endif
 }
 
-void FrtCmd_177(void) {
-    /* Original at 0x02235B04 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl FrontierScript_ReadVarPtr\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    add r0, #0x59\n    ldrb r0, [r0]\n    strh r0, [r4]\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_177(void) {
+    FrontierScript_ReadVarPtr();
+    Frontier_GetData();
+    return 0;
 }
 
 void FrtCmd_178(void) {
@@ -131,14 +120,11 @@ void FrtCmd_179(void) {
     #endif
 }
 
-void FrtCmd_180(void) {
-    /* Original at 0x02235F64 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl FrontierScript_ReadVarPtr\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    bl sub_02096998\n    strh r0, [r4]\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_180(void) {
+    FrontierScript_ReadVarPtr();
+    Frontier_GetData();
+    sub_02096998();
+    return 1;
 }
 
 void FrtCmd_181(void) {
@@ -149,12 +135,8 @@ void ov80_02235F90(void) {
     Frontier_GetData(0, 1, 0);
 }
 
-void FrtCmd_182(void) {
-    /* Original at 0x02235FB4 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    bl FrontierFieldSystem_Free\n    mov r0, #0\n    pop {r3, pc}"
-    );
-    #endif
+u32 FrtCmd_182(void) {
+    Frontier_GetData();
+    FrontierFieldSystem_Free();
+    return 0;
 }

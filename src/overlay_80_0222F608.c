@@ -11,28 +11,17 @@ void FrtCmd_092(void) {
     #endif
 }
 
-void FrtCmd_093(void) {
-    void *r3;
-    void *r4;
-    void *r5;
-    r5 = r0 + 0;
+u32 FrtCmd_093(void) {
     FrontierScript_ReadVar();
-    r4 = r0 + 0;
-    /* ldr r0, [r5] */
-    /* ldr r0, [r0] */
     Frontier_GetData();
-    r1 = r4 + 0;
-    ov80_0222FEEC();
-    r0 = 0;
+    ov80_0222FEEC(r4);
+    return 0;
 }
 
-void FrtCmd_094(void) {
-    void *r3;
-    /* ldr r0, [r0] */
-    /* ldr r0, [r0] */
+u32 FrtCmd_094(void) {
     Frontier_GetData();
     ov80_02230424();
-    r0 = 0;
+    return 0;
 }
 
 void FrtCmd_095(void) {
@@ -76,49 +65,32 @@ void FrtCmd_098(void) {
 }
 
 void ov80_0222F7CC(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4, #0x1c] */
-    r1 = (r0 + 0) + 0;
-    ov80_02230460();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    ov80_02230460(*((u32*)(r0 + 0x1c)), r0);
+    Heap_Free(r4);
 }
 
-void FrtCmd_099(void) {
-    void *r3;
-    /* ldr r0, [r0] */
-    /* ldr r0, [r0] */
+u32 FrtCmd_099(void) {
     Frontier_GetData();
     ov80_022307F0();
-    r0 = 0;
+    return 0;
 }
 
-void FrtCmd_100(void) {
-    void *r3;
-    /* ldr r0, [r0] */
-    /* ldr r0, [r0] */
+u32 FrtCmd_100(void) {
     Frontier_GetData();
     ov80_022308C4();
-    r0 = 0;
+    return 0;
 }
 
-void FrtCmd_101(void) {
-    void *r3;
-    /* ldr r0, [r0] */
-    /* ldr r0, [r0] */
+u32 FrtCmd_101(void) {
     Frontier_GetData();
     ov80_022309F8();
-    r0 = 0;
+    return 0;
 }
 
-void FrtCmd_102(void) {
-    void *r3;
-    /* ldr r0, [r0] */
-    /* ldr r0, [r0] */
+u32 FrtCmd_102(void) {
     Frontier_GetData();
     ov80_02230A60();
-    r0 = 0;
+    return 0;
 }
 
 void FrtCmd_103(void) {
@@ -141,44 +113,20 @@ void ov80_0222FC08(void) {
     #endif
 }
 
-void FrtCmd_104(void) {
-    void *r3;
-    void *r4;
-    void *r5;
-    r5 = r0 + 0;
+u32 FrtCmd_104(void) {
     FrontierScript_ReadVarPtr();
-    r4 = r0 + 0;
-    /* ldr r0, [r5] */
-    /* ldr r0, [r0] */
     Frontier_GetData();
-    /* ldr r0, [r0, #0x14] */
-    /* strh r0, [r4] */
-    r0 = 0;
+    return 0;
 }
 
 void FrtCmd_105(void) {
-    void *r3;
-    void *r4;
-    void *r5;
-    void *r6;
-    void *r7;
-    r5 = r0 + 0;
-    FrontierScript_ReadVar();
-    r6 = r0 + 0;
-    r0 = r5 + 0;
-    FrontierScript_ReadVar((r5 + 0));
-    r7 = r0 + 0;
-    r0 = r5 + 0;
-    FrontierScript_ReadVarPtr((r5 + 0));
-    r4 = r0 + 0;
-    /* ldr r0, [r5] */
-    /* ldr r0, [r0] */
-    Frontier_GetData();
-    r1 = r6 + 0;
-    r2 = r7 + 0;
-    ov80_02230AF8();
-    /* strh r0, [r4] */
-    r0 = 1;
+    /* Original at 0x0222FC50 */
+    /* Requires manual decompilation - 19 instructions */
+    #ifdef MWERKS
+    asm(
+        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    bl FrontierScript_ReadVar\n    add r6, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVar\n    add r7, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVarPtr\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov80_02230AF8\n    strh r0, [r4]\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}"
+    );
+    #endif
 }
 
 void FrtCmd_106(void) {

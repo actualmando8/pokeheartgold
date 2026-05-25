@@ -12,13 +12,10 @@ void ov01_021EABA8(void) {
 }
 
 void ov01_021EAC30(void) {
-    /* Original at 0x021EAC30 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x28]\n    bl ov01_021EAC64\n    bl Camera_UnsetStaticPtr\n    ldr r0, [r4, #0x24]\n    bl Camera_History_Delete\n    ldr r0, [r4, #0x24]\n    bl Camera_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021EAC64(*((u32*)(r0 + 0x28)));
+    Camera_UnsetStaticPtr();
+    Camera_History_Delete(*((u32*)(r4 + 0x24)));
+    Camera_Delete(*((u32*)(r4 + 0x24)));
 }
 
 void ov01_021EAC4C(void) {

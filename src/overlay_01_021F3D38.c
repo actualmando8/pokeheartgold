@@ -16,13 +16,8 @@ void ov01_021F3D50(void) {
 }
 
 void ov01_021F3D68(void) {
-    /* Original at 0x021F3D68 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #0x12]\n    strh r2, [r0, #0x10]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[0x12] = r1;
+    ((u16*)r0)[0x10] = r2;
 }
 
 void ov01_021F3D70(void) {
@@ -76,13 +71,8 @@ void ov01_021F3D98(void) {
 }
 
 void ov01_021F3DFC(void) {
-    /* Original at 0x021F3DFC */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x68]\n    bl ov01_021F3D70\n    add r0, r4, #0\n    bl ov01_021F3D98\n    pop {r4, pc}"
-    );
-    #endif
+    ov01_021F3D70(*((u32*)(r0 + 0x68)));
+    ov01_021F3D98(r4);
 }
 
 void ov01_021F3E10(void) {

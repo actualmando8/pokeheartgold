@@ -12,13 +12,9 @@ void sub_0202068C(void) {
 }
 
 void sub_020206C8(void) {
-    /* Original at 0x020206C8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_02020740\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02020740();
+    Heap_Free();
+    Heap_Free(r4);
 }
 
 void sub_020206E0(void) {
@@ -50,13 +46,12 @@ void sub_02020764(void) {
 }
 
 void sub_02020770(void) {
-    /* Original at 0x02020770 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0]\n    str r1, [r0, #4]\n    str r1, [r0, #8]\n    str r1, [r0, #0xc]\n    strb r1, [r0, #0x10]\n    strb r1, [r0, #0x11]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 0;
+    ((u32*)r0)[4] = 0;
+    ((u32*)r0)[8] = 0;
+    ((u32*)r0)[0xc] = 0;
+    ((u8*)r0)[0x10] = 0;
+    ((u8*)r0)[0x11] = 0;
 }
 
 void sub_02020780(void) {

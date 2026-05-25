@@ -160,23 +160,13 @@ void sub_020134BC(void) {
 }
 
 void sub_020134D0(void) {
-    /* Original at 0x020134D0 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r3, r1, #0\n    add r4, r0, #0\n    ldr r0, [r3]\n    ldr r1, [r3, #4]\n    ldr r2, [r3, #8]\n    ldr r3, [r3, #0xc]\n    bl sub_02013220\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02013220(*((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    SysTask_Destroy(r4);
 }
 
 void sub_020134EC(void) {
-    /* Original at 0x020134EC */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r2, r1, #0\n    add r4, r0, #0\n    ldr r0, [r2]\n    ldr r1, [r2, #4]\n    ldr r2, [r2, #8]\n    bl sub_020132A8\n    add r0, r4, #0\n    bl SysTask_Destroy\n    pop {r4, pc}"
-    );
-    #endif
+    sub_020132A8(*((u32*)(r1 + 4)), *((u32*)(r1 + 8)));
+    SysTask_Destroy(r4);
 }
 
 void sub_02013504(void) {

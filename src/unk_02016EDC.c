@@ -12,13 +12,8 @@ void sub_02016EDC(void) {
 }
 
 void sub_02016F2C(void) {
-    /* Original at 0x02016F2C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    Heap_Free(r4);
 }
 
 void sub_02016F40(void) {
@@ -165,13 +160,7 @@ void sub_020174A4(void) {
 }
 
 void sub_020174B4(void) {
-    /* Original at 0x020174B4 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #0x18]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x18] = 1;
 }
 
 void sub_020174BC(void) {

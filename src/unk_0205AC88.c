@@ -162,13 +162,12 @@ void sub_0205B27C(void) {
 }
 
 void sub_0205B338(void) {
-    /* Original at 0x0205B338 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #8\n    mov r1, #0x57\n    bl String_New\n    str r0, [r4]\n    mov r1, #0\n    add r0, r4, #0\n    str r1, [r4, #4]\n    add r0, #0x14\n    str r1, [r4, #8]\n    bl MailMsg_Init_WithBank\n    mov r0, #0\n    str r0, [r4, #0x10]\n    str r0, [r4, #0xc]\n    pop {r4, pc}"
-    );
-    #endif
+    String_New(8, 0x57);
+    *((u32*)(r4 + 4)) = 0;
+    *((u32*)(r4 + 8)) = 0;
+    MailMsg_Init_WithBank(r4, 0);
+    *((u32*)(r4 + 0x10)) = 0;
+    *((u32*)(r4 + 0xc)) = 0;
 }
 
 void sub_0205B35C(void) {

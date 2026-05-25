@@ -120,11 +120,6 @@ void sub_02077650(void) {
 }
 
 void sub_02077664(void) {
-    /* Original at 0x02077664 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    bl sub_020775AC\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    sub_020775AC(*((u32*)(r0 + 0xc)));
+    Heap_Free(r4);
 }

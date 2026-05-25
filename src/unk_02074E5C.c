@@ -34,13 +34,7 @@ void sub_02074EE4(void) {
 }
 
 void sub_02074EEC(void) {
-    /* Original at 0x02074EEC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xfa\n    lsl r0, r0, #2\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 2;
 }
 
 u8 sub_02074EF4(void) {

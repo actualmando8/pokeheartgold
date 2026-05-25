@@ -32,13 +32,8 @@ void ov45_02229F94(void) {
 }
 
 void ov45_02229FE0(void) {
-    /* Original at 0x02229FE0 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r0, [r4, #8]\n    bl ov45_0222CDC0\n    ldr r0, [r4, #4]\n    bl ov45_0222A1F8\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_0222CDC0(*((u32*)(r1 + 8)));
+    ov45_0222A1F8(*((u32*)(r4 + 4)));
 }
 
 void ov45_02229FF4(void) {
@@ -826,13 +821,7 @@ void ov45_0222AD90(void) {
 }
 
 void ov45_0222ADA0(void) {
-    /* Original at 0x0222ADA0 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x4b\n    lsl r0, r0, #4\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 4;
 }
 
 void ov45_0222ADA8(void) {
@@ -896,13 +885,8 @@ void ov45_0222ADF8(void) {
 }
 
 void ov45_0222AE08(void) {
-    /* Original at 0x0222AE08 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r6, r0, #0\n    mov r1, #3\n    add r4, r2, #0\n    bl _u32_div_f\n    str r0, [r5]\n    add r0, r6, #0\n    mov r1, #3\n    bl _u32_div_f\n    str r1, [r4]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    _u32_div_f(3);
+    _u32_div_f(r6, 3);
 }
 
 void ov45_0222AE24(void) {
@@ -1124,23 +1108,13 @@ void ov45_0222B0E8(void) {
 }
 
 void ov45_0222B0F8(void) {
-    /* Original at 0x0222B0F8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    bl Save_GameStats_Get\n    mov r1, #0x2f\n    bl GameStats_Inc\n    pop {r3, pc}"
-    );
-    #endif
+    Save_GameStats_Get();
+    GameStats_Inc(0x2f);
 }
 
 void ov45_0222B108(void) {
-    /* Original at 0x0222B108 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    bl Save_GameStats_Get\n    mov r1, #0x77\n    bl GameStats_Inc\n    pop {r3, pc}"
-    );
-    #endif
+    Save_GameStats_Get();
+    GameStats_Inc(0x77);
 }
 
 void ov45_0222B118(void) {
@@ -1346,13 +1320,7 @@ void ov45_0222BB00(void) {
 }
 
 void ov45_0222BB58(void) {
-    /* Original at 0x0222BB58 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = 0;
 }
 
 void ov45_0222BB60(void) {
@@ -1386,13 +1354,8 @@ void ov45_0222BC84(void) {
 }
 
 void ov45_0222BCA0(void) {
-    /* Original at 0x0222BCA0 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0xe1\n    lsl r1, r1, #2\n    strh r1, [r0]\n    bx lr"
-    );
-    #endif
+    r1 = r1 << 2;
+    *(u16*)r0 = 0xe1;
 }
 
 void ov45_0222BCA8(void) {
@@ -1434,13 +1397,7 @@ void ov45_0222BCE4(void) {
 }
 
 void ov45_0222BD24(void) {
-    /* Original at 0x0222BD24 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    strb r1, [r0, #2]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[2] = 1;
 }
 
 void ov45_0222BD2C(void) {
@@ -1520,23 +1477,13 @@ void ov45_0222BE28(void) {
 }
 
 void ov45_0222BE48(void) {
-    /* Original at 0x0222BE48 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    strh r1, [r0, #0x24]\n    mov r1, #0\n    strh r1, [r0, #0x26]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0x24] = 1;
+    ((u16*)r0)[0x26] = 0;
 }
 
 void ov45_0222BE54(void) {
-    /* Original at 0x0222BE54 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strh r1, [r0, #0x24]\n    strh r1, [r0, #0x26]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0x24] = 0;
+    ((u16*)r0)[0x26] = 0;
 }
 
 void ov45_0222BE5C(void) {
@@ -1664,13 +1611,7 @@ void ov45_0222C388(void) {
 }
 
 void ov45_0222C3A8(void) {
-    /* Original at 0x0222C3A8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 1;
 }
 
 void ov45_0222C3B0(void) {
@@ -1898,13 +1839,8 @@ void ov45_0222C95C(void) {
 }
 
 void ov45_0222C978(void) {
-    /* Original at 0x0222C978 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    mov r1, #0\n    mov r2, #0xb8\n    add r5, r0, #0\n    bl MI_CpuFill8\n    add r0, r4, #0\n    bl WallpaperPasswordBank_Create\n    add r5, #0xb4\n    str r0, [r5]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MI_CpuFill8(0, 0xb8);
+    WallpaperPasswordBank_Create(r4);
 }
 
 void ov45_0222C994(void) {
@@ -2206,13 +2142,9 @@ void ov45_0222CEB0(void) {
 }
 
 void ov45_0222CF00(void) {
-    /* Original at 0x0222CF00 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r0, r2, #0\n    mov r1, #0x20\n    bl Heap_Alloc\n    str r0, [r5]\n    mov r1, #0\n    mov r2, #0x20\n    bl memset\n    ldr r1, [r5]\n    ldr r0, [r4, #0x40]\n    str r0, [r1]\n    ldr r0, [r4, #0x3c]\n    str r0, [r1, #0x1c]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 0x20);
+    memset(0, 0x20);
+    *((u32*)(r1 + 0x1c)) = *((u32*)(r4 + 0x3c));
 }
 
 void ov45_0222CF24(void) {
@@ -2352,13 +2284,8 @@ void ov45_0222D164(void) {
 }
 
 void ov45_0222D19C(void) {
-    /* Original at 0x0222D19C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl ov45_0222CE94\n    ldr r0, [r4]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_0222CE94();
+    Heap_Free();
 }
 
 void ov45_0222D1B0(void) {
@@ -2392,13 +2319,8 @@ void ov45_0222D20C(void) {
 }
 
 void ov45_0222D23C(void) {
-    /* Original at 0x0222D23C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl ov45_0222CE94\n    ldr r0, [r4]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_0222CE94();
+    Heap_Free();
 }
 
 void ov45_0222D250(void) {
@@ -2432,13 +2354,8 @@ void ov45_0222D2AC(void) {
 }
 
 void ov45_0222D2E4(void) {
-    /* Original at 0x0222D2E4 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl ov45_0222CE94\n    ldr r0, [r4]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_0222CE94();
+    Heap_Free();
 }
 
 void ov45_0222D2F8(void) {
@@ -4446,13 +4363,8 @@ void ov45_0223070C(void) {
 }
 
 void ov45_02230884(void) {
-    /* Original at 0x02230884 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    bl sub_02023DA4\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0x90\n    bl memset\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02023DA4(*((u32*)(r0 + 8)));
+    memset(r4, 0, 0x90);
 }
 
 void ov45_0223089C(void) {
@@ -4510,13 +4422,9 @@ void ov45_02230908(void) {
 }
 
 void ov45_02230920(void) {
-    /* Original at 0x02230920 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #1\n    bl ov45_022309C4\n    add r1, r0, #0\n    ldr r0, [r4, #8]\n    bl sub_02023EE0\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl sub_02023F40\n    pop {r4, pc}"
-    );
-    #endif
+    ov45_022309C4(1);
+    sub_02023EE0(*((u32*)(r4 + 8)), r0);
+    sub_02023F40(*((u32*)(r4 + 8)), 0);
 }
 
 void ov45_0223093C(void) {
@@ -4540,13 +4448,7 @@ void ov45_02230968(void) {
 }
 
 void ov45_02230974(void) {
-    /* Original at 0x02230974 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #3]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[3] = r1;
 }
 
 void ov45_02230978(void) {
@@ -4670,13 +4572,10 @@ void ov45_02230ACC(void) {
 }
 
 void ov45_02230B64(void) {
-    /* Original at 0x02230B64 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    mov r1, #6\n    bl ov42_02228188\n    add r1, r0, #0\n    mov r0, #1\n    bl ov45_022309C4\n    add r1, r0, #0\n    ldr r0, [r4, #8]\n    bl sub_02023EE0\n    ldr r0, [r4, #8]\n    mov r1, #0\n    bl sub_02023F40\n    pop {r4, pc}"
-    );
-    #endif
+    ov42_02228188(*((u32*)(r0 + 4)), 6);
+    ov45_022309C4(1, r0);
+    sub_02023EE0(*((u32*)(r4 + 8)), r0);
+    sub_02023F40(*((u32*)(r4 + 8)), 0);
 }
 
 void ov45_02230B8C(void) {
@@ -4780,13 +4679,8 @@ void ov45_02230E28(void) {
 }
 
 void ov45_02230E64(void) {
-    /* Original at 0x02230E64 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl sub_02023FDC\n    add r4, #0x8c\n    ldr r1, [r4]\n    bl NNS_G3dMdlSetMdlLightEnableFlagAll\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02023FDC();
+    NNS_G3dMdlSetMdlLightEnableFlagAll();
 }
 
 void ov45_02230E78(void) {

@@ -59,13 +59,9 @@ void ov01_02203F68(void) {
 }
 
 void ov01_02203F6C(void) {
-    /* Original at 0x02203F6C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x18\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0xc]\n    add r1, sp, #0xc\n    bl MapObject_CopyPositionVector\n    ldr r0, [r4, #0x10]\n    add r4, #0x14\n    add r1, r4, #0\n    add r2, sp, #0xc\n    add r3, sp, #0\n    bl VEC_MultAdd\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02068DA8\n    add sp, #0x18\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MapObject_CopyPositionVector(*((u32*)(r1 + 0xc)));
+    VEC_MultAdd(*((u32*)(r4 + 0x10)), r4);
+    sub_02068DA8(r5);
 }
 
 void ov01_02203F98(void) {

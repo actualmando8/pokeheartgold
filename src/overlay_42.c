@@ -688,13 +688,8 @@ void ov42_02228050(void) {
 }
 
 void ov42_02228068(void) {
-    /* Original at 0x02228068 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #7]\n    bl ov42_02228110\n    add r1, r4, #0\n    bl ov42_02228548\n    pop {r4, pc}"
-    );
-    #endif
+    ov42_02228110(*((u8*)(r1 + 7)));
+    ov42_02228548(r4);
 }
 
 void ov42_0222807C(void) {
@@ -1276,13 +1271,7 @@ void ov42_0222910C(void) {
 }
 
 void ov42_0222919C(void) {
-    /* Original at 0x0222919C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strb r1, [r0, #0x13]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[0x13] = r1;
 }
 
 void ov42_022291A0(void) {
@@ -1294,13 +1283,9 @@ void ov42_022291AC(void) {
 }
 
 void ov42_022291B8(void) {
-    /* Original at 0x022291B8 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldrh r1, [r4, #8]\n    ldr r0, [r4, #4]\n    bl ov42_022292BC\n    add r1, r0, #0\n    ldrh r2, [r4, #0xa]\n    add r0, r4, #0\n    bl ov42_02229308\n    add r0, r4, #0\n    bl ov42_0222910C\n    pop {r4, pc}"
-    );
-    #endif
+    ov42_022292BC(*((u32*)(r0 + 4)));
+    ov42_02229308(r4, r0);
+    ov42_0222910C(r4);
 }
 
 void ov42_022291D8(void) {
@@ -1320,13 +1305,8 @@ void ov42_0222920C(void) {
 }
 
 void ov42_02229218(void) {
-    /* Original at 0x02229218 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r2, r1, #0\n    add r4, r0, #0\n    mov r1, #0\n    bl ov42_02229308\n    ldr r0, [r4, #4]\n    bl ov42_02227538\n    pop {r4, pc}"
-    );
-    #endif
+    ov42_02229308(0, r1);
+    ov42_02227538(*((u32*)(r4 + 4)));
 }
 
 void ov42_0222922C(void) {
@@ -1340,13 +1320,8 @@ void ov42_0222922C(void) {
 }
 
 void ov42_02229248(void) {
-    /* Original at 0x02229248 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0, #4]\n    bl ov42_02227430\n    bl Sprite_GetPalOffset\n    pop {r3, pc}"
-    );
-    #endif
+    ov42_02227430(*((u32*)(r0 + 4)));
+    Sprite_GetPalOffset();
 }
 
 void ov42_02229258(void) {
@@ -1408,23 +1383,15 @@ void ov42_02229358(void) {
 }
 
 void ov42_02229394(void) {
-    /* Original at 0x02229394 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strb r1, [r0]\n    strb r1, [r0, #1]\n    strb r1, [r0, #2]\n    strb r1, [r0, #3]\n    bx lr"
-    );
-    #endif
+    *(u8*)r0 = 0;
+    ((u8*)r0)[1] = 0;
+    ((u8*)r0)[2] = 0;
+    ((u8*)r0)[3] = 0;
 }
 
 void ov42_022293A0(void) {
-    /* Original at 0x022293A0 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0]\n    strh r2, [r0, #2]\n    bx lr"
-    );
-    #endif
+    *(u16*)r0 = r1;
+    ((u16*)r0)[2] = r2;
 }
 
 void ov42_022293A8(void) {
@@ -1458,13 +1425,8 @@ void ov42_022293B8(void) {
 }
 
 void ov42_0222940C(void) {
-    /* Original at 0x0222940C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free(*((u32*)(r0 + 8)));
+    Heap_Free(r4);
 }
 
 void ov42_02229420(void) {
@@ -1548,13 +1510,8 @@ void ov42_02229974(void) {
 }
 
 void ov42_022299AC(void) {
-    /* Original at 0x022299AC */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    Heap_Free(r4);
 }
 
 void ov42_022299C0(void) {
@@ -1588,13 +1545,8 @@ void ov42_02229A40(void) {
 }
 
 void ov42_02229A78(void) {
-    /* Original at 0x02229A78 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    Heap_Free(r4);
 }
 
 void ov42_02229A8C(void) {

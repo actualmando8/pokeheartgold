@@ -202,13 +202,9 @@ u8 sub_02063B04(void) {
 }
 
 void sub_02063B08(void) {
-    /* Original at 0x02063B08 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r1, #9\n    bl sub_0205F398\n    add r4, r0, #0\n    add r0, r5, #0\n    mov r1, #1\n    bl MapObject_GetParam\n    strb r0, [r4, #3]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0205F398(9);
+    MapObject_GetParam(r5, 1);
+    *((u8*)(r4 + 3)) = r0;
 }
 
 void sub_02063B20(void) {
@@ -282,13 +278,8 @@ void sub_02063E70(void) {
 }
 
 void sub_02063FE4(void) {
-    /* Original at 0x02063FE4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_0205F40C\n    add r2, r0, #0\n    add r1, r2, #0\n    ldr r2, [r2]\n    add r0, r4, #0\n    add r1, #8\n    bl ov01_021F95CC\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F40C();
+    ov01_021F95CC(r4, r0, r0);
 }
 
 void sub_02063FFC(void) {
@@ -631,22 +622,12 @@ void sub_020648A0(void) {
     #endif
 }
 
-void sub_020648C8(void) {
-    /* Original at 0x020648C8 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x24]\n    bl MapObject_ClearHeldMovementIfActive\n    ldr r0, [r4, #0x24]\n    mov r1, #0\n    bl sub_0205FC94\n    mov r0, #0x11\n    str r0, [r4]\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 sub_020648C8(void) {
+    MapObject_ClearHeldMovementIfActive(*((u32*)(r0 + 0x24)));
+    sub_0205FC94(*((u32*)(r4 + 0x24)), 0);
+    return 1;
 }
 
 void sub_020648E4(void) {
-    /* Original at 0x020648E4 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #4]\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 1;
 }

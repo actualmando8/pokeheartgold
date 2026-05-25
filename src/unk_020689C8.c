@@ -2,13 +2,10 @@
 #include "global.h"
 
 void sub_020689C8(void) {
-    /* Original at 0x020689C8 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    bl sub_02068C08\n    add r4, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    bl sub_02068C38\n    str r0, [r4, #0xc]\n    str r6, [r4]\n    str r5, [r4, #8]\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    sub_02068C08();
+    sub_02068C38(r5, r6);
+    *((u32*)(r4 + 0xc)) = r0;
+    *((u32*)(r4 + 8)) = r5;
 }
 
 void sub_020689E8(void) {
@@ -281,13 +278,7 @@ void sub_02068D78(void) {
 }
 
 void sub_02068D8C(void) {
-    /* Original at 0x02068D8C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = r1;
 }
 
 void sub_02068D90(void) {
@@ -301,13 +292,7 @@ void sub_02068D90(void) {
 }
 
 void sub_02068D94(void) {
-    /* Original at 0x02068D94 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = r1;
 }
 
 void sub_02068D98(void) {
@@ -321,13 +306,7 @@ void sub_02068D98(void) {
 }
 
 void sub_02068D9C(void) {
-    /* Original at 0x02068D9C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x10]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x10] = r1;
 }
 
 void sub_02068DA0(void) {
@@ -341,13 +320,7 @@ void sub_02068DA0(void) {
 }
 
 void sub_02068DA4(void) {
-    /* Original at 0x02068DA4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
 }
 
 void sub_02068DA8(void) {

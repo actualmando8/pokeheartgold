@@ -12,22 +12,10 @@ void sub_02078834(void) {
 }
 
 void sub_02078B2C(void) {
-    void *r4;
-    r0 = 0xb;
-    r1 = 0x18;
     Heap_AllocAtEnd(0xb, 0x18);
-    r1 = 0;
-    r2 = 0x18;
-    r4 = r0 + 0;
-    MI_CpuFill8();
-    r0 = 0xb;
-    r1 = 0xc;
+    MI_CpuFill8(0, 0x18);
     Heap_AllocAtEnd(0xb, 0xc);
-    r1 = 0;
-    r2 = 0xc;
-    *(u32*)r4 = r0;
-    MI_CpuFill8();
-    r0 = r4 + 0;
+    MI_CpuFill8(0, 0xc);
 }
 
 void sub_02078B58(void) {

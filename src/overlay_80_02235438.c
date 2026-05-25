@@ -38,14 +38,10 @@ void FrtCmd_133(void) {
     #endif
 }
 
-void FrtCmd_134(void) {
-    /* Original at 0x02235610 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    bl FrontierFieldSystem_Free\n    mov r0, #0\n    pop {r3, pc}"
-    );
-    #endif
+u32 FrtCmd_134(void) {
+    Frontier_GetData();
+    FrontierFieldSystem_Free();
+    return 0;
 }
 
 void FrtCmd_135(void) {

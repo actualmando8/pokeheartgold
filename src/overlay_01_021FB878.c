@@ -124,13 +124,9 @@ void ov01_021FBD38(void) {
 }
 
 void ov01_021FBD8C(void) {
-    /* Original at 0x021FBD8C */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0xc]\n    bl GF3dRender_AllocAndLoadTexResources\n    ldr r0, [r4]\n    ldr r1, [r4, #0xc]\n    bl GF3dRender_BindModelSet\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GF3dRender_AllocAndLoadTexResources(*((u32*)(r1 + 0xc)));
+    GF3dRender_BindModelSet(*((u32*)(r4 + 0xc)));
+    SysTask_Destroy(r5);
 }
 
 void Field3dModel_Unload(void) {
@@ -246,13 +242,7 @@ void Field3dObject_Draw(void) {
 }
 
 void Field3dObject_SetActiveFlag(void) {
-    /* Original at 0x021FC004 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x6c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x6c] = r1;
 }
 
 void Field3dObject_GetActiveFlag(void) {
@@ -266,13 +256,9 @@ void Field3dObject_GetActiveFlag(void) {
 }
 
 void Field3dObject_SetPosEx(void) {
-    /* Original at 0x021FC00C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x54]\n    str r2, [r0, #0x58]\n    str r3, [r0, #0x5c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x54] = r1;
+    ((u32*)r0)[0x58] = r2;
+    ((u32*)r0)[0x5c] = r3;
 }
 
 void Field3dObject_SetPos(void) {

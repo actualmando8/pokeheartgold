@@ -89,13 +89,8 @@ void MovementScriptMachine(void) {
 }
 
 void MovementScriptMachineSub_Init(void) {
-    /* Original at 0x020622B8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #8]\n    mov r1, #1\n    str r1, [r0]\n    add r0, r1, #0\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = 0;
+    *(u32*)r0 = 1;
 }
 
 void MovementScriptMachineSub_WaitReady(void) {
@@ -560,13 +555,8 @@ void MapObjectMovementCmd095_Step0(void) {
 }
 
 void sub_02062D54(void) {
-    /* Original at 0x02062D54 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #4\n    bl sub_0205F3C0\n    str r4, [r0]\n    add r0, r5, #0\n    bl MapObject_IncrementMovementStep\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0205F3C0(4);
+    MapObject_IncrementMovementStep(r5);
 }
 
 void MapObjectMovementCmd064_Step1(void) {
@@ -700,13 +690,10 @@ void MapObjectMovementCmd074_Step0(void) {
 }
 
 void sub_02062F48(void) {
-    /* Original at 0x02062F48 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r1, #0\n    mov r1, #8\n    add r5, r0, #0\n    bl sub_0205F3C0\n    add r4, r0, #0\n    str r6, [r4]\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #1\n    bl ov01_02200540\n    str r0, [r4, #4]\n    add r0, r5, #0\n    bl MapObject_IncrementMovementStep\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    sub_0205F3C0(8);
+    ov01_02200540(r5, r6, 1);
+    *((u32*)(r4 + 4)) = r0;
+    MapObject_IncrementMovementStep(r5);
 }
 
 void MapObjectMovementCmd075_Step1(void) {

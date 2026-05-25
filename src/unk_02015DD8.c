@@ -94,13 +94,8 @@ void sub_02015FB0(void) {
 }
 
 void sub_02015FC4(void) {
-    /* Original at 0x02015FC4 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0]\n    strh r2, [r0, #2]\n    bx lr"
-    );
-    #endif
+    *(u16*)r0 = r1;
+    ((u16*)r0)[2] = r2;
 }
 
 void sub_02015FCC(void) {
@@ -114,23 +109,13 @@ void sub_02015FCC(void) {
 }
 
 void sub_02015FD8(void) {
-    /* Original at 0x02015FD8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0, #4]\n    strh r2, [r0, #6]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[4] = r1;
+    ((u16*)r0)[6] = r2;
 }
 
 void sub_02015FE0(void) {
-    /* Original at 0x02015FE0 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0, #8]\n    strh r2, [r0, #0xa]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[8] = r1;
+    ((u16*)r0)[0xa] = r2;
 }
 
 void sub_02015FE8(void) {
@@ -144,13 +129,7 @@ void sub_02015FE8(void) {
 }
 
 void sub_02015FF4(void) {
-    /* Original at 0x02015FF4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
 }
 
 void sub_02015FF8(void) {
@@ -174,43 +153,19 @@ void sub_02015FFC(void) {
 }
 
 void sub_02016004(void) {
-    /* Original at 0x02016004 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x24]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x24] = r1;
 }
 
 void sub_02016008(void) {
-    /* Original at 0x02016008 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x28]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x28] = r1;
 }
 
 void sub_0201600C(void) {
-    /* Original at 0x0201600C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x2c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x2c] = r1;
 }
 
 void sub_02016010(void) {
-    /* Original at 0x02016010 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x30]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x30] = r1;
 }
 
 void sub_02016014(void) {
@@ -224,13 +179,7 @@ void sub_02016014(void) {
 }
 
 void sub_02016020(void) {
-    /* Original at 0x02016020 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x18]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x18] = r1;
 }
 
 void sub_02016024(void) {

@@ -242,13 +242,10 @@ void ov89_02259E18(void) {
 }
 
 void ov89_02259E28(void) {
-    /* Original at 0x02259E28 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0xc\n    bl MI_CpuFill8\n    mov r0, #0x96\n    strh r0, [r4, #2]\n    mov r0, #0x1f\n    strh r0, [r4]\n    add r0, #0xe2\n    str r0, [r4, #4]\n    mov r0, #0\n    strb r0, [r4, #8]\n    pop {r4, pc}"
-    );
-    #endif
+    MI_CpuFill8(r1, 0, 0xc);
+    *((u16*)(r4 + 2)) = 0x96;
+    *((u32*)(r4 + 4)) = 0x1f;
+    *((u8*)(r4 + 8)) = 0;
 }
 
 void ov89_02259E48(void) {
@@ -340,13 +337,8 @@ void ov89_0225A260(void) {
 }
 
 void ov89_0225A354(void) {
-    /* Original at 0x0225A354 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl FontOAM_Delete\n    add r0, r4, #4\n    bl sub_02021B5C\n    pop {r4, pc}"
-    );
-    #endif
+    FontOAM_Delete();
+    sub_02021B5C((r4 + 4));
 }
 
 void ov89_0225A368(void) {

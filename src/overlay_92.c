@@ -2,13 +2,10 @@
 #include "global.h"
 
 void ov92_0225C540(void) {
-    /* Original at 0x0225C540 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r1, [r2]\n    ldr r0, [r2, #4]\n    add r4, r3, #0\n    str r1, [r4, #0x14]\n    str r0, [r4, #0x18]\n    bl SetLCRNGSeed\n    add r0, r4, #0\n    bl ov92_0225D8D4\n    pop {r4, pc}"
-    );
-    #endif
+    *((u32*)(r3 + 0x14)) = r1;
+    *((u32*)(r3 + 0x18)) = *((u32*)(r2 + 4));
+    SetLCRNGSeed(*((u32*)(r2 + 4)));
+    ov92_0225D8D4(r4);
 }
 
 void ov92_0225C558(void) {
@@ -240,23 +237,11 @@ void ov92_0225D8C4(void) {
 }
 
 void ov92_0225D8D4(void) {
-    /* Original at 0x0225D8D4 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = 1;
 }
 
 void ov92_0225D8DC(void) {
-    /* Original at 0x0225D8DC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = 1;
 }
 
 void ov92_0225D8E4(void) {
@@ -1042,13 +1027,7 @@ void ov92_02261BA0(void) {
 }
 
 void ov92_02261E80(void) {
-    /* Original at 0x02261E80 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 0;
 }
 
 void ov92_02261E88(void) {
@@ -1132,13 +1111,11 @@ void ov92_02262CEC(void) {
 }
 
 void ov92_022630E8(void) {
-    /* Original at 0x022630E8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0xfe\n    lsl r1, r1, #0x16\n    str r1, [r0]\n    mov r1, #0\n    str r1, [r0, #4]\n    str r1, [r0, #8]\n    str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    r1 = r1 << 0x16;
+    *(u32*)r0 = 0xfe;
+    ((u32*)r0)[4] = 0;
+    ((u32*)r0)[8] = 0;
+    ((u32*)r0)[0xc] = 0;
 }
 
 void ov92_022630F8(void) {

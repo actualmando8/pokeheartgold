@@ -86,14 +86,15 @@ void ov01_021FE3F8(void) {
     #endif
 }
 
-void ov01_021FE4FC(void) {
-    /* Original at 0x021FE4FC */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl sub_02068D90\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    bl sub_02068D98\n    ldr r1, [r0, #8]\n    str r1, [r4, #0x18]\n    ldr r1, [r0, #4]\n    str r1, [r4, #0x14]\n    mov r1, #0x1f\n    str r1, [r4, #0xc]\n    ldr r0, [r0]\n    str r0, [r4, #0x10]\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 ov01_021FE4FC(void) {
+    sub_02068D90();
+    *((u32*)(r4 + 0x10)) = r0;
+    sub_02068D98(r5);
+    *((u32*)(r4 + 0x18)) = *((u32*)(r0 + 8));
+    *((u32*)(r4 + 0x14)) = *((u32*)(r0 + 4));
+    *((u32*)(r4 + 0xc)) = 0x1f;
+    *((u32*)(r4 + 0x10)) = r0;
+    return 1;
 }
 
 void ov01_021FE524(void) {

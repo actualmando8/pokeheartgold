@@ -62,13 +62,8 @@ void ov80_0223A62C(void) {
 }
 
 void ov80_0223A748(void) {
-    /* Original at 0x0223A748 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl FontOAM_Delete\n    add r0, r4, #4\n    bl sub_02021B5C\n    pop {r4, pc}"
-    );
-    #endif
+    FontOAM_Delete();
+    sub_02021B5C((r4 + 4));
 }
 
 void ov80_0223A75C(void) {

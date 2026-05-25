@@ -1363,13 +1363,7 @@ void ov44_0222F8C0(void) {
 }
 
 void ov44_0222F8F0(void) {
-    /* Original at 0x0222F8F0 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r1, [r4, #4]\n    add r0, r1, #0\n    add r0, #0x22\n    ldrb r0, [r0]\n    add r1, #0x21\n    strb r0, [r1]\n    ldr r0, [r4, #4]\n    mov r1, #0x24\n    bl ov00_021E6D60\n    ldr r0, [r4, #4]\n    add r0, #0x22\n    ldrb r0, [r0]\n    pop {r4, pc}"
-    );
-    #endif
+    ov00_021E6D60(*((u32*)(r0 + 4)), 0x24);
 }
 
 void ov44_0222F910(void) {
@@ -1992,13 +1986,7 @@ void ov44_02231D8C(void) {
 }
 
 void ov44_02231D94(void) {
-    /* Original at 0x02231D94 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = r1;
 }
 
 void ov44_02231D98(void) {
@@ -2056,13 +2044,8 @@ void ov44_02231EF4(void) {
 }
 
 void ov44_02231F04(void) {
-    /* Original at 0x02231F04 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    mov r1, #6\n    bl ov42_02228188\n    bl ov42_022282A4\n    pop {r3, pc}"
-    );
-    #endif
+    ov42_02228188(6);
+    ov42_022282A4();
 }
 
 void ov44_02231F14(void) {
@@ -2574,13 +2557,9 @@ void ov44_02232C4C(void) {
 }
 
 void ov44_02232C6C(void) {
-    /* Original at 0x02232C6C */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r2, #0\n    add r5, r0, #0\n    add r6, r1, #0\n    ldr r0, [r4]\n    mov r1, #6\n    bl ov42_02228188\n    add r7, r0, #0\n    ldr r0, [r4]\n    mov r1, #4\n    bl ov42_02228188\n    add r3, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov44_02232C4C\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov42_02228188(6);
+    ov42_02228188(4);
+    ov44_02232C4C(r5, r6, r7, r0);
 }
 
 void ov44_02232C94(void) {
@@ -2663,13 +2642,7 @@ void ov44_02232E38(void) {
 }
 
 void ov44_02232E54(void) {
-    /* Original at 0x02232E54 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    strb r1, [r0, #0x10]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[0x10] = 1;
 }
 
 void ov44_02232E5C(void) {

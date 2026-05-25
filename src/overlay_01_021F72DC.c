@@ -23,7 +23,7 @@ void ov01_021F73CC(void) {
 
 void ov01_021F73F4(void) {
     sub_0205F40C();
-    ov01_021F95A8(r4, r0);
+    ov01_021F95A8(r4, (r0 + 4));
 }
 
 void ov01_021F7408(void) {
@@ -82,23 +82,15 @@ void ov01_021F7504(void) {
 }
 
 void ov01_021F7704(void) {
-    /* Original at 0x021F7704 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl sub_0205F40C\n    mov r1, #0\n    strb r1, [r0, #0x15]\n    add r0, r4, #0\n    bl MapObject_GetFacingVector\n    mov r1, #0\n    str r1, [r0, #4]\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205F40C();
+    *((u8*)(r0 + 0x15)) = 0;
+    MapObject_GetFacingVector(r4, 0);
+    *((u32*)(r0 + 4)) = 0;
 }
 
 void ov01_021F771C(void) {
-    /* Original at 0x021F771C */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r1, #0xfd\n    bl MapObjectManager_GetFirstActiveObjectByID\n    bl sub_0205F40C\n    ldr r0, [r0]\n    pop {r3, pc}"
-    );
-    #endif
+    MapObjectManager_GetFirstActiveObjectByID(0xfd);
+    sub_0205F40C();
 }
 
 void ov01_021F772C(void) {
@@ -292,13 +284,11 @@ void ov01_021F7DA8(void) {
 }
 
 void ov01_021F7DD0(void) {
-    /* Original at 0x021F7DD0 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r2, sp, #0\n    mov r1, #0\n    str r1, [r2]\n    str r1, [r2, #4]\n    add r4, r0, #0\n    str r1, [r2, #8]\n    bl sub_0205F40C\n    add r1, r0, #0\n    add r0, r4, #0\n    add r1, r1, #4\n    bl ov01_021F95A8\n    add r0, r4, #0\n    add r1, sp, #0\n    bl MapObject_SetFacingVector\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    *((u32*)(r2 + 4)) = 0;
+    *((u32*)(r2 + 8)) = 0;
+    sub_0205F40C(0);
+    ov01_021F95A8(r4, (r0 + 4));
+    MapObject_SetFacingVector(r4);
 }
 
 void ov01_021F7DFC(void) {
@@ -684,13 +674,10 @@ void ov01_021F8CC8(void) {
 }
 
 void ov01_021F8CFC(void) {
-    /* Original at 0x021F8CFC */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    mov r1, #4\n    bl sub_0205F3E8\n    add r4, r0, #0\n    add r0, r5, #0\n    bl MapObject_GetSpriteID\n    add r1, sp, #0\n    bl ov01_021F8CC8\n    add r0, r5, #0\n    add r1, sp, #0\n    bl ov01_021FD2EC\n    str r0, [r4]\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    sub_0205F3E8(4);
+    MapObject_GetSpriteID(r5);
+    ov01_021F8CC8();
+    ov01_021FD2EC(r5);
 }
 
 void ov01_021F8D24(void) {
@@ -724,11 +711,8 @@ void ov01_021F8D40(void) {
 }
 
 void ov01_021F8D58(void) {
-    /* Original at 0x021F8D58 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    bl sub_0205F40C\n    add r4, r0, #0\n    add r0, r5, #0\n    bl MapObject_GetSpriteID\n    add r1, sp, #0\n    bl ov01_021F8CC8\n    add r0, r5, #0\n    add r1, sp, #0\n    bl ov01_021FD2EC\n    str r0, [r4]\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    sub_0205F40C();
+    MapObject_GetSpriteID(r5);
+    ov01_021F8CC8();
+    ov01_021FD2EC(r5);
 }

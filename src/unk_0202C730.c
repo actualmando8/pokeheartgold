@@ -2,13 +2,7 @@
 #include "global.h"
 
 void Save_FriendGroup_sizeof(void) {
-    /* Original at 0x0202C730 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x42\n    lsl r0, r0, #2\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 2;
 }
 
 void sub_0202C738(void) {

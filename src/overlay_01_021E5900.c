@@ -2,13 +2,12 @@
 #include "global.h"
 
 void ov01_021E5900(void) {
-    /* Original at 0x021E5900 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    bl DoScheduledBgGpuUpdates\n    bl GF_RunVramTransferTasks\n    bl OamManager_ApplyAndResetBuffers\n    ldr r0, [r4, #0x3c]\n    bl sub_0205F1A0\n    bl ov01_021FA1D0\n    bl sub_02023910\n    pop {r4, pc}"
-    );
-    #endif
+    DoScheduledBgGpuUpdates(*((u32*)(r0 + 8)));
+    GF_RunVramTransferTasks();
+    OamManager_ApplyAndResetBuffers();
+    sub_0205F1A0(*((u32*)(r4 + 0x3c)));
+    ov01_021FA1D0();
+    sub_02023910();
 }
 
 void ov01_021E5924(void) {

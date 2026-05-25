@@ -176,13 +176,9 @@ void ov80_022319B0(void) {
 }
 
 void ov80_02231A04(void) {
-    /* Original at 0x02231A04 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov80_022379C8\n    bl ov80_02237A40\n    str r0, [r4, #0xc]\n    pop {r4, pc}"
-    );
-    #endif
+    ov80_022379C8();
+    ov80_02237A40();
+    *((u32*)(r4 + 0xc)) = r0;
 }
 
 void ov80_02231A14(void) {

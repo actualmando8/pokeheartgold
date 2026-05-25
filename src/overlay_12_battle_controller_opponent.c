@@ -151,13 +151,9 @@ void ov12_02258FC8(void) {
 }
 
 void ov12_02258FD8(void) {
-    /* Original at 0x02258FD8 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r6, r4, #0\n    add r6, #0x94\n    add r1, r6, #0\n    add r1, #0x29\n    ldrb r1, [r1]\n    add r5, r0, #0\n    bl ov12_0223BB6C\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov12_0225A524\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov12_0223BB6C(r1);
+    ov12_0225A524(r5, r4, r6);
+    ov12_02259928(r4);
 }
 
 void ov12_02259000(void) {
@@ -426,13 +422,9 @@ void ov12_022596B8(void) {
 }
 
 void ov12_02259700(void) {
-    /* Original at 0x02259700 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    ldrh r1, [r2, #2]\n    add r5, r0, #0\n    add r2, r2, #4\n    bl ov12_0223BF14\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov12_0225B1A8\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0223BF14((r1 + 4));
+    ov12_0225B1A8(r5, r4);
+    ov12_02259928(r4);
 }
 
 void ov12_02259724(void) {
@@ -456,23 +448,15 @@ void ov12_02259758(void) {
 }
 
 void ov12_02259768(void) {
-    /* Original at 0x02259768 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r1, #0\n    add r4, r6, #0\n    add r4, #0x94\n    ldrh r1, [r4, #2]\n    add r5, r0, #0\n    add r2, r4, #4\n    bl ov12_0223BF14\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r4, #0\n    bl ov12_0225B2F8\n    add r0, r6, #0\n    bl ov12_02259928\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov12_0223BF14((r1 + 4));
+    ov12_0225B2F8(r5, r6, r4);
+    ov12_02259928(r6);
 }
 
 void ov12_0225978C(void) {
-    /* Original at 0x0225978C */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r2, r4, #0\n    add r2, #0x94\n    ldrh r1, [r2, #2]\n    add r5, r0, #0\n    add r2, r2, #4\n    bl ov12_0223BF14\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov12_0225B34C\n    add r0, r4, #0\n    bl ov12_02259928\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0223BF14((r1 + 4));
+    ov12_0225B34C(r5, r4);
+    ov12_02259928(r4);
 }
 
 void ov12_022597B0(void) {
@@ -1246,13 +1230,9 @@ void ov12_0225E104(void) {
 }
 
 void ov12_0225E134(void) {
-    /* Original at 0x0225E134 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0226430C(*((u8*)(r1 + 9)), *((u8*)(r1 + 8)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225E154(void) {
@@ -1266,13 +1246,10 @@ void ov12_0225E154(void) {
 }
 
 void ov12_0225E1D4(void) {
-    /* Original at 0x0225E1D4 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldr r0, [r4]\n    mov r2, #4\n    bl ov12_02262F24\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_02262F24(*((u8*)(r1 + 9)), 4);
+    ov12_0226430C(*((u8*)(r4 + 9)), *((u8*)(r4 + 8)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225E1FC(void) {
@@ -1306,13 +1283,9 @@ void ov12_0225E404(void) {
 }
 
 void ov12_0225E4CC(void) {
-    /* Original at 0x0225E4CC */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0x1d]\n    add r5, r0, #0\n    ldrb r2, [r4, #0x1c]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0226430C(*((u8*)(r1 + 0x1d)), *((u8*)(r1 + 0x1c)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225E4EC(void) {
@@ -1346,13 +1319,9 @@ void ov12_0225E6FC(void) {
 }
 
 void ov12_0225E740(void) {
-    /* Original at 0x0225E740 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0226430C(*((u8*)(r1 + 0xd)), *((u8*)(r1 + 0xc)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225E760(void) {
@@ -1426,13 +1395,9 @@ void ov12_0225F8AC(void) {
 }
 
 void ov12_0225F960(void) {
-    /* Original at 0x0225F960 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0226430C(*((u8*)(r1 + 9)), *((u8*)(r1 + 8)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225F980(void) {
@@ -1456,23 +1421,15 @@ void ov12_0225FA44(void) {
 }
 
 void ov12_0225FC80(void) {
-    /* Original at 0x0225FC80 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0226430C(*((u8*)(r1 + 0xd)), *((u8*)(r1 + 0xc)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225FCA0(void) {
-    /* Original at 0x0225FCA0 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0226430C(*((u8*)(r1 + 0xd)), *((u8*)(r1 + 0xc)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225FCC0(void) {

@@ -224,33 +224,20 @@ void BugContestTimeoutCheck(void) {
 }
 
 void ov01_021E7A98(void) {
-    /* Original at 0x021E7A98 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0xc]\n    bl Save_GameStats_Get\n    mov r1, #0\n    bl GameStats_GetCapped\n    add r4, r0, #0\n    ldr r0, [r5, #0xc]\n    bl Save_ApricornBox_Get\n    add r1, r4, #0\n    bl sub_02032058\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Save_GameStats_Get(*((u32*)(r0 + 0xc)));
+    GameStats_GetCapped(0);
+    Save_ApricornBox_Get(*((u32*)(r5 + 0xc)));
+    sub_02032058(r4);
 }
 
 void PlayerAvatar_GetStandingTileCoords(void) {
-    /* Original at 0x021E7AB8 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x40]\n    add r4, r1, #0\n    add r6, r2, #0\n    bl PlayerAvatar_GetXCoord\n    str r0, [r4]\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetZCoord\n    str r0, [r6]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
+    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
 }
 
 void PlayerAvatar_GetFacingTileCoords(void) {
-    /* Original at 0x021E7AD4 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x40]\n    add r4, r1, #0\n    add r6, r2, #0\n    bl PlayerAvatar_GetFacingDirection\n    add r1, r0, #0\n    add r0, r5, #0\n    add r2, r4, #0\n    add r3, r6, #0\n    bl ShiftFieldCoordsByCompassDirection\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    PlayerAvatar_GetFacingDirection(*((u32*)(r0 + 0x40)));
+    ShiftFieldCoordsByCompassDirection(r5, r0, r4, r6);
 }
 
 void ShiftFieldCoordsByCompassDirection(void) {

@@ -42,13 +42,8 @@ void ov03_02254054(void) {
 }
 
 void ov03_022540E8(void) {
-    /* Original at 0x022540E8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov03_02255B98\n    add r2, r0, #0\n    ldr r0, [r4, #0x68]\n    add r4, #0x91\n    ldrb r1, [r4]\n    bl sub_02058124\n    pop {r4, pc}"
-    );
-    #endif
+    ov03_02255B98();
+    sub_02058124(*((u32*)(r4 + 0x68)), r0);
 }
 
 void ov03_02254100(void) {
@@ -196,13 +191,8 @@ void ov03_02254A54(void) {
 }
 
 void ov03_02254B2C(void) {
-    /* Original at 0x02254B2C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov03_02255B98\n    add r2, r0, #0\n    ldr r0, [r4, #0x68]\n    add r4, #0x91\n    ldrb r1, [r4]\n    bl sub_020580E4\n    pop {r4, pc}"
-    );
-    #endif
+    ov03_02255B98();
+    sub_020580E4(*((u32*)(r4 + 0x68)), r0);
 }
 
 void ov03_02254B44(void) {
@@ -744,13 +734,9 @@ void ov03_022560EC(void) {
 }
 
 void ov03_022563D4(void) {
-    /* Original at 0x022563D4 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x24\n    mov r1, #1\n    bl sub_0200E5D4\n    add r1, r4, #0\n    add r1, #0x28\n    ldrb r1, [r1]\n    ldr r0, [r4, #0x24]\n    bl ScheduleBgTilemapBufferTransfer\n    add r4, #0x24\n    add r0, r4, #0\n    bl RemoveWindow\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(1);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r4 + 0x24)), r4);
+    RemoveWindow(r4);
 }
 
 void ov03_022563F8(void) {
@@ -1428,13 +1414,7 @@ void ov03_022587E8(void) {
 }
 
 void ov03_02258810(void) {
-    /* Original at 0x02258810 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r0, [r1]\n    bx lr"
-    );
-    #endif
+    *(u32*)r1 = r0;
 }
 
 void ov03_02258814(void) {
@@ -1448,13 +1428,7 @@ void ov03_02258814(void) {
 }
 
 void ov03_02258828(void) {
-    /* Original at 0x02258828 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xba\n    lsl r0, r0, #2\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 2;
 }
 
 void ov03_02258830(void) {
@@ -1531,14 +1505,11 @@ void ScrCmd_716(void) {
     #endif
 }
 
-void ScrCmd_717(void) {
-    /* Original at 0x02258978 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ScriptReadHalfword\n    add r1, r0, #0\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    bl GetVarPointer\n    add r1, r0, #0\n    ldr r0, [r4, #0x74]\n    bl sub_02097720\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 ScrCmd_717(void) {
+    ScriptReadHalfword();
+    GetVarPointer(r4, r0);
+    sub_02097720(*((u32*)(r4 + 0x74)), r0);
+    return 1;
 }
 
 void ScrCmd_718(void) {
@@ -1571,14 +1542,11 @@ void ScrCmd_720(void) {
     #endif
 }
 
-void ScrCmd_721(void) {
-    /* Original at 0x02258BDC */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    bl ScriptReadHalfword\n    add r1, r0, #0\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    bl GetVarPointer\n    add r4, #0x80\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov02_0224E698\n    strh r0, [r5]\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 ScrCmd_721(void) {
+    ScriptReadHalfword();
+    GetVarPointer(r4, r0);
+    ov02_0224E698();
+    return 0;
 }
 
 void ScrCmd_791(void) {
@@ -1591,14 +1559,11 @@ void ScrCmd_791(void) {
     #endif
 }
 
-void ScrCmd_792(void) {
-    /* Original at 0x02258CDC */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r0, #0x80\n    ldr r5, [r0]\n    ldr r0, [r5, #0xc]\n    bl Save_SafariZone_Get\n    add r4, r0, #0\n    ldr r0, [r5, #0xc]\n    bl Save_PlayerData_GetIGTAddr\n    add r1, r0, #0\n    add r0, r4, #0\n    bl sub_0202F784\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 ScrCmd_792(void) {
+    Save_SafariZone_Get(*((u32*)(r5 + 0xc)));
+    Save_PlayerData_GetIGTAddr(*((u32*)(r5 + 0xc)));
+    sub_0202F784(r4, r0);
+    return 0;
 }
 
 void ov03_02258CFC(void) {

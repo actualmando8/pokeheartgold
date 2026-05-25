@@ -2,21 +2,10 @@
 #include "global.h"
 
 void ov80_022384D8(void) {
-    void *r3;
-    void *r4;
-    void *r5;
-    r5 = r0 + 0;
-    r0 = 0x65;
-    r1 = 8;
     Heap_Alloc(0x65, 8);
-    r1 = 0;
-    r2 = 8;
-    r4 = r0 + 0;
-    MI_CpuFill8();
-    r0 = r5 + 0;
-    ov80_022384FC((r5 + 0));
-    ((u32*)r4)[4] = r0;
-    r0 = r4 + 0;
+    MI_CpuFill8(0, 8);
+    ov80_022384FC(r5);
+    *((u32*)(r4 + 4)) = r0;
 }
 
 void ov80_022384FC(void) {
@@ -50,21 +39,13 @@ void ov80_0223857C(void) {
 }
 
 void ov80_022385B0(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4, #4] */
-    ov80_022385C4();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    ov80_022385C4(*((u32*)(r0 + 4)));
+    Heap_Free(r4);
 }
 
 void ov80_022385C4(void) {
-    void *r4;
-    r4 = r0 + 0;
-    /* ldr r0, [r4] */
     SysTask_Destroy();
-    r0 = r4 + 0;
-    Heap_Free((r4 + 0));
+    Heap_Free(r4);
 }
 
 void ov80_022385D8(void) {

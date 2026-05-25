@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_021FEEEC(void) {
-    /* Original at 0x021FEEEC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #4\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    bl ov01_021FEF18\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F1430(4, 0, 0);
+    ov01_021FEF18();
 }
 
 void ov01_021FEF08(void) {
@@ -115,11 +110,6 @@ void ov01_021FF424(void) {
 }
 
 void ov01_021FF44C(void) {
-    /* Original at 0x021FF44C */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    add r1, sp, #0\n    bl sub_02068DB8\n    ldr r0, [r4, #0x24]\n    add r1, sp, #0\n    bl sub_02023E50\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    sub_02068DB8();
+    sub_02023E50(*((u32*)(r4 + 0x24)));
 }

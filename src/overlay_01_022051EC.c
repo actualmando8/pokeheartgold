@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_022051EC(void) {
-    /* Original at 0x022051EC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #0\n    mov r1, #0xc4\n    add r3, r2, #0\n    add r5, r0, #0\n    bl ov01_021F1430\n    add r4, r0, #0\n    str r5, [r4]\n    bl ov01_02205218\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov01_021F1430(0xc4, 0, 0);
+    ov01_02205218();
 }
 
 void ov01_02205208(void) {
@@ -27,8 +22,8 @@ void ov01_02205218(void) {
 }
 
 void ov01_022052A4(void) {
-    Field3dModelAnimation_Unload();
-    Field3dModelAnimation_Unload(r4);
+    Field3dModelAnimation_Unload((r0 + 4));
+    Field3dModelAnimation_Unload(r4, (r4 + 4));
     Field3dModel_Unload(r4);
 }
 

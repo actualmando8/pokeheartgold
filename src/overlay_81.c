@@ -220,13 +220,10 @@ void ov81_0223F6A8(void) {
 }
 
 void ov81_0223F754(void) {
-    /* Original at 0x0223F754 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov81_02241804\n    add r0, r4, #0\n    mov r1, #1\n    bl ov81_02240F38\n    add r0, r4, #0\n    mov r1, #9\n    bl ov81_0224086C\n    strb r0, [r4, #0x10]\n    pop {r4, pc}"
-    );
-    #endif
+    ov81_02241804();
+    ov81_02240F38(r4, 1);
+    ov81_0224086C(r4, 9);
+    *((u8*)(r4 + 0x10)) = r0;
 }
 
 void ov81_0223F770(void) {
@@ -389,13 +386,8 @@ void ov81_02240458(void) {
 }
 
 void ov81_022404AC(void) {
-    /* Original at 0x022404AC */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r3, #0\n    strb r3, [r0, #8]\n    str r2, [r1]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[8] = 0;
+    *(u32*)r1 = r2;
 }
 
 void ov81_022404B4(void) {
@@ -1359,14 +1351,10 @@ void ov81_02242D18(void) {
     #endif
 }
 
-void ov81_02242D74(void) {
-    /* Original at 0x02242D74 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    bl Sprite_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov81_02242D74(void) {
+    Sprite_Delete(*((u32*)(r0 + 8)));
+    Heap_Free(r4);
+    return 0;
 }
 
 void ov81_02242D88(void) {
@@ -1390,13 +1378,8 @@ void ov81_02242DD8(void) {
 }
 
 void ov81_02242DE4(void) {
-    /* Original at 0x02242DE4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #8]\n    add r4, r1, #0\n    mov r1, #0\n    bl Sprite_SetAnimationFrame\n    ldr r0, [r5, #8]\n    add r1, r4, #0\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Sprite_SetAnimationFrame(*((u32*)(r0 + 8)), 0);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 8)), r4);
 }
 
 void ov81_02242DFC(void) {
@@ -1427,14 +1410,10 @@ void ov81_02242E50(void) {
     #endif
 }
 
-void ov81_02242EA4(void) {
-    /* Original at 0x02242EA4 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    bl Sprite_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov81_02242EA4(void) {
+    Sprite_Delete(*((u32*)(r0 + 0xc)));
+    Heap_Free(r4);
+    return 0;
 }
 
 void ov81_02242EB8(void) {
@@ -1460,13 +1439,7 @@ void ov81_02242F30(void) {
 }
 
 void ov81_02242F3C(void) {
-    /* Original at 0x02242F3C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0]\n    bx lr"
-    );
-    #endif
+    *(u16*)r0 = r1;
 }
 
 void ov81_02242F40(void) {
@@ -1535,14 +1508,10 @@ void ov81_02242FBC(void) {
     Sprite_SetOamMode();
 }
 
-void ov81_02242FC8(void) {
-    /* Original at 0x02242FC8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    bl Sprite_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov81_02242FC8(void) {
+    Sprite_Delete(*((u32*)(r0 + 0xc)));
+    Heap_Free(r4);
+    return 0;
 }
 
 void ov81_02242FDC(void) {

@@ -41,53 +41,33 @@ void sub_02067AE4(void) {
 }
 
 void sub_02067B88(void) {
-    /* Original at 0x02067B88 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    bl Save_VarsFlags_Get\n    bl Save_VarsFlags_ClearSafariSysFlag\n    ldr r0, [r4, #0xc]\n    bl Save_Roamers_Get\n    bl Save_RandomizeRoamersLocation\n    pop {r4, pc}"
-    );
-    #endif
+    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
+    Save_VarsFlags_ClearSafariSysFlag();
+    Save_Roamers_Get(*((u32*)(r4 + 0xc)));
+    Save_RandomizeRoamersLocation();
 }
 
 void sub_02067BA4(void) {
-    /* Original at 0x02067BA4 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    bl Save_VarsFlags_Get\n    bl Save_VarsFlags_ClearSafariSysFlag\n    ldr r0, [r4, #0xc]\n    bl Save_Roamers_Get\n    bl Save_RandomizeRoamersLocation\n    pop {r4, pc}"
-    );
-    #endif
+    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
+    Save_VarsFlags_ClearSafariSysFlag();
+    Save_Roamers_Get(*((u32*)(r4 + 0xc)));
+    Save_RandomizeRoamersLocation();
 }
 
 void sub_02067BC0(void) {
-    /* Original at 0x02067BC0 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0, #0xc]\n    bl Save_VarsFlags_Get\n    bl Save_VarsFlags_ClearSafariSysFlag\n    pop {r3, pc}"
-    );
-    #endif
+    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
+    Save_VarsFlags_ClearSafariSysFlag();
 }
 
 void FieldSystem_ClearFollowingTrainer(void) {
-    /* Original at 0x02067BD0 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r0, [r0, #0xc]\n    bl Save_VarsFlags_Get\n    add r4, r0, #0\n    bl Save_VarsFlags_ClearHaveFollowerFlag\n    add r0, r4, #0\n    mov r1, #0\n    bl Save_VarsFlags_SetFollowerTrainerNum\n    pop {r4, pc}"
-    );
-    #endif
+    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
+    Save_VarsFlags_ClearHaveFollowerFlag();
+    Save_VarsFlags_SetFollowerTrainerNum(r4, 0);
 }
 
 void sub_02067BE8(void) {
-    /* Original at 0x02067BE8 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0, #0xc]\n    bl Save_Roamers_Get\n    bl Save_RandomizeRoamersLocation\n    pop {r3, pc}"
-    );
-    #endif
+    Save_Roamers_Get(*((u32*)(r0 + 0xc)));
+    Save_RandomizeRoamersLocation();
 }
 
 void sub_02067BF8(void) {

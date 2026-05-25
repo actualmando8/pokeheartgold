@@ -198,23 +198,17 @@ void sub_0205AA9C(void) {
 }
 
 void sub_0205AB88(void) {
-    /* Original at 0x0205AB88 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x20\n    add r4, r0, #0\n    add r0, sp, #0\n    bl sub_0205AA4C\n    mov r1, #0\n    add r0, sp, #0\n    strb r1, [r0, #0x1c]\n    add r0, r4, #0\n    bl sub_02035838\n    add r0, sp, #0\n    bl sub_02035854\n    bl sub_0203588C\n    add sp, #0x20\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0205AA4C();
+    *((u8*)(r0 + 0x1c)) = 0;
+    sub_02035838(r4, 0);
+    sub_02035854();
+    sub_0203588C();
 }
 
 void sub_0205ABB0(void) {
-    /* Original at 0x0205ABB0 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #0x30]\n    str r1, [r0, #0x40]\n    str r1, [r0, #0x44]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x30] = 0;
+    ((u32*)r0)[0x40] = 0;
+    ((u32*)r0)[0x44] = 0;
 }
 
 void sub_0205ABBC(void) {

@@ -146,13 +146,8 @@ void sub_02023AA0(void) {
 }
 
 void sub_02023B38(void) {
-    /* Original at 0x02023B38 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r3, #0\n    bl NNS_G3dTexReleaseTexKey\n    add r0, r5, #0\n    bl NNS_G3dPlttReleasePlttKey\n    str r0, [r4]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    NNS_G3dTexReleaseTexKey();
+    NNS_G3dPlttReleasePlttKey(r5);
 }
 
 void sub_02023B4C(void) {
@@ -376,13 +371,8 @@ void sub_02023FDC(void) {
 }
 
 void sub_02023FE4(void) {
-    /* Original at 0x02023FE4 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r2, [r0, #0x1c]\n    str r1, [r0, #0x20]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x1c] = r2;
+    ((u32*)r0)[0x20] = r1;
 }
 
 void sub_02023FEC(void) {
@@ -514,13 +504,8 @@ void sub_02024394(void) {
 }
 
 void sub_020243A4(void) {
-    /* Original at 0x020243A4 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r1, r5, #0\n    add r1, #0xb6\n    ldrh r1, [r1]\n    ldr r0, [r5, #0x2c]\n    bl sub_02024454\n    add r5, #0xb8\n    add r1, r5, #0\n    add r2, r4, #0\n    bl sub_020243C4\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02024454(*((u32*)(r0 + 0x2c)), r0);
+    sub_020243C4(r5, r4);
 }
 
 void sub_020243C4(void) {
@@ -544,13 +529,8 @@ void sub_020243FC(void) {
 }
 
 void sub_0202441C(void) {
-    /* Original at 0x0202441C */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    add r0, #0x84\n    ldr r0, [r0]\n    bl NNS_G3dReleaseMdlSet\n    add r4, #0x8c\n    ldr r0, [r4]\n    add r1, sp, #4\n    add r2, sp, #8\n    add r3, sp, #0\n    bl sub_02023B38\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    NNS_G3dReleaseMdlSet();
+    sub_02023B38();
 }
 
 void sub_0202443C(void) {

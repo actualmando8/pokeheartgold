@@ -370,11 +370,6 @@ void ov01_02206268(void) {
 }
 
 void ov01_022062CC(void) {
-    /* Original at 0x022062CC */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0, #0xc]\n    bl SaveArray_Party_Get\n    bl GetIdxOfFirstAliveMonInParty_CrashIfNone\n    pop {r3, pc}"
-    );
-    #endif
+    SaveArray_Party_Get(*((u32*)(r0 + 0xc)));
+    GetIdxOfFirstAliveMonInParty_CrashIfNone();
 }

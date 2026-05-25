@@ -786,13 +786,7 @@ void ov108_021E852C(void) {
 }
 
 void ov108_021E853C(void) {
-    /* Original at 0x021E853C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x14]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x14] = r1;
 }
 
 void ov108_021E8540(void) {

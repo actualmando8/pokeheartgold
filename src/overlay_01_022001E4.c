@@ -179,13 +179,9 @@ void ov01_02200480(void) {
 }
 
 void ov01_022004EC(void) {
-    /* Original at 0x022004EC */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r0, [r4, #0x40]\n    bl sub_02023DA4\n    ldr r0, [r4, #0x38]\n    ldr r1, [r4, #0x30]\n    bl ov01_0220024C\n    ldr r0, [r4, #0x38]\n    ldr r1, [r4, #0x30]\n    bl ov01_022003B0\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02023DA4(*((u32*)(r1 + 0x40)));
+    ov01_0220024C(*((u32*)(r4 + 0x38)), *((u32*)(r4 + 0x30)));
+    ov01_022003B0(*((u32*)(r4 + 0x38)), *((u32*)(r4 + 0x30)));
 }
 
 void ov01_02200508(void) {

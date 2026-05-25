@@ -126,13 +126,7 @@ void ov01_021F3B1C(void) {
 }
 
 void ov01_021F3B2C(void) {
-    /* Original at 0x021F3B2C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = r1;
 }
 
 void ov01_021F3B30(void) {

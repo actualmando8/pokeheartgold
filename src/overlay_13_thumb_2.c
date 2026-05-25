@@ -656,23 +656,14 @@ void ov13_02222AB0(void) {
 }
 
 void ov13_02222B20(void) {
-    /* Original at 0x02222B20 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0]\n    strh r1, [r0, #4]\n    strh r1, [r0, #6]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = 0;
+    ((u16*)r0)[4] = 0;
+    ((u16*)r0)[6] = 0;
 }
 
 void ov13_02222B2C(void) {
-    /* Original at 0x02222B2C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r0, [r1]\n    mov r0, #1\n    strh r0, [r1, #4]\n    bx lr"
-    );
-    #endif
+    *(u32*)r1 = r0;
+    ((u16*)r1)[4] = 1;
 }
 
 void ov13_02222B34(void) {
@@ -686,13 +677,9 @@ void ov13_02222B34(void) {
 }
 
 void ov13_02222BC0(void) {
-    /* Original at 0x02222BC0 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #0\n    add r1, #0xc\n    mov r2, #0x20\n    bl MIi_CpuClear16\n    ldr r0, [r5]\n    add r1, r4, #0\n    strh r0, [r4, #0xa]\n    ldrh r2, [r4, #0xa]\n    add r0, r5, #4\n    add r1, #0xc\n    bl MI_CpuCopy8\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MIi_CpuClear16(0, 0x20);
+    *((u16*)(r4 + 0xa)) = r0;
+    MI_CpuCopy8((r5 + 4), r4);
 }
 
 void ov13_02222BE4(void) {

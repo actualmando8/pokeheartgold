@@ -88,13 +88,12 @@ void sub_020613C0(void) {
 }
 
 void sub_020613D0(void) {
-    /* Original at 0x020613D0 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r1, #0\n    add r7, r3, #0\n    mov r1, #0x10\n    add r5, r0, #0\n    add r6, r2, #0\n    bl sub_0205F370\n    str r7, [r0, #4]\n    str r4, [r0, #8]\n    str r6, [r0, #0xc]\n    add r0, r5, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r5, #0\n    bl MapObject_ClearSingleMovement\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    sub_0205F370(0x10);
+    *((u32*)(r0 + 4)) = r7;
+    *((u32*)(r0 + 8)) = r4;
+    *((u32*)(r0 + 0xc)) = r6;
+    sub_0205F328(r5, 0);
+    MapObject_ClearSingleMovement(r5);
 }
 
 void sub_020613F8(void) {
@@ -128,13 +127,10 @@ void sub_020615F0(void) {
 }
 
 void sub_02061648(void) {
-    /* Original at 0x02061648 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #8\n    bl sub_0205F370\n    str r4, [r0]\n    add r0, r5, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r5, #0\n    bl MapObject_ClearSingleMovement\n    add r0, r5, #0\n    bl sub_02060F78\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0205F370(8);
+    sub_0205F328(r5, 0);
+    MapObject_ClearSingleMovement(r5);
+    sub_02060F78(r5);
 }
 
 void sub_0206166C(void) {
@@ -164,13 +160,10 @@ void sub_020616B4(void) {
 }
 
 void sub_020616C0(void) {
-    /* Original at 0x020616C0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #8\n    bl sub_0205F370\n    strb r4, [r0]\n    add r0, r5, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r5, #0\n    bl MapObject_ClearSingleMovement\n    add r0, r5, #0\n    bl sub_02060F78\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0205F370(8);
+    sub_0205F328(r5, 0);
+    MapObject_ClearSingleMovement(r5);
+    sub_02060F78(r5);
 }
 
 void sub_020616E4(void) {
@@ -240,13 +233,10 @@ void sub_02061850(void) {
 }
 
 void sub_02061874(void) {
-    /* Original at 0x02061874 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    bl MapObject_GetFacingDirection\n    mov r1, #0\n    bl sub_0206234C\n    add r1, r0, #0\n    add r0, r5, #0\n    bl MapObject_ForceSetHeldMovement\n    mov r0, #1\n    strb r0, [r4, #2]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MapObject_GetFacingDirection();
+    sub_0206234C(0);
+    MapObject_ForceSetHeldMovement(r5, r0);
+    *((u8*)(r4 + 2)) = 1;
 }
 
 void sub_02061894(void) {

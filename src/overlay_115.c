@@ -226,13 +226,8 @@ void ov115_0225F944(void) {
 }
 
 void ov115_0225F968(void) {
-    /* Original at 0x0225F968 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0, #0xc]\n    bl Save_PlayerData_GetProfile\n    bl PlayerProfile_GetTrainerGender\n    pop {r3, pc}"
-    );
-    #endif
+    Save_PlayerData_GetProfile(*((u32*)(r0 + 0xc)));
+    PlayerProfile_GetTrainerGender();
 }
 
 void ov115_0225F978(void) {

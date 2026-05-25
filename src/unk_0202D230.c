@@ -182,13 +182,7 @@ void sub_0202D5DC(void) {
 }
 
 void sub_0202D638(void) {
-    /* Original at 0x0202D638 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = r1;
 }
 
 void sub_0202D63C(void) {
@@ -226,7 +220,7 @@ void sub_0202D678(void) {
 }
 
 void sub_0202D6DC(void) {
-    MI_CpuFill8(0, 0xfa);
+    MI_CpuFill8((r0 + 4), 0, 0xfa);
     MI_CpuFill8(r4, 0, 4);
 }
 

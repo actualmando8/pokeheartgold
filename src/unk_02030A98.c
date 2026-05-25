@@ -400,13 +400,7 @@ void sub_0203126C(void) {
 }
 
 void sub_020312A4(void) {
-    /* Original at 0x020312A4 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xba\n    lsl r0, r0, #4\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 4;
 }
 
 void sub_020312AC(void) {

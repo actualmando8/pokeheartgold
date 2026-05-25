@@ -70,13 +70,9 @@ void ov88_02258B14(void) {
 }
 
 void ov88_02258B20(void) {
-    /* Original at 0x02258B20 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    bl DoScheduledBgGpuUpdates\n    bl OamManager_ApplyAndResetBuffers\n    bl GF_RunVramTransferTasks\n    pop {r3, pc}"
-    );
-    #endif
+    DoScheduledBgGpuUpdates();
+    OamManager_ApplyAndResetBuffers();
+    GF_RunVramTransferTasks();
 }
 
 void ov88_02258B34(void) {
@@ -336,13 +332,8 @@ void ov88_02259508(void) {
 }
 
 void ov88_0225954C(void) {
-    /* Original at 0x0225954C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    bl String_Delete\n    add r4, #0xc\n    add r0, r4, #0\n    bl RemoveWindow\n    pop {r4, pc}"
-    );
-    #endif
+    String_Delete(*((u32*)(r0 + 8)));
+    RemoveWindow(r4);
 }
 
 void ov88_02259560(void) {
@@ -356,13 +347,7 @@ void ov88_02259560(void) {
 }
 
 void ov88_022595DC(void) {
-    /* Original at 0x022595DC */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strb r1, [r0]\n    bx lr"
-    );
-    #endif
+    *(u8*)r0 = 0;
 }
 
 void ov88_022595E4(void) {
@@ -420,33 +405,40 @@ void ov88_02259818(void) {
 }
 
 void ov88_0225983C(void) {
-    /* Original at 0x0225983C */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r3, #0\n    strb r3, [r0]\n    strb r3, [r0, #1]\n    strb r3, [r0, #2]\n    strb r3, [r0, #3]\n    strb r3, [r0, #4]\n    strb r3, [r0, #5]\n    strb r3, [r0, #6]\n    strb r3, [r0, #7]\n    strb r3, [r0, #8]\n    strb r3, [r0, #9]\n    strb r3, [r0, #0xa]\n    strb r3, [r0, #0xb]\n    strh r1, [r0, #6]\n    str r2, [r0, #8]\n    bx lr"
-    );
-    #endif
+    *(u8*)r0 = 0;
+    ((u8*)r0)[1] = 0;
+    ((u8*)r0)[2] = 0;
+    ((u8*)r0)[3] = 0;
+    ((u8*)r0)[4] = 0;
+    ((u8*)r0)[5] = 0;
+    ((u8*)r0)[6] = 0;
+    ((u8*)r0)[7] = 0;
+    ((u8*)r0)[8] = 0;
+    ((u8*)r0)[9] = 0;
+    ((u8*)r0)[0xa] = 0;
+    ((u8*)r0)[0xb] = 0;
+    ((u16*)r0)[6] = r1;
+    ((u32*)r0)[8] = r2;
 }
 
 void ov88_0225985C(void) {
-    /* Original at 0x0225985C */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strb r1, [r0]\n    strb r1, [r0, #1]\n    strb r1, [r0, #2]\n    strb r1, [r0, #3]\n    strb r1, [r0, #4]\n    strb r1, [r0, #5]\n    strb r1, [r0, #6]\n    strb r1, [r0, #7]\n    strb r1, [r0, #8]\n    strb r1, [r0, #9]\n    strb r1, [r0, #0xa]\n    strb r1, [r0, #0xb]\n    bx lr"
-    );
-    #endif
+    *(u8*)r0 = 0;
+    ((u8*)r0)[1] = 0;
+    ((u8*)r0)[2] = 0;
+    ((u8*)r0)[3] = 0;
+    ((u8*)r0)[4] = 0;
+    ((u8*)r0)[5] = 0;
+    ((u8*)r0)[6] = 0;
+    ((u8*)r0)[7] = 0;
+    ((u8*)r0)[8] = 0;
+    ((u8*)r0)[9] = 0;
+    ((u8*)r0)[0xa] = 0;
+    ((u8*)r0)[0xb] = 0;
 }
 
 void ov88_02259878(void) {
-    /* Original at 0x02259878 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    strh r1, [r0]\n    mov r1, #0\n    strh r1, [r0, #2]\n    bx lr"
-    );
-    #endif
+    *(u16*)r0 = 1;
+    ((u16*)r0)[2] = 0;
 }
 
 void ov88_02259884(void) {

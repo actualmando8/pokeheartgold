@@ -234,13 +234,9 @@ void ov48_022594D0(void) {
 }
 
 void ov48_022594DC(void) {
-    /* Original at 0x022594DC */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r0]\n    bl DoScheduledBgGpuUpdates\n    bl OamManager_ApplyAndResetBuffers\n    bl GF_RunVramTransferTasks\n    pop {r3, pc}"
-    );
-    #endif
+    DoScheduledBgGpuUpdates();
+    OamManager_ApplyAndResetBuffers();
+    GF_RunVramTransferTasks();
 }
 
 void ov48_022594F0(void) {
@@ -596,13 +592,9 @@ void ov48_02259F8C(void) {
 }
 
 void ov48_02259FEC(void) {
-    /* Original at 0x02259FEC */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x20]\n    bl YesNoPrompt_Reset\n    add r0, r4, #0\n    add r0, #0x10\n    mov r1, #1\n    bl ClearFrameAndWindow2\n    add r4, #0x10\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    YesNoPrompt_Reset(*((u32*)(r0 + 0x20)));
+    ClearFrameAndWindow2(r4, 1);
+    ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
 void ov48_0225A00C(void) {
@@ -676,23 +668,15 @@ void ov48_0225A244(void) {
 }
 
 void ov48_0225A288(void) {
-    /* Original at 0x0225A288 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strh r1, [r0, #0x34]\n    strh r1, [r0, #0x36]\n    str r1, [r0, #0x38]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0x34] = 0;
+    ((u16*)r0)[0x36] = 0;
+    ((u32*)r0)[0x38] = 0;
 }
 
 void ov48_0225A294(void) {
-    /* Original at 0x0225A294 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strh r1, [r0, #0x34]\n    strh r1, [r0, #0x36]\n    str r1, [r0, #0x38]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0x34] = 0;
+    ((u16*)r0)[0x36] = 0;
+    ((u32*)r0)[0x38] = 0;
 }
 
 void ov48_0225A2A0(void) {
@@ -936,13 +920,10 @@ void ov48_0225AA38(void) {
 }
 
 void ov48_0225AA50(void) {
-    /* Original at 0x0225AA50 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strb r1, [r0, #4]\n    strb r1, [r0, #5]\n    strb r1, [r0, #6]\n    strb r1, [r0, #7]\n    bx lr"
-    );
-    #endif
+    ((u8*)r0)[4] = 0;
+    ((u8*)r0)[5] = 0;
+    ((u8*)r0)[6] = 0;
+    ((u8*)r0)[7] = 0;
 }
 
 void ov48_0225AA5C(void) {
@@ -1040,23 +1021,11 @@ void ov48_0225AE3C(void) {
 }
 
 void ov48_0225AE58(void) {
-    /* Original at 0x0225AE58 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[8] = r1;
 }
 
 void ov48_0225AE5C(void) {
-    /* Original at 0x0225AE5C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "strh r1, [r0, #0xa]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0xa] = r1;
 }
 
 void ov48_0225AE60(void) {
@@ -1070,13 +1039,10 @@ void ov48_0225AE60(void) {
 }
 
 void ov48_0225AEA8(void) {
-    /* Original at 0x0225AEA8 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #0\n    strh r1, [r5, #4]\n    strh r1, [r5, #6]\n    bl ov48_0225AEDC\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov48_0225AFB4\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    *((u16*)(r0 + 4)) = 0;
+    *((u16*)(r0 + 6)) = 0;
+    ov48_0225AEDC(0);
+    ov48_0225AFB4(r5, r4);
 }
 
 void ov48_0225AEC4(void) {
@@ -1138,13 +1104,10 @@ void ov48_0225B068(void) {
 }
 
 void ov48_0225B0A4(void) {
-    /* Original at 0x0225B0A4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl DestroyMsgData\n    ldr r0, [r4, #4]\n    bl MessageFormat_Delete\n    ldr r0, [r4, #8]\n    bl String_Delete\n    ldr r0, [r4, #0xc]\n    bl String_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    DestroyMsgData();
+    MessageFormat_Delete(*((u32*)(r4 + 4)));
+    String_Delete(*((u32*)(r4 + 8)));
+    String_Delete(*((u32*)(r4 + 0xc)));
 }
 
 void ov48_0225B0C4(void) {
@@ -1156,13 +1119,9 @@ void ov48_0225B0D4(void) {
 }
 
 void ov48_0225B0E0(void) {
-    /* Original at 0x0225B0E0 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r4, r1, #0\n    ldr r2, [r5, #0xc]\n    mov r1, #3\n    bl ReadMsgDataIntoString\n    ldr r0, [r5, #4]\n    mov r1, #0\n    add r2, r4, #0\n    bl BufferCountryName\n    ldr r0, [r5, #4]\n    ldr r1, [r5, #8]\n    ldr r2, [r5, #0xc]\n    bl StringExpandPlaceholders\n    ldr r0, [r5, #8]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ReadMsgDataIntoString(3, *((u32*)(r0 + 0xc)));
+    BufferCountryName(*((u32*)(r5 + 4)), 0, r4);
+    StringExpandPlaceholders(*((u32*)(r5 + 4)), *((u32*)(r5 + 8)), *((u32*)(r5 + 0xc)));
 }
 
 void ov48_0225B108(void) {

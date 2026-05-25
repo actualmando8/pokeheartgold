@@ -21,21 +21,13 @@ void sub_0201935C(void) {
     #endif
 }
 
-void sub_02019490(void) {
-    void *r3;
-    void *r4;
-    void *r5;
-    r5 = r0 + 0;
+u32 sub_02019490(void) {
     OverlayManager_GetData();
-    r4 = r0 + 0;
     sub_020194F8();
-    /* ldr r0, [r4] */
     Heap_Free();
-    r0 = r5 + 0;
-    OverlayManager_FreeData((r5 + 0));
-    r0 = 0x7b;
+    OverlayManager_FreeData(r5);
     Heap_Destroy(0x7b);
-    r0 = 1;
+    return 1;
 }
 
 void sub_020194B4(void) {

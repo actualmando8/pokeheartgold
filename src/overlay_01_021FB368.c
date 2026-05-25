@@ -32,13 +32,8 @@ void ov01_021FB3E4(void) {
 }
 
 void ov01_021FB418(void) {
-    /* Original at 0x021FB418 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free(*((u32*)(r0 + 4)));
+    Heap_Free(r4);
 }
 
 void ov01_021FB42C(void) {

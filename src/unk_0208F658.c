@@ -142,13 +142,7 @@ void sub_0208F7E0(void) {
 }
 
 void sub_0208F7E8(void) {
-    /* Original at 0x0208F7E8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0xfb\n    lsl r0, r0, #2\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 2;
 }
 
 u8 sub_0208F7F0(void) {
@@ -160,13 +154,7 @@ u8 sub_0208F7F4(void) {
 }
 
 void sub_0208F7F8(void) {
-    /* Original at 0x0208F7F8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r0, #0x59\n    lsl r0, r0, #4\n    bx lr"
-    );
-    #endif
+    r0 = r0 << 4;
 }
 
 void sub_0208F800(void) {

@@ -12,13 +12,10 @@ void ov01_02204004(void) {
 }
 
 void ov01_02204084(void) {
-    /* Original at 0x02204084 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    ldr r0, [r4, #0xc]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    Heap_Free(*((u32*)(r4 + 8)));
+    Heap_Free(*((u32*)(r4 + 0xc)));
+    Heap_Free(r4);
 }
 
 void ov01_022040A4(void) {
@@ -198,23 +195,16 @@ void ov01_022044B0(void) {
 }
 
 void ov01_022044C4(void) {
-    /* Original at 0x022044C4 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x1c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x1c] = r1;
 }
 
 void ov01_022044C8(void) {
-    /* Original at 0x022044C8 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    mov r4, #0\n    str r4, [r0, #0x18]\n    mov r4, #1\n    str r4, [r0, #0x1c]\n    str r4, [r0, #0x14]\n    str r1, [r0, #8]\n    str r2, [r0, #0xc]\n    str r3, [r0, #0x10]\n    pop {r3, r4}\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x18] = 0;
+    ((u32*)r0)[0x1c] = 1;
+    ((u32*)r0)[0x14] = 1;
+    ((u32*)r0)[8] = r1;
+    ((u32*)r0)[0xc] = r2;
+    ((u32*)r0)[0x10] = r3;
 }
 
 void ov01_022044E0(void) {
@@ -256,13 +246,7 @@ void ov01_02204554(void) {
 }
 
 void ov01_0220455C(void) {
-    /* Original at 0x0220455C */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = r1;
 }
 
 void ov01_02204560(void) {
@@ -286,13 +270,7 @@ void ov01_02204570(void) {
 }
 
 void ov01_02204590(void) {
-    /* Original at 0x02204590 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[8] = r1;
 }
 
 void ov01_02204594(void) {
@@ -364,13 +342,9 @@ void ov01_02204698(void) {
 }
 
 void ov01_022046A4(void) {
-    /* Original at 0x022046A4 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    add r5, r1, #0\n    add r0, r2, #0\n    mov r1, #0\n    bl NNS_G3dGetAnmByIdx\n    add r4, r0, #0\n    add r0, r6, #0\n    add r1, r4, #0\n    bl ov01_022046D4\n    add r1, r4, #0\n    str r0, [r5]\n    bl ov01_02204728\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    NNS_G3dGetAnmByIdx(r2, 0);
+    ov01_022046D4(r6, r0);
+    ov01_02204728(r4);
 }
 
 void ov01_022046C8(void) {
@@ -409,13 +383,9 @@ void ov01_02204728(void) {
 }
 
 void ov01_02204744(void) {
-    /* Original at 0x02204744 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #0x78\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #0x78\n    bl MIi_CpuClearFast\n    bl GF_RTC_GetTimeOfDay\n    str r0, [r4]\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Alloc(0x78);
+    MIi_CpuClearFast(0, r0, 0x78);
+    GF_RTC_GetTimeOfDay();
 }
 
 void ov01_02204764(void) {

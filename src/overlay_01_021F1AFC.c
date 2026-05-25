@@ -665,13 +665,8 @@ void Field_PlayerMovementSavingClear(void) {
 }
 
 void ov01_021F3030(void) {
-    /* Original at 0x021F3030 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r0, [r1, #0xc]\n    bl PlayerAvatar_GetMapObject\n    bl sub_0205F484\n    pop {r3, pc}"
-    );
-    #endif
+    PlayerAvatar_GetMapObject(*((u32*)(r1 + 0xc)));
+    sub_0205F484();
 }
 
 void ov01_021F3040(void) {
@@ -722,11 +717,6 @@ void ov01_021F30F4(void) {
 }
 
 void ov01_021F3100(void) {
-    /* Original at 0x021F3100 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r0, [r0, #0xc]\n    add r4, r1, #0\n    bl SaveArray_Party_Get\n    add r1, r4, #0\n    bl Party_GetMonByIndex\n    pop {r4, pc}"
-    );
-    #endif
+    SaveArray_Party_Get(*((u32*)(r0 + 0xc)));
+    Party_GetMonByIndex(r4);
 }

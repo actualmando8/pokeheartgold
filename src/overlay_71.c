@@ -470,13 +470,7 @@ void ov71_022476EC(void) {
 }
 
 void ov71_02247704(void) {
-    /* Original at 0x02247704 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x64]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x64] = r1;
 }
 
 void ov71_02247708(void) {
@@ -490,13 +484,9 @@ void ov71_02247708(void) {
 }
 
 void ov71_02247730(void) {
-    /* Original at 0x02247730 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0, #0x74]\n    str r1, [r0, #0x78]\n    str r1, [r0, #0x7c]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x74] = r1;
+    ((u32*)r0)[0x78] = r1;
+    ((u32*)r0)[0x7c] = r1;
 }
 
 void ov71_02247738(void) {
@@ -564,13 +554,8 @@ void ov71_0224784C(void) {
 }
 
 void ov71_022478B8(void) {
-    /* Original at 0x022478B8 */
-    /* Requires manual decompilation - 6 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl Camera_UnsetStaticPtr\n    ldr r0, [r4]\n    bl Camera_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    Camera_UnsetStaticPtr();
+    Camera_Delete();
 }
 
 void ov71_022478C8(void) {
@@ -1220,13 +1205,8 @@ void ov71_02249670(void) {
 }
 
 void ov71_022497C8(void) {
-    /* Original at 0x022497C8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x24]\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0x24]\n    mov r1, #7\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(*((u32*)(r0 + 0x24)), 3);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0x24)), 7);
 }
 
 void ov71_022497E0(void) {
@@ -1264,13 +1244,7 @@ void ov71_02249970(void) {
 }
 
 void ov71_02249988(void) {
-    /* Original at 0x02249988 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 0;
 }
 
 void ov71_02249990(void) {
@@ -1328,13 +1302,7 @@ void ov71_02249B64(void) {
 }
 
 void ov71_02249C90(void) {
-    /* Original at 0x02249C90 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = 1;
 }
 
 void ov71_02249C98(void) {
@@ -1498,13 +1466,8 @@ void ov71_0224A278(void) {
 }
 
 void ov71_0224A3D8(void) {
-    /* Original at 0x0224A3D8 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x24]\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0x24]\n    mov r1, #7\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(*((u32*)(r0 + 0x24)), 3);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0x24)), 7);
 }
 
 void ov71_0224A3F0(void) {
@@ -1542,13 +1505,7 @@ void ov71_0224A590(void) {
 }
 
 void ov71_0224A5A8(void) {
-    /* Original at 0x0224A5A8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #4]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 0;
 }
 
 void ov71_0224A5B0(void) {
@@ -1606,13 +1563,7 @@ void ov71_0224A7D0(void) {
 }
 
 void ov71_0224A8A8(void) {
-    /* Original at 0x0224A8A8 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0xc] = 1;
 }
 
 void ov71_0224A8B0(void) {

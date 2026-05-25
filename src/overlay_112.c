@@ -1476,13 +1476,7 @@ void ov112_021EB838(void) {
 }
 
 void ov112_021EB85C(void) {
-    /* Original at 0x021EB85C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0xb\n    str r1, [r0, #4]\n    mov r0, #0x1a\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 0xb;
 }
 
 void ov112_021EB864(void) {
@@ -1873,14 +1867,10 @@ void ov112_021EC3C8(void) {
     #endif
 }
 
-void ov112_021EC3F0(void) {
-    /* Original at 0x021EC3F0 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x20]\n    bl SaveGameNormal\n    ldr r0, [r4, #0x20]\n    bl Save_ClearStatusFlags\n    mov r0, #0x20\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov112_021EC3F0(void) {
+    SaveGameNormal(*((u32*)(r0 + 0x20)));
+    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
+    return 0x20;
 }
 
 void ov112_021EC404(void) {
@@ -2230,13 +2220,8 @@ void ov112_021ED224(void) {
 }
 
 void ov112_021ED25C(void) {
-    /* Original at 0x021ED25C */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    strh r1, [r0, #0x14]\n    strh r1, [r0, #0x16]\n    bx lr"
-    );
-    #endif
+    ((u16*)r0)[0x14] = 0;
+    ((u16*)r0)[0x16] = 0;
 }
 
 void ov112_021ED264(void) {
@@ -2670,13 +2655,7 @@ void ov112_021EE514(void) {
 }
 
 void ov112_021EE524(void) {
-    /* Original at 0x021EE524 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #6\n    str r1, [r0, #4]\n    mov r0, #0x42\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 6;
 }
 
 void ov112_021EE52C(void) {
@@ -2779,14 +2758,10 @@ void ov112_021EE6D0(void) {
     #endif
 }
 
-void ov112_021EE6F8(void) {
-    /* Original at 0x021EE6F8 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x20]\n    bl SaveGameNormal\n    ldr r0, [r4, #0x20]\n    bl Save_ClearStatusFlags\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov112_021EE6F8(void) {
+    SaveGameNormal(*((u32*)(r0 + 0x20)));
+    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
+    return 3;
 }
 
 void ov112_021EE70C(void) {
@@ -2957,14 +2932,10 @@ void ov112_021EEE4C(void) {
     #endif
 }
 
-void ov112_021EEE8C(void) {
-    /* Original at 0x021EEE8C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x20]\n    bl SaveGameNormal\n    ldr r0, [r4, #0x20]\n    bl Save_ClearStatusFlags\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov112_021EEE8C(void) {
+    SaveGameNormal(*((u32*)(r0 + 0x20)));
+    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
+    return 3;
 }
 
 void ov112_021EEEA0(void) {
@@ -3001,14 +2972,10 @@ void ov112_021EEEE0(void) {
     #endif
 }
 
-void ov112_021EEF08(void) {
-    /* Original at 0x021EEF08 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x20]\n    bl SaveGameNormal\n    ldr r0, [r4, #0x20]\n    bl Save_ClearStatusFlags\n    mov r0, #8\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov112_021EEF08(void) {
+    SaveGameNormal(*((u32*)(r0 + 0x20)));
+    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
+    return 8;
 }
 
 void ov112_021EEF1C(void) {
@@ -3016,13 +2983,7 @@ void ov112_021EEF1C(void) {
 }
 
 void ov112_021EEF28(void) {
-    /* Original at 0x021EEF28 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0xa\n    str r1, [r0, #4]\n    add r0, r1, #0\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 0xa;
 }
 
 void ov112_021EEF30(void) {
@@ -3510,13 +3471,7 @@ void ov112_021F0368(void) {
 }
 
 void ov112_021F0394(void) {
-    /* Original at 0x021F0394 */
-    /* Requires manual decompilation - 4 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #4]\n    mov r0, #0x25\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[4] = 0;
 }
 
 void ov112_021F039C(void) {
@@ -4080,13 +4035,8 @@ void ov112_021F1EFC(void) {
 }
 
 void ov112_021F1F3C(void) {
-    /* Original at 0x021F1F3C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0xc]\n    add r4, r1, #0\n    bl ManagedSprite_SetAnimNoRestart\n    ldr r0, [r5, #8]\n    add r1, r4, #0\n    bl ManagedSprite_SetAnimNoRestart\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ManagedSprite_SetAnimNoRestart(*((u32*)(r0 + 0xc)));
+    ManagedSprite_SetAnimNoRestart(*((u32*)(r5 + 8)), r4);
 }
 
 void ov112_021F1F54(void) {

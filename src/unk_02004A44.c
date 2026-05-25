@@ -50,23 +50,13 @@ void Sound_SetScene(void) {
 }
 
 void sub_02004AFC(void) {
-    /* Original at 0x02004AFC */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x15\n    bl GF_SdatGetAttrPtr\n    mov r0, #0x16\n    bl GF_SdatGetAttrPtr\n    strb r4, [r0]\n    pop {r4, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0x15);
+    GF_SdatGetAttrPtr(0x16);
 }
 
 void sub_02004B10(void) {
-    /* Original at 0x02004B10 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r0, #0x16\n    bl GF_SdatGetAttrPtr\n    add r4, r0, #0\n    bl sub_02005318\n    mov r0, #0\n    strb r0, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0x16);
+    sub_02005318();
 }
 
 void sub_02004B24(void) {
@@ -219,13 +209,8 @@ void sub_020053A8(void) {
 }
 
 void Sound_ClearBGMPauseFlags(void) {
-    /* Original at 0x020053F0 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r0, #0xc\n    bl GF_SdatGetAttrPtr\n    add r4, r0, #0\n    mov r0, #0xd\n    bl GF_SdatGetAttrPtr\n    mov r1, #0\n    strb r1, [r4]\n    strb r1, [r0]\n    pop {r4, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0xc);
+    GF_SdatGetAttrPtr(0xd);
 }
 
 void GF_SndHandleMoveVolume(void) {
@@ -390,23 +375,13 @@ void sub_020056E8(void) {
 }
 
 void sub_02005728(void) {
-    /* Original at 0x02005728 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl sub_020055AC\n    ldr r0, [r0]\n    bl NNS_SndWaveOutStop\n    pop {r3, pc}"
-    );
-    #endif
+    sub_020055AC();
+    NNS_SndWaveOutStop();
 }
 
 void sub_02005738(void) {
-    /* Original at 0x02005738 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl sub_020055AC\n    ldr r0, [r0]\n    bl NNS_SndWaveOutIsPlaying\n    pop {r3, pc}"
-    );
-    #endif
+    sub_020055AC();
+    NNS_SndWaveOutIsPlaying();
 }
 
 void sub_02005748(void) {
@@ -420,13 +395,8 @@ void sub_02005748(void) {
 }
 
 void sub_02005760(void) {
-    /* Original at 0x02005760 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl sub_020055AC\n    ldr r0, [r0]\n    add r1, r4, #0\n    bl NNS_SndWaveOutSetSpeed\n    pop {r4, pc}"
-    );
-    #endif
+    sub_020055AC();
+    NNS_SndWaveOutSetSpeed(r4);
 }
 
 void sub_02005774(void) {

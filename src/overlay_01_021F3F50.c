@@ -46,13 +46,9 @@ void Field_SaveStatsPrinter_Print(void) {
 }
 
 void Field_SaveStatsPrinter_RemoveFromScreen(void) {
-    /* Original at 0x021F41A4 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    mov r1, #0\n    bl sub_0200E5D4\n    ldr r0, [r4, #0x10]\n    bl RemoveWindow\n    ldr r0, [r4, #0x10]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    sub_0200E5D4(*((u32*)(r0 + 0x10)), 0);
+    RemoveWindow(*((u32*)(r4 + 0x10)));
+    Heap_Free(*((u32*)(r4 + 0x10)));
 }
 
 void Field_SaveStatsPrinter_New(void) {
@@ -66,13 +62,9 @@ void Field_SaveStatsPrinter_New(void) {
 }
 
 void Field_SaveStatsPrinter_Delete(void) {
-    /* Original at 0x021F421C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x18]\n    bl DestroyMsgData\n    ldr r0, [r4, #0x14]\n    bl MessageFormat_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    DestroyMsgData(*((u32*)(r0 + 0x18)));
+    MessageFormat_Delete(*((u32*)(r4 + 0x14)));
+    Heap_Free(r4);
 }
 
 void ov01_021F4234(void) {
@@ -106,13 +98,8 @@ void ov01_021F42F8(void) {
 }
 
 void ov01_021F434C(void) {
-    /* Original at 0x021F434C */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    bl RemoveWindow\n    ldr r0, [r4, #0x10]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    RemoveWindow(*((u32*)(r0 + 0x10)));
+    Heap_Free(*((u32*)(r4 + 0x10)));
 }
 
 void ov01_021F4360(void) {
@@ -126,13 +113,9 @@ void ov01_021F4360(void) {
 }
 
 void ov01_021F43D0(void) {
-    /* Original at 0x021F43D0 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x18]\n    bl DestroyMsgData\n    ldr r0, [r4, #0x14]\n    bl MessageFormat_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    DestroyMsgData(*((u32*)(r0 + 0x18)));
+    MessageFormat_Delete(*((u32*)(r4 + 0x14)));
+    Heap_Free(r4);
 }
 
 void Field_SaveGameNormal(void) {

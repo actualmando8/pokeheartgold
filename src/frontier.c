@@ -21,14 +21,13 @@ void Frontier_Main(void) {
     #endif
 }
 
-void Frontier_Exit(void) {
-    /* Original at 0x0209673C */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl OverlayManager_GetData\n    add r4, r0, #0\n    ldr r0, [r4, #0x14]\n    bl ov80_0222A920\n    add r0, r4, #0\n    bl Frontier_FreeMap\n    add r0, r5, #0\n    bl OverlayManager_FreeData\n    bl Frontier_UnloadOverlays\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 Frontier_Exit(void) {
+    OverlayManager_GetData();
+    ov80_0222A920(*((u32*)(r0 + 0x14)));
+    Frontier_FreeMap(r4);
+    OverlayManager_FreeData(r5);
+    Frontier_UnloadOverlays();
+    return 1;
 }
 
 void Frontier_CreateMap(void) {

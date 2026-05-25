@@ -2,13 +2,11 @@
 #include "global.h"
 
 void sub_02033AE0(void) {
-    /* Original at 0x02033AE0 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "str r1, [r0]\n    strh r2, [r0, #0xa]\n    mov r1, #0\n    strh r1, [r0, #4]\n    strh r1, [r0, #6]\n    strh r1, [r0, #8]\n    bx lr"
-    );
-    #endif
+    *(u32*)r0 = r1;
+    ((u16*)r0)[0xa] = r2;
+    ((u16*)r0)[4] = 0;
+    ((u16*)r0)[6] = 0;
+    ((u16*)r0)[8] = 0;
 }
 
 void sub_02033AF0(void) {

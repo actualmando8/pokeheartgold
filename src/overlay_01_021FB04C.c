@@ -134,11 +134,5 @@ void ov01_021FB354(void) {
 }
 
 void ov01_021FB360(void) {
-    /* Original at 0x021FB360 */
-    /* Requires manual decompilation - 3 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    str r1, [r0, #0x18]\n    bx lr"
-    );
-    #endif
+    ((u32*)r0)[0x18] = 0;
 }
