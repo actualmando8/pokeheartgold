@@ -40,13 +40,11 @@ void ov80_0222ADDC(void) {
 }
 
 void ov80_0222ADE8(void) {
-    /* Original at 0x0222ADE8 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r2, r0, #0\n    add r4, r1, #0\n    ldr r0, [r2]\n    ldr r1, [r2, #4]\n    bl ov80_02239D74\n    str r0, [r4]\n    mov r0, #0\n    mov r1, #1\n    bl SetBgPriority\n    mov r0, #2\n    add r1, r0, #0\n    bl SetBgPriority\n    mov r0, #3\n    add r1, r0, #0\n    bl SetBgPriority\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    pop {r4, pc}"
-    );
-    #endif
+    ov80_02239D74(*((u32*)(r0 + 4)), r0);
+    SetBgPriority(0, 1);
+    SetBgPriority(2, 2);
+    SetBgPriority(3, 3);
+    GfGfx_EngineATogglePlanes(4, 0);
 }
 
 void ov80_0222AE1C(void) {

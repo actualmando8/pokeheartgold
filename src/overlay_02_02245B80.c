@@ -42,13 +42,10 @@ void ov02_02245D18(void) {
 }
 
 void ov02_02245DB0(void) {
-    /* Original at 0x02245DB0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x44\n    mov r1, #0\n    bl Field3dObject_SetActiveFlag\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x30\n    add r1, #0xbc\n    bl Field3dModelAnimation_Unload\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x1c\n    add r1, #0xbc\n    bl Field3dModelAnimation_Unload\n    add r4, #0xc\n    add r0, r4, #0\n    bl Field3dModel_Unload\n    pop {r4, pc}"
-    );
-    #endif
+    Field3dObject_SetActiveFlag(0);
+    Field3dModelAnimation_Unload(r4, r4);
+    Field3dModelAnimation_Unload(r4, r4);
+    Field3dModel_Unload(r4);
 }
 
 void ov02_02245DE0(void) {

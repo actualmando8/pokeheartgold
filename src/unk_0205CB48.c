@@ -254,13 +254,11 @@ void sub_0205D4B4(void) {
 }
 
 void sub_0205D610(void) {
-    /* Original at 0x0205D610 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r2, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r6, #0\n    mov r1, #0x28\n    bl sub_0206234C\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0205DA1C\n    add r0, r4, #0\n    add r1, r6, #0\n    bl MapObject_SetNextFacingDirection\n    add r0, r5, #0\n    bl PlayerAvatar_ResetUnkC\n    add r0, r5, #0\n    bl PlayerAvatar_ToggleUnkC\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    sub_0206234C(r2, 0x28);
+    sub_0205DA1C(r5, r4, r0);
+    MapObject_SetNextFacingDirection(r4, r6);
+    PlayerAvatar_ResetUnkC(r5);
+    PlayerAvatar_ToggleUnkC(r5);
 }
 
 void sub_0205D640(void) {
@@ -351,13 +349,11 @@ void sub_0205D83C(void) {
 }
 
 void sub_0205D948(void) {
-    /* Original at 0x0205D948 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r2, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    bl PlayerAvatar_ClearUnk24ClearFlag2\n    add r0, r6, #0\n    mov r1, #0x28\n    bl sub_0206234C\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0205DA1C\n    add r0, r4, #0\n    add r1, r6, #0\n    bl MapObject_SetNextFacingDirection\n    add r0, r5, #0\n    bl PlayerAvatar_ClearUnk24ClearFlag2\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    PlayerAvatar_ClearUnk24ClearFlag2();
+    sub_0206234C(r6, 0x28);
+    sub_0205DA1C(r5, r4, r0);
+    MapObject_SetNextFacingDirection(r4, r6);
+    PlayerAvatar_ClearUnk24ClearFlag2(r5);
 }
 
 void sub_0205D978(void) {

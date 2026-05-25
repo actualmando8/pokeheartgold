@@ -1010,13 +1010,12 @@ void ov40_0222F9D4(void) {
 }
 
 void ov40_0222F9E0(void) {
-    /* Original at 0x0222F9E0 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r2, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r2, #2\n    add r3, r6, #0\n    bl ov40_0222F950\n    str r0, [r5, #0x18]\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #2\n    add r3, r6, #0\n    bl ov40_0222F950\n    str r0, [r5, #0x1c]\n    ldr r0, [r5, #0x18]\n    mov r1, #0x18\n    mov r2, #0x88\n    bl ManagedSprite_SetPositionXY\n    ldr r0, [r5, #0x1c]\n    mov r1, #0xe8\n    mov r2, #0x88\n    bl ManagedSprite_SetPositionXY\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov40_0222F950(2, r2);
+    *((u32*)(r5 + 0x18)) = r0;
+    ov40_0222F950(r5, r4, 2, r6);
+    *((u32*)(r5 + 0x1c)) = r0;
+    ManagedSprite_SetPositionXY(*((u32*)(r5 + 0x18)), 0x18, 0x88);
+    ManagedSprite_SetPositionXY(*((u32*)(r5 + 0x1c)), 0xe8, 0x88);
 }
 
 void ov40_0222FA18(void) {
@@ -1318,13 +1317,14 @@ void ov40_022306F0(void) {
 }
 
 void ov40_02230738(void) {
-    /* Original at 0x02230738 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    mov r0, #0\n    mov r1, #1\n    bl SetBgPriority\n    mov r0, #1\n    mov r1, #3\n    bl SetBgPriority\n    mov r0, #2\n    mov r1, #0\n    bl SetBgPriority\n    mov r0, #3\n    mov r1, #1\n    bl SetBgPriority\n    mov r0, #4\n    mov r1, #1\n    bl SetBgPriority\n    mov r0, #5\n    mov r1, #3\n    bl SetBgPriority\n    mov r0, #6\n    mov r1, #0\n    bl SetBgPriority\n    mov r0, #7\n    mov r1, #1\n    bl SetBgPriority\n    pop {r3, pc}"
-    );
-    #endif
+    SetBgPriority(0, 1);
+    SetBgPriority(1, 3);
+    SetBgPriority(2, 0);
+    SetBgPriority(3, 1);
+    SetBgPriority(4, 1);
+    SetBgPriority(5, 3);
+    SetBgPriority(6, 0);
+    SetBgPriority(7, 1);
 }
 
 void ov40_0223077C(void) {

@@ -349,13 +349,12 @@ void MapObjectMovementCmd091_Step0(void) {
 }
 
 void sub_020627B0(void) {
-    /* Original at 0x020627B0 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r1, #0\n    add r6, r2, #0\n    add r4, r3, #0\n    mov r1, #0xc\n    add r5, r0, #0\n    bl sub_0205F3C0\n    strh r4, [r0]\n    add r1, r6, #1\n    strh r1, [r0, #2]\n    add r0, r5, #0\n    add r1, r7, #0\n    bl MapObject_SetFacingDirection\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0205F328\n    add r0, r5, #0\n    bl sub_02060F78\n    add r0, r5, #0\n    bl MapObject_IncrementMovementStep\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    sub_0205F3C0(0xc);
+    *((u16*)(r0 + 2)) = (r6 + 1);
+    MapObject_SetFacingDirection(r5, r7);
+    sub_0205F328(r5, r4);
+    sub_02060F78(r5);
+    MapObject_IncrementMovementStep(r5);
 }
 
 void MapObjectMovementCmd040_Step1(void) {
@@ -715,13 +714,14 @@ void MapObjectMovementCmd103_Step0(void) {
 }
 
 void sub_02062FAC(void) {
-    /* Original at 0x02062FAC */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r1, #0\n    mov r1, #8\n    add r5, r0, #0\n    add r7, r2, #0\n    add r6, r3, #0\n    bl sub_0205F3C0\n    strh r4, [r0]\n    strh r6, [r0, #2]\n    strh r7, [r0, #4]\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_02060F24\n    add r0, r5, #0\n    add r1, r4, #0\n    bl MapObject_SetOrQueueFacing\n    add r0, r5, #0\n    add r1, r6, #0\n    bl sub_0205F328\n    add r0, r5, #0\n    mov r1, #4\n    bl MapObject_SetFlagsBits\n    add r0, r5, #0\n    bl MapObject_IncrementMovementStep\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    sub_0205F3C0(8);
+    *((u16*)(r0 + 2)) = r6;
+    *((u16*)(r0 + 4)) = r7;
+    sub_02060F24(r5, r4);
+    MapObject_SetOrQueueFacing(r5, r4);
+    sub_0205F328(r5, r6);
+    MapObject_SetFlagsBits(r5, 4);
+    MapObject_IncrementMovementStep(r5);
 }
 
 void sub_02062FEC(void) {

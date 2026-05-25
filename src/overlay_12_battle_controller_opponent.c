@@ -1220,13 +1220,11 @@ void ov12_0225DAD4(void) {
 }
 
 void ov12_0225E104(void) {
-    /* Original at 0x0225E104 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #9]\n    add r5, r0, #0\n    ldr r0, [r4]\n    bl ov10_022205BC\n    add r2, r0, #0\n    ldrb r1, [r4, #9]\n    ldr r0, [r4]\n    bl ov12_02262F24\n    ldrb r1, [r4, #9]\n    ldrb r2, [r4, #8]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov10_022205BC(*((u8*)(r1 + 9)));
+    ov12_02262F24(*((u8*)(r4 + 9)), r0);
+    ov12_0226430C(*((u8*)(r4 + 9)), *((u8*)(r4 + 8)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225E134(void) {
@@ -1355,13 +1353,12 @@ void ov12_0225F3A4(void) {
 }
 
 void ov12_0225F3FC(void) {
-    /* Original at 0x0225F3FC */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #0xd]\n    add r5, r0, #0\n    ldrb r2, [r4, #0xc]\n    ldr r0, [r4]\n    bl ov12_0226430C\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    ldr r0, [r0]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    ldr r0, [r0, #4]\n    bl Heap_Free\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    add r0, r4, #0\n    bl Heap_Free\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov12_0226430C(*((u8*)(r1 + 0xd)), *((u8*)(r1 + 0xc)));
+    Heap_Free(*((u32*)(*((u32*)(r4 + 8)) + 4)));
+    Heap_Free(*((u32*)(*((u32*)(r4 + 8)) + 4)));
+    Heap_Free(*((u32*)(r4 + 8)));
+    Heap_Free(r4);
+    SysTask_Destroy(r5);
 }
 
 void ov12_0225F434(void) {

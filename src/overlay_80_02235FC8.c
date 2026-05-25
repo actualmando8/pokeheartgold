@@ -66,11 +66,5 @@ void ov80_02236330(void) {
 }
 
 void ov80_0223641C(void) {
-    /* Original at 0x0223641C */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    ldrb r1, [r0, #0x14]\n    add r0, r4, #0\n    add r0, #0x9f\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    bl Heap_Free\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0xac\n    str r1, [r0]\n    add r0, r4, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    add r4, #0x9d\n    strh r1, [r0]\n    strb r1, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free(r1, *((u8*)(r1 + 0x14)));
 }

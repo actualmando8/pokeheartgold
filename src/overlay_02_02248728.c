@@ -1169,13 +1169,16 @@ void ov02_0224B2CC(void) {
 }
 
 void ov02_0224B314(void) {
-    /* Original at 0x0224B314 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    bl sub_02068D74\n    add r4, r0, #0\n    mov r0, #2\n    str r0, [r4]\n    mov r0, #0\n    str r0, [r4, #4]\n    str r0, [r4, #0xc]\n    str r0, [r4, #8]\n    str r0, [r4, #0x10]\n    str r0, [r4, #0x14]\n    str r0, [r4, #0x18]\n    ldr r0, [r4, #0x20]\n    add r1, sp, #0\n    bl ov02_02248C98\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02068DA8\n    ldr r0, [r4, #0x20]\n    mov r1, #4\n    bl Sprite_SetAnimCtrlSeq\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    sub_02068D74();
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 0xc)) = 0;
+    *((u32*)(r0 + 8)) = 0;
+    *((u32*)(r0 + 0x10)) = 0;
+    *((u32*)(r0 + 0x14)) = 0;
+    *((u32*)(r0 + 0x18)) = 0;
+    ov02_02248C98(*((u32*)(r0 + 0x20)));
+    sub_02068DA8(r5);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r4 + 0x20)), 4);
 }
 
 void ov02_0224B350(void) {
@@ -1762,14 +1765,14 @@ void ov02_0224C7D4(void) {
     #endif
 }
 
-void ov02_0224C840(void) {
-    /* Original at 0x0224C840 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r5, r0, #0\n    ldr r0, [r1, #0xc]\n    add r4, r2, #0\n    bl Save_LocalFieldData_Get\n    add r6, r0, #0\n    bl LocalFieldData_GetBlackoutSpawn\n    add r1, sp, #0\n    add r7, r0, #0\n    bl GetFlyWarpData\n    add r0, r6, #0\n    bl LocalFieldData_GetSpecialSpawnWarpPtr\n    add r1, r0, #0\n    add r0, r7, #0\n    bl GetSpecialSpawnWarpData\n    ldr r2, [r4, #0xc]\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02053B04\n    mov r0, #2\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+u32 ov02_0224C840(void) {
+    Save_LocalFieldData_Get(*((u32*)(r1 + 0xc)));
+    LocalFieldData_GetBlackoutSpawn();
+    GetFlyWarpData();
+    LocalFieldData_GetSpecialSpawnWarpPtr(r6);
+    GetSpecialSpawnWarpData(r7, r0);
+    sub_02053B04(r5, *((u32*)(r4 + 0xc)));
+    return 2;
 }
 
 void ov02_0224C87C(void) {

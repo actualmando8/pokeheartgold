@@ -1699,14 +1699,13 @@ void ov112_021EBE78(void) {
     #endif
 }
 
-void ov112_021EBF18(void) {
-    /* Original at 0x021EBF18 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x18]\n    mov r1, #4\n    bl BgClearTilemapBufferAndCommit\n    ldr r0, [r4, #0x18]\n    mov r1, #5\n    bl BgClearTilemapBufferAndCommit\n    ldr r0, [r4, #0x18]\n    mov r1, #1\n    bl BgClearTilemapBufferAndCommit\n    ldr r0, [r4, #0x18]\n    mov r1, #2\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #2\n    mov r2, #0x10\n    mov r3, #0xd\n    bl ov112_021EC460\n    mov r0, #0xc\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov112_021EBF18(void) {
+    BgClearTilemapBufferAndCommit(*((u32*)(r0 + 0x18)), 4);
+    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 5);
+    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 1);
+    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 2);
+    ov112_021EC460(r4, 2, 0x10, 0xd);
+    return 0xc;
 }
 
 void ov112_021EBF4C(void) {
@@ -2141,14 +2140,13 @@ void ov112_021ECFD4(void) {
     #endif
 }
 
-void ov112_021ED020(void) {
-    /* Original at 0x021ED020 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x18]\n    mov r1, #4\n    bl BgClearTilemapBufferAndCommit\n    ldr r0, [r4, #0x18]\n    mov r1, #5\n    bl BgClearTilemapBufferAndCommit\n    ldr r0, [r4, #0x18]\n    mov r1, #1\n    bl BgClearTilemapBufferAndCommit\n    ldr r0, [r4, #0x18]\n    mov r1, #2\n    bl BgClearTilemapBufferAndCommit\n    ldr r3, [r4, #0xc]\n    add r0, r4, #0\n    mov r1, #2\n    mov r2, #0x10\n    bl ov112_021EC460\n    mov r0, #0x40\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov112_021ED020(void) {
+    BgClearTilemapBufferAndCommit(*((u32*)(r0 + 0x18)), 4);
+    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 5);
+    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 1);
+    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 2);
+    ov112_021EC460(r4, 2, 0x10, *((u32*)(r4 + 0xc)));
+    return 0x40;
 }
 
 void ov112_021ED054(void) {
@@ -4247,13 +4245,10 @@ void ov112_021F27B8(void) {
 }
 
 void ov112_021F27E0(void) {
-    /* Original at 0x021F27E0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #1\n    bl ov112_021F2204\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0\n    bl ov112_021F2204\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #9\n    mov r3, #0x1a\n    bl ov112_021F22D0\n    add r0, r4, #0\n    mov r1, #0x2d\n    mov r2, #0\n    bl ov112_021F1624\n    pop {r4, pc}"
-    );
-    #endif
+    ov112_021F2204(0, 1);
+    ov112_021F2204(r4, 1, 0);
+    ov112_021F22D0(r4, 0, 9, 0x1a);
+    ov112_021F1624(r4, 0x2d, 0);
 }
 
 void ov112_021F2810(void) {

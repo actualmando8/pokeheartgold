@@ -194,13 +194,10 @@ void ov01_021EB840(void) {
 }
 
 void ov01_021EB86C(void) {
-    /* Original at 0x021EB86C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    bl ov01_021EBEF0\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov01_021EBF24\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov01_021EBF58\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov01_021EBF94\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov01_021EBEF0();
+    ov01_021EBF24(r5, r4, r6);
+    ov01_021EBF58(r5, r4, r6);
+    ov01_021EBF94(r5, r4, r6);
 }
 
 void ov01_021EB898(void) {
@@ -474,13 +471,12 @@ void ov01_021EC240(void) {
 }
 
 void ov01_021EC29C(void) {
-    /* Original at 0x021EC29C */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    ldr r1, [r4, #0x34]\n    ldr r0, [r4, #0x38]\n    str r1, [r0, #0x34]\n    ldr r1, [r4, #0x38]\n    ldr r0, [r4, #0x34]\n    str r1, [r0, #0x38]\n    ldr r0, [r4, #4]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    add r0, r4, #0\n    bl ov01_021EC1E4\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0x3c\n    ldr r5, [r4, #4]\n    bl memset\n    str r5, [r4, #4]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    *((u32*)(*((u32*)(r0 + 0x38)) + 0x34)) = *((u32*)(r0 + 0x34));
+    *((u32*)(*((u32*)(r0 + 0x34)) + 0x38)) = *((u32*)(r0 + 0x38));
+    Sprite_SetDrawFlag(*((u32*)(r0 + 4)), 0);
+    ov01_021EC1E4(r4);
+    memset(r4, 0, 0x3c);
+    *((u32*)(r4 + 4)) = r5;
 }
 
 void ov01_021EC2CC(void) {

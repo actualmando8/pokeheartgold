@@ -499,14 +499,14 @@ void FrtCmd_048(void) {
     #endif
 }
 
-void FrtCmd_049(void) {
-    /* Original at 0x0222CA1C */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r0, #0\n    bl FrontierScript_ReadVar\n    add r5, r0, #0\n    add r0, r4, #0\n    bl FrontierScript_ReadVar\n    add r6, r0, #0\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl sub_0209680C\n    add r1, r5, #0\n    add r4, r0, #0\n    bl ov80_02239700\n    add r1, r6, #0\n    bl ManagedSprite_SetAnim\n    add r0, r4, #0\n    add r1, r5, #0\n    mov r2, #1\n    bl ov80_02239708\n    mov r0, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+u32 FrtCmd_049(void) {
+    FrontierScript_ReadVar();
+    FrontierScript_ReadVar(r4);
+    sub_0209680C();
+    ov80_02239700(r5);
+    ManagedSprite_SetAnim(r6);
+    ov80_02239708(r4, r5, 1);
+    return 0;
 }
 
 u32 FrtCmd_050(void) {
@@ -706,14 +706,12 @@ void ov80_0222CF6C(void) {
     #endif
 }
 
-void FrtCmd_123(void) {
-    /* Original at 0x0222D008 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetLaunchArgs\n    ldr r2, [r5, #0x1c]\n    add r1, r2, #1\n    str r1, [r5, #0x1c]\n    ldr r0, [r0, #8]\n    ldrb r4, [r2]\n    bl Save_PlayerData_GetProfile\n    add r2, r0, #0\n    ldr r0, [r5]\n    add r1, r4, #0\n    ldr r0, [r0, #0x44]\n    bl BufferPlayersName\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_123(void) {
+    Frontier_GetLaunchArgs();
+    *((u32*)(r5 + 0x1c)) = (*((u32*)(r5 + 0x1c)) + 1);
+    Save_PlayerData_GetProfile(*((u32*)(r0 + 8)), (*((u32*)(r5 + 0x1c)) + 1), *((u32*)(r5 + 0x1c)));
+    BufferPlayersName(*((u32*)(r0 + 0x44)), r4, r0);
+    return 0;
 }
 
 void FrtCmd_124(void) {
@@ -771,24 +769,24 @@ u32 FrtCmd_129(void) {
     return 0;
 }
 
-void FrtCmd_130(void) {
-    /* Original at 0x0222D168 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetLaunchArgs\n    add r4, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVar\n    add r5, r0, #0\n    ldr r0, [r4, #8]\n    bl Save_GameStats_Get\n    mov r1, #0x45\n    add r2, r5, #0\n    bl GameStats_Add\n    ldr r0, [r4, #8]\n    bl Save_FrontierData_Get\n    add r1, r5, #0\n    mov r2, #5\n    bl FrontierData_BattlePointAction\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_130(void) {
+    Frontier_GetLaunchArgs();
+    FrontierScript_ReadVar(r5);
+    Save_GameStats_Get(*((u32*)(r4 + 8)));
+    GameStats_Add(0x45, r5);
+    Save_FrontierData_Get(*((u32*)(r4 + 8)));
+    FrontierData_BattlePointAction(r5, 5);
+    return 0;
 }
 
-void FrtCmd_131(void) {
-    /* Original at 0x0222D1A0 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetLaunchArgs\n    add r4, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVar\n    add r5, r0, #0\n    ldr r0, [r4, #8]\n    bl Save_GameStats_Get\n    mov r1, #0x46\n    add r2, r5, #0\n    bl GameStats_Add\n    ldr r0, [r4, #8]\n    bl Save_FrontierData_Get\n    add r1, r5, #0\n    mov r2, #6\n    bl FrontierData_BattlePointAction\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+u32 FrtCmd_131(void) {
+    Frontier_GetLaunchArgs();
+    FrontierScript_ReadVar(r5);
+    Save_GameStats_Get(*((u32*)(r4 + 8)));
+    GameStats_Add(0x46, r5);
+    Save_FrontierData_Get(*((u32*)(r4 + 8)));
+    FrontierData_BattlePointAction(r5, 6);
+    return 0;
 }
 
 void FrtCmd_053(void) {
@@ -891,14 +889,13 @@ u32 FrtCmd_061(void) {
     return 0;
 }
 
-void FrtCmd_062(void) {
-    /* Original at 0x0222D360 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    bl FrontierScriptContext_ReadHalfWord\n    add r6, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVarPtr\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetLaunchArgs\n    ldr r0, [r0, #8]\n    bl Save_VarsFlags_Get\n    add r1, r6, #0\n    bl Save_VarsFlags_GetVarAddr\n    ldrh r0, [r0]\n    strh r0, [r4]\n    mov r0, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+u32 FrtCmd_062(void) {
+    FrontierScriptContext_ReadHalfWord();
+    FrontierScript_ReadVarPtr(r5);
+    Frontier_GetLaunchArgs();
+    Save_VarsFlags_Get(*((u32*)(r0 + 8)));
+    Save_VarsFlags_GetVarAddr(r6);
+    return 0;
 }
 
 void ov80_0222D390(void) {
@@ -1011,14 +1008,13 @@ void FrtCmd_064(void) {
     #endif
 }
 
-void FrtCmd_065(void) {
-    /* Original at 0x0222DD68 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl sub_0209680C\n    add r4, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVar\n    add r6, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVar\n    add r7, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVar\n    add r3, r0, #0\n    ldr r0, [r4, #0x10]\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov80_022399A4\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+u32 FrtCmd_065(void) {
+    sub_0209680C();
+    FrontierScript_ReadVar(r5);
+    FrontierScript_ReadVar(r5);
+    FrontierScript_ReadVar(r5);
+    ov80_022399A4(*((u32*)(r4 + 0x10)), r6, r7, r0);
+    return 0;
 }
 
 u32 FrtCmd_066(void) {
@@ -1028,14 +1024,13 @@ u32 FrtCmd_066(void) {
     return 0;
 }
 
-void FrtCmd_067(void) {
-    /* Original at 0x0222DDBC */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r0, [r0]\n    bl sub_0209680C\n    add r5, r0, #0\n    add r0, r4, #0\n    bl FrontierScript_ReadVar\n    add r6, r0, #0\n    add r0, r4, #0\n    bl FrontierScript_ReadVar\n    add r4, r0, #0\n    ldr r0, [r5, #0x10]\n    add r1, r6, #0\n    bl ov80_02239A60\n    mov r2, #0\n    add r1, r4, #0\n    add r3, r2, #0\n    bl sub_02015494\n    mov r0, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+u32 FrtCmd_067(void) {
+    sub_0209680C();
+    FrontierScript_ReadVar(r4);
+    FrontierScript_ReadVar(r4);
+    ov80_02239A60(*((u32*)(r5 + 0x10)), r6);
+    sub_02015494(r4, 0, 0);
+    return 0;
 }
 
 void FrtCmd_068(void) {

@@ -158,13 +158,13 @@ void ov43_0222A50C(void) {
 }
 
 void ov43_0222A520(void) {
-    /* Original at 0x0222A520 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov43_0222ACDC\n    add r0, r4, #0\n    bl ov43_0222A9D8\n    add r0, r4, #0\n    bl ov43_0222A960\n    add r0, r4, #0\n    bl ov43_0222A8A8\n    add r0, r4, #0\n    bl ov43_0222A81C\n    add r0, r4, #0\n    bl ov43_0222A66C\n    ldr r0, [r4, #0x58]\n    bl NARC_Delete\n    pop {r4, pc}"
-    );
-    #endif
+    ov43_0222ACDC();
+    ov43_0222A9D8(r4);
+    ov43_0222A960(r4);
+    ov43_0222A8A8(r4);
+    ov43_0222A81C(r4);
+    ov43_0222A66C(r4);
+    NARC_Delete(*((u32*)(r4 + 0x58)));
 }
 
 void ov43_0222A550(void) {
@@ -238,13 +238,13 @@ void ov43_0222A8C0(void) {
 }
 
 void ov43_0222A960(void) {
-    /* Original at 0x0222A960 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x60]\n    bl YesNoPrompt_Destroy\n    ldr r0, [r4, #0x5c]\n    bl TouchscreenListMenuSpawner_Destroy\n    ldr r0, [r4, #0x7c]\n    bl String_Delete\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    bl String_Delete\n    ldr r0, [r4, #0x74]\n    bl String_Delete\n    ldr r0, [r4, #0x78]\n    bl String_Delete\n    add r4, #0x64\n    add r0, r4, #0\n    bl RemoveWindow\n    pop {r4, pc}"
-    );
-    #endif
+    YesNoPrompt_Destroy(*((u32*)(r0 + 0x60)));
+    TouchscreenListMenuSpawner_Destroy(*((u32*)(r4 + 0x5c)));
+    String_Delete(*((u32*)(r4 + 0x7c)));
+    String_Delete(r4);
+    String_Delete(*((u32*)(r4 + 0x74)));
+    String_Delete(*((u32*)(r4 + 0x78)));
+    RemoveWindow(r4);
 }
 
 void ov43_0222A998(void) {
@@ -292,23 +292,21 @@ void ov43_0222AAA4(void) {
 }
 
 void ov43_0222AB20(void) {
-    /* Original at 0x0222AB20 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r3, #0\n    add r0, r1, #0\n    add r6, r2, #0\n    bl sub_0202C6F4\n    add r7, r0, #0\n    add r0, r5, #0\n    bl PlayerProfile_New\n    add r5, r0, #0\n    add r0, r7, #0\n    add r1, r6, #0\n    bl sub_0202C254\n    add r1, r0, #0\n    add r0, r5, #0\n    bl Save_Profile_PlayerName_Set\n    ldr r0, [r4, #0x50]\n    mov r1, #0\n    add r2, r5, #0\n    bl BufferPlayersName\n    add r0, r5, #0\n    bl Heap_Free\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    sub_0202C6F4(r1);
+    PlayerProfile_New(r5);
+    sub_0202C254(r7, r6);
+    Save_Profile_PlayerName_Set(r5, r0);
+    BufferPlayersName(*((u32*)(r4 + 0x50)), 0, r5);
+    Heap_Free(r5);
 }
 
 void ov43_0222AB5C(void) {
-    /* Original at 0x0222AB5C */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    add r0, r3, #0\n    add r7, r2, #0\n    bl PlayerProfile_New\n    add r4, r0, #0\n    add r0, r6, #0\n    bl sub_0202C6F4\n    add r1, r7, #0\n    bl sub_0202C298\n    add r1, r0, #0\n    add r0, r4, #0\n    bl Save_Profile_PlayerName_Set\n    ldr r0, [r5, #0x50]\n    mov r1, #0\n    add r2, r4, #0\n    bl BufferPlayersName\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    PlayerProfile_New(r3);
+    sub_0202C6F4(r6);
+    sub_0202C298(r7);
+    Save_Profile_PlayerName_Set(r4, r0);
+    BufferPlayersName(*((u32*)(r5 + 0x50)), 0, r4);
+    Heap_Free(r4);
 }
 
 void ov43_0222AB94(void) {
@@ -724,13 +722,9 @@ void ov43_0222C2B0(void) {
 }
 
 void ov43_0222C32C(void) {
-    /* Original at 0x0222C32C */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    add r5, r1, #0\n    add r4, r2, #0\n    add r6, r3, #0\n    bl ov43_0222C620\n    add r2, r0, #0\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    ldr r1, [r5, #4]\n    add r0, r4, #0\n    add r3, r6, #0\n    bl ov43_0222AB20\n    add r0, r7, #0\n    add r1, r4, #0\n    mov r2, #0x39\n    add r3, r6, #0\n    bl ov43_0222C550\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov43_0222C620();
+    ov43_0222AB20(r4, *((u32*)(r5 + 4)), *((u8*)(r0 + 0x18)), r6);
+    ov43_0222C550(r7, r4, 0x39, r6);
 }
 
 void ov43_0222C358(void) {

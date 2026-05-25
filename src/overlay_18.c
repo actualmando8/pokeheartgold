@@ -102,23 +102,17 @@ void ov18_021EE638(void) {
 }
 
 void ov18_021EE6BC(void) {
-    /* Original at 0x021EE6BC */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #7\n    add r6, r2, #0\n    bl ov18_021EE71C\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #8\n    bl ov18_021EE75C\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #9\n    bl ov18_021EE7DC\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #0xa\n    bl ov18_021EE834\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov18_021EE71C(7);
+    ov18_021EE75C(r5, r4, 8);
+    ov18_021EE7DC(r5, r4, 9);
+    ov18_021EE834(r5, r4, r6, 0xa);
 }
 
 void ov18_021EE6EC(void) {
-    /* Original at 0x021EE6EC */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    mov r1, #0x51\n    add r6, r2, #0\n    bl ov18_021EE71C\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #0x52\n    bl ov18_021EE75C\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #0x53\n    bl ov18_021EE7DC\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #0x54\n    bl ov18_021EE834\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov18_021EE71C(0x51);
+    ov18_021EE75C(r5, r4, 0x52);
+    ov18_021EE7DC(r5, r4, 0x53);
+    ov18_021EE834(r5, r4, r6, 0x54);
 }
 
 void ov18_021EE71C(void) {
@@ -817,13 +811,13 @@ void ov18_021F0DD0(void) {
 }
 
 void ov18_021F0F2C(void) {
-    /* Original at 0x021F0F2C */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xc\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r0, r4, #0\n    add r0, #0x3c\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r0, r4, #0\n    add r0, #0x5c\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r0, r4, #0\n    add r0, #0x8c\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r0, r4, #0\n    add r0, #0x9c\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r0, r4, #0\n    add r0, #0x6c\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r4, #0x7c\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    ClearWindowTilemapAndScheduleTransfer();
+    ClearWindowTilemapAndScheduleTransfer(r4);
+    ClearWindowTilemapAndScheduleTransfer(r4);
+    ClearWindowTilemapAndScheduleTransfer(r4);
+    ClearWindowTilemapAndScheduleTransfer(r4);
+    ClearWindowTilemapAndScheduleTransfer(r4);
+    ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
 void ov18_021F0F68(void) {
@@ -1390,13 +1384,14 @@ void ov18_021F2880(void) {
 }
 
 void ov18_021F2964(void) {
-    /* Original at 0x021F2964 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0x3c\n    bl ov18_021F1324\n    add r0, r4, #0\n    bl ov18_021F2648\n    add r0, r4, #0\n    bl ov18_021F2270\n    add r0, r4, #0\n    bl ov18_021F17FC\n    add r0, r4, #0\n    bl ov18_021F1CB4\n    add r0, r4, #0\n    bl ov18_021F1E70\n    add r0, r4, #0\n    bl ov18_021F2724\n    add r0, r4, #0\n    bl ov18_021F2348\n    pop {r4, pc}"
-    );
-    #endif
+    ov18_021F1324(0x3c);
+    ov18_021F2648(r4);
+    ov18_021F2270(r4);
+    ov18_021F17FC(r4);
+    ov18_021F1CB4(r4);
+    ov18_021F1E70(r4);
+    ov18_021F2724(r4);
+    ov18_021F2348(r4);
 }
 
 void ov18_021F299C(void) {
@@ -3665,13 +3660,12 @@ void ov18_021F92AC(void) {
 }
 
 void ov18_021F92DC(void) {
-    /* Original at 0x021F92DC */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r4, r1, #0\n    bl sub_0200AEB0\n    ldr r0, [r5, #4]\n    bl sub_0200B0A8\n    ldr r0, [r4]\n    ldr r1, [r5]\n    bl DestroySingle2DGfxResObj\n    ldr r0, [r4, #4]\n    ldr r1, [r5, #4]\n    bl DestroySingle2DGfxResObj\n    ldr r0, [r4, #8]\n    ldr r1, [r5, #8]\n    bl DestroySingle2DGfxResObj\n    ldr r0, [r4, #0xc]\n    ldr r1, [r5, #0xc]\n    bl DestroySingle2DGfxResObj\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0200AEB0();
+    sub_0200B0A8(*((u32*)(r5 + 4)));
+    DestroySingle2DGfxResObj();
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 4)), *((u32*)(r5 + 4)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 8)), *((u32*)(r5 + 8)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 0xc)), *((u32*)(r5 + 0xc)));
 }
 
 void ov18_021F9310(void) {

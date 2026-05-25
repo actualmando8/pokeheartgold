@@ -2410,13 +2410,12 @@ void ov70_0223E5FC(void) {
 }
 
 void ov70_0223E658(void) {
-    /* Original at 0x0223E658 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    mov r1, #5\n    mov r2, #0\n    add r5, r0, #0\n    bl GetBoxMonData\n    add r1, sp, #0\n    strh r0, [r1]\n    add r0, r5, #0\n    mov r1, #0x6f\n    mov r2, #0\n    bl GetBoxMonData\n    add r1, r0, #1\n    add r0, sp, #0\n    strb r1, [r0, #2]\n    add r0, r5, #0\n    bl CalcBoxMonLevel\n    add r1, sp, #0\n    strb r0, [r1, #3]\n    add r0, sp, #0\n    add r1, r4, #0\n    bl ov70_0223E5FC\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    GetBoxMonData(5, 0);
+    GetBoxMonData(r5, 0x6f, 0);
+    *((u8*)(r0 + 2)) = (r0 + 1);
+    CalcBoxMonLevel(r5, (r0 + 1));
+    *((u8*)(r1 + 3)) = r0;
+    ov70_0223E5FC(r4);
 }
 
 void ov70_0223E690(void) {
@@ -4561,13 +4560,13 @@ void ov70_02244854(void) {
 }
 
 void ov70_02244888(void) {
-    /* Original at 0x02244888 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r0, [r0, #0x20]\n    bl sub_02039418\n    mov r0, #4\n    bl Sys_SetSleepDisableFlag\n    add r0, r4, #0\n    bl ov70_02245124\n    add r0, r4, #0\n    add r0, #0x54\n    mov r1, #2\n    mov r2, #1\n    mov r3, #0x14\n    bl ov00_021EC3F0\n    mov r0, #2\n    bl ov00_021EC454\n    bl ov00_021EC4A4\n    mov r0, #3\n    str r0, [r4, #0x2c]\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02039418(*((u32*)(r0 + 0x20)));
+    Sys_SetSleepDisableFlag(4);
+    ov70_02245124(r4);
+    ov00_021EC3F0(r4, 2, 1, 0x14);
+    ov00_021EC454(2);
+    ov00_021EC4A4();
+    *((u32*)(r4 + 0x2c)) = 3;
 }
 
 void ov70_022448C0(void) {

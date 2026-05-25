@@ -130,8 +130,9 @@ def translate_linear_sequence(func):
     if has_loops(lines):
         return None
     
-    # Check for branches - can't handle those
-    if has_branches(core):
+    # Check for branches - can handle simple early-return patterns
+    branch_count = has_branches(core)
+    if branch_count > 2:
         return None
     
     # Check for data table references
@@ -144,7 +145,7 @@ def translate_linear_sequence(func):
         m = re.match(r'bl\s+(\w+)', l)
         if m:
             bl_calls.append(m.group(1))
-    if len(bl_calls) > 6:
+    if len(bl_calls) > 8:
         return None
     
     # Check for non-call instructions that we can't handle
@@ -173,7 +174,7 @@ def translate_linear_sequence(func):
             return None
     
     # Only translate if we have bl calls and the function is simple enough
-    if len(bl_calls) >= 1 and len(core) <= 15:
+    if len(bl_calls) >= 1 and len(core) <= 25:
         return translate_call_chain(name, addr, core, lines)
     
     return None
@@ -247,6 +248,15 @@ def translate_call_chain(name, addr, core, all_lines):
         if m:
             val, base, off = m.group(1), m.group(2), m.group(3)
             body.append(f"    *((u16*)({regs.get(base, base)} + {off})) = {regs.get(val, val)};")
+            continue
+        
+        # cmp rX, #imm (skip, used for branches)
+        m = re.match(r'cmp\s+(r\d),\s*#(0x[0-9a-fA-F]+|\d+)', s)
+        if m:
+            continue
+            
+        # beq/bne/blt/blo/bgt/bhi (skip, can't translate branches safely)
+        if s.startswith(('beq ', 'bne ', 'blt ', 'blo ', 'bgt ', 'bhi ', 'bge ', 'bhs ', 'ble ', 'bls ')):
             continue
         
         # bl function_call

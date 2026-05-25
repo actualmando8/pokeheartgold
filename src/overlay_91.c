@@ -1282,13 +1282,13 @@ void ov91_0225F878(void) {
 }
 
 void ov91_0225FA60(void) {
-    /* Original at 0x0225FA60 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    mov r1, #6\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    mov r1, #7\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4]\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(1);
+    FreeBgTilemapBuffer(2);
+    FreeBgTilemapBuffer(4);
+    FreeBgTilemapBuffer(5);
+    FreeBgTilemapBuffer(6);
+    FreeBgTilemapBuffer(7);
+    Heap_Free();
 }
 
 void ov91_0225FA9C(void) {
@@ -1332,13 +1332,14 @@ void ov91_0225FC84(void) {
 }
 
 void ov91_0225FCD8(void) {
-    /* Original at 0x0225FCD8 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl MessageFormat_New\n    str r0, [r5, #4]\n    mov r0, #0\n    mov r1, #0x1b\n    mov r2, #0xe6\n    add r3, r4, #0\n    bl NewMsgDataFromNarc\n    str r0, [r5, #8]\n    mov r0, #0x80\n    add r1, r4, #0\n    bl String_New\n    str r0, [r5, #0xc]\n    mov r0, #0x80\n    add r1, r4, #0\n    bl String_New\n    str r0, [r5, #0x10]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MessageFormat_New(r1);
+    *((u32*)(r5 + 4)) = r0;
+    NewMsgDataFromNarc(0, 0x1b, 0xe6, r4);
+    *((u32*)(r5 + 8)) = r0;
+    String_New(0x80, r4);
+    *((u32*)(r5 + 0xc)) = r0;
+    String_New(0x80, r4);
+    *((u32*)(r5 + 0x10)) = r0;
 }
 
 void ov91_0225FD0C(void) {

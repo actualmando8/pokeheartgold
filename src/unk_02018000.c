@@ -200,13 +200,11 @@ void sub_020182EC(void) {
 }
 
 void sub_020182F8(void) {
-    /* Original at 0x020182F8 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    str r2, [r5]\n    add r0, r2, #0\n    mov r1, #0\n    add r6, r3, #0\n    bl NNS_G3dGetAnmByIdx\n    str r0, [r5, #4]\n    ldr r1, [r5, #4]\n    ldr r2, [r4, #8]\n    add r0, r6, #0\n    bl NNS_G3dAllocAnmObj\n    str r0, [r5, #8]\n    ldr r1, [r5, #4]\n    ldr r2, [r4, #8]\n    ldr r3, [r4, #0xc]\n    bl NNS_G3dAnmObjInit\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    NNS_G3dGetAnmByIdx(r2, 0);
+    *((u32*)(r5 + 4)) = r0;
+    NNS_G3dAllocAnmObj(r6, *((u32*)(r5 + 4)), *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 8)) = r0;
+    NNS_G3dAnmObjInit(*((u32*)(r5 + 4)), *((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)));
 }
 
 void sub_02018324(void) {

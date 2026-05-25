@@ -90,13 +90,13 @@ void Sound_SetSceneAndPlayBGM(void) {
 }
 
 void sub_02005060(void) {
-    /* Original at 0x02005060 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0x18\n    bl GF_SdatGetAttrPtr\n    ldr r0, [r0]\n    bl GF_Snd_LoadState\n    mov r0, #0x19\n    bl GF_SdatGetAttrPtr\n    bl GF_Snd_SaveState\n    add r0, r4, #0\n    bl sub_02004B24\n    mov r0, #0x1a\n    bl GF_SdatGetAttrPtr\n    bl GF_Snd_SaveState\n    pop {r4, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(0x18);
+    GF_Snd_LoadState();
+    GF_SdatGetAttrPtr(0x19);
+    GF_Snd_SaveState();
+    sub_02004B24(r4);
+    GF_SdatGetAttrPtr(0x1a);
+    GF_Snd_SaveState();
 }
 
 void sub_0200508C(void) {
@@ -552,13 +552,13 @@ void sub_02005A74(void) {
 }
 
 void sub_02005AB0(void) {
-    /* Original at 0x02005AB0 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r2, #0\n    mov r0, #2\n    add r5, r1, #0\n    add r7, r3, #0\n    bl GF_SdatGetAttrPtr\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r6, #0\n    bl GF_SndStartFadeOutBGM\n    mov r0, #0\n    bl sub_02004A60\n    add r0, r5, #0\n    bl GF_SetCurrentPlayingBGM\n    add r0, r7, #0\n    bl sub_020059A0\n    add r0, r5, #0\n    bl GF_GetBankInfoBySeqNo\n    str r0, [r4]\n    add r0, sp, #8\n    ldrb r0, [r0, #0x10]\n    bl sub_020059E0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    GF_SdatGetAttrPtr(2);
+    GF_SndStartFadeOutBGM(0, r6);
+    sub_02004A60(0);
+    GF_SetCurrentPlayingBGM(r5);
+    sub_020059A0(r7);
+    GF_GetBankInfoBySeqNo(r5);
+    sub_020059E0(*((u8*)(r0 + 0x10)));
 }
 
 void GF_SndSetAllocatableChannelForBGMPlayer(void) {

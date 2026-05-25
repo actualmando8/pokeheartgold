@@ -2,13 +2,20 @@
 #include "global.h"
 
 void sub_02014A08(void) {
-    /* Original at 0x02014A08 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    mov r1, #0xc\n    add r4, r2, #0\n    bl Heap_Alloc\n    mov r1, #0\n    strb r1, [r0]\n    strb r1, [r0, #1]\n    strb r1, [r0, #2]\n    strb r1, [r0, #3]\n    strb r1, [r0, #4]\n    strb r1, [r0, #5]\n    strb r1, [r0, #6]\n    strb r1, [r0, #7]\n    strb r1, [r0, #8]\n    strb r1, [r0, #9]\n    strb r1, [r0, #0xa]\n    strb r1, [r0, #0xb]\n    mov r1, #1\n    strb r1, [r0, #9]\n    str r5, [r0]\n    str r4, [r0, #4]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Heap_Alloc(0xc);
+    *((u8*)(r0 + 1)) = 0;
+    *((u8*)(r0 + 2)) = 0;
+    *((u8*)(r0 + 3)) = 0;
+    *((u8*)(r0 + 4)) = 0;
+    *((u8*)(r0 + 5)) = 0;
+    *((u8*)(r0 + 6)) = 0;
+    *((u8*)(r0 + 7)) = 0;
+    *((u8*)(r0 + 8)) = 0;
+    *((u8*)(r0 + 9)) = 0;
+    *((u8*)(r0 + 0xa)) = 0;
+    *((u8*)(r0 + 0xb)) = 0;
+    *((u8*)(r0 + 9)) = 1;
+    *((u32*)(r0 + 4)) = r4;
 }
 
 void sub_02014A38(void) {

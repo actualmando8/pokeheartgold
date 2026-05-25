@@ -1025,13 +1025,14 @@ void ov74_0222BFA0(void) {
 }
 
 void ov74_0222C014(void) {
-    /* Original at 0x0222C014 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0\n    strb r1, [r4, #8]\n    bl ov74_0222BF08\n    add r0, r4, #0\n    bl ov74_0222AF28\n    add r0, r4, #0\n    bl ov74_0222B288\n    add r0, r4, #0\n    bl ov74_0222B3A4\n    add r0, r4, #0\n    bl ov74_0222B144\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    pop {r4, pc}"
-    );
-    #endif
+    *((u8*)(r0 + 8)) = 0;
+    ov74_0222BF08(0);
+    ov74_0222AF28(r4);
+    ov74_0222B288(r4);
+    ov74_0222B3A4(r4);
+    ov74_0222B144(r4);
+    GfGfx_EngineATogglePlanes(0x10, 1);
+    GfGfx_EngineBTogglePlanes(0x10, 1);
 }
 
 void ov74_0222C04C(void) {
@@ -1928,13 +1929,18 @@ void ov74_0222FF68(void) {
 }
 
 void ov74_0222FF80(void) {
-    /* Original at 0x0222FF80 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    bl ov74_022310C4\n    add r4, r0, #0\n    bl ov74_02231100\n    str r0, [r4]\n    bl ov74_02231054\n    ldrh r0, [r0, #0x32]\n    strh r0, [r4, #4]\n    bl WM_GetDispersionScanPeriod\n    strh r0, [r4, #6]\n    mov r0, #0xff\n    strb r0, [r4, #8]\n    strb r0, [r4, #9]\n    strb r0, [r4, #0xa]\n    strb r0, [r4, #0xb]\n    strb r0, [r4, #0xc]\n    strb r0, [r4, #0xd]\n    pop {r4, pc}"
-    );
-    #endif
+    ov74_022310C4();
+    ov74_02231100();
+    ov74_02231054();
+    *((u16*)(r4 + 4)) = r0;
+    WM_GetDispersionScanPeriod();
+    *((u16*)(r4 + 6)) = r0;
+    *((u8*)(r4 + 8)) = 0xff;
+    *((u8*)(r4 + 9)) = 0xff;
+    *((u8*)(r4 + 0xa)) = 0xff;
+    *((u8*)(r4 + 0xb)) = 0xff;
+    *((u8*)(r4 + 0xc)) = 0xff;
+    *((u8*)(r4 + 0xd)) = 0xff;
 }
 
 void ov74_0222FFAC(void) {
@@ -2382,13 +2388,16 @@ void ov74_02230EB4(void) {
 }
 
 void ov74_02230EE8(void) {
-    /* Original at 0x02230EE8 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    bl ov74_02231184\n    add r4, r0, #0\n    bl ov74_022311DC\n    mov r1, #1\n    strb r1, [r4, #0x18]\n    mov r1, #0\n    strb r1, [r4, #0x19]\n    add r0, #8\n    str r0, [r4]\n    str r0, [r4, #4]\n    mov r0, #0x30\n    str r0, [r4, #0x10]\n    str r0, [r4, #0x14]\n    mov r0, #0x78\n    strb r0, [r4, #0x1a]\n    strb r1, [r4, #0x1b]\n    mov r0, #0xfe\n    strb r0, [r4, #0x1c]\n    pop {r4, pc}"
-    );
-    #endif
+    ov74_02231184();
+    ov74_022311DC();
+    *((u8*)(r4 + 0x18)) = 1;
+    *((u8*)(r4 + 0x19)) = 0;
+    *((u32*)(r4 + 4)) = r0;
+    *((u32*)(r4 + 0x10)) = 0x30;
+    *((u32*)(r4 + 0x14)) = 0x30;
+    *((u8*)(r4 + 0x1a)) = 0x78;
+    *((u8*)(r4 + 0x1b)) = 0;
+    *((u8*)(r4 + 0x1c)) = 0xfe;
 }
 
 void ov74_02230F14(void) {
@@ -3792,13 +3801,11 @@ void ov74_022352A0(void) {
 }
 
 void ov74_022352D0(void) {
-    /* Original at 0x022352D0 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    add r6, r1, #0\n    mov r0, #3\n    add r2, r3, #0\n    bl Heap_Create\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl OverlayManager_CreateAndGetData\n    mov r1, #0\n    add r2, r4, #0\n    add r5, r0, #0\n    bl memset\n    mov r0, #0\n    add r1, r0, #0\n    bl sub_0200FBF4\n    mov r0, #1\n    mov r1, #0\n    bl sub_0200FBF4\n    add r0, r5, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_Create(3, r3);
+    OverlayManager_CreateAndGetData(r5, r4, r6);
+    memset(0, r4);
+    sub_0200FBF4(0, 0);
+    sub_0200FBF4(1, 0);
 }
 
 void ov74_02235308(void) {

@@ -12,13 +12,14 @@ void ov28_0225D520(void) {
 }
 
 void ov28_0225D5EC(void) {
-    /* Original at 0x0225D5EC */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r0, r5, #0\n    bl SysTask_GetData\n    add r4, r0, #0\n    bl DowsingMchn_FreeHiddenItemLocs\n    add r0, r4, #0\n    bl ov28_0225D8D0\n    add r0, r4, #0\n    bl ov28_0225D878\n    add r0, r4, #0\n    bl ov28_0225D7C4\n    ldr r0, [r4, #0x10]\n    bl ov28_0225D6E0\n    add r0, r5, #0\n    bl DestroySysTaskAndEnvironment\n    mov r0, #8\n    bl Heap_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    SysTask_GetData(r1);
+    DowsingMchn_FreeHiddenItemLocs();
+    ov28_0225D8D0(r4);
+    ov28_0225D878(r4);
+    ov28_0225D7C4(r4);
+    ov28_0225D6E0(*((u32*)(r4 + 0x10)));
+    DestroySysTaskAndEnvironment(r5);
+    Heap_Destroy(8);
 }
 
 u8 ov28_0225D624(void) {

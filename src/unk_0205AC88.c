@@ -122,13 +122,13 @@ void sub_0205B13C(void) {
 }
 
 void sub_0205B1E4(void) {
-    /* Original at 0x0205B1E4 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r0, #0\n    add r0, r5, #0\n    mov r1, #0x43\n    bl MapObject_SetHeldMovement\n    add r0, r5, #0\n    mov r1, #1\n    bl MapObject_SetFlag19\n    add r0, r5, #0\n    mov r1, #0\n    bl sub_0205FC94\n    add r0, r4, #0\n    mov r1, #1\n    bl sub_0205B0DC\n    mov r0, #0\n    strb r0, [r4, #4]\n    strh r0, [r4, #6]\n    mov r0, #3\n    strb r0, [r4, #1]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    MapObject_SetHeldMovement(r1, 0x43);
+    MapObject_SetFlag19(r5, 1);
+    sub_0205FC94(r5, 0);
+    sub_0205B0DC(r4, 1);
+    *((u8*)(r4 + 4)) = 0;
+    *((u16*)(r4 + 6)) = 0;
+    *((u8*)(r4 + 1)) = 3;
 }
 
 void sub_0205B218(void) {

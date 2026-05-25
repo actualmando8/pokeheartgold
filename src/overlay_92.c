@@ -1139,13 +1139,13 @@ void ov92_02263108(void) {
 }
 
 void ov92_02263218(void) {
-    /* Original at 0x02263218 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0xc]\n    add r1, r0, #0\n    bl _fadd\n    add r4, r0, #0\n    ldr r0, [r5, #8]\n    add r1, r0, #0\n    bl _fadd\n    add r6, r0, #0\n    ldr r0, [r5]\n    add r1, r0, #0\n    bl _fmul\n    add r7, r0, #0\n    ldr r0, [r5, #4]\n    add r1, r0, #0\n    bl _fadd\n    add r1, r0, #0\n    add r0, r7, #0\n    bl _fadd\n    add r1, r0, #0\n    add r0, r6, #0\n    bl _fadd\n    add r1, r0, #0\n    add r0, r4, #0\n    bl _fadd\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    _fadd(*((u32*)(r0 + 0xc)), *((u32*)(r0 + 0xc)));
+    _fadd(*((u32*)(r5 + 8)), *((u32*)(r5 + 8)));
+    _fmul(r0);
+    _fadd(*((u32*)(r5 + 4)), *((u32*)(r5 + 4)));
+    _fadd(r7, r0);
+    _fadd(r6, r0);
+    _fadd(r4, r0);
 }
 
 void ov92_0226325C(void) {
@@ -1159,13 +1159,13 @@ void ov92_0226325C(void) {
 }
 
 void ov92_022632B4(void) {
-    /* Original at 0x022632B4 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r6, r2, #0\n    ldr r0, [r4]\n    add r1, r6, #0\n    bl _fdiv\n    str r0, [r5]\n    ldr r0, [r4, #4]\n    add r1, r6, #0\n    bl _fdiv\n    str r0, [r5, #4]\n    ldr r0, [r4, #8]\n    add r1, r6, #0\n    bl _fdiv\n    str r0, [r5, #8]\n    ldr r0, [r4, #0xc]\n    add r1, r6, #0\n    bl _fdiv\n    str r0, [r5, #0xc]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    _fdiv(r2);
+    _fdiv(*((u32*)(r4 + 4)), r6);
+    *((u32*)(r5 + 4)) = r0;
+    _fdiv(*((u32*)(r4 + 8)), r6);
+    *((u32*)(r5 + 8)) = r0;
+    _fdiv(*((u32*)(r4 + 0xc)), r6);
+    *((u32*)(r5 + 0xc)) = r0;
 }
 
 void ov92_022632E8(void) {

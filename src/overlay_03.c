@@ -1522,14 +1522,14 @@ void ScrCmd_718(void) {
     #endif
 }
 
-void ScrCmd_719(void) {
-    /* Original at 0x022589D4 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, #0x80\n    ldr r6, [r0]\n    mov r1, #0x10\n    add r0, r6, #0\n    bl FieldSysGetAttrAddr\n    add r0, r5, #0\n    bl ScriptReadHalfword\n    add r1, r0, #0\n    add r0, r5, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    bl GetVarPointer\n    add r4, r0, #0\n    add r0, r5, #0\n    bl ScriptReadHalfword\n    add r5, #0x80\n    add r1, r0, #0\n    ldr r0, [r5]\n    bl GetVarPointer\n    add r1, r0, #0\n    add r0, r6, #0\n    bl ov02_0224E754\n    strh r0, [r4]\n    mov r0, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+u32 ScrCmd_719(void) {
+    FieldSysGetAttrAddr(r6, 0x10);
+    ScriptReadHalfword(r5);
+    GetVarPointer(r5, r0);
+    ScriptReadHalfword(r5);
+    GetVarPointer(r0);
+    ov02_0224E754(r6, r0);
+    return 0;
 }
 
 void ScrCmd_720(void) {

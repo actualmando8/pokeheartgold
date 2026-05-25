@@ -468,13 +468,13 @@ void ov72_02239198(void) {
 }
 
 void ov72_022391E8(void) {
-    /* Original at 0x022391E8 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r0, [r0, #0xc]\n    bl sub_02039418\n    mov r0, #4\n    bl Sys_SetSleepDisableFlag\n    add r0, r4, #0\n    bl ov72_0223A414\n    add r0, r4, #0\n    add r0, #0x2c\n    mov r1, #2\n    mov r2, #1\n    mov r3, #0x14\n    bl ov00_021EC3F0\n    mov r0, #2\n    bl ov00_021EC454\n    bl ov00_021EC4A4\n    mov r0, #3\n    str r0, [r4, #0x1c]\n    pop {r4, pc}"
-    );
-    #endif
+    sub_02039418(*((u32*)(r0 + 0xc)));
+    Sys_SetSleepDisableFlag(4);
+    ov72_0223A414(r4);
+    ov00_021EC3F0(r4, 2, 1, 0x14);
+    ov00_021EC454(2);
+    ov00_021EC4A4();
+    *((u32*)(r4 + 0x1c)) = 3;
 }
 
 void ov72_02239220(void) {
@@ -719,14 +719,11 @@ void ov72_02239C14(void) {
     #endif
 }
 
-void ov72_02239C8C(void) {
-    /* Original at 0x02239C8C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r2, r4, #0\n    mov r1, #1\n    add r2, #0x9c\n    str r1, [r2]\n    add r2, r4, #0\n    add r2, #0x98\n    ldr r2, [r2]\n    bl ov72_0223A520\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #1\n    bl ov72_0223A41C\n    mov r0, #0x22\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov72_02239C8C(void) {
+    ov72_0223A520(1, r0);
+    ov72_0223A41C(r4, 0, 1);
+    *((u32*)(r4 + 0x1c)) = 0x22;
+    return 3;
 }
 
 void ov72_02239CB4(void) {
@@ -1293,13 +1290,9 @@ void ov72_0223AED0(void) {
 }
 
 void ov72_0223AF1C(void) {
-    /* Original at 0x0223AF1C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #0\n    mov r2, #0\n    add r1, #0x2d\n    strb r2, [r1]\n    add r1, r4, #0\n    add r1, #0x2c\n    ldrb r2, [r1]\n    add r1, r4, #0\n    add r1, #0x33\n    strb r2, [r1]\n    bl ov72_0223B0C4\n    add r0, r4, #0\n    bl ov72_0223B1C8\n    add r0, r4, #0\n    bl ov72_0223B2E4\n    pop {r4, pc}"
-    );
-    #endif
+    ov72_0223B0C4(r0, 0);
+    ov72_0223B1C8(r4);
+    ov72_0223B2E4(r4);
 }
 
 void ov72_0223AF48(void) {

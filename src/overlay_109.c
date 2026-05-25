@@ -454,13 +454,10 @@ void ov109_021E6DE4(void) {
 }
 
 void ov109_021E6E64(void) {
-    /* Original at 0x021E6E64 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #0\n    add r0, #0x90\n    add r1, #0x94\n    ldr r0, [r0]\n    ldr r1, [r1]\n    bl SpriteSystem_DestroySpriteManager\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x94\n    str r1, [r0]\n    add r0, r4, #0\n    add r0, #0x90\n    ldr r0, [r0]\n    bl SpriteSystem_Free\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x90\n    str r1, [r0]\n    bl GF_DestroyVramTransferManager\n    ldr r0, [r4]\n    bl thunk_ClearMainOAM\n    pop {r4, pc}"
-    );
-    #endif
+    SpriteSystem_DestroySpriteManager(r0);
+    SpriteSystem_Free(r4, 0);
+    GF_DestroyVramTransferManager(r4, 0);
+    thunk_ClearMainOAM();
 }
 
 void ov109_021E6E9C(void) {

@@ -1386,13 +1386,12 @@ void ov71_02249E6C(void) {
 }
 
 void ov71_0224A080(void) {
-    /* Original at 0x0224A080 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    mov r1, #7\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    mov r1, #6\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0xc]\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(*((u32*)(r0 + 0xc)), 3);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 7);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 2);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 6);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 1);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0xc)), 5);
 }
 
 void ov71_0224A0B8(void) {

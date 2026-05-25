@@ -1764,13 +1764,16 @@ void ov102_021EB67C(void) {
 }
 
 void ov102_021EB694(void) {
-    /* Original at 0x021EB694 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    mov r0, #0x23\n    mov r1, #0x64\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    str r6, [r4, #4]\n    str r7, [r4, #8]\n    add r0, r5, #0\n    bl ov102_021EA268\n    str r0, [r4, #0xc]\n    mov r0, #0\n    str r0, [r4, #0x10]\n    str r0, [r4, #0x18]\n    str r0, [r4, #0x5c]\n    ldr r0, [r4, #4]\n    bl ov102_021E8F68\n    str r0, [r4, #0x60]\n    add r0, r4, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    Heap_Alloc(0x23, 0x64);
+    *((u32*)(r0 + 4)) = r6;
+    *((u32*)(r0 + 8)) = r7;
+    ov102_021EA268(r5);
+    *((u32*)(r4 + 0xc)) = r0;
+    *((u32*)(r4 + 0x10)) = 0;
+    *((u32*)(r4 + 0x18)) = 0;
+    *((u32*)(r4 + 0x5c)) = 0;
+    ov102_021E8F68(*((u32*)(r4 + 4)));
+    *((u32*)(r4 + 0x60)) = r0;
 }
 
 void ov102_021EB6C8(void) {
@@ -2088,13 +2091,16 @@ void ov102_021EC13C(void) {
 }
 
 void ov102_021EC20C(void) {
-    /* Original at 0x021EC20C */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    mov r0, #0x23\n    mov r1, #0x30\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    str r5, [r4]\n    str r6, [r4, #4]\n    str r7, [r4, #8]\n    add r0, r5, #0\n    bl ov102_021EA268\n    str r0, [r4, #0xc]\n    add r0, r5, #0\n    bl ov102_021EA26C\n    str r0, [r4, #0x10]\n    mov r0, #0\n    str r0, [r4, #0x14]\n    str r0, [r4, #0x18]\n    str r0, [r4, #0x2c]\n    add r0, r4, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    Heap_Alloc(0x23, 0x30);
+    *((u32*)(r0 + 4)) = r6;
+    *((u32*)(r0 + 8)) = r7;
+    ov102_021EA268(r5);
+    *((u32*)(r4 + 0xc)) = r0;
+    ov102_021EA26C(r5);
+    *((u32*)(r4 + 0x10)) = r0;
+    *((u32*)(r4 + 0x14)) = 0;
+    *((u32*)(r4 + 0x18)) = 0;
+    *((u32*)(r4 + 0x2c)) = 0;
 }
 
 void ov102_021EC240(void) {

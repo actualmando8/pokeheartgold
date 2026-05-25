@@ -452,13 +452,11 @@ void ov41_022468FC(void) {
 }
 
 void ov41_02246A20(void) {
-    /* Original at 0x02246A20 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x40]\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0x40]\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0x40]\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0x40]\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    ldr r0, [r4, #0x40]\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    FreeBgTilemapBuffer(*((u32*)(r0 + 0x40)), 1);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0x40)), 2);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0x40)), 3);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0x40)), 4);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 0x40)), 5);
 }
 
 void ov41_02246A50(void) {
@@ -1161,13 +1159,16 @@ void ov41_02248400(void) {
 }
 
 void ov41_02248488(void) {
-    /* Original at 0x02248488 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldr r1, [r4]\n    add r5, r0, #0\n    str r1, [r5, #0x44]\n    ldr r1, [r4, #4]\n    str r1, [r5, #0x48]\n    ldr r1, [r4, #8]\n    str r1, [r5, #0x4c]\n    ldr r1, [r4, #0xc]\n    str r1, [r5, #0x50]\n    ldr r1, [r4, #0x10]\n    str r1, [r5, #0x54]\n    ldr r1, [r4, #0x14]\n    str r1, [r5, #0x58]\n    ldr r1, [r4, #0x18]\n    str r1, [r5, #8]\n    ldr r1, [r4, #0x28]\n    str r1, [r5, #4]\n    mov r1, #0\n    bl ov41_0224888C\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov41_022489A8\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    *((u32*)(r0 + 0x44)) = r1;
+    *((u32*)(r0 + 0x48)) = *((u32*)(r1 + 4));
+    *((u32*)(r0 + 0x4c)) = *((u32*)(r1 + 8));
+    *((u32*)(r0 + 0x50)) = *((u32*)(r1 + 0xc));
+    *((u32*)(r0 + 0x54)) = *((u32*)(r1 + 0x10));
+    *((u32*)(r0 + 0x58)) = *((u32*)(r1 + 0x14));
+    *((u32*)(r0 + 8)) = *((u32*)(r1 + 0x18));
+    *((u32*)(r0 + 4)) = *((u32*)(r1 + 0x28));
+    ov41_0224888C(0);
+    ov41_022489A8(r5, r4);
 }
 
 void ov41_022484C0(void) {
@@ -1351,13 +1352,11 @@ void ov41_02248998(void) {
 }
 
 void ov41_022489A8(void) {
-    /* Original at 0x022489A8 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldr r1, [r4, #0x1c]\n    add r5, r0, #0\n    add r0, #0xc\n    bl ov41_02248A28\n    mov r0, #0\n    str r0, [r5]\n    ldr r0, [r5, #0xc]\n    mov r1, #1\n    bl ov41_022489E4\n    add r0, r5, #0\n    ldr r1, [r4, #0x20]\n    add r0, #0x18\n    bl ov41_02248A28\n    add r0, r5, #0\n    ldr r1, [r4, #0x24]\n    add r0, #0x24\n    bl ov41_02248A28\n    add r5, #0x30\n    add r0, r5, #0\n    mov r1, #1\n    bl ov41_02248A28\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    ov41_02248A28(*((u32*)(r1 + 0x1c)));
+    ov41_022489E4(*((u32*)(r5 + 0xc)), 1);
+    ov41_02248A28(r5, *((u32*)(r4 + 0x20)));
+    ov41_02248A28(r5, *((u32*)(r4 + 0x24)));
+    ov41_02248A28(r5, 1);
 }
 
 void ov41_022489E4(void) {
@@ -1391,13 +1390,18 @@ void ov41_02248A28(void) {
 }
 
 void ov41_02248A6C(void) {
-    /* Original at 0x02248A6C */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl Heap_Free\n    mov r0, #0\n    str r0, [r4]\n    strb r0, [r4]\n    strb r0, [r4, #1]\n    strb r0, [r4, #2]\n    strb r0, [r4, #3]\n    strb r0, [r4, #4]\n    strb r0, [r4, #5]\n    strb r0, [r4, #6]\n    strb r0, [r4, #7]\n    strb r0, [r4, #8]\n    strb r0, [r4, #9]\n    strb r0, [r4, #0xa]\n    strb r0, [r4, #0xb]\n    pop {r4, pc}"
-    );
-    #endif
+    Heap_Free();
+    *((u8*)(r4 + 1)) = 0;
+    *((u8*)(r4 + 2)) = 0;
+    *((u8*)(r4 + 3)) = 0;
+    *((u8*)(r4 + 4)) = 0;
+    *((u8*)(r4 + 5)) = 0;
+    *((u8*)(r4 + 6)) = 0;
+    *((u8*)(r4 + 7)) = 0;
+    *((u8*)(r4 + 8)) = 0;
+    *((u8*)(r4 + 9)) = 0;
+    *((u8*)(r4 + 0xa)) = 0;
+    *((u8*)(r4 + 0xb)) = 0;
 }
 
 void ov41_02248A94(void) {
@@ -2601,13 +2605,12 @@ void ov41_0224AFF8(void) {
 }
 
 void ov41_0224B084(void) {
-    /* Original at 0x0224B084 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    add r4, r1, #0\n    bl sub_0200AEB0\n    ldr r0, [r5, #4]\n    bl sub_0200B0A8\n    ldr r0, [r4]\n    ldr r1, [r5]\n    bl DestroySingle2DGfxResObj\n    ldr r0, [r4, #4]\n    ldr r1, [r5, #4]\n    bl DestroySingle2DGfxResObj\n    ldr r0, [r4, #8]\n    ldr r1, [r5, #8]\n    bl DestroySingle2DGfxResObj\n    ldr r0, [r4, #0xc]\n    ldr r1, [r5, #0xc]\n    bl DestroySingle2DGfxResObj\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_0200AEB0();
+    sub_0200B0A8(*((u32*)(r5 + 4)));
+    DestroySingle2DGfxResObj();
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 4)), *((u32*)(r5 + 4)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 8)), *((u32*)(r5 + 8)));
+    DestroySingle2DGfxResObj(*((u32*)(r4 + 0xc)), *((u32*)(r5 + 0xc)));
 }
 
 void ov41_0224B0B8(void) {

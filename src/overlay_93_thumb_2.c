@@ -219,14 +219,15 @@ void ov93_02260A30(void) {
     #endif
 }
 
-void ov93_02260A58(void) {
-    /* Original at 0x02260A58 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    add r7, r0, #0\n    add r4, r2, #0\n    add r6, r3, #0\n    add r0, r5, #0\n    mov r1, #0\n    mov r2, #0xc\n    bl MI_CpuFill8\n    add r0, r6, #0\n    bl ov93_02260B70\n    strb r0, [r5, #4]\n    mov r0, #1\n    strb r0, [r5, #5]\n    ldrb r1, [r5, #4]\n    add r0, r7, #0\n    add r2, r4, #0\n    bl ov93_02260984\n    str r0, [r5]\n    strb r4, [r5, #6]\n    strh r6, [r5, #8]\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+u32 ov93_02260A58(void) {
+    MI_CpuFill8(r1, 0, 0xc);
+    ov93_02260B70(r6);
+    *((u8*)(r5 + 4)) = r0;
+    *((u8*)(r5 + 5)) = 1;
+    ov93_02260984(r7, *((u8*)(r5 + 4)), r4);
+    *((u8*)(r5 + 6)) = r4;
+    *((u16*)(r5 + 8)) = r6;
+    return 1;
 }
 
 void ov93_02260A8C(void) {

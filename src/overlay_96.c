@@ -1429,13 +1429,11 @@ void ov96_021E9718(void) {
 }
 
 void ov96_021E9784(void) {
-    /* Original at 0x021E9784 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    add r4, r3, #0\n    add r5, r1, #0\n    add r7, r2, #0\n    add r0, r4, #0\n    add r1, r6, #0\n    bl PokeathlonCourse_GetParticipantData\n    add r1, r7, #0\n    add r2, r5, #0\n    bl memcpy\n    add r0, r4, #0\n    bl ov96_021E604C\n    add r0, r4, #0\n    mov r1, #3\n    bl PokeathlonCourse_SetStateTransitionType\n    add r0, r4, #0\n    mov r1, #5\n    bl PokeathlonCourse_SetStateField07\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    PokeathlonCourse_GetParticipantData(r3, r0);
+    memcpy(r7, r5);
+    ov96_021E604C(r4);
+    PokeathlonCourse_SetStateTransitionType(r4, 3);
+    PokeathlonCourse_SetStateField07(r4, 5);
 }
 
 void ov96_021E97B8(void) {
@@ -2734,23 +2732,19 @@ void ov96_021ED524(void) {
 }
 
 void ov96_021ED578(void) {
-    /* Original at 0x021ED578 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    add r7, r2, #0\n    bl PokeathlonCourse_GetHeapAllocPtr4\n    ldr r0, [r0, #0xc]\n    bl ov96_021EE97C\n    add r4, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    bl PokeathlonCourse_GetPlayerProfileFromData\n    add r2, r0, #0\n    add r0, r4, #0\n    mov r1, #0\n    bl BufferPlayersName\n    add r0, r4, #0\n    add r1, r7, #0\n    mov r2, #3\n    mov r3, #1\n    bl ov96_021EDF3C\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    PokeathlonCourse_GetHeapAllocPtr4();
+    ov96_021EE97C(*((u32*)(r0 + 0xc)));
+    PokeathlonCourse_GetPlayerProfileFromData(r5, r6);
+    BufferPlayersName(r4, 0, r0);
+    ov96_021EDF3C(r4, r7, 3, 1);
 }
 
 void ov96_021ED5AC(void) {
-    /* Original at 0x021ED5AC */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    bl PokeathlonCourse_GetHeapAllocPtr4\n    ldr r0, [r0, #0xc]\n    bl ov96_021EE97C\n    add r7, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl PokeathlonCourse_GetPlayerProfileFromData\n    add r2, r0, #0\n    add r0, r7, #0\n    mov r1, #0\n    bl BufferPlayersName\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #1\n    bl ov96_021ED524\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    PokeathlonCourse_GetHeapAllocPtr4();
+    ov96_021EE97C(*((u32*)(r0 + 0xc)));
+    PokeathlonCourse_GetPlayerProfileFromData(r5, r4);
+    BufferPlayersName(r7, 0, r0);
+    ov96_021ED524(r5, r4, r6, 1);
 }
 
 void ov96_021ED5E0(void) {
@@ -3144,13 +3138,11 @@ void ov96_021EE580(void) {
 }
 
 void ov96_021EE5B4(void) {
-    /* Original at 0x021EE5B4 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r1, #0\n    add r5, r0, #0\n    add r0, r6, #0\n    mov r1, #0x30\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x30\n    bl MI_CpuFill8\n    str r6, [r4]\n    mov r0, #0xdd\n    add r1, r6, #0\n    str r5, [r4, #8]\n    bl NARC_New\n    str r0, [r4, #0xc]\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_Alloc(r1, 0x30);
+    MI_CpuFill8(0, 0x30);
+    *((u32*)(r4 + 8)) = r5;
+    NARC_New(0xdd, r6);
+    *((u32*)(r4 + 0xc)) = r0;
 }
 
 void ov96_021EE5E0(void) {
@@ -3475,13 +3467,14 @@ void ov96_021EEFAC(void) {
 }
 
 void ov96_021EF05C(void) {
-    /* Original at 0x021EF05C */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl PokeathlonCourse_GetHeapAllocPtr4\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetVBlankIntrCB\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetHBlankIntrCB\n    bl sub_0203A914\n    ldr r0, [r4, #8]\n    bl ov96_021EE808\n    add r0, r4, #0\n    bl ov96_021EEF98\n    add r0, r5, #0\n    bl PokeathlonCourse_FreePtr4HeapAlloc\n    mov r0, #0x9f\n    bl Heap_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    PokeathlonCourse_GetHeapAllocPtr4();
+    Main_SetVBlankIntrCB(0, 0);
+    Main_SetHBlankIntrCB(0, 0);
+    sub_0203A914();
+    ov96_021EE808(*((u32*)(r4 + 8)));
+    ov96_021EEF98(r4);
+    PokeathlonCourse_FreePtr4HeapAlloc(r5);
+    Heap_Destroy(0x9f);
 }
 
 void ov96_021EF094(void) {
@@ -5857,13 +5850,11 @@ void ov96_021F8A98(void) {
 }
 
 void ov96_021F8ACC(void) {
-    /* Original at 0x021F8ACC */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r6, r2, #0\n    bl Sprite_CreateAffine\n    add r4, r0, #0\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    add r0, r4, #0\n    add r1, r5, #0\n    bl Sprite_SetAnimCtrlSeq\n    add r0, r4, #0\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    add r0, r4, #0\n    add r1, r6, #0\n    bl Sprite_SetDrawPriority\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Sprite_CreateAffine();
+    Sprite_SetAnimActiveFlag(1);
+    Sprite_SetAnimCtrlSeq(r4, r5);
+    Sprite_SetDrawFlag(r4, 0);
+    Sprite_SetDrawPriority(r4, r6);
 }
 
 void ov96_021F8AFC(void) {
@@ -6514,13 +6505,12 @@ void ov96_021FBEA0(void) {
 }
 
 void ov96_021FBEA4(void) {
-    /* Original at 0x021FBEA4 */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    mov r0, #0\n    str r0, [r4, #0xc]\n    ldr r0, [r4, #8]\n    bl ov96_021EB5B8\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    mov r1, #1\n    mov r2, #0\n    bl ov96_021EB52C\n    mov r1, #1\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    bl ov96_021EB52C\n    add r0, r5, #0\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    add r0, r5, #0\n    mov r1, #1\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    *((u32*)(r0 + 0xc)) = 0;
+    ov96_021EB5B8(*((u32*)(r0 + 8)));
+    ov96_021EB52C(*((u32*)(r4 + 4)), 1, 0);
+    ov96_021EB52C(*((u32*)(r4 + 8)), 1, 1);
+    Sprite_SetAnimActiveFlag(r5, 1);
+    Sprite_SetAnimCtrlSeq(r5, 1);
 }
 
 void ov96_021FBEDC(void) {
@@ -7850,13 +7840,12 @@ void ov96_02203970(void) {
 }
 
 void ov96_02203A00(void) {
-    /* Original at 0x02203A00 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r1, #0\n    mov r1, #0x74\n    add r5, r0, #0\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r1, #0\n    mov r2, #0x74\n    bl MI_CpuFill8\n    str r5, [r4]\n    str r6, [r4, #8]\n    add r0, r4, #0\n    str r7, [r4, #4]\n    bl ov96_02203FBC\n    add r0, r4, #0\n    bl ov96_02203FFC\n    add r0, r4, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    Heap_Alloc(0x74);
+    MI_CpuFill8(0, 0x74);
+    *((u32*)(r4 + 8)) = r6;
+    *((u32*)(r4 + 4)) = r7;
+    ov96_02203FBC(r4);
+    ov96_02203FFC(r4);
 }
 
 void ov96_02203A30(void) {

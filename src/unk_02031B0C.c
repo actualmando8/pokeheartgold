@@ -246,13 +246,11 @@ void sub_020322AC(void) {
 }
 
 void sub_02032308(void) {
-    /* Original at 0x02032308 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #8\n    add r4, r2, #0\n    add r2, sp, #0\n    bl sub_02031CEC\n    mov r0, #1\n    mov r1, #0x1b\n    mov r2, #0x15\n    add r3, r4, #0\n    bl NewMsgDataFromNarc\n    add r5, r0, #0\n    add r0, sp, #0\n    bl sub_02032004\n    add r1, r0, #0\n    add r0, r5, #0\n    add r1, #0x13\n    bl NewString_ReadMsgData\n    add r4, r0, #0\n    add r0, r5, #0\n    bl DestroyMsgData\n    add r0, r4, #0\n    add sp, #8\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02031CEC();
+    NewMsgDataFromNarc(1, 0x1b, 0x15, r4);
+    sub_02032004();
+    NewString_ReadMsgData(r5, r0);
+    DestroyMsgData(r5);
 }
 
 void sub_02032340(void) {

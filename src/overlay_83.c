@@ -42,13 +42,13 @@ void ov83_0223E008(void) {
 }
 
 void ov83_0223E10C(void) {
-    /* Original at 0x0223E10C */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r5, #0\n    add r4, #0x50\n    add r0, r4, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov83_0224153C\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov83_02241770\n    add r1, r5, #0\n    add r0, r5, #0\n    add r1, #0x80\n    bl ov83_02240080\n    add r1, r5, #0\n    add r0, r5, #0\n    add r1, #0x70\n    bl ov83_02240170\n    add r0, r5, #0\n    bl ov83_02240290\n    bl GfGfx_BothDispOn\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    FillWindowPixelBuffer(r0, 0);
+    ov83_0224153C(r5, r4);
+    ov83_02241770(r5, r4);
+    ov83_02240080(r5, r5);
+    ov83_02240170(r5, r5);
+    ov83_02240290(r5);
+    GfGfx_BothDispOn();
 }
 
 void ov83_0223E14C(void) {
@@ -1182,13 +1182,13 @@ void ov83_022432B4(void) {
 }
 
 void ov83_022433B8(void) {
-    /* Original at 0x022433B8 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r5, #0\n    add r4, #0x50\n    add r0, r4, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov83_02245584\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov83_022453DC\n    add r1, r5, #0\n    add r0, r5, #0\n    add r1, #0x80\n    bl ov83_022448E4\n    add r1, r5, #0\n    add r0, r5, #0\n    add r1, #0x70\n    bl ov83_022449D4\n    add r0, r5, #0\n    bl ov83_02244BEC\n    bl GfGfx_BothDispOn\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    FillWindowPixelBuffer(r0, 0);
+    ov83_02245584(r5, r4);
+    ov83_022453DC(r5, r4);
+    ov83_022448E4(r5, r5);
+    ov83_022449D4(r5, r5);
+    ov83_02244BEC(r5);
+    GfGfx_BothDispOn();
 }
 
 void ov83_022433F8(void) {

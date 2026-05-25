@@ -145,14 +145,14 @@ u32 ov01_021FC98C(void) {
     return 1;
 }
 
-void ov01_021FC9AC(void) {
-    /* Original at 0x021FC9AC */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, r2, #0\n    mov r1, #0\n    bl sub_0205F328\n    add r0, r4, #0\n    mov r1, #0x32\n    bl ov01_021FCB90\n    mov r0, #0x10\n    str r0, [r4, #0x10]\n    mov r0, #0xe\n    str r0, [r4, #0xc]\n    ldr r0, [r4, #0x20]\n    ldr r0, [r0, #0xc]\n    bl Save_GameStats_Get\n    mov r1, #0x65\n    bl GameStats_Inc\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+u32 ov01_021FC9AC(void) {
+    sub_0205F328(r2, 0);
+    ov01_021FCB90(r4, 0x32);
+    *((u32*)(r4 + 0x10)) = 0x10;
+    *((u32*)(r4 + 0xc)) = 0xe;
+    Save_GameStats_Get(*((u32*)(*((u32*)(r4 + 0x20)) + 0xc)));
+    GameStats_Inc(0x65);
+    return 1;
 }
 
 void ov01_021FC9DC(void) {
@@ -258,13 +258,11 @@ void ov01_021FCB6C(void) {
 }
 
 void ov01_021FCB90(void) {
-    /* Original at 0x021FCB90 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    bl ov01_021FCB6C\n    ldr r0, [r5, #0x48]\n    ldr r2, [r5, #0x30]\n    add r1, r6, #0\n    ldr r4, [r5, #0x20]\n    bl ReadMsgDataIntoString\n    ldr r0, [r5, #0x34]\n    ldr r1, [r5, #0x2c]\n    ldr r2, [r5, #0x30]\n    bl StringExpandPlaceholders\n    ldr r0, [r4, #0xc]\n    bl Save_PlayerData_GetOptionsAddr\n    add r2, r0, #0\n    add r0, r5, #0\n    ldr r1, [r5, #0x2c]\n    add r0, #0x38\n    mov r3, #1\n    bl sub_0205B5B4\n    add r5, #0x28\n    strb r0, [r5]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    ov01_021FCB6C();
+    ReadMsgDataIntoString(*((u32*)(r5 + 0x48)), r6, *((u32*)(r5 + 0x30)));
+    StringExpandPlaceholders(*((u32*)(r5 + 0x34)), *((u32*)(r5 + 0x2c)), *((u32*)(r5 + 0x30)));
+    Save_PlayerData_GetOptionsAddr(*((u32*)(r4 + 0xc)));
+    sub_0205B5B4(r5, *((u32*)(r5 + 0x2c)), r0, 1);
 }
 
 void ov01_021FCBCC(void) {

@@ -1387,13 +1387,11 @@ void ov45_0222BCD8(void) {
 }
 
 void ov45_0222BCE4(void) {
-    /* Original at 0x0222BCE4 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r2, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r7, #0\n    mov r1, #0x94\n    bl Heap_Alloc\n    add r6, r0, #0\n    add r0, r4, #0\n    add r0, #0x20\n    add r1, r6, #0\n    mov r2, #0x94\n    bl MIi_CpuCopyFast\n    add r4, #0x10\n    add r1, r6, #0\n    add r0, r4, #0\n    add r1, #8\n    mov r2, #0x10\n    bl MI_CpuCopy8\n    ldr r1, [r5]\n    add r0, r6, #0\n    add r2, r7, #0\n    bl ov45_0222A844\n    add r0, r6, #0\n    bl Heap_Free\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 0x94);
+    MIi_CpuCopyFast(r4, r0, 0x94);
+    MI_CpuCopy8(r4, r6, 0x10);
+    ov45_0222A844(r6, r7);
+    Heap_Free(r6);
 }
 
 void ov45_0222BD24(void) {
@@ -2274,13 +2272,10 @@ void ov45_0222D14C(void) {
 }
 
 void ov45_0222D164(void) {
-    /* Original at 0x0222D164 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r2, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r6, #0\n    mov r1, #0x3c\n    bl Heap_Alloc\n    str r0, [r4]\n    mov r1, #0\n    mov r2, #0x3c\n    bl memset\n    ldr r0, [r4]\n    mov r2, #0\n    add r1, r0, #0\n    add r1, #0x38\n    strb r2, [r1]\n    add r1, r0, #0\n    mov r2, #1\n    add r1, #0x39\n    strb r2, [r1]\n    ldr r1, [r5, #0x40]\n    str r1, [r0, #0x34]\n    add r1, r6, #0\n    bl ov45_0222CE78\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 0x3c);
+    memset(0, 0x3c);
+    *((u32*)(r0 + 0x34)) = *((u32*)(r5 + 0x40));
+    ov45_0222CE78(r6, 1);
 }
 
 void ov45_0222D19C(void) {
@@ -2309,13 +2304,12 @@ void ov45_0222D1DC(void) {
 }
 
 void ov45_0222D20C(void) {
-    /* Original at 0x0222D20C */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r2, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r6, #0\n    mov r1, #0x40\n    bl Heap_Alloc\n    str r0, [r4]\n    mov r1, #0\n    mov r2, #0x40\n    bl memset\n    ldr r0, [r4]\n    mov r1, #0\n    str r1, [r0, #0x3c]\n    mov r1, #1\n    str r1, [r0, #0x38]\n    ldr r1, [r5, #0x40]\n    str r1, [r0, #0x34]\n    add r1, r6, #0\n    bl ov45_0222CE78\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 0x40);
+    memset(0, 0x40);
+    *((u32*)(r0 + 0x3c)) = 0;
+    *((u32*)(r0 + 0x38)) = 1;
+    *((u32*)(r0 + 0x34)) = *((u32*)(r5 + 0x40));
+    ov45_0222CE78(r6);
 }
 
 void ov45_0222D23C(void) {
@@ -2344,13 +2338,10 @@ void ov45_0222D27C(void) {
 }
 
 void ov45_0222D2AC(void) {
-    /* Original at 0x0222D2AC */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r2, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r6, #0\n    mov r1, #0x3c\n    bl Heap_Alloc\n    str r0, [r4]\n    mov r1, #0\n    mov r2, #0x3c\n    bl memset\n    ldr r0, [r4]\n    mov r2, #0\n    add r1, r0, #0\n    add r1, #0x38\n    strb r2, [r1]\n    add r1, r0, #0\n    mov r2, #1\n    add r1, #0x39\n    strb r2, [r1]\n    ldr r1, [r5, #0x40]\n    str r1, [r0, #0x34]\n    add r1, r6, #0\n    bl ov45_0222CE78\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 0x3c);
+    memset(0, 0x3c);
+    *((u32*)(r0 + 0x34)) = *((u32*)(r5 + 0x40));
+    ov45_0222CE78(r6, 1);
 }
 
 void ov45_0222D2E4(void) {
@@ -2379,13 +2370,14 @@ void ov45_0222D324(void) {
 }
 
 void ov45_0222D354(void) {
-    /* Original at 0x0222D354 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r2, #0\n    mov r1, #8\n    bl Heap_Alloc\n    str r0, [r4]\n    mov r1, #0\n    strb r1, [r0]\n    strb r1, [r0, #1]\n    strb r1, [r0, #2]\n    strb r1, [r0, #3]\n    strb r1, [r0, #4]\n    strb r1, [r0, #5]\n    strb r1, [r0, #6]\n    strb r1, [r0, #7]\n    ldr r1, [r5, #0x3c]\n    ldr r0, [r4]\n    str r1, [r0]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 8);
+    *((u8*)(r0 + 1)) = 0;
+    *((u8*)(r0 + 2)) = 0;
+    *((u8*)(r0 + 3)) = 0;
+    *((u8*)(r0 + 4)) = 0;
+    *((u8*)(r0 + 5)) = 0;
+    *((u8*)(r0 + 6)) = 0;
+    *((u8*)(r0 + 7)) = 0;
 }
 
 void ov45_0222D380(void) {
@@ -2423,13 +2415,19 @@ void ov45_0222D3C4(void) {
 }
 
 void ov45_0222D3D8(void) {
-    /* Original at 0x0222D3D8 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r2, #0\n    mov r1, #0xc\n    bl Heap_Alloc\n    str r0, [r4]\n    mov r1, #0\n    strb r1, [r0]\n    strb r1, [r0, #1]\n    strb r1, [r0, #2]\n    strb r1, [r0, #3]\n    strb r1, [r0, #4]\n    strb r1, [r0, #5]\n    strb r1, [r0, #6]\n    strb r1, [r0, #7]\n    strb r1, [r0, #8]\n    strb r1, [r0, #9]\n    strb r1, [r0, #0xa]\n    strb r1, [r0, #0xb]\n    ldr r1, [r4]\n    ldr r0, [r5, #0x40]\n    str r0, [r1]\n    ldr r0, [r5, #0x3c]\n    str r0, [r1, #4]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 0xc);
+    *((u8*)(r0 + 1)) = 0;
+    *((u8*)(r0 + 2)) = 0;
+    *((u8*)(r0 + 3)) = 0;
+    *((u8*)(r0 + 4)) = 0;
+    *((u8*)(r0 + 5)) = 0;
+    *((u8*)(r0 + 6)) = 0;
+    *((u8*)(r0 + 7)) = 0;
+    *((u8*)(r0 + 8)) = 0;
+    *((u8*)(r0 + 9)) = 0;
+    *((u8*)(r0 + 0xa)) = 0;
+    *((u8*)(r0 + 0xb)) = 0;
+    *((u32*)(0 + 4)) = *((u32*)(r5 + 0x3c));
 }
 
 void ov45_0222D410(void) {
@@ -2459,13 +2457,20 @@ u8 ov45_0222D448(void) {
 }
 
 void ov45_0222D44C(void) {
-    /* Original at 0x0222D44C */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r2, #0\n    mov r1, #0xc\n    bl Heap_Alloc\n    str r0, [r4]\n    mov r2, #0\n    strb r2, [r0]\n    strb r2, [r0, #1]\n    strb r2, [r0, #2]\n    strb r2, [r0, #3]\n    strb r2, [r0, #4]\n    strb r2, [r0, #5]\n    strb r2, [r0, #6]\n    strb r2, [r0, #7]\n    strb r2, [r0, #8]\n    strb r2, [r0, #9]\n    strb r2, [r0, #0xa]\n    strb r2, [r0, #0xb]\n    ldr r1, [r4]\n    ldr r0, [r5, #0x40]\n    str r0, [r1]\n    ldr r0, [r5, #0x3c]\n    str r0, [r1, #4]\n    str r2, [r1, #8]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    Heap_Alloc(r2, 0xc);
+    *((u8*)(r0 + 1)) = 0;
+    *((u8*)(r0 + 2)) = 0;
+    *((u8*)(r0 + 3)) = 0;
+    *((u8*)(r0 + 4)) = 0;
+    *((u8*)(r0 + 5)) = 0;
+    *((u8*)(r0 + 6)) = 0;
+    *((u8*)(r0 + 7)) = 0;
+    *((u8*)(r0 + 8)) = 0;
+    *((u8*)(r0 + 9)) = 0;
+    *((u8*)(r0 + 0xa)) = 0;
+    *((u8*)(r0 + 0xb)) = 0;
+    *((u32*)(r1 + 4)) = *((u32*)(r5 + 0x3c));
+    *((u32*)(r1 + 8)) = 0;
 }
 
 void ov45_0222D484(void) {

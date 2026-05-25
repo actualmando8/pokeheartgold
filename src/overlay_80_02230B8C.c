@@ -75,14 +75,13 @@ u32 FrtCmd_146(void) {
     return 0;
 }
 
-void FrtCmd_147(void) {
-    /* Original at 0x02230FF0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    bl FrontierScript_ReadVar\n    add r6, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVar\n    add r7, r0, #0\n    add r0, r5, #0\n    bl FrontierScript_ReadVarPtr\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl Frontier_GetData\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov80_02231844\n    strh r0, [r4]\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+u32 FrtCmd_147(void) {
+    FrontierScript_ReadVar();
+    FrontierScript_ReadVar(r5);
+    FrontierScript_ReadVarPtr(r5);
+    Frontier_GetData();
+    ov80_02231844(r6, r7);
+    return 1;
 }
 
 void FrtCmd_148(void) {

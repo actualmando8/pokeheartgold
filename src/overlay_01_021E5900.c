@@ -103,13 +103,13 @@ void ov01_021E6058(void) {
 }
 
 void ov01_021E6138(void) {
-    /* Original at 0x021E6138 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #1\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #2\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #8\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    add r0, r4, #0\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    add r0, r4, #0\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    pop {r4, pc}"
-    );
-    #endif
+    GfGfx_EngineATogglePlanes(1, 0);
+    GfGfx_EngineATogglePlanes(2, 0);
+    GfGfx_EngineATogglePlanes(4, 0);
+    GfGfx_EngineATogglePlanes(8, 0);
+    FreeBgTilemapBuffer(r4, 1);
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 3);
 }
 
 void ov01_021E6178(void) {

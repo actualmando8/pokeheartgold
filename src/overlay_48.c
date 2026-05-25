@@ -324,13 +324,10 @@ void ov48_02259868(void) {
 }
 
 void ov48_02259874(void) {
-    /* Original at 0x02259874 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0x24\n    add r4, r0, #0\n    add r1, sp, #0\n    bl ov48_022598BC\n    add r0, r4, #0\n    ldr r1, [r4]\n    ldr r2, [r4, #4]\n    ldr r3, [r4, #8]\n    add r0, #0x24\n    bl sub_020182A8\n    add r0, r4, #0\n    ldr r1, [r4, #0xc]\n    ldr r2, [r4, #0x10]\n    ldr r3, [r4, #0x14]\n    add r0, #0x24\n    bl sub_020182C4\n    add r4, #0x24\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_02018288\n    add sp, #0x24\n    pop {r3, r4, pc}"
-    );
-    #endif
+    ov48_022598BC();
+    sub_020182A8(r4, *((u32*)(r4 + 4)), *((u32*)(r4 + 8)));
+    sub_020182C4(r4, *((u32*)(r4 + 0xc)), *((u32*)(r4 + 0x10)), *((u32*)(r4 + 0x14)));
+    sub_02018288(r4);
 }
 
 void ov48_022598AC(void) {
@@ -1125,13 +1122,10 @@ void ov48_0225B0E0(void) {
 }
 
 void ov48_0225B108(void) {
-    /* Original at 0x0225B108 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    add r4, r1, #0\n    add r6, r2, #0\n    bl MessageFormat_ResetBuffers\n    ldr r0, [r5]\n    ldr r2, [r5, #0xc]\n    mov r1, #3\n    bl ReadMsgDataIntoString\n    ldr r0, [r5, #4]\n    mov r1, #0\n    add r2, r4, #0\n    add r3, r6, #0\n    bl BufferCityName\n    ldr r0, [r5, #4]\n    ldr r1, [r5, #8]\n    ldr r2, [r5, #0xc]\n    bl StringExpandPlaceholders\n    ldr r0, [r5, #8]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    MessageFormat_ResetBuffers(*((u32*)(r0 + 4)));
+    ReadMsgDataIntoString(3, *((u32*)(r5 + 0xc)));
+    BufferCityName(*((u32*)(r5 + 4)), 0, r4, r6);
+    StringExpandPlaceholders(*((u32*)(r5 + 4)), *((u32*)(r5 + 8)), *((u32*)(r5 + 0xc)));
 }
 
 void ov48_0225B13C(void) {

@@ -6215,123 +6215,99 @@ void ov07_02231B80(void) {
 }
 
 void ov07_02231B90(void) {
-    /* Original at 0x02231B90 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231AD0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231AD0(r5, r6, r0, r7);
 }
 
 void ov07_02231BC0(void) {
-    /* Original at 0x02231BC0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231AE0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231AE0(r5, r6, r0, r7);
 }
 
 void ov07_02231BF0(void) {
-    /* Original at 0x02231BF0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231AF0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231AF0(r5, r6, r0, r7);
 }
 
 void ov07_02231C20(void) {
-    /* Original at 0x02231C20 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B00\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B00(r5, r6, r0, r7);
 }
 
 void ov07_02231C50(void) {
-    /* Original at 0x02231C50 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B10\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B10(r5, r6, r0, r7);
 }
 
 void ov07_02231C80(void) {
-    /* Original at 0x02231C80 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B20\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B20(r5, r6, r0, r7);
 }
 
 void ov07_02231CB0(void) {
-    /* Original at 0x02231CB0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B30\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B30(r5, r6, r0, r7);
 }
 
 void ov07_02231CE0(void) {
-    /* Original at 0x02231CE0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B40\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B40(r5, r6, r0, r7);
 }
 
 void ov07_02231D10(void) {
-    /* Original at 0x02231D10 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B50\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B50(r5, r6, r0, r7);
 }
 
 void ov07_02231D40(void) {
-    /* Original at 0x02231D40 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B60\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B60(r5, r6, r0, r7);
 }
 
 void ov07_02231D70(void) {
-    /* Original at 0x02231D70 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B70\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B70(r5, r6, r0, r7);
 }
 
 void ov07_02231DA0(void) {
-    /* Original at 0x02231DA0 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov07_0221C478\n    bl sub_02015530\n    add r7, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov07_02231924\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov07_0221BFC0\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov07_02231B80\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    ov07_0221C478();
+    sub_02015530();
+    ov07_02231924(r4, r5);
+    ov07_0221BFC0(r4);
+    ov07_02231B80(r5, r6, r0, r7);
 }
 
 void ov07_02231DD0(void) {
@@ -6407,13 +6383,20 @@ void ov07_02231FD8(void) {
 }
 
 void ov07_02231FE4(void) {
-    /* Original at 0x02231FE4 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    mov r1, #0\n    strb r1, [r4]\n    strb r1, [r4, #1]\n    strb r1, [r4, #2]\n    add r5, r0, #0\n    strb r1, [r4, #3]\n    str r5, [r4, #4]\n    bl ov07_0221C530\n    str r0, [r4, #8]\n    add r0, r5, #0\n    bl ov07_0221C514\n    str r0, [r4, #0xc]\n    add r0, r5, #0\n    bl ov07_0221C528\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    bl ov07_0221C4A0\n    str r0, [r4, #0x14]\n    add r0, r5, #0\n    bl ov07_0221FA78\n    str r0, [r4, #0x18]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    *((u8*)(r1 + 1)) = 0;
+    *((u8*)(r1 + 2)) = 0;
+    *((u8*)(r1 + 3)) = 0;
+    *((u32*)(r1 + 4)) = r0;
+    ov07_0221C530(0);
+    *((u32*)(r4 + 8)) = r0;
+    ov07_0221C514(r5);
+    *((u32*)(r4 + 0xc)) = r0;
+    ov07_0221C528(r5);
+    *((u32*)(r4 + 0x10)) = r0;
+    ov07_0221C4A0(r5);
+    *((u32*)(r4 + 0x14)) = r0;
+    ov07_0221FA78(r5);
+    *((u32*)(r4 + 0x18)) = r0;
 }
 
 void ov07_02232020(void) {

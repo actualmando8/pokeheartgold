@@ -205,13 +205,9 @@ void sub_02023C9C(void) {
 }
 
 void sub_02023CF0(void) {
-    /* Original at 0x02023CF0 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r1, r5, #0\n    add r2, r5, #0\n    add r0, r4, #0\n    add r1, #0x88\n    add r2, #0x8c\n    bl sub_02024328\n    add r1, r5, #0\n    add r1, #0x84\n    str r0, [r1]\n    add r1, r5, #0\n    add r1, #0x88\n    add r0, r5, #0\n    ldr r1, [r1]\n    add r0, #0x30\n    bl NNS_G3dRenderObjInit\n    add r0, r4, #0\n    bl sub_02024374\n    add r5, #0x90\n    str r0, [r5]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    sub_02024328(r1, r0, r0);
+    NNS_G3dRenderObjInit(r5, r5);
+    sub_02024374(r4);
 }
 
 void sub_02023D24(void) {
