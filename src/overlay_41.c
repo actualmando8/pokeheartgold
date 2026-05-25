@@ -1743,14 +1743,9 @@ void ov41_02247FFC(void) {
 
 
 void ov41_02248020(void) {
-    // ldr r3, _0224802C ; =ov41_02249A50
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // ldr r1, [r2, #0x20]
     // bx r3
     // nop
     // _0224802C: .word ov41_02249A50
-    // TODO: decompile
 }
 
 
@@ -1914,9 +1909,6 @@ void ov41_022482A8(void) {
 
 
 void ov41_022482B4(void) {
-    // ldr r0, [r0, #0x24]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2330,14 +2322,8 @@ void ov41_02248984(void) {
 
 
 void ov41_02248998(void) {
-    // ldr r0, [r0, #0x3c]
     // cmp r0, #0
     // bne _022489A2
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2587,8 +2573,6 @@ void ov41_02248E44(void) {
 
 
 void ov41_02248E80(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2704,8 +2688,6 @@ void ov41_02248F80(void) {
 
 
 void ov41_022490AC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3093,14 +3075,9 @@ void ov41_022496E8(void) {
 
 
 void ov41_02249700(void) {
-    // ldr r3, _0224970C ; =Pokepic_SetAttr
-    // add r2, r1, #0
-    // ldr r0, [r0]
-    // mov r1, #2
     // bx r3
     // nop
     // _0224970C: .word Pokepic_SetAttr
-    // TODO: decompile
 }
 
 
@@ -3808,8 +3785,6 @@ void ov41_0224A238(void) {
 
 
 void ov41_0224A254(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

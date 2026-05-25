@@ -163,12 +163,8 @@ void sub_02087C38(void) {
 
 
 void sub_02087E10(void) {
-    // lsl r1, r0, #2
-    // ldr r0, _02087E18 ; =_02110594
     // ldr r0, [r0, r1]
-    // bx lr
     // _02087E18: .word _02110594
-    // TODO: decompile
 }
 
 

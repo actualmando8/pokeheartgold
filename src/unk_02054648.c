@@ -394,22 +394,11 @@ void sub_02054DC8(void) {
 
 
 void sub_02054E00(void) {
-    // ldr r3, _02054E1C ; =_020FC60C
-    // mov r2, #0
-    // ldrh r1, [r3]
-    // cmp r0, r1
     // bne _02054E0E
-    // mov r0, #1
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #2
     // cmp r2, #4
     // blt _02054E04
-    // mov r0, #0
-    // bx lr
     // nop
     // _02054E1C: .word _020FC60C
-    // TODO: decompile
 }
 
 

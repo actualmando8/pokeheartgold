@@ -340,37 +340,24 @@ void ov01_021F3B2C(void) {
 
 
 void ov01_021F3B30(void) {
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F3B34(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F3B38(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F3B3C(void) {
-    // ldr r0, [r0, #0x10]
-    // ldr r0, [r0, #0x54]
-    // bx lr
-    // TODO: decompile
 }
 
 

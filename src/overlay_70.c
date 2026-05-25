@@ -279,12 +279,8 @@ void ov70_02237F38(void) {
 
 
 void ov70_02237F58(void) {
-    // ldr r0, _02237F60 ; =_02246800
-    // ldr r0, [r0, #4]
-    // bx lr
     // nop
     // _02237F60: .word _02246800
-    // TODO: decompile
 }
 
 
@@ -706,8 +702,6 @@ void ov70_02238818(void) {
 
 
 void ov70_0223887C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1398,13 +1392,10 @@ void ov70_02239414(void) {
 
 
 void ov70_022394A8(void) {
-    // ldr r1, _022394B0 ; =0x00000DCC
-    // ldr r3, _022394B4 ; =Sprite_Delete
     // ldr r0, [r0, r1]
     // bx r3
     // _022394B0: .word 0x00000DCC
     // _022394B4: .word Sprite_Delete
-    // TODO: decompile
 }
 
 
@@ -1561,13 +1552,10 @@ void ov70_022396F4(void) {
 
 
 void ov70_02239730(void) {
-    // ldr r3, _02239738 ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _0223973C ; =ov70_0224524C
     // bx r3
     // nop
     // _02239738: .word TouchscreenHitbox_FindRectAtTouchNew
     // _0223973C: .word ov70_0224524C
-    // TODO: decompile
 }
 
 
@@ -2007,14 +1995,10 @@ void ov70_0223A06C(void) {
 
 
 void ov70_0223A0C4(void) {
-    // mov r1, #0xee
-    // lsl r1, r1, #4
-    // ldr r3, _0223A0D0 ; =Sprite_Delete
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _0223A0D0: .word Sprite_Delete
-    // TODO: decompile
 }
 
 
@@ -2609,14 +2593,10 @@ void ov70_0223AC98(void) {
 
 
 void ov70_0223ACE4(void) {
-    // mov r1, #0xee
-    // lsl r1, r1, #4
-    // ldr r3, _0223ACF0 ; =Sprite_Delete
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _0223ACF0: .word Sprite_Delete
-    // TODO: decompile
 }
 
 
@@ -3395,13 +3375,10 @@ void ov70_0223BD04(void) {
 
 
 void ov70_0223BD80(void) {
-    // ldr r3, _0223BD88 ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _0223BD8C ; =ov70_022456C8
     // bx r3
     // nop
     // _0223BD88: .word TouchscreenHitbox_FindRectAtTouchNew
     // _0223BD8C: .word ov70_022456C8
-    // TODO: decompile
 }
 
 
@@ -3641,18 +3618,10 @@ void ov70_0223C2B0(void) {
 
 
 void ov70_0223C2EC(void) {
-    // ldr r1, _0223C300 ; =0x000011C4
     // ldr r1, [r0, r1]
-    // ldr r0, [r1, #0x24]
     // cmp r0, #0
     // bne _0223C2FA
-    // ldr r0, [r1, #0x28]
-    // bx lr
-    // ldr r0, [r1, #0x2c]
-    // add r0, r0, #4
-    // bx lr
     // _0223C300: .word 0x000011C4
-    // TODO: decompile
 }
 
 
@@ -4510,13 +4479,10 @@ void ov70_0223D588(void) {
 
 
 void ov70_0223D680(void) {
-    // ldr r3, _0223D688 ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _0223D68C ; =ov70_02245884
     // bx r3
     // nop
     // _0223D688: .word TouchscreenHitbox_FindRectAtTouchNew
     // _0223D68C: .word ov70_02245884
-    // TODO: decompile
 }
 
 
@@ -5096,11 +5062,6 @@ void ov70_0223E264(void) {
 void ov70_0223E490(void) {
     // cmp r0, #0x12
     // bne _0223E498
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -5817,18 +5778,10 @@ void ov70_0223F244(void) {
 void ov70_0223F2A0(void) {
     // cmp r0, #1
     // bne _0223F2AA
-    // ldr r0, _0223F2B8 ; =ov70_022465EC
-    // ldr r0, [r0]
-    // bx lr
     // cmp r0, #2
     // bne _0223F2B2
-    // ldr r0, _0223F2B8 ; =ov70_022465EC
-    // ldr r1, [r0, #4]
-    // add r0, r1, #0
-    // bx lr
     // nop
     // _0223F2B8: .word ov70_022465EC
-    // TODO: decompile
 }
 
 
@@ -6387,13 +6340,10 @@ void ov70_0223FC40(void) {
 
 
 void ov70_0223FC58(void) {
-    // ldr r1, _0223FC60 ; =0x00000BBC
-    // ldr r3, _0223FC64 ; =String_Delete
     // ldr r0, [r0, r1]
     // bx r3
     // _0223FC60: .word 0x00000BBC
     // _0223FC64: .word String_Delete
-    // TODO: decompile
 }
 
 

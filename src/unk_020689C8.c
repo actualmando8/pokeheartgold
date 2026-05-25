@@ -139,14 +139,9 @@ void sub_02068C38(void) {
 
 
 void sub_02068C5C(void) {
-    // ldr r3, _02068C68 ; =Heap_FreeExplicit
-    // add r1, r0, #0
-    // ldr r0, [r1, #8]
-    // ldr r1, [r1, #0xc]
     // bx r3
     // nop
     // _02068C68: .word Heap_FreeExplicit
-    // TODO: decompile
 }
 
 
@@ -166,18 +161,12 @@ void sub_02068C6C(void) {
 
 
 void sub_02068CC4(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02068CC8(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -303,9 +292,6 @@ void sub_02068D8C(void) {
 
 
 void sub_02068D90(void) {
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -318,9 +304,6 @@ void sub_02068D94(void) {
 
 
 void sub_02068D98(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -333,9 +316,6 @@ void sub_02068D9C(void) {
 
 
 void sub_02068DA0(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -374,40 +354,30 @@ u8 sub_02068DC8(void) {
 
 
 void sub_02068DCC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02068DD0(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02068DD4(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02068DD8(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02068DDC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

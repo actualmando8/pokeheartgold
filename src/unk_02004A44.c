@@ -16,12 +16,8 @@ void GF_SND_BGM_DisableCheck(void) {
 
 
 void sub_02004A60(void) {
-    GF_SdatGetAttrPtr(0xa);
-    sub_02004AB8(r5);
-    GBSounds_GetDSSeqNoByGBSeqNo(r5);
-    // strh r0, [r4]
-    // strh r5, [r4]
-    GF_SetCurrentPlayingBGM(0);
+    *((u16*)r4) = r0;
+    *((u16*)r4) = r5;
 }
 
 
@@ -64,9 +60,9 @@ void Sound_SetFieldBGM(void) {
 
 
 void Sound_SetScene(void) {
-    // strb r5, [r4]
-    // strb r1, [r0]
-    // strb r5, [r0]
+    *((u8*)r4) = r5;
+    *((u8*)r0) = r1;
+    *((u8*)r0) = r5;
 }
 
 
@@ -88,116 +84,40 @@ void sub_02004B10(void) {
 
 
 void sub_02004B24(void) {
-    // add r0, r0, r0
-    // add r0, pc
-    // asr r0, r0, #0x10
-    // add pc, r0
-    // _02004B38: ; jump table
     // mov r0, #GROUP_SE_FIELD
-    GF_Snd_LoadGroup((*((u16*)(r0 + 6)) << 0x10));
     // mov r0, #GROUP_SE_FIELD
-    GF_Snd_LoadGroup();
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_BALLOON02, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_BALLOON03_2, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_BALLOON05, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_BALLOON01, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_BALLOON07, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_ALERT4, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_DP_FW104, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_NOMI02, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_DP_023, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_POINT1, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_POINT2, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_POINT3, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_BALLOON05_2, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_DP_HAMARU, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_DP_CON_016, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_KIRAKIRA, 1);
-    GF_Snd_LoadSeqEx(SEQ_SE_PL_FCALL, 1);
     // mov r0, #GROUP_SE_NUTMIXER
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_BATTLE
-    GF_Snd_LoadGroup();
     // mov r0, #WAVE_ARC_SE_HIROBA>>8
-    GF_Snd_LoadBank((r0 << 8));
-    GF_Snd_LoadWaveArc((3 << 8));
     // mov r0, #GROUP_SE_TRADE
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_FIELD
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_BATTLE
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_FIELD
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_CONTEST
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_FIELD
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_NUTMIXER
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_FIELD
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_DIG
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_FIELD
-    GF_Snd_LoadGroup();
-    GF_Snd_LoadBank(BANK_SE_THLON);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_THLON);
-    GF_Snd_LoadBank(BANK_SE_THLON_OPED);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_THLON_OPED);
     // mov r0, #GROUP_SE_BAG
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_SLOT
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_NAMEIN
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_IMAGE
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_ZUKAN
-    GF_Snd_LoadGroup();
-    GF_Snd_LoadBank(BANK_SE_TOWNMAP);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_TOWNMAP);
     // mov r0, #GROUP_SE_TRCARD
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_POKELIST
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_DIG
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_CUSTOM
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_BAG
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_NAMEIN
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_CUSTOM
-    GF_Snd_LoadGroup();
     // mov r0, #GROUP_SE_CLIMAX
-    GF_Snd_LoadGroup();
-    GF_Snd_LoadBank(BANK_SE_SCRATCH);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_SCRATCH);
-    GF_Snd_LoadBank(BANK_SE_PLANTER);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_PLANTER);
     // mov r0, #BANK_SE_LINEAR>>2
-    GF_Snd_LoadBank((r0 << 2));
     // mov r0, #WAVE_ARC_SE_LINEAR>>2
-    GF_Snd_LoadWaveArc((r0 << 2));
-    GF_Snd_LoadBank(BANK_SE_COIN);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_COIN);
-    GF_Snd_LoadBank(BANK_SE_DENDO);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_DENDO);
     // mov r0, #BANK_SE_JUICE>>2
-    GF_Snd_LoadBank((r0 << 2));
     // mov r0, #WAVE_ARC_SE_JUICE>>2
-    GF_Snd_LoadWaveArc((r0 << 2));
     // mov r0, #BANK_SE_PHC>>2
-    GF_Snd_LoadBank((r0 << 2));
     // mov r0, #WAVE_ARC_SE_PHC>>2
-    GF_Snd_LoadWaveArc((r0 << 2));
-    GF_Snd_LoadBank(BANK_SE_SEKIBAN);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_SEKIBAN);
-    GF_Snd_LoadBank(BANK_SE_EVENT);
-    GF_Snd_LoadWaveArc(WAVE_ARC_SE_EVENT);
-    GF_AssertFail();
 }
 
 
@@ -205,14 +125,7 @@ void sub_02004B24(void) {
 
 
 void sub_02004EB4(void) {
-    // ldr r3, _02004EC0 ; =Sound_SetSceneAndPlayBGM
-    // add r1, r0, #0
-    // mov r0, #4
-    // mov r2, #1
     // bx r3
-    // nop
-    // _02004EC0: .word Sound_SetSceneAndPlayBGM
-    // TODO: decompile
 }
 
 
@@ -220,16 +133,9 @@ void sub_02004EB4(void) {
 
 
 void Sound_SetSceneAndPlayBGM(void) {
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // ldr r0, [sp]
-    // ldr r0, [sp, #4]
-    // add r0, r4, r4
-    // add r0, pc
-    // asr r0, r0, #0x10
-    // add pc, r0
-    // _02004F1E: ; jump table
-    // strh r0, [r7]
+    *((u32*)sp) = r0;
+    *((u32*)(sp + 4)) = r0;
+    *((u16*)r7) = ((s32)((r4 + r4)) >> 0x10);
 }
 
 
@@ -271,8 +177,6 @@ void sub_0200508C(void) {
 
 
 void sub_02005150(void) {
-    // ldrh r0, [r4]
-    // ldrh r0, [r4]
 }
 
 
@@ -280,10 +184,6 @@ void sub_02005150(void) {
 
 
 void sub_020051A4(void) {
-    // ldrb r0, [r6]
-    // ldrh r0, [r4]
-    // ldrh r0, [r4]
-    // ldrh r0, [r4]
 }
 
 
@@ -347,11 +247,6 @@ void sub_02005318(void) {
 
 
 void sub_02005328(void) {
-    // add r0, r4, r4
-    // add r0, pc
-    // asr r0, r0, #0x10
-    // add pc, r0
-    // _02005352: ; jump table
 }
 
 
@@ -359,7 +254,7 @@ void sub_02005328(void) {
 
 
 void sub_020053A8(void) {
-    // strb r5, [r6]
+    *((u8*)r6) = r5;
 }
 
 
@@ -476,9 +371,7 @@ void GF_MIC_StartAutoSampling(void) {
 
 
 void GF_MIC_StopAutoSampling(void) {
-    GetSoundDataPointer();
-    // strb r1, [r0]
-    MIC_StopAutoSampling(_021D05E8, 0);
+    *((u8*)r0) = r1;
 }
 
 
@@ -505,8 +398,6 @@ void GF_MicResumeOnLidOpen(void) {
 
 
 void sub_020055AC(void) {
-    // ldrb r0, [r6]
-    // ldrb r0, [r4]
 }
 
 
@@ -514,10 +405,10 @@ void sub_020055AC(void) {
 
 
 void sub_02005600(void) {
-    // str r0, [r4]
-    // strb r0, [r6]
-    // str r0, [r6]
-    // strb r0, [r4]
+    *((u32*)r4) = r0;
+    *((u8*)r6) = r0;
+    *((u32*)r6) = r0;
+    *((u8*)r4) = r0;
 }
 
 
@@ -525,8 +416,8 @@ void sub_02005600(void) {
 
 
 void sub_02005680(void) {
-    // strb r0, [r6]
-    // strb r0, [r4]
+    *((u8*)r6) = r0;
+    *((u8*)r4) = r0;
 }
 
 
@@ -534,12 +425,12 @@ void sub_02005680(void) {
 
 
 void sub_020056E8(void) {
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0xc]
-    // str r0, [sp, #0x10]
-    // str r0, [sp, #0x14]
+    *((u32*)sp) = r0;
+    *((u32*)(sp + 4)) = r0;
+    *((u32*)(sp + 8)) = r0;
+    *((u32*)(sp + 0xc)) = r0;
+    *((u32*)(sp + 0x10)) = r0;
+    *((u32*)(sp + 0x14)) = r0;
 }
 
 
@@ -582,43 +473,20 @@ void sub_02005774(void) {
 
 
 void sub_020057AC(void) {
-    // str r1, [sp]
-    // str r2, [sp, #4]
-    GetSoundDataPointer();
-    GF_SdatGetAttrPtr(0x22);
-    GF_AssertFail();
-    NNS_SndArcGetWaveArcInfo(r6);
-    GF_AssertFail();
-    NNS_SndArcGetFileSize(((*((u32*)r7) << 8) >> 8));
-    GF_AssertFail();
-    // ldr r0, [sp, #0x48]
-    Heap_Alloc(0, r6);
-    // str r0, [r4]
-    GF_AssertFail();
-    memset(0, 0, r6);
-    NNS_SndArcReadFile(((*((u32*)r7) << 8) >> 8), *((u32*)r4), r6, 0);
-    // mvn r1, r1
-    GF_AssertFail(0);
-    sub_02005898(*((u32*)r4), r6);
-    sub_020055AC(r5);
-    // str r1, [sp, #0xc]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0x10]
-    // str r1, [sp, #0x14]
-    // str r0, [sp, #0x20]
-    // ldr r0, [sp]
-    // str r1, [sp, #0x18]
-    // str r0, [sp, #0x24]
-    // str r0, [sp, #0x28]
-    // ldr r0, [sp, #4]
-    // str r0, [sp, #0x2c]
-    // add r0, sp, #8
-    // str r6, [sp, #0x1c]
-    sub_020056E8((6 << 0xc), r5);
-    // ldr r1, [sp]
-    sub_02005774(r5);
-    GF_SdatGetAttrPtr(0xf);
-    // strb r1, [r0]
+    *((u32*)sp) = r1;
+    *((u32*)(sp + 4)) = r2;
+    *((u32*)r4) = *((u32*)(sp + 0x48));
+    *((u32*)(sp + 0xc)) = ~(r1);
+    *((u32*)(sp + 8)) = *((u32*)(sp + 0x48));
+    *((u32*)(sp + 0x10)) = *((u32*)(sp + 0x48));
+    *((u32*)(sp + 0x14)) = ~(r1);
+    *((u32*)(sp + 0x20)) = *((u32*)(sp + 0x48));
+    *((u32*)(sp + 0x18)) = ~(r1);
+    *((u32*)(sp + 0x24)) = *((u32*)sp);
+    *((u32*)(sp + 0x28)) = *((u32*)sp);
+    *((u32*)(sp + 0x2c)) = *((u32*)(sp + 4));
+    *((u32*)(sp + 0x1c)) = r6;
+    *((u8*)(sp + 8)) = *((u32*)sp);
 }
 
 
@@ -636,7 +504,7 @@ void sub_02005898(void) {
 
 
 void sub_020058B8(void) {
-    // strb r0, [r4]
+    *((u8*)r4) = r0;
 }
 
 
@@ -735,10 +603,6 @@ void Sound_SetMasterVolume(void) {
 
 
 void sub_020059D8(void) {
-    // ldr r0, _020059DC ; =_021D0620
-    // bx lr
-    // _020059DC: .word _021D0620
-    // TODO: decompile
 }
 
 
@@ -760,13 +624,10 @@ void GF_NowStartMusicId(void) {
 
 
 void sub_02005A10(void) {
-    // str r3, [sp, #8]
-    // add r0, sp, #0x10
-    // ldr r3, [sp, #8]
-    // str r0, [sp]
-    // ldr r0, [sp, #0x24]
-    // str r0, [sp, #4]
-    // strb r0, [r4]
+    *((u32*)(sp + 8)) = r3;
+    *((u32*)sp) = (sp + 0x10);
+    *((u32*)(sp + 4)) = *((u32*)(sp + 0x24));
+    *((u8*)r4) = *((u32*)(sp + 0x24));
 }
 
 
@@ -774,11 +635,9 @@ void sub_02005A10(void) {
 
 
 void GF_FadeStartMusicId(void) {
-    // str r3, [sp]
-    // add r0, sp, #0x10
-    // str r0, [sp, #4]
-    // ldr r0, [sp, #0x24]
-    // str r0, [sp, #8]
+    *((u32*)sp) = r3;
+    *((u32*)(sp + 4)) = (sp + 0x10);
+    *((u32*)(sp + 8)) = *((u32*)(sp + 0x24));
 }
 
 
@@ -786,14 +645,10 @@ void GF_FadeStartMusicId(void) {
 
 
 void sub_02005A74(void) {
-    // str r3, [sp, #8]
-    // add r0, sp, #0x10
-    // ldr r3, [sp, #8]
-    // str r0, [sp]
-    // ldr r0, [sp, #0x28]
-    // str r0, [sp, #4]
-    // ldr r0, [sp, #0x20]
-    // str r0, [r4]
+    *((u32*)(sp + 8)) = r3;
+    *((u32*)sp) = (sp + 0x10);
+    *((u32*)(sp + 4)) = *((u32*)(sp + 0x28));
+    *((u32*)r4) = *((u32*)(sp + 0x20));
 }
 
 
@@ -826,7 +681,6 @@ void sub_02005AF8(void) {
 
 
 void sub_02005B20(void) {
-    // mvn r1, r1
 }
 
 
@@ -907,28 +761,21 @@ void SoundSys_ToggleGBSounds(void) {
 
 
 
-void GBSounds_GetGBSeqNoByDSSeqNo(void) {
-    // push {r3, r4}
-    // ldr r2, _02005C90 ; =_020F5730
-    // mov r4, #0
-    // lsl r3, r4, #2
-    // ldrh r1, [r2, r3]
-    // cmp r0, r1
-    // bne _02005C82
-    // ldr r0, _02005C94 ; =_020F5730 + 2
-    // ldrh r0, [r0, r3]
-    // pop {r3, r4}
-    // bx lr
-    // add r1, r4, #1
-    // lsl r1, r1, #0x10
-    // lsr r4, r1, #0x10
-    // cmp r4, #0x88
-    // blo _02005C72
-    // pop {r3, r4}
-    // bx lr
-    // _02005C90: .word _020F5730
-    // _02005C94: .word _020F5730 + 2
-    // TODO: decompile
+/* Address: 0x02005C72
+ * Looks up GB sequence number by DS sequence number.
+ */
+u32 GBSounds_GetGBSeqNoByDSSeqNo(u32 a1) {
+    u32 i;
+    
+    for (i = 0; i < 0x88; i++) {
+        u16 seq = *((u16*)(_020F5730 + i * 4));
+        if (seq == a1) {
+            u16 result = *((u16*)(_020F5730 + 2 + i * 4));
+            return result;
+        }
+    }
+    
+    return 0;
 }
 
 
@@ -936,7 +783,6 @@ void GBSounds_GetGBSeqNoByDSSeqNo(void) {
 
 
 void GBSounds_GetDSSeqNoByGBSeqNo(void) {
-    // add r1, r2, r3
 }
 
 

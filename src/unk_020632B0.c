@@ -407,8 +407,6 @@ void sub_02063AC8(void) {
 
 
 void sub_02063AFC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

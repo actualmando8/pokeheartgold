@@ -70,9 +70,6 @@ UnkOv01_021FFECC * ov01_021F1450(void) {
 
 
 void ov01_021F1468(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -85,9 +82,6 @@ void ov01_021F146C(void) {
 
 
 void ov01_021F1478(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -177,14 +171,8 @@ void ov01_021F15AC(void) {
 
 
 void ov01_021F15B4(void) {
-    // ldr r0, [r0]
     // cmp r0, #0x17
     // bne _021F15BE
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

@@ -69,9 +69,6 @@ void ApricornBox_SetKurtApricorn(void) {
 
 
 void ApricornBox_GetKurtQuantity(void) {
-    // ldrb r0, [r0, #7]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -93,10 +90,6 @@ void sub_02031BEC(void) {
 
 
 void sub_02031C00(void) {
-    // ldr r0, [r0, #0x1c]
-    // lsr r0, r0, #0x1e
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -134,9 +127,6 @@ void sub_02031CCC(void) {
 
 
 void sub_02031CE8(void) {
-    // ldrb r0, [r0, #9]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -557,8 +547,6 @@ void sub_020324F4(void) {
 void sub_02032504(void) {
     // cmp r1, #0
     // bne _0203250C
-    // mov r0, #0
-    // bx lr
     // cmp r0, #0
     // beq _0203251A
     // cmp r0, #1
@@ -568,59 +556,30 @@ void sub_02032504(void) {
     // b _02032582
     // cmp r1, #0x3e
     // bls _02032522
-    // mov r0, #6
-    // bx lr
     // cmp r1, #0x32
     // bls _0203252A
-    // mov r0, #5
-    // bx lr
     // cmp r1, #0x28
     // bls _02032532
-    // mov r0, #4
-    // bx lr
     // cmp r1, #0x1e
     // bls _0203253A
-    // mov r0, #3
-    // bx lr
     // cmp r1, #0x14
     // bls _02032542
-    // mov r0, #2
-    // bx lr
     // cmp r1, #0
     // beq _02032582
-    // mov r0, #1
-    // bx lr
     // cmp r1, #0x28
     // bls _02032552
-    // mov r0, #4
-    // bx lr
     // cmp r1, #0x1e
     // bls _0203255A
-    // mov r0, #3
-    // bx lr
     // cmp r1, #0x14
     // bls _02032562
-    // mov r0, #2
-    // bx lr
     // cmp r1, #0
     // beq _02032582
-    // mov r0, #1
-    // bx lr
     // cmp r1, #0x14
     // bls _02032572
-    // mov r0, #3
-    // bx lr
     // cmp r1, #0xa
     // bls _0203257A
-    // mov r0, #2
-    // bx lr
     // cmp r1, #0
     // beq _02032582
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

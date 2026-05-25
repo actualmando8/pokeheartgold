@@ -1253,17 +1253,12 @@ void ov08_0221DC3C(void) {
 
 
 void ov08_0221DD28(void) {
-    // ldr r1, _0221DD38 ; =0x00002070
-    // add r2, r0, #0
     // ldr r0, [r2, r1]
-    // add r1, r1, #4
-    // ldr r3, _0221DD3C ; =WindowArray_Delete
     // ldrb r1, [r2, r1]
     // bx r3
     // nop
     // _0221DD38: .word 0x00002070
     // _0221DD3C: .word WindowArray_Delete
-    // TODO: decompile
 }
 
 
@@ -6188,9 +6183,6 @@ void ov08_02224B7C(void) {
 
 
 void ov08_02224B84(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6198,9 +6190,6 @@ void ov08_02224B84(void) {
 
 
 void ov08_02224B88(void) {
-    // ldrb r0, [r0, #9]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6208,9 +6197,6 @@ void ov08_02224B88(void) {
 
 
 void ov08_02224B8C(void) {
-    // ldrb r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
 
 

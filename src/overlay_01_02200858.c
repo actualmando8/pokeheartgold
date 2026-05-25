@@ -61,8 +61,6 @@ u32 ov01_02200900(void) {
 
 
 void ov01_02200938(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

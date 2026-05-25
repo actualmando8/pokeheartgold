@@ -21,15 +21,10 @@ void sub_02074E5C(void) {
 
 
 void sub_02074EC4(void) {
-    // ldr r3, _02074ED0 ; =sub_0203410C
-    // add r2, r0, #0
-    // ldr r0, _02074ED4 ; =_020FFE30
-    // mov r1, #0xc
     // bx r3
     // nop
     // _02074ED0: .word sub_0203410C
     // _02074ED4: .word _020FFE30
-    // TODO: decompile
 }
 
 
@@ -122,20 +117,12 @@ void sub_02074F7C(void) {
 
 
 void sub_02074F84(void) {
-    // ldr r0, [r1]
-    // ldr r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02074F8C(void) {
-    // ldr r0, [r1]
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 

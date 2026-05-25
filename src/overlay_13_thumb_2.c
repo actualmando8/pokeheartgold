@@ -558,12 +558,8 @@ void ov13_022214AC(void) {
 
 
 void ov13_022214B8(void) {
-    // ldr r0, _022214C0 ; =_0224CF98
-    // ldr r0, [r0, #0x10]
-    // bx lr
     // nop
     // _022214C0: .word _0224CF98
-    // TODO: decompile
 }
 
 
@@ -1527,14 +1523,9 @@ void ov13_02222948(void) {
 
 
 void ov13_02222968(void) {
-    // add r3, r0, #0
-    // add r0, r1, #0
-    // add r1, r3, #0
-    // ldr r3, _02222974 ; =MI_CpuCopy8
     // bx r3
     // nop
     // _02222974: .word MI_CpuCopy8
-    // TODO: decompile
 }
 
 
@@ -1578,8 +1569,6 @@ void ov13_022229EC(void) {
 
 
 void ov13_022229FC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1721,30 +1710,20 @@ void ov13_02222BE4(void) {
 
 
 void ov13_02222BF4(void) {
-    // ldr r3, _02222C00 ; =OS_SendMessage
-    // add r1, r0, #0
-    // ldr r0, _02222C04 ; =ov13_0224DDA0
-    // mov r2, #0
     // bx r3
     // nop
     // _02222C00: .word OS_SendMessage
     // _02222C04: .word ov13_0224DDA0
-    // TODO: decompile
 }
 
 
 
 
 void ov13_02222C08(void) {
-    // ldr r3, _02222C14 ; =OS_SendMessage
-    // add r1, r0, #0
-    // ldr r0, _02222C18 ; =ov13_0224DDA0
-    // mov r2, #0
     // bx r3
     // nop
     // _02222C14: .word OS_SendMessage
     // _02222C18: .word ov13_0224DDA0
-    // TODO: decompile
 }
 
 
@@ -2326,12 +2305,8 @@ void ov13_02223D24(void) {
 
 
 void ov13_02223DE0(void) {
-    // ldr r0, _02223DE8 ; =ov13_0224DF30
-    // ldr r0, [r0, #0x2c]
-    // bx lr
     // nop
     // _02223DE8: .word ov13_0224DF30
-    // TODO: decompile
 }
 
 

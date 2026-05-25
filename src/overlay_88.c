@@ -320,8 +320,6 @@ void ov88_02258EA8(void) {
 
 
 void ov88_02258EF8(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -417,8 +415,6 @@ void ov88_022590C0(void) {
 
 
 void ov88_022590D4(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

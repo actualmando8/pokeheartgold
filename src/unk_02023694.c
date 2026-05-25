@@ -750,13 +750,6 @@ void sub_0202443C(void) {
     // cmp r1, #1
     // beq _0202444A
     // b _0202444E
-    // ldr r0, [r0]
-    // bx lr
-    // ldr r0, [r0, #4]
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

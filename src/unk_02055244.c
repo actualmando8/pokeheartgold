@@ -78,13 +78,9 @@ u32 sub_02055370(void) {
 
 
 void sub_020553B0(void) {
-    // ldr r3, _020553B8 ; =TaskManager_Call
-    // ldr r1, _020553BC ; =sub_02055370
-    // mov r2, #0
     // bx r3
     // _020553B8: .word TaskManager_Call
     // _020553BC: .word sub_02055370
-    // TODO: decompile
 }
 
 
@@ -99,13 +95,9 @@ u32 sub_020553C0(void) {
 
 
 void sub_02055408(void) {
-    // ldr r3, _02055410 ; =TaskManager_Call
-    // ldr r1, _02055414 ; =sub_020553C0
-    // mov r2, #0
     // bx r3
     // _02055410: .word TaskManager_Call
     // _02055414: .word sub_020553C0
-    // TODO: decompile
 }
 
 

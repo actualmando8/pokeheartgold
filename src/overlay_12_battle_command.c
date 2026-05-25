@@ -803,16 +803,9 @@ void GetMoveMessageNo(void) {
     // beq _022480FA
     // cmp r1, #0xff
     // beq _02248100
-    // bx lr
-    // ldr r1, _02248108 ; =0x00003044
     // ldr r0, [r0, r1]
-    // bx lr
-    // mov r1, #0x49
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // bx lr
     // _02248108: .word 0x00003044
-    // TODO: decompile
 }
 
 

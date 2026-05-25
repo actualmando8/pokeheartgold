@@ -596,14 +596,9 @@ void ov43_0222ABFC(void) {
 
 
 void ov43_0222AC18(void) {
-    // ldr r3, _0222AC24 ; =BufferWiFiPlazaActivityName
-    // add r2, r1, #0
-    // ldr r0, [r0, #0x50]
-    // mov r1, #0
     // bx r3
     // nop
     // _0222AC24: .word BufferWiFiPlazaActivityName
-    // TODO: decompile
 }
 
 
@@ -988,17 +983,10 @@ void ov43_0222B408(void) {
 
 
 void ov43_0222B440(void) {
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // ldr r2, [r2]
-    // ldr r1, _0222B450 ; =ov43_0222F0CC
-    // ldr r3, _0222B454 ; =ov43_0222A318
     // ldrb r1, [r1, r2]
-    // mov r2, #0
     // bx r3
     // _0222B450: .word ov43_0222F0CC
     // _0222B454: .word ov43_0222A318
-    // TODO: decompile
 }
 
 
@@ -2212,16 +2200,12 @@ void ov43_0222CD34(void) {
 
 
 void ov43_0222CD3C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov43_0222CD40(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2464,20 +2448,10 @@ void ov43_0222D228(void) {
 
 
 void ov43_0222D230(void) {
-    // ldr r0, [r0, #0x10]
     // cmp r0, #1
     // bne _0222D23A
-    // mov r0, #8
     // b _0222D23C
-    // mov r0, #3
-    // sub r0, r0, #1
-    // cmp r1, r0
     // bne _0222D246
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2870,14 +2844,9 @@ void ov43_0222DB28(void) {
 
 
 void ov43_0222DB84(void) {
-    // ldr r3, _0222DB90 ; =ov43_0222AD74
-    // add r0, r1, #0
-    // mov r1, #0
-    // mov r2, #0xff
     // bx r3
     // nop
     // _0222DB90: .word ov43_0222AD74
-    // TODO: decompile
 }
 
 
@@ -2996,8 +2965,6 @@ void ov43_0222DDF0(void) {
 
 
 void ov43_0222DE10(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

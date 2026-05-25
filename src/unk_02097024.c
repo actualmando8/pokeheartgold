@@ -25,9 +25,6 @@ void sub_02097060(void) {
 
 
 void sub_02097078(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 

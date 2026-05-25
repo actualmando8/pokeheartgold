@@ -72,13 +72,10 @@ void ov14_021E5A54(void) {
 
 
 void ov14_021E5A60(void) {
-    // ldr r3, _021E5A68 ; =GfGfx_SetBanks
-    // ldr r0, _021E5A6C ; =ov14_021F7CE4
     // bx r3
     // nop
     // _021E5A68: .word GfGfx_SetBanks
     // _021E5A6C: .word ov14_021F7CE4
-    // TODO: decompile
 }
 
 
@@ -299,15 +296,11 @@ void ov14_021E5ED0(void) {
 
 
 void ov14_021E5EE8(void) {
-    // ldr r1, [r0, #0x34]
-    // ldr r0, _021E5EF4 ; =0x00000434
-    // ldr r3, _021E5EF8 ; =YesNoPrompt_Destroy
     // ldr r0, [r1, r0]
     // bx r3
     // nop
     // _021E5EF4: .word 0x00000434
     // _021E5EF8: .word YesNoPrompt_Destroy
-    // TODO: decompile
 }
 
 
@@ -1175,15 +1168,11 @@ void ov14_021E71E8(void) {
 
 
 void ov14_021E7264(void) {
-    // ldr r1, [r0, #0x34]
-    // ldr r0, _021E7270 ; =0x000088DC
-    // ldr r3, _021E7274 ; =Heap_Free
     // ldr r0, [r1, r0]
     // bx r3
     // nop
     // _021E7270: .word 0x000088DC
     // _021E7274: .word Heap_Free
-    // TODO: decompile
 }
 
 
@@ -1601,14 +1590,10 @@ void ov14_021E7BA4(void) {
 
 
 void ov14_021E7D7C(void) {
-    // mov r1, #0x2f
-    // lsl r1, r1, #4
-    // ldr r3, _021E7D88 ; =sub_020195C0
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _021E7D88: .word sub_020195C0
-    // TODO: decompile
 }
 
 
@@ -2713,16 +2698,10 @@ void ov14_021E9450(void) {
 
 
 void ov14_021E94A8(void) {
-    // ldr r1, [r0, #0x34]
-    // mov r0, #0x2f
-    // lsl r0, r0, #4
     // ldr r0, [r1, r0]
-    // ldr r3, _021E94B8 ; =sub_02019978
-    // mov r1, #2
     // bx r3
     // nop
     // _021E94B8: .word sub_02019978
-    // TODO: decompile
 }
 
 
@@ -2780,16 +2759,10 @@ void ov14_021E9590(void) {
 
 
 void ov14_021E95B4(void) {
-    // ldr r1, [r0, #0x34]
-    // mov r0, #0x2f
-    // lsl r0, r0, #4
     // ldr r0, [r1, r0]
-    // ldr r3, _021E95C4 ; =sub_02019978
-    // mov r1, #0xa
     // bx r3
     // nop
     // _021E95C4: .word sub_02019978
-    // TODO: decompile
 }
 
 
@@ -2805,16 +2778,10 @@ void ov14_021E95C8(void) {
 
 
 void ov14_021E9604(void) {
-    // ldr r1, [r0, #0x34]
-    // mov r0, #0x2f
-    // lsl r0, r0, #4
     // ldr r0, [r1, r0]
-    // ldr r3, _021E9614 ; =sub_02019978
-    // mov r1, #0xc
     // bx r3
     // nop
     // _021E9614: .word sub_02019978
-    // TODO: decompile
 }
 
 
@@ -4294,13 +4261,9 @@ void ov14_021EBE68(void) {
 
 
 void ov14_021EBF8C(void) {
-    // ldr r3, _021EBF94 ; =ov14_021F0234
-    // ldr r1, _021EBF98 ; =ov14_021E94BC
-    // mov r2, #0xe
     // bx r3
     // _021EBF94: .word ov14_021F0234
     // _021EBF98: .word ov14_021E94BC
-    // TODO: decompile
 }
 
 
@@ -5631,13 +5594,9 @@ void ov14_021EE26C(void) {
 
 
 void ov14_021EE328(void) {
-    // ldr r3, _021EE330 ; =ov14_021F0234
-    // ldr r1, _021EE334 ; =ov14_021E9450
-    // mov r2, #0xe
     // bx r3
     // _021EE330: .word ov14_021F0234
     // _021EE334: .word ov14_021E9450
-    // TODO: decompile
 }
 
 
@@ -9351,14 +9310,10 @@ void ov14_021F391C(void) {
 
 
 void ov14_021F395C(void) {
-    // mov r3, #0xca
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _021F3968 ; =ManagedSprite_SetPositionXY
     // bx r3
     // nop
     // _021F3968: .word ManagedSprite_SetPositionXY
-    // TODO: decompile
 }
 
 
@@ -11930,13 +11885,9 @@ void ov14_021F6844(void) {
     // cmp r1, #1
     // beq _021F6852
     // b _021F6854
-    // mov r1, #7
     // b _021F6854
-    // mov r1, #0xa
-    // ldr r3, _021F6858 ; =ov14_021F6698
     // bx r3
     // _021F6858: .word ov14_021F6698
-    // TODO: decompile
 }
 
 
@@ -12013,13 +11964,10 @@ void ov14_021F69F0(void) {
 
 
 void ov14_021F6A14(void) {
-    // ldr r3, _021F6A1C ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _021F6A20 ; =ov14_021F864C
     // bx r3
     // nop
     // _021F6A1C: .word TouchscreenHitbox_FindRectAtTouchNew
     // _021F6A20: .word ov14_021F864C
-    // TODO: decompile
 }
 
 
@@ -12027,13 +11975,10 @@ void ov14_021F6A14(void) {
 
 
 void ov14_021F6A24(void) {
-    // ldr r3, _021F6A2C ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _021F6A30 ; =ov14_021F8614
     // bx r3
     // nop
     // _021F6A2C: .word TouchscreenHitbox_FindRectAtTouchNew
     // _021F6A30: .word ov14_021F8614
-    // TODO: decompile
 }
 
 
@@ -12041,13 +11986,10 @@ void ov14_021F6A24(void) {
 
 
 void ov14_021F6A34(void) {
-    // ldr r3, _021F6A3C ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _021F6A40 ; =ov14_021F8630
     // bx r3
     // nop
     // _021F6A3C: .word TouchscreenHitbox_FindRectAtTouchNew
     // _021F6A40: .word ov14_021F8630
-    // TODO: decompile
 }
 
 
@@ -12113,14 +12055,9 @@ void ov14_021F6B60(void) {
 
 
 void ov14_021F6B7C(void) {
-    // ldr r3, _021F6B88 ; =ov14_021F2A18
-    // ldr r0, [r0, #0x34]
-    // mov r1, #9
-    // mov r2, #0
     // bx r3
     // nop
     // _021F6B88: .word ov14_021F2A18
-    // TODO: decompile
 }
 
 

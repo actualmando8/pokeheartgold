@@ -1116,9 +1116,7 @@ void ov02_02249E90(void) {
 
 
 
-void ov02_02249EC0(void) {
-    // TODO: decompile
-}
+
 
 
 
@@ -1520,14 +1518,8 @@ void ov02_0224A700(void) {
 
 
 void ov02_0224A7A8(void) {
-    // ldr r3, _0224A7B4 ; =GetPokemonSpriteCharAndPlttNarcIds
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // ldr r1, [r2, #0x5c]
-    // mov r2, #2
     // bx r3
     // _0224A7B4: .word GetPokemonSpriteCharAndPlttNarcIds
-    // TODO: decompile
 }
 
 
@@ -1544,14 +1536,8 @@ void ov02_0224A7B8(void) {
 
 
 void ov02_0224A800(void) {
-    // add r3, r0, #0
-    // add r2, r1, #0
-    // ldrh r0, [r3]
-    // ldrh r1, [r3, #4]
-    // ldr r3, _0224A80C ; =sub_02014450
     // bx r3
     // _0224A80C: .word sub_02014450
-    // TODO: decompile
 }
 
 
@@ -1698,8 +1684,6 @@ void ov02_0224AAD4(void) {
 
 
 void ov02_0224AB54(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1755,8 +1739,6 @@ void ov02_0224AC04(void) {
 
 
 void ov02_0224AC24(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2379,8 +2361,6 @@ void ov02_0224B7CC(void) {
 
 
 void ov02_0224B804(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3523,30 +3503,20 @@ void ov02_0224D2BC(void) {
 
 
 void ov02_0224D2C8(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224D2D4 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224D2D8 ; =ov02_02253974
     // bx r3
     // nop
     // _0224D2D4: .word Field3dObjectTaskManager_CreateTask
     // _0224D2D8: .word ov02_02253974
-    // TODO: decompile
 }
 
 
 
 
 void ov02_0224D2DC(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224D2E8 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224D2EC ; =ov02_022539BC
     // bx r3
     // nop
     // _0224D2E8: .word Field3dObjectTaskManager_CreateTask
     // _0224D2EC: .word ov02_022539BC
-    // TODO: decompile
 }
 
 
@@ -3620,30 +3590,20 @@ void ov02_0224D3E8(void) {
 
 
 void ov02_0224D3F4(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224D400 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224D404 ; =ov02_022538FC
     // bx r3
     // nop
     // _0224D400: .word Field3dObjectTaskManager_CreateTask
     // _0224D404: .word ov02_022538FC
-    // TODO: decompile
 }
 
 
 
 
 void ov02_0224D408(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224D414 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224D418 ; =ov02_0225398C
     // bx r3
     // nop
     // _0224D414: .word Field3dObjectTaskManager_CreateTask
     // _0224D418: .word ov02_0225398C
-    // TODO: decompile
 }
 
 
@@ -3728,15 +3688,10 @@ void ov02_0224D580(void) {
 
 
 void ov02_0224D598(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224D5A4 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224D5A8 ; =ov02_02253944
     // bx r3
     // nop
     // _0224D5A4: .word Field3dObjectTaskManager_CreateTask
     // _0224D5A8: .word ov02_02253944
-    // TODO: decompile
 }
 
 
@@ -3798,15 +3753,10 @@ void ov02_0224D670(void) {
 
 
 void ov02_0224D67C(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224D688 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224D68C ; =ov02_02253914
     // bx r3
     // nop
     // _0224D688: .word Field3dObjectTaskManager_CreateTask
     // _0224D68C: .word ov02_02253914
-    // TODO: decompile
 }
 
 
@@ -3977,15 +3927,10 @@ void ov02_0224D98C(void) {
 
 
 void ov02_0224D9A4(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224D9B0 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224D9B4 ; =ov02_0225395C
     // bx r3
     // nop
     // _0224D9B0: .word Field3dObjectTaskManager_CreateTask
     // _0224D9B4: .word ov02_0225395C
-    // TODO: decompile
 }
 
 
@@ -4154,30 +4099,20 @@ void ov02_0224DC58(void) {
 
 
 void ov02_0224DC64(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224DC70 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224DC74 ; =ov02_022539A4
     // bx r3
     // nop
     // _0224DC70: .word Field3dObjectTaskManager_CreateTask
     // _0224DC74: .word ov02_022539A4
-    // TODO: decompile
 }
 
 
 
 
 void ov02_0224DC78(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224DC84 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224DC88 ; =ov02_0225392C
     // bx r3
     // nop
     // _0224DC84: .word Field3dObjectTaskManager_CreateTask
     // _0224DC88: .word ov02_0225392C
-    // TODO: decompile
 }
 
 
@@ -4257,30 +4192,20 @@ void ov02_0224DDC8(void) {
 
 
 void ov02_0224DDE0(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224DDEC ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224DDF0 ; =ov02_022539D4
     // bx r3
     // nop
     // _0224DDEC: .word Field3dObjectTaskManager_CreateTask
     // _0224DDF0: .word ov02_022539D4
-    // TODO: decompile
 }
 
 
 
 
 void ov02_0224DDF4(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _0224DE00 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _0224DE04 ; =ov02_022539EC
     // bx r3
     // nop
     // _0224DE00: .word Field3dObjectTaskManager_CreateTask
     // _0224DE04: .word ov02_022539EC
-    // TODO: decompile
 }
 
 
@@ -4487,16 +4412,9 @@ void ov02_0224E2D4(void) {
 
 
 void ov02_0224E308(void) {
-    // ldr r1, _0224E318 ; =0x00000165
-    // cmp r0, r1
     // bne _0224E312
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _0224E318: .word 0x00000165
-    // TODO: decompile
 }
 
 
@@ -5155,15 +5073,10 @@ void ov02_0224EF6C(void) {
 
 
 void FieldSystem_FollowMonInteract(void) {
-    // ldr r3, _0224EF8C ; =TaskManager_Call
-    // ldr r0, [r0, #0x10]
-    // ldr r1, _0224EF90 ; =Task_FollowMonInteract
-    // mov r2, #0
     // bx r3
     // nop
     // _0224EF8C: .word TaskManager_Call
     // _0224EF90: .word Task_FollowMonInteract
-    // TODO: decompile
 }
 
 

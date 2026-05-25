@@ -493,8 +493,6 @@ void ov12_02238A30(void) {
 
 
 void ov12_02238A64(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

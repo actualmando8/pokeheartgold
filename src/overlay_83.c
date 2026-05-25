@@ -4814,11 +4814,6 @@ void ov83_02244F60(void) {
 void ov83_02245068(void) {
     // cmp r0, #1
     // bne _02245070
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0xf
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6554,9 +6549,6 @@ void ov83_0224773C(void) {
 
 
 void ov83_02247768(void) {
-    // add r0, r1, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6728,8 +6720,6 @@ void ov83_02247A18(void) {
 
 
 void ov83_02247A20(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6782,68 +6772,48 @@ void ov83_02247B04(void) {
 
 
 void ov83_02247B1C(void) {
-    // ldr r3, _02247B2C ; =ov83_02248544
-    // lsl r1, r1, #2
-    // lsl r2, r2, #2
     // ldr r1, [r3, r1]
     // ldr r2, [r3, r2]
-    // ldr r3, _02247B30 ; =ov83_02242AB4
     // bx r3
     // nop
     // _02247B2C: .word ov83_02248544
     // _02247B30: .word ov83_02242AB4
-    // TODO: decompile
 }
 
 
 
 
 void ov83_02247B34(void) {
-    // ldr r3, _02247B44 ; =ov83_02248544
-    // lsl r1, r1, #2
-    // lsl r2, r2, #2
     // ldr r1, [r3, r1]
     // ldr r2, [r3, r2]
-    // ldr r3, _02247B48 ; =ov83_02242AB4
     // bx r3
     // nop
     // _02247B44: .word ov83_02248544
     // _02247B48: .word ov83_02242AB4
-    // TODO: decompile
 }
 
 
 
 
 void ov83_02247B4C(void) {
-    // ldr r3, _02247B5C ; =ov83_02248544
-    // lsl r1, r1, #2
-    // lsl r2, r2, #2
     // ldr r1, [r3, r1]
     // ldr r2, [r3, r2]
-    // ldr r3, _02247B60 ; =ov83_022469D8
     // bx r3
     // nop
     // _02247B5C: .word ov83_02248544
     // _02247B60: .word ov83_022469D8
-    // TODO: decompile
 }
 
 
 
 
 void ov83_02247B64(void) {
-    // ldr r3, _02247B74 ; =ov83_02248544
-    // lsl r1, r1, #2
-    // lsl r2, r2, #2
     // ldr r1, [r3, r1]
     // ldr r2, [r3, r2]
-    // ldr r3, _02247B78 ; =ov83_022469D8
     // bx r3
     // nop
     // _02247B74: .word ov83_02248544
     // _02247B78: .word ov83_022469D8
-    // TODO: decompile
 }
 
 

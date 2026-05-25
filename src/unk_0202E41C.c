@@ -2,10 +2,7 @@
 #include "global.h"
 
 void sub_0202E41C(void) {
-    // ldr r0, _0202E420 ; =0x00000BC8
-    // bx lr
     // _0202E420: .word 0x00000BC8
-    // TODO: decompile
 }
 
 

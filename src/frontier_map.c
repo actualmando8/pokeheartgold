@@ -170,8 +170,6 @@ void FrontierMap_VBlank(void) {
 
 
 void ov80_02238AAC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

@@ -590,9 +590,6 @@ void ov01_021E6644(void) {
 
 
 void ov01_021E6698(void) {
-    // add r0, r0, #4
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -612,66 +609,45 @@ void ov01_021E66A0(void) {
 
 
 void ov01_021E66A8(void) {
-    // ldr r3, _021E66B4 ; =Heap_AllocAtEnd
-    // mov r1, #0xfa
-    // mov r0, #3
-    // lsl r1, r1, #2
     // bx r3
     // nop
     // _021E66B4: .word Heap_AllocAtEnd
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021E66B8(void) {
-    // ldr r3, _021E66C4 ; =Heap_AllocAtEnd
-    // mov r1, #0xfa
-    // mov r0, #3
-    // lsl r1, r1, #2
     // bx r3
     // nop
     // _021E66C4: .word Heap_AllocAtEnd
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021E66C8(void) {
-    // ldr r3, _021E66D4 ; =Heap_AllocAtEnd
-    // mov r1, #0xfa
-    // mov r0, #3
-    // lsl r1, r1, #2
     // bx r3
     // nop
     // _021E66D4: .word Heap_AllocAtEnd
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021E66D8(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021E66DC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021E66E0(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

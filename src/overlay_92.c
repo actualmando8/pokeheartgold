@@ -29,8 +29,6 @@ void ov92_0225C578(void) {
 
 
 void ov92_0225C584(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -67,10 +65,7 @@ u8 ov92_0225C598(void) {
 
 
 void ov92_0225C59C(void) {
-    // ldr r0, _0225C5A0 ; =_0226383C
-    // bx lr
     // _0225C5A0: .word _0226383C
-    // TODO: decompile
 }
 
 
@@ -908,14 +903,8 @@ void ov92_0225D894(void) {
 
 
 void ov92_0225D8C4(void) {
-    // ldr r0, [r0, #0x44]
     // cmp r0, #0
     // bne _0225D8CE
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

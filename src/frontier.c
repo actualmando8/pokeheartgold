@@ -119,28 +119,18 @@ void Frontier_UnloadOverlays(void) {
 
 
 void Frontier_GetLaunchArgs(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_0209680C(void) {
-    // ldr r0, [r0, #0x18]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void Frontier_GetData(void) {
-    // ldr r0, [r0]
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 

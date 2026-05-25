@@ -153,9 +153,6 @@ void sub_0200E5D4(void) {
 
 
 void sub_0200E63C(void) {
-    // add r0, r0, #2
-    // bx lr
-    // TODO: decompile
 }
 
 

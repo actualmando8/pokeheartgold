@@ -212,24 +212,16 @@ void sub_02067484(void) {
 
 
 void sub_020674A4(void) {
-    // ldr r1, _020674AC ; =0x02E90EDD
     // mul r1, r0
-    // add r0, r1, #1
-    // bx lr
     // _020674AC: .word 0x02E90EDD
-    // TODO: decompile
 }
 
 
 
 
 void sub_020674B0(void) {
-    // ldr r1, _020674B8 ; =0x5D588B65
     // mul r1, r0
-    // add r0, r1, #1
-    // bx lr
     // _020674B8: .word 0x5D588B65
-    // TODO: decompile
 }
 
 
@@ -262,18 +254,9 @@ u32 sub_0206751C(void) {
 
 
 void FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(void) {
-    // ldr r0, [r0, #0x20]
-    // ldr r1, [r0]
-    // ldr r0, _02067598 ; =MAP_BATTLE_TOWER_PARTNER_ROOM
-    // cmp r1, r0
     // bne _02067592
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _02067598: .word MAP_BATTLE_TOWER_PARTNER_ROOM
-    // TODO: decompile
 }
 
 

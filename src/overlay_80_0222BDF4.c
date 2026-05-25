@@ -124,17 +124,8 @@ void FrtCmd_009(void) {
 
 
 void ov80_0222BFE4(void) {
-    // cmp r0, r1
     // bhs _0222BFEC
-    // mov r0, #0
-    // bx lr
-    // cmp r0, r1
     // bne _0222BFF4
-    // mov r0, #1
-    // bx lr
-    // mov r0, #2
-    // bx lr
-    // TODO: decompile
 }
 
 

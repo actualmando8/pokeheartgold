@@ -345,14 +345,10 @@ void sub_020889D0(void) {
 
 
 void sub_02088AF8(void) {
-    // mov r1, #0x7d
-    // lsl r1, r1, #4
-    // ldr r3, _02088B04 ; =sub_020195C0
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _02088B04: .word sub_020195C0
-    // TODO: decompile
 }
 
 
@@ -1622,13 +1618,10 @@ void sub_0208ADB8(void) {
 
 
 void sub_0208ADCC(void) {
-    // ldr r3, _0208ADD4 ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _0208ADD8 ; =_021038D4
     // bx r3
     // nop
     // _0208ADD4: .word TouchscreenHitbox_FindRectAtTouchNew
     // _0208ADD8: .word _021038D4
-    // TODO: decompile
 }
 
 
@@ -1681,13 +1674,10 @@ void sub_0208AE88(void) {
 
 
 void sub_0208AEB4(void) {
-    // ldr r3, _0208AEBC ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _0208AEC0 ; =_021038B8
     // bx r3
     // nop
     // _0208AEBC: .word TouchscreenHitbox_FindRectAtTouchNew
     // _0208AEC0: .word _021038B8
-    // TODO: decompile
 }
 
 
@@ -1695,13 +1685,10 @@ void sub_0208AEB4(void) {
 
 
 void sub_0208AEC4(void) {
-    // ldr r3, _0208AECC ; =TouchscreenHitbox_FindRectAtTouchNew
-    // ldr r0, _0208AED0 ; =_021039E8
     // bx r3
     // nop
     // _0208AECC: .word TouchscreenHitbox_FindRectAtTouchNew
     // _0208AED0: .word _021039E8
-    // TODO: decompile
 }
 
 

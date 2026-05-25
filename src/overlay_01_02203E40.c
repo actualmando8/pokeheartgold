@@ -89,8 +89,6 @@ u32 ov01_02203F3C(void) {
 
 
 void ov01_02203F68(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

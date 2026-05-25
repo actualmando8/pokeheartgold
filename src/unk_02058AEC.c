@@ -1005,9 +1005,6 @@ void sub_0205A1D4(void) {
 
 
 void sub_0205A1F0(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1070,9 +1067,6 @@ int sub_0205A284(void) {
 
 
 void sub_0205A358(void) {
-    // ldr r0, [r0, #0x1c]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1104,16 +1098,12 @@ void sub_0205A3B0(void) {
 
 
 void sub_0205A408(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_0205A40C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

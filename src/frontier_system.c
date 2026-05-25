@@ -88,8 +88,6 @@ void ov80_0222AA0C(void) {
 
 
 void FrontierSystem_deadstripped_0222AA3C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

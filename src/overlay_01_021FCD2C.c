@@ -61,14 +61,9 @@ void ov01_021FCDFC(void) {
 
 
 void ov01_021FCE34(void) {
-    // ldr r3, _021FCE40 ; =Camera_SetDistance
-    // add r1, r0, #0
-    // ldr r0, [r1, #0x20]
-    // ldr r1, [r1, #0x30]
     // bx r3
     // nop
     // _021FCE40: .word Camera_SetDistance
-    // TODO: decompile
 }
 
 

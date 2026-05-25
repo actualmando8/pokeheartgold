@@ -27,8 +27,6 @@ void ov01_021FC0A8(void) {
 
 
 void ov01_021FC0DC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -45,23 +43,16 @@ void ov01_021FC0E0(void) {
 
 
 void ov01_021FC10C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FC110(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _021FC11C ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _021FC120 ; =ov01_02208BCC
     // bx r3
     // nop
     // _021FC11C: .word Field3dObjectTaskManager_CreateTask
     // _021FC120: .word ov01_02208BCC
-    // TODO: decompile
 }
 
 
@@ -80,15 +71,10 @@ void ov01_021FC12C(void) {
 
 
 void ov01_021FC138(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _021FC144 ; =Field3dObjectTaskManager_CreateTask
-    // ldr r0, [r0, #4]
-    // ldr r1, _021FC148 ; =ov01_02208BE4
     // bx r3
     // nop
     // _021FC144: .word Field3dObjectTaskManager_CreateTask
     // _021FC148: .word ov01_02208BE4
-    // TODO: decompile
 }
 
 
@@ -133,13 +119,9 @@ void ov01_021FC1E0(void) {
 
 
 void ov01_021FC1EC(void) {
-    // ldr r3, _021FC1F4 ; =BG_SetMaskColor
-    // mov r0, #2
-    // ldr r1, _021FC1F8 ; =0x00007FFF
     // bx r3
     // _021FC1F4: .word BG_SetMaskColor
     // _021FC1F8: .word 0x00007FFF
-    // TODO: decompile
 }
 
 

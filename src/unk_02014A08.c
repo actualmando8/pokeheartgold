@@ -110,14 +110,10 @@ void sub_02014BD8(void) {
 
 
 void sub_02014BF8(void) {
-    // mov r1, #6
-    // lsl r1, r1, #8
-    // ldr r3, _02014C04 ; =sub_02014A4C
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _02014C04: .word sub_02014A4C
-    // TODO: decompile
 }
 
 

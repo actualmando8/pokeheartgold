@@ -46,11 +46,6 @@ void ov01_021E87E4(void) {
 void ov01_021E8858(void) {
     // cmp r0, #0
     // bne _021E8860
-    // mov r0, #0
-    // bx lr
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -195,14 +190,10 @@ void ov01_021E8B90(void) {
 
 
 void ov01_021E8B9C(void) {
-    // mov r1, #0x4d
-    // lsl r1, r1, #2
-    // ldr r3, _021E8BA8 ; =NARC_GetFileCount
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _021E8BA8: .word NARC_GetFileCount
-    // TODO: decompile
 }
 
 

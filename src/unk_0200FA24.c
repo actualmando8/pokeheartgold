@@ -58,16 +58,9 @@ void HandleFadeUpdateFrame(void) {
 
 
 void IsPaletteFadeFinished(void) {
-    // ldr r0, _0200FB6C ; =_021D1034
-    // ldrh r0, [r0, #0xc]
     // cmp r0, #0
     // bne _0200FB68
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _0200FB6C: .word _021D1034
-    // TODO: decompile
 }
 
 
@@ -319,24 +312,15 @@ void sub_0200FFF8(void) {
 
 
 void sub_02010014(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02010018(void) {
-    // ldr r2, _02010028 ; =0x0000FFFF
-    // cmp r1, r2
     // bne _02010024
-    // mov r1, #0x15
-    // lsl r1, r1, #4
     // ldrh r1, [r0, r1]
-    // add r0, r1, #0
-    // bx lr
     // _02010028: .word 0x0000FFFF
-    // TODO: decompile
 }
 
 

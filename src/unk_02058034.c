@@ -2,8 +2,6 @@
 #include "global.h"
 
 void sub_02058034(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -67,13 +65,9 @@ void sub_02058164(void) {
 
 
 void sub_02058180(void) {
-    // ldr r3, _02058188 ; =sub_020582F4
-    // ldr r0, _0205818C ; =sub_020588A0
-    // mov r1, #0
     // bx r3
     // _02058188: .word sub_020582F4
     // _0205818C: .word sub_020588A0
-    // TODO: decompile
 }
 
 
@@ -109,26 +103,12 @@ void sub_02058190(void) {
 
 
 void sub_02058258(void) {
-    // ldr r0, _02058278 ; =_021D41C8
-    // ldr r0, [r0]
-    // ldr r1, [r0, #0x30]
-    // ldr r0, _0205827C ; =sub_020588F8
-    // cmp r1, r0
     // bne _02058268
-    // mov r0, #0
-    // bx lr
-    // ldr r0, _02058280 ; =sub_02058930
-    // cmp r1, r0
     // beq _02058272
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _02058278: .word _021D41C8
     // _0205827C: .word sub_020588F8
     // _02058280: .word sub_02058930
-    // TODO: decompile
 }
 
 
@@ -173,8 +153,6 @@ void sub_02058304(void) {
 
 
 void sub_02058328(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -188,8 +166,6 @@ void sub_0205832C(void) {
 
 
 void sub_02058348(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -211,8 +187,6 @@ void sub_0205836C(void) {
 
 
 void sub_02058388(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -354,13 +328,9 @@ void sub_02058640(void) {
 
 
 void sub_02058690(void) {
-    // ldr r3, _02058698 ; =sub_020582F4
-    // ldr r0, _0205869C ; =sub_02058608
-    // mov r1, #0
     // bx r3
     // _02058698: .word sub_020582F4
     // _0205869C: .word sub_02058608
-    // TODO: decompile
 }
 
 
@@ -395,26 +365,14 @@ void sub_02058720(void) {
 
 
 void sub_02058740(void) {
-    // ldr r0, _02058760 ; =_021D41C8
-    // ldr r0, [r0]
     // cmp r0, #0
     // beq _0205875A
-    // ldr r1, [r0, #0x30]
-    // ldr r0, _02058764 ; =sub_020586EC
-    // cmp r1, r0
     // beq _02058756
-    // ldr r0, _02058768 ; =sub_02058608
-    // cmp r1, r0
     // bne _0205875A
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _02058760: .word _021D41C8
     // _02058764: .word sub_020586EC
     // _02058768: .word sub_02058608
-    // TODO: decompile
 }
 
 
@@ -573,39 +531,19 @@ void sub_02058A78(void) {
 
 
 void sub_02058AA0(void) {
-    // ldr r0, _02058AD4 ; =_021D41C8
-    // ldr r0, [r0]
     // cmp r0, #0
     // bne _02058AAC
-    // mov r0, #0
-    // bx lr
-    // ldr r1, [r0, #0x30]
-    // ldr r0, _02058AD8 ; =sub_02058870
-    // cmp r1, r0
     // beq _02058ACC
-    // ldr r0, _02058ADC ; =sub_02058854
-    // cmp r1, r0
     // beq _02058ACC
-    // ldr r0, _02058AE0 ; =sub_0205882C
-    // cmp r1, r0
     // beq _02058ACC
-    // ldr r0, _02058AE4 ; =sub_020587E8
-    // cmp r1, r0
     // beq _02058ACC
-    // ldr r0, _02058AE8 ; =sub_0205876C
-    // cmp r1, r0
     // bne _02058AD0
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _02058AD4: .word _021D41C8
     // _02058AD8: .word sub_02058870
     // _02058ADC: .word sub_02058854
     // _02058AE0: .word sub_0205882C
     // _02058AE4: .word sub_020587E8
     // _02058AE8: .word sub_0205876C
-    // TODO: decompile
 }
 
 

@@ -500,8 +500,6 @@ void ov52_021E8B94(void) {
 
 
 void ov52_021E8BD8(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -874,8 +872,6 @@ void ov52_021E9158(void) {
 
 
 void ov52_021E9218(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -898,8 +894,6 @@ void ov52_021E921C(void) {
 
 
 void ov52_021E925C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

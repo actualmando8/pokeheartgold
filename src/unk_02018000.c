@@ -85,21 +85,12 @@ void sub_02018198(void) {
 
 
 void sub_020181A0(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_020181A4(void) {
-    // ldr r0, [r0, #8]
-    // ldr r0, [r0, #8]
-    // ldrh r0, [r0, #4]
-    // lsl r0, r0, #0xc
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -175,9 +166,6 @@ void sub_020182A0(void) {
 
 
 void sub_020182A4(void) {
-    // ldr r0, [r0, #0x6c]
-    // bx lr
-    // TODO: decompile
 }
 
 

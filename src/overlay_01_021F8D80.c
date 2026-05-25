@@ -320,32 +320,24 @@ void ov01_021F9424(void) {
 
 
 void ov01_021F943C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F9440(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F9444(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F9448(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

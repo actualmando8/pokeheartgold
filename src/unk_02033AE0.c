@@ -195,22 +195,12 @@ void sub_02033DF0(void) {
 
 
 void sub_02033E88(void) {
-    // ldr r1, [r0, #0x10]
     // cmp r1, #0
     // beq _02033E92
-    // add r0, r1, #0
-    // bx lr
-    // ldr r1, [r0]
     // cmp r1, #0
     // beq _02033E9C
-    // add r0, r1, #0
-    // bx lr
-    // ldr r0, [r0, #8]
     // cmp r0, #0
     // bne _02033EA4
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -295,11 +285,6 @@ void sub_0203401C(void) {
     // b _0203403E
     // cmp r0, #0x1a
     // bne _0203403E
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -324,11 +309,6 @@ void sub_02034084(void) {
     // beq _02034090
     // cmp r0, #0x23
     // bne _02034094
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -423,10 +403,7 @@ void sub_02034280(void) {
 
 
 void sub_020342B8(void) {
-    // ldr r0, _020342BC ; =0x0000FFFF
-    // bx lr
     // _020342BC: .word 0x0000FFFF
-    // TODO: decompile
 }
 
 

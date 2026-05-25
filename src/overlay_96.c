@@ -1870,18 +1870,13 @@ void ov96_021E8988(void) {
 
 
 void ov96_021E8A20(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov96_021E8A24(void) {
-    // ldr r0, _021E8A28 ; =ov96_0221AEC4
-    // bx lr
     // _021E8A28: .word ov96_0221AEC4
-    // TODO: decompile
 }
 
 
@@ -1950,9 +1945,6 @@ void ov96_021E8B1C(void) {
 
 
 void ov96_021E8B88(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1965,9 +1957,6 @@ void ov96_021E8B8C(void) {
 
 
 void ov96_021E8BAC(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2186,11 +2175,6 @@ void ov96_021E8FE0(void) {
 
 
 void ov96_021E90FC(void) {
-    // ldr r0, [r0, #0x24]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2267,9 +2251,6 @@ void ov96_021E9290(void) {
 
 
 void ov96_021E92AC(void) {
-    // ldr r0, [r0, #0x28]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2384,18 +2365,12 @@ void ov96_021E9510(void) {
 
 
 void ov96_021E9524(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov96_021E9528(void) {
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2655,14 +2630,9 @@ void ov96_021E9A2C(void) {
 
 
 void ov96_021E9A38(void) {
-    // ldr r3, _021E9A44 ; =PokeathlonCourse_GetField974_AtIndex
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // add r1, r2, #0
     // bx r3
     // nop
     // _021E9A44: .word PokeathlonCourse_GetField974_AtIndex
-    // TODO: decompile
 }
 
 
@@ -2681,14 +2651,8 @@ void ov96_021E9A54(void) {
 
 
 void ov96_021E9A68(void) {
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // lsl r1, r2, #0x18
-    // ldr r3, _021E9A74 ; =ov96_021E86FC
-    // lsr r1, r1, #0x18
     // bx r3
     // _021E9A74: .word ov96_021E86FC
-    // TODO: decompile
 }
 
 
@@ -3374,9 +3338,6 @@ void ov96_021EA8A8(void) {
 
 
 void ov96_021EAA00(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3389,9 +3350,6 @@ void ov96_021EAA04(void) {
 
 
 void ov96_021EAA20(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3675,18 +3633,12 @@ void ov96_021EAF78(void) {
 
 
 void ov96_021EAF8C(void) {
-    // ldr r0, [r0, #0x30]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov96_021EAF90(void) {
-    // ldr r0, [r0, #0x2c]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -4020,9 +3972,6 @@ void ov96_021EB5AC(void) {
 
 
 void ov96_021EB5B8(void) {
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -4044,9 +3993,6 @@ void ov96_021EB5C8(void) {
 
 
 void ov96_021EB5E8(void) {
-    // ldr r0, [r0, #0x14]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -5126,14 +5072,8 @@ void ov96_021ECD24(void) {
 
 
 void ov96_021ECDC4(void) {
-    // ldr r0, [r0, #0x18]
     // cmp r0, #0
     // bne _021ECDCE
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -5947,22 +5887,11 @@ void ov96_021EDF3C(void) {
 
 
 void ov96_021EDF5C(void) {
-    // ldr r3, _021EDF78 ; =ov96_0221B058
-    // mov r2, #0
-    // ldr r1, [r3]
-    // cmp r1, r0
     // ble _021EDF6A
-    // add r0, r2, #0
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #4
     // cmp r2, #0xc
     // blt _021EDF60
-    // add r0, r2, #0
-    // bx lr
     // nop
     // _021EDF78: .word ov96_0221B058
-    // TODO: decompile
 }
 
 
@@ -6501,11 +6430,6 @@ void ov96_021EEA08(void) {
 
 
 void ov96_021EEA80(void) {
-    // ldr r0, [r0, #0x34]
-    // lsl r0, r0, #3
-    // lsr r0, r0, #0x1f
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -10924,24 +10848,13 @@ void ov96_021F46BC(void) {
 
 
 void ov96_021F4700(void) {
-    // ldr r0, [r0, #0x1c]
-    // cmp r0, r1
     // bne _021F470A
-    // mov r0, #0
-    // bx lr
     // cmp r1, #1
     // bne _021F4712
-    // mov r0, #1
-    // bx lr
     // cmp r1, #2
     // bne _021F471E
     // cmp r0, #1
     // beq _021F471E
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -13996,14 +13909,10 @@ void ov96_021F8728(void) {
 
 
 void ov96_021F87D0(void) {
-    // mov r1, #0x5f
-    // lsl r1, r1, #2
-    // ldr r3, _021F87DC ; =SpriteList_RenderAndAnimateSprites
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _021F87DC: .word SpriteList_RenderAndAnimateSprites
-    // TODO: decompile
 }
 
 
@@ -16378,18 +16287,12 @@ void ov96_021FBE54(void) {
 
 
 void ov96_021FBE9C(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov96_021FBEA0(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -17980,11 +17883,6 @@ void ov96_021FDE6C(void) {
     // bhs _021FDE78
     // cmp r2, #0x20
     // bhs _021FDE78
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -25767,8 +25665,6 @@ void ov96_02207B8C(void) {
 
 
 void ov96_02207BD4(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -28372,17 +28268,9 @@ void ov96_0220B730(void) {
 
 
 void ov96_0220B744(void) {
-    // ldr r0, [r0, #0x40]
-    // mov r1, #1
-    // lsl r0, r0, #0x16
-    // lsr r0, r0, #0x18
     // beq _0220B754
     // cmp r0, #1
     // beq _0220B754
-    // mov r1, #0
-    // add r0, r1, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -34909,17 +34797,8 @@ void ov96_022143FC(void) {
     // bge _0221440C
     // cmp r1, #0x70
     // bge _02214408
-    // mov r0, #0
-    // bx lr
-    // mov r0, #2
-    // bx lr
     // cmp r1, #0x70
     // bge _02214414
-    // mov r0, #1
-    // bx lr
-    // mov r0, #3
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -35154,11 +35033,6 @@ void ov96_022148E8(void) {
 
 
 void ov96_02214904(void) {
-    // ldr r0, [r0, #0x44]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -35889,11 +35763,6 @@ void ov96_022158D4(void) {
     // blt _022158E8
     // cmp r1, #0x20
     // bge _022158E8
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -37298,11 +37167,6 @@ void ov96_02217820(void) {
 void ov96_0221785C(void) {
     // cmp r0, #0xb
     // bne _02217864
-    // mov r0, #0
-    // bx lr
-    // mov r0, #1
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -37322,11 +37186,6 @@ void ov96_02217890(void) {
     // beq _02217898
     // cmp r0, #0xb
     // bne _0221789C
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -37978,30 +37837,11 @@ void ov96_0221862C(void) {
 
 
 void ov96_02218688(void) {
-    // ldr r2, [r0, #0x60]
-    // lsl r1, r2, #4
-    // lsr r1, r1, #0x1f
     // beq _02218694
-    // mov r0, #0
-    // bx lr
-    // lsl r1, r2, #3
-    // lsr r1, r1, #0x1f
     // beq _0221869E
-    // mov r0, #0
-    // bx lr
-    // lsl r1, r2, #5
-    // lsr r1, r1, #0x1f
     // beq _022186A8
-    // mov r0, #0
-    // bx lr
-    // ldr r0, [r0, #0x14]
     // cmp r0, #1
     // bne _022186B2
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -38580,16 +38420,10 @@ void ov96_02219398(void) {
 void ov96_022193CC(void) {
     // cmp r1, #0
     // beq _022193D4
-    // mov r1, #3
     // b _022193D6
-    // mov r1, #4
-    // ldr r3, _022193E0 ; =sub_0200606C
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
     // bx r3
     // nop
     // _022193E0: .word sub_0200606C
-    // TODO: decompile
 }
 
 

@@ -466,17 +466,10 @@ void ov01_021F4FB0(void) {
 
 
 void ov01_021F5024(void) {
-    // ldr r1, [r0]
     // cmp r1, #0
     // bne _021F5034
-    // ldr r0, [r0, #4]
     // cmp r0, #0
     // bne _021F5034
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

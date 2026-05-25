@@ -101,8 +101,6 @@ void sub_02061338(void) {
 
 
 void sub_0206139C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

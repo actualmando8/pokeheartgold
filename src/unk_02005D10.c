@@ -536,24 +536,12 @@ void sub_02006920(void) {
 
 
 void sub_02006A0C(void) {
-    // mov r2, #0x7b
-    // lsl r2, r2, #2
-    // cmp r0, r2
     // bne _02006A1C
     // cmp r1, #1
     // bne _02006A1C
-    // mov r0, #1
-    // bx lr
-    // ldr r1, _02006A2C ; =0x000001EE
-    // cmp r0, r1
     // bne _02006A26
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _02006A2C: .word 0x000001EE
-    // TODO: decompile
 }
 
 

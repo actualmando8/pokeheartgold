@@ -119,9 +119,6 @@ void sub_02015FF4(void) {
 
 
 void sub_02015FF8(void) {
-    // ldr r0, [r0, #0x14]
-    // bx lr
-    // TODO: decompile
 }
 
 

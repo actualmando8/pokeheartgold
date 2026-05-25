@@ -306,8 +306,6 @@ void ov12_02258E7C(void) {
 
 
 void ov12_02258EB0(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -5864,37 +5862,26 @@ void ov12_02260EA4(void) {
 
 
 void ov12_02261258(void) {
-    // ldr r1, _02261260 ; =0x00000195
     // ldrb r0, [r0, r1]
-    // bx lr
     // nop
     // _02261260: .word 0x00000195
-    // TODO: decompile
 }
 
 
 
 
 void ov12_02261264(void) {
-    // ldr r1, _0226126C ; =0x00000196
     // ldrb r0, [r0, r1]
-    // bx lr
     // nop
     // _0226126C: .word 0x00000196
-    // TODO: decompile
 }
 
 
 
 
 void ov12_02261270(void) {
-    // ldr r1, [r0, #0x20]
     // cmp r1, #0
     // bne _02261278
-    // ldr r1, [r0, #0x1c]
-    // add r0, r1, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

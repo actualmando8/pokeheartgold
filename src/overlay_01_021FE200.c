@@ -204,8 +204,6 @@ u32 ov01_021FE4FC(void) {
 
 
 void ov01_021FE524(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

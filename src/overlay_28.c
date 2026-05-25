@@ -479,14 +479,9 @@ void ov28_0225DE64(void) {
 
 
 void ov28_0225DE78(void) {
-    // ldr r3, _0225DE84 ; =FX_Atan2Idx
-    // add r2, r0, #0
-    // lsl r0, r1, #0xc
-    // lsl r1, r2, #0xc
     // bx r3
     // nop
     // _0225DE84: .word FX_Atan2Idx
-    // TODO: decompile
 }
 
 

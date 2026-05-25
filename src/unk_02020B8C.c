@@ -2,22 +2,14 @@
 #include "global.h"
 
 void sub_02020B8C(void) {
-    // cmp r0, r1
     // blt _02020B92
-    // add r0, r1, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02020B94(void) {
-    // cmp r0, r1
     // bgt _02020B9A
-    // add r0, r1, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

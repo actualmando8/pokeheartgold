@@ -1048,37 +1048,24 @@ void ov82_0223F5E0(void) {
 void ov82_0223F6C4(void) {
     // cmp r0, #0x11
     // blo _0223F6CA
-    // mov r0, #0x11
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov82_0223F6CC(void) {
-    // ldrb r1, [r0, #9]
     // cmp r1, #0
     // bne _0223F6E0
-    // ldrh r0, [r0, #0x1c]
     // cmp r0, #0x32
     // beq _0223F6DC
     // cmp r0, #0xaa
     // bne _0223F6E0
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov82_0223F6E4(void) {
-    // ldrb r0, [r0, #0x1e]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1178,15 +1165,10 @@ void ov82_0223F90C(void) {
 
 
 void ov82_0223F948(void) {
-    // ldr r3, _0223F954 ; =G2x_SetBlendBrightness_
-    // add r2, r0, #0
-    // ldr r0, _0223F958 ; =0x04000050
-    // mov r1, #0x1e
     // bx r3
     // nop
     // _0223F954: .word G2x_SetBlendBrightness_
     // _0223F958: .word 0x04000050
-    // TODO: decompile
 }
 
 

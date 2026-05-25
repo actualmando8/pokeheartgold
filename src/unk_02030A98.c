@@ -354,10 +354,7 @@ void sub_02030FE4(void) {
 
 
 void Save_Frontier_sizeof(void) {
-    // ldr r0, _02031004 ; =0x00001628
-    // bx lr
     // _02031004: .word 0x00001628
-    // TODO: decompile
 }
 
 
@@ -386,10 +383,7 @@ void Save_Frontier_Init(void) {
 
 
 void Save_Frontier_GetStatic(void) {
-    // ldr r0, _02031080 ; =_021D2AFC
-    // bx lr
     // _02031080: .word _021D2AFC
-    // TODO: decompile
 }
 
 
@@ -684,28 +678,18 @@ void sub_020315B8(void) {
 
 
 void sub_020315D0(void) {
-    // ldrb r0, [r0, #0x14]
     // cmp r0, #0
     // beq _020315DC
     // cmp r0, #1
     // beq _020315DC
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_020315E0(void) {
-    // ldrh r0, [r0, #0x1c]
-    // ldr r1, _020315EC ; =0x000001EF
-    // cmp r0, r1
     // blo _020315EA
-    // mov r0, #0
-    // bx lr
     // _020315EC: .word 0x000001EF
-    // TODO: decompile
 }
 
 
@@ -718,26 +702,16 @@ void sub_020315F0(void) {
 
 
 void sub_02031610(void) {
-    // ldrb r0, [r0, #0x1b]
-    // lsl r0, r0, #0x1f
-    // lsr r0, r0, #0x1f
     // cmp r0, #1
     // bls _0203161C
-    // mov r0, #1
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02031620(void) {
-    // ldrb r0, [r0, #0x17]
     // cmp r0, #0xea
     // blo _02031628
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -774,26 +748,18 @@ void sub_0203164C(void) {
 
 
 void sub_020316F0(void) {
-    // ldrb r0, [r0, #0x15]
     // cmp r0, #1
     // blo _020316FA
     // cmp r0, #0xc
     // bls _020316FC
-    // mov r0, #1
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_02031700(void) {
-    // ldrb r0, [r0, #0x16]
     // cmp r0, #0xf
     // bls _02031708
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

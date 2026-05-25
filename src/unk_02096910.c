@@ -2,15 +2,10 @@
 #include "global.h"
 
 void sub_02096910(void) {
-    // ldr r3, _0209691C ; =sub_0203410C
-    // add r2, r0, #0
-    // ldr r0, _02096920 ; =_02108594
-    // mov r1, #0x34
     // bx r3
     // nop
     // _0209691C: .word sub_0203410C
     // _02096920: .word _02108594
-    // TODO: decompile
 }
 
 

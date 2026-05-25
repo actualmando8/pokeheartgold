@@ -344,15 +344,9 @@ void ov80_0223B1D4(void) {
 
 
 void ov80_0223B3EC(void) {
-    // ldr r3, _0223B3F8 ; =SysTask_CreateOnVBlankQueue
-    // mov r2, #1
-    // add r1, r0, #0
-    // ldr r0, _0223B3FC ; =ov80_0223B400
-    // lsl r2, r2, #0xa
     // bx r3
     // _0223B3F8: .word SysTask_CreateOnVBlankQueue
     // _0223B3FC: .word ov80_0223B400
-    // TODO: decompile
 }
 
 

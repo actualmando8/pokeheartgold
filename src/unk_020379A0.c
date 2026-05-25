@@ -21,16 +21,9 @@ void sub_020379F8(void) {
 
 
 void sub_02037A10(void) {
-    // ldr r0, _02037A20 ; =_021D414C
-    // ldr r0, [r0]
     // cmp r0, #0
     // beq _02037A1C
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _02037A20: .word _021D414C
-    // TODO: decompile
 }
 
 
@@ -89,23 +82,12 @@ void sub_02037ADC(void) {
 
 
 void sub_02037B38(void) {
-    // ldr r1, _02037B54 ; =_021D414C
-    // ldr r2, [r1]
     // cmp r2, #0
     // bne _02037B44
-    // mov r0, #1
-    // bx lr
-    // ldr r1, _02037B58 ; =0x00000261
     // ldrb r1, [r2, r1]
-    // cmp r1, r0
     // bne _02037B50
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _02037B54: .word _021D414C
     // _02037B58: .word 0x00000261
-    // TODO: decompile
 }
 
 

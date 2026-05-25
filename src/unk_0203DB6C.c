@@ -2,16 +2,12 @@
 #include "global.h"
 
 void sub_0203DB6C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_0203DB70(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

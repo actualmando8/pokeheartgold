@@ -105,11 +105,6 @@ void ov80_02237D8C(void) {
     // beq _02237D94
     // cmp r0, #3
     // bne _02237D98
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -204,9 +199,6 @@ void ov80_02237F3C(void) {
 void ov80_02237F9C(void) {
     // cmp r0, #8
     // blo _02237FA2
-    // mov r0, #7
-    // bx lr
-    // TODO: decompile
 }
 
 

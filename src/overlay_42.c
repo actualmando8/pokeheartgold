@@ -206,9 +206,6 @@ void ov42_0222740C(void) {
 
 
 void ov42_02227430(void) {
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -256,19 +253,12 @@ void ov42_022274AC(void) {
 
 
 void ov42_022274B8(void) {
-    // ldr r0, [r0]
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov42_022274C0(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -643,14 +633,8 @@ void ov42_02227B04(void) {
 
 
 void ov42_02227B5C(void) {
-    // ldr r0, [r0]
     // cmp r0, #0
     // beq _02227B66
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -803,28 +787,18 @@ void ov42_02227DC8(void) {
 
 
 void ov42_02227DD8(void) {
-    // ldr r3, _02227DE4 ; =Sprite_UpdateAnim
-    // mov r1, #2
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #0xc
     // bx r3
     // nop
     // _02227DE4: .word Sprite_UpdateAnim
-    // TODO: decompile
 }
 
 
 
 
 void ov42_02227DE8(void) {
-    // ldr r3, _02227DF4 ; =Sprite_UpdateAnim
-    // mov r1, #2
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #0xc
     // bx r3
     // nop
     // _02227DF4: .word Sprite_UpdateAnim
-    // TODO: decompile
 }
 
 
@@ -838,84 +812,53 @@ void ov42_02227DF8(void) {
 
 
 void ov42_02227E18(void) {
-    // ldr r3, _02227E24 ; =Sprite_UpdateAnim
-    // mov r1, #2
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #0xc
     // bx r3
     // nop
     // _02227E24: .word Sprite_UpdateAnim
-    // TODO: decompile
 }
 
 
 
 
 void ov42_02227E28(void) {
-    // ldr r3, _02227E34 ; =Sprite_UpdateAnim
-    // mov r1, #1
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #0xc
     // bx r3
     // nop
     // _02227E34: .word Sprite_UpdateAnim
-    // TODO: decompile
 }
 
 
 
 
 void ov42_02227E38(void) {
-    // ldr r3, _02227E44 ; =Sprite_UpdateAnim
-    // mov r1, #1
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #0xc
     // bx r3
     // nop
     // _02227E44: .word Sprite_UpdateAnim
-    // TODO: decompile
 }
 
 
 
 
 void ov42_02227E48(void) {
-    // ldr r3, _02227E54 ; =Sprite_UpdateAnim
-    // mov r1, #2
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #0xe
     // bx r3
     // nop
     // _02227E54: .word Sprite_UpdateAnim
-    // TODO: decompile
 }
 
 
 
 
 void ov42_02227E58(void) {
-    // ldr r3, _02227E64 ; =Sprite_UpdateAnim
-    // mov r1, #6
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #0xc
     // bx r3
     // nop
     // _02227E64: .word Sprite_UpdateAnim
-    // TODO: decompile
 }
 
 
 
 
 void ov42_02227E68(void) {
-    // ldr r0, [r0, #4]
     // cmp r0, #0
     // bne _02227E72
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -955,9 +898,6 @@ void ov42_02227F40(void) {
 
 
 void ov42_02227F44(void) {
-    // ldrh r0, [r0, #2]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1123,12 +1063,9 @@ void ov42_02228270(void) {
 
 
 void ov42_022282A4(void) {
-    // ldr r1, _022282AC ; =ov42_02229E08
     // ldrb r0, [r1, r0]
-    // bx lr
     // nop
     // _022282AC: .word ov42_02229E08
-    // TODO: decompile
 }
 
 
@@ -1819,14 +1756,8 @@ void ov42_02229258(void) {
 
 
 void ov42_02229274(void) {
-    // ldr r0, [r0, #4]
     // cmp r0, #0
     // bne _0222927E
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

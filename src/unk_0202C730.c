@@ -50,9 +50,6 @@ void sub_0202C7C0(void) {
 
 
 void sub_0202C7DC(void) {
-    // ldr r0, [r0, #0x54]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -140,22 +137,10 @@ u32 sub_0202C88C(void) {
 
 
 void sub_0202C8C4(void) {
-    // ldrh r2, [r0]
-    // ldr r1, _0202C8E0 ; =0x0000FFFF
-    // cmp r2, r1
     // bne _0202C8D0
-    // mov r0, #1
-    // bx lr
-    // ldrh r0, [r0, #0x10]
-    // cmp r0, r1
     // bne _0202C8DA
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _0202C8E0: .word 0x0000FFFF
-    // TODO: decompile
 }
 
 

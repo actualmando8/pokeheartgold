@@ -69,14 +69,9 @@ void sub_02069870(void) {
 
 
 void sub_02069884(void) {
-    // ldr r3, _02069890 ; =sub_02069870
-    // add r2, r1, #0
-    // ldr r1, [r2, #0xc]
-    // ldr r2, [r2, #0x10]
     // bx r3
     // nop
     // _02069890: .word sub_02069870
-    // TODO: decompile
 }
 
 

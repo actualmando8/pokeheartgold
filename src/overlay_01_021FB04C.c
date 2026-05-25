@@ -31,86 +31,50 @@ void ov01_021FB0B0(void) {
 
 
 void ov01_021FB110(void) {
-    // add r3, r1, #0
-    // ldr r1, [r2]
-    // ldr r2, [r3, #0x10]
-    // ldr r3, _021FB11C ; =NARC_ReadFile
-    // lsl r1, r1, #3
     // bx r3
     // _021FB11C: .word NARC_ReadFile
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FB120(void) {
-    // ldr r2, [r2, #4]
-    // add r3, r1, #0
-    // mov r1, #0xc
     // mul r1, r2
-    // ldr r2, [r3, #0x14]
-    // ldr r3, _021FB130 ; =NARC_ReadFile
     // bx r3
     // nop
     // _021FB130: .word NARC_ReadFile
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FB134(void) {
-    // add r3, r1, #0
-    // ldr r1, [r2, #8]
-    // ldr r2, [r3, #4]
-    // ldr r3, _021FB140 ; =NARC_ReadFile
-    // lsl r1, r1, #2
     // bx r3
     // _021FB140: .word NARC_ReadFile
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FB144(void) {
-    // add r3, r1, #0
-    // ldr r1, [r2, #0xc]
-    // ldr r2, [r3]
-    // ldr r3, _021FB150 ; =NARC_ReadFile
-    // lsl r1, r1, #3
     // bx r3
     // _021FB150: .word NARC_ReadFile
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FB154(void) {
-    // add r3, r1, #0
-    // ldr r1, [r2, #0x10]
-    // ldr r2, [r3, #8]
-    // ldr r3, _021FB160 ; =NARC_ReadFile
-    // lsl r1, r1, #3
     // bx r3
     // _021FB160: .word NARC_ReadFile
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FB164(void) {
-    // add r3, r1, #0
-    // ldr r1, [r2, #0x14]
-    // ldr r2, [r3, #0xc]
-    // ldr r3, _021FB170 ; =NARC_ReadFile
-    // lsl r1, r1, #1
     // bx r3
     // _021FB170: .word NARC_ReadFile
-    // TODO: decompile
 }
 
 

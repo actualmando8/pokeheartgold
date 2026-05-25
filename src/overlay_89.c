@@ -1225,21 +1225,15 @@ void ov89_0225A41C(void) {
 
 
 void ov89_0225A468(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov89_0225A46C(void) {
-    // ldr r3, _0225A474 ; =MI_CpuFill8
-    // mov r1, #0
-    // ldr r2, _0225A478 ; =0x00000744
     // bx r3
     // _0225A474: .word MI_CpuFill8
     // _0225A478: .word 0x00000744
-    // TODO: decompile
 }
 
 
@@ -1704,27 +1698,10 @@ void ov89_0225ADA4(void) {
 
 
 void ov89_0225AEA8(void) {
-    // ldr r3, [r0]
-    // ldr r2, [r1, #4]
-    // cmp r3, r2
     // bgt _0225AECC
-    // ldr r3, [r1]
-    // ldr r2, [r0, #4]
-    // cmp r3, r2
     // bgt _0225AECC
-    // ldr r3, [r0, #8]
-    // ldr r2, [r1, #0xc]
-    // cmp r3, r2
     // blt _0225AECC
-    // ldr r1, [r1, #8]
-    // ldr r0, [r0, #0xc]
-    // cmp r1, r0
     // blt _0225AECC
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2967,64 +2944,39 @@ void ov89_0225C84C(void) {
 
 
 void ov89_0225C88C(void) {
-    // ldr r3, _0225C8B0 ; =0x000001E7
-    // cmp r0, r3
     // bne _0225C89A
     // cmp r1, #0
     // ble _0225C89A
-    // mov r0, #0
-    // bx lr
-    // ldr r1, _0225C8B4 ; =0x000001ED
-    // cmp r0, r1
     // bne _0225C8A8
     // cmp r2, #0
     // bne _0225C8A8
-    // mov r0, #0
-    // bx lr
-    // lsl r1, r0, #2
-    // ldr r0, _0225C8B8 ; =ov89_0225CE94
     // ldrb r0, [r0, r1]
-    // bx lr
     // _0225C8B0: .word 0x000001E7
     // _0225C8B4: .word 0x000001ED
     // _0225C8B8: .word ov89_0225CE94
-    // TODO: decompile
 }
 
 
 
 
 void ov89_0225C8BC(void) {
-    // ldr r2, _0225C8D4 ; =0x000001E7
-    // cmp r0, r2
     // bne _0225C8CA
     // cmp r1, #0
     // ble _0225C8CA
-    // mov r0, #2
-    // bx lr
-    // lsl r1, r0, #2
-    // ldr r0, _0225C8D8 ; =ov89_0225CE95
     // ldrb r0, [r0, r1]
-    // bx lr
     // nop
     // _0225C8D4: .word 0x000001E7
     // _0225C8D8: .word ov89_0225CE95
-    // TODO: decompile
 }
 
 
 
 
 void ov89_0225C8DC(void) {
-    // ldr r3, _0225C8E8 ; =ov45_0222EE50
-    // add r2, r0, #0
-    // ldr r0, _0225C8EC ; =ov89_0225D64C
-    // mov r1, #3
     // bx r3
     // nop
     // _0225C8E8: .word ov45_0222EE50
     // _0225C8EC: .word ov89_0225D64C
-    // TODO: decompile
 }
 
 

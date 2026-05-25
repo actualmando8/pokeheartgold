@@ -609,9 +609,6 @@ void ov91_0225D2D0(void) {
 
 
 void ov91_0225D2E8(void) {
-    // ldr r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -654,9 +651,6 @@ void ov91_0225D368(void) {
 
 
 void ov91_0225D37C(void) {
-    // ldr r0, [r0, #0x18]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -976,14 +970,10 @@ void ov91_0225D884(void) {
 
 
 void ov91_0225D8E0(void) {
-    // ldr r3, _0225D8EC ; =Sprite_SetDrawFlag
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // mov r1, #0
     // bx r3
     // nop
     // _0225D8EC: .word Sprite_SetDrawFlag
-    // TODO: decompile
 }
 
 
@@ -1177,8 +1167,6 @@ void ov91_0225DBD0(void) {
 
 
 void ov91_0225DBE0(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1513,20 +1501,14 @@ void ov91_0225E1E4(void) {
 
 
 void ov91_0225E1EC(void) {
-    // ldr r0, _0225E1F0 ; =0x00000E38
-    // bx lr
     // _0225E1F0: .word 0x00000E38
-    // TODO: decompile
 }
 
 
 
 
 void ov91_0225E1F4(void) {
-    // ldr r0, _0225E1F8 ; =0x00003FFF
-    // bx lr
     // _0225E1F8: .word 0x00003FFF
-    // TODO: decompile
 }
 
 
@@ -1894,36 +1876,15 @@ void ov91_0225E8BC(void) {
 
 
 void ov91_0225E990(void) {
-    // ldr r1, [r0, #0x40]
-    // mov r0, #0x2f
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
     // blt _0225E9A6
-    // mov r0, #0xf
-    // lsl r0, r0, #0x10
-    // cmp r1, r0
     // bgt _0225E9A6
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov91_0225E9AC(void) {
-    // ldr r1, [r0, #0x40]
-    // mov r0, #0x1e
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
     // bgt _0225E9BA
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2492,9 +2453,6 @@ void ov91_0225F3D4(void) {
 
 
 void ov91_0225F3E4(void) {
-    // ldr r0, [r0, #0x14]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2957,14 +2915,10 @@ void ov91_0225FD2C(void) {
 
 
 void ov91_0225FDC8(void) {
-    // mov r1, #0x19
-    // lsl r1, r1, #4
-    // ldr r3, _0225FDD4 ; =Camera_Delete
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _0225FDD4: .word Camera_Delete
-    // TODO: decompile
 }
 
 
@@ -3031,8 +2985,6 @@ void ov91_0225FDE0(void) {
 
 
 void ov91_0225FEFC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -4506,10 +4458,7 @@ void ov91_02261B10(void) {
 
 
 void ov91_02261B20(void) {
-    // ldr r0, _02261B24 ; =ov91_02262754
-    // bx lr
     // _02261B24: .word ov91_02262754
-    // TODO: decompile
 }
 
 

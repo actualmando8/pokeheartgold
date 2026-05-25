@@ -8,14 +8,9 @@ void ov80_02229EE0(void) {
 
 
 void ov80_02229EF4(void) {
-    // add r3, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r3, _02229F00 ; =ReadWholeNarcMemberByIdPair
     // bx r3
     // nop
     // _02229F00: .word ReadWholeNarcMemberByIdPair
-    // TODO: decompile
 }
 
 
@@ -209,25 +204,13 @@ void ov80_0222A140(void) {
 
 
 void ov80_0222A30C(void) {
-    // ldr r3, _0222A32C ; =ov80_0223B628
-    // mov r2, #0
-    // ldrh r1, [r3]
-    // cmp r0, r1
     // bne _0222A31E
-    // ldr r0, _0222A330 ; =ov80_0223B62A
-    // lsl r1, r2, #2
     // ldrh r0, [r0, r1]
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #4
     // cmp r2, #0x3f
     // blo _0222A310
-    // mov r0, #3
-    // bx lr
     // nop
     // _0222A32C: .word ov80_0223B628
     // _0222A330: .word ov80_0223B62A
-    // TODO: decompile
 }
 
 
@@ -386,35 +369,18 @@ void ov80_0222A52C(void) {
 void ov80_0222A5A4(void) {
     // cmp r0, #0x64
     // bhs _0222A5AC
-    // mov r0, #3
-    // bx lr
     // cmp r0, #0x78
     // bhs _0222A5B4
-    // mov r0, #6
-    // bx lr
     // cmp r0, #0x8c
     // bhs _0222A5BC
-    // mov r0, #9
-    // bx lr
     // cmp r0, #0xa0
     // bhs _0222A5C4
-    // mov r0, #0xc
-    // bx lr
     // cmp r0, #0xb4
     // bhs _0222A5CC
-    // mov r0, #0xf
-    // bx lr
     // cmp r0, #0xc8
     // bhs _0222A5D4
-    // mov r0, #0x12
-    // bx lr
     // cmp r0, #0xdc
     // bhs _0222A5DC
-    // mov r0, #0x15
-    // bx lr
-    // mov r0, #0x1f
-    // bx lr
-    // TODO: decompile
 }
 
 

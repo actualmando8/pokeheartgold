@@ -1352,19 +1352,9 @@ void ov108_021EA700(void) {
     // bne _021EA714
     // cmp r1, #1
     // beq _021EA70C
-    // mov r0, #1
     // b _021EA70E
-    // mov r0, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
     // cmp r1, #1
     // bne _021EA71C
-    // mov r0, #2
-    // bx lr
-    // mov r0, #3
-    // bx lr
-    // TODO: decompile
 }
 
 

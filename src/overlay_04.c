@@ -664,14 +664,9 @@ void ov04_02254D98(void) {
 
 
 void ov04_02254DD0(void) {
-    // ldr r0, [r0, #4]
-    // ldr r3, _02254DDC ; =sub_0200E390
-    // ldr r0, [r0, #0x24]
-    // ldr r0, [r0, #0x14]
     // bx r3
     // nop
     // _02254DDC: .word SysTask_Destroy
-    // TODO: decompile
 }
 
 

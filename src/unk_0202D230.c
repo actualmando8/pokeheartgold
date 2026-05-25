@@ -26,13 +26,9 @@ void sub_0202D254(void) {
 
 
 void sub_0202D274(void) {
-    // ldr r3, _0202D27C ; =MI_CpuFill8
-    // mov r1, #0
-    // ldr r2, _0202D280 ; =0x00000B3C
     // bx r3
     // _0202D27C: .word MI_CpuFill8
     // _0202D280: .word 0x00000B3C
-    // TODO: decompile
 }
 
 
@@ -162,9 +158,6 @@ void sub_0202D4FC(void) {
 
 
 void sub_0202D564(void) {
-    // ldrh r0, [r0, #0x16]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -215,9 +208,6 @@ void sub_0202D638(void) {
 
 
 void sub_0202D63C(void) {
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -259,27 +249,9 @@ void sub_0202D6DC(void) {
 
 
 void sub_0202D6F8(void) {
-    // ldr r3, [r0]
-    // ldr r2, [r1]
-    // cmp r3, r2
     // bls _0202D704
-    // mov r0, #1
-    // bx lr
-    // ldr r3, [r0, #4]
-    // ldr r2, [r1, #4]
-    // cmp r3, r2
     // bls _0202D710
-    // mov r0, #1
-    // bx lr
-    // ldr r2, [r0, #8]
-    // ldr r0, [r1, #8]
-    // cmp r2, r0
     // bls _0202D71C
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

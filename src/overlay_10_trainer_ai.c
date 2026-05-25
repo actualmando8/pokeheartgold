@@ -1180,16 +1180,12 @@ void ov10_0221DDCC(void) {
 
 
 void ov10_0221DDE8(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov10_0221DDEC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

@@ -17,9 +17,6 @@ void sub_0205A46C(void) {
 
 
 void sub_0205A478(void) {
-    // ldr r0, [r0, #0x44]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -347,17 +344,10 @@ void sub_0205AC4C(void) {
 
 
 void sub_0205AC70(void) {
-    // mov r1, #0x61
-    // add r2, r0, #0
-    // lsl r1, r1, #2
     // ldr r1, [r2, r1]
-    // ldr r3, _0205AC80 ; =sub_02036FD8
-    // mov r0, #0x69
-    // ldr r2, _0205AC84 ; =0x0000066C
     // bx r3
     // _0205AC80: .word sub_02036FD8
     // _0205AC84: .word 0x0000066C
-    // TODO: decompile
 }
 
 

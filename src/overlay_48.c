@@ -749,14 +749,10 @@ void ov48_02259750(void) {
 
 
 void ov48_02259788(void) {
-    // mov r1, #5
-    // lsl r1, r1, #6
-    // ldr r3, _02259794 ; =GF_3DVramMan_Delete
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _02259794: .word GF_3DVramMan_Delete
-    // TODO: decompile
 }
 
 
@@ -972,9 +968,6 @@ void ov48_02259BA0(void) {
 
 
 void ov48_02259BBC(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1044,9 +1037,6 @@ void ov48_02259C78(void) {
 
 
 void ov48_02259CFC(void) {
-    // ldrh r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1132,14 +1122,6 @@ void ov48_02259E5C(void) {
     // beq _02259E6E
     // cmp r1, #2
     // beq _02259E72
-    // bx lr
-    // ldr r0, [r0]
-    // bx lr
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // ldr r0, [r0, #0x14]
-    // bx lr
-    // TODO: decompile
 }
 
 

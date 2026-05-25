@@ -79,16 +79,9 @@ void sub_02056EA0(void) {
 
 
 void sub_02056EE0(void) {
-    // ldr r0, _02056EF0 ; =_021D41C4
-    // ldr r0, [r0]
     // cmp r0, #0
     // beq _02056EEC
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _02056EF0: .word _021D41C4
-    // TODO: decompile
 }
 
 

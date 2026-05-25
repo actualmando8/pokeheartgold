@@ -27,32 +27,19 @@ void ov01_021F3D70(void) {
 
 
 void ov01_021F3D80(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F3D84(void) {
-    // ldrb r0, [r0, #0x12]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021F3D88(void) {
-    // ldrb r0, [r0, #0x13]
-    // lsl r0, r0, #0x19
-    // lsr r0, r0, #0x19
     // bne _021F3D94
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

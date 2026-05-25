@@ -32,16 +32,12 @@ void ov01_021EAF70(void) {
 
 
 void ov01_021EAF8C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021EAF90(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

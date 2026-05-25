@@ -117,11 +117,6 @@ void BattleArcade_MultiplayerCheck(void) {
     // beq _0223837C
     // cmp r0, #3
     // bne _02238380
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -185,19 +180,10 @@ void ov80_02238498(void) {
 void ov80_022384BC(void) {
     // cmp r0, #9
     // bhs _022384C4
-    // mov r0, #0
-    // bx lr
     // cmp r0, #0x12
     // bhs _022384CC
-    // mov r0, #1
-    // bx lr
     // cmp r0, #0x1b
     // bhs _022384D4
-    // mov r0, #2
-    // bx lr
-    // mov r0, #3
-    // bx lr
-    // TODO: decompile
 }
 
 

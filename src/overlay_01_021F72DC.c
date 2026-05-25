@@ -955,8 +955,6 @@ void ov01_021F8CFC(void) {
 
 
 void ov01_021F8D24(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

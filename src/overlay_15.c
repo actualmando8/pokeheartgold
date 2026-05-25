@@ -205,14 +205,9 @@ void BagApp_GetSaveStructPtrs(void) {
 
 
 void BagApp_GetSaveRoamers(void) {
-    // mov r1, #0x8d
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // ldr r3, _021F9938 ; =Save_Roamers_Get
-    // ldr r0, [r0]
     // bx r3
     // _021F9938: .word Save_Roamers_Get
-    // TODO: decompile
 }
 
 
@@ -409,14 +404,9 @@ void ov15_021F9D60(void) {
 
 
 void ov15_021F9D8C(void) {
-    // add r3, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r3, _021F9D98 ; =ReadMsgDataIntoString
     // bx r3
     // nop
     // _021F9D98: .word ReadMsgDataIntoString
-    // TODO: decompile
 }
 
 
@@ -525,8 +515,6 @@ void ov15_021FA044(void) {
 
 
 void ov15_021FA070(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -993,15 +981,11 @@ void ov15_021FAB34(void) {
 
 
 void ov15_021FAC2C(void) {
-    // ldr r0, _021FAC38 ; =ov15_02201314
-    // lsl r1, r1, #2
-    // ldr r3, _021FAC3C ; =TouchscreenHitbox_FindRectAtTouchNew
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _021FAC38: .word ov15_02201314
     // _021FAC3C: .word TouchscreenHitbox_FindRectAtTouchNew
-    // TODO: decompile
 }
 
 
@@ -2497,11 +2481,6 @@ void ov15_021FD3F0(void) {
     // blo _021FD400
     // cmp r1, #0x63
     // bhs _021FD400
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3881,13 +3860,10 @@ void ov15_021FF004(void) {
 
 
 void ov15_021FF058(void) {
-    // ldr r1, _021FF060 ; =0x00000804
-    // ldr r3, _021FF064 ; =YesNoPrompt_Destroy
     // ldr r0, [r0, r1]
     // bx r3
     // _021FF060: .word 0x00000804
     // _021FF064: .word YesNoPrompt_Destroy
-    // TODO: decompile
 }
 
 
@@ -4548,14 +4524,9 @@ void ov15_021FFECC(void) {
 
 
 void ov15_021FFF24(void) {
-    // mov r1, #0x2a
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // ldr r3, _021FFF30 ; =ManagedSprite_SetDrawFlag
-    // mov r1, #0
     // bx r3
     // _021FFF30: .word ManagedSprite_SetDrawFlag
-    // TODO: decompile
 }
 
 
@@ -4707,16 +4678,10 @@ void ov15_022002B4(void) {
 
 
 void ov15_022002EC(void) {
-    // mov r1, #0
     // cmp r0, #0x64
     // bge _022002F4
-    // mov r1, #1
     // cmp r0, #0xa
     // bge _022002FA
-    // mov r1, #2
-    // add r0, r1, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -4780,14 +4745,10 @@ void ov15_02200458(void) {
 
 
 void ov15_022004DC(void) {
-    // mov r2, #0xa7
-    // lsl r2, r2, #2
-    // ldr r3, _022004E8 ; =ManagedSprite_SetDrawFlag
     // ldr r0, [r0, r2]
     // bx r3
     // nop
     // _022004E8: .word ManagedSprite_SetDrawFlag
-    // TODO: decompile
 }
 
 

@@ -45,15 +45,11 @@ void ov80_0222AE1C(void) {
 
 
 void ov80_0222AE28(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 void ov80_0222AE2C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -70,8 +66,6 @@ void ov80_0222AE30(void) {
 
 
 void ov80_0222AE68(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -82,8 +76,6 @@ void ov80_0222AE6C(void) {
 
 
 void ov80_0222AE80(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -94,8 +86,6 @@ void ov80_0222AE84(void) {
 
 
 void ov80_0222AE9C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -122,8 +112,6 @@ void ov80_0222AEBC(void) {
 
 
 void ov80_0222AEF4(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

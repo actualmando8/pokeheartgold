@@ -2,15 +2,10 @@
 #include "global.h"
 
 void sub_0208F658(void) {
-    // ldr r3, _0208F664 ; =sub_0203410C
-    // add r2, r0, #0
-    // ldr r0, _0208F668 ; =_02105430
-    // mov r1, #0xb
     // bx r3
     // nop
     // _0208F664: .word sub_0203410C
     // _0208F668: .word _02105430
-    // TODO: decompile
 }
 
 
@@ -19,15 +14,8 @@ void sub_0208F658(void) {
 void sub_0208F66C(void) {
     // cmp r0, #0xc
     // bne _0208F674
-    // mov r0, #0xc
-    // bx lr
     // cmp r0, #6
     // bhs _0208F67C
-    // add r0, r0, #6
-    // bx lr
-    // sub r0, r0, #6
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -68,16 +56,12 @@ void sub_0208F714(void) {
 
 
 void sub_0208F724(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_0208F728(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -91,8 +75,6 @@ void sub_0208F72C(void) {
 
 
 void sub_0208F738(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

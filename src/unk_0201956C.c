@@ -375,8 +375,6 @@ void sub_02019B70(void) {
 
 
 void sub_02019BA0(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

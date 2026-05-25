@@ -470,57 +470,36 @@ void ov71_02247340(void) {
 
 
 void ov71_02247384(void) {
-    // ldr r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov71_02247388(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov71_0224738C(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov71_02247390(void) {
-    // ldr r0, [r0]
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov71_02247398(void) {
-    // ldr r0, [r0]
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov71_022473A0(void) {
-    // ldr r0, [r0]
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -534,12 +513,9 @@ void ov71_022473A8(void) {
 
 
 void ov71_022473B0(void) {
-    // ldr r1, _022473B8 ; =0x0000014E
     // ldrh r0, [r0, r1]
-    // bx lr
     // nop
     // _022473B8: .word 0x0000014E
-    // TODO: decompile
 }
 
 
@@ -553,12 +529,9 @@ void ov71_022473BC(void) {
 
 
 void ov71_022473C4(void) {
-    // ldr r1, _022473CC ; =0x00000152
     // ldrh r0, [r0, r1]
-    // bx lr
     // nop
     // _022473CC: .word 0x00000152
-    // TODO: decompile
 }
 
 
@@ -571,10 +544,6 @@ void ov71_022473D0(void) {
 
 
 void ov71_022473DC(void) {
-    // ldr r0, [r0]
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -829,56 +798,36 @@ void ov71_022477EC(void) {
 
 
 void ov71_0224780C(void) {
-    // ldr r3, _02247818 ; =Camera_SetAnglePos
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // ldr r1, [r2]
     // bx r3
     // nop
     // _02247818: .word Camera_SetAnglePos
-    // TODO: decompile
 }
 
 
 
 
 void ov71_0224781C(void) {
-    // ldr r3, _02247828 ; =Camera_AdjustAngleTarget
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // ldr r1, [r2]
     // bx r3
     // nop
     // _02247828: .word Camera_AdjustAngleTarget
-    // TODO: decompile
 }
 
 
 
 
 void ov71_0224782C(void) {
-    // ldr r3, _02247838 ; =Camera_ApplyPerspectiveType
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // ldr r1, [r2]
     // bx r3
     // nop
     // _02247838: .word Camera_ApplyPerspectiveType
-    // TODO: decompile
 }
 
 
 
 
 void ov71_0224783C(void) {
-    // ldr r3, _02247848 ; =Camera_SetPerspectiveAngle
-    // add r2, r0, #0
-    // add r0, r1, #0
-    // ldr r1, [r2]
     // bx r3
     // nop
     // _02247848: .word Camera_SetPerspectiveAngle
-    // TODO: decompile
 }
 
 
@@ -1215,14 +1164,8 @@ void ov71_022480C0(void) {
 
 
 void ov71_02248110(void) {
-    // ldr r0, [r0, #0x78]
     // cmp r0, #0
     // bne _0224811A
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1269,14 +1212,8 @@ void ov71_0224817C(void) {
 
 
 void ov71_022481C8(void) {
-    // ldr r0, [r0, #0x7c]
     // cmp r0, #0
     // bne _022481D2
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2490,14 +2427,8 @@ void ov71_022499A4(void) {
 
 
 void ov71_02249A50(void) {
-    // ldr r0, [r0, #4]
     // cmp r0, #0
     // bne _02249A5A
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3033,14 +2964,8 @@ void ov71_0224A5C4(void) {
 
 
 void ov71_0224A684(void) {
-    // ldr r0, [r0, #4]
     // cmp r0, #0
     // bne _0224A68E
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3803,14 +3728,8 @@ void ov71_0224B910(void) {
 
 
 void ov71_0224B960(void) {
-    // ldr r0, [r0, #0x7c]
     // cmp r0, #0
     // bne _0224B96A
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

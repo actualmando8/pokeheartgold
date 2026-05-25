@@ -23,8 +23,6 @@ void sub_0202C03C(void) {
 
 
 void sub_0202C08C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -340,10 +338,7 @@ void sub_0202C5E4(void) {
 
 
 void sub_0202C6F4(void) {
-    // ldr r0, _0202C6F8 ; =_021D2230
-    // bx lr
     // _0202C6F8: .word _021D2230
-    // TODO: decompile
 }
 
 

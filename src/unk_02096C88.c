@@ -24,15 +24,10 @@ void sub_02096CC8(void) {
 
 
 void sub_02096CE0(void) {
-    // ldr r3, _02096CEC ; =sub_0203410C
-    // add r2, r0, #0
-    // ldr r0, _02096CF0 ; =_0210884C
-    // mov r1, #0x87
     // bx r3
     // nop
     // _02096CEC: .word sub_0203410C
     // _02096CF0: .word _0210884C
-    // TODO: decompile
 }
 
 
@@ -103,14 +98,8 @@ void sub_02096DBC(void) {
 
 
 void sub_02096DE4(void) {
-    // ldr r0, [r3]
-    // ldr r3, _02096DF0 ; =ov85_021E9C84
-    // ldr r0, [r0, #0x38]
-    // mov r1, #2
-    // mov r2, #0
     // bx r3
     // _02096DF0: .word ov85_021E9C84
-    // TODO: decompile
 }
 
 
@@ -178,14 +167,9 @@ void sub_02096F3C(void) {
 
 
 void sub_02096F50(void) {
-    // ldr r0, [r3]
-    // ldr r3, _02096F5C ; =ov85_021E8680
-    // ldr r0, [r0, #0x34]
-    // add r1, r2, #0
     // bx r3
     // nop
     // _02096F5C: .word ov85_021E8680
-    // TODO: decompile
 }
 
 
@@ -193,14 +177,9 @@ void sub_02096F50(void) {
 
 
 void sub_02096F60(void) {
-    // ldr r0, [r3]
-    // ldr r3, _02096F6C ; =ov85_021E86AC
-    // ldr r0, [r0, #0x34]
-    // ldr r1, [r2]
     // bx r3
     // nop
     // _02096F6C: .word ov85_021E86AC
-    // TODO: decompile
 }
 
 
@@ -208,14 +187,9 @@ void sub_02096F60(void) {
 
 
 void sub_02096F70(void) {
-    // ldr r0, [r3]
-    // ldr r3, _02096F7C ; =ov85_021E85C4
-    // ldr r0, [r0, #0x34]
-    // ldrb r1, [r2]
     // bx r3
     // nop
     // _02096F7C: .word ov85_021E85C4
-    // TODO: decompile
 }
 
 
@@ -230,14 +204,8 @@ void sub_02096F80(void) {
 
 
 void sub_02096F9C(void) {
-    // add r1, r0, #0
-    // ldr r0, [r3]
-    // ldr r3, _02096FA8 ; =ov85_021E8740
-    // ldr r0, [r0, #0x34]
-    // ldr r2, [r2]
     // bx r3
     // _02096FA8: .word ov85_021E8740
-    // TODO: decompile
 }
 
 
@@ -245,14 +213,9 @@ void sub_02096F9C(void) {
 
 
 void sub_02096FAC(void) {
-    // ldr r0, [r3]
-    // ldr r3, _02096FB8 ; =ov85_021E8748
-    // ldr r0, [r0, #0x34]
-    // add r1, r2, #0
     // bx r3
     // nop
     // _02096FB8: .word ov85_021E8748
-    // TODO: decompile
 }
 
 

@@ -96,9 +96,6 @@ void ov12_0226BD4C(void) {
 
 
 void ov12_0226BD50(void) {
-    // ldrb r0, [r0, #0x1b]
-    // bx lr
-    // TODO: decompile
 }
 
 

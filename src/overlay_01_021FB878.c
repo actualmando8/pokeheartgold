@@ -80,35 +80,25 @@ void ov01_021FB9E0(void) {
 
 
 void ov01_021FB9F4(void) {
-    // ldr r1, _021FB9FC ; =0x000008AC
     // ldr r0, [r0, r1]
-    // bx lr
     // nop
     // _021FB9FC: .word 0x000008AC
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FBA00(void) {
-    // ldr r1, _021FBA10 ; =0x000008B7
     // ldrb r0, [r0, r1]
     // cmp r0, #0
     // beq _021FBA0C
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _021FBA10: .word 0x000008B7
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FBA14(void) {
-    // ldr r1, _021FBA38 ; =0x000008B7
     // ldrb r0, [r0, r1]
     // cmp r0, #0
     // beq _021FBA26
@@ -117,17 +107,8 @@ void ov01_021FBA14(void) {
     // cmp r0, #2
     // beq _021FBA2E
     // b _021FBA32
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // mov r0, #3
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _021FBA38: .word 0x000008B7
-    // TODO: decompile
 }
 
 
@@ -357,9 +338,6 @@ void Field3dModelAnimation_FrameSet(void) {
 
 
 void ov01_021FBF28(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -429,9 +407,6 @@ void Field3dObject_SetActiveFlag(void) {
 
 
 void Field3dObject_GetActiveFlag(void) {
-    // ldr r0, [r0, #0x6c]
-    // bx lr
-    // TODO: decompile
 }
 
 

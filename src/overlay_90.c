@@ -153,18 +153,12 @@ void ov90_02258A04(void) {
 
 
 void ov90_02258AA0(void) {
-    // ldrb r0, [r0, #6]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov90_02258AA4(void) {
-    // ldrb r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -278,14 +272,8 @@ void ov90_02258CB0(void) {
 
 
 void ov90_02258CE0(void) {
-    // ldrh r0, [r0, #4]
     // cmp r0, #0
     // bne _02258CEA
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -562,28 +550,18 @@ void ov90_022591F4(void) {
 
 
 void ov90_02259200(void) {
-    // ldr r3, _0225920C ; =BufferPlayersName
-    // add r2, r1, #0
-    // ldr r0, [r0, #4]
-    // mov r1, #0
     // bx r3
     // nop
     // _0225920C: .word BufferPlayersName
-    // TODO: decompile
 }
 
 
 
 
 void ov90_02259210(void) {
-    // ldr r3, _0225921C ; =BufferCountryName
-    // add r2, r1, #0
-    // ldr r0, [r0, #4]
-    // mov r1, #0
     // bx r3
     // nop
     // _0225921C: .word BufferCountryName
-    // TODO: decompile
 }
 
 
@@ -608,28 +586,18 @@ void ov90_02259250(void) {
 
 
 void ov90_0225926C(void) {
-    // ldr r3, _02259278 ; =BufferWiFiPlazaInstrumentName
-    // add r2, r1, #0
-    // ldr r0, [r0, #4]
-    // mov r1, #1
     // bx r3
     // nop
     // _02259278: .word BufferWiFiPlazaInstrumentName
-    // TODO: decompile
 }
 
 
 
 
 void ov90_0225927C(void) {
-    // ldr r3, _02259288 ; =BufferWiFiPlazaActivityName
-    // add r2, r1, #0
-    // ldr r0, [r0, #4]
-    // mov r1, #0
     // bx r3
     // nop
     // _02259288: .word BufferWiFiPlazaActivityName
-    // TODO: decompile
 }
 
 
@@ -874,14 +842,10 @@ void ov90_022596C8(void) {
 
 
 void ov90_02259784(void) {
-    // mov r1, #0x7f
-    // lsl r1, r1, #2
-    // ldr r3, _02259790 ; =Heap_Free
     // ldr r0, [r0, r1]
     // bx r3
     // nop
     // _02259790: .word Heap_Free
-    // TODO: decompile
 }
 
 
@@ -2040,13 +2004,10 @@ void ov90_0225B2A8(void) {
 
 
 void ov90_0225B330(void) {
-    // ldr r1, _0225B338 ; =0x00000654
-    // ldr r3, _0225B33C ; =Heap_Free
     // ldr r0, [r0, r1]
     // bx r3
     // _0225B338: .word 0x00000654
     // _0225B33C: .word Heap_Free
-    // TODO: decompile
 }
 
 
@@ -2099,9 +2060,6 @@ void ov90_0225B38C(void) {
 
 
 void ov90_0225B538(void) {
-    // ldrb r0, [r0, #0x1f]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2663,10 +2621,7 @@ void ov90_0225C06C(void) {
 
 
 void ov90_0225C150(void) {
-    // ldr r0, _0225C154 ; =ov90_0225C4FC
-    // bx lr
     // _0225C154: .word ov90_0225C4FC
-    // TODO: decompile
 }
 
 
@@ -2709,28 +2664,18 @@ void ov90_0225C19C(void) {
 
 
 void ov90_0225C1A8(void) {
-    // add r1, r0, #0
-    // add r0, r3, #0
-    // ldr r3, _0225C1B4 ; =ov90_02258B2C
-    // mov r2, #1
     // bx r3
     // nop
     // _0225C1B4: .word ov90_02258B2C
-    // TODO: decompile
 }
 
 
 
 
 void ov90_0225C1B8(void) {
-    // add r1, r0, #0
-    // add r0, r3, #0
-    // ldr r3, _0225C1C4 ; =ov90_02258B2C
-    // mov r2, #0
     // bx r3
     // nop
     // _0225C1C4: .word ov90_02258B2C
-    // TODO: decompile
 }
 
 

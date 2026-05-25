@@ -46,9 +46,6 @@ void FieldWeatherUpdate_UsedFlash(void) {
 
 
 void ov01_021EB31C(void) {
-    // ldr r0, [r0, #4]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -733,8 +730,6 @@ void ov01_021EC2E4(void) {
 
 
 void ov01_021EC300(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

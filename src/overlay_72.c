@@ -126,12 +126,8 @@ void ov72_02237B54(void) {
 
 
 void ov72_02237B74(void) {
-    // ldr r0, _02237B7C ; =_0223B820
-    // ldr r0, [r0, #4]
-    // bx lr
     // nop
     // _02237B7C: .word _0223B820
-    // TODO: decompile
 }
 
 
@@ -379,8 +375,6 @@ void ov72_02238144(void) {
 
 
 void ov72_02238160(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2124,8 +2118,6 @@ void ov72_0223A414(void) {
 
 
 void ov72_0223A41C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

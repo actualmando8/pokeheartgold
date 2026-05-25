@@ -62,38 +62,16 @@ BOOL FrtCmd_132(void) {
 void ov80_0223558C(void) {
     // cmp r1, #2
     // bne _02235598
-    // ldrb r0, [r0, #0x10]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x1d
-    // bx lr
     // cmp r1, #1
     // bne _022355BE
-    // ldrb r1, [r0, #0xf]
     // cmp r1, #2
     // bne _022355B0
-    // ldrb r0, [r0, #0x10]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x1d
-    // lsl r1, r0, #1
-    // ldr r0, _022355CC ; =ov80_0223C034
     // ldrh r0, [r0, r1]
-    // bx lr
-    // ldrb r0, [r0, #0x12]
     // cmp r0, #0
     // beq _022355BA
-    // mov r0, #0x61
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // ldrb r0, [r0, #0x11]
     // cmp r0, #0
     // beq _022355C8
-    // mov r0, #0x61
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _022355CC: .word ov80_0223C034
-    // TODO: decompile
 }
 
 

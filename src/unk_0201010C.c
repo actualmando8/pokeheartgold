@@ -829,16 +829,11 @@ void sub_02011080(void) {
 
 
 void sub_020110C4(void) {
-    // ldr r3, _020110D0 ; =SysTask_CreateOnVWaitQueue
-    // add r1, r0, #0
-    // ldr r0, _020110D4 ; =sub_02011104
-    // ldr r2, _020110D8 ; =0x000003FF
     // bx r3
     // nop
     // _020110D0: .word SysTask_CreateOnVWaitQueue
     // _020110D4: .word sub_02011104
     // _020110D8: .word 0x000003FF
-    // TODO: decompile
 }
 
 
@@ -851,13 +846,10 @@ void sub_020110DC(void) {
 
 
 void sub_020110F4(void) {
-    // ldr r3, _020110FC ; =0x00000309
     // ldrb r1, [r1, r3]
-    // ldr r3, _02011100 ; =sub_0200FFB4
     // bx r3
     // _020110FC: .word 0x00000309
     // _02011100: .word sub_0200FFB4
-    // TODO: decompile
 }
 
 
@@ -1663,8 +1655,6 @@ void sub_02012454(void) {
 
 
 void sub_020124AC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1808,8 +1798,6 @@ void sub_0201275C(void) {
 
 
 void sub_020127B4(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1950,8 +1938,6 @@ void sub_02012A2C(void) {
 
 
 void sub_02012A8C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

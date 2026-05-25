@@ -112,9 +112,6 @@ void ov01_021EFD3C(void) {
 
 
 void ov01_021EFE30(void) {
-    // ldr r0, [r0, #0x18]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -981,15 +978,9 @@ void ov01_021F0DB0(void) {
 
 
 void ov01_021F0DC8(void) {
-    // ldr r3, _021F0DD4 ; =SysTask_CreateOnVWaitQueue
-    // mov r2, #1
-    // add r1, r0, #0
-    // ldr r0, _021F0DD8 ; =ov01_021F0DB0
-    // lsl r2, r2, #0xa
     // bx r3
     // _021F0DD4: .word SysTask_CreateOnVWaitQueue
     // _021F0DD8: .word ov01_021F0DB0
-    // TODO: decompile
 }
 
 
@@ -1213,15 +1204,9 @@ void ov01_021F1250(void) {
 
 
 void ov01_021F127C(void) {
-    // ldr r3, _021F1288 ; =SysTask_CreateOnVBlankQueue
-    // mov r2, #1
-    // add r1, r0, #0
-    // ldr r0, _021F128C ; =ov01_021F1290
-    // lsl r2, r2, #0xa
     // bx r3
     // _021F1288: .word SysTask_CreateOnVBlankQueue
     // _021F128C: .word ov01_021F1290
-    // TODO: decompile
 }
 
 

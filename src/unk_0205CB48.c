@@ -277,9 +277,6 @@ void sub_0205D428(void) {
 
 
 void sub_0205D44C(void) {
-    // add r0, r2, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

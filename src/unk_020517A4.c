@@ -58,28 +58,12 @@ int BattleSetup_GetWildBattleMusic(void) {
 
 
 void NPCTrainerGetBattleIntroAndMusicParam(void) {
-    // ldr r3, _02051890 ; =_020FC3CA
-    // mov r2, #0
-    // ldrh r1, [r3]
-    // lsl r1, r1, #0x16
-    // lsr r1, r1, #0x16
-    // cmp r0, r1
     // bne _02051882
-    // ldr r0, _02051890 ; =_020FC3CA
-    // lsl r1, r2, #1
     // ldrh r0, [r0, r1]
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x1a
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #2
     // cmp r2, #0x20
     // blo _0205186C
-    // mov r0, #0x29
-    // bx lr
     // nop
     // _02051890: .word _020FC3CA
-    // TODO: decompile
 }
 
 

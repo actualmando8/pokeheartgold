@@ -36,8 +36,6 @@ void sub_02065968(void) {
 
 
 void sub_02065998(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -237,8 +235,6 @@ void sub_02066024(void) {
 
 
 void sub_02066054(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

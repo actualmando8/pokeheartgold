@@ -265,20 +265,14 @@ void GetDoorSE(void) {
 
 
 void ov01_021E9700(void) {
-    // ldr r1, _021E9718 ; =0x0000FFFF
     // cmp r0, #0x3d
     // beq _021E970C
     // cmp r0, #0xe0
     // beq _021E9710
     // b _021E9712
-    // mov r1, #0
     // b _021E9712
-    // mov r1, #1
-    // add r0, r1, #0
-    // bx lr
     // nop
     // _021E9718: .word 0x0000FFFF
-    // TODO: decompile
 }
 
 
@@ -505,14 +499,8 @@ void ov01_021E9C00(void) {
 
 
 void ov01_021E9C20(void) {
-    // add r3, r0, #0
-    // add r2, r1, #0
-    // ldr r0, [r3, #0x54]
-    // ldr r1, [r3, #0x58]
-    // ldr r3, _021E9C2C ; =ov01_021E8ED0
     // bx r3
     // _021E9C2C: .word ov01_021E8ED0
-    // TODO: decompile
 }
 
 

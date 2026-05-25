@@ -220,8 +220,6 @@ void sub_020606CC(void) {
 
 
 void sub_02060700(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -229,8 +227,6 @@ void sub_02060700(void) {
 
 
 void sub_02060704(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -311,8 +307,6 @@ void sub_02060AB8(void) {
 
 
 void sub_02060AF0(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -499,12 +493,8 @@ void sub_02060EEC(void) {
 
 
 void GetDeltaXByFacingDirection(void) {
-    // lsl r1, r0, #2
-    // ldr r0, _02060F14 ; =_020FD4AC
     // ldr r0, [r0, r1]
-    // bx lr
     // _02060F14: .word _020FD4AC
-    // TODO: decompile
 }
 
 
@@ -512,12 +502,8 @@ void GetDeltaXByFacingDirection(void) {
 
 
 void GetDeltaYByFacingDirection(void) {
-    // lsl r1, r0, #2
-    // ldr r0, _02060F20 ; =_020FD49C
     // ldr r0, [r0, r1]
-    // bx lr
     // _02060F20: .word _020FD49C
-    // TODO: decompile
 }
 
 
@@ -652,12 +638,8 @@ void sub_020611DC(void) {
 
 
 void sub_020611F4(void) {
-    // lsl r1, r0, #2
-    // ldr r0, _020611FC ; =_020FD4DC
     // ldr r0, [r0, r1]
-    // bx lr
     // _020611FC: .word _020FD4DC
-    // TODO: decompile
 }
 
 
@@ -665,21 +647,9 @@ void sub_020611F4(void) {
 
 
 void sub_02061200(void) {
-    // cmp r0, r2
     // ble _02061208
-    // mov r0, #2
-    // bx lr
-    // cmp r0, r2
     // bge _02061210
-    // mov r0, #3
-    // bx lr
-    // cmp r1, r3
     // bgt _02061218
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 

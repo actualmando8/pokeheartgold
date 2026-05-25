@@ -114,8 +114,6 @@ void sub_02095A34(void) {
 
 
 void sub_02095A78(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 

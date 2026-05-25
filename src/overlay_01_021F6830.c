@@ -222,22 +222,11 @@ u8 ov01_021F6BAC(void) {
 
 
 void ov01_021F6BB0(void) {
-    // ldr r3, _021F6BCC ; =ov01_02206C08
-    // mov r2, #0
-    // ldrh r1, [r3]
-    // cmp r0, r1
     // bne _021F6BBE
-    // mov r0, #1
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #2
     // cmp r2, #0x2b
     // blo _021F6BB4
-    // mov r0, #0
-    // bx lr
     // nop
     // _021F6BCC: .word ov01_02206C08
-    // TODO: decompile
 }
 
 

@@ -2,19 +2,10 @@
 #include "global.h"
 
 void sub_0202B614(void) {
-    // ldr r1, _0202B628 ; =0x00001234
-    // cmp r0, r1
     // beq _0202B620
-    // ldr r1, _0202B62C ; =0x00002345
-    // cmp r0, r1
     // bne _0202B624
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _0202B628: .word 0x00001234
     // _0202B62C: .word 0x00002345
-    // TODO: decompile
 }
 
 
@@ -188,11 +179,6 @@ void sub_0202B8D8(void) {
 void sub_0202B8FC(void) {
     // cmp r0, #0x3d
     // bhs _0202B904
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -225,10 +211,7 @@ void Save_FashionData_Init(void) {
 
 
 void Save_FashionData_sizeof(void) {
-    // ldr r0, _0202B990 ; =0x00000834
-    // bx lr
     // _0202B990: .word 0x00000834
-    // TODO: decompile
 }
 
 
@@ -533,18 +516,12 @@ void sub_0202BEFC(void) {
 
 
 void sub_0202BF00(void) {
-    // ldrb r0, [r0, #1]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void sub_0202BF04(void) {
-    // ldrb r0, [r0, #2]
-    // bx lr
-    // TODO: decompile
 }
 
 

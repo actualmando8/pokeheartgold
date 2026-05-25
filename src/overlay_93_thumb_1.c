@@ -1015,8 +1015,6 @@ void ov93_0225DB2C(void) {
 
 
 void ov93_0225DBC4(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1077,8 +1075,6 @@ void ov93_0225DBC8(void) {
 
 
 void ov93_0225DD28(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1464,12 +1460,9 @@ void ov93_0225E370(void) {
 
 
 void ov93_0225E3B8(void) {
-    // ldr r1, _0225E3C0 ; =0x00002FC8
     // ldr r0, [r0, r1]
-    // bx lr
     // nop
     // _0225E3C0: .word 0x00002FC8
-    // TODO: decompile
 }
 
 
@@ -1604,8 +1597,6 @@ void ov93_0225E764(void) {
 
 
 void ov93_0225E7AC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1710,25 +1701,15 @@ void ov93_0225EA50(void) {
 void ov93_0225EA6C(void) {
     // cmp r1, #0x62
     // blt _0225EA76
-    // mov r2, #0x4b
-    // lsl r2, r2, #4
     // b _0225EA7A
-    // mov r2, #0xa
     // mul r2, r1
-    // mov r1, #0x27
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // ldr r3, _0225EA90 ; =_s32_div_f
-    // lsl r1, r0, #2
-    // ldr r0, _0225EA94 ; =ov93_022630D8
     // ldr r0, [r0, r1]
-    // mov r1, #0x64
     // mul r0, r2
     // bx r3
     // nop
     // _0225EA90: .word _s32_div_f
     // _0225EA94: .word ov93_022630D8
-    // TODO: decompile
 }
 
 

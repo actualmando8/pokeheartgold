@@ -324,17 +324,8 @@ void ov01_021F9AB4(void) {
 
 
 void ov01_021F9AD0(void) {
-    // ldr r3, [r0]
-    // cmp r3, r1
     // bne _021F9ADA
-    // mov r0, #1
-    // bx lr
-    // add r0, r0, #4
-    // sub r2, r2, #1
     // bne _021F9AD0
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -721,9 +712,6 @@ void ov01_021FA208(void) {
 
 
 void ov01_021FA20C(void) {
-    // ldr r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -736,9 +724,6 @@ void ov01_021FA210(void) {
 
 
 void ov01_021FA214(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -751,9 +736,6 @@ void ov01_021FA218(void) {
 
 
 void ov01_021FA21C(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -766,9 +748,6 @@ void ov01_021FA220(void) {
 
 
 void ov01_021FA224(void) {
-    // ldr r0, [r0, #0x14]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -781,9 +760,6 @@ void ov01_021FA228(void) {
 
 
 void ov01_021FA22C(void) {
-    // ldr r0, [r0, #0x18]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -796,23 +772,16 @@ void ov01_021FA230(void) {
 
 
 void ov01_021FA234(void) {
-    // ldr r0, [r0, #0x1c]
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void FldObjSys_ReadMModelFromNarc(void) {
-    // mov r3, #0x41
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _021FA244 ; =ReadMModelFromNarcInternal
     // bx r3
     // nop
     // _021FA244: .word ReadMModelFromNarcInternal
-    // TODO: decompile
 }
 
 
@@ -935,36 +904,24 @@ void ov01_021FA40C(void) {
 
 
 void ov01_021FA44C(void) {
-    // lsl r1, r0, #2
-    // ldr r0, _021FA454 ; =ov01_02208B70
     // ldr r0, [r0, r1]
-    // bx lr
     // _021FA454: .word ov01_02208B70
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FA458(void) {
-    // lsl r1, r0, #2
-    // ldr r0, _021FA460 ; =ov01_02208B80
     // ldr r0, [r0, r1]
-    // bx lr
     // _021FA460: .word ov01_02208B80
-    // TODO: decompile
 }
 
 
 
 
 void ov01_021FA464(void) {
-    // lsl r1, r0, #2
-    // ldr r0, _021FA46C ; =ov01_02208B90
     // ldr r0, [r0, r1]
-    // bx lr
     // _021FA46C: .word ov01_02208B90
-    // TODO: decompile
 }
 
 

@@ -584,18 +584,10 @@ void ov27_0225AD0C(void) {
 void ov27_0225AE8C(void) {
     // cmp r0, #1
     // bne _0225AE94
-    // mov r0, #5
-    // bx lr
     // cmp r0, #3
     // bne _0225AE9E
-    // mov r0, #0x7d
-    // lsl r0, r0, #2
-    // bx lr
-    // ldr r0, _0225AEA4 ; =0x000001F3
-    // bx lr
     // nop
     // _0225AEA4: .word 0x000001F3
-    // TODO: decompile
 }
 
 
@@ -1139,20 +1131,11 @@ void ov27_0225BD50(void) {
 
 
 void ov27_0225BDAC(void) {
-    // ldr r1, _0225BDC4 ; =0x0000051C
     // ldr r0, [r0, r1]
-    // lsl r0, r0, #0x1b
-    // lsr r0, r0, #0x1c
-    // sub r0, r0, #2
     // cmp r0, #4
     // bls _0225BDBE
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // nop
     // _0225BDC4: .word 0x0000051C
-    // TODO: decompile
 }
 
 
@@ -1363,30 +1346,21 @@ void ov27_0225C1EC(void) {
 
 
 void ov27_0225C238(void) {
-    // ldr r3, _0225C244 ; =Heap_AllocAtEnd
-    // mov r1, #0xfa
-    // mov r0, #3
-    // lsl r1, r1, #2
     // bx r3
     // nop
     // _0225C244: .word Heap_AllocAtEnd
-    // TODO: decompile
 }
 
 
 
 
 void ov27_0225C248(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
 
 
 void ov27_0225C24C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1882,21 +1856,12 @@ void ov27_0225CD18(void) {
 
 
 void ov27_0225CD74(void) {
-    // mov r2, #0xe2
-    // lsl r2, r2, #2
     // ldr r0, [r0, r2]
-    // sub r2, r1, #2
-    // mov r1, #0x18
-    // add r3, r2, #0
     // mul r3, r1
-    // ldr r1, _0225CD8C ; =ov27_0225D3C6
     // ldrb r1, [r1, r3]
-    // ldr r3, _0225CD90 ; =sub_020248F0
-    // add r1, r1, #2
     // bx r3
     // _0225CD8C: .word ov27_0225D3C6
     // _0225CD90: .word Sprite_SetAnimCtrlSeq
-    // TODO: decompile
 }
 
 

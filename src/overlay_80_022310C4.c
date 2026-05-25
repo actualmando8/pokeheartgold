@@ -162,9 +162,6 @@ void ov80_022314DC(void) {
 
 
 void ov80_02231518(void) {
-    // ldrh r0, [r0, #6]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -298,9 +295,6 @@ void ov80_022317C0(void) {
 
 
 void ov80_022317CC(void) {
-    // ldrb r0, [r0, #5]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -353,41 +347,29 @@ void ov80_02231844(void) {
 
 
 void ov80_02231888(void) {
-    // ldrb r3, [r0, #4]
-    // ldrh r2, [r0, #0xa]
     // cmp r3, #1
     // bhi _0223189E
     // cmp r2, #0x12
     // blo _02231898
-    // mov r1, #0xc
     // b _022318AA
-    // ldr r1, _022318C8 ; =ov80_0223BDFC
     // ldrb r1, [r1, r2]
     // b _022318AA
     // cmp r2, #0x12
     // blo _022318A6
-    // mov r1, #0x17
     // b _022318AA
-    // ldr r1, _022318CC ; =ov80_0223BE10
     // ldrb r1, [r1, r2]
     // cmp r3, #0
     // bne _022318BC
-    // ldrh r0, [r0, #8]
     // cmp r0, #0x32
     // beq _022318B8
     // cmp r0, #0xaa
     // bne _022318C2
-    // mov r1, #0x14
     // b _022318C2
     // cmp r3, #2
     // bne _022318C2
-    // mov r1, #0xc
-    // add r0, r1, #0
-    // bx lr
     // nop
     // _022318C8: .word ov80_0223BDFC
     // _022318CC: .word ov80_0223BE10
-    // TODO: decompile
 }
 
 

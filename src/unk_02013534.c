@@ -89,23 +89,12 @@ int sub_02013688(void) {
 
 
 void sub_020136B4(void) {
-    // str r1, [sp]
-    // ldr r0, [sp]
-    // str r0, [sp]
-    // ldr r1, [sp]
-    // add r1, r1, r2
-    // str r1, [sp]
-    // add r7, r7, r0
-    // str r6, [sp, #0xc]
-    // add r0, r0, r4
-    // ldr r0, [sp]
-    // add r0, r0, r1
-    // str r0, [sp, #4]
-    // add r1, sp, #4
-    // add r0, r0, r4
-    // add r0, r7, r0
-    // str r0, [sp, #8]
-    // add r4, #0xc
+    *((u32*)sp) = r1;
+    *((u32*)sp) = *((u32*)sp);
+    *((u32*)sp) = (*((u32*)sp) + r2);
+    *((u32*)(sp + 0xc)) = r6;
+    *((u32*)(sp + 4)) = (*((u32*)sp) + (*((u32*)sp) + r2));
+    *((u32*)(sp + 8)) = ((r7 + *((u32*)sp)) + ((*((u32*)sp) + (*((u32*)sp) + r2)) + r4));
 }
 
 
@@ -113,21 +102,11 @@ void sub_020136B4(void) {
 
 
 void sub_02013728(void) {
-    // str r1, [sp]
-    // ldr r1, [sp]
-    // str r6, [sp, #0xc]
-    // add r7, r7, r0
-    // add r1, r1, r2
-    // str r1, [sp]
-    // add r0, r0, r4
-    // ldr r0, [sp]
-    // add r0, r0, r1
-    // str r0, [sp, #4]
-    // add r1, sp, #4
-    // add r0, r0, r4
-    // add r0, r7, r0
-    // str r0, [sp, #8]
-    // add r4, #0xc
+    *((u32*)sp) = r1;
+    *((u32*)(sp + 0xc)) = r6;
+    *((u32*)sp) = (*((u32*)sp) + r2);
+    *((u32*)(sp + 4)) = (*((u32*)sp) + (*((u32*)sp) + r2));
+    *((u32*)(sp + 8)) = ((r7 + r0) + ((*((u32*)sp) + (*((u32*)sp) + r2)) + r4));
 }
 
 
@@ -135,8 +114,8 @@ void sub_02013728(void) {
 
 
 void sub_02013794(void) {
-    // str r0, [r4]
-    // str r0, [r6]
+    *((u32*)r4) = r0;
+    *((u32*)r6) = r0;
 }
 
 
@@ -144,7 +123,6 @@ void sub_02013794(void) {
 
 
 void TextOBJ_SetSpritesDrawFlag(void) {
-    // add r4, #0xc
 }
 
 
@@ -152,7 +130,6 @@ void TextOBJ_SetSpritesDrawFlag(void) {
 
 
 void sub_020137F0(void) {
-    // add r4, #0xc
 }
 
 
@@ -160,7 +137,6 @@ void sub_020137F0(void) {
 
 
 void sub_02013820(void) {
-    // add r4, #0xc
 }
 
 
@@ -168,7 +144,6 @@ void sub_02013820(void) {
 
 
 void TextOBJ_SetPaletteNum(void) {
-    // add r4, #0xc
 }
 
 
@@ -176,7 +151,6 @@ void TextOBJ_SetPaletteNum(void) {
 
 
 void sub_02013880(void) {
-    // add r4, #0xc
 }
 
 
@@ -184,7 +158,6 @@ void sub_02013880(void) {
 
 
 void sub_020138B0(void) {
-    // add r4, #0xc
 }
 
 
@@ -192,7 +165,6 @@ void sub_020138B0(void) {
 
 
 void sub_020138E0(void) {
-    // add r4, #0xc
 }
 
 
@@ -251,15 +223,10 @@ void TextOBJ_Destroy(void) {
 
 
 void TextOBJ_CopyFromBGWindow(void) {
-    // str r2, [sp, #4]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0xc]
-    // ldr r1, [sp, #0xc]
-    // ldr r0, [sp, #4]
-    // ldr r3, [sp, #0xc]
-    // str r5, [sp]
-    // ldr r0, [sp, #8]
-    // ldr r1, [sp, #0xc]
+    *((u32*)(sp + 4)) = r2;
+    *((u32*)(sp + 8)) = r0;
+    *((u32*)(sp + 0xc)) = r0;
+    *((u32*)sp) = r5;
 }
 
 
@@ -267,28 +234,11 @@ void TextOBJ_CopyFromBGWindow(void) {
 
 
 void sub_02013A50(void) {
-    // ldr r0, [sp, #0x20]
-    // str r0, [sp, #0x20]
-    // ldr r0, [sp, #0x24]
-    // str r0, [sp, #0x24]
-    // add r0, r7, r0
-    // str r2, [sp]
-    // str r3, [sp, #4]
-    // ldr r1, [sp]
-    // ldr r0, [sp, #0x20]
-    // add r0, r1, r0
-    // ldr r0, [sp]
-    // str r0, [sp, #8]
-    // ldr r0, [sp, #0x20]
-    // add r0, r4, r0
-    // ldr r0, [sp, #4]
-    // add r2, r2, r0
-    // ldr r0, [sp, #0x24]
-    // add r0, r0, r1
-    // add r1, r1, r2
-    // ldr r2, [sp, #8]
-    // ldr r0, [sp]
-    // add r5, r5, r7
+    *((u32*)(sp + 0x20)) = *((u32*)(sp + 0x20));
+    *((u32*)(sp + 0x24)) = *((u32*)(sp + 0x24));
+    *((u32*)sp) = r2;
+    *((u32*)(sp + 4)) = r3;
+    *((u32*)(sp + 8)) = *((u32*)sp);
 }
 
 
@@ -296,7 +246,7 @@ void sub_02013A50(void) {
 
 
 void sub_02013AC0(void) {
-    // strb r1, [r0]
+    *((u8*)r0) = r1;
 }
 
 
@@ -304,37 +254,26 @@ void sub_02013AC0(void) {
 
 
 void sub_02013AD0(void) {
-    // add r0, r1, r0
-    // add r3, #0x14
 }
 
 
 
 
 
-void sub_02013AF8(void) {
-    // push {r3, r4}
-    // ldr r4, _02013B20 ; =_020F5F2C
-    // mov r3, #0
-    // ldrb r2, [r4]
-    // cmp r2, r0
-    // bgt _02013B10
-    // ldrb r2, [r4, #1]
-    // cmp r2, r1
-    // bgt _02013B10
-    // add r0, r3, #0
-    // pop {r3, r4}
-    // bx lr
-    // add r3, r3, #1
-    // add r4, r4, #2
-    // cmp r3, #0xc
-    // blt _02013AFE
-    // mov r0, #0xc
-    // pop {r3, r4}
-    // bx lr
-    // nop
-    // _02013B20: .word _020F5F2C
-    // TODO: decompile
+/* Address: 0x02013AF8
+ * Searches a table of byte pairs for matching values.
+ */
+u32 sub_02013AF8(u32 a1, u32 a2) {
+    u32 i;
+    
+    for (i = 0; i < 0xC; i++) {
+        u8 lo = *((u8*)(_020F5F2C + i * 2));
+        u8 hi = *((u8*)(_020F5F2C + i * 2 + 1));
+        if (lo <= a1 && hi <= a2)
+            return i;
+    }
+    
+    return 0xC;
 }
 
 
@@ -419,29 +358,16 @@ void sub_02013BD4(void) {
 
 
 void sub_02013C5C(void) {
-    // str r0, [sp, #0x10]
-    // ldr r0, [sp, #0x30]
-    // str r1, [sp, #0x14]
-    // str r0, [sp, #0x30]
-    // ldr r0, [sp, #0x34]
-    // str r0, [sp, #0x34]
-    // ldr r0, [sp, #0x30]
+    *((u32*)(sp + 0x10)) = r0;
+    *((u32*)(sp + 0x14)) = r1;
+    *((u32*)(sp + 0x30)) = *((u32*)(sp + 0x30));
+    *((u32*)(sp + 0x34)) = *((u32*)(sp + 0x34));
     // and r7, r0
-    ObjCharTransfer_GetBlockSizeFromMode(*((u32*)0x04001000), *((u32*)0x04001000));
-    // str r0, [sp, #0x18]
-    // ldr r0, [sp, #0x14]
-    NNS_G2dInitImageProxy(r5);
-    // str r7, [sp]
-    // ldr r0, [sp, #0x30]
-    // str r6, [sp, #4]
-    // str r0, [sp, #8]
-    // ldr r0, [sp, #0x34]
-    // ldr r3, [sp, #0x18]
-    // str r0, [sp, #0xc]
-    // ldr r0, [sp, #0x10]
-    sub_02013CD0(r4, r5);
-    // ldr r0, [sp, #0x14]
-    // add r5, #0x24
+    *((u32*)(sp + 0x18)) = *((u32*)(sp + 0x30));
+    *((u32*)sp) = r7;
+    *((u32*)(sp + 4)) = r6;
+    *((u32*)(sp + 8)) = *((u32*)(sp + 0x30));
+    *((u32*)(sp + 0xc)) = *((u32*)(sp + 0x34));
 }
 
 
@@ -449,38 +375,12 @@ void sub_02013C5C(void) {
 
 
 void sub_02013CD0(void) {
-    // str r0, [sp, #8]
-    // str r0, [sp, #0x10]
-    // ldr r1, [sp, #0x10]
-    // str r0, [sp, #0xc]
-    // ldr r0, [sp, #0x34]
-    Heap_AllocAtEnd(*((u8*)(_020F5F2D + (*((u32*)(r1 + 8)) << 1))), (r3 << 5));
-    // ldr r1, [sp, #0x10]
-    // str r0, [sp]
-    // str r7, [sp, #4]
-    // ldr r0, [sp, #8]
-    // ldr r2, [sp, #0xc]
-    sub_02013A50(*((u32*)(r6 + 4)), *((u32*)r6));
-    DC_FlushRange(r7, r4);
-    // ldr r0, [sp, #0x30]
-    // ldr r6, [sp, #0x2c]
-    GX_LoadOBJ(r7, r6, r4);
-    *((u32*)(r5 + 4)) = r6;
-    // ldr r6, [sp, #0x2c]
-    GXS_LoadOBJ(r7, r6, r4);
-    *((u32*)(r5 + 8)) = r6;
+    *((u32*)(sp + 8)) = r0;
+    *((u32*)(sp + 0x10)) = r0;
+    *((u32*)(sp + 0xc)) = r0;
+    *((u32*)sp) = *((u32*)(sp + 0x34));
+    *((u32*)(sp + 4)) = r7;
     // and r0, r1
-    *((u32*)(r5 + 0x20)) = 0x00300010;
-    *((u32*)(r5 + 0xc)) = 0x0000FFFF;
-    *((u32*)(r5 + 0x10)) = 0x0000FFFF;
-    *((u32*)(r5 + 0x14)) = 3;
-    *((u32*)(r5 + 0x18)) = 0;
-    *((u32*)(r5 + 0x1c)) = 1;
-    // ldr r0, [sp, #0x28]
-    *((u32*)(r5 + 0x20)) = 1;
-    Heap_Free(r7, *((u32*)0x04001000));
-    // ldr r0, [sp, #0x2c]
-    // add r0, r0, r4
 }
 
 
@@ -488,19 +388,13 @@ void sub_02013CD0(void) {
 
 
 void sub_02013D88(void) {
-    // str r0, [sp, #0xc]
-    // str r1, [sp, #0x10]
-    // ldr r7, [sp, #0x30]
+    *((u32*)(sp + 0xc)) = r0;
+    *((u32*)(sp + 0x10)) = r1;
     // and r5, r0
-    ObjCharTransfer_GetBlockSizeFromMode(*((u32*)0x04001000), *((u32*)0x04001000));
-    // str r0, [sp, #0x14]
-    // ldr r0, [sp, #0x14]
-    // ldr r2, [sp, #0x10]
-    // str r0, [sp]
-    // str r5, [sp, #4]
-    // ldr r0, [sp, #0xc]
-    // str r7, [sp, #8]
-    sub_02013DE0(*((u32*)(r6 + 0xc)), 0);
+    *((u32*)(sp + 0x14)) = r0;
+    *((u32*)sp) = *((u32*)(sp + 0x14));
+    *((u32*)(sp + 4)) = r5;
+    *((u32*)(sp + 8)) = *((u32*)(sp + 0x30));
 }
 
 
@@ -508,12 +402,8 @@ void sub_02013D88(void) {
 
 
 void sub_02013DE0(void) {
-    // ldr r3, [sp, #0x20]
-    // add r0, r0, r5
-    // str r3, [sp]
-    // str r0, [sp, #4]
-    sub_02013A50(r0, *((u8*)(_020F5F2C + (*((u32*)(r1 + 8)) << 1))), *((u8*)(_020F5F2D + (*((u32*)(r1 + 8)) << 1))), *((u32*)r1));
-    // add r0, r5, r0
+    *((u32*)sp) = *((u32*)(sp + 0x20));
+    *((u32*)(sp + 4)) = (r0 + r5);
 }
 
 
@@ -522,9 +412,6 @@ void sub_02013DE0(void) {
 
 void sub_02013E24(void) {
     // and r0, r1
-    ObjCharTransfer_GetBlockSizeFromMode(0x00300010, *((u32*)0x04001000));
-    // add r7, r1, r5
-    // add r3, r3, r5
 }
 
 
@@ -532,15 +419,9 @@ void sub_02013E24(void) {
 
 
 void sub_02013E78(void) {
-    // str r0, [sp]
-    // str r1, [sp, #4]
-    // ldr r0, [sp]
-    // str r0, [r1, r5]
-    // add r7, #0x24
-    // add r0, r0, r5
-    // add r0, r0, r5
-    // ldr r0, [sp, #4]
-    // add r5, #0xc
+    *((u32*)sp) = r0;
+    *((u32*)(sp + 4)) = r1;
+    *((u32*)(r1 + r5)) = *((u32*)sp);
 }
 
 
@@ -548,7 +429,6 @@ void sub_02013E78(void) {
 
 
 void sub_02013ECC(void) {
-    // add r4, #0xc
 }
 
 

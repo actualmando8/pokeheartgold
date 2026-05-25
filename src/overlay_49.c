@@ -156,22 +156,11 @@ void ov49_022589D8(void) {
 
 
 void ov49_02258A30(void) {
-    // ldr r3, _02258A4C ; =ov49_02269634
-    // mov r2, #0
-    // ldrb r1, [r3]
-    // cmp r0, r1
     // bne _02258A3E
-    // mov r0, #1
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #1
     // cmp r2, #0x20
     // blo _02258A34
-    // mov r0, #0
-    // bx lr
     // nop
     // _02258A4C: .word ov49_02269634
-    // TODO: decompile
 }
 
 
@@ -179,22 +168,11 @@ void ov49_02258A30(void) {
 
 
 void ov49_02258A50(void) {
-    // ldr r3, _02258A6C ; =_02269624
-    // mov r2, #0
-    // ldrb r1, [r3]
-    // cmp r0, r1
     // bne _02258A5E
-    // mov r0, #1
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #1
     // cmp r2, #3
     // blo _02258A54
-    // mov r0, #0
-    // bx lr
     // nop
     // _02258A6C: .word _02269624
-    // TODO: decompile
 }
 
 
@@ -202,22 +180,11 @@ void ov49_02258A50(void) {
 
 
 void ov49_02258A70(void) {
-    // ldr r3, _02258A8C ; =ov49_0226962C
-    // mov r2, #0
-    // ldrb r1, [r3]
-    // cmp r0, r1
     // bne _02258A7E
-    // mov r0, #1
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #1
     // cmp r2, #7
     // blo _02258A74
-    // mov r0, #0
-    // bx lr
     // nop
     // _02258A8C: .word ov49_0226962C
-    // TODO: decompile
 }
 
 
@@ -225,22 +192,11 @@ void ov49_02258A70(void) {
 
 
 void ov49_02258A90(void) {
-    // ldr r3, _02258AAC ; =ov49_02269628
-    // mov r2, #0
-    // ldrb r1, [r3]
-    // cmp r0, r1
     // bne _02258A9E
-    // mov r0, #1
-    // bx lr
-    // add r2, r2, #1
-    // add r3, r3, #1
     // cmp r2, #4
     // blo _02258A94
-    // mov r0, #0
-    // bx lr
     // nop
     // _02258AAC: .word ov49_02269628
-    // TODO: decompile
 }
 
 
@@ -248,9 +204,6 @@ void ov49_02258A90(void) {
 
 
 void ov49_02258AB0(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -402,9 +355,6 @@ void ov49_02258D70(void) {
 
 
 void ov49_02258DAC(void) {
-    // ldr r0, [r0, #0x20]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -412,9 +362,6 @@ void ov49_02258DAC(void) {
 
 
 void ov49_02258DB0(void) {
-    // ldr r0, [r0, #0x24]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -494,9 +441,6 @@ void ov49_02258EEC(void) {
 
 
 void ov49_02258F38(void) {
-    // ldrb r0, [r0, #0xa]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -504,9 +448,6 @@ void ov49_02258F38(void) {
 
 
 void ov49_02258F3C(void) {
-    // ldrb r0, [r0, #0xb]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -782,9 +723,6 @@ void ov49_0225932C(void) {
 
 
 void ov49_022593BC(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -803,14 +741,8 @@ void ov49_022593C0(void) {
 
 
 void ov49_022593FC(void) {
-    // ldr r0, [r0]
     // cmp r0, #0
     // bne _02259406
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -818,8 +750,6 @@ void ov49_022593FC(void) {
 
 
 void ov49_0225940C(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1335,9 +1265,6 @@ void ov49_02259EF8(void) {
 
 
 void ov49_02259FE8(void) {
-    // ldr r0, [r0, #0x34]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1345,9 +1272,6 @@ void ov49_02259FE8(void) {
 
 
 void ov49_02259FEC(void) {
-    // ldr r0, [r0, #0x38]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1403,9 +1327,6 @@ void ov49_0225A018(void) {
 
 
 void ov49_0225A02C(void) {
-    // ldrb r0, [r0, #2]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1413,9 +1334,6 @@ void ov49_0225A02C(void) {
 
 
 void ov49_0225A030(void) {
-    // ldrb r0, [r0, #3]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1444,9 +1362,6 @@ void ov49_0225A03C(void) {
 
 
 void ov49_0225A040(void) {
-    // ldrb r0, [r0, #5]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -1788,14 +1703,10 @@ void ov49_0225A39C(void) {
 
 
 void ov49_0225A3AC(void) {
-    // mov r3, #0xb7
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _0225A3B8 ; =BufferJPGreeting
     // bx r3
     // nop
     // _0225A3B8: .word BufferJPGreeting
-    // TODO: decompile
 }
 
 
@@ -1803,14 +1714,10 @@ void ov49_0225A3AC(void) {
 
 
 void ov49_0225A3BC(void) {
-    // mov r3, #0xb7
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _0225A3C8 ; =BufferENGreeting
     // bx r3
     // nop
     // _0225A3C8: .word BufferENGreeting
-    // TODO: decompile
 }
 
 
@@ -1818,14 +1725,10 @@ void ov49_0225A3BC(void) {
 
 
 void ov49_0225A3CC(void) {
-    // mov r3, #0xb7
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _0225A3D8 ; =BufferFRGreeting
     // bx r3
     // nop
     // _0225A3D8: .word BufferFRGreeting
-    // TODO: decompile
 }
 
 
@@ -1833,14 +1736,10 @@ void ov49_0225A3CC(void) {
 
 
 void ov49_0225A3DC(void) {
-    // mov r3, #0xb7
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _0225A3E8 ; =BufferITGreeting
     // bx r3
     // nop
     // _0225A3E8: .word BufferITGreeting
-    // TODO: decompile
 }
 
 
@@ -1848,14 +1747,10 @@ void ov49_0225A3DC(void) {
 
 
 void ov49_0225A3EC(void) {
-    // mov r3, #0xb7
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _0225A3F8 ; =BufferDEGreeting
     // bx r3
     // nop
     // _0225A3F8: .word BufferDEGreeting
-    // TODO: decompile
 }
 
 
@@ -1863,14 +1758,10 @@ void ov49_0225A3EC(void) {
 
 
 void ov49_0225A3FC(void) {
-    // mov r3, #0xb7
-    // lsl r3, r3, #2
     // ldr r0, [r0, r3]
-    // ldr r3, _0225A408 ; =BufferSPGreeting
     // bx r3
     // nop
     // _0225A408: .word BufferSPGreeting
-    // TODO: decompile
 }
 
 
@@ -1959,14 +1850,9 @@ void ov49_0225A510(void) {
 
 
 void ov49_0225A520(void) {
-    // mov r2, #0xf7
-    // lsl r2, r2, #2
     // ldr r0, [r0, r2]
-    // ldr r3, _0225A52C ; =ov49_02268968
-    // mov r2, #1
     // bx r3
     // _0225A52C: .word ov49_02268968
-    // TODO: decompile
 }
 
 
@@ -2295,14 +2181,8 @@ void ov49_0225AC38(void) {
 
 
 void ov49_0225AC4C(void) {
-    // ldr r0, [r0, #0x1c]
     // cmp r0, #0
     // beq _0225AC56
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2443,9 +2323,6 @@ void ov49_0225AEF8(void) {
 
 
 void ov49_0225AF04(void) {
-    // ldr r0, [r0, #0x34]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2546,8 +2423,6 @@ void ov49_0225B070(void) {
 
 
 void ov49_0225B0D4(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -2730,14 +2605,8 @@ void ov49_0225B3A8(void) {
 
 
 void ov49_0225B3C8(void) {
-    // add r3, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r3, _0225B3D4 ; =BufferPlayersName
-    // ldr r0, [r0]
     // bx r3
     // _0225B3D4: .word BufferPlayersName
-    // TODO: decompile
 }
 
 
@@ -2745,14 +2614,8 @@ void ov49_0225B3C8(void) {
 
 
 void ov49_0225B3D8(void) {
-    // add r3, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r3, _0225B3E4 ; =BufferWiFiPlazaActivityName
-    // ldr r0, [r0]
     // bx r3
     // _0225B3E4: .word BufferWiFiPlazaActivityName
-    // TODO: decompile
 }
 
 
@@ -2760,14 +2623,8 @@ void ov49_0225B3D8(void) {
 
 
 void ov49_0225B3E8(void) {
-    // add r3, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r3, _0225B3F4 ; =BufferWiFiPlazaEventName
-    // ldr r0, [r0]
     // bx r3
     // _0225B3F4: .word BufferWiFiPlazaEventName
-    // TODO: decompile
 }
 
 
@@ -2775,14 +2632,8 @@ void ov49_0225B3E8(void) {
 
 
 void ov49_0225B3F8(void) {
-    // add r3, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r3, _0225B404 ; =BufferWiFiPlazaInstrumentName
-    // ldr r0, [r0]
     // bx r3
     // _0225B404: .word BufferWiFiPlazaInstrumentName
-    // TODO: decompile
 }
 
 
@@ -2790,14 +2641,8 @@ void ov49_0225B3F8(void) {
 
 
 void ov49_0225B408(void) {
-    // add r3, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r3, _0225B414 ; =BufferCountryName
-    // ldr r0, [r0]
     // bx r3
     // _0225B414: .word BufferCountryName
-    // TODO: decompile
 }
 
 
@@ -3063,9 +2908,6 @@ void ov49_0225B8EC(void) {
 
 
 void ov49_0225B8F8(void) {
-    // ldrb r0, [r0, #3]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3073,19 +2915,10 @@ void ov49_0225B8F8(void) {
 
 
 void ov49_0225B8FC(void) {
-    // ldrb r1, [r0, #2]
     // cmp r1, #2
     // bne _0225B906
-    // mov r0, #1
-    // bx lr
-    // ldrb r0, [r0, #1]
     // cmp r0, #2
     // bne _0225B910
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3093,17 +2926,10 @@ void ov49_0225B8FC(void) {
 
 
 void ov49_0225B914(void) {
-    // ldrb r1, [r0, #2]
     // cmp r1, #0
     // bne _0225B924
-    // ldrb r0, [r0, #1]
     // cmp r0, #2
     // bne _0225B924
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3118,14 +2944,8 @@ void ov49_0225B928(void) {
 
 
 void ov49_0225B934(void) {
-    // ldrb r0, [r0, #2]
     // cmp r0, #0
     // beq _0225B93E
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3249,8 +3069,6 @@ void ov49_0225BABC(void) {
 
 
 void ov49_0225BB10(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3296,8 +3114,6 @@ void ov49_0225BBA8(void) {
 
 
 void ov49_0225BBCC(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3528,9 +3344,6 @@ void ov49_0225BFC4(void) {
 
 
 void ov49_0225BFEC(void) {
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -3802,14 +3615,9 @@ void ov49_0225C460(void) {
 
 
 void ov49_0225C470(void) {
-    // ldr r3, _0225C47C ; =ov49_0225B3C8
-    // add r0, r1, #0
-    // add r1, r2, #0
-    // mov r2, #0
     // bx r3
     // nop
     // _0225C47C: .word ov49_0225B3C8
-    // TODO: decompile
 }
 
 
@@ -4329,8 +4137,6 @@ void ov49_0225CD58(void) {
 
 
 void ov49_0225CDE8(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -4615,9 +4421,6 @@ void ov49_0225D160(void) {
 
 
 void ov49_0225D1C0(void) {
-    // ldrh r0, [r0, #2]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6136,9 +5939,6 @@ void ov49_0225EF30(void) {
 
 
 void ov49_0225EF3C(void) {
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6161,9 +5961,6 @@ void ov49_0225EF68(void) {
 
 
 void ov49_0225EF84(void) {
-    // ldr r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6171,9 +5968,6 @@ void ov49_0225EF84(void) {
 
 
 void ov49_0225EF88(void) {
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6300,14 +6094,8 @@ void ov49_0225F148(void) {
 
 
 void ov49_0225F170(void) {
-    // ldr r0, [r0, #0x14]
     // cmp r0, #0
     // bne _0225F17A
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6315,14 +6103,8 @@ void ov49_0225F170(void) {
 
 
 void ov49_0225F180(void) {
-    // ldr r0, [r0, #4]
     // cmp r0, #0
     // beq _0225F18A
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -6476,14 +6258,8 @@ void ov49_0225F430(void) {
 
 
 void ov49_0225F438(void) {
-    // ldrb r0, [r0, #5]
     // cmp r0, #0
     // beq _0225F442
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -9979,8 +9755,6 @@ void ov49_02264CA8(void) {
 
 
 void ov49_02264CF8(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -10313,11 +10087,6 @@ void ov49_022652D0(void) {
 
 
 void ov49_022652E0(void) {
-    // ldr r0, [r0, #8]
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -10637,14 +10406,8 @@ void ov49_02265920(void) {
 
 
 void ov49_02265948(void) {
-    // ldr r3, _02265954 ; =memset
-    // mov r2, #0xd1
-    // add r0, r1, #0
-    // mov r1, #0
-    // lsl r2, r2, #4
     // bx r3
     // _02265954: .word memset
-    // TODO: decompile
 }
 
 
@@ -10652,14 +10415,8 @@ void ov49_02265948(void) {
 
 
 void ov49_02265958(void) {
-    // ldr r0, [r0, #8]
     // cmp r0, #0
     // beq _02265962
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -13255,8 +13012,6 @@ void ov49_022685F8(void) {
 
 
 void ov49_02268620(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -13461,8 +13216,6 @@ void ov49_02268ADC(void) {
 
 
 void ov49_02268B04(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -13470,8 +13223,6 @@ void ov49_02268B04(void) {
 
 
 void ov49_02268B08(void) {
-    // bx lr
-    // TODO: decompile
 }
 
 
@@ -13548,14 +13299,8 @@ void ov49_02268C74(void) {
 
 
 void ov49_02268CAC(void) {
-    // ldr r3, _02268CB8 ; =ov49_0225E82C
-    // mov r2, #1
-    // ldr r0, [r0, #4]
-    // mov r1, #0
-    // lsl r2, r2, #0xc
     // bx r3
     // _02268CB8: .word ov49_0225E82C
-    // TODO: decompile
 }
 
 
@@ -13563,14 +13308,9 @@ void ov49_02268CAC(void) {
 
 
 void ov49_02268CBC(void) {
-    // ldr r3, _02268CC8 ; =ov49_0225E82C
-    // mov r1, #1
-    // ldr r0, [r0, #4]
-    // lsl r2, r1, #0xc
     // bx r3
     // nop
     // _02268CC8: .word ov49_0225E82C
-    // TODO: decompile
 }
 
 
@@ -13578,14 +13318,8 @@ void ov49_02268CBC(void) {
 
 
 void ov49_02268CCC(void) {
-    // ldr r3, _02268CD8 ; =ov49_0225E82C
-    // mov r2, #1
-    // ldr r0, [r0, #4]
-    // mov r1, #0
-    // lsl r2, r2, #0xc
     // bx r3
     // _02268CD8: .word ov49_0225E82C
-    // TODO: decompile
 }
 
 
@@ -13593,14 +13327,8 @@ void ov49_02268CCC(void) {
 
 
 void ov49_02268CDC(void) {
-    // ldr r3, _02268CE8 ; =ov49_0225E82C
-    // mov r2, #1
-    // ldr r0, [r0, #4]
-    // mov r1, #0
-    // lsl r2, r2, #0xc
     // bx r3
     // _02268CE8: .word ov49_0225E82C
-    // TODO: decompile
 }
 
 

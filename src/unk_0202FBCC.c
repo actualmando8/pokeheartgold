@@ -2,10 +2,7 @@
 #include "global.h"
 
 void sub_0202FBCC(void) {
-    // ldr r0, _0202FBD0 ; =0x00001D50
-    // bx lr
     // _0202FBD0: .word 0x00001D50
-    // TODO: decompile
 }
 
 
@@ -38,16 +35,9 @@ void sub_0202FC24(void) {
 
 
 void sub_0202FC48(void) {
-    // ldr r0, _0202FC58 ; =_021D2AF8
-    // ldr r0, [r0]
     // cmp r0, #0
     // beq _0202FC54
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
     // _0202FC58: .word _021D2AF8
-    // TODO: decompile
 }
 
 
