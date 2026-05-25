@@ -1,5 +1,35 @@
 #include <nitro.h>
 
+void OSi_SetTimerReserved(s32 timerNum);
+void OSi_SetTimer(OSAlarm *alarm);
+void OS_InitAlarm(void);
+BOOL OS_IsAlarmAvailable(void);
+void OS_CreateAlarm(OSAlarm *alarm);
+void OSi_InsertAlarm(OSAlarm *alarm, OSTick fire);
+void OS_SetAlarm(OSAlarm *alarm, OSTick tick, OSAlarmHandler handler, void *arg);
+void OS_SetPeriodicAlarm(OSAlarm *alarm, OSTick start, OSTick period, OSAlarmHandler handler, void *arg);
+void OS_CancelAlarm(OSAlarm *alarm);
+void OSi_ArrangeTimer(void);
+
+
+void OSi_SetTimer(OSAlarm *alarm);
+void OS_InitAlarm(void);
+BOOL OS_IsAlarmAvailable(void);
+void OS_CreateAlarm(OSAlarm *alarm);
+void OSi_InsertAlarm(OSAlarm *alarm, OSTick fire);
+void OS_SetAlarm(OSAlarm *alarm, OSTick tick, OSAlarmHandler handler, void *arg);
+void OS_SetPeriodicAlarm(OSAlarm *alarm, OSTick start, OSTick period, OSAlarmHandler handler, void *arg);
+void OS_CancelAlarm(OSAlarm *alarm);
+void OSi_ArrangeTimer(void);
+
+
+BOOL OS_IsAlarmAvailable(void);
+asm void OSi_AlarmHandler(void *arg);
+
+
+void OSi_AlarmHandler(void *arg);
+
+
 void OSi_AlarmHandler(void *arg);
 void OSi_ArrangeTimer(void);
 

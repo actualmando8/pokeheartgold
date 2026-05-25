@@ -1,5 +1,7 @@
 #include "config.h"
 
+#define FS_EXTERN_OVERLAY(name) .public SDK_OVERLAY_##name##_ID
+
 FS_EXTERN_OVERLAY(OVY_0)
 FS_EXTERN_OVERLAY(OVY_10)
 FS_EXTERN_OVERLAY(pokegear)

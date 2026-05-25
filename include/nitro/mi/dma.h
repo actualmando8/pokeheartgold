@@ -284,6 +284,7 @@ extern "C" {
 
 
 //---- DMA callback
+#ifndef SDK_ASM
 typedef void (*MIDmaCallback) (void *);
 
 //================================================================================
@@ -653,6 +654,7 @@ void    MI_WaitDma(u32 dmaNo);
   Returns:      None
  *---------------------------------------------------------------------------*/
 void    MI_StopDma(u32 dmaNo);
+#endif /* SDK_ASM */
 
 #ifdef __cplusplus
 } /* extern "C"*/

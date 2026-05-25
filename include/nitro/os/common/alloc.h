@@ -80,7 +80,10 @@ extern "C" {
 //----------------------------------------------------------------
 // type definition
 
-typedef int OSHeapHandle;
+#ifndef OSHeapHandle_DEFINED
+typedef s32 OSHeapHandle;
+#define OSHeapHandle_DEFINED
+#endif
 typedef void (*OSAllocVisitor) (void *obj, u32 size);
 
 #define  OS_CURRENT_HEAP_HANDLE       ((OSHeapHandle)-1)
@@ -102,7 +105,7 @@ typedef void (*OSAllocVisitor) (void *obj, u32 size);
   Returns:      start of real arena, aligned with 32 bytes boundaries, after
                 heap array has been allocated
  *---------------------------------------------------------------------------*/
-extern void *OS_InitAlloc(OSArenaId id, void *arenaStart, void *arenaEnd, int maxHeaps);
+extern void *OS_InitAlloc(OSArenaId id, void *arenaStart, void *arenaEnd, s32 maxHeaps);
 
 /*---------------------------------------------------------------------------*
   Name:         OS_ClearAlloc
