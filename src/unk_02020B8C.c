@@ -11,6 +11,7 @@ void sub_02020B8C(void) {
 
 
 
+
 void sub_02020B94(void) {
     // cmp r0, r1
     // bgt _02020B9A
@@ -18,6 +19,7 @@ void sub_02020B94(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -78,15 +80,11 @@ fx32 GetDistanceFromPointToLine(void) {
 
 
 
-void CalcAngleBetweenVecs(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x30
-    // add r4, r1, #0
+u16 CalcAngleBetweenVecs(void) {
     // add r1, sp, #0x24
-    // bl VEC_Normalize
-    // add r0, r4, #0
+    VEC_Normalize();
     // add r1, sp, #0x18
-    // bl VEC_Normalize
+    VEC_Normalize(r4);
     // ldr r0, [sp, #0x24]
     // ldr r4, [sp, #0x18]
     // str r0, [sp]
@@ -101,220 +99,97 @@ void CalcAngleBetweenVecs(void) {
     // ldr r2, [sp, #8]
     // asr r7, r0, #0x1f
     // ldr r3, [sp, #0xc]
-    // add r1, r7, #0
     // str r0, [sp, #0x10]
-    // bl _ll_mul
+    _ll_mul(r7);
     // str r0, [sp, #0x14]
-    // add r5, r1, #0
     // ldr r0, [sp]
     // ldr r1, [sp, #4]
-    // add r2, r4, #0
-    // add r3, r6, #0
-    // bl _ll_mul
-    // mov r2, #2
+    _ll_mul(r4, r6);
     // ldr r3, [sp, #0x14]
-    // lsl r2, r2, #0xa
     // add r3, r3, r2
-    // ldr r2, _02020D28 ; =0x00000000
     // adc r5, r2
-    // lsl r2, r5, #0x14
-    // lsr r3, r3, #0xc
-    // orr r3, r2
-    // mov r2, #2
-    // lsl r2, r2, #0xa
     // add r0, r0, r2
-    // ldr r2, _02020D28 ; =0x00000000
     // adc r1, r2
-    // lsl r1, r1, #0x14
-    // lsr r0, r0, #0xc
-    // orr r0, r1
     // add r5, r3, r0
     // ldr r0, [sp, #0x10]
-    // add r1, r7, #0
-    // add r2, r4, #0
-    // add r3, r6, #0
-    // bl _ll_mul
-    // add r6, r0, #0
-    // add r4, r1, #0
+    _ll_mul(((r0 >> 0xc) | (r1 << 0x14)), r7, r4, r6);
     // ldr r0, [sp]
     // ldr r1, [sp, #4]
     // ldr r2, [sp, #8]
     // ldr r3, [sp, #0xc]
-    // bl _ll_mul
-    // mov r2, #2
-    // mov r3, #0
-    // lsl r2, r2, #0xa
+    _ll_mul();
     // add r6, r6, r2
     // adc r4, r3
-    // lsl r4, r4, #0x14
-    // lsr r6, r6, #0xc
-    // orr r6, r4
     // add r4, r0, r2
     // adc r1, r3
-    // lsl r0, r1, #0x14
-    // lsr r1, r4, #0xc
-    // orr r1, r0
     // sub r0, r6, r1
-    // cmp r5, #0
-    // bne _02020D1E
-    // cmp r0, #0
-    // ble _02020D16
-    // add sp, #0x30
-    // lsl r0, r2, #3
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #3
-    // add sp, #0x30
-    // lsl r0, r0, #0xe
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r1, r5, #0
-    // bl FX_Atan2Idx
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _02020D28: .word 0x00000000
-    // TODO: decompile
+    FX_Atan2Idx((3 << 0xe), r5, (2 << 0xa), 0);
 }
+
 
 
 
 void sub_02020D2C(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x24
-    // add r4, r1, #0
-    // ldr r1, [r4]
-    // ldr r3, _02020DA0 ; =FX_SinCosTable_
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x10
     // asr r1, r1, #4
-    // lsl r2, r1, #1
-    // lsl r1, r2, #1
-    // add r2, r2, #1
-    // lsl r2, r2, #1
     // ldrsh r1, [r3, r1]
     // ldrsh r2, [r3, r2]
-    // add r5, r0, #0
-    // bl MTX_RotX33_
-    // ldr r0, [r4, #4]
-    // ldr r3, _02020DA0 ; =FX_SinCosTable_
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
+    MTX_RotX33_(((((*((u32*)r1) << 0x10) >> 0x10) << 1) << 1), (((((*((u32*)r1) << 0x10) >> 0x10) << 1) + 1) << 1), FX_SinCosTable_);
     // asr r0, r0, #4
-    // lsl r2, r0, #1
-    // lsl r1, r2, #1
-    // add r2, r2, #1
-    // lsl r2, r2, #1
     // ldrsh r1, [r3, r1]
     // ldrsh r2, [r3, r2]
     // add r0, sp, #0
-    // bl MTX_RotY33_
-    // add r0, r5, #0
+    MTX_RotY33_(((*((u32*)(r4 + 4)) << 0x10) >> 0x10), ((((*((u32*)(r4 + 4)) << 0x10) >> 0x10) << 1) << 1), (((((*((u32*)(r4 + 4)) << 0x10) >> 0x10) << 1) + 1) << 1), FX_SinCosTable_);
     // add r1, sp, #0
-    // add r2, r5, #0
-    // bl MTX_Concat33
-    // ldr r0, [r4, #8]
-    // ldr r3, _02020DA0 ; =FX_SinCosTable_
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
+    MTX_Concat33(r5, r5);
     // asr r0, r0, #4
-    // lsl r2, r0, #1
-    // lsl r1, r2, #1
-    // add r2, r2, #1
-    // lsl r2, r2, #1
     // ldrsh r1, [r3, r1]
     // ldrsh r2, [r3, r2]
     // add r0, sp, #0
-    // bl MTX_RotZ33_
-    // add r0, r5, #0
+    MTX_RotZ33_(((*((u32*)(r4 + 8)) << 0x10) >> 0x10), ((((*((u32*)(r4 + 8)) << 0x10) >> 0x10) << 1) << 1), (((((*((u32*)(r4 + 8)) << 0x10) >> 0x10) << 1) + 1) << 1), FX_SinCosTable_);
     // add r1, sp, #0
-    // add r2, r5, #0
-    // bl MTX_Concat33
-    // add sp, #0x24
-    // pop {r4, r5, pc}
-    // nop
-    // _02020DA0: .word FX_SinCosTable_
-    // TODO: decompile
+    MTX_Concat33(r5, r5);
 }
+
 
 
 
 void sub_02020DA4(void) {
     // str r0, [sp]
-    GF_CosDegNoWrap(r1);
-    GF_SinDegNoWrap(r5);
     // ldr r0, [sp]
-    MTX_RotX33_(r0, r7);
-    GF_CosDegNoWrap(r4);
-    GF_SinDegNoWrap(r4);
     // add r0, sp, #4
-    MTX_RotY33_(r0, r5);
     // ldr r0, [sp]
     // add r1, sp, #4
-    MTX_Concat33(r0);
-    GF_CosDegNoWrap(r6);
-    GF_SinDegNoWrap(r6);
     // add r0, sp, #4
-    MTX_RotZ33_(r0, r4);
     // ldr r0, [sp]
     // add r1, sp, #4
-    MTX_Concat33(r0);
 }
+
 
 
 
 void sub_02020E10(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // asr r0, r0, #4
-    // add r7, r2, #0
-    // lsl r2, r0, #1
-    // add r6, r1, #0
-    // lsl r0, r2, #1
-    // ldr r1, _02020E7C ; =FX_SinCosTable_
-    // add r2, r2, #1
-    // lsl r2, r2, #1
     // ldrsh r0, [r1, r0]
     // ldrsh r1, [r1, r2]
-    // add r5, r3, #0
     // ldr r4, [sp, #0x18]
-    // bl FX_Div
-    // add r2, r0, #0
+    FX_Div(((r0 << 1) << 1), FX_SinCosTable_, (((r0 << 1) + 1) << 1));
     // asr r1, r6, #0x1f
-    // add r0, r6, #0
     // asr r3, r2, #0x1f
-    // bl _ll_mul
-    // mov r6, #2
-    // mov r2, #0
-    // lsl r6, r6, #0xa
+    _ll_mul(r6, r0);
     // add r0, r0, r6
     // adc r1, r2
-    // lsl r1, r1, #0x14
-    // lsr r0, r0, #0xc
-    // orr r0, r1
     // asr r3, r0, #0x1f
-    // lsr r1, r0, #0x13
-    // lsl r3, r3, #0xd
-    // orr r3, r1
-    // lsl r0, r0, #0xd
     // add r0, r0, r6
     // adc r3, r2
-    // lsl r1, r3, #0x14
-    // lsr r0, r0, #0xc
-    // orr r0, r1
     // asr r1, r0, #0x1f
     // asr r3, r7, #0x1f
-    // add r2, r7, #0
     // str r0, [r4]
-    // bl _ll_mul
-    // mov r3, #0
-    // add r2, r6, #0
+    _ll_mul((((((r0 >> 0xc) | (r1 << 0x14)) << 0xd) >> 0xc) | (((r3 << 0xd) | (((r0 >> 0xc) | (r1 << 0x14)) >> 0x13)) << 0x14)), (((r3 << 0xd) | (((r0 >> 0xc) | (r1 << 0x14)) >> 0x13)) << 0x14), r7, ((r3 << 0xd) | (((r0 >> 0xc) | (r1 << 0x14)) >> 0x13)));
     // add r2, r0, r2
     // adc r1, r3
-    // lsl r0, r1, #0x14
-    // lsr r1, r2, #0xc
-    // orr r1, r0
     // str r1, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _02020E7C: .word FX_SinCosTable_
-    // TODO: decompile
 }
+
 
 
 
@@ -323,17 +198,15 @@ void sub_02020E80(void) {
 
 
 
+
 BOOL sub_02020EB0(void) {
     // str r2, [sp]
-    sub_02020E80();
-    sub_02020E80(r5, r7, r4);
     // eor r0, r6
     // ldr r0, [sp]
-    sub_02020E80(r4, r5);
     // ldr r0, [sp]
-    sub_02020E80(r4, r7);
     // eor r0, r5
 }
+
 
 
 
@@ -343,104 +216,60 @@ void sub_02020EF4(void) {
     // sub r0, r0, r6
     // asr r0, r0, #0x10
     // asr r1, r1, #0x10
-    FX_Div(((r0 << 0x10) << 0xc), ((r1 << 0x10) << 0xc));
     // str r0, [sp]
     // str r0, [sp]
     // ldr r0, [sp]
     // asr r1, r0, #0x1f
     // asr r3, r2, #0x1f
-    _ll_mul((0xff << 0xc), (r4 << 0xc));
     // add r3, r0, r3
     // adc r1, r4
-    // orr r1, r0
     // ldr r0, [sp]
     // sub r1, r2, r1
     // str r0, [r5]
     // str r1, [sp, #4]
-    *((u32*)(r5 + 4)) = ((2 << 0xa) >> 0xc);
 }
 
 
 
-void sub_02020F4C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x34
+
+BOOL sub_02020F4C(void) {
     // ldr r4, [sp, #0x48]
-    // add r7, r0, #0
-    // add r5, r1, #0
-    // add r6, r3, #0
     // str r2, [sp, #4]
-    // cmp r4, #0
-    // beq _02020F64
-    // ldr r0, _0202109C ; =0x0000FFFF
     // str r0, [r4]
-    // str r0, [r4, #4]
+    *((u32*)(r4 + 4)) = 0x0000FFFF;
     // ldr r2, [sp, #4]
-    // add r0, r7, #0
-    // add r1, r5, #0
-    // add r3, r6, #0
-    // bl sub_02020EB0
-    // cmp r0, #0
-    // bne _02020F7A
-    // add sp, #0x34
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // ldr r0, [r5, #4]
+    sub_02020EB0(r0, r1, r3);
     // str r0, [sp]
-    // ldr r1, [r7]
-    // ldr r2, [r7, #4]
-    // ldr r3, [r5]
     // add r0, sp, #0x24
-    // bl sub_02020EF4
-    // ldr r0, [r6, #4]
+    sub_02020EF4(*((u32*)(r5 + 4)), *((u32*)r7), *((u32*)(r7 + 4)), *((u32*)r5));
     // ldr r1, [sp, #4]
     // str r0, [sp]
     // ldr r2, [sp, #4]
-    // ldr r1, [r1]
-    // ldr r2, [r2, #4]
-    // ldr r3, [r6]
     // add r0, sp, #0x1c
-    // bl sub_02020EF4
+    sub_02020EF4(*((u32*)(r6 + 4)), *((u32*)r1), *((u32*)(r2 + 4)), *((u32*)r6));
     // ldr r1, [sp, #0x1c]
     // ldr r3, [sp, #0x24]
-    // cmp r3, r1
-    // bne _02020FAC
-    // add sp, #0x34
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
     // ldr r2, [sp, #0x20]
     // ldr r0, [sp, #0x28]
     // sub r1, r3, r1
     // sub r0, r2, r0
-    // bl FX_Div
+    FX_Div(0);
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x1c]
     // ldr r2, [sp, #0xc]
     // asr r1, r0, #0x1f
     // asr r3, r2, #0x1f
-    // bl _ll_mul
-    // add r2, r0, #0
+    _ll_mul();
     // ldr r0, [sp, #0x20]
-    // mov r3, #0
     // str r0, [sp, #0x10]
-    // mov r0, #2
-    // lsl r0, r0, #0xa
     // add r0, r2, r0
     // adc r1, r3
-    // lsr r0, r0, #0xc
-    // lsl r1, r1, #0x14
     // str r0, [sp, #0x14]
-    // orr r0, r1
     // str r0, [sp, #0x14]
     // ldr r0, [sp, #0xc]
     // add r1, sp, #0x30
-    // bl FX_Modf
-    // mov r1, #2
-    // lsl r1, r1, #0xa
-    // cmp r0, r1
-    // blt _02020FF8
+    FX_Modf((((2 << 0xa) >> 0xc) | (r1 << 0x14)), (r1 << 0x14), r0, 0);
     // ldr r2, [sp, #0x30]
-    // lsl r0, r1, #1
     // add r0, r2, r0
     // str r0, [sp, #0x30]
     // ldr r0, [sp, #0x30]
@@ -450,82 +279,25 @@ void sub_02020F4C(void) {
     // ldr r0, [sp, #0x14]
     // add r0, r1, r0
     // add r1, sp, #0x2c
-    // bl FX_Modf
-    // mov r1, #2
-    // lsl r1, r1, #0xa
-    // cmp r0, r1
-    // blt _0202101A
+    FX_Modf(((2 << 0xa) << 1), (2 << 0xa));
     // ldr r2, [sp, #0x2c]
-    // lsl r0, r1, #1
     // add r0, r2, r0
     // str r0, [sp, #0x2c]
     // ldr r0, [sp, #0x2c]
     // asr r0, r0, #0xc
-    // str r0, [r4, #4]
-    // ldr r1, [r5]
-    // ldr r0, [r7]
-    // cmp r0, r1
-    // blt _0202102C
+    *((u32*)(r4 + 4)) = ((2 << 0xa) << 1);
     // mov ip, r0
-    // b _02021030
     // mov ip, r1
-    // add r1, r0, #0
-    // ldr r2, [r5, #4]
-    // ldr r0, [r7, #4]
-    // cmp r0, r2
-    // blt _0202103C
     // str r0, [sp, #8]
-    // b _02021040
     // str r2, [sp, #8]
-    // add r2, r0, #0
     // ldr r0, [sp, #4]
-    // ldr r3, [r6]
-    // ldr r0, [r0]
-    // cmp r0, r3
-    // blt _0202104E
     // str r0, [sp, #0x18]
-    // b _02021052
     // str r3, [sp, #0x18]
-    // add r3, r0, #0
     // ldr r0, [sp, #4]
-    // ldr r5, [r6, #4]
-    // ldr r0, [r0, #4]
-    // cmp r0, r5
-    // blt _02021060
-    // add r7, r0, #0
-    // b _02021064
-    // add r7, r5, #0
-    // add r5, r0, #0
-    // ldr r0, [r4]
     // mov r6, ip
-    // cmp r6, r0
-    // blt _02021094
-    // cmp r1, r0
-    // bgt _02021094
-    // ldr r1, [r4, #4]
     // ldr r4, [sp, #8]
-    // cmp r4, r1
-    // blt _02021094
-    // cmp r2, r1
-    // bgt _02021094
     // ldr r2, [sp, #0x18]
-    // cmp r2, r0
-    // blt _02021094
-    // cmp r3, r0
-    // bgt _02021094
-    // cmp r7, r1
-    // blt _02021094
-    // cmp r5, r1
-    // bgt _02021094
-    // add sp, #0x34
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0x34
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _0202109C: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 

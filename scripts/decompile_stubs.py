@@ -41,10 +41,17 @@ def decompile_asm_to_c(asm_lines, func_name, header):
     if not instructions:
         return None
     
-    # Filter out prologue/epilogue
+    # Build literal pool map: label -> symbol
+    literal_pool = {}
+    for l in instructions:
+        m = re.match(r'^(\w+):\s*\.word\s+(\w+)', l)
+        if m:
+            literal_pool[m.group(1)] = m.group(2)
+    
+    # Filter out prologue/epilogue and literal pool labels
     core = [l for l in instructions if not l.startswith(('push', 'pop', 'bx ', 'nop', 'add sp', 'sub sp'))]
     core = [l for l in core if not re.match(r'^\w+:$', l)]
-    core = [l for l in core if not re.match(r'^\w+:\.word', l)]  # literal pool labels
+    core = [l for l in core if not re.match(r'^\w+:\s*\.word', l)]
     
     # Check for data table refs (literal pools with .word)
     has_data_ref = any('.word' in l for l in instructions)
@@ -62,9 +69,7 @@ def decompile_asm_to_c(asm_lines, func_name, header):
             pass
         return f"u32 {func_name}(void) {{\n    return {val};\n}}"
     
-    # Can't handle data refs
-    if has_data_ref:
-        return None
+    # Handle data refs by resolving literal pools
     
     # Try to translate
     body = []
@@ -72,6 +77,22 @@ def decompile_asm_to_c(asm_lines, func_name, header):
     had_error = False
     
     for instr in core:
+        # ldr rX, _label ; =symbol (literal pool load)
+        m = re.match(r'ldr\s+r(\d),\s+(\w+)\s*;\s*=(\w+)', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            symbol = m.group(3)
+            regs[dst] = symbol
+            continue
+        
+        # ldr rX, _label ; =0xADDRESS (literal pool load with address)
+        m = re.match(r'ldr\s+r(\d),\s+(\w+)\s*;\s*=(0x[0-9a-fA-F]+)', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            addr = m.group(3)
+            regs[dst] = addr
+            continue
+        
         # mov rX, #imm
         m = re.match(r'mov\s+r(\d),\s*#(0x[0-9a-fA-F]+|\d+)', instr)
         if m:
@@ -114,6 +135,32 @@ def decompile_asm_to_c(asm_lines, func_name, header):
             regs[f'r{m.group(1)}'] = f"({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} >> {m.group(3)})"
             continue
         
+        # mul rX, rY
+        m = re.match(r'mul\s+r(\d),\s*r(\d)', instr)
+        if m:
+            # mul in Thumb uses r0-r1 implicitly, result in r0
+            # Actually: mul rdst, rsrc means rdst = rdst * rsrc
+            dst = 'r' + m.group(1)
+            src = 'r' + m.group(2)
+            regs[dst] = "(" + regs.get(dst, dst) + " * " + regs.get(src, src) + ")"
+            continue
+        
+        # bic rX, rY
+        m = re.match(r'bic\s+r(\d),\s*r(\d)', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            src = 'r' + m.group(2)
+            regs[dst] = "(" + regs.get(dst, dst) + " & ~(" + regs.get(src, src) + "))"
+            continue
+        
+        # orr rX, rY
+        m = re.match(r'orr\s+r(\d),\s*r(\d)', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            src = 'r' + m.group(2)
+            regs[dst] = "(" + regs.get(dst, dst) + " | " + regs.get(src, src) + ")"
+            continue
+        
         # ldr rX, [rY, #imm]
         m = re.match(r'ldr\s+r(\d),\s*\[r(\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', instr)
         if m:
@@ -132,12 +179,58 @@ def decompile_asm_to_c(asm_lines, func_name, header):
             regs[f'r{m.group(1)}'] = f"*((u16*)({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} + {m.group(3)}))"
             continue
         
-        # ldr rX, [rY]
+        # ldr rX, [rY] (dereference pointer)
         m = re.match(r'ldr\s+r(\d),\s*\[r(\d)\]', instr)
         if m:
-            dst = f'r{m.group(1)}'
-            src = f'r{m.group(2)}'
-            regs[dst] = "*((u32*)" + regs.get(src, src) + ")"
+            dst = 'r' + m.group(1)
+            src = 'r' + m.group(2)
+            base = regs.get(src, src)
+            regs[dst] = "*((u32*)" + base + ")"
+            continue
+        
+        # ldrb rX, [rY]
+        m = re.match(r'ldrb\s+r(\d),\s*\[r(\d)\]', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            src = 'r' + m.group(2)
+            base = regs.get(src, src)
+            regs[dst] = "*((u8*)" + base + ")"
+            continue
+        
+        # ldrh rX, [rY]
+        m = re.match(r'ldrh\s+r(\d),\s*\[r(\d)\]', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            src = 'r' + m.group(2)
+            base = regs.get(src, src)
+            regs[dst] = "*((u16*)" + base + ")"
+            continue
+        
+        # ldr rX, [rY, rZ] (indexed load)
+        m = re.match(r'ldr\s+r(\d),\s*\[r(\d),\s*r(\d)\]', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            base = regs.get('r' + m.group(2), 'r' + m.group(2))
+            idx = regs.get('r' + m.group(3), 'r' + m.group(3))
+            regs[dst] = "*((u32*)(" + base + " + " + idx + "))"
+            continue
+        
+        # ldrb rX, [rY, rZ]
+        m = re.match(r'ldrb\s+r(\d),\s*\[r(\d),\s*r(\d)\]', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            base = regs.get('r' + m.group(2), 'r' + m.group(2))
+            idx = regs.get('r' + m.group(3), 'r' + m.group(3))
+            regs[dst] = "*((u8*)(" + base + " + " + idx + "))"
+            continue
+        
+        # ldrh rX, [rY, rZ]
+        m = re.match(r'ldrh\s+r(\d),\s*\[r(\d),\s*r(\d)\]', instr)
+        if m:
+            dst = 'r' + m.group(1)
+            base = regs.get('r' + m.group(2), 'r' + m.group(2))
+            idx = regs.get('r' + m.group(3), 'r' + m.group(3))
+            regs[dst] = "*((u16*)(" + base + " + " + idx + "))"
             continue
         
         # str rX, [rY, #imm]

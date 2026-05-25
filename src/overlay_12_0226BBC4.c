@@ -2,7 +2,6 @@
 #include "global.h"
 
 void ov12_0226BBC4(void) {
-    NARC_New(0xa4, r2);
     // str r6, [sp]
     // str r1, [sp, #4]
     // str r0, [sp, #8]
@@ -10,50 +9,33 @@ void ov12_0226BBC4(void) {
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #0x34]
     // str r0, [sp, #0x14]
-    SpriteSystem_LoadPaletteBufferFromOpenNarc(r7, 3, r5, r4);
     // str r3, [sp]
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x30]
     // str r0, [sp, #8]
-    SpriteSystem_LoadCharResObjFromOpenNarc(r5, r4, r6, 0);
     // str r0, [sp]
     // ldr r0, [sp, #0x38]
     // str r0, [sp, #4]
-    SpriteSystem_LoadCellResObjFromOpenNarc(r5, r4, r6, 2);
     // str r0, [sp]
     // ldr r0, [sp, #0x3c]
     // str r0, [sp, #4]
-    SpriteSystem_LoadAnimResObjFromOpenNarc(r5, r4, r6, 3);
-    NARC_Delete(r6);
 }
+
 
 
 
 void ov12_0226BC40(void) {
-    SpriteManager_UnloadCharObjById();
-    SpriteManager_UnloadPlttObjById(r5, r4);
-    SpriteManager_UnloadCellObjById(r5, r6);
     // ldr r1, [sp, #0x10]
-    SpriteManager_UnloadAnimObjById(r5);
 }
 
 
 
-void ov12_0226BC68(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x38
-    // ldr r5, _0226BCD8 ; =ov12_0226EBD4
-    // add r6, r3, #0
-    // add r7, r0, #0
+
+void * ov12_0226BC68(void) {
     // str r1, [sp]
     // add r4, sp, #4
-    // mov r3, #6
     // ldmia r5!, {r0, r1}
     // stmia r4!, {r0, r1}
-    // sub r3, r3, #1
-    // bne _0226BC78
-    // ldr r0, [r5]
-    // mov r1, #0x20
     // str r0, [r4]
     // ldr r0, [sp, #0x50]
     // str r6, [sp, #0x18]
@@ -66,36 +48,18 @@ void ov12_0226BC68(void) {
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x60]
     // str r0, [sp, #0x30]
-    // add r0, r2, #0
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #0x20
-    // add r4, r0, #0
-    // bl MI_CpuFill8
+    Heap_Alloc(r2, 0x20, (6 - 1));
+    MI_CpuFill8(0, 0x20);
     // ldr r1, [sp]
-    // add r0, r7, #0
     // add r2, sp, #4
-    // bl SpriteSystem_NewSprite
-    // mov r1, #0
+    SpriteSystem_NewSprite(r7);
     // str r0, [r4]
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #3
-    // lsl r0, r0, #0x12
-    // str r0, [r4, #0x14]
-    // ldr r0, _0226BCDC ; =ov12_0226BD54
-    // ldr r2, _0226BCE0 ; =0x000003E7
-    // add r1, r4, #0
-    // bl SysTask_CreateOnMainQueue
-    // str r0, [r4, #4]
-    // add r0, r4, #0
-    // add sp, #0x38
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _0226BCD8: .word ov12_0226EBD4
-    // _0226BCDC: .word ov12_0226BD54
-    // _0226BCE0: .word 0x000003E7
-    // TODO: decompile
+    ManagedSprite_SetDrawFlag(0);
+    *((u32*)(r4 + 0x14)) = (3 << 0x12);
+    SysTask_CreateOnMainQueue(ov12_0226BD54, r4, 0x000003E7);
+    *((u32*)(r4 + 4)) = r0;
 }
+
 
 
 
@@ -104,16 +68,12 @@ void ov12_0226BCE4(void) {
 
 
 
+
 void ov12_0226BCFC(void) {
-    ov12_0226BEB8();
-    *((u32*)(r5 + 8)) = r7;
-    *((u32*)(r5 + 0xc)) = r4;
-    *((u32*)(r5 + 0x14)) = r6;
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r5), (r7 << 0x10), (r4 << 0x10), r6);
-    ManagedSprite_SetDrawFlag(*((u32*)r5), 1);
 }
+
 
 
 
@@ -122,13 +82,16 @@ void ov12_0226BD2C(void) {
 
 
 
+
 void ov12_0226BD38(void) {
 }
 
 
 
+
 void ov12_0226BD4C(void) {
 }
+
 
 
 
@@ -140,178 +103,66 @@ void ov12_0226BD50(void) {
 
 
 
+
 void ov12_0226BD54(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // ldrb r0, [r4, #0x1b]
-    // cmp r0, #1
-    // bne _0226BD62
-    // mov r0, #0
-    // strb r0, [r4, #0x1b]
-    // mov r0, #0x18
+    *((u8*)(r1 + 0x1b)) = 0;
     // ldrsh r1, [r4, r0]
-    // cmp r1, #0
-    // ble _0226BD78
-    // sub r1, r1, #1
-    // strh r1, [r4, #0x18]
+    *((u16*)(r1 + 0x18)) = (r1 - 1);
     // ldrsh r0, [r4, r0]
-    // cmp r0, #0
-    // bne _0226BD78
-    // mov r0, #1
-    // strb r0, [r4, #0x1a]
-    // ldr r0, [r4]
-    // bl ManagedSprite_GetDrawFlag
-    // cmp r0, #0
-    // bne _0226BD84
-    // b _0226BEB0
-    // ldrb r0, [r4, #0x1c]
-    // cmp r0, #0
-    // bne _0226BE06
-    // mov r1, #0xfa
-    // ldr r2, [r4, #0x10]
-    // lsl r1, r1, #2
+    *((u8*)(r1 + 0x1a)) = 1;
+    ManagedSprite_GetDrawFlag(*((u32*)r1), (r1 - 1));
     // add r2, r2, r1
-    // add r0, r4, #0
-    // ldr r1, _0226BEB4 ; =0x00004650
     // add r0, #0x10
-    // str r2, [r4, #0x10]
-    // cmp r2, r1
-    // blt _0226BDB2
-    // ldr r2, [r0]
+    *((u32*)(r4 + 0x10)) = *((u32*)(r4 + 0x10));
     // sub r1, r2, r1
     // str r1, [r0]
-    // ldrb r0, [r4, #0x1a]
-    // cmp r0, #1
-    // bne _0226BDB2
-    // mov r0, #1
-    // strb r0, [r4, #0x1c]
-    // mov r0, #0
-    // strb r0, [r4, #0x1a]
-    // ldrb r0, [r4, #0x1c]
-    // cmp r0, #0
-    // bne _0226BE06
-    // ldr r0, [r4, #0x10]
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // bl GF_SinDegNoWrap
-    // mov r2, #0xe
+    *((u8*)(r4 + 0x1c)) = 1;
+    *((u8*)(r4 + 0x1a)) = 0;
+    _s32_div_f(*((u32*)(r4 + 0x10)), 0x64, *((u32*)r4));
+    GF_SinDegNoWrap(((r0 << 0x10) >> 0x10));
     // asr r1, r0, #0x1f
-    // lsl r2, r2, #0xc
-    // mov r3, #0
-    // bl _ll_mul
-    // add r5, r1, #0
-    // ldr r1, [r4, #8]
-    // mov r2, #2
-    // add r6, r0, #0
-    // lsl r1, r1, #0x10
-    // mov r7, #0
-    // lsl r2, r2, #0xa
+    _ll_mul((0xe << 0xc), 0);
     // asr r1, r1, #0x10
     // add r2, r6, r2
     // adc r5, r7
-    // lsl r5, r5, #0x14
-    // lsr r2, r2, #0xc
-    // orr r2, r5
     // asr r5, r2, #0xb
-    // lsr r5, r5, #0x14
     // add r5, r2, r5
-    // ldr r3, [r4, #0xc]
     // asr r2, r5, #0xc
     // sub r2, r3, r2
-    // lsl r2, r2, #0x10
-    // ldr r0, [r4]
-    // ldr r3, [r4, #0x14]
     // asr r2, r2, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldrb r0, [r4, #0x1c]
-    // cmp r0, #1
-    // bne _0226BEAA
-    // ldrb r0, [r4, #0x1d]
-    // cmp r0, #3
-    // bhi _0226BEAA
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r4), (*((u32*)(r4 + 8)) << 0x10), ((((2 << 0xa) >> 0xc) | (r1 << 0x14)) << 0x10), *((u32*)(r4 + 0x14)));
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0226BE1E: ; jump table
-    // ldrb r0, [r4, #0x1e]
-    // add r0, r0, #1
-    // strb r0, [r4, #0x1e]
-    // ldrb r0, [r4, #0x1e]
-    // cmp r0, #3
-    // bls _0226BEAA
-    // mov r0, #0
-    // strb r0, [r4, #0x1e]
-    // ldrb r0, [r4, #0x1d]
-    // add r0, r0, #1
-    // strb r0, [r4, #0x1d]
-    // b _0226BEAA
-    // ldr r2, [r4, #0xc]
-    // ldr r1, [r4, #8]
+    *((u8*)(r4 + 0x1e)) = (*((u8*)(r4 + 0x1e)) + 1);
+    *((u8*)(r4 + 0x1e)) = 0;
+    *((u8*)(r4 + 0x1d)) = (*((u8*)(r4 + 0x1d)) + 1);
     // add r2, #8
-    // lsl r1, r1, #0x10
-    // lsl r2, r2, #0x10
-    // ldr r0, [r4]
-    // ldr r3, [r4, #0x14]
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // mov r0, #1
-    // strb r0, [r4, #0x1b]
-    // ldrb r0, [r4, #0x1d]
-    // add r0, r0, #1
-    // strb r0, [r4, #0x1d]
-    // b _0226BEAA
-    // ldrb r0, [r4, #0x1e]
-    // add r0, r0, #1
-    // strb r0, [r4, #0x1e]
-    // ldrb r0, [r4, #0x1e]
-    // cmp r0, #2
-    // bls _0226BEAA
-    // ldr r2, [r4, #0xc]
-    // ldr r1, [r4, #8]
-    // add r2, r2, #2
-    // lsl r1, r1, #0x10
-    // lsl r2, r2, #0x10
-    // ldr r0, [r4]
-    // ldr r3, [r4, #0x14]
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r4), (*((u32*)(r4 + 8)) << 0x10), (*((u32*)(r4 + 0xc)) << 0x10), *((u32*)(r4 + 0x14)));
+    *((u8*)(r4 + 0x1b)) = 1;
+    *((u8*)(r4 + 0x1d)) = (*((u8*)(r4 + 0x1d)) + 1);
+    *((u8*)(r4 + 0x1e)) = (*((u8*)(r4 + 0x1e)) + 1);
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // mov r0, #0
-    // strb r0, [r4, #0x1e]
-    // ldrb r0, [r4, #0x1d]
-    // add r0, r0, #1
-    // strb r0, [r4, #0x1d]
-    // b _0226BEAA
-    // ldrb r0, [r4, #0x1e]
-    // add r0, r0, #1
-    // strb r0, [r4, #0x1e]
-    // ldrb r0, [r4, #0x1e]
-    // cmp r0, #2
-    // bls _0226BEAA
-    // add r0, r4, #0
-    // bl ov12_0226BD38
-    // mov r0, #0
-    // strb r0, [r4, #0x1e]
-    // ldrb r0, [r4, #0x1d]
-    // add r0, r0, #1
-    // strb r0, [r4, #0x1d]
-    // ldr r0, [r4]
-    // bl ManagedSprite_TickFrame
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _0226BEB4: .word 0x00004650
-    // TODO: decompile
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r4), (*((u32*)(r4 + 8)) << 0x10), ((*((u32*)(r4 + 0xc)) + 2) << 0x10), *((u32*)(r4 + 0x14)));
+    *((u8*)(r4 + 0x1e)) = 0;
+    *((u8*)(r4 + 0x1d)) = (*((u8*)(r4 + 0x1d)) + 1);
+    *((u8*)(r4 + 0x1e)) = (*((u8*)(r4 + 0x1e)) + 1);
+    ov12_0226BD38(r4);
+    *((u8*)(r4 + 0x1e)) = 0;
+    *((u8*)(r4 + 0x1d)) = (*((u8*)(r4 + 0x1d)) + 1);
+    ManagedSprite_TickFrame(*((u32*)r4));
 }
+
 
 
 
 void ov12_0226BEB8(void) {
 }
+
 
 

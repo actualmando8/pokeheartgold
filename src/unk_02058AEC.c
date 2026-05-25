@@ -2,1190 +2,467 @@
 #include "global.h"
 
 void sub_02058AEC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r7, r0, #0
-    // add r6, r1, #0
     // ldr r0, [sp, #0x24]
-    // mov r1, #0x3c
     // str r2, [sp]
     // str r3, [sp, #4]
-    // ldr r5, [r6, #0xc]
-    // bl Heap_AllocAtEnd
-    // mov r1, #0
-    // mov r2, #0x3c
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // ldr r0, [r6, #0xc]
-    // bl Save_PlayerData_GetProfile
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // bl sub_0208AD34
-    // add r0, r5, #0
-    // bl SaveArray_IsNatDexEnabled
-    // str r0, [r4, #0x1c]
-    // add r0, r5, #0
-    // bl sub_02088288
-    // str r0, [r4, #0x2c]
-    // add r0, r5, #0
-    // bl Save_PlayerData_GetOptionsAddr
-    // str r0, [r4, #4]
+    Heap_AllocAtEnd(0x3c);
+    MI_CpuFill8(0, 0x3c);
+    Save_PlayerData_GetProfile(*((u32*)(r6 + 0xc)));
+    sub_0208AD34(r4, r0);
+    SaveArray_IsNatDexEnabled(r5);
+    *((u32*)(r4 + 0x1c)) = r0;
+    sub_02088288(r5);
+    *((u32*)(r4 + 0x2c)) = r0;
+    Save_PlayerData_GetOptionsAddr(r5);
+    *((u32*)(r4 + 4)) = r0;
     // ldr r0, [sp]
     // str r0, [r4]
-    // mov r0, #1
-    // strb r0, [r4, #0x11]
+    *((u8*)(r4 + 0x11)) = 1;
     // ldr r0, [sp, #4]
-    // strb r0, [r4, #0x14]
-    // ldr r0, [r4]
-    // bl Party_GetCount
-    // strb r0, [r4, #0x13]
-    // mov r0, #0
-    // strh r0, [r4, #0x18]
+    *((u8*)(r4 + 0x14)) = 1;
+    Party_GetCount(*((u32*)r4));
+    *((u8*)(r4 + 0x13)) = r0;
+    *((u16*)(r4 + 0x18)) = 0;
     // ldr r0, [sp, #0x20]
-    // strb r0, [r4, #0x12]
-    // add r0, r5, #0
-    // bl Save_SpecialRibbons_Get
-    // str r0, [r4, #0x20]
-    // mov r0, #0
-    // str r0, [r4, #0x30]
-    // add r0, r5, #0
-    // bl sub_0208828C
-    // str r0, [r4, #0x34]
-    // ldr r1, _02058B7C ; =_020FC7CC
-    // add r0, r4, #0
-    // bl sub_02089D40
-    // ldr r1, _02058B80 ; =gOverlayTemplate_PokemonSummary
-    // add r0, r6, #0
-    // add r2, r4, #0
-    // bl FieldSystem_LaunchApplication
+    *((u8*)(r4 + 0x12)) = 0;
+    Save_SpecialRibbons_Get(r5);
+    *((u32*)(r4 + 0x20)) = r0;
+    *((u32*)(r4 + 0x30)) = 0;
+    sub_0208828C(r5);
+    *((u32*)(r4 + 0x34)) = r0;
+    sub_02089D40(r4, _020FC7CC);
+    FieldSystem_LaunchApplication(r6, gOverlayTemplate_PokemonSummary, r4);
     // str r4, [r7]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _02058B7C: .word _020FC7CC
-    // _02058B80: .word gOverlayTemplate_PokemonSummary
-    // TODO: decompile
 }
+
 
 
 
 void sub_02058B84(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // mov r1, #0x44
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #0x44
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // ldr r0, [r5, #0x24]
-    // ldr r0, [r0, #0xc]
-    // bl Save_PlayerData_GetOptionsAddr
-    // str r0, [r4, #0xc]
-    // ldr r0, [r5, #0x24]
+    Heap_Alloc(r1, 0x44);
+    MI_CpuFill8(0, 0x44);
+    Save_PlayerData_GetOptionsAddr(*((u32*)(*((u32*)(r5 + 0x24)) + 0xc)));
+    *((u32*)(r4 + 0xc)) = r0;
     // add r0, #0xa4
-    // ldr r0, [r0]
-    // str r0, [r4, #0x14]
-    // ldr r0, [r5, #0x24]
-    // ldr r0, [r0, #0xc]
-    // bl SaveArray_Party_Get
+    *((u32*)(r4 + 0x14)) = *((u32*)*((u32*)(r5 + 0x24)));
+    SaveArray_Party_Get(*((u32*)(*((u32*)(r5 + 0x24)) + 0xc)));
     // str r0, [r4]
-    // ldr r0, [r5, #0x24]
-    // ldr r0, [r0, #0xc]
-    // bl Save_Bag_Get
-    // str r0, [r4, #4]
-    // mov r0, #0x43
-    // ldr r1, [r5, #0x24]
-    // lsl r0, r0, #2
+    Save_Bag_Get(*((u32*)(*((u32*)(r5 + 0x24)) + 0xc)));
+    *((u32*)(r4 + 4)) = r0;
     // add r0, r1, r0
-    // str r0, [r4, #0x20]
-    // add r0, r4, #0
-    // mov r1, #0
+    *((u32*)(r4 + 0x20)) = (0x43 << 2);
     // add r0, #0x25
     // strb r1, [r0]
-    // add r0, r4, #0
-    // mov r1, #2
     // add r0, #0x24
     // strb r1, [r0]
-    // ldr r0, [r5, #0x24]
     // add r0, #0xa4
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _02058C1E
-    // mov r1, #1
-    // bl LinkBattleRuleset_GetRuleValue
-    // add r1, r4, #0
+    LinkBattleRuleset_GetRuleValue(*((u32*)*((u32*)(r5 + 0x24))), 1);
     // add r1, #0x36
-    // ldrb r1, [r1]
-    // mov r2, #0xf
-    // lsl r0, r0, #0x18
-    // bic r1, r2
-    // lsr r2, r0, #0x18
-    // mov r0, #0xf
     // and r0, r2
-    // orr r1, r0
-    // add r0, r4, #0
     // add r0, #0x36
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x36
-    // ldrb r0, [r0]
-    // mov r1, #0xf0
-    // bic r0, r1
-    // add r1, r4, #0
     // add r1, #0x36
-    // ldrb r1, [r1]
-    // lsl r1, r1, #0x1c
-    // lsr r1, r1, #0x1c
-    // lsl r1, r1, #0x1c
-    // lsr r1, r1, #0x18
-    // b _02058C3E
-    // add r0, r4, #0
     // add r0, #0x36
-    // ldrb r1, [r0]
-    // mov r0, #0xf
-    // bic r1, r0
-    // mov r0, #3
-    // orr r1, r0
-    // add r0, r4, #0
     // add r0, #0x36
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x36
-    // ldrb r1, [r0]
-    // mov r0, #0xf0
-    // bic r1, r0
-    // mov r0, #0x30
-    // orr r1, r0
-    // add r0, r4, #0
     // add r0, #0x36
     // strb r1, [r0]
-    // add r0, r4, #0
-    // mov r1, #0x64
     // add r0, #0x37
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0x3c
-    // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x26
     // strb r1, [r0]
-    // mov r2, #0
     // add r0, r5, r2
     // add r0, #0x3d
-    // ldrb r1, [r0]
     // add r0, r4, r2
     // add r0, #0x30
-    // add r2, r2, #1
     // strb r1, [r0]
-    // cmp r2, #6
-    // blt _02058C5C
-    // ldr r0, [r5, #0x24]
-    // ldr r1, _02058C7C ; =gOverlayTemplate_PartyMenu
-    // add r2, r4, #0
-    // bl FieldSystem_LaunchApplication
-    // str r4, [r5, #4]
-    // pop {r3, r4, r5, pc}
-    // _02058C7C: .word gOverlayTemplate_PartyMenu
-    // TODO: decompile
+    FieldSystem_LaunchApplication(*((u32*)(r5 + 0x24)), gOverlayTemplate_PartyMenu, r4);
+    *((u32*)(r5 + 4)) = r4;
 }
+
 
 
 
 void sub_02058C80(void) {
-    FieldSystem_ApplicationIsRunning(r1);
     // add r0, #0x30
     // add r1, #0x3d
-    MI_CpuCopy8(*((u32*)(r4 + 4)), r4, 6);
     // add r0, #0x26
-    // ldrb r0, [r0]
-    *((u32*)(r4 + 0x38)) = 0;
-    *((u32*)(r4 + 0x38)) = 1;
-    *((u32*)(r4 + 0x38)) = 2;
     // add r0, #0x26
-    // ldrb r1, [r0]
     // add r0, #0x3c
     // strb r1, [r0]
-    Heap_Free(*((u32*)(r4 + 4)));
-    *((u32*)(r4 + 4)) = 0;
 }
 
 
 
+
 void sub_02058CD8(void) {
-    FieldSystem_ApplicationIsRunning(r1);
     // add r0, #0x3c
     // strb r1, [r0]
-    Heap_Free(*((u32*)r4), *((u8*)(*((u32*)r4) + 0x14)));
     // str r0, [r4]
 }
 
 
 
+
 void sub_02058D04(void) {
-    sub_020505C8(*((u32*)(r0 + 0x24)));
-    ov01_021E636C(1);
-    sub_02056E60();
 }
+
 
 
 
 void sub_02058D24(void) {
-    sub_02037454();
-    sub_02037B5C(0);
 }
+
 
 
 
 void sub_02058D4C(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // bl TaskManager_GetEnvironment
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl TaskManager_GetFieldSystem
-    // ldr r1, [r4, #0x34]
-    // cmp r1, #0x2c
-    // bls _02058D66
-    // b _02059472
+    TaskManager_GetEnvironment();
+    TaskManager_GetFieldSystem(r5);
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02058D72: ; jump table
-    // add r0, r4, #0
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // sub r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x43
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02058E94
-    // mov r0, #1
-    // str r0, [r4, #0x34]
-    // bl sub_02057E08
-    // b _02059472
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #1
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #2
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _02058E94
-    // mov r0, #0x5d
-    // bl sub_02037AC0
-    // mov r0, #3
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0x5d
-    // bl sub_02037B38
-    // cmp r0, #0
-    // beq _02058E42
-    // mov r0, #7
-    // str r0, [r4, #0x34]
-    // ldr r0, [r4, #0x24]
-    // ldr r0, [r0, #0x3c]
-    // bl sub_0205F55C
-    // ldr r1, [r4, #0x50]
-    // ldr r2, [r4, #8]
-    // mov r0, #1
+    *((u32*)(r4 + 0x34)) = 1;
+    sub_02057E08(1, (*((u8*)r4) - 1));
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 1, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
+    *((u32*)(r4 + 0x34)) = 2;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18));
+    sub_02037AC0(0x5d);
+    *((u32*)(r4 + 0x34)) = 3;
+    sub_02037B38(0x5d);
+    *((u32*)(r4 + 0x34)) = 7;
+    sub_0205F55C(*((u32*)(*((u32*)(r4 + 0x24)) + 0x3c)));
     // blx r2
-    // b _02059472
-    // ldr r0, _02059148 ; =gSystem
-    // ldr r1, [r0, #0x48]
-    // mov r0, #2
     // tst r0, r1
-    // beq _02058E94
-    // mov r0, #4
-    // str r0, [r4, #0x34]
-    // mov r0, #0x5c
-    // bl sub_02037AC0
-    // mov r0, #5
+    *((u32*)(r4 + 0x34)) = 4;
+    sub_02037AC0(0x5c, *((u32*)(gSystem + 0x48)), *((u32*)(r4 + 8)));
     // add r4, #0x43
     // strb r0, [r4]
-    // b _02059472
-    // mov r0, #0x5d
-    // bl sub_02037B38
-    // cmp r0, #0
-    // beq _02058E7C
-    // mov r0, #7
-    // str r0, [r4, #0x34]
-    // ldr r0, [r4, #0x24]
-    // ldr r0, [r0, #0x3c]
-    // bl sub_0205F55C
-    // ldr r1, [r4, #0x50]
-    // ldr r2, [r4, #8]
-    // mov r0, #1
+    sub_02037B38(0x5d);
+    *((u32*)(r4 + 0x34)) = 7;
+    sub_0205F55C(*((u32*)(*((u32*)(r4 + 0x24)) + 0x3c)));
     // blx r2
-    // add r0, r4, #0
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // sub r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x43
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02058E96
-    // b _02059472
-    // mov r0, #8
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02059650
-    // add r0, r4, #0
-    // bl Heap_Free
-    // add sp, #8
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // add r0, r4, #0
-    // bl sub_02059650
-    // add r0, r4, #0
-    // bl Heap_Free
-    // bl sub_02057F70
-    // add sp, #8
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0x5d
-    // bl sub_02037B38
-    // cmp r0, #0
-    // beq _02058EDC
-    // mov r0, #5
-    // str r0, [r4, #0x34]
-    // ldr r1, [r4, #0x50]
-    // ldr r2, [r4, #8]
-    // mov r0, #1
+    *((u32*)(r4 + 0x34)) = 8;
+    sub_02059650(r4, (*((u8*)r4) - 1), *((u32*)(r4 + 8)));
+    Heap_Free(r4);
+    sub_02059650(r4);
+    Heap_Free(r4);
+    sub_02057F70();
+    sub_02037B38(0x5d);
+    *((u32*)(r4 + 0x34)) = 5;
     // blx r2
-    // b _02059472
-    // ldr r1, [r4, #0x50]
-    // ldr r2, [r4, #8]
-    // mov r0, #0
     // blx r2
-    // mov r0, #5
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0xa
-    // str r0, [r4, #0x34]
-    // mov r0, #5
+    *((u32*)(r4 + 0x34)) = 5;
+    *((u32*)(r4 + 0x34)) = 0xa;
     // add r4, #0x44
     // strb r0, [r4]
-    // b _02059472
-    // add r1, r4, #0
     // add r1, #0x44
-    // ldrb r1, [r1]
-    // cmp r1, #0
-    // beq _02058F0E
-    // add r0, r4, #0
     // add r0, #0x44
-    // ldrb r0, [r0]
     // add r4, #0x44
-    // sub r0, r0, #1
     // strb r0, [r4]
-    // b _02059472
-    // ldr r0, [r0, #0x40]
-    // bl PlayerAvatar_GetMapObject
-    // bl MapObject_IsMovementPaused
-    // cmp r0, #0
-    // beq _02058FB2
-    // mov r0, #0xb
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // bl sub_02057E08
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0xd
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #0xc
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _02058FB2
-    // mov r0, #0xd
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0
-    // bl ov01_021E636C
-    // mov r0, #0xe
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
+    PlayerAvatar_GetMapObject(*((u32*)((*((u8*)r4) - 1) + 0x40)), *((u8*)r4), *((u32*)(r4 + 8)));
+    MapObject_IsMovementPaused();
+    *((u32*)(r4 + 0x34)) = 0xb;
+    sub_02057E08(0xb);
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0xd, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
+    *((u32*)(r4 + 0x34)) = 0xc;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18));
+    *((u32*)(r4 + 0x34)) = 0xd;
+    ov01_021E636C(0);
+    *((u32*)(r4 + 0x34)) = 0xe;
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // sub r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x43
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02058FB2
-    // bl sub_02057E08
-    // mov r0, #0xf
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_020594C8
-    // add r0, r4, #0
-    // mov r1, #0xb
-    // bl sub_02058B84
-    // mov r0, #0x10
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r1, [r4, #0x24]
-    // add r0, r4, #0
-    // bl sub_02058C80
-    // cmp r0, #0
-    // beq _02058FB2
-    // ldr r0, [r4, #0x38]
-    // cmp r0, #0
-    // beq _02058FB4
-    // cmp r0, #1
-    // beq _02058FBA
-    // cmp r0, #2
-    // beq _02058FC0
-    // b _02059472
-    // mov r0, #0x14
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0x13
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0x11
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x24]
-    // ldr r0, [r0, #0xc]
-    // bl SaveArray_Party_Get
-    // add r2, r0, #0
-    // mov r0, #0
+    sub_02057E08(*((u8*)r4), (*((u8*)r4) - 1));
+    *((u32*)(r4 + 0x34)) = 0xf;
+    sub_020594C8(r4, 0);
+    sub_02058B84(r4, 0xb);
+    *((u32*)(r4 + 0x34)) = 0x10;
+    sub_02058C80(r4, *((u32*)(r4 + 0x24)));
+    *((u32*)(r4 + 0x34)) = 0x14;
+    *((u32*)(r4 + 0x34)) = 0x13;
+    *((u32*)(r4 + 0x34)) = 0x11;
+    SaveArray_Party_Get(*((u32*)(*((u32*)(r4 + 0x24)) + 0xc)));
     // str r0, [sp]
-    // mov r0, #0xb
     // str r0, [sp, #4]
-    // add r3, r4, #0
     // add r3, #0x3c
-    // ldrb r3, [r3]
-    // ldr r1, [r4, #0x24]
-    // add r0, r4, #0
-    // bl sub_02058AEC
-    // mov r0, #0x12
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r1, [r4, #0x24]
-    // add r0, r4, #0
-    // bl sub_02058CD8
-    // cmp r0, #0
-    // beq _020590C8
-    // mov r0, #0xf
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x24]
-    // bl FieldSystem_LoadFieldOverlay
-    // add r0, r4, #0
+    sub_02058AEC(r4, *((u32*)(r4 + 0x24)), r0, *((u8*)r4));
+    *((u32*)(r4 + 0x34)) = 0x12;
+    sub_02058CD8(r4, *((u32*)(r4 + 0x24)));
+    *((u32*)(r4 + 0x34)) = 0xf;
+    FieldSystem_LoadFieldOverlay(*((u32*)(r4 + 0x24)));
     // add r0, #0x88
-    // ldrb r0, [r0]
-    // cmp r0, #3
-    // beq _0205901C
-    // add r0, r4, #0
-    // mov r1, #5
     // add r0, #0x43
     // strb r1, [r0]
-    // mov r0, #0x15
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0x1a
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
+    *((u32*)(r4 + 0x34)) = 0x15;
+    *((u32*)(r4 + 0x34)) = 0x1a;
     // add r0, #0x3d
-    // bl sub_0203996C
-    // add r0, r4, #0
-    // bl sub_02058D04
-    // cmp r0, #0
-    // beq _020590C8
-    // add r0, r4, #0
-    // mov r1, #5
+    sub_0203996C(r4, 5);
+    sub_02058D04(r4);
     // add r0, #0x43
     // strb r1, [r0]
-    // mov r0, #0
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x24]
-    // bl FieldSystem_LoadFieldOverlay
-    // add r0, r4, #0
+    *((u32*)(r4 + 0x34)) = 0;
+    FieldSystem_LoadFieldOverlay(*((u32*)(r4 + 0x24)), 5);
     // add r0, #0x88
-    // ldrb r0, [r0]
-    // cmp r0, #3
-    // beq _02059058
-    // mov r0, #0x16
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0x1a
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02058D04
-    // cmp r0, #0
-    // beq _020590C8
-    // mov r0, #8
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
+    *((u32*)(r4 + 0x34)) = 0x16;
+    *((u32*)(r4 + 0x34)) = 0x1a;
+    sub_02058D04(r4);
+    *((u32*)(r4 + 0x34)) = 8;
     // add r0, #0x44
-    // ldrb r0, [r0]
-    // sub r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x44
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x44
-    // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _020590C8
-    // mov r0, #0x18
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // bl sub_02057E08
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0x13
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #0x19
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _020590C8
-    // mov r0, #0xd
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02058D04
-    // cmp r0, #0
-    // bne _020590CA
-    // b _02059472
-    // bl sub_02058D24
-    // cmp r0, #0
-    // beq _020590D8
-    // mov r0, #5
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x38]
-    // cmp r0, #0
-    // beq _020590E2
-    // mov r1, #1
-    // b _020590E4
-    // mov r1, #0
-    // add r0, r4, #0
+    *((u32*)(r4 + 0x34)) = 0x18;
+    sub_02057E08(0x18, (*((u8*)r4) - 1));
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0x13, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
+    *((u32*)(r4 + 0x34)) = 0x19;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18));
+    *((u32*)(r4 + 0x34)) = 0xd;
+    sub_02058D04(r4);
+    sub_02058D24();
+    *((u32*)(r4 + 0x34)) = 5;
     // add r0, #0x82
     // strb r1, [r0]
-    // add r1, r4, #0
     // add r1, #0x82
-    // ldrb r1, [r1]
-    // add r0, r4, #0
-    // bl sub_020596A8
-    // mov r0, #0
-    // bl sub_02037AC0
-    // ldr r0, [r4, #0x28]
-    // ldr r2, [r4, #0x74]
-    // mov r1, #0
-    // bl BufferPlayersName
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0xe
-    // bl ReadMsgDataIntoString
-    // ldr r0, [r4, #0x28]
-    // ldr r1, [r4, #0x10]
-    // ldr r2, [r4, #0xc]
-    // bl StringExpandPlaceholders
-    // ldr r1, [r4, #0x10]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #0x1b
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _0205922E
-    // bl sub_02058D24
-    // cmp r0, #0
-    // beq _0205914C
-    // mov r0, #5
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // nop
-    // _02059148: .word gSystem
-    // mov r0, #0
-    // bl sub_02037B38
-    // cmp r0, #0
-    // beq _0205922E
-    // add r0, r4, #0
-    // bl sub_020596F0
-    // mov r0, #0x1c
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02059738
-    // cmp r0, #0
-    // beq _0205922E
-    // mov r0, #1
-    // bl sub_02037AC0
-    // mov r0, #0x1d
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #1
-    // bl sub_02037B38
-    // cmp r0, #0
-    // beq _0205922E
-    // add r0, r4, #0
-    // bl sub_02059748
-    // add r1, r4, #0
+    sub_020596A8(r4, *((u8*)r4));
+    sub_02037AC0(0);
+    BufferPlayersName(*((u32*)(r4 + 0x28)), 0, *((u32*)(r4 + 0x74)));
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0xe, *((u32*)(r4 + 0xc)));
+    StringExpandPlaceholders(*((u32*)(r4 + 0x28)), *((u32*)(r4 + 0x10)), *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0x10)));
+    *((u32*)(r4 + 0x30)) = r0;
+    *((u32*)(r4 + 0x34)) = 0x1b;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18));
+    sub_02058D24();
+    *((u32*)(r4 + 0x34)) = 5;
+    sub_02037B38(0);
+    sub_020596F0(r4);
+    *((u32*)(r4 + 0x34)) = 0x1c;
+    sub_02059738(r4);
+    sub_02037AC0(1);
+    *((u32*)(r4 + 0x34)) = 0x1d;
+    sub_02037B38(1);
+    sub_02059748(r4);
     // add r1, #0x83
     // strb r0, [r1]
-    // add r0, r4, #0
     // add r0, #0x82
-    // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _020591BC
-    // add r0, r4, #0
     // add r0, #0x83
-    // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _020591BC
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0x14
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #0x1e
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0x2a
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _0205922E
-    // add r0, r4, #0
-    // mov r1, #0
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0x14, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
+    *((u32*)(r4 + 0x34)) = 0x1e;
+    *((u32*)(r4 + 0x34)) = 0x2a;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18));
     // add r0, #0x89
     // strb r1, [r0]
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0x11
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // add r0, r4, #0
-    // mov r1, #0
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0x11, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
     // add r0, #0x84
     // strb r1, [r0]
-    // mov r0, #0x1f
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _0205922E
-    // add r0, r4, #0
-    // bl sub_020597A8
-    // add r1, r4, #0
+    *((u32*)(r4 + 0x34)) = 0x1f;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18), 0);
+    sub_020597A8(r4);
     // add r1, #0x84
-    // ldrb r1, [r1]
-    // add r0, r4, #0
-    // bl sub_02059820
-    // mov r0, #0x20
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02059A08
-    // cmp r0, #1
-    // beq _02059230
-    // cmp r0, #2
-    // beq _02059246
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02059AD8
-    // mov r0, #0x81
+    sub_02059820(r4, *((u8*)r4));
+    *((u32*)(r4 + 0x34)) = 0x20;
+    sub_02059A08(r4);
+    sub_02059AD8(r4);
     // ldrsb r1, [r4, r0]
-    // add r0, r4, #0
     // add r0, #0x84
     // strb r1, [r0]
-    // mov r0, #0x24
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02059AD8
-    // add r0, r4, #0
-    // mov r1, #0xff
+    *((u32*)(r4 + 0x34)) = 0x24;
+    sub_02059AD8(r4);
     // add r0, #0x84
     // strb r1, [r0]
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0xf
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #2
-    // bl sub_02037AC0
-    // mov r0, #0x27
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r1, r4, #0
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0xf, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
+    sub_02037AC0(2);
+    *((u32*)(r4 + 0x34)) = 0x27;
     // add r1, #0x84
-    // ldrb r1, [r1]
-    // ldr r0, [r4, #0x50]
-    // bl Party_GetMonByIndex
-    // bl Mon_GetBoxMon
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x28]
-    // mov r1, #1
-    // bl BufferBoxMonSpeciesName
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0x12
-    // bl ReadMsgDataIntoString
-    // ldr r0, [r4, #0x28]
-    // ldr r1, [r4, #0x10]
-    // ldr r2, [r4, #0xc]
-    // bl StringExpandPlaceholders
-    // ldr r1, [r4, #0x10]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #0x25
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _02059348
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_0205993C
-    // mov r0, #0x26
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02059A08
-    // cmp r0, #1
-    // beq _020592FC
-    // cmp r0, #2
-    // bne _02059348
-    // add r0, r4, #0
-    // bl sub_02059AD8
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0x11
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #0x1f
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0x81
+    Party_GetMonByIndex(*((u32*)(r4 + 0x50)), *((u8*)r4));
+    Mon_GetBoxMon();
+    BufferBoxMonSpeciesName(*((u32*)(r4 + 0x28)), 1, r0);
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0x12, *((u32*)(r4 + 0xc)));
+    StringExpandPlaceholders(*((u32*)(r4 + 0x28)), *((u32*)(r4 + 0x10)), *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0x10)));
+    *((u32*)(r4 + 0x30)) = r0;
+    *((u32*)(r4 + 0x34)) = 0x25;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18));
+    sub_0205993C(r4, 0);
+    *((u32*)(r4 + 0x34)) = 0x26;
+    sub_02059A08(r4);
+    sub_02059AD8(r4);
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0x11, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
+    *((u32*)(r4 + 0x34)) = 0x1f;
     // ldrsb r0, [r4, r0]
-    // cmp r0, #1
-    // bne _02059334
-    // add r0, r4, #0
-    // bl sub_02059AD8
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0xe
-    // bl ReadMsgDataIntoString
-    // ldr r0, [r4, #0x28]
-    // ldr r1, [r4, #0x10]
-    // ldr r2, [r4, #0xc]
-    // bl StringExpandPlaceholders
-    // ldr r1, [r4, #0x10]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // mov r0, #2
-    // bl sub_02037AC0
-    // mov r0, #0x27
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #0
-    // bl ov01_021E636C
-    // mov r0, #0x21
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // bne _0205934A
-    // b _02059472
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_020594C8
-    // mov r0, #1
+    sub_02059AD8(r4);
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0xe, *((u32*)(r4 + 0xc)));
+    StringExpandPlaceholders(*((u32*)(r4 + 0x28)), *((u32*)(r4 + 0x10)), *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0x10)));
+    *((u32*)(r4 + 0x30)) = r0;
+    sub_02037AC0(2);
+    *((u32*)(r4 + 0x34)) = 0x27;
+    ov01_021E636C(0);
+    *((u32*)(r4 + 0x34)) = 0x21;
+    IsPaletteFadeFinished(0x21);
+    sub_020594C8(r4, 0);
     // str r0, [sp]
-    // mov r0, #0xb
     // str r0, [sp, #4]
-    // add r3, r4, #0
     // add r3, #0x84
-    // ldrb r3, [r3]
-    // ldr r1, [r4, #0x24]
-    // ldr r2, [r4, #0x50]
-    // add r0, r4, #0
-    // bl sub_02058AEC
-    // mov r0, #0x22
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r1, [r4, #0x24]
-    // add r0, r4, #0
-    // bl sub_02058CD8
-    // cmp r0, #0
-    // beq _02059472
-    // ldr r0, [r4, #0x24]
-    // bl FieldSystem_LoadFieldOverlay
-    // mov r0, #0x23
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02058D04
-    // cmp r0, #0
-    // beq _02059472
-    // mov r0, #0x24
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _02059472
-    // mov r0, #2
-    // bl sub_02037B38
-    // cmp r0, #0
-    // beq _02059472
-    // add r0, r4, #0
-    // bl sub_0205975C
-    // mov r0, #0x29
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_02059798
-    // cmp r0, #0
-    // beq _02059472
-    // add r0, r4, #0
+    sub_02058AEC(r4, *((u32*)(r4 + 0x24)), *((u32*)(r4 + 0x50)), *((u8*)r4));
+    *((u32*)(r4 + 0x34)) = 0x22;
+    sub_02058CD8(r4, *((u32*)(r4 + 0x24)));
+    FieldSystem_LoadFieldOverlay(*((u32*)(r4 + 0x24)));
+    *((u32*)(r4 + 0x34)) = 0x23;
+    sub_02058D04(r4);
+    *((u32*)(r4 + 0x34)) = 0x24;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18));
+    sub_02037B38(2);
+    sub_0205975C(r4);
+    *((u32*)(r4 + 0x34)) = 0x29;
+    sub_02059798(r4);
     // add r0, #0x84
-    // ldrb r0, [r0]
-    // cmp r0, #0xff
-    // bne _020593DC
-    // mov r0, #4
-    // bl sub_02037AC0
-    // mov r0, #0x2c
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
+    sub_02037AC0(4);
+    *((u32*)(r4 + 0x34)) = 0x2c;
     // add r0, #0x85
-    // ldrb r0, [r0]
-    // cmp r0, #0xff
-    // bne _020593EC
-    // mov r0, #0x2a
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // add r0, r4, #0
-    // bl sub_020597D4
-    // mov r0, #0x5d
-    // bl sub_02037AC0
-    // mov r0, #2
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x2c]
-    // ldr r2, [r4, #0xc]
-    // mov r1, #0xf
-    // bl ReadMsgDataIntoString
-    // ldr r1, [r4, #0xc]
-    // add r0, r4, #0
-    // bl sub_02059478
-    // str r0, [r4, #0x30]
-    // add r0, r4, #0
-    // mov r1, #0
+    *((u32*)(r4 + 0x34)) = 0x2a;
+    sub_020597D4(r4);
+    sub_02037AC0(0x5d);
+    *((u32*)(r4 + 0x34)) = 2;
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x2c)), 0xf, *((u32*)(r4 + 0xc)));
+    sub_02059478(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x30)) = r0;
     // add r0, #0x43
     // strb r1, [r0]
-    // mov r0, #0x2b
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _02059472
-    // add r0, r4, #0
+    *((u32*)(r4 + 0x34)) = 0x2b;
+    IsPrintFinished(((*((u32*)(r4 + 0x30)) << 0x18) >> 0x18), 0);
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x43
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x43
-    // ldrb r0, [r0]
-    // cmp r0, #0x3c
-    // bls _02059472
-    // mov r0, #4
-    // bl sub_02037AC0
-    // mov r0, #0x2c
-    // str r0, [r4, #0x34]
-    // b _02059472
-    // mov r0, #4
-    // bl sub_02037B38
-    // cmp r0, #0
-    // beq _02059472
-    // add r0, r4, #0
+    sub_02037AC0(4, (*((u8*)r4) + 1));
+    *((u32*)(r4 + 0x34)) = 0x2c;
+    sub_02037B38(4);
     // add r0, #0x14
-    // mov r1, #0
-    // bl ClearFrameAndWindow2
-    // mov r0, #0
-    // ldr r2, [r4, #8]
-    // add r1, r0, #0
+    ClearFrameAndWindow2(r4, 0);
     // blx r2
-    // mov r0, #5
-    // str r0, [r4, #0x34]
-    // mov r0, #0
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x34)) = 5;
 }
+
 
 
 
 void sub_02059478(void) {
     // add r4, #0x14
-    WindowIsInUse(r0);
-    sub_0205B514(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), r4, 3);
-    Save_PlayerData_GetOptionsAddr(*((u32*)(*((u32*)(r5 + 0x24)) + 0xc)));
-    sub_0205B564(r4, r0);
-    sub_0205B5A8(r4);
-    Save_PlayerData_GetOptionsAddr(*((u32*)(*((u32*)(r5 + 0x24)) + 0xc)));
-    sub_0205B5B4(r4, r6, r0, 1);
 }
+
 
 
 
 void sub_020594C8(void) {
     // add r0, #0x14
-    WindowIsInUse();
     // add r0, #0x14
-    ClearFrameAndWindow2(r5, 0);
     // add r0, #0x14
-    ClearWindowTilemapAndCopyToVram(r5);
     // add r0, #0x14
-    RemoveWindow(r5);
     // add r0, #0x14
-    InitWindow(r5);
     // add r0, #0x54
-    WindowIsInUse(r5);
     // add r0, #0x54
-    RemoveWindow(r5);
     // add r0, #0x54
-    InitWindow(r5);
     // add r0, #0x64
-    WindowIsInUse(r5);
     // add r0, #0x64
-    RemoveWindow(r5);
     // add r5, #0x64
-    InitWindow(r5);
 }
+
 
 
 
 void sub_02059538(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x10]
-    // add r6, r1, #0
-    // cmp r0, #0
-    // beq _02059546
-    // b _0205964A
-    // mov r0, #0xb
-    // mov r1, #0x8c
-    // bl Heap_AllocAtEnd
-    // add r4, r0, #0
-    // mov r1, #0
-    // mov r2, #0x8c
-    // bl MI_CpuFill8
-    // add r0, r4, #0
-    // mov r1, #5
+    Heap_AllocAtEnd(0xb, 0x8c);
+    MI_CpuFill8(0, 0x8c);
     // add r0, #0x43
     // strb r1, [r0]
-    // str r5, [r4, #0x24]
-    // str r6, [r4, #8]
-    // mov r0, #0xb
-    // bl MessageFormat_New
-    // str r0, [r4, #0x28]
-    // mov r0, #0
-    // mov r1, #0x1b
-    // mov r2, #0xe
-    // mov r3, #0xb
-    // bl NewMsgDataFromNarc
-    // str r0, [r4, #0x2c]
-    // mov r0, #0xc8
-    // mov r1, #0xb
-    // bl String_New
-    // str r0, [r4, #0xc]
-    // mov r0, #0xc8
-    // mov r1, #0xb
-    // bl String_New
-    // str r0, [r4, #0x10]
-    // add r0, r4, #0
+    *((u32*)(r4 + 0x24)) = r5;
+    *((u32*)(r4 + 8)) = r6;
+    MessageFormat_New(0xb, 5);
+    *((u32*)(r4 + 0x28)) = r0;
+    NewMsgDataFromNarc(0, 0x1b, 0xe, 0xb);
+    *((u32*)(r4 + 0x2c)) = r0;
+    String_New(0xc8, 0xb);
+    *((u32*)(r4 + 0xc)) = r0;
+    String_New(0xc8, 0xb);
+    *((u32*)(r4 + 0x10)) = r0;
     // add r0, #0x14
-    // bl InitWindow
-    // add r0, r4, #0
+    InitWindow(r4);
     // add r0, #0x54
-    // bl InitWindow
-    // add r0, r4, #0
+    InitWindow(r4);
     // add r0, #0x64
-    // bl InitWindow
-    // mov r0, #0xb
-    // bl ListMenuCursorNew
-    // str r0, [r4, #0x78]
-    // bl sub_0203993C
-    // add r1, r4, #0
+    InitWindow(r4);
+    ListMenuCursorNew(0xb);
+    *((u32*)(r4 + 0x78)) = r0;
+    sub_0203993C();
     // add r1, #0x88
     // strb r0, [r1]
-    // mov r1, #0
-    // str r1, [r4, #0x4c]
-    // str r1, [r4, #0x48]
-    // add r0, r4, #0
-    // str r1, [r4, #0x50]
+    *((u32*)(r4 + 0x4c)) = 0;
+    *((u32*)(r4 + 0x48)) = 0;
+    *((u32*)(r4 + 0x50)) = 0;
     // add r0, #0x89
     // strb r1, [r0]
-    // bl sub_0203769C
-    // add r1, r4, #0
+    sub_0203769C(r4, 0);
     // add r1, #0x86
     // strh r0, [r1]
-    // add r0, r4, #0
     // add r0, #0x86
-    // ldrh r1, [r0]
-    // mov r0, #1
     // eor r0, r1
-    // bl sub_02034818
-    // str r0, [r4, #0x74]
-    // add r0, r4, #0
+    sub_02034818(1, *((u16*)r4));
+    *((u32*)(r4 + 0x74)) = r0;
     // add r0, #0x88
-    // ldrb r0, [r0]
-    // cmp r0, #3
-    // beq _020595F0
-    // cmp r0, #4
-    // beq _02059626
-    // b _0205962C
-    // bl sub_02059B08
-    // add r6, r0, #0
-    // mov r0, #0xb
-    // add r1, r6, #0
-    // bl Heap_AllocAtEnd
-    // str r0, [r4, #0x4c]
-    // mov r0, #0xb
-    // add r1, r6, #0
-    // bl Heap_AllocAtEnd
-    // str r0, [r4, #0x48]
-    // mov r0, #0xb
-    // bl SaveArray_Party_Alloc
-    // mov r1, #3
-    // str r0, [r4, #0x50]
-    // bl Party_InitWithMaxSize
-    // add r0, r4, #0
-    // mov r1, #5
+    sub_02059B08(*((u8*)r4));
+    Heap_AllocAtEnd(0xb, r0);
+    *((u32*)(r4 + 0x4c)) = r0;
+    Heap_AllocAtEnd(0xb, r6);
+    *((u32*)(r4 + 0x48)) = r0;
+    SaveArray_Party_Alloc(0xb);
+    *((u32*)(r4 + 0x50)) = r0;
+    Party_InitWithMaxSize(3);
     // add r0, #0x44
     // strb r1, [r0]
-    // mov r0, #0x17
-    // str r0, [r4, #0x34]
-    // b _02059640
-    // mov r0, #9
-    // str r0, [r4, #0x34]
-    // b _02059640
-    // ldr r0, [r4, #0x24]
+    *((u32*)(r4 + 0x34)) = 0x17;
+    *((u32*)(r4 + 0x34)) = 9;
     // add r0, #0xa4
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _0205963C
-    // mov r0, #9
-    // str r0, [r4, #0x34]
-    // b _02059640
-    // mov r0, #0
-    // str r0, [r4, #0x34]
-    // ldr r1, _0205964C ; =sub_02058D4C
-    // add r0, r5, #0
-    // add r2, r4, #0
-    // bl FieldSystem_CreateTask
-    // pop {r4, r5, r6, pc}
-    // _0205964C: .word sub_02058D4C
-    // TODO: decompile
+    *((u32*)(r4 + 0x34)) = 9;
+    *((u32*)(r4 + 0x34)) = 0;
+    FieldSystem_CreateTask(r5, sub_02058D4C, r4);
 }
+
 
 
 
 void sub_02059650(void) {
-    Heap_Free(*((u32*)(r0 + 0x50)));
-    Heap_Free(*((u32*)(r4 + 0x4c)));
-    Heap_Free(*((u32*)(r4 + 0x48)));
-    DestroyMsgData(*((u32*)(r4 + 0x2c)));
-    MessageFormat_Delete(*((u32*)(r4 + 0x28)));
-    String_Delete(*((u32*)(r4 + 0xc)));
-    String_Delete(*((u32*)(r4 + 0x10)));
-    DestroyListMenuCursorObj(*((u32*)(r4 + 0x78)));
-    sub_020594C8(r4, 1);
 }
+
 
 
 
@@ -1194,46 +471,36 @@ void sub_0205969C(void) {
 
 
 
+
 void sub_020596A8(void) {
-    SaveArray_Party_Get(*((u32*)(*((u32*)(r0 + 0x24)) + 0xc)));
     // str r0, [sp]
-    sub_02070D90();
     // add r0, r6, r0
     // str r5, [r4, r0]
-    // ldr r0, [r4, r0]
     // add r1, r7, r5
     // add r1, #0x3d
-    // ldrb r1, [r1]
     // ldr r0, [sp]
-    Party_GetMonByIndex((r0 << 1), (r1 - 1));
-    MI_CpuCopy8(r4, r6);
     // add r4, r4, r6
 }
 
 
 
+
 void sub_020596F0(void) {
     // add r0, #0x89
-    // ldrb r1, [r0]
     // tst r1, r0
-    sub_02059B08(1);
     // add r0, #0x86
-    // ldrh r0, [r0]
-    sub_02037088(0x6a, r4, r0);
-    sub_02036FD8(0x6a, r4);
     // add r1, #0x89
-    // ldrb r2, [r1]
     // add r5, #0x89
-    // orr r1, r2
     // strb r1, [r5]
 }
 
 
 
+
 void sub_02059738(void) {
     // add r0, #0x89
-    // ldrb r0, [r0]
 }
+
 
 
 
@@ -1242,55 +509,41 @@ void sub_02059748(void) {
 
 
 
+
 void sub_0205975C(void) {
     // add r0, #0x86
-    // ldrh r0, [r0]
     // add r1, #0x84
-    sub_02037108(0x6b, r0, 1);
     // add r1, #0x84
-    sub_02037030(0x6b, r4, 1);
     // add r1, #0x89
-    // ldrb r2, [r1]
     // add r4, #0x89
-    // orr r1, r2
     // strb r1, [r4]
 }
 
 
 
+
 void sub_02059798(void) {
     // add r0, #0x89
-    // ldrb r0, [r0]
 }
+
 
 
 
 void sub_020597A8(void) {
-    sub_02070D90();
-    Party_InitWithMaxSize(*((u32*)(r5 + 0x50)), 3);
-    // mul r1, r6
     // add r1, r2, r1
-    Party_AddMon(*((u32*)(r5 + 0x50)), 0, *((u32*)(r5 + 0x48)));
 }
+
 
 
 
 void sub_020597D4(void) {
-    sub_02070D90();
     // add r0, #0x84
-    // ldrb r0, [r0]
-    // mul r1, r4
     // add r0, r2, r1
     // add r1, #0x85
-    // ldrb r1, [r1]
-    // mul r2, r4
     // add r1, r3, r2
-    MI_CpuCopy8(r6, r6, r0, *((u32*)(r6 + 0x4c)));
-    Party_InitWithMaxSize(*((u32*)(r6 + 0x50)), 3);
-    // mul r1, r4
     // add r1, r2, r1
-    Party_AddMon(*((u32*)(r6 + 0x50)), 0, *((u32*)(r6 + 0x4c)));
 }
+
 
 
 
@@ -1299,10 +552,7 @@ void sub_02059820(void) {
     // add r0, #0x54
     // str r1, [sp, #0x14]
     // str r0, [sp, #0x20]
-    WindowIsInUse();
-    NewMsgDataFromNarc(1, 0x1b, 0xed, 4);
     // str r0, [sp, #0x18]
-    sub_02070D90();
     // str r0, [sp, #0x1c]
     // str r0, [sp]
     // str r1, [sp, #4]
@@ -1310,189 +560,95 @@ void sub_02059820(void) {
     // str r0, [sp, #0xc]
     // str r1, [sp, #0x10]
     // ldr r1, [sp, #0x20]
-    AddWindowParameterized(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), 0xa, 3, 0x15);
     // str r0, [sp]
     // str r0, [sp, #4]
-    LoadUserFrameGfx1(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), 3, 1, 0xb);
     // ldr r0, [sp, #0x20]
-    FillWindowPixelBuffer(0xf);
     // add r0, r0, r6
-    GetMonData(*((u32*)(r5 + 0x48)), 5, 0);
     // ldr r0, [sp, #0x18]
-    ReadMsgDataIntoString(r0, *((u32*)(r5 + 0xc)));
     // str r4, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x20]
-    AddTextPrinterParameterized(0, 0, *((u32*)(r5 + 0xc)), 0x10);
     // ldr r0, [sp, #0x1c]
     // add r6, r6, r0
     // add r4, #0x10
-    ReadMsgDataIntoString(*((u32*)(r5 + 0x2c)), 0x15, *((u32*)(r5 + 0xc)));
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r1, [sp, #8]
     // ldr r0, [sp, #0x20]
-    AddTextPrinterParameterized(0xff, 0, *((u32*)(r5 + 0xc)), 0x10);
     // ldr r0, [sp, #0x18]
-    DestroyMsgData();
     // str r0, [sp]
     // ldr r0, [sp, #0x20]
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x20]
-    FillWindowPixelRect(((*((u8*)(0x10 + 8)) << 0x13) >> 0x10), 0xf, 0, 0);
     // ldr r3, [sp, #0x14]
     // add r1, #0x54
-    ListMenuUpdateCursorObj(*((u32*)(r5 + 0x78)), r5, 0, (r3 << 4));
     // add r0, #0x54
-    DrawFrameAndWindow1(r5, 0, 1, 0xb);
     // ldr r0, [sp, #0x14]
     // add r1, #0x81
     // strb r0, [r1]
     // add r0, #0x80
     // strb r1, [r0]
     // ldr r0, [sp, #0x20]
-    *((u32*)(r5 + 0x7c)) = r5;
 }
+
 
 
 
 void sub_0205993C(void) {
     // add r7, #0x64
     // str r1, [sp, #0x14]
-    WindowIsInUse(r0);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // str r0, [sp, #0xc]
     // str r0, [sp, #0x10]
-    AddWindowParameterized(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), r7, 3, 0x14);
     // str r0, [sp]
     // str r0, [sp, #4]
-    LoadUserFrameGfx1(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), 3, 1, 0xb);
-    FillWindowPixelBuffer(r7, 0xf);
     // add r1, #0x16
-    ReadMsgDataIntoString(*((u32*)(r5 + 0x2c)), 0, *((u32*)(r5 + 0xc)));
     // str r4, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    AddTextPrinterParameterized(r7, 0, *((u32*)(r5 + 0xc)), 0x10);
     // add r4, #0x10
     // add r0, #0x80
     // strb r1, [r0]
     // ldr r0, [sp, #0x14]
-    *((u32*)(r5 + 0x7c)) = r7;
     // add r1, #0x81
     // strb r0, [r1]
     // str r0, [sp]
     // str r0, [sp, #4]
-    FillWindowPixelRect(r7, 0xf, 0, 0);
     // ldr r3, [sp, #0x14]
-    ListMenuUpdateCursorObj(*((u32*)(r5 + 0x78)), *((u32*)(r5 + 0x7c)), 0, (r3 << 4));
-    DrawFrameAndWindow1(*((u32*)(r5 + 0x7c)), 0, 1, 0xb);
 }
+
 
 
 
 void sub_02059A08(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // ldr r0, _02059AD0 ; =gSystem
-    // mov r1, #0x40
-    // ldr r0, [r0, #0x48]
     // tst r1, r0
-    // beq _02059A32
-    // mov r0, #0x81
     // ldrsb r0, [r4, r0]
-    // cmp r0, #0
-    // bne _02059A28
-    // add r0, r4, #0
     // add r0, #0x80
-    // ldrb r0, [r0]
-    // b _02059A28
-    // sub r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x81
     // strb r1, [r0]
-    // b _02059A94
-    // mov r1, #0x80
     // tst r1, r0
-    // beq _02059A56
-    // mov r0, #0x81
     // ldrsb r1, [r4, r0]
-    // add r0, r4, #0
     // add r0, #0x80
-    // ldrb r0, [r0]
-    // sub r0, r0, #1
-    // cmp r1, r0
-    // bne _02059A4C
-    // mov r1, #0
-    // b _02059A4E
-    // add r1, r1, #1
-    // add r0, r4, #0
     // add r0, #0x81
     // strb r1, [r0]
-    // b _02059A94
-    // mov r1, #1
     // tst r1, r0
-    // beq _02059A7C
-    // ldr r0, _02059AD4 ; =0x000005DC
-    // bl PlaySE
-    // mov r0, #0x81
+    PlaySE(0x000005DC, 1);
     // ldrsb r1, [r4, r0]
     // add r4, #0x80
-    // ldrb r0, [r4]
-    // sub r0, r0, #1
-    // cmp r1, r0
-    // bge _02059A76
-    // add sp, #8
-    // mov r0, #1
-    // pop {r4, pc}
-    // add sp, #8
-    // mov r0, #2
-    // pop {r4, pc}
-    // mov r1, #2
     // tst r0, r1
-    // beq _02059A8E
-    // ldr r0, _02059AD4 ; =0x000005DC
-    // bl PlaySE
-    // add sp, #8
-    // mov r0, #2
-    // pop {r4, pc}
-    // add sp, #8
-    // mov r0, #0
-    // pop {r4, pc}
-    // ldr r0, _02059AD4 ; =0x000005DC
-    // bl PlaySE
-    // ldr r0, [r4, #0x7c]
-    // mov r1, #0x10
+    PlaySE(0x000005DC, 2);
+    PlaySE(0x000005DC);
     // str r1, [sp]
-    // ldrb r1, [r0, #8]
-    // mov r2, #0
-    // add r3, r2, #0
-    // lsl r1, r1, #0x13
-    // lsr r1, r1, #0x10
     // str r1, [sp, #4]
-    // mov r1, #0xf
-    // bl FillWindowPixelRect
-    // mov r3, #0x81
+    FillWindowPixelRect(*((u32*)(r4 + 0x7c)), 0xf, 0, 0);
     // ldrsb r3, [r4, r3]
-    // ldr r0, [r4, #0x78]
-    // ldr r1, [r4, #0x7c]
-    // mov r2, #0
-    // lsl r3, r3, #4
-    // bl ListMenuUpdateCursorObj
-    // ldr r0, [r4, #0x7c]
-    // bl CopyWindowPixelsToVram_TextMode
-    // mov r0, #0
-    // add sp, #8
-    // pop {r4, pc}
-    // nop
-    // _02059AD0: .word gSystem
-    // _02059AD4: .word 0x000005DC
-    // TODO: decompile
+    ListMenuUpdateCursorObj(*((u32*)(r4 + 0x78)), *((u32*)(r4 + 0x7c)), 0, (0x81 << 4));
+    CopyWindowPixelsToVram_TextMode(*((u32*)(r4 + 0x7c)));
 }
+
 
 
 
@@ -1501,16 +657,14 @@ void sub_02059AD8(void) {
 
 
 
+
 void sub_02059AE4(void) {
-    sub_0205969C(r3);
     // add r1, #0x86
-    // ldrh r1, [r1]
     // add r1, #0x89
-    // ldrb r2, [r1]
     // add r0, #0x89
-    // orr r1, r2
     // strb r1, [r0]
 }
+
 
 
 
@@ -1519,304 +673,126 @@ void sub_02059B08(void) {
 
 
 
+
 void sub_02059B18(void) {
 }
 
 
 
+
 void sub_02059B34(void) {
-    sub_0205969C(r3);
     // add r1, #0x86
-    // ldrh r1, [r1]
-    // ldrb r2, [r4]
     // add r1, #0x85
     // strb r2, [r1]
     // add r1, #0x89
-    // ldrb r2, [r1]
     // add r0, #0x89
-    // orr r1, r2
     // strb r1, [r0]
 }
 
 
 
+
 void sub_02059B64(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r0, #0
-    // bl TaskManager_GetFieldSystem
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl TaskManager_GetEnvironment
-    // add r4, r0, #0
-    // mov r1, #0
-    // ldr r0, [r4, #0x24]
-    // add r2, r1, #0
-    // bl sub_020588DC
-    // ldr r1, [r4, #0x28]
-    // add r6, r0, #0
-    // cmp r1, #7
-    // bls _02059B8A
-    // b _02059D32
+    TaskManager_GetFieldSystem();
+    TaskManager_GetEnvironment(r4);
+    sub_020588DC(*((u32*)(r0 + 0x24)), 0, 0);
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02059B96: ; jump table
-    // mov r0, #4
-    // bl MessageFormat_New
-    // str r0, [r4, #0x18]
-    // mov r0, #0
-    // mov r1, #0x1b
-    // mov r2, #0xe
-    // mov r3, #4
-    // bl NewMsgDataFromNarc
-    // str r0, [r4, #0x1c]
-    // mov r0, #0xc8
-    // mov r1, #4
-    // bl String_New
+    MessageFormat_New(4, (*((u16*)(*((u32*)(r4 + 0x28)) + 6)) << 0x10));
+    *((u32*)(r4 + 0x18)) = r0;
+    NewMsgDataFromNarc(0, 0x1b, 0xe, 4);
+    *((u32*)(r4 + 0x1c)) = r0;
+    String_New(0xc8, 4);
     // str r0, [r4]
-    // mov r0, #0xc8
-    // mov r1, #4
-    // bl String_New
-    // str r0, [r4, #4]
-    // ldrb r0, [r6]
-    // cmp r0, #0xc
-    // bhi _02059C0E
+    String_New(0xc8, 4);
+    *((u32*)(r4 + 4)) = r0;
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02059BE2: ; jump table
-    // ldrb r0, [r6, #3]
-    // add r1, r0, #2
-    // b _02059C10
-    // mov r1, #0x19
-    // b _02059C10
-    // mov r1, #0x1a
-    // b _02059C10
-    // mov r1, #0x1b
-    // b _02059C10
-    // mov r1, #2
-    // ldr r0, [r4, #0x1c]
-    // ldr r2, [r4]
-    // bl ReadMsgDataIntoString
-    // ldr r0, [r4, #0x24]
-    // bl sub_02034818
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x18]
-    // mov r1, #0
-    // bl BufferPlayersName
-    // ldr r0, [r4, #0x18]
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4]
-    // bl StringExpandPlaceholders
-    // add r1, r4, #0
-    // ldr r0, [r5, #8]
+    ReadMsgDataIntoString(*((u32*)(r4 + 0x1c)), 2, *((u32*)r4));
+    sub_02034818(*((u32*)(r4 + 0x24)));
+    BufferPlayersName(*((u32*)(r4 + 0x18)), 0, r0);
+    StringExpandPlaceholders(*((u32*)(r4 + 0x18)), *((u32*)(r4 + 4)), *((u32*)r4));
     // add r1, #8
-    // mov r2, #3
-    // bl sub_0205B514
-    // ldr r0, [r5, #0xc]
-    // bl Save_PlayerData_GetOptionsAddr
-    // add r1, r0, #0
-    // add r0, r4, #0
+    sub_0205B514(*((u32*)(r5 + 8)), r4, 3);
+    Save_PlayerData_GetOptionsAddr(*((u32*)(r5 + 0xc)));
     // add r0, #8
-    // bl sub_0205B564
-    // ldr r0, [r5, #0xc]
-    // bl Save_PlayerData_GetOptionsAddr
-    // add r2, r0, #0
-    // add r0, r4, #0
-    // ldr r1, [r4, #4]
+    sub_0205B564(r4, r0);
+    Save_PlayerData_GetOptionsAddr(*((u32*)(r5 + 0xc)));
     // add r0, #8
-    // mov r3, #1
-    // bl sub_0205B5B4
-    // str r0, [r4, #0x20]
-    // ldr r0, [r4, #0x28]
-    // add r0, r0, #1
-    // str r0, [r4, #0x28]
-    // b _02059D36
-    // ldr r0, [r4, #0x20]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl IsPrintFinished
-    // cmp r0, #0
-    // beq _02059D36
-    // ldr r0, _02059D3C ; =gSystem
-    // ldr r1, [r0, #0x48]
-    // mov r0, #1
+    sub_0205B5B4(r4, *((u32*)(r4 + 4)), r0, 1);
+    *((u32*)(r4 + 0x20)) = r0;
+    *((u32*)(r4 + 0x28)) = (*((u32*)(r4 + 0x28)) + 1);
+    IsPrintFinished(((*((u32*)(r4 + 0x20)) << 0x18) >> 0x18));
     // tst r0, r1
-    // beq _02059D36
-    // ldr r0, [r4, #0x1c]
-    // bl DestroyMsgData
-    // ldr r0, [r4, #0x18]
-    // bl MessageFormat_Delete
-    // ldr r0, [r4]
-    // bl String_Delete
-    // ldr r0, [r4, #4]
-    // bl String_Delete
-    // add r0, r4, #0
+    DestroyMsgData(*((u32*)(r4 + 0x1c)), *((u32*)(gSystem + 0x48)));
+    MessageFormat_Delete(*((u32*)(r4 + 0x18)));
+    String_Delete(*((u32*)r4));
+    String_Delete(*((u32*)(r4 + 4)));
     // add r0, #8
-    // mov r1, #0
-    // bl ClearFrameAndWindow2
-    // add r0, r4, #0
+    ClearFrameAndWindow2(r4, 0);
     // add r0, #8
-    // bl RemoveWindow
-    // mov r0, #0
-    // bl ov01_021E636C
-    // ldr r0, [r4, #0x28]
-    // add r0, r0, #1
-    // str r0, [r4, #0x28]
-    // b _02059D36
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _02059D36
-    // ldr r0, [r4, #0x28]
-    // add r0, r0, #1
-    // str r0, [r4, #0x28]
-    // b _02059D36
-    // add r1, r4, #0
-    // ldr r2, _02059D40 ; =0x0000066C
+    RemoveWindow(r4);
+    ov01_021E636C(0);
+    *((u32*)(r4 + 0x28)) = (*((u32*)(r4 + 0x28)) + 1);
+    IsPaletteFadeFinished((*((u32*)(r4 + 0x28)) + 1));
+    *((u32*)(r4 + 0x28)) = (*((u32*)(r4 + 0x28)) + 1);
     // add r1, #0x2c
-    // bl MI_CpuCopy8
-    // add r1, r4, #0
-    // add r0, r5, #0
+    MI_CpuCopy8((*((u32*)(r4 + 0x28)) + 1), r4, 0x0000066C);
     // add r1, #0x2c
-    // bl TrainerCard_LaunchApp
-    // ldr r0, [r4, #0x28]
-    // add r0, r0, #1
-    // str r0, [r4, #0x28]
-    // b _02059D36
-    // add r0, r5, #0
-    // bl FieldSystem_ApplicationIsRunning
-    // cmp r0, #0
-    // bne _02059D36
-    // ldr r0, [r4, #0x28]
-    // add r0, r0, #1
-    // str r0, [r4, #0x28]
-    // b _02059D36
-    // add r0, r5, #0
-    // bl FieldSystem_LoadFieldOverlay
-    // ldr r0, [r4, #0x28]
-    // add r0, r0, #1
-    // str r0, [r4, #0x28]
-    // b _02059D36
-    // add r0, r5, #0
-    // bl sub_020505C8
-    // cmp r0, #0
-    // bne _02059D36
-    // mov r0, #1
-    // bl ov01_021E636C
-    // bl sub_02056E60
-    // ldr r0, [r4, #0x28]
-    // add r0, r0, #1
-    // str r0, [r4, #0x28]
-    // b _02059D36
-    // bl sub_02057F70
-    // add r0, r4, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _02059D3C: .word gSystem
-    // _02059D40: .word 0x0000066C
-    // TODO: decompile
+    TrainerCard_LaunchApp(r5, r4);
+    *((u32*)(r4 + 0x28)) = (*((u32*)(r4 + 0x28)) + 1);
+    FieldSystem_ApplicationIsRunning(r5);
+    *((u32*)(r4 + 0x28)) = (*((u32*)(r4 + 0x28)) + 1);
+    FieldSystem_LoadFieldOverlay(r5);
+    *((u32*)(r4 + 0x28)) = (*((u32*)(r4 + 0x28)) + 1);
+    sub_020505C8(r5);
+    ov01_021E636C(1);
+    sub_02056E60();
+    *((u32*)(r4 + 0x28)) = (*((u32*)(r4 + 0x28)) + 1);
+    sub_02057F70((*((u32*)(r4 + 0x28)) + 1));
+    Heap_Free(r4);
 }
+
 
 
 
 void sub_02059D44(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
-    // bl sub_0203769C
-    // add r5, r0, #0
-    // bl sub_02057ADC
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl sub_02057B14
-    // add r6, r0, #0
-    // mov r4, #0
-    // bl sub_02037454
-    // cmp r0, #0
-    // ble _02059DA6
-    // cmp r4, r5
-    // beq _02059D9C
-    // add r0, r4, #0
-    // bl sub_02057A34
-    // cmp r7, r0
-    // bne _02059D9C
-    // add r0, r4, #0
-    // bl sub_02057A88
-    // cmp r6, r0
-    // bne _02059D9C
-    // ldr r1, _02059DA8 ; =0x000006A8
-    // mov r0, #0xb
-    // bl Heap_AllocAtEnd
-    // add r2, r0, #0
-    // str r4, [r2, #0x24]
-    // mov r0, #0
-    // str r0, [r2, #0x28]
+    sub_0203769C();
+    sub_02057ADC();
+    sub_02057B14(r5);
+    sub_02037454();
+    sub_02057A34(r4);
+    sub_02057A88(r4);
+    Heap_AllocAtEnd(0xb, 0x000006A8);
+    *((u32*)(r0 + 0x24)) = r4;
+    *((u32*)(r0 + 0x28)) = 0;
     // ldr r0, [sp]
-    // ldr r1, _02059DAC ; =sub_02059B64
-    // bl FieldSystem_CreateTask
-    // bl sub_0203E2F4
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r4, r4, #1
-    // bl sub_02037454
-    // cmp r4, r0
-    // blt _02059D66
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _02059DA8: .word 0x000006A8
-    // _02059DAC: .word sub_02059B64
-    // TODO: decompile
+    FieldSystem_CreateTask(0, sub_02059B64, r0);
+    sub_0203E2F4();
+    sub_02037454();
 }
 
 
 
-void sub_02059DB0(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bne _02059DBA
-    // bl GF_AssertFail
-    // add r0, r4, #0
+
+struct UnkStruct_02059E1C * sub_02059DB0(void) {
+    GF_AssertFail();
     // add r0, #0x80
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _02059DC8
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // mov r2, #0x2a
-    // mov r0, #3
-    // mov r1, #0x1f
-    // lsl r2, r2, #6
-    // bl Heap_CreateAtEnd
-    // add r0, r4, #0
-    // bl sub_02059E1C
-    // add r5, r0, #0
-    // bne _02059DE4
-    // add r0, r4, #0
+    Heap_CreateAtEnd(3, 0x1f, (0x2a << 6));
+    sub_02059E1C(r4);
     // add r0, #0x80
-    // ldr r5, [r0]
-    // add r0, r4, #0
-    // bl sub_02091574
-    // mov r0, #2
-    // bl sub_02038C1C
-    // ldr r1, _02059E00 ; =sub_02059E88
-    // add r0, r5, #0
-    // mov r2, #0x28
-    // bl sub_0205A034
-    // add r0, r5, #0
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _02059E00: .word sub_02059E88
-    // TODO: decompile
+    sub_02091574(r4);
+    sub_02038C1C(2);
+    sub_0205A034(r5, sub_02059E88, 0x28);
 }
+
 
 
 
@@ -1825,242 +801,104 @@ void sub_02059E04(void) {
 
 
 
+
 void sub_02059E1C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r1, r5, #0
     // add r1, #0x80
-    // ldr r1, [r1]
-    // cmp r1, #0
-    // beq _02059E2E
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // bl FieldSystem_GetSaveData
-    // add r6, r0, #0
-    // bl sub_02037F18
-    // mov r1, #0x19
-    // mov r0, #0x1f
-    // lsl r1, r1, #4
-    // bl Heap_Alloc
-    // mov r2, #0x19
-    // mov r1, #0
-    // lsl r2, r2, #4
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // mov r0, #0
-    // str r0, [r4, #0x10]
-    // mov r0, #0x28
-    // str r0, [r4, #0x14]
-    // ldr r0, _02059E84 ; =sub_0205A03C
-    // add r1, r4, #0
-    // mov r2, #0xa
-    // bl SysTask_CreateOnMainQueue
-    // str r0, [r4, #0xc]
+    FieldSystem_GetSaveData(0, *((u32*)r0));
+    sub_02037F18();
+    Heap_Alloc(0x1f, (0x19 << 4));
+    MI_CpuFill8(0, (0x19 << 4));
+    *((u32*)(r4 + 0x10)) = 0;
+    *((u32*)(r4 + 0x14)) = 0x28;
+    SysTask_CreateOnMainQueue(sub_0205A03C, r4, 0xa);
+    *((u32*)(r4 + 0xc)) = r0;
     // str r5, [r4]
-    // str r6, [r4, #4]
-    // add r0, r6, #0
-    // bl Save_PlayerData_GetProfile
-    // str r0, [r4, #8]
-    // add r0, r4, #0
-    // bl sub_0205ABBC
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    *((u32*)(r4 + 4)) = r6;
+    Save_PlayerData_GetProfile(r6);
+    *((u32*)(r4 + 8)) = r0;
+    sub_0205ABBC(r4);
     // add r0, r4, r0
-    // bl sub_0203778C
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _02059E84: .word sub_0205A03C
-    // TODO: decompile
+    sub_0203778C((0x15 << 4));
 }
+
 
 
 
 void sub_02059E88(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // bl sub_02035650
-    // cmp r0, #0
-    // beq _02059EB4
+    sub_02035650();
     // add r0, sp, #0
-    // bl MailMsg_Init_Default
+    MailMsg_Init_Default();
     // add r0, sp, #0
-    // bl sub_0205AB88
-    // add r0, r4, #0
+    sub_0205AB88();
     // add r1, sp, #0
-    // bl sub_0205AA6C
-    // ldr r1, _02059EB8 ; =sub_02059EBC
-    // add r0, r4, #0
-    // mov r2, #0x28
-    // bl sub_0205A034
-    // add sp, #8
-    // pop {r4, pc}
-    // _02059EB8: .word sub_02059EBC
-    // TODO: decompile
+    sub_0205AA6C(r4);
+    sub_0205A034(r4, sub_02059EBC, 0x28);
 }
+
 
 
 
 void sub_02059EBC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02037FCC
-    // cmp r0, #0
-    // beq _02059ED8
-    // ldr r0, _02059F24 ; =_021D41CC
-    // mov r2, #0
+    sub_02037FCC();
     // str r2, [r0]
-    // ldr r1, _02059F28 ; =sub_02059F78
-    // add r0, r4, #0
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // ldr r0, [r4, #0x20]
-    // cmp r0, #0
-    // beq _02059F22
-    // mov r0, #2
-    // str r0, [r4, #0x28]
-    // ldr r0, [r4, #0x20]
-    // cmp r0, #1
-    // bne _02059F08
-    // ldr r0, [r4, #0x30]
-    // cmp r0, #5
-    // bne _02059EF6
-    // ldr r0, [r4, #0x18]
-    // bl sub_0203894C
-    // b _02059F18
-    // cmp r0, #6
-    // ldr r0, [r4, #0x18]
-    // bne _02059F02
-    // bl sub_0203898C
-    // b _02059F18
-    // bl sub_02037F64
-    // b _02059F18
-    // cmp r0, #2
-    // bne _02059F18
-    // mov r0, #0
-    // bl sub_0208F814
-    // ldr r0, [r4, #0x18]
-    // bl sub_02038918
-    // ldr r1, _02059F2C ; =sub_0205A0B4
-    // add r0, r4, #0
-    // mov r2, #0xc
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // _02059F24: .word _021D41CC
-    // _02059F28: .word sub_02059F78
-    // _02059F2C: .word sub_0205A0B4
-    // TODO: decompile
+    sub_0205A034(r4, sub_02059F78, 0);
+    *((u32*)(r4 + 0x28)) = 2;
+    sub_0203894C(*((u32*)(r4 + 0x18)));
+    sub_0203898C(*((u32*)(r4 + 0x18)));
+    sub_02037F64();
+    sub_0208F814(0);
+    sub_02038918(*((u32*)(r4 + 0x18)));
+    sub_0205A034(r4, sub_0205A0B4, 0xc);
 }
+
 
 
 
 void sub_02059F30(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02038070
-    // cmp r0, #1
-    // bne _02059F4C
-    // ldr r0, [r4]
-    // bl sub_02091574
-    // ldr r1, _02059F50 ; =sub_02059EBC
-    // add r0, r4, #0
-    // mov r2, #2
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // nop
-    // _02059F50: .word sub_02059EBC
-    // TODO: decompile
+    sub_02038070();
+    sub_02091574(*((u32*)r4));
+    sub_0205A034(r4, sub_02059EBC, 2);
 }
+
 
 
 
 void sub_02059F54(void) {
-    sub_02034818(1);
 }
+
 
 
 
 void sub_02059F78(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x14]
-    // cmp r0, #0
-    // ble _02059F88
-    // sub r0, r0, #1
-    // str r0, [r4, #0x14]
-    // pop {r3, r4, r5, pc}
-    // ldr r0, _02059FEC ; =_021D41CC
-    // ldr r1, [r0]
-    // add r1, r1, #1
+    *((u32*)(r0 + 0x14)) = (*((u32*)(r0 + 0x14)) - 1);
     // str r1, [r0]
-    // bl sub_02035878
-    // add r5, r0, #0
-    // bl sub_020376F8
-    // cmp r0, #0
-    // beq _02059FC8
-    // bl sub_02059F54
-    // cmp r0, #1
-    // bne _02059FC8
-    // ldrb r0, [r5, #0x1c]
-    // cmp r0, #4
-    // beq _02059FC8
-    // bl sub_02034434
-    // mov r0, #1
-    // add r1, r0, #0
-    // bl sub_020398D4
-    // mov r0, #0xb
-    // bl sub_0205A904
-    // ldr r1, _02059FF0 ; =sub_02059FF8
-    // add r0, r4, #0
-    // mov r2, #0
-    // bl sub_0205A034
-    // bl sub_02037FCC
-    // cmp r0, #0
-    // bne _02059FEA
-    // bl sub_02037FF0
-    // add r0, r4, #0
-    // bl sub_0205ABBC
-    // mov r0, #0
-    // bl sub_0205A904
-    // ldr r1, _02059FF4 ; =sub_02059F30
-    // add r0, r4, #0
-    // mov r2, #2
-    // bl sub_0205A034
-    // pop {r3, r4, r5, pc}
-    // _02059FEC: .word _021D41CC
-    // _02059FF0: .word sub_02059FF8
-    // _02059FF4: .word sub_02059F30
-    // TODO: decompile
+    sub_02035878(_021D41CC, (*((u32*)_021D41CC) + 1));
+    sub_020376F8();
+    sub_02059F54();
+    sub_02034434(*((u8*)(r5 + 0x1c)));
+    sub_020398D4(1, 1);
+    sub_0205A904(0xb);
+    sub_0205A034(r4, sub_02059FF8, 0);
+    sub_02037FCC();
+    sub_02037FF0();
+    sub_0205ABBC(r4);
+    sub_0205A904(0);
+    sub_0205A034(r4, sub_02059F30, 2);
 }
+
 
 
 
 void sub_02059FF8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02039918
-    // cmp r0, #0
-    // beq _0205A00C
-    // bl sub_020376F8
-    // cmp r0, #0
-    // beq _0205A02E
-    // bl sub_020376F8
-    // cmp r0, #0
-    // bne _0205A02E
-    // bl sub_02037FF0
-    // add r0, r4, #0
-    // bl sub_0205ABBC
-    // mov r0, #0
-    // bl sub_0205A904
-    // ldr r1, _0205A030 ; =sub_02059F30
-    // add r0, r4, #0
-    // mov r2, #2
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // _0205A030: .word sub_02059F30
-    // TODO: decompile
+    sub_02039918();
+    sub_020376F8();
+    sub_020376F8();
+    sub_02037FF0();
+    sub_0205ABBC(r4);
+    sub_0205A904(0);
+    sub_0205A034(r4, sub_02059F30, 2);
 }
+
 
 
 
@@ -2069,210 +907,100 @@ void sub_0205A034(void) {
 
 
 
+
 void sub_0205A03C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r1, [sp]
-    // cmp r1, #0
-    // bne _0205A04A
-    // bl SysTask_Destroy
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r7, #0x11
-    // ldr r5, _0205A078 ; =_021D41D8
-    // mov r6, #0
-    // add r4, r1, #0
-    // lsl r7, r7, #4
-    // add r0, r6, #0
-    // bl sub_02035754
-    // mov r1, #0x11
-    // lsl r1, r1, #4
+    SysTask_Destroy();
+    sub_02035754(0);
     // str r0, [r4, r1]
-    // ldr r0, [r4, r7]
-    // add r6, r6, #1
-    // add r4, r4, #4
     // stmia r5!, {r0}
-    // cmp r6, #0x10
-    // blt _0205A054
     // ldr r0, [sp]
-    // ldr r1, [r0, #0x10]
-    // cmp r1, #0
-    // beq _0205A076
     // blx r1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _0205A078: .word _021D41D8
-    // TODO: decompile
 }
+
 
 
 
 void sub_0205A07C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x14]
-    // cmp r0, #0
-    // beq _0205A08C
-    // sub r0, r0, #1
-    // str r0, [r4, #0x14]
-    // pop {r4, pc}
-    // bl sub_02038094
-    // ldr r1, _0205A09C ; =sub_0205A0A0
-    // add r0, r4, #0
-    // mov r2, #0
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // _0205A09C: .word sub_0205A0A0
-    // TODO: decompile
+    *((u32*)(r0 + 0x14)) = (*((u32*)(r0 + 0x14)) - 1);
+    sub_02038094((*((u32*)(r0 + 0x14)) - 1));
+    sub_0205A034(r4, sub_0205A0A0, 0);
 }
+
 
 
 
 void sub_0205A0A0(void) {
-    sub_02037474();
-    sub_0205A1D4(r4);
 }
+
 
 
 
 void sub_0205A0B4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02037F94
-    // cmp r0, #1
-    // bne _0205A0D0
-    // bl sub_02034434
-    // ldr r1, _0205A108 ; =sub_0205A144
-    // add r0, r4, #0
-    // mov r2, #3
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // bl sub_020376F8
-    // cmp r0, #0
-    // beq _0205A0E8
-    // mov r2, #0
-    // str r2, [r4, #0x20]
-    // mov r0, #3
-    // str r0, [r4, #0x1c]
-    // ldr r1, _0205A10C ; =sub_02059F78
-    // add r0, r4, #0
-    // bl sub_0205A034
-    // bl sub_02037F94
-    // cmp r0, #0
-    // beq _0205A106
-    // ldr r1, _0205A110 ; =sub_0205A114
-    // add r0, r4, #0
-    // mov r2, #2
-    // bl sub_0205A034
-    // mov r1, #0
-    // str r1, [r4, #0x24]
-    // mov r0, #2
-    // str r0, [r4, #0x1c]
-    // str r1, [r4, #0x20]
-    // str r1, [r4, #0x44]
-    // pop {r4, pc}
-    // _0205A108: .word sub_0205A144
-    // _0205A10C: .word sub_02059F78
-    // _0205A110: .word sub_0205A114
-    // TODO: decompile
+    sub_02037F94();
+    sub_02034434();
+    sub_0205A034(r4, sub_0205A144, 3);
+    sub_020376F8();
+    *((u32*)(r4 + 0x20)) = 0;
+    *((u32*)(r4 + 0x1c)) = 3;
+    sub_0205A034(r4, sub_02059F78, 0);
+    sub_02037F94();
+    sub_0205A034(r4, sub_0205A114, 2);
+    *((u32*)(r4 + 0x24)) = 0;
+    *((u32*)(r4 + 0x1c)) = 2;
+    *((u32*)(r4 + 0x20)) = 0;
+    *((u32*)(r4 + 0x44)) = 0;
 }
+
 
 
 
 void sub_0205A114(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // bl FieldSystem_TaskIsRunning
-    // cmp r0, #0
-    // bne _0205A13C
-    // bl sub_02037FF0
-    // add r0, r4, #0
-    // bl sub_0205ABBC
-    // mov r0, #0
-    // bl sub_0205A904
-    // ldr r1, _0205A140 ; =sub_02059F30
-    // add r0, r4, #0
-    // mov r2, #2
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // nop
-    // _0205A140: .word sub_02059F30
-    // TODO: decompile
+    FieldSystem_TaskIsRunning(*((u32*)r0));
+    sub_02037FF0();
+    sub_0205ABBC(r4);
+    sub_0205A904(0);
+    sub_0205A034(r4, sub_02059F30, 2);
 }
+
 
 
 
 void sub_0205A144(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02037F94
-    // cmp r0, #1
-    // bne _0205A178
-    // bl sub_0203769C
-    // bl sub_02034818
-    // cmp r0, #0
-    // beq _0205A1A0
-    // mov r1, #0
-    // str r1, [r4, #0x20]
-    // mov r0, #1
-    // str r0, [r4, #0x1c]
-    // str r1, [r4, #0x44]
-    // add r1, r0, #0
-    // bl sub_020398D4
-    // ldr r1, _0205A1A4 ; =sub_0205A1AC
-    // add r0, r4, #0
-    // mov r2, #3
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // bl sub_02037F94
-    // cmp r0, #0
-    // bne _0205A1A0
-    // bl sub_02037FF0
-    // add r0, r4, #0
-    // bl sub_0205ABBC
-    // ldr r1, _0205A1A8 ; =sub_02059F30
-    // add r0, r4, #0
-    // mov r2, #2
-    // bl sub_0205A034
-    // mov r1, #0
-    // str r1, [r4, #0x24]
-    // mov r0, #2
-    // str r0, [r4, #0x1c]
-    // str r1, [r4, #0x20]
-    // str r1, [r4, #0x44]
-    // pop {r4, pc}
-    // nop
-    // _0205A1A4: .word sub_0205A1AC
-    // _0205A1A8: .word sub_02059F30
-    // TODO: decompile
+    sub_02037F94();
+    sub_0203769C();
+    sub_02034818();
+    *((u32*)(r4 + 0x20)) = 0;
+    *((u32*)(r4 + 0x1c)) = 1;
+    *((u32*)(r4 + 0x44)) = 0;
+    sub_020398D4(1, 1);
+    sub_0205A034(r4, sub_0205A1AC, 3);
+    sub_02037F94();
+    sub_02037FF0();
+    sub_0205ABBC(r4);
+    sub_0205A034(r4, sub_02059F30, 2);
+    *((u32*)(r4 + 0x24)) = 0;
+    *((u32*)(r4 + 0x1c)) = 2;
+    *((u32*)(r4 + 0x20)) = 0;
+    *((u32*)(r4 + 0x44)) = 0;
 }
+
 
 
 
 void sub_0205A1AC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02037F94
-    // cmp r0, #0
-    // bne _0205A1CC
-    // bl sub_02037FF0
-    // add r0, r4, #0
-    // bl sub_0205ABBC
-    // ldr r1, _0205A1D0 ; =sub_02059F30
-    // add r0, r4, #0
-    // mov r2, #2
-    // bl sub_0205A034
-    // pop {r4, pc}
-    // nop
-    // _0205A1D0: .word sub_02059F30
-    // TODO: decompile
+    sub_02037F94();
+    sub_02037FF0();
+    sub_0205ABBC(r4);
+    sub_0205A034(r4, sub_02059F30, 2);
 }
+
 
 
 
 void sub_0205A1D4(void) {
-    SysTask_Destroy(*((u32*)(r0 + 0xc)));
-    Heap_Free(r4);
-    Heap_Destroy(0x1f);
 }
+
 
 
 
@@ -2284,164 +1012,60 @@ void sub_0205A1F0(void) {
 
 
 
+
 void sub_0205A1F4(void) {
     // add r1, r0, r1
-    // ldr r0, [r1, r0]
 }
 
 
 
-void sub_0205A200(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // add r4, r0, #0
-    // sub r0, r5, #1
-    // bl sub_02035798
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // bl sub_0205ABB0
-    // cmp r6, #0
-    // bne _0205A21C
-    // mov r0, #5
-    // pop {r4, r5, r6, pc}
-    // sub r0, r5, #1
-    // lsl r0, r0, #2
+
+int sub_0205A200(void) {
+    sub_02035798((r1 - 1));
+    sub_0205ABB0(r4);
     // add r1, r4, r0
-    // mov r0, #0x11
-    // lsl r0, r0, #4
-    // ldr r1, [r1, r0]
-    // cmp r1, #0
-    // bne _0205A230
-    // mov r0, #5
-    // pop {r4, r5, r6, pc}
     // add r1, #0x50
-    // ldr r0, _0205A280 ; =_021D41CC
     // add r1, #0x30
-    // str r1, [r0, #4]
-    // ldrb r0, [r1, #0x1c]
-    // cmp r0, #0xd
-    // bhi _0205A27A
+    *((u32*)(_021D41CC + 4)) = *((u32*)(r1 + (0x11 << 4)));
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0205A24A: ; jump table
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #2
-    // pop {r4, r5, r6, pc}
-    // mov r0, #3
-    // pop {r4, r5, r6, pc}
-    // mov r0, #4
-    // pop {r4, r5, r6, pc}
-    // mov r0, #5
-    // pop {r4, r5, r6, pc}
-    // mov r0, #5
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _0205A280: .word _021D41CC
-    // TODO: decompile
 }
 
 
 
-void sub_0205A284(void) {
-    // push {r3, r4}
-    // sub r1, r1, #1
-    // lsl r3, r1, #2
+
+int sub_0205A284(void) {
     // add r4, r0, r3
-    // mov r3, #0x11
-    // lsl r3, r3, #4
-    // ldr r4, [r4, r3]
-    // cmp r4, #0
-    // bne _0205A29C
-    // mov r0, #5
-    // pop {r3, r4}
-    // bx lr
     // add r4, #0x50
-    // ldr r3, _0205A354 ; =_021D41CC
     // add r4, #0x30
-    // str r4, [r3, #4]
-    // ldrb r3, [r4, #0x1c]
-    // cmp r3, #0xd
-    // bhi _0205A34E
+    *((u32*)(_021D41CC + 4)) = *((u32*)(r4 + (0x11 << 4)));
     // add r3, r3, r3
     // add r3, pc
-    // ldrh r3, [r3, #6]
-    // lsl r3, r3, #0x10
     // asr r3, r3, #0x10
     // add pc, r3
     // _0205A2B6: ; jump table
-    // cmp r2, #3
-    // beq _0205A2DC
-    // mov r0, #5
-    // pop {r3, r4}
-    // bx lr
-    // mov r2, #5
-    // str r2, [r0, #0x30]
-    // str r1, [r0, #0x18]
-    // mov r2, #1
-    // str r2, [r0, #0x20]
-    // mov r1, #0
-    // str r1, [r0, #0x24]
-    // str r1, [r0, #0x1c]
-    // add r0, r2, #0
-    // pop {r3, r4}
-    // bx lr
-    // cmp r2, #1
-    // beq _0205A2FC
-    // mov r0, #5
-    // pop {r3, r4}
-    // bx lr
-    // str r1, [r0, #0x18]
-    // mov r2, #1
-    // str r2, [r0, #0x20]
-    // mov r1, #0
-    // str r1, [r0, #0x24]
-    // str r1, [r0, #0x1c]
-    // add r0, r2, #0
-    // pop {r3, r4}
-    // bx lr
-    // cmp r2, #2
-    // beq _0205A318
-    // mov r0, #5
-    // pop {r3, r4}
-    // bx lr
-    // str r1, [r0, #0x18]
-    // mov r1, #2
-    // str r1, [r0, #0x20]
-    // mov r1, #0
-    // str r1, [r0, #0x24]
-    // str r1, [r0, #0x1c]
-    // mov r0, #1
-    // pop {r3, r4}
-    // bx lr
-    // cmp r2, #4
-    // beq _0205A334
-    // mov r0, #5
-    // pop {r3, r4}
-    // bx lr
-    // mov r2, #6
-    // str r2, [r0, #0x30]
-    // str r1, [r0, #0x18]
-    // mov r2, #1
-    // str r2, [r0, #0x20]
-    // mov r1, #0
-    // str r1, [r0, #0x1c]
-    // add r0, r2, #0
-    // pop {r3, r4}
-    // bx lr
-    // mov r0, #5
-    // pop {r3, r4}
-    // bx lr
-    // mov r0, #5
-    // pop {r3, r4}
-    // bx lr
-    // _0205A354: .word _021D41CC
-    // TODO: decompile
+    *((u32*)(5 + 0x30)) = 5;
+    *((u32*)(5 + 0x18)) = (r1 - 1);
+    *((u32*)(5 + 0x20)) = 1;
+    *((u32*)(5 + 0x24)) = 0;
+    *((u32*)(5 + 0x1c)) = 0;
+    *((u32*)(5 + 0x18)) = 0;
+    *((u32*)(5 + 0x20)) = 1;
+    *((u32*)(5 + 0x24)) = 0;
+    *((u32*)(5 + 0x1c)) = 0;
+    *((u32*)(5 + 0x18)) = 0;
+    *((u32*)(5 + 0x20)) = 2;
+    *((u32*)(5 + 0x24)) = 0;
+    *((u32*)(5 + 0x1c)) = 0;
+    *((u32*)(5 + 0x30)) = 6;
+    *((u32*)(5 + 0x18)) = 0;
+    *((u32*)(5 + 0x20)) = 1;
+    *((u32*)(5 + 0x1c)) = 0;
 }
+
 
 
 
@@ -2453,12 +1077,10 @@ void sub_0205A358(void) {
 
 
 
+
 u32 sub_0205A35C(void) {
-    sub_02037454(7);
-    sub_0203769C(7);
-    sub_02037FCC();
-    sub_02037F94(*((u32*)(r4 + 0x40)));
 }
+
 
 
 
@@ -2467,23 +1089,17 @@ void sub_0205A39C(void) {
 
 
 
+
 void sub_0205A3B0(void) {
     // add r0, sp, #0
-    *((u8*)(r0 + 2)) = r2;
     // add r1, sp, #0
     // add r1, #2
-    *((u32*)(r0 + 0x34)) = *((u8*)(r0 + 2));
-    sub_02037030(0x63, *((u32*)(r0 + 0x44)), 1);
-    *((u8*)(r0 + 1)) = *((u32*)(r5 + 0x30));
     // add r1, sp, #0
     // add r1, #1
-    sub_02037108(0x67, *((u32*)(r5 + 0x30)), 1);
-    *((u32*)(r5 + 0x3c)) = r4;
     // strb r1, [r0]
     // add r1, sp, #0
-    sub_02037108(0x67, 7, 1);
-    *((u32*)(r5 + 0x3c)) = r4;
 }
+
 
 
 
@@ -2494,6 +1110,7 @@ void sub_0205A408(void) {
 
 
 
+
 void sub_0205A40C(void) {
     // bx lr
     // TODO: decompile
@@ -2501,40 +1118,22 @@ void sub_0205A40C(void) {
 
 
 
+
 void sub_0205A410(void) {
-    // push {r4, lr}
-    // add r4, r3, #0
-    // add r0, r4, #0
     // add r0, #0x80
-    // ldr r0, [r0]
-    // ldr r1, _0205A42C ; =sub_02059EBC
-    // mov r2, #2
-    // bl sub_0205A034
+    sub_0205A034(*((u32*)r3), sub_02059EBC, 2);
     // add r4, #0x80
-    // ldr r0, [r4]
-    // bl sub_0205ABBC
-    // pop {r4, pc}
-    // _0205A42C: .word sub_02059EBC
-    // TODO: decompile
+    sub_0205ABBC(*((u32*)r4));
 }
+
 
 
 
 void sub_0205A430(void) {
     // add r3, #0x80
-    // ldr r1, [r3]
-    // ldr r0, [r1, #0x44]
-    // cmp r0, #0
-    // bne _0205A444
-    // ldrb r0, [r2]
-    // str r0, [r1, #0x30]
-    // ldrb r1, [r2]
-    // ldr r0, _0205A448 ; =_021D41CC
-    // str r1, [r0, #8]
-    // bx lr
-    // nop
-    // _0205A448: .word _021D41CC
-    // TODO: decompile
+    *((u32*)(*((u32*)r3) + 0x30)) = *((u8*)r2);
+    *((u32*)(_021D41CC + 8)) = *((u8*)r2);
 }
+
 
 

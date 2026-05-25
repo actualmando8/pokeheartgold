@@ -6,69 +6,33 @@ void sub_02087A78(void) {
 
 
 
+
 void sub_02087A84(void) {
 }
 
 
 
+
 void sub_02087A8C(void) {
-    // push {r4, r5, r6, lr}
-    // mov r2, #1
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r0, #3
-    // mov r1, #0x7e
-    // lsl r2, r2, #0x10
-    // bl Heap_Create
-    // add r0, r5, #0
-    // mov r1, #0x2c
-    // mov r2, #0x7e
-    // bl OverlayManager_CreateAndGetData
-    // mov r1, #0
-    // mov r2, #0x2c
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // add r0, r5, #0
-    // bl OverlayManager_GetArgs
-    // str r0, [r4, #0x28]
-    // ldr r0, [r0, #0xc]
-    // ldr r1, _02087B00 ; =0x00004170
-    // str r0, [r4, #0xc]
-    // mov r0, #0x7e
-    // bl Heap_Alloc
-    // ldr r2, _02087B00 ; =0x00004170
-    // str r0, [r4, #0x14]
-    // mov r1, #0
-    // bl MI_CpuFill8
-    // add r2, r4, #0
-    // ldr r1, [r4, #0x14]
-    // ldr r0, _02087B04 ; =0x00000868
+    Heap_Create(3, 0x7e, (1 << 0x10));
+    OverlayManager_CreateAndGetData(r5, 0x2c, 0x7e);
+    MI_CpuFill8(0, 0x2c);
+    OverlayManager_GetArgs(r5);
+    *((u32*)(r4 + 0x28)) = r0;
+    *((u32*)(r4 + 0xc)) = *((u32*)(r0 + 0xc));
+    Heap_Alloc(0x7e, 0x00004170);
+    *((u32*)(r4 + 0x14)) = r0;
+    MI_CpuFill8(0, 0x00004170);
     // add r2, #0x18
     // str r2, [r1, r0]
-    // ldr r2, [r4, #0xc]
-    // ldr r1, [r4, #0x14]
     // sub r0, #0x38
     // str r2, [r1, r0]
-    // ldr r0, [r4, #0x14]
     // str r6, [r0]
-    // ldr r4, [r4, #0x14]
-    // ldr r1, [r4]
-    // add r0, r4, #0
-    // bl sub_02087FF8
-    // ldr r1, _02087B08 ; =0x000006D8
-    // ldr r1, [r4, r1]
-    // lsl r1, r1, #2
+    sub_02087FF8(*((u32*)(r4 + 0x14)), *((u32*)*((u32*)(r4 + 0x14))), *((u32*)(r4 + 0xc)));
     // add r2, r4, r1
-    // ldr r1, _02087B0C ; =0x0000081C
     // str r0, [r2, r1]
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _02087B00: .word 0x00004170
-    // _02087B04: .word 0x00000868
-    // _02087B08: .word 0x000006D8
-    // _02087B0C: .word 0x0000081C
-    // TODO: decompile
 }
+
 
 
 
@@ -77,8 +41,10 @@ void sub_02087B10(void) {
 
 
 
+
 void sub_02087B1C(void) {
 }
+
 
 
 
@@ -87,8 +53,10 @@ void sub_02087B28(void) {
 
 
 
+
 void sub_02087B34(void) {
 }
+
 
 
 
@@ -97,8 +65,10 @@ void sub_02087B40(void) {
 
 
 
+
 void sub_02087B4C(void) {
 }
+
 
 
 
@@ -107,270 +77,88 @@ void sub_02087B58(void) {
 
 
 
+
 u32 sub_02087B64(void) {
-    OverlayManager_GetData();
-    sub_02087BE8(0x7e);
     // str r0, [r5]
     // str r0, [r4]
-    sub_02087C38(1, 0x7e);
     // str r0, [r5]
     // str r0, [r4]
 }
+
 
 
 
 u32 sub_02087BAC(void) {
-    OverlayManager_GetData();
-    sub_0202FC48();
-    sub_0202FC24();
-    Heap_Free(*((u32*)(r4 + 0x14)));
-    OverlayManager_FreeData(r5);
-    GF_SndHandleSetPlayerVolume(1, 0x7f);
-    GF_SndHandleSetPlayerVolume(7, 0x7f);
-    Heap_Destroy(0x7e);
 }
+
 
 
 
 void sub_02087BE8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // add r2, r1, #0
-    // cmp r0, #0
-    // bne _02087C18
-    // ldr r0, [r4, #0x14]
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // bne _02087C06
-    // ldr r0, _02087C30 ; =_021028B4
-    // add r1, r4, #0
-    // bl OverlayManager_New
-    // b _02087C0E
-    // ldr r0, _02087C34 ; =_021028C4
-    // add r1, r4, #0
-    // bl OverlayManager_New
-    // str r0, [r4, #8]
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    OverlayManager_New(_021028B4, r0, r1);
+    OverlayManager_New(_021028C4, r4);
+    *((u32*)(r4 + 8)) = r0;
     // str r0, [r4]
-    // b _02087C2C
-    // ldr r0, [r4, #8]
-    // bl OverlayManager_Run
-    // cmp r0, #0
-    // beq _02087C2C
-    // ldr r0, [r4, #8]
-    // bl OverlayManager_Delete
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // _02087C30: .word _021028B4
-    // _02087C34: .word _021028C4
-    // TODO: decompile
+    OverlayManager_Run(*((u32*)(r4 + 8)));
+    OverlayManager_Delete(*((u32*)(r4 + 8)));
 }
+
 
 
 
 void sub_02087C38(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // cmp r0, #0
-    // beq _02087C50
-    // cmp r0, #1
-    // beq _02087C6A
-    // cmp r0, #2
-    // beq _02087D0C
-    // b _02087D5A
-    // ldr r0, [r5, #0x14]
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _02087C62
-    // ldr r0, _02087DF4 ; =FS_OVERLAY_ID(OVY_39)
-    // bl UnloadOverlayByID
-    // bl UnloadOVY38
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    UnloadOverlayByID(FS_OVERLAY_ID);
+    UnloadOVY38();
     // str r0, [r5]
-    // b _02087DEC
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl BattleSetup_New
-    // str r0, [r5, #0x10]
-    // bl sub_0202FC48
-    // cmp r0, #0
-    // bne _02087C92
-    // ldr r1, [r5, #0x14]
-    // ldr r0, _02087DF8 ; =0x0000086C
+    BattleSetup_New(r4, 0);
+    *((u32*)(r5 + 0x10)) = r0;
+    sub_0202FC48();
     // add r2, sp, #4
-    // ldr r0, [r1, r0]
-    // add r1, r4, #0
     // str r0, [sp]
-    // ldr r0, [r5, #0xc]
-    // ldr r3, [r5, #0x10]
-    // bl sub_0202FC90
-    // b _02087C9E
-    // ldr r0, [r5, #0x10]
-    // ldr r1, [r5, #0xc]
-    // bl sub_020304F0
-    // mov r0, #1
+    sub_0202FC90(*((u32*)(r5 + 0xc)), r4, *((u32*)(r5 + 0x10)));
+    sub_020304F0(*((u32*)(r5 + 0x10)), *((u32*)(r5 + 0xc)));
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // bl BagCursor_New
-    // mov r1, #0x43
-    // ldr r2, [r5, #0x10]
-    // lsl r1, r1, #2
+    BagCursor_New(r4);
     // str r0, [r2, r1]
-    // ldr r0, [r5, #0xc]
-    // bl Save_GameStats_Get
-    // mov r1, #0x51
-    // ldr r2, [r5, #0x10]
-    // lsl r1, r1, #2
+    Save_GameStats_Get(*((u32*)(r5 + 0xc)), (0x43 << 2), *((u32*)(r5 + 0x10)));
     // str r0, [r2, r1]
-    // ldr r6, _02087DFC ; =FS_OVERLAY_ID(OVY_40)
-    // mov r1, #2
-    // add r0, r6, #0
-    // bl HandleLoadOverlay
-    // cmp r0, #1
-    // bne _02087CDA
-    // bl sub_0202FC5C
-    // ldr r1, [r5, #0x10]
-    // add r2, r4, #0
-    // bl ov40_02244920
-    // add r0, r6, #0
-    // bl UnloadOverlayByID
-    // ldr r1, [r5, #0x14]
-    // ldr r0, _02087E00 ; =0x00000874
-    // mov r2, #1
+    HandleLoadOverlay(FS_OVERLAY_ID, 2, *((u32*)(r5 + 0x10)));
+    sub_0202FC5C();
+    ov40_02244920(*((u32*)(r5 + 0x10)), r4);
+    UnloadOverlayByID(r6);
     // str r2, [r1, r0]
     // ldr r0, [sp, #4]
-    // cmp r0, #1
-    // beq _02087D04
-    // mov r0, #0x43
-    // ldr r1, [r5, #0x10]
-    // lsl r0, r0, #2
-    // ldr r0, [r1, r0]
-    // bl Heap_Free
-    // ldr r0, [r5, #0x10]
-    // bl BattleSetup_Delete
-    // mov r0, #0
+    Heap_Free(*((u32*)(*((u32*)(r5 + 0x10)) + (0x43 << 2))), *((u32*)(r5 + 0x10)), 1);
+    BattleSetup_Delete(*((u32*)(r5 + 0x10)));
     // str r0, [r5]
-    // add sp, #8
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r5]
-    // add r0, r0, #1
     // str r0, [r5]
-    // b _02087DEC
-    // mov r0, #1
-    // mov r1, #0x7f
-    // bl GF_SndHandleSetPlayerVolume
-    // mov r0, #7
-    // mov r1, #0x7f
-    // bl GF_SndHandleSetPlayerVolume
-    // mov r0, #1
-    // bl sub_02005B68
-    // ldr r0, [r5, #0x10]
+    GF_SndHandleSetPlayerVolume(1, 0x7f);
+    GF_SndHandleSetPlayerVolume(7, 0x7f);
+    sub_02005B68(1);
     // add r0, #0x5d
-    // ldrb r0, [r0]
-    // bl sub_02087E34
-    // cmp r0, #1
-    // bne _02087D3C
-    // ldr r1, _02087E04 ; =0x0000047B
-    // mov r0, #5
-    // mov r2, #1
-    // bl Sound_SetSceneAndPlayBGM
-    // b _02087D46
-    // ldr r1, _02087E08 ; =0x0000045D
-    // mov r0, #5
-    // mov r2, #1
-    // bl Sound_SetSceneAndPlayBGM
-    // ldr r0, _02087E0C ; =gOverlayTemplate_Battle
-    // ldr r1, [r5, #0x10]
-    // add r2, r4, #0
-    // bl OverlayManager_New
-    // str r0, [r5, #8]
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    sub_02087E34(*((u8*)*((u32*)(r5 + 0x10))));
+    Sound_SetSceneAndPlayBGM(5, 0x0000047B, 1);
+    Sound_SetSceneAndPlayBGM(5, 0x0000045D, 1);
+    OverlayManager_New(gOverlayTemplate_Battle, *((u32*)(r5 + 0x10)), r4);
+    *((u32*)(r5 + 8)) = r0;
     // str r0, [r5]
-    // b _02087DEC
-    // ldr r0, [r5, #8]
-    // bl OverlayManager_Run
-    // cmp r0, #0
-    // beq _02087DEC
-    // mov r0, #0x71
-    // ldr r1, [r5, #0x10]
-    // lsl r0, r0, #2
-    // ldr r2, [r1, r0]
-    // ldr r1, [r5, #0x14]
-    // ldr r0, _02087E00 ; =0x00000874
+    OverlayManager_Run(*((u32*)(r5 + 8)));
     // str r2, [r1, r0]
-    // ldr r2, [r5, #0x14]
-    // ldr r1, [r2]
-    // cmp r1, #0
-    // beq _02087D88
-    // ldr r1, [r2, r0]
-    // cmp r1, #0
-    // bne _02087D88
-    // add r0, r0, #4
-    // ldr r0, [r2, r0]
-    // mov r1, #1
     // strb r1, [r0]
-    // mov r0, #0x43
-    // ldr r1, [r5, #0x10]
-    // lsl r0, r0, #2
-    // ldr r0, [r1, r0]
-    // bl Heap_Free
-    // ldr r0, [r5, #0x10]
-    // bl BattleSetup_Delete
-    // ldr r0, [r5, #8]
-    // bl OverlayManager_Delete
-    // mov r0, #0
-    // bl sub_02005B68
-    // mov r0, #0
-    // bl Sound_SetScene
-    // ldr r0, [r5, #0x28]
-    // ldr r1, [r0, #0x20]
-    // ldr r1, [r1]
-    // bl FieldBGM_GetEffective
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x28]
-    // ldr r1, [r0, #0x20]
-    // ldr r1, [r1]
-    // bl FieldBGM_GetForMapHeader
-    // bl Sound_SetFieldBGM
-    // mov r0, #0
-    // add r1, r4, #0
-    // bl sub_02055198
-    // mov r0, #0
+    Heap_Free(*((u32*)(*((u32*)(r5 + 0x10)) + (0x43 << 2))), *((u32*)(r5 + 0x10)), *((u32*)(r5 + 0x14)));
+    BattleSetup_Delete(*((u32*)(r5 + 0x10)));
+    OverlayManager_Delete(*((u32*)(r5 + 8)));
+    sub_02005B68(0);
+    Sound_SetScene(0);
+    FieldBGM_GetEffective(*((u32*)(r5 + 0x28)), *((u32*)*((u32*)(*((u32*)(r5 + 0x28)) + 0x20))));
+    FieldBGM_GetForMapHeader(*((u32*)(r5 + 0x28)), *((u32*)*((u32*)(*((u32*)(r5 + 0x28)) + 0x20))));
+    Sound_SetFieldBGM();
+    sub_02055198(0, r4);
     // str r0, [r5]
-    // ldr r0, [r5, #0x14]
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _02087DE6
-    // bl LoadOVY38
-    // ldr r0, _02087DF4 ; =FS_OVERLAY_ID(OVY_39)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // add sp, #8
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _02087DF4: .word FS_OVERLAY_ID(OVY_39)
-    // _02087DF8: .word 0x0000086C
-    // _02087DFC: .word FS_OVERLAY_ID(OVY_40)
-    // _02087E00: .word 0x00000874
-    // _02087E04: .word 0x0000047B
-    // _02087E08: .word 0x0000045D
-    // _02087E0C: .word gOverlayTemplate_Battle
-    // TODO: decompile
+    LoadOVY38(*((u32*)*((u32*)(r5 + 0x14))));
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
 }
+
 
 
 
@@ -385,45 +173,22 @@ void sub_02087E10(void) {
 
 
 
+
 u32 sub_02087E1C(void) {
     // ldr r0, [r0, r1]
-    Save_VarsFlags_Get((0x83 << 4));
-    Save_VarsFlags_FlypointFlagAction(2, 0x1b);
 }
 
 
 
-void sub_02087E34(void) {
-    // push {r3, r4, r5}
-    // sub sp, #0x14
-    // ldr r5, _02087E6C ; =_021028A0
-    // add r3, r0, #0
+
+u32 sub_02087E34(void) {
     // ldmia r5!, {r0, r1}
     // add r4, sp, #0
-    // add r2, r4, #0
     // stmia r4!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r4!, {r0, r1}
-    // ldr r0, [r5]
-    // mov r1, #0
     // str r0, [r4]
-    // ldr r0, [r2]
-    // cmp r3, r0
-    // bne _02087E5C
-    // add sp, #0x14
-    // mov r0, #1
-    // pop {r3, r4, r5}
-    // bx lr
-    // add r1, r1, #1
-    // add r2, r2, #4
-    // cmp r1, #5
-    // blo _02087E4E
-    // mov r0, #0
-    // add sp, #0x14
-    // pop {r3, r4, r5}
-    // bx lr
-    // _02087E6C: .word _021028A0
-    // TODO: decompile
 }
+
 
 

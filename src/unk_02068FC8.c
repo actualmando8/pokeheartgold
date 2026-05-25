@@ -2,62 +2,45 @@
 #include "global.h"
 
 void sub_02068FC8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xa4
     // str r0, [sp, #0x10]
     // ldr r6, [sp, #0xb8]
     // str r1, [sp, #0x14]
     // str r2, [sp, #0x18]
-    // add r0, r6, #0
     // str r3, [sp, #0x1c]
     // ldr r5, [sp, #0xbc]
-    // bl FieldSystem_GetSaveData
+    FieldSystem_GetSaveData(r6);
     // str r0, [sp, #0x20]
-    // bl Save_PlayerData_GetProfile
-    // add r7, r0, #0
+    Save_PlayerData_GetProfile();
     // ldr r0, [sp, #0x20]
-    // bl Save_GameStats_Get
-    // add r4, r0, #0
-    // ldr r2, _020691A0 ; =0x0000066C
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl memset
+    Save_GameStats_Get();
+    memset(r5, 0, 0x0000066C);
     // ldr r0, [sp, #0x1c]
-    // strb r0, [r5, #5]
-    // add r0, r6, #0
-    // bl sub_020691E8
+    *((u8*)(r5 + 5)) = r0;
+    sub_020691E8(r6);
     // str r0, [sp, #0x24]
-    // add r0, r7, #0
-    // bl PlayerProfile_GetLanguage
+    PlayerProfile_GetLanguage(r7);
     // str r0, [sp]
     // str r5, [sp, #4]
     // ldr r0, [sp, #0x10]
     // ldr r2, [sp, #0x24]
     // ldr r3, [sp, #0x18]
     // mov r1, #GAME_VERSION
-    // bl sub_020692A0
-    // add r0, r7, #0
-    // bl PlayerProfile_GetTrainerID_VisibleHalf
+    sub_020692A0();
+    PlayerProfile_GetTrainerID_VisibleHalf(r7);
     // str r0, [sp, #0x28]
-    // add r0, r7, #0
-    // bl PlayerProfile_GetTrainerGender
+    PlayerProfile_GetTrainerGender(r7);
     // str r0, [sp, #0x2c]
-    // add r0, r7, #0
-    // bl PlayerProfile_GetNamePtr
+    PlayerProfile_GetNamePtr(r7);
     // str r0, [sp, #0x30]
-    // add r0, r7, #0
-    // bl PlayerProfile_GetMoney
+    PlayerProfile_GetMoney(r7);
     // str r0, [sp, #0x34]
-    // ldr r0, [r6, #0xc]
-    // bl Save_Pokedex_Get
-    // bl Pokedex_CountDexOwned
+    Save_Pokedex_Get(*((u32*)(r6 + 0xc)));
+    Pokedex_CountDexOwned();
     // str r0, [sp, #0x38]
-    // ldr r0, [r6, #0xc]
-    // bl Save_Pokedex_Get
-    // bl Pokedex_IsEnabled
+    Save_Pokedex_Get(*((u32*)(r6 + 0xc)));
+    Pokedex_IsEnabled();
     // str r0, [sp, #0x3c]
-    // add r0, r4, #0
-    // bl GameStats_GetScore
+    GameStats_GetScore(r4);
     // ldr r1, [sp, #0x38]
     // ldr r2, [sp, #0x30]
     // str r1, [sp]
@@ -67,61 +50,41 @@ void sub_02068FC8(void) {
     // str r0, [sp, #8]
     // ldr r1, [sp, #0x2c]
     // ldr r0, [sp, #0x28]
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
     // str r5, [sp, #0xc]
-    // bl sub_020692C4
+    sub_020692C4(((r1 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x20]
-    // bl Save_PlayerData_GetIGTAddr
+    Save_PlayerData_GetIGTAddr();
     // str r0, [sp, #0x40]
-    // add r0, r6, #0
     // add r1, sp, #0x94
     // add r2, sp, #0x78
-    // bl sub_02055624
-    // add r0, r6, #0
+    sub_02055624(r6);
     // add r1, sp, #0x84
     // add r2, sp, #0x78
-    // bl FieldSystem_GetGameClearTime
-    // ldr r0, [r6, #0xc]
-    // bl Save_VarsFlags_Get
-    // bl CheckGameClearFlag
+    FieldSystem_GetGameClearTime(r6);
+    Save_VarsFlags_Get(*((u32*)(r6 + 0xc)));
+    CheckGameClearFlag();
     // add r1, sp, #0x78
     // str r1, [sp]
     // ldr r1, [sp, #0x14]
-    // lsl r0, r0, #0x18
     // str r1, [sp, #4]
     // ldr r1, [sp, #0x40]
     // str r5, [sp, #8]
-    // lsr r0, r0, #0x18
     // add r2, sp, #0x94
     // add r3, sp, #0x84
-    // bl sub_02069308
-    // ldr r0, [r6, #0xc]
-    // bl Save_TrainerCard_Get
+    sub_02069308(((r0 << 0x18) >> 0x18));
+    Save_TrainerCard_Get(*((u32*)(r6 + 0xc)));
     // str r0, [sp, #0x44]
-    // add r0, r4, #0
-    // mov r1, #0x21
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x21);
     // str r0, [sp, #0x48]
-    // add r0, r4, #0
-    // mov r1, #0x1a
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x1a);
     // str r0, [sp, #0x4c]
-    // add r0, r4, #0
-    // mov r1, #0x15
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x15);
     // str r0, [sp, #0x50]
-    // add r0, r4, #0
-    // mov r1, #0x19
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x19);
     // str r0, [sp, #0x54]
-    // add r0, r4, #0
-    // mov r1, #0x5c
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x5c);
     // str r0, [sp, #0x58]
-    // add r0, r4, #0
-    // mov r1, #0x14
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x14);
     // ldr r1, [sp, #0x58]
     // add r1, r1, r0
     // ldr r0, [sp, #0x54]
@@ -131,39 +94,24 @@ void sub_02068FC8(void) {
     // ldr r0, [sp, #0x4c]
     // add r0, r0, r1
     // str r0, [sp, #0x5c]
-    // add r0, r4, #0
-    // mov r1, #0x16
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x16);
     // str r0, [sp, #0x60]
-    // add r0, r4, #0
-    // mov r1, #0x1b
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x1b);
     // str r0, [sp, #0x64]
-    // add r0, r4, #0
-    // mov r1, #0x17
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x17);
     // str r0, [sp, #0x68]
-    // add r0, r4, #0
-    // mov r1, #0x1c
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x1c);
     // str r0, [sp, #0x6c]
-    // add r0, r4, #0
-    // mov r1, #0x14
-    // bl GameStats_GetCapped
+    GameStats_GetCapped(r4, 0x14);
     // str r0, [sp, #0x70]
-    // add r0, r4, #0
-    // mov r1, #0x19
-    // bl GameStats_GetCapped
-    // add r4, r0, #0
+    GameStats_GetCapped(r4, 0x19);
     // ldr r0, [sp, #0x44]
-    // bl TrainerCard_SignatureExists
+    TrainerCard_SignatureExists();
     // str r0, [sp, #0x74]
     // ldr r0, [sp, #0x44]
-    // bl TrainerCard_GetSignature
+    TrainerCard_GetSignature();
     // ldr r1, [sp, #0x74]
     // ldr r2, [sp, #0x60]
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
     // str r1, [sp]
     // str r0, [sp, #4]
     // ldr r1, [sp, #0x48]
@@ -177,65 +125,29 @@ void sub_02068FC8(void) {
     // add r2, r3, r2
     // ldr r3, [sp, #0x70]
     // add r3, r3, r4
-    // bl sub_020693AC
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // bl sub_0206940C
-    // mov r3, #0
-    // ldr r0, _020691A0 ; =0x0000066C
-    // add r2, r3, #0
-    // ldrb r1, [r5, r2]
-    // add r2, r2, #1
+    sub_020693AC(((r1 << 0x18) >> 0x18));
+    sub_0206940C(r7, r6, r5);
     // eor r3, r1
-    // cmp r2, r0
-    // blo _02069186
-    // ldr r0, _020691A4 ; =0x00000668
-    // mov r1, #0
     // strh r3, [r5, r0]
-    // add r0, r0, #2
     // strh r1, [r5, r0]
-    // add sp, #0xa4
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _020691A0: .word 0x0000066C
-    // _020691A4: .word 0x00000668
-    // TODO: decompile
 }
 
 
 
-void sub_020691A8(void) {
-    // push {r4, lr}
-    // ldr r1, _020691C0 ; =0x0000066C
-    // bl Heap_Alloc
-    // ldr r2, _020691C0 ; =0x0000066C
-    // mov r1, #0
-    // add r4, r0, #0
-    // bl memset
-    // add r0, r4, #0
-    // pop {r4, pc}
-    // nop
-    // _020691C0: .word 0x0000066C
-    // TODO: decompile
+
+void * sub_020691A8(void) {
+    Heap_Alloc(0x0000066C);
+    memset(0, 0x0000066C);
 }
 
 
 
-void sub_020691C4(void) {
-    // push {r4, lr}
-    // ldr r1, _020691DC ; =0x0000067C
-    // bl Heap_Alloc
-    // ldr r2, _020691DC ; =0x0000067C
-    // mov r1, #0
-    // add r4, r0, #0
-    // bl memset
-    // add r0, r4, #0
-    // pop {r4, pc}
-    // nop
-    // _020691DC: .word 0x0000067C
-    // TODO: decompile
+
+void * sub_020691C4(void) {
+    Heap_Alloc(0x0000067C);
+    memset(0, 0x0000067C);
 }
+
 
 
 
@@ -244,58 +156,31 @@ void sub_020691E0(void) {
 
 
 
+
 u32 sub_020691E8(void) {
-    FieldSystem_GetSaveData();
-    Save_GameStats_Get();
-    Save_VarsFlags_Get(r7);
-    Save_Frontier_GetStatic(r7);
-    CheckGameClearFlag(r6);
-    Save_Pokedex_Get(r7);
-    Pokedex_NationalDexIsComplete();
-    FrontierSave_GetStat(r5, 0, 0xff);
-    FrontierSave_GetStat(r5, 2, 0xff);
-    FrontierSave_GetStat(r5, 4, 0xff);
-    FrontierSave_GetStat(r5, 6, 0xff);
-    FrontierSave_GetStat(r5, 8, 0xff);
-    Save_VarsFlags_CheckFlagInArray(r6, 0xf1);
-    Save_VarsFlags_CheckFlagInArray(r6, (0x61 << 2));
 }
+
 
 
 
 void sub_020692A0(void) {
     // ldr r5, [sp, #0x14]
-    // bic r4, r6
     // and r0, r6
-    // orr r0, r4
-    *((u8*)(r5 + 4)) = r0;
     // strb r1, [r5]
-    *((u8*)(r5 + 3)) = r2;
     // add r0, sp, #0
-    *((u8*)(r5 + 1)) = *((u8*)(r0 + 0x10));
-    *((u8*)(r5 + 2)) = r3;
 }
+
 
 
 
 void sub_020692C4(void) {
     // ldr r4, [sp, #0x1c]
-    *((u16*)(r4 + 0x28)) = r0;
-    // bic r0, r2
-    // orr r0, r2
-    *((u8*)(r4 + 4)) = *((u8*)(r4 + 4));
     // add r0, #8
-    CopyU16StringArrayN(r4, r2, 8);
     // ldr r0, [sp, #0x10]
-    *((u32*)(r4 + 0x1c)) = r5;
-    *((u32*)(r4 + 0x20)) = r0;
-    // bic r0, r1
     // ldr r1, [sp, #0x14]
-    // orr r0, r1
-    *((u8*)(r4 + 4)) = *((u8*)(r4 + 4));
     // ldr r0, [sp, #0x18]
-    *((u32*)(r4 + 0x24)) = *((u8*)(r4 + 4));
 }
+
 
 
 
@@ -304,10 +189,7 @@ void sub_02069308(void) {
     // str r0, [sp]
     // str r1, [sp, #4]
     // ldr r7, [sp, #0x20]
-    GetIGTHours(r1);
-    *((u16*)(r4 + 0x2a)) = r0;
     // ldr r0, [sp, #4]
-    GetIGTMinutes();
     // add r1, #0x2e
     // strb r0, [r1]
     // add r0, #0x2f
@@ -323,185 +205,80 @@ void sub_02069308(void) {
     // strb r1, [r0]
     // add r0, #0x34
     // strb r1, [r0]
-    *((u16*)(r4 + 0x2c)) = *((u32*)r7);
     // add r0, #0x32
     // strb r1, [r0]
     // add r0, #0x33
     // strb r1, [r0]
     // add r0, #0x34
     // strb r1, [r0]
-    *((u16*)(r4 + 0x2c)) = 0;
     // add r0, #0x35
     // strb r1, [r0]
-    // bic r2, r0
     // add r0, sp, #0x10
-    // orr r1, r2
-    *((u8*)(r4 + 4)) = ((*((u8*)(2 + 0x14)) << 0x1f) >> 0x1e);
     // ldr r0, [sp, #4]
-    *((u32*)(r4 + 0x18)) = *((u8*)(2 + 0x14));
-    *((u32*)(r4 + 0x18)) = 0;
 }
+
 
 
 
 void sub_020693AC(void) {
-    // push {r3, r4, r5, lr}
     // ldr r4, [sp, #0x18]
-    // ldr r5, _02069400 ; =0x000F423F
-    // str r0, [r4, #0x38]
-    // cmp r0, r5
-    // bls _020693BA
-    // str r5, [r4, #0x38]
-    // str r1, [r4, #0x3c]
-    // str r2, [r4, #0x40]
-    // ldr r1, [r4, #0x3c]
-    // ldr r0, _02069404 ; =0x0000270F
-    // cmp r1, r0
-    // bls _020693C8
-    // str r0, [r4, #0x3c]
-    // ldr r1, [r4, #0x40]
-    // ldr r0, _02069404 ; =0x0000270F
-    // cmp r1, r0
-    // bls _020693D2
-    // str r0, [r4, #0x40]
-    // ldr r0, _02069408 ; =0x0001869F
-    // str r3, [r4, #0x44]
-    // cmp r3, r0
-    // bls _020693DC
-    // str r0, [r4, #0x44]
-    // ldrb r1, [r4, #4]
-    // mov r0, #0x10
-    // mov r2, #6
-    // bic r1, r0
+    *((u32*)(r4 + 0x38)) = r0;
+    *((u32*)(r4 + 0x38)) = 0x000F423F;
+    *((u32*)(r4 + 0x3c)) = r1;
+    *((u32*)(r4 + 0x40)) = r2;
+    *((u32*)(r4 + 0x3c)) = 0x0000270F;
+    *((u32*)(r4 + 0x40)) = 0x0000270F;
+    *((u32*)(r4 + 0x44)) = r3;
+    *((u32*)(r4 + 0x44)) = 0x0001869F;
     // add r0, sp, #0
-    // ldrb r0, [r0, #0x10]
-    // lsl r2, r2, #8
-    // lsl r0, r0, #0x1f
-    // lsr r0, r0, #0x1b
-    // orr r0, r1
-    // strb r0, [r4, #4]
+    *((u8*)(r4 + 4)) = (((*((u8*)(0x10 + 0x10)) << 0x1f) >> 0x1b) | (*((u8*)(r4 + 4)) & ~(0x10)));
     // add r4, #0x68
     // ldr r0, [sp, #0x14]
-    // add r1, r4, #0
-    // bl MI_CpuCopy8
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _02069400: .word 0x000F423F
-    // _02069404: .word 0x0000270F
-    // _02069408: .word 0x0001869F
-    // TODO: decompile
+    MI_CpuCopy8((((*((u8*)(0x10 + 0x10)) << 0x1f) >> 0x1b) | (*((u8*)(r4 + 4)) & ~(0x10))), r4, (6 << 8));
 }
+
 
 
 
 void sub_0206940C(void) {
-    Save_TrainerCard_Get(*((u32*)(r1 + 0xc)));
-    TrainerCard_GetBadgeShininessArr();
     // add r1, #0x48
-    // ldr r4, [r1, r0]
-    // bic r4, r3
     // str r4, [r1, r0]
-    // ldr r4, [r1, r0]
     // and r4, r5
     // str r4, [r1, r0]
-    PlayerProfile_TestBadgeFlag(r7, 0, (((0 + 1) << 0x18) >> 0x18), 1);
-    // orr r0, r4
-    *((u16*)(r6 + 6)) = *((u16*)(r6 + 6));
 }
+
 
 
 
 void sub_02069464(void) {
-    // push {r3, r4, r5, lr}
-    // ldr r1, _02069490 ; =0x00000684
-    // add r5, r0, #0
-    // mov r0, #0xb
-    // bl Heap_AllocAtEnd
-    // add r4, r0, #0
-    // mov r0, #0
+    Heap_AllocAtEnd(0xb, 0x00000684);
     // str r0, [r4]
-    // add r0, r5, #0
     // add r0, #0x80
-    // ldr r0, [r0]
-    // bl sub_0205ABD8
-    // str r0, [r4, #4]
-    // ldr r0, [r5, #0x10]
-    // ldr r1, _02069494 ; =sub_02069498
-    // add r2, r4, #0
-    // bl TaskManager_Call
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _02069490: .word 0x00000684
-    // _02069494: .word sub_02069498
-    // TODO: decompile
+    sub_0205ABD8(*((u32*)r5));
+    *((u32*)(r4 + 4)) = r0;
+    TaskManager_Call(*((u32*)(r5 + 0x10)), sub_02069498, r4);
 }
 
 
 
-void sub_02069498(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl TaskManager_GetFieldSystem
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl TaskManager_GetEnvironment
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // cmp r0, #0xa
-    // bgt _020694C2
-    // bge _020694E4
-    // cmp r0, #1
-    // bgt _0206951C
-    // cmp r0, #0
-    // blt _0206951C
-    // beq _020694C8
-    // cmp r0, #1
-    // beq _020694D4
-    // b _0206951C
-    // cmp r0, #0xb
-    // beq _02069500
-    // b _0206951C
+
+BOOL sub_02069498(void) {
+    TaskManager_GetFieldSystem();
+    TaskManager_GetEnvironment(r5);
     // add r4, #0x80
-    // ldr r0, [r4]
-    // bl sub_0205AC70
-    // mov r0, #1
+    sub_0205AC70(*((u32*)r4));
     // str r0, [r5]
-    // ldr r1, [r5, #4]
-    // ldr r0, _02069520 ; =0x0000066A
-    // ldrh r0, [r1, r0]
-    // cmp r0, #0
-    // beq _0206951C
-    // mov r0, #0xa
     // str r0, [r5]
-    // b _0206951C
-    // add r1, r5, #0
-    // ldr r0, [r5, #4]
-    // ldr r2, _02069524 ; =0x0000066C
     // add r1, #8
-    // bl MI_CpuCopy8
-    // add r1, r5, #0
-    // add r0, r4, #0
+    MI_CpuCopy8(*((u32*)(r5 + 4)), r5, 0x0000066C);
     // add r1, #8
-    // bl TrainerCard_LaunchApp
-    // mov r0, #0xb
+    TrainerCard_LaunchApp(r4, r5);
     // str r0, [r5]
-    // b _0206951C
-    // add r0, r4, #0
-    // bl FieldSystem_ApplicationIsRunning
-    // cmp r0, #0
-    // bne _0206951C
+    FieldSystem_ApplicationIsRunning(r4);
     // add r4, #0x80
-    // ldr r0, [r4]
-    // bl sub_0205AC4C
-    // add r0, r5, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // _02069520: .word 0x0000066A
-    // _02069524: .word 0x0000066C
-    // TODO: decompile
+    sub_0205AC4C(*((u32*)r4));
+    Heap_Free(r5);
 }
+
 
 

@@ -2,698 +2,261 @@
 #include "global.h"
 
 void ov80_0223A00C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // add r7, r2, #0
-    // mov r1, #0x5a
-    // mov r2, #0xfa
     // str r3, [sp]
-    // ldr r0, _0223A0B4 ; =ov80_0223A144
-    // lsl r1, r1, #2
-    // lsl r2, r2, #2
-    // mov r3, #0x65
-    // bl CreateSysTaskAndEnvironment
-    // bl SysTask_GetData
-    // add r4, r0, #0
-    // str r5, [r4, #0x10]
+    CreateSysTaskAndEnvironment(ov80_0223A144, (0x5a << 2), (0xfa << 2), 0x65);
+    SysTask_GetData();
+    *((u32*)(r0 + 0x10)) = r5;
     // ldr r0, [sp]
-    // str r7, [r4, #0x14]
-    // str r0, [r4, #0x18]
+    *((u32*)(r0 + 0x14)) = r7;
+    *((u32*)(r0 + 0x18)) = r0;
     // ldr r0, [sp, #0x18]
     // add r1, sp, #8
-    // str r0, [r4, #0x1c]
+    *((u32*)(r0 + 0x1c)) = r0;
     // ldr r0, [sp, #0x1c]
-    // str r0, [r4, #0x20]
-    // mov r0, #0x18
+    *((u32*)(r0 + 0x20)) = r0;
     // ldrsh r0, [r1, r0]
-    // strh r0, [r4, #0x28]
-    // mov r0, #0x1c
+    *((u16*)(r0 + 0x28)) = 0x18;
     // ldrsh r0, [r1, r0]
-    // mov r1, #0x65
-    // strh r0, [r4, #0x2a]
-    // mov r0, #0x6d
-    // bl NARC_New
-    // str r0, [r4, #0x24]
-    // ldr r1, [r4, #0x20]
-    // cmp r1, #0
-    // beq _0223A05E
-    // mov r0, #0
+    *((u16*)(r0 + 0x2a)) = 0x1c;
+    NARC_New(0x6d, 0x65);
+    *((u32*)(r4 + 0x24)) = r0;
     // strh r0, [r1]
-    // add r0, r4, #0
-    // sub r1, r6, #1
     // add r0, #0x2c
     // strb r1, [r0]
-    // mov r0, #1
-    // bl BgGetCharPtr
-    // mov r2, #2
-    // add r1, r0, #0
-    // mov r0, #0
-    // lsl r2, r2, #0xe
-    // bl MIi_CpuClear32
-    // mov r2, #0
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r3, r2, #0
-    // bl ScheduleSetBgPosText
-    // add r0, r5, #0
-    // mov r1, #1
-    // mov r2, #3
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // add r1, r4, #0
+    BgGetCharPtr(1, (r6 - 1));
+    MIi_CpuClear32(0, r0, (2 << 0xe));
+    ScheduleSetBgPosText(r5, 1, 0, 0);
+    ScheduleSetBgPosText(r5, 1, 3, 0);
     // add r1, #0x2c
-    // ldrb r2, [r1]
-    // mov r1, #0xc
-    // ldr r3, _0223A0B8 ; =ov80_0223DB98
-    // mul r1, r2
-    // add r0, r4, #0
     // add r1, r3, r1
-    // bl ov80_0223A938
-    // ldr r0, _0223A0BC ; =ov80_0223A0EC
-    // add r1, r4, #0
-    // mov r2, #1
-    // bl SysTask_CreateOnVWaitQueue
-    // str r0, [r4, #0x34]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _0223A0B4: .word ov80_0223A144
-    // _0223A0B8: .word ov80_0223DB98
-    // _0223A0BC: .word ov80_0223A0EC
-    // TODO: decompile
+    ov80_0223A938(r4, (0xc * *((u8*)r4)), *((u8*)r4), ov80_0223DB98);
+    SysTask_CreateOnVWaitQueue(ov80_0223A0EC, r4, 1);
+    *((u32*)(r4 + 0x34)) = r0;
 }
+
 
 
 
 void ov80_0223A0C0(void) {
     // ldr r0, [r5, r0]
-    SysTask_Destroy((5 << 6));
-    SysTask_Destroy(*((u32*)(r5 + 0x34)));
-    NARC_Delete(*((u32*)(r5 + 0x24)));
-    Heap_FreeExplicit(0x65, *((u32*)(r5 + 0xc)));
-    DestroySysTaskAndEnvironment(r4);
 }
+
 
 
 
 void ov80_0223A0EC(void) {
-    // push {r3, r4, r5, r6}
-    // add r0, r1, #0
-    // ldr r1, _0223A13C ; =0x00000151
-    // sub r2, r1, #2
-    // ldrb r3, [r0, r2]
-    // sub r2, r1, #3
-    // ldrb r2, [r0, r2]
-    // ldrb r4, [r0, r1]
-    // lsl r3, r3, #8
-    // lsl r5, r2, #8
-    // add r6, r5, #0
-    // sub r5, r1, #1
-    // mov r2, #0xff
-    // lsl r2, r2, #8
     // and r3, r2
-    // ldrb r5, [r0, r5]
     // and r6, r2
-    // orr r3, r4
-    // orr r5, r6
-    // ldr r6, _0223A140 ; =0x04000040
     // strh r5, [r6]
-    // strh r3, [r6, #4]
-    // add r3, r1, #4
-    // ldrb r5, [r0, r3]
-    // add r3, r1, #2
-    // ldrb r4, [r0, r3]
-    // add r3, r1, #1
-    // ldrb r3, [r0, r3]
-    // add r1, r1, #3
-    // ldrb r0, [r0, r1]
-    // lsl r3, r3, #8
+    *((u16*)(0x04000040 + 4)) = ((*((u8*)(r1 + (0x00000151 - 2))) << 8) | *((u8*)(r1 + 0x00000151)));
     // and r3, r2
-    // orr r0, r3
-    // strh r0, [r6, #2]
-    // lsl r0, r4, #8
+    *((u16*)(0x04000040 + 2)) = (*((u8*)(r1 + (0x00000151 + 3))) | (*((u8*)(r1 + (0x00000151 + 1))) << 8));
     // and r0, r2
-    // orr r0, r5
-    // strh r0, [r6, #6]
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // _0223A13C: .word 0x00000151
-    // _0223A140: .word 0x04000040
-    // TODO: decompile
+    *((u16*)(0x04000040 + 6)) = ((*((u8*)(r1 + (0x00000151 + 2))) << 8) | *((u8*)(r1 + (0x00000151 + 4))));
 }
+
 
 
 
 void ov80_0223A144(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r3, r4, #0
     // add r3, #0x2c
-    // ldrb r6, [r3]
-    // mov r3, #0xc
-    // ldr r2, _0223A170 ; =ov80_0223DB98
-    // mul r3, r6
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0x65
     // add r2, r2, r3
-    // bl ov80_0223A174
-    // cmp r0, #1
-    // bne _0223A16C
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov80_0223A0C0
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _0223A170: .word ov80_0223DB98
-    // TODO: decompile
+    ov80_0223A174(r1, 0x65, ov80_0223DB98, (0xc * *((u8*)r1)));
+    ov80_0223A0C0(r4, r5);
 }
 
 
 
+
 void ov80_0223A174(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x28
-    // add r4, r0, #0
-    // add r6, r1, #0
-    // ldr r1, [r4]
-    // add r7, r2, #0
-    // ldr r5, [r4, #0xc]
-    // cmp r1, #0x12
-    // bls _0223A188
-    // b _0223A620
     // add r2, r1, r1
     // add r2, pc
-    // ldrh r2, [r2, #6]
-    // lsl r2, r2, #0x10
     // asr r2, r2, #0x10
     // add pc, r2
     // _0223A194: ; jump table
-    // add r0, r6, #0
-    // mov r1, #0x94
-    // bl Heap_Alloc
-    // str r0, [r4, #0xc]
-    // mov r1, #0
-    // mov r2, #0x94
-    // bl memset
-    // ldr r5, [r4, #0xc]
-    // ldr r0, [r4, #0x24]
-    // mov r1, #2
+    Heap_Alloc(r1, 0x94, (*((u16*)(r2 + 6)) << 0x10));
+    *((u32*)(r4 + 0xc)) = r0;
+    memset(0, 0x94);
     // str r0, [sp]
-    // mov r0, #0x10
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // mov r0, #1
     // str r0, [sp, #0xc]
     // str r0, [sp, #0x10]
-    // ldr r0, _0223A50C ; =0x000007D4
     // str r0, [sp, #0x14]
-    // ldr r0, [r4, #0x1c]
-    // ldr r2, [r4, #0x14]
-    // ldr r3, [r4, #0x18]
-    // bl SpriteSystem_LoadPaletteBufferFromOpenNarc
-    // mov r3, #0x59
-    // add r1, r0, #0
-    // lsl r3, r3, #2
-    // mov r2, #1
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(*((u32*)(r4 + 0x1c)), 2, *((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)));
     // lsl r2, r1
-    // ldr r0, [r4, r3]
-    // mov r1, #0x65
-    // orr r0, r2
     // str r0, [r4, r3]
-    // mov r0, #4
-    // bl FontSystem_NewInit
-    // str r0, [r4, #0x30]
-    // ldr r2, _0223A510 ; =0x000002D9
-    // mov r0, #1
-    // mov r1, #0x1b
-    // add r3, r6, #0
-    // bl NewMsgDataFromNarc
-    // ldr r1, [r7]
+    FontSystem_NewInit(4, 0x65, 1, (0x59 << 2));
+    *((u32*)(r4 + 0x30)) = r0;
+    NewMsgDataFromNarc(1, 0x1b, 0x000002D9, r6);
     // str r0, [sp, #0x20]
-    // bl NewString_ReadMsgData
+    NewString_ReadMsgData(*((u32*)r7));
     // str r0, [sp, #0x24]
-    // ldr r0, _0223A514 ; =0x00010200
-    // add r1, r5, #0
     // str r0, [sp]
-    // mov r3, #0
-    // ldr r0, _0223A50C ; =0x000007D4
     // str r3, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x28
     // ldrsh r0, [r4, r0]
     // ldr r2, [sp, #0x24]
     // add r1, #0x7c
     // add r0, #0x74
     // str r0, [sp, #0xc]
-    // mov r0, #0x2a
     // ldrsh r0, [r4, r0]
     // add r0, #0x58
     // str r0, [sp, #0x10]
     // str r3, [sp, #0x14]
     // str r3, [sp, #0x18]
-    // add r0, r4, #0
-    // bl ov80_0223A62C
-    // ldr r0, [r5, #0x7c]
-    // mov r1, #0
-    // bl TextOBJ_SetSpritesDrawFlag
+    ov80_0223A62C(r4, r5, 0);
+    TextOBJ_SetSpritesDrawFlag(*((u32*)(r5 + 0x7c)), 0);
     // ldr r0, [sp, #0x24]
-    // bl String_Delete
+    String_Delete();
     // ldr r0, [sp, #0x20]
-    // bl DestroyMsgData
-    // ldr r0, [r4, #0x24]
-    // mov r1, #2
+    DestroyMsgData();
     // str r0, [sp]
-    // ldrb r0, [r7, #4]
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // mov r0, #1
     // str r0, [sp, #0xc]
     // str r0, [sp, #0x10]
-    // ldr r0, _0223A518 ; =0x000007D2
     // str r0, [sp, #0x14]
-    // ldr r0, [r4, #0x1c]
-    // ldr r2, [r4, #0x14]
-    // ldr r3, [r4, #0x18]
-    // bl SpriteSystem_LoadPaletteBufferFromOpenNarc
-    // mov r3, #0x16
-    // lsl r3, r3, #4
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(*((u32*)(r4 + 0x1c)), 2, *((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)));
     // str r0, [r4, r3]
-    // add r0, r3, #4
-    // ldr r2, [r4, r3]
-    // mov r1, #1
-    // ldr r0, [r4, r0]
     // lsl r1, r2
-    // orr r1, r0
-    // add r0, r3, #4
     // str r1, [r4, r0]
-    // mov r0, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, _0223A51C ; =0x000007DA
     // str r0, [sp, #8]
-    // ldrb r3, [r7, #5]
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0x18]
-    // ldr r2, [r4, #0x24]
-    // bl SpriteSystem_LoadCharResObjFromOpenNarc
-    // mov r0, #0
+    SpriteSystem_LoadCharResObjFromOpenNarc(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)), *((u32*)(r4 + 0x24)), *((u8*)(r7 + 5)));
     // str r0, [sp]
-    // ldr r0, _0223A518 ; =0x000007D2
     // str r0, [sp, #4]
-    // ldrb r3, [r7, #6]
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0x18]
-    // ldr r2, [r4, #0x24]
-    // bl SpriteSystem_LoadCellResObjFromOpenNarc
-    // mov r0, #0
+    SpriteSystem_LoadCellResObjFromOpenNarc(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)), *((u32*)(r4 + 0x24)), *((u8*)(r7 + 6)));
     // str r0, [sp]
-    // ldr r0, _0223A518 ; =0x000007D2
     // str r0, [sp, #4]
-    // ldrb r3, [r7, #7]
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0x18]
-    // ldr r2, [r4, #0x24]
-    // bl SpriteSystem_LoadAnimResObjFromOpenNarc
-    // mov r0, #0xe
+    SpriteSystem_LoadAnimResObjFromOpenNarc(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)), *((u32*)(r4 + 0x24)), *((u8*)(r7 + 7)));
     // str r0, [sp]
-    // mov r0, #0
-    // mov r2, #0x16
     // str r0, [sp, #4]
-    // lsl r2, r2, #4
-    // ldr r2, [r4, r2]
-    // ldr r0, [r4, #0x1c]
-    // lsl r2, r2, #0x14
-    // mov r1, #2
-    // lsr r2, r2, #0x10
-    // mov r3, #0x10
-    // bl PaletteData_BlendPalette
-    // ldr r0, [r4, #0x24]
-    // mov r1, #2
+    PaletteData_BlendPalette(*((u32*)(r4 + 0x1c)), 2, ((*((u32*)(r4 + (0x16 << 4))) << 0x14) >> 0x10), 0x10);
     // str r0, [sp]
-    // mov r0, #0x3b
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // mov r0, #1
     // str r0, [sp, #0xc]
     // str r0, [sp, #0x10]
-    // ldr r0, _0223A520 ; =0x000007D3
     // str r0, [sp, #0x14]
-    // ldr r0, [r4, #0x1c]
-    // ldr r2, [r4, #0x14]
-    // ldr r3, [r4, #0x18]
-    // bl SpriteSystem_LoadPaletteBufferFromOpenNarc
-    // add r3, r0, #0
-    // mov r7, #0x59
-    // mov r0, #1
-    // lsl r7, r7, #2
-    // add r1, r0, #0
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(*((u32*)(r4 + 0x1c)), 2, *((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)));
     // lsl r1, r3
-    // ldr r2, [r4, r7]
-    // mov r3, #0xcc
-    // orr r1, r2
     // str r1, [r4, r7]
-    // mov r1, #0
     // str r1, [sp]
     // str r0, [sp, #4]
-    // ldr r0, _0223A524 ; =0x000007DB
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0x18]
-    // ldr r2, [r4, #0x24]
-    // bl SpriteSystem_LoadCharResObjFromOpenNarc
-    // mov r0, #0
+    SpriteSystem_LoadCharResObjFromOpenNarc(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)), *((u32*)(r4 + 0x24)), 0xcc);
     // str r0, [sp]
-    // ldr r0, _0223A520 ; =0x000007D3
-    // mov r3, #0xcd
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0x18]
-    // ldr r2, [r4, #0x24]
-    // bl SpriteSystem_LoadCellResObjFromOpenNarc
-    // mov r0, #0
+    SpriteSystem_LoadCellResObjFromOpenNarc(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)), *((u32*)(r4 + 0x24)), 0xcd);
     // str r0, [sp]
-    // ldr r0, _0223A520 ; =0x000007D3
-    // mov r3, #0xce
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0x18]
-    // ldr r2, [r4, #0x24]
-    // bl SpriteSystem_LoadAnimResObjFromOpenNarc
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0x18]
-    // ldr r2, _0223A528 ; =ov80_0223DB30
-    // bl SpriteSystem_NewSprite
-    // add r1, r5, #0
+    SpriteSystem_LoadAnimResObjFromOpenNarc(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)), *((u32*)(r4 + 0x24)), 0xce);
+    SpriteSystem_NewSprite(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x18)), ov80_0223DB30);
     // add r1, #0x90
     // str r0, [r1]
-    // add r0, r5, #0
     // add r0, #0x90
-    // ldr r0, [r0]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // add r0, r5, #0
+    ManagedSprite_SetDrawFlag(*((u32*)r5), 0);
     // add r0, #0x90
-    // ldr r0, [r0]
-    // ldr r0, [r0]
-    // bl Sprite_TickFrame
-    // mov r0, #0x2a
+    Sprite_TickFrame(*((u32*)*((u32*)r5)));
     // ldrsh r0, [r4, r0]
-    // cmp r0, #0
-    // ble _0223A3AA
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
+    _fflt((0x2a << 0xc));
+    _fadd((0x3f << 0x18), r0);
     // str r0, [sp, #0x1c]
-    // b _0223A3BA
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
+    _fflt((r0 << 0xc));
+    _fsub((0x3f << 0x18));
     // str r0, [sp, #0x1c]
-    // mov r0, #0x28
     // ldrsh r0, [r4, r0]
-    // cmp r0, #0
-    // ble _0223A3D4
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0223A3E2
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // add r7, r0, #0
+    _fflt((0x28 << 0xc));
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r0 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
     // ldr r0, [sp, #0x1c]
-    // bl _ffix
+    _ffix();
     // add r5, #0x14
-    // add r1, r5, #0
-    // mov r2, #0x12
-    // mov r5, #0x52
-    // add r3, r0, #0
-    // lsl r2, r2, #0xe
-    // lsl r5, r5, #0xc
     // str r6, [sp]
-    // add r0, r4, #0
     // add r2, r7, r2
     // add r3, r3, r5
-    // bl ov80_0223A78C
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    ov80_0223A78C(r4, r5, (0x12 << 0xe), r0);
     // str r0, [r4]
-    // b _0223A620
-    // mov r0, #3
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // mov r0, #0
-    // ldr r3, _0223A52C ; =0x00007FFF
     // str r6, [sp, #8]
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // bl BeginNormalPaletteFade
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    BeginNormalPaletteFade(0, 0, 0, 0x00007FFF);
     // str r0, [r4]
-    // b _0223A620
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _0223A4FC
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    IsPaletteFadeFinished((*((u32*)r4) + 1));
     // str r0, [r4]
-    // b _0223A620
-    // mov r0, #3
-    // mov r1, #1
     // str r0, [sp]
     // str r1, [sp, #4]
-    // ldr r3, _0223A52C ; =0x00007FFF
     // str r6, [sp, #8]
-    // add r2, r1, #0
-    // bl BeginNormalPaletteFade
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    BeginNormalPaletteFade(3, 1, 1, 0x00007FFF);
     // str r0, [r4]
-    // b _0223A620
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _0223A4FC
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    IsPaletteFadeFinished((*((u32*)r4) + 1));
     // str r0, [r4]
-    // b _0223A620
-    // mov r1, #0
-    // bl ov80_0223AA80
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    ov80_0223AA80((*((u32*)r4) + 1), 0);
     // str r0, [r4]
-    // b _0223A620
-    // mov r0, #0x53
-    // lsl r0, r0, #2
-    // ldrb r0, [r4, r0]
-    // cmp r0, #1
-    // bne _0223A4FC
-    // add r0, r1, #1
     // str r0, [r4]
-    // mov r0, #0xa
-    // str r0, [r5, #0x78]
-    // b _0223A620
-    // ldr r0, [r5, #0x78]
-    // sub r0, r0, #1
-    // str r0, [r5, #0x78]
+    *((u32*)(r5 + 0x78)) = 0xa;
+    *((u32*)(r5 + 0x78)) = (*((u32*)(r5 + 0x78)) - 1);
     // bpl _0223A4FC
     // add r5, #0x14
-    // add r0, r5, #0
-    // bl ov80_0223A834
-    // cmp r0, #1
-    // bne _0223A4FC
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    ov80_0223A834(r5);
     // str r0, [r4]
-    // b _0223A620
-    // add r0, r1, #1
     // str r0, [r4]
-    // b _0223A620
-    // mov r2, #0x56
-    // lsl r2, r2, #2
-    // add r1, r5, #0
     // add r2, r4, r2
-    // bl ov80_0223AB94
-    // cmp r0, #1
-    // bne _0223A4FC
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    ov80_0223AB94((r1 + 1), r5, (0x56 << 2));
     // str r0, [r4]
-    // b _0223A620
-    // mov r0, #0xa
-    // str r0, [r5, #0x78]
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    *((u32*)(r5 + 0x78)) = 0xa;
     // str r0, [r4]
-    // b _0223A620
-    // ldr r0, [r5, #0x78]
-    // sub r0, r0, #1
-    // str r0, [r5, #0x78]
+    *((u32*)(r5 + 0x78)) = (*((u32*)(r5 + 0x78)) - 1);
     // bpl _0223A4FC
-    // mov r0, #3
     // str r0, [sp]
-    // mov r1, #1
     // str r1, [sp, #4]
-    // mov r1, #0
-    // ldr r3, _0223A52C ; =0x00007FFF
     // str r6, [sp, #8]
-    // add r2, r1, #0
-    // bl BeginNormalPaletteFade
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    BeginNormalPaletteFade(3, 0, 0, 0x00007FFF);
     // str r0, [r4]
-    // b _0223A620
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // bne _0223A4FE
-    // b _0223A620
-    // mov r0, #0
-    // mov r2, #0x59
+    IsPaletteFadeFinished((*((u32*)r4) + 1));
     // str r0, [sp]
-    // lsl r2, r2, #2
-    // ldr r3, [r4, r2]
-    // ldr r2, _0223A530 ; =0x00003FFF
-    // b _0223A534
-    // _0223A50C: .word 0x000007D4
-    // _0223A510: .word 0x000002D9
-    // _0223A514: .word 0x00010200
-    // _0223A518: .word 0x000007D2
-    // _0223A51C: .word 0x000007DA
-    // _0223A520: .word 0x000007D3
-    // _0223A524: .word 0x000007DB
-    // _0223A528: .word ov80_0223DB30
-    // _0223A52C: .word 0x00007FFF
-    // _0223A530: .word 0x00003FFF
-    // ldr r0, [r4, #0x1c]
     // eor r2, r3
-    // lsl r2, r2, #0x10
-    // mov r1, #2
-    // lsr r2, r2, #0x10
-    // mov r3, #0xe
-    // bl PaletteData_BlendPalettes
-    // mov r0, #0
+    PaletteData_BlendPalettes(*((u32*)(r4 + 0x1c)), 2, ((0x00003FFF << 0x10) >> 0x10), 0xe);
     // str r0, [sp]
-    // mov r2, #0x16
     // str r0, [sp, #4]
-    // lsl r2, r2, #4
-    // ldr r2, [r4, r2]
-    // ldr r0, [r4, #0x1c]
-    // lsl r2, r2, #0x14
-    // mov r1, #2
-    // lsr r2, r2, #0x10
-    // mov r3, #0x10
-    // bl PaletteData_BlendPalette
-    // mov r0, #0xd
+    PaletteData_BlendPalette(*((u32*)(r4 + 0x1c)), 2, ((*((u32*)(r4 + (0x16 << 4))) << 0x14) >> 0x10), 0x10);
     // mvn r0, r0
-    // mov r1, #0x2c
-    // mov r2, #1
-    // bl SetBlendBrightness
-    // ldr r0, [r5, #0x7c]
-    // mov r1, #1
-    // bl TextOBJ_SetSpritesDrawFlag
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    SetBlendBrightness(0xd, 0x2c, 1);
+    TextOBJ_SetSpritesDrawFlag(*((u32*)(r5 + 0x7c)), 1);
     // str r0, [r4]
-    // b _0223A620
-    // mov r0, #3
-    // mov r1, #1
     // str r0, [sp]
     // str r1, [sp, #4]
-    // ldr r3, _0223A628 ; =0x00007FFF
     // str r6, [sp, #8]
-    // add r2, r1, #0
-    // bl BeginNormalPaletteFade
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    BeginNormalPaletteFade(3, 1, 1, 0x00007FFF);
     // str r0, [r4]
-    // b _0223A620
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _0223A620
-    // mov r0, #0x1a
-    // str r0, [r5, #0x78]
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    IsPaletteFadeFinished((*((u32*)r4) + 1));
+    *((u32*)(r5 + 0x78)) = 0x1a;
     // str r0, [r4]
-    // b _0223A620
-    // ldr r0, [r5, #0x78]
-    // sub r0, r0, #1
-    // str r0, [r5, #0x78]
+    *((u32*)(r5 + 0x78)) = (*((u32*)(r5 + 0x78)) - 1);
     // bpl _0223A620
-    // ldr r0, [r4]
-    // add r0, r0, #1
     // str r0, [r4]
-    // b _0223A620
-    // mov r0, #0xf
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // mov r0, #0x65
-    // mov r1, #0
     // str r0, [sp, #8]
-    // ldr r3, _0223A628 ; =0x00007FFF
-    // mov r0, #3
-    // add r2, r1, #0
-    // bl BeginNormalPaletteFade
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    BeginNormalPaletteFade(3, 0, 0, 0x00007FFF);
     // str r0, [r4]
-    // b _0223A620
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _0223A620
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    IsPaletteFadeFinished((*((u32*)r4) + 1));
     // str r0, [r4]
-    // b _0223A620
-    // ldr r1, _0223A628 ; =0x00007FFF
-    // mov r0, #1
-    // bl sub_0200FBF4
-    // ldr r1, [r4, #0x20]
-    // cmp r1, #0
-    // beq _0223A5FA
-    // mov r0, #1
+    sub_0200FBF4(1, 0x00007FFF);
     // strh r0, [r1]
-    // add r0, r5, #0
     // add r0, #0x7c
-    // bl ov80_0223A748
-    // ldr r0, [r4, #0x30]
-    // bl sub_020135AC
-    // add r0, r5, #0
+    ov80_0223A748(r5, *((u32*)(r4 + 0x20)));
+    sub_020135AC(*((u32*)(r4 + 0x30)));
     // add r0, #0x90
-    // ldr r0, [r0]
-    // bl Sprite_DeleteAndFreeResources
+    Sprite_DeleteAndFreeResources(*((u32*)r5));
     // add r5, #0x14
-    // add r0, r5, #0
-    // bl ov80_0223A81C
-    // add sp, #0x28
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0x28
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _0223A628: .word 0x00007FFF
-    // TODO: decompile
+    ov80_0223A81C(r5);
 }
+
 
 
 
@@ -702,24 +265,20 @@ void ov80_0223A62C(void) {
     // str r3, [sp, #0x1c]
     // ldr r6, [sp, #0x9c]
     // ldr r4, [sp, #0xa8]
-    GF_AssertFail(*((u32*)r1));
     // str r0, [sp, #0x24]
     // str r0, [sp, #0x20]
     // ldr r0, [sp, #0x18]
     // ldr r1, [sp, #0x1c]
     // add r2, sp, #0x2c
     // add r3, sp, #0x28
-    ov80_0223A75C(*((u32*)(r7 + 0x18)));
     // str r0, [sp, #0x2c]
     // str r0, [sp, #0x28]
     // add r0, sp, #0x3c
-    InitWindow(*((u16*)(r4 + 0x10)));
     // str r0, [sp]
     // str r0, [sp, #4]
     // ldr r2, [sp, #0x28]
     // ldr r0, [sp, #0x24]
     // add r1, sp, #0x3c
-    AddTextWindowTopLeftCorner(0, ((r2 << 0x18) >> 0x18), 2);
     // str r3, [sp]
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x90]
@@ -730,16 +289,13 @@ void ov80_0223A62C(void) {
     // ldr r2, [sp, #0x18]
     // add r0, sp, #0x3c
     // str r3, [sp, #0x14]
-    AddTextPrinterParameterizedWithColorAndSpacing(0xff, 0);
     // add r2, sp, #0x3c
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
     // add r0, sp, #0x3c
-    sub_02013688(1, 0x65, r4);
     // add r3, sp, #0x30
-    sub_02021AC8(1, 1);
     // ldr r0, [sp, #0xa4]
     // ldr r1, [sp, #0x2c]
     // add r0, r1, r0
@@ -749,11 +305,9 @@ void ov80_0223A62C(void) {
     // add r0, sp, #0x3c
     // str r0, [sp, #0x50]
     // ldr r0, [sp, #0x20]
-    SpriteManager_GetSpriteList(*((u32*)(r7 + 0x30)));
     // str r0, [sp, #0x54]
     // ldr r0, [sp, #0x20]
     // ldr r1, [sp, #0x98]
-    SpriteManager_FindPlttResourceProxy();
     // str r0, [sp, #0x58]
     // ldr r0, [sp, #0x34]
     // str r1, [sp, #0x5c]
@@ -767,22 +321,18 @@ void ov80_0223A62C(void) {
     // str r0, [sp, #0x78]
     // add r0, sp, #0x4c
     // str r1, [sp, #0x6c]
-    sub_020135D8(0x65, 0);
     // ldr r1, [sp, #0x94]
-    sub_020138E0();
     // ldr r2, [sp, #0xa0]
     // sub r2, #8
-    sub_020136B4(r7, r6);
     // add r0, sp, #0x3c
-    RemoveWindow();
     // str r7, [r5]
     // add r3, sp, #0x30
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
     // str r0, [r2]
     // ldr r0, [sp, #0x2c]
-    *((u16*)(r5 + 0x10)) = *((u32*)r3);
 }
+
 
 
 
@@ -791,91 +341,50 @@ void ov80_0223A748(void) {
 
 
 
+
 void ov80_0223A75C(void) {
-    FontID_String_GetWidth(r1, r0, 0);
     // asr r1, r4, #2
     // add r1, r4, r1
     // asr r5, r1, #3
-    FX_ModS32(8);
     // str r4, [r6]
     // str r5, [r7]
 }
 
 
 
+
 void ov80_0223A78C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x34
-    // add r6, r3, #0
     // mov ip, r2
-    // ldr r3, _0223A818 ; =ov80_0223DB64
-    // add r7, r0, #0
-    // add r4, r1, #0
     // add r2, sp, #0
-    // mov r5, #6
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // sub r5, r5, #1
-    // bne _0223A79E
-    // ldr r0, [r3]
-    // add r5, r4, #0
     // str r0, [r2]
     // mov r0, ip
     // asr r1, r0, #0xc
     // add r0, sp, #0
     // strh r1, [r0]
     // asr r1, r6, #0xc
-    // strh r1, [r0, #2]
-    // mov r6, #0
+    *((u16*)(*((u32*)ov80_0223DB64) + 2)) = r1;
     // strh r6, [r4]
-    // strh r6, [r4, #2]
+    *((u16*)(r1 + 2)) = 0;
     // add r5, #0x14
-    // ldr r0, [r7, #0x14]
-    // ldr r1, [r7, #0x18]
     // add r2, sp, #0
-    // bl SpriteSystem_NewSprite
-    // mov r1, #0
-    // str r0, [r4, #4]
-    // bl ManagedSprite_SetDrawFlag
-    // cmp r6, #3
-    // beq _0223A7FA
-    // ldr r0, [r4, #4]
-    // mov r1, #2
-    // ldr r0, [r0]
-    // bl Sprite_SetAffineOverwriteMode
-    // ldr r0, [r4, #4]
-    // mov r1, #1
-    // ldr r0, [r0]
-    // bl Sprite_SetAnimCtrlSeq
-    // mov r1, #2
-    // lsl r1, r1, #0xc
-    // add r0, r5, #0
-    // lsr r2, r1, #1
-    // mov r3, #6
-    // bl ov80_0223A8C4
-    // b _0223A808
-    // mov r1, #1
-    // lsl r1, r1, #0xc
-    // add r0, r5, #0
-    // add r2, r1, #0
-    // mov r3, #6
-    // bl ov80_0223A8C4
-    // add r6, r6, #1
-    // add r4, r4, #4
+    SpriteSystem_NewSprite(*((u32*)(r0 + 0x14)), *((u32*)(r0 + 0x18)), ov80_0223DB64);
+    *((u32*)(r4 + 4)) = r0;
+    ManagedSprite_SetDrawFlag(0);
+    Sprite_SetAffineOverwriteMode(*((u32*)*((u32*)(r4 + 4))), 2);
+    Sprite_SetAnimCtrlSeq(*((u32*)*((u32*)(r4 + 4))), 1);
+    ov80_0223A8C4(r5, (2 << 0xc), ((2 << 0xc) >> 1), 6);
+    ov80_0223A8C4(r5, (1 << 0xc), (1 << 0xc), 6);
     // add r5, #0x14
-    // cmp r6, #4
-    // blt _0223A7C0
-    // add sp, #0x34
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _0223A818: .word ov80_0223DB64
-    // TODO: decompile
 }
+
 
 
 
 void ov80_0223A81C(void) {
 }
+
 
 
 
@@ -889,17 +398,12 @@ void ov80_0223A834(void) {
     // ldrsh r0, [r7, r0]
     // strh r0, [r7]
     // ldrsh r0, [r7, r1]
-    *((u16*)(r0 + 2)) = (3 + 1);
     // str r0, [sp, #4]
     // ldrsh r0, [r7, r0]
     // add r6, #0x14
-    ov80_0223A8D4(r0, 2);
     // str r0, [sp, #8]
     // add r0, sp, #0xc
-    ov80_0223A91C(*((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x14)), *((u32*)(r4 + 0x14)));
     // add r1, sp, #0xc
-    Sprite_SetAffineScale(*((u32*)*((u32*)(r5 + 4))));
-    Sprite_SetDrawFlag(*((u32*)*((u32*)(r5 + 4))), 1);
     // ldr r0, [sp, #8]
     // str r0, [sp]
     // ldr r0, [sp, #4]
@@ -913,30 +417,24 @@ void ov80_0223A834(void) {
 
 
 
+
 void ov80_0223A8C4(void) {
     // str r1, [r0]
-    *((u32*)(r0 + 4)) = r1;
     // sub r1, r2, r1
-    *((u32*)(r0 + 8)) = r1;
-    *((u32*)(r0 + 0x10)) = r3;
-    *((u32*)(r0 + 0xc)) = 0;
 }
+
 
 
 
 void ov80_0223A8D4(void) {
     // asr r1, r0, #0x1f
     // asr r3, r2, #0x1f
-    _ll_mul(*((u32*)(r0 + 8)), (*((u32*)(r0 + 0xc)) << 0xc));
     // add r0, r0, r2
     // adc r1, r3
-    // orr r0, r1
-    FX_Div((r0 >> 0xc), (*((u32*)(r4 + 0x10)) << 0xc), (2 << 0xa), 0);
     // add r0, r0, r1
     // str r0, [r4]
-    *((u32*)(r4 + 0xc)) = (*((u32*)(r4 + 0xc)) + 1);
-    *((u32*)(r4 + 0xc)) = *((u32*)(r4 + 0x10));
 }
+
 
 
 
@@ -952,189 +450,78 @@ void ov80_0223A91C(void) {
 
 
 
+
 void ov80_0223A938(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // mov r3, #1
-    // lsl r3, r3, #0x1a
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // ldr r1, [r3]
-    // ldr r0, _0223AA3C ; =0xFFFF1FFF
-    // add r2, r3, #0
     // and r1, r0
-    // mov r0, #6
-    // lsl r0, r0, #0xc
-    // orr r0, r1
     // str r0, [r3]
     // add r2, #0x48
-    // ldrh r6, [r2]
-    // mov r0, #0x3f
-    // mov r1, #0x1f
-    // bic r6, r0
-    // orr r1, r6
-    // mov r7, #0x20
-    // orr r1, r7
     // strh r1, [r2]
-    // ldrh r6, [r2]
-    // ldr r1, _0223AA40 ; =0xFFFFC0FF
     // and r1, r6
-    // mov r6, #0x1f
-    // lsl r6, r6, #8
-    // orr r6, r1
-    // lsl r1, r7, #8
-    // orr r1, r6
     // strh r1, [r2]
-    // add r1, r3, #0
     // add r1, #0x4a
-    // ldrh r2, [r1]
-    // bic r2, r0
-    // mov r0, #0x1d
-    // orr r0, r2
-    // orr r0, r7
     // strh r0, [r1]
-    // add r1, r3, #0
-    // mov r0, #0
     // add r1, #0x40
     // strh r0, [r1]
-    // add r1, r3, #0
     // add r1, #0x44
     // strh r0, [r1]
-    // add r1, r3, #0
     // add r1, #0x42
     // strh r0, [r1]
     // add r3, #0x46
     // strh r0, [r3]
     // str r0, [sp]
     // str r7, [sp, #4]
-    // mov r0, #0xc0
     // str r0, [sp, #8]
-    // ldrb r2, [r4, #8]
-    // ldr r0, [r5, #0x1c]
-    // mov r1, #0x6d
-    // mov r3, #0x65
-    // bl PaletteData_LoadNarc
-    // mov r0, #0
+    PaletteData_LoadNarc(*((u32*)(r0 + 0x1c)), 0x6d, *((u8*)(r1 + 8)), 0x65);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x65
     // str r0, [sp, #0xc]
-    // ldrb r1, [r4, #9]
-    // ldr r0, [r5, #0x24]
-    // ldr r2, [r5, #0x10]
-    // mov r3, #1
-    // bl GfGfxLoader_LoadCharDataFromOpenNarc
-    // mov r0, #0
+    GfGfxLoader_LoadCharDataFromOpenNarc(*((u32*)(r5 + 0x24)), *((u8*)(r4 + 9)), *((u32*)(r5 + 0x10)), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x65
     // str r0, [sp, #0xc]
-    // ldrb r1, [r4, #0xa]
-    // ldr r0, [r5, #0x24]
-    // ldr r2, [r5, #0x10]
-    // mov r3, #1
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // add r0, r7, #0
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r5 + 0x24)), *((u8*)(r4 + 0xa)), *((u32*)(r5 + 0x10)), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #0xc
     // str r0, [sp, #8]
-    // mov r2, #0
-    // ldr r0, [r5, #0x10]
-    // mov r1, #1
-    // add r3, r2, #0
-    // bl BgTilemapRectChangePalette
-    // ldr r0, [r5, #0x10]
-    // mov r1, #1
-    // bl ScheduleBgTilemapBufferTransfer
-    // ldrb r1, [r4, #8]
-    // mov r0, #0x6d
+    BgTilemapRectChangePalette(*((u32*)(r5 + 0x10)), 1, 0, 0);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 0x10)), 1);
     // add r2, sp, #0x10
-    // mov r3, #0x65
-    // bl GfGfxLoader_GetPlttData
-    // add r4, r0, #0
+    GfGfxLoader_GetPlttData(0x6d, *((u8*)(r4 + 8)), 0x65);
     // ldr r0, [sp, #0x10]
-    // add r1, r5, #0
-    // add r2, r7, #0
-    // ldr r0, [r0, #0xc]
     // add r1, #0x40
     // add r2, #0xe0
-    // bl MIi_CpuCopy16
-    // add r0, r4, #0
-    // bl Heap_Free
-    // ldr r0, _0223AA44 ; =ov80_0223AA4C
-    // ldr r2, _0223AA48 ; =0x0000044C
-    // add r1, r5, #0
-    // bl SysTask_CreateOnMainQueue
-    // mov r1, #5
-    // lsl r1, r1, #6
+    MIi_CpuCopy16(*((u32*)(r0 + 0xc)), r5, r7);
+    Heap_Free(r4);
+    SysTask_CreateOnMainQueue(ov80_0223AA4C, r5, 0x0000044C);
     // str r0, [r5, r1]
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _0223AA3C: .word 0xFFFF1FFF
-    // _0223AA40: .word 0xFFFFC0FF
-    // _0223AA44: .word ov80_0223AA4C
-    // _0223AA48: .word 0x0000044C
-    // TODO: decompile
 }
+
 
 
 
 void ov80_0223AA4C(void) {
-    *((u32*)(r1 + 0x38)) = (*((u32*)(r1 + 0x38)) + 1);
     // bmi _0223AA7E
-    *((u32*)(r1 + 0x38)) = 0;
-    *((u32*)(r1 + 0x3c)) = (*((u32*)(r1 + 0x3c)) + 1);
-    *((u32*)(r1 + 0x3c)) = 0;
     // str r0, [sp]
     // add r2, #0x40
     // add r1, r2, r1
-    PaletteData_LoadPalette(*((u32*)(r1 + 0x1c)), (*((u32*)(r1 + 0x3c)) << 5), 0, 0xc0);
 }
+
 
 
 
 void ov80_0223AA80(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // mov r1, #0x51
-    // lsl r1, r1, #2
     // add r4, r0, r1
-    // add r0, r4, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // cmp r5, #0
-    // bne _0223AAAE
-    // mov r0, #5
-    // lsl r0, r0, #0xc
+    MI_CpuFill8(r4, 0, 0x14);
     // str r0, [r4]
-    // str r0, [r4, #4]
-    // mov r2, #0xfa
-    // ldr r0, _0223AAC8 ; =ov80_0223AAD0
-    // add r1, r4, #0
-    // lsl r2, r2, #2
-    // bl SysTask_CreateOnMainQueue
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0x2e
-    // lsl r0, r0, #8
+    *((u32*)(r4 + 4)) = (5 << 0xc);
+    SysTask_CreateOnMainQueue(ov80_0223AAD0, r4, (0xfa << 2));
     // str r0, [r4]
-    // mov r0, #0x72
-    // lsl r0, r0, #8
-    // str r0, [r4, #4]
-    // mov r2, #0xfa
-    // ldr r0, _0223AACC ; =ov80_0223AB34
-    // add r1, r4, #0
-    // lsl r2, r2, #2
-    // bl SysTask_CreateOnMainQueue
-    // pop {r3, r4, r5, pc}
-    // _0223AAC8: .word ov80_0223AAD0
-    // _0223AACC: .word ov80_0223AB34
-    // TODO: decompile
+    *((u32*)(r4 + 4)) = (0x72 << 8);
+    SysTask_CreateOnMainQueue(ov80_0223AB34, r4, (0xfa << 2));
 }
+
 
 
 
@@ -1142,25 +529,13 @@ void ov80_0223AAD0(void) {
     // sub r2, r2, r0
     // str r2, [r1]
     // add r0, r2, r0
-    *((u32*)(r1 + 4)) = (2 << 0xa);
     // str r0, [r1]
-    *((u32*)(r1 + 4)) = (0x72 << 8);
-    *((u8*)(r1 + 9)) = (*((u8*)(r1 + 9)) + 1);
-    *((u8*)(r1 + 0xa)) = 0;
     // asr r2, r2, #8
-    *((u8*)(r1 + 0xb)) = *((u32*)r1);
-    *((u8*)(r1 + 0xc)) = 0xff;
     // asr r2, r2, #8
-    *((u8*)(r1 + 0xd)) = *((u32*)(r1 + 4));
-    *((u8*)(r1 + 0xe)) = 1;
     // asr r2, r2, #8
-    *((u8*)(r1 + 0xf)) = *((u32*)r1);
-    *((u8*)(r1 + 0x10)) = 0;
     // asr r0, r0, #8
-    *((u8*)(r1 + 0x11)) = *((u32*)(r1 + 4));
-    *((u8*)(r1 + 8)) = 1;
-    SysTask_Destroy(*((u32*)(r1 + 4)), 1);
 }
+
 
 
 
@@ -1168,25 +543,13 @@ void ov80_0223AB34(void) {
     // add r2, r2, r0
     // str r2, [r1]
     // sub r0, r2, r0
-    *((u32*)(r1 + 4)) = (2 << 0xa);
     // str r0, [r1]
-    *((u32*)(r1 + 4)) = (5 << 0xc);
-    *((u8*)(r1 + 9)) = (*((u8*)(r1 + 9)) + 1);
-    *((u8*)(r1 + 0xa)) = 0;
     // asr r2, r2, #8
-    *((u8*)(r1 + 0xb)) = *((u32*)r1);
-    *((u8*)(r1 + 0xc)) = 0xff;
     // asr r2, r2, #8
-    *((u8*)(r1 + 0xd)) = *((u32*)(r1 + 4));
-    *((u8*)(r1 + 0xe)) = 1;
     // asr r2, r2, #8
-    *((u8*)(r1 + 0xf)) = *((u32*)r1);
-    *((u8*)(r1 + 0x10)) = 0;
     // asr r0, r0, #8
-    *((u8*)(r1 + 0x11)) = *((u32*)(r1 + 4));
-    *((u8*)(r1 + 8)) = 1;
-    SysTask_Destroy(*((u32*)(r1 + 4)), 1);
 }
+
 
 
 
@@ -1199,21 +562,17 @@ void ov80_0223AB94(void) {
     // add r2, #0x50
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r1), (0x28 << 0x10), (0x2a << 0x10), (2 << 0x14));
     // add r5, #0x90
-    ManagedSprite_SetDrawFlag(*((u32*)r5), 1);
     // str r0, [r4]
-    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) + 1);
     // sub r1, r1, r0
     // str r1, [r4]
     // str r0, [r4]
-    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) + 1);
     // ldrsh r2, [r3, r2]
     // add r5, #0x90
     // add r2, #0x50
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r5), (*((u32*)r4) << 8), (0x2a << 0x10), (2 << 0x14));
 }
+
 
 

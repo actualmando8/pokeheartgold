@@ -6,44 +6,19 @@ void sub_0202C034(void) {
 
 
 
+
 void sub_0202C03C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // mov r2, #0x23
-    // mov r0, #0
-    // add r1, r7, #0
-    // lsl r2, r2, #6
-    // bl MIi_CpuClearFast
-    // mov r0, #0x1d
-    // lsl r0, r0, #4
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // ldr r4, _0202C084 ; =0x0000FFFF
-    // mov r5, #0
-    // add r6, r7, #0
-    // mov r3, #2
+    MIi_CpuClearFast(0, r0, (0x23 << 6));
     // sub r1, #0x10
     // add r2, #0x1e
     // strh r4, [r6, r0]
     // strh r4, [r6, r1]
     // strb r3, [r6, r2]
-    // add r5, r5, #1
     // add r6, #0x38
-    // cmp r5, #0x20
-    // blt _0202C060
-    // add r0, r7, #0
-    // bl sub_0203A01C
-    // mov r2, #0x23
-    // ldr r1, _0202C088 ; =_021D2230
-    // add r0, r7, #0
-    // lsl r2, r2, #6
-    // bl MI_CpuCopy8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _0202C084: .word 0x0000FFFF
-    // _0202C088: .word _021D2230
-    // TODO: decompile
+    sub_0203A01C(r7, (0x1d << 4), (0x1d << 4), 2);
+    MI_CpuCopy8(r7, _021D2230, (0x23 << 6));
 }
+
 
 
 
@@ -54,191 +29,57 @@ void sub_0202C08C(void) {
 
 
 
+
 void sub_0202C090(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r7, r2, #0
-    // cmp r4, #0x20
-    // blt _0202C0A0
-    // bl GF_AssertFail
-    // cmp r7, #0xc
-    // bhi _0202C170
+    GF_AssertFail();
     // add r0, r7, r7
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0202C0B0: ; jump table
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x1e
-    // lsl r0, r0, #4
-    // ldr r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x79
-    // lsl r0, r0, #2
-    // ldrh r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C174 ; =0x000001E6
-    // ldrh r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x7a
-    // lsl r0, r0, #2
-    // ldrh r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C178 ; =0x000001EA
-    // ldrh r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x7b
-    // lsl r0, r0, #2
-    // ldrb r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C17C ; =0x000001ED
-    // ldrb r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C180 ; =0x000001EE
-    // ldrb r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C184 ; =0x000001EF
-    // ldrb r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x1f
-    // lsl r0, r0, #4
-    // ldrh r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C188 ; =0x000001F2
-    // ldrh r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x7d
-    // lsl r0, r0, #2
-    // ldrh r6, [r1, r0]
-    // b _0202C170
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C18C ; =0x000001F6
-    // ldrh r6, [r1, r0]
-    // add r0, r6, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _0202C174: .word 0x000001E6
-    // _0202C178: .word 0x000001EA
-    // _0202C17C: .word 0x000001ED
-    // _0202C180: .word 0x000001EE
-    // _0202C184: .word 0x000001EF
-    // _0202C188: .word 0x000001F2
-    // _0202C18C: .word 0x000001F6
-    // TODO: decompile
 }
+
 
 
 
 void sub_0202C190(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r7, r2, #0
-    // add r6, r3, #0
-    // cmp r4, #0x20
-    // blt _0202C1A2
-    // bl GF_AssertFail
-    // cmp r7, #9
-    // bhi _0202C228
+    GF_AssertFail();
     // add r0, r7, r7
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0202C1B2: ; jump table
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x1e
-    // lsl r0, r0, #4
     // str r6, [r1, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x38
-    // mul r0, r4
+    GF_AssertFail((0x1e << 4));
+    GF_AssertFail();
+    GF_AssertFail();
     // add r1, r5, r0
-    // ldr r0, _0202C22C ; =0x000001EA
     // strh r6, [r1, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // mov r0, #0x7b
-    // lsl r0, r0, #2
     // strb r6, [r1, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C230 ; =0x000001ED
     // strb r6, [r1, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C234 ; =0x000001EE
     // strb r6, [r1, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x38
-    // mul r0, r4
     // add r1, r5, r0
-    // ldr r0, _0202C238 ; =0x000001EF
     // strb r6, [r1, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _0202C22C: .word 0x000001EA
-    // _0202C230: .word 0x000001ED
-    // _0202C234: .word 0x000001EE
-    // _0202C238: .word 0x000001EF
-    // TODO: decompile
+    GF_AssertFail(0x000001EF);
 }
+
 
 
 
@@ -247,18 +88,18 @@ void sub_0202C23C(void) {
 
 
 
+
 void sub_0202C254(void) {
 }
 
 
 
+
 void sub_0202C270(void) {
-    GF_AssertFail();
     // add r2, r5, r1
-    // mul r1, r4
     // add r1, r2, r1
-    CopyStringToU16Array(r6, 0x38, 0x10);
 }
+
 
 
 
@@ -267,23 +108,20 @@ void sub_0202C298(void) {
 
 
 
+
 void sub_0202C2B4(void) {
-    GF_AssertFail();
     // add r2, r5, r1
-    // mul r1, r4
     // add r1, r2, r1
-    CopyStringToU16Array(r6, 0x38, 0x10);
 }
+
 
 
 
 void sub_0202C2DC(void) {
-    GF_AssertFail();
     // add r5, #0x40
-    // mul r0, r4
     // add r0, r5, r0
-    DWC_IsValidFriendData(0xc);
 }
+
 
 
 
@@ -294,478 +132,210 @@ int sub_0202C2F8(void) {
 
 
 void sub_0202C318(void) {
-    sub_0202C2DC(r0, 0);
 }
+
 
 
 
 void sub_0202C338(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
     // str r0, [sp]
-    // add r5, r1, #0
     // bmi _0202C3D8
-    // cmp r5, #0x20
-    // bge _0202C3D8
-    // cmp r5, #0x1f
-    // bge _0202C39E
-    // mov r1, #7
-    // lsl r1, r1, #6
     // add r0, r0, r1
     // str r0, [sp, #4]
-    // mov r0, #0x38
-    // add r1, r5, #0
-    // mul r1, r0
     // ldr r0, [sp, #4]
     // add r6, r0, r1
     // ldr r0, [sp]
-    // add r1, r5, #0
     // str r0, [sp, #8]
     // add r0, #0x40
     // str r0, [sp, #8]
-    // mov r0, #0xc
-    // mul r1, r0
     // ldr r0, [sp, #8]
     // add r4, r0, r1
-    // add r7, r5, #1
-    // mov r0, #0x38
-    // add r1, r7, #0
-    // mul r1, r0
     // ldr r0, [sp, #4]
-    // mov r2, #0x38
     // add r0, r0, r1
-    // add r1, r6, #0
-    // bl MI_CpuCopy8
-    // mov r0, #0xc
-    // add r1, r7, #0
-    // mul r1, r0
+    MI_CpuCopy8(0x38, r6, 0x38);
     // ldr r0, [sp, #8]
-    // mov r2, #0xc
     // add r0, r0, r1
-    // add r1, r4, #0
-    // bl MI_CpuCopy8
-    // add r5, r5, #1
+    MI_CpuCopy8(0xc, r4, 0xc);
     // add r6, #0x38
     // add r4, #0xc
-    // cmp r5, #0x1f
-    // blt _0202C36E
-    // mov r2, #7
     // ldr r1, [sp]
-    // lsl r2, r2, #6
     // add r2, r1, r2
-    // ldr r1, _0202C3DC ; =0x000006C8
-    // mov r0, #0
     // add r1, r2, r1
-    // mov r2, #0x38
-    // bl MIi_CpuClearFast
+    MIi_CpuClearFast(0, 0x000006C8, 0x38);
     // ldr r2, [sp]
-    // mov r1, #0x5d
     // add r2, #0x40
-    // lsl r1, r1, #2
     // add r1, r2, r1
-    // mov r0, #0
-    // mov r2, #0xc
-    // bl MIi_CpuClearFast
-    // ldr r2, _0202C3E0 ; =0x00000898
-    // ldr r3, _0202C3E4 ; =0x0000FFFF
+    MIi_CpuClearFast(0, (0x5d << 2), 0xc);
     // ldr r0, [sp]
-    // add r1, r2, #0
     // strh r3, [r0, r2]
     // sub r1, #0x10
     // strh r3, [r0, r1]
-    // mov r1, #2
     // add r2, #0x1e
     // strb r1, [r0, r2]
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // _0202C3DC: .word 0x000006C8
-    // _0202C3E0: .word 0x00000898
-    // _0202C3E4: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
 void sub_0202C3E8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
-    // add r6, r2, #0
     // str r0, [sp]
-    // cmp r5, #0
-    // blt _0202C462
-    // cmp r5, #0x20
-    // bge _0202C462
-    // cmp r6, #0
-    // blt _0202C462
-    // cmp r6, #0x20
-    // bge _0202C462
-    // mov r2, #0x38
-    // lsl r1, r2, #3
     // add r0, r0, r1
     // str r0, [sp, #4]
-    // add r4, r6, #0
-    // add r3, r5, #0
-    // mul r4, r2
     // ldr r1, [sp, #4]
-    // mul r3, r2
     // add r0, r0, r4
     // add r1, r1, r3
-    // bl MI_CpuCopy8
+    MI_CpuCopy8((0x38 << 3), 0x38, (r1 * 0x38));
     // ldr r7, [sp]
-    // mov r2, #0xc
-    // add r0, r6, #0
-    // add r1, r5, #0
-    // mul r0, r2
     // add r7, #0x40
-    // mul r1, r2
     // str r0, [sp, #8]
     // add r0, r7, r0
     // add r1, r7, r1
-    // bl MI_CpuCopy8
+    MI_CpuCopy8((r6 * 0xc), (r5 * 0xc), 0xc);
     // ldr r1, [sp, #4]
-    // mov r0, #0
     // add r1, r1, r4
-    // mov r2, #0x38
-    // bl MIi_CpuClearFast
+    MIi_CpuClearFast(0, 0x38);
     // ldr r1, [sp, #8]
-    // mov r0, #0
     // add r1, r7, r1
-    // mov r2, #0xc
-    // bl MIi_CpuClearFast
+    MIi_CpuClearFast(0, 0xc);
     // ldr r0, [sp]
-    // mov r1, #0x1d
     // add r2, r0, r4
-    // ldr r3, _0202C468 ; =0x0000FFFF
-    // lsl r1, r1, #4
     // strh r3, [r2, r1]
     // ldr r0, [sp, #4]
     // add r1, #0x1e
     // strh r3, [r0, r4]
-    // mov r0, #2
     // strb r0, [r2, r1]
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _0202C468: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
 void sub_0202C46C(void) {
     // mvn r5, r5
-    sub_0202C2DC(r0, 0);
     // mvn r0, r0
-    sub_0202C3E8(r6, r5, r4);
     // mvn r0, r0
 }
+
 
 
 
 void sub_0202C4B0(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
     // add r0, sp, #0
-    // add r4, r1, #0
-    // bl GF_RTC_CopyDate
-    // cmp r4, #0
-    // blt _0202C4E6
-    // cmp r4, #0x20
-    // bge _0202C4E6
-    // mov r0, #0x38
-    // add r2, r4, #0
-    // mul r2, r0
-    // mov r0, #0x7d
+    GF_RTC_CopyDate();
     // ldr r1, [sp]
-    // lsl r0, r0, #4
     // add r1, r1, r0
-    // ldr r0, _0202C4EC ; =0x000001EA
     // add r3, r5, r2
     // strh r1, [r3, r0]
-    // add r1, r0, #2
     // ldr r2, [sp, #4]
-    // add r0, r0, #3
     // strb r2, [r3, r1]
     // ldr r1, [sp, #8]
     // strb r1, [r3, r0]
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _0202C4EC: .word 0x000001EA
-    // TODO: decompile
 }
+
 
 
 
 void sub_0202C4F0(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r0, #0
-    // cmp r1, #0
-    // blt _0202C548
-    // cmp r1, #0x20
-    // bge _0202C548
-    // mov r5, #0x79
-    // mov r0, #0x38
-    // lsl r5, r5, #2
-    // mul r0, r1
     // add r5, r4, r5
-    // ldrh r6, [r5, r0]
     // add r2, r6, r2
     // strh r2, [r5, r0]
-    // ldrh r6, [r5, r0]
-    // ldr r2, _0202C54C ; =0x0000270F
-    // cmp r6, r2
-    // bls _0202C516
     // strh r2, [r5, r0]
-    // ldr r2, _0202C550 ; =0x000001E6
     // add r2, r4, r2
-    // ldrh r5, [r2, r0]
     // add r3, r5, r3
     // strh r3, [r2, r0]
-    // ldrh r5, [r2, r0]
-    // ldr r3, _0202C54C ; =0x0000270F
-    // cmp r5, r3
-    // bls _0202C52A
     // strh r3, [r2, r0]
-    // mov r2, #0x7a
-    // lsl r2, r2, #2
     // add r2, r4, r2
-    // ldrh r5, [r2, r0]
     // ldr r3, [sp, #0x10]
     // add r3, r5, r3
     // strh r3, [r2, r0]
-    // ldrh r5, [r2, r0]
-    // ldr r3, _0202C54C ; =0x0000270F
-    // cmp r5, r3
-    // bls _0202C542
     // strh r3, [r2, r0]
-    // add r0, r4, #0
-    // bl sub_0202C4B0
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _0202C54C: .word 0x0000270F
-    // _0202C550: .word 0x000001E6
-    // TODO: decompile
+    sub_0202C4B0(r0, (0x7a << 2), 0x0000270F);
 }
+
 
 
 
 void sub_0202C554(void) {
-    // push {r3, r4, r5, lr}
-    // cmp r1, #0
-    // blt _0202C57A
-    // cmp r1, #0x20
-    // bge _0202C57A
-    // ldr r3, _0202C57C ; =0x000001F2
     // add r4, r0, r3
-    // mov r3, #0x38
-    // mul r3, r1
-    // ldrh r5, [r4, r3]
     // add r2, r5, r2
     // strh r2, [r4, r3]
-    // ldrh r5, [r4, r3]
-    // ldr r2, _0202C580 ; =0x0000270F
-    // cmp r5, r2
-    // bls _0202C576
     // strh r2, [r4, r3]
-    // bl sub_0202C4B0
-    // pop {r3, r4, r5, pc}
-    // _0202C57C: .word 0x000001F2
-    // _0202C580: .word 0x0000270F
-    // TODO: decompile
+    sub_0202C4B0(0x0000270F, (0x38 * r1));
 }
+
 
 
 
 void sub_0202C584(void) {
-    // push {r3, r4, r5, lr}
-    // cmp r1, #0
-    // blt _0202C5AC
-    // cmp r1, #0x20
-    // bge _0202C5AC
-    // mov r3, #0x7d
-    // lsl r3, r3, #2
     // add r4, r0, r3
-    // mov r3, #0x38
-    // mul r3, r1
-    // ldrh r5, [r4, r3]
     // add r2, r5, r2
     // strh r2, [r4, r3]
-    // ldrh r5, [r4, r3]
-    // ldr r2, _0202C5B0 ; =0x0000270F
-    // cmp r5, r2
-    // bls _0202C5A8
     // strh r2, [r4, r3]
-    // bl sub_0202C4B0
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _0202C5B0: .word 0x0000270F
-    // TODO: decompile
+    sub_0202C4B0(0x0000270F, (0x38 * r1));
 }
+
 
 
 
 void sub_0202C5B4(void) {
-    // push {r3, r4, r5, lr}
-    // cmp r1, #0
-    // blt _0202C5DA
-    // cmp r1, #0x20
-    // bge _0202C5DA
-    // ldr r3, _0202C5DC ; =0x000001F6
     // add r4, r0, r3
-    // mov r3, #0x38
-    // mul r3, r1
-    // ldrh r5, [r4, r3]
     // add r2, r5, r2
     // strh r2, [r4, r3]
-    // ldrh r5, [r4, r3]
-    // ldr r2, _0202C5E0 ; =0x0000270F
-    // cmp r5, r2
-    // bls _0202C5D6
     // strh r2, [r4, r3]
-    // bl sub_0202C4B0
-    // pop {r3, r4, r5, pc}
-    // _0202C5DC: .word 0x000001F6
-    // _0202C5E0: .word 0x0000270F
-    // TODO: decompile
+    sub_0202C4B0(0x0000270F, (0x38 * r1));
 }
+
 
 
 
 void sub_0202C5E4(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // cmp r2, #0
-    // blt _0202C6DE
-    // cmp r2, #0x20
-    // bge _0202C6DE
-    // cmp r1, #0
-    // blt _0202C6DE
-    // cmp r1, #0x20
-    // bge _0202C6DE
-    // add r4, r1, #0
-    // mov r0, #0x38
-    // mov r3, #0x79
-    // mul r4, r0
-    // add r1, r2, #0
-    // lsl r3, r3, #2
-    // mul r1, r0
     // add r2, r5, r3
     // add r6, r5, r4
-    // ldrh r0, [r2, r1]
-    // ldrh r3, [r6, r3]
     // add r0, r0, r3
     // strh r0, [r2, r1]
-    // ldrh r3, [r2, r1]
-    // ldr r0, _0202C6E0 ; =0x0000270F
-    // cmp r3, r0
-    // bls _0202C61C
     // strh r0, [r2, r1]
-    // ldr r3, _0202C6E4 ; =0x000001E6
     // add r6, r5, r4
     // add r2, r5, r3
-    // ldrh r0, [r2, r1]
-    // ldrh r3, [r6, r3]
     // add r0, r0, r3
     // strh r0, [r2, r1]
-    // ldrh r3, [r2, r1]
-    // ldr r0, _0202C6E0 ; =0x0000270F
-    // cmp r3, r0
-    // bls _0202C634
     // strh r0, [r2, r1]
-    // mov r3, #0x7a
-    // lsl r3, r3, #2
     // add r2, r5, r3
     // add r6, r5, r4
-    // ldrh r0, [r2, r1]
-    // ldrh r3, [r6, r3]
     // add r0, r0, r3
     // strh r0, [r2, r1]
-    // ldrh r3, [r2, r1]
-    // ldr r0, _0202C6E0 ; =0x0000270F
-    // cmp r3, r0
-    // bls _0202C64E
     // strh r0, [r2, r1]
-    // mov r3, #0x1f
-    // lsl r3, r3, #4
     // add r2, r5, r3
     // add r6, r5, r4
-    // ldrh r0, [r2, r1]
-    // ldrh r3, [r6, r3]
     // add r0, r0, r3
     // strh r0, [r2, r1]
-    // ldrh r3, [r2, r1]
-    // ldr r0, _0202C6E0 ; =0x0000270F
-    // cmp r3, r0
-    // bls _0202C668
     // strh r0, [r2, r1]
-    // ldr r3, _0202C6E8 ; =0x000001F2
     // add r6, r5, r4
     // add r2, r5, r3
-    // ldrh r0, [r2, r1]
-    // ldrh r3, [r6, r3]
     // add r0, r0, r3
     // strh r0, [r2, r1]
-    // ldrh r3, [r2, r1]
-    // ldr r0, _0202C6E0 ; =0x0000270F
-    // cmp r3, r0
-    // bls _0202C680
     // strh r0, [r2, r1]
-    // mov r3, #0x7d
-    // lsl r3, r3, #2
     // add r2, r5, r3
     // add r6, r5, r4
-    // ldrh r0, [r2, r1]
-    // ldrh r3, [r6, r3]
     // add r0, r0, r3
     // strh r0, [r2, r1]
-    // ldrh r3, [r2, r1]
-    // ldr r0, _0202C6E0 ; =0x0000270F
-    // cmp r3, r0
-    // bls _0202C69A
     // strh r0, [r2, r1]
-    // ldr r3, _0202C6EC ; =0x000001F6
     // add r6, r5, r4
     // add r2, r5, r3
-    // ldrh r0, [r2, r1]
-    // ldrh r3, [r6, r3]
     // add r0, r0, r3
     // strh r0, [r2, r1]
-    // ldrh r3, [r2, r1]
-    // ldr r0, _0202C6E0 ; =0x0000270F
-    // cmp r3, r0
-    // bls _0202C6B2
     // strh r0, [r2, r1]
-    // mov r0, #7
-    // lsl r0, r0, #6
     // add r6, r5, r0
     // add r0, r6, r4
     // add r1, r6, r1
-    // mov r2, #0x10
-    // bl MIi_CpuCopyFast
-    // mov r0, #0
+    MIi_CpuCopyFast((7 << 6), (r2 * 0x38), 0x10, *((u16*)(r2 + (r2 * 0x38))));
     // add r1, r6, r4
-    // mov r2, #0x38
-    // bl MIi_CpuClearFast
-    // mov r0, #0x1d
-    // ldr r1, _0202C6F0 ; =0x0000FFFF
+    MIi_CpuClearFast(0, 0x38);
     // add r2, r5, r4
-    // lsl r0, r0, #4
     // strh r1, [r2, r0]
     // strh r1, [r6, r4]
-    // mov r1, #2
     // add r0, #0x1e
     // strb r1, [r2, r0]
-    // pop {r4, r5, r6, pc}
-    // _0202C6E0: .word 0x0000270F
-    // _0202C6E4: .word 0x000001E6
-    // _0202C6E8: .word 0x000001F2
-    // _0202C6EC: .word 0x000001F6
-    // _0202C6F0: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
@@ -778,34 +348,19 @@ void sub_0202C6F4(void) {
 
 
 
+
 void sub_0202C6FC(void) {
-    // push {r3, lr}
-    // mov r1, #0x19
-    // bl SaveArray_Get
-    // mov r2, #0x23
-    // ldr r1, _0202C710 ; =_021D2230
-    // lsl r2, r2, #6
-    // bl MI_CpuCopy8
-    // pop {r3, pc}
-    // _0202C710: .word _021D2230
-    // TODO: decompile
+    SaveArray_Get(0x19);
+    MI_CpuCopy8(_021D2230, (0x23 << 6));
 }
+
 
 
 
 void sub_0202C714(void) {
-    // push {r3, lr}
-    // mov r1, #0x19
-    // bl SaveArray_Get
-    // add r1, r0, #0
-    // mov r2, #0x23
-    // ldr r0, _0202C72C ; =_021D2230
-    // lsl r2, r2, #6
-    // bl MI_CpuCopy8
-    // pop {r3, pc}
-    // nop
-    // _0202C72C: .word _021D2230
-    // TODO: decompile
+    SaveArray_Get(0x19);
+    MI_CpuCopy8(_021D2230, r0, (0x23 << 6));
 }
+
 
 

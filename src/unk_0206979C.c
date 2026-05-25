@@ -6,8 +6,10 @@ void sub_0206979C(void) {
 
 
 
+
 void sub_020697A8(void) {
 }
+
 
 
 
@@ -16,8 +18,10 @@ void sub_020697BC(void) {
 
 
 
+
 void sub_020697D0(void) {
 }
+
 
 
 
@@ -25,9 +29,8 @@ void sub_020697DC(void) {
     // ldr r0, [sp, #0x14]
     // str r0, [sp]
     // ldr r3, [sp, #0x10]
-    GfGfxLoader_LoadFromOpenNarc(r2, r3, 0);
-    sub_020697A8(r5, r0, r4);
 }
+
 
 
 
@@ -36,25 +39,20 @@ void sub_02069800(void) {
 
 
 
+
 void sub_02069818(void) {
     // tst r0, r1
-    Heap_Free(*((u32*)(r0 + 8)), *((u32*)r0));
-    // bic r1, r0
     // str r1, [r4]
-    *((u32*)(r4 + 8)) = 0;
-    *((u32*)(r4 + 0xc)) = 0;
 }
+
 
 
 
 void sub_0206983C(void) {
     // add r0, #0x14
-    HeapExp_FndInitAllocator(r2, 4);
     // add r0, #0x14
-    NNS_G3dAllocAnmObj(r5, *((u32*)(r5 + 0xc)), r4);
-    *((u32*)(r5 + 0x10)) = r0;
-    GF_AssertFail();
 }
+
 
 
 
@@ -63,8 +61,10 @@ void sub_02069864(void) {
 
 
 
+
 void sub_02069870(void) {
 }
+
 
 
 
@@ -81,12 +81,11 @@ void sub_02069884(void) {
 
 
 
+
 void sub_02069894(void) {
-    sub_020697D0(r2, r3);
     // ldr r2, [sp, #0x10]
-    sub_02069864(r5, r4);
-    sub_02069884(r5, r4);
 }
+
 
 
 
@@ -95,26 +94,22 @@ void sub_020698B8(void) {
 
 
 
+
 void sub_020698D0(void) {
 }
 
 
 
+
 BOOL sub_020698E8(void) {
     // add r6, r6, r1
-    *((u32*)(r0 + 4)) = *((u32*)(r0 + 4));
     // sub r1, r1, r3
-    *((u32*)(r0 + 4)) = *((u32*)(r0 + 4));
-    *((u32*)(r0 + 4)) = (*((u16*)(*((u32*)(*((u32*)(r0 + 0x10)) + 8)) + 4)) << 0xc);
     // add r1, r1, r3
-    *((u32*)(r0 + 4)) = *((u32*)(r0 + 4));
-    *((u32*)(r0 + 4)) = 0;
     // str r2, [r1]
-    // orr r1, r2
     // str r1, [r0]
-    // bic r2, r1
     // str r2, [r0]
 }
+
 
 
 
@@ -124,8 +119,10 @@ BOOL sub_02069948(void) {
 
 
 
+
 void sub_02069958(void) {
 }
+
 
 
 
@@ -134,8 +131,10 @@ void sub_02069964(void) {
 
 
 
+
 void sub_02069978(void) {
 }
+
 
 
 
@@ -144,8 +143,10 @@ void sub_02069984(void) {
 
 
 
+
 void sub_0206998C(void) {
 }
+
 
 
 
@@ -154,8 +155,10 @@ void sub_02069998(void) {
 
 
 
+
 void sub_020699AC(void) {
 }
+
 
 
 
@@ -164,7 +167,9 @@ void sub_020699BC(void) {
 
 
 
+
 void sub_020699D0(void) {
 }
+
 
 

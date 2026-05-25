@@ -2,41 +2,23 @@
 #include "global.h"
 
 void ov01_021F3F50(void) {
-    Save_LocalFieldData_Get(*((u32*)(r1 + 0xc)));
-    LocalFieldData_GetCurrentPosition();
-    Save_Pokedex_Get(r4);
-    MapHeader_GetMapSec(*((u32*)r6));
-    *((u32*)(r5 + 4)) = r0;
-    Pokedex_IsEnabled(r7);
-    Pokedex_CountDexOwned(r7);
     // str r0, [r5]
-    Save_PlayerData_GetProfile(r4);
-    *((u32*)(r5 + 8)) = r0;
-    Save_PlayerData_GetIGTAddr(r4);
-    *((u32*)(r5 + 0xc)) = r0;
 }
+
 
 
 
 void ov01_021F3F9C(void) {
-    BufferLandmarkName(0, *((u32*)(r1 + 4)));
-    BufferPlayersName(r5, 1, *((u32*)(r4 + 8)));
-    PlayerProfile_CountBadges(*((u32*)(r4 + 8)));
     // str r0, [sp]
     // str r0, [sp, #4]
-    BufferIntegerAsString(r5, 2, r0, 2);
     // str r0, [sp]
     // str r0, [sp, #4]
-    BufferIntegerAsString(r5, 3, *((u32*)r4), 2);
-    GetIGTHours(*((u32*)(r4 + 0xc)));
     // str r0, [sp]
     // str r0, [sp, #4]
-    BufferIntegerAsString(r5, 4, r0, 2);
-    GetIGTMinutes(*((u32*)(r4 + 0xc)));
     // str r3, [sp]
     // str r0, [sp, #4]
-    BufferIntegerAsString(r5, 5, r0, 2);
 }
+
 
 
 
@@ -45,165 +27,65 @@ u8 ov01_021F4044(void) {
 
 
 
+
 void ov01_021F4048(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // mov r0, #0
-    // mov r1, #1
-    // bl GetFontAttribute
-    // add r4, r0, #0
-    // mov r0, #0
-    // mov r1, #3
-    // bl GetFontAttribute
+    GetFontAttribute(0, 1);
+    GetFontAttribute(0, 3);
     // add r0, r4, r0
     // str r0, [sp, #0x14]
-    // mov r4, #0
-    // ldr r0, [r5, #0x14]
-    // ldr r1, [r5, #0x18]
-    // ldr r3, [r5, #4]
-    // add r2, r4, #0
-    // bl ReadMsgData_ExpandPlaceholders
-    // add r1, r4, #0
-    // add r6, r0, #0
+    ReadMsgData_ExpandPlaceholders(*((u32*)(r5 + 0x14)), *((u32*)(r5 + 0x18)), 0, *((u32*)(r5 + 4)));
     // str r1, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r5, #0x10]
-    // add r2, r6, #0
-    // add r3, r1, #0
-    // bl AddTextPrinterParameterized
-    // add r0, r6, #0
-    // bl String_Delete
-    // mov r0, #1
+    AddTextPrinterParameterized(*((u32*)(r5 + 0x10)), r4, r0, r4);
+    String_Delete(r6);
     // str r0, [sp, #0x10]
-    // ldr r0, _021F4124 ; =ov01_02206AF4
-    // ldr r7, _021F4128 ; =ov01_02206AE4
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0xc]
-    // ldr r1, [r0]
-    // cmp r1, #3
-    // bne _021F40A6
-    // ldr r0, [r5, #0x1c]
-    // cmp r0, #0
-    // beq _021F410E
     // ldr r0, [sp, #0x14]
     // add r4, r4, r0
-    // ldr r0, [r5, #0x18]
-    // bl NewString_ReadMsgData
-    // add r6, r0, #0
-    // mov r1, #0
+    NewString_ReadMsgData(*((u32*)(r5 + 0x18)), *((u32*)ov01_02206AF4));
     // str r4, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0x10]
-    // add r2, r6, #0
-    // add r3, r1, #0
-    // bl AddTextPrinterParameterized
-    // add r0, r6, #0
-    // bl String_Delete
-    // sub r2, r7, #4
-    // ldr r0, [r5, #0x14]
-    // ldr r1, [r5, #0x18]
-    // ldr r2, [r2]
-    // ldr r3, [r5, #4]
-    // bl ReadMsgData_ExpandPlaceholders
-    // add r6, r0, #0
-    // mov r0, #0
-    // mov r1, #2
-    // bl GetFontAttribute
-    // add r2, r0, #0
-    // mov r0, #0
-    // add r1, r6, #0
-    // bl FontID_String_GetWidth
-    // mov r1, #0x68
+    AddTextPrinterParameterized(*((u32*)(r5 + 0x10)), 0, r0, 0);
+    String_Delete(r6);
+    ReadMsgData_ExpandPlaceholders(*((u32*)(r5 + 0x14)), *((u32*)(r5 + 0x18)), *((u32*)(r7 - 4)), *((u32*)(r5 + 4)));
+    GetFontAttribute(0, 2);
+    FontID_String_GetWidth(0, r6, r0);
     // sub r3, r1, r0
     // str r4, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0x10]
-    // mov r1, #0
-    // add r2, r6, #0
-    // bl AddTextPrinterParameterized
-    // add r0, r6, #0
-    // bl String_Delete
+    AddTextPrinterParameterized(*((u32*)(r5 + 0x10)), 0, r6);
+    String_Delete(r6);
     // ldr r0, [sp, #0xc]
-    // add r7, r7, #4
-    // add r0, r0, #4
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x10]
-    // add r0, r0, #1
     // str r0, [sp, #0x10]
-    // cmp r0, #5
-    // blo _021F4098
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _021F4124: .word ov01_02206AF4
-    // _021F4128: .word ov01_02206AE4
-    // TODO: decompile
 }
+
 
 
 
 void Field_SaveStatsPrinter_Print(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x14
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // mov r1, #0x10
-    // bl Heap_Alloc
-    // str r0, [r4, #0x10]
-    // mov r3, #1
+    Heap_Alloc(*((u32*)(r0 + 4)), 0x10);
+    *((u32*)(r4 + 0x10)) = r0;
     // str r3, [sp]
-    // ldr r0, [r4, #0x2c]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #8]
-    // mov r0, #0xd
     // str r0, [sp, #0xc]
-    // ldr r0, _021F419C ; =0x00000189
     // str r0, [sp, #0x10]
-    // ldrb r2, [r4, #8]
-    // ldr r0, [r4, #0xc]
-    // ldr r1, [r4, #0x10]
-    // bl AddWindowParameterized
-    // mov r0, #0
+    AddWindowParameterized(*((u32*)(r4 + 0xc)), *((u32*)(r4 + 0x10)), *((u8*)(r4 + 8)), 1);
     // str r0, [sp]
-    // ldr r0, [r4, #4]
-    // ldr r2, _021F41A0 ; =0x000003D9
     // str r0, [sp, #4]
-    // ldrb r1, [r4, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r3, #0xb
-    // bl LoadUserFrameGfx1
-    // mov r0, #0
-    // mov r1, #6
-    // bl GetFontAttribute
-    // add r1, r0, #0
-    // ldr r0, [r4, #0x10]
-    // bl FillWindowPixelBuffer
-    // add r0, r4, #0
-    // bl ov01_021F4048
-    // ldr r0, [r4, #0x10]
-    // ldr r2, _021F41A0 ; =0x000003D9
-    // mov r1, #0
-    // mov r3, #0xb
-    // bl DrawFrameAndWindow1
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // _021F419C: .word 0x00000189
-    // _021F41A0: .word 0x000003D9
-    // TODO: decompile
+    LoadUserFrameGfx1(*((u32*)(r4 + 0xc)), *((u8*)(r4 + 8)), 0x000003D9, 0xb);
+    GetFontAttribute(0, 6);
+    FillWindowPixelBuffer(*((u32*)(r4 + 0x10)), r0);
+    ov01_021F4048(r4);
+    DrawFrameAndWindow1(*((u32*)(r4 + 0x10)), 0, 0x000003D9, 0xb);
 }
+
 
 
 
@@ -212,48 +94,27 @@ void Field_SaveStatsPrinter_RemoveFromScreen(void) {
 
 
 
+
 void Field_SaveStatsPrinter_New(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // mov r1, #0x34
-    // add r7, r2, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
+    Heap_Alloc(r1, 0x34);
     // str r6, [r4]
-    // str r5, [r4, #4]
-    // strb r7, [r4, #8]
-    // ldr r0, [r6, #8]
-    // str r0, [r4, #0xc]
-    // add r0, r5, #0
-    // bl MessageFormat_New
-    // str r0, [r4, #0x14]
-    // ldr r2, _021F4218 ; =0x000001A7
-    // mov r0, #1
-    // mov r1, #0x1b
-    // add r3, r5, #0
-    // bl NewMsgDataFromNarc
-    // str r0, [r4, #0x18]
-    // add r0, r4, #0
-    // ldr r1, [r4]
+    *((u32*)(r0 + 4)) = r5;
+    *((u8*)(r0 + 8)) = r7;
+    *((u32*)(r0 + 0xc)) = *((u32*)(r6 + 8));
+    MessageFormat_New(r5);
+    *((u32*)(r4 + 0x14)) = r0;
+    NewMsgDataFromNarc(1, 0x1b, 0x000001A7, r5);
+    *((u32*)(r4 + 0x18)) = r0;
     // add r0, #0x1c
-    // bl ov01_021F3F50
-    // add r1, r4, #0
-    // ldr r0, [r4, #0x14]
+    ov01_021F3F50(r4, *((u32*)r4));
     // add r1, #0x1c
-    // bl ov01_021F3F9C
-    // mov r0, #0xd
-    // str r0, [r4, #0x2c]
-    // add r0, r4, #0
+    ov01_021F3F9C(*((u32*)(r4 + 0x14)), r4);
+    *((u32*)(r4 + 0x2c)) = 0xd;
     // add r0, #0x1c
-    // bl ov01_021F4044
-    // str r0, [r4, #0x30]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _021F4218: .word 0x000001A7
-    // TODO: decompile
+    ov01_021F4044(r4);
+    *((u32*)(r4 + 0x30)) = r0;
 }
+
 
 
 
@@ -262,10 +123,9 @@ void Field_SaveStatsPrinter_Delete(void) {
 
 
 
+
 void ov01_021F4234(void) {
-    FontID_String_GetWidth(r3, 0);
     // sub r4, r1, r0
-    FontID_String_GetWidth(r3, (*((u8*)(r5 + 7)) << 3), r4);
     // sub r1, r1, r0
     // add r0, r1, r0
     // asr r4, r0, #1
@@ -273,113 +133,41 @@ void ov01_021F4234(void) {
 
 
 
+
 void ov01_021F426C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r5, r0, #0
-    // mov r0, #0
-    // mov r1, #1
-    // bl GetFontAttribute
-    // add r4, r0, #0
-    // mov r0, #0
-    // mov r1, #3
-    // bl GetFontAttribute
+    GetFontAttribute(0, 1);
+    GetFontAttribute(0, 3);
     // add r0, r4, r0
-    // ldr r4, _021F42F0 ; =ov01_02206B04
     // str r0, [sp, #0x10]
-    // mov r7, #0
-    // ldr r0, [r5, #0x1c]
-    // cmp r0, #0
-    // bne _021F429C
-    // ldr r0, [r4]
-    // cmp r0, #0xb
-    // beq _021F42E2
-    // cmp r0, #7
-    // beq _021F42E2
-    // ldr r0, [r5, #0x14]
-    // ldr r1, [r5, #0x18]
-    // ldr r2, [r4]
-    // ldr r3, [r5, #4]
-    // bl ReadMsgData_ExpandPlaceholders
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x10]
-    // ldr r2, [r4, #4]
-    // add r1, r6, #0
-    // mov r3, #0
-    // bl ov01_021F4234
-    // add r3, r0, #0
-    // ldr r1, [r4, #8]
+    ReadMsgData_ExpandPlaceholders(*((u32*)(r5 + 0x14)), *((u32*)(r5 + 0x18)), *((u32*)ov01_02206B04), *((u32*)(r5 + 4)));
+    ov01_021F4234(*((u32*)(r5 + 0x10)), r0, *((u32*)(r4 + 4)), 0);
     // ldr r0, [sp, #0x10]
-    // add r2, r6, #0
-    // mul r1, r0
     // str r1, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0xc]
-    // lsl r1, r0, #2
-    // ldr r0, _021F42F4 ; =ov01_02206AD8
-    // ldr r0, [r0, r1]
-    // mov r1, #0
     // str r0, [sp, #8]
-    // mov r0, #0
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #0x10]
-    // bl AddTextPrinterParameterizedWithColor
-    // add r0, r6, #0
-    // bl String_Delete
-    // add r7, r7, #1
+    AddTextPrinterParameterizedWithColor(*((u32*)(r5 + 0x10)), 0, r6, r0);
+    String_Delete(r6);
     // add r4, #0x10
-    // cmp r7, #9
-    // blo _021F428C
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _021F42F0: .word ov01_02206B04
-    // _021F42F4: .word ov01_02206AD8
-    // TODO: decompile
 }
+
 
 
 
 void ov01_021F42F8(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x14
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // mov r1, #0x10
-    // bl Heap_Alloc
-    // str r0, [r4, #0x10]
-    // mov r0, #2
+    Heap_Alloc(*((u32*)(r0 + 4)), 0x10);
+    *((u32*)(r4 + 0x10)) = r0;
     // str r0, [sp]
-    // ldr r0, [r4, #0x2c]
-    // mov r3, #7
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0x30]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #8]
-    // mov r0, #4
     // str r0, [sp, #0xc]
-    // ldr r0, _021F4348 ; =0x0000010B
     // str r0, [sp, #0x10]
-    // ldrb r2, [r4, #8]
-    // ldr r0, [r4, #0xc]
-    // ldr r1, [r4, #0x10]
-    // bl AddWindowParameterized
-    // ldr r0, [r4, #0x10]
-    // mov r1, #0
-    // bl FillWindowPixelBuffer
-    // add r0, r4, #0
-    // bl ov01_021F426C
-    // ldr r0, [r4, #0x10]
-    // bl CopyWindowToVram
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // _021F4348: .word 0x0000010B
-    // TODO: decompile
+    AddWindowParameterized(*((u32*)(r4 + 0xc)), *((u32*)(r4 + 0x10)), *((u8*)(r4 + 8)), 7);
+    FillWindowPixelBuffer(*((u32*)(r4 + 0x10)), 0);
+    ov01_021F426C(r4);
+    CopyWindowToVram(*((u32*)(r4 + 0x10)));
 }
+
 
 
 
@@ -388,55 +176,30 @@ void ov01_021F434C(void) {
 
 
 
+
 void ov01_021F4360(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // mov r1, #0x34
-    // add r7, r2, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
+    Heap_Alloc(r1, 0x34);
     // str r6, [r4]
-    // str r5, [r4, #4]
-    // strb r7, [r4, #8]
-    // ldr r0, [r6, #8]
-    // str r0, [r4, #0xc]
-    // add r0, r5, #0
-    // bl MessageFormat_New
-    // str r0, [r4, #0x14]
-    // ldr r2, _021F43CC ; =0x000001A7
-    // mov r0, #1
-    // mov r1, #0x1b
-    // add r3, r5, #0
-    // bl NewMsgDataFromNarc
-    // str r0, [r4, #0x18]
-    // mov r0, #1
-    // bl TextFlags_SetCanABSpeedUpPrint
-    // mov r0, #0
-    // bl TextFlags_SetAutoScrollParam
-    // mov r0, #1
-    // bl TextFlags_SetCanTouchSpeedUpPrint
-    // add r0, r4, #0
-    // ldr r1, [r4]
+    *((u32*)(r0 + 4)) = r5;
+    *((u8*)(r0 + 8)) = r7;
+    *((u32*)(r0 + 0xc)) = *((u32*)(r6 + 8));
+    MessageFormat_New(r5);
+    *((u32*)(r4 + 0x14)) = r0;
+    NewMsgDataFromNarc(1, 0x1b, 0x000001A7, r5);
+    *((u32*)(r4 + 0x18)) = r0;
+    TextFlags_SetCanABSpeedUpPrint(1);
+    TextFlags_SetAutoScrollParam(0);
+    TextFlags_SetCanTouchSpeedUpPrint(1);
     // add r0, #0x1c
-    // bl ov01_021F3F50
-    // add r1, r4, #0
-    // ldr r0, [r4, #0x14]
+    ov01_021F3F50(r4, *((u32*)r4));
     // add r1, #0x1c
-    // bl ov01_021F3F9C
-    // mov r0, #0x13
-    // str r0, [r4, #0x2c]
-    // add r0, r4, #0
+    ov01_021F3F9C(*((u32*)(r4 + 0x14)), r4);
+    *((u32*)(r4 + 0x2c)) = 0x13;
     // add r0, #0x1c
-    // bl ov01_021F4044
-    // str r0, [r4, #0x30]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021F43CC: .word 0x000001A7
-    // TODO: decompile
+    ov01_021F4044(r4);
+    *((u32*)(r4 + 0x30)) = r0;
 }
+
 
 
 
@@ -445,31 +208,22 @@ void ov01_021F43D0(void) {
 
 
 
+
 void Field_SaveGameNormal(void) {
-    ov01_021F4404();
-    SaveGameNormal(*((u32*)(r4 + 0xc)));
 }
+
 
 
 
 void ov01_021F4404(void) {
-    FieldSystem_SyncMapObjectsToSave();
-    ov01_021F6830(r4, 4, 0);
-    PlayerAvatar_GetXCoord(*((u32*)(r4 + 0x40)));
-    *((u32*)(*((u32*)(r4 + 0x20)) + 8)) = r0;
-    PlayerAvatar_GetZCoord(*((u32*)(r4 + 0x40)), *((u32*)(r4 + 0x20)));
-    *((u32*)(*((u32*)(r4 + 0x20)) + 0xc)) = r0;
     // mvn r1, r1
-    *((u32*)(*((u32*)(r4 + 0x20)) + 4)) = 0;
-    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)), 0);
-    *((u32*)(*((u32*)(r4 + 0x20)) + 0x10)) = r0;
 }
+
 
 
 
 void ov01_021F4440(void) {
-    GF_AssertFail();
-    ov01_021F4404(*((u32*)*((u32*)(r0 + 0x20))));
 }
+
 
 

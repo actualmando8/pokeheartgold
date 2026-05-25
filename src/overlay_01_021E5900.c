@@ -6,618 +6,239 @@ void ov01_021E5900(void) {
 
 
 
+
 void ov01_021E5924(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r6, r1, #0
-    // mov r1, #0
-    // ldr r5, _021E5B9C ; =0x00DCE6A1
     // str r1, [sp, #4]
-    // bl OverlayManager_GetArgs
-    // ldr r1, [r6]
-    // add r4, r0, #0
-    // cmp r1, #3
-    // bls _021E593E
-    // b _021E5B8E
+    OverlayManager_GetArgs(0);
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _021E594A: ; jump table
-    // ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(ds_protect)
-    // mov r0, #0
-    // bl FS_LoadOverlay
-    // mov r0, #0
-    // add r1, r0, #0
-    // bl Main_SetVBlankIntrCB
-    // bl HBlankInterruptDisable
-    // ldr r0, _021E5BA4 ; =0x04000050
-    // mov r1, #0
+    FS_LoadOverlay(0, FS_OVERLAY_ID);
+    Main_SetVBlankIntrCB(0, 0);
+    HBlankInterruptDisable();
     // strh r1, [r0]
-    // ldr r0, _021E5BA8 ; =0x04001050
     // strh r1, [r0]
-    // ldr r0, _021E5BAC ; =ov01_021E66A8
-    // bl DSProt_DetectDummy
-    // ldr r1, _021E5BB0 ; =0x000004CF
-    // mul r1, r0
-    // mov r0, #0
+    DSProt_DetectDummy(ov01_021E66A8, 0);
     // add r5, r5, r1
-    // bl sub_0200FBDC
-    // mov r0, #1
-    // bl sub_0200FBDC
-    // add r0, r4, #0
-    // bl ov01_021E6364
-    // ldr r0, _021E5BB4 ; =ov01_021E66D8
-    // bl DSProt_DetectNotEmulator
-    // cmp r0, #0
-    // bne _021E599C
-    // mov r1, #1
-    // b _021E599E
-    // mov r1, #0
-    // mov r0, #0x6b
-    // mul r0, r1
+    sub_0200FBDC(0, (0x000004CF * r0));
+    sub_0200FBDC(1);
+    ov01_021E6364(r4);
+    DSProt_DetectNotEmulator(ov01_021E66D8);
     // add r5, r5, r0
-    // add r0, r4, #0
-    // bl sub_02053018
-    // mov r0, #0x47
-    // mov r1, #8
-    // lsl r0, r0, #2
+    sub_02053018(r4, 0);
     // str r1, [r4, r0]
-    // ldr r0, [r4, #0x74]
-    // ldr r0, [r0]
-    // lsl r0, r0, #8
-    // lsr r0, r0, #0x1c
-    // beq _021E59F0
-    // ldr r0, _021E5BB8 ; =FS_OVERLAY_ID(OVY_2)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // add r0, r4, #0
-    // bl ov01_021E5EB8
-    // cmp r0, #0
-    // beq _021E59D4
-    // cmp r0, #1
-    // beq _021E59DE
-    // b _021E59E8
-    // ldr r0, _021E5BBC ; =FS_OVERLAY_ID(OVY_4)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // b _021E59F0
-    // ldr r0, _021E5BC0 ; =FS_OVERLAY_ID(OVY_3)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // b _021E59F0
-    // ldr r0, _021E5BC0 ; =FS_OVERLAY_ID(OVY_3)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // ldr r0, _021E5BC4 ; =ov01_021E66B8
-    // bl DSProt_DetectFlashcart
-    // ldr r2, [r4, #0x74]
-    // add r7, r0, #0
-    // ldr r1, _021E5BC8 ; =0x000003A1
-    // ldr r2, [r2, #4]
-    // mul r7, r1
-    // mov r0, #3
-    // mov r1, #4
-    // bl Heap_Create
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // beq _021E5A12
-    // bl GF_AssertFail
-    // ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(ds_protect)
-    // mov r0, #0
-    // bl FS_UnloadOverlay
-    // mov r0, #4
-    // mov r1, #0x28
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #0x28
-    // str r0, [r4, #4]
-    // bl MI_CpuFill8
-    // add r0, r4, #0
-    // mov r1, #4
-    // mov r2, #8
-    // bl Field3dObjectTaskManager_Create
-    // ldr r1, [r4, #4]
-    // str r0, [r1, #4]
-    // ldr r1, _021E5BCC ; =0x00000D69
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
+    ov01_021E5EB8(r4);
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
+    DSProt_DetectFlashcart(ov01_021E66B8);
+    Heap_Create(3, 4, *((u32*)(*((u32*)(r4 + 0x74)) + 4)));
+    GF_AssertFail(*((u32*)(r4 + 4)));
+    FS_UnloadOverlay(0, FS_OVERLAY_ID);
+    Heap_Alloc(4, 0x28);
+    *((u32*)(r4 + 4)) = r0;
+    MI_CpuFill8(0, 0x28);
+    Field3dObjectTaskManager_Create(r4, 4, 8);
+    *((u32*)(*((u32*)(r4 + 4)) + 4)) = r0;
     // add r0, r5, r7
-    // bl _u32_div_f
-    // cmp r1, #0
-    // beq _021E5A50
-    // ldr r0, _021E5BD0 ; =sub_0203E348
-    // mov r1, #0
-    // mov r2, #0x7b
-    // bl SysTask_CreateOnMainQueue
-    // bl ov01_021E6028
-    // mov r0, #0x80
-    // mov r1, #4
-    // bl GF_CreateVramTransferManager
-    // mov r0, #4
-    // add r1, r0, #0
-    // bl sub_02023738
-    // mov r0, #4
-    // bl GF3dRender_InitSimpleManager
-    // bl ov01_021E61E0
-    // bl ov01_021E6178
-    // bl GfGfx_SwapDisplay
-    // mov r0, #4
-    // bl BgConfig_Alloc
-    // str r0, [r4, #8]
-    // bl ov01_021E6058
-    // mov r0, #0
-    // mov r1, #1
-    // bl sub_0205B4EC
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl TryStartMapScriptByType
-    // ldr r1, _021E5BD4 ; =0x00001079
+    _u32_div_f(0x00000D69);
+    SysTask_CreateOnMainQueue(sub_0203E348, 0, 0x7b);
+    ov01_021E6028();
+    GF_CreateVramTransferManager(0x80, 4);
+    sub_02023738(4, 4);
+    GF3dRender_InitSimpleManager(4);
+    ov01_021E61E0();
+    ov01_021E6178();
+    GfGfx_SwapDisplay();
+    BgConfig_Alloc(4);
+    *((u32*)(r4 + 8)) = r0;
+    ov01_021E6058();
+    sub_0205B4EC(0, 1);
+    TryStartMapScriptByType(r4, 4);
     // add r0, r5, r7
-    // bl _u32_div_f
-    // cmp r1, #0
-    // beq _021E5AA8
-    // ldr r0, _021E5BD0 ; =sub_0203E348
-    // ldr r2, _021E5BD8 ; =0x00000315
-    // mov r1, #0
-    // bl SysTask_CreateOnMainQueue
-    // mov r0, #4
-    // bl ov02_0224F864
-    // mov r1, #0x12
-    // lsl r1, r1, #4
+    _u32_div_f(0x00001079);
+    SysTask_CreateOnMainQueue(sub_0203E348, 0, 0x00000315);
+    ov02_0224F864(4);
     // str r0, [r4, r1]
-    // b _021E5B8E
-    // bl ov01_021E63B8
-    // mov r0, #0x41
-    // lsl r0, r0, #2
-    // ldr r0, [r4, r0]
-    // add r1, r4, #0
+    ov01_021E63B8((0x12 << 4));
     // str r0, [sp]
-    // add r3, r4, #0
     // add r1, #0xc0
     // add r3, #0xcc
-    // ldr r0, [r4, #0x34]
-    // ldr r1, [r1]
-    // ldr r2, [r4, #0x54]
-    // ldr r3, [r3]
-    // bl ov01_021FBA3C
-    // add r1, r4, #0
+    ov01_021FBA3C(*((u32*)(r4 + 0x34)), *((u32*)r4), *((u32*)(r4 + 0x54)), *((u32*)r4));
     // add r1, #0xc0
-    // ldr r1, [r1]
-    // mov r0, #4
-    // bl ov01_021F3638
-    // add r1, r4, #0
+    ov01_021F3638(4, *((u32*)r4));
     // add r1, #0x9c
     // str r0, [r1]
-    // add r0, r4, #0
-    // bl ov01_021E6460
-    // add r0, r4, #0
-    // bl ov01_021E64A4
-    // add r0, r4, #0
-    // bl ov01_021E6580
-    // ldr r0, [r4, #0xc]
-    // bl Save_LocalFieldData_Get
-    // bl LocalFieldData_GetWeatherType
-    // add r1, r0, #0
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0xc]
-    // bl ov01_021EB260
-    // ldr r1, [r4, #0x20]
-    // add r0, r4, #0
-    // ldr r1, [r1]
-    // bl FieldBGM_PlayEffectiveForMapHeader
-    // cmp r0, #0
-    // bne _021E5B2A
-    // add r0, r4, #0
+    ov01_021E6460(r4, r4);
+    ov01_021E64A4(r4);
+    ov01_021E6580(r4);
+    Save_LocalFieldData_Get(*((u32*)(r4 + 0xc)));
+    LocalFieldData_GetWeatherType();
+    ov01_021EB260(*((u32*)(*((u32*)(r4 + 4)) + 0xc)), r0);
+    FieldBGM_PlayEffectiveForMapHeader(r4, *((u32*)*((u32*)(r4 + 0x20))));
     // add r0, #0xc4
-    // ldr r1, [r0]
-    // mov r0, #1
     // mvn r0, r0
-    // cmp r1, r0
-    // bne _021E5B32
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ov01_021E7F00
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl TryStartMapScriptByType
-    // mov r0, #4
-    // bl ov01_021FB4C0
-    // ldr r1, [r4, #4]
-    // str r0, [r1, #0x1c]
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0x1c]
-    // bl ov01_021FB4F4
-    // ldr r1, [r4, #4]
-    // mov r0, #4
-    // ldr r1, [r1, #0x1c]
-    // bl ov01_021FB5D4
-    // ldr r1, [r4, #4]
-    // str r0, [r1, #0x20]
-    // b _021E5B8E
-    // bl ov01_021EAF18
-    // b _021E5B8E
-    // bl ov01_021EAF34
-    // cmp r0, #0
-    // beq _021E5B70
-    // mov r0, #1
+    ov01_021E7F00(r4, 0);
+    TryStartMapScriptByType(r4, 3);
+    ov01_021FB4C0(4);
+    *((u32*)(*((u32*)(r4 + 4)) + 0x1c)) = r0;
+    ov01_021FB4F4(*((u32*)(*((u32*)(r4 + 4)) + 0x1c)), *((u32*)(r4 + 4)));
+    ov01_021FB5D4(4, *((u32*)(*((u32*)(r4 + 4)) + 0x1c)));
+    *((u32*)(*((u32*)(r4 + 4)) + 0x20)) = r0;
+    ov01_021EAF18(*((u32*)(r4 + 4)));
+    ov01_021EAF34();
     // str r0, [sp, #4]
-    // str r0, [r4, #0x6c]
-    // bl ov01_021E662C
-    // cmp r0, #0
-    // bne _021E5B8E
-    // mov r2, #0xfa
-    // ldr r0, _021E5BDC ; =sub_02096594
-    // mov r1, #0
-    // lsl r2, r2, #2
-    // bl SysTask_CreateOnMainQueue
-    // ldr r0, _021E5BDC ; =sub_02096594
-    // ldr r2, _021E5BE0 ; =0x00000578
-    // mov r1, #0
-    // bl SysTask_CreateOnMainQueue
-    // ldr r0, [r6]
-    // add r0, r0, #1
+    *((u32*)(r4 + 0x6c)) = 1;
+    ov01_021E662C(1);
+    SysTask_CreateOnMainQueue(sub_02096594, 0, (0xfa << 2));
+    SysTask_CreateOnMainQueue(sub_02096594, 0, 0x00000578);
     // str r0, [r6]
     // ldr r0, [sp, #4]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021E5B9C: .word 0x00DCE6A1
-    // _021E5BA0: .word FS_OVERLAY_ID(ds_protect)
-    // _021E5BA4: .word 0x04000050
-    // _021E5BA8: .word 0x04001050
-    // _021E5BAC: .word ov01_021E66A8
-    // _021E5BB0: .word 0x000004CF
-    // _021E5BB4: .word ov01_021E66D8
-    // _021E5BB8: .word FS_OVERLAY_ID(OVY_2)
-    // _021E5BBC: .word FS_OVERLAY_ID(OVY_4)
-    // _021E5BC0: .word FS_OVERLAY_ID(OVY_3)
-    // _021E5BC4: .word ov01_021E66B8
-    // _021E5BC8: .word 0x000003A1
-    // _021E5BCC: .word 0x00000D69
-    // _021E5BD0: .word sub_0203E348
-    // _021E5BD4: .word 0x00001079
-    // _021E5BD8: .word 0x00000315
-    // _021E5BDC: .word sub_02096594
-    // _021E5BE0: .word 0x00000578
-    // TODO: decompile
 }
+
 
 
 
 void ov01_021E5BE4(void) {
-    OverlayManager_GetArgs();
-    ov01_021E5ED4();
-    ov01_021F6830(r4, 1, 1);
-    ov01_021E5F04(r4);
     // add r1, #0xbc
-    ov01_021E5FC0(r4, ((*((u32*)r4) << 0x18) >> 0x18));
 }
+
 
 
 
 void ov01_021E5C24(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
-    // ldr r5, _021E5E7C ; =0x002AAACF
-    // bl OverlayManager_GetArgs
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x2c]
-    // bl ov01_021F50F0
-    // ldr r0, [r6]
-    // cmp r0, #0
-    // beq _021E5C4A
-    // cmp r0, #1
-    // bne _021E5C42
-    // b _021E5D82
-    // cmp r0, #2
-    // bne _021E5C48
-    // b _021E5E12
-    // b _021E5E76
-    // ldr r1, _021E5E80 ; =FS_OVERLAY_ID(ds_protect)
-    // mov r0, #0
-    // bl FS_LoadOverlay
-    // add r0, r4, #0
-    // bl sub_02064910
-    // ldr r0, _021E5E84 ; =ov01_021E66C8
-    // bl DSProt_DetectDummy
-    // ldr r1, _021E5E88 ; =0x0000023B
-    // mul r1, r0
-    // ldr r0, [r4, #0x2c]
+    OverlayManager_GetArgs();
+    ov01_021F50F0(*((u32*)(r0 + 0x2c)));
+    FS_LoadOverlay(0, FS_OVERLAY_ID);
+    sub_02064910(r4);
+    DSProt_DetectDummy(ov01_021E66C8);
     // add r5, r5, r1
-    // bl ov01_021F6304
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetXCoord
-    // ldr r1, [r4, #0x20]
-    // str r0, [r1, #8]
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetZCoord
-    // ldr r1, [r4, #0x20]
-    // str r0, [r1, #0xc]
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // ldr r1, [r4, #0x20]
-    // str r0, [r1, #0x10]
-    // add r0, r4, #0
+    ov01_021F6304(*((u32*)(r4 + 0x2c)), (0x0000023B * r0));
+    PlayerAvatar_GetXCoord(*((u32*)(r4 + 0x40)));
+    *((u32*)(*((u32*)(r4 + 0x20)) + 8)) = r0;
+    PlayerAvatar_GetZCoord(*((u32*)(r4 + 0x40)), *((u32*)(r4 + 0x20)));
+    *((u32*)(*((u32*)(r4 + 0x20)) + 0xc)) = r0;
+    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)), *((u32*)(r4 + 0x20)));
+    *((u32*)(*((u32*)(r4 + 0x20)) + 0x10)) = r0;
     // add r0, #0x98
-    // ldr r0, [r0]
-    // bl ov01_021FB418
-    // ldr r0, [r4, #0x54]
-    // cmp r0, #0
-    // bne _021E5C9C
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x2c]
-    // bl ov01_021F61F8
-    // ldr r0, _021E5E8C ; =ov01_021E66DC
-    // bl DSProt_DetectNotFlashcart
-    // cmp r0, #0
-    // bne _021E5CB0
-    // mov r1, #1
-    // b _021E5CB2
-    // mov r1, #0
-    // ldr r0, _021E5E90 ; =0x0000018D
-    // mul r0, r1
+    ov01_021FB418(*((u32*)r4), *((u32*)(r4 + 0x20)));
+    GF_AssertFail(*((u32*)(r4 + 0x54)));
+    ov01_021F61F8(*((u32*)(r4 + 0x2c)));
+    DSProt_DetectNotFlashcart(ov01_021E66DC);
     // add r5, r5, r0
-    // ldr r0, [r4, #0x54]
-    // bl ov01_021E8A28
-    // ldr r0, [r4, #0x54]
-    // bl ov01_021E8AEC
-    // add r0, r4, #0
+    ov01_021E8A28(*((u32*)(r4 + 0x54)), 0);
+    ov01_021E8AEC(*((u32*)(r4 + 0x54)));
     // add r0, #0x58
-    // bl ov01_021E8DD4
-    // mov r0, #0x41
-    // lsl r0, r0, #2
-    // ldr r0, [r4, r0]
-    // bl ov01_02204764
-    // add r0, r4, #0
+    ov01_021E8DD4(r4);
+    ov01_02204764(*((u32*)(r4 + (0x41 << 2))));
     // add r0, #0xcc
-    // ldr r0, [r0]
-    // bl ov01_02204634
-    // add r0, r4, #0
+    ov01_02204634(*((u32*)r4));
     // add r0, #0xc8
-    // ldr r0, [r0]
-    // bl ov01_02204278
-    // ldr r0, _021E5E94 ; =ov01_021E66E0
-    // bl DSProt_DetectNotEmulator
-    // cmp r0, #0
-    // bne _021E5CF8
-    // mov r1, #1
-    // b _021E5CFA
-    // mov r1, #0
-    // mov r0, #0x8b
-    // add r7, r1, #0
-    // mul r7, r0
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0x10]
-    // bl ov01_021EB1BC
-    // ldr r1, _021E5E80 ; =FS_OVERLAY_ID(ds_protect)
-    // mov r0, #0
-    // bl FS_UnloadOverlay
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0x10]
-    // bl ov01_021EB1DC
-    // ldr r0, [r4, #4]
-    // mov r1, #0
-    // str r1, [r0, #0x10]
-    // ldr r1, _021E5E98 ; =0x000008AD
+    ov01_02204278(*((u32*)r4));
+    DSProt_DetectNotEmulator(ov01_021E66E0);
+    ov01_021EB1BC(*((u32*)(*((u32*)(r4 + 4)) + 0x10)), 0);
+    FS_UnloadOverlay(0, FS_OVERLAY_ID);
+    ov01_021EB1DC(*((u32*)(*((u32*)(r4 + 4)) + 0x10)));
+    *((u32*)(*((u32*)(r4 + 4)) + 0x10)) = 0;
     // add r0, r5, r7
-    // bl _u32_div_f
-    // cmp r1, #0
-    // beq _021E5D34
-    // ldr r0, _021E5E9C ; =sub_0203E348
-    // ldr r2, _021E5EA0 ; =0x00001EA5
-    // mov r1, #0
-    // bl SysTask_CreateOnMainQueue
-    // ldr r0, [r4, #0x3c]
-    // bl sub_0205E4C8
-    // ldr r0, [r4, #0x3c]
-    // bl ov01_021F9250
-    // ldr r0, [r4, #0x3c]
-    // bl sub_0205F55C
-    // ldr r0, [r4, #0x44]
-    // bl ov01_021F13F4
-    // add r0, r4, #0
-    // bl ov01_02205424
-    // ldr r0, [r4, #0x38]
-    // bl ov01_021E66A0
-    // mov r0, #0
-    // str r0, [r4, #0x38]
-    // ldr r1, _021E5EA4 ; =0x000004EB
+    _u32_div_f(*((u32*)(r4 + 4)), 0x000008AD);
+    SysTask_CreateOnMainQueue(sub_0203E348, 0, 0x00001EA5);
+    sub_0205E4C8(*((u32*)(r4 + 0x3c)));
+    ov01_021F9250(*((u32*)(r4 + 0x3c)));
+    sub_0205F55C(*((u32*)(r4 + 0x3c)));
+    ov01_021F13F4(*((u32*)(r4 + 0x44)));
+    ov01_02205424(r4);
+    ov01_021E66A0(*((u32*)(r4 + 0x38)));
+    *((u32*)(r4 + 0x38)) = 0;
     // add r0, r5, r7
-    // bl _u32_div_f
-    // cmp r1, #0
-    // beq _021E5D72
-    // ldr r0, _021E5E9C ; =sub_0203E348
-    // ldr r2, _021E5EA8 ; =0x000004DD
-    // mov r1, #0
-    // bl SysTask_CreateOnMainQueue
+    _u32_div_f(0, 0x000004EB);
+    SysTask_CreateOnMainQueue(sub_0203E348, 0, 0x000004DD);
     // add r4, #0x9c
-    // ldr r0, [r4]
-    // bl ov01_021F3660
-    // ldr r0, [r6]
-    // add r0, r0, #1
+    ov01_021F3660(*((u32*)r4));
     // str r0, [r6]
-    // b _021E5E76
-    // ldr r0, [r4, #0x2c]
-    // bl ov01_021F62CC
-    // cmp r0, #1
-    // bne _021E5E76
-    // add r0, r4, #0
+    ov01_021F62CC(*((u32*)(r4 + 0x2c)));
     // add r0, #0xc0
-    // ldr r0, [r0]
-    // bl ov01_02204084
-    // add r0, r4, #0
+    ov01_02204084(*((u32*)r4));
     // add r0, #0x34
-    // bl ov01_021FB944
-    // ldr r0, [r4, #0x2c]
-    // bl ov01_021F62B0
-    // add r0, r4, #0
-    // bl ov01_021EAC30
-    // add r0, r4, #0
+    ov01_021FB944(r4);
+    ov01_021F62B0(*((u32*)(r4 + 0x2c)));
+    ov01_021EAC30(r4);
     // add r0, #0x50
-    // bl ov01_021EA284
-    // ldr r0, [r4, #0x68]
-    // bl ov01_021F3D50
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #8]
-    // bl FieldDrawMapNameInfo_Destroy
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0xc]
-    // bl ov01_021EB234
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0x20]
-    // bl ov01_021FB610
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0x1c]
-    // bl ov01_021FB4D4
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0x18]
-    // bl sub_020556A8
-    // add r0, r4, #0
+    ov01_021EA284(r4);
+    ov01_021F3D50(*((u32*)(r4 + 0x68)));
+    FieldDrawMapNameInfo_Destroy(*((u32*)(*((u32*)(r4 + 4)) + 8)));
+    ov01_021EB234(*((u32*)(*((u32*)(r4 + 4)) + 0xc)));
+    ov01_021FB610(*((u32*)(*((u32*)(r4 + 4)) + 0x20)));
+    ov01_021FB4D4(*((u32*)(*((u32*)(r4 + 4)) + 0x1c)));
+    sub_020556A8(*((u32*)(*((u32*)(r4 + 4)) + 0x18)));
     // add r0, #0x4c
-    // bl ov01_021EA840
-    // add r0, r4, #0
+    ov01_021EA840(r4);
     // add r0, #0x48
-    // bl ov01_021EA8FC
-    // bl ov01_021E619C
-    // mov r0, #0x12
-    // lsl r0, r0, #4
-    // ldr r0, [r4, r0]
-    // bl ov02_0224F8F4
-    // ldr r0, [r4, #8]
-    // bl ov01_021E6138
-    // add r0, r4, #0
-    // bl ov01_021EAF54
-    // ldr r0, [r6]
-    // add r0, r0, #1
+    ov01_021EA8FC(r4);
+    ov01_021E619C();
+    ov02_0224F8F4(*((u32*)(r4 + (0x12 << 4))));
+    ov01_021E6138(*((u32*)(r4 + 8)));
+    ov01_021EAF54(r4);
     // str r0, [r6]
-    // b _021E5E76
-    // add r0, r4, #0
-    // bl ov01_021EAF70
-    // cmp r0, #0
-    // beq _021E5E76
-    // bl ov01_021E6214
-    // bl sub_02023778
-    // bl GF_DestroyVramTransferManager
-    // bl GF3dRender_DeleteSimpleManager
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #4]
-    // bl Field3dObjectTaskManager_Delete
-    // mov r0, #0
-    // add r1, r0, #0
-    // bl Main_SetVBlankIntrCB
-    // ldr r0, [r4, #8]
-    // bl Heap_Free
-    // ldr r0, [r4, #4]
-    // bl Heap_Free
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // mov r0, #4
-    // bl Heap_Destroy
-    // ldr r0, [r4, #0x74]
-    // ldr r0, [r0]
-    // lsl r0, r0, #8
-    // lsr r0, r0, #0x1c
-    // beq _021E5E6E
-    // ldr r0, _021E5EAC ; =FS_OVERLAY_ID(OVY_2)
-    // bl UnloadOverlayByID
-    // ldr r0, _021E5EB0 ; =FS_OVERLAY_ID(OVY_4)
-    // bl UnloadOverlayByID
-    // ldr r0, _021E5EB4 ; =FS_OVERLAY_ID(OVY_3)
-    // bl UnloadOverlayByID
-    // bl sub_02005D00
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021E5E7C: .word 0x002AAACF
-    // _021E5E80: .word FS_OVERLAY_ID(ds_protect)
-    // _021E5E84: .word ov01_021E66C8
-    // _021E5E88: .word 0x0000023B
-    // _021E5E8C: .word ov01_021E66DC
-    // _021E5E90: .word 0x0000018D
-    // _021E5E94: .word ov01_021E66E0
-    // _021E5E98: .word 0x000008AD
-    // _021E5E9C: .word sub_0203E348
-    // _021E5EA0: .word 0x00001EA5
-    // _021E5EA4: .word 0x000004EB
-    // _021E5EA8: .word 0x000004DD
-    // _021E5EAC: .word FS_OVERLAY_ID(OVY_2)
-    // _021E5EB0: .word FS_OVERLAY_ID(OVY_4)
-    // _021E5EB4: .word FS_OVERLAY_ID(OVY_3)
-    // TODO: decompile
+    ov01_021EAF70(r4);
+    ov01_021E6214();
+    sub_02023778();
+    GF_DestroyVramTransferManager();
+    GF3dRender_DeleteSimpleManager();
+    Field3dObjectTaskManager_Delete(*((u32*)(*((u32*)(r4 + 4)) + 4)));
+    Main_SetVBlankIntrCB(0, 0);
+    Heap_Free(*((u32*)(r4 + 8)));
+    Heap_Free(*((u32*)(r4 + 4)));
+    *((u32*)(r4 + 4)) = 0;
+    Heap_Destroy(4);
+    UnloadOverlayByID(FS_OVERLAY_ID);
+    UnloadOverlayByID(FS_OVERLAY_ID);
+    UnloadOverlayByID(FS_OVERLAY_ID);
+    sub_02005D00();
 }
+
 
 
 
 void ov01_021E5EB8(void) {
-    FieldSystem_GetSaveData();
-    Save_GetGymmickPtr();
-    Save_Gymmick_GetType();
 }
+
 
 
 
 void ov01_021E5ED4(void) {
-    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
-    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
-    *((u32*)(*((u32*)(r5 + 0x20)) + 8)) = r4;
-    *((u32*)(*((u32*)(r5 + 0x20)) + 0xc)) = r0;
 }
+
 
 
 
 void ov01_021E5F04(void) {
-    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
     // asr r1, r0, #4
     // add r1, r0, r1
     // asr r4, r1, #5
-    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)), (r1 >> 0x1b));
     // asr r1, r0, #4
     // add r1, r0, r1
     // asr r2, r1, #5
-    MapMatrix_GetMapHeader(*((u32*)(r5 + 0x30)), r4);
-    Save_LocalFieldData_Get(*((u32*)(r5 + 0xc)));
     // str r4, [r0]
-    Field_InitMapEvents(r5, r4);
-    sub_02053038(r5, 1);
-    Field_GetNumObjectEvents(r5);
     // str r0, [sp, #4]
-    Field_GetObjectEvents(r5);
     // str r0, [sp]
     // ldr r3, [sp, #4]
-    sub_0205E104(*((u32*)(r5 + 0x3c)), r6, r4);
-    FieldBGM_GetEffective(r5, *((u32*)*((u32*)(r5 + 0x20))));
-    FieldBGM_TryFadeOut(r5, r0, 1);
-    Field_InitMapObjectsFromZoneEventData(r5);
-    LocalFieldData_GetWeatherType(r7);
-    FieldWeatherUpdate_UsedFlash(*((u32*)(*((u32*)(r5 + 4)) + 0xc)), r0);
-    MapHeader_GetMapSec(r6);
-    MapHeader_GetMapSec(r4);
-    FieldSystem_DrawMapNameAnimation(r5);
 }
+
 
 
 
 void ov01_021E5FC0(void) {
-    FieldSystem_TaskIsRunning();
-    FieldSystem_StartBugContestTimer(r5);
-    ov01_021EA2A4(*((u32*)(r5 + 0x50)));
-    // ldr r0, [r5, r0]
-    ov01_022047DC((0x41 << 2));
-    ov01_021EAD8C(*((u32*)(r5 + 0x28)));
-    ov01_021F3D98(r5);
     // tst r0, r4
-    ov01_021EB114(*((u32*)(*((u32*)(r5 + 4)) + 0x10)));
     // tst r0, r4
     // add r0, #0xc8
-    ov01_02204350(*((u32*)r5));
     // tst r0, r4
-    ov01_021F50F0(*((u32*)(r5 + 0x2c)));
     // tst r0, r4
-    ov01_021E6220(r5);
 }
+
 
 
 
@@ -626,8 +247,10 @@ void ov01_021E6028(void) {
 
 
 
+
 void ov01_021E6048(void) {
 }
+
 
 
 
@@ -636,105 +259,54 @@ void ov01_021E6050(void) {
 
 
 
+
 void ov01_021E6058(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x68
-    // ldr r5, _021E6128 ; =ov01_022062EC
     // add r3, sp, #0x58
-    // add r4, r0, #0
-    // add r2, r3, #0
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // add r0, r2, #0
-    // bl SetBothScreensModesAndDisable
-    // ldr r5, _021E612C ; =ov01_02206318
+    SetBothScreensModesAndDisable(r3, r3);
     // add r3, sp, #0x3c
     // ldmia r5!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // ldr r0, [r5]
-    // mov r1, #1
     // str r0, [r3]
-    // add r0, r4, #0
-    // mov r3, #0
-    // bl InitBgFromTemplate
-    // mov r0, #1
-    // mov r1, #0x20
-    // mov r2, #0
-    // mov r3, #4
-    // bl BG_ClearCharDataRange
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl BgClearTilemapBufferAndCommit
-    // ldr r5, _021E6130 ; =ov01_022062FC
+    InitBgFromTemplate(r4, 1, r3, 0);
+    BG_ClearCharDataRange(1, 0x20, 0, 4);
+    BgClearTilemapBufferAndCommit(r4, 1);
     // add r3, sp, #0x20
     // ldmia r5!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // ldr r0, [r5]
-    // mov r1, #2
     // str r0, [r3]
-    // add r0, r4, #0
-    // mov r3, #0
-    // bl InitBgFromTemplate
-    // mov r0, #2
-    // mov r1, #0x20
-    // mov r2, #0
-    // mov r3, #4
-    // bl BG_ClearCharDataRange
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl BgClearTilemapBufferAndCommit
-    // ldr r5, _021E6134 ; =ov01_02206334
+    InitBgFromTemplate(r4, 2, r3, 0);
+    BG_ClearCharDataRange(2, 0x20, 0, 4);
+    BgClearTilemapBufferAndCommit(r4, 2);
     // add r3, sp, #4
     // ldmia r5!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // ldr r0, [r5]
-    // mov r1, #3
     // str r0, [r3]
-    // add r0, r4, #0
-    // mov r3, #0
-    // bl InitBgFromTemplate
-    // mov r0, #3
-    // mov r1, #0x20
-    // mov r2, #0
-    // mov r3, #4
-    // bl BG_ClearCharDataRange
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl BgClearTilemapBufferAndCommit
-    // mov r0, #0
+    InitBgFromTemplate(r4, 3, r3, 0);
+    BG_ClearCharDataRange(3, 0x20, 0, 4);
+    BgClearTilemapBufferAndCommit(r4, 3);
     // add r1, sp, #0
     // strh r0, [r1]
-    // mov r1, #2
-    // bl DC_FlushRange
+    DC_FlushRange(0, 2);
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #2
-    // bl GX_LoadBGPltt
-    // add sp, #0x68
-    // pop {r3, r4, r5, pc}
-    // _021E6128: .word ov01_022062EC
-    // _021E612C: .word ov01_02206318
-    // _021E6130: .word ov01_022062FC
-    // _021E6134: .word ov01_02206334
-    // TODO: decompile
+    GX_LoadBGPltt(0, 2);
 }
+
 
 
 
@@ -743,15 +315,15 @@ void ov01_021E6138(void) {
 
 
 
+
 void ov01_021E6178(void) {
-    NNS_G2dInitOamManagerModule();
     // str r0, [sp]
     // str r1, [sp, #4]
     // str r0, [sp, #8]
     // str r3, [sp, #0xc]
     // str r2, [sp, #0x10]
-    OamManager_Create(0, 0x7c, 0, 0x1f);
 }
+
 
 
 
@@ -760,40 +332,25 @@ void ov01_021E619C(void) {
 
 
 
+
 void ov01_021E61A4(void) {
-    ov01_021EAB44(0, 0);
-    ov01_021EAB58(r4, 2, 0);
-    ov01_021EAB6C(r4, 0x1f, 0);
-    ov01_021EAB80(r4, (2 << 0xe), 1, 0);
-    ov01_021EA910(r4, (1 << 0x16));
 }
+
 
 
 
 void ov01_021E61E0(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // ldr r4, _021E6210 ; =ov01_022062DC
     // add r3, sp, #0
-    // add r2, r3, #0
     // ldmia r4!, {r0, r1}
     // stmia r3!, {r0, r1}
     // ldmia r4!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // mov r1, #0x10
-    // add r0, r2, #0
-    // add r2, r1, #0
-    // bl ObjCharTransfer_InitEx
-    // mov r0, #0x14
-    // mov r1, #4
-    // bl ObjPlttTransfer_Init
-    // bl ObjCharTransfer_ClearBuffers
-    // bl ObjPlttTransfer_Reset
-    // add sp, #0x10
-    // pop {r4, pc}
-    // _021E6210: .word ov01_022062DC
-    // TODO: decompile
+    ObjCharTransfer_InitEx(r3, 0x10, 0x10);
+    ObjPlttTransfer_Init(0x14, 4);
+    ObjCharTransfer_ClearBuffers();
+    ObjPlttTransfer_Reset();
 }
+
 
 
 
@@ -802,142 +359,78 @@ void ov01_021E6214(void) {
 
 
 
+
 void ov01_021E6220(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x88
-    // add r4, r0, #0
-    // bl Thunk_G3X_Reset
-    // bl Camera_PushLookAtToNNSGlb
-    // ldr r0, [r4, #0x2c]
-    // ldr r1, [r4, #0x48]
-    // bl ov01_021F61A8
-    // add r0, r4, #0
+    Thunk_G3X_Reset();
+    Camera_PushLookAtToNNSGlb();
+    ov01_021F61A8(*((u32*)(r4 + 0x2c)), *((u32*)(r4 + 0x48)));
     // add r0, #0x9c
-    // ldr r0, [r0]
-    // ldr r1, [r4, #0x34]
-    // bl ov01_021F3C9C
-    // ldr r1, [r4, #0x24]
+    ov01_021F3C9C(*((u32*)r4), *((u32*)(r4 + 0x34)));
     // add r0, sp, #0
-    // bl Camera_GetAngle
+    Camera_GetAngle(*((u32*)(r4 + 0x24)));
     // add r2, sp, #0
-    // ldrh r2, [r2]
-    // mov r0, #0x47
-    // lsl r0, r0, #2
     // neg r2, r2
-    // lsl r2, r2, #0x10
-    // lsr r2, r2, #0x10
     // asr r2, r2, #4
-    // lsl r2, r2, #1
-    // add r2, r2, #1
-    // lsl r3, r2, #1
-    // ldr r2, _021E630C ; =FX_SinCosTable_
-    // ldr r0, [r4, r0]
     // ldrsh r2, [r2, r3]
-    // lsl r0, r0, #0xc
     // asr r1, r0, #0x1f
     // asr r3, r2, #0x1f
-    // bl _ll_mul
-    // mov r2, #2
-    // mov r3, #0
-    // lsl r2, r2, #0xa
+    _ll_mul((*((u32*)(r4 + (0x47 << 2))) << 0xc), FX_SinCosTable_, (((((*((u16*)r2) << 0x10) >> 0x10) << 1) + 1) << 1));
     // add r2, r0, r2
     // adc r1, r3
-    // lsl r0, r1, #0x14
-    // lsr r2, r2, #0xc
-    // ldr r6, _021E6310 ; =NNS_G3dGlb + 0x8
-    // orr r2, r0
     // add r5, sp, #0x48
-    // mov r3, #8
     // ldmia r6!, {r0, r1}
     // stmia r5!, {r0, r1}
-    // sub r3, r3, #1
-    // bne _021E6286
     // add r6, sp, #0x48
     // add r5, sp, #8
-    // mov r3, #8
     // ldmia r6!, {r0, r1}
     // stmia r5!, {r0, r1}
-    // sub r3, r3, #1
-    // bne _021E6294
     // ldr r0, [sp, #0x30]
     // asr r3, r2, #0x1f
     // asr r1, r0, #0x1f
-    // bl _ll_mul
-    // mov r3, #2
-    // mov r5, #0
-    // lsl r3, r3, #0xa
+    _ll_mul((r1 << 0x14), (((2 << 0xa) >> 0xc) | (r1 << 0x14)), (8 - 1));
     // add r3, r0, r3
     // adc r1, r5
-    // lsl r0, r1, #0x14
-    // lsr r1, r3, #0xc
     // ldr r2, [sp, #0x40]
-    // orr r1, r0
     // add r0, r2, r1
     // str r0, [sp, #0x40]
-    // ldr r1, _021E6310 ; =NNS_G3dGlb + 0x8
     // add r0, sp, #8
-    // mov r2, #0x40
-    // bl MIi_CpuCopyFast
-    // ldr r1, _021E6314 ; =NNS_G3dGlb + 0x80
-    // mov r0, #0x50
-    // ldr r2, [r1, #0x7c]
-    // bic r2, r0
-    // str r2, [r1, #0x7c]
-    // bl NNS_G3dGlbFlushP
-    // ldr r0, [r4, #0x44]
-    // bl ov01_021F13EC
-    // bl sub_020237B0
-    // ldr r1, _021E6310 ; =NNS_G3dGlb + 0x8
+    MIi_CpuCopyFast((r1 << 0x14), NNS_G3dGlb, 0x40, (2 << 0xa));
+    *((u32*)(NNS_G3dGlb + 0x7c)) = (*((u32*)(NNS_G3dGlb + 0x7c)) & ~(0x50));
+    NNS_G3dGlbFlushP(0x50, NNS_G3dGlb, (*((u32*)(NNS_G3dGlb + 0x7c)) & ~(0x50)));
+    ov01_021F13EC(*((u32*)(r4 + 0x44)));
+    sub_020237B0();
     // add r0, sp, #0x48
-    // mov r2, #0x40
-    // bl MIi_CpuCopyFast
-    // ldr r1, _021E6314 ; =NNS_G3dGlb + 0x80
-    // mov r0, #0x50
-    // ldr r2, [r1, #0x7c]
-    // bic r2, r0
-    // str r2, [r1, #0x7c]
-    // bl NNS_G3dGlbFlushP
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #4]
-    // bl Field3dObjectTaskManager_RunDrawTasks
-    // ldr r1, _021E6318 ; =gG3dDepthBufferingMode
-    // add r0, r5, #0
-    // ldr r1, [r1]
-    // bl RequestSwap3DBuffers
-    // add sp, #0x88
-    // pop {r4, r5, r6, pc}
-    // _021E630C: .word FX_SinCosTable_
-    // _021E6310: .word NNS_G3dGlb + 0x8
-    // _021E6314: .word NNS_G3dGlb + 0x80
-    // _021E6318: .word gG3dDepthBufferingMode
-    // TODO: decompile
+    MIi_CpuCopyFast(NNS_G3dGlb, 0x40);
+    *((u32*)(NNS_G3dGlb + 0x7c)) = (*((u32*)(NNS_G3dGlb + 0x7c)) & ~(0x50));
+    NNS_G3dGlbFlushP(0x50, NNS_G3dGlb, (*((u32*)(NNS_G3dGlb + 0x7c)) & ~(0x50)));
+    Field3dObjectTaskManager_RunDrawTasks(*((u32*)(*((u32*)(r4 + 4)) + 4)));
+    RequestSwap3DBuffers(r5, *((u32*)gG3dDepthBufferingMode));
 }
+
 
 
 
 void ov01_021E631C(void) {
     // add r1, #0xbc
-    // orr r1, r2
     // add r0, #0xbc
     // str r1, [r0]
     // add r1, #0xbc
-    // bic r2, r1
     // add r0, #0xbc
     // str r2, [r0]
 }
+
 
 
 
 void ov01_021E6340(void) {
     // add r1, #0xbc
-    // orr r1, r2
     // add r0, #0xbc
     // str r1, [r0]
     // add r1, #0xbc
-    // bic r2, r1
     // add r0, #0xbc
     // str r2, [r0]
 }
+
 
 
 
@@ -948,90 +441,50 @@ void ov01_021E6364(void) {
 
 
 
+
 void ov01_021E636C(void) {
     // str r0, [sp]
     // str r1, [sp, #4]
     // str r0, [sp, #8]
-    BeginNormalPaletteFade(0, 1, 1, 0);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    BeginNormalPaletteFade(0, 0, 0, 0);
-    GF_AssertFail();
 }
+
 
 
 
 void ov01_021E63B8(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r0, #1
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // ldr r0, _021E6454 ; =gG3dDepthBufferingMode
-    // ldr r0, [r0]
-    // lsl r1, r0, #1
-    // ldr r0, _021E6458 ; =0x04000540
+    GfGfx_EngineATogglePlanes(1, 0);
     // str r1, [r0]
-    // ldr r0, [r5, #0x20]
-    // ldr r0, [r0]
-    // bl MapHeader_GetAreaDataBank
-    // bl ov01_021FB888
-    // str r0, [r5, #0x34]
-    // bl ov01_021FB934
-    // add r3, r0, #0
-    // ldr r1, _021E645C ; =0x00000226
-    // mov r0, #4
-    // mov r2, #0x80
-    // bl ov01_02204004
-    // add r1, r5, #0
+    MapHeader_GetAreaDataBank(*((u32*)*((u32*)(r5 + 0x20))), (*((u32*)gG3dDepthBufferingMode) << 1));
+    ov01_021FB888();
+    *((u32*)(r5 + 0x34)) = r0;
+    ov01_021FB934();
+    ov01_02204004(4, 0x00000226, 0x80, r0);
     // add r1, #0xc0
     // str r0, [r1]
-    // ldr r0, [r5, #0x20]
-    // ldr r0, [r0]
-    // bl MapHeader_GetMoveModelBank
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x38]
-    // cmp r0, #0
-    // beq _021E6406
-    // bl GF_AssertFail
-    // mov r0, #4
-    // add r1, r4, #0
-    // bl ov01_021E6644
-    // str r0, [r5, #0x38]
-    // mov r0, #4
-    // bl ov01_022041C4
-    // add r1, r5, #0
+    MapHeader_GetMoveModelBank(*((u32*)*((u32*)(r5 + 0x20))), r5);
+    GF_AssertFail(*((u32*)(r5 + 0x38)));
+    ov01_021E6644(4, r4);
+    *((u32*)(r5 + 0x38)) = r0;
+    ov01_022041C4(4);
     // add r1, #0xc8
     // str r0, [r1]
-    // add r0, r5, #0
     // add r0, #0xc8
-    // ldr r0, [r0]
-    // bl ov01_0220460C
-    // add r1, r5, #0
+    ov01_0220460C(*((u32*)r5), r5);
     // add r1, #0xcc
     // str r0, [r1]
-    // mov r0, #4
-    // bl ov01_02204744
-    // mov r1, #0x41
-    // lsl r1, r1, #2
+    ov01_02204744(4, r5);
     // str r0, [r5, r1]
-    // ldr r0, [r5, #0x34]
-    // bl ov01_021FB904
-    // add r1, r5, #0
+    ov01_021FB904(*((u32*)(r5 + 0x34)), (0x41 << 2));
     // add r1, #0xc8
-    // ldr r1, [r1]
-    // bl ov01_021E87E4
-    // str r0, [r5, #0x54]
-    // bl ov01_021E8DB4
-    // str r0, [r5, #0x58]
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _021E6454: .word gG3dDepthBufferingMode
-    // _021E6458: .word 0x04000540
-    // _021E645C: .word 0x00000226
-    // TODO: decompile
+    ov01_021E87E4(*((u32*)r5));
+    *((u32*)(r5 + 0x54)) = r0;
+    ov01_021E8DB4();
+    *((u32*)(r5 + 0x58)) = r0;
 }
+
 
 
 
@@ -1041,229 +494,98 @@ void ov01_021E6460(void) {
     // add r2, #0xc0
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    ov01_021F6020(*((u32*)(r0 + 0x30)), *((u32*)(r0 + 0x34)), *((u32*)r0), *((u32*)(r0 + 0x54)));
-    *((u32*)(r4 + 0x2c)) = r0;
-    ov01_021FB3A4(8, 4);
     // add r1, #0x98
     // str r0, [r1]
-    ov01_021F6118(*((u32*)(r4 + 0x2c)), *((u32*)(*((u32*)(r4 + 0x20)) + 8)), *((u32*)(*((u32*)(r4 + 0x20)) + 0xc)));
 }
+
 
 
 
 void ov01_021E64A4(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0x14
-    // mov r1, #0x17
-    // mov r2, #4
-    // add r5, r0, #0
-    // bl ov01_021F1348
-    // mov r1, #0x50
-    // str r0, [r5, #0x44]
-    // bl ov01_021F1384
-    // mov r2, #0x20
+    ov01_021F1348(0x17, 4);
+    *((u32*)(r5 + 0x44)) = r0;
+    ov01_021F1384(0x50);
     // str r2, [sp]
-    // mov r0, #5
     // str r2, [sp, #4]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #8]
-    // lsl r0, r2, #6
     // str r0, [sp, #0xc]
-    // lsl r0, r2, #0xb
     // str r0, [sp, #0x10]
-    // ldr r0, [r5, #0x44]
-    // mov r1, #4
-    // add r3, r2, #0
-    // bl ov01_021F1390
-    // add r0, r5, #0
-    // mov r1, #4
-    // bl sub_02055680
-    // ldr r1, [r5, #4]
-    // str r0, [r1, #0x18]
-    // ldr r0, [r5, #0x70]
-    // cmp r0, #2
-    // bne _021E64F2
-    // ldr r0, [r5, #0x3c]
-    // mov r1, #0
-    // bl sub_0205F5F8
-    // ldr r0, [r5, #0x44]
-    // ldr r1, _021E657C ; =ov01_02208BFC
-    // bl ov01_021F13D0
-    // ldr r0, [r5, #0x70]
-    // mov r4, #0xa
-    // cmp r0, #2
-    // bne _021E6504
-    // mov r4, #5
-    // ldr r0, [r5, #0x38]
-    // bl ov01_021E669C
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x38]
-    // bl ov01_021E6698
+    ov01_021F1390(*((u32*)(r5 + 0x44)), 4, 0x20, 0x20);
+    sub_02055680(r5, 4);
+    *((u32*)(*((u32*)(r5 + 4)) + 0x18)) = r0;
+    sub_0205F5F8(*((u32*)(r5 + 0x3c)), 0);
+    ov01_021F13D0(*((u32*)(r5 + 0x44)), ov01_02208BFC);
+    ov01_021E669C(*((u32*)(r5 + 0x38)));
+    ov01_021E6698(*((u32*)(r5 + 0x38)));
     // str r4, [sp]
-    // add r3, r0, #0
-    // ldr r0, [r5, #0x3c]
-    // mov r1, #0x20
-    // add r2, r6, #3
-    // bl ov01_021F91F8
-    // ldr r0, [r5, #0x3c]
-    // bl ov01_022057DC
-    // ldr r0, [r5, #0x44]
-    // bl ov01_021FD3F8
-    // ldr r0, [r5, #0x40]
-    // bl sub_0205C46C
-    // add r0, r5, #0
+    ov01_021F91F8(*((u32*)(r5 + 0x3c)), 0x20, (r6 + 3), r0);
+    ov01_022057DC(*((u32*)(r5 + 0x3c)));
+    ov01_021FD3F8(*((u32*)(r5 + 0x44)));
+    sub_0205C46C(*((u32*)(r5 + 0x40)));
     // add r0, #0xac
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // ldr r0, [r5, #0x3c]
-    // beq _021E6544
-    // bl sub_0205E580
-    // b _021E654E
-    // bl sub_0205E520
-    // add r0, r5, #0
-    // bl ov01_022059AC
-    // bl sub_02057FA4
-    // add r0, r5, #0
+    sub_0205E580(*((u32*)(r5 + 0x3c)));
+    sub_0205E520();
+    ov01_022059AC(r5);
+    sub_02057FA4();
     // add r0, #0xac
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // ldr r0, [r5, #0x3c]
-    // beq _021E6566
-    // mov r1, #2
-    // bl MapObjectManager_ClearFlagsBits
-    // b _021E656A
-    // bl sub_0205F568
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetPositionVector
-    // ldr r1, [r5, #0x2c]
-    // bl ov01_021F62E8
-    // add sp, #0x14
-    // pop {r3, r4, r5, r6, pc}
-    // nop
-    // _021E657C: .word ov01_02208BFC
-    // TODO: decompile
+    MapObjectManager_ClearFlagsBits(*((u32*)(r5 + 0x3c)), 2);
+    sub_0205F568();
+    PlayerAvatar_GetPositionVector(*((u32*)(r5 + 0x40)));
+    ov01_021F62E8(*((u32*)(r5 + 0x2c)));
 }
+
 
 
 
 void ov01_021E6580(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // mov r0, #1
-    // add r1, r0, #0
-    // bl GfGfx_EngineATogglePlanes
-    // bl GfGfx_BothDispOn
-    // bl ov01_021EA8E0
-    // str r0, [r4, #0x48]
-    // bl ov01_021E61A4
-    // bl ov01_021EA824
-    // str r0, [r4, #0x4c]
-    // ldr r0, [r4, #0xc]
-    // bl Save_LocalFieldData_Get
-    // bl LocalFieldData_GetCameraType
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetPositionVector
-    // add r1, r4, #0
-    // add r2, r5, #0
-    // mov r3, #1
-    // bl ov01_021EABA8
-    // ldr r0, [r4, #0x34]
-    // bl ov01_021FBA14
-    // add r5, r0, #0
-    // cmp r5, #3
-    // bne _021E65D8
-    // ldr r0, [r4, #0xc]
-    // bl Save_VarsFlags_Get
-    // bl CheckFlag96A
-    // cmp r0, #0
-    // beq _021E65D8
-    // mov r5, #4
-    // ldr r0, [r4, #0x48]
-    // add r1, r5, #0
-    // bl ov01_021EA220
-    // str r0, [r4, #0x50]
-    // add r0, r4, #0
-    // bl ov01_021EB1F4
-    // ldr r1, [r4, #4]
-    // str r0, [r1, #0xc]
-    // ldr r0, [r4, #8]
-    // bl FieldDrawMapNameInfo_Create
-    // ldr r1, [r4, #4]
-    // str r0, [r1, #8]
-    // mov r0, #4
-    // bl ov01_021F3D38
-    // str r0, [r4, #0x68]
-    // bl ov01_021EAFD4
-    // ldr r1, [r4, #4]
-    // str r0, [r1, #0x10]
-    // ldr r0, [r4, #0x34]
-    // bl ov01_021FB9CC
-    // add r1, r0, #0
-    // ldr r0, [r4, #4]
-    // ldr r0, [r0, #0x10]
-    // bl ov01_021EB00C
-    // add r0, r4, #0
-    // bl sub_020648EC
-    // ldr r0, _021E6628 ; =ov01_021E5900
-    // add r1, r4, #0
-    // bl Main_SetVBlankIntrCB
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _021E6628: .word ov01_021E5900
-    // TODO: decompile
+    GfGfx_EngineATogglePlanes(1, 1);
+    GfGfx_BothDispOn();
+    ov01_021EA8E0();
+    *((u32*)(r4 + 0x48)) = r0;
+    ov01_021E61A4();
+    ov01_021EA824();
+    *((u32*)(r4 + 0x4c)) = r0;
+    Save_LocalFieldData_Get(*((u32*)(r4 + 0xc)));
+    LocalFieldData_GetCameraType();
+    PlayerAvatar_GetPositionVector(*((u32*)(r4 + 0x40)));
+    ov01_021EABA8(r4, r5, 1);
+    ov01_021FBA14(*((u32*)(r4 + 0x34)));
+    Save_VarsFlags_Get(*((u32*)(r4 + 0xc)));
+    CheckFlag96A();
+    ov01_021EA220(*((u32*)(r4 + 0x48)), 4);
+    *((u32*)(r4 + 0x50)) = r0;
+    ov01_021EB1F4(r4);
+    *((u32*)(*((u32*)(r4 + 4)) + 0xc)) = r0;
+    FieldDrawMapNameInfo_Create(*((u32*)(r4 + 8)), *((u32*)(r4 + 4)));
+    *((u32*)(*((u32*)(r4 + 4)) + 8)) = r0;
+    ov01_021F3D38(4, *((u32*)(r4 + 4)));
+    *((u32*)(r4 + 0x68)) = r0;
+    ov01_021EAFD4();
+    *((u32*)(*((u32*)(r4 + 4)) + 0x10)) = r0;
+    ov01_021FB9CC(*((u32*)(r4 + 0x34)), *((u32*)(r4 + 4)));
+    ov01_021EB00C(*((u32*)(*((u32*)(r4 + 4)) + 0x10)), r0);
+    sub_020648EC(r4);
+    Main_SetVBlankIntrCB(ov01_021E5900, r4);
 }
+
 
 
 
 void ov01_021E662C(void) {
-    CARD_SpiWaitGetStatus();
-    CARD_SpiWaitGetStatus();
 }
+
 
 
 
 void ov01_021E6644(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0x64
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r0, #0x5c
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // bl AllocAtEndAndReadWholeNarcMemberByIdPair
-    // ldr r1, _021E6694 ; =0x0000FFFF
-    // mov r2, #0
-    // add r3, r4, #0
-    // add r2, r2, #1
-    // str r1, [r3, #4]
-    // add r3, r3, #4
-    // cmp r2, #0x18
-    // blt _021E6662
-    // ldr r5, _021E6694 ; =0x0000FFFF
-    // mov r3, #0
-    // add r1, r0, #0
-    // add r2, r4, #0
-    // ldrh r6, [r1]
-    // str r6, [r2, #4]
-    // ldrh r6, [r1]
-    // cmp r6, r5
-    // beq _021E6688
-    // add r3, r3, #1
-    // add r1, r1, #2
-    // add r2, r2, #4
-    // cmp r3, #0x18
-    // blt _021E6674
+    Heap_Alloc(0x64);
+    AllocAtEndAndReadWholeNarcMemberByIdPair(0x5c, r6, r5);
+    *((u32*)(r4 + 4)) = 0x0000FFFF;
+    *((u32*)(r4 + 4)) = *((u16*)r0);
     // strh r3, [r4]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _021E6694: .word 0x0000FFFF
-    // TODO: decompile
+    Heap_Free((r0 + 2), (r4 + 4), (0 + 1));
 }
+
 
 
 
@@ -1275,14 +597,17 @@ void ov01_021E6698(void) {
 
 
 
+
 void ov01_021E669C(void) {
     // ldrh r0, [r0]
 }
 
 
 
+
 void ov01_021E66A0(void) {
 }
+
 
 
 
@@ -1299,6 +624,7 @@ void ov01_021E66A8(void) {
 
 
 
+
 void ov01_021E66B8(void) {
     // ldr r3, _021E66C4 ; =Heap_AllocAtEnd
     // mov r1, #0xfa
@@ -1309,6 +635,7 @@ void ov01_021E66B8(void) {
     // _021E66C4: .word Heap_AllocAtEnd
     // TODO: decompile
 }
+
 
 
 
@@ -1325,10 +652,12 @@ void ov01_021E66C8(void) {
 
 
 
+
 void ov01_021E66D8(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -1339,9 +668,11 @@ void ov01_021E66DC(void) {
 
 
 
+
 void ov01_021E66E0(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 

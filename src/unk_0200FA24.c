@@ -2,142 +2,58 @@
 #include "global.h"
 
 void BeginNormalPaletteFade(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r5, r0, #0
     // ldr r0, [sp, #0x30]
-    // add r4, r1, #0
-    // add r7, r2, #0
-    // add r6, r3, #0
-    // cmp r0, #0
-    // bne _0200FA3A
-    // bl GF_AssertFail
+    GF_AssertFail();
     // ldr r0, [sp, #0x34]
-    // cmp r0, #0
-    // bne _0200FA44
-    // bl GF_AssertFail
-    // ldr r0, _0200FB00 ; =_021D1034
-    // ldrh r0, [r0, #0xc]
-    // cmp r0, #0
-    // beq _0200FA50
-    // bl GF_AssertFail
-    // ldr r0, _0200FB04 ; =_021D0EF4
-    // bl sub_020100C4
-    // ldr r1, _0200FB04 ; =_021D0EF4
-    // add r0, r5, #0
-    // bl sub_0200FE14
-    // ldr r0, _0200FB08 ; =_021D0F68
-    // bl sub_0200FEB0
-    // ldr r0, _0200FB04 ; =_021D0EF4
-    // add r1, r6, #0
-    // bl sub_02010018
-    // add r5, r0, #0
-    // mov r0, #0
+    GF_AssertFail();
+    GF_AssertFail(*((u16*)(_021D1034 + 0xc)));
+    sub_020100C4(_021D0EF4);
+    sub_0200FE14(r5, _021D0EF4);
+    sub_0200FEB0(_021D0F68);
+    sub_02010018(_021D0EF4, r6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, _0200FB0C ; =_021D0F80
     // ldr r2, [sp, #0x30]
     // str r0, [sp, #0xc]
-    // ldr r0, _0200FB08 ; =_021D0F68
     // ldr r3, [sp, #0x34]
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #0x38]
-    // add r1, r4, #0
     // str r0, [sp, #0x14]
-    // ldr r0, _0200FB10 ; =_021D0F08
     // str r5, [sp, #0x18]
-    // bl sub_0200FE84
-    // mov r0, #0
+    sub_0200FE84(_021D0F08, r4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, _0200FB0C ; =_021D0F80
     // ldr r2, [sp, #0x30]
     // str r0, [sp, #0xc]
-    // ldr r0, _0200FB08 ; =_021D0F68
     // ldr r3, [sp, #0x34]
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #0x38]
-    // add r1, r7, #0
     // str r0, [sp, #0x14]
-    // ldr r0, _0200FB14 ; =_021D0F38
     // str r5, [sp, #0x18]
-    // bl sub_0200FE84
-    // ldr r0, _0200FB00 ; =_021D1034
-    // mov r1, #1
-    // strh r1, [r0, #0xc]
-    // ldr r0, _0200FB18 ; =_021D0EF8
-    // ldr r1, _0200FB10 ; =_021D0F08
-    // bl FadeWork_UpdateFrame
-    // ldr r0, _0200FB1C ; =_021D0EFC
-    // ldr r1, _0200FB14 ; =_021D0F38
-    // bl FadeWork_UpdateFrame
-    // ldr r0, _0200FB20 ; =_021D0EF4
-    // ldr r0, [r0, #0xc]
-    // cmp r0, #0
-    // beq _0200FAE2
-    // ldr r0, _0200FB04 ; =_021D0EF4
+    sub_0200FE84(_021D0F38, r7);
+    *((u16*)(_021D1034 + 0xc)) = 1;
+    FadeWork_UpdateFrame(_021D0EF8, _021D0F08);
+    FadeWork_UpdateFrame(_021D0EFC, _021D0F38);
     // add r0, #0x14
-    // bl sub_02010064
-    // ldr r1, _0200FB24 ; =0x0000014E
-    // ldr r0, _0200FB04 ; =_021D0EF4
-    // mov r2, #1
+    sub_02010064(_021D0EF4);
     // strb r2, [r0, r1]
-    // ldr r0, _0200FB04 ; =_021D0EF4
-    // ldr r0, [r0, #0x10]
-    // cmp r0, #0
-    // beq _0200FAFA
-    // ldr r0, _0200FB04 ; =_021D0EF4
     // add r0, #0x44
-    // bl sub_02010064
-    // ldr r1, _0200FB28 ; =0x0000014F
-    // ldr r0, _0200FB04 ; =_021D0EF4
-    // mov r2, #1
+    sub_02010064(_021D0EF4, 0x0000014E, 1);
     // strb r2, [r0, r1]
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _0200FB00: .word _021D1034
-    // _0200FB04: .word _021D0EF4
-    // _0200FB08: .word _021D0F68
-    // _0200FB0C: .word _021D0F80
-    // _0200FB10: .word _021D0F08
-    // _0200FB14: .word _021D0F38
-    // _0200FB18: .word _021D0EF8
-    // _0200FB1C: .word _021D0EFC
-    // _0200FB20: .word _021D0EF4
-    // _0200FB24: .word 0x0000014E
-    // _0200FB28: .word 0x0000014F
-    // TODO: decompile
 }
+
 
 
 
 void HandleFadeUpdateFrame(void) {
-    // push {r4, lr}
-    // ldr r0, _0200FB54 ; =_021D1034
-    // ldr r4, _0200FB58 ; =_021D0EF4
-    // ldrh r0, [r0, #0xc]
-    // cmp r0, #0
-    // beq _0200FB50
-    // add r1, r4, #0
-    // add r2, r4, #0
-    // add r0, r4, #0
     // add r1, #0x14
     // add r2, #0x44
-    // bl DoFadeUpdateFrame
-    // cmp r0, #1
-    // bne _0200FB50
-    // add r0, r4, #0
-    // bl HandleEndFade
-    // pop {r4, pc}
-    // nop
-    // _0200FB54: .word _021D1034
-    // _0200FB58: .word _021D0EF4
-    // TODO: decompile
+    DoFadeUpdateFrame(_021D0EF4, _021D0EF4, _021D0EF4);
+    HandleEndFade(r4);
 }
+
 
 
 
@@ -156,50 +72,20 @@ void IsPaletteFadeFinished(void) {
 
 
 
+
 void sub_0200FB70(void) {
-    // push {r3, lr}
-    // ldr r0, _0200FBBC ; =_021D0F68
-    // mov r1, #0
-    // bl sub_0200FF5C
-    // ldr r0, _0200FBBC ; =_021D0F68
-    // mov r1, #1
-    // bl sub_0200FF5C
-    // ldr r0, _0200FBC0 ; =_021D0EF4
-    // ldr r1, [r0, #4]
-    // cmp r1, #0
-    // beq _0200FB8E
-    // mov r1, #2
-    // str r1, [r0, #0x20]
-    // ldr r0, _0200FBC0 ; =_021D0EF4
-    // ldr r1, [r0, #8]
-    // cmp r1, #0
-    // beq _0200FB9A
-    // mov r1, #2
-    // str r1, [r0, #0x50]
-    // ldr r0, _0200FBC4 ; =_021D0EF8
-    // ldr r1, _0200FBC8 ; =_021D0F08
-    // bl FadeWork_UpdateFrame
-    // ldr r0, _0200FBCC ; =_021D0EFC
-    // ldr r1, _0200FBD0 ; =_021D0F38
-    // bl FadeWork_UpdateFrame
-    // ldr r0, _0200FBD4 ; =_021D1034
-    // mov r1, #0
-    // strh r1, [r0, #0xc]
-    // strb r1, [r0, #0xe]
-    // strb r1, [r0, #0xf]
-    // ldr r0, _0200FBD8 ; =_021D0EF4
-    // bl sub_020100C4
-    // pop {r3, pc}
-    // _0200FBBC: .word _021D0F68
-    // _0200FBC0: .word _021D0EF4
-    // _0200FBC4: .word _021D0EF8
-    // _0200FBC8: .word _021D0F08
-    // _0200FBCC: .word _021D0EFC
-    // _0200FBD0: .word _021D0F38
-    // _0200FBD4: .word _021D1034
-    // _0200FBD8: .word _021D0EF4
-    // TODO: decompile
+    sub_0200FF5C(_021D0F68, 0);
+    sub_0200FF5C(_021D0F68, 1);
+    *((u32*)(_021D0EF4 + 0x20)) = 2;
+    *((u32*)(_021D0EF4 + 0x50)) = 2;
+    FadeWork_UpdateFrame(_021D0EF8, _021D0F08);
+    FadeWork_UpdateFrame(_021D0EFC, _021D0F38);
+    *((u16*)(_021D1034 + 0xc)) = 0;
+    *((u8*)(_021D1034 + 0xe)) = 0;
+    *((u8*)(_021D1034 + 0xf)) = 0;
+    sub_020100C4(_021D0EF4, 0);
 }
+
 
 
 
@@ -208,124 +94,46 @@ void sub_0200FBDC(void) {
 
 
 
+
 void SetMasterBrightnessNeutral(void) {
 }
 
 
 
+
 void sub_0200FBF4(void) {
-    // ldr r2, _0200FC10 ; =0x0000FFFF
-    // cmp r1, r2
-    // bne _0200FBFE
-    // ldr r1, _0200FC14 ; =_021D1034
-    // ldrh r1, [r1, #0x10]
-    // ldr r2, _0200FC18 ; =0x00007FFF
-    // cmp r1, r2
-    // bne _0200FC08
-    // mov r1, #0x10
-    // b _0200FC0C
-    // mov r1, #0xf
     // mvn r1, r1
-    // ldr r3, _0200FC1C ; =SetMasterBrightness
-    // bx r3
-    // _0200FC10: .word 0x0000FFFF
-    // _0200FC14: .word _021D1034
-    // _0200FC18: .word 0x00007FFF
-    // _0200FC1C: .word SetMasterBrightness
-    // TODO: decompile
 }
+
 
 
 
 void sub_0200FC20(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // ldr r0, _0200FC54 ; =0x0000FFFF
-    // cmp r4, r0
-    // bne _0200FC2E
-    // ldr r0, _0200FC58 ; =_021D1034
-    // ldrh r4, [r0, #0x10]
-    // ldr r0, _0200FC5C ; =0x00007FFF
-    // cmp r4, r0
-    // bne _0200FC38
-    // mov r5, #0x10
-    // b _0200FC3C
-    // mov r5, #0xf
     // mvn r5, r5
-    // mov r0, #0
-    // add r1, r5, #0
-    // bl SetMasterBrightness
-    // mov r0, #1
-    // add r1, r5, #0
-    // bl SetMasterBrightness
-    // ldr r0, _0200FC58 ; =_021D1034
-    // strh r4, [r0, #0x10]
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _0200FC54: .word 0x0000FFFF
-    // _0200FC58: .word _021D1034
-    // _0200FC5C: .word 0x00007FFF
-    // TODO: decompile
+    SetMasterBrightness(0, 0xf);
+    SetMasterBrightness(1, r5);
+    *((u16*)(_021D1034 + 0x10)) = r4;
 }
+
 
 
 
 void sub_0200FC60(void) {
-    // push {r0, r1, r2, r3}
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #0x18
-    // ldrh r2, [r1, #4]
-    // add r4, r0, #0
-    // ldr r0, _0200FCD0 ; =0x0000FFFF
-    // cmp r2, r0
-    // bne _0200FC78
-    // ldr r0, _0200FCD4 ; =_021D1034
-    // ldrh r0, [r0, #0x10]
-    // strh r0, [r1, #4]
-    // cmp r4, #0
+    *((u16*)(r1 + 4)) = *((u16*)(_021D1034 + 0x10));
     // add r0, sp, #0x1c
-    // bne _0200FC88
-    // mov r1, #0
-    // mov r2, #2
-    // bl GX_LoadBGPltt
-    // b _0200FC90
-    // mov r1, #0
-    // mov r2, #2
-    // bl GXS_LoadBGPltt
-    // ldr r0, _0200FCD8 ; =_021D0F80
-    // mov r1, #1
-    // add r2, r4, #0
-    // bl sub_02013424
-    // mov r2, #0
-    // ldr r0, _0200FCD8 ; =_021D0F80
-    // mov r1, #0x3f
-    // add r3, r2, #0
+    GX_LoadBGPltt(*((u16*)(_021D1034 + 0x10)), 0, 2);
+    GXS_LoadBGPltt(0, 2);
+    sub_02013424(_021D0F80, 1, r4);
     // str r4, [sp]
-    // bl sub_02013440
-    // mov r1, #0
+    sub_02013440(_021D0F80, 0x3f, 0, 0);
     // str r1, [sp]
     // str r1, [sp, #4]
-    // ldr r0, _0200FCD8 ; =_021D0F80
-    // add r2, r1, #0
-    // add r3, r1, #0
     // str r4, [sp, #8]
-    // bl sub_02013488
-    // ldr r0, _0200FCD8 ; =_021D0F80
-    // mov r1, #0x20
-    // mov r2, #0
-    // add r3, r4, #0
-    // bl sub_02013468
-    // add sp, #0xc
-    // pop {r3, r4}
-    // pop {r3}
-    // add sp, #0x10
-    // bx r3
-    // _0200FCD0: .word 0x0000FFFF
-    // _0200FCD4: .word _021D1034
-    // _0200FCD8: .word _021D0F80
-    // TODO: decompile
+    sub_02013488(_021D0F80, 0, 0, 0);
+    sub_02013468(_021D0F80, 0x20, 0, r4);
 }
+
 
 
 
@@ -334,82 +142,39 @@ void sub_0200FCDC(void) {
 
 
 
+
 void SetMasterBrightness(void) {
-    // push {r3, lr}
-    // cmp r0, #0
-    // bne _0200FD0A
     // ; GX_SetMasterBrightness(a1);
-    // ldr r0, _0200FD14 ; =0x0400006C
-    // bl GXx_SetMasterBrightness_
-    // pop {r3, pc}
+    GXx_SetMasterBrightness_(0x0400006C);
     // ; GXS_SetMasterBrightness(a1);
-    // ldr r0, _0200FD18 ; =0x0400106C
-    // bl GXx_SetMasterBrightness_
-    // pop {r3, pc}
-    // nop
-    // _0200FD14: .word 0x0400006C
-    // _0200FD18: .word 0x0400106C
-    // TODO: decompile
+    GXx_SetMasterBrightness_(0x0400106C);
 }
+
 
 
 
 void HandleEndFade(void) {
-    // push {r4, lr}
-    // mov r1, #0x53
-    // add r4, r0, #0
-    // mov r2, #0
-    // lsl r1, r1, #2
     // strh r2, [r4, r1]
-    // bl sub_0201002C
-    // mov r1, #0x15
-    // lsl r1, r1, #4
+    sub_0201002C((0x53 << 2), 0);
     // strh r0, [r4, r1]
-    // ldr r0, [r4, #0xc]
-    // cmp r0, #0
-    // beq _0200FD4C
-    // add r0, r4, #0
     // add r0, #0x14
-    // bl sub_02010094
-    // ldr r0, [r4, #0x3c]
-    // cmp r0, #0
-    // bne _0200FD4C
-    // ldr r0, _0200FD70 ; =_021D1034
-    // mov r1, #0
-    // strb r1, [r0, #0xe]
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0
-    // beq _0200FD66
-    // add r0, r4, #0
+    sub_02010094(r4, (0x15 << 4));
+    *((u8*)(_021D1034 + 0xe)) = 0;
     // add r0, #0x44
-    // bl sub_02010094
-    // ldr r0, [r4, #0x3c]
-    // cmp r0, #0
-    // bne _0200FD66
-    // ldr r0, _0200FD70 ; =_021D1034
-    // mov r1, #0
-    // strb r1, [r0, #0xf]
-    // add r0, r4, #0
-    // bl sub_020100C4
-    // pop {r4, pc}
-    // nop
-    // _0200FD70: .word _021D1034
-    // TODO: decompile
+    sub_02010094(r4, 0);
+    *((u8*)(_021D1034 + 0xf)) = 0;
+    sub_020100C4(r4, 0);
 }
+
 
 
 
 void DoFadeUpdateFrame(void) {
-    FadeWork_UpdateFrame((r0 + 4));
     // add r0, #8
-    FadeWork_UpdateFrame(r5, r4);
-    FadeWork_UpdateFrame((r5 + 4));
     // add r0, #8
-    FadeWork_UpdateFrame(r5, r4);
     // add r0, #8
-    FadeWork_UpdateFrame(r5, r4);
-    FadeWork_UpdateFrame((r5 + 4));
 }
+
 
 
 
@@ -418,18 +183,11 @@ void FadeWork_UpdateFrame(void) {
 
 
 
+
 void CallFadeFunc(void) {
-    // push {r3, lr}
-    // ldr r1, [r0]
-    // lsl r2, r1, #2
-    // ldr r1, _0200FE10 ; =sFadeFuncPtrs
-    // ldr r1, [r1, r2]
     // blx r1
-    // pop {r3, pc}
-    // nop
-    // _0200FE10: .word sFadeFuncPtrs
-    // TODO: decompile
 }
+
 
 
 
@@ -439,12 +197,8 @@ void sub_0200FE14(void) {
     // asr r0, r0, #0x10
     // add pc, r0
     // _0200FE26: ; jump table
-    sub_0200FE78(r1, 0, 1, 1);
-    sub_0200FE78(r1, 1, 1, 1);
-    sub_0200FE78(r1, 2, 1, 1);
-    sub_0200FE78(r1, 1, 1, 0);
-    sub_0200FE78(r1, 2, 0, 1);
 }
+
 
 
 
@@ -453,49 +207,36 @@ void sub_0200FE78(void) {
 
 
 
+
 void sub_0200FE84(void) {
     // str r1, [r0]
-    // str r2, [r0, #4]
+    *((u32*)(r0 + 4)) = r2;
     // ldr r1, [sp]
-    // str r3, [r0, #8]
-    // str r1, [r0, #0xc]
+    *((u32*)(r0 + 8)) = r3;
+    *((u32*)(r0 + 0xc)) = r1;
     // ldr r1, [sp, #4]
-    // str r1, [r0, #0x14]
+    *((u32*)(r0 + 0x14)) = r1;
     // ldr r1, [sp, #8]
-    // str r1, [r0, #0x10]
+    *((u32*)(r0 + 0x10)) = r1;
     // ldr r1, [sp, #0xc]
-    // str r1, [r0, #0x18]
+    *((u32*)(r0 + 0x18)) = r1;
     // ldr r1, [sp, #0x10]
-    // str r1, [r0, #0x1c]
+    *((u32*)(r0 + 0x1c)) = r1;
     // ldr r1, [sp, #0x14]
-    // str r1, [r0, #0x20]
-    // ldr r1, _0200FEAC ; =0xFFFFFFF0
+    *((u32*)(r0 + 0x20)) = r1;
     // add r1, sp
-    // ldrh r1, [r1, #0x28]
-    // strh r1, [r0, #0x24]
-    // bx lr
-    // _0200FEAC: .word 0xFFFFFFF0
-    // TODO: decompile
+    *((u16*)(r0 + 0x24)) = *((u16*)(0xFFFFFFF0 + 0x28));
 }
+
 
 
 
 void sub_0200FEB0(void) {
-    // mov r3, #0
-    // ldr r1, _0200FEC8 ; =sub_02010014
-    // add r2, r3, #0
     // str r2, [r0]
-    // str r1, [r0, #8]
-    // str r2, [r0, #0x10]
-    // add r3, r3, #1
-    // add r0, r0, #4
-    // cmp r3, #2
-    // blt _0200FEB6
-    // bx lr
-    // nop
-    // _0200FEC8: .word sub_02010014
-    // TODO: decompile
+    *((u32*)(r0 + 8)) = sub_02010014;
+    *((u32*)(r0 + 0x10)) = 0;
 }
+
 
 
 
@@ -505,135 +246,63 @@ void sub_0200FECC(void) {
 
 
 
+
 void sub_0200FEE4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // mov r0, #1
     // str r0, [sp, #4]
-    // add r0, r5, #0
     // str r0, [sp, #8]
     // add r0, #0x10
-    // lsl r4, r3, #2
     // str r0, [sp, #8]
-    // ldr r0, [r0, r4]
-    // add r7, r2, #0
     // str r1, [sp]
-    // cmp r0, #0
-    // beq _0200FF06
-    // bl GF_AssertFail
-    // add r6, r5, #0
+    GF_AssertFail(*((u32*)(r0 + (r3 << 2))));
     // add r6, #8
-    // ldr r0, [r6, r4]
-    // cmp r0, #0
-    // bne _0200FF14
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // bne _0200FF2E
-    // ldr r0, [r5, #0x14]
-    // cmp r0, #0
-    // bne _0200FF2E
-    // ldr r0, _0200FF54 ; =sub_0200FECC
-    // add r1, r5, #0
-    // bl Main_SetHBlankIntrCB
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    GF_AssertFail(*((u32*)(r5 + r4)));
+    Main_SetHBlankIntrCB(sub_0200FECC, r5);
     // str r0, [sp, #4]
     // ldr r0, [sp, #4]
-    // cmp r0, #1
-    // beq _0200FF38
-    // bl GF_AssertFail
+    GF_AssertFail(((r0 << 0x18) >> 0x18));
     // ldr r0, [sp]
-    // cmp r7, #0
     // str r0, [r5, r4]
-    // beq _0200FF44
     // str r7, [r6, r4]
-    // b _0200FF48
-    // ldr r0, _0200FF58 ; =sub_02010014
     // str r0, [r6, r4]
     // ldr r0, [sp, #8]
-    // mov r1, #1
     // str r1, [r0, r4]
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _0200FF54: .word sub_0200FECC
-    // _0200FF58: .word sub_02010014
-    // TODO: decompile
 }
+
 
 
 
 void sub_0200FF5C(void) {
-    // push {r3, r4, r5, lr}
-    // lsl r4, r1, #2
-    // add r5, r0, #0
-    // mov r1, #0
     // add r0, r5, r4
-    // str r1, [r0, #0x10]
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // bne _0200FF78
-    // ldr r0, [r5, #0x14]
-    // cmp r0, #0
-    // bne _0200FF78
-    // bl HBlankInterruptDisable
-    // ldr r1, _0200FF84 ; =sub_02010014
+    *((u32*)(r0 + 0x10)) = 0;
+    HBlankInterruptDisable(*((u32*)(r0 + 0x14)), 0);
     // add r0, r5, r4
-    // str r1, [r0, #8]
-    // mov r0, #0
+    *((u32*)(r0 + 8)) = sub_02010014;
     // str r0, [r5, r4]
-    // pop {r3, r4, r5, pc}
-    // _0200FF84: .word sub_02010014
-    // TODO: decompile
 }
+
 
 
 
 void sub_0200FF88(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
     // ldr r0, [sp, #0x18]
-    // mov r1, #0x10
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl Heap_AllocAtEnd
-    // add r1, r0, #0
+    Heap_AllocAtEnd(0x10);
     // str r5, [r1]
-    // str r4, [r1, #4]
-    // mov r2, #1
-    // str r6, [r1, #8]
-    // ldr r0, _0200FFB0 ; =sub_0200FFD8
-    // lsl r2, r2, #0xa
-    // str r7, [r1, #0xc]
-    // bl SysTask_CreateOnVWaitQueue
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _0200FFB0: .word sub_0200FFD8
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = r4;
+    *((u32*)(r0 + 8)) = r6;
+    *((u32*)(r0 + 0xc)) = r7;
+    SysTask_CreateOnVWaitQueue(sub_0200FFD8, r0, (1 << 0xa));
 }
+
 
 
 
 void sub_0200FFB4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r0, r2, #0
-    // mov r1, #8
-    // bl Heap_AllocAtEnd
-    // add r1, r0, #0
-    // mov r2, #1
+    Heap_AllocAtEnd(r2, 8);
     // str r5, [r1]
-    // ldr r0, _0200FFD4 ; =sub_0200FFF8
-    // lsl r2, r2, #0xa
-    // str r4, [r1, #4]
-    // bl SysTask_CreateOnVWaitQueue
-    // pop {r3, r4, r5, pc}
-    // _0200FFD4: .word sub_0200FFF8
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = r4;
+    SysTask_CreateOnVWaitQueue(sub_0200FFF8, r0, (1 << 0xa));
 }
+
 
 
 
@@ -642,8 +311,10 @@ void sub_0200FFD8(void) {
 
 
 
+
 void sub_0200FFF8(void) {
 }
+
 
 
 
@@ -651,6 +322,7 @@ void sub_02010014(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -669,11 +341,12 @@ void sub_02010018(void) {
 
 
 
+
 void sub_0201002C(void) {
     // add r2, #0x14
     // add r2, #0x44
-    // ldrh r0, [r0, r1]
 }
+
 
 
 
@@ -682,70 +355,30 @@ void sub_02010050(void) {
 
 
 
+
 void sub_02010064(void) {
-    // push {r3, lr}
-    // add r1, r0, #0
-    // ldr r0, [r1, #0x28]
-    // cmp r0, #0
-    // bne _0201008A
-    // ldrh r2, [r1, #0x24]
-    // ldr r0, _0201008C ; =0x00007FFF
-    // cmp r2, r0
-    // beq _0201007A
-    // cmp r2, #0
-    // bne _0201008A
-    // ldr r0, [r1, #0x2c]
-    // cmp r0, #0
-    // bne _0201008A
-    // mov r2, #1
-    // ldr r0, _02010090 ; =sub_02010050
-    // lsl r2, r2, #0xa
-    // bl SysTask_CreateOnVWaitQueue
-    // pop {r3, pc}
-    // _0201008C: .word 0x00007FFF
-    // _02010090: .word sub_02010050
-    // TODO: decompile
+    SysTask_CreateOnVWaitQueue(sub_02010050, r0, (1 << 0xa));
 }
+
 
 
 
 void sub_02010094(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x28]
-    // cmp r0, #1
-    // bne _020100BC
-    // ldrh r1, [r4, #0x24]
-    // ldr r0, _020100C0 ; =0x00007FFF
-    // cmp r1, r0
-    // beq _020100AA
-    // cmp r1, #0
-    // bne _020100BC
-    // ldr r0, [r4, #0x2c]
-    // cmp r0, #0
-    // bne _020100BC
-    // ldr r0, [r4, #0x10]
-    // bl sub_0200FBF4
-    // ldr r0, [r4, #0x10]
-    // bl sub_0200FBDC
-    // pop {r4, pc}
-    // nop
-    // _020100C0: .word 0x00007FFF
-    // TODO: decompile
+    sub_0200FBF4(*((u32*)(r0 + 0x10)), *((u16*)(r0 + 0x24)));
+    sub_0200FBDC(*((u32*)(r4 + 0x10)));
 }
+
 
 
 
 void sub_020100C4(void) {
     // strb r0, [r2]
     // add r0, #0x14
-    memset(r0, 0, 0x30);
     // add r0, #0x44
-    memset(r4, 0, 0x30);
     // add r2, #0x74
     // strb r0, [r2]
     // add r4, #0x8c
-    memset(r4, 0, 0xc0);
 }
+
 
 

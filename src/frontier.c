@@ -1,181 +1,72 @@
 /* Decompiled from asm/frontier.s */
 #include "global.h"
 
-void Frontier_Init(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl Frontier_LoadOverlays
-    // ldr r1, _02096604 ; =0x00000A54
-    // add r0, r5, #0
-    // mov r2, #0xb
-    // bl OverlayManager_CreateAndGetData
-    // ldr r2, _02096604 ; =0x00000A54
-    // add r4, r0, #0
-    // mov r1, #0
-    // bl MI_CpuFill8
-    // add r0, r4, #0
-    // bl sub_02096780
-    // add r0, r4, #0
-    // bl sub_02096884
-    // add r0, r5, #0
-    // bl OverlayManager_GetArgs
+u8 Frontier_Init(void) {
+    Frontier_LoadOverlays();
+    OverlayManager_CreateAndGetData(r5, 0x00000A54, 0xb);
+    MI_CpuFill8(0, 0x00000A54);
+    sub_02096780(r4);
+    sub_02096884(r4);
+    OverlayManager_GetArgs(r5);
     // str r0, [r4]
-    // cmp r0, #0
-    // bne _020965DC
-    // bl GF_AssertFail
-    // ldr r2, [r4]
-    // add r0, r4, #0
+    GF_AssertFail();
     // add r2, #0x20
-    // ldrb r2, [r2]
-    // mov r1, #0xb
-    // bl FrontierSystem_Create
-    // str r0, [r4, #0x14]
-    // ldr r1, [r4]
-    // mov r2, #0
+    FrontierSystem_Create(r4, 0xb, *((u8*)*((u32*)r4)));
+    *((u32*)(r4 + 0x14)) = r0;
     // add r1, #0x20
-    // ldrb r1, [r1]
-    // bl FrontierSystem_AddTask
-    // add r0, r4, #0
-    // bl Frontier_CreateMap
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _02096604: .word 0x00000A54
-    // TODO: decompile
+    FrontierSystem_AddTask(*((u8*)*((u32*)r4)), 0);
+    Frontier_CreateMap(r4);
 }
 
 
 
-void Frontier_Main(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // bl OverlayManager_GetData
-    // ldr r1, [r5]
-    // add r4, r0, #0
-    // cmp r1, #6
-    // bls _0209661A
-    // b _02096734
+
+u8 Frontier_Main(void) {
+    OverlayManager_GetData();
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02096626: ; jump table
-    // mov r0, #1
     // str r0, [r5]
-    // b _02096734
     // add r0, #0x22
-    // ldrb r0, [r0]
-    // cmp r0, #1
-    // bne _02096648
-    // mov r0, #2
     // str r0, [r5]
-    // b _02096734
-    // ldrb r0, [r4, #0x1d]
-    // cmp r0, #0
-    // beq _02096734
-    // ldrb r0, [r4, #0x1e]
-    // cmp r0, #1
-    // bne _0209665A
-    // mov r0, #5
     // str r0, [r5]
-    // b _02096734
-    // ldr r0, [r4, #0x14]
-    // bl FrontierSystem_Main
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // beq _02096734
-    // mov r0, #3
+    FrontierSystem_Main(*((u32*)(r0 + 0x14)), (*((u16*)(*((u32*)r5) + 6)) << 0x10));
     // str r0, [r5]
-    // b _02096734
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r4, #0x18]
-    // bl ov80_022389C4
-    // add r0, r4, #0
-    // bl Frontier_FreeMap
-    // bl Frontier_UnloadOverlays
-    // mov r0, #4
+    ov80_022389C4(*((u32*)(r4 + 0x18)));
+    Frontier_FreeMap(r4);
+    Frontier_UnloadOverlays();
     // str r0, [r5]
-    // b _02096734
-    // ldr r0, [r4, #4]
-    // bl OverlayManager_Run
-    // cmp r0, #1
-    // bne _02096734
-    // ldr r0, [r4, #4]
-    // bl OverlayManager_Delete
-    // bl Frontier_LoadOverlays
-    // ldr r1, [r4, #0xc]
-    // cmp r1, #0
-    // beq _020966A4
-    // ldr r0, [r4, #8]
+    OverlayManager_Run(*((u32*)(r4 + 4)));
+    OverlayManager_Delete(*((u32*)(r4 + 4)));
+    Frontier_LoadOverlays();
     // blx r1
-    // ldr r0, [r4, #8]
-    // cmp r0, #0
-    // beq _020966B4
-    // ldrb r1, [r4, #0x10]
-    // cmp r1, #1
-    // bne _020966B4
-    // bl Heap_Free
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // str r0, [r4, #0xc]
-    // str r0, [r4, #8]
-    // add r0, r4, #0
-    // bl Frontier_CreateMap
-    // ldr r0, [r4, #0x18]
-    // bl ov80_02238A18
-    // mov r0, #1
+    Heap_Free(*((u32*)(r4 + 8)), *((u8*)(r4 + 0x10)));
+    *((u32*)(r4 + 4)) = 0;
+    *((u32*)(r4 + 0xc)) = 0;
+    *((u32*)(r4 + 8)) = 0;
+    Frontier_CreateMap(r4);
+    ov80_02238A18(*((u32*)(r4 + 0x18)));
     // str r0, [r5]
-    // b _02096734
-    // bl Frontier_FreeMap
-    // add r0, r4, #0
-    // bl sub_02096780
-    // mov r0, #6
+    Frontier_FreeMap(1);
+    sub_02096780(r4);
     // str r0, [r5]
-    // b _02096734
-    // bl Frontier_CreateMap
-    // ldrh r1, [r4, #0x20]
-    // ldr r0, _02096738 ; =0x0000FFFF
-    // cmp r1, r0
-    // ldr r0, [r4, #0x14]
-    // bne _020966FA
-    // ldr r1, [r4]
-    // mov r2, #0xb
+    Frontier_CreateMap(6);
     // add r1, #0x20
-    // ldrb r1, [r1]
-    // bl ov80_0222AA7C
-    // b _0209672C
-    // mov r1, #0xb
-    // bl ov80_0222AAD8
-    // add r6, r0, #0
-    // ldr r0, [r4, #0x14]
-    // bl ov80_0222A920
-    // ldr r2, [r4]
-    // add r0, r4, #0
+    ov80_0222AA7C(*((u32*)(r4 + 0x14)), *((u8*)*((u32*)r4)), 0xb);
+    ov80_0222AAD8(0xb);
+    ov80_0222A920(*((u32*)(r4 + 0x14)));
     // add r2, #0x20
-    // ldrb r2, [r2]
-    // mov r1, #0xb
-    // bl FrontierSystem_Create
-    // str r0, [r4, #0x14]
-    // ldr r1, [r4]
-    // ldrh r2, [r4, #0x20]
+    FrontierSystem_Create(r4, 0xb, *((u8*)*((u32*)r4)));
+    *((u32*)(r4 + 0x14)) = r0;
     // add r1, #0x20
-    // ldrb r1, [r1]
-    // bl FrontierSystem_AddTask
-    // ldr r0, [r4, #0x14]
-    // add r1, r6, #0
-    // bl ov80_0222AAF8
-    // mov r0, #0
-    // strb r0, [r4, #0x1e]
-    // mov r0, #1
+    FrontierSystem_AddTask(*((u8*)*((u32*)r4)), *((u16*)(r4 + 0x20)));
+    ov80_0222AAF8(*((u32*)(r4 + 0x14)), r6);
+    *((u8*)(r4 + 0x1e)) = 0;
     // str r0, [r5]
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // _02096738: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
@@ -184,8 +75,10 @@ u32 Frontier_Exit(void) {
 
 
 
+
 void Frontier_CreateMap(void) {
 }
+
 
 
 
@@ -194,75 +87,34 @@ void Frontier_FreeMap(void) {
 
 
 
+
 void sub_02096780(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, _020967B8 ; =0x0000FFFF
-    // mov r1, #0
-    // add r2, r4, #0
-    // add r1, r1, #1
-    // strh r0, [r2, #0x24]
-    // add r2, r2, #4
-    // cmp r1, #0x18
-    // blt _0209678A
-    // add r0, r4, #0
-    // mov r2, #0x1e
+    *((u16*)(r0 + 0x24)) = 0x0000FFFF;
     // add r0, #0x84
-    // mov r1, #0
-    // lsl r2, r2, #6
-    // bl MI_CpuFill8
-    // ldr r1, _020967B8 ; =0x0000FFFF
-    // mov r2, #0
-    // add r0, r4, #0
+    MI_CpuFill8(r0, 0, (0x1e << 6));
     // add r0, #0x90
-    // add r2, r2, #1
     // add r4, #0x3c
     // strh r1, [r0]
-    // cmp r2, #0x20
-    // blt _020967A6
-    // pop {r4, pc}
-    // nop
-    // _020967B8: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
 void Frontier_LoadOverlays(void) {
-    // push {r3, lr}
-    // ldr r0, _020967D8 ; =FS_OVERLAY_ID(OVY_80)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // ldr r0, _020967DC ; =FS_OVERLAY_ID(OVY_81)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // ldr r0, _020967E0 ; =FS_OVERLAY_ID(OVY_42)
-    // mov r1, #2
-    // bl HandleLoadOverlay
-    // pop {r3, pc}
-    // _020967D8: .word FS_OVERLAY_ID(OVY_80)
-    // _020967DC: .word FS_OVERLAY_ID(OVY_81)
-    // _020967E0: .word FS_OVERLAY_ID(OVY_42)
-    // TODO: decompile
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
+    HandleLoadOverlay(FS_OVERLAY_ID, 2);
 }
+
 
 
 
 void Frontier_UnloadOverlays(void) {
-    // push {r3, lr}
-    // ldr r0, _020967FC ; =FS_OVERLAY_ID(OVY_80)
-    // bl UnloadOverlayByID
-    // ldr r0, _02096800 ; =FS_OVERLAY_ID(OVY_81)
-    // bl UnloadOverlayByID
-    // ldr r0, _02096804 ; =FS_OVERLAY_ID(OVY_42)
-    // bl UnloadOverlayByID
-    // pop {r3, pc}
-    // nop
-    // _020967FC: .word FS_OVERLAY_ID(OVY_80)
-    // _02096800: .word FS_OVERLAY_ID(OVY_81)
-    // _02096804: .word FS_OVERLAY_ID(OVY_42)
-    // TODO: decompile
+    UnloadOverlayByID(FS_OVERLAY_ID);
+    UnloadOverlayByID(FS_OVERLAY_ID);
+    UnloadOverlayByID(FS_OVERLAY_ID);
 }
+
 
 
 
@@ -274,11 +126,13 @@ void Frontier_GetLaunchArgs(void) {
 
 
 
+
 void sub_0209680C(void) {
     // ldr r0, [r0, #0x18]
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -291,21 +145,18 @@ void Frontier_GetData(void) {
 
 
 
+
 void Frontier_SetData(void) {
     // str r1, [r0]
 }
 
 
 
+
 void Frontier_LaunchApplication(void) {
-    GF_AssertFail(*((u32*)(r0 + 4)));
-    OverlayManager_New(r7, r4, 0xb);
-    *((u32*)(r5 + 4)) = r0;
-    *((u32*)(r5 + 8)) = r4;
     // ldr r0, [sp, #0x18]
-    *((u8*)(r5 + 0x10)) = r6;
-    *((u32*)(r5 + 0xc)) = r0;
 }
+
 
 
 
@@ -316,12 +167,12 @@ void sub_0209684C(void) {
 
 
 
+
 void sub_02096854(void) {
     // add r3, #0x20
     // strb r1, [r3]
-    *((u8*)(r0 + 0x1e)) = 1;
-    *((u16*)(r0 + 0x20)) = r2;
 }
+
 
 
 
@@ -345,38 +196,18 @@ u16 * sub_0209686C(void) {
 
 
 
-void sub_02096878(void) {
-    // ldr r1, _02096880 ; =0x00000A04
+void * sub_02096878(void) {
     // add r0, r0, r1
-    // bx lr
-    // nop
-    // _02096880: .word 0x00000A04
-    // TODO: decompile
 }
+
 
 
 
 void sub_02096884(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, _020968A8 ; =0x00000A04
-    // mov r1, #0
     // add r0, r4, r0
-    // mov r2, #8
-    // bl MI_CpuFill8
-    // ldr r1, _020968AC ; =0x0000FFFF
-    // ldr r0, _020968A8 ; =0x00000A04
-    // mov r2, #0
-    // add r2, r2, #1
+    MI_CpuFill8(0x00000A04, 0, 8);
     // strh r1, [r4, r0]
-    // add r4, r4, #2
-    // cmp r2, #8
-    // blt _0209689A
-    // pop {r4, pc}
-    // nop
-    // _020968A8: .word 0x00000A04
-    // _020968AC: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 

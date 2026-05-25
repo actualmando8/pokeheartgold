@@ -2,125 +2,51 @@
 #include "global.h"
 
 void ov12_0226BEC4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r0, #5
-    // mov r1, #8
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #8
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // mov r2, #0xfa
-    // ldr r0, _0226BEEC ; =ov12_0226BF04
-    // add r1, r4, #0
-    // lsl r2, r2, #2
+    Heap_Alloc(5, 8);
+    MI_CpuFill8(0, 8);
     // str r5, [r4]
-    // bl SysTask_CreateOnMainQueue
-    // pop {r3, r4, r5, pc}
-    // nop
-    // _0226BEEC: .word ov12_0226BF04
-    // TODO: decompile
+    SysTask_CreateOnMainQueue(ov12_0226BF04, r4, (0xfa << 2));
 }
+
 
 
 void ov12_0226BEF0(void) {
-    SysTask_GetData();
-    Heap_Free();
-    SysTask_Destroy(r4);
 }
+
 
 
 void ov12_0226BF04(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r4, r1, #0
-    // ldr r0, [r4]
-    // bl BattleSystem_GetBattleInput
-    // mov r1, #4
+    BattleSystem_GetBattleInput(*((u32*)r1));
     // ldrsh r1, [r4, r1]
-    // add r5, r0, #0
-    // cmp r1, #4
-    // bhi _0226BFCE
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _0226BF26: ; jump table
-    // cmp r5, #0
-    // bne _0226BF38
-    // bl GF_AssertFail
-    // mov r0, #7
-    // mov r1, #5
-    // bl NARC_New
-    // add r6, r0, #0
-    // mov r0, #8
-    // mov r1, #5
-    // bl NARC_New
-    // add r7, r0, #0
-    // mov r0, #0
+    GF_AssertFail((*((u16*)(4 + 6)) << 0x10));
+    NARC_New(7, 5);
+    NARC_New(8, 5);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // add r2, r5, #0
-    // mov r3, #0x12
-    // bl BattleInput_ChangeMenu
-    // add r0, r6, #0
-    // bl NARC_Delete
-    // add r0, r7, #0
-    // bl NARC_Delete
-    // mov r0, #4
+    BattleInput_ChangeMenu(r6, r0, r5, 0x12);
+    NARC_Delete(r6);
+    NARC_Delete(r7);
     // ldrsh r0, [r4, r0]
-    // add sp, #8
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl BattleInput_CheckFeedbackDone
-    // cmp r0, #1
-    // bne _0226BFCE
-    // mov r0, #4
+    *((u16*)(r4 + 4)) = (4 + 1);
+    BattleInput_CheckFeedbackDone((4 + 1));
     // ldrsh r0, [r4, r0]
-    // add sp, #8
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4]
-    // bl ov12_0223C080
-    // cmp r0, #1
-    // bne _0226BFCE
-    // add r0, r5, #0
-    // bl BattleInput_CheckTouch
-    // cmp r0, #1
-    // bne _0226BFCE
-    // ldr r0, _0226BFD4 ; =0x000005DD
-    // bl PlaySE
-    // mov r0, #4
+    *((u16*)(r4 + 4)) = (4 + 1);
+    ov12_0223C080(*((u32*)r4));
+    BattleInput_CheckTouch(r5);
+    PlaySE(0x000005DD);
     // ldrsh r0, [r4, r0]
-    // add sp, #8
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #6
+    *((u16*)(r4 + 4)) = (4 + 1);
     // ldrsh r1, [r4, r0]
-    // add r1, r1, #1
-    // strh r1, [r4, #6]
+    *((u16*)(r4 + 6)) = (r1 + 1);
     // ldrsh r0, [r4, r0]
-    // cmp r0, #8
-    // ble _0226BFCE
-    // ldr r0, [r4]
-    // mov r1, #0
-    // bl ov12_0223BFFC
-    // mov r0, #4
+    ov12_0223BFFC(*((u32*)r4), 0);
     // ldrsh r0, [r4, r0]
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _0226BFD4: .word 0x000005DD
-    // TODO: decompile
+    *((u16*)(r4 + 4)) = (4 + 1);
 }
+
 

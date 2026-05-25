@@ -2,43 +2,21 @@
 #include "global.h"
 
 void ov01_021F944C(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r2, #0
-    // mov r2, #0x41
-    // add r5, r0, #0
-    // lsl r2, r2, #2
     // str r1, [r5, r2]
-    // add r1, r4, #0
-    // bl ov01_021FA2EC
+    ov01_021FA2EC(r2, (0x41 << 2));
     // ldr r2, [sp, #0x24]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov01_021FA854
-    // mov r2, #4
-    // mov r1, #8
+    ov01_021FA854(r5, r4);
     // ldr r0, [sp, #0x18]
     // str r2, [sp]
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x1c]
-    // add r3, r1, #0
     // str r0, [sp, #8]
-    // add r0, r5, #0
-    // bl ov01_021F9808
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov01_021F9698
+    ov01_021F9808(r5, 8, 4, 8);
+    ov01_021F9698(r5, r4);
     // ldr r1, [sp, #0x20]
-    // ldr r2, _021F9498 ; =ov01_02207260
-    // ldr r3, _021F949C ; =ov01_02206CF0
-    // add r0, r5, #0
-    // bl ov01_021F9A8C
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // _021F9498: .word ov01_02207260
-    // _021F949C: .word ov01_02206CF0
-    // TODO: decompile
+    ov01_021F9A8C(r5, ov01_02207260, ov01_02206CF0);
 }
+
 
 
 
@@ -47,17 +25,14 @@ void ov01_021F94A0(void) {
 
 
 
+
 void ov01_021F94C0(void) {
     // str r1, [r5]
-    ov01_021FA3DC(0);
     // str r0, [sp]
-    ov01_021F9DA4(r6);
-    ov01_021F9654(r7, r5, r6);
     // ldr r0, [sp]
-    ov01_021FA75C((r4 - 3), r7, r5, r6);
-    ov01_021F9528(r7, r6);
     // str r0, [r5]
 }
+
 
 
 
@@ -66,23 +41,31 @@ void ov01_021F9510(void) {
 
 
 
+
 void ov01_021F9528(void) {
-    ov01_021FA3DC();
-    ov01_021FA1D0();
-    ov01_021F9F84(r4, r5);
-    ov01_021F9704(r4, r5);
-    GF_AssertFail();
     // add r1, sp, #0
-    ov01_021F93AC(r6);
     // add r2, sp, #0
-    ov01_021FA31C(r7, r4);
-    GF_AssertFail();
 }
 
 
 
+
 void ov01_021F9574(void) {
-    sub_02023DA4(*((u32*)r1));
+    // str r0, [r5]
+}
+
+
+
+
+void ov01_021F95A8(void) {
+}
+
+
+
+
+void ov01_021F95CC(void) {
+    ov01_021F9688();
+    sub_02023DA4(*((u32*)r5));
     // str r0, [r5]
     MapObject_GetManager(r6);
     ov01_021F97BC(r6, r4);
@@ -92,67 +75,23 @@ void ov01_021F9574(void) {
 
 
 
-void ov01_021F95A8(void) {
-    ov01_021F9688();
-    MapObject_GetSpriteID(r5);
-    ov01_021F9574(r5, r4, r0);
-}
-
-
-
-void ov01_021F95CC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // add r4, r2, #0
-    // bl ov01_021F9688
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // beq _021F95E6
-    // bl sub_02023DA4
-    // mov r0, #0
-    // str r0, [r5]
-    // ldr r0, _021F960C ; =0x0000FFFF
-    // cmp r4, r0
-    // beq _021F960A
-    // add r0, r6, #0
-    // bl MapObject_GetManager
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl ov01_021F97BC
-    // cmp r0, #0
-    // bne _021F960A
-    // add r0, r6, #0
-    // bl ov01_021FA3DC
-    // add r1, r4, #0
-    // bl ov01_021F9778
-    // pop {r4, r5, r6, pc}
-    // _021F960C: .word 0x0000FFFF
-    // TODO: decompile
-}
-
-
 
 void ov01_021F9610(void) {
 }
 
 
 
+
 void ov01_021F9630(void) {
-    sub_02023EA4(((*((u32*)r1) << 0x18) >> 0x18));
-    sub_02023EE0(r5, *((u16*)(r4 + 6)));
-    sub_02023F1C(r5, *((u32*)(r4 + 8)));
 }
+
 
 
 
 void ov01_021F9654(void) {
-    ov01_021FA3DC();
-    ov01_021F9974(r6);
-    ov01_021F9528(r5, r6);
     // str r0, [r4]
-    ov01_021FA75C(r7, r5, r4, r6);
 }
+
 
 
 
@@ -161,42 +100,22 @@ void ov01_021F9688(void) {
 
 
 
+
 void ov01_021F9698(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // mov r1, #0x28
-    // add r7, r0, #0
-    // mov r0, #4
-    // mul r1, r5
-    // bl Heap_Alloc
-    // add r6, r0, #0
-    // add r0, r7, #0
+    Heap_Alloc(4, (0x28 * r1));
     // add r0, #0xe4
     // str r6, [r0]
-    // cmp r6, #0
-    // bne _021F96B8
-    // bl GF_AssertFail
-    // mov r0, #4
-    // lsl r1, r5, #3
-    // bl Heap_Alloc
-    // add r4, r0, #0
+    GF_AssertFail(r7);
+    Heap_Alloc(4, (r5 << 3));
     // add r7, #0xf4
     // str r4, [r7]
-    // cmp r4, #0
-    // bne _021F96CE
-    // bl GF_AssertFail
-    // ldr r0, _021F96E0 ; =0x0000FFFF
+    GF_AssertFail();
     // str r0, [r4]
-    // str r6, [r4, #4]
+    *((u32*)(r4 + 4)) = r6;
     // add r4, #8
     // add r6, #0x28
-    // sub r5, r5, #1
-    // bne _021F96D0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021F96E0: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
@@ -205,44 +124,19 @@ void ov01_021F96E4(void) {
 
 
 
+
 void ov01_021F9704(void) {
-    // push {r4, r5, r6, lr}
-    // add r2, r0, #0
     // add r2, #0xf4
-    // ldr r4, [r2]
-    // ldr r2, [r0, #4]
-    // add r6, r4, #0
-    // add r5, r2, #0
-    // ldr r3, [r6]
-    // cmp r3, r1
-    // bne _021F971C
-    // ldr r0, [r6, #4]
-    // pop {r4, r5, r6, pc}
     // add r6, #8
-    // sub r5, r5, #1
-    // bne _021F9712
-    // ldr r3, _021F9740 ; =0x0000FFFF
-    // ldr r5, [r4]
-    // cmp r5, r3
-    // bne _021F9736
     // str r1, [r4]
-    // ldr r2, [r4, #4]
-    // bl ov01_021FA370
-    // ldr r0, [r4, #4]
-    // pop {r4, r5, r6, pc}
+    ov01_021FA370(*((u32*)(*((u32*)r0) + 4)), *((u32*)(*((u32*)r0) + 4)), 0x0000FFFF);
     // add r4, #8
-    // sub r2, r2, #1
-    // bne _021F9724
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // _021F9740: .word 0x0000FFFF
-    // TODO: decompile
 }
 
 
 
+
 void ov01_021F9744(void) {
-    sub_0205F1A0();
     // add r1, #0xf4
     // ldmia r3!, {r0, r1}
     // stmia r4!, {r0, r1}
@@ -251,121 +145,62 @@ void ov01_021F9744(void) {
 
 
 
+
 void ov01_021F9778(void) {
-    // add r2, r0, #0
     // add r2, #0xf4
-    // ldr r3, [r2]
-    // ldr r2, [r0, #4]
-    // ldr r0, [r3]
-    // cmp r0, r1
-    // bne _021F978C
-    // ldr r0, _021F9794 ; =0x0000FFFF
     // str r0, [r3]
-    // bx lr
     // add r3, #8
-    // sub r2, r2, #1
-    // bne _021F9780
-    // bx lr
-    // _021F9794: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
 void ov01_021F9798(void) {
-    // push {r3, r4}
-    // add r1, r0, #0
     // add r1, #0xf4
-    // ldr r4, [r1]
-    // ldr r1, _021F97B8 ; =0x0000FFFF
-    // ldr r3, [r0, #4]
-    // add r0, r1, #0
-    // ldr r2, [r4]
-    // cmp r2, r0
-    // beq _021F97AE
     // str r1, [r4]
     // add r4, #8
-    // sub r3, r3, #1
-    // bne _021F97A6
-    // pop {r3, r4}
-    // bx lr
-    // _021F97B8: .word 0x0000FFFF
-    // TODO: decompile
 }
+
 
 
 
 void ov01_021F97BC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // add r5, r1, #0
-    // add r6, r2, #0
-    // bl MapObjectManager_GetObjectCount
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl MapObjectManager_GetObjects2
-    // ldr r7, _021F9804 ; =0x0000FFFF
+    MapObjectManager_GetObjectCount();
+    MapObjectManager_GetObjects2(r7);
     // str r0, [sp]
     // ldr r0, [sp]
-    // cmp r0, r5
-    // beq _021F97F4
-    // bl MapObject_CheckActive
-    // cmp r0, #1
-    // bne _021F97F4
+    MapObject_CheckActive();
     // ldr r0, [sp]
-    // bl MapObject_GetSpriteID
-    // cmp r0, r7
-    // beq _021F97F4
-    // cmp r0, r6
-    // bne _021F97F4
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
+    MapObject_GetSpriteID();
     // add r0, sp, #0
-    // bl MapObjectArray_NextObject
-    // sub r4, r4, #1
-    // bne _021F97D4
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021F9804: .word 0x0000FFFF
-    // TODO: decompile
+    MapObjectArray_NextObject(1);
 }
+
 
 
 
 void ov01_021F9808(void) {
-    ov01_021FC4C4(4, 0x3f, (r1 << 0xc), r1);
     // add r1, #0xf8
     // str r0, [r1]
-    ov01_021F9B00(r5, r5);
-    ov01_021FA208(r5, r6);
     // sub r1, r4, r6
-    ov01_021FA210(r5);
-    ov01_021FC4C4(4, 0x40, (r7 << 7), r7);
     // add r1, #0xfc
     // str r0, [r1]
-    ov01_021F9C24(r5, r5);
     // ldr r1, [sp, #0x18]
-    ov01_021FA218(r5);
     // ldr r1, [sp, #0x18]
     // sub r1, r7, r1
-    ov01_021FA220(r5);
     // ldr r0, [sp, #0x1c]
-    GF3dGfxRawResMan_Create(4);
-    ov01_021FA1EC(r5, r0);
-    ov01_021F9D48(r5);
     // ldr r1, [sp, #0x20]
-    ov01_021FA228(r5);
     // ldr r2, [sp, #0x1c]
     // ldr r1, [sp, #0x20]
     // sub r1, r2, r1
-    ov01_021FA230(r5);
 }
+
 
 
 
 void ov01_021F9890(void) {
 }
+
 
 
 
@@ -376,27 +211,20 @@ void ov01_021F98B4(void) {
 
 
 
+
 void ov01_021F98CC(void) {
-    ov01_021FC5B8(r1, r2);
     // ldr r2, [sp, #0x18]
-    ov01_021F98B4(r4, r7);
-    GF_AssertFail();
-    // ldr r0, [r5, r0]
-    MapObjectManager_GetMapModelNarc((0x41 << 2));
     // str r0, [sp]
-    ov01_021FC5CC(r6, r4, r0, *((u16*)(r7 + 2)));
 }
+
 
 
 
 void ov01_021F9918(void) {
     // add r0, #0xf0
-    GF3dGfxRawResMan_DoesNotHaveObjWithId(*((u32*)r0), r2);
-    ov01_021FA524(r5, r4);
-    GetMoveModelNoBySpriteId(r4);
     // bpl _021F9950
-    ov01_021FA470(r5, r4, r0, r6);
 }
+
 
 
 
@@ -405,78 +233,39 @@ void ov01_021F9968(void) {
 
 
 
+
 void ov01_021F9974(void) {
 }
 
 
 
+
 void ov01_021F9980(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r1, [r4]
-    // ldr r0, _021F99A0 ; =0x0000FFFF
-    // cmp r1, r0
-    // beq _021F999E
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl ov01_021F9968
-    // add r4, r4, #4
-    // ldr r1, [r4]
-    // cmp r1, r6
-    // bne _021F9990
-    // pop {r4, r5, r6, pc}
-    // _021F99A0: .word 0x0000FFFF
-    // TODO: decompile
+    ov01_021F9968(r0, *((u32*)r1));
 }
+
 
 
 
 void ov01_021F99A4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl ov01_021FA1DC
-    // ldr r0, _021F99CC ; =ov01_02207294
-    // add r1, r5, #0
+    ov01_021FA1DC();
     // str r0, [sp]
     // add r1, #0xf8
-    // ldr r1, [r1]
-    // add r0, r5, #0
-    // add r2, r4, #0
-    // mov r3, #0xff
-    // bl ov01_021F98CC
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov01_021F9B10
-    // pop {r3, r4, r5, pc}
-    // _021F99CC: .word ov01_02207294
-    // TODO: decompile
+    ov01_021F98CC(r5, *((u32*)r5), r4, 0xff);
+    ov01_021F9B10(r5, r4);
 }
+
 
 
 
 void ov01_021F99D0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl ov01_021FA1DC
-    // ldr r0, _021F99F8 ; =ov01_02207294
-    // add r1, r5, #0
+    ov01_021FA1DC();
     // str r0, [sp]
     // add r1, #0xf8
-    // ldr r1, [r1]
-    // add r0, r5, #0
-    // add r2, r4, #0
-    // mov r3, #0xff
-    // bl ov01_021F98CC
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov01_021F9B54
-    // pop {r3, r4, r5, pc}
-    // _021F99F8: .word ov01_02207294
-    // TODO: decompile
+    ov01_021F98CC(r5, *((u32*)r5), r4, 0xff);
+    ov01_021F9B54(r5, r4);
 }
+
 
 
 
@@ -485,51 +274,26 @@ void ov01_021F99FC(void) {
 
 
 
+
 void ov01_021F9A18(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl ov01_021FA1E4
-    // ldr r0, _021F9A40 ; =ov01_022072CC
-    // add r1, r5, #0
+    ov01_021FA1E4();
     // str r0, [sp]
     // add r1, #0xfc
-    // ldr r1, [r1]
-    // add r0, r5, #0
-    // add r2, r4, #0
-    // mov r3, #0xff
-    // bl ov01_021F98CC
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov01_021F9C34
-    // pop {r3, r4, r5, pc}
-    // _021F9A40: .word ov01_022072CC
-    // TODO: decompile
+    ov01_021F98CC(r5, *((u32*)r5), r4, 0xff);
+    ov01_021F9C34(r5, r4);
 }
+
 
 
 
 void ov01_021F9A44(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl ov01_021FA1E4
-    // ldr r0, _021F9A6C ; =ov01_022072CC
-    // add r1, r5, #0
+    ov01_021FA1E4();
     // str r0, [sp]
     // add r1, #0xfc
-    // ldr r1, [r1]
-    // add r0, r5, #0
-    // add r2, r4, #0
-    // mov r3, #0xff
-    // bl ov01_021F98CC
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov01_021F9C78
-    // pop {r3, r4, r5, pc}
-    // _021F9A6C: .word ov01_022072CC
-    // TODO: decompile
+    ov01_021F98CC(r5, *((u32*)r5), r4, 0xff);
+    ov01_021F9C78(r5, r4);
 }
+
 
 
 
@@ -538,8 +302,10 @@ void ov01_021F9A70(void) {
 
 
 
+
 void ov01_021F9A8C(void) {
 }
+
 
 
 
@@ -549,9 +315,11 @@ void ov01_021F9AAC(void) {
 
 
 
+
 void ov01_021F9AB4(void) {
     // str r1, [r0]
 }
+
 
 
 
@@ -571,9 +339,11 @@ void ov01_021F9AD0(void) {
 
 
 
+
 void ov01_021F9AE4(void) {
     // str r2, [r0]
 }
+
 
 
 
@@ -582,12 +352,10 @@ void ov01_021F9B00(void) {
 
 
 
+
 void ov01_021F9B10(void) {
-    ov01_021FA20C();
-    ov01_021FA200(r5);
-    ov01_021F9AB4(r4, 0xff, r6);
-    GF_AssertFail();
 }
+
 
 
 
@@ -596,48 +364,34 @@ void ov01_021F9B38(void) {
 
 
 
+
 void ov01_021F9B54(void) {
-    ov01_021FA200();
-    ov01_021FA20C(r5);
-    ov01_021FA214(r5);
     // add r0, r6, r4
-    ov01_021F9AB4(r7, 0xff, r0);
-    GF_AssertFail();
 }
+
 
 
 
 void ov01_021F9B84(void) {
-    ov01_021FA200();
-    ov01_021FA20C(r5);
-    ov01_021FA214(r5);
     // add r0, r6, r4
-    ov01_021F9AD0(r7, r0);
 }
+
 
 
 
 void ov01_021F9BAC(void) {
-    ov01_021FA200();
-    ov01_021FA20C(r5);
-    ov01_021FA214(r5);
     // add r0, r6, r4
-    ov01_021F9AE4(r7, 0xff, r0);
 }
+
 
 
 
 void ov01_021F9BD4(void) {
-    ov01_021FA1DC(r1);
-    ov01_021FA200(r6);
-    ov01_021FA20C(r6);
     // add r5, r4, r0
-    ov01_021FA214(r6);
-    ov01_021FA01C(r7, *((u32*)r5), 0);
     // add r0, #0xf8
-    ov01_021FC588(*((u32*)r6), *((u32*)r5));
     // str r0, [r5]
 }
+
 
 
 
@@ -646,12 +400,10 @@ void ov01_021F9C24(void) {
 
 
 
+
 void ov01_021F9C34(void) {
-    ov01_021FA21C();
-    ov01_021FA204(r5);
-    ov01_021F9AB4(r4, 0xff, r6);
-    GF_AssertFail();
 }
+
 
 
 
@@ -660,84 +412,52 @@ void ov01_021F9C5C(void) {
 
 
 
+
 void ov01_021F9C78(void) {
-    ov01_021FA204();
-    ov01_021FA21C(r5);
-    ov01_021FA224(r5);
     // add r0, r6, r4
-    ov01_021F9AB4(r7, 0xff, r0);
-    GF_AssertFail();
 }
+
 
 
 
 void ov01_021F9CA8(void) {
-    ov01_021FA204();
-    ov01_021FA21C(r5);
-    ov01_021FA224(r5);
     // add r0, r6, r4
-    ov01_021F9AD0(r7, r0);
 }
+
 
 
 
 void ov01_021F9CD0(void) {
-    ov01_021FA204();
-    ov01_021FA21C(r5);
-    ov01_021FA224(r5);
     // add r0, r6, r4
-    ov01_021F9AE4(r7, 0xff, r0);
 }
 
 
 
+
 void ov01_021F9CF8(void) {
-    ov01_021FA1E4(r1);
-    ov01_021FA204(r6);
-    ov01_021FA21C(r6);
     // add r5, r4, r0
-    ov01_021FA224(r6);
-    ov01_021FA094(r7, *((u32*)r5), 0);
     // add r0, #0xfc
-    ov01_021FC588(*((u32*)r6), *((u32*)r5));
     // str r0, [r5]
 }
 
 
 
+
 void ov01_021F9D48(void) {
-    // push {r3, lr}
-    // bl ov01_021FA1FC
-    // ldr r1, _021F9D58 ; =0x0000FFFF
-    // mov r2, #0x20
-    // bl ov01_021F9AAC
-    // pop {r3, pc}
-    // _021F9D58: .word 0x0000FFFF
-    // TODO: decompile
+    ov01_021FA1FC();
+    ov01_021F9AAC(0x0000FFFF, 0x20);
 }
+
 
 
 
 void ov01_021F9D5C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl ov01_021FA22C
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl ov01_021FA1FC
-    // ldr r2, _021F9D84 ; =0x0000FFFF
-    // add r1, r4, #0
-    // add r3, r6, #0
-    // bl ov01_021F9AB4
-    // cmp r0, #0
-    // bne _021F9D80
-    // bl GF_AssertFail
-    // pop {r4, r5, r6, pc}
-    // nop
-    // _021F9D84: .word 0x0000FFFF
-    // TODO: decompile
+    ov01_021FA22C();
+    ov01_021FA1FC(r5);
+    ov01_021F9AB4(r4, 0x0000FFFF, r6);
+    GF_AssertFail();
 }
+
 
 
 
@@ -746,163 +466,96 @@ void ov01_021F9D88(void) {
 
 
 
+
 void ov01_021F9DA4(void) {
-    ov01_021F9D88();
-    ov01_021F9E9C(r5, r4);
-    ov01_021FA524(r5, r4);
 }
+
 
 
 
 void ov01_021F9DD0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // bl ov01_021FA1FC
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl ov01_021FA22C
-    // lsl r4, r0, #2
-    // add r0, r5, #0
-    // bl ov01_021FA234
-    // add r3, r0, #0
-    // ldr r2, _021F9E00 ; =0x0000FFFF
-    // add r0, r6, r4
-    // add r1, r7, #0
-    // bl ov01_021F9AB4
-    // cmp r0, #0
-    // bne _021F9DFE
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _021F9E00: .word 0x0000FFFF
-    // TODO: decompile
-}
-
-
-
-void ov01_021F9E04(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // bl ov01_021FA1FC
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl ov01_021FA22C
-    // lsl r4, r0, #2
-    // add r0, r5, #0
-    // bl ov01_021FA234
-    // add r3, r0, #0
-    // ldr r2, _021F9E2C ; =0x0000FFFF
-    // add r0, r6, r4
-    // add r1, r7, #0
-    // bl ov01_021F9AE4
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _021F9E2C: .word 0x0000FFFF
-    // TODO: decompile
-}
-
-
-
-void ov01_021F9E30(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r6, r1, #0
-    // str r0, [sp]
-    // add r0, r6, #0
-    // bl ov01_021FA1F4
-    // str r0, [sp, #4]
-    // add r0, r6, #0
-    // bl ov01_021FA1FC
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl ov01_021FA22C
-    // lsl r0, r0, #2
-    // add r5, r4, r0
-    // add r0, r6, #0
-    // bl ov01_021FA234
-    // add r7, r0, #0
-    // ldr r4, [r5]
-    // ldr r0, _021F9E98 ; =0x0000FFFF
-    // cmp r4, r0
-    // beq _021F9E8C
-    // ldr r0, [sp]
-    // add r1, r4, #0
-    // mov r2, #0
-    // bl ov01_021F9FCC
-    // cmp r0, #0
-    // bne _021F9E8C
-    // ldr r0, [sp, #4]
-    // add r1, r4, #0
-    // bl GF3dGfxRawResMan_FreeObjById
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl ov01_021FA4F0
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl ov01_021FA6A4
-    // ldr r0, _021F9E98 ; =0x0000FFFF
-    // str r0, [r5]
-    // add r5, r5, #4
-    // sub r7, r7, #1
-    // bne _021F9E5A
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021F9E98: .word 0x0000FFFF
-    // TODO: decompile
-}
-
-
-
-void ov01_021F9E9C(void) {
     ov01_021FA1FC();
     ov01_021FA22C(r5);
     ov01_021FA234(r5);
     // add r0, r6, r4
-    ov01_021F9AD0(r7, r0);
+    ov01_021F9AB4(r7, 0x0000FFFF, r0);
+    GF_AssertFail();
 }
+
+
+
+
+void ov01_021F9E04(void) {
+    ov01_021FA1FC();
+    ov01_021FA22C(r5);
+    ov01_021FA234(r5);
+    // add r0, r6, r4
+    ov01_021F9AE4(r7, 0x0000FFFF, r0);
+}
+
+
+
+
+void ov01_021F9E30(void) {
+    // str r0, [sp]
+    ov01_021FA1F4(r1);
+    // str r0, [sp, #4]
+    ov01_021FA1FC(r6);
+    ov01_021FA22C(r6);
+    // add r5, r4, r0
+    ov01_021FA234(r6);
+    // ldr r0, [sp]
+    ov01_021F9FCC(0x0000FFFF, *((u32*)r5), 0);
+    // ldr r0, [sp, #4]
+    GF3dGfxRawResMan_FreeObjById(r4);
+    ov01_021FA4F0(r6, r4);
+    ov01_021FA6A4(r6, r4);
+    // str r0, [r5]
+}
+
+
+
+
+void ov01_021F9E9C(void) {
+    // add r0, r6, r4
+}
+
 
 
 
 void ov01_021F9EC4(void) {
-    ov01_021F9D88();
-    ov01_021F9E9C(r5, r4);
 }
+
 
 
 
 void ov01_021F9EEC(void) {
-    ov01_021F9B38();
-    ov01_021F9B84(r5, r4);
 }
+
 
 
 
 void ov01_021F9F14(void) {
-    ov01_021F9C5C();
-    ov01_021F9CA8(r5, r4);
 }
+
 
 
 
 void ov01_021F9F3C(void) {
-    ov01_021F9DA4();
-    ov01_021F9974(r5, r4);
 }
+
 
 
 
 void ov01_021F9F54(void) {
-    ov01_021F9EEC();
-    ov01_021F99D0(r5, r4);
 }
+
 
 
 
 void ov01_021F9F6C(void) {
-    ov01_021F9F14();
-    ov01_021F9A44(r5, r4);
 }
+
 
 
 
@@ -911,8 +564,10 @@ void ov01_021F9F84(void) {
 
 
 
+
 void ov01_021F9FB0(void) {
 }
+
 
 
 
@@ -921,167 +576,70 @@ void ov01_021F9FCC(void) {
     // str r1, [sp]
     // add r1, sp, #0
     // add r2, sp, #4
-    MapObjectManager_GetNextObjectWithFlagFromIndex(0, 1);
     // add r7, sp, #0
     // ldr r0, [sp]
     // ldr r0, [sp]
-    MapObject_GetSpriteID();
     // add r2, sp, #4
-    MapObjectManager_GetNextObjectWithFlagFromIndex(r6, r7, 1);
 }
+
 
 
 
 void ov01_021FA01C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r6, r1, #0
-    // mov r1, #0
-    // add r5, r2, #0
     // str r1, [sp, #4]
     // str r1, [sp]
     // add r1, sp, #0
     // add r2, sp, #4
-    // mov r3, #1
-    // add r7, r0, #0
-    // bl MapObjectManager_GetNextObjectWithFlagFromIndex
-    // cmp r0, #1
-    // bne _021FA088
-    // cmp r5, #0
-    // beq _021FA044
+    MapObjectManager_GetNextObjectWithFlagFromIndex(0, 1);
     // ldr r0, [sp]
-    // cmp r5, r0
-    // beq _021FA078
     // ldr r0, [sp]
-    // bl MapObject_GetSpriteID
-    // add r4, r0, #0
-    // ldr r0, _021FA090 ; =0x0000FFFF
-    // cmp r4, r0
-    // beq _021FA078
+    MapObject_GetSpriteID();
     // ldr r0, [sp]
-    // bl ov01_021F9318
-    // ldrh r0, [r0]
-    // lsl r0, r0, #0x1c
-    // lsr r0, r0, #0x1c
-    // cmp r0, #1
-    // bne _021FA078
-    // ldr r0, _021FA090 ; =0x0000FFFF
-    // cmp r4, r0
-    // beq _021FA078
-    // add r0, r4, #0
-    // bl ov01_021FA28C
-    // cmp r6, r0
-    // bne _021FA078
-    // add sp, #8
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r7, #0
+    ov01_021F9318(0x0000FFFF);
+    ov01_021FA28C(r4);
     // add r1, sp, #0
     // add r2, sp, #4
-    // mov r3, #1
-    // bl MapObjectManager_GetNextObjectWithFlagFromIndex
-    // cmp r0, #1
-    // beq _021FA03A
-    // mov r0, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021FA090: .word 0x0000FFFF
-    // TODO: decompile
+    MapObjectManager_GetNextObjectWithFlagFromIndex(r7, 1);
 }
+
 
 
 
 void ov01_021FA094(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r6, r1, #0
-    // mov r1, #0
-    // add r5, r2, #0
     // str r1, [sp, #4]
     // str r1, [sp]
     // add r1, sp, #0
     // add r2, sp, #4
-    // mov r3, #1
-    // add r7, r0, #0
-    // bl MapObjectManager_GetNextObjectWithFlagFromIndex
-    // cmp r0, #1
-    // bne _021FA0FE
-    // cmp r5, #0
-    // beq _021FA0BC
+    MapObjectManager_GetNextObjectWithFlagFromIndex(0, 1);
     // ldr r0, [sp]
-    // cmp r0, r5
-    // beq _021FA0EE
-    // ldr r0, _021FA104 ; =0x0000FFFF
-    // cmp r4, r0
-    // beq _021FA0EE
     // ldr r0, [sp]
-    // bl ov01_021F9318
-    // ldrh r0, [r0]
-    // lsl r0, r0, #0x1c
-    // lsr r0, r0, #0x1c
-    // cmp r0, #1
-    // bne _021FA0EE
+    ov01_021F9318(0x0000FFFF);
     // ldr r0, [sp]
-    // bl MapObject_GetSpriteID
-    // ldr r1, _021FA104 ; =0x0000FFFF
-    // add r4, r0, #0
-    // cmp r4, r1
-    // beq _021FA0EE
-    // bl ov01_021FA2A0
-    // cmp r6, r0
-    // bne _021FA0EE
-    // add sp, #8
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r7, #0
+    MapObject_GetSpriteID(((*((u16*)r0) << 0x1c) >> 0x1c));
+    ov01_021FA2A0(0x0000FFFF);
     // add r1, sp, #0
     // add r2, sp, #4
-    // mov r3, #1
-    // bl MapObjectManager_GetNextObjectWithFlagFromIndex
-    // cmp r0, #1
-    // beq _021FA0B2
-    // mov r0, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // _021FA104: .word 0x0000FFFF
-    // TODO: decompile
+    MapObjectManager_GetNextObjectWithFlagFromIndex(r7, 1);
 }
+
 
 
 
 void ov01_021FA108(void) {
-    sub_0205F1A0();
-    ov01_021FA28C(r5);
     // str r0, [sp]
     // ldr r1, [sp]
-    ov01_021F9EEC(r4);
     // ldr r1, [sp]
-    ov01_021FA01C(r6, r7);
     // add r0, #0xf8
     // ldr r1, [sp]
-    ov01_021FC588(*((u32*)r4));
     // ldr r1, [sp]
-    ov01_021F9BAC(r4);
-    ov01_021FA2A0(r5);
     // str r0, [sp, #4]
     // ldr r1, [sp, #4]
-    ov01_021F9F14(r4);
     // ldr r1, [sp, #4]
-    ov01_021FA094(r6, r7);
     // add r0, #0xfc
     // ldr r1, [sp, #4]
-    ov01_021FC588(*((u32*)r4));
     // ldr r1, [sp, #4]
-    ov01_021F9CD0(r4);
-    ov01_021F9EC4(r4, r5);
-    ov01_021F9FCC(r6, r5, r7);
-    ov01_021FA1F4(r4);
-    GF3dGfxRawResMan_FreeObjById(r5);
-    ov01_021F9E04(r4, r5);
-    ov01_021FA4F0(r4, r5);
-    ov01_021FA6A4(r4, r5);
 }
+
 
 
 
@@ -1092,14 +650,17 @@ void ov01_021FA1C8(void) {
 
 
 
+
 void ov01_021FA1D0(void) {
     // add r0, #0xe0
 }
 
 
 
+
 void ov01_021FA1D8(void) {
 }
+
 
 
 
@@ -1109,9 +670,11 @@ void ov01_021FA1DC(void) {
 
 
 
+
 void ov01_021FA1E4(void) {
     // add r0, #0xec
 }
+
 
 
 
@@ -1122,9 +685,11 @@ void ov01_021FA1EC(void) {
 
 
 
+
 void ov01_021FA1F4(void) {
     // add r0, #0xf0
 }
+
 
 
 
@@ -1134,9 +699,11 @@ void ov01_021FA1FC(void) {
 
 
 
+
 void ov01_021FA200(void) {
     // add r0, #0x20
 }
+
 
 
 
@@ -1146,8 +713,10 @@ void ov01_021FA204(void) {
 
 
 
+
 void ov01_021FA208(void) {
 }
+
 
 
 
@@ -1159,8 +728,10 @@ void ov01_021FA20C(void) {
 
 
 
+
 void ov01_021FA210(void) {
 }
+
 
 
 
@@ -1172,8 +743,10 @@ void ov01_021FA214(void) {
 
 
 
+
 void ov01_021FA218(void) {
 }
+
 
 
 
@@ -1185,8 +758,10 @@ void ov01_021FA21C(void) {
 
 
 
+
 void ov01_021FA220(void) {
 }
+
 
 
 
@@ -1198,8 +773,10 @@ void ov01_021FA224(void) {
 
 
 
+
 void ov01_021FA228(void) {
 }
+
 
 
 
@@ -1211,8 +788,10 @@ void ov01_021FA22C(void) {
 
 
 
+
 void ov01_021FA230(void) {
 }
+
 
 
 
@@ -1221,6 +800,7 @@ void ov01_021FA234(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -1237,38 +817,13 @@ void FldObjSys_ReadMModelFromNarc(void) {
 
 
 
+
 void sub_021FA248(void) {
-    // push {r3, lr}
-    // ldr r3, _021FA280 ; =ov01_022074A8
-    // ldr r1, _021FA284 ; =0x0000FFFF
-    // ldrh r2, [r3]
-    // cmp r2, r0
-    // bne _021FA270
-    // ldrh r0, [r3, #4]
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x1a
-    // cmp r0, #0xff ; Never eq due to data type limitations
-    // bne _021FA268
-    // bne _021FA264
-    // bl GF_AssertFail
-    // ldr r0, _021FA288 ; =ov01_02207318
-    // pop {r3, pc}
-    // ldr r1, _021FA288 ; =ov01_02207318
-    // lsl r0, r0, #3
+    GF_AssertFail(((*((u16*)(ov01_022074A8 + 4)) << 0x10) >> 0x1a), 0x0000FFFF, *((u16*)ov01_022074A8), ov01_022074A8);
     // add r0, r1, r0
-    // pop {r3, pc}
-    // add r3, r3, #6
-    // ldrh r2, [r3]
-    // cmp r2, r1
-    // bne _021FA24E
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // _021FA280: .word ov01_022074A8
-    // _021FA284: .word 0x0000FFFF
-    // _021FA288: .word ov01_02207318
-    // TODO: decompile
+    GF_AssertFail((ov01_02207318 << 3), ov01_02207318, *((u16*)(r3 + 6)), (r3 + 6));
 }
+
 
 
 
@@ -1277,8 +832,10 @@ void ov01_021FA28C(void) {
 
 
 
+
 void ov01_021FA298(void) {
 }
+
 
 
 
@@ -1287,15 +844,16 @@ void ov01_021FA2A0(void) {
 
 
 
+
 void ov01_021FA2AC(void) {
 }
 
 
 
+
 void ov01_021FA2B8(void) {
-    MapObject_SetFlagsBits((1 << 0x16));
-    MapObject_ClearFlagsBits((1 << 0x16));
 }
+
 
 
 
@@ -1304,14 +862,13 @@ void ov01_021FA2D4(void) {
 
 
 
+
 void ov01_021FA2EC(void) {
     // str r0, [sp, #4]
     // add r0, sp, #0
     // str r4, [sp]
-    sub_020237EC(4);
-    ov01_021FA1C8(r5, r0);
-    ov01_021FA1D8(r5, r4);
 }
+
 
 
 
@@ -1320,70 +877,37 @@ void ov01_021FA314(void) {
 
 
 
+
 void ov01_021FA31C(void) {
-    // push {r4, lr}
-    // sub sp, #0x20
     // str r0, [sp]
     // str r1, [sp, #4]
     // ldmia r2!, {r0, r1}
     // add r3, sp, #8
     // stmia r3!, {r0, r1}
-    // ldr r0, [r2]
     // add r2, sp, #0x14
     // str r0, [r3]
-    // ldr r3, _021FA36C ; =ov01_02208B64
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
     // add r0, sp, #0
-    // bl sub_02023D44
-    // add r4, r0, #0
-    // beq _021FA364
-    // mov r1, #0
-    // bl sub_02023EA4
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_02023EE0
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_02023F40
-    // add r0, r4, #0
-    // bl sub_02023F90
-    // bl ov01_021EA3B0
-    // add r0, r4, #0
-    // add sp, #0x20
-    // pop {r4, pc}
-    // nop
-    // _021FA36C: .word ov01_02208B64
-    // TODO: decompile
+    sub_02023D44(*((u32*)ov01_02208B64), ov01_02208B64);
+    sub_02023EA4(0);
+    sub_02023EE0(r4, 0);
+    sub_02023F40(r4, 0);
+    sub_02023F90(r4);
+    ov01_021EA3B0();
 }
+
 
 
 
 void ov01_021FA370(void) {
-    ov01_021FA28C(r1);
     // add r0, #0xf8
-    ov01_021FC5A4(*((u32*)r6), r0);
     // str r0, [r4]
-    ov01_021FA2A0(r5);
     // add r0, #0xfc
-    ov01_021FC5A4(*((u32*)r6), r0);
     // add r1, #0xc
-    sub_02026E18(r4);
-    ov01_021FA1F4(r6);
-    GF3dGfxRawResMan_GetObjById(r5);
-    GF3dGfxRawResObj_GetTex();
-    *((u32*)(r4 + 4)) = r0;
-    GF3dGfxRawResObj_GetTexKey(r6);
-    *((u32*)(r4 + 0x1c)) = r0;
-    GF3dGfxRawResObj_GetTex4x4Key(r6);
-    *((u32*)(r4 + 0x20)) = r0;
-    GF3dGfxRawResObj_GetPlttKey(r6);
-    *((u32*)(r4 + 0x24)) = r0;
-    ov01_021FA2AC(r5);
-    *((u32*)(r4 + 8)) = r0;
 }
+
 
 
 
@@ -1392,24 +916,21 @@ void ov01_021FA3DC(void) {
 
 
 
+
 void ov01_021FA3E8(void) {
     // add r1, sp, #0
-    ov01_021F93AC();
     // ldr r1, [sp, #8]
     // add r0, r1, r0
     // str r0, [sp, #8]
     // add r1, sp, #0
-    sub_02023E50(r4);
 }
+
 
 
 
 void ov01_021FA40C(void) {
-    MapObject_TestFlagsBits((1 << 9));
-    MapObject_TestFlagsBits(r5, (1 << 0xc));
-    MapObject_TestFlagsBits(r5, (2 << 0xc));
-    sub_02023EA4(r6, ((0 << 0x18) >> 0x18));
 }
+
 
 
 
@@ -1424,6 +945,7 @@ void ov01_021FA44C(void) {
 
 
 
+
 void ov01_021FA458(void) {
     // lsl r1, r0, #2
     // ldr r0, _021FA460 ; =ov01_02208B80
@@ -1432,6 +954,7 @@ void ov01_021FA458(void) {
     // _021FA460: .word ov01_02208B80
     // TODO: decompile
 }
+
 
 
 
@@ -1446,59 +969,46 @@ void ov01_021FA464(void) {
 
 
 
+
 void ov01_021FA470(void) {
-    // ldr r4, [r5, r0]
     // ldrsh r1, [r4, r0]
     // ldrsh r0, [r4, r0]
     // str r3, [sp]
     // add r0, #0xe0
-    sub_020238F8(*((u32*)r0));
     // ldrsh r3, [r4, r2]
     // add r5, #0xf0
-    *((u32*)(*((u32*)(r4 + 0xc)) + 0xc)) = *((u32*)r5);
     // ldr r1, [sp]
-    *((u32*)(*((u32*)(r4 + 0xc)) + 8)) = *((u32*)r5);
-    *((u32*)(*((u32*)(r4 + 0xc)) + 4)) = r6;
     // str r7, [r0]
     // add r0, #0x10
-    GF_AssertFail(0, *((u32*)r5), (0 + 1));
-    FldObjSys_ReadMModelFromNarc(r5, r7, 0);
     // ldr r3, [sp]
-    ov01_021FA61C(r5, r6, r0);
     // ldrsh r0, [r4, r0]
-    *((u16*)(r4 + 4)) = (4 + 1);
 }
+
 
 
 
 void ov01_021FA4F0(void) {
-    // ldr r0, [r0, r2]
     // ldrsh r4, [r0, r3]
-    *((u32*)(*((u32*)(r0 + 0xc)) + 0xc)) = 0;
     // add r2, #0x10
 }
+
 
 
 
 void ov01_021FA524(void) {
-    // ldr r0, [r0, r2]
     // ldrsh r4, [r0, r3]
     // add r2, #0x10
 }
+
 
 
 
 void ov01_021FA564(void) {
     // str r1, [sp]
     // ldr r0, [sp]
-    // ldr r4, [r0, r1]
     // add r0, #0xe0
-    sub_020238F8(*((u32*)r0), (1 << 8));
     // ldr r0, [sp]
-    FldObjSys_ReadMModelFromNarc(*((u32*)(r5 + 0xc)), *((u32*)r5), 0);
     // ldr r0, [sp]
-    ov01_021FA61C(*((u32*)(r5 + 4)), r0, *((u32*)(r5 + 8)));
-    *((u32*)(r5 + 0xc)) = 0;
     // ldrsh r0, [r7, r0]
     // strh r0, [r7]
     // add r5, #0x10
@@ -1514,110 +1024,85 @@ void ov01_021FA564(void) {
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
     // mov r0, ip
-    *((u32*)(((0 + 1) << 4) + 0xc)) = 0;
     // add r3, #0x10
     // ldrsh r0, [r4, r0]
     // add r5, #0x10
-    *((u16*)(r4 + 4)) = 0;
 }
+
 
 
 
 void ov01_021FA61C(void) {
     // str r0, [sp]
     // add r0, #0xf0
-    GF3dGfxRawResMan_AllocObjAndKeys(*((u32*)r0), r2, r1, 1);
-    GF_AssertFail();
-    ov01_021FA668(r5, r4);
-    ov01_021F9D5C(r5, r4);
-    ov01_021F9DD0(r5, r4);
 }
+
 
 
 
 void ov01_021FA668(void) {
-    // ldr r3, [r0, r3]
-    *((u16*)((1 << 8) + 6)) = 1;
     // ldrsh r6, [r3, r2]
     // add r0, #0xf0
-    *((u32*)(*((u32*)((1 << 8) + 0x10)) + 8)) = *((u32*)r0);
-    *((u32*)(*((u32*)((1 << 8) + 0x10)) + 4)) = r1;
     // str r0, [r4]
-    *((u16*)((1 << 8) + 6)) = 0;
     // add r4, #0xc
-    GF_AssertFail(0, (0 + 1), (1 << 8));
 }
+
 
 
 
 void ov01_021FA6A4(void) {
-    // ldr r2, [r0, r2]
-    *((u16*)((1 << 8) + 6)) = 1;
     // ldrsh r5, [r2, r3]
-    *((u32*)(*((u32*)((1 << 8) + 0x10)) + 8)) = 0;
     // str r0, [r4]
     // add r4, #0xc
-    *((u16*)((1 << 8) + 6)) = 0;
 }
+
 
 
 
 void ov01_021FA6E0(void) {
-    // ldr r6, [r1, r0]
     // ldrsh r0, [r6, r4]
-    GF3dGfxRawResMan_LoadObjTexById(*((u32*)(*((u32*)(r6 + 0x10)) + 8)), *((u32*)(*((u32*)(r6 + 0x10)) + 4)));
     // str r7, [r5]
     // ldrsh r0, [r6, r0]
     // add r5, #0xc
 }
+
 
 
 
 void ov01_021FA71C(void) {
-    // ldr r6, [r1, r0]
-    *((u16*)(r6 + 6)) = 1;
     // ldrsh r0, [r6, r4]
-    GF3dGfxRawResMan_FreeObjVramAndSecondaryHeaderById(*((u32*)(*((u32*)(r6 + 0x10)) + 8)), *((u32*)(*((u32*)(r6 + 0x10)) + 4)));
     // str r7, [r5]
-    *((u32*)(r5 + 8)) = r7;
     // ldrsh r0, [r6, r0]
     // add r5, #0xc
-    *((u16*)(r6 + 6)) = 0;
 }
+
 
 
 
 void ov01_021FA75C(void) {
-    // ldr r5, [r0, r5]
     // ldrsh r6, [r5, r4]
-    *((u32*)(*((u32*)((1 << 8) + 8)) + 4)) = r1;
-    *((u32*)(*((u32*)((1 << 8) + 8)) + 8)) = r2;
     // str r3, [r0]
     // str r2, [r0]
-    ov01_021FA2B8(r1, 1, 0);
     // add r0, #0xc
-    GF_AssertFail();
 }
 
 
 
+
 void ov01_021FA798(void) {
-    // ldr r0, [r0, r2]
     // ldrsh r4, [r0, r3]
-    *((u32*)(*((u32*)(r0 + 8)) + 4)) = 0;
-    *((u32*)(*((u32*)(r0 + 8)) + 8)) = 0;
     // add r2, #0xc
 }
 
 
 
+
 void ov01_021FA7C8(void) {
-    // ldr r6, [r7, r0]
     // ldrsh r0, [r6, r4]
-    ov01_021FA804(r0, *((u32*)(r6 + 8)));
     // ldrsh r0, [r6, r0]
     // add r5, #0xc
 }
+
 
 
 
@@ -1626,366 +1111,166 @@ void ov01_021FA7F8(void) {
 
 
 
+
 void ov01_021FA804(void) {
-    ov01_021F9EC4(*((u32*)r1));
-    ov01_021F9528(*((u32*)(r4 + 4)), *((u32*)r4));
     // str r0, [r1]
-    GF_AssertFail(*((u32*)*((u32*)(r4 + 8))), *((u32*)(r4 + 8)));
-    ov01_021FA2B8(*((u32*)(r4 + 4)), 0);
-    MapObject_TestFlagsBits(*((u32*)(r4 + 4)), (2 << 0x14));
-    sub_0205F4C0(*((u32*)(r4 + 4)));
-    sub_0205F484();
-    *((u32*)(r4 + 4)) = 0;
-    *((u32*)(r4 + 8)) = 0;
 }
 
 
 
+
 void ov01_021FA854(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // mov r0, #0xc
-    // add r7, r6, #0
-    // mul r7, r0
-    // lsl r0, r6, #4
-    // lsl r1, r7, #1
     // str r0, [sp, #4]
     // add r0, r1, r0
     // str r0, [sp, #8]
     // add r0, #0x28
     // str r0, [sp, #8]
     // ldr r1, [sp, #8]
-    // mov r0, #4
     // str r2, [sp]
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _021FA882
-    // bl GF_AssertFail
+    Heap_Alloc(4, ((r1 * 0xc) << 1));
+    GF_AssertFail();
     // ldr r2, [sp, #8]
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl memset
+    memset(r4, 0);
     // ldr r0, [sp]
     // strh r6, [r4]
-    // strh r0, [r4, #2]
-    // add r0, r4, #0
+    *((u16*)(r4 + 2)) = r0;
     // add r0, #0x28
-    // str r0, [r4, #8]
+    *((u32*)(r4 + 8)) = r4;
     // add r1, r0, r7
     // ldr r0, [sp, #4]
-    // str r1, [r4, #0xc]
+    *((u32*)(r4 + 0xc)) = r1;
     // add r0, r1, r0
-    // str r0, [r4, #0x10]
-    // mov r0, #1
-    // lsl r0, r0, #8
+    *((u32*)(r4 + 0x10)) = r4;
     // str r4, [r5, r0]
-    // add r0, r0, #4
-    // ldr r0, [r5, r0]
-    // bl MapObjectManager_GetPriority
-    // add r6, r0, #0
-    // ldr r0, _021FA8E8 ; =ov01_021FA564
-    // add r1, r5, #0
-    // add r2, r6, #1
-    // bl SysTask_CreateOnMainQueue
-    // str r0, [r4, #0x18]
-    // ldr r0, _021FA8EC ; =ov01_021FA7F8
-    // add r1, r5, #0
-    // add r2, r6, #2
-    // bl SysTask_CreateOnMainQueue
-    // str r0, [r4, #0x1c]
-    // ldr r0, _021FA8F0 ; =ov01_021FA6E0
-    // add r1, r5, #0
-    // mov r2, #0xff
-    // bl SysTask_CreateOnVBlankQueue
-    // str r0, [r4, #0x20]
-    // ldr r0, _021FA8F4 ; =ov01_021FA71C
-    // add r1, r5, #0
-    // mov r2, #0xff
-    // bl SysTask_CreateOnVWaitQueue
-    // str r0, [r4, #0x24]
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // nop
-    // _021FA8E8: .word ov01_021FA564
-    // _021FA8EC: .word ov01_021FA7F8
-    // _021FA8F0: .word ov01_021FA6E0
-    // _021FA8F4: .word ov01_021FA71C
-    // TODO: decompile
+    MapObjectManager_GetPriority(*((u32*)(r5 + ((1 << 8) + 4))));
+    SysTask_CreateOnMainQueue(ov01_021FA564, r5, (r0 + 1));
+    *((u32*)(r4 + 0x18)) = r0;
+    SysTask_CreateOnMainQueue(ov01_021FA7F8, r5, (r6 + 2));
+    *((u32*)(r4 + 0x1c)) = r0;
+    SysTask_CreateOnVBlankQueue(ov01_021FA6E0, r5, 0xff);
+    *((u32*)(r4 + 0x20)) = r0;
+    SysTask_CreateOnVWaitQueue(ov01_021FA71C, r5, 0xff);
+    *((u32*)(r4 + 0x24)) = r0;
 }
 
 
 
+
 void ov01_021FA8F8(void) {
-    // ldr r4, [r5, r0]
-    *((u16*)(r4 + 6)) = 1;
-    SysTask_Destroy(*((u32*)(r4 + 0x18)));
-    SysTask_Destroy(*((u32*)(r4 + 0x1c)));
-    SysTask_Destroy(*((u32*)(r4 + 0x20)));
-    SysTask_Destroy(*((u32*)(r4 + 0x24)));
-    Heap_Free(r4);
     // str r1, [r5, r0]
 }
 
 
 
+
 void ov01_021FA930(void) {
-    ov01_021FA2D4();
-    ov01_021F72DC(r5);
-    MapObject_GetSpriteID(r5);
-    MapObject_GetManager(r5);
-    sub_0205E420(r5);
-    ov01_021FA108(r7, r6, r5);
-    sub_0205E38C(r5, r4);
-    ov01_021FA97C(r5, r4);
 }
+
 
 
 
 void ov01_021FA97C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x38
-    // add r6, r0, #0
     // str r1, [sp, #8]
-    // bl ov01_021FA3DC
-    // add r7, r0, #0
-    // bl ov01_021FA1D0
+    ov01_021FA3DC();
+    ov01_021FA1D0();
     // str r0, [sp, #0x14]
-    // add r0, r6, #0
-    // bl ov01_021F72DC
+    ov01_021F72DC(r6);
     // str r0, [sp, #0x10]
-    // mov r0, #4
-    // mov r1, #0x58
-    // bl Heap_AllocAtEnd
-    // mov r1, #0
-    // mov r2, #0x58
-    // add r5, r0, #0
-    // bl memset
+    Heap_AllocAtEnd(4, 0x58);
+    memset(0, 0x58);
     // ldr r0, [sp, #8]
     // str r0, [r5]
-    // add r0, r6, #0
-    // str r6, [r5, #0x50]
-    // bl MapObject_GetID
-    // cmp r0, #0xff
-    // bne _021FA9CE
-    // add r0, r6, #0
-    // bl ov01_021F72DC
-    // bl sub_02023F90
-    // mov r1, #0
-    // bl NNS_G3dMdlGetMdlFogEnableFlag
+    *((u32*)(r5 + 0x50)) = r6;
+    MapObject_GetID(r6);
+    ov01_021F72DC(r6);
+    sub_02023F90();
+    NNS_G3dMdlGetMdlFogEnableFlag(0);
     // str r0, [sp, #0x1c]
-    // b _021FA9D2
-    // mov r0, #0
     // str r0, [sp, #0x1c]
-    // add r0, r6, #0
-    // bl MapObject_GetSpriteID
+    MapObject_GetSpriteID(r6);
     // str r0, [sp, #0x18]
-    // bl ov01_021FA28C
-    // ldr r4, _021FAB90 ; =ov01_02207294
-    // ldrh r1, [r4]
-    // cmp r1, r0
-    // beq _021FA9EE
-    // add r4, r4, #4
-    // ldrh r1, [r4]
-    // cmp r1, #0xff
-    // bne _021FA9E0
-    // cmp r1, #0xff
-    // bne _021FA9F6
-    // bl GF_AssertFail
-    // ldrh r1, [r4, #2]
-    // add r0, r7, #0
-    // mov r2, #0
-    // bl FldObjSys_ReadMModelFromNarc
-    // str r0, [r5, #8]
+    ov01_021FA28C();
+    GF_AssertFail(*((u16*)(ov01_02207294 + 4)));
+    FldObjSys_ReadMModelFromNarc(r7, *((u16*)(r4 + 2)), 0);
+    *((u32*)(r5 + 8)) = r0;
     // ldr r0, [sp, #0x18]
-    // bl ov01_021FA2A0
-    // ldr r4, _021FAB94 ; =ov01_022072CC
-    // ldrh r1, [r4]
-    // cmp r1, r0
-    // beq _021FAA18
-    // add r4, r4, #4
-    // ldrh r1, [r4]
-    // cmp r1, #0xff
-    // bne _021FAA0A
-    // cmp r1, #0xff
-    // bne _021FAA20
-    // bl GF_AssertFail
-    // ldrh r1, [r4, #2]
-    // add r0, r7, #0
-    // mov r2, #0
-    // bl FldObjSys_ReadMModelFromNarc
-    // add r1, r5, #0
+    ov01_021FA2A0();
+    GF_AssertFail(*((u16*)(ov01_022072CC + 4)));
+    FldObjSys_ReadMModelFromNarc(r7, *((u16*)(r4 + 2)), 0);
     // add r1, #0x14
-    // str r0, [r5, #0xc]
-    // bl sub_02026E18
+    *((u32*)(r5 + 0xc)) = r0;
+    sub_02026E18(r5);
     // ldr r0, [sp, #0x18]
-    // bl GetMoveModelNoBySpriteId
-    // add r1, r0, #0
+    GetMoveModelNoBySpriteId();
     // bpl _021FAA44
-    // bl GF_AssertFail
-    // mov r1, #0
-    // add r0, r7, #0
-    // mov r2, #0
-    // bl FldObjSys_ReadMModelFromNarc
-    // str r0, [r5, #0x10]
-    // bl NNS_G3dGetTex
-    // add r4, r0, #0
+    GF_AssertFail(r0);
+    FldObjSys_ReadMModelFromNarc(r7, 0, 0);
+    *((u32*)(r5 + 0x10)) = r0;
+    NNS_G3dGetTex();
     // ldr r0, [sp, #0x18]
-    // bl ov01_021FA2AC
-    // add r3, r0, #0
-    // add r0, r5, #0
+    ov01_021FA2AC();
     // add r0, #0x14
     // str r0, [sp]
-    // add r0, r5, #0
-    // ldr r1, [r5, #8]
     // add r0, #0x28
-    // add r2, r4, #0
-    // bl sub_02023E2C
+    sub_02023E2C(r5, *((u32*)(r5 + 8)), r4, r0);
     // ldr r0, [sp, #0x10]
-    // bl sub_02023E68
-    // add r3, r0, #0
+    sub_02023E68();
     // add r2, sp, #0x2c
     // ldmia r3!, {r0, r1}
-    // add r4, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // add r1, r5, #0
     // str r0, [r2]
     // ldr r0, [sp, #0x14]
     // add r1, #0x28
-    // add r2, r4, #0
-    // bl ov01_021FA31C
-    // str r0, [r5, #0x24]
-    // cmp r0, #0
-    // bne _021FAA98
-    // bl GF_AssertFail
+    ov01_021FA31C(*((u32*)r0), r5, r2, r0);
+    *((u32*)(r5 + 0x24)) = r0;
+    GF_AssertFail();
     // ldr r0, [sp, #0x1c]
-    // cmp r0, #0
-    // bne _021FAAAA
-    // ldr r0, [r5, #0x24]
-    // bl sub_02023F90
-    // mov r1, #0
-    // bl NNS_G3dMdlSetMdlFogEnableFlagAll
+    sub_02023F90(*((u32*)(r5 + 0x24)));
+    NNS_G3dMdlSetMdlFogEnableFlagAll(0);
     // ldr r0, [sp, #0x10]
-    // bl sub_02023EF4
-    // add r1, r0, #0
-    // ldr r0, [r5, #0x24]
-    // bl sub_02023EE0
+    sub_02023EF4();
+    sub_02023EE0(*((u32*)(r5 + 0x24)), r0);
     // ldr r0, [sp, #0x10]
-    // bl sub_02023F70
-    // add r1, r0, #0
-    // ldr r0, [r5, #0x24]
-    // bl sub_02023F40
+    sub_02023F70();
+    sub_02023F40(*((u32*)(r5 + 0x24)), r0);
     // ldr r0, [sp, #0x10]
-    // bl sub_02023F30
-    // add r1, r0, #0
-    // ldr r0, [r5, #0x24]
-    // bl sub_02023F1C
-    // ldr r0, [r5, #0x24]
-    // mov r1, #0
-    // bl sub_02023F04
-    // ldr r0, [r5, #0x24]
-    // mov r1, #1
-    // bl sub_02023EA4
-    // ldr r0, [r5, #0x24]
-    // bl sub_02023FC0
-    // add r0, r6, #0
-    // bl MapObject_CheckFlag24
-    // cmp r0, #1
-    // bne _021FAB4A
-    // add r0, r6, #0
-    // mov r1, #2
-    // bl MapObject_GetPriorityPlusValue
+    sub_02023F30();
+    sub_02023F1C(*((u32*)(r5 + 0x24)), r0);
+    sub_02023F04(*((u32*)(r5 + 0x24)), 0);
+    sub_02023EA4(*((u32*)(r5 + 0x24)), 1);
+    sub_02023FC0(*((u32*)(r5 + 0x24)));
+    MapObject_CheckFlag24(r6);
+    MapObject_GetPriorityPlusValue(r6, 2);
     // str r0, [sp, #0xc]
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl sub_02060FA8
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // bl sub_0205BA70
-    // cmp r0, #1
-    // bne _021FAB18
-    // mov r4, #2
-    // b _021FAB28
-    // add r0, r4, #0
-    // bl sub_0205B984
-    // cmp r0, #1
-    // bne _021FAB26
-    // mov r4, #0
-    // b _021FAB28
-    // mov r4, #1
-    // add r0, r6, #0
+    sub_02060FA8(r6, 1);
+    sub_0205BA70(((r0 << 0x18) >> 0x18));
+    sub_0205B984(2);
     // add r1, sp, #0x20
-    // bl MapObject_CopyPositionVector
-    // add r0, r6, #0
-    // bl ov01_021F146C
+    MapObject_CopyPositionVector(r6);
+    ov01_021F146C(r6);
     // ldr r1, [sp, #0xc]
     // str r4, [sp]
     // str r1, [sp, #4]
-    // add r1, r5, #0
-    // ldr r2, [r5, #0x24]
     // add r1, #0x28
     // add r3, sp, #0x20
-    // bl ov01_021FDE64
-    // str r0, [r5, #0x54]
-    // add r0, r6, #0
-    // bl sub_0205E420
-    // mov r0, #0x41
-    // lsl r0, r0, #2
-    // ldr r0, [r7, r0]
+    ov01_021FDE64(r5, *((u32*)(r5 + 0x24)));
+    *((u32*)(r5 + 0x54)) = r0;
+    sub_0205E420(r6);
     // ldr r1, [sp, #0x18]
-    // add r2, r6, #0
-    // bl ov01_021FA108
+    ov01_021FA108(*((u32*)(r7 + (0x41 << 2))), r6);
     // ldr r1, [sp, #8]
-    // add r0, r6, #0
-    // bl sub_0205E38C
-    // mov r0, #0x41
-    // lsl r0, r0, #2
-    // ldr r0, [r7, r0]
-    // bl MapObjectManager_GetPriority
-    // ldr r0, _021FAB98 ; =ov01_021FAB9C
-    // add r1, r5, #0
-    // mov r2, #0xff
-    // bl SysTask_CreateOnVWaitQueue
-    // add r4, r0, #0
-    // bne _021FAB82
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov01_021FAB9C
-    // add sp, #0x38
-    // pop {r3, r4, r5, r6, r7, pc}
-    // nop
-    // _021FAB90: .word ov01_02207294
-    // _021FAB94: .word ov01_022072CC
-    // _021FAB98: .word ov01_021FAB9C
-    // TODO: decompile
+    sub_0205E38C(r6);
+    MapObjectManager_GetPriority(*((u32*)(r7 + (0x41 << 2))));
+    SysTask_CreateOnVWaitQueue(ov01_021FAB9C, r5, 0xff);
+    GF_AssertFail();
+    ov01_021FAB9C(r4, r5);
 }
+
 
 
 
 void ov01_021FAB9C(void) {
-    MapObject_CheckActive(*((u32*)(r1 + 0x50)));
-    ov01_021FA2D4(r4);
-    sub_02068B48(*((u32*)(r5 + 0x54)));
-    sub_02023DA4(*((u32*)(r5 + 0x24)));
-    Heap_Free(*((u32*)(r5 + 8)));
-    Heap_Free(*((u32*)(r5 + 0xc)));
-    Heap_Free(*((u32*)(r5 + 0x10)));
-    Heap_Free(r5);
-    SysTask_Destroy(r6);
-    MapObject_GetSpriteID(r4);
-    *((u32*)(r5 + 4)) = (*((u32*)(r5 + 4)) + 1);
-    ov01_021FA2D4(r4, *((u32*)r5));
-    sub_02068B48(*((u32*)(r5 + 0x54)));
-    sub_02023DA4(*((u32*)(r5 + 0x24)));
-    Heap_Free(*((u32*)(r5 + 8)));
-    Heap_Free(*((u32*)(r5 + 0xc)));
-    Heap_Free(*((u32*)(r5 + 0x10)));
-    Heap_Free(r5);
-    SysTask_Destroy(r6);
 }
+
 
 
