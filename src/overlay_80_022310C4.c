@@ -343,9 +343,10 @@ void ov80_022310C4(void) {
 }
 
 
+
 void ov80_022313C0(void) {
-    ov80_022313C8();
 }
+
 
 
 void ov80_022313C8(void) {
@@ -449,6 +450,7 @@ void ov80_022313C8(void) {
 }
 
 
+
 void ov80_022314A0(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -476,6 +478,7 @@ void ov80_022314A0(void) {
     // _022314D8: .word 0x00000D98
     // TODO: decompile
 }
+
 
 
 void ov80_022314DC(void) {
@@ -509,11 +512,13 @@ void ov80_022314DC(void) {
 }
 
 
+
 void ov80_02231518(void) {
     // ldrh r0, [r0, #6]
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov80_0223151C(void) {
@@ -560,6 +565,7 @@ void ov80_0223151C(void) {
     // _02231578: .word 0x000006FC
     // TODO: decompile
 }
+
 
 
 void ov80_0223157C(void) {
@@ -813,14 +819,11 @@ void ov80_0223157C(void) {
 }
 
 
+
 void ov80_022317C0(void) {
-    // ldrb r1, [r0, #5]
-    // add r1, r1, #1
-    // strb r1, [r0, #5]
-    // ldrb r0, [r0, #5]
-    // bx lr
-    // TODO: decompile
+    *((u8*)(r0 + 5)) = (*((u8*)(r0 + 5)) + 1);
 }
+
 
 
 void ov80_022317CC(void) {
@@ -828,6 +831,7 @@ void ov80_022317CC(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov80_022317D0(void) {
@@ -857,6 +861,7 @@ void ov80_022317D0(void) {
 }
 
 
+
 void ov80_02231804(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -877,6 +882,7 @@ void ov80_02231804(void) {
 }
 
 
+
 void ov80_02231828(void) {
     // mov r1, #1
     // strb r1, [r0, #6]
@@ -893,6 +899,7 @@ void ov80_02231828(void) {
     // _02231840: .word ov80_0223157C
     // TODO: decompile
 }
+
 
 
 void ov80_02231844(void) {
@@ -920,6 +927,7 @@ void ov80_02231844(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_02231888(void) {
@@ -959,6 +967,7 @@ void ov80_02231888(void) {
     // _022318CC: .word ov80_0223BE10
     // TODO: decompile
 }
+
 
 
 void ov80_022318D0(void) {
@@ -1006,6 +1015,7 @@ void ov80_022318D0(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_02231930(void) {
@@ -1070,6 +1080,7 @@ void ov80_02231930(void) {
 }
 
 
+
 void ov80_022319B0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -1114,11 +1125,10 @@ void ov80_022319B0(void) {
 }
 
 
+
 void ov80_02231A04(void) {
-    ov80_022379C8();
-    ov80_02237A40();
-    *((u32*)(r4 + 0xc)) = r0;
 }
+
 
 
 void ov80_02231A14(void) {
@@ -1312,4 +1322,5 @@ void ov80_02231A14(void) {
     // _02231BF4: .word 0x3FE00000
     // TODO: decompile
 }
+
 

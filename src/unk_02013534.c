@@ -58,6 +58,7 @@ void FontSystem_NewInit(void) {
 }
 
 
+
 void sub_020135AC(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -78,6 +79,7 @@ void sub_020135AC(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_020135D8(void) {
@@ -142,6 +144,7 @@ void sub_020135D8(void) {
 }
 
 
+
 void FontOAM_Delete(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -160,6 +163,7 @@ void FontOAM_Delete(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02013688(void) {
@@ -184,6 +188,7 @@ void sub_02013688(void) {
     // pop {r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void sub_020136B4(void) {
@@ -245,6 +250,7 @@ void sub_020136B4(void) {
 }
 
 
+
 void sub_02013728(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -300,6 +306,7 @@ void sub_02013728(void) {
 }
 
 
+
 void sub_02013794(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -321,6 +328,7 @@ void sub_02013794(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void TextOBJ_SetSpritesDrawFlag(void) {
@@ -349,6 +357,7 @@ void TextOBJ_SetSpritesDrawFlag(void) {
 }
 
 
+
 void sub_020137F0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -373,6 +382,7 @@ void sub_020137F0(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02013820(void) {
@@ -401,6 +411,7 @@ void sub_02013820(void) {
 }
 
 
+
 void TextOBJ_SetPaletteNum(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -425,6 +436,7 @@ void TextOBJ_SetPaletteNum(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02013880(void) {
@@ -453,6 +465,7 @@ void sub_02013880(void) {
 }
 
 
+
 void sub_020138B0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -477,6 +490,7 @@ void sub_020138B0(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_020138E0(void) {
@@ -505,24 +519,20 @@ void sub_020138E0(void) {
 }
 
 
+
 void sub_02013910(void) {
-    Heap_Alloc(r1, 0x18);
-    *((u32*)(r0 + 0xc)) = r0;
-    *((u32*)(r0 + 0x10)) = r0;
-    sub_02013BD4(*((u8*)(r5 + 7)), *((u8*)(r5 + 8)), r6, r0);
-    *((u32*)(r4 + 0x14)) = r0;
 }
+
 
 
 void sub_02013938(void) {
-    sub_02013FA8();
-    Heap_Free(r4);
 }
+
 
 
 void sub_02013948(void) {
-    sub_02013E24();
 }
+
 
 
 void TextOBJ_Create(void) {
@@ -581,9 +591,10 @@ void TextOBJ_Create(void) {
 }
 
 
+
 void TextOBJ_Destroy(void) {
-    FontOAM_Delete();
 }
+
 
 
 void TextOBJ_CopyFromBGWindow(void) {
@@ -643,6 +654,7 @@ void TextOBJ_CopyFromBGWindow(void) {
 }
 
 
+
 void sub_02013A50(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -700,6 +712,7 @@ void sub_02013A50(void) {
 }
 
 
+
 void sub_02013AC0(void) {
     // mov r2, #0x14
     // mov r1, #0
@@ -710,6 +723,7 @@ void sub_02013AC0(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_02013AD0(void) {
@@ -737,6 +751,7 @@ void sub_02013AD0(void) {
 }
 
 
+
 void sub_02013AF8(void) {
     // push {r3, r4}
     // ldr r4, _02013B20 ; =_020F5F2C
@@ -761,6 +776,7 @@ void sub_02013AF8(void) {
     // _02013B20: .word _020F5F2C
     // TODO: decompile
 }
+
 
 
 void sub_02013B24(void) {
@@ -850,6 +866,7 @@ void sub_02013B24(void) {
 }
 
 
+
 void sub_02013BD4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x38
@@ -918,6 +935,7 @@ void sub_02013BD4(void) {
 }
 
 
+
 void sub_02013C5C(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x1c
@@ -974,6 +992,7 @@ void sub_02013C5C(void) {
     // _02013CCC: .word 0x00300010
     // TODO: decompile
 }
+
 
 
 void sub_02013CD0(void) {
@@ -1062,6 +1081,7 @@ void sub_02013CD0(void) {
 }
 
 
+
 void sub_02013D88(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -1107,6 +1127,7 @@ void sub_02013D88(void) {
 }
 
 
+
 void sub_02013DE0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -1141,6 +1162,7 @@ void sub_02013DE0(void) {
     // _02013E20: .word _020F5F2D
     // TODO: decompile
 }
+
 
 
 void sub_02013E24(void) {
@@ -1184,6 +1206,7 @@ void sub_02013E24(void) {
     // _02013E74: .word _020F5F2C
     // TODO: decompile
 }
+
 
 
 void sub_02013E78(void) {
@@ -1231,6 +1254,7 @@ void sub_02013E78(void) {
 }
 
 
+
 void sub_02013ECC(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -1250,6 +1274,7 @@ void sub_02013ECC(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02013EF0(void) {
@@ -1322,6 +1347,7 @@ void sub_02013EF0(void) {
 }
 
 
+
 void sub_02013F78(void) {
     // push {r4, lr}
     // mov r1, #0x14
@@ -1338,6 +1364,7 @@ void sub_02013F78(void) {
 }
 
 
+
 void sub_02013F94(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1350,24 +1377,22 @@ void sub_02013F94(void) {
 }
 
 
+
 void sub_02013FA8(void) {
-    sub_02013F94();
 }
+
 
 
 void sub_02013FC0(void) {
-    // ldr r2, [r1, #0xc]
-    // str r2, [r0, #0xc]
-    // str r1, [r0, #0x10]
-    // ldr r2, [r1, #0xc]
-    // str r0, [r2, #0x10]
-    // str r0, [r1, #0xc]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0xc)) = *((u32*)(r1 + 0xc));
+    *((u32*)(r0 + 0x10)) = r1;
+    *((u32*)(*((u32*)(r1 + 0xc)) + 0x10)) = r0;
+    *((u32*)(r1 + 0xc)) = r0;
 }
+
 
 
 void sub_02013FD0(void) {
-    sub_02013728();
 }
+
 

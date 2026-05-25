@@ -2,9 +2,8 @@
 #include "global.h"
 
 void sub_0205FD20(void) {
-    sub_0205F41C();
-    sub_02063A14(r4);
 }
+
 
 
 void sub_0205FD30(void) {
@@ -49,6 +48,7 @@ void sub_0205FD30(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205FD98(void) {
@@ -107,6 +107,7 @@ void sub_0205FD98(void) {
 }
 
 
+
 void sub_0205FE0C(void) {
     // push {r4, lr}
     // mov r1, #1
@@ -120,6 +121,7 @@ void sub_0205FE0C(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205FE24(void) {
@@ -141,6 +143,7 @@ void sub_0205FE24(void) {
 }
 
 
+
 void sub_0205FE48(void) {
     // push {r4, lr}
     // mov r1, #4
@@ -158,6 +161,7 @@ void sub_0205FE48(void) {
     // _0205FE68: .word 0x00010004
     // TODO: decompile
 }
+
 
 
 void sub_0205FE6C(void) {
@@ -187,6 +191,7 @@ void sub_0205FE6C(void) {
 }
 
 
+
 void sub_0205FEA4(void) {
     // push {r4, lr}
     // mov r1, #2
@@ -212,6 +217,7 @@ void sub_0205FEA4(void) {
     // _0205FED8: .word 0x00020008
     // TODO: decompile
 }
+
 
 
 void sub_0205FEDC(void) {
@@ -276,6 +282,7 @@ void sub_0205FEDC(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205FF6C(void) {
@@ -357,6 +364,7 @@ void sub_0205FF6C(void) {
 }
 
 
+
 void sub_02060020(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -404,6 +412,7 @@ void sub_02060020(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0206008C(void) {
@@ -464,6 +473,7 @@ void sub_0206008C(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02060114(void) {
@@ -530,9 +540,10 @@ void sub_02060114(void) {
 }
 
 
+
 void sub_020601A4(void) {
-    sub_0205F9C0(0);
 }
+
 
 
 void sub_020601BC(void) {
@@ -618,6 +629,7 @@ void sub_020601BC(void) {
 }
 
 
+
 void sub_02060274(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0xc
@@ -699,6 +711,7 @@ void sub_02060274(void) {
 }
 
 
+
 void sub_02060328(void) {
     // push {r4, r5, r6, lr}
     // add r4, r3, #0
@@ -754,6 +767,7 @@ void sub_02060328(void) {
 }
 
 
+
 void sub_0206039C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -780,9 +794,10 @@ void sub_0206039C(void) {
 }
 
 
+
 void sub_020603D0(void) {
-    MapObject_SetFlag26();
 }
+
 
 
 void sub_020603DC(void) {
@@ -800,6 +815,7 @@ void sub_020603DC(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_020603F8(void) {
@@ -935,6 +951,7 @@ void sub_020603F8(void) {
 }
 
 
+
 void sub_02060530(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -1057,6 +1074,7 @@ void sub_02060530(void) {
 }
 
 
+
 void sub_0206064C(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -1092,6 +1110,7 @@ void sub_0206064C(void) {
 }
 
 
+
 void sub_02060698(void) {
     // push {r4, r5, r6, lr}
     // add r6, r1, #0
@@ -1116,6 +1135,7 @@ void sub_02060698(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_020606CC(void) {
@@ -1144,16 +1164,19 @@ void sub_020606CC(void) {
 }
 
 
+
 void sub_02060700(void) {
     // bx lr
     // TODO: decompile
 }
 
 
+
 void sub_02060704(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_02060708(void) {
@@ -1181,6 +1204,7 @@ void sub_02060708(void) {
 }
 
 
+
 void sub_0206073C(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -1204,6 +1228,7 @@ void sub_0206073C(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02060770(void) {
@@ -1231,6 +1256,7 @@ void sub_02060770(void) {
 }
 
 
+
 void sub_020607A4(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -1254,6 +1280,7 @@ void sub_020607A4(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_020607D8(void) {
@@ -1475,6 +1502,7 @@ void sub_020607D8(void) {
 }
 
 
+
 void sub_020609D4(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -1576,6 +1604,7 @@ void sub_020609D4(void) {
 }
 
 
+
 void sub_02060AB8(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -1604,10 +1633,12 @@ void sub_02060AB8(void) {
 }
 
 
+
 void sub_02060AF0(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_02060AF4(void) {
@@ -1685,6 +1716,7 @@ void sub_02060AF4(void) {
 }
 
 
+
 void sub_02060B90(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x14
@@ -1706,6 +1738,7 @@ void sub_02060B90(void) {
     // pop {r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02060BB8(void) {
@@ -1738,6 +1771,7 @@ void sub_02060BB8(void) {
     // pop {r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02060BFC(void) {
@@ -1817,6 +1851,7 @@ void sub_02060BFC(void) {
     // pop {r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02060CA8(void) {
@@ -1926,6 +1961,7 @@ void sub_02060CA8(void) {
 }
 
 
+
 void sub_02060D94(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -1968,6 +2004,7 @@ void sub_02060D94(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02060DEC(void) {
@@ -2020,6 +2057,7 @@ void sub_02060DEC(void) {
 }
 
 
+
 void sub_02060E54(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -2060,19 +2098,20 @@ void sub_02060E54(void) {
 }
 
 
+
 void sub_02060EA4(void) {
-    sub_0205B798(0, 1);
 }
+
 
 
 void sub_02060EBC(void) {
-    sub_0205B8B8(0, 1);
 }
+
 
 
 void sub_02060ED4(void) {
-    sub_0205B8C4(0, 1);
 }
+
 
 
 void sub_02060EEC(void) {
@@ -2094,6 +2133,7 @@ void sub_02060EEC(void) {
 }
 
 
+
 void GetDeltaXByFacingDirection(void) {
     // lsl r1, r0, #2
     // ldr r0, _02060F14 ; =_020FD4AC
@@ -2102,6 +2142,7 @@ void GetDeltaXByFacingDirection(void) {
     // _02060F14: .word _020FD4AC
     // TODO: decompile
 }
+
 
 
 void GetDeltaYByFacingDirection(void) {
@@ -2114,50 +2155,26 @@ void GetDeltaYByFacingDirection(void) {
 }
 
 
+
 void sub_02060F24(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl MapObject_GetXCoord
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_SetPreviousX
-    // add r0, r5, #0
-    // bl MapObject_GetYCoord
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_SetPreviousY
-    // add r0, r5, #0
-    // bl MapObject_GetZCoord
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_SetPreviousZ
-    // add r0, r4, #0
-    // bl GetDeltaXByFacingDirection
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_AddCurrentX
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl MapObject_AddCurrentY
-    // add r0, r4, #0
-    // bl GetDeltaYByFacingDirection
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_AddCurrentZ
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    MapObject_GetXCoord();
+    MapObject_SetPreviousX(r5, r0);
+    MapObject_GetYCoord(r5);
+    MapObject_SetPreviousY(r5, r0);
+    MapObject_GetZCoord(r5);
+    MapObject_SetPreviousZ(r5, r0);
+    GetDeltaXByFacingDirection(r4);
+    MapObject_AddCurrentX(r5, r0);
+    MapObject_AddCurrentY(r5, 0);
+    GetDeltaYByFacingDirection(r4);
+    MapObject_AddCurrentZ(r5, r0);
 }
+
 
 
 void sub_02060F78(void) {
-    MapObject_GetXCoord();
-    MapObject_SetPreviousX(r4, r0);
-    MapObject_GetYCoord(r4);
-    MapObject_SetPreviousY(r4, r0);
-    MapObject_GetZCoord(r4);
-    MapObject_SetPreviousZ(r4, r0);
 }
+
 
 
 void sub_02060FA8(void) {
@@ -2186,6 +2203,7 @@ void sub_02060FA8(void) {
 }
 
 
+
 void sub_02060FE0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r1, #0
@@ -2212,6 +2230,7 @@ void sub_02060FE0(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0206101C(void) {
@@ -2253,6 +2272,7 @@ void sub_0206101C(void) {
     // pop {r3, r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02061070(void) {
@@ -2323,6 +2343,7 @@ void sub_02061070(void) {
 }
 
 
+
 void sub_02061108(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -2382,6 +2403,7 @@ void sub_02061108(void) {
 }
 
 
+
 void sub_02061190(void) {
     // cmp r0, #3
     // bhi _020611C6
@@ -2412,6 +2434,7 @@ void sub_02061190(void) {
 }
 
 
+
 void sub_020611C8(void) {
     // lsl r3, r0, #0x10
     // mov r0, #2
@@ -2424,6 +2447,7 @@ void sub_020611C8(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_020611DC(void) {
@@ -2440,6 +2464,7 @@ void sub_020611DC(void) {
 }
 
 
+
 void sub_020611F4(void) {
     // lsl r1, r0, #2
     // ldr r0, _020611FC ; =_020FD4DC
@@ -2448,6 +2473,7 @@ void sub_020611F4(void) {
     // _020611FC: .word _020FD4DC
     // TODO: decompile
 }
+
 
 
 void sub_02061200(void) {
@@ -2467,6 +2493,7 @@ void sub_02061200(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0206121C(void) {
@@ -2492,6 +2519,7 @@ void sub_0206121C(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02061248(void) {
@@ -2525,4 +2553,5 @@ void sub_02061248(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 

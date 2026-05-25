@@ -207,6 +207,7 @@ void ov12_02237D00(void) {
 }
 
 
+
 void ov12_02237ED0(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -238,6 +239,7 @@ void ov12_02237ED0(void) {
     // _02237F14: .word FS_OVERLAY_ID(OVY_7)
     // TODO: decompile
 }
+
 
 
 void ov12_02237F18(void) {
@@ -690,6 +692,7 @@ void ov12_02237F18(void) {
 }
 
 
+
 void ov12_02238358(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // bl OverlayManager_GetData
@@ -793,6 +796,7 @@ void ov12_02238358(void) {
     // _02238438: .word 0x000023FE
     // TODO: decompile
 }
+
 
 
 void ov12_0223843C(void) {
@@ -1161,6 +1165,7 @@ void ov12_0223843C(void) {
 }
 
 
+
 void ov12_022387AC(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x9c
@@ -1389,6 +1394,7 @@ void ov12_022387AC(void) {
 }
 
 
+
 void ov12_022389B8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -1445,20 +1451,17 @@ void ov12_022389B8(void) {
 }
 
 
+
 void ov12_02238A30(void) {
-    GfGfx_EngineATogglePlanes(1, 0);
-    GfGfx_EngineATogglePlanes(2, 0);
-    FreeBgTilemapBuffer(r4, 1);
-    FreeBgTilemapBuffer(r4, 2);
-    FreeBgTilemapBuffer(r4, 3);
-    BgConfig_CleanupBattleMenuBackgrounds(r4);
 }
+
 
 
 void ov12_02238A64(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov12_02238A68(void) {
@@ -2763,6 +2766,7 @@ void ov12_02238A68(void) {
 }
 
 
+
 void ov12_022395BC(void) {
     // cmp r0, #0x69
     // bgt _0223961A
@@ -2813,9 +2817,10 @@ void ov12_022395BC(void) {
 }
 
 
+
 void ov12_02239644(void) {
-    GF_3DVramMan_Create(5, 0, 2);
 }
+
 
 
 void ov12_02239664(void) {
@@ -2880,9 +2885,10 @@ void ov12_02239664(void) {
 }
 
 
+
 void ov12_022396E8(void) {
-    GF_3DVramMan_Delete();
 }
+
 
 
 void ov12_022396F0(void) {
@@ -2915,6 +2921,7 @@ void ov12_022396F0(void) {
     // _0223972C: .word NNS_GfdDefaultFuncAllocPlttVram
     // TODO: decompile
 }
+
 
 
 void ov12_02239730(void) {
@@ -2998,6 +3005,7 @@ void ov12_02239730(void) {
 }
 
 
+
 void ov12_022397E4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -3018,6 +3026,7 @@ void ov12_022397E4(void) {
     // _0223980C: .word 0x00003FF8
     // TODO: decompile
 }
+
 
 
 void ov12_02239810(void) {
@@ -3050,6 +3059,7 @@ void ov12_02239810(void) {
     // _02239850: .word 0x000023FD
     // TODO: decompile
 }
+
 
 
 void ov12_02239854(void) {
@@ -3186,6 +3196,7 @@ void ov12_02239854(void) {
 }
 
 
+
 void ov12_0223998C(void) {
     // push {r3, r4, r5, lr}
     // ldr r3, _022399B8 ; =0x00002438
@@ -3212,6 +3223,7 @@ void ov12_0223998C(void) {
 }
 
 
+
 void ov12_022399BC(void) {
     // push {r3, lr}
     // bl sub_02039998
@@ -3224,6 +3236,7 @@ void ov12_022399BC(void) {
     // _022399D0: .word FS_OVERLAY_ID(OVY_18)
     // TODO: decompile
 }
+
 
 
 void ov12_022399D4(void) {
@@ -3478,6 +3491,7 @@ void ov12_022399D4(void) {
     // _02239C24: .word 0x00001024
     // TODO: decompile
 }
+
 
 
 void ov12_02239C28(void) {
@@ -3944,37 +3958,20 @@ void ov12_02239C28(void) {
 }
 
 
+
 void ov12_0223A088(void) {
-    // push {r4, lr}
-    // bl OverlayManager_GetData
-    // add r4, r0, #0
-    // mov r0, #0
-    // add r1, r0, #0
-    // bl Main_SetVBlankIntrCB
-    // mov r0, #0
-    // add r1, r0, #0
-    // bl sub_0200FBF4
-    // ldr r0, [r4, #0xc]
-    // mov r1, #0
-    // bl PaletteData_FreeBuffers
-    // ldr r0, [r4, #0xc]
-    // bl PaletteData_Free
-    // ldr r0, [r4, #8]
-    // mov r1, #1
-    // bl WindowArray_Delete
-    // mov r0, #2
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // ldr r0, [r4, #4]
-    // mov r1, #1
-    // bl FreeBgTilemapBuffer
-    // ldr r0, [r4, #4]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    OverlayManager_GetData();
+    Main_SetVBlankIntrCB(0, 0);
+    sub_0200FBF4(0, 0);
+    PaletteData_FreeBuffers(*((u32*)(r4 + 0xc)), 0);
+    PaletteData_Free(*((u32*)(r4 + 0xc)));
+    WindowArray_Delete(*((u32*)(r4 + 8)), 1);
+    GfGfx_EngineATogglePlanes(2, 0);
+    FreeBgTilemapBuffer(*((u32*)(r4 + 4)), 1);
+    Heap_Free(*((u32*)(r4 + 4)));
+    Heap_Free(r4);
 }
+
 
 
 void ov12_0223A0D4(void) {
@@ -4121,6 +4118,7 @@ void ov12_0223A0D4(void) {
 }
 
 
+
 void ov12_0223A218(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // bl OverlayManager_GetData
@@ -4156,6 +4154,7 @@ void ov12_0223A218(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov12_0223A260(void) {
@@ -4310,6 +4309,7 @@ void ov12_0223A260(void) {
 }
 
 
+
 void ov12_0223A3A8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // bl OverlayManager_GetData
@@ -4345,6 +4345,7 @@ void ov12_0223A3A8(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov12_0223A3F0(void) {
@@ -4571,6 +4572,7 @@ void ov12_0223A3F0(void) {
 }
 
 
+
 void ov12_0223A5E4(void) {
     // push {r4, r5, r6, lr}
     // bl OverlayManager_GetArgs
@@ -4602,6 +4604,7 @@ void ov12_0223A5E4(void) {
 }
 
 
+
 void ov12_0223A620(void) {
     // push {r3, lr}
     // ldr r2, [r0, #0x2c]
@@ -4631,6 +4634,7 @@ void ov12_0223A620(void) {
     // _0223A660: .word 0x0000240C
     // TODO: decompile
 }
+
 
 
 void ov12_0223A664(void) {
@@ -4787,6 +4791,7 @@ void ov12_0223A664(void) {
 }
 
 
+
 void ov12_0223A7A0(void) {
     // push {r3, lr}
     // bl sub_0203A880
@@ -4808,4 +4813,5 @@ void ov12_0223A7A0(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 

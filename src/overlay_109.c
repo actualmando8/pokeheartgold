@@ -50,6 +50,7 @@ void PhotoAlbum_Init(void) {
 }
 
 
+
 void PhotoAlbum_Main(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -103,6 +104,7 @@ void PhotoAlbum_Main(void) {
 }
 
 
+
 void PhotoAlbum_Exit(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -124,6 +126,7 @@ void PhotoAlbum_Exit(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E5A20(void) {
@@ -159,6 +162,7 @@ void ov109_021E5A20(void) {
     // _021E5A6C: .word 0x04001000
     // TODO: decompile
 }
+
 
 
 void ov109_021E5A70(void) {
@@ -257,11 +261,10 @@ void ov109_021E5A70(void) {
 }
 
 
+
 void ov109_021E5B40(void) {
-    ov109_021E5D5C();
-    Heap_Free(r4);
-    MenuInputStateMgr_SetState(*((u32*)(*((u32*)(r4 + 0x10)) + 8)), *((u32*)(r4 + 0xc)));
 }
+
 
 
 void ov109_021E5B60(void) {
@@ -292,11 +295,10 @@ void ov109_021E5B60(void) {
 }
 
 
+
 u32 ov109_021E5B98(void) {
-    sub_02021238();
-    ov109_021E5CE4(r4);
-    return 1;
 }
+
 
 
 void ov109_021E5BAC(void) {
@@ -336,6 +338,7 @@ void ov109_021E5BAC(void) {
     // pop {r3, r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E5BF4(void) {
@@ -378,39 +381,40 @@ void ov109_021E5BF4(void) {
 }
 
 
+
 void ov109_021E5C40(void) {
-    ov109_021E5F10();
 }
+
 
 
 void ov109_021E5C48(void) {
-    ov109_021E656C(1, 2, 5);
 }
+
 
 
 void ov109_021E5C68(void) {
-    ov109_021E66C4(1, 3, 5);
 }
+
 
 
 void ov109_021E5C88(void) {
-    ov109_021E681C();
 }
+
 
 
 void ov109_021E5C90(void) {
-    ov109_021E61BC();
 }
+
 
 
 void ov109_021E5C98(void) {
-    ov109_021E61DC();
 }
+
 
 
 void ov109_021E5CAC(void) {
-    ov109_021E682C();
 }
+
 
 
 void ov109_021E5CB4(void) {
@@ -435,13 +439,10 @@ void ov109_021E5CB4(void) {
 }
 
 
+
 void ov109_021E5CE4(void) {
-    ov109_021E6EC0();
-    ov109_021E6DBC(r4);
-    ov109_021E6D2C(r4);
-    ov109_021E6C7C(r4);
-    ov109_021E6AFC(r4);
 }
+
 
 
 void ov109_021E5D08(void) {
@@ -488,6 +489,7 @@ void ov109_021E5D08(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E5D5C(void) {
@@ -538,6 +540,7 @@ void ov109_021E5D5C(void) {
 }
 
 
+
 void ov109_021E5DB8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -564,6 +567,7 @@ void ov109_021E5DB8(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E5DEC(void) {
@@ -674,37 +678,17 @@ void ov109_021E5DEC(void) {
 }
 
 
+
 void ov109_021E5EC8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldrb r3, [r4, #0x19]
-    // mov r1, #3
-    // add r2, r1, #0
-    // bl ov109_021E70C4
-    // add r0, r4, #0
-    // bl ov109_021E7524
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ov109_021E7388
-    // mov r1, #0
-    // add r0, r4, #0
-    // mov r2, #1
-    // add r3, r1, #0
-    // bl ov109_021E73F8
-    // ldrb r1, [r4, #0x1b]
-    // ldrb r2, [r4, #0x1c]
-    // add r0, r4, #0
-    // mov r3, #1
-    // bl ov109_021E7474
-    // ldr r0, [r4, #0x14]
-    // mov r1, #3
-    // bl ScheduleBgTilemapBufferTransfer
-    // ldr r0, [r4, #0x14]
-    // mov r1, #2
-    // bl ScheduleBgTilemapBufferTransfer
-    // pop {r4, pc}
-    // TODO: decompile
+    ov109_021E70C4(3, 3, *((u8*)(r0 + 0x19)));
+    ov109_021E7524(r4);
+    ov109_021E7388(r4, 0);
+    ov109_021E73F8(r4, 0, 1, 0);
+    ov109_021E7474(r4, *((u8*)(r4 + 0x1b)), *((u8*)(r4 + 0x1c)), 1);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r4 + 0x14)), 3);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r4 + 0x14)), 2);
 }
+
 
 
 void ov109_021E5F10(void) {
@@ -731,6 +715,7 @@ void ov109_021E5F10(void) {
     // pop {r3, r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E5F40(void) {
@@ -820,6 +805,7 @@ void ov109_021E5F40(void) {
 }
 
 
+
 void ov109_021E5FFC(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -862,6 +848,7 @@ void ov109_021E5FFC(void) {
     // _021E6054: .word 0x000005DC
     // TODO: decompile
 }
+
 
 
 void ov109_021E6058(void) {
@@ -1032,6 +1019,7 @@ void ov109_021E6058(void) {
 }
 
 
+
 void ov109_021E61BC(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -1049,6 +1037,7 @@ void ov109_021E61BC(void) {
     // pop {r3, r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E61DC(void) {
@@ -1134,6 +1123,7 @@ void ov109_021E61DC(void) {
     // _021E6288: .word 0x000005DC
     // TODO: decompile
 }
+
 
 
 void ov109_021E628C(void) {
@@ -1251,6 +1241,7 @@ void ov109_021E628C(void) {
 }
 
 
+
 void ov109_021E638C(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -1293,6 +1284,7 @@ void ov109_021E638C(void) {
     // _021E63E4: .word 0x000005DC
     // TODO: decompile
 }
+
 
 
 void ov109_021E63E8(void) {
@@ -1479,6 +1471,7 @@ void ov109_021E63E8(void) {
 }
 
 
+
 void ov109_021E656C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1636,6 +1629,7 @@ void ov109_021E656C(void) {
     // _021E66C0: .word ov109_021E78DC
     // TODO: decompile
 }
+
 
 
 void ov109_021E66C4(void) {
@@ -1797,9 +1791,10 @@ void ov109_021E66C4(void) {
 }
 
 
+
 void ov109_021E681C(void) {
-    ov109_021E7640();
 }
+
 
 
 void ov109_021E682C(void) {
@@ -1827,6 +1822,7 @@ void ov109_021E682C(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E685C(void) {
@@ -1857,6 +1853,7 @@ void ov109_021E685C(void) {
 }
 
 
+
 void ov109_021E6898(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1877,6 +1874,7 @@ void ov109_021E6898(void) {
 }
 
 
+
 void ov109_021E68B8(void) {
     // lsl r1, r1, #0x18
     // lsr r1, r1, #0x18
@@ -1894,6 +1892,7 @@ void ov109_021E68B8(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov109_021E68D4(void) {
@@ -1933,6 +1932,7 @@ void ov109_021E68D4(void) {
 }
 
 
+
 void ov109_021E691C(void) {
     // mov r2, #0x1f
     // lsl r2, r2, #4
@@ -1946,9 +1946,10 @@ void ov109_021E691C(void) {
 }
 
 
+
 void ov109_021E692C(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov109_021E694C(void) {
@@ -2140,6 +2141,7 @@ void ov109_021E694C(void) {
 }
 
 
+
 void ov109_021E6AFC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2181,6 +2183,7 @@ void ov109_021E6AFC(void) {
     // _021E6B58: .word 0x04000304
     // TODO: decompile
 }
+
 
 
 void ov109_021E6B5C(void) {
@@ -2318,11 +2321,10 @@ void ov109_021E6B5C(void) {
 }
 
 
+
 void ov109_021E6C7C(void) {
-    Heap_Free();
-    Heap_Free(r4);
-    Heap_Free();
 }
+
 
 
 void ov109_021E6C9C(void) {
@@ -2393,6 +2395,7 @@ void ov109_021E6C9C(void) {
 }
 
 
+
 void ov109_021E6D2C(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -2433,6 +2436,7 @@ void ov109_021E6D2C(void) {
 }
 
 
+
 void ov109_021E6D84(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -2462,6 +2466,7 @@ void ov109_021E6D84(void) {
 }
 
 
+
 void ov109_021E6DBC(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -2482,6 +2487,7 @@ void ov109_021E6DBC(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E6DE4(void) {
@@ -2542,28 +2548,20 @@ void ov109_021E6DE4(void) {
 }
 
 
+
 void ov109_021E6E64(void) {
-    SpriteSystem_DestroySpriteManager(r0);
-    SpriteSystem_Free(r4, 0);
-    GF_DestroyVramTransferManager(r4, 0);
-    thunk_ClearMainOAM();
 }
+
 
 
 void ov109_021E6E9C(void) {
-    ov109_021E6DE4();
-    ov109_021E6EE4(r4);
-    TouchscreenListMenuSpawner_Create(0);
-    GfGfx_EngineATogglePlanes(0x10, 1);
 }
+
 
 
 void ov109_021E6EC0(void) {
-    GfGfx_EngineATogglePlanes(0x10, 0);
-    ov109_021E6F60(r4);
-    TouchscreenListMenuSpawner_Destroy(r4);
-    ov109_021E6E64(r4);
 }
+
 
 
 void ov109_021E6EE4(void) {
@@ -2625,9 +2623,10 @@ void ov109_021E6EE4(void) {
 }
 
 
+
 void ov109_021E6F60(void) {
-    thunk_Sprite_Delete(0);
 }
+
 
 
 void ov109_021E6F7C(void) {
@@ -2674,6 +2673,7 @@ void ov109_021E6F7C(void) {
     // pop {r3, r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E6FD4(void) {
@@ -2723,6 +2723,7 @@ void ov109_021E6FD4(void) {
     // pop {r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E7030(void) {
@@ -2801,6 +2802,7 @@ void ov109_021E7030(void) {
 }
 
 
+
 void ov109_021E70C4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r2, #0
@@ -2838,6 +2840,7 @@ void ov109_021E70C4(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E7114(void) {
@@ -2892,6 +2895,7 @@ void ov109_021E7114(void) {
 }
 
 
+
 void ov109_021E7178(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -2927,6 +2931,7 @@ void ov109_021E7178(void) {
     // _021E71B8: .word 0x00000000
     // TODO: decompile
 }
+
 
 
 void ov109_021E71BC(void) {
@@ -2994,6 +2999,7 @@ void ov109_021E71BC(void) {
     // _021E7244: .word ov109_021E7890
     // TODO: decompile
 }
+
 
 
 void ov109_021E7248(void) {
@@ -3139,6 +3145,7 @@ void ov109_021E7248(void) {
 }
 
 
+
 void ov109_021E7388(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -3190,6 +3197,7 @@ void ov109_021E7388(void) {
     // _021E73F4: .word 0x00010500
     // TODO: decompile
 }
+
 
 
 void ov109_021E73F8(void) {
@@ -3253,6 +3261,7 @@ void ov109_021E73F8(void) {
 }
 
 
+
 void ov109_021E7474(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -3301,6 +3310,7 @@ void ov109_021E7474(void) {
 }
 
 
+
 void ov109_021E74D4(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -3341,6 +3351,7 @@ void ov109_021E74D4(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E7524(void) {
@@ -3390,6 +3401,7 @@ void ov109_021E7524(void) {
 }
 
 
+
 void ov109_021E7584(void) {
     // push {r4, r5, r6, lr}
     // add r6, r1, #0
@@ -3414,6 +3426,7 @@ void ov109_021E7584(void) {
 }
 
 
+
 void ov109_021E75B4(void) {
     // ldr r1, [r0, #0xc]
     // cmp r1, #0
@@ -3426,6 +3439,7 @@ void ov109_021E75B4(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov109_021E75C8(void) {
@@ -3487,6 +3501,7 @@ void ov109_021E75C8(void) {
     // _021E763C: .word ov109_021E789C
     // TODO: decompile
 }
+
 
 
 void ov109_021E7640(void) {
@@ -3571,6 +3586,7 @@ void ov109_021E7640(void) {
 }
 
 
+
 void ov109_021E76F0(void) {
     // push {r4, r5, lr}
     // sub sp, #0x14
@@ -3616,6 +3632,7 @@ void ov109_021E76F0(void) {
     // pop {r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov109_021E7748(void) {
@@ -3682,6 +3699,7 @@ void ov109_021E7748(void) {
 }
 
 
+
 void ov109_021E77D4(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -3710,6 +3728,7 @@ void ov109_021E77D4(void) {
     // _021E780C: .word ov109_021E7810
     // TODO: decompile
 }
+
 
 
 void ov109_021E7810(void) {
@@ -3743,6 +3762,7 @@ void ov109_021E7810(void) {
 }
 
 
+
 void ov109_021E7850(void) {
     // push {r3, r4}
     // mov r1, #0
@@ -3771,4 +3791,5 @@ void ov109_021E7850(void) {
     // _021E7880: .word 0x000001ED
     // TODO: decompile
 }
+
 

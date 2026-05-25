@@ -71,9 +71,10 @@ void PlayerAvatar_MoveControl(void) {
 }
 
 
+
 void sub_0205CBE4(void) {
-    sub_0205CBEC();
 }
+
 
 
 void sub_0205CBEC(void) {
@@ -122,12 +123,10 @@ void sub_0205CBEC(void) {
 }
 
 
+
 void sub_0205CC4C(void) {
-    sub_0205DD9C(r3);
-    sub_0205DDB8(r6);
-    PlayerAvatar_SetUnk28Unk2C(r5, r4, r0);
-    PlayerAvatar_ClearFlag6(r5);
 }
+
 
 
 void sub_0205CC74(void) {
@@ -146,6 +145,7 @@ void sub_0205CC74(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205CC94(void) {
@@ -234,6 +234,7 @@ void sub_0205CC94(void) {
     // _0205CD6C: .word SEQ_SE_GS_KUSA2
     // TODO: decompile
 }
+
 
 
 void sub_0205CD70(void) {
@@ -342,6 +343,7 @@ void sub_0205CD70(void) {
 }
 
 
+
 void PlayerAvatar_UpdateMovement(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -439,11 +441,10 @@ void PlayerAvatar_UpdateMovement(void) {
 }
 
 
+
 void sub_0205CF44(void) {
-    PlayerAvatar_SetUnk10(0);
-    PlayerAvatar_SetUnk14(r4, 0);
-    PlayerAvatar_ClearUnk24ClearFlag2(r4);
 }
+
 
 
 void sub_0205CF60(void) {
@@ -490,42 +491,24 @@ void sub_0205CF60(void) {
 }
 
 
+
 void sub_0205CFBC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // add r4, r0, #0
-    // mov r1, #0
-    // bl PlayerAvatar_SetUnk10
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl PlayerAvatar_SetUnk14
-    // add r0, r4, #0
-    // bl PlayerAvatar_GetMapObject
-    // add r4, r0, #0
-    // add r1, r5, #0
-    // bl MapObject_SetFacingDirection
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_0205F328
-    // add r0, r4, #0
-    // bl sub_02060F78
-    // add r0, r4, #0
-    // bl MapObject_ClearHeldMovement
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl sub_0206234C
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // bl MapObject_SetHeldMovement
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    PlayerAvatar_SetUnk10(0);
+    PlayerAvatar_SetUnk14(r4, 0);
+    PlayerAvatar_GetMapObject(r4);
+    MapObject_SetFacingDirection(r5);
+    sub_0205F328(r4, 0);
+    sub_02060F78(r4);
+    MapObject_ClearHeldMovement(r4);
+    sub_0206234C(r5, 0);
+    MapObject_SetHeldMovement(r4, r0);
 }
+
 
 
 void sub_0205D004(void) {
-    sub_0205D01C();
-    sub_0205D07C(r5, r0, r4);
 }
+
 
 
 void sub_0205D01C(void) {
@@ -575,6 +558,7 @@ void sub_0205D01C(void) {
 }
 
 
+
 void sub_0205D07C(void) {
     // push {r3, lr}
     // add r3, r1, #0
@@ -595,9 +579,10 @@ void sub_0205D07C(void) {
 }
 
 
+
 void sub_0205D09C(void) {
-    sub_0205D1FC();
 }
+
 
 
 void sub_0205D0A8(void) {
@@ -697,6 +682,7 @@ void sub_0205D0A8(void) {
 }
 
 
+
 void sub_0205D190(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -744,6 +730,7 @@ void sub_0205D190(void) {
 }
 
 
+
 void sub_0205D1FC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -773,6 +760,7 @@ void sub_0205D1FC(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205D240(void) {
@@ -822,6 +810,7 @@ void sub_0205D240(void) {
 }
 
 
+
 void sub_0205D2A0(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -846,6 +835,7 @@ void sub_0205D2A0(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205D2D0(void) {
@@ -899,6 +889,7 @@ void sub_0205D2D0(void) {
 }
 
 
+
 void sub_0205D340(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -945,6 +936,7 @@ void sub_0205D340(void) {
     // pop {r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205D3A8(void) {
@@ -997,16 +989,15 @@ void sub_0205D3A8(void) {
 }
 
 
+
 void sub_0205D40C(void) {
-    sub_0205D450();
-    sub_0205D428();
-    PlayerAvatar_SetUnk10(r5, r0);
 }
+
 
 
 void sub_0205D428(void) {
-    GF_AssertFail(0, 0, 1, 2);
 }
+
 
 
 void sub_0205D44C(void) {
@@ -1014,6 +1005,7 @@ void sub_0205D44C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0205D450(void) {
@@ -1049,11 +1041,10 @@ void sub_0205D450(void) {
 }
 
 
+
 void sub_0205D494(void) {
-    MapObject_GetFacingDirection(r1);
-    sub_0206234C(0);
-    sub_0205DA1C(r5, r4, r0);
 }
+
 
 
 void sub_0205D4B4(void) {
@@ -1205,18 +1196,15 @@ void sub_0205D4B4(void) {
 }
 
 
+
 void sub_0205D610(void) {
-    sub_0206234C(r2, 0x28);
-    sub_0205DA1C(r5, r4, r0);
-    MapObject_SetNextFacingDirection(r4, r6);
-    PlayerAvatar_ResetUnkC(r5);
-    PlayerAvatar_ToggleUnkC(r5);
 }
+
 
 
 void sub_0205D640(void) {
-    sub_0205D6E8();
 }
+
 
 
 void sub_0205D658(void) {
@@ -1242,6 +1230,7 @@ void sub_0205D658(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205D684(void) {
@@ -1270,6 +1259,7 @@ void sub_0205D684(void) {
 }
 
 
+
 void sub_0205D6B4(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -1295,6 +1285,7 @@ void sub_0205D6B4(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205D6E8(void) {
@@ -1352,11 +1343,10 @@ void sub_0205D6E8(void) {
 }
 
 
+
 void sub_0205D75C(void) {
-    sub_0205D7AC();
-    sub_0205D778();
-    PlayerAvatar_SetUnk10(r5, r0);
 }
+
 
 
 void sub_0205D778(void) {
@@ -1383,6 +1373,7 @@ void sub_0205D778(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205D7AC(void) {
@@ -1436,12 +1427,10 @@ void sub_0205D7AC(void) {
 }
 
 
+
 void sub_0205D818(void) {
-    MapObject_GetFacingDirection(r1);
-    sub_0206234C(0);
-    sub_0205DA1C(r5, r4, r0);
-    PlayerAvatar_ClearUnk24ClearFlag2(r5);
 }
+
 
 
 void sub_0205D83C(void) {
@@ -1555,13 +1544,10 @@ void sub_0205D83C(void) {
 }
 
 
+
 void sub_0205D948(void) {
-    PlayerAvatar_ClearUnk24ClearFlag2();
-    sub_0206234C(r6, 0x28);
-    sub_0205DA1C(r5, r4, r0);
-    MapObject_SetNextFacingDirection(r4, r6);
-    PlayerAvatar_ClearUnk24ClearFlag2(r5);
 }
+
 
 
 void sub_0205D978(void) {
@@ -1637,10 +1623,10 @@ void sub_0205D978(void) {
 }
 
 
+
 void sub_0205DA1C(void) {
-    PlayerAvatar_SetUnk8(r2);
-    MapObject_SetHeldMovement(r5, r4);
 }
+
 
 
 void sub_0205DA34(void) {
@@ -1698,6 +1684,7 @@ void sub_0205DA34(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205DAA8(void) {
@@ -1789,6 +1776,7 @@ void sub_0205DAA8(void) {
 }
 
 
+
 void sub_0205DB68(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r0, #0
@@ -1849,6 +1837,7 @@ void sub_0205DB68(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205DBF4(void) {
@@ -1927,6 +1916,7 @@ void sub_0205DBF4(void) {
 }
 
 
+
 void sub_0205DCA0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -1969,6 +1959,7 @@ void sub_0205DCA0(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205DCFC(void) {
@@ -2041,9 +2032,10 @@ void sub_0205DCFC(void) {
 }
 
 
+
 void sub_0205DD94(void) {
-    sub_0205DDD4();
 }
+
 
 
 void sub_0205DD9C(void) {
@@ -2064,6 +2056,7 @@ void sub_0205DD9C(void) {
 }
 
 
+
 void sub_0205DDB8(void) {
     // mov r1, #0x40
     // tst r1, r0
@@ -2080,6 +2073,7 @@ void sub_0205DDB8(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0205DDD4(void) {
@@ -2131,6 +2125,7 @@ void sub_0205DDD4(void) {
 }
 
 
+
 void sub_0205DE38(void) {
     // push {r4, lr}
     // bl PlayerAvatar_GetMapObject
@@ -2153,6 +2148,7 @@ void sub_0205DE38(void) {
 }
 
 
+
 void sub_0205DE64(void) {
     // sub r0, #0x1c
     // cmp r0, #3
@@ -2172,6 +2168,7 @@ void sub_0205DE64(void) {
 }
 
 
+
 void sub_0205DE88(void) {
     // mov r0, #2
     // tst r0, r1
@@ -2182,6 +2179,7 @@ void sub_0205DE88(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0205DE98(void) {
@@ -2203,6 +2201,7 @@ void sub_0205DE98(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205DEC0(void) {
@@ -2237,6 +2236,7 @@ void sub_0205DEC0(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205DF0C(void) {
@@ -2323,22 +2323,20 @@ void sub_0205DF0C(void) {
 }
 
 
+
 void sub_0205DFC8(void) {
-    PlayerAvatar_GetMapObject();
-    MapObject_AreBitsSetForMovementScriptInit();
 }
+
 
 
 void sub_0205DFD4(void) {
-    PlayerAvatar_GetMapObject();
-    sub_0205DA1C(r5, r0, r4);
 }
+
 
 
 void sub_0205DFEC(void) {
-    PlayerAvatar_GetMapObject();
-    sub_02060FA8(r4);
 }
+
 
 
 void sub_0205DFFC(void) {
@@ -2365,10 +2363,10 @@ void sub_0205DFFC(void) {
 }
 
 
+
 void PlayerAvatar_GetCoordsInFront(void) {
-    PlayerAvatar_GetFacingDirection();
-    sub_0205DFFC(r5, r0, r4, r6);
 }
+
 
 
 void sub_0205E048(void) {
@@ -2391,6 +2389,7 @@ void sub_0205E048(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0205E078(void) {
@@ -2426,4 +2425,5 @@ void sub_0205E078(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 

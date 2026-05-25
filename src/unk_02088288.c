@@ -2,14 +2,13 @@
 #include "global.h"
 
 u8 sub_02088288(void) {
-    return 1;
 }
+
 
 
 void sub_0208828C(void) {
-    Save_VarsFlags_Get();
-    CheckFlag982();
 }
+
 
 
 void PokemonSummary_Init(void) {
@@ -167,6 +166,7 @@ void PokemonSummary_Init(void) {
 }
 
 
+
 void PokemonSummary_Main(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -284,6 +284,7 @@ void PokemonSummary_Main(void) {
 }
 
 
+
 void PokemonSummary_Exit(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -328,6 +329,7 @@ void PokemonSummary_Exit(void) {
 }
 
 
+
 void sub_020885DC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -353,9 +355,10 @@ void sub_020885DC(void) {
 }
 
 
+
 void sub_02088610(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void sub_02088630(void) {
@@ -507,35 +510,19 @@ void sub_02088630(void) {
 }
 
 
+
 void sub_0208877C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl GfGfx_DisableEngineAPlanes
-    // bl GfGfx_DisableEngineBPlanes
-    // add r0, r4, #0
-    // mov r1, #6
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0x13
-    // add r1, r4, #0
-    // bl Heap_FreeExplicit
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
+    FreeBgTilemapBuffer(r4, 6);
+    FreeBgTilemapBuffer(r4, 5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 3);
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    Heap_FreeExplicit(0x13, r4);
 }
+
 
 
 void sub_020887C4(void) {
@@ -628,9 +615,10 @@ void sub_020887C4(void) {
 }
 
 
+
 void sub_0208887C(void) {
-    G2x_SetBlendAlpha_(8, 1, 0x1e, 0x17);
 }
+
 
 
 void sub_02088894(void) {
@@ -720,6 +708,7 @@ void sub_02088894(void) {
 }
 
 
+
 void sub_0208895C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -766,6 +755,7 @@ void sub_0208895C(void) {
     // _020889CC: .word 0x000007AC
     // TODO: decompile
 }
+
 
 
 void sub_020889D0(void) {
@@ -906,6 +896,7 @@ void sub_020889D0(void) {
 }
 
 
+
 void sub_02088AF8(void) {
     // mov r1, #0x7d
     // lsl r1, r1, #4
@@ -916,6 +907,7 @@ void sub_02088AF8(void) {
     // _02088B04: .word sub_020195C0
     // TODO: decompile
 }
+
 
 
 void sub_02088B08(void) {
@@ -946,6 +938,7 @@ void sub_02088B08(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02088B40(void) {
@@ -1160,6 +1153,7 @@ void sub_02088B40(void) {
 }
 
 
+
 void sub_02088D18(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1177,9 +1171,10 @@ void sub_02088D18(void) {
 }
 
 
+
 void sub_02088D34(void) {
-    sub_0208A63C();
 }
+
 
 
 void sub_02088D48(void) {
@@ -1308,6 +1303,7 @@ void sub_02088D48(void) {
 }
 
 
+
 void sub_02088E68(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1332,6 +1328,7 @@ void sub_02088E68(void) {
     // _02088E94: .word 0x000007BD
     // TODO: decompile
 }
+
 
 
 void sub_02088E98(void) {
@@ -1501,6 +1498,7 @@ void sub_02088E98(void) {
     // _02089024: .word 0x000005DD
     // TODO: decompile
 }
+
 
 
 void sub_02089028(void) {
@@ -1717,6 +1715,7 @@ void sub_02089028(void) {
 }
 
 
+
 void sub_02089208(void) {
     // push {r4, lr}
     // ldr r1, _020892E0 ; =gSystem
@@ -1820,14 +1819,15 @@ void sub_02089208(void) {
 }
 
 
+
 void sub_020892F4(void) {
-    sub_0208A9C4();
 }
+
 
 
 void sub_02089308(void) {
-    sub_0208AA9C();
 }
+
 
 
 void sub_0208931C(void) {
@@ -1949,6 +1949,7 @@ void sub_0208931C(void) {
 }
 
 
+
 void sub_0208942C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1971,6 +1972,7 @@ void sub_0208942C(void) {
 }
 
 
+
 void sub_02089454(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1989,6 +1991,7 @@ void sub_02089454(void) {
     // _02089474: .word 0x00000508
     // TODO: decompile
 }
+
 
 
 void sub_02089478(void) {
@@ -2170,6 +2173,7 @@ void sub_02089478(void) {
 }
 
 
+
 void sub_02089608(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -2212,6 +2216,7 @@ void sub_02089608(void) {
 }
 
 
+
 void sub_02089658(void) {
     // ldr r0, _0208966C ; =gSystem
     // ldr r1, [r0, #0x48]
@@ -2228,14 +2233,15 @@ void sub_02089658(void) {
 }
 
 
+
 void sub_02089670(void) {
-    sub_020880CC();
 }
+
 
 
 void sub_02089680(void) {
-    IsPaletteFadeFinished(0, 1);
 }
+
 
 
 void sub_02089698(void) {
@@ -2362,6 +2368,7 @@ void sub_02089698(void) {
 }
 
 
+
 void sub_02089794(void) {
     // push {r4, lr}
     // ldr r1, _020897BC ; =0x000007C9
@@ -2383,6 +2390,7 @@ void sub_02089794(void) {
     // _020897BC: .word 0x000007C9
     // TODO: decompile
 }
+
 
 
 void sub_020897C0(void) {
@@ -2410,12 +2418,10 @@ void sub_020897C0(void) {
 }
 
 
+
 void sub_020897F0(void) {
-    AllocMonZeroed(0x13);
-    CopyBoxPokemonToPokemon(r6, r0);
-    sub_0208981C(r5, r4, r7);
-    Heap_Free(r4);
 }
+
 
 
 void sub_0208981C(void) {
@@ -2899,6 +2905,7 @@ void sub_0208981C(void) {
 }
 
 
+
 void sub_02089C50(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -2948,6 +2955,7 @@ void sub_02089C50(void) {
     // _02089CB0: .word 0x000007B8
     // TODO: decompile
 }
+
 
 
 void sub_02089CB4(void) {
@@ -3011,6 +3019,7 @@ void sub_02089CB4(void) {
 }
 
 
+
 void sub_02089D40(void) {
     // push {r3, r4, r5, r6}
     // mov r6, #0
@@ -3034,6 +3043,7 @@ void sub_02089D40(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_02089D68(void) {
@@ -3111,6 +3121,7 @@ void sub_02089D68(void) {
 }
 
 
+
 void sub_02089E14(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -3125,6 +3136,7 @@ void sub_02089E14(void) {
     // _02089E2C: .word 0x000005E1
     // TODO: decompile
 }
+
 
 
 void sub_02089E30(void) {
@@ -3170,6 +3182,7 @@ void sub_02089E30(void) {
 }
 
 
+
 void sub_02089E80(void) {
     // mov r2, #0x8b
     // lsl r2, r2, #2
@@ -3185,6 +3198,7 @@ void sub_02089E80(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_02089E98(void) {
@@ -3265,6 +3279,7 @@ void sub_02089E98(void) {
 }
 
 
+
 void sub_02089F50(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -3299,6 +3314,7 @@ void sub_02089F50(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_02089F98(void) {
@@ -3457,6 +3473,7 @@ void sub_02089F98(void) {
 }
 
 
+
 void sub_0208A0EC(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x14
@@ -3541,6 +3558,7 @@ void sub_0208A0EC(void) {
 }
 
 
+
 void sub_0208A1A0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -3614,6 +3632,7 @@ void sub_0208A1A0(void) {
 }
 
 
+
 void sub_0208A234(void) {
     // push {r4, lr}
     // mov r2, #0x8b
@@ -3667,6 +3686,7 @@ void sub_0208A234(void) {
 }
 
 
+
 void sub_0208A2C0(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -3683,6 +3703,7 @@ void sub_0208A2C0(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0208A2E0(void) {
@@ -3709,6 +3730,7 @@ void sub_0208A2E0(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0208A310(void) {
@@ -3799,6 +3821,7 @@ void sub_0208A310(void) {
 }
 
 
+
 void sub_0208A3CC(void) {
     // mov r1, #0x8b
     // lsl r1, r1, #2
@@ -3821,6 +3844,7 @@ void sub_0208A3CC(void) {
     // _0208A3F0: .word 0x000007BC
     // TODO: decompile
 }
+
 
 
 void sub_0208A3F4(void) {
@@ -3875,6 +3899,7 @@ void sub_0208A3F4(void) {
 }
 
 
+
 void sub_0208A45C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -3920,6 +3945,7 @@ void sub_0208A45C(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0208A4B8(void) {
@@ -3974,6 +4000,7 @@ void sub_0208A4B8(void) {
 }
 
 
+
 void sub_0208A520(void) {
     // push {r4, lr}
     // mov r1, #0x8b
@@ -4007,6 +4034,7 @@ void sub_0208A520(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0208A564(void) {
@@ -4103,6 +4131,7 @@ void sub_0208A564(void) {
     // _0208A638: .word 0x00000434
     // TODO: decompile
 }
+
 
 
 void sub_0208A63C(void) {
@@ -4202,6 +4231,7 @@ void sub_0208A63C(void) {
 }
 
 
+
 void sub_0208A71C(void) {
     // push {r4, r5, r6, r7}
     // add r5, r0, #0
@@ -4270,6 +4300,7 @@ void sub_0208A71C(void) {
 }
 
 
+
 void sub_0208A79C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -4315,6 +4346,7 @@ void sub_0208A79C(void) {
 }
 
 
+
 void sub_0208A7F8(void) {
     // push {r3, r4, r5, lr}
     // mov r2, #0
@@ -4342,6 +4374,7 @@ void sub_0208A7F8(void) {
     // _0208A830: .word 0x0000044C
     // TODO: decompile
 }
+
 
 
 void sub_0208A834(void) {
@@ -4441,6 +4474,7 @@ void sub_0208A834(void) {
 }
 
 
+
 void sub_0208A8F4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -4481,6 +4515,7 @@ void sub_0208A8F4(void) {
     // _0208A94C: .word 0x00000428
     // TODO: decompile
 }
+
 
 
 void sub_0208A950(void) {
@@ -4533,6 +4568,7 @@ void sub_0208A950(void) {
     // _0208A9C0: .word 0x00000434
     // TODO: decompile
 }
+
 
 
 void sub_0208A9C4(void) {
@@ -4631,6 +4667,7 @@ void sub_0208A9C4(void) {
 }
 
 
+
 void sub_0208AA9C(void) {
     // push {r4, lr}
     // ldr r1, _0208AB50 ; =0x000007BE
@@ -4715,6 +4752,7 @@ void sub_0208AA9C(void) {
     // _0208AB54: .word 0x00000428
     // TODO: decompile
 }
+
 
 
 void sub_0208AB58(void) {
@@ -4897,6 +4935,7 @@ void sub_0208AB58(void) {
 }
 
 
+
 void sub_0208ACDC(void) {
     // push {r4, r5, r6, r7}
     // ldr r2, _0208AD30 ; =0x000007C5
@@ -4945,34 +4984,30 @@ void sub_0208ACDC(void) {
 }
 
 
+
 void sub_0208AD34(void) {
-    PlayerProfile_GetNamePtr(r1);
-    *((u32*)(r5 + 8)) = r0;
-    PlayerProfile_GetTrainerID(r4);
-    *((u32*)(r5 + 0xc)) = r0;
-    PlayerProfile_GetTrainerGender(r4);
-    *((u8*)(r5 + 0x10)) = r0;
 }
+
 
 
 u8 sub_0208AD54(void) {
-    return 0x40;
 }
+
 
 
 u8 sub_0208AD58(void) {
-    return 0x41;
 }
+
 
 
 u8 sub_0208AD5C(void) {
-    return 0x3f;
 }
+
 
 
 u8 sub_0208AD60(void) {
-    return 0x3e;
 }
+
 
 
 void Pokemon_GetStatusIconId(void) {
@@ -5020,9 +5055,10 @@ void Pokemon_GetStatusIconId(void) {
 }
 
 
+
 void sub_0208ADB8(void) {
-    MenuInputStateMgr_SetState(0x8b);
 }
+
 
 
 void sub_0208ADCC(void) {
@@ -5034,6 +5070,7 @@ void sub_0208ADCC(void) {
     // _0208ADD8: .word _021038D4
     // TODO: decompile
 }
+
 
 
 void sub_0208ADDC(void) {
@@ -5057,6 +5094,7 @@ void sub_0208ADDC(void) {
     // _0208AE04: .word _021038AC
     // TODO: decompile
 }
+
 
 
 void sub_0208AE08(void) {
@@ -5090,6 +5128,7 @@ void sub_0208AE08(void) {
 }
 
 
+
 void sub_0208AE48(void) {
     // push {r3, lr}
     // ldr r0, _0208AE7C ; =_021038D4
@@ -5121,6 +5160,7 @@ void sub_0208AE48(void) {
 }
 
 
+
 void sub_0208AE88(void) {
     // push {r3, lr}
     // ldr r0, _0208AEAC ; =_021038B4
@@ -5144,6 +5184,7 @@ void sub_0208AE88(void) {
 }
 
 
+
 void sub_0208AEB4(void) {
     // ldr r3, _0208AEBC ; =TouchscreenHitbox_FindRectAtTouchNew
     // ldr r0, _0208AEC0 ; =_021038B8
@@ -5155,6 +5196,7 @@ void sub_0208AEB4(void) {
 }
 
 
+
 void sub_0208AEC4(void) {
     // ldr r3, _0208AECC ; =TouchscreenHitbox_FindRectAtTouchNew
     // ldr r0, _0208AED0 ; =_021039E8
@@ -5164,6 +5206,7 @@ void sub_0208AEC4(void) {
     // _0208AED0: .word _021039E8
     // TODO: decompile
 }
+
 
 
 void sub_0208AED4(void) {
@@ -5189,6 +5232,7 @@ void sub_0208AED4(void) {
     // _0208AF04: .word 0x0000042C
     // TODO: decompile
 }
+
 
 
 void sub_0208AF08(void) {
@@ -5240,6 +5284,7 @@ void sub_0208AF08(void) {
 }
 
 
+
 void sub_0208AF70(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -5264,6 +5309,7 @@ void sub_0208AF70(void) {
     // _0208AF9C: .word 0x00003006
     // TODO: decompile
 }
+
 
 
 void sub_0208AFA0(void) {
@@ -5301,6 +5347,7 @@ void sub_0208AFA0(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void sub_0208AFE8(void) {
@@ -5353,6 +5400,7 @@ void sub_0208AFE8(void) {
 }
 
 
+
 void sub_0208B044(void) {
     // push {lr}
     // sub sp, #0x14
@@ -5375,14 +5423,15 @@ void sub_0208B044(void) {
 }
 
 
+
 void sub_0208B068(void) {
-    sub_0208AFE8(6, 0xf, 1, 4, 0, 0x13);
 }
+
 
 
 void sub_0208B08C(void) {
-    sub_0208AFE8(6, 0xa, 1, 2, 0, 0x11);
 }
+
 
 
 void sub_0208B0B0(void) {
@@ -5422,6 +5471,7 @@ void sub_0208B0B0(void) {
 }
 
 
+
 void sub_0208B0F4(void) {
     // push {lr}
     // sub sp, #0x14
@@ -5442,6 +5492,7 @@ void sub_0208B0F4(void) {
     // pop {pc}
     // TODO: decompile
 }
+
 
 
 void sub_0208B118(void) {
@@ -5513,4 +5564,5 @@ void sub_0208B118(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 

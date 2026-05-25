@@ -369,6 +369,7 @@ void ov80_022324C4(void) {
 }
 
 
+
 void ov80_02232824(void) {
     // push {r3, lr}
     // cmp r1, #0
@@ -379,6 +380,7 @@ void ov80_02232824(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_02232838(void) {
@@ -477,6 +479,7 @@ void ov80_02232838(void) {
 }
 
 
+
 void ov80_02232908(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x18c
@@ -556,6 +559,7 @@ void ov80_02232908(void) {
     // pop {r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_022329B4(void) {
@@ -678,6 +682,7 @@ void ov80_022329B4(void) {
 }
 
 
+
 void ov80_02232ABC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -700,6 +705,7 @@ void ov80_02232ABC(void) {
     // _02232AE8: .word 0x00000A28
     // TODO: decompile
 }
+
 
 
 void ov80_02232AEC(void) {
@@ -749,9 +755,10 @@ void ov80_02232AEC(void) {
 }
 
 
+
 void ov80_02232B44(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov80_02232B58(void) {
@@ -1084,14 +1091,11 @@ void ov80_02232B58(void) {
 }
 
 
+
 void ov80_02232E58(void) {
-    // ldrb r1, [r0, #0x11]
-    // add r1, r1, #1
-    // strb r1, [r0, #0x11]
-    // ldrb r0, [r0, #0x11]
-    // bx lr
-    // TODO: decompile
+    *((u8*)(r0 + 0x11)) = (*((u8*)(r0 + 0x11)) + 1);
 }
+
 
 
 void ov80_02232E64(void) {
@@ -1099,6 +1103,7 @@ void ov80_02232E64(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov80_02232E68(void) {
@@ -1127,6 +1132,7 @@ void ov80_02232E68(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_02232E9C(void) {
@@ -1162,6 +1168,7 @@ void ov80_02232E9C(void) {
 }
 
 
+
 void ov80_02232EE0(void) {
     // add r1, r0, #0
     // mov r2, #1
@@ -1182,9 +1189,10 @@ void ov80_02232EE0(void) {
 }
 
 
+
 void ov80_02232F00(void) {
-    ov80_02237E30();
 }
+
 
 
 void ov80_02232F08(void) {
@@ -1230,6 +1238,7 @@ void ov80_02232F08(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_02232F60(void) {
@@ -1320,6 +1329,7 @@ void ov80_02232F60(void) {
     // _0223301C: .word 0x0000039A
     // TODO: decompile
 }
+
 
 
 void ov80_02233020(void) {
@@ -1542,6 +1552,7 @@ void ov80_02233020(void) {
 }
 
 
+
 void ov80_022331E8(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -1605,6 +1616,7 @@ void ov80_022331E8(void) {
 }
 
 
+
 void ov80_02233280(void) {
     // push {r3, lr}
     // cmp r1, #6
@@ -1634,6 +1646,7 @@ void ov80_02233280(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_022332D0(void) {
@@ -1753,6 +1766,7 @@ void ov80_022332D0(void) {
 }
 
 
+
 void ov80_022333D0(void) {
     // push {r4, lr}
     // add r4, r1, #0
@@ -1769,6 +1783,7 @@ void ov80_022333D0(void) {
     // _022333EC: .word 0x000003D9
     // TODO: decompile
 }
+
 
 
 void ov80_022333F0(void) {
@@ -1842,6 +1857,7 @@ void ov80_022333F0(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov80_02233490(void) {
@@ -1952,6 +1968,7 @@ void ov80_02233490(void) {
 }
 
 
+
 void ov80_02233594(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -2032,6 +2049,7 @@ void ov80_02233594(void) {
 }
 
 
+
 void ov80_02233648(void) {
     // ldrb r3, [r0, #0x10]
     // ldrh r2, [r0, #0x16]
@@ -2065,4 +2083,5 @@ void ov80_02233648(void) {
     // _02233684: .word ov80_0223BE60
     // TODO: decompile
 }
+
 

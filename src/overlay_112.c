@@ -34,6 +34,7 @@ void ov112_021E5900(void) {
 }
 
 
+
 void ov112_021E5938(void) {
     // ldr r0, _021E5948 ; =_021FF9E0
     // mov r1, #1
@@ -46,6 +47,7 @@ void ov112_021E5938(void) {
     // _021E5948: .word _021FF9E0
     // TODO: decompile
 }
+
 
 
 void ov112_021E594C(void) {
@@ -62,6 +64,7 @@ void ov112_021E594C(void) {
     // _021E5960: .word _021FF9E0
     // TODO: decompile
 }
+
 
 
 void ov112_021E5964(void) {
@@ -94,6 +97,7 @@ void ov112_021E5964(void) {
 }
 
 
+
 void ov112_021E59A8(void) {
     // ldr r0, _021E59B0 ; =_021FF9E0
     // ldr r0, [r0, #0x2c]
@@ -102,6 +106,7 @@ void ov112_021E59A8(void) {
     // _021E59B0: .word _021FF9E0
     // TODO: decompile
 }
+
 
 
 void ov112_021E59B4(void) {
@@ -153,6 +158,7 @@ void ov112_021E59B4(void) {
 }
 
 
+
 void ov112_021E5A14(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -190,20 +196,22 @@ void ov112_021E5A14(void) {
 }
 
 
+
 void ov112_021E5A5C(void) {
-    ov112_021E5A14();
 }
+
 
 
 void ov112_021E5A68(void) {
-    ov112_021E59B4();
 }
+
 
 
 void ov112_021E5A80(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021E5A84(void) {
@@ -245,6 +253,7 @@ void ov112_021E5A84(void) {
     // _021E5ACC: .word ov112_021FFA18
     // TODO: decompile
 }
+
 
 
 void ov112_021E5AD0(void) {
@@ -289,6 +298,7 @@ void ov112_021E5AD0(void) {
     // _021E5B24: .word 0x000082EA
     // TODO: decompile
 }
+
 
 
 void ov112_021E5B28(void) {
@@ -346,6 +356,7 @@ void ov112_021E5B28(void) {
     // _021E5B94: .word _021FF9E0
     // TODO: decompile
 }
+
 
 
 void ov112_021E5B98(void) {
@@ -536,6 +547,7 @@ void ov112_021E5B98(void) {
 }
 
 
+
 void ov112_021E5D38(void) {
     // ldr r1, _021E5D40 ; =_021FF9E0
     // str r0, [r1, #0xc]
@@ -544,6 +556,7 @@ void ov112_021E5D38(void) {
     // _021E5D40: .word _021FF9E0
     // TODO: decompile
 }
+
 
 
 void ov112_021E5D44(void) {
@@ -556,6 +569,7 @@ void ov112_021E5D44(void) {
 }
 
 
+
 void ov112_021E5D50(void) {
     // ldr r1, _021E5D58 ; =_021FF9E0
     // str r0, [r1, #0x14]
@@ -564,6 +578,7 @@ void ov112_021E5D50(void) {
     // _021E5D58: .word _021FF9E0
     // TODO: decompile
 }
+
 
 
 void ov112_021E5D5C(void) {
@@ -576,9 +591,10 @@ void ov112_021E5D5C(void) {
 }
 
 
+
 void ov112_021E5D68(void) {
-    OS_Halt(3);
 }
+
 
 
 void ov112_021E5D8C(void) {
@@ -652,6 +668,7 @@ void ov112_021E5D8C(void) {
 }
 
 
+
 void ov112_021E5E18(void) {
     // ldr r1, _021E5E24 ; =ov112_021FFAA4
     // ldr r2, [r1, #0x14]
@@ -662,6 +679,7 @@ void ov112_021E5E18(void) {
     // _021E5E24: .word ov112_021FFAA4
     // TODO: decompile
 }
+
 
 
 void ov112_021E5E28(void) {
@@ -680,6 +698,7 @@ void ov112_021E5E28(void) {
     // _021E5E44: .word ov112_021FFAA4
     // TODO: decompile
 }
+
 
 
 void ov112_021E5E48(void) {
@@ -739,6 +758,7 @@ void ov112_021E5E48(void) {
 }
 
 
+
 void ov112_021E5EB8(void) {
     // ldr r2, _021E5EC0 ; =ov112_021FFAA4
     // str r0, [r2, #0x20]
@@ -747,6 +767,7 @@ void ov112_021E5EB8(void) {
     // _021E5EC0: .word ov112_021FFAA4
     // TODO: decompile
 }
+
 
 
 void ov112_021E5EC4(void) {
@@ -771,6 +792,7 @@ void ov112_021E5EC4(void) {
     // _021E5EE8: .word ov112_021FFB24
     // TODO: decompile
 }
+
 
 
 void ov112_021E5EEC(void) {
@@ -908,6 +930,7 @@ void ov112_021E5EEC(void) {
 }
 
 
+
 void ov112_021E6004(void) {
     // push {r3, lr}
     // bl OS_GetTick
@@ -1031,6 +1054,7 @@ void ov112_021E6004(void) {
 }
 
 
+
 void ov112_021E6134(void) {
     // push {r3, lr}
     // ldr r0, _021E6160 ; =ov112_021FFB24
@@ -1056,6 +1080,7 @@ void ov112_021E6134(void) {
     // _021E6160: .word ov112_021FFB24
     // TODO: decompile
 }
+
 
 
 void ov112_021E6164(void) {
@@ -2063,6 +2088,7 @@ void ov112_021E6164(void) {
 }
 
 
+
 void ov112_021E6A6C(void) {
     // push {r3, lr}
     // ldr r1, _021E6BD0 ; =ov112_021FFAA4
@@ -2215,6 +2241,7 @@ void ov112_021E6A6C(void) {
 }
 
 
+
 void ov112_021E6BDC(void) {
     // ldr r0, _021E6BF4 ; =ov112_021FFB24
     // ldr r1, [r0, #0x24]
@@ -2231,6 +2258,7 @@ void ov112_021E6BDC(void) {
     // _021E6BF4: .word ov112_021FFB24
     // TODO: decompile
 }
+
 
 
 void ov112_021E6BF8(void) {
@@ -2591,6 +2619,7 @@ void ov112_021E6BF8(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021E6F60(void) {
@@ -3039,6 +3068,7 @@ void ov112_021E6F60(void) {
 }
 
 
+
 void ov112_021E7398(void) {
     // push {r4, r5, r6, lr}
     // ldr r5, _021E73C4 ; =ov112_021FFB08
@@ -3060,6 +3090,7 @@ void ov112_021E7398(void) {
     // _021E73C4: .word ov112_021FFB08
     // TODO: decompile
 }
+
 
 
 void ov112_021E73C8(void) {
@@ -3123,6 +3154,7 @@ void ov112_021E73C8(void) {
 }
 
 
+
 void ov112_021E7464(void) {
     // push {r3, lr}
     // ldr r0, _021E747C ; =ov112_021FFB08
@@ -3137,6 +3169,7 @@ void ov112_021E7464(void) {
     // _021E7480: .word ov112_021FFBD8
     // TODO: decompile
 }
+
 
 
 void ov112_021E7484(void) {
@@ -3158,6 +3191,7 @@ void ov112_021E7484(void) {
     // _021E74A4: .word ov112_021E5EC4
     // TODO: decompile
 }
+
 
 
 void ov112_021E74A8(void) {
@@ -3234,6 +3268,7 @@ void ov112_021E74A8(void) {
 }
 
 
+
 void ov112_021E7548(void) {
     // push {r4, lr}
     // ldr r4, _021E7584 ; =ov112_021FFAA4
@@ -3270,6 +3305,7 @@ void ov112_021E7548(void) {
     // _021E7590: .word 0x00002BCA
     // TODO: decompile
 }
+
 
 
 void ov112_021E7594(void) {
@@ -3338,6 +3374,7 @@ void ov112_021E7594(void) {
 }
 
 
+
 void ov112_021E7620(void) {
     // push {r3, lr}
     // ldr r2, _021E7658 ; =ov112_021FFAA4
@@ -3374,19 +3411,20 @@ void ov112_021E7620(void) {
 }
 
 
+
 void ov112_021E7668(void) {
-    ov112_021E59A8();
 }
+
 
 
 void ov112_021E7670(void) {
-    _s32_div_f(0xff);
 }
+
 
 
 void ov112_021E768C(void) {
-    _s32_div_f(0xff);
 }
+
 
 
 void ov112_021E76A8(void) {
@@ -3408,6 +3446,7 @@ void ov112_021E76A8(void) {
     // _021E76C8: .word ov112_021FFAA4
     // TODO: decompile
 }
+
 
 
 void ov112_021E76CC(void) {
@@ -3475,6 +3514,7 @@ void ov112_021E76CC(void) {
 }
 
 
+
 void ov112_021E7768(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -3525,6 +3565,7 @@ void ov112_021E7768(void) {
 }
 
 
+
 void ov112_021E77E4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -3555,6 +3596,7 @@ void ov112_021E77E4(void) {
     // _021E782C: .word 0x0001E52C
     // TODO: decompile
 }
+
 
 
 void ov112_021E7830(void) {
@@ -3657,6 +3699,7 @@ void ov112_021E7830(void) {
 }
 
 
+
 void ov112_021E7910(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -3687,6 +3730,7 @@ void ov112_021E7910(void) {
     // _021E7958: .word gApplication_TitleScreen
     // TODO: decompile
 }
+
 
 
 void ov112_021E795C(void) {
@@ -3722,6 +3766,7 @@ void ov112_021E795C(void) {
 }
 
 
+
 void ov112_021E79A8(void) {
     // push {r3, lr}
     // ldr r0, [r0, #0x18]
@@ -3742,9 +3787,10 @@ void ov112_021E79A8(void) {
 }
 
 
+
 void ov112_021E79D0(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov112_021E79F0(void) {
@@ -3837,39 +3883,19 @@ void ov112_021E79F0(void) {
 }
 
 
+
 void ov112_021E7AC8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x1f
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // mov r0, #0x1b
-    // mov r1, #0
-    // bl GfGfx_EngineBTogglePlanes
-    // add r0, r4, #0
-    // mov r1, #6
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0x9a
-    // add r1, r4, #0
-    // bl Heap_FreeExplicit
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfx_EngineATogglePlanes(0x1f, 0);
+    GfGfx_EngineBTogglePlanes(0x1b, 0);
+    FreeBgTilemapBuffer(r4, 6);
+    FreeBgTilemapBuffer(r4, 5);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 3);
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 1);
+    Heap_FreeExplicit(0x9a, r4);
 }
+
 
 
 void ov112_021E7B18(void) {
@@ -3989,6 +4015,7 @@ void ov112_021E7B18(void) {
 }
 
 
+
 void ov112_021E7C18(void) {
     // push {r4, lr}
     // mov r1, #0x1b
@@ -4028,6 +4055,7 @@ void ov112_021E7C18(void) {
 }
 
 
+
 void ov112_021E7C6C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -4053,6 +4081,7 @@ void ov112_021E7C6C(void) {
 }
 
 
+
 void ov112_021E7CA4(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -4073,6 +4102,7 @@ void ov112_021E7CA4(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021E7CC8(void) {
@@ -4153,6 +4183,7 @@ void ov112_021E7CC8(void) {
 }
 
 
+
 void ov112_021E7D7C(void) {
     // push {r4, lr}
     // ldr r1, _021E7D9C ; =0x000010F4
@@ -4173,6 +4204,7 @@ void ov112_021E7D7C(void) {
 }
 
 
+
 void ov112_021E7DA4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -4187,6 +4219,7 @@ void ov112_021E7DA4(void) {
     // _021E7DBC: .word 0x0000C910
     // TODO: decompile
 }
+
 
 
 void ov112_021E7DC0(void) {
@@ -4216,6 +4249,7 @@ void ov112_021E7DC0(void) {
     // _021E7DF8: .word 0x0000F1D8
     // TODO: decompile
 }
+
 
 
 void ov112_021E7DFC(void) {
@@ -5506,6 +5540,7 @@ void ov112_021E7DFC(void) {
 }
 
 
+
 void ov112_021E8B74(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -5620,6 +5655,7 @@ void ov112_021E8B74(void) {
 }
 
 
+
 void ov112_021E8C5C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r1, #0
@@ -5665,6 +5701,7 @@ void ov112_021E8C5C(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021E8CB8(void) {
@@ -6148,6 +6185,7 @@ void ov112_021E8CB8(void) {
 }
 
 
+
 void ov112_021E90FC(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -6182,6 +6220,7 @@ void ov112_021E90FC(void) {
     // _021E9144: .word 0x00030100
     // TODO: decompile
 }
+
 
 
 void ov112_021E9148(void) {
@@ -6331,6 +6370,7 @@ void ov112_021E9148(void) {
 }
 
 
+
 void ov112_021E9290(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x24
@@ -6411,6 +6451,7 @@ void ov112_021E9290(void) {
 }
 
 
+
 void ov112_021E9338(void) {
     // push {r3, lr}
     // ldr r1, _021E9358 ; =0x0001E440
@@ -6430,6 +6471,7 @@ void ov112_021E9338(void) {
     // _021E9358: .word 0x0001E440
     // TODO: decompile
 }
+
 
 
 void ov112_021E935C(void) {
@@ -6482,6 +6524,7 @@ void ov112_021E935C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021E93BC(void) {
@@ -6570,14 +6613,15 @@ void ov112_021E93BC(void) {
 }
 
 
+
 void ov112_021E9464(void) {
-    Boxmon_GetIconNaix();
 }
+
 
 
 void ov112_021E9470(void) {
-    GetMonIconNaixEx();
 }
+
 
 
 void ov112_021E9480(void) {
@@ -6726,6 +6770,7 @@ void ov112_021E9480(void) {
 }
 
 
+
 void ov112_021E95A0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -6779,6 +6824,7 @@ void ov112_021E95A0(void) {
 }
 
 
+
 void ov112_021E9610(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -6825,6 +6871,7 @@ void ov112_021E9610(void) {
 }
 
 
+
 void ov112_021E966C(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -6868,6 +6915,7 @@ void ov112_021E966C(void) {
     // _021E96CC: .word 0x0001F2E2
     // TODO: decompile
 }
+
 
 
 void ov112_021E96D0(void) {
@@ -6924,6 +6972,7 @@ void ov112_021E96D0(void) {
     // _021E974C: .word 0x0001F2E2
     // TODO: decompile
 }
+
 
 
 void ov112_021E9750(void) {
@@ -7064,6 +7113,7 @@ void ov112_021E9750(void) {
 }
 
 
+
 void ov112_021E9888(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -7078,6 +7128,7 @@ void ov112_021E9888(void) {
     // _021E98A0: .word ov112_021FF514
     // TODO: decompile
 }
+
 
 
 void ov112_021E98A4(void) {
@@ -7114,6 +7165,7 @@ void ov112_021E98A4(void) {
 }
 
 
+
 void ov112_021E98E8(void) {
     // ldr r3, _021E98F4 ; =ToggleBgLayer
     // lsl r1, r1, #0x18
@@ -7124,6 +7176,7 @@ void ov112_021E98E8(void) {
     // _021E98F4: .word ToggleBgLayer
     // TODO: decompile
 }
+
 
 
 void ov112_021E98F8(void) {
@@ -7158,6 +7211,7 @@ void ov112_021E98F8(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021E9934(void) {
@@ -7213,6 +7267,7 @@ void ov112_021E9934(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021E9998(void) {
@@ -7293,6 +7348,7 @@ void ov112_021E9998(void) {
 }
 
 
+
 void ov112_021E9A30(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r3, #0xd
@@ -7329,6 +7385,7 @@ void ov112_021E9A30(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021E9A78(void) {
@@ -7510,6 +7567,7 @@ void ov112_021E9A78(void) {
 }
 
 
+
 void ov112_021E9C10(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -7572,10 +7630,12 @@ void ov112_021E9C10(void) {
 }
 
 
+
 void ov112_021E9C94(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021E9C98(void) {
@@ -7742,6 +7802,7 @@ void ov112_021E9C98(void) {
 }
 
 
+
 void ov112_021E9E30(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -7839,9 +7900,10 @@ void ov112_021E9E30(void) {
 }
 
 
+
 void ov112_021E9F40(void) {
-    ov112_021E9FA4(4);
 }
+
 
 
 void ov112_021E9F5C(void) {
@@ -7878,6 +7940,7 @@ void ov112_021E9F5C(void) {
 }
 
 
+
 void ov112_021E9FA4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -7904,6 +7967,7 @@ void ov112_021E9FA4(void) {
     // _021E9FD4: .word 0x0001EA68
     // TODO: decompile
 }
+
 
 
 void ov112_021E9FD8(void) {
@@ -7935,6 +7999,7 @@ void ov112_021E9FD8(void) {
 }
 
 
+
 void ov112_021EA010(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -7961,6 +8026,7 @@ void ov112_021EA010(void) {
     // _021EA040: .word 0x0001EBA8
     // TODO: decompile
 }
+
 
 
 void ov112_021EA044(void) {
@@ -7995,6 +8061,7 @@ void ov112_021EA044(void) {
     // _021EA088: .word 0x0001E454
     // TODO: decompile
 }
+
 
 
 void ov112_021EA08C(void) {
@@ -8053,6 +8120,7 @@ void ov112_021EA08C(void) {
 }
 
 
+
 void ov112_021EA10C(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -8103,9 +8171,10 @@ void ov112_021EA10C(void) {
 }
 
 
+
 void ov112_021EA17C(void) {
-    WaitingIcon_New();
 }
+
 
 
 void ov112_021EA19C(void) {
@@ -8117,6 +8186,7 @@ void ov112_021EA19C(void) {
     // _021EA1A8: .word sub_0200F450
     // TODO: decompile
 }
+
 
 
 void ov112_021EA1AC(void) {
@@ -8152,6 +8222,7 @@ void ov112_021EA1AC(void) {
 }
 
 
+
 void ov112_021EA1F8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -8178,6 +8249,7 @@ void ov112_021EA1F8(void) {
     // _021EA22C: .word 0x0001E528
     // TODO: decompile
 }
+
 
 
 void ov112_021EA230(void) {
@@ -8247,6 +8319,7 @@ void ov112_021EA230(void) {
     // _021EA2C0: .word ov112_021FEC98
     // TODO: decompile
 }
+
 
 
 void ov112_021EA2C4(void) {
@@ -8365,6 +8438,7 @@ void ov112_021EA2C4(void) {
     // _021EA3BC: .word 0x0000C227
     // TODO: decompile
 }
+
 
 
 void ov112_021EA3C0(void) {
@@ -8498,6 +8572,7 @@ void ov112_021EA3C0(void) {
 }
 
 
+
 void ov112_021EA4F4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -8517,6 +8592,7 @@ void ov112_021EA4F4(void) {
     // _021EA518: .word 0x0001E530
     // TODO: decompile
 }
+
 
 
 void ov112_021EA51C(void) {
@@ -8557,6 +8633,7 @@ void ov112_021EA51C(void) {
 }
 
 
+
 void ov112_021EA570(void) {
     // ldr r1, _021EA57C ; =0x0001E530
     // ldr r3, _021EA580 ; =ManagedSprite_SetDrawFlag
@@ -8568,6 +8645,7 @@ void ov112_021EA570(void) {
     // _021EA580: .word ManagedSprite_SetDrawFlag
     // TODO: decompile
 }
+
 
 
 void ov112_021EA584(void) {
@@ -8586,6 +8664,7 @@ void ov112_021EA584(void) {
     // _021EA5A0: .word 0x0001E530
     // TODO: decompile
 }
+
 
 
 void ov112_021EA5A4(void) {
@@ -8635,6 +8714,7 @@ void ov112_021EA5A4(void) {
 }
 
 
+
 void ov112_021EA60C(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -8666,6 +8746,7 @@ void ov112_021EA60C(void) {
 }
 
 
+
 void ov112_021EA64C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -8685,6 +8766,7 @@ void ov112_021EA64C(void) {
 }
 
 
+
 void ov112_021EA670(void) {
     // lsl r1, r1, #2
     // add r1, r0, r1
@@ -8698,6 +8780,7 @@ void ov112_021EA670(void) {
     // _021EA684: .word ManagedSprite_SetDrawFlag
     // TODO: decompile
 }
+
 
 
 void ov112_021EA688(void) {
@@ -8715,6 +8798,7 @@ void ov112_021EA688(void) {
 }
 
 
+
 void ov112_021EA6A0(void) {
     // lsl r1, r1, #2
     // add r1, r0, r1
@@ -8730,9 +8814,10 @@ void ov112_021EA6A0(void) {
 }
 
 
+
 void ov112_021EA6B8(void) {
-    ManagedSprite_SetPositionXYWithSubscreenOffset(1);
 }
+
 
 
 void ov112_021EA6D8(void) {
@@ -8805,6 +8890,7 @@ void ov112_021EA6D8(void) {
 }
 
 
+
 void ov112_021EA76C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -8848,6 +8934,7 @@ void ov112_021EA76C(void) {
     // _021EA7CC: .word 0x0001EC80
     // TODO: decompile
 }
+
 
 
 void ov112_021EA7D0(void) {
@@ -8897,6 +8984,7 @@ void ov112_021EA7D0(void) {
 }
 
 
+
 void ov112_021EA838(void) {
     // push {r3, r4}
     // ldr r1, _021EA860 ; =0x0001EC80
@@ -8921,6 +9009,7 @@ void ov112_021EA838(void) {
     // _021EA860: .word 0x0001EC80
     // TODO: decompile
 }
+
 
 
 void ov112_021EA864(void) {
@@ -9055,6 +9144,7 @@ void ov112_021EA864(void) {
 }
 
 
+
 void ov112_021EA984(void) {
     // ldr r1, _021EA99C ; =0x0001EC80
     // mov r2, #0
@@ -9073,6 +9163,7 @@ void ov112_021EA984(void) {
 }
 
 
+
 void ov112_021EA9A0(void) {
     // mov r2, #0
     // ldrb r1, [r0]
@@ -9089,6 +9180,7 @@ void ov112_021EA9A0(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021EA9BC(void) {
@@ -9130,6 +9222,7 @@ void ov112_021EA9BC(void) {
 }
 
 
+
 void ov112_021EAA10(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -9147,6 +9240,7 @@ void ov112_021EAA10(void) {
     // _021EAA30: .word 0x0001E564
     // TODO: decompile
 }
+
 
 
 void ov112_021EAA34(void) {
@@ -9196,6 +9290,7 @@ void ov112_021EAA34(void) {
 }
 
 
+
 void ov112_021EAA98(void) {
     // cmp r2, #0
     // bne _021EAAAE
@@ -9236,6 +9331,7 @@ void ov112_021EAA98(void) {
     // _021EAAE0: .word ov112_021EA9BC
     // TODO: decompile
 }
+
 
 
 void ov112_021EAAE4(void) {
@@ -9297,6 +9393,7 @@ void ov112_021EAAE4(void) {
 }
 
 
+
 void ov112_021EAB58(void) {
     // push {r3, lr}
     // sub sp, #8
@@ -9314,6 +9411,7 @@ void ov112_021EAB58(void) {
     // pop {r3, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EAB78(void) {
@@ -9369,6 +9467,7 @@ void ov112_021EAB78(void) {
 }
 
 
+
 void ov112_021EABE8(void) {
     // push {r4, r5, r6, lr}
     // add r5, r1, #0
@@ -9395,6 +9494,7 @@ void ov112_021EABE8(void) {
 }
 
 
+
 void ov112_021EAC18(void) {
     // push {r3, lr}
     // ldr r1, _021EAC30 ; =0x00000497
@@ -9409,6 +9509,7 @@ void ov112_021EAC18(void) {
     // _021EAC30: .word 0x00000497
     // TODO: decompile
 }
+
 
 
 void ov112_021EAC34(void) {
@@ -9433,9 +9534,10 @@ void ov112_021EAC34(void) {
 }
 
 
+
 u8 ov112_021EAC58(void) {
-    return 1;
 }
+
 
 
 void ov112_021EAC5C(void) {
@@ -9602,6 +9704,7 @@ void ov112_021EAC5C(void) {
 }
 
 
+
 void ov112_021EADD0(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #0x10
@@ -9761,9 +9864,10 @@ void ov112_021EADD0(void) {
 }
 
 
+
 void ov112_021EAF48(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EAF5C(void) {
@@ -9835,6 +9939,7 @@ void ov112_021EAF5C(void) {
     // _021EAFF8: .word ov112_021FF0AC
     // TODO: decompile
 }
+
 
 
 void ov112_021EAFFC(void) {
@@ -10046,14 +10151,15 @@ void ov112_021EAFFC(void) {
 }
 
 
+
 void ov112_021EB1D8(void) {
-    ov112_021EC460();
 }
+
 
 
 void ov112_021EB1E8(void) {
-    TextPrinterCheckActive(5, 7);
 }
+
 
 
 void ov112_021EB208(void) {
@@ -10085,6 +10191,7 @@ void ov112_021EB208(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EB244(void) {
@@ -10119,6 +10226,7 @@ void ov112_021EB244(void) {
     // _021EB288: .word 0x0001EC50
     // TODO: decompile
 }
+
 
 
 void ov112_021EB28C(void) {
@@ -10231,19 +10339,20 @@ void ov112_021EB28C(void) {
 }
 
 
+
 void ov112_021EB388(void) {
-    ov112_021EA570(0x1a, 0xb, 3);
 }
+
 
 
 void ov112_021EB3A8(void) {
-    ov112_021EC460();
 }
+
 
 
 void ov112_021EB3B8(void) {
-    TextPrinterCheckActive(0xb, 0xc);
 }
+
 
 
 void ov112_021EB3D8(void) {
@@ -10296,6 +10405,7 @@ void ov112_021EB3D8(void) {
     // _021EB448: .word ov112_021FF090
     // TODO: decompile
 }
+
 
 
 void ov112_021EB44C(void) {
@@ -10423,6 +10533,7 @@ void ov112_021EB44C(void) {
 }
 
 
+
 void ov112_021EB568(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -10459,14 +10570,15 @@ void ov112_021EB568(void) {
 }
 
 
+
 void ov112_021EB5AC(void) {
-    ov112_021EC460();
 }
+
 
 
 void ov112_021EB5BC(void) {
-    TextPrinterCheckActive(0x10, 0x11);
 }
+
 
 
 void ov112_021EB5DC(void) {
@@ -10527,6 +10639,7 @@ void ov112_021EB5DC(void) {
     // _021EB660: .word ov112_021FF09C
     // TODO: decompile
 }
+
 
 
 void ov112_021EB664(void) {
@@ -10654,6 +10767,7 @@ void ov112_021EB664(void) {
 }
 
 
+
 void ov112_021EB780(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -10695,6 +10809,7 @@ void ov112_021EB780(void) {
     // _021EB7D4: .word 0x0001EC50
     // TODO: decompile
 }
+
 
 
 void ov112_021EB7D8(void) {
@@ -10744,6 +10859,7 @@ void ov112_021EB7D8(void) {
 }
 
 
+
 void ov112_021EB838(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -10765,9 +10881,10 @@ void ov112_021EB838(void) {
 }
 
 
+
 void ov112_021EB85C(void) {
-    ((u32*)r0)[4] = 0xb;
 }
+
 
 
 void ov112_021EB864(void) {
@@ -10817,19 +10934,20 @@ void ov112_021EB864(void) {
 }
 
 
+
 void ov112_021EB8C4(void) {
-    TextPrinterCheckActive(0x18);
 }
+
 
 
 void ov112_021EB8E8(void) {
-    ManagedSprite_IsAnimated(0x19);
 }
+
 
 
 u8 ov112_021EB908(void) {
-    return 0x1b;
 }
+
 
 
 void ov112_021EB90C(void) {
@@ -10863,6 +10981,7 @@ void ov112_021EB90C(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EB950(void) {
@@ -10919,6 +11038,7 @@ void ov112_021EB950(void) {
 }
 
 
+
 void ov112_021EB9C0(void) {
     // ldr r0, _021EB9E0 ; =gSystem
     // mov r1, #0x80
@@ -10939,6 +11059,7 @@ void ov112_021EB9C0(void) {
     // _021EB9E0: .word gSystem
     // TODO: decompile
 }
+
 
 
 void ov112_021EB9E4(void) {
@@ -10963,9 +11084,10 @@ void ov112_021EB9E4(void) {
 }
 
 
+
 void ov112_021EBA08(void) {
-    BeginNormalPaletteFade(0, 0x9a, 2, 6, 1);
 }
+
 
 
 void ov112_021EBA28(void) {
@@ -10992,19 +11114,20 @@ void ov112_021EBA28(void) {
 }
 
 
+
 u8 ov112_021EBA50(void) {
-    return 1;
 }
+
 
 
 void ov112_021EBA54(void) {
-    ov112_021EA08C(1, 2, 0x93);
 }
+
 
 
 void ov112_021EBA6C(void) {
-    TextPrinterCheckActive(1, 2);
 }
+
 
 
 void ov112_021EBA8C(void) {
@@ -11028,9 +11151,10 @@ void ov112_021EBA8C(void) {
 }
 
 
+
 u8 ov112_021EBAB0(void) {
-    return 4;
 }
+
 
 
 void ov112_021EBAB4(void) {
@@ -11109,6 +11233,7 @@ void ov112_021EBAB4(void) {
 }
 
 
+
 void ov112_021EBB58(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -11134,16 +11259,15 @@ void ov112_021EBB58(void) {
 }
 
 
+
 u32 ov112_021EBB84(void) {
-    ov112_021EA688(8);
-    ov112_021EA64C(r4);
-    return 1;
 }
+
 
 
 void ov112_021EBB98(void) {
-    ov112_021EA08C(1, 2, 3);
 }
+
 
 
 void ov112_021EBBB0(void) {
@@ -11166,6 +11290,7 @@ void ov112_021EBBB0(void) {
     // _021EBBD4: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EBBD8(void) {
@@ -11216,6 +11341,7 @@ void ov112_021EBBD8(void) {
 }
 
 
+
 void ov112_021EBC3C(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -11247,6 +11373,7 @@ void ov112_021EBC3C(void) {
     // _021EBC78: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EBC7C(void) {
@@ -11290,6 +11417,7 @@ void ov112_021EBC7C(void) {
     // _021EBCD4: .word 0x0001E458
     // TODO: decompile
 }
+
 
 
 void ov112_021EBCD8(void) {
@@ -11380,6 +11508,7 @@ void ov112_021EBCD8(void) {
 }
 
 
+
 void ov112_021EBD9C(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -11416,6 +11545,7 @@ void ov112_021EBD9C(void) {
     // _021EBDE4: .word 0x0001EC50
     // TODO: decompile
 }
+
 
 
 void ov112_021EBDE8(void) {
@@ -11467,14 +11597,15 @@ void ov112_021EBDE8(void) {
 }
 
 
+
 void ov112_021EBE4C(void) {
-    TextPrinterCheckActive(8, 9);
 }
+
 
 
 void ov112_021EBE6C(void) {
-    ov112_021E96D0();
 }
+
 
 
 void ov112_021EBE78(void) {
@@ -11550,19 +11681,15 @@ void ov112_021EBE78(void) {
 }
 
 
+
 u32 ov112_021EBF18(void) {
-    BgClearTilemapBufferAndCommit(*((u32*)(r0 + 0x18)), 4);
-    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 5);
-    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 1);
-    BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 2);
-    ov112_021EC460(r4, 2, 0x10, 0xd);
-    return 0xc;
 }
+
 
 
 void ov112_021EBF4C(void) {
-    TextPrinterCheckActive(0xc);
 }
+
 
 
 void ov112_021EBF70(void) {
@@ -11607,6 +11734,7 @@ void ov112_021EBF70(void) {
 }
 
 
+
 void ov112_021EBFC8(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -11636,6 +11764,7 @@ void ov112_021EBFC8(void) {
 }
 
 
+
 void ov112_021EC000(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -11662,9 +11791,10 @@ void ov112_021EC000(void) {
 }
 
 
+
 void ov112_021EC038(void) {
-    ov112_021E7CC8();
 }
+
 
 
 void ov112_021EC044(void) {
@@ -11759,6 +11889,7 @@ void ov112_021EC044(void) {
 }
 
 
+
 void ov112_021EC134(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0xc
@@ -11815,6 +11946,7 @@ void ov112_021EC134(void) {
 }
 
 
+
 void ov112_021EC1A8(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -11846,6 +11978,7 @@ void ov112_021EC1A8(void) {
 }
 
 
+
 void ov112_021EC1E4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -11865,6 +11998,7 @@ void ov112_021EC1E4(void) {
     // _021EC204: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EC208(void) {
@@ -11927,6 +12061,7 @@ void ov112_021EC208(void) {
 }
 
 
+
 void ov112_021EC284(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -11946,6 +12081,7 @@ void ov112_021EC284(void) {
     // _021EC2A4: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EC2A8(void) {
@@ -11978,9 +12114,10 @@ void ov112_021EC2A8(void) {
 }
 
 
+
 void ov112_021EC2E4(void) {
-    TextPrinterCheckActive(0x17, 0x18);
 }
+
 
 
 void ov112_021EC304(void) {
@@ -12007,6 +12144,7 @@ void ov112_021EC304(void) {
     // _021EC334: .word 0x0001F2E8
     // TODO: decompile
 }
+
 
 
 void ov112_021EC338(void) {
@@ -12039,24 +12177,25 @@ void ov112_021EC338(void) {
 }
 
 
+
 u8 ov112_021EC374(void) {
-    return 0x1b;
 }
+
 
 
 void ov112_021EC378(void) {
-    ov112_021EA08C(0x1c, 2, 0x1b);
 }
+
 
 
 void ov112_021EC390(void) {
-    TextPrinterCheckActive(0x1c, 0x1d);
 }
+
 
 
 void ov112_021EC3B0(void) {
-    ov112_021EA08C(0x1e, 2, 0xd);
 }
+
 
 
 void ov112_021EC3C8(void) {
@@ -12081,26 +12220,25 @@ void ov112_021EC3C8(void) {
 }
 
 
+
 u32 ov112_021EC3F0(void) {
-    SaveGameNormal(*((u32*)(r0 + 0x20)));
-    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
-    return 0x20;
 }
+
 
 
 void ov112_021EC404(void) {
-    ov112_021EA19C();
 }
+
 
 
 void ov112_021EC414(void) {
-    ManagedSprite_IsAnimated(0x21);
 }
+
 
 
 void ov112_021EC434(void) {
-    ov112_021EA570();
 }
+
 
 
 void ov112_021EC440(void) {
@@ -12121,9 +12259,10 @@ void ov112_021EC440(void) {
 }
 
 
+
 void ov112_021EC460(void) {
-    ov112_021EA08C();
 }
+
 
 
 void ov112_021EC478(void) {
@@ -12205,6 +12344,7 @@ void ov112_021EC478(void) {
 }
 
 
+
 void ov112_021EC520(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -12230,6 +12370,7 @@ void ov112_021EC520(void) {
 }
 
 
+
 void ov112_021EC54C(void) {
     // ldr r1, _021EC558 ; =0x0001F2E0
     // mov r2, #0
@@ -12240,6 +12381,7 @@ void ov112_021EC54C(void) {
     // _021EC558: .word 0x0001F2E0
     // TODO: decompile
 }
+
 
 
 void ov112_021EC55C(void) {
@@ -12350,6 +12492,7 @@ void ov112_021EC55C(void) {
 }
 
 
+
 void ov112_021EC640(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -12379,29 +12522,30 @@ void ov112_021EC640(void) {
 }
 
 
+
 void ov112_021EC67C(void) {
-    TextPrinterCheckActive(0x1a, 2);
 }
+
 
 
 void ov112_021EC69C(void) {
-    BeginNormalPaletteFade(0, 0x9a, 1, 4, 6);
 }
+
 
 
 void ov112_021EC6C0(void) {
-    IsPaletteFadeFinished(0x42, 4, 7);
 }
+
 
 
 void ov112_021EC6D8(void) {
-    BeginNormalPaletteFade(0, 0x9a, 6, 6, 1);
 }
+
 
 
 void ov112_021EC6F8(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EC70C(void) {
@@ -12456,6 +12600,7 @@ void ov112_021EC70C(void) {
 }
 
 
+
 void ov112_021EC778(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -12487,9 +12632,10 @@ void ov112_021EC778(void) {
 }
 
 
+
 void ov112_021EC7B8(void) {
-    _s32_div_f(5);
 }
+
 
 
 void ov112_021EC7D0(void) {
@@ -12586,6 +12732,7 @@ void ov112_021EC7D0(void) {
 }
 
 
+
 void ov112_021EC8A4(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -12660,6 +12807,7 @@ void ov112_021EC8A4(void) {
 }
 
 
+
 void ov112_021EC950(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -12696,6 +12844,7 @@ void ov112_021EC950(void) {
     // _021EC998: .word 0x0001EC58
     // TODO: decompile
 }
+
 
 
 void ov112_021EC99C(void) {
@@ -12753,6 +12902,7 @@ void ov112_021EC99C(void) {
 }
 
 
+
 void ov112_021ECA18(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -12804,6 +12954,7 @@ void ov112_021ECA18(void) {
 }
 
 
+
 void ov112_021ECA88(void) {
     // push {r3, r4}
     // ldr r2, _021ECAA4 ; =0x0001EC50
@@ -12822,6 +12973,7 @@ void ov112_021ECA88(void) {
     // _021ECAA4: .word 0x0001EC50
     // TODO: decompile
 }
+
 
 
 void ov112_021ECAA8(void) {
@@ -13057,6 +13209,7 @@ void ov112_021ECAA8(void) {
 }
 
 
+
 void ov112_021ECCC4(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -13150,6 +13303,7 @@ void ov112_021ECCC4(void) {
 }
 
 
+
 void ov112_021ECDA0(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -13212,6 +13366,7 @@ void ov112_021ECDA0(void) {
     // _021ECE24: .word ov112_021FF0C4
     // TODO: decompile
 }
+
 
 
 void ov112_021ECE28(void) {
@@ -13287,14 +13442,15 @@ void ov112_021ECE28(void) {
 }
 
 
+
 void ov112_021ECECC(void) {
-    TextPrinterCheckActive(0xd, 0xe);
 }
+
 
 
 void ov112_021ECEEC(void) {
-    ov112_021E966C();
 }
+
 
 
 void ov112_021ECEF8(void) {
@@ -13328,6 +13484,7 @@ void ov112_021ECEF8(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021ECF38(void) {
@@ -13364,6 +13521,7 @@ void ov112_021ECF38(void) {
     // _021ECF84: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021ECF88(void) {
@@ -13404,48 +13562,23 @@ void ov112_021ECF88(void) {
 }
 
 
+
 void ov112_021ECFD4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x18]
-    // mov r1, #4
-    // bl BgClearTilemapBufferAndCommit
-    // ldr r0, [r4, #0x18]
-    // mov r1, #5
-    // bl BgClearTilemapBufferAndCommit
-    // ldr r0, [r4, #0x18]
-    // mov r1, #1
-    // bl BgClearTilemapBufferAndCommit
-    // ldr r0, [r4, #0x18]
-    // mov r1, #2
-    // bl BgClearTilemapBufferAndCommit
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl ov112_021EA688
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl ov112_021EA688
-    // add r0, r4, #0
-    // bl ov112_021ED0D0
-    // ldr r3, [r4, #0xc]
-    // add r0, r4, #0
-    // mov r1, #2
-    // mov r2, #0x10
-    // bl ov112_021EC460
-    // mov r0, #0x40
-    // pop {r4, pc}
-    // TODO: decompile
-}
-
-
-u32 ov112_021ED020(void) {
     BgClearTilemapBufferAndCommit(*((u32*)(r0 + 0x18)), 4);
     BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 5);
     BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 1);
     BgClearTilemapBufferAndCommit(*((u32*)(r4 + 0x18)), 2);
+    ov112_021EA688(r4, 3);
+    ov112_021EA688(r4, 4);
+    ov112_021ED0D0(r4);
     ov112_021EC460(r4, 2, 0x10, *((u32*)(r4 + 0xc)));
-    return 0x40;
 }
+
+
+
+u32 ov112_021ED020(void) {
+}
+
 
 
 void ov112_021ED054(void) {
@@ -13475,6 +13608,7 @@ void ov112_021ED054(void) {
     // _021ED08C: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021ED090(void) {
@@ -13507,9 +13641,10 @@ void ov112_021ED090(void) {
 }
 
 
+
 void ov112_021ED0C8(void) {
-    ov112_021ED0D0();
 }
+
 
 
 void ov112_021ED0D0(void) {
@@ -13559,6 +13694,7 @@ void ov112_021ED0D0(void) {
 }
 
 
+
 void ov112_021ED13C(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -13594,9 +13730,10 @@ void ov112_021ED13C(void) {
 }
 
 
+
 void ov112_021ED180(void) {
-    SysTask_Destroy(1);
 }
+
 
 
 void ov112_021ED1A0(void) {
@@ -13655,6 +13792,7 @@ void ov112_021ED1A0(void) {
 }
 
 
+
 void ov112_021ED224(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -13684,10 +13822,10 @@ void ov112_021ED224(void) {
 }
 
 
+
 void ov112_021ED25C(void) {
-    ((u16*)r0)[0x14] = 0;
-    ((u16*)r0)[0x16] = 0;
 }
+
 
 
 void ov112_021ED264(void) {
@@ -13748,6 +13886,7 @@ void ov112_021ED264(void) {
 }
 
 
+
 void ov112_021ED2F4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -13765,6 +13904,7 @@ void ov112_021ED2F4(void) {
 }
 
 
+
 void ov112_021ED314(void) {
     // push {r3, lr}
     // cmp r0, #0
@@ -13779,6 +13919,7 @@ void ov112_021ED314(void) {
     // _021ED32C: .word 0x00000934
     // TODO: decompile
 }
+
 
 
 void ov112_021ED330(void) {
@@ -13804,6 +13945,7 @@ void ov112_021ED330(void) {
     // _021ED358: .word 0x0001D760
     // TODO: decompile
 }
+
 
 
 void ov112_021ED35C(void) {
@@ -13952,6 +14094,7 @@ void ov112_021ED35C(void) {
 }
 
 
+
 void ov112_021ED4D4(void) {
     // push {r4, lr}
     // ldr r1, _021ED51C ; =0x00009DFC
@@ -13990,6 +14133,7 @@ void ov112_021ED4D4(void) {
     // _021ED52C: .word 0x0001E550
     // TODO: decompile
 }
+
 
 
 void ov112_021ED530(void) {
@@ -14037,6 +14181,7 @@ void ov112_021ED530(void) {
 }
 
 
+
 void ov112_021ED590(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -14073,6 +14218,7 @@ void ov112_021ED590(void) {
 }
 
 
+
 void ov112_021ED5DC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -14097,6 +14243,7 @@ void ov112_021ED5DC(void) {
     // _021ED60C: .word 0x00009D7A
     // TODO: decompile
 }
+
 
 
 void ov112_021ED610(void) {
@@ -14125,6 +14272,7 @@ void ov112_021ED610(void) {
 }
 
 
+
 void ov112_021ED640(void) {
     // ldr r1, _021ED664 ; =0x0000AABC
     // ldrb r1, [r0, r1]
@@ -14148,6 +14296,7 @@ void ov112_021ED640(void) {
     // _021ED668: .word 0x000001ED
     // TODO: decompile
 }
+
 
 
 void ov112_021ED66C(void) {
@@ -14292,6 +14441,7 @@ void ov112_021ED66C(void) {
 }
 
 
+
 void ov112_021ED7DC(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #0x10
@@ -14417,6 +14567,7 @@ void ov112_021ED7DC(void) {
 }
 
 
+
 void ov112_021ED8DC(void) {
     // push {r4, lr}
     // ldr r1, _021ED908 ; =0x0000AABC
@@ -14442,6 +14593,7 @@ void ov112_021ED8DC(void) {
     // _021ED914: .word 0x0000B184
     // TODO: decompile
 }
+
 
 
 void ov112_021ED918(void) {
@@ -14563,6 +14715,7 @@ void ov112_021ED918(void) {
 }
 
 
+
 void ov112_021EDA4C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -14633,6 +14786,7 @@ void ov112_021EDA4C(void) {
 }
 
 
+
 void ov112_021EDAF4(void) {
     // push {r3, lr}
     // cmp r1, #0
@@ -14657,6 +14811,7 @@ void ov112_021EDAF4(void) {
     // _021EDB20: .word 0x0001E550
     // TODO: decompile
 }
+
 
 
 void ov112_021EDB24(void) {
@@ -14814,6 +14969,7 @@ void ov112_021EDB24(void) {
 }
 
 
+
 void ov112_021EDCB0(void) {
     // cmp r0, #0x21
     // bgt _021EDCE4
@@ -14849,6 +15005,7 @@ void ov112_021EDCB0(void) {
 }
 
 
+
 void ov112_021EDD08(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -14868,6 +15025,7 @@ void ov112_021EDD08(void) {
     // _021EDD2C: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EDD30(void) {
@@ -14893,6 +15051,7 @@ void ov112_021EDD30(void) {
 }
 
 
+
 void ov112_021EDD5C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -14911,6 +15070,7 @@ void ov112_021EDD5C(void) {
     // _021EDD7C: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EDD80(void) {
@@ -14939,6 +15099,7 @@ void ov112_021EDD80(void) {
 }
 
 
+
 void ov112_021EDDB4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -14965,6 +15126,7 @@ void ov112_021EDDB4(void) {
 }
 
 
+
 void ov112_021EDDE8(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -14989,6 +15151,7 @@ void ov112_021EDDE8(void) {
     // _021EDE18: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EDE1C(void) {
@@ -15028,6 +15191,7 @@ void ov112_021EDE1C(void) {
     // _021EDE64: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EDE68(void) {
@@ -15102,6 +15266,7 @@ void ov112_021EDE68(void) {
 }
 
 
+
 void ov112_021EDF08(void) {
     // push {r4, lr}
     // ldr r1, _021EDF44 ; =0x0001F2C0
@@ -15133,6 +15298,7 @@ void ov112_021EDF08(void) {
     // _021EDF48: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EDF4C(void) {
@@ -15204,6 +15370,7 @@ void ov112_021EDF4C(void) {
 }
 
 
+
 void ov112_021EDFE8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -15246,6 +15413,7 @@ void ov112_021EDFE8(void) {
     // _021EE040: .word 0x00009D44
     // TODO: decompile
 }
+
 
 
 void ov112_021EE044(void) {
@@ -15328,14 +15496,15 @@ void ov112_021EE044(void) {
 }
 
 
+
 void ov112_021EE0F4(void) {
-    ov112_021EA08C(0x28, 2, 0x14);
 }
+
 
 
 void ov112_021EE10C(void) {
-    TextPrinterCheckActive(0x28, 0x3e);
 }
+
 
 
 void ov112_021EE12C(void) {
@@ -15374,6 +15543,7 @@ void ov112_021EE12C(void) {
 }
 
 
+
 void ov112_021EE178(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -15398,19 +15568,20 @@ void ov112_021EE178(void) {
 }
 
 
+
 void ov112_021EE1A4(void) {
-    ov112_021EA08C(0x2c, 2, 0x12);
 }
+
 
 
 void ov112_021EE1BC(void) {
-    TextPrinterCheckActive(0x2c, 0x2d);
 }
+
 
 
 void ov112_021EE1DC(void) {
-    ov112_021E966C();
 }
+
 
 
 void ov112_021EE1E8(void) {
@@ -15495,14 +15666,15 @@ void ov112_021EE1E8(void) {
 }
 
 
+
 void ov112_021EE29C(void) {
-    ov112_021EA08C(0x30, 0, 0x13);
 }
+
 
 
 void ov112_021EE2B4(void) {
-    TextPrinterCheckActive(0x30, 0x31);
 }
+
 
 
 void ov112_021EE2D4(void) {
@@ -15537,6 +15709,7 @@ void ov112_021EE2D4(void) {
     // _021EE318: .word 0x0001EC50
     // TODO: decompile
 }
+
 
 
 void ov112_021EE31C(void) {
@@ -15627,6 +15800,7 @@ void ov112_021EE31C(void) {
 }
 
 
+
 void ov112_021EE3E0(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -15688,6 +15862,7 @@ void ov112_021EE3E0(void) {
 }
 
 
+
 void ov112_021EE464(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -15726,9 +15901,10 @@ void ov112_021EE464(void) {
 }
 
 
+
 void ov112_021EE4B8(void) {
-    ov112_021EA688(0x36, 8, 0);
 }
+
 
 
 void ov112_021EE4D0(void) {
@@ -15763,24 +15939,25 @@ void ov112_021EE4D0(void) {
 }
 
 
+
 u8 ov112_021EE510(void) {
-    return 0x38;
 }
+
 
 
 void ov112_021EE514(void) {
-    ov112_021EC460();
 }
+
 
 
 void ov112_021EE524(void) {
-    ((u32*)r0)[4] = 6;
 }
+
 
 
 void ov112_021EE52C(void) {
-    BeginNormalPaletteFade(0, 0x3f, 0x9a, 1, 6);
 }
+
 
 
 void ov112_021EE550(void) {
@@ -15801,9 +15978,10 @@ void ov112_021EE550(void) {
 }
 
 
+
 void ov112_021EE570(void) {
-    TextPrinterCheckActive(0x40);
 }
+
 
 
 void ov112_021EE594(void) {
@@ -15824,6 +16002,7 @@ void ov112_021EE594(void) {
     // _021EE5B4: .word 0x0001E530
     // TODO: decompile
 }
+
 
 
 void ov112_021EE5B8(void) {
@@ -15862,9 +16041,10 @@ void ov112_021EE5B8(void) {
 }
 
 
+
 u8 ov112_021EE604(void) {
-    return 2;
 }
+
 
 
 void ov112_021EE608(void) {
@@ -15885,9 +16065,10 @@ void ov112_021EE608(void) {
 }
 
 
+
 u8 ov112_021EE624(void) {
-    return 1;
 }
+
 
 
 void ov112_021EE628(void) {
@@ -15933,6 +16114,7 @@ void ov112_021EE628(void) {
 }
 
 
+
 void ov112_021EE688(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -15955,9 +16137,10 @@ void ov112_021EE688(void) {
 }
 
 
+
 u8 ov112_021EE6AC(void) {
-    return 1;
 }
+
 
 
 void ov112_021EE6B0(void) {
@@ -15976,6 +16159,7 @@ void ov112_021EE6B0(void) {
     // _021EE6CC: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EE6D0(void) {
@@ -16000,16 +16184,15 @@ void ov112_021EE6D0(void) {
 }
 
 
+
 u32 ov112_021EE6F8(void) {
-    SaveGameNormal(*((u32*)(r0 + 0x20)));
-    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
-    return 3;
 }
+
 
 
 void ov112_021EE70C(void) {
-    ov112_021EA19C();
 }
+
 
 
 void ov112_021EE718(void) {
@@ -16033,9 +16216,10 @@ void ov112_021EE718(void) {
 }
 
 
+
 void ov112_021EE73C(void) {
-    ov112_021EA08C(6, 2, 0x19);
 }
+
 
 
 void ov112_021EE754(void) {
@@ -16057,6 +16241,7 @@ void ov112_021EE754(void) {
     // _021EE774: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EE778(void) {
@@ -16083,6 +16268,7 @@ void ov112_021EE778(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EE7A8(void) {
@@ -16201,6 +16387,7 @@ void ov112_021EE7A8(void) {
 }
 
 
+
 void ov112_021EE8BC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r6, #0
@@ -16249,6 +16436,7 @@ void ov112_021EE8BC(void) {
 }
 
 
+
 void ov112_021EE920(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -16287,6 +16475,7 @@ void ov112_021EE920(void) {
 }
 
 
+
 void ov112_021EE970(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -16313,6 +16502,7 @@ void ov112_021EE970(void) {
     // _021EE9A0: .word 0x00001388
     // TODO: decompile
 }
+
 
 
 void ov112_021EE9A4(void) {
@@ -16345,6 +16535,7 @@ void ov112_021EE9A4(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EE9E4(void) {
@@ -16420,6 +16611,7 @@ void ov112_021EE9E4(void) {
 }
 
 
+
 void ov112_021EEA7C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -16473,6 +16665,7 @@ void ov112_021EEA7C(void) {
     // _021EEAEC: .word 0x0000B002
     // TODO: decompile
 }
+
 
 
 void ov112_021EEAF0(void) {
@@ -16689,11 +16882,10 @@ void ov112_021EEAF0(void) {
 }
 
 
+
 void ov112_021EECF0(void) {
-    ov112_021EEAF0(1);
-    ov112_021EEA7C(r4);
-    ov112_021EE920(r4);
 }
+
 
 
 void ov112_021EED08(void) {
@@ -16799,6 +16991,7 @@ void ov112_021EED08(void) {
 }
 
 
+
 void ov112_021EEDFC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -16821,9 +17014,10 @@ void ov112_021EEDFC(void) {
 }
 
 
+
 void ov112_021EEE20(void) {
-    ov112_021EA688();
 }
+
 
 
 void ov112_021EEE2C(void) {
@@ -16842,6 +17036,7 @@ void ov112_021EEE2C(void) {
     // _021EEE48: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EEE4C(void) {
@@ -16875,16 +17070,15 @@ void ov112_021EEE4C(void) {
 }
 
 
+
 u32 ov112_021EEE8C(void) {
-    SaveGameNormal(*((u32*)(r0 + 0x20)));
-    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
-    return 3;
 }
+
 
 
 void ov112_021EEEA0(void) {
-    ov112_021EA19C();
 }
+
 
 
 void ov112_021EEEAC(void) {
@@ -16899,6 +17093,7 @@ void ov112_021EEEAC(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021EEEC0(void) {
@@ -16917,6 +17112,7 @@ void ov112_021EEEC0(void) {
     // _021EEEDC: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EEEE0(void) {
@@ -16941,21 +17137,20 @@ void ov112_021EEEE0(void) {
 }
 
 
+
 u32 ov112_021EEF08(void) {
-    SaveGameNormal(*((u32*)(r0 + 0x20)));
-    Save_ClearStatusFlags(*((u32*)(r4 + 0x20)));
-    return 8;
 }
+
 
 
 void ov112_021EEF1C(void) {
-    ov112_021EA19C();
 }
+
 
 
 void ov112_021EEF28(void) {
-    ((u32*)r0)[4] = 0xa;
 }
+
 
 
 void ov112_021EEF30(void) {
@@ -16985,6 +17180,7 @@ void ov112_021EEF30(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EEF68(void) {
@@ -17080,6 +17276,7 @@ void ov112_021EEF68(void) {
 }
 
 
+
 void ov112_021EF03C(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -17169,6 +17366,7 @@ void ov112_021EF03C(void) {
 }
 
 
+
 void ov112_021EF100(void) {
     // push {r4, lr}
     // ldr r1, _021EF14C ; =0x0001D764
@@ -17208,14 +17406,15 @@ void ov112_021EF100(void) {
 }
 
 
+
 void ov112_021EF15C(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov112_021EF17C(void) {
-    SetBothScreensModesAndDisable();
 }
+
 
 
 void ov112_021EF19C(void) {
@@ -17242,6 +17441,7 @@ void ov112_021EF19C(void) {
 }
 
 
+
 void ov112_021EF1CC(void) {
     // push {lr}
     // sub sp, #0x14
@@ -17261,6 +17461,7 @@ void ov112_021EF1CC(void) {
     // pop {pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EF1F0(void) {
@@ -17339,6 +17540,7 @@ void ov112_021EF1F0(void) {
 }
 
 
+
 void ov112_021EF298(void) {
     // push {r3, r4, r5, lr}
     // add r4, r3, #0
@@ -17390,6 +17592,7 @@ void ov112_021EF298(void) {
 }
 
 
+
 void ov112_021EF300(void) {
     // add r3, r0, #0
     // add r0, r1, #0
@@ -17402,9 +17605,10 @@ void ov112_021EF300(void) {
 }
 
 
+
 void ov112_021EF310(void) {
-    sub_02093594();
 }
+
 
 
 void ov112_021EF31C(void) {
@@ -17505,6 +17709,7 @@ void ov112_021EF31C(void) {
     // _021EF3F4: .word 0x0001E430
     // TODO: decompile
 }
+
 
 
 void ov112_021EF3F8(void) {
@@ -17678,6 +17883,7 @@ void ov112_021EF3F8(void) {
 }
 
 
+
 void ov112_021EF568(void) {
     // push {lr}
     // sub sp, #0xc
@@ -17710,6 +17916,7 @@ void ov112_021EF568(void) {
     // _021EF5A8: .word 0x00009DFC
     // TODO: decompile
 }
+
 
 
 void ov112_021EF5AC(void) {
@@ -17769,14 +17976,15 @@ void ov112_021EF5AC(void) {
 }
 
 
+
 void ov112_021EF62C(void) {
-    ov112_021E7768(0, 0xa, 1);
 }
+
 
 
 u8 ov112_021EF640(void) {
-    return 2;
 }
+
 
 
 void ov112_021EF644(void) {
@@ -17797,16 +18005,15 @@ void ov112_021EF644(void) {
 }
 
 
+
 u8 ov112_021EF660(void) {
-    return 1;
 }
+
 
 
 u32 ov112_021EF664(void) {
-    ov112_021E9C10(1);
-    ov112_021E9A78(r4, 4);
-    return 2;
 }
+
 
 
 void ov112_021EF67C(void) {
@@ -17829,6 +18036,7 @@ void ov112_021EF67C(void) {
     // _021EF69C: .word ov112_021FF924
     // TODO: decompile
 }
+
 
 
 void ov112_021EF6A0(void) {
@@ -17878,6 +18086,7 @@ void ov112_021EF6A0(void) {
 }
 
 
+
 void ov112_021EF700(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -17921,6 +18130,7 @@ void ov112_021EF700(void) {
     // _021EF754: .word 0x0001E494
     // TODO: decompile
 }
+
 
 
 void ov112_021EF758(void) {
@@ -18082,9 +18292,10 @@ void ov112_021EF758(void) {
 }
 
 
+
 void ov112_021EF8C0(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EF8D4(void) {
@@ -18145,6 +18356,7 @@ void ov112_021EF8D4(void) {
 }
 
 
+
 void ov112_021EF958(void) {
     // push {r4, lr}
     // ldr r1, _021EF98C ; =0x0001F374
@@ -18176,6 +18388,7 @@ void ov112_021EF958(void) {
 }
 
 
+
 void ov112_021EF994(void) {
     // push {r4, lr}
     // ldr r1, _021EF9C8 ; =0x00009D7A
@@ -18205,6 +18418,7 @@ void ov112_021EF994(void) {
     // _021EF9D0: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EF9D4(void) {
@@ -18243,6 +18457,7 @@ void ov112_021EF9D4(void) {
 }
 
 
+
 void ov112_021EFA1C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -18262,6 +18477,7 @@ void ov112_021EFA1C(void) {
     // _021EFA40: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021EFA44(void) {
@@ -18290,6 +18506,7 @@ void ov112_021EFA44(void) {
 }
 
 
+
 void ov112_021EFA74(void) {
     // push {r4, lr}
     // mov r1, #0
@@ -18311,14 +18528,15 @@ void ov112_021EFA74(void) {
 }
 
 
+
 void ov112_021EFA9C(void) {
-    BeginNormalPaletteFade(0, 0x9a, 0xb, 1, 6);
 }
+
 
 
 void ov112_021EFAC0(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EFAD4(void) {
@@ -18355,6 +18573,7 @@ void ov112_021EFAD4(void) {
     // _021EFB10: .word 0x000001ED
     // TODO: decompile
 }
+
 
 
 void ov112_021EFB14(void) {
@@ -18530,9 +18749,10 @@ void ov112_021EFB14(void) {
 }
 
 
+
 void ov112_021EFC9C(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EFCB0(void) {
@@ -18556,9 +18776,10 @@ void ov112_021EFCB0(void) {
 }
 
 
+
 void ov112_021EFCD8(void) {
-    BeginNormalPaletteFade(0, 0x10, 0x9a, 1, 6);
 }
+
 
 
 void ov112_021EFCFC(void) {
@@ -18583,6 +18804,7 @@ void ov112_021EFCFC(void) {
 }
 
 
+
 void ov112_021EFD24(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -18604,6 +18826,7 @@ void ov112_021EFD24(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021EFD4C(void) {
@@ -18651,6 +18874,7 @@ void ov112_021EFD4C(void) {
     // _021EFDA4: .word 0x0000B002
     // TODO: decompile
 }
+
 
 
 void ov112_021EFDA8(void) {
@@ -18785,9 +19009,10 @@ void ov112_021EFDA8(void) {
 }
 
 
+
 void ov112_021EFED8(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EFEEC(void) {
@@ -18811,24 +19036,25 @@ void ov112_021EFEEC(void) {
 }
 
 
+
 void ov112_021EFF14(void) {
-    BeginNormalPaletteFade(0, 0x15, 0x9a, 1, 6);
 }
+
 
 
 void ov112_021EFF38(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EFF4C(void) {
-    BeginNormalPaletteFade(0, 0x17, 0x9a, 1, 6);
 }
+
 
 
 void ov112_021EFF70(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021EFF84(void) {
@@ -18977,9 +19203,10 @@ void ov112_021EFF84(void) {
 }
 
 
+
 void ov112_021F00CC(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021F00E0(void) {
@@ -19007,6 +19234,7 @@ void ov112_021F00E0(void) {
     // _021F0110: .word 0x0001E524
     // TODO: decompile
 }
+
 
 
 void ov112_021F0114(void) {
@@ -19045,24 +19273,25 @@ void ov112_021F0114(void) {
 }
 
 
+
 void ov112_021F015C(void) {
-    BeginNormalPaletteFade(0, 0x1d, 0x9a, 1, 6);
 }
+
 
 
 void ov112_021F0180(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021F0194(void) {
-    BeginNormalPaletteFade(0, 0x1f, 0x9a, 1, 6);
 }
+
 
 
 void ov112_021F01B8(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021F01CC(void) {
@@ -19211,9 +19440,10 @@ void ov112_021F01CC(void) {
 }
 
 
+
 void ov112_021F0314(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void ov112_021F0328(void) {
@@ -19247,6 +19477,7 @@ void ov112_021F0328(void) {
 }
 
 
+
 void ov112_021F0368(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -19271,9 +19502,10 @@ void ov112_021F0368(void) {
 }
 
 
+
 void ov112_021F0394(void) {
-    ((u32*)r0)[4] = 0;
 }
+
 
 
 void ov112_021F039C(void) {
@@ -19293,6 +19525,7 @@ void ov112_021F039C(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F03BC(void) {
@@ -19429,6 +19662,7 @@ void ov112_021F03BC(void) {
 }
 
 
+
 void ov112_021F04DC(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -19453,9 +19687,10 @@ void ov112_021F04DC(void) {
 }
 
 
+
 void ov112_021F050C(void) {
-    SpriteList_RenderAndAnimateSprites();
 }
+
 
 
 void ov112_021F051C(void) {
@@ -19533,6 +19768,7 @@ void ov112_021F051C(void) {
 }
 
 
+
 void ov112_021F05CC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -19557,6 +19793,7 @@ void ov112_021F05CC(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F05FC(void) {
@@ -19611,6 +19848,7 @@ void ov112_021F05FC(void) {
 }
 
 
+
 void ov112_021F0668(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x38
@@ -19658,6 +19896,7 @@ void ov112_021F0668(void) {
     // _021F06C8: .word ov112_021FF150
     // TODO: decompile
 }
+
 
 
 void ov112_021F06CC(void) {
@@ -19906,6 +20145,7 @@ void ov112_021F06CC(void) {
 }
 
 
+
 void ov112_021F0908(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r4, r0, #0
@@ -19964,6 +20204,7 @@ void ov112_021F0908(void) {
 }
 
 
+
 void ov112_021F0980(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -19990,6 +20231,7 @@ void ov112_021F0980(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F09B4(void) {
@@ -20166,6 +20408,7 @@ void ov112_021F09B4(void) {
 }
 
 
+
 void ov112_021F0B28(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -20222,6 +20465,7 @@ void ov112_021F0B28(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F0B9C(void) {
@@ -20295,6 +20539,7 @@ void ov112_021F0B9C(void) {
 }
 
 
+
 void ov112_021F0C30(void) {
     // str r1, [r0]
     // str r2, [r0, #4]
@@ -20313,6 +20558,7 @@ void ov112_021F0C30(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F0C50(void) {
@@ -20344,6 +20590,7 @@ void ov112_021F0C50(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F0C8C(void) {
@@ -20404,6 +20651,7 @@ void ov112_021F0C8C(void) {
 }
 
 
+
 void ov112_021F0D04(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -20436,6 +20684,7 @@ void ov112_021F0D04(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F0D48(void) {
@@ -20500,6 +20749,7 @@ void ov112_021F0D48(void) {
 }
 
 
+
 void ov112_021F0DC0(void) {
     // push {r3, lr}
     // mov r0, #0
@@ -20525,9 +20775,10 @@ void ov112_021F0DC0(void) {
 }
 
 
+
 void ov112_021F0DF4(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov112_021F0E14(void) {
@@ -20566,6 +20817,7 @@ void ov112_021F0E14(void) {
     // _021F0E5C: .word 0x00000129
     // TODO: decompile
 }
+
 
 
 void ov112_021F0E60(void) {
@@ -20609,6 +20861,7 @@ void ov112_021F0E60(void) {
 }
 
 
+
 void ov112_021F0EB4(void) {
     // push {r3, lr}
     // ldr r1, _021F0EF0 ; =0x0000013D
@@ -20644,6 +20897,7 @@ void ov112_021F0EB4(void) {
     // _021F0EF8: .word gSystem
     // TODO: decompile
 }
+
 
 
 void ov112_021F0EFC(void) {
@@ -20685,6 +20939,7 @@ void ov112_021F0EFC(void) {
 }
 
 
+
 void ov112_021F0F48(void) {
     // cmp r1, #0
     // beq _021F0F56
@@ -20702,6 +20957,7 @@ void ov112_021F0F48(void) {
 }
 
 
+
 void ov112_021F0F60(void) {
     // add r0, #0x76
     // ldrb r0, [r0]
@@ -20713,6 +20969,7 @@ void ov112_021F0F60(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F0F70(void) {
@@ -20733,6 +20990,7 @@ void ov112_021F0F70(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F0F90(void) {
@@ -21102,6 +21360,7 @@ void ov112_021F0F90(void) {
 }
 
 
+
 void ov112_021F1288(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -21173,6 +21432,7 @@ void ov112_021F1288(void) {
 }
 
 
+
 void ov112_021F1324(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -21198,6 +21458,7 @@ void ov112_021F1324(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F135C(void) {
@@ -21246,9 +21507,10 @@ void ov112_021F135C(void) {
 }
 
 
+
 void ov112_021F13BC(void) {
-    ov112_021F135C();
 }
+
 
 
 void ov112_021F13CC(void) {
@@ -21334,6 +21596,7 @@ void ov112_021F13CC(void) {
 }
 
 
+
 void ov112_021F1488(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -21394,6 +21657,7 @@ void ov112_021F1488(void) {
 }
 
 
+
 void ov112_021F1504(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #0x28
@@ -21427,6 +21691,7 @@ void ov112_021F1504(void) {
 }
 
 
+
 void ov112_021F1548(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -21455,6 +21720,7 @@ void ov112_021F1548(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F1584(void) {
@@ -21495,9 +21761,10 @@ void ov112_021F1584(void) {
 }
 
 
+
 void ov112_021F15CC(void) {
-    BufferIntegerAsString(1);
 }
+
 
 
 void ov112_021F15E4(void) {
@@ -21533,6 +21800,7 @@ void ov112_021F15E4(void) {
     // _021F1620: .word 0x0000013D
     // TODO: decompile
 }
+
 
 
 void ov112_021F1624(void) {
@@ -21698,9 +21966,10 @@ void ov112_021F1624(void) {
 }
 
 
+
 void ov112_021F178C(void) {
-    ov112_021F135C();
 }
+
 
 
 void ov112_021F179C(void) {
@@ -21760,6 +22029,7 @@ void ov112_021F179C(void) {
 }
 
 
+
 void ov112_021F1814(void) {
     // push {r4, r5, r6, lr}
     // ldr r5, _021F1834 ; =ov112_021FF4C0
@@ -21778,6 +22048,7 @@ void ov112_021F1814(void) {
     // _021F1834: .word ov112_021FF4C0
     // TODO: decompile
 }
+
 
 
 void ov112_021F1838(void) {
@@ -21877,6 +22148,7 @@ void ov112_021F1838(void) {
 }
 
 
+
 void ov112_021F1904(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -21916,6 +22188,7 @@ void ov112_021F1904(void) {
 }
 
 
+
 void ov112_021F194C(void) {
     // push {r4, lr}
     // add r4, r1, #0
@@ -21932,6 +22205,7 @@ void ov112_021F194C(void) {
     // _021F1968: .word ov112_021FF9B8
     // TODO: decompile
 }
+
 
 
 void ov112_021F196C(void) {
@@ -22005,6 +22279,7 @@ void ov112_021F196C(void) {
 }
 
 
+
 void ov112_021F1A08(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -22030,6 +22305,7 @@ void ov112_021F1A08(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F1A40(void) {
@@ -22119,6 +22395,7 @@ void ov112_021F1A40(void) {
 }
 
 
+
 void ov112_021F1AF4(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x34
@@ -22161,6 +22438,7 @@ void ov112_021F1AF4(void) {
 }
 
 
+
 void ov112_021F1B44(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x34
@@ -22201,6 +22479,7 @@ void ov112_021F1B44(void) {
     // _021F1B90: .word ov112_021FF3CC
     // TODO: decompile
 }
+
 
 
 void ov112_021F1B94(void) {
@@ -22347,6 +22626,7 @@ void ov112_021F1B94(void) {
 }
 
 
+
 void ov112_021F1CC8(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -22391,6 +22671,7 @@ void ov112_021F1CC8(void) {
 }
 
 
+
 void ov112_021F1D28(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -22416,6 +22697,7 @@ void ov112_021F1D28(void) {
 }
 
 
+
 void ov112_021F1D58(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -22429,6 +22711,7 @@ void ov112_021F1D58(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F1D70(void) {
@@ -22466,6 +22749,7 @@ void ov112_021F1D70(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F1DC0(void) {
@@ -22616,6 +22900,7 @@ void ov112_021F1DC0(void) {
 }
 
 
+
 void ov112_021F1EFC(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -22648,10 +22933,10 @@ void ov112_021F1EFC(void) {
 }
 
 
+
 void ov112_021F1F3C(void) {
-    ManagedSprite_SetAnimNoRestart(*((u32*)(r0 + 0xc)));
-    ManagedSprite_SetAnimNoRestart(*((u32*)(r5 + 8)), r4);
 }
+
 
 
 void ov112_021F1F54(void) {
@@ -22675,6 +22960,7 @@ void ov112_021F1F54(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F1F80(void) {
@@ -22718,6 +23004,7 @@ void ov112_021F1F80(void) {
 }
 
 
+
 void ov112_021F1FD0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -22743,6 +23030,7 @@ void ov112_021F1FD0(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F2000(void) {
@@ -22819,6 +23107,7 @@ void ov112_021F2000(void) {
     // _021F2094: .word ov112_021FF400
     // TODO: decompile
 }
+
 
 
 void ov112_021F2098(void) {
@@ -22984,6 +23273,7 @@ void ov112_021F2098(void) {
 }
 
 
+
 void ov112_021F2204(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -23066,6 +23356,7 @@ void ov112_021F2204(void) {
 }
 
 
+
 void ov112_021F22B0(void) {
     // push {r3, r4, r5, lr}
     // add r4, r2, #0
@@ -23083,6 +23374,7 @@ void ov112_021F22B0(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F22D0(void) {
@@ -23129,16 +23421,15 @@ void ov112_021F22D0(void) {
 }
 
 
+
 void ov112_021F2328(void) {
-    ov112_021F235C();
-    ov112_021F24D8(r4);
 }
+
 
 
 void ov112_021F2338(void) {
-    ov112_021F238C();
-    ov112_021F24F8(r4);
 }
+
 
 
 void ov112_021F2348(void) {
@@ -23153,6 +23444,7 @@ void ov112_021F2348(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F235C(void) {
@@ -23180,6 +23472,7 @@ void ov112_021F235C(void) {
     // _021F2388: .word 0xFFFF01FF
     // TODO: decompile
 }
+
 
 
 void ov112_021F238C(void) {
@@ -23334,6 +23627,7 @@ void ov112_021F238C(void) {
 }
 
 
+
 void ov112_021F24C4(void) {
     // mov r2, #0x53
     // lsl r2, r2, #2
@@ -23346,6 +23640,7 @@ void ov112_021F24C4(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F24D8(void) {
@@ -23366,6 +23661,7 @@ void ov112_021F24D8(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F24F8(void) {
@@ -23435,6 +23731,7 @@ void ov112_021F24F8(void) {
 }
 
 
+
 void ov112_021F257C(void) {
     // push {r4, r5, r6, lr}
     // ldr r1, _021F25F8 ; =0x0000013D
@@ -23498,6 +23795,7 @@ void ov112_021F257C(void) {
     // _021F25F8: .word 0x0000013D
     // TODO: decompile
 }
+
 
 
 void ov112_021F25FC(void) {
@@ -23568,6 +23866,7 @@ void ov112_021F25FC(void) {
 }
 
 
+
 void ov112_021F2688(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -23613,6 +23912,7 @@ void ov112_021F2688(void) {
     // _021F26E4: .word 0x0000013D
     // TODO: decompile
 }
+
 
 
 void ov112_021F26E8(void) {
@@ -23678,6 +23978,7 @@ void ov112_021F26E8(void) {
 }
 
 
+
 void ov112_021F2768(void) {
     // push {r3, r4, r5, lr}
     // ldr r1, _021F27B4 ; =0x0000013D
@@ -23718,20 +24019,15 @@ void ov112_021F2768(void) {
 }
 
 
+
 void ov112_021F27B8(void) {
-    ov112_021F2204(0, 1);
-    ov112_021F2204(r4, 1, 0);
-    ov112_021F2348(r4);
-    ov112_021F1624(r4, 0x2c, 0);
 }
+
 
 
 void ov112_021F27E0(void) {
-    ov112_021F2204(0, 1);
-    ov112_021F2204(r4, 1, 0);
-    ov112_021F22D0(r4, 0, 9, 0x1a);
-    ov112_021F1624(r4, 0x2d, 0);
 }
+
 
 
 void ov112_021F2810(void) {
@@ -23782,6 +24078,7 @@ void ov112_021F2810(void) {
     // _021F2870: .word 0x0000013D
     // TODO: decompile
 }
+
 
 
 void ov112_021F2874(void) {
@@ -23837,6 +24134,7 @@ void ov112_021F2874(void) {
 }
 
 
+
 void ov112_021F28DC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -23870,11 +24168,10 @@ void ov112_021F28DC(void) {
 }
 
 
+
 void ov112_021F2920(void) {
-    ov112_021F2204(1, 1);
-    ov112_021F1F3C(r4, 3);
-    ov112_021F1624(r4, 0x43, 0);
 }
+
 
 
 void ov112_021F2944(void) {
@@ -23912,6 +24209,7 @@ void ov112_021F2944(void) {
     // _021F2988: .word 0x0000013D
     // TODO: decompile
 }
+
 
 
 void ov112_021F298C(void) {
@@ -24028,6 +24326,7 @@ void ov112_021F298C(void) {
 }
 
 
+
 void ov112_021F2A78(void) {
     // push {r4, r5, r6, lr}
     // ldr r2, _021F2B28 ; =0x0000013D
@@ -24115,6 +24414,7 @@ void ov112_021F2A78(void) {
 }
 
 
+
 void ov112_021F2B2C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -24153,6 +24453,7 @@ void ov112_021F2B2C(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F2B80(void) {
@@ -24298,6 +24599,7 @@ void ov112_021F2B80(void) {
 }
 
 
+
 void ov112_021F2CC4(void) {
     // mov r2, #0x51
     // lsl r2, r2, #2
@@ -24309,6 +24611,7 @@ void ov112_021F2CC4(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F2CD4(void) {
@@ -24438,6 +24741,7 @@ void ov112_021F2CD4(void) {
 }
 
 
+
 void ov112_021F2DE4(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -24495,6 +24799,7 @@ void ov112_021F2DE4(void) {
 }
 
 
+
 void ov112_021F2E70(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -24520,6 +24825,7 @@ void ov112_021F2E70(void) {
     // _021F2EAC: .word gSystem + 0x60
     // TODO: decompile
 }
+
 
 
 void ov112_021F2EB0(void) {
@@ -24551,6 +24857,7 @@ void ov112_021F2EB0(void) {
     // _021F2EF0: .word 0x00003FF8
     // TODO: decompile
 }
+
 
 
 void ov112_021F2EF4(void) {
@@ -24634,6 +24941,7 @@ void ov112_021F2EF4(void) {
 }
 
 
+
 void ov112_021F2FAC(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -24685,6 +24993,7 @@ void ov112_021F2FAC(void) {
     // pop {r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F3018(void) {
@@ -24757,6 +25066,7 @@ void ov112_021F3018(void) {
 }
 
 
+
 void ov112_021F30BC(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -24826,6 +25136,7 @@ void ov112_021F30BC(void) {
 }
 
 
+
 void ov112_021F3140(void) {
     // push {r4, r5, r6, r7}
     // add r6, r1, #0
@@ -24892,6 +25203,7 @@ void ov112_021F3140(void) {
 }
 
 
+
 void ov112_021F31BC(void) {
     // mov r2, #0
     // add r1, r0, #0
@@ -24909,6 +25221,7 @@ void ov112_021F31BC(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov112_021F31D8(void) {
@@ -24968,6 +25281,7 @@ void ov112_021F31D8(void) {
 }
 
 
+
 void ov112_021F3244(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -24999,6 +25313,7 @@ void ov112_021F3244(void) {
     // _021F3288: .word 0x000001F2
     // TODO: decompile
 }
+
 
 
 void ov112_021F328C(void) {
@@ -25108,6 +25423,7 @@ void ov112_021F328C(void) {
 }
 
 
+
 void ov112_021F336C(void) {
     // push {r4, r5, r6, lr}
     // add r6, r1, #0
@@ -25154,6 +25470,7 @@ void ov112_021F336C(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F33D8(void) {
@@ -25368,6 +25685,7 @@ void ov112_021F33D8(void) {
 }
 
 
+
 void ov112_021F35A4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r4, #0
@@ -25388,6 +25706,7 @@ void ov112_021F35A4(void) {
     // pop {r3, r4, r5, r6, r7, pc}
     // TODO: decompile
 }
+
 
 
 void ov112_021F35C8(void) {
@@ -25424,6 +25743,7 @@ void ov112_021F35C8(void) {
 }
 
 
+
 void ov112_021F3608(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r1, #0
@@ -25444,6 +25764,7 @@ void ov112_021F3608(void) {
     // _021F362C: .word ov112_021FF4D4
     // TODO: decompile
 }
+
 
 
 void ov112_021F3630(void) {
@@ -25471,4 +25792,5 @@ void ov112_021F3630(void) {
     // _021F3660: .word ov112_021FF4D4
     // TODO: decompile
 }
+
 

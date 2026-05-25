@@ -304,6 +304,7 @@ void TrainerCardMainApp_Init(void) {
 }
 
 
+
 void TrainerCardMainApp_Main(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -444,6 +445,7 @@ void TrainerCardMainApp_Main(void) {
 }
 
 
+
 void TrainerCardMainApp_Exit(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -502,6 +504,7 @@ void TrainerCardMainApp_Exit(void) {
     // _021E5F60: .word 0x0000310C
     // TODO: decompile
 }
+
 
 
 void ov51_021E5F64(void) {
@@ -596,6 +599,7 @@ void ov51_021E5F64(void) {
 }
 
 
+
 void ov51_021E6038(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -656,9 +660,10 @@ void ov51_021E6038(void) {
 }
 
 
+
 void ov51_021E60D4(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov51_021E60F4(void) {
@@ -786,6 +791,7 @@ void ov51_021E60F4(void) {
 }
 
 
+
 void ov51_021E6200(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #4
@@ -812,6 +818,7 @@ void ov51_021E6200(void) {
     // pop {r3, r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov51_021E6238(void) {
@@ -939,6 +946,7 @@ void ov51_021E6238(void) {
     // _021E6350: .word ov51_021E7E54
     // TODO: decompile
 }
+
 
 
 void ov51_021E6354(void) {
@@ -1279,58 +1287,23 @@ void ov51_021E6354(void) {
 }
 
 
+
 void ov51_021E6644(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x1f
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // mov r0, #0x1f
-    // mov r1, #0
-    // bl GfGfx_EngineBTogglePlanes
-    // mov r2, #0
-    // add r0, r4, #0
-    // mov r1, #5
-    // add r3, r2, #0
-    // bl BgSetPosTextAndCommit
-    // add r0, r4, #0
-    // mov r1, #5
-    // mov r2, #3
-    // mov r3, #0
-    // bl BgSetPosTextAndCommit
-    // mov r2, #0
-    // add r0, r4, #0
-    // mov r1, #3
-    // add r3, r2, #0
-    // bl BgSetPosTextAndCommit
-    // mov r1, #3
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl BgSetPosTextAndCommit
-    // add r0, r4, #0
-    // mov r1, #7
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #6
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl FreeBgTilemapBuffer
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfx_EngineATogglePlanes(0x1f, 0);
+    GfGfx_EngineBTogglePlanes(0x1f, 0);
+    BgSetPosTextAndCommit(r4, 5, 0, 0);
+    BgSetPosTextAndCommit(r4, 5, 3, 0);
+    BgSetPosTextAndCommit(r4, 3, 0, 0);
+    BgSetPosTextAndCommit(r4, 3, 3, 0);
+    FreeBgTilemapBuffer(r4, 7);
+    FreeBgTilemapBuffer(r4, 6);
+    FreeBgTilemapBuffer(r4, 4);
+    FreeBgTilemapBuffer(r4, 5);
+    FreeBgTilemapBuffer(r4, 2);
+    FreeBgTilemapBuffer(r4, 3);
+    Heap_Free(r4);
 }
+
 
 
 void ov51_021E66C0(void) {
@@ -1388,6 +1361,7 @@ void ov51_021E66C0(void) {
 }
 
 
+
 void ov51_021E6734(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1436,6 +1410,7 @@ void ov51_021E6734(void) {
     // _021E67A0: .word 0x000030F4
     // TODO: decompile
 }
+
 
 
 void ov51_021E67A4(void) {
@@ -1539,6 +1514,7 @@ void ov51_021E67A4(void) {
     // _021E6884: .word 0x00003436
     // TODO: decompile
 }
+
 
 
 void ov51_021E6888(void) {
@@ -1706,6 +1682,7 @@ void ov51_021E6888(void) {
 }
 
 
+
 void ov51_021E69EC(void) {
     // push {r4, lr}
     // sub sp, #0x18
@@ -1754,6 +1731,7 @@ void ov51_021E69EC(void) {
 }
 
 
+
 void ov51_021E6A54(void) {
     // push {r3, lr}
     // ldr r1, _021E6A9C ; =gSystem
@@ -1795,6 +1773,7 @@ void ov51_021E6A54(void) {
     // _021E6AA8: .word SEQ_SE_DP_SELECT
     // TODO: decompile
 }
+
 
 
 void ov51_021E6AAC(void) {
@@ -1865,6 +1844,7 @@ void ov51_021E6AAC(void) {
 }
 
 
+
 void ov51_021E6B44(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -1898,6 +1878,7 @@ void ov51_021E6B44(void) {
     // _021E6B84: .word 0x0000310C
     // TODO: decompile
 }
+
 
 
 void ov51_021E6B88(void) {
@@ -1953,6 +1934,7 @@ void ov51_021E6B88(void) {
 }
 
 
+
 void ov51_021E6C00(void) {
     // push {r4, lr}
     // sub sp, #0x18
@@ -2000,6 +1982,7 @@ void ov51_021E6C00(void) {
     // _021E6C68: .word 0x04000030
     // TODO: decompile
 }
+
 
 
 void ov51_021E6C6C(void) {
@@ -2050,9 +2033,10 @@ void ov51_021E6C6C(void) {
 }
 
 
+
 void ov51_021E6CCC(void) {
-    FillBgTilemapRect(0x10, 6, 7, 9, 0, 0x14);
 }
+
 
 
 void ov51_021E6CF0(void) {
@@ -2099,6 +2083,7 @@ void ov51_021E6CF0(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov51_021E6D44(void) {
@@ -2152,6 +2137,7 @@ void ov51_021E6D44(void) {
 }
 
 
+
 void ov51_021E6DA8(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2202,6 +2188,7 @@ void ov51_021E6DA8(void) {
 }
 
 
+
 void ov51_021E6E10(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -2239,6 +2226,7 @@ void ov51_021E6E10(void) {
     // _021E6E5C: .word 0x0000311C
     // TODO: decompile
 }
+
 
 
 void ov51_021E6E60(void) {
@@ -2307,6 +2295,7 @@ void ov51_021E6E60(void) {
 }
 
 
+
 void ov51_021E6EF0(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -2327,6 +2316,7 @@ void ov51_021E6EF0(void) {
     // pop {r3, r4, r5, pc}
     // TODO: decompile
 }
+
 
 
 void ov51_021E6F18(void) {
@@ -2639,6 +2629,7 @@ void ov51_021E6F18(void) {
 }
 
 
+
 void ov51_021E71D0(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -2667,6 +2658,7 @@ void ov51_021E71D0(void) {
     // _021E7204: .word 0x000030F4
     // TODO: decompile
 }
+
 
 
 void ov51_021E7208(void) {
@@ -2989,6 +2981,7 @@ void ov51_021E7208(void) {
 }
 
 
+
 void ov51_021E74D4(void) {
     // push {r4, r5, r6, lr}
     // add r4, r1, #0
@@ -3007,6 +3000,7 @@ void ov51_021E74D4(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov51_021E74F4(void) {
@@ -3048,6 +3042,7 @@ void ov51_021E74F4(void) {
 }
 
 
+
 void ov51_021E7540(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -3078,6 +3073,7 @@ void ov51_021E7540(void) {
     // _021E7578: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void ov51_021E757C(void) {
@@ -3180,6 +3176,7 @@ void ov51_021E757C(void) {
 }
 
 
+
 void ov51_021E7664(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -3211,6 +3208,7 @@ void ov51_021E7664(void) {
     // _021E76A0: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void ov51_021E76A4(void) {
@@ -3247,6 +3245,7 @@ void ov51_021E76A4(void) {
     // _021E76E8: .word 0x00050400
     // TODO: decompile
 }
+
 
 
 void ov51_021E76EC(void) {
@@ -3332,6 +3331,7 @@ void ov51_021E76EC(void) {
 }
 
 
+
 void ov51_021E77A0(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -3377,6 +3377,7 @@ void ov51_021E77A0(void) {
     // _021E7800: .word 0x0000343C
     // TODO: decompile
 }
+
 
 
 void ov51_021E7804(void) {
@@ -3431,6 +3432,7 @@ void ov51_021E7804(void) {
 }
 
 
+
 void ov51_021E786C(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -3480,6 +3482,7 @@ void ov51_021E786C(void) {
 }
 
 
+
 void ov51_021E78D0(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -3499,6 +3502,7 @@ void ov51_021E78D0(void) {
     // pop {r4, pc}
     // TODO: decompile
 }
+
 
 
 void ov51_021E78F8(void) {
@@ -3731,6 +3735,7 @@ void ov51_021E78F8(void) {
 }
 
 
+
 void ov51_021E7AF4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x88
@@ -3840,6 +3845,7 @@ void ov51_021E7AF4(void) {
 }
 
 
+
 void ov51_021E7BD0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x80
@@ -3943,6 +3949,7 @@ void ov51_021E7BD0(void) {
 }
 
 
+
 void ov51_021E7CA4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r6, #0x7e
@@ -4015,6 +4022,7 @@ void ov51_021E7CA4(void) {
 }
 
 
+
 void ov51_021E7D44(void) {
     // push {r4, r5, r6, lr}
     // add r6, r3, #0
@@ -4033,6 +4041,7 @@ void ov51_021E7D44(void) {
     // pop {r4, r5, r6, pc}
     // TODO: decompile
 }
+
 
 
 void ov51_021E7D68(void) {
@@ -4063,6 +4072,7 @@ void ov51_021E7D68(void) {
 }
 
 
+
 void ov51_021E7DA4(void) {
     // mov r2, #0
     // mov r1, #0xff
@@ -4075,4 +4085,5 @@ void ov51_021E7DA4(void) {
     // bx lr
     // TODO: decompile
 }
+
 
