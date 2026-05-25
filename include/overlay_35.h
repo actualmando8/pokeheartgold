@@ -4,6 +4,6 @@
 #include "global.h"
 
 void ov35_02259D80(void *obj);
-u8 ov35_02259DB8(void *obj);
+u8 ov35_02259DB8(void);
 
 #endif

@@ -11,7 +11,7 @@ void ov01_021F3D80(void);
 u8 ov01_021F3D84(void *ctx);
 u32 ov01_021F3D88(void *ctx);
 void ov01_021F3D98(void *parent);
-void ov01_021F3DFC(void *parent);
+void ov01_021F3DFC(void *parent, int a1);
 void ov01_021F3E10(void *parent);
 void ov01_021F3E4C(void *parent);
 u32 ov01_021F3EA0(void *parent);
