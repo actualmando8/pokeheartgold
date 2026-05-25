@@ -5,112 +5,278 @@ void ov01_021F3D38(void) {
     Heap_Alloc(0, 0x14, 0x14);
 }
 
+
 void ov01_021F3D50(void) {
-    /* Original at 0x021F3D50 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldrb r1, [r4, #0x13]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x1f\n    beq _021F3D60\n    bl RemoveWindow\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldrb r1, [r4, #0x13]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x1f
+    // beq _021F3D60
+    // bl RemoveWindow
+    // add r0, r4, #0
+    // bl Heap_Free
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021F3D68(void) {
     ((u8*)r0)[0x12] = r1;
     ((u16*)r0)[0x10] = r2;
 }
 
+
 void ov01_021F3D70(void) {
-    /* Original at 0x021F3D70 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrb r3, [r0, #0x13]\n    mov r2, #0x7f\n    bic r3, r2\n    mov r2, #0x7f\n    and r1, r2\n    orr r1, r3\n    strb r1, [r0, #0x13]\n    bx lr"
-    );
-    #endif
+    // ldrb r3, [r0, #0x13]
+    // mov r2, #0x7f
+    // bic r3, r2
+    // mov r2, #0x7f
+    // and r1, r2
+    // orr r1, r3
+    // strb r1, [r0, #0x13]
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov01_021F3D80(void) {
-    /* Original at 0x021F3D80 */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov01_021F3D84(void) {
-    /* Original at 0x021F3D84 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrb r0, [r0, #0x12]\n    bx lr"
-    );
-    #endif
+    // ldrb r0, [r0, #0x12]
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov01_021F3D88(void) {
-    /* Original at 0x021F3D88 */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrb r0, [r0, #0x13]\n    lsl r0, r0, #0x19\n    lsr r0, r0, #0x19\n    bne _021F3D94\n    mov r0, #1\n    bx lr\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    // ldrb r0, [r0, #0x13]
+    // lsl r0, r0, #0x19
+    // lsr r0, r0, #0x19
+    // bne _021F3D94
+    // mov r0, #1
+    // bx lr
+    // mov r0, #0
+    // bx lr
+    // TODO: decompile
 }
 
+
 void ov01_021F3D98(void) {
-    /* Original at 0x021F3D98 */
-    /* Requires manual decompilation - 42 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r4, [r0, #0x68]\n    ldrb r1, [r4, #0x13]\n    lsl r1, r1, #0x19\n    lsr r1, r1, #0x19\n    cmp r1, #4\n    bhi _021F3DFA\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _021F3DB2: ; jump table\n    bl ov01_021F3E10\n    ldrb r1, [r4, #0x13]\n    mov r0, #0x7f\n    bic r1, r0\n    strb r1, [r4, #0x13]\n    pop {r4, pc}\n    bl ov01_021F3EE0\n    cmp r0, #1\n    bne _021F3DFA\n    ldrb r1, [r4, #0x13]\n    mov r0, #0x7f\n    bic r1, r0\n    strb r1, [r4, #0x13]\n    pop {r4, pc}\n    bl ov01_021F3EA0\n    cmp r0, #1\n    bne _021F3DFA\n    ldrb r1, [r4, #0x13]\n    mov r0, #0x7f\n    bic r1, r0\n    strb r1, [r4, #0x13]\n    pop {r4, pc}\n    bl ov01_021F3E4C\n    ldrb r1, [r4, #0x13]\n    mov r0, #0x7f\n    bic r1, r0\n    strb r1, [r4, #0x13]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r4, [r0, #0x68]
+    // ldrb r1, [r4, #0x13]
+    // lsl r1, r1, #0x19
+    // lsr r1, r1, #0x19
+    // cmp r1, #4
+    // bhi _021F3DFA
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _021F3DB2: ; jump table
+    // bl ov01_021F3E10
+    // ldrb r1, [r4, #0x13]
+    // mov r0, #0x7f
+    // bic r1, r0
+    // strb r1, [r4, #0x13]
+    // pop {r4, pc}
+    // bl ov01_021F3EE0
+    // cmp r0, #1
+    // bne _021F3DFA
+    // ldrb r1, [r4, #0x13]
+    // mov r0, #0x7f
+    // bic r1, r0
+    // strb r1, [r4, #0x13]
+    // pop {r4, pc}
+    // bl ov01_021F3EA0
+    // cmp r0, #1
+    // bne _021F3DFA
+    // ldrb r1, [r4, #0x13]
+    // mov r0, #0x7f
+    // bic r1, r0
+    // strb r1, [r4, #0x13]
+    // pop {r4, pc}
+    // bl ov01_021F3E4C
+    // ldrb r1, [r4, #0x13]
+    // mov r0, #0x7f
+    // bic r1, r0
+    // strb r1, [r4, #0x13]
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021F3DFC(void) {
     ov01_021F3D70(*((u32*)(r0 + 0x68)));
     ov01_021F3D98(r4);
 }
 
+
 void ov01_021F3E10(void) {
-    /* Original at 0x021F3E10 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r1, #3\n    add r4, r0, #0\n    add r3, r1, #0\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    sub r3, #0x33\n    bl BgSetPosTextAndCommit\n    ldr r1, [r4, #0x68]\n    ldrb r0, [r1, #0x13]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x1f\n    bne _021F3E40\n    ldrb r2, [r1, #0x12]\n    ldr r0, [r4, #8]\n    mov r3, #3\n    bl sub_0205B63C\n    ldr r2, [r4, #0x68]\n    mov r0, #0x80\n    ldrb r1, [r2, #0x13]\n    orr r0, r1\n    strb r0, [r2, #0x13]\n    ldr r0, [r4, #0x68]\n    ldrb r1, [r0, #0x12]\n    ldrh r2, [r0, #0x10]\n    bl sub_0205B6A0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // mov r1, #3
+    // add r4, r0, #0
+    // add r3, r1, #0
+    // ldr r0, [r4, #8]
+    // add r2, r1, #0
+    // sub r3, #0x33
+    // bl BgSetPosTextAndCommit
+    // ldr r1, [r4, #0x68]
+    // ldrb r0, [r1, #0x13]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x1f
+    // bne _021F3E40
+    // ldrb r2, [r1, #0x12]
+    // ldr r0, [r4, #8]
+    // mov r3, #3
+    // bl sub_0205B63C
+    // ldr r2, [r4, #0x68]
+    // mov r0, #0x80
+    // ldrb r1, [r2, #0x13]
+    // orr r0, r1
+    // strb r0, [r2, #0x13]
+    // ldr r0, [r4, #0x68]
+    // ldrb r1, [r0, #0x12]
+    // ldrh r2, [r0, #0x10]
+    // bl sub_0205B6A0
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021F3E4C(void) {
-    /* Original at 0x021F3E4C */
-    /* Requires manual decompilation - 37 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x10\n    add r4, r0, #0\n    ldr r0, [r4, #0x68]\n    ldrb r1, [r0, #0x13]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x1f\n    beq _021F3E9A\n    bl RemoveWindow\n    mov r0, #0x12\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #6\n    str r0, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    mov r2, #0\n    ldr r0, [r4, #8]\n    mov r1, #3\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    ldr r0, [r4, #8]\n    mov r1, #3\n    bl BgCommitTilemapBufferToVram\n    mov r1, #3\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    mov r3, #0\n    bl BgSetPosTextAndCommit\n    ldr r2, [r4, #0x68]\n    mov r0, #0x80\n    ldrb r1, [r2, #0x13]\n    bic r1, r0\n    strb r1, [r2, #0x13]\n    add sp, #0x10\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #0x10
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x68]
+    // ldrb r1, [r0, #0x13]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x1f
+    // beq _021F3E9A
+    // bl RemoveWindow
+    // mov r0, #0x12
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #6
+    // str r0, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // mov r2, #0
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // bl BgCommitTilemapBufferToVram
+    // mov r1, #3
+    // ldr r0, [r4, #8]
+    // add r2, r1, #0
+    // mov r3, #0
+    // bl BgSetPosTextAndCommit
+    // ldr r2, [r4, #0x68]
+    // mov r0, #0x80
+    // ldrb r1, [r2, #0x13]
+    // bic r1, r0
+    // strb r1, [r2, #0x13]
+    // add sp, #0x10
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021F3EA0(void) {
-    /* Original at 0x021F3EA0 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    mov r1, #3\n    bl Bg_GetYpos\n    cmp r0, #0\n    bne _021F3EB4\n    mov r0, #1\n    pop {r4, pc}\n    mov r1, #0x2f\n    mvn r1, r1\n    cmp r0, r1\n    ble _021F3EC0\n    cmp r0, #0\n    blt _021F3ECE\n    mov r1, #3\n    add r3, r1, #0\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    sub r3, #0x33\n    bl BgSetPosTextAndCommit\n    ldr r0, [r4, #8]\n    mov r1, #3\n    mov r2, #4\n    mov r3, #0x10\n    bl BgSetPosTextAndCommit\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // bl Bg_GetYpos
+    // cmp r0, #0
+    // bne _021F3EB4
+    // mov r0, #1
+    // pop {r4, pc}
+    // mov r1, #0x2f
+    // mvn r1, r1
+    // cmp r0, r1
+    // ble _021F3EC0
+    // cmp r0, #0
+    // blt _021F3ECE
+    // mov r1, #3
+    // add r3, r1, #0
+    // ldr r0, [r4, #8]
+    // add r2, r1, #0
+    // sub r3, #0x33
+    // bl BgSetPosTextAndCommit
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // mov r2, #4
+    // mov r3, #0x10
+    // bl BgSetPosTextAndCommit
+    // mov r0, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void ov01_021F3EE0(void) {
-    /* Original at 0x021F3EE0 */
-    /* Requires manual decompilation - 50 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x10\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    mov r1, #3\n    bl Bg_GetYpos\n    mov r1, #0x2f\n    mvn r1, r1\n    cmp r0, r1\n    bne _021F3F2C\n    mov r0, #0x12\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #6\n    str r0, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    mov r2, #0\n    ldr r0, [r4, #8]\n    mov r1, #3\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    ldr r0, [r4, #8]\n    mov r1, #3\n    bl BgCommitTilemapBufferToVram\n    mov r1, #3\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    mov r3, #0\n    bl BgSetPosTextAndCommit\n    add sp, #0x10\n    mov r0, #1\n    pop {r4, pc}\n    ble _021F3F32\n    cmp r0, #0\n    blt _021F3F3E\n    mov r1, #3\n    ldr r0, [r4, #8]\n    add r2, r1, #0\n    mov r3, #0\n    bl BgSetPosTextAndCommit\n    ldr r0, [r4, #8]\n    mov r1, #3\n    mov r2, #5\n    mov r3, #0x10\n    bl BgSetPosTextAndCommit\n    mov r0, #0\n    add sp, #0x10\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #0x10
+    // add r4, r0, #0
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // bl Bg_GetYpos
+    // mov r1, #0x2f
+    // mvn r1, r1
+    // cmp r0, r1
+    // bne _021F3F2C
+    // mov r0, #0x12
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #6
+    // str r0, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // mov r2, #0
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // bl BgCommitTilemapBufferToVram
+    // mov r1, #3
+    // ldr r0, [r4, #8]
+    // add r2, r1, #0
+    // mov r3, #0
+    // bl BgSetPosTextAndCommit
+    // add sp, #0x10
+    // mov r0, #1
+    // pop {r4, pc}
+    // ble _021F3F32
+    // cmp r0, #0
+    // blt _021F3F3E
+    // mov r1, #3
+    // ldr r0, [r4, #8]
+    // add r2, r1, #0
+    // mov r3, #0
+    // bl BgSetPosTextAndCommit
+    // ldr r0, [r4, #8]
+    // mov r1, #3
+    // mov r2, #5
+    // mov r3, #0x10
+    // bl BgSetPosTextAndCommit
+    // mov r0, #0
+    // add sp, #0x10
+    // pop {r4, pc}
+    // TODO: decompile
 }
+

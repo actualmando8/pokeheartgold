@@ -2,249 +2,2067 @@
 #include "global.h"
 
 void ov80_022324C4(void) {
-    /* Original at 0x022324C4 */
-    /* Requires manual decompilation - 363 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r7, r1, #0\n    add r5, r0, #0\n    ldr r1, _02232818 ; =0x00000A28\n    mov r0, #0xb\n    add r6, r2, #0\n    str r3, [sp, #4]\n    bl Heap_Alloc\n    ldr r1, _0223281C ; =ov80_0223DD48\n    ldr r2, _02232818 ; =0x00000A28\n    str r0, [r1]\n    mov r1, #0\n    bl MI_CpuFill8\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r4, [r0]\n    add r0, r5, #0\n    bl sub_02030CC8\n    str r0, [r4, #8]\n    ldr r1, _0223281C ; =ov80_0223DD48\n    str r5, [r4, #4]\n    mov r0, #0xb\n    str r0, [r4]\n    ldr r4, [r1]\n    bl SaveArray_Party_Alloc\n    str r0, [r4, #0x28]\n    mov r0, #0xb\n    bl SaveArray_Party_Alloc\n    str r0, [r4, #0x2c]\n    mov r0, #0xa2\n    ldr r1, [sp, #0x38]\n    lsl r0, r0, #4\n    str r1, [r4, r0]\n    add r0, r5, #0\n    ldr r4, [r4, #8]\n    bl sub_02030E08\n    add r5, r0, #0\n    cmp r7, #0\n    beq _02232520\n    b _022326BA\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r1, [r0]\n    mov r0, #0\n    strb r6, [r1, #0x10]\n    strb r0, [r1, #0x11]\n    add r0, r4, #0\n    bl sub_02030CBC\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r2, [r0, #0x10]\n    cmp r2, #3\n    bne _02232546\n    ldr r0, [r0, #4]\n    bl Save_VarsFlags_Get\n    bl Save_VarsFlags_GetVar4052\n    b _02232552\n    mov r3, #0\n    add r0, r5, #0\n    mov r1, #9\n    str r3, [sp]\n    bl sub_02030E58\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    cmp r0, #1\n    bne _02232592\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldr r0, [r0, #4]\n    bl Save_Frontier_GetStatic\n    add r5, r0, #0\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl sub_0205C1A0\n    add r4, r0, #0\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl sub_0205C1A0\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl FrontierSave_GetStat\n    ldr r1, _0223281C ; =ov80_0223DD48\n    ldr r1, [r1]\n    strh r0, [r1, #0x14]\n    b _02232630\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r4, [r0]\n    mov r0, #0\n    strh r0, [r4, #0x14]\n    ldr r0, [r4, #4]\n    bl Save_Frontier_GetStatic\n    add r5, r0, #0\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl sub_0205C1F0\n    add r7, r0, #0\n    ldrb r0, [r4, #0x10]\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r5, #0\n    add r1, r7, #0\n    mov r3, #0\n    bl sub_02031108\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldr r0, [r0, #4]\n    bl Save_Frontier_GetStatic\n    add r4, r0, #0\n    add r0, r6, #0\n    bl sub_0205C218\n    add r5, r0, #0\n    add r0, r6, #0\n    bl sub_0205C218\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    mov r3, #0\n    bl sub_02031108\n    ldr r4, _0223281C ; =ov80_0223DD48\n    mov r5, #0\n    ldr r0, [r4]\n    ldr r0, [r0, #4]\n    bl Save_Frontier_GetStatic\n    add r6, r0, #0\n    ldr r0, [r4]\n    lsl r1, r5, #0x18\n    ldrb r0, [r0, #0x10]\n    lsr r1, r1, #0x18\n    bl sub_0205C174\n    add r7, r0, #0\n    ldr r0, [r4]\n    lsl r1, r5, #0x18\n    ldrb r0, [r0, #0x10]\n    lsr r1, r1, #0x18\n    bl sub_0205C174\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r6, #0\n    add r1, r7, #0\n    mov r3, #1\n    bl sub_02031108\n    add r0, r5, #1\n    lsl r0, r0, #0x10\n    lsr r5, r0, #0x10\n    cmp r5, #3\n    blo _022325F2\n    ldr r0, _0223281C ; =ov80_0223DD48\n    mov r1, #7\n    ldr r5, [r0]\n    ldrh r0, [r5, #0x14]\n    bl _s32_div_f\n    strh r0, [r5, #0x16]\n    mov r0, #0\n    str r0, [r5, #0x18]\n    add r1, r5, #0\n    ldr r0, [sp, #4]\n    add r1, #0x24\n    strb r0, [r1]\n    add r1, sp, #0x20\n    add r0, r5, #0\n    ldrh r2, [r1, #0x10]\n    add r0, #0x25\n    strb r2, [r0]\n    add r0, r5, #0\n    ldrh r1, [r1, #0x14]\n    add r0, #0x26\n    strb r1, [r0]\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldr r0, [r0, #4]\n    bl Save_Frontier_GetStatic\n    add r4, r0, #0\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl sub_0205C1F0\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r6, #0\n    bl FrontierSave_GetStat\n    strh r0, [r5, #0x20]\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldr r0, [r0, #4]\n    bl Save_Frontier_GetStatic\n    add r4, r0, #0\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl sub_0205C1F0\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r6, #0\n    mov r3, #0xa\n    bl sub_02031228\n    b _0223273E\n    ldr r0, _0223281C ; =ov80_0223DD48\n    mov r1, #0\n    ldr r5, [r0]\n    str r1, [sp]\n    add r0, r4, #0\n    add r2, r1, #0\n    add r3, r1, #0\n    bl sub_02030D84\n    strb r0, [r5, #0x10]\n    mov r2, #0\n    str r2, [sp]\n    add r0, r4, #0\n    mov r1, #1\n    add r3, r2, #0\n    bl sub_02030D84\n    strb r0, [r5, #0x11]\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r6, [r0]\n    ldr r0, [r6, #4]\n    bl Save_Frontier_GetStatic\n    add r7, r0, #0\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl sub_0205C1A0\n    str r0, [sp, #0xc]\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1A0\n    bl sub_0205C268\n    add r2, r0, #0\n    ldr r1, [sp, #0xc]\n    add r0, r7, #0\n    bl FrontierSave_GetStat\n    strh r0, [r6, #0x14]\n    ldrh r0, [r6, #0x14]\n    mov r1, #7\n    bl _s32_div_f\n    mov r5, #0\n    strh r0, [r6, #0x16]\n    ldr r7, _0223281C ; =ov80_0223DD48\n    add r6, r5, #0\n    lsl r2, r5, #0x18\n    add r0, r4, #0\n    mov r1, #7\n    lsr r2, r2, #0x18\n    add r3, r6, #0\n    str r6, [sp]\n    bl sub_02030D84\n    ldr r1, [r7]\n    add r1, r1, r5\n    add r1, #0x24\n    strb r0, [r1]\n    add r0, r5, #1\n    lsl r0, r0, #0x10\n    lsr r5, r0, #0x10\n    cmp r5, #3\n    blo _0223271C\n    ldr r6, _0223281C ; =ov80_0223DD48\n    ldr r7, _02232820 ; =0x0000036A\n    mov r4, #0\n    ldr r5, [r6]\n    ldr r0, [r5, #4]\n    bl SaveArray_Party_Get\n    add r1, r5, r4\n    add r1, #0x24\n    ldrb r1, [r1]\n    bl Party_GetMonByIndex\n    ldr r5, [r6]\n    mov r1, #6\n    mov r2, #0\n    bl GetMonData\n    lsl r1, r4, #1\n    add r1, r5, r1\n    strh r0, [r1, r7]\n    add r0, r4, #1\n    lsl r0, r0, #0x10\n    lsr r4, r0, #0x10\n    cmp r4, #3\n    blo _02232744\n    ldr r0, [r5, #4]\n    bl SaveArray_Party_Get\n    str r0, [sp, #8]\n    ldr r0, _0223281C ; =ov80_0223DD48\n    mov r1, #0\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl ov80_02237B24\n    add r7, r0, #0\n    mov r5, #0\n    cmp r7, #0\n    ble _022327F8\n    ldr r6, _0223281C ; =ov80_0223DD48\n    ldr r1, [r6]\n    ldr r0, [sp, #8]\n    add r1, r1, r5\n    add r1, #0x24\n    ldrb r1, [r1]\n    bl Party_GetMonByIndex\n    add r1, r0, #0\n    ldr r0, [r6]\n    ldr r0, [r0, #0x28]\n    bl Party_AddMon\n    ldr r0, [r6]\n    add r1, r5, #0\n    ldr r0, [r0, #0x28]\n    bl Party_GetMonByIndex\n    mov r1, #0\n    str r1, [sp, #0x14]\n    add r4, r0, #0\n    mov r1, #6\n    add r2, sp, #0x14\n    bl SetMonData\n    add r0, r4, #0\n    mov r1, #0xa1\n    mov r2, #0\n    bl GetMonData\n    cmp r0, #0x32\n    bls _022327EE\n    add r0, r4, #0\n    mov r1, #5\n    mov r2, #0\n    bl GetMonData\n    mov r1, #0x32\n    bl GetMonExpBySpeciesAndLevel\n    str r0, [sp, #0x10]\n    add r0, r4, #0\n    mov r1, #8\n    add r2, sp, #0x10\n    bl SetMonData\n    add r0, r4, #0\n    bl CalcMonLevelAndStats\n    add r0, r5, #1\n    lsl r0, r0, #0x10\n    lsr r5, r0, #0x10\n    cmp r5, r7\n    blt _0223278E\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldrb r0, [r0, #0x10]\n    bl ov80_02237D8C\n    cmp r0, #1\n    bne _02232810\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    ldr r0, [r0, #4]\n    bl ov80_0222A840\n    ldr r0, _0223281C ; =ov80_0223DD48\n    ldr r0, [r0]\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    _02232818: .word 0x00000A28\n    _0223281C: .word ov80_0223DD48\n    _02232820: .word 0x0000036A"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // add r7, r1, #0
+    // add r5, r0, #0
+    // ldr r1, _02232818 ; =0x00000A28
+    // mov r0, #0xb
+    // add r6, r2, #0
+    // str r3, [sp, #4]
+    // bl Heap_Alloc
+    // ldr r1, _0223281C ; =ov80_0223DD48
+    // ldr r2, _02232818 ; =0x00000A28
+    // str r0, [r1]
+    // mov r1, #0
+    // bl MI_CpuFill8
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r4, [r0]
+    // add r0, r5, #0
+    // bl sub_02030CC8
+    // str r0, [r4, #8]
+    // ldr r1, _0223281C ; =ov80_0223DD48
+    // str r5, [r4, #4]
+    // mov r0, #0xb
+    // str r0, [r4]
+    // ldr r4, [r1]
+    // bl SaveArray_Party_Alloc
+    // str r0, [r4, #0x28]
+    // mov r0, #0xb
+    // bl SaveArray_Party_Alloc
+    // str r0, [r4, #0x2c]
+    // mov r0, #0xa2
+    // ldr r1, [sp, #0x38]
+    // lsl r0, r0, #4
+    // str r1, [r4, r0]
+    // add r0, r5, #0
+    // ldr r4, [r4, #8]
+    // bl sub_02030E08
+    // add r5, r0, #0
+    // cmp r7, #0
+    // beq _02232520
+    // b _022326BA
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r1, [r0]
+    // mov r0, #0
+    // strb r6, [r1, #0x10]
+    // strb r0, [r1, #0x11]
+    // add r0, r4, #0
+    // bl sub_02030CBC
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r2, [r0, #0x10]
+    // cmp r2, #3
+    // bne _02232546
+    // ldr r0, [r0, #4]
+    // bl Save_VarsFlags_Get
+    // bl Save_VarsFlags_GetVar4052
+    // b _02232552
+    // mov r3, #0
+    // add r0, r5, #0
+    // mov r1, #9
+    // str r3, [sp]
+    // bl sub_02030E58
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // cmp r0, #1
+    // bne _02232592
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldr r0, [r0, #4]
+    // bl Save_Frontier_GetStatic
+    // add r5, r0, #0
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl sub_0205C1A0
+    // add r4, r0, #0
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl sub_0205C1A0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl FrontierSave_GetStat
+    // ldr r1, _0223281C ; =ov80_0223DD48
+    // ldr r1, [r1]
+    // strh r0, [r1, #0x14]
+    // b _02232630
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r4, [r0]
+    // mov r0, #0
+    // strh r0, [r4, #0x14]
+    // ldr r0, [r4, #4]
+    // bl Save_Frontier_GetStatic
+    // add r5, r0, #0
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl sub_0205C1F0
+    // add r7, r0, #0
+    // ldrb r0, [r4, #0x10]
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // mov r3, #0
+    // bl sub_02031108
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldr r0, [r0, #4]
+    // bl Save_Frontier_GetStatic
+    // add r4, r0, #0
+    // add r0, r6, #0
+    // bl sub_0205C218
+    // add r5, r0, #0
+    // add r0, r6, #0
+    // bl sub_0205C218
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r5, #0
+    // mov r3, #0
+    // bl sub_02031108
+    // ldr r4, _0223281C ; =ov80_0223DD48
+    // mov r5, #0
+    // ldr r0, [r4]
+    // ldr r0, [r0, #4]
+    // bl Save_Frontier_GetStatic
+    // add r6, r0, #0
+    // ldr r0, [r4]
+    // lsl r1, r5, #0x18
+    // ldrb r0, [r0, #0x10]
+    // lsr r1, r1, #0x18
+    // bl sub_0205C174
+    // add r7, r0, #0
+    // ldr r0, [r4]
+    // lsl r1, r5, #0x18
+    // ldrb r0, [r0, #0x10]
+    // lsr r1, r1, #0x18
+    // bl sub_0205C174
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // mov r3, #1
+    // bl sub_02031108
+    // add r0, r5, #1
+    // lsl r0, r0, #0x10
+    // lsr r5, r0, #0x10
+    // cmp r5, #3
+    // blo _022325F2
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // mov r1, #7
+    // ldr r5, [r0]
+    // ldrh r0, [r5, #0x14]
+    // bl _s32_div_f
+    // strh r0, [r5, #0x16]
+    // mov r0, #0
+    // str r0, [r5, #0x18]
+    // add r1, r5, #0
+    // ldr r0, [sp, #4]
+    // add r1, #0x24
+    // strb r0, [r1]
+    // add r1, sp, #0x20
+    // add r0, r5, #0
+    // ldrh r2, [r1, #0x10]
+    // add r0, #0x25
+    // strb r2, [r0]
+    // add r0, r5, #0
+    // ldrh r1, [r1, #0x14]
+    // add r0, #0x26
+    // strb r1, [r0]
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldr r0, [r0, #4]
+    // bl Save_Frontier_GetStatic
+    // add r4, r0, #0
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl sub_0205C1F0
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // bl FrontierSave_GetStat
+    // strh r0, [r5, #0x20]
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldr r0, [r0, #4]
+    // bl Save_Frontier_GetStatic
+    // add r4, r0, #0
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl sub_0205C1F0
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // mov r3, #0xa
+    // bl sub_02031228
+    // b _0223273E
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // mov r1, #0
+    // ldr r5, [r0]
+    // str r1, [sp]
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // add r3, r1, #0
+    // bl sub_02030D84
+    // strb r0, [r5, #0x10]
+    // mov r2, #0
+    // str r2, [sp]
+    // add r0, r4, #0
+    // mov r1, #1
+    // add r3, r2, #0
+    // bl sub_02030D84
+    // strb r0, [r5, #0x11]
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r6, [r0]
+    // ldr r0, [r6, #4]
+    // bl Save_Frontier_GetStatic
+    // add r7, r0, #0
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl sub_0205C1A0
+    // str r0, [sp, #0xc]
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1A0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // ldr r1, [sp, #0xc]
+    // add r0, r7, #0
+    // bl FrontierSave_GetStat
+    // strh r0, [r6, #0x14]
+    // ldrh r0, [r6, #0x14]
+    // mov r1, #7
+    // bl _s32_div_f
+    // mov r5, #0
+    // strh r0, [r6, #0x16]
+    // ldr r7, _0223281C ; =ov80_0223DD48
+    // add r6, r5, #0
+    // lsl r2, r5, #0x18
+    // add r0, r4, #0
+    // mov r1, #7
+    // lsr r2, r2, #0x18
+    // add r3, r6, #0
+    // str r6, [sp]
+    // bl sub_02030D84
+    // ldr r1, [r7]
+    // add r1, r1, r5
+    // add r1, #0x24
+    // strb r0, [r1]
+    // add r0, r5, #1
+    // lsl r0, r0, #0x10
+    // lsr r5, r0, #0x10
+    // cmp r5, #3
+    // blo _0223271C
+    // ldr r6, _0223281C ; =ov80_0223DD48
+    // ldr r7, _02232820 ; =0x0000036A
+    // mov r4, #0
+    // ldr r5, [r6]
+    // ldr r0, [r5, #4]
+    // bl SaveArray_Party_Get
+    // add r1, r5, r4
+    // add r1, #0x24
+    // ldrb r1, [r1]
+    // bl Party_GetMonByIndex
+    // ldr r5, [r6]
+    // mov r1, #6
+    // mov r2, #0
+    // bl GetMonData
+    // lsl r1, r4, #1
+    // add r1, r5, r1
+    // strh r0, [r1, r7]
+    // add r0, r4, #1
+    // lsl r0, r0, #0x10
+    // lsr r4, r0, #0x10
+    // cmp r4, #3
+    // blo _02232744
+    // ldr r0, [r5, #4]
+    // bl SaveArray_Party_Get
+    // str r0, [sp, #8]
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // mov r1, #0
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl ov80_02237B24
+    // add r7, r0, #0
+    // mov r5, #0
+    // cmp r7, #0
+    // ble _022327F8
+    // ldr r6, _0223281C ; =ov80_0223DD48
+    // ldr r1, [r6]
+    // ldr r0, [sp, #8]
+    // add r1, r1, r5
+    // add r1, #0x24
+    // ldrb r1, [r1]
+    // bl Party_GetMonByIndex
+    // add r1, r0, #0
+    // ldr r0, [r6]
+    // ldr r0, [r0, #0x28]
+    // bl Party_AddMon
+    // ldr r0, [r6]
+    // add r1, r5, #0
+    // ldr r0, [r0, #0x28]
+    // bl Party_GetMonByIndex
+    // mov r1, #0
+    // str r1, [sp, #0x14]
+    // add r4, r0, #0
+    // mov r1, #6
+    // add r2, sp, #0x14
+    // bl SetMonData
+    // add r0, r4, #0
+    // mov r1, #0xa1
+    // mov r2, #0
+    // bl GetMonData
+    // cmp r0, #0x32
+    // bls _022327EE
+    // add r0, r4, #0
+    // mov r1, #5
+    // mov r2, #0
+    // bl GetMonData
+    // mov r1, #0x32
+    // bl GetMonExpBySpeciesAndLevel
+    // str r0, [sp, #0x10]
+    // add r0, r4, #0
+    // mov r1, #8
+    // add r2, sp, #0x10
+    // bl SetMonData
+    // add r0, r4, #0
+    // bl CalcMonLevelAndStats
+    // add r0, r5, #1
+    // lsl r0, r0, #0x10
+    // lsr r5, r0, #0x10
+    // cmp r5, r7
+    // blt _0223278E
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldrb r0, [r0, #0x10]
+    // bl ov80_02237D8C
+    // cmp r0, #1
+    // bne _02232810
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // ldr r0, [r0, #4]
+    // bl ov80_0222A840
+    // ldr r0, _0223281C ; =ov80_0223DD48
+    // ldr r0, [r0]
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02232818: .word 0x00000A28
+    // _0223281C: .word ov80_0223DD48
+    // _02232820: .word 0x0000036A
+    // TODO: decompile
 }
+
 
 void ov80_02232824(void) {
-    /* Original at 0x02232824 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    cmp r1, #0\n    bne _02232830\n    bl ov80_02232838\n    pop {r3, pc}\n    bl ov80_02232908\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // cmp r1, #0
+    // bne _02232830
+    // bl ov80_02232838
+    // pop {r3, pc}
+    // bl ov80_02232908
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02232838(void) {
-    /* Original at 0x02232838 */
-    /* Requires manual decompilation - 91 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r7, r0, #0\n    ldr r0, [r7, #0x28]\n    bl Party_GetCount\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    mov r6, #0\n    str r0, [sp, #0x10]\n    cmp r0, #0\n    ble _022328A0\n    add r5, r7, #0\n    ldr r0, [r7, #0x28]\n    add r1, r6, #0\n    bl Party_GetMonByIndex\n    mov r1, #0x3a\n    mov r2, #0\n    add r4, r0, #0\n    bl GetMonData\n    mov r1, #0xe5\n    lsl r1, r1, #2\n    strh r0, [r5, r1]\n    add r0, r4, #0\n    mov r1, #0x3b\n    mov r2, #0\n    bl GetMonData\n    ldr r1, _02232900 ; =0x00000396\n    mov r2, #0\n    strh r0, [r5, r1]\n    add r0, r4, #0\n    mov r1, #0x3c\n    bl GetMonData\n    mov r1, #0xe6\n    lsl r1, r1, #2\n    strh r0, [r5, r1]\n    add r0, r4, #0\n    mov r1, #0x3d\n    mov r2, #0\n    bl GetMonData\n    ldr r1, _02232904 ; =0x0000039A\n    add r6, r6, #1\n    strh r0, [r5, r1]\n    ldr r0, [sp, #0x10]\n    add r5, #8\n    cmp r6, r0\n    blt _02232852\n    add r0, r7, #0\n    bl ov80_02237ED8\n    add r1, r0, #0\n    add r2, r7, #0\n    ldrb r0, [r7, #0x10]\n    add r2, #0x30\n    mov r3, #0xe\n    bl ov80_02237ADC\n    ldrb r0, [r7, #0x10]\n    mov r1, #1\n    ldrb r4, [r7, #0x11]\n    bl ov80_02237B58\n    add r5, r0, #0\n    ldrb r0, [r7, #0x10]\n    bl ov80_02237D8C\n    mov r3, #0xa2\n    lsl r3, r3, #2\n    add r1, r7, r3\n    str r1, [sp]\n    add r1, r3, #0\n    sub r1, #0x14\n    add r1, r7, r1\n    str r1, [sp, #4]\n    add r1, r3, #0\n    sub r1, #0x10\n    add r1, r7, r1\n    lsl r0, r0, #0x18\n    add r2, r4, #7\n    str r1, [sp, #8]\n    lsr r0, r0, #0x18\n    lsl r1, r4, #1\n    lsl r2, r2, #1\n    str r0, [sp, #0xc]\n    add r1, r7, r1\n    add r2, r7, r2\n    sub r3, #0x1c\n    ldrh r1, [r1, #0x30]\n    ldrh r2, [r2, #0x30]\n    add r0, r5, #0\n    add r3, r7, r3\n    bl ov80_0222A6B8\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}\n    _02232900: .word 0x00000396\n    _02232904: .word 0x0000039A"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r7, r0, #0
+    // ldr r0, [r7, #0x28]
+    // bl Party_GetCount
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // mov r6, #0
+    // str r0, [sp, #0x10]
+    // cmp r0, #0
+    // ble _022328A0
+    // add r5, r7, #0
+    // ldr r0, [r7, #0x28]
+    // add r1, r6, #0
+    // bl Party_GetMonByIndex
+    // mov r1, #0x3a
+    // mov r2, #0
+    // add r4, r0, #0
+    // bl GetMonData
+    // mov r1, #0xe5
+    // lsl r1, r1, #2
+    // strh r0, [r5, r1]
+    // add r0, r4, #0
+    // mov r1, #0x3b
+    // mov r2, #0
+    // bl GetMonData
+    // ldr r1, _02232900 ; =0x00000396
+    // mov r2, #0
+    // strh r0, [r5, r1]
+    // add r0, r4, #0
+    // mov r1, #0x3c
+    // bl GetMonData
+    // mov r1, #0xe6
+    // lsl r1, r1, #2
+    // strh r0, [r5, r1]
+    // add r0, r4, #0
+    // mov r1, #0x3d
+    // mov r2, #0
+    // bl GetMonData
+    // ldr r1, _02232904 ; =0x0000039A
+    // add r6, r6, #1
+    // strh r0, [r5, r1]
+    // ldr r0, [sp, #0x10]
+    // add r5, #8
+    // cmp r6, r0
+    // blt _02232852
+    // add r0, r7, #0
+    // bl ov80_02237ED8
+    // add r1, r0, #0
+    // add r2, r7, #0
+    // ldrb r0, [r7, #0x10]
+    // add r2, #0x30
+    // mov r3, #0xe
+    // bl ov80_02237ADC
+    // ldrb r0, [r7, #0x10]
+    // mov r1, #1
+    // ldrb r4, [r7, #0x11]
+    // bl ov80_02237B58
+    // add r5, r0, #0
+    // ldrb r0, [r7, #0x10]
+    // bl ov80_02237D8C
+    // mov r3, #0xa2
+    // lsl r3, r3, #2
+    // add r1, r7, r3
+    // str r1, [sp]
+    // add r1, r3, #0
+    // sub r1, #0x14
+    // add r1, r7, r1
+    // str r1, [sp, #4]
+    // add r1, r3, #0
+    // sub r1, #0x10
+    // add r1, r7, r1
+    // lsl r0, r0, #0x18
+    // add r2, r4, #7
+    // str r1, [sp, #8]
+    // lsr r0, r0, #0x18
+    // lsl r1, r4, #1
+    // lsl r2, r2, #1
+    // str r0, [sp, #0xc]
+    // add r1, r7, r1
+    // add r2, r7, r2
+    // sub r3, #0x1c
+    // ldrh r1, [r1, #0x30]
+    // ldrh r2, [r2, #0x30]
+    // add r0, r5, #0
+    // add r3, r7, r3
+    // bl ov80_0222A6B8
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // _02232900: .word 0x00000396
+    // _02232904: .word 0x0000039A
+    // TODO: decompile
 }
+
 
 void ov80_02232908(void) {
-    /* Original at 0x02232908 */
-    /* Requires manual decompilation - 76 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x18c\n    add r5, r0, #0\n    bl ov80_022329B4\n    mov r4, #0\n    add r6, r5, #0\n    add r7, r4, #0\n    str r7, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #6\n    lsr r2, r2, #0x18\n    add r3, r7, #0\n    bl sub_02030D84\n    strh r0, [r6, #0x30]\n    add r4, r4, #1\n    add r6, r6, #2\n    cmp r4, #0xe\n    blt _02232918\n    mov r6, #0\n    add r4, sp, #0x30\n    add r7, r5, #0\n    mov r0, #0\n    str r0, [sp]\n    lsl r2, r6, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #8\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030D84\n    strh r0, [r4]\n    ldrh r1, [r4]\n    mov r0, #0x9b\n    lsl r0, r0, #2\n    strh r1, [r7, r0]\n    add r6, r6, #1\n    add r4, r4, #2\n    add r7, r7, #2\n    cmp r6, #4\n    blt _02232938\n    add r0, sp, #0x18\n    str r0, [sp]\n    mov r0, #4\n    str r0, [sp, #4]\n    mov r0, #0xb\n    str r0, [sp, #8]\n    mov r0, #0xcd\n    str r0, [sp, #0xc]\n    add r0, sp, #0x3c\n    add r1, sp, #0x30\n    add r2, sp, #0x10\n    mov r3, #0\n    bl ov80_0222A52C\n    mov r0, #0xb\n    bl AllocMonZeroed\n    add r6, r0, #0\n    mov r7, #0\n    add r4, sp, #0x3c\n    add r0, r5, #0\n    bl ov80_02237D88\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r6, #0\n    bl ov80_0222A140\n    ldr r1, [r5, #0x2c]\n    add r0, r5, #0\n    add r2, r6, #0\n    bl ov80_02237E18\n    add r7, r7, #1\n    add r4, #0x38\n    cmp r7, #4\n    blt _02232986\n    add r0, r6, #0\n    bl Heap_Free\n    add sp, #0x18c\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x18c
+    // add r5, r0, #0
+    // bl ov80_022329B4
+    // mov r4, #0
+    // add r6, r5, #0
+    // add r7, r4, #0
+    // str r7, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #6
+    // lsr r2, r2, #0x18
+    // add r3, r7, #0
+    // bl sub_02030D84
+    // strh r0, [r6, #0x30]
+    // add r4, r4, #1
+    // add r6, r6, #2
+    // cmp r4, #0xe
+    // blt _02232918
+    // mov r6, #0
+    // add r4, sp, #0x30
+    // add r7, r5, #0
+    // mov r0, #0
+    // str r0, [sp]
+    // lsl r2, r6, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #8
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030D84
+    // strh r0, [r4]
+    // ldrh r1, [r4]
+    // mov r0, #0x9b
+    // lsl r0, r0, #2
+    // strh r1, [r7, r0]
+    // add r6, r6, #1
+    // add r4, r4, #2
+    // add r7, r7, #2
+    // cmp r6, #4
+    // blt _02232938
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // mov r0, #4
+    // str r0, [sp, #4]
+    // mov r0, #0xb
+    // str r0, [sp, #8]
+    // mov r0, #0xcd
+    // str r0, [sp, #0xc]
+    // add r0, sp, #0x3c
+    // add r1, sp, #0x30
+    // add r2, sp, #0x10
+    // mov r3, #0
+    // bl ov80_0222A52C
+    // mov r0, #0xb
+    // bl AllocMonZeroed
+    // add r6, r0, #0
+    // mov r7, #0
+    // add r4, sp, #0x3c
+    // add r0, r5, #0
+    // bl ov80_02237D88
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // bl ov80_0222A140
+    // ldr r1, [r5, #0x2c]
+    // add r0, r5, #0
+    // add r2, r6, #0
+    // bl ov80_02237E18
+    // add r7, r7, #1
+    // add r4, #0x38
+    // cmp r7, #4
+    // blt _02232986
+    // add r0, r6, #0
+    // bl Heap_Free
+    // add sp, #0x18c
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov80_022329B4(void) {
-    /* Original at 0x022329B4 */
-    /* Requires manual decompilation - 115 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    ldr r0, [r5, #0x28]\n    bl Party_GetCount\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    mov r4, #0\n    str r0, [sp, #4]\n    cmp r0, #0\n    ble _02232AB6\n    add r7, sp, #8\n    ldr r0, [r5, #0x28]\n    add r1, r4, #0\n    bl Party_GetMonByIndex\n    add r6, r0, #0\n    mov r0, #0\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #2\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030D84\n    add r2, sp, #8\n    strh r0, [r7, #2]\n    add r0, r6, #0\n    mov r1, #0xa3\n    add r2, #2\n    bl SetMonData\n    mov r0, #0\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #3\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030D84\n    strb r0, [r7]\n    add r0, r6, #0\n    mov r1, #0x3a\n    add r2, sp, #8\n    bl SetMonData\n    mov r0, #0\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #3\n    lsr r2, r2, #0x18\n    mov r3, #1\n    bl sub_02030D84\n    strb r0, [r7]\n    add r0, r6, #0\n    mov r1, #0x3b\n    add r2, sp, #8\n    bl SetMonData\n    mov r0, #0\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #3\n    lsr r2, r2, #0x18\n    mov r3, #2\n    bl sub_02030D84\n    strb r0, [r7]\n    add r0, r6, #0\n    mov r1, #0x3c\n    add r2, sp, #8\n    bl SetMonData\n    mov r0, #0\n    str r0, [sp]\n    mov r1, #3\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    lsr r2, r2, #0x18\n    add r3, r1, #0\n    bl sub_02030D84\n    strb r0, [r7]\n    add r0, r6, #0\n    mov r1, #0x3d\n    add r2, sp, #8\n    bl SetMonData\n    mov r0, #0\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #4\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030D84\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    mov r1, #0xa0\n    add r2, sp, #0xc\n    bl SetMonData\n    mov r0, #0\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #5\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030D84\n    add r2, sp, #8\n    strh r0, [r7, #2]\n    add r0, r6, #0\n    mov r1, #6\n    add r2, #2\n    bl SetMonData\n    ldr r0, [sp, #4]\n    add r4, r4, #1\n    cmp r4, r0\n    blt _022329CE\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // ldr r0, [r5, #0x28]
+    // bl Party_GetCount
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // mov r4, #0
+    // str r0, [sp, #4]
+    // cmp r0, #0
+    // ble _02232AB6
+    // add r7, sp, #8
+    // ldr r0, [r5, #0x28]
+    // add r1, r4, #0
+    // bl Party_GetMonByIndex
+    // add r6, r0, #0
+    // mov r0, #0
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #2
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030D84
+    // add r2, sp, #8
+    // strh r0, [r7, #2]
+    // add r0, r6, #0
+    // mov r1, #0xa3
+    // add r2, #2
+    // bl SetMonData
+    // mov r0, #0
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #3
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030D84
+    // strb r0, [r7]
+    // add r0, r6, #0
+    // mov r1, #0x3a
+    // add r2, sp, #8
+    // bl SetMonData
+    // mov r0, #0
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #3
+    // lsr r2, r2, #0x18
+    // mov r3, #1
+    // bl sub_02030D84
+    // strb r0, [r7]
+    // add r0, r6, #0
+    // mov r1, #0x3b
+    // add r2, sp, #8
+    // bl SetMonData
+    // mov r0, #0
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #3
+    // lsr r2, r2, #0x18
+    // mov r3, #2
+    // bl sub_02030D84
+    // strb r0, [r7]
+    // add r0, r6, #0
+    // mov r1, #0x3c
+    // add r2, sp, #8
+    // bl SetMonData
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r1, #3
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // lsr r2, r2, #0x18
+    // add r3, r1, #0
+    // bl sub_02030D84
+    // strb r0, [r7]
+    // add r0, r6, #0
+    // mov r1, #0x3d
+    // add r2, sp, #8
+    // bl SetMonData
+    // mov r0, #0
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #4
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030D84
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // mov r1, #0xa0
+    // add r2, sp, #0xc
+    // bl SetMonData
+    // mov r0, #0
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #5
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030D84
+    // add r2, sp, #8
+    // strh r0, [r7, #2]
+    // add r0, r6, #0
+    // mov r1, #6
+    // add r2, #2
+    // bl SetMonData
+    // ldr r0, [sp, #4]
+    // add r4, r4, #1
+    // cmp r4, r0
+    // blt _022329CE
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02232ABC(void) {
-    /* Original at 0x02232ABC */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    beq _02232AE6\n    ldr r0, [r4, #0x28]\n    cmp r0, #0\n    beq _02232ACC\n    bl Heap_Free\n    ldr r0, [r4, #0x2c]\n    cmp r0, #0\n    beq _02232AD6\n    bl Heap_Free\n    ldr r2, _02232AE8 ; =0x00000A28\n    add r0, r4, #0\n    mov r1, #0\n    bl MI_CpuFill8\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}\n    _02232AE8: .word 0x00000A28"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // beq _02232AE6
+    // ldr r0, [r4, #0x28]
+    // cmp r0, #0
+    // beq _02232ACC
+    // bl Heap_Free
+    // ldr r0, [r4, #0x2c]
+    // cmp r0, #0
+    // beq _02232AD6
+    // bl Heap_Free
+    // ldr r2, _02232AE8 ; =0x00000A28
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl MI_CpuFill8
+    // add r0, r4, #0
+    // bl Heap_Free
+    // pop {r4, pc}
+    // _02232AE8: .word 0x00000A28
+    // TODO: decompile
 }
 
+
 void ov80_02232AEC(void) {
-    /* Original at 0x02232AEC */
-    /* Requires manual decompilation - 42 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    add r6, r1, #0\n    mov r4, #0\n    add r5, r7, #0\n    lsl r1, r4, #0x18\n    add r0, r6, #0\n    lsr r1, r1, #0x18\n    bl ov80_02232B44\n    mov r1, #0xe\n    lsl r1, r1, #6\n    strh r0, [r5, r1]\n    add r4, r4, #1\n    add r5, r5, #2\n    cmp r4, #6\n    blt _02232AF6\n    mov r3, #0\n    sub r0, r1, #4\n    add r2, r6, r3\n    ldrb r5, [r2, #8]\n    mov r4, #0x37\n    add r1, r7, r3\n    lsl r4, r4, #4\n    strb r5, [r1, r4]\n    ldrb r5, [r2, #0xc]\n    add r4, r4, #4\n    add r3, r3, #1\n    strb r5, [r1, r4]\n    mov r4, #0xde\n    lsl r4, r4, #2\n    ldrb r5, [r2, #0x10]\n    cmp r3, #4\n    strb r5, [r1, r4]\n    ldrb r2, [r2, #0x14]\n    strb r2, [r1, r0]\n    blt _02232B12\n    ldrh r1, [r6, #0x28]\n    ldr r0, _02232B40 ; =0x00000A1C\n    strh r1, [r7, r0]\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02232B40: .word 0x00000A1C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r7, r0, #0
+    // add r6, r1, #0
+    // mov r4, #0
+    // add r5, r7, #0
+    // lsl r1, r4, #0x18
+    // add r0, r6, #0
+    // lsr r1, r1, #0x18
+    // bl ov80_02232B44
+    // mov r1, #0xe
+    // lsl r1, r1, #6
+    // strh r0, [r5, r1]
+    // add r4, r4, #1
+    // add r5, r5, #2
+    // cmp r4, #6
+    // blt _02232AF6
+    // mov r3, #0
+    // sub r0, r1, #4
+    // add r2, r6, r3
+    // ldrb r5, [r2, #8]
+    // mov r4, #0x37
+    // add r1, r7, r3
+    // lsl r4, r4, #4
+    // strb r5, [r1, r4]
+    // ldrb r5, [r2, #0xc]
+    // add r4, r4, #4
+    // add r3, r3, #1
+    // strb r5, [r1, r4]
+    // mov r4, #0xde
+    // lsl r4, r4, #2
+    // ldrb r5, [r2, #0x10]
+    // cmp r3, #4
+    // strb r5, [r1, r4]
+    // ldrb r2, [r2, #0x14]
+    // strb r2, [r1, r0]
+    // blt _02232B12
+    // ldrh r1, [r6, #0x28]
+    // ldr r0, _02232B40 ; =0x00000A1C
+    // strh r1, [r7, r0]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _02232B40: .word 0x00000A1C
+    // TODO: decompile
 }
+
 
 void ov80_02232B44(void) {
     GF_AssertFail();
 }
 
+
 void ov80_02232B58(void) {
-    /* Original at 0x02232B58 */
-    /* Requires manual decompilation - 325 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x2c\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    add r6, r1, #0\n    bl sub_02030E08\n    str r0, [sp, #4]\n    ldr r0, [r5, #4]\n    bl Save_Frontier_GetStatic\n    add r4, r0, #0\n    ldrb r0, [r5, #0x10]\n    mov r1, #1\n    bl ov80_02237B58\n    ldrb r1, [r5, #0x10]\n    add r0, sp, #0x10\n    strb r1, [r0, #8]\n    mov r1, #0\n    add r0, sp, #0x18\n    str r0, [sp]\n    ldr r0, [r5, #8]\n    add r2, r1, #0\n    add r3, r1, #0\n    bl sub_02030CF4\n    ldr r0, [r5, #8]\n    mov r1, #1\n    bl sub_02030CE0\n    mov r2, #0\n    ldrb r1, [r5, #0x11]\n    add r0, sp, #0x10\n    add r3, r2, #0\n    strb r1, [r0, #8]\n    add r0, sp, #0x18\n    str r0, [sp]\n    ldr r0, [r5, #8]\n    mov r1, #1\n    bl sub_02030CF4\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1A0\n    add r7, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1A0\n    bl sub_0205C268\n    add r2, r0, #0\n    ldrh r3, [r5, #0x14]\n    add r0, r4, #0\n    add r1, r7, #0\n    bl sub_02031108\n    cmp r6, #2\n    beq _02232CCA\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1C8\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1C8\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r6, #0\n    bl FrontierSave_GetStat\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1C8\n    add r7, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1C8\n    bl sub_0205C268\n    add r2, r0, #0\n    ldrh r3, [r5, #0x14]\n    add r0, r4, #0\n    add r1, r7, #0\n    bl sub_0203126C\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1C8\n    add r7, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1C8\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r7, #0\n    bl FrontierSave_GetStat\n    str r0, [sp, #0xc]\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    add r7, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r7, #0\n    bl FrontierSave_GetStat\n    add r7, r0, #0\n    ldrh r0, [r5, #0x14]\n    cmp r0, r6\n    bne _02232C6E\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C240\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C240\n    bl sub_0205C268\n    lsl r3, r7, #0x10\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r6, #0\n    lsr r3, r3, #0x10\n    bl sub_0203126C\n    b _02232C94\n    ldr r0, [sp, #0xc]\n    cmp r6, r0\n    bhs _02232C94\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C240\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C240\n    bl sub_0205C268\n    lsl r3, r7, #0x10\n    add r2, r0, #0\n    add r0, r4, #0\n    add r1, r6, #0\n    lsr r3, r3, #0x10\n    bl sub_02031108\n    add r0, r5, #0\n    add r0, #0x27\n    ldrb r1, [r0]\n    add r0, sp, #0x10\n    mov r3, #0\n    strb r1, [r0, #8]\n    add r0, sp, #0x18\n    str r0, [sp]\n    ldrb r2, [r5, #0x10]\n    ldr r0, [sp, #4]\n    mov r1, #9\n    bl sub_02030E18\n    ldrb r0, [r5, #0x10]\n    cmp r0, #3\n    bne _02232CCA\n    mov r0, #0x6c\n    bl sub_0205C268\n    add r3, r5, #0\n    add r3, #0x27\n    add r2, r0, #0\n    ldrb r3, [r3]\n    add r0, r4, #0\n    mov r1, #0x6c\n    bl sub_02031108\n    mov r4, #0\n    add r6, sp, #0x10\n    add r7, sp, #0x10\n    lsl r0, r4, #1\n    add r0, r5, r0\n    ldrh r0, [r0, #0x30]\n    lsl r2, r4, #0x18\n    mov r1, #6\n    strh r0, [r7]\n    str r6, [sp]\n    ldr r0, [r5, #8]\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030CF4\n    add r0, r4, #1\n    lsl r0, r0, #0x10\n    lsr r4, r0, #0x10\n    cmp r4, #0xe\n    blo _02232CD0\n    mov r4, #0\n    add r6, sp, #0x18\n    add r7, sp, #0x10\n    add r0, r5, r4\n    add r0, #0x24\n    ldrb r0, [r0]\n    lsl r2, r4, #0x18\n    mov r1, #7\n    strb r0, [r7, #8]\n    str r6, [sp]\n    ldr r0, [r5, #8]\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030CF4\n    add r0, r4, #1\n    lsl r0, r0, #0x10\n    lsr r4, r0, #0x10\n    cmp r4, #3\n    blo _02232CF8\n    ldr r0, [r5, #0x28]\n    bl Party_GetCount\n    mov r4, #0\n    str r0, [sp, #8]\n    cmp r0, #0\n    bls _02232E10\n    add r7, sp, #0x10\n    ldr r0, [r5, #0x28]\n    add r1, r4, #0\n    bl Party_GetMonByIndex\n    mov r1, #0xa3\n    mov r2, #0\n    add r6, r0, #0\n    bl GetMonData\n    strh r0, [r7]\n    add r0, sp, #0x10\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #2\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030CF4\n    add r0, r6, #0\n    mov r1, #0x3a\n    mov r2, #0\n    bl GetMonData\n    strb r0, [r7, #8]\n    add r0, sp, #0x18\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #3\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030CF4\n    add r0, r6, #0\n    mov r1, #0x3b\n    mov r2, #0\n    bl GetMonData\n    strb r0, [r7, #8]\n    add r0, sp, #0x18\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #3\n    lsr r2, r2, #0x18\n    mov r3, #1\n    bl sub_02030CF4\n    add r0, r6, #0\n    mov r1, #0x3c\n    mov r2, #0\n    bl GetMonData\n    strb r0, [r7, #8]\n    add r0, sp, #0x18\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #3\n    lsr r2, r2, #0x18\n    mov r3, #2\n    bl sub_02030CF4\n    add r0, r6, #0\n    mov r1, #0x3d\n    mov r2, #0\n    bl GetMonData\n    strb r0, [r7, #8]\n    add r0, sp, #0x18\n    str r0, [sp]\n    mov r1, #3\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    lsr r2, r2, #0x18\n    add r3, r1, #0\n    bl sub_02030CF4\n    add r0, r6, #0\n    mov r1, #0xa0\n    mov r2, #0\n    bl GetMonData\n    str r0, [sp, #0x1c]\n    add r0, sp, #0x1c\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #4\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030CF4\n    add r0, r6, #0\n    mov r1, #6\n    mov r2, #0\n    bl GetMonData\n    strh r0, [r7]\n    add r0, sp, #0x10\n    str r0, [sp]\n    lsl r2, r4, #0x18\n    ldr r0, [r5, #8]\n    mov r1, #5\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030CF4\n    add r0, r4, #1\n    lsl r0, r0, #0x10\n    lsr r4, r0, #0x10\n    ldr r0, [sp, #8]\n    cmp r4, r0\n    blo _02232D2A\n    ldr r0, [r5, #0x2c]\n    bl Party_GetCount\n    add r6, r0, #0\n    ldr r4, _02232E54 ; =0x00000000\n    beq _02232E4E\n    add r7, sp, #0x10\n    ldr r0, [r5, #0x2c]\n    add r1, r4, #0\n    bl Party_GetMonByIndex\n    lsl r0, r4, #1\n    add r1, r5, r0\n    mov r0, #0x9b\n    lsl r0, r0, #2\n    ldrh r1, [r1, r0]\n    add r0, sp, #0x10\n    lsl r2, r4, #0x18\n    strh r1, [r0]\n    str r7, [sp]\n    ldr r0, [r5, #8]\n    mov r1, #8\n    lsr r2, r2, #0x18\n    mov r3, #0\n    bl sub_02030CF4\n    add r0, r4, #1\n    lsl r0, r0, #0x10\n    lsr r4, r0, #0x10\n    cmp r4, r6\n    blo _02232E1E\n    add sp, #0x2c\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02232E54: .word 0x00000000"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x2c
+    // add r5, r0, #0
+    // ldr r0, [r5, #4]
+    // add r6, r1, #0
+    // bl sub_02030E08
+    // str r0, [sp, #4]
+    // ldr r0, [r5, #4]
+    // bl Save_Frontier_GetStatic
+    // add r4, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // mov r1, #1
+    // bl ov80_02237B58
+    // ldrb r1, [r5, #0x10]
+    // add r0, sp, #0x10
+    // strb r1, [r0, #8]
+    // mov r1, #0
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // ldr r0, [r5, #8]
+    // add r2, r1, #0
+    // add r3, r1, #0
+    // bl sub_02030CF4
+    // ldr r0, [r5, #8]
+    // mov r1, #1
+    // bl sub_02030CE0
+    // mov r2, #0
+    // ldrb r1, [r5, #0x11]
+    // add r0, sp, #0x10
+    // add r3, r2, #0
+    // strb r1, [r0, #8]
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // ldr r0, [r5, #8]
+    // mov r1, #1
+    // bl sub_02030CF4
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1A0
+    // add r7, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1A0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // ldrh r3, [r5, #0x14]
+    // add r0, r4, #0
+    // add r1, r7, #0
+    // bl sub_02031108
+    // cmp r6, #2
+    // beq _02232CCA
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1C8
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1C8
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // bl FrontierSave_GetStat
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1C8
+    // add r7, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1C8
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // ldrh r3, [r5, #0x14]
+    // add r0, r4, #0
+    // add r1, r7, #0
+    // bl sub_0203126C
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1C8
+    // add r7, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1C8
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r7, #0
+    // bl FrontierSave_GetStat
+    // str r0, [sp, #0xc]
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // add r7, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r7, #0
+    // bl FrontierSave_GetStat
+    // add r7, r0, #0
+    // ldrh r0, [r5, #0x14]
+    // cmp r0, r6
+    // bne _02232C6E
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C240
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C240
+    // bl sub_0205C268
+    // lsl r3, r7, #0x10
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // lsr r3, r3, #0x10
+    // bl sub_0203126C
+    // b _02232C94
+    // ldr r0, [sp, #0xc]
+    // cmp r6, r0
+    // bhs _02232C94
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C240
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C240
+    // bl sub_0205C268
+    // lsl r3, r7, #0x10
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // lsr r3, r3, #0x10
+    // bl sub_02031108
+    // add r0, r5, #0
+    // add r0, #0x27
+    // ldrb r1, [r0]
+    // add r0, sp, #0x10
+    // mov r3, #0
+    // strb r1, [r0, #8]
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // ldrb r2, [r5, #0x10]
+    // ldr r0, [sp, #4]
+    // mov r1, #9
+    // bl sub_02030E18
+    // ldrb r0, [r5, #0x10]
+    // cmp r0, #3
+    // bne _02232CCA
+    // mov r0, #0x6c
+    // bl sub_0205C268
+    // add r3, r5, #0
+    // add r3, #0x27
+    // add r2, r0, #0
+    // ldrb r3, [r3]
+    // add r0, r4, #0
+    // mov r1, #0x6c
+    // bl sub_02031108
+    // mov r4, #0
+    // add r6, sp, #0x10
+    // add r7, sp, #0x10
+    // lsl r0, r4, #1
+    // add r0, r5, r0
+    // ldrh r0, [r0, #0x30]
+    // lsl r2, r4, #0x18
+    // mov r1, #6
+    // strh r0, [r7]
+    // str r6, [sp]
+    // ldr r0, [r5, #8]
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030CF4
+    // add r0, r4, #1
+    // lsl r0, r0, #0x10
+    // lsr r4, r0, #0x10
+    // cmp r4, #0xe
+    // blo _02232CD0
+    // mov r4, #0
+    // add r6, sp, #0x18
+    // add r7, sp, #0x10
+    // add r0, r5, r4
+    // add r0, #0x24
+    // ldrb r0, [r0]
+    // lsl r2, r4, #0x18
+    // mov r1, #7
+    // strb r0, [r7, #8]
+    // str r6, [sp]
+    // ldr r0, [r5, #8]
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030CF4
+    // add r0, r4, #1
+    // lsl r0, r0, #0x10
+    // lsr r4, r0, #0x10
+    // cmp r4, #3
+    // blo _02232CF8
+    // ldr r0, [r5, #0x28]
+    // bl Party_GetCount
+    // mov r4, #0
+    // str r0, [sp, #8]
+    // cmp r0, #0
+    // bls _02232E10
+    // add r7, sp, #0x10
+    // ldr r0, [r5, #0x28]
+    // add r1, r4, #0
+    // bl Party_GetMonByIndex
+    // mov r1, #0xa3
+    // mov r2, #0
+    // add r6, r0, #0
+    // bl GetMonData
+    // strh r0, [r7]
+    // add r0, sp, #0x10
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #2
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030CF4
+    // add r0, r6, #0
+    // mov r1, #0x3a
+    // mov r2, #0
+    // bl GetMonData
+    // strb r0, [r7, #8]
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #3
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030CF4
+    // add r0, r6, #0
+    // mov r1, #0x3b
+    // mov r2, #0
+    // bl GetMonData
+    // strb r0, [r7, #8]
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #3
+    // lsr r2, r2, #0x18
+    // mov r3, #1
+    // bl sub_02030CF4
+    // add r0, r6, #0
+    // mov r1, #0x3c
+    // mov r2, #0
+    // bl GetMonData
+    // strb r0, [r7, #8]
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #3
+    // lsr r2, r2, #0x18
+    // mov r3, #2
+    // bl sub_02030CF4
+    // add r0, r6, #0
+    // mov r1, #0x3d
+    // mov r2, #0
+    // bl GetMonData
+    // strb r0, [r7, #8]
+    // add r0, sp, #0x18
+    // str r0, [sp]
+    // mov r1, #3
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // lsr r2, r2, #0x18
+    // add r3, r1, #0
+    // bl sub_02030CF4
+    // add r0, r6, #0
+    // mov r1, #0xa0
+    // mov r2, #0
+    // bl GetMonData
+    // str r0, [sp, #0x1c]
+    // add r0, sp, #0x1c
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #4
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030CF4
+    // add r0, r6, #0
+    // mov r1, #6
+    // mov r2, #0
+    // bl GetMonData
+    // strh r0, [r7]
+    // add r0, sp, #0x10
+    // str r0, [sp]
+    // lsl r2, r4, #0x18
+    // ldr r0, [r5, #8]
+    // mov r1, #5
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030CF4
+    // add r0, r4, #1
+    // lsl r0, r0, #0x10
+    // lsr r4, r0, #0x10
+    // ldr r0, [sp, #8]
+    // cmp r4, r0
+    // blo _02232D2A
+    // ldr r0, [r5, #0x2c]
+    // bl Party_GetCount
+    // add r6, r0, #0
+    // ldr r4, _02232E54 ; =0x00000000
+    // beq _02232E4E
+    // add r7, sp, #0x10
+    // ldr r0, [r5, #0x2c]
+    // add r1, r4, #0
+    // bl Party_GetMonByIndex
+    // lsl r0, r4, #1
+    // add r1, r5, r0
+    // mov r0, #0x9b
+    // lsl r0, r0, #2
+    // ldrh r1, [r1, r0]
+    // add r0, sp, #0x10
+    // lsl r2, r4, #0x18
+    // strh r1, [r0]
+    // str r7, [sp]
+    // ldr r0, [r5, #8]
+    // mov r1, #8
+    // lsr r2, r2, #0x18
+    // mov r3, #0
+    // bl sub_02030CF4
+    // add r0, r4, #1
+    // lsl r0, r0, #0x10
+    // lsr r4, r0, #0x10
+    // cmp r4, r6
+    // blo _02232E1E
+    // add sp, #0x2c
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _02232E54: .word 0x00000000
+    // TODO: decompile
 }
+
 
 void ov80_02232E58(void) {
-    /* Original at 0x02232E58 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrb r1, [r0, #0x11]\n    add r1, r1, #1\n    strb r1, [r0, #0x11]\n    ldrb r0, [r0, #0x11]\n    bx lr"
-    );
-    #endif
+    // ldrb r1, [r0, #0x11]
+    // add r1, r1, #1
+    // strb r1, [r0, #0x11]
+    // ldrb r0, [r0, #0x11]
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov80_02232E64(void) {
-    /* Original at 0x02232E64 */
-    /* Requires manual decompilation - 2 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrb r0, [r0, #0x11]\n    bx lr"
-    );
-    #endif
+    // ldrb r0, [r0, #0x11]
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov80_02232E68(void) {
-    /* Original at 0x02232E68 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x30\n    add r2, r0, #0\n    ldrb r4, [r2, #0x11]\n    mov r3, #7\n    mul r3, r1\n    add r1, r4, r3\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x17\n    add r1, r2, r1\n    ldrh r1, [r1, #0x30]\n    add r0, sp, #0\n    mov r2, #0xb\n    mov r3, #0xcc\n    bl ov80_02229F04\n    bl Heap_Free\n    add r0, sp, #0\n    ldrh r0, [r0, #4]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl ov80_0222A30C\n    add sp, #0x30\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #0x30
+    // add r2, r0, #0
+    // ldrb r4, [r2, #0x11]
+    // mov r3, #7
+    // mul r3, r1
+    // add r1, r4, r3
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x17
+    // add r1, r2, r1
+    // ldrh r1, [r1, #0x30]
+    // add r0, sp, #0
+    // mov r2, #0xb
+    // mov r3, #0xcc
+    // bl ov80_02229F04
+    // bl Heap_Free
+    // add r0, sp, #0
+    // ldrh r0, [r0, #4]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl ov80_0222A30C
+    // add sp, #0x30
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02232E9C(void) {
-    /* Original at 0x02232E9C */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    mov r4, #0\n    ldr r0, [r5, #4]\n    bl Save_Frontier_GetStatic\n    add r6, r0, #0\n    lsl r1, r4, #0x18\n    ldrb r0, [r5, #0x10]\n    lsr r1, r1, #0x18\n    bl sub_0205C174\n    add r7, r0, #0\n    lsl r1, r4, #0x18\n    ldrb r0, [r5, #0x10]\n    lsr r1, r1, #0x18\n    bl sub_0205C174\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r6, #0\n    add r1, r7, #0\n    mov r3, #1\n    bl sub_02031108\n    add r4, r4, #1\n    cmp r4, #3\n    blt _02232EA2\n    add r0, r5, #0\n    mov r1, #1\n    bl ov80_02232B58\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // mov r4, #0
+    // ldr r0, [r5, #4]
+    // bl Save_Frontier_GetStatic
+    // add r6, r0, #0
+    // lsl r1, r4, #0x18
+    // ldrb r0, [r5, #0x10]
+    // lsr r1, r1, #0x18
+    // bl sub_0205C174
+    // add r7, r0, #0
+    // lsl r1, r4, #0x18
+    // ldrb r0, [r5, #0x10]
+    // lsr r1, r1, #0x18
+    // bl sub_0205C174
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // mov r3, #1
+    // bl sub_02031108
+    // add r4, r4, #1
+    // cmp r4, #3
+    // blt _02232EA2
+    // add r0, r5, #0
+    // mov r1, #1
+    // bl ov80_02232B58
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov80_02232EE0(void) {
-    /* Original at 0x02232EE0 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "add r1, r0, #0\n    mov r2, #1\n    add r1, #0x27\n    strb r2, [r1]\n    ldrh r1, [r0, #0x16]\n    cmp r1, #8\n    bhs _02232EF2\n    add r1, r1, #1\n    strh r1, [r0, #0x16]\n    ldr r3, _02232EFC ; =ov80_02232B58\n    mov r1, #0\n    strb r1, [r0, #0x11]\n    bx r3\n    nop\n    _02232EFC: .word ov80_02232B58"
-    );
-    #endif
+    // add r1, r0, #0
+    // mov r2, #1
+    // add r1, #0x27
+    // strb r2, [r1]
+    // ldrh r1, [r0, #0x16]
+    // cmp r1, #8
+    // bhs _02232EF2
+    // add r1, r1, #1
+    // strh r1, [r0, #0x16]
+    // ldr r3, _02232EFC ; =ov80_02232B58
+    // mov r1, #0
+    // strb r1, [r0, #0x11]
+    // bx r3
+    // nop
+    // _02232EFC: .word ov80_02232B58
+    // TODO: decompile
 }
+
 
 void ov80_02232F00(void) {
     ov80_02237E30();
 }
 
+
 void ov80_02232F08(void) {
-    /* Original at 0x02232F08 */
-    /* Requires manual decompilation - 40 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    ldrb r0, [r5, #0x10]\n    mov r1, #1\n    ldrb r4, [r5, #0x11]\n    bl ov80_02237B58\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl ov80_02237D8C\n    mov r3, #0xa2\n    lsl r3, r3, #2\n    add r1, r5, r3\n    str r1, [sp]\n    add r1, r3, #0\n    sub r1, #0x14\n    add r1, r5, r1\n    str r1, [sp, #4]\n    add r1, r3, #0\n    sub r1, #0x10\n    add r1, r5, r1\n    lsl r0, r0, #0x18\n    add r2, r4, #7\n    str r1, [sp, #8]\n    lsr r0, r0, #0x18\n    lsl r1, r4, #1\n    lsl r2, r2, #1\n    str r0, [sp, #0xc]\n    add r1, r5, r1\n    add r2, r5, r2\n    sub r3, #0x1c\n    ldrh r1, [r1, #0x30]\n    ldrh r2, [r2, #0x30]\n    add r0, r6, #0\n    add r3, r5, r3\n    bl ov80_0222A6B8\n    add r0, r5, #0\n    bl ov80_02237E30\n    add sp, #0x10\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // mov r1, #1
+    // ldrb r4, [r5, #0x11]
+    // bl ov80_02237B58
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl ov80_02237D8C
+    // mov r3, #0xa2
+    // lsl r3, r3, #2
+    // add r1, r5, r3
+    // str r1, [sp]
+    // add r1, r3, #0
+    // sub r1, #0x14
+    // add r1, r5, r1
+    // str r1, [sp, #4]
+    // add r1, r3, #0
+    // sub r1, #0x10
+    // add r1, r5, r1
+    // lsl r0, r0, #0x18
+    // add r2, r4, #7
+    // str r1, [sp, #8]
+    // lsr r0, r0, #0x18
+    // lsl r1, r4, #1
+    // lsl r2, r2, #1
+    // str r0, [sp, #0xc]
+    // add r1, r5, r1
+    // add r2, r5, r2
+    // sub r3, #0x1c
+    // ldrh r1, [r1, #0x30]
+    // ldrh r2, [r2, #0x30]
+    // add r0, r6, #0
+    // add r3, r5, r3
+    // bl ov80_0222A6B8
+    // add r0, r5, #0
+    // bl ov80_02237E30
+    // add sp, #0x10
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02232F60(void) {
-    /* Original at 0x02232F60 */
-    /* Requires manual decompilation - 85 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r6, r0, #0\n    bl sub_0203769C\n    cmp r0, #0\n    bne _02232F74\n    mov r0, #0\n    str r0, [sp]\n    b _02232F78\n    mov r0, #2\n    str r0, [sp]\n    ldrb r0, [r6, #0x10]\n    mov r1, #0\n    bl ov80_02237B24\n    add r5, r0, #0\n    ldr r0, [r6, #0x28]\n    bl Party_GetCount\n    ldr r4, [sp]\n    add r0, r4, #0\n    add r0, r5, r0\n    add r1, r4, #0\n    str r0, [sp, #4]\n    cmp r1, r0\n    bge _02232FEA\n    ldr r0, [r6, #0x28]\n    add r1, r4, #0\n    bl Party_GetMonByIndex\n    ldr r1, [sp]\n    mov r2, #0\n    sub r1, r4, r1\n    lsl r1, r1, #3\n    add r5, r6, r1\n    mov r1, #0x3a\n    add r7, r0, #0\n    bl GetMonData\n    mov r1, #0xe5\n    lsl r1, r1, #2\n    strh r0, [r5, r1]\n    add r0, r7, #0\n    mov r1, #0x3b\n    mov r2, #0\n    bl GetMonData\n    ldr r1, _02233018 ; =0x00000396\n    mov r2, #0\n    strh r0, [r5, r1]\n    add r0, r7, #0\n    mov r1, #0x3c\n    bl GetMonData\n    mov r1, #0xe6\n    lsl r1, r1, #2\n    strh r0, [r5, r1]\n    add r0, r7, #0\n    mov r1, #0x3d\n    mov r2, #0\n    bl GetMonData\n    ldr r1, _0223301C ; =0x0000039A\n    add r4, r4, #1\n    strh r0, [r5, r1]\n    ldr r0, [sp, #4]\n    cmp r4, r0\n    blt _02232F96\n    ldr r0, [r6, #0x28]\n    bl ov80_02237D9C\n    mov r0, #0x37\n    lsl r0, r0, #4\n    mov r7, #0\n    add r2, r0, #0\n    add r3, r0, #0\n    add r4, r7, #0\n    add r1, r0, #4\n    add r2, #8\n    add r3, #0xc\n    add r5, r6, r7\n    strb r4, [r5, r0]\n    strb r4, [r5, r1]\n    strb r4, [r5, r2]\n    add r7, r7, #1\n    strb r4, [r5, r3]\n    cmp r7, #4\n    blt _02233002\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02233018: .word 0x00000396\n    _0223301C: .word 0x0000039A"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r6, r0, #0
+    // bl sub_0203769C
+    // cmp r0, #0
+    // bne _02232F74
+    // mov r0, #0
+    // str r0, [sp]
+    // b _02232F78
+    // mov r0, #2
+    // str r0, [sp]
+    // ldrb r0, [r6, #0x10]
+    // mov r1, #0
+    // bl ov80_02237B24
+    // add r5, r0, #0
+    // ldr r0, [r6, #0x28]
+    // bl Party_GetCount
+    // ldr r4, [sp]
+    // add r0, r4, #0
+    // add r0, r5, r0
+    // add r1, r4, #0
+    // str r0, [sp, #4]
+    // cmp r1, r0
+    // bge _02232FEA
+    // ldr r0, [r6, #0x28]
+    // add r1, r4, #0
+    // bl Party_GetMonByIndex
+    // ldr r1, [sp]
+    // mov r2, #0
+    // sub r1, r4, r1
+    // lsl r1, r1, #3
+    // add r5, r6, r1
+    // mov r1, #0x3a
+    // add r7, r0, #0
+    // bl GetMonData
+    // mov r1, #0xe5
+    // lsl r1, r1, #2
+    // strh r0, [r5, r1]
+    // add r0, r7, #0
+    // mov r1, #0x3b
+    // mov r2, #0
+    // bl GetMonData
+    // ldr r1, _02233018 ; =0x00000396
+    // mov r2, #0
+    // strh r0, [r5, r1]
+    // add r0, r7, #0
+    // mov r1, #0x3c
+    // bl GetMonData
+    // mov r1, #0xe6
+    // lsl r1, r1, #2
+    // strh r0, [r5, r1]
+    // add r0, r7, #0
+    // mov r1, #0x3d
+    // mov r2, #0
+    // bl GetMonData
+    // ldr r1, _0223301C ; =0x0000039A
+    // add r4, r4, #1
+    // strh r0, [r5, r1]
+    // ldr r0, [sp, #4]
+    // cmp r4, r0
+    // blt _02232F96
+    // ldr r0, [r6, #0x28]
+    // bl ov80_02237D9C
+    // mov r0, #0x37
+    // lsl r0, r0, #4
+    // mov r7, #0
+    // add r2, r0, #0
+    // add r3, r0, #0
+    // add r4, r7, #0
+    // add r1, r0, #4
+    // add r2, #8
+    // add r3, #0xc
+    // add r5, r6, r7
+    // strb r4, [r5, r0]
+    // strb r4, [r5, r1]
+    // strb r4, [r5, r2]
+    // add r7, r7, #1
+    // strb r4, [r5, r3]
+    // cmp r7, #4
+    // blt _02233002
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _02233018: .word 0x00000396
+    // _0223301C: .word 0x0000039A
+    // TODO: decompile
 }
+
 
 void ov80_02233020(void) {
-    /* Original at 0x02233020 */
-    /* Requires manual decompilation - 215 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x2c\n    add r6, r0, #0\n    mov r0, #0\n    str r0, [sp, #0x10]\n    add r1, sp, #0x18\n    add r4, r0, #0\n    add r0, r0, #1\n    strb r4, [r1]\n    add r1, r1, #1\n    cmp r0, #0x14\n    blt _0223302E\n    strb r4, [r6, #0x12]\n    bl sub_0203769C\n    cmp r0, #0\n    bne _02233048\n    mov r0, #0\n    str r0, [sp]\n    b _0223304C\n    mov r0, #2\n    str r0, [sp]\n    ldrb r0, [r6, #0x10]\n    mov r1, #0\n    bl ov80_02237B24\n    str r0, [sp, #8]\n    ldrb r0, [r6, #0x10]\n    mov r1, #1\n    bl ov80_02237B58\n    str r0, [sp, #4]\n    ldr r1, [sp, #8]\n    ldr r0, [sp]\n    add r0, r1, r0\n    ldr r1, [sp]\n    str r0, [sp, #0xc]\n    cmp r1, r0\n    bge _02233122\n    add r7, sp, #0x18\n    ldr r0, [r6, #0x28]\n    ldr r1, [sp]\n    bl Party_GetMonByIndex\n    mov r1, #0xac\n    mov r2, #0\n    add r5, r0, #0\n    bl GetMonData\n    cmp r0, #0\n    beq _02233116\n    add r0, r5, #0\n    mov r1, #0xa3\n    mov r2, #0\n    bl GetMonData\n    str r0, [sp, #0x14]\n    add r0, r5, #0\n    mov r1, #0xa4\n    mov r2, #0\n    bl GetMonData\n    ldr r1, [sp, #0x14]\n    cmp r1, #0\n    beq _022330E2\n    ldrb r1, [r7]\n    add r1, r1, #1\n    strb r1, [r7]\n    ldr r1, [sp, #0x14]\n    cmp r1, r0\n    bne _022330B6\n    ldrb r0, [r7, #1]\n    add r0, r0, #1\n    strb r0, [r7, #1]\n    b _022330CC\n    lsr r1, r0, #1\n    ldr r0, [sp, #0x14]\n    cmp r0, r1\n    blo _022330C6\n    ldrb r0, [r7, #2]\n    add r0, r0, #1\n    strb r0, [r7, #2]\n    b _022330CC\n    ldrb r0, [r7, #3]\n    add r0, r0, #1\n    strb r0, [r7, #3]\n    add r0, r5, #0\n    mov r1, #0xa0\n    mov r2, #0\n    bl GetMonData\n    cmp r0, #0\n    bne _022330E6\n    ldrb r0, [r7, #4]\n    add r0, r0, #1\n    strb r0, [r7, #4]\n    b _022330E6\n    mov r0, #1\n    strb r0, [r6, #0x12]\n    add r0, r5, #0\n    mov r1, #0x3a\n    mov r2, #0\n    bl GetMonData\n    add r4, r4, r0\n    add r0, r5, #0\n    mov r1, #0x3b\n    mov r2, #0\n    bl GetMonData\n    add r4, r4, r0\n    add r0, r5, #0\n    mov r1, #0x3c\n    mov r2, #0\n    bl GetMonData\n    add r4, r4, r0\n    add r0, r5, #0\n    mov r1, #0x3d\n    mov r2, #0\n    bl GetMonData\n    add r4, r4, r0\n    ldr r0, [sp]\n    add r1, r0, #1\n    ldr r0, [sp, #0xc]\n    str r1, [sp]\n    cmp r1, r0\n    blt _02233070\n    ldr r1, [sp, #4]\n    mov r0, #0\n    cmp r1, #0\n    ble _02233146\n    mov r2, #0xdd\n    add r3, sp, #0x18\n    lsl r2, r2, #2\n    add r1, r6, r0\n    ldrb r1, [r1, r2]\n    cmp r1, #1\n    bne _0223313E\n    ldrb r1, [r3, #8]\n    add r1, r1, #1\n    strb r1, [r3, #8]\n    ldr r1, [sp, #4]\n    add r0, r0, #1\n    cmp r0, r1\n    blt _02233130\n    ldr r0, [sp, #8]\n    mov r3, #0\n    add r7, r3, #0\n    cmp r0, #0\n    ble _0223316E\n    mov r0, #0xe5\n    lsl r0, r0, #2\n    mov r2, #0\n    add r5, r6, #0\n    ldrh r1, [r5, r0]\n    add r2, r2, #1\n    add r5, r5, #2\n    add r3, r3, r1\n    cmp r2, #4\n    blt _02233158\n    ldr r1, [sp, #8]\n    add r7, r7, #1\n    add r6, #8\n    cmp r7, r1\n    blt _02233154\n    sub r0, r3, r4\n    cmp r0, #5\n    bgt _0223317E\n    add r0, sp, #0x18\n    ldrb r1, [r0, #5]\n    add r1, r1, #1\n    strb r1, [r0, #5]\n    b _02233198\n    cmp r0, #0xa\n    bgt _0223318C\n    add r0, sp, #0x18\n    ldrb r1, [r0, #6]\n    add r1, r1, #1\n    strb r1, [r0, #6]\n    b _02233198\n    cmp r0, #0xf\n    bgt _02233198\n    add r0, sp, #0x18\n    ldrb r1, [r0, #7]\n    add r1, r1, #1\n    strb r1, [r0, #7]\n    add r1, sp, #0x18\n    ldrb r2, [r1]\n    lsl r0, r2, #1\n    add r2, r2, r0\n    ldr r0, [sp, #0x10]\n    add r3, r0, r2\n    ldrb r2, [r1, #1]\n    lsl r0, r2, #1\n    add r0, r2, r0\n    add r2, r3, r0\n    ldrb r0, [r1, #2]\n    lsl r0, r0, #1\n    add r2, r2, r0\n    ldrb r0, [r1, #3]\n    add r2, r2, r0\n    ldrb r0, [r1, #4]\n    add r2, r2, r0\n    ldrb r0, [r1, #5]\n    lsl r0, r0, #3\n    add r3, r2, r0\n    ldrb r2, [r1, #6]\n    mov r0, #6\n    mul r0, r2\n    add r2, r3, r0\n    ldrb r0, [r1, #7]\n    ldrb r1, [r1, #8]\n    lsl r0, r0, #2\n    add r2, r2, r0\n    mov r0, #7\n    mul r0, r1\n    add r0, r2, r0\n    str r0, [sp, #0x10]\n    cmp r0, #0\n    bgt _022331E0\n    mov r0, #1\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x10]\n    add sp, #0x2c\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x2c
+    // add r6, r0, #0
+    // mov r0, #0
+    // str r0, [sp, #0x10]
+    // add r1, sp, #0x18
+    // add r4, r0, #0
+    // add r0, r0, #1
+    // strb r4, [r1]
+    // add r1, r1, #1
+    // cmp r0, #0x14
+    // blt _0223302E
+    // strb r4, [r6, #0x12]
+    // bl sub_0203769C
+    // cmp r0, #0
+    // bne _02233048
+    // mov r0, #0
+    // str r0, [sp]
+    // b _0223304C
+    // mov r0, #2
+    // str r0, [sp]
+    // ldrb r0, [r6, #0x10]
+    // mov r1, #0
+    // bl ov80_02237B24
+    // str r0, [sp, #8]
+    // ldrb r0, [r6, #0x10]
+    // mov r1, #1
+    // bl ov80_02237B58
+    // str r0, [sp, #4]
+    // ldr r1, [sp, #8]
+    // ldr r0, [sp]
+    // add r0, r1, r0
+    // ldr r1, [sp]
+    // str r0, [sp, #0xc]
+    // cmp r1, r0
+    // bge _02233122
+    // add r7, sp, #0x18
+    // ldr r0, [r6, #0x28]
+    // ldr r1, [sp]
+    // bl Party_GetMonByIndex
+    // mov r1, #0xac
+    // mov r2, #0
+    // add r5, r0, #0
+    // bl GetMonData
+    // cmp r0, #0
+    // beq _02233116
+    // add r0, r5, #0
+    // mov r1, #0xa3
+    // mov r2, #0
+    // bl GetMonData
+    // str r0, [sp, #0x14]
+    // add r0, r5, #0
+    // mov r1, #0xa4
+    // mov r2, #0
+    // bl GetMonData
+    // ldr r1, [sp, #0x14]
+    // cmp r1, #0
+    // beq _022330E2
+    // ldrb r1, [r7]
+    // add r1, r1, #1
+    // strb r1, [r7]
+    // ldr r1, [sp, #0x14]
+    // cmp r1, r0
+    // bne _022330B6
+    // ldrb r0, [r7, #1]
+    // add r0, r0, #1
+    // strb r0, [r7, #1]
+    // b _022330CC
+    // lsr r1, r0, #1
+    // ldr r0, [sp, #0x14]
+    // cmp r0, r1
+    // blo _022330C6
+    // ldrb r0, [r7, #2]
+    // add r0, r0, #1
+    // strb r0, [r7, #2]
+    // b _022330CC
+    // ldrb r0, [r7, #3]
+    // add r0, r0, #1
+    // strb r0, [r7, #3]
+    // add r0, r5, #0
+    // mov r1, #0xa0
+    // mov r2, #0
+    // bl GetMonData
+    // cmp r0, #0
+    // bne _022330E6
+    // ldrb r0, [r7, #4]
+    // add r0, r0, #1
+    // strb r0, [r7, #4]
+    // b _022330E6
+    // mov r0, #1
+    // strb r0, [r6, #0x12]
+    // add r0, r5, #0
+    // mov r1, #0x3a
+    // mov r2, #0
+    // bl GetMonData
+    // add r4, r4, r0
+    // add r0, r5, #0
+    // mov r1, #0x3b
+    // mov r2, #0
+    // bl GetMonData
+    // add r4, r4, r0
+    // add r0, r5, #0
+    // mov r1, #0x3c
+    // mov r2, #0
+    // bl GetMonData
+    // add r4, r4, r0
+    // add r0, r5, #0
+    // mov r1, #0x3d
+    // mov r2, #0
+    // bl GetMonData
+    // add r4, r4, r0
+    // ldr r0, [sp]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0xc]
+    // str r1, [sp]
+    // cmp r1, r0
+    // blt _02233070
+    // ldr r1, [sp, #4]
+    // mov r0, #0
+    // cmp r1, #0
+    // ble _02233146
+    // mov r2, #0xdd
+    // add r3, sp, #0x18
+    // lsl r2, r2, #2
+    // add r1, r6, r0
+    // ldrb r1, [r1, r2]
+    // cmp r1, #1
+    // bne _0223313E
+    // ldrb r1, [r3, #8]
+    // add r1, r1, #1
+    // strb r1, [r3, #8]
+    // ldr r1, [sp, #4]
+    // add r0, r0, #1
+    // cmp r0, r1
+    // blt _02233130
+    // ldr r0, [sp, #8]
+    // mov r3, #0
+    // add r7, r3, #0
+    // cmp r0, #0
+    // ble _0223316E
+    // mov r0, #0xe5
+    // lsl r0, r0, #2
+    // mov r2, #0
+    // add r5, r6, #0
+    // ldrh r1, [r5, r0]
+    // add r2, r2, #1
+    // add r5, r5, #2
+    // add r3, r3, r1
+    // cmp r2, #4
+    // blt _02233158
+    // ldr r1, [sp, #8]
+    // add r7, r7, #1
+    // add r6, #8
+    // cmp r7, r1
+    // blt _02233154
+    // sub r0, r3, r4
+    // cmp r0, #5
+    // bgt _0223317E
+    // add r0, sp, #0x18
+    // ldrb r1, [r0, #5]
+    // add r1, r1, #1
+    // strb r1, [r0, #5]
+    // b _02233198
+    // cmp r0, #0xa
+    // bgt _0223318C
+    // add r0, sp, #0x18
+    // ldrb r1, [r0, #6]
+    // add r1, r1, #1
+    // strb r1, [r0, #6]
+    // b _02233198
+    // cmp r0, #0xf
+    // bgt _02233198
+    // add r0, sp, #0x18
+    // ldrb r1, [r0, #7]
+    // add r1, r1, #1
+    // strb r1, [r0, #7]
+    // add r1, sp, #0x18
+    // ldrb r2, [r1]
+    // lsl r0, r2, #1
+    // add r2, r2, r0
+    // ldr r0, [sp, #0x10]
+    // add r3, r0, r2
+    // ldrb r2, [r1, #1]
+    // lsl r0, r2, #1
+    // add r0, r2, r0
+    // add r2, r3, r0
+    // ldrb r0, [r1, #2]
+    // lsl r0, r0, #1
+    // add r2, r2, r0
+    // ldrb r0, [r1, #3]
+    // add r2, r2, r0
+    // ldrb r0, [r1, #4]
+    // add r2, r2, r0
+    // ldrb r0, [r1, #5]
+    // lsl r0, r0, #3
+    // add r3, r2, r0
+    // ldrb r2, [r1, #6]
+    // mov r0, #6
+    // mul r0, r2
+    // add r2, r3, r0
+    // ldrb r0, [r1, #7]
+    // ldrb r1, [r1, #8]
+    // lsl r0, r0, #2
+    // add r2, r2, r0
+    // mov r0, #7
+    // mul r0, r1
+    // add r0, r2, r0
+    // str r0, [sp, #0x10]
+    // cmp r0, #0
+    // bgt _022331E0
+    // mov r0, #1
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0x10]
+    // add sp, #0x2c
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov80_022331E8(void) {
-    /* Original at 0x022331E8 */
-    /* Requires manual decompilation - 58 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    add r6, r0, #0\n    add r4, r2, #0\n    bl Save_Frontier_GetStatic\n    add r7, r0, #0\n    add r0, r5, #0\n    bl sub_0205C1F0\n    str r0, [sp]\n    add r0, r5, #0\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    ldr r1, [sp]\n    add r0, r7, #0\n    bl FrontierSave_GetStat\n    add r1, r0, r4\n    ldr r0, _0223327C ; =0x0000270F\n    cmp r1, r0\n    ble _02233244\n    add r0, r6, #0\n    bl Save_Frontier_GetStatic\n    add r7, r0, #0\n    add r0, r5, #0\n    bl sub_0205C1F0\n    str r0, [sp, #4]\n    add r0, r5, #0\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    ldr r1, [sp, #4]\n    ldr r3, _0223327C ; =0x0000270F\n    add r0, r7, #0\n    bl sub_02031108\n    b _0223326A\n    add r0, r6, #0\n    bl Save_Frontier_GetStatic\n    add r7, r0, #0\n    add r0, r5, #0\n    bl sub_0205C1F0\n    str r0, [sp, #8]\n    add r0, r5, #0\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    ldr r1, [sp, #8]\n    add r0, r7, #0\n    add r3, r4, #0\n    bl sub_02031228\n    add r0, r6, #0\n    bl Save_GameStats_Get\n    mov r1, #0x42\n    add r2, r4, #0\n    bl GameStats_Add\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _0223327C: .word 0x0000270F"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // add r4, r2, #0
+    // bl Save_Frontier_GetStatic
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // bl sub_0205C1F0
+    // str r0, [sp]
+    // add r0, r5, #0
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // ldr r1, [sp]
+    // add r0, r7, #0
+    // bl FrontierSave_GetStat
+    // add r1, r0, r4
+    // ldr r0, _0223327C ; =0x0000270F
+    // cmp r1, r0
+    // ble _02233244
+    // add r0, r6, #0
+    // bl Save_Frontier_GetStatic
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // bl sub_0205C1F0
+    // str r0, [sp, #4]
+    // add r0, r5, #0
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // ldr r1, [sp, #4]
+    // ldr r3, _0223327C ; =0x0000270F
+    // add r0, r7, #0
+    // bl sub_02031108
+    // b _0223326A
+    // add r0, r6, #0
+    // bl Save_Frontier_GetStatic
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // bl sub_0205C1F0
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // ldr r1, [sp, #8]
+    // add r0, r7, #0
+    // add r3, r4, #0
+    // bl sub_02031228
+    // add r0, r6, #0
+    // bl Save_GameStats_Get
+    // mov r1, #0x42
+    // add r2, r4, #0
+    // bl GameStats_Add
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // _0223327C: .word 0x0000270F
+    // TODO: decompile
 }
+
 
 void ov80_02233280(void) {
-    /* Original at 0x02233280 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    cmp r1, #6\n    bhi _022332CC\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02233292: ; jump table\n    bl ov80_0222B5C8\n    pop {r3, pc}\n    bl ov80_0222B65C\n    pop {r3, pc}\n    bl ov80_0222B6C8\n    pop {r3, pc}\n    bl ov80_0222B7E4\n    pop {r3, pc}\n    add r1, r2, #0\n    bl ov80_0222B8D8\n    pop {r3, pc}\n    add r1, r2, #0\n    bl ov80_0222B920\n    pop {r3, pc}\n    bl ov80_0222B968\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // cmp r1, #6
+    // bhi _022332CC
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _02233292: ; jump table
+    // bl ov80_0222B5C8
+    // pop {r3, pc}
+    // bl ov80_0222B65C
+    // pop {r3, pc}
+    // bl ov80_0222B6C8
+    // pop {r3, pc}
+    // bl ov80_0222B7E4
+    // pop {r3, pc}
+    // add r1, r2, #0
+    // bl ov80_0222B8D8
+    // pop {r3, pc}
+    // add r1, r2, #0
+    // bl ov80_0222B920
+    // pop {r3, pc}
+    // bl ov80_0222B968
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void ov80_022332D0(void) {
-    /* Original at 0x022332D0 */
-    /* Requires manual decompilation - 112 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x14\n    add r5, r0, #0\n    add r6, r1, #0\n    bl FrontierSystem_GetFrontierMap\n    add r4, r0, #0\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _022332EC\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _022332FA\n    bl GF_AssertFail\n    ldrb r0, [r6, #0x10]\n    bl ov80_02237D8C\n    cmp r0, #0\n    bne _02233342\n    mov r0, #0xb\n    mov r1, #1\n    bl AllocWindows\n    add r1, r5, #0\n    add r1, #0xa8\n    str r0, [r1]\n    mov r2, #1\n    add r1, r5, #0\n    str r2, [sp]\n    mov r0, #0xa\n    str r0, [sp, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    mov r0, #0xe\n    str r0, [sp, #0xc]\n    ldr r0, _022333C8 ; =0x00000253\n    add r1, #0xa8\n    str r0, [sp, #0x10]\n    ldr r0, [r4]\n    ldr r1, [r1]\n    add r3, r2, #0\n    bl AddWindowParameterized\n    add r1, r5, #0\n    add r1, #0xa8\n    ldr r0, [r4]\n    ldr r1, [r1]\n    bl ov80_022333D0\n    b _022333BA\n    mov r0, #0xb\n    mov r1, #1\n    bl AllocWindows\n    add r1, r5, #0\n    add r1, #0xa8\n    str r0, [r1]\n    mov r0, #0xb\n    mov r1, #1\n    bl AllocWindows\n    add r1, r5, #0\n    add r1, #0xac\n    str r0, [r1]\n    mov r2, #1\n    add r1, r5, #0\n    str r2, [sp]\n    mov r0, #0xa\n    str r0, [sp, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    mov r0, #0xe\n    str r0, [sp, #0xc]\n    ldr r0, _022333C8 ; =0x00000253\n    add r1, #0xa8\n    str r0, [sp, #0x10]\n    ldr r0, [r4]\n    ldr r1, [r1]\n    add r3, r2, #0\n    bl AddWindowParameterized\n    mov r2, #1\n    add r1, r5, #0\n    str r2, [sp]\n    mov r0, #0xa\n    str r0, [sp, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    mov r0, #0xe\n    str r0, [sp, #0xc]\n    ldr r0, _022333CC ; =0x0000022B\n    add r1, #0xac\n    str r0, [sp, #0x10]\n    ldr r0, [r4]\n    ldr r1, [r1]\n    mov r3, #0x15\n    bl AddWindowParameterized\n    add r1, r5, #0\n    add r1, #0xa8\n    ldr r0, [r4]\n    ldr r1, [r1]\n    bl ov80_022333D0\n    add r1, r5, #0\n    add r1, #0xac\n    ldr r0, [r4]\n    ldr r1, [r1]\n    bl ov80_022333D0\n    add r0, r5, #0\n    add r1, r6, #0\n    bl ov80_02233490\n    add sp, #0x14\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _022333C8: .word 0x00000253\n    _022333CC: .word 0x0000022B"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0x14
+    // add r5, r0, #0
+    // add r6, r1, #0
+    // bl FrontierSystem_GetFrontierMap
+    // add r4, r0, #0
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // beq _022332EC
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // beq _022332FA
+    // bl GF_AssertFail
+    // ldrb r0, [r6, #0x10]
+    // bl ov80_02237D8C
+    // cmp r0, #0
+    // bne _02233342
+    // mov r0, #0xb
+    // mov r1, #1
+    // bl AllocWindows
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // str r0, [r1]
+    // mov r2, #1
+    // add r1, r5, #0
+    // str r2, [sp]
+    // mov r0, #0xa
+    // str r0, [sp, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // mov r0, #0xe
+    // str r0, [sp, #0xc]
+    // ldr r0, _022333C8 ; =0x00000253
+    // add r1, #0xa8
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4]
+    // ldr r1, [r1]
+    // add r3, r2, #0
+    // bl AddWindowParameterized
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // ldr r0, [r4]
+    // ldr r1, [r1]
+    // bl ov80_022333D0
+    // b _022333BA
+    // mov r0, #0xb
+    // mov r1, #1
+    // bl AllocWindows
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // str r0, [r1]
+    // mov r0, #0xb
+    // mov r1, #1
+    // bl AllocWindows
+    // add r1, r5, #0
+    // add r1, #0xac
+    // str r0, [r1]
+    // mov r2, #1
+    // add r1, r5, #0
+    // str r2, [sp]
+    // mov r0, #0xa
+    // str r0, [sp, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // mov r0, #0xe
+    // str r0, [sp, #0xc]
+    // ldr r0, _022333C8 ; =0x00000253
+    // add r1, #0xa8
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4]
+    // ldr r1, [r1]
+    // add r3, r2, #0
+    // bl AddWindowParameterized
+    // mov r2, #1
+    // add r1, r5, #0
+    // str r2, [sp]
+    // mov r0, #0xa
+    // str r0, [sp, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // mov r0, #0xe
+    // str r0, [sp, #0xc]
+    // ldr r0, _022333CC ; =0x0000022B
+    // add r1, #0xac
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4]
+    // ldr r1, [r1]
+    // mov r3, #0x15
+    // bl AddWindowParameterized
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // ldr r0, [r4]
+    // ldr r1, [r1]
+    // bl ov80_022333D0
+    // add r1, r5, #0
+    // add r1, #0xac
+    // ldr r0, [r4]
+    // ldr r1, [r1]
+    // bl ov80_022333D0
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // bl ov80_02233490
+    // add sp, #0x14
+    // pop {r3, r4, r5, r6, pc}
+    // nop
+    // _022333C8: .word 0x00000253
+    // _022333CC: .word 0x0000022B
+    // TODO: decompile
 }
+
 
 void ov80_022333D0(void) {
-    /* Original at 0x022333D0 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r2, _022333EC ; =0x000003D9\n    add r0, r4, #0\n    mov r1, #1\n    mov r3, #0xc\n    bl DrawFrameAndWindow1\n    add r0, r4, #0\n    mov r1, #0xf\n    bl FillWindowPixelBuffer\n    pop {r4, pc}\n    nop\n    _022333EC: .word 0x000003D9"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r1, #0
+    // ldr r2, _022333EC ; =0x000003D9
+    // add r0, r4, #0
+    // mov r1, #1
+    // mov r3, #0xc
+    // bl DrawFrameAndWindow1
+    // add r0, r4, #0
+    // mov r1, #0xf
+    // bl FillWindowPixelBuffer
+    // pop {r4, pc}
+    // nop
+    // _022333EC: .word 0x000003D9
+    // TODO: decompile
 }
+
 
 void ov80_022333F0(void) {
-    /* Original at 0x022333F0 */
-    /* Requires manual decompilation - 68 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldrb r0, [r1, #0x10]\n    bl ov80_02237D8C\n    cmp r0, #0\n    bne _02233424\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _0223340C\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r4, [r0]\n    mov r1, #0\n    add r0, r4, #0\n    bl sub_0200E5D4\n    add r0, r4, #0\n    mov r1, #1\n    bl WindowArray_Delete\n    b _02233480\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _02233432\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _02233440\n    bl GF_AssertFail\n    bl sub_0203769C\n    cmp r0, #0\n    bne _02233454\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r4, [r0]\n    add r0, r5, #0\n    add r0, #0xac\n    b _0223345E\n    add r0, r5, #0\n    add r0, #0xac\n    ldr r4, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r6, [r0]\n    add r0, r4, #0\n    mov r1, #0\n    bl sub_0200E5D4\n    add r0, r4, #0\n    mov r1, #1\n    bl WindowArray_Delete\n    add r0, r6, #0\n    mov r1, #0\n    bl sub_0200E5D4\n    add r0, r6, #0\n    mov r1, #1\n    bl WindowArray_Delete\n    add r0, r5, #0\n    mov r1, #0\n    add r0, #0xa8\n    str r1, [r0]\n    add r5, #0xac\n    str r1, [r5]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // ldrb r0, [r1, #0x10]
+    // bl ov80_02237D8C
+    // cmp r0, #0
+    // bne _02233424
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _0223340C
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r4, [r0]
+    // mov r1, #0
+    // add r0, r4, #0
+    // bl sub_0200E5D4
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl WindowArray_Delete
+    // b _02233480
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _02233432
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _02233440
+    // bl GF_AssertFail
+    // bl sub_0203769C
+    // cmp r0, #0
+    // bne _02233454
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r4, [r0]
+    // add r0, r5, #0
+    // add r0, #0xac
+    // b _0223345E
+    // add r0, r5, #0
+    // add r0, #0xac
+    // ldr r4, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r6, [r0]
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl sub_0200E5D4
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl WindowArray_Delete
+    // add r0, r6, #0
+    // mov r1, #0
+    // bl sub_0200E5D4
+    // add r0, r6, #0
+    // mov r1, #1
+    // bl WindowArray_Delete
+    // add r0, r5, #0
+    // mov r1, #0
+    // add r0, #0xa8
+    // str r1, [r0]
+    // add r5, #0xac
+    // str r1, [r5]
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02233490(void) {
-    /* Original at 0x02233490 */
-    /* Requires manual decompilation - 103 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    add r4, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl ov80_02237D8C\n    cmp r0, #0\n    bne _022334EA\n    add r0, r4, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _022334AE\n    bl GF_AssertFail\n    ldr r0, [r5, #4]\n    bl Save_Frontier_GetStatic\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    add r7, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r6, #0\n    add r1, r7, #0\n    bl FrontierSave_GetStat\n    add r6, r0, #0\n    ldr r0, [r5, #4]\n    bl Save_PlayerData_GetProfile\n    add r2, r0, #0\n    add r0, r4, #0\n    add r4, #0xa8\n    ldr r1, [r4]\n    add r3, r6, #0\n    bl ov80_02233594\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r4, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _022334F8\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _02233506\n    bl GF_AssertFail\n    bl sub_0203769C\n    cmp r0, #0\n    bne _0223353A\n    ldr r0, [r5, #4]\n    bl Save_Frontier_GetStatic\n    add r6, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    add r7, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    add r0, r6, #0\n    add r1, r7, #0\n    bl FrontierSave_GetStat\n    add r6, r0, #0\n    ldr r0, _02233590 ; =0x00000A1C\n    ldrh r5, [r5, r0]\n    b _02233564\n    ldr r0, _02233590 ; =0x00000A1C\n    ldrh r6, [r5, r0]\n    ldr r0, [r5, #4]\n    bl Save_Frontier_GetStatic\n    add r7, r0, #0\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    str r0, [sp]\n    ldrb r0, [r5, #0x10]\n    bl sub_0205C1F0\n    bl sub_0205C268\n    add r2, r0, #0\n    ldr r1, [sp]\n    add r0, r7, #0\n    bl FrontierSave_GetStat\n    add r5, r0, #0\n    mov r0, #0\n    bl sub_02034818\n    add r1, r4, #0\n    add r1, #0xa8\n    add r2, r0, #0\n    ldr r1, [r1]\n    add r0, r4, #0\n    add r3, r6, #0\n    bl ov80_02233594\n    mov r0, #1\n    bl sub_02034818\n    add r2, r0, #0\n    add r0, r4, #0\n    add r4, #0xac\n    ldr r1, [r4]\n    add r3, r5, #0\n    bl ov80_02233594\n    pop {r3, r4, r5, r6, r7, pc}\n    _02233590: .word 0x00000A1C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r1, #0
+    // add r4, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl ov80_02237D8C
+    // cmp r0, #0
+    // bne _022334EA
+    // add r0, r4, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _022334AE
+    // bl GF_AssertFail
+    // ldr r0, [r5, #4]
+    // bl Save_Frontier_GetStatic
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // add r7, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // bl FrontierSave_GetStat
+    // add r6, r0, #0
+    // ldr r0, [r5, #4]
+    // bl Save_PlayerData_GetProfile
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r4, #0xa8
+    // ldr r1, [r4]
+    // add r3, r6, #0
+    // bl ov80_02233594
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r4, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _022334F8
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _02233506
+    // bl GF_AssertFail
+    // bl sub_0203769C
+    // cmp r0, #0
+    // bne _0223353A
+    // ldr r0, [r5, #4]
+    // bl Save_Frontier_GetStatic
+    // add r6, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // add r7, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // bl FrontierSave_GetStat
+    // add r6, r0, #0
+    // ldr r0, _02233590 ; =0x00000A1C
+    // ldrh r5, [r5, r0]
+    // b _02233564
+    // ldr r0, _02233590 ; =0x00000A1C
+    // ldrh r6, [r5, r0]
+    // ldr r0, [r5, #4]
+    // bl Save_Frontier_GetStatic
+    // add r7, r0, #0
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // str r0, [sp]
+    // ldrb r0, [r5, #0x10]
+    // bl sub_0205C1F0
+    // bl sub_0205C268
+    // add r2, r0, #0
+    // ldr r1, [sp]
+    // add r0, r7, #0
+    // bl FrontierSave_GetStat
+    // add r5, r0, #0
+    // mov r0, #0
+    // bl sub_02034818
+    // add r1, r4, #0
+    // add r1, #0xa8
+    // add r2, r0, #0
+    // ldr r1, [r1]
+    // add r0, r4, #0
+    // add r3, r6, #0
+    // bl ov80_02233594
+    // mov r0, #1
+    // bl sub_02034818
+    // add r2, r0, #0
+    // add r0, r4, #0
+    // add r4, #0xac
+    // ldr r1, [r4]
+    // add r3, r5, #0
+    // bl ov80_02233594
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02233590: .word 0x00000A1C
+    // TODO: decompile
 }
+
 
 void ov80_02233594(void) {
-    /* Original at 0x02233594 */
-    /* Requires manual decompilation - 75 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r5, r0, #0\n    str r3, [sp, #0x14]\n    str r1, [sp, #0xc]\n    ldr r1, [r5, #0x34]\n    mov r0, #0x14\n    str r2, [sp, #0x10]\n    bl String_New\n    add r4, r0, #0\n    ldr r1, [r5, #0x34]\n    mov r0, #0x14\n    bl String_New\n    add r6, r0, #0\n    mov r0, #0\n    mov r1, #0x1b\n    mov r2, #0x1f\n    mov r3, #0xb\n    bl NewMsgDataFromNarc\n    add r7, r0, #0\n    mov r0, #1\n    str r0, [sp]\n    str r0, [sp, #4]\n    ldr r0, [r5, #0x44]\n    ldr r2, [sp, #0x14]\n    mov r1, #0\n    mov r3, #4\n    bl BufferIntegerAsString\n    add r0, r7, #0\n    mov r1, #2\n    add r2, r4, #0\n    bl ReadMsgDataIntoString\n    ldr r0, [r5, #0x44]\n    add r1, r6, #0\n    add r2, r4, #0\n    bl StringExpandPlaceholders\n    mov r3, #0x10\n    str r3, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    mov r1, #0\n    ldr r0, [sp, #0xc]\n    str r1, [sp, #8]\n    add r2, r6, #0\n    bl AddTextPrinterParameterized\n    ldr r0, [r5, #0x44]\n    ldr r2, [sp, #0x10]\n    mov r1, #0\n    bl BufferPlayersName\n    add r0, r7, #0\n    mov r1, #0\n    add r2, r4, #0\n    bl ReadMsgDataIntoString\n    ldr r0, [r5, #0x44]\n    add r1, r6, #0\n    add r2, r4, #0\n    bl StringExpandPlaceholders\n    mov r1, #0\n    str r1, [sp]\n    str r1, [sp, #4]\n    ldr r0, [sp, #0xc]\n    add r2, r6, #0\n    add r3, r1, #0\n    str r1, [sp, #8]\n    bl AddTextPrinterParameterized\n    add r0, r4, #0\n    bl String_Delete\n    add r0, r6, #0\n    bl String_Delete\n    add r0, r7, #0\n    bl DestroyMsgData\n    ldr r0, [sp, #0xc]\n    bl CopyWindowToVram\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // add r5, r0, #0
+    // str r3, [sp, #0x14]
+    // str r1, [sp, #0xc]
+    // ldr r1, [r5, #0x34]
+    // mov r0, #0x14
+    // str r2, [sp, #0x10]
+    // bl String_New
+    // add r4, r0, #0
+    // ldr r1, [r5, #0x34]
+    // mov r0, #0x14
+    // bl String_New
+    // add r6, r0, #0
+    // mov r0, #0
+    // mov r1, #0x1b
+    // mov r2, #0x1f
+    // mov r3, #0xb
+    // bl NewMsgDataFromNarc
+    // add r7, r0, #0
+    // mov r0, #1
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // ldr r0, [r5, #0x44]
+    // ldr r2, [sp, #0x14]
+    // mov r1, #0
+    // mov r3, #4
+    // bl BufferIntegerAsString
+    // add r0, r7, #0
+    // mov r1, #2
+    // add r2, r4, #0
+    // bl ReadMsgDataIntoString
+    // ldr r0, [r5, #0x44]
+    // add r1, r6, #0
+    // add r2, r4, #0
+    // bl StringExpandPlaceholders
+    // mov r3, #0x10
+    // str r3, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // ldr r0, [sp, #0xc]
+    // str r1, [sp, #8]
+    // add r2, r6, #0
+    // bl AddTextPrinterParameterized
+    // ldr r0, [r5, #0x44]
+    // ldr r2, [sp, #0x10]
+    // mov r1, #0
+    // bl BufferPlayersName
+    // add r0, r7, #0
+    // mov r1, #0
+    // add r2, r4, #0
+    // bl ReadMsgDataIntoString
+    // ldr r0, [r5, #0x44]
+    // add r1, r6, #0
+    // add r2, r4, #0
+    // bl StringExpandPlaceholders
+    // mov r1, #0
+    // str r1, [sp]
+    // str r1, [sp, #4]
+    // ldr r0, [sp, #0xc]
+    // add r2, r6, #0
+    // add r3, r1, #0
+    // str r1, [sp, #8]
+    // bl AddTextPrinterParameterized
+    // add r0, r4, #0
+    // bl String_Delete
+    // add r0, r6, #0
+    // bl String_Delete
+    // add r0, r7, #0
+    // bl DestroyMsgData
+    // ldr r0, [sp, #0xc]
+    // bl CopyWindowToVram
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov80_02233648(void) {
-    /* Original at 0x02233648 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrb r3, [r0, #0x10]\n    ldrh r2, [r0, #0x16]\n    cmp r3, #1\n    bhi _0223365E\n    cmp r2, #8\n    blo _02233658\n    mov r1, #7\n    b _0223366A\n    ldr r1, _02233680 ; =ov80_0223BE54\n    ldrb r1, [r1, r2]\n    b _0223366A\n    cmp r2, #8\n    blo _02233666\n    mov r1, #0x12\n    b _0223366A\n    ldr r1, _02233684 ; =ov80_0223BE60\n    ldrb r1, [r1, r2]\n    cmp r3, #0\n    bne _0223367A\n    ldrh r0, [r0, #0x14]\n    cmp r0, #0x15\n    beq _02233678\n    cmp r0, #0x31\n    bne _0223367A\n    mov r1, #0x14\n    add r0, r1, #0\n    bx lr\n    nop\n    _02233680: .word ov80_0223BE54\n    _02233684: .word ov80_0223BE60"
-    );
-    #endif
+    // ldrb r3, [r0, #0x10]
+    // ldrh r2, [r0, #0x16]
+    // cmp r3, #1
+    // bhi _0223365E
+    // cmp r2, #8
+    // blo _02233658
+    // mov r1, #7
+    // b _0223366A
+    // ldr r1, _02233680 ; =ov80_0223BE54
+    // ldrb r1, [r1, r2]
+    // b _0223366A
+    // cmp r2, #8
+    // blo _02233666
+    // mov r1, #0x12
+    // b _0223366A
+    // ldr r1, _02233684 ; =ov80_0223BE60
+    // ldrb r1, [r1, r2]
+    // cmp r3, #0
+    // bne _0223367A
+    // ldrh r0, [r0, #0x14]
+    // cmp r0, #0x15
+    // beq _02233678
+    // cmp r0, #0x31
+    // bne _0223367A
+    // mov r1, #0x14
+    // add r0, r1, #0
+    // bx lr
+    // nop
+    // _02233680: .word ov80_0223BE54
+    // _02233684: .word ov80_0223BE60
+    // TODO: decompile
 }
+

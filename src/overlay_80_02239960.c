@@ -8,59 +8,144 @@ void ov80_02239960(void) {
     sub_02014DA0();
 }
 
+
 void ov80_02239980(void) {
-    /* Original at 0x02239980 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    mov r4, #0\n    add r5, r6, #0\n    ldr r0, [r5]\n    cmp r0, #0\n    beq _02239992\n    bl ov80_02239A98\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #8\n    blt _02239988\n    add r0, r6, #0\n    bl Heap_Free\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r6, r0, #0
+    // mov r4, #0
+    // add r5, r6, #0
+    // ldr r0, [r5]
+    // cmp r0, #0
+    // beq _02239992
+    // bl ov80_02239A98
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #8
+    // blt _02239988
+    // add r0, r6, #0
+    // bl Heap_Free
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov80_022399A4(void) {
-    /* Original at 0x022399A4 */
-    /* Requires manual decompilation - 50 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    lsl r6, r1, #2\n    ldr r0, [r5, r6]\n    add r7, r2, #0\n    str r3, [sp, #8]\n    cmp r0, #0\n    beq _022399BA\n    bl GF_AssertFail\n    ldrh r0, [r5, #0x20]\n    mov r1, #0x12\n    lsl r1, r1, #0xa\n    bl Heap_Alloc\n    add r2, r0, #0\n    mov r0, #1\n    str r0, [sp]\n    ldrh r0, [r5, #0x20]\n    mov r3, #0x12\n    ldr r1, _02239A14 ; =ov80_02239AD4\n    str r0, [sp, #4]\n    ldr r0, _02239A18 ; =ov80_02239AB0\n    lsl r3, r3, #0xa\n    bl sub_02014DB4\n    add r4, r0, #0\n    bl sub_02015524\n    add r2, r0, #0\n    mov r0, #1\n    mov r1, #0xe1\n    lsl r0, r0, #0xc\n    lsl r1, r1, #0xe\n    bl Camera_SetPerspectiveClippingPlane\n    ldr r1, [sp, #8]\n    add r0, r4, #0\n    bl sub_02015528\n    ldrh r2, [r5, #0x20]\n    mov r0, #0xbc\n    add r1, r7, #0\n    bl sub_02015264\n    add r1, r0, #0\n    add r0, r4, #0\n    mov r2, #0xa\n    mov r3, #1\n    bl sub_0201526C\n    str r4, [r5, r6]\n    add r0, r4, #0\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _02239A14: .word ov80_02239AD4\n    _02239A18: .word ov80_02239AB0"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // lsl r6, r1, #2
+    // ldr r0, [r5, r6]
+    // add r7, r2, #0
+    // str r3, [sp, #8]
+    // cmp r0, #0
+    // beq _022399BA
+    // bl GF_AssertFail
+    // ldrh r0, [r5, #0x20]
+    // mov r1, #0x12
+    // lsl r1, r1, #0xa
+    // bl Heap_Alloc
+    // add r2, r0, #0
+    // mov r0, #1
+    // str r0, [sp]
+    // ldrh r0, [r5, #0x20]
+    // mov r3, #0x12
+    // ldr r1, _02239A14 ; =ov80_02239AD4
+    // str r0, [sp, #4]
+    // ldr r0, _02239A18 ; =ov80_02239AB0
+    // lsl r3, r3, #0xa
+    // bl sub_02014DB4
+    // add r4, r0, #0
+    // bl sub_02015524
+    // add r2, r0, #0
+    // mov r0, #1
+    // mov r1, #0xe1
+    // lsl r0, r0, #0xc
+    // lsl r1, r1, #0xe
+    // bl Camera_SetPerspectiveClippingPlane
+    // ldr r1, [sp, #8]
+    // add r0, r4, #0
+    // bl sub_02015528
+    // ldrh r2, [r5, #0x20]
+    // mov r0, #0xbc
+    // add r1, r7, #0
+    // bl sub_02015264
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // mov r2, #0xa
+    // mov r3, #1
+    // bl sub_0201526C
+    // str r4, [r5, r6]
+    // add r0, r4, #0
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // _02239A14: .word ov80_02239AD4
+    // _02239A18: .word ov80_02239AB0
+    // TODO: decompile
 }
+
 
 void ov80_02239A1C(void) {
-    /* Original at 0x02239A1C */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    lsl r4, r1, #2\n    ldr r0, [r5, r4]\n    cmp r0, #0\n    bne _02239A2C\n    bl GF_AssertFail\n    ldr r0, [r5, r4]\n    bl ov80_02239A98\n    mov r0, #0\n    str r0, [r5, r4]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // lsl r4, r1, #2
+    // ldr r0, [r5, r4]
+    // cmp r0, #0
+    // bne _02239A2C
+    // bl GF_AssertFail
+    // ldr r0, [r5, r4]
+    // bl ov80_02239A98
+    // mov r0, #0
+    // str r0, [r5, r4]
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void ov80_02239A38(void) {
-    /* Original at 0x02239A38 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl Thunk_G3X_Reset\n    bl sub_02015420\n    cmp r0, #0\n    bne _02239A4A\n    mov r0, #0\n    pop {r3, pc}\n    bl sub_0201543C\n    cmp r0, #0\n    ble _02239A56\n    bl Thunk_G3X_Reset\n    bl sub_02015460\n    mov r0, #1\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // bl Thunk_G3X_Reset
+    // bl sub_02015420
+    // cmp r0, #0
+    // bne _02239A4A
+    // mov r0, #0
+    // pop {r3, pc}
+    // bl sub_0201543C
+    // cmp r0, #0
+    // ble _02239A56
+    // bl Thunk_G3X_Reset
+    // bl sub_02015460
+    // mov r0, #1
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02239A60(void) {
     GF_AssertFail();
 }
 
+
 void ov80_02239A74(void) {
-    /* Original at 0x02239A74 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r4, #0\n    ldr r0, [r5]\n    cmp r0, #0\n    beq _02239A8C\n    bl sub_020154B0\n    cmp r0, #0\n    ble _02239A8C\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #8\n    blt _02239A7A\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // mov r4, #0
+    // ldr r0, [r5]
+    // cmp r0, #0
+    // beq _02239A8C
+    // bl sub_020154B0
+    // cmp r0, #0
+    // ble _02239A8C
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #8
+    // blt _02239A7A
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02239A98(void) {
     sub_020154D0();
@@ -68,22 +153,43 @@ void ov80_02239A98(void) {
     Heap_Free(r4);
 }
 
+
 void ov80_02239AB0(void) {
-    /* Original at 0x02239AB0 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r3, _02239AD0 ; =NNS_GfdDefaultFuncAllocTexVram\n    mov r2, #0\n    ldr r3, [r3]\n    blx r3\n    add r4, r0, #0\n    bne _02239AC2\n    bl GF_AssertFail\n    add r0, r4, #0\n    bl sub_02015354\n    lsl r0, r4, #0x10\n    lsr r0, r0, #0xd\n    pop {r4, pc}\n    nop\n    _02239AD0: .word NNS_GfdDefaultFuncAllocTexVram"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r3, _02239AD0 ; =NNS_GfdDefaultFuncAllocTexVram
+    // mov r2, #0
+    // ldr r3, [r3]
+    // blx r3
+    // add r4, r0, #0
+    // bne _02239AC2
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // bl sub_02015354
+    // lsl r0, r4, #0x10
+    // lsr r0, r0, #0xd
+    // pop {r4, pc}
+    // nop
+    // _02239AD0: .word NNS_GfdDefaultFuncAllocTexVram
+    // TODO: decompile
 }
 
+
 void ov80_02239AD4(void) {
-    /* Original at 0x02239AD4 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r3, _02239AF4 ; =NNS_GfdDefaultFuncAllocPlttVram\n    mov r2, #1\n    ldr r3, [r3]\n    blx r3\n    add r4, r0, #0\n    bne _02239AE6\n    bl GF_AssertFail\n    add r0, r4, #0\n    bl sub_02015394\n    lsl r0, r4, #0x10\n    lsr r0, r0, #0xd\n    pop {r4, pc}\n    nop\n    _02239AF4: .word NNS_GfdDefaultFuncAllocPlttVram"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r3, _02239AF4 ; =NNS_GfdDefaultFuncAllocPlttVram
+    // mov r2, #1
+    // ldr r3, [r3]
+    // blx r3
+    // add r4, r0, #0
+    // bne _02239AE6
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // bl sub_02015394
+    // lsl r0, r4, #0x10
+    // lsr r0, r0, #0xd
+    // pop {r4, pc}
+    // nop
+    // _02239AF4: .word NNS_GfdDefaultFuncAllocPlttVram
+    // TODO: decompile
 }
+

@@ -2,55 +2,225 @@
 #include "global.h"
 
 void ov12_02265E28(void) {
-    /* Original at 0x02265E28 */
-    /* Requires manual decompilation - 116 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r0, #0\n    mov r0, #8\n    mov r1, #5\n    bl NARC_New\n    add r4, r0, #0\n    ldr r0, [r5, #4]\n    bl BattleSystem_GetSpriteSystem\n    str r0, [sp, #0x24]\n    ldr r0, [r5, #4]\n    bl BattleSystem_GetSpriteManager\n    str r0, [sp, #0x20]\n    ldr r0, [r5, #4]\n    bl ov12_0223B52C\n    add r7, r0, #0\n    ldrb r0, [r5, #8]\n    cmp r0, #0\n    ldrb r0, [r5, #9]\n    bne _02265E6E\n    lsl r1, r0, #1\n    ldr r0, _02265F1C ; =ov12_0226E0D0\n    ldrh r3, [r0, r1]\n    ldr r0, _02265F20 ; =0x00004E2D\n    mov r1, #0x80\n    str r1, [sp, #0x1c]\n    add r6, r0, #0\n    mov r1, #0x81\n    sub r6, #8\n    str r1, [sp, #0x18]\n    b _02265E82\n    lsl r1, r0, #1\n    ldr r0, _02265F24 ; =ov12_0226E0A0\n    ldrh r3, [r0, r1]\n    ldr r0, _02265F28 ; =0x00004E2E\n    mov r1, #0x83\n    str r1, [sp, #0x1c]\n    add r6, r0, #0\n    mov r1, #0x84\n    sub r6, #8\n    str r1, [sp, #0x18]\n    mov r1, #1\n    str r1, [sp]\n    str r1, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x24]\n    ldr r1, [sp, #0x20]\n    add r2, r4, #0\n    bl SpriteSystem_LoadCharResObjFromOpenNarc\n    ldr r0, [r5, #4]\n    bl BattleSystem_GetPaletteData\n    str r4, [sp]\n    ldrb r1, [r5, #9]\n    mov r2, #6\n    add r3, r1, #0\n    mul r3, r2\n    ldr r2, _02265F2C ; =ov12_0226E168\n    lsl r1, r7, #1\n    add r2, r2, r3\n    ldrh r1, [r1, r2]\n    ldr r2, [sp, #0x24]\n    ldr r3, [sp, #0x20]\n    str r1, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    mov r1, #1\n    str r1, [sp, #0xc]\n    str r1, [sp, #0x10]\n    ldr r1, _02265F30 ; =0x00004E29\n    str r1, [sp, #0x14]\n    mov r1, #2\n    bl SpriteSystem_LoadPaletteBufferFromOpenNarc\n    ldr r0, [r5, #4]\n    bl BattleSystem_GetPaletteData\n    mov r1, #0\n    str r1, [sp]\n    mov r1, #0x20\n    str r1, [sp, #4]\n    mov r1, #0x70\n    str r1, [sp, #8]\n    ldrb r2, [r5, #9]\n    mov r3, #6\n    lsl r5, r7, #1\n    mul r3, r2\n    ldr r2, _02265F2C ; =ov12_0226E168\n    mov r1, #8\n    add r2, r2, r3\n    ldrh r2, [r5, r2]\n    mov r3, #5\n    bl PaletteData_LoadNarc\n    mov r0, #1\n    str r0, [sp]\n    ldr r0, [sp, #0x24]\n    ldr r1, [sp, #0x20]\n    ldr r3, [sp, #0x1c]\n    add r2, r4, #0\n    str r6, [sp, #4]\n    bl SpriteSystem_LoadCellResObjFromOpenNarc\n    mov r0, #1\n    str r0, [sp]\n    ldr r0, [sp, #0x24]\n    ldr r1, [sp, #0x20]\n    ldr r3, [sp, #0x18]\n    add r2, r4, #0\n    str r6, [sp, #4]\n    bl SpriteSystem_LoadAnimResObjFromOpenNarc\n    add r0, r4, #0\n    bl NARC_Delete\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    _02265F1C: .word ov12_0226E0D0\n    _02265F20: .word 0x00004E2D\n    _02265F24: .word ov12_0226E0A0\n    _02265F28: .word 0x00004E2E\n    _02265F2C: .word ov12_0226E168\n    _02265F30: .word 0x00004E29"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // add r5, r0, #0
+    // mov r0, #8
+    // mov r1, #5
+    // bl NARC_New
+    // add r4, r0, #0
+    // ldr r0, [r5, #4]
+    // bl BattleSystem_GetSpriteSystem
+    // str r0, [sp, #0x24]
+    // ldr r0, [r5, #4]
+    // bl BattleSystem_GetSpriteManager
+    // str r0, [sp, #0x20]
+    // ldr r0, [r5, #4]
+    // bl ov12_0223B52C
+    // add r7, r0, #0
+    // ldrb r0, [r5, #8]
+    // cmp r0, #0
+    // ldrb r0, [r5, #9]
+    // bne _02265E6E
+    // lsl r1, r0, #1
+    // ldr r0, _02265F1C ; =ov12_0226E0D0
+    // ldrh r3, [r0, r1]
+    // ldr r0, _02265F20 ; =0x00004E2D
+    // mov r1, #0x80
+    // str r1, [sp, #0x1c]
+    // add r6, r0, #0
+    // mov r1, #0x81
+    // sub r6, #8
+    // str r1, [sp, #0x18]
+    // b _02265E82
+    // lsl r1, r0, #1
+    // ldr r0, _02265F24 ; =ov12_0226E0A0
+    // ldrh r3, [r0, r1]
+    // ldr r0, _02265F28 ; =0x00004E2E
+    // mov r1, #0x83
+    // str r1, [sp, #0x1c]
+    // add r6, r0, #0
+    // mov r1, #0x84
+    // sub r6, #8
+    // str r1, [sp, #0x18]
+    // mov r1, #1
+    // str r1, [sp]
+    // str r1, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #0x24]
+    // ldr r1, [sp, #0x20]
+    // add r2, r4, #0
+    // bl SpriteSystem_LoadCharResObjFromOpenNarc
+    // ldr r0, [r5, #4]
+    // bl BattleSystem_GetPaletteData
+    // str r4, [sp]
+    // ldrb r1, [r5, #9]
+    // mov r2, #6
+    // add r3, r1, #0
+    // mul r3, r2
+    // ldr r2, _02265F2C ; =ov12_0226E168
+    // lsl r1, r7, #1
+    // add r2, r2, r3
+    // ldrh r1, [r1, r2]
+    // ldr r2, [sp, #0x24]
+    // ldr r3, [sp, #0x20]
+    // str r1, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // mov r1, #1
+    // str r1, [sp, #0xc]
+    // str r1, [sp, #0x10]
+    // ldr r1, _02265F30 ; =0x00004E29
+    // str r1, [sp, #0x14]
+    // mov r1, #2
+    // bl SpriteSystem_LoadPaletteBufferFromOpenNarc
+    // ldr r0, [r5, #4]
+    // bl BattleSystem_GetPaletteData
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r1, #0x20
+    // str r1, [sp, #4]
+    // mov r1, #0x70
+    // str r1, [sp, #8]
+    // ldrb r2, [r5, #9]
+    // mov r3, #6
+    // lsl r5, r7, #1
+    // mul r3, r2
+    // ldr r2, _02265F2C ; =ov12_0226E168
+    // mov r1, #8
+    // add r2, r2, r3
+    // ldrh r2, [r5, r2]
+    // mov r3, #5
+    // bl PaletteData_LoadNarc
+    // mov r0, #1
+    // str r0, [sp]
+    // ldr r0, [sp, #0x24]
+    // ldr r1, [sp, #0x20]
+    // ldr r3, [sp, #0x1c]
+    // add r2, r4, #0
+    // str r6, [sp, #4]
+    // bl SpriteSystem_LoadCellResObjFromOpenNarc
+    // mov r0, #1
+    // str r0, [sp]
+    // ldr r0, [sp, #0x24]
+    // ldr r1, [sp, #0x20]
+    // ldr r3, [sp, #0x18]
+    // add r2, r4, #0
+    // str r6, [sp, #4]
+    // bl SpriteSystem_LoadAnimResObjFromOpenNarc
+    // add r0, r4, #0
+    // bl NARC_Delete
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02265F1C: .word ov12_0226E0D0
+    // _02265F20: .word 0x00004E2D
+    // _02265F24: .word ov12_0226E0A0
+    // _02265F28: .word 0x00004E2E
+    // _02265F2C: .word ov12_0226E168
+    // _02265F30: .word 0x00004E29
+    // TODO: decompile
 }
 
+
 void ov12_02265F34(void) {
-    /* Original at 0x02265F34 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    bl BattleSystem_GetSpriteSystem\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    bl BattleSystem_GetSpriteManager\n    add r1, r0, #0\n    add r0, r5, #0\n    ldrb r3, [r4, #8]\n    mov r2, #0x34\n    ldr r5, _02265F64 ; =ov12_0226E100\n    mul r2, r3\n    add r2, r5, r2\n    bl SpriteSystem_NewSprite\n    str r0, [r4]\n    ldr r0, [r0]\n    bl Sprite_TickFrame\n    pop {r3, r4, r5, pc}\n    nop\n    _02265F64: .word ov12_0226E100"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #4]
+    // bl BattleSystem_GetSpriteSystem
+    // add r5, r0, #0
+    // ldr r0, [r4, #4]
+    // bl BattleSystem_GetSpriteManager
+    // add r1, r0, #0
+    // add r0, r5, #0
+    // ldrb r3, [r4, #8]
+    // mov r2, #0x34
+    // ldr r5, _02265F64 ; =ov12_0226E100
+    // mul r2, r3
+    // add r2, r5, r2
+    // bl SpriteSystem_NewSprite
+    // str r0, [r4]
+    // ldr r0, [r0]
+    // bl Sprite_TickFrame
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02265F64: .word ov12_0226E100
+    // TODO: decompile
 }
+
 
 void ov12_02265F68(void) {
     Sprite_DeleteAndFreeResources(0);
 }
 
+
 void ov12_02265F7C(void) {
-    /* Original at 0x02265F7C */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    bl BattleSystem_GetSpriteManager\n    add r4, r0, #0\n    ldrb r0, [r5, #8]\n    cmp r0, #0\n    bne _02265F92\n    ldr r1, _02265FB8 ; =0x00004E2D\n    b _02265F94\n    ldr r1, _02265FBC ; =0x00004E2E\n    add r5, r1, #0\n    add r0, r4, #0\n    sub r5, #8\n    bl SpriteManager_UnloadCharObjById\n    ldr r1, _02265FC0 ; =0x00004E29\n    add r0, r4, #0\n    bl SpriteManager_UnloadPlttObjById\n    add r0, r4, #0\n    add r1, r5, #0\n    bl SpriteManager_UnloadCellObjById\n    add r0, r4, #0\n    add r1, r5, #0\n    bl SpriteManager_UnloadAnimObjById\n    pop {r3, r4, r5, pc}\n    _02265FB8: .word 0x00004E2D\n    _02265FBC: .word 0x00004E2E\n    _02265FC0: .word 0x00004E29"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5, #4]
+    // bl BattleSystem_GetSpriteManager
+    // add r4, r0, #0
+    // ldrb r0, [r5, #8]
+    // cmp r0, #0
+    // bne _02265F92
+    // ldr r1, _02265FB8 ; =0x00004E2D
+    // b _02265F94
+    // ldr r1, _02265FBC ; =0x00004E2E
+    // add r5, r1, #0
+    // add r0, r4, #0
+    // sub r5, #8
+    // bl SpriteManager_UnloadCharObjById
+    // ldr r1, _02265FC0 ; =0x00004E29
+    // add r0, r4, #0
+    // bl SpriteManager_UnloadPlttObjById
+    // add r0, r4, #0
+    // add r1, r5, #0
+    // bl SpriteManager_UnloadCellObjById
+    // add r0, r4, #0
+    // add r1, r5, #0
+    // bl SpriteManager_UnloadAnimObjById
+    // pop {r3, r4, r5, pc}
+    // _02265FB8: .word 0x00004E2D
+    // _02265FBC: .word 0x00004E2E
+    // _02265FC0: .word 0x00004E29
+    // TODO: decompile
 }
+
 
 void ov12_02265FC4(void) {
     ManagedSprite_SetDrawFlag();
 }
 
+
 void ov12_02265FD4(void) {
-    /* Original at 0x02265FD4 */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    mov r0, #0\n    add r1, r5, #0\n    mov r2, #0x10\n    add r7, r3, #0\n    bl MIi_CpuClearFast\n    str r4, [r5, #4]\n    strb r6, [r5, #8]\n    strb r7, [r5, #9]\n    cmp r7, #0x18\n    blt _02265FFA\n    bl GF_AssertFail\n    mov r0, #0\n    strb r0, [r5, #9]\n    add r0, r5, #0\n    bl ov12_02265E28\n    add r0, r5, #0\n    bl ov12_02265F34\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // add r6, r2, #0
+    // mov r0, #0
+    // add r1, r5, #0
+    // mov r2, #0x10
+    // add r7, r3, #0
+    // bl MIi_CpuClearFast
+    // str r4, [r5, #4]
+    // strb r6, [r5, #8]
+    // strb r7, [r5, #9]
+    // cmp r7, #0x18
+    // blt _02265FFA
+    // bl GF_AssertFail
+    // mov r0, #0
+    // strb r0, [r5, #9]
+    // add r0, r5, #0
+    // bl ov12_02265E28
+    // add r0, r5, #0
+    // bl ov12_02265F34
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov12_02266008(void) {
     ov12_02265F68();
     ov12_02265F7C(r4);
     MIi_CpuClearFast(0, r4, 0x10);
 }
+

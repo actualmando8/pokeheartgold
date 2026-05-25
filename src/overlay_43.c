@@ -2,78 +2,478 @@
 #include "global.h"
 
 void PalPad_Init(void) {
-    /* Original at 0x02229EE0 */
-    /* Requires manual decompilation - 88 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, _02229FA4 ; =FS_OVERLAY_ID(OVY_42)\n    mov r1, #2\n    bl HandleLoadOverlay\n    mov r2, #7\n    mov r0, #3\n    mov r1, #0x33\n    lsl r2, r2, #0x10\n    bl Heap_Create\n    ldr r1, _02229FA8 ; =0x000005A4\n    add r0, r5, #0\n    mov r2, #0x33\n    bl OverlayManager_CreateAndGetData\n    ldr r2, _02229FA8 ; =0x000005A4\n    mov r1, #0\n    add r4, r0, #0\n    bl memset\n    add r0, r5, #0\n    bl OverlayManager_GetArgs\n    mov r1, #0x9f\n    lsl r1, r1, #2\n    str r0, [r4, r1]\n    add r0, r1, #0\n    sub r0, #0x68\n    ldr r1, [r4, r1]\n    add r0, r4, r0\n    mov r2, #0x33\n    bl ov43_0222A290\n    mov r1, #0x85\n    lsl r1, r1, #2\n    add r0, r4, #4\n    add r1, r4, r1\n    mov r2, #0x33\n    bl ov43_0222A48C\n    mov r1, #0xa\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0x6c\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222AE5C\n    mov r1, #0xb\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0xac\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222B5A8\n    mov r0, #0xf\n    mov r1, #0x85\n    lsl r0, r0, #6\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222CBAC\n    mov r0, #0xf3\n    mov r1, #0x85\n    lsl r0, r0, #2\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222CD90\n    ldr r0, _02229FAC ; =0x00000408\n    mov r1, #0x85\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222D134\n    ldr r0, _02229FB0 ; =ov43_0222A148\n    add r1, r4, #0\n    bl Main_SetVBlankIntrCB\n    bl HBlankInterruptDisable\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    nop\n    _02229FA4: .word FS_OVERLAY_ID(OVY_42)\n    _02229FA8: .word 0x000005A4\n    _02229FAC: .word 0x00000408\n    _02229FB0: .word ov43_0222A148"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // ldr r0, _02229FA4 ; =FS_OVERLAY_ID(OVY_42)
+    // mov r1, #2
+    // bl HandleLoadOverlay
+    // mov r2, #7
+    // mov r0, #3
+    // mov r1, #0x33
+    // lsl r2, r2, #0x10
+    // bl Heap_Create
+    // ldr r1, _02229FA8 ; =0x000005A4
+    // add r0, r5, #0
+    // mov r2, #0x33
+    // bl OverlayManager_CreateAndGetData
+    // ldr r2, _02229FA8 ; =0x000005A4
+    // mov r1, #0
+    // add r4, r0, #0
+    // bl memset
+    // add r0, r5, #0
+    // bl OverlayManager_GetArgs
+    // mov r1, #0x9f
+    // lsl r1, r1, #2
+    // str r0, [r4, r1]
+    // add r0, r1, #0
+    // sub r0, #0x68
+    // ldr r1, [r4, r1]
+    // add r0, r4, r0
+    // mov r2, #0x33
+    // bl ov43_0222A290
+    // mov r1, #0x85
+    // lsl r1, r1, #2
+    // add r0, r4, #4
+    // add r1, r4, r1
+    // mov r2, #0x33
+    // bl ov43_0222A48C
+    // mov r1, #0xa
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0x6c
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222AE5C
+    // mov r1, #0xb
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0xac
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222B5A8
+    // mov r0, #0xf
+    // mov r1, #0x85
+    // lsl r0, r0, #6
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222CBAC
+    // mov r0, #0xf3
+    // mov r1, #0x85
+    // lsl r0, r0, #2
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222CD90
+    // ldr r0, _02229FAC ; =0x00000408
+    // mov r1, #0x85
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222D134
+    // ldr r0, _02229FB0 ; =ov43_0222A148
+    // add r1, r4, #0
+    // bl Main_SetVBlankIntrCB
+    // bl HBlankInterruptDisable
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02229FA4: .word FS_OVERLAY_ID(OVY_42)
+    // _02229FA8: .word 0x000005A4
+    // _02229FAC: .word 0x00000408
+    // _02229FB0: .word ov43_0222A148
+    // TODO: decompile
 }
+
 
 void PalPad_Main(void) {
-    /* Original at 0x02229FB4 */
-    /* Requires manual decompilation - 110 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r5, r1, #0\n    bl OverlayManager_GetData\n    add r4, r0, #0\n    ldr r0, [r5]\n    cmp r0, #0\n    beq _02229FCC\n    cmp r0, #1\n    beq _0222A084\n    b _0222A098\n    ldr r0, [r4]\n    cmp r0, #5\n    bhi _0222A064\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02229FDE: ; jump table\n    mov r1, #0xa\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0x6c\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222AE64\n    add r6, r0, #0\n    b _0222A064\n    mov r1, #0xb\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0xac\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222B5D0\n    add r6, r0, #0\n    b _0222A064\n    mov r0, #0x33\n    str r0, [sp]\n    mov r0, #0xf\n    mov r2, #0x85\n    lsl r0, r0, #6\n    lsl r2, r2, #2\n    add r0, r4, r0\n    add r1, r4, #0\n    add r2, r4, r2\n    add r3, r4, #4\n    bl ov43_0222CBB4\n    add r6, r0, #0\n    b _0222A064\n    mov r0, #0xf3\n    mov r1, #0x85\n    lsl r0, r0, #2\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222CD98\n    add r6, r0, #0\n    b _0222A064\n    ldr r0, _0222A0A4 ; =0x00000408\n    mov r1, #0x85\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    mov r3, #0x33\n    bl ov43_0222D15C\n    add r6, r0, #0\n    b _0222A064\n    add sp, #4\n    mov r0, #1\n    pop {r3, r4, r5, r6, pc}\n    cmp r6, #1\n    bne _0222A098\n    ldr r0, _0222A0A8 ; =0x0000021D\n    ldrb r1, [r4, r0]\n    str r1, [r4]\n    add r1, r0, #1\n    ldrb r1, [r4, r1]\n    sub r0, r0, #1\n    strb r1, [r4, r0]\n    mov r0, #0x5a\n    mov r1, #4\n    lsl r0, r0, #4\n    str r1, [r4, r0]\n    mov r0, #1\n    str r0, [r5]\n    b _0222A098\n    mov r0, #0x5a\n    lsl r0, r0, #4\n    ldr r1, [r4, r0]\n    sub r1, r1, #1\n    str r1, [r4, r0]\n    ldr r0, [r4, r0]\n    cmp r0, #0\n    bgt _0222A098\n    mov r0, #0\n    str r0, [r5]\n    add r0, r4, #4\n    bl ov43_0222A500\n    mov r0, #0\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    _0222A0A4: .word 0x00000408\n    _0222A0A8: .word 0x0000021D"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // add r5, r1, #0
+    // bl OverlayManager_GetData
+    // add r4, r0, #0
+    // ldr r0, [r5]
+    // cmp r0, #0
+    // beq _02229FCC
+    // cmp r0, #1
+    // beq _0222A084
+    // b _0222A098
+    // ldr r0, [r4]
+    // cmp r0, #5
+    // bhi _0222A064
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02229FDE: ; jump table
+    // mov r1, #0xa
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0x6c
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222AE64
+    // add r6, r0, #0
+    // b _0222A064
+    // mov r1, #0xb
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0xac
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222B5D0
+    // add r6, r0, #0
+    // b _0222A064
+    // mov r0, #0x33
+    // str r0, [sp]
+    // mov r0, #0xf
+    // mov r2, #0x85
+    // lsl r0, r0, #6
+    // lsl r2, r2, #2
+    // add r0, r4, r0
+    // add r1, r4, #0
+    // add r2, r4, r2
+    // add r3, r4, #4
+    // bl ov43_0222CBB4
+    // add r6, r0, #0
+    // b _0222A064
+    // mov r0, #0xf3
+    // mov r1, #0x85
+    // lsl r0, r0, #2
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222CD98
+    // add r6, r0, #0
+    // b _0222A064
+    // ldr r0, _0222A0A4 ; =0x00000408
+    // mov r1, #0x85
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // mov r3, #0x33
+    // bl ov43_0222D15C
+    // add r6, r0, #0
+    // b _0222A064
+    // add sp, #4
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, pc}
+    // cmp r6, #1
+    // bne _0222A098
+    // ldr r0, _0222A0A8 ; =0x0000021D
+    // ldrb r1, [r4, r0]
+    // str r1, [r4]
+    // add r1, r0, #1
+    // ldrb r1, [r4, r1]
+    // sub r0, r0, #1
+    // strb r1, [r4, r0]
+    // mov r0, #0x5a
+    // mov r1, #4
+    // lsl r0, r0, #4
+    // str r1, [r4, r0]
+    // mov r0, #1
+    // str r0, [r5]
+    // b _0222A098
+    // mov r0, #0x5a
+    // lsl r0, r0, #4
+    // ldr r1, [r4, r0]
+    // sub r1, r1, #1
+    // str r1, [r4, r0]
+    // ldr r0, [r4, r0]
+    // cmp r0, #0
+    // bgt _0222A098
+    // mov r0, #0
+    // str r0, [r5]
+    // add r0, r4, #4
+    // bl ov43_0222A500
+    // mov r0, #0
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // _0222A0A4: .word 0x00000408
+    // _0222A0A8: .word 0x0000021D
+    // TODO: decompile
 }
 
+
 void PalPad_Exit(void) {
-    /* Original at 0x0222A0AC */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl OverlayManager_GetData\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetVBlankIntrCB\n    bl HBlankInterruptDisable\n    mov r1, #0xa\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0x6c\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222B098\n    mov r1, #0xb\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0xac\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222B93C\n    mov r0, #0xf\n    mov r1, #0x85\n    lsl r0, r0, #6\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222CD34\n    mov r0, #0xf3\n    mov r1, #0x85\n    lsl r0, r0, #2\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222CE0C\n    ldr r0, _0222A140 ; =0x00000408\n    mov r1, #0x85\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222D228\n    add r0, r4, #4\n    bl ov43_0222A520\n    mov r1, #0x85\n    lsl r1, r1, #2\n    add r0, r4, r1\n    add r1, #0x68\n    ldr r1, [r4, r1]\n    bl ov43_0222A2F0\n    add r0, r5, #0\n    bl OverlayManager_FreeData\n    mov r0, #0x33\n    bl Heap_Destroy\n    ldr r0, _0222A144 ; =FS_OVERLAY_ID(OVY_42)\n    bl UnloadOverlayByID\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    _0222A140: .word 0x00000408\n    _0222A144: .word FS_OVERLAY_ID(OVY_42)"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // bl OverlayManager_GetData
+    // add r4, r0, #0
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl Main_SetVBlankIntrCB
+    // bl HBlankInterruptDisable
+    // mov r1, #0xa
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0x6c
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222B098
+    // mov r1, #0xb
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0xac
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222B93C
+    // mov r0, #0xf
+    // mov r1, #0x85
+    // lsl r0, r0, #6
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222CD34
+    // mov r0, #0xf3
+    // mov r1, #0x85
+    // lsl r0, r0, #2
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222CE0C
+    // ldr r0, _0222A140 ; =0x00000408
+    // mov r1, #0x85
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222D228
+    // add r0, r4, #4
+    // bl ov43_0222A520
+    // mov r1, #0x85
+    // lsl r1, r1, #2
+    // add r0, r4, r1
+    // add r1, #0x68
+    // ldr r1, [r4, r1]
+    // bl ov43_0222A2F0
+    // add r0, r5, #0
+    // bl OverlayManager_FreeData
+    // mov r0, #0x33
+    // bl Heap_Destroy
+    // ldr r0, _0222A144 ; =FS_OVERLAY_ID(OVY_42)
+    // bl UnloadOverlayByID
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // _0222A140: .word 0x00000408
+    // _0222A144: .word FS_OVERLAY_ID(OVY_42)
+    // TODO: decompile
 }
+
 
 void ov43_0222A148(void) {
     ov43_0222A50C();
 }
 
+
 void ov43_0222A154(void) {
-    /* Original at 0x0222A154 */
-    /* Requires manual decompilation - 58 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    mov r1, #0x85\n    add r5, r0, #0\n    lsl r1, r1, #2\n    add r0, r5, #4\n    add r1, r5, r1\n    add r2, r4, #0\n    bl ov43_0222A48C\n    mov r1, #0xa\n    lsl r1, r1, #6\n    add r0, r5, r1\n    sub r1, #0x6c\n    add r1, r5, r1\n    add r2, r5, #4\n    add r3, r4, #0\n    bl ov43_0222B0A0\n    mov r1, #0xb\n    lsl r1, r1, #6\n    add r0, r5, r1\n    sub r1, #0xac\n    add r1, r5, r1\n    add r2, r5, #4\n    add r3, r4, #0\n    bl ov43_0222B944\n    mov r0, #0xf\n    mov r1, #0x85\n    lsl r0, r0, #6\n    lsl r1, r1, #2\n    add r0, r5, r0\n    add r1, r5, r1\n    add r2, r5, #4\n    add r3, r4, #0\n    bl ov43_0222CD3C\n    mov r0, #0xf3\n    mov r1, #0x85\n    lsl r0, r0, #2\n    lsl r1, r1, #2\n    add r0, r5, r0\n    add r1, r5, r1\n    add r2, r5, #4\n    add r3, r4, #0\n    bl ov43_0222CE48\n    ldr r0, _0222A1D4 ; =0x00000408\n    mov r1, #0x85\n    lsl r1, r1, #2\n    add r0, r5, r0\n    add r1, r5, r1\n    add r2, r5, #4\n    add r3, r4, #0\n    bl ov43_0222D584\n    ldr r0, _0222A1D8 ; =ov43_0222A148\n    add r1, r5, #0\n    bl Main_SetVBlankIntrCB\n    bl HBlankInterruptDisable\n    pop {r3, r4, r5, pc}\n    _0222A1D4: .word 0x00000408\n    _0222A1D8: .word ov43_0222A148"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r1, #0
+    // mov r1, #0x85
+    // add r5, r0, #0
+    // lsl r1, r1, #2
+    // add r0, r5, #4
+    // add r1, r5, r1
+    // add r2, r4, #0
+    // bl ov43_0222A48C
+    // mov r1, #0xa
+    // lsl r1, r1, #6
+    // add r0, r5, r1
+    // sub r1, #0x6c
+    // add r1, r5, r1
+    // add r2, r5, #4
+    // add r3, r4, #0
+    // bl ov43_0222B0A0
+    // mov r1, #0xb
+    // lsl r1, r1, #6
+    // add r0, r5, r1
+    // sub r1, #0xac
+    // add r1, r5, r1
+    // add r2, r5, #4
+    // add r3, r4, #0
+    // bl ov43_0222B944
+    // mov r0, #0xf
+    // mov r1, #0x85
+    // lsl r0, r0, #6
+    // lsl r1, r1, #2
+    // add r0, r5, r0
+    // add r1, r5, r1
+    // add r2, r5, #4
+    // add r3, r4, #0
+    // bl ov43_0222CD3C
+    // mov r0, #0xf3
+    // mov r1, #0x85
+    // lsl r0, r0, #2
+    // lsl r1, r1, #2
+    // add r0, r5, r0
+    // add r1, r5, r1
+    // add r2, r5, #4
+    // add r3, r4, #0
+    // bl ov43_0222CE48
+    // ldr r0, _0222A1D4 ; =0x00000408
+    // mov r1, #0x85
+    // lsl r1, r1, #2
+    // add r0, r5, r0
+    // add r1, r5, r1
+    // add r2, r5, #4
+    // add r3, r4, #0
+    // bl ov43_0222D584
+    // ldr r0, _0222A1D8 ; =ov43_0222A148
+    // add r1, r5, #0
+    // bl Main_SetVBlankIntrCB
+    // bl HBlankInterruptDisable
+    // pop {r3, r4, r5, pc}
+    // _0222A1D4: .word 0x00000408
+    // _0222A1D8: .word ov43_0222A148
+    // TODO: decompile
 }
+
 
 void ov43_0222A1DC(void) {
-    /* Original at 0x0222A1DC */
-    /* Requires manual decompilation - 47 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetVBlankIntrCB\n    bl HBlankInterruptDisable\n    mov r1, #0xa\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0x6c\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222B1D8\n    mov r1, #0xb\n    lsl r1, r1, #6\n    add r0, r4, r1\n    sub r1, #0xac\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222BAB8\n    mov r0, #0xf\n    mov r1, #0x85\n    lsl r0, r0, #6\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222CD40\n    mov r0, #0xf3\n    mov r1, #0x85\n    lsl r0, r0, #2\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222D008\n    ldr r0, _0222A248 ; =0x00000408\n    mov r1, #0x85\n    lsl r1, r1, #2\n    add r0, r4, r0\n    add r1, r4, r1\n    add r2, r4, #4\n    bl ov43_0222D610\n    add r0, r4, #4\n    bl ov43_0222A520\n    pop {r4, pc}\n    _0222A248: .word 0x00000408"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl Main_SetVBlankIntrCB
+    // bl HBlankInterruptDisable
+    // mov r1, #0xa
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0x6c
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222B1D8
+    // mov r1, #0xb
+    // lsl r1, r1, #6
+    // add r0, r4, r1
+    // sub r1, #0xac
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222BAB8
+    // mov r0, #0xf
+    // mov r1, #0x85
+    // lsl r0, r0, #6
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222CD40
+    // mov r0, #0xf3
+    // mov r1, #0x85
+    // lsl r0, r0, #2
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222D008
+    // ldr r0, _0222A248 ; =0x00000408
+    // mov r1, #0x85
+    // lsl r1, r1, #2
+    // add r0, r4, r0
+    // add r1, r4, r1
+    // add r2, r4, #4
+    // bl ov43_0222D610
+    // add r0, r4, #4
+    // bl ov43_0222A520
+    // pop {r4, pc}
+    // _0222A248: .word 0x00000408
+    // TODO: decompile
 }
+
 
 void ov43_0222A24C(void) {
-    /* Original at 0x0222A24C */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r6, r2, #0\n    add r7, r3, #0\n    bl InitWindow\n    add r0, sp, #0x18\n    ldrb r1, [r0, #0x10]\n    add r2, r6, #0\n    add r3, r7, #0\n    str r1, [sp]\n    ldrb r1, [r0, #0x14]\n    str r1, [sp, #4]\n    ldrb r1, [r0, #0x18]\n    str r1, [sp, #8]\n    ldrb r1, [r0, #0x1c]\n    str r1, [sp, #0xc]\n    ldrh r0, [r0, #0x20]\n    add r1, r4, #0\n    str r0, [sp, #0x10]\n    add r0, r5, #0\n    bl AddWindowParameterized\n    add r1, sp, #0x3c\n    ldrb r1, [r1]\n    add r0, r4, #0\n    bl FillWindowPixelBuffer\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // add r6, r2, #0
+    // add r7, r3, #0
+    // bl InitWindow
+    // add r0, sp, #0x18
+    // ldrb r1, [r0, #0x10]
+    // add r2, r6, #0
+    // add r3, r7, #0
+    // str r1, [sp]
+    // ldrb r1, [r0, #0x14]
+    // str r1, [sp, #4]
+    // ldrb r1, [r0, #0x18]
+    // str r1, [sp, #8]
+    // ldrb r1, [r0, #0x1c]
+    // str r1, [sp, #0xc]
+    // ldrh r0, [r0, #0x20]
+    // add r1, r4, #0
+    // str r0, [sp, #0x10]
+    // add r0, r5, #0
+    // bl AddWindowParameterized
+    // add r1, sp, #0x3c
+    // ldrb r1, [r1]
+    // add r0, r4, #0
+    // bl FillWindowPixelBuffer
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222A290(void) {
-    /* Original at 0x0222A290 */
-    /* Requires manual decompilation - 38 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4]\n    add r6, r2, #0\n    str r0, [r5, #4]\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    str r0, [r5, #0x58]\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    str r0, [r5, #0x5c]\n    ldr r0, [r4, #4]\n    bl MenuInputStateMgr_GetState\n    str r0, [r5]\n    ldr r0, [r5, #4]\n    bl Save_PlayerData_GetOptionsAddr\n    add r4, r0, #0\n    bl Options_GetTextFrameDelay\n    strb r0, [r5, #0xc]\n    add r0, r4, #0\n    bl Options_GetFrame\n    strb r0, [r5, #0xd]\n    add r0, r4, #0\n    bl Options_GetButtonMode\n    cmp r0, #1\n    beq _0222A2DC\n    mov r0, #1\n    b _0222A2DE\n    mov r0, #0\n    strb r0, [r5, #0xe]\n    mov r0, #1\n    bl TextFlags_SetCanABSpeedUpPrint\n    mov r0, #1\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // ldr r0, [r4]
+    // add r6, r2, #0
+    // str r0, [r5, #4]
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // str r0, [r5, #0x58]
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // str r0, [r5, #0x5c]
+    // ldr r0, [r4, #4]
+    // bl MenuInputStateMgr_GetState
+    // str r0, [r5]
+    // ldr r0, [r5, #4]
+    // bl Save_PlayerData_GetOptionsAddr
+    // add r4, r0, #0
+    // bl Options_GetTextFrameDelay
+    // strb r0, [r5, #0xc]
+    // add r0, r4, #0
+    // bl Options_GetFrame
+    // strb r0, [r5, #0xd]
+    // add r0, r4, #0
+    // bl Options_GetButtonMode
+    // cmp r0, #1
+    // beq _0222A2DC
+    // mov r0, #1
+    // b _0222A2DE
+    // mov r0, #0
+    // strb r0, [r5, #0xe]
+    // mov r0, #1
+    // bl TextFlags_SetCanABSpeedUpPrint
+    // mov r0, #1
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222A2F0(void) {
     TextFlags_SetCanABSpeedUpPrint(0);
@@ -83,79 +483,257 @@ void ov43_0222A2F0(void) {
     String_Delete(*((u32*)(r5 + 0x5c)));
 }
 
+
 void ov43_0222A318(void) {
     ((u8*)r0)[9] = r1;
     ((u8*)r0)[0xa] = r2;
 }
 
+
 void ov43_0222A320(void) {
-    /* Original at 0x0222A320 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r1, _0222A330 ; =gSystem\n    ldr r2, [r1, #0x48]\n    ldr r1, _0222A334 ; =0x00000CF3\n    tst r1, r2\n    beq _0222A32E\n    mov r1, #0\n    str r1, [r0]\n    bx lr\n    _0222A330: .word gSystem\n    _0222A334: .word 0x00000CF3"
-    );
-    #endif
+    // ldr r1, _0222A330 ; =gSystem
+    // ldr r2, [r1, #0x48]
+    // ldr r1, _0222A334 ; =0x00000CF3
+    // tst r1, r2
+    // beq _0222A32E
+    // mov r1, #0
+    // str r1, [r0]
+    // bx lr
+    // _0222A330: .word gSystem
+    // _0222A334: .word 0x00000CF3
+    // TODO: decompile
 }
+
 
 void ov43_0222A338(void) {
-    /* Original at 0x0222A338 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    cmp r1, #0\n    beq _0222A348\n    ldr r0, [r5, #0x58]\n    bl String_Copy\n    cmp r4, #0\n    beq _0222A354\n    ldr r0, [r5, #0x5c]\n    add r1, r4, #0\n    bl String_Copy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // add r4, r2, #0
+    // cmp r1, #0
+    // beq _0222A348
+    // ldr r0, [r5, #0x58]
+    // bl String_Copy
+    // cmp r4, #0
+    // beq _0222A354
+    // ldr r0, [r5, #0x5c]
+    // add r1, r4, #0
+    // bl String_Copy
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222A358(void) {
-    /* Original at 0x0222A358 */
-    /* Requires manual decompilation - 81 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    str r0, [sp]\n    ldr r0, [r0, #4]\n    add r6, r1, #0\n    str r2, [sp, #4]\n    bl sub_0202C6F4\n    add r5, r0, #0\n    bl sub_0202C08C\n    bl DWC_CreateFriendKey\n    str r0, [sp, #0x10]\n    str r1, [sp, #0xc]\n    mov r4, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0202C2DC\n    cmp r0, #0\n    bne _0222A404\n    add r0, r6, #0\n    add r1, sp, #0x1c\n    bl String_atoi\n    add r7, r0, #0\n    ldr r0, [sp, #0x1c]\n    add r6, r1, #0\n    cmp r0, #1\n    bne _0222A3FE\n    ldr r0, [sp, #0xc]\n    eor r1, r0\n    ldr r0, [sp, #0x10]\n    eor r0, r7\n    orr r0, r1\n    beq _0222A3FE\n    add r0, r5, #0\n    bl sub_0202C08C\n    add r1, r7, #0\n    add r2, r6, #0\n    bl DWC_CheckFriendKey\n    cmp r0, #0\n    bne _0222A3BA\n    add sp, #0x20\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp]\n    add r1, r7, #0\n    ldr r0, [r0, #4]\n    add r2, r6, #0\n    add r3, sp, #0x18\n    bl sub_0203A128\n    cmp r0, #0\n    bne _0222A3D2\n    add sp, #0x20\n    mov r0, #2\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0202C23C\n    add r1, r7, #0\n    add r2, r6, #0\n    bl DWC_CreateFriendKeyToken\n    ldr r2, [sp, #4]\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0202C270\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #8\n    mov r3, #2\n    bl sub_0202C190\n    add sp, #0x20\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    add sp, #0x20\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    add r4, r4, #1\n    cmp r4, #0x20\n    blt _0222A378\n    bl GF_AssertFail\n    mov r0, #0\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x20
+    // str r0, [sp]
+    // ldr r0, [r0, #4]
+    // add r6, r1, #0
+    // str r2, [sp, #4]
+    // bl sub_0202C6F4
+    // add r5, r0, #0
+    // bl sub_0202C08C
+    // bl DWC_CreateFriendKey
+    // str r0, [sp, #0x10]
+    // str r1, [sp, #0xc]
+    // mov r4, #0
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl sub_0202C2DC
+    // cmp r0, #0
+    // bne _0222A404
+    // add r0, r6, #0
+    // add r1, sp, #0x1c
+    // bl String_atoi
+    // add r7, r0, #0
+    // ldr r0, [sp, #0x1c]
+    // add r6, r1, #0
+    // cmp r0, #1
+    // bne _0222A3FE
+    // ldr r0, [sp, #0xc]
+    // eor r1, r0
+    // ldr r0, [sp, #0x10]
+    // eor r0, r7
+    // orr r0, r1
+    // beq _0222A3FE
+    // add r0, r5, #0
+    // bl sub_0202C08C
+    // add r1, r7, #0
+    // add r2, r6, #0
+    // bl DWC_CheckFriendKey
+    // cmp r0, #0
+    // bne _0222A3BA
+    // add sp, #0x20
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r0, [sp]
+    // add r1, r7, #0
+    // ldr r0, [r0, #4]
+    // add r2, r6, #0
+    // add r3, sp, #0x18
+    // bl sub_0203A128
+    // cmp r0, #0
+    // bne _0222A3D2
+    // add sp, #0x20
+    // mov r0, #2
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl sub_0202C23C
+    // add r1, r7, #0
+    // add r2, r6, #0
+    // bl DWC_CreateFriendKeyToken
+    // ldr r2, [sp, #4]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl sub_0202C270
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // mov r2, #8
+    // mov r3, #2
+    // bl sub_0202C190
+    // add sp, #0x20
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add sp, #0x20
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r4, r4, #1
+    // cmp r4, #0x20
+    // blt _0222A378
+    // bl GF_AssertFail
+    // mov r0, #0
+    // add sp, #0x20
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222A414(void) {
     ((u32*)r0)[0x60] = r1;
     ((u32*)r0)[0x64] = 1;
 }
 
+
 void ov43_0222A41C(void) {
     ((u8*)r0)[0xb] = r1;
 }
 
+
 void ov43_0222A420(void) {
-    /* Original at 0x0222A420 */
-    /* Requires manual decompilation - 49 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r0, #0x10\n    mov r1, #0\n    mov r2, #0x48\n    bl memset\n    ldr r0, [r5, #4]\n    bl sub_0202C6F4\n    mov r4, #0\n    add r6, r5, #0\n    add r7, r5, #0\n    str r0, [sp]\n    str r4, [r5, #0x10]\n    add r6, #0x14\n    add r7, #0x10\n    ldr r0, [sp]\n    add r1, r4, #0\n    bl sub_0202C2DC\n    cmp r0, #1\n    bne _0222A482\n    ldr r0, [r5, #0x10]\n    add r1, r4, #0\n    add r0, r5, r0\n    strb r4, [r0, #0x18]\n    ldr r0, [sp]\n    mov r2, #8\n    bl sub_0202C090\n    cmp r0, #2\n    bne _0222A46C\n    ldr r0, [r5, #0x10]\n    add r1, r5, r0\n    add r1, #0x38\n    mov r0, #0xff\n    b _0222A47A\n    ldr r1, [r6]\n    ldr r0, [r5, #0x14]\n    add r1, r1, #1\n    str r1, [r6]\n    ldr r1, [r5, #0x10]\n    add r1, r5, r1\n    add r1, #0x38\n    strb r0, [r1]\n    ldr r0, [r7]\n    add r0, r0, #1\n    str r0, [r7]\n    add r4, r4, #1\n    cmp r4, #0x20\n    blt _0222A442\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // add r0, #0x10
+    // mov r1, #0
+    // mov r2, #0x48
+    // bl memset
+    // ldr r0, [r5, #4]
+    // bl sub_0202C6F4
+    // mov r4, #0
+    // add r6, r5, #0
+    // add r7, r5, #0
+    // str r0, [sp]
+    // str r4, [r5, #0x10]
+    // add r6, #0x14
+    // add r7, #0x10
+    // ldr r0, [sp]
+    // add r1, r4, #0
+    // bl sub_0202C2DC
+    // cmp r0, #1
+    // bne _0222A482
+    // ldr r0, [r5, #0x10]
+    // add r1, r4, #0
+    // add r0, r5, r0
+    // strb r4, [r0, #0x18]
+    // ldr r0, [sp]
+    // mov r2, #8
+    // bl sub_0202C090
+    // cmp r0, #2
+    // bne _0222A46C
+    // ldr r0, [r5, #0x10]
+    // add r1, r5, r0
+    // add r1, #0x38
+    // mov r0, #0xff
+    // b _0222A47A
+    // ldr r1, [r6]
+    // ldr r0, [r5, #0x14]
+    // add r1, r1, #1
+    // str r1, [r6]
+    // ldr r1, [r5, #0x10]
+    // add r1, r5, r1
+    // add r1, #0x38
+    // strb r0, [r1]
+    // ldr r0, [r7]
+    // add r0, r0, #1
+    // str r0, [r7]
+    // add r4, r4, #1
+    // cmp r4, #0x20
+    // blt _0222A442
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222A48C(void) {
-    /* Original at 0x0222A48C */
-    /* Requires manual decompilation - 44 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    ldr r0, _0222A4FC ; =gSystem + 0x60\n    mov r1, #1\n    add r4, r2, #0\n    strb r1, [r0, #9]\n    bl GfGfx_SwapDisplay\n    mov r0, #0x55\n    add r1, r4, #0\n    bl NARC_New\n    str r0, [r5, #0x58]\n    bl ov43_0222A550\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222A570\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222A690\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222A87C\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r4, #0\n    bl ov43_0222A8C0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222AC28\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222A998\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #1\n    bl TextFlags_SetCanABSpeedUpPrint\n    mov r0, #0\n    bl TextFlags_SetAutoScrollParam\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    pop {r4, r5, r6, pc}\n    nop\n    _0222A4FC: .word gSystem + 0x60"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // add r6, r1, #0
+    // ldr r0, _0222A4FC ; =gSystem + 0x60
+    // mov r1, #1
+    // add r4, r2, #0
+    // strb r1, [r0, #9]
+    // bl GfGfx_SwapDisplay
+    // mov r0, #0x55
+    // add r1, r4, #0
+    // bl NARC_New
+    // str r0, [r5, #0x58]
+    // bl ov43_0222A550
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222A570
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222A690
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222A87C
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // add r2, r4, #0
+    // bl ov43_0222A8C0
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222AC28
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222A998
+    // mov r0, #0x10
+    // mov r1, #1
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #1
+    // bl TextFlags_SetCanABSpeedUpPrint
+    // mov r0, #0
+    // bl TextFlags_SetAutoScrollParam
+    // mov r0, #0
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _0222A4FC: .word gSystem + 0x60
+    // TODO: decompile
 }
+
 
 void ov43_0222A500(void) {
     SpriteList_RenderAndAnimateSprites();
 }
+
 
 void ov43_0222A50C(void) {
     DoScheduledBgGpuUpdates();
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
 }
+
 
 void ov43_0222A520(void) {
     ov43_0222ACDC();
@@ -167,59 +745,395 @@ void ov43_0222A520(void) {
     NARC_Delete(*((u32*)(r4 + 0x58)));
 }
 
+
 void ov43_0222A550(void) {
     GfGfx_SetBanks(5);
 }
 
+
 void ov43_0222A570(void) {
-    /* Original at 0x0222A570 */
-    /* Requires manual decompilation - 112 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    add r7, r1, #0\n    add r5, r0, #0\n    add r0, r7, #0\n    bl BgConfig_Alloc\n    add r3, sp, #0x10\n    ldr r4, _0222A664 ; =ov43_0222EDC8\n    str r0, [r5]\n    add r2, r3, #0\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    add r0, r2, #0\n    bl SetBothScreensModesAndDisable\n    ldr r6, _0222A668 ; =ov43_0222EFFC\n    mov r4, #0\n    lsl r1, r4, #0x18\n    ldr r0, [r5]\n    lsr r1, r1, #0x18\n    add r2, r6, #0\n    mov r3, #0\n    bl InitBgFromTemplate\n    lsl r0, r4, #0x18\n    lsr r0, r0, #0x18\n    mov r1, #0x20\n    mov r2, #0\n    add r3, r7, #0\n    bl BG_ClearCharDataRange\n    lsl r1, r4, #0x18\n    ldr r0, [r5]\n    lsr r1, r1, #0x18\n    bl BgClearTilemapBufferAndCommit\n    add r4, r4, #1\n    add r6, #0x1c\n    cmp r4, #7\n    blt _0222A598\n    mov r0, #0x16\n    lsl r0, r0, #4\n    str r0, [sp]\n    str r7, [sp, #4]\n    mov r2, #0\n    ldr r0, [r5, #0x58]\n    mov r1, #5\n    add r3, r2, #0\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    mov r0, #0xa0\n    str r0, [sp]\n    str r7, [sp, #4]\n    mov r1, #4\n    ldr r0, [r5, #0x58]\n    add r2, r1, #0\n    mov r3, #0\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    mov r3, #0\n    str r3, [sp]\n    str r3, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    str r7, [sp, #0xc]\n    ldr r0, [r5, #0x58]\n    ldr r2, [r5]\n    mov r1, #7\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    str r7, [sp, #0xc]\n    ldr r0, [r5, #0x58]\n    ldr r2, [r5]\n    mov r1, #7\n    mov r3, #2\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    str r7, [sp, #0xc]\n    mov r1, #6\n    ldr r0, [r5, #0x58]\n    ldr r2, [r5]\n    add r3, r1, #0\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r3, #0\n    str r3, [sp]\n    str r3, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    str r7, [sp, #0xc]\n    ldr r0, [r5, #0x58]\n    ldr r2, [r5]\n    mov r1, #0xa\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    str r7, [sp, #0xc]\n    ldr r0, [r5, #0x58]\n    ldr r2, [r5]\n    mov r1, #8\n    mov r3, #6\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222A664: .word ov43_0222EDC8\n    _0222A668: .word ov43_0222EFFC"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x20
+    // add r7, r1, #0
+    // add r5, r0, #0
+    // add r0, r7, #0
+    // bl BgConfig_Alloc
+    // add r3, sp, #0x10
+    // ldr r4, _0222A664 ; =ov43_0222EDC8
+    // str r0, [r5]
+    // add r2, r3, #0
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // add r0, r2, #0
+    // bl SetBothScreensModesAndDisable
+    // ldr r6, _0222A668 ; =ov43_0222EFFC
+    // mov r4, #0
+    // lsl r1, r4, #0x18
+    // ldr r0, [r5]
+    // lsr r1, r1, #0x18
+    // add r2, r6, #0
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // lsl r0, r4, #0x18
+    // lsr r0, r0, #0x18
+    // mov r1, #0x20
+    // mov r2, #0
+    // add r3, r7, #0
+    // bl BG_ClearCharDataRange
+    // lsl r1, r4, #0x18
+    // ldr r0, [r5]
+    // lsr r1, r1, #0x18
+    // bl BgClearTilemapBufferAndCommit
+    // add r4, r4, #1
+    // add r6, #0x1c
+    // cmp r4, #7
+    // blt _0222A598
+    // mov r0, #0x16
+    // lsl r0, r0, #4
+    // str r0, [sp]
+    // str r7, [sp, #4]
+    // mov r2, #0
+    // ldr r0, [r5, #0x58]
+    // mov r1, #5
+    // add r3, r2, #0
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // mov r0, #0xa0
+    // str r0, [sp]
+    // str r7, [sp, #4]
+    // mov r1, #4
+    // ldr r0, [r5, #0x58]
+    // add r2, r1, #0
+    // mov r3, #0
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // mov r3, #0
+    // str r3, [sp]
+    // str r3, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // str r7, [sp, #0xc]
+    // ldr r0, [r5, #0x58]
+    // ldr r2, [r5]
+    // mov r1, #7
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // str r7, [sp, #0xc]
+    // ldr r0, [r5, #0x58]
+    // ldr r2, [r5]
+    // mov r1, #7
+    // mov r3, #2
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // str r7, [sp, #0xc]
+    // mov r1, #6
+    // ldr r0, [r5, #0x58]
+    // ldr r2, [r5]
+    // add r3, r1, #0
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r3, #0
+    // str r3, [sp]
+    // str r3, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // str r7, [sp, #0xc]
+    // ldr r0, [r5, #0x58]
+    // ldr r2, [r5]
+    // mov r1, #0xa
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // str r7, [sp, #0xc]
+    // ldr r0, [r5, #0x58]
+    // ldr r2, [r5]
+    // mov r1, #8
+    // mov r3, #6
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // add sp, #0x20
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222A664: .word ov43_0222EDC8
+    // _0222A668: .word ov43_0222EFFC
+    // TODO: decompile
 }
+
 
 void ov43_0222A66C(void) {
-    /* Original at 0x0222A66C */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r4, #0\n    lsl r1, r4, #0x18\n    ldr r0, [r5]\n    lsr r1, r1, #0x18\n    bl FreeBgTilemapBuffer\n    add r4, r4, #1\n    cmp r4, #7\n    blt _0222A672\n    ldr r0, [r5]\n    bl Heap_Free\n    mov r0, #0\n    str r0, [r5]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // mov r4, #0
+    // lsl r1, r4, #0x18
+    // ldr r0, [r5]
+    // lsr r1, r1, #0x18
+    // bl FreeBgTilemapBuffer
+    // add r4, r4, #1
+    // cmp r4, #7
+    // blt _0222A672
+    // ldr r0, [r5]
+    // bl Heap_Free
+    // mov r0, #0
+    // str r0, [r5]
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222A690(void) {
-    /* Original at 0x0222A690 */
-    /* Requires manual decompilation - 175 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x3c\n    add r7, r1, #0\n    add r6, r0, #0\n    bl NNS_G2dInitOamManagerModule\n    mov r0, #0x10\n    add r1, r7, #0\n    bl GF_CreateVramTransferManager\n    mov r0, #0\n    str r0, [sp]\n    mov r1, #0x7e\n    str r1, [sp, #4]\n    str r0, [sp, #8]\n    mov r3, #0x1e\n    str r3, [sp, #0xc]\n    add r2, r0, #0\n    str r7, [sp, #0x10]\n    bl OamManager_Create\n    ldr r4, _0222A814 ; =ov43_0222EDD8\n    add r3, sp, #0x2c\n    add r2, r3, #0\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    mov r1, #0x10\n    add r0, r2, #0\n    add r2, r1, #0\n    str r7, [sp, #0x38]\n    bl ObjCharTransfer_InitEx\n    mov r0, #0x40\n    add r1, r7, #0\n    bl ObjPlttTransfer_Init\n    bl ObjCharTransfer_ClearBuffers\n    bl ObjPlttTransfer_Reset\n    add r1, r6, #0\n    mov r0, #0x40\n    add r1, #0xbc\n    add r2, r7, #0\n    bl G2dRenderer_Init\n    str r0, [r6, #4]\n    add r0, r6, #0\n    add r3, r6, #0\n    ldr r1, _0222A818 ; =ov43_0222F0FC\n    add r0, #8\n    mov r2, #1\n    add r3, #0xbc\n    bl sub_0200B27C\n    mov r4, #0\n    add r5, r6, #0\n    mov r0, #0x40\n    add r1, r4, #0\n    add r2, r7, #0\n    bl Create2DGfxResObjMan\n    mov r1, #0x79\n    lsl r1, r1, #2\n    str r0, [r5, r1]\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #4\n    blt _0222A706\n    mov r0, #0x64\n    str r0, [sp]\n    mov r2, #1\n    str r2, [sp, #4]\n    str r7, [sp, #8]\n    add r0, r1, #0\n    ldr r0, [r6, r0]\n    ldr r1, [r6, #0x58]\n    add r3, r2, #0\n    bl AddCharResObjFromOpenNarc\n    add r1, r6, #0\n    add r1, #0xac\n    str r0, [r1]\n    mov r0, #0x64\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #5\n    str r0, [sp, #8]\n    mov r0, #0x7a\n    str r7, [sp, #0xc]\n    lsl r0, r0, #2\n    mov r2, #0\n    ldr r0, [r6, r0]\n    ldr r1, [r6, #0x58]\n    add r3, r2, #0\n    bl AddPlttResObjFromOpenNarc\n    add r1, r6, #0\n    add r1, #0xb0\n    str r0, [r1]\n    mov r0, #0x64\n    str r0, [sp]\n    mov r2, #2\n    str r2, [sp, #4]\n    mov r0, #0x7b\n    str r7, [sp, #8]\n    lsl r0, r0, #2\n    ldr r0, [r6, r0]\n    ldr r1, [r6, #0x58]\n    mov r3, #1\n    bl AddCellOrAnimResObjFromOpenNarc\n    add r1, r6, #0\n    add r1, #0xb4\n    str r0, [r1]\n    mov r0, #0x64\n    str r0, [sp]\n    mov r2, #3\n    str r2, [sp, #4]\n    mov r0, #0x1f\n    str r7, [sp, #8]\n    lsl r0, r0, #4\n    ldr r0, [r6, r0]\n    ldr r1, [r6, #0x58]\n    mov r3, #1\n    bl AddCellOrAnimResObjFromOpenNarc\n    add r1, r6, #0\n    add r1, #0xb8\n    str r0, [r1]\n    add r0, r6, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    bl sub_0200ADA4\n    cmp r0, #0\n    bne _0222A7AC\n    bl GF_AssertFail\n    add r0, r6, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    bl sub_0200B00C\n    cmp r0, #0\n    bne _0222A7BE\n    bl GF_AssertFail\n    add r0, r6, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    bl sub_0200A740\n    add r0, r6, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    bl sub_0200A740\n    mov r1, #0x64\n    add r0, r1, #0\n    mov r3, #0x79\n    str r1, [sp]\n    sub r0, #0x65\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    str r0, [sp, #0x10]\n    lsl r3, r3, #2\n    ldr r2, [r6, r3]\n    str r2, [sp, #0x14]\n    add r2, r3, #4\n    ldr r2, [r6, r2]\n    str r2, [sp, #0x18]\n    add r2, r3, #0\n    add r2, #8\n    ldr r2, [r6, r2]\n    add r3, #0xc\n    str r2, [sp, #0x1c]\n    ldr r2, [r6, r3]\n    add r6, #0x88\n    str r2, [sp, #0x20]\n    str r0, [sp, #0x24]\n    str r0, [sp, #0x28]\n    add r0, r6, #0\n    add r2, r1, #0\n    add r3, r1, #0\n    bl CreateSpriteResourcesHeader\n    add sp, #0x3c\n    pop {r4, r5, r6, r7, pc}\n    _0222A814: .word ov43_0222EDD8\n    _0222A818: .word ov43_0222F0FC"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x3c
+    // add r7, r1, #0
+    // add r6, r0, #0
+    // bl NNS_G2dInitOamManagerModule
+    // mov r0, #0x10
+    // add r1, r7, #0
+    // bl GF_CreateVramTransferManager
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r1, #0x7e
+    // str r1, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r3, #0x1e
+    // str r3, [sp, #0xc]
+    // add r2, r0, #0
+    // str r7, [sp, #0x10]
+    // bl OamManager_Create
+    // ldr r4, _0222A814 ; =ov43_0222EDD8
+    // add r3, sp, #0x2c
+    // add r2, r3, #0
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // mov r1, #0x10
+    // add r0, r2, #0
+    // add r2, r1, #0
+    // str r7, [sp, #0x38]
+    // bl ObjCharTransfer_InitEx
+    // mov r0, #0x40
+    // add r1, r7, #0
+    // bl ObjPlttTransfer_Init
+    // bl ObjCharTransfer_ClearBuffers
+    // bl ObjPlttTransfer_Reset
+    // add r1, r6, #0
+    // mov r0, #0x40
+    // add r1, #0xbc
+    // add r2, r7, #0
+    // bl G2dRenderer_Init
+    // str r0, [r6, #4]
+    // add r0, r6, #0
+    // add r3, r6, #0
+    // ldr r1, _0222A818 ; =ov43_0222F0FC
+    // add r0, #8
+    // mov r2, #1
+    // add r3, #0xbc
+    // bl sub_0200B27C
+    // mov r4, #0
+    // add r5, r6, #0
+    // mov r0, #0x40
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // bl Create2DGfxResObjMan
+    // mov r1, #0x79
+    // lsl r1, r1, #2
+    // str r0, [r5, r1]
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #4
+    // blt _0222A706
+    // mov r0, #0x64
+    // str r0, [sp]
+    // mov r2, #1
+    // str r2, [sp, #4]
+    // str r7, [sp, #8]
+    // add r0, r1, #0
+    // ldr r0, [r6, r0]
+    // ldr r1, [r6, #0x58]
+    // add r3, r2, #0
+    // bl AddCharResObjFromOpenNarc
+    // add r1, r6, #0
+    // add r1, #0xac
+    // str r0, [r1]
+    // mov r0, #0x64
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #5
+    // str r0, [sp, #8]
+    // mov r0, #0x7a
+    // str r7, [sp, #0xc]
+    // lsl r0, r0, #2
+    // mov r2, #0
+    // ldr r0, [r6, r0]
+    // ldr r1, [r6, #0x58]
+    // add r3, r2, #0
+    // bl AddPlttResObjFromOpenNarc
+    // add r1, r6, #0
+    // add r1, #0xb0
+    // str r0, [r1]
+    // mov r0, #0x64
+    // str r0, [sp]
+    // mov r2, #2
+    // str r2, [sp, #4]
+    // mov r0, #0x7b
+    // str r7, [sp, #8]
+    // lsl r0, r0, #2
+    // ldr r0, [r6, r0]
+    // ldr r1, [r6, #0x58]
+    // mov r3, #1
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // add r1, r6, #0
+    // add r1, #0xb4
+    // str r0, [r1]
+    // mov r0, #0x64
+    // str r0, [sp]
+    // mov r2, #3
+    // str r2, [sp, #4]
+    // mov r0, #0x1f
+    // str r7, [sp, #8]
+    // lsl r0, r0, #4
+    // ldr r0, [r6, r0]
+    // ldr r1, [r6, #0x58]
+    // mov r3, #1
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // add r1, r6, #0
+    // add r1, #0xb8
+    // str r0, [r1]
+    // add r0, r6, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // bl sub_0200ADA4
+    // cmp r0, #0
+    // bne _0222A7AC
+    // bl GF_AssertFail
+    // add r0, r6, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // bl sub_0200B00C
+    // cmp r0, #0
+    // bne _0222A7BE
+    // bl GF_AssertFail
+    // add r0, r6, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // bl sub_0200A740
+    // add r0, r6, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // bl sub_0200A740
+    // mov r1, #0x64
+    // add r0, r1, #0
+    // mov r3, #0x79
+    // str r1, [sp]
+    // sub r0, #0x65
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // lsl r3, r3, #2
+    // ldr r2, [r6, r3]
+    // str r2, [sp, #0x14]
+    // add r2, r3, #4
+    // ldr r2, [r6, r2]
+    // str r2, [sp, #0x18]
+    // add r2, r3, #0
+    // add r2, #8
+    // ldr r2, [r6, r2]
+    // add r3, #0xc
+    // str r2, [sp, #0x1c]
+    // ldr r2, [r6, r3]
+    // add r6, #0x88
+    // str r2, [sp, #0x20]
+    // str r0, [sp, #0x24]
+    // str r0, [sp, #0x28]
+    // add r0, r6, #0
+    // add r2, r1, #0
+    // add r3, r1, #0
+    // bl CreateSpriteResourcesHeader
+    // add sp, #0x3c
+    // pop {r4, r5, r6, r7, pc}
+    // _0222A814: .word ov43_0222EDD8
+    // _0222A818: .word ov43_0222F0FC
+    // TODO: decompile
 }
+
 
 void ov43_0222A81C(void) {
-    /* Original at 0x0222A81C */
-    /* Requires manual decompilation - 39 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    bl sub_0200AEB0\n    add r0, r7, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    bl sub_0200B0A8\n    mov r6, #0x79\n    mov r4, #0\n    add r5, r7, #0\n    lsl r6, r6, #2\n    add r1, r5, #0\n    add r1, #0xac\n    ldr r0, [r5, r6]\n    ldr r1, [r1]\n    bl DestroySingle2DGfxResObj\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #4\n    blt _0222A83A\n    mov r6, #0x79\n    mov r5, #0\n    add r4, r7, #0\n    lsl r6, r6, #2\n    ldr r0, [r4, r6]\n    bl Destroy2DGfxResObjMan\n    add r5, r5, #1\n    add r4, r4, #4\n    cmp r5, #4\n    blt _0222A856\n    ldr r0, [r7, #4]\n    bl SpriteList_Delete\n    bl ObjCharTransfer_Destroy\n    bl ObjPlttTransfer_Destroy\n    bl OamManager_Free\n    bl GF_DestroyVramTransferManager\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r7, r0, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // bl sub_0200AEB0
+    // add r0, r7, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // bl sub_0200B0A8
+    // mov r6, #0x79
+    // mov r4, #0
+    // add r5, r7, #0
+    // lsl r6, r6, #2
+    // add r1, r5, #0
+    // add r1, #0xac
+    // ldr r0, [r5, r6]
+    // ldr r1, [r1]
+    // bl DestroySingle2DGfxResObj
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #4
+    // blt _0222A83A
+    // mov r6, #0x79
+    // mov r5, #0
+    // add r4, r7, #0
+    // lsl r6, r6, #2
+    // ldr r0, [r4, r6]
+    // bl Destroy2DGfxResObjMan
+    // add r5, r5, #1
+    // add r4, r4, #4
+    // cmp r5, #4
+    // blt _0222A856
+    // ldr r0, [r7, #4]
+    // bl SpriteList_Delete
+    // bl ObjCharTransfer_Destroy
+    // bl ObjPlttTransfer_Destroy
+    // bl OamManager_Free
+    // bl GF_DestroyVramTransferManager
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222A87C(void) {
-    /* Original at 0x0222A87C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl MessageFormat_New\n    str r0, [r5, #0x50]\n    ldr r2, _0222A8A4 ; =0x0000030B\n    mov r0, #0\n    mov r1, #0x1b\n    add r3, r4, #0\n    bl NewMsgDataFromNarc\n    str r0, [r5, #0x54]\n    mov r0, #4\n    add r1, r4, #0\n    bl FontID_Alloc\n    pop {r3, r4, r5, pc}\n    nop\n    _0222A8A4: .word 0x0000030B"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl MessageFormat_New
+    // str r0, [r5, #0x50]
+    // ldr r2, _0222A8A4 ; =0x0000030B
+    // mov r0, #0
+    // mov r1, #0x1b
+    // add r3, r4, #0
+    // bl NewMsgDataFromNarc
+    // str r0, [r5, #0x54]
+    // mov r0, #4
+    // add r1, r4, #0
+    // bl FontID_Alloc
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _0222A8A4: .word 0x0000030B
+    // TODO: decompile
 }
+
 
 void ov43_0222A8A8(void) {
     FontID_Release(4);
@@ -227,15 +1141,79 @@ void ov43_0222A8A8(void) {
     MessageFormat_Delete(*((u32*)(r4 + 0x50)));
 }
 
+
 void ov43_0222A8C0(void) {
-    /* Original at 0x0222A8C0 */
-    /* Requires manual decompilation - 68 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x14\n    add r6, r1, #0\n    mov r1, #0x16\n    add r5, r0, #0\n    mov r0, #0\n    lsl r1, r1, #4\n    add r4, r2, #0\n    bl LoadFontPal1\n    mov r1, #7\n    mov r0, #4\n    lsl r1, r1, #6\n    add r2, r4, #0\n    bl LoadFontPal1\n    ldrb r0, [r6, #0xd]\n    mov r1, #1\n    mov r2, #0x46\n    str r0, [sp]\n    str r4, [sp, #4]\n    ldr r0, [r5]\n    mov r3, #0xc\n    bl LoadUserFrameGfx2\n    add r0, r5, #0\n    add r0, #0x64\n    bl InitWindow\n    mov r0, #0\n    str r0, [sp]\n    mov r0, #0x18\n    str r0, [sp, #4]\n    mov r0, #3\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    mov r0, #0x64\n    str r0, [sp, #0x10]\n    add r1, r5, #0\n    mov r2, #1\n    ldr r0, [r5]\n    add r1, #0x64\n    add r3, r2, #0\n    bl AddWindowParameterized\n    mov r0, #0x80\n    add r1, r4, #0\n    bl String_New\n    str r0, [r5, #0x74]\n    mov r0, #0x80\n    add r1, r4, #0\n    bl String_New\n    str r0, [r5, #0x78]\n    mov r0, #0x80\n    add r1, r4, #0\n    bl String_New\n    str r0, [r5, #0x7c]\n    mov r0, #0x80\n    add r1, r4, #0\n    bl String_New\n    add r1, r5, #0\n    add r1, #0x80\n    str r0, [r1]\n    add r0, r4, #0\n    mov r1, #0\n    bl TouchscreenListMenuSpawner_Create\n    str r0, [r5, #0x5c]\n    add r0, r4, #0\n    bl YesNoPrompt_Create\n    str r0, [r5, #0x60]\n    add sp, #0x14\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0x14
+    // add r6, r1, #0
+    // mov r1, #0x16
+    // add r5, r0, #0
+    // mov r0, #0
+    // lsl r1, r1, #4
+    // add r4, r2, #0
+    // bl LoadFontPal1
+    // mov r1, #7
+    // mov r0, #4
+    // lsl r1, r1, #6
+    // add r2, r4, #0
+    // bl LoadFontPal1
+    // ldrb r0, [r6, #0xd]
+    // mov r1, #1
+    // mov r2, #0x46
+    // str r0, [sp]
+    // str r4, [sp, #4]
+    // ldr r0, [r5]
+    // mov r3, #0xc
+    // bl LoadUserFrameGfx2
+    // add r0, r5, #0
+    // add r0, #0x64
+    // bl InitWindow
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r0, #0x18
+    // str r0, [sp, #4]
+    // mov r0, #3
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // mov r0, #0x64
+    // str r0, [sp, #0x10]
+    // add r1, r5, #0
+    // mov r2, #1
+    // ldr r0, [r5]
+    // add r1, #0x64
+    // add r3, r2, #0
+    // bl AddWindowParameterized
+    // mov r0, #0x80
+    // add r1, r4, #0
+    // bl String_New
+    // str r0, [r5, #0x74]
+    // mov r0, #0x80
+    // add r1, r4, #0
+    // bl String_New
+    // str r0, [r5, #0x78]
+    // mov r0, #0x80
+    // add r1, r4, #0
+    // bl String_New
+    // str r0, [r5, #0x7c]
+    // mov r0, #0x80
+    // add r1, r4, #0
+    // bl String_New
+    // add r1, r5, #0
+    // add r1, #0x80
+    // str r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl TouchscreenListMenuSpawner_Create
+    // str r0, [r5, #0x5c]
+    // add r0, r4, #0
+    // bl YesNoPrompt_Create
+    // str r0, [r5, #0x60]
+    // add sp, #0x14
+    // pop {r3, r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222A960(void) {
     YesNoPrompt_Destroy(*((u32*)(r0 + 0x60)));
@@ -247,49 +1225,187 @@ void ov43_0222A960(void) {
     RemoveWindow(r4);
 }
 
+
 void ov43_0222A998(void) {
-    /* Original at 0x0222A998 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    str r1, [sp, #8]\n    mov r1, #0x82\n    lsl r1, r1, #2\n    ldr r4, _0222A9D4 ; =ov43_0222F0C0\n    str r0, [sp, #4]\n    mov r7, #0\n    add r6, r0, r1\n    add r5, r0, #0\n    ldr r0, [sp, #8]\n    mov r2, #1\n    str r0, [sp]\n    ldr r0, [sp, #4]\n    ldrb r1, [r4]\n    ldr r0, [r0, #0x58]\n    add r3, r6, #0\n    bl GfGfxLoader_GetScrnDataFromOpenNarc\n    mov r1, #2\n    lsl r1, r1, #8\n    str r0, [r5, r1]\n    add r7, r7, #1\n    add r6, r6, #4\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r7, #2\n    blt _0222A9AC\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _0222A9D4: .word ov43_0222F0C0"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // str r1, [sp, #8]
+    // mov r1, #0x82
+    // lsl r1, r1, #2
+    // ldr r4, _0222A9D4 ; =ov43_0222F0C0
+    // str r0, [sp, #4]
+    // mov r7, #0
+    // add r6, r0, r1
+    // add r5, r0, #0
+    // ldr r0, [sp, #8]
+    // mov r2, #1
+    // str r0, [sp]
+    // ldr r0, [sp, #4]
+    // ldrb r1, [r4]
+    // ldr r0, [r0, #0x58]
+    // add r3, r6, #0
+    // bl GfGfxLoader_GetScrnDataFromOpenNarc
+    // mov r1, #2
+    // lsl r1, r1, #8
+    // str r0, [r5, r1]
+    // add r7, r7, #1
+    // add r6, r6, #4
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r7, #2
+    // blt _0222A9AC
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // _0222A9D4: .word ov43_0222F0C0
+    // TODO: decompile
 }
+
 
 void ov43_0222A9D8(void) {
     Heap_Free(0, 2);
 }
 
+
 void ov43_0222A9F4(void) {
-    /* Original at 0x0222A9F4 */
-    /* Requires manual decompilation - 52 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    add r0, #0x84\n    ldr r0, [r0]\n    add r4, r1, #0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    add r6, r2, #0\n    bl TextPrinterCheckActive\n    cmp r0, #1\n    bne _0222AA22\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    add r0, r5, #0\n    add r0, #0x84\n    ldr r0, [r0]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl RemoveTextPrinter\n    add r0, r4, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    ldr r0, [r5, #0x54]\n    ldr r2, [r5, #0x78]\n    add r1, r6, #0\n    bl ReadMsgDataIntoString\n    ldr r0, [r5, #0x50]\n    ldr r1, [r5, #0x74]\n    ldr r2, [r5, #0x78]\n    bl StringExpandPlaceholders\n    mov r0, #1\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    mov r0, #4\n    str r0, [sp]\n    mov r0, #2\n    str r0, [sp, #4]\n    ldr r0, _0222AA6C ; =0x000F0200\n    mov r3, #0\n    str r0, [sp, #8]\n    str r3, [sp, #0xc]\n    ldr r2, [r5, #0x74]\n    add r0, r4, #0\n    mov r1, #1\n    bl AddTextPrinterParameterizedWithColor\n    add r5, #0x84\n    str r0, [r5]\n    add r0, r4, #0\n    bl ScheduleWindowCopyToVram\n    add sp, #0x10\n    pop {r4, r5, r6, pc}\n    _0222AA6C: .word 0x000F0200"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // add r0, #0x84
+    // ldr r0, [r0]
+    // add r4, r1, #0
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // add r6, r2, #0
+    // bl TextPrinterCheckActive
+    // cmp r0, #1
+    // bne _0222AA22
+    // mov r0, #0
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // add r0, r5, #0
+    // add r0, #0x84
+    // ldr r0, [r0]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl RemoveTextPrinter
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // ldr r0, [r5, #0x54]
+    // ldr r2, [r5, #0x78]
+    // add r1, r6, #0
+    // bl ReadMsgDataIntoString
+    // ldr r0, [r5, #0x50]
+    // ldr r1, [r5, #0x74]
+    // ldr r2, [r5, #0x78]
+    // bl StringExpandPlaceholders
+    // mov r0, #1
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // mov r0, #4
+    // str r0, [sp]
+    // mov r0, #2
+    // str r0, [sp, #4]
+    // ldr r0, _0222AA6C ; =0x000F0200
+    // mov r3, #0
+    // str r0, [sp, #8]
+    // str r3, [sp, #0xc]
+    // ldr r2, [r5, #0x74]
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl AddTextPrinterParameterizedWithColor
+    // add r5, #0x84
+    // str r0, [r5]
+    // add r0, r4, #0
+    // bl ScheduleWindowCopyToVram
+    // add sp, #0x10
+    // pop {r4, r5, r6, pc}
+    // _0222AA6C: .word 0x000F0200
+    // TODO: decompile
 }
+
 
 void ov43_0222AA70(void) {
-    /* Original at 0x0222AA70 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x84\n    ldr r0, [r0]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #1\n    bne _0222AA98\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    add r0, r4, #0\n    add r0, #0x84\n    ldr r0, [r0]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl RemoveTextPrinter\n    add r4, #0x64\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r0, #0x84
+    // ldr r0, [r0]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl TextPrinterCheckActive
+    // cmp r0, #1
+    // bne _0222AA98
+    // mov r0, #0
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // add r0, r4, #0
+    // add r0, #0x84
+    // ldr r0, [r0]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl RemoveTextPrinter
+    // add r4, #0x64
+    // add r0, r4, #0
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222AAA4(void) {
-    /* Original at 0x0222AAA4 */
-    /* Requires manual decompilation - 53 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #8\n    add r6, r2, #0\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r2, _0222AB18 ; =0x05F5E100\n    add r0, r4, #0\n    add r1, r6, #0\n    mov r3, #0\n    bl _ll_udiv\n    add r2, r0, #0\n    mov r0, #2\n    str r0, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    ldr r0, [r5, #0x50]\n    mov r3, #4\n    bl BufferIntegerAsString\n    ldr r2, _0222AB1C ; =0x00002710\n    add r0, r4, #0\n    add r1, r6, #0\n    mov r3, #0\n    bl _ll_udiv\n    ldr r2, _0222AB1C ; =0x00002710\n    mov r3, #0\n    bl _ull_mod\n    mov r1, #2\n    add r2, r0, #0\n    str r1, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    ldr r0, [r5, #0x50]\n    mov r3, #4\n    bl BufferIntegerAsString\n    ldr r2, _0222AB1C ; =0x00002710\n    add r0, r4, #0\n    add r1, r6, #0\n    mov r3, #0\n    bl _ull_mod\n    add r2, r0, #0\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    ldr r0, [r5, #0x50]\n    mov r1, #3\n    mov r3, #4\n    bl BufferIntegerAsString\n    add sp, #8\n    pop {r4, r5, r6, pc}\n    nop\n    _0222AB18: .word 0x05F5E100\n    _0222AB1C: .word 0x00002710"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #8
+    // add r6, r2, #0
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // ldr r2, _0222AB18 ; =0x05F5E100
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // mov r3, #0
+    // bl _ll_udiv
+    // add r2, r0, #0
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // ldr r0, [r5, #0x50]
+    // mov r3, #4
+    // bl BufferIntegerAsString
+    // ldr r2, _0222AB1C ; =0x00002710
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // mov r3, #0
+    // bl _ll_udiv
+    // ldr r2, _0222AB1C ; =0x00002710
+    // mov r3, #0
+    // bl _ull_mod
+    // mov r1, #2
+    // add r2, r0, #0
+    // str r1, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // ldr r0, [r5, #0x50]
+    // mov r3, #4
+    // bl BufferIntegerAsString
+    // ldr r2, _0222AB1C ; =0x00002710
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // mov r3, #0
+    // bl _ull_mod
+    // add r2, r0, #0
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // ldr r0, [r5, #0x50]
+    // mov r1, #3
+    // mov r3, #4
+    // bl BufferIntegerAsString
+    // add sp, #8
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _0222AB18: .word 0x05F5E100
+    // _0222AB1C: .word 0x00002710
+    // TODO: decompile
 }
+
 
 void ov43_0222AB20(void) {
     sub_0202C6F4(r1);
@@ -300,6 +1416,7 @@ void ov43_0222AB20(void) {
     Heap_Free(r5);
 }
 
+
 void ov43_0222AB5C(void) {
     PlayerProfile_New(r3);
     sub_0202C6F4(r6);
@@ -309,135 +1426,731 @@ void ov43_0222AB5C(void) {
     Heap_Free(r4);
 }
 
+
 void ov43_0222AB94(void) {
-    /* Original at 0x0222AB94 */
-    /* Requires manual decompilation - 45 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r5, r0, #0\n    add r4, r2, #0\n    add r0, r1, #0\n    bl sub_0202C6F4\n    add r1, r4, #0\n    mov r2, #6\n    add r7, r0, #0\n    mov r6, #1\n    bl sub_0202C090\n    add r2, r0, #0\n    bne _0222ABB4\n    mov r6, #0\n    mov r0, #0\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r1, #2\n    ldr r0, [r5, #0x50]\n    add r3, r1, #0\n    bl BufferIntegerAsString\n    add r0, r7, #0\n    add r1, r4, #0\n    mov r2, #4\n    bl sub_0202C090\n    mov r1, #0\n    add r2, r0, #0\n    str r1, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    ldr r0, [r5, #0x50]\n    mov r3, #4\n    bl BufferIntegerAsString\n    add r0, r7, #0\n    add r1, r4, #0\n    mov r2, #5\n    bl sub_0202C090\n    add r2, r0, #0\n    ldr r0, [r5, #0x50]\n    mov r1, #1\n    bl BufferMonthNameAbbr\n    add r0, r6, #0\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r5, r0, #0
+    // add r4, r2, #0
+    // add r0, r1, #0
+    // bl sub_0202C6F4
+    // add r1, r4, #0
+    // mov r2, #6
+    // add r7, r0, #0
+    // mov r6, #1
+    // bl sub_0202C090
+    // add r2, r0, #0
+    // bne _0222ABB4
+    // mov r6, #0
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r1, #2
+    // ldr r0, [r5, #0x50]
+    // add r3, r1, #0
+    // bl BufferIntegerAsString
+    // add r0, r7, #0
+    // add r1, r4, #0
+    // mov r2, #4
+    // bl sub_0202C090
+    // mov r1, #0
+    // add r2, r0, #0
+    // str r1, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // ldr r0, [r5, #0x50]
+    // mov r3, #4
+    // bl BufferIntegerAsString
+    // add r0, r7, #0
+    // add r1, r4, #0
+    // mov r2, #5
+    // bl sub_0202C090
+    // add r2, r0, #0
+    // ldr r0, [r5, #0x50]
+    // mov r1, #1
+    // bl BufferMonthNameAbbr
+    // add r0, r6, #0
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222ABFC(void) {
     BufferIntegerAsString(0, 1, 4);
 }
 
+
 void ov43_0222AC18(void) {
-    /* Original at 0x0222AC18 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r3, _0222AC24 ; =BufferWiFiPlazaActivityName\n    add r2, r1, #0\n    ldr r0, [r0, #0x50]\n    mov r1, #0\n    bx r3\n    nop\n    _0222AC24: .word BufferWiFiPlazaActivityName"
-    );
-    #endif
+    // ldr r3, _0222AC24 ; =BufferWiFiPlazaActivityName
+    // add r2, r1, #0
+    // ldr r0, [r0, #0x50]
+    // mov r1, #0
+    // bx r3
+    // nop
+    // _0222AC24: .word BufferWiFiPlazaActivityName
+    // TODO: decompile
 }
+
 
 void ov43_0222AC28(void) {
-    /* Original at 0x0222AC28 */
-    /* Requires manual decompilation - 80 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    str r0, [sp]\n    ldr r5, [sp]\n    mov r0, #0\n    str r0, [sp, #8]\n    ldr r4, _0222ACD0 ; =ov43_0222F14C\n    add r0, r5, #0\n    str r0, [sp, #0xc]\n    add r0, #0x88\n    str r1, [sp, #4]\n    add r7, r4, #0\n    mov r6, #5\n    str r0, [sp, #0xc]\n    ldr r0, [sp]\n    ldr r0, [r0, #4]\n    str r0, [r4]\n    ldr r0, [sp, #0xc]\n    str r0, [r4, #4]\n    ldr r0, [sp, #4]\n    str r0, [r4, #0x2c]\n    add r0, r7, #0\n    bl Sprite_CreateAffine\n    mov r1, #0x7d\n    lsl r1, r1, #2\n    str r0, [r5, r1]\n    add r0, r1, #0\n    ldr r0, [r5, r0]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    mov r0, #0x7d\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    mov r0, #0x7d\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    add r1, r6, #0\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, [sp, #8]\n    add r4, #0x30\n    add r0, r0, #1\n    add r7, #0x30\n    add r5, r5, #4\n    add r6, r6, #2\n    str r0, [sp, #8]\n    cmp r0, #2\n    blt _0222AC44\n    ldr r0, [sp]\n    ldr r1, _0222ACD4 ; =ov43_0222F160\n    ldr r0, [r0, #4]\n    str r0, [r1, #0x4c]\n    ldr r0, [sp]\n    add r0, #0x88\n    str r0, [r1, #0x50]\n    ldr r0, [sp, #4]\n    str r0, [r1, #0x78]\n    ldr r0, _0222ACD8 ; =ov43_0222F1AC\n    bl Sprite_CreateAffine\n    mov r2, #0x7f\n    ldr r1, [sp]\n    lsl r2, r2, #2\n    str r0, [r1, r2]\n    add r0, r1, #0\n    ldr r0, [r0, r2]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    mov r1, #0x7f\n    ldr r0, [sp]\n    lsl r1, r1, #2\n    ldr r0, [r0, r1]\n    mov r1, #1\n    bl Sprite_SetAnimCtrlSeq\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222ACD0: .word ov43_0222F14C\n    _0222ACD4: .word ov43_0222F160\n    _0222ACD8: .word ov43_0222F1AC"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // str r0, [sp]
+    // ldr r5, [sp]
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // ldr r4, _0222ACD0 ; =ov43_0222F14C
+    // add r0, r5, #0
+    // str r0, [sp, #0xc]
+    // add r0, #0x88
+    // str r1, [sp, #4]
+    // add r7, r4, #0
+    // mov r6, #5
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp]
+    // ldr r0, [r0, #4]
+    // str r0, [r4]
+    // ldr r0, [sp, #0xc]
+    // str r0, [r4, #4]
+    // ldr r0, [sp, #4]
+    // str r0, [r4, #0x2c]
+    // add r0, r7, #0
+    // bl Sprite_CreateAffine
+    // mov r1, #0x7d
+    // lsl r1, r1, #2
+    // str r0, [r5, r1]
+    // add r0, r1, #0
+    // ldr r0, [r5, r0]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // mov r0, #0x7d
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #0
+    // bl Sprite_SetDrawFlag
+    // mov r0, #0x7d
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // add r1, r6, #0
+    // bl Sprite_SetAnimCtrlSeq
+    // ldr r0, [sp, #8]
+    // add r4, #0x30
+    // add r0, r0, #1
+    // add r7, #0x30
+    // add r5, r5, #4
+    // add r6, r6, #2
+    // str r0, [sp, #8]
+    // cmp r0, #2
+    // blt _0222AC44
+    // ldr r0, [sp]
+    // ldr r1, _0222ACD4 ; =ov43_0222F160
+    // ldr r0, [r0, #4]
+    // str r0, [r1, #0x4c]
+    // ldr r0, [sp]
+    // add r0, #0x88
+    // str r0, [r1, #0x50]
+    // ldr r0, [sp, #4]
+    // str r0, [r1, #0x78]
+    // ldr r0, _0222ACD8 ; =ov43_0222F1AC
+    // bl Sprite_CreateAffine
+    // mov r2, #0x7f
+    // ldr r1, [sp]
+    // lsl r2, r2, #2
+    // str r0, [r1, r2]
+    // add r0, r1, #0
+    // ldr r0, [r0, r2]
+    // mov r1, #0
+    // bl Sprite_SetDrawFlag
+    // mov r1, #0x7f
+    // ldr r0, [sp]
+    // lsl r1, r1, #2
+    // ldr r0, [r0, r1]
+    // mov r1, #1
+    // bl Sprite_SetAnimCtrlSeq
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222ACD0: .word ov43_0222F14C
+    // _0222ACD4: .word ov43_0222F160
+    // _0222ACD8: .word ov43_0222F1AC
+    // TODO: decompile
 }
 
+
 void ov43_0222ACDC(void) {
-    /* Original at 0x0222ACDC */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    bl Sprite_Delete\n    mov r6, #0x7d\n    mov r4, #0\n    lsl r6, r6, #2\n    ldr r0, [r5, r6]\n    bl Sprite_Delete\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #2\n    blt _0222ACF0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // bl Sprite_Delete
+    // mov r6, #0x7d
+    // mov r4, #0
+    // lsl r6, r6, #2
+    // ldr r0, [r5, r6]
+    // bl Sprite_Delete
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #2
+    // blt _0222ACF0
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222AD00(void) {
     Sprite_SetDrawFlag(0, 0x7d);
 }
 
+
 void ov43_0222AD20(void) {
     Sprite_SetAnimActiveFlag(0, 0x7d);
 }
 
+
 void ov43_0222AD40(void) {
-    /* Original at 0x0222AD40 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r2, #0\n    lsl r2, r1, #0x19\n    lsr r6, r2, #0x18\n    cmp r1, #2\n    blo _0222AD52\n    sub r1, r1, #2\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    mov r2, #0x7d\n    lsl r2, r2, #2\n    lsl r4, r1, #2\n    add r5, r0, r2\n    ldr r0, [r5, r4]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    add r1, r6, #5\n    ldr r0, [r5, r4]\n    add r1, r1, r7\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, [r5, r4]\n    bl Sprite_ResetAnimCtrlState\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r7, r2, #0
+    // lsl r2, r1, #0x19
+    // lsr r6, r2, #0x18
+    // cmp r1, #2
+    // blo _0222AD52
+    // sub r1, r1, #2
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x18
+    // mov r2, #0x7d
+    // lsl r2, r2, #2
+    // lsl r4, r1, #2
+    // add r5, r0, r2
+    // ldr r0, [r5, r4]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // add r1, r6, #5
+    // ldr r0, [r5, r4]
+    // add r1, r1, r7
+    // bl Sprite_SetAnimCtrlSeq
+    // ldr r0, [r5, r4]
+    // bl Sprite_ResetAnimCtrlState
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222AD74(void) {
-    /* Original at 0x0222AD74 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    cmp r2, #0xff\n    beq _0222AD8A\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    add r1, r2, #0\n    bl Sprite_SetAnimCtrlSeq\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    add r1, r4, #0\n    bl Sprite_SetDrawFlag\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // cmp r2, #0xff
+    // beq _0222AD8A
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // add r1, r2, #0
+    // bl Sprite_SetAnimCtrlSeq
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // add r1, r4, #0
+    // bl Sprite_SetDrawFlag
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222AD98(void) {
-    /* Original at 0x0222AD98 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    add r4, r2, #0\n    bl Sprite_SetPriority\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    add r1, r4, #0\n    bl Sprite_SetDrawPriority\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // add r4, r2, #0
+    // bl Sprite_SetPriority
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // add r1, r4, #0
+    // bl Sprite_SetDrawPriority
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222ADB8(void) {
-    /* Original at 0x0222ADB8 */
-    /* Requires manual decompilation - 55 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x18\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    add r0, sp, #4\n    mov r1, #0\n    mov r2, #0x14\n    bl MI_CpuFill8\n    ldr r0, [r4]\n    mov r1, #0x19\n    str r0, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    mov r0, #0xa\n    str r0, [sp, #0xc]\n    mov r0, #0xd\n    str r0, [sp, #0x10]\n    add r0, sp, #4\n    strb r1, [r0, #0x10]\n    mov r1, #9\n    strb r1, [r0, #0x11]\n    ldrb r1, [r0, #0x12]\n    mov r2, #0xf\n    bic r1, r2\n    ldr r2, [r5]\n    lsl r2, r2, #0x18\n    lsr r3, r2, #0x18\n    mov r2, #0xf\n    and r2, r3\n    orr r1, r2\n    strb r1, [r0, #0x12]\n    ldrb r1, [r0, #0x12]\n    mov r2, #0xf0\n    bic r1, r2\n    lsl r2, r6, #0x18\n    lsr r2, r2, #0x18\n    lsl r2, r2, #0x1c\n    lsr r2, r2, #0x18\n    orr r1, r2\n    strb r1, [r0, #0x12]\n    mov r1, #0\n    strb r1, [r0, #0x13]\n    ldr r0, [r4, #0x60]\n    add r1, sp, #4\n    bl YesNoPrompt_InitFromTemplate\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #4\n    mov r1, #8\n    mov r2, #0\n    mov r3, #0x3d\n    bl StartBrightnessTransition\n    add sp, #0x18\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x18
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // add r6, r2, #0
+    // add r0, sp, #4
+    // mov r1, #0
+    // mov r2, #0x14
+    // bl MI_CpuFill8
+    // ldr r0, [r4]
+    // mov r1, #0x19
+    // str r0, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // mov r0, #0xa
+    // str r0, [sp, #0xc]
+    // mov r0, #0xd
+    // str r0, [sp, #0x10]
+    // add r0, sp, #4
+    // strb r1, [r0, #0x10]
+    // mov r1, #9
+    // strb r1, [r0, #0x11]
+    // ldrb r1, [r0, #0x12]
+    // mov r2, #0xf
+    // bic r1, r2
+    // ldr r2, [r5]
+    // lsl r2, r2, #0x18
+    // lsr r3, r2, #0x18
+    // mov r2, #0xf
+    // and r2, r3
+    // orr r1, r2
+    // strb r1, [r0, #0x12]
+    // ldrb r1, [r0, #0x12]
+    // mov r2, #0xf0
+    // bic r1, r2
+    // lsl r2, r6, #0x18
+    // lsr r2, r2, #0x18
+    // lsl r2, r2, #0x1c
+    // lsr r2, r2, #0x18
+    // orr r1, r2
+    // strb r1, [r0, #0x12]
+    // mov r1, #0
+    // strb r1, [r0, #0x13]
+    // ldr r0, [r4, #0x60]
+    // add r1, sp, #4
+    // bl YesNoPrompt_InitFromTemplate
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #4
+    // mov r1, #8
+    // mov r2, #0
+    // mov r3, #0x3d
+    // bl StartBrightnessTransition
+    // add sp, #0x18
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222AE2C(void) {
-    /* Original at 0x0222AE2C */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0x60]\n    bl YesNoPrompt_HandleInput\n    add r6, r0, #0\n    sub r0, r6, #1\n    cmp r0, #1\n    bhi _0222AE58\n    ldr r0, [r4, #0x60]\n    bl YesNoPrompt_IsInTouchMode\n    str r0, [r5]\n    ldr r0, [r4, #0x60]\n    bl YesNoPrompt_Reset\n    mov r0, #0\n    mov r1, #0x3d\n    mov r2, #1\n    bl SetBlendBrightness\n    add r0, r6, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x60]
+    // bl YesNoPrompt_HandleInput
+    // add r6, r0, #0
+    // sub r0, r6, #1
+    // cmp r0, #1
+    // bhi _0222AE58
+    // ldr r0, [r4, #0x60]
+    // bl YesNoPrompt_IsInTouchMode
+    // str r0, [r5]
+    // ldr r0, [r4, #0x60]
+    // bl YesNoPrompt_Reset
+    // mov r0, #0
+    // mov r1, #0x3d
+    // mov r2, #1
+    // bl SetBlendBrightness
+    // add r0, r6, #0
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222AE5C(void) {
     ov43_0222B0A0();
 }
 
+
 void ov43_0222AE64(void) {
-    /* Original at 0x0222AE64 */
-    /* Requires manual decompilation - 235 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r4, r1, #0\n    add r7, r3, #0\n    ldrb r3, [r4, #8]\n    add r5, r0, #0\n    add r6, r2, #0\n    cmp r3, #0xb\n    bhi _0222AEF0\n    add r3, r3, r3\n    add r3, pc\n    ldrh r3, [r3, #6]\n    lsl r3, r3, #0x10\n    asr r3, r3, #0x10\n    add pc, r3\n    _0222AE82: ; jump table\n    bl ov43_0222B1FC\n    mov r0, #6\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0\n    mov r1, #0x11\n    add r2, r1, #0\n    add r3, r0, #0\n    str r7, [sp, #8]\n    bl BeginNormalPaletteFade\n    mov r0, #1\n    strb r0, [r4, #8]\n    b _0222B08A\n    bl IsPaletteFadeFinished\n    cmp r0, #0\n    beq _0222AEF0\n    mov r0, #3\n    strb r0, [r4, #8]\n    b _0222B08A\n    bl ov43_0222B1FC\n    mov r0, #3\n    strb r0, [r4, #8]\n    b _0222B08A\n    bl ov43_0222B374\n    str r0, [sp, #0x10]\n    cmp r0, #0\n    beq _0222AEF0\n    mov r0, #2\n    str r0, [r5, #4]\n    mov r0, #4\n    strb r0, [r4, #8]\n    b _0222B08A\n    ldr r3, [r5, #4]\n    sub r2, r3, #1\n    str r2, [r5, #4]\n    cmp r3, #0\n    beq _0222AEF2\n    b _0222B08A\n    mov r2, #0\n    str r2, [r5, #4]\n    bl ov43_0222B574\n    cmp r0, #1\n    bne _0222AF24\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222B440\n    ldr r0, [r5]\n    cmp r0, #3\n    beq _0222AF10\n    cmp r0, #1\n    bne _0222AF16\n    mov r0, #5\n    strb r0, [r4, #8]\n    b _0222B08A\n    add r0, r5, #0\n    add r1, r6, #0\n    bl ov43_0222B458\n    add sp, #0x14\n    mov r0, #1\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, [r5]\n    cmp r0, #1\n    bne _0222B01C\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #0x3a\n    add r3, r7, #0\n    bl ov43_0222B4BC\n    mov r0, #0xb\n    strb r0, [r4, #8]\n    b _0222B08A\n    mov r0, #6\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0\n    mov r1, #0x10\n    str r7, [sp, #8]\n    add r2, r1, #0\n    add r3, r0, #0\n    bl BeginNormalPaletteFade\n    ldrb r0, [r4, #8]\n    add r0, r0, #1\n    strb r0, [r4, #8]\n    b _0222B08A\n    bl IsPaletteFadeFinished\n    cmp r0, #1\n    bne _0222B01C\n    add sp, #0x14\n    mov r0, #1\n    pop {r4, r5, r6, r7, pc}\n    bl ov43_0222B1FC\n    mov r0, #6\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0\n    mov r1, #0x11\n    add r2, r1, #0\n    add r3, r0, #0\n    str r7, [sp, #8]\n    bl BeginNormalPaletteFade\n    mov r0, #8\n    strb r0, [r4, #8]\n    b _0222B08A\n    bl IsPaletteFadeFinished\n    cmp r0, #0\n    beq _0222B08A\n    add r0, r7, #0\n    bl PlayerProfile_New\n    str r0, [sp, #0xc]\n    ldr r0, [r4, #0x58]\n    bl String_cstr\n    add r1, r0, #0\n    ldr r0, [sp, #0xc]\n    bl Save_Profile_PlayerName_Set\n    ldr r0, [r6, #0x50]\n    ldr r2, [sp, #0xc]\n    mov r1, #0\n    bl BufferPlayersName\n    ldr r0, [sp, #0xc]\n    bl Heap_Free\n    ldr r0, [r4, #0x5c]\n    add r1, sp, #0x10\n    bl String_atoi\n    add r3, r0, #0\n    ldr r0, [sp, #0x10]\n    add r2, r1, #0\n    cmp r0, #0\n    beq _0222AFE2\n    add r0, r6, #0\n    add r1, r3, #0\n    bl ov43_0222AAA4\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #0x37\n    add r3, r7, #0\n    bl ov43_0222B4BC\n    mov r0, #9\n    strb r0, [r4, #8]\n    b _0222B08A\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #0x38\n    add r3, r7, #0\n    bl ov43_0222B4BC\n    mov r0, #0xb\n    strb r0, [r4, #8]\n    b _0222B08A\n    bl ov43_0222B534\n    cmp r0, #0\n    beq _0222B08A\n    add r0, r4, #0\n    add r1, r6, #0\n    mov r2, #0\n    bl ov43_0222ADB8\n    mov r0, #0xa\n    strb r0, [r4, #8]\n    b _0222B08A\n    add r0, r4, #0\n    add r1, r6, #0\n    bl ov43_0222AE2C\n    cmp r0, #1\n    beq _0222B01E\n    cmp r0, #2\n    beq _0222B04C\n    b _0222B08A\n    ldr r1, [r4, #0x5c]\n    ldr r2, [r4, #0x58]\n    add r0, r4, #0\n    bl ov43_0222A358\n    add r2, r0, #0\n    bne _0222B038\n    add r0, r5, #0\n    bl ov43_0222B55C\n    mov r0, #3\n    strb r0, [r4, #8]\n    b _0222B08A\n    ldr r3, _0222B090 ; =ov43_0222F0C8\n    add r0, r5, #0\n    ldrb r2, [r3, r2]\n    add r1, r6, #0\n    add r3, r7, #0\n    bl ov43_0222B4BC\n    mov r0, #0xb\n    strb r0, [r4, #8]\n    b _0222B08A\n    add r0, r5, #0\n    bl ov43_0222B55C\n    mov r0, #3\n    strb r0, [r4, #8]\n    b _0222B08A\n    bl ov43_0222B534\n    cmp r0, #0\n    beq _0222B08A\n    ldr r0, _0222B094 ; =gSystem\n    ldr r1, [r0, #0x48]\n    mov r0, #1\n    tst r0, r1\n    bne _0222B078\n    mov r0, #2\n    tst r0, r1\n    bne _0222B078\n    bl System_GetTouchNew\n    cmp r0, #0\n    beq _0222B08A\n    add r0, r5, #0\n    bl ov43_0222B55C\n    add r0, r5, #0\n    add r1, r6, #0\n    bl ov43_0222B408\n    mov r0, #3\n    strb r0, [r4, #8]\n    mov r0, #0\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}\n    _0222B090: .word ov43_0222F0C8\n    _0222B094: .word gSystem"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r4, r1, #0
+    // add r7, r3, #0
+    // ldrb r3, [r4, #8]
+    // add r5, r0, #0
+    // add r6, r2, #0
+    // cmp r3, #0xb
+    // bhi _0222AEF0
+    // add r3, r3, r3
+    // add r3, pc
+    // ldrh r3, [r3, #6]
+    // lsl r3, r3, #0x10
+    // asr r3, r3, #0x10
+    // add pc, r3
+    // _0222AE82: ; jump table
+    // bl ov43_0222B1FC
+    // mov r0, #6
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // mov r1, #0x11
+    // add r2, r1, #0
+    // add r3, r0, #0
+    // str r7, [sp, #8]
+    // bl BeginNormalPaletteFade
+    // mov r0, #1
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // bl IsPaletteFadeFinished
+    // cmp r0, #0
+    // beq _0222AEF0
+    // mov r0, #3
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // bl ov43_0222B1FC
+    // mov r0, #3
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // bl ov43_0222B374
+    // str r0, [sp, #0x10]
+    // cmp r0, #0
+    // beq _0222AEF0
+    // mov r0, #2
+    // str r0, [r5, #4]
+    // mov r0, #4
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // ldr r3, [r5, #4]
+    // sub r2, r3, #1
+    // str r2, [r5, #4]
+    // cmp r3, #0
+    // beq _0222AEF2
+    // b _0222B08A
+    // mov r2, #0
+    // str r2, [r5, #4]
+    // bl ov43_0222B574
+    // cmp r0, #1
+    // bne _0222AF24
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222B440
+    // ldr r0, [r5]
+    // cmp r0, #3
+    // beq _0222AF10
+    // cmp r0, #1
+    // bne _0222AF16
+    // mov r0, #5
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // bl ov43_0222B458
+    // add sp, #0x14
+    // mov r0, #1
+    // pop {r4, r5, r6, r7, pc}
+    // ldr r0, [r5]
+    // cmp r0, #1
+    // bne _0222B01C
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // mov r2, #0x3a
+    // add r3, r7, #0
+    // bl ov43_0222B4BC
+    // mov r0, #0xb
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // mov r0, #6
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // mov r1, #0x10
+    // str r7, [sp, #8]
+    // add r2, r1, #0
+    // add r3, r0, #0
+    // bl BeginNormalPaletteFade
+    // ldrb r0, [r4, #8]
+    // add r0, r0, #1
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // bl IsPaletteFadeFinished
+    // cmp r0, #1
+    // bne _0222B01C
+    // add sp, #0x14
+    // mov r0, #1
+    // pop {r4, r5, r6, r7, pc}
+    // bl ov43_0222B1FC
+    // mov r0, #6
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // mov r1, #0x11
+    // add r2, r1, #0
+    // add r3, r0, #0
+    // str r7, [sp, #8]
+    // bl BeginNormalPaletteFade
+    // mov r0, #8
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // bl IsPaletteFadeFinished
+    // cmp r0, #0
+    // beq _0222B08A
+    // add r0, r7, #0
+    // bl PlayerProfile_New
+    // str r0, [sp, #0xc]
+    // ldr r0, [r4, #0x58]
+    // bl String_cstr
+    // add r1, r0, #0
+    // ldr r0, [sp, #0xc]
+    // bl Save_Profile_PlayerName_Set
+    // ldr r0, [r6, #0x50]
+    // ldr r2, [sp, #0xc]
+    // mov r1, #0
+    // bl BufferPlayersName
+    // ldr r0, [sp, #0xc]
+    // bl Heap_Free
+    // ldr r0, [r4, #0x5c]
+    // add r1, sp, #0x10
+    // bl String_atoi
+    // add r3, r0, #0
+    // ldr r0, [sp, #0x10]
+    // add r2, r1, #0
+    // cmp r0, #0
+    // beq _0222AFE2
+    // add r0, r6, #0
+    // add r1, r3, #0
+    // bl ov43_0222AAA4
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // mov r2, #0x37
+    // add r3, r7, #0
+    // bl ov43_0222B4BC
+    // mov r0, #9
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // mov r2, #0x38
+    // add r3, r7, #0
+    // bl ov43_0222B4BC
+    // mov r0, #0xb
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // bl ov43_0222B534
+    // cmp r0, #0
+    // beq _0222B08A
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // mov r2, #0
+    // bl ov43_0222ADB8
+    // mov r0, #0xa
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // bl ov43_0222AE2C
+    // cmp r0, #1
+    // beq _0222B01E
+    // cmp r0, #2
+    // beq _0222B04C
+    // b _0222B08A
+    // ldr r1, [r4, #0x5c]
+    // ldr r2, [r4, #0x58]
+    // add r0, r4, #0
+    // bl ov43_0222A358
+    // add r2, r0, #0
+    // bne _0222B038
+    // add r0, r5, #0
+    // bl ov43_0222B55C
+    // mov r0, #3
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // ldr r3, _0222B090 ; =ov43_0222F0C8
+    // add r0, r5, #0
+    // ldrb r2, [r3, r2]
+    // add r1, r6, #0
+    // add r3, r7, #0
+    // bl ov43_0222B4BC
+    // mov r0, #0xb
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // add r0, r5, #0
+    // bl ov43_0222B55C
+    // mov r0, #3
+    // strb r0, [r4, #8]
+    // b _0222B08A
+    // bl ov43_0222B534
+    // cmp r0, #0
+    // beq _0222B08A
+    // ldr r0, _0222B094 ; =gSystem
+    // ldr r1, [r0, #0x48]
+    // mov r0, #1
+    // tst r0, r1
+    // bne _0222B078
+    // mov r0, #2
+    // tst r0, r1
+    // bne _0222B078
+    // bl System_GetTouchNew
+    // cmp r0, #0
+    // beq _0222B08A
+    // add r0, r5, #0
+    // bl ov43_0222B55C
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // bl ov43_0222B408
+    // mov r0, #3
+    // strb r0, [r4, #8]
+    // mov r0, #0
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // _0222B090: .word ov43_0222F0C8
+    // _0222B094: .word gSystem
+    // TODO: decompile
 }
+
 
 void ov43_0222B098(void) {
     ov43_0222B1D8();
 }
 
+
 void ov43_0222B0A0(void) {
-    /* Original at 0x0222B0A0 */
-    /* Requires manual decompilation - 135 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    str r0, [sp, #0x14]\n    add r0, #8\n    add r5, r1, #0\n    str r2, [sp, #0x24]\n    str r3, [sp, #0x18]\n    bl InitWindow\n    mov r3, #4\n    ldr r1, [sp, #0x14]\n    str r3, [sp]\n    mov r0, #0x18\n    str r0, [sp, #4]\n    mov r0, #0x14\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    mov r0, #1\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x24]\n    add r1, #8\n    ldr r0, [r0]\n    mov r2, #3\n    bl AddWindowParameterized\n    ldr r0, [sp, #0x14]\n    add r0, #0x20\n    bl InitWindow\n    mov r0, #0x13\n    str r0, [sp]\n    mov r0, #0x1b\n    str r0, [sp, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    mov r0, #0xac\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x24]\n    ldr r1, [sp, #0x14]\n    ldr r0, [r0]\n    add r1, #0x20\n    mov r2, #1\n    mov r3, #2\n    bl AddWindowParameterized\n    ldr r0, [sp, #0x14]\n    mov r1, #0\n    add r0, #8\n    bl FillWindowPixelBuffer\n    ldr r0, [sp, #0x14]\n    mov r1, #0\n    add r0, #0x20\n    bl FillWindowPixelBuffer\n    ldr r1, [sp, #0x18]\n    mov r0, #0x80\n    bl String_New\n    ldr r1, [sp, #0x14]\n    str r0, [r1, #0x3c]\n    ldr r0, [r5, #4]\n    bl Save_PlayerData_GetOptionsAddr\n    bl Options_GetTextFrameDelay\n    ldr r1, [sp, #0x14]\n    str r0, [r1, #0x38]\n    ldr r1, [sp, #0x18]\n    mov r0, #0x80\n    bl String_New\n    add r4, r0, #0\n    ldr r1, [sp, #0x18]\n    mov r0, #0x80\n    bl String_New\n    str r0, [sp, #0x1c]\n    ldr r0, [r5, #4]\n    bl Save_PlayerData_GetProfile\n    add r2, r0, #0\n    ldr r0, [sp, #0x24]\n    mov r1, #0\n    ldr r0, [r0, #0x50]\n    bl BufferPlayersName\n    ldr r0, [sp, #0x14]\n    mov r7, #0\n    str r0, [sp, #0x20]\n    add r0, #8\n    mov r5, #8\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #0x24]\n    ldr r2, [sp, #0x1c]\n    ldr r0, [r0, #0x54]\n    add r1, r7, #1\n    bl ReadMsgDataIntoString\n    ldr r0, [sp, #0x24]\n    ldr r2, [sp, #0x1c]\n    ldr r0, [r0, #0x50]\n    add r1, r4, #0\n    bl StringExpandPlaceholders\n    mov r0, #4\n    add r1, r4, #0\n    mov r2, #0\n    bl FontID_String_GetWidth\n    mov ip, r0\n    str r5, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222B1D4 ; =0x00010F00\n    mov r3, #0xc0\n    str r0, [sp, #8]\n    mov r0, #0\n    mov r6, ip\n    str r0, [sp, #0xc]\n    sub r3, r3, r6\n    ldr r0, [sp, #0x20]\n    mov r1, #4\n    add r2, r4, #0\n    lsr r3, r3, #1\n    bl AddTextPrinterParameterizedWithColor\n    add r7, r7, #1\n    add r5, #0x28\n    cmp r7, #4\n    blt _0222B160\n    add r0, r4, #0\n    bl String_Delete\n    ldr r0, [sp, #0x1c]\n    bl String_Delete\n    ldr r0, [sp, #0x18]\n    ldr r3, [sp, #0x14]\n    str r0, [sp]\n    ldr r0, [sp, #0x24]\n    mov r1, #0xb\n    ldr r0, [r0, #0x58]\n    mov r2, #1\n    add r3, #0x1c\n    bl GfGfxLoader_GetScrnDataFromOpenNarc\n    ldr r1, [sp, #0x14]\n    str r0, [r1, #0x18]\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222B1D4: .word 0x00010F00"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // str r0, [sp, #0x14]
+    // add r0, #8
+    // add r5, r1, #0
+    // str r2, [sp, #0x24]
+    // str r3, [sp, #0x18]
+    // bl InitWindow
+    // mov r3, #4
+    // ldr r1, [sp, #0x14]
+    // str r3, [sp]
+    // mov r0, #0x18
+    // str r0, [sp, #4]
+    // mov r0, #0x14
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // mov r0, #1
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0x24]
+    // add r1, #8
+    // ldr r0, [r0]
+    // mov r2, #3
+    // bl AddWindowParameterized
+    // ldr r0, [sp, #0x14]
+    // add r0, #0x20
+    // bl InitWindow
+    // mov r0, #0x13
+    // str r0, [sp]
+    // mov r0, #0x1b
+    // str r0, [sp, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // mov r0, #0xac
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0x24]
+    // ldr r1, [sp, #0x14]
+    // ldr r0, [r0]
+    // add r1, #0x20
+    // mov r2, #1
+    // mov r3, #2
+    // bl AddWindowParameterized
+    // ldr r0, [sp, #0x14]
+    // mov r1, #0
+    // add r0, #8
+    // bl FillWindowPixelBuffer
+    // ldr r0, [sp, #0x14]
+    // mov r1, #0
+    // add r0, #0x20
+    // bl FillWindowPixelBuffer
+    // ldr r1, [sp, #0x18]
+    // mov r0, #0x80
+    // bl String_New
+    // ldr r1, [sp, #0x14]
+    // str r0, [r1, #0x3c]
+    // ldr r0, [r5, #4]
+    // bl Save_PlayerData_GetOptionsAddr
+    // bl Options_GetTextFrameDelay
+    // ldr r1, [sp, #0x14]
+    // str r0, [r1, #0x38]
+    // ldr r1, [sp, #0x18]
+    // mov r0, #0x80
+    // bl String_New
+    // add r4, r0, #0
+    // ldr r1, [sp, #0x18]
+    // mov r0, #0x80
+    // bl String_New
+    // str r0, [sp, #0x1c]
+    // ldr r0, [r5, #4]
+    // bl Save_PlayerData_GetProfile
+    // add r2, r0, #0
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0
+    // ldr r0, [r0, #0x50]
+    // bl BufferPlayersName
+    // ldr r0, [sp, #0x14]
+    // mov r7, #0
+    // str r0, [sp, #0x20]
+    // add r0, #8
+    // mov r5, #8
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #0x24]
+    // ldr r2, [sp, #0x1c]
+    // ldr r0, [r0, #0x54]
+    // add r1, r7, #1
+    // bl ReadMsgDataIntoString
+    // ldr r0, [sp, #0x24]
+    // ldr r2, [sp, #0x1c]
+    // ldr r0, [r0, #0x50]
+    // add r1, r4, #0
+    // bl StringExpandPlaceholders
+    // mov r0, #4
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl FontID_String_GetWidth
+    // mov ip, r0
+    // str r5, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222B1D4 ; =0x00010F00
+    // mov r3, #0xc0
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // mov r6, ip
+    // str r0, [sp, #0xc]
+    // sub r3, r3, r6
+    // ldr r0, [sp, #0x20]
+    // mov r1, #4
+    // add r2, r4, #0
+    // lsr r3, r3, #1
+    // bl AddTextPrinterParameterizedWithColor
+    // add r7, r7, #1
+    // add r5, #0x28
+    // cmp r7, #4
+    // blt _0222B160
+    // add r0, r4, #0
+    // bl String_Delete
+    // ldr r0, [sp, #0x1c]
+    // bl String_Delete
+    // ldr r0, [sp, #0x18]
+    // ldr r3, [sp, #0x14]
+    // str r0, [sp]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0xb
+    // ldr r0, [r0, #0x58]
+    // mov r2, #1
+    // add r3, #0x1c
+    // bl GfGfxLoader_GetScrnDataFromOpenNarc
+    // ldr r1, [sp, #0x14]
+    // str r0, [r1, #0x18]
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222B1D4: .word 0x00010F00
+    // TODO: decompile
 }
+
 
 void ov43_0222B1D8(void) {
     String_Delete(*((u32*)(r0 + 0x3c)));
@@ -446,130 +2159,471 @@ void ov43_0222B1D8(void) {
     Heap_Free(*((u32*)(r4 + 0x18)));
 }
 
+
 void ov43_0222B1FC(void) {
-    /* Original at 0x0222B1FC */
-    /* Requires manual decompilation - 53 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r4, r2, #0\n    add r1, r4, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r1, #0x64\n    mov r2, #0\n    bl ov43_0222A9F4\n    add r0, r5, #0\n    add r0, #8\n    bl ScheduleWindowCopyToVram\n    ldr r2, [r5, #0x1c]\n    mov r3, #0\n    str r3, [sp]\n    ldrh r0, [r2]\n    mov r1, #2\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    ldrh r0, [r2, #2]\n    add r2, #0xc\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    bl LoadRectToBgTilemapRect\n    mov r2, #0\n    ldr r0, [r4]\n    mov r1, #2\n    add r3, r2, #0\n    bl ScheduleSetBgPosText\n    ldr r0, [r4]\n    mov r1, #2\n    mov r2, #3\n    mov r3, #0\n    bl ScheduleSetBgPosText\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0\n    bl ov43_0222AD74\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0\n    bl ov43_0222AD98\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222B3A4\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r4, r2, #0
+    // add r1, r4, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // add r1, #0x64
+    // mov r2, #0
+    // bl ov43_0222A9F4
+    // add r0, r5, #0
+    // add r0, #8
+    // bl ScheduleWindowCopyToVram
+    // ldr r2, [r5, #0x1c]
+    // mov r3, #0
+    // str r3, [sp]
+    // ldrh r0, [r2]
+    // mov r1, #2
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // ldrh r0, [r2, #2]
+    // add r2, #0xc
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // bl LoadRectToBgTilemapRect
+    // mov r2, #0
+    // ldr r0, [r4]
+    // mov r1, #2
+    // add r3, r2, #0
+    // bl ScheduleSetBgPosText
+    // ldr r0, [r4]
+    // mov r1, #2
+    // mov r2, #3
+    // mov r3, #0
+    // bl ScheduleSetBgPosText
+    // add r0, r4, #0
+    // mov r1, #1
+    // mov r2, #0
+    // bl ov43_0222AD74
+    // add r0, r4, #0
+    // mov r1, #1
+    // mov r2, #0
+    // bl ov43_0222AD98
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222B3A4
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222B278(void) {
-    /* Original at 0x0222B278 */
-    /* Requires manual decompilation - 76 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, _0222B314 ; =gSystem\n    add r4, r2, #0\n    ldr r3, [r0, #0x48]\n    ldr r0, _0222B318 ; =0x00000CF3\n    mov r2, #0\n    tst r0, r3\n    beq _0222B28C\n    str r2, [r1]\n    ldr r6, _0222B314 ; =gSystem\n    mov r0, #1\n    ldr r1, [r6, #0x48]\n    add r3, r1, #0\n    tst r3, r0\n    beq _0222B2AA\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222B3C4\n    ldr r0, _0222B31C ; =0x000005DD\n    bl PlaySE\n    mov r0, #1\n    pop {r4, r5, r6, pc}\n    mov r3, #2\n    tst r1, r3\n    beq _0222B2BE\n    ldr r0, _0222B31C ; =0x000005DD\n    bl PlaySE\n    mov r0, #3\n    str r0, [r5]\n    mov r0, #1\n    pop {r4, r5, r6, pc}\n    ldr r1, [r6, #0x4c]\n    mov r3, #0x40\n    tst r3, r1\n    beq _0222B2DC\n    ldr r1, [r5]\n    cmp r1, #0\n    beq _0222B2D4\n    sub r1, r1, #1\n    str r1, [r5]\n    add r2, r0, #0\n    b _0222B2F6\n    mov r1, #3\n    str r1, [r5]\n    add r2, r0, #0\n    b _0222B2F6\n    mov r3, #0x80\n    tst r1, r3\n    beq _0222B2F6\n    ldr r1, [r5]\n    cmp r1, #3\n    bhs _0222B2F0\n    add r1, r1, #1\n    str r1, [r5]\n    add r2, r0, #0\n    b _0222B2F6\n    mov r1, #0\n    str r1, [r5]\n    add r2, r0, #0\n    cmp r2, #1\n    bne _0222B310\n    ldr r0, _0222B320 ; =0x000005E5\n    bl PlaySE\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222B3A4\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    mov r0, #0\n    pop {r4, r5, r6, pc}\n    _0222B314: .word gSystem\n    _0222B318: .word 0x00000CF3\n    _0222B31C: .word 0x000005DD\n    _0222B320: .word 0x000005E5"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // ldr r0, _0222B314 ; =gSystem
+    // add r4, r2, #0
+    // ldr r3, [r0, #0x48]
+    // ldr r0, _0222B318 ; =0x00000CF3
+    // mov r2, #0
+    // tst r0, r3
+    // beq _0222B28C
+    // str r2, [r1]
+    // ldr r6, _0222B314 ; =gSystem
+    // mov r0, #1
+    // ldr r1, [r6, #0x48]
+    // add r3, r1, #0
+    // tst r3, r0
+    // beq _0222B2AA
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222B3C4
+    // ldr r0, _0222B31C ; =0x000005DD
+    // bl PlaySE
+    // mov r0, #1
+    // pop {r4, r5, r6, pc}
+    // mov r3, #2
+    // tst r1, r3
+    // beq _0222B2BE
+    // ldr r0, _0222B31C ; =0x000005DD
+    // bl PlaySE
+    // mov r0, #3
+    // str r0, [r5]
+    // mov r0, #1
+    // pop {r4, r5, r6, pc}
+    // ldr r1, [r6, #0x4c]
+    // mov r3, #0x40
+    // tst r3, r1
+    // beq _0222B2DC
+    // ldr r1, [r5]
+    // cmp r1, #0
+    // beq _0222B2D4
+    // sub r1, r1, #1
+    // str r1, [r5]
+    // add r2, r0, #0
+    // b _0222B2F6
+    // mov r1, #3
+    // str r1, [r5]
+    // add r2, r0, #0
+    // b _0222B2F6
+    // mov r3, #0x80
+    // tst r1, r3
+    // beq _0222B2F6
+    // ldr r1, [r5]
+    // cmp r1, #3
+    // bhs _0222B2F0
+    // add r1, r1, #1
+    // str r1, [r5]
+    // add r2, r0, #0
+    // b _0222B2F6
+    // mov r1, #0
+    // str r1, [r5]
+    // add r2, r0, #0
+    // cmp r2, #1
+    // bne _0222B310
+    // ldr r0, _0222B320 ; =0x000005E5
+    // bl PlaySE
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222B3A4
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // mov r0, #0
+    // pop {r4, r5, r6, pc}
+    // _0222B314: .word gSystem
+    // _0222B318: .word 0x00000CF3
+    // _0222B31C: .word 0x000005DD
+    // _0222B320: .word 0x000005E5
+    // TODO: decompile
 }
+
 
 void ov43_0222B324(void) {
-    /* Original at 0x0222B324 */
-    /* Requires manual decompilation - 33 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, _0222B36C ; =ov43_0222EE1A\n    add r6, r1, #0\n    add r4, r2, #0\n    add r7, r3, #0\n    bl TouchscreenHitbox_FindHitboxAtTouchNew\n    mov r1, #0\n    mvn r1, r1\n    cmp r0, r1\n    bne _0222B340\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #1\n    str r1, [r7]\n    str r1, [r6]\n    str r0, [r5]\n    ldr r0, _0222B370 ; =0x000005DD\n    bl PlaySE\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222B3C4\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222B3A4\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222B36C: .word ov43_0222EE1A\n    _0222B370: .word 0x000005DD"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // ldr r0, _0222B36C ; =ov43_0222EE1A
+    // add r6, r1, #0
+    // add r4, r2, #0
+    // add r7, r3, #0
+    // bl TouchscreenHitbox_FindHitboxAtTouchNew
+    // mov r1, #0
+    // mvn r1, r1
+    // cmp r0, r1
+    // bne _0222B340
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r1, #1
+    // str r1, [r7]
+    // str r1, [r6]
+    // str r0, [r5]
+    // ldr r0, _0222B370 ; =0x000005DD
+    // bl PlaySE
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222B3C4
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222B3A4
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222B36C: .word ov43_0222EE1A
+    // _0222B370: .word 0x000005DD
+    // TODO: decompile
 }
+
 
 void ov43_0222B374(void) {
-    /* Original at 0x0222B374 */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    mov r3, #0\n    str r3, [sp]\n    add r3, sp, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    bl ov43_0222B324\n    ldr r1, [sp]\n    cmp r1, #0\n    beq _0222B396\n    mov r1, #1\n    add sp, #4\n    str r1, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov43_0222B278\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // mov r3, #0
+    // str r3, [sp]
+    // add r3, sp, #0
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // add r6, r2, #0
+    // bl ov43_0222B324
+    // ldr r1, [sp]
+    // cmp r1, #0
+    // beq _0222B396
+    // mov r1, #1
+    // add sp, #4
+    // str r1, [r4]
+    // pop {r3, r4, r5, r6, pc}
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // bl ov43_0222B278
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222B3A4(void) {
-    /* Original at 0x0222B3A4 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "add r2, r0, #0\n    ldr r3, [r2]\n    mov r2, #0x28\n    mul r2, r3\n    mov r0, #0x7f\n    add r2, #0x30\n    lsl r0, r0, #2\n    lsl r2, r2, #0x10\n    ldr r0, [r1, r0]\n    ldr r3, _0222B3C0 ; =Sprite_SetPositionXY\n    mov r1, #0x80\n    asr r2, r2, #0x10\n    bx r3\n    nop\n    _0222B3C0: .word Sprite_SetPositionXY"
-    );
-    #endif
+    // add r2, r0, #0
+    // ldr r3, [r2]
+    // mov r2, #0x28
+    // mul r2, r3
+    // mov r0, #0x7f
+    // add r2, #0x30
+    // lsl r0, r0, #2
+    // lsl r2, r2, #0x10
+    // ldr r0, [r1, r0]
+    // ldr r3, _0222B3C0 ; =Sprite_SetPositionXY
+    // mov r1, #0x80
+    // asr r2, r2, #0x10
+    // bx r3
+    // nop
+    // _0222B3C0: .word Sprite_SetPositionXY
+    // TODO: decompile
 }
+
 
 void ov43_0222B3C4(void) {
-    /* Original at 0x0222B3C4 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r7, r0, #0\n    add r6, r1, #0\n    mov r4, #0\n    mov r5, #4\n    ldr r0, [r7]\n    cmp r0, r4\n    bne _0222B3DA\n    mov r1, #9\n    b _0222B3DC\n    mov r1, #2\n    mov r0, #0x1c\n    str r0, [sp]\n    mov r0, #4\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r1, #2\n    lsl r3, r5, #0x18\n    ldr r0, [r6]\n    add r2, r1, #0\n    lsr r3, r3, #0x18\n    bl BgTilemapRectChangePalette\n    add r4, r4, #1\n    add r5, r5, #5\n    cmp r4, #4\n    blt _0222B3D0\n    ldr r0, [r6]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r7, r0, #0
+    // add r6, r1, #0
+    // mov r4, #0
+    // mov r5, #4
+    // ldr r0, [r7]
+    // cmp r0, r4
+    // bne _0222B3DA
+    // mov r1, #9
+    // b _0222B3DC
+    // mov r1, #2
+    // mov r0, #0x1c
+    // str r0, [sp]
+    // mov r0, #4
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // mov r1, #2
+    // lsl r3, r5, #0x18
+    // ldr r0, [r6]
+    // add r2, r1, #0
+    // lsr r3, r3, #0x18
+    // bl BgTilemapRectChangePalette
+    // add r4, r4, #1
+    // add r5, r5, #5
+    // cmp r4, #4
+    // blt _0222B3D0
+    // ldr r0, [r6]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222B408(void) {
-    /* Original at 0x0222B408 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    mov r6, #0\n    mov r4, #4\n    mov r7, #2\n    mov r0, #0x1c\n    str r0, [sp]\n    mov r0, #4\n    str r0, [sp, #4]\n    str r7, [sp, #8]\n    lsl r3, r4, #0x18\n    ldr r0, [r5]\n    add r1, r7, #0\n    add r2, r7, #0\n    lsr r3, r3, #0x18\n    bl BgTilemapRectChangePalette\n    ldr r0, [r5]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add r6, r6, #1\n    add r4, r4, #5\n    cmp r6, #4\n    blt _0222B414\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r5, r1, #0
+    // mov r6, #0
+    // mov r4, #4
+    // mov r7, #2
+    // mov r0, #0x1c
+    // str r0, [sp]
+    // mov r0, #4
+    // str r0, [sp, #4]
+    // str r7, [sp, #8]
+    // lsl r3, r4, #0x18
+    // ldr r0, [r5]
+    // add r1, r7, #0
+    // add r2, r7, #0
+    // lsr r3, r3, #0x18
+    // bl BgTilemapRectChangePalette
+    // ldr r0, [r5]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r6, r6, #1
+    // add r4, r4, #5
+    // cmp r6, #4
+    // blt _0222B414
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222B440(void) {
-    /* Original at 0x0222B440 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "add r2, r0, #0\n    add r0, r1, #0\n    ldr r2, [r2]\n    ldr r1, _0222B450 ; =ov43_0222F0CC\n    ldr r3, _0222B454 ; =ov43_0222A318\n    ldrb r1, [r1, r2]\n    mov r2, #0\n    bx r3\n    _0222B450: .word ov43_0222F0CC\n    _0222B454: .word ov43_0222A318"
-    );
-    #endif
+    // add r2, r0, #0
+    // add r0, r1, #0
+    // ldr r2, [r2]
+    // ldr r1, _0222B450 ; =ov43_0222F0CC
+    // ldr r3, _0222B454 ; =ov43_0222A318
+    // ldrb r1, [r1, r2]
+    // mov r2, #0
+    // bx r3
+    // _0222B450: .word ov43_0222F0CC
+    // _0222B454: .word ov43_0222A318
+    // TODO: decompile
 }
+
 
 void ov43_0222B458(void) {
-    /* Original at 0x0222B458 */
-    /* Requires manual decompilation - 43 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov43_0222AA70\n    mov r2, #0\n    str r2, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0x18\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r4]\n    mov r1, #2\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    mov r2, #0\n    str r2, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0x18\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r4]\n    mov r1, #3\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #3\n    bl ScheduleBgTilemapBufferTransfer\n    add r5, #8\n    add r0, r5, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0xff\n    bl ov43_0222AD74\n    add sp, #0x10\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222AA70
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0x18
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r4]
+    // mov r1, #2
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0x18
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r4]
+    // mov r1, #3
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #3
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r5, #8
+    // add r0, r5, #0
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #0xff
+    // bl ov43_0222AD74
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222B4BC(void) {
-    /* Original at 0x0222B4BC */
-    /* Requires manual decompilation - 50 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    add r4, r1, #0\n    mov r0, #0x80\n    add r1, r3, #0\n    add r7, r2, #0\n    bl String_New\n    add r6, r0, #0\n    add r0, r5, #0\n    add r0, #0x20\n    mov r1, #0xf\n    bl FillWindowPixelBuffer\n    ldr r0, [r4, #0x54]\n    add r1, r7, #0\n    add r2, r6, #0\n    bl ReadMsgDataIntoString\n    ldr r0, [r4, #0x50]\n    ldr r1, [r5, #0x3c]\n    add r2, r6, #0\n    bl StringExpandPlaceholders\n    mov r0, #1\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    mov r3, #0\n    str r3, [sp]\n    ldr r0, [r5, #0x38]\n    mov r1, #1\n    str r0, [sp, #4]\n    ldr r0, _0222B530 ; =0x00010200\n    str r0, [sp, #8]\n    str r3, [sp, #0xc]\n    add r0, r5, #0\n    ldr r2, [r5, #0x3c]\n    add r0, #0x20\n    bl AddTextPrinterParameterizedWithColor\n    str r0, [r5, #0x34]\n    add r0, r5, #0\n    add r0, #0x20\n    mov r1, #1\n    mov r2, #0x46\n    mov r3, #0xc\n    bl DrawFrameAndWindow2\n    add r5, #0x20\n    add r0, r5, #0\n    bl ScheduleWindowCopyToVram\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222B530: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // mov r0, #0x80
+    // add r1, r3, #0
+    // add r7, r2, #0
+    // bl String_New
+    // add r6, r0, #0
+    // add r0, r5, #0
+    // add r0, #0x20
+    // mov r1, #0xf
+    // bl FillWindowPixelBuffer
+    // ldr r0, [r4, #0x54]
+    // add r1, r7, #0
+    // add r2, r6, #0
+    // bl ReadMsgDataIntoString
+    // ldr r0, [r4, #0x50]
+    // ldr r1, [r5, #0x3c]
+    // add r2, r6, #0
+    // bl StringExpandPlaceholders
+    // mov r0, #1
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // mov r3, #0
+    // str r3, [sp]
+    // ldr r0, [r5, #0x38]
+    // mov r1, #1
+    // str r0, [sp, #4]
+    // ldr r0, _0222B530 ; =0x00010200
+    // str r0, [sp, #8]
+    // str r3, [sp, #0xc]
+    // add r0, r5, #0
+    // ldr r2, [r5, #0x3c]
+    // add r0, #0x20
+    // bl AddTextPrinterParameterizedWithColor
+    // str r0, [r5, #0x34]
+    // add r0, r5, #0
+    // add r0, #0x20
+    // mov r1, #1
+    // mov r2, #0x46
+    // mov r3, #0xc
+    // bl DrawFrameAndWindow2
+    // add r5, #0x20
+    // add r0, r5, #0
+    // bl ScheduleWindowCopyToVram
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222B530: .word 0x00010200
+    // TODO: decompile
 }
 
+
 void ov43_0222B534(void) {
-    /* Original at 0x0222B534 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r0, [r0, #0x34]\n    add r4, r1, #0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0222B556\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    bl TextFlags_GetIsTouchSpeedingUpPrint\n    str r0, [r4]\n    mov r0, #1\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r0, [r0, #0x34]
+    // add r4, r1, #0
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _0222B556
+    // mov r0, #0
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // bl TextFlags_GetIsTouchSpeedingUpPrint
+    // str r0, [r4]
+    // mov r0, #1
+    // pop {r4, pc}
+    // mov r0, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222B55C(void) {
     ClearFrameAndWindow2(1);
     ClearWindowTilemapAndScheduleTransfer(r4);
 }
 
+
 void ov43_0222B574(void) {
-    /* Original at 0x0222B574 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    ldr r0, [r0]\n    cmp r0, #1\n    bne _0222B59E\n    ldr r0, [r1, #4]\n    bl sub_0202C6F4\n    add r5, r0, #0\n    mov r4, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0202C2DC\n    cmp r0, #0\n    bne _0222B596\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    add r4, r4, #1\n    cmp r4, #0x20\n    blt _0222B586\n    b _0222B5A2\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // ldr r0, [r0]
+    // cmp r0, #1
+    // bne _0222B59E
+    // ldr r0, [r1, #4]
+    // bl sub_0202C6F4
+    // add r5, r0, #0
+    // mov r4, #0
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl sub_0202C2DC
+    // cmp r0, #0
+    // bne _0222B596
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // add r4, r4, #1
+    // cmp r4, #0x20
+    // blt _0222B586
+    // b _0222B5A2
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222B5A8(void) {
     Save_PlayerData_GetOptionsAddr(*((u32*)(r1 + 4)));
@@ -577,149 +2631,1582 @@ void ov43_0222B5A8(void) {
     ov43_0222B944(r5, r4, r6, r7);
 }
 
+
 void ov43_0222B5D0(void) {
-    /* Original at 0x0222B5D0 */
-    /* Requires manual decompilation - 356 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r4, r1, #0\n    ldrb r5, [r4, #8]\n    add r6, r0, #0\n    add r7, r2, #0\n    str r3, [sp, #0xc]\n    cmp r5, #0x17\n    bls _0222B5E4\n    b _0222B932\n    add r5, r5, r5\n    add r5, pc\n    ldrh r5, [r5, #6]\n    lsl r5, r5, #0x10\n    asr r5, r5, #0x10\n    add pc, r5\n    _0222B5F0: ; jump table\n    mov r0, #0\n    strh r0, [r6]\n    strh r0, [r6, #2]\n    strh r0, [r6, #4]\n    strh r0, [r6, #6]\n    add r0, r4, #0\n    bl ov43_0222A420\n    ldr r3, [sp, #0xc]\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    bl ov43_0222BB20\n    mov r0, #2\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222BFA4\n    cmp r0, #4\n    bhi _0222B70A\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0222B656: ; jump table\n    add r0, r6, #0\n    add r1, r4, #0\n    mov r2, #2\n    bl ov43_0222C53C\n    b _0222B932\n    add r0, r6, #0\n    add r1, r4, #0\n    mov r2, #3\n    bl ov43_0222C53C\n    b _0222B932\n    mov r0, #0x17\n    strb r0, [r4, #8]\n    b _0222B932\n    mov r0, #4\n    add r6, #0xf4\n    str r0, [r6]\n    mov r0, #5\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222BFD4\n    mov r0, #4\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222C024\n    cmp r0, #1\n    bne _0222B70A\n    mov r0, #2\n    strb r0, [r4, #8]\n    b _0222B932\n    add r2, r6, #0\n    add r2, #0xf4\n    add r1, r6, #0\n    ldr r2, [r2]\n    add r1, #0xf4\n    sub r3, r2, #1\n    add r2, r6, #0\n    ldr r1, [r1]\n    add r2, #0xf4\n    str r3, [r2]\n    cmp r1, #0\n    bgt _0222B70A\n    add r1, r6, #0\n    mov r2, #0\n    add r1, #0xf4\n    str r2, [r1]\n    bl ov43_0222C620\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222A41C\n    ldr r3, [sp, #0xc]\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    bl ov43_0222C148\n    mov r0, #6\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222C228\n    strb r0, [r4, #8]\n    b _0222B932\n    mov r0, #4\n    add r6, #0xf4\n    str r0, [r6]\n    mov r0, #8\n    strb r0, [r4, #8]\n    b _0222B932\n    add r3, r6, #0\n    add r3, #0xf4\n    ldr r3, [r3]\n    sub r5, r3, #1\n    add r3, r6, #0\n    add r3, #0xf4\n    add r6, #0xf4\n    str r5, [r3]\n    ldr r3, [r6]\n    cmp r3, #0\n    ble _0222B70C\n    b _0222B932\n    bl ov43_0222BBB8\n    add r0, r4, #0\n    mov r1, #4\n    mov r2, #0\n    bl ov43_0222A318\n    add sp, #0x18\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #0xb\n    ldrsb r2, [r4, r1]\n    asr r0, r2, #2\n    lsr r0, r0, #0x1d\n    add r0, r2, r0\n    asr r0, r0, #3\n    strh r0, [r6]\n    ldrsb r0, [r4, r1]\n    lsr r2, r0, #0x1f\n    lsl r1, r0, #0x1d\n    sub r1, r1, r2\n    mov r0, #0x1d\n    ror r1, r0\n    add r0, r2, r1\n    strh r0, [r6, #4]\n    mov r0, #1\n    strb r0, [r4, #8]\n    b _0222B932\n    mov r0, #6\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    add r0, r3, #0\n    str r0, [sp, #8]\n    mov r0, #0\n    mov r1, #0x10\n    add r2, r1, #0\n    add r3, r0, #0\n    bl BeginNormalPaletteFade\n    add r0, r6, #0\n    bl ov43_0222C620\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    bl sub_0202C6F4\n    add r1, r4, r5\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C254\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222A414\n    mov r0, #0xb\n    strb r0, [r4, #8]\n    b _0222B932\n    bl IsPaletteFadeFinished\n    cmp r0, #0\n    beq _0222B818\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    bl ov43_0222BBB8\n    add r0, r4, #0\n    mov r1, #2\n    mov r2, #4\n    bl ov43_0222A318\n    add sp, #0x18\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    bl ov43_0222C620\n    add r5, r0, #0\n    ldr r0, [r4, #4]\n    bl sub_0202C6F4\n    add r1, r4, r5\n    ldrb r1, [r1, #0x18]\n    ldr r2, [r4, #0x58]\n    bl sub_0202C270\n    ldr r3, [sp, #0xc]\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    bl ov43_0222BB20\n    mov r0, #6\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    ldr r0, [sp, #0xc]\n    mov r1, #0x11\n    str r0, [sp, #8]\n    mov r0, #0\n    add r2, r1, #0\n    add r3, r0, #0\n    bl BeginNormalPaletteFade\n    mov r0, #0xe\n    strb r0, [r4, #8]\n    b _0222B932\n    bl IsPaletteFadeFinished\n    cmp r0, #0\n    beq _0222B818\n    mov r0, #2\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222C32C\n    mov r0, #0x10\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222C358\n    cmp r0, #1\n    bne _0222B818\n    mov r0, #0x11\n    strb r0, [r4, #8]\n    b _0222B932\n    add r0, r4, #0\n    add r1, r7, #0\n    bl ov43_0222AE2C\n    cmp r0, #1\n    beq _0222B81A\n    cmp r0, #2\n    beq _0222B826\n    b _0222B932\n    add r0, r6, #0\n    bl ov43_0222C600\n    mov r0, #0x12\n    strb r0, [r4, #8]\n    b _0222B932\n    add r0, r6, #0\n    bl ov43_0222C600\n    add r0, r7, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r2, #4\n    add r0, r6, #0\n    ldrsh r2, [r6, r2]\n    add r0, #8\n    add r1, r7, #0\n    mov r3, #0\n    bl ov43_0222C890\n    mov r0, #2\n    strb r0, [r4, #8]\n    b _0222B932\n    add r1, r7, #0\n    bl ov43_0222C65C\n    mov r0, #0x13\n    strb r0, [r4, #8]\n    b _0222B932\n    add r1, r7, #0\n    bl ov43_0222C714\n    cmp r0, #1\n    bne _0222B932\n    ldr r0, [r4, #4]\n    bl sub_0202C6F4\n    str r0, [sp, #0x10]\n    add r0, r6, #0\n    bl ov43_0222C620\n    str r0, [sp, #0x14]\n    add r5, r4, #0\n    ldr r1, [sp, #0x14]\n    add r5, #0x18\n    ldrb r1, [r5, r1]\n    ldr r0, [sp, #0x10]\n    bl sub_0202C338\n    ldr r0, [r4, #4]\n    bl Save_Frontier_GetStatic\n    ldr r1, [sp, #0x14]\n    ldrb r1, [r5, r1]\n    bl sub_020311AC\n    add r0, r4, #0\n    bl ov43_0222A420\n    mov r0, #4\n    ldrsh r0, [r6, r0]\n    mov r3, #0\n    add r1, r4, #0\n    str r0, [sp]\n    ldr r0, [sp, #0xc]\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    ldrsh r3, [r6, r3]\n    add r0, r6, #0\n    add r2, r7, #0\n    bl ov43_0222C378\n    add r0, r7, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r0, #0x14\n    strb r0, [r4, #8]\n    b _0222B932\n    add r1, r7, #0\n    bl ov43_0222C750\n    mov r0, #2\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222C2B0\n    cmp r0, #1\n    bne _0222B8D4\n    mov r0, #0x16\n    strb r0, [r4, #8]\n    b _0222B932\n    add r0, r7, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r0, #2\n    strb r0, [r4, #8]\n    b _0222B932\n    bl ov43_0222C5D8\n    cmp r0, #0\n    beq _0222B932\n    ldr r0, _0222B938 ; =gSystem\n    ldr r0, [r0, #0x48]\n    cmp r0, #0\n    bne _0222B8FA\n    bl System_GetTouchNew\n    cmp r0, #0\n    beq _0222B932\n    add r0, r7, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r2, #4\n    add r0, r6, #0\n    ldrsh r2, [r6, r2]\n    add r0, #8\n    add r1, r7, #0\n    mov r3, #0\n    bl ov43_0222C890\n    mov r0, #2\n    strb r0, [r4, #8]\n    add r0, r6, #0\n    bl ov43_0222C600\n    b _0222B932\n    bl ov43_0222BBB8\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #2\n    bl ov43_0222A318\n    add sp, #0x18\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222B938: .word gSystem"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // add r4, r1, #0
+    // ldrb r5, [r4, #8]
+    // add r6, r0, #0
+    // add r7, r2, #0
+    // str r3, [sp, #0xc]
+    // cmp r5, #0x17
+    // bls _0222B5E4
+    // b _0222B932
+    // add r5, r5, r5
+    // add r5, pc
+    // ldrh r5, [r5, #6]
+    // lsl r5, r5, #0x10
+    // asr r5, r5, #0x10
+    // add pc, r5
+    // _0222B5F0: ; jump table
+    // mov r0, #0
+    // strh r0, [r6]
+    // strh r0, [r6, #2]
+    // strh r0, [r6, #4]
+    // strh r0, [r6, #6]
+    // add r0, r4, #0
+    // bl ov43_0222A420
+    // ldr r3, [sp, #0xc]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // bl ov43_0222BB20
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222BFA4
+    // cmp r0, #4
+    // bhi _0222B70A
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _0222B656: ; jump table
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // mov r2, #2
+    // bl ov43_0222C53C
+    // b _0222B932
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // mov r2, #3
+    // bl ov43_0222C53C
+    // b _0222B932
+    // mov r0, #0x17
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // mov r0, #4
+    // add r6, #0xf4
+    // str r0, [r6]
+    // mov r0, #5
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222BFD4
+    // mov r0, #4
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222C024
+    // cmp r0, #1
+    // bne _0222B70A
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r2, r6, #0
+    // add r2, #0xf4
+    // add r1, r6, #0
+    // ldr r2, [r2]
+    // add r1, #0xf4
+    // sub r3, r2, #1
+    // add r2, r6, #0
+    // ldr r1, [r1]
+    // add r2, #0xf4
+    // str r3, [r2]
+    // cmp r1, #0
+    // bgt _0222B70A
+    // add r1, r6, #0
+    // mov r2, #0
+    // add r1, #0xf4
+    // str r2, [r1]
+    // bl ov43_0222C620
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222A41C
+    // ldr r3, [sp, #0xc]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // bl ov43_0222C148
+    // mov r0, #6
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222C228
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // mov r0, #4
+    // add r6, #0xf4
+    // str r0, [r6]
+    // mov r0, #8
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r3, r6, #0
+    // add r3, #0xf4
+    // ldr r3, [r3]
+    // sub r5, r3, #1
+    // add r3, r6, #0
+    // add r3, #0xf4
+    // add r6, #0xf4
+    // str r5, [r3]
+    // ldr r3, [r6]
+    // cmp r3, #0
+    // ble _0222B70C
+    // b _0222B932
+    // bl ov43_0222BBB8
+    // add r0, r4, #0
+    // mov r1, #4
+    // mov r2, #0
+    // bl ov43_0222A318
+    // add sp, #0x18
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r1, #0xb
+    // ldrsb r2, [r4, r1]
+    // asr r0, r2, #2
+    // lsr r0, r0, #0x1d
+    // add r0, r2, r0
+    // asr r0, r0, #3
+    // strh r0, [r6]
+    // ldrsb r0, [r4, r1]
+    // lsr r2, r0, #0x1f
+    // lsl r1, r0, #0x1d
+    // sub r1, r1, r2
+    // mov r0, #0x1d
+    // ror r1, r0
+    // add r0, r2, r1
+    // strh r0, [r6, #4]
+    // mov r0, #1
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // mov r0, #6
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // add r0, r3, #0
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // mov r1, #0x10
+    // add r2, r1, #0
+    // add r3, r0, #0
+    // bl BeginNormalPaletteFade
+    // add r0, r6, #0
+    // bl ov43_0222C620
+    // add r5, r0, #0
+    // ldr r0, [r4, #4]
+    // bl sub_0202C6F4
+    // add r1, r4, r5
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C254
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222A414
+    // mov r0, #0xb
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl IsPaletteFadeFinished
+    // cmp r0, #0
+    // beq _0222B818
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // bl ov43_0222BBB8
+    // add r0, r4, #0
+    // mov r1, #2
+    // mov r2, #4
+    // bl ov43_0222A318
+    // add sp, #0x18
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // bl ov43_0222C620
+    // add r5, r0, #0
+    // ldr r0, [r4, #4]
+    // bl sub_0202C6F4
+    // add r1, r4, r5
+    // ldrb r1, [r1, #0x18]
+    // ldr r2, [r4, #0x58]
+    // bl sub_0202C270
+    // ldr r3, [sp, #0xc]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // bl ov43_0222BB20
+    // mov r0, #6
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #0xc]
+    // mov r1, #0x11
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // add r2, r1, #0
+    // add r3, r0, #0
+    // bl BeginNormalPaletteFade
+    // mov r0, #0xe
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl IsPaletteFadeFinished
+    // cmp r0, #0
+    // beq _0222B818
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222C32C
+    // mov r0, #0x10
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222C358
+    // cmp r0, #1
+    // bne _0222B818
+    // mov r0, #0x11
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r0, r4, #0
+    // add r1, r7, #0
+    // bl ov43_0222AE2C
+    // cmp r0, #1
+    // beq _0222B81A
+    // cmp r0, #2
+    // beq _0222B826
+    // b _0222B932
+    // add r0, r6, #0
+    // bl ov43_0222C600
+    // mov r0, #0x12
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r0, r6, #0
+    // bl ov43_0222C600
+    // add r0, r7, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r2, #4
+    // add r0, r6, #0
+    // ldrsh r2, [r6, r2]
+    // add r0, #8
+    // add r1, r7, #0
+    // mov r3, #0
+    // bl ov43_0222C890
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r1, r7, #0
+    // bl ov43_0222C65C
+    // mov r0, #0x13
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r1, r7, #0
+    // bl ov43_0222C714
+    // cmp r0, #1
+    // bne _0222B932
+    // ldr r0, [r4, #4]
+    // bl sub_0202C6F4
+    // str r0, [sp, #0x10]
+    // add r0, r6, #0
+    // bl ov43_0222C620
+    // str r0, [sp, #0x14]
+    // add r5, r4, #0
+    // ldr r1, [sp, #0x14]
+    // add r5, #0x18
+    // ldrb r1, [r5, r1]
+    // ldr r0, [sp, #0x10]
+    // bl sub_0202C338
+    // ldr r0, [r4, #4]
+    // bl Save_Frontier_GetStatic
+    // ldr r1, [sp, #0x14]
+    // ldrb r1, [r5, r1]
+    // bl sub_020311AC
+    // add r0, r4, #0
+    // bl ov43_0222A420
+    // mov r0, #4
+    // ldrsh r0, [r6, r0]
+    // mov r3, #0
+    // add r1, r4, #0
+    // str r0, [sp]
+    // ldr r0, [sp, #0xc]
+    // str r3, [sp, #4]
+    // str r0, [sp, #8]
+    // ldrsh r3, [r6, r3]
+    // add r0, r6, #0
+    // add r2, r7, #0
+    // bl ov43_0222C378
+    // add r0, r7, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r0, #0x14
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r1, r7, #0
+    // bl ov43_0222C750
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222C2B0
+    // cmp r0, #1
+    // bne _0222B8D4
+    // mov r0, #0x16
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // add r0, r7, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // b _0222B932
+    // bl ov43_0222C5D8
+    // cmp r0, #0
+    // beq _0222B932
+    // ldr r0, _0222B938 ; =gSystem
+    // ldr r0, [r0, #0x48]
+    // cmp r0, #0
+    // bne _0222B8FA
+    // bl System_GetTouchNew
+    // cmp r0, #0
+    // beq _0222B932
+    // add r0, r7, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r2, #4
+    // add r0, r6, #0
+    // ldrsh r2, [r6, r2]
+    // add r0, #8
+    // add r1, r7, #0
+    // mov r3, #0
+    // bl ov43_0222C890
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // add r0, r6, #0
+    // bl ov43_0222C600
+    // b _0222B932
+    // bl ov43_0222BBB8
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #2
+    // bl ov43_0222A318
+    // add sp, #0x18
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222B938: .word gSystem
+    // TODO: decompile
 }
+
 
 void ov43_0222B93C(void) {
     ov43_0222BAB8();
 }
 
+
 void ov43_0222B944(void) {
-    /* Original at 0x0222B944 */
-    /* Requires manual decompilation - 166 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x5c\n    str r0, [sp, #0x18]\n    ldr r4, [sp, #0x18]\n    mov r0, #0\n    ldr r5, _0222BA9C ; =ov43_0222ED74\n    ldr r6, _0222BAA0 ; =ov43_0222EE08\n    add r7, r2, #0\n    str r3, [sp, #0x1c]\n    str r0, [sp, #0x28]\n    add r4, #8\n    ldr r0, [sp, #0x1c]\n    add r1, r7, #0\n    str r0, [sp]\n    ldrh r3, [r5]\n    add r0, r4, #0\n    add r2, r6, #0\n    bl ov43_0222C788\n    ldr r0, [sp, #0x28]\n    add r5, r5, #2\n    add r0, r0, #1\n    add r6, r6, #6\n    add r4, #0x38\n    str r0, [sp, #0x28]\n    cmp r0, #3\n    blt _0222B95A\n    ldr r0, [r7, #4]\n    ldr r3, [sp, #0x1c]\n    mov r1, #0\n    mov r2, #0x10\n    bl ov42_02227060\n    ldr r1, [sp, #0x18]\n    ldr r3, [sp, #0x1c]\n    add r1, #0xb4\n    str r0, [r1]\n    ldr r0, [sp, #0x18]\n    mov r1, #1\n    add r0, #0xb4\n    ldr r0, [r0]\n    mov r2, #2\n    bl ov42_02227228\n    mov r3, #0x15\n    ldr r1, [sp, #0x18]\n    str r3, [sp]\n    mov r0, #9\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    ldr r0, _0222BAA4 ; =0x0000014F\n    add r1, #0xb8\n    str r0, [sp, #0x10]\n    mov r0, #0\n    str r0, [sp, #0x14]\n    ldr r0, [r7]\n    mov r2, #1\n    bl ov43_0222A24C\n    ldr r0, [r7, #0x54]\n    mov r1, #7\n    bl NewString_ReadMsgData\n    add r4, r0, #0\n    mov r3, #0\n    str r3, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222BAA8 ; =0x00010F00\n    mov r1, #4\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x18]\n    add r2, r4, #0\n    add r0, #0xb8\n    str r3, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    add r0, r4, #0\n    bl String_Delete\n    mov r0, #0\n    str r0, [sp, #0x20]\n    ldr r0, _0222BAAC ; =ov43_0222EEE0\n    ldr r6, [sp, #0x18]\n    str r0, [sp, #0x24]\n    ldr r1, [sp, #0x1c]\n    mov r0, #4\n    bl ListMenuItems_New\n    add r1, r6, #0\n    add r1, #0xe4\n    ldr r5, [sp, #0x24]\n    str r0, [r1]\n    mov r4, #0\n    add r0, r6, #0\n    add r0, #0xe4\n    ldr r0, [r0]\n    ldr r1, [r7, #0x54]\n    ldr r2, [r5]\n    ldr r3, [r5, #4]\n    bl ListMenuItems_AppendFromMsgData\n    add r4, r4, #1\n    add r5, #8\n    cmp r4, #4\n    blt _0222BA06\n    ldr r0, [sp, #0x24]\n    add r6, r6, #4\n    add r0, #0x20\n    str r0, [sp, #0x24]\n    ldr r0, [sp, #0x20]\n    add r0, r0, #1\n    str r0, [sp, #0x20]\n    cmp r0, #2\n    blt _0222B9F4\n    mov r0, #0x13\n    str r0, [sp]\n    mov r0, #0x1b\n    str r0, [sp, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    ldr r0, _0222BAB0 ; =0x00000161\n    ldr r1, [sp, #0x18]\n    str r0, [sp, #0x10]\n    mov r0, #0xf\n    str r0, [sp, #0x14]\n    ldr r0, [r7]\n    add r1, #0xc8\n    mov r2, #1\n    mov r3, #2\n    bl ov43_0222A24C\n    ldr r1, [sp, #0x1c]\n    mov r0, #0x80\n    bl String_New\n    ldr r1, [sp, #0x18]\n    ldr r4, _0222BAB4 ; =ov43_0222EEB0\n    add r1, #0xd8\n    str r0, [r1]\n    add r3, sp, #0x2c\n    mov r2, #6\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _0222BA6A\n    ldr r0, [r7, #4]\n    add r7, #0x88\n    str r0, [sp, #0x2c]\n    ldr r0, [sp, #0x1c]\n    str r7, [sp, #0x30]\n    str r0, [sp, #0x58]\n    add r0, sp, #0x2c\n    bl Sprite_CreateAffine\n    ldr r1, [sp, #0x18]\n    add r1, #0xf8\n    str r0, [r1]\n    ldr r0, [sp, #0x18]\n    mov r1, #0\n    add r0, #0xf8\n    str r0, [sp, #0x18]\n    ldr r0, [r0]\n    bl Sprite_SetDrawFlag\n    add sp, #0x5c\n    pop {r4, r5, r6, r7, pc}\n    _0222BA9C: .word ov43_0222ED74\n    _0222BAA0: .word ov43_0222EE08\n    _0222BAA4: .word 0x0000014F\n    _0222BAA8: .word 0x00010F00\n    _0222BAAC: .word ov43_0222EEE0\n    _0222BAB0: .word 0x00000161\n    _0222BAB4: .word ov43_0222EEB0"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x5c
+    // str r0, [sp, #0x18]
+    // ldr r4, [sp, #0x18]
+    // mov r0, #0
+    // ldr r5, _0222BA9C ; =ov43_0222ED74
+    // ldr r6, _0222BAA0 ; =ov43_0222EE08
+    // add r7, r2, #0
+    // str r3, [sp, #0x1c]
+    // str r0, [sp, #0x28]
+    // add r4, #8
+    // ldr r0, [sp, #0x1c]
+    // add r1, r7, #0
+    // str r0, [sp]
+    // ldrh r3, [r5]
+    // add r0, r4, #0
+    // add r2, r6, #0
+    // bl ov43_0222C788
+    // ldr r0, [sp, #0x28]
+    // add r5, r5, #2
+    // add r0, r0, #1
+    // add r6, r6, #6
+    // add r4, #0x38
+    // str r0, [sp, #0x28]
+    // cmp r0, #3
+    // blt _0222B95A
+    // ldr r0, [r7, #4]
+    // ldr r3, [sp, #0x1c]
+    // mov r1, #0
+    // mov r2, #0x10
+    // bl ov42_02227060
+    // ldr r1, [sp, #0x18]
+    // ldr r3, [sp, #0x1c]
+    // add r1, #0xb4
+    // str r0, [r1]
+    // ldr r0, [sp, #0x18]
+    // mov r1, #1
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // mov r2, #2
+    // bl ov42_02227228
+    // mov r3, #0x15
+    // ldr r1, [sp, #0x18]
+    // str r3, [sp]
+    // mov r0, #9
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222BAA4 ; =0x0000014F
+    // add r1, #0xb8
+    // str r0, [sp, #0x10]
+    // mov r0, #0
+    // str r0, [sp, #0x14]
+    // ldr r0, [r7]
+    // mov r2, #1
+    // bl ov43_0222A24C
+    // ldr r0, [r7, #0x54]
+    // mov r1, #7
+    // bl NewString_ReadMsgData
+    // add r4, r0, #0
+    // mov r3, #0
+    // str r3, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222BAA8 ; =0x00010F00
+    // mov r1, #4
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #0x18]
+    // add r2, r4, #0
+    // add r0, #0xb8
+    // str r3, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // add r0, r4, #0
+    // bl String_Delete
+    // mov r0, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, _0222BAAC ; =ov43_0222EEE0
+    // ldr r6, [sp, #0x18]
+    // str r0, [sp, #0x24]
+    // ldr r1, [sp, #0x1c]
+    // mov r0, #4
+    // bl ListMenuItems_New
+    // add r1, r6, #0
+    // add r1, #0xe4
+    // ldr r5, [sp, #0x24]
+    // str r0, [r1]
+    // mov r4, #0
+    // add r0, r6, #0
+    // add r0, #0xe4
+    // ldr r0, [r0]
+    // ldr r1, [r7, #0x54]
+    // ldr r2, [r5]
+    // ldr r3, [r5, #4]
+    // bl ListMenuItems_AppendFromMsgData
+    // add r4, r4, #1
+    // add r5, #8
+    // cmp r4, #4
+    // blt _0222BA06
+    // ldr r0, [sp, #0x24]
+    // add r6, r6, #4
+    // add r0, #0x20
+    // str r0, [sp, #0x24]
+    // ldr r0, [sp, #0x20]
+    // add r0, r0, #1
+    // str r0, [sp, #0x20]
+    // cmp r0, #2
+    // blt _0222B9F4
+    // mov r0, #0x13
+    // str r0, [sp]
+    // mov r0, #0x1b
+    // str r0, [sp, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222BAB0 ; =0x00000161
+    // ldr r1, [sp, #0x18]
+    // str r0, [sp, #0x10]
+    // mov r0, #0xf
+    // str r0, [sp, #0x14]
+    // ldr r0, [r7]
+    // add r1, #0xc8
+    // mov r2, #1
+    // mov r3, #2
+    // bl ov43_0222A24C
+    // ldr r1, [sp, #0x1c]
+    // mov r0, #0x80
+    // bl String_New
+    // ldr r1, [sp, #0x18]
+    // ldr r4, _0222BAB4 ; =ov43_0222EEB0
+    // add r1, #0xd8
+    // str r0, [r1]
+    // add r3, sp, #0x2c
+    // mov r2, #6
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _0222BA6A
+    // ldr r0, [r7, #4]
+    // add r7, #0x88
+    // str r0, [sp, #0x2c]
+    // ldr r0, [sp, #0x1c]
+    // str r7, [sp, #0x30]
+    // str r0, [sp, #0x58]
+    // add r0, sp, #0x2c
+    // bl Sprite_CreateAffine
+    // ldr r1, [sp, #0x18]
+    // add r1, #0xf8
+    // str r0, [r1]
+    // ldr r0, [sp, #0x18]
+    // mov r1, #0
+    // add r0, #0xf8
+    // str r0, [sp, #0x18]
+    // ldr r0, [r0]
+    // bl Sprite_SetDrawFlag
+    // add sp, #0x5c
+    // pop {r4, r5, r6, r7, pc}
+    // _0222BA9C: .word ov43_0222ED74
+    // _0222BAA0: .word ov43_0222EE08
+    // _0222BAA4: .word 0x0000014F
+    // _0222BAA8: .word 0x00010F00
+    // _0222BAAC: .word ov43_0222EEE0
+    // _0222BAB0: .word 0x00000161
+    // _0222BAB4: .word ov43_0222EEB0
+    // TODO: decompile
 }
+
 
 void ov43_0222BAB8(void) {
-    /* Original at 0x0222BAB8 */
-    /* Requires manual decompilation - 44 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r0, #0xf8\n    ldr r0, [r0]\n    add r7, r2, #0\n    bl Sprite_Delete\n    add r0, r5, #0\n    add r0, #0xc8\n    bl RemoveWindow\n    add r0, r5, #0\n    add r0, #0xd8\n    ldr r0, [r0]\n    bl String_Delete\n    mov r6, #0\n    add r4, r5, #0\n    add r0, r4, #0\n    add r0, #0xe4\n    ldr r0, [r0]\n    bl ListMenuItems_Delete\n    add r6, r6, #1\n    add r4, r4, #4\n    cmp r6, #2\n    blt _0222BADC\n    add r0, r5, #0\n    add r0, #0xb8\n    bl RemoveWindow\n    add r0, r5, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    bl ov42_02227274\n    add r0, r5, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    bl ov42_02227114\n    mov r4, #0\n    add r5, #8\n    add r0, r5, #0\n    add r1, r7, #0\n    bl ov43_0222C7EC\n    add r4, r4, #1\n    add r5, #0x38\n    cmp r4, #3\n    blt _0222BB0E\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // add r0, #0xf8
+    // ldr r0, [r0]
+    // add r7, r2, #0
+    // bl Sprite_Delete
+    // add r0, r5, #0
+    // add r0, #0xc8
+    // bl RemoveWindow
+    // add r0, r5, #0
+    // add r0, #0xd8
+    // ldr r0, [r0]
+    // bl String_Delete
+    // mov r6, #0
+    // add r4, r5, #0
+    // add r0, r4, #0
+    // add r0, #0xe4
+    // ldr r0, [r0]
+    // bl ListMenuItems_Delete
+    // add r6, r6, #1
+    // add r4, r4, #4
+    // cmp r6, #2
+    // blt _0222BADC
+    // add r0, r5, #0
+    // add r0, #0xb8
+    // bl RemoveWindow
+    // add r0, r5, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // bl ov42_02227274
+    // add r0, r5, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // bl ov42_02227114
+    // mov r4, #0
+    // add r5, #8
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // bl ov43_0222C7EC
+    // add r4, r4, #1
+    // add r5, #0x38
+    // cmp r4, #3
+    // blt _0222BB0E
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222BB20(void) {
-    /* Original at 0x0222BB20 */
-    /* Requires manual decompilation - 67 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x1c\n    add r4, r2, #0\n    add r7, r1, #0\n    add r1, r4, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    add r1, #0x64\n    mov r2, #5\n    add r6, r3, #0\n    bl ov43_0222A9F4\n    mov r0, #0x83\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #0xe\n    str r1, [sp]\n    mov r1, #4\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r1, #3\n    str r1, [sp, #0xc]\n    mov r1, #0\n    str r1, [sp, #0x10]\n    ldrh r2, [r0]\n    mov r3, #0x14\n    lsl r2, r2, #0x15\n    lsr r2, r2, #0x18\n    str r2, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r2, #0x11\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r4]\n    bl CopyToBgTilemapRect\n    add r0, r5, #0\n    add r0, #0xb8\n    bl ScheduleWindowCopyToVram\n    ldr r0, [r4]\n    mov r1, #0\n    bl ScheduleBgTilemapBufferTransfer\n    add r0, r4, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r0, #4\n    ldrsh r0, [r5, r0]\n    mov r3, #0\n    add r1, r7, #0\n    str r0, [sp]\n    str r3, [sp, #4]\n    str r6, [sp, #8]\n    ldrsh r3, [r5, r3]\n    add r0, r5, #0\n    add r2, r4, #0\n    bl ov43_0222C378\n    mov r1, #1\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov43_0222AD74\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0x10\n    bl ov43_0222AD98\n    add sp, #0x1c\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x1c
+    // add r4, r2, #0
+    // add r7, r1, #0
+    // add r1, r4, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // add r1, #0x64
+    // mov r2, #5
+    // add r6, r3, #0
+    // bl ov43_0222A9F4
+    // mov r0, #0x83
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #0xe
+    // str r1, [sp]
+    // mov r1, #4
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r1, #3
+    // str r1, [sp, #0xc]
+    // mov r1, #0
+    // str r1, [sp, #0x10]
+    // ldrh r2, [r0]
+    // mov r3, #0x14
+    // lsl r2, r2, #0x15
+    // lsr r2, r2, #0x18
+    // str r2, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r2, #0x11
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r4]
+    // bl CopyToBgTilemapRect
+    // add r0, r5, #0
+    // add r0, #0xb8
+    // bl ScheduleWindowCopyToVram
+    // ldr r0, [r4]
+    // mov r1, #0
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r0, #4
+    // ldrsh r0, [r5, r0]
+    // mov r3, #0
+    // add r1, r7, #0
+    // str r0, [sp]
+    // str r3, [sp, #4]
+    // str r6, [sp, #8]
+    // ldrsh r3, [r5, r3]
+    // add r0, r5, #0
+    // add r2, r4, #0
+    // bl ov43_0222C378
+    // mov r1, #1
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // bl ov43_0222AD74
+    // add r0, r4, #0
+    // mov r1, #1
+    // mov r2, #0x10
+    // bl ov43_0222AD98
+    // add sp, #0x1c
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222BBB8(void) {
-    /* Original at 0x0222BBB8 */
-    /* Requires manual decompilation - 86 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x1c\n    add r4, r2, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov43_0222AA70\n    add r0, r5, #0\n    add r0, #0xb8\n    bl ClearWindowTilemapAndScheduleTransfer\n    mov r7, #2\n    mov r6, #0\n    add r5, #8\n    lsl r7, r7, #8\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r4, r7\n    bl ov43_0222C9A4\n    add r6, r6, #1\n    add r5, #0x38\n    cmp r6, #3\n    blt _0222BBD6\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0xff\n    bl ov43_0222AD74\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #9\n    bl ov43_0222AD98\n    add r0, r4, #0\n    mov r1, #0\n    bl ov43_0222AD00\n    mov r0, #0x83\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #0xe\n    str r1, [sp]\n    mov r1, #4\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r2, #0x11\n    str r2, [sp, #0xc]\n    mov r1, #0\n    str r1, [sp, #0x10]\n    ldrh r3, [r0]\n    lsl r3, r3, #0x15\n    lsr r3, r3, #0x18\n    str r3, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r3, #0x14\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r4]\n    bl CopyToBgTilemapRect\n    mov r0, #0x83\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r2, #0x10\n    add r1, r0, #0\n    str r2, [sp]\n    mov r3, #4\n    str r3, [sp, #4]\n    add r1, #0xc\n    str r1, [sp, #8]\n    str r2, [sp, #0xc]\n    str r3, [sp, #0x10]\n    ldrh r1, [r0]\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r1, #0\n    add r3, r1, #0\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r4]\n    bl CopyToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #0\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x1c
+    // add r4, r2, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222AA70
+    // add r0, r5, #0
+    // add r0, #0xb8
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // mov r7, #2
+    // mov r6, #0
+    // add r5, #8
+    // lsl r7, r7, #8
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r4, r7
+    // bl ov43_0222C9A4
+    // add r6, r6, #1
+    // add r5, #0x38
+    // cmp r6, #3
+    // blt _0222BBD6
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #0xff
+    // bl ov43_0222AD74
+    // add r0, r4, #0
+    // mov r1, #1
+    // mov r2, #9
+    // bl ov43_0222AD98
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl ov43_0222AD00
+    // mov r0, #0x83
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #0xe
+    // str r1, [sp]
+    // mov r1, #4
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r2, #0x11
+    // str r2, [sp, #0xc]
+    // mov r1, #0
+    // str r1, [sp, #0x10]
+    // ldrh r3, [r0]
+    // lsl r3, r3, #0x15
+    // lsr r3, r3, #0x18
+    // str r3, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r3, #0x14
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r4]
+    // bl CopyToBgTilemapRect
+    // mov r0, #0x83
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r2, #0x10
+    // add r1, r0, #0
+    // str r2, [sp]
+    // mov r3, #4
+    // str r3, [sp, #4]
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // str r2, [sp, #0xc]
+    // str r3, [sp, #0x10]
+    // ldrh r1, [r0]
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r1, #0
+    // add r3, r1, #0
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r4]
+    // bl CopyToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #0
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222BC78(void) {
-    /* Original at 0x0222BC78 */
-    /* Requires manual decompilation - 71 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r2, #0\n    cmp r3, #0\n    bne _0222BC9C\n    ldr r0, _0222BD14 ; =0x000005DD\n    bl PlaySE\n    mov r2, #4\n    add r0, r5, #0\n    ldrsh r2, [r5, r2]\n    add r0, #8\n    add r1, r4, #0\n    mov r3, #1\n    bl ov43_0222C890\n    mov r0, #3\n    pop {r3, r4, r5, pc}\n    cmp r3, #5\n    bne _0222BCEA\n    mov r0, #4\n    ldrsh r2, [r5, r0]\n    cmp r2, #8\n    bne _0222BCC2\n    ldr r0, _0222BD14 ; =0x000005DD\n    bl PlaySE\n    mov r2, #4\n    add r0, r5, #0\n    ldrsh r2, [r5, r2]\n    add r0, #8\n    add r1, r4, #0\n    mov r3, #1\n    bl ov43_0222C890\n    mov r0, #3\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    ldrsh r3, [r5, r0]\n    ldr r1, [r1, #0x10]\n    lsl r3, r3, #3\n    add r2, r2, r3\n    cmp r1, r2\n    bls _0222BD10\n    ldr r0, _0222BD14 ; =0x000005DD\n    bl PlaySE\n    mov r2, #4\n    add r0, r5, #0\n    ldrsh r2, [r5, r2]\n    add r0, #8\n    add r1, r4, #0\n    mov r3, #1\n    bl ov43_0222C890\n    mov r0, #4\n    pop {r3, r4, r5, pc}\n    cmp r3, #1\n    bne _0222BCFC\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #1\n    bl ov43_0222AD40\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    cmp r3, #2\n    bne _0222BD0E\n    mov r1, #1\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov43_0222AD40\n    mov r0, #2\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    nop\n    _0222BD14: .word 0x000005DD"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // add r4, r2, #0
+    // cmp r3, #0
+    // bne _0222BC9C
+    // ldr r0, _0222BD14 ; =0x000005DD
+    // bl PlaySE
+    // mov r2, #4
+    // add r0, r5, #0
+    // ldrsh r2, [r5, r2]
+    // add r0, #8
+    // add r1, r4, #0
+    // mov r3, #1
+    // bl ov43_0222C890
+    // mov r0, #3
+    // pop {r3, r4, r5, pc}
+    // cmp r3, #5
+    // bne _0222BCEA
+    // mov r0, #4
+    // ldrsh r2, [r5, r0]
+    // cmp r2, #8
+    // bne _0222BCC2
+    // ldr r0, _0222BD14 ; =0x000005DD
+    // bl PlaySE
+    // mov r2, #4
+    // add r0, r5, #0
+    // ldrsh r2, [r5, r2]
+    // add r0, #8
+    // add r1, r4, #0
+    // mov r3, #1
+    // bl ov43_0222C890
+    // mov r0, #3
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // ldrsh r3, [r5, r0]
+    // ldr r1, [r1, #0x10]
+    // lsl r3, r3, #3
+    // add r2, r2, r3
+    // cmp r1, r2
+    // bls _0222BD10
+    // ldr r0, _0222BD14 ; =0x000005DD
+    // bl PlaySE
+    // mov r2, #4
+    // add r0, r5, #0
+    // ldrsh r2, [r5, r2]
+    // add r0, #8
+    // add r1, r4, #0
+    // mov r3, #1
+    // bl ov43_0222C890
+    // mov r0, #4
+    // pop {r3, r4, r5, pc}
+    // cmp r3, #1
+    // bne _0222BCFC
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #1
+    // bl ov43_0222AD40
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // cmp r3, #2
+    // bne _0222BD0E
+    // mov r1, #1
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // bl ov43_0222AD40
+    // mov r0, #2
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _0222BD14: .word 0x000005DD
+    // TODO: decompile
 }
+
 
 void ov43_0222BD18(void) {
-    /* Original at 0x0222BD18 */
-    /* Requires manual decompilation - 223 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    ldr r0, _0222BEE0 ; =gSystem\n    add r6, r1, #0\n    ldr r1, [r0, #0x48]\n    ldr r0, _0222BEE4 ; =0x00000CF3\n    add r7, r2, #0\n    tst r0, r1\n    beq _0222BD30\n    mov r0, #0\n    str r0, [r6]\n    ldr r0, _0222BEE0 ; =gSystem\n    mov r2, #1\n    ldr r1, [r0, #0x48]\n    tst r2, r1\n    beq _0222BD4A\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r7, #0\n    mov r3, #5\n    bl ov43_0222BC78\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    mov r2, #2\n    tst r1, r2\n    beq _0222BD72\n    mov r0, #8\n    strh r0, [r5, #4]\n    mov r2, #4\n    add r0, r5, #0\n    ldrsh r2, [r5, r2]\n    add r0, #8\n    add r1, r7, #0\n    bl ov43_0222C844\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r7, #0\n    mov r3, #0\n    bl ov43_0222BC78\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    mov r1, #4\n    ldrsh r1, [r5, r1]\n    mov r4, #0\n    lsl r2, r1, #0x10\n    lsr r2, r2, #0x10\n    str r2, [sp, #8]\n    add r2, r4, #0\n    str r2, [sp, #4]\n    ldr r2, [r0, #0x4c]\n    mov r0, #0x40\n    tst r0, r2\n    beq _0222BDBA\n    cmp r1, #8\n    bne _0222BDA0\n    mov r0, #6\n    ldrsh r0, [r5, r0]\n    mov r4, #1\n    add r1, r4, #0\n    strh r0, [r5, #4]\n    add r0, r7, #0\n    bl ov43_0222AD00\n    b _0222BE62\n    cmp r1, #4\n    bge _0222BDB0\n    cmp r1, #0\n    ble _0222BE62\n    sub r0, r1, #1\n    strh r0, [r5, #4]\n    mov r4, #1\n    b _0222BE62\n    ble _0222BE62\n    sub r0, r1, #1\n    strh r0, [r5, #4]\n    mov r4, #1\n    b _0222BE62\n    mov r0, #0x80\n    tst r0, r2\n    beq _0222BDEC\n    cmp r1, #3\n    beq _0222BDC8\n    cmp r1, #7\n    bne _0222BDD0\n    mov r0, #8\n    strh r0, [r5, #4]\n    mov r4, #1\n    b _0222BE62\n    cmp r1, #4\n    bge _0222BDE0\n    cmp r1, #3\n    bge _0222BE62\n    add r0, r1, #1\n    strh r0, [r5, #4]\n    mov r4, #1\n    b _0222BE62\n    cmp r1, #7\n    bge _0222BE62\n    add r0, r1, #1\n    strh r0, [r5, #4]\n    mov r4, #1\n    b _0222BE62\n    mov r0, #0x20\n    tst r0, r2\n    beq _0222BE12\n    cmp r1, #8\n    beq _0222BE62\n    cmp r1, #4\n    bge _0222BE0A\n    add r0, r1, #4\n    mov r4, #1\n    strh r0, [r5, #4]\n    add r0, r4, #0\n    str r0, [sp, #4]\n    mov r0, #0\n    str r0, [sp]\n    b _0222BE62\n    sub r0, r1, #4\n    strh r0, [r5, #4]\n    mov r4, #1\n    b _0222BE62\n    mov r3, #0x10\n    add r0, r2, #0\n    tst r0, r3\n    beq _0222BE38\n    cmp r1, #8\n    beq _0222BE62\n    cmp r1, #4\n    bge _0222BE2A\n    add r0, r1, #4\n    strh r0, [r5, #4]\n    mov r4, #1\n    b _0222BE62\n    sub r0, r1, #4\n    mov r4, #1\n    strh r0, [r5, #4]\n    add r0, r4, #0\n    str r0, [sp, #4]\n    str r0, [sp]\n    b _0222BE62\n    ldrb r0, [r6, #0xe]\n    cmp r0, #0\n    beq _0222BE62\n    beq _0222BE50\n    lsl r1, r3, #5\n    tst r1, r2\n    beq _0222BE50\n    mov r0, #1\n    str r0, [sp, #4]\n    add r0, r4, #0\n    str r0, [sp]\n    b _0222BE62\n    cmp r0, #0\n    beq _0222BE62\n    mov r0, #1\n    lsl r0, r0, #8\n    tst r0, r2\n    beq _0222BE62\n    mov r0, #1\n    str r0, [sp, #4]\n    str r0, [sp]\n    ldr r0, [sp, #4]\n    cmp r0, #1\n    bne _0222BEBC\n    ldr r0, [sp]\n    cmp r0, #0\n    beq _0222BE96\n    mov r0, #0\n    ldrsh r1, [r5, r0]\n    mov r3, #2\n    strh r1, [r5, #2]\n    ldrsh r0, [r5, r0]\n    add r0, r0, #1\n    lsr r2, r0, #0x1f\n    lsl r1, r0, #0x1e\n    sub r1, r1, r2\n    mov r0, #0x1e\n    ror r1, r0\n    add r0, r2, r1\n    strh r0, [r5]\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov43_0222BC78\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    mov r0, #0\n    ldrsh r1, [r5, r0]\n    strh r1, [r5, #2]\n    ldrsh r1, [r5, r0]\n    sub r1, r1, #1\n    strh r1, [r5]\n    ldrsh r0, [r5, r0]\n    cmp r0, #0\n    bge _0222BEAC\n    add r0, r0, #4\n    strh r0, [r5]\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r7, #0\n    mov r3, #1\n    bl ov43_0222BC78\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    cmp r4, #1\n    bne _0222BED8\n    ldr r0, _0222BEE8 ; =0x000005E5\n    bl PlaySE\n    mov r2, #4\n    add r0, r5, #0\n    ldrsh r2, [r5, r2]\n    add r0, #8\n    add r1, r7, #0\n    bl ov43_0222C844\n    ldr r0, [sp, #8]\n    strh r0, [r5, #6]\n    mov r0, #0\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _0222BEE0: .word gSystem\n    _0222BEE4: .word 0x00000CF3\n    _0222BEE8: .word 0x000005E5"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // ldr r0, _0222BEE0 ; =gSystem
+    // add r6, r1, #0
+    // ldr r1, [r0, #0x48]
+    // ldr r0, _0222BEE4 ; =0x00000CF3
+    // add r7, r2, #0
+    // tst r0, r1
+    // beq _0222BD30
+    // mov r0, #0
+    // str r0, [r6]
+    // ldr r0, _0222BEE0 ; =gSystem
+    // mov r2, #1
+    // ldr r1, [r0, #0x48]
+    // tst r2, r1
+    // beq _0222BD4A
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // add r2, r7, #0
+    // mov r3, #5
+    // bl ov43_0222BC78
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // mov r2, #2
+    // tst r1, r2
+    // beq _0222BD72
+    // mov r0, #8
+    // strh r0, [r5, #4]
+    // mov r2, #4
+    // add r0, r5, #0
+    // ldrsh r2, [r5, r2]
+    // add r0, #8
+    // add r1, r7, #0
+    // bl ov43_0222C844
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // add r2, r7, #0
+    // mov r3, #0
+    // bl ov43_0222BC78
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // mov r1, #4
+    // ldrsh r1, [r5, r1]
+    // mov r4, #0
+    // lsl r2, r1, #0x10
+    // lsr r2, r2, #0x10
+    // str r2, [sp, #8]
+    // add r2, r4, #0
+    // str r2, [sp, #4]
+    // ldr r2, [r0, #0x4c]
+    // mov r0, #0x40
+    // tst r0, r2
+    // beq _0222BDBA
+    // cmp r1, #8
+    // bne _0222BDA0
+    // mov r0, #6
+    // ldrsh r0, [r5, r0]
+    // mov r4, #1
+    // add r1, r4, #0
+    // strh r0, [r5, #4]
+    // add r0, r7, #0
+    // bl ov43_0222AD00
+    // b _0222BE62
+    // cmp r1, #4
+    // bge _0222BDB0
+    // cmp r1, #0
+    // ble _0222BE62
+    // sub r0, r1, #1
+    // strh r0, [r5, #4]
+    // mov r4, #1
+    // b _0222BE62
+    // ble _0222BE62
+    // sub r0, r1, #1
+    // strh r0, [r5, #4]
+    // mov r4, #1
+    // b _0222BE62
+    // mov r0, #0x80
+    // tst r0, r2
+    // beq _0222BDEC
+    // cmp r1, #3
+    // beq _0222BDC8
+    // cmp r1, #7
+    // bne _0222BDD0
+    // mov r0, #8
+    // strh r0, [r5, #4]
+    // mov r4, #1
+    // b _0222BE62
+    // cmp r1, #4
+    // bge _0222BDE0
+    // cmp r1, #3
+    // bge _0222BE62
+    // add r0, r1, #1
+    // strh r0, [r5, #4]
+    // mov r4, #1
+    // b _0222BE62
+    // cmp r1, #7
+    // bge _0222BE62
+    // add r0, r1, #1
+    // strh r0, [r5, #4]
+    // mov r4, #1
+    // b _0222BE62
+    // mov r0, #0x20
+    // tst r0, r2
+    // beq _0222BE12
+    // cmp r1, #8
+    // beq _0222BE62
+    // cmp r1, #4
+    // bge _0222BE0A
+    // add r0, r1, #4
+    // mov r4, #1
+    // strh r0, [r5, #4]
+    // add r0, r4, #0
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // str r0, [sp]
+    // b _0222BE62
+    // sub r0, r1, #4
+    // strh r0, [r5, #4]
+    // mov r4, #1
+    // b _0222BE62
+    // mov r3, #0x10
+    // add r0, r2, #0
+    // tst r0, r3
+    // beq _0222BE38
+    // cmp r1, #8
+    // beq _0222BE62
+    // cmp r1, #4
+    // bge _0222BE2A
+    // add r0, r1, #4
+    // strh r0, [r5, #4]
+    // mov r4, #1
+    // b _0222BE62
+    // sub r0, r1, #4
+    // mov r4, #1
+    // strh r0, [r5, #4]
+    // add r0, r4, #0
+    // str r0, [sp, #4]
+    // str r0, [sp]
+    // b _0222BE62
+    // ldrb r0, [r6, #0xe]
+    // cmp r0, #0
+    // beq _0222BE62
+    // beq _0222BE50
+    // lsl r1, r3, #5
+    // tst r1, r2
+    // beq _0222BE50
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // add r0, r4, #0
+    // str r0, [sp]
+    // b _0222BE62
+    // cmp r0, #0
+    // beq _0222BE62
+    // mov r0, #1
+    // lsl r0, r0, #8
+    // tst r0, r2
+    // beq _0222BE62
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // str r0, [sp]
+    // ldr r0, [sp, #4]
+    // cmp r0, #1
+    // bne _0222BEBC
+    // ldr r0, [sp]
+    // cmp r0, #0
+    // beq _0222BE96
+    // mov r0, #0
+    // ldrsh r1, [r5, r0]
+    // mov r3, #2
+    // strh r1, [r5, #2]
+    // ldrsh r0, [r5, r0]
+    // add r0, r0, #1
+    // lsr r2, r0, #0x1f
+    // lsl r1, r0, #0x1e
+    // sub r1, r1, r2
+    // mov r0, #0x1e
+    // ror r1, r0
+    // add r0, r2, r1
+    // strh r0, [r5]
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // add r2, r7, #0
+    // bl ov43_0222BC78
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // ldrsh r1, [r5, r0]
+    // strh r1, [r5, #2]
+    // ldrsh r1, [r5, r0]
+    // sub r1, r1, #1
+    // strh r1, [r5]
+    // ldrsh r0, [r5, r0]
+    // cmp r0, #0
+    // bge _0222BEAC
+    // add r0, r0, #4
+    // strh r0, [r5]
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // add r2, r7, #0
+    // mov r3, #1
+    // bl ov43_0222BC78
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // cmp r4, #1
+    // bne _0222BED8
+    // ldr r0, _0222BEE8 ; =0x000005E5
+    // bl PlaySE
+    // mov r2, #4
+    // add r0, r5, #0
+    // ldrsh r2, [r5, r2]
+    // add r0, #8
+    // add r1, r7, #0
+    // bl ov43_0222C844
+    // ldr r0, [sp, #8]
+    // strh r0, [r5, #6]
+    // mov r0, #0
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _0222BEE0: .word gSystem
+    // _0222BEE4: .word 0x00000CF3
+    // _0222BEE8: .word 0x000005E5
+    // TODO: decompile
 }
+
 
 void ov43_0222BEEC(void) {
-    /* Original at 0x0222BEEC */
-    /* Requires manual decompilation - 84 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, _0222BF9C ; =ov43_0222EF60\n    add r7, r1, #0\n    add r4, r2, #0\n    add r6, r3, #0\n    bl TouchscreenHitbox_FindHitboxAtTouchNew\n    mov r1, #0\n    mvn r1, r1\n    cmp r0, r1\n    bne _0222BF08\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r0, #8\n    bhi _0222BF34\n    mov r1, #1\n    str r1, [r6]\n    strh r0, [r5, #4]\n    ldr r0, _0222BFA0 ; =0x000005E5\n    bl PlaySE\n    mov r2, #4\n    add r0, r5, #0\n    ldrsh r2, [r5, r2]\n    add r0, #8\n    add r1, r4, #0\n    bl ov43_0222C844\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, r4, #0\n    mov r3, #5\n    bl ov43_0222BC78\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r0, #9\n    beq _0222BF4C\n    cmp r0, #0xa\n    bne _0222BF40\n    mov r1, #1\n    b _0222BF4C\n    mov r1, #0\n    ldrsh r1, [r5, r1]\n    sub r0, #0xb\n    sub r0, r0, r1\n    lsl r0, r0, #0x18\n    asr r1, r0, #0x18\n    cmp r1, #0\n    bne _0222BF54\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #1\n    str r0, [r6]\n    mov r0, #0\n    ldrsh r2, [r5, r0]\n    strh r2, [r5, #2]\n    ldrsh r2, [r5, r0]\n    add r2, r2, r1\n    strh r2, [r5]\n    cmp r1, #0\n    ldrsh r0, [r5, r0]\n    blt _0222BF86\n    lsr r2, r0, #0x1f\n    lsl r1, r0, #0x1e\n    sub r1, r1, r2\n    mov r0, #0x1e\n    ror r1, r0\n    add r0, r2, r1\n    strh r0, [r5]\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, r4, #0\n    mov r3, #2\n    bl ov43_0222BC78\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r0, #0\n    bge _0222BF8E\n    add r0, r0, #4\n    strh r0, [r5]\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, r4, #0\n    mov r3, #1\n    bl ov43_0222BC78\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222BF9C: .word ov43_0222EF60\n    _0222BFA0: .word 0x000005E5"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // ldr r0, _0222BF9C ; =ov43_0222EF60
+    // add r7, r1, #0
+    // add r4, r2, #0
+    // add r6, r3, #0
+    // bl TouchscreenHitbox_FindHitboxAtTouchNew
+    // mov r1, #0
+    // mvn r1, r1
+    // cmp r0, r1
+    // bne _0222BF08
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // cmp r0, #8
+    // bhi _0222BF34
+    // mov r1, #1
+    // str r1, [r6]
+    // strh r0, [r5, #4]
+    // ldr r0, _0222BFA0 ; =0x000005E5
+    // bl PlaySE
+    // mov r2, #4
+    // add r0, r5, #0
+    // ldrsh r2, [r5, r2]
+    // add r0, #8
+    // add r1, r4, #0
+    // bl ov43_0222C844
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl ov43_0222BC78
+    // pop {r3, r4, r5, r6, r7, pc}
+    // cmp r0, #9
+    // beq _0222BF4C
+    // cmp r0, #0xa
+    // bne _0222BF40
+    // mov r1, #1
+    // b _0222BF4C
+    // mov r1, #0
+    // ldrsh r1, [r5, r1]
+    // sub r0, #0xb
+    // sub r0, r0, r1
+    // lsl r0, r0, #0x18
+    // asr r1, r0, #0x18
+    // cmp r1, #0
+    // bne _0222BF54
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #1
+    // str r0, [r6]
+    // mov r0, #0
+    // ldrsh r2, [r5, r0]
+    // strh r2, [r5, #2]
+    // ldrsh r2, [r5, r0]
+    // add r2, r2, r1
+    // strh r2, [r5]
+    // cmp r1, #0
+    // ldrsh r0, [r5, r0]
+    // blt _0222BF86
+    // lsr r2, r0, #0x1f
+    // lsl r1, r0, #0x1e
+    // sub r1, r1, r2
+    // mov r0, #0x1e
+    // ror r1, r0
+    // add r0, r2, r1
+    // strh r0, [r5]
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // add r2, r4, #0
+    // mov r3, #2
+    // bl ov43_0222BC78
+    // pop {r3, r4, r5, r6, r7, pc}
+    // cmp r0, #0
+    // bge _0222BF8E
+    // add r0, r0, #4
+    // strh r0, [r5]
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // add r2, r4, #0
+    // mov r3, #1
+    // bl ov43_0222BC78
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222BF9C: .word ov43_0222EF60
+    // _0222BFA0: .word 0x000005E5
+    // TODO: decompile
 }
+
 
 void ov43_0222BFA4(void) {
-    /* Original at 0x0222BFA4 */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    mov r3, #0\n    str r3, [sp]\n    add r3, sp, #0\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r2, #0\n    bl ov43_0222BEEC\n    ldr r1, [sp]\n    cmp r1, #0\n    beq _0222BFC6\n    mov r1, #1\n    add sp, #4\n    str r1, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov43_0222BD18\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // mov r3, #0
+    // str r3, [sp]
+    // add r3, sp, #0
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // add r6, r2, #0
+    // bl ov43_0222BEEC
+    // ldr r1, [sp]
+    // cmp r1, #0
+    // beq _0222BFC6
+    // mov r1, #1
+    // add sp, #4
+    // str r1, [r4]
+    // pop {r3, r4, r5, r6, pc}
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // bl ov43_0222BD18
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222BFD4(void) {
-    /* Original at 0x0222BFD4 */
-    /* Requires manual decompilation - 35 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r0, #0xb2\n    ldrh r0, [r0]\n    add r4, r2, #0\n    cmp r0, #2\n    bne _0222BFE8\n    mov r2, #2\n    b _0222BFEA\n    mov r2, #1\n    mov r0, #4\n    ldrsh r0, [r5, r0]\n    str r0, [sp]\n    str r2, [sp, #4]\n    str r3, [sp, #8]\n    mov r3, #0\n    ldrsh r3, [r5, r3]\n    add r0, r5, #0\n    add r2, r4, #0\n    bl ov43_0222C378\n    add r5, #8\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #0xa\n    bl ov43_0222C844\n    add r0, r4, #0\n    mov r1, #0\n    bl ov43_0222AD20\n    ldr r0, _0222C020 ; =0x000005E1\n    bl PlaySE\n    add sp, #0xc\n    pop {r4, r5, pc}\n    nop\n    _0222C020: .word 0x000005E1"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // add r0, #0xb2
+    // ldrh r0, [r0]
+    // add r4, r2, #0
+    // cmp r0, #2
+    // bne _0222BFE8
+    // mov r2, #2
+    // b _0222BFEA
+    // mov r2, #1
+    // mov r0, #4
+    // ldrsh r0, [r5, r0]
+    // str r0, [sp]
+    // str r2, [sp, #4]
+    // str r3, [sp, #8]
+    // mov r3, #0
+    // ldrsh r3, [r5, r3]
+    // add r0, r5, #0
+    // add r2, r4, #0
+    // bl ov43_0222C378
+    // add r5, #8
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // mov r2, #0xa
+    // bl ov43_0222C844
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl ov43_0222AD20
+    // ldr r0, _0222C020 ; =0x000005E1
+    // bl PlaySE
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // nop
+    // _0222C020: .word 0x000005E1
+    // TODO: decompile
 }
+
 
 void ov43_0222C024(void) {
-    /* Original at 0x0222C024 */
-    /* Requires manual decompilation - 135 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    add r5, r0, #0\n    mov r0, #0xb0\n    ldrsh r0, [r5, r0]\n    str r1, [sp, #0xc]\n    add r4, r2, #0\n    add r6, r3, #0\n    cmp r0, #8\n    blt _0222C0B4\n    mov r2, #0\n    ldr r0, [r4]\n    mov r1, #2\n    add r3, r2, #0\n    bl ScheduleSetBgPosText\n    mov r2, #0\n    ldr r0, [r4]\n    mov r1, #3\n    add r3, r2, #0\n    bl ScheduleSetBgPosText\n    ldr r3, _0222C140 ; =ov43_0222F0FC\n    add r2, sp, #0x10\n    add r7, r2, #0\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    add r0, r4, #0\n    add r0, #8\n    add r1, r7, #0\n    bl GF_SetG2dRendererSurface\n    add r0, r5, #0\n    add r0, #0xb2\n    ldrh r0, [r0]\n    cmp r0, #2\n    bne _0222C076\n    mov r2, #2\n    b _0222C078\n    mov r2, #1\n    mov r0, #0x38\n    add r1, r5, #0\n    mul r0, r2\n    mov r2, #2\n    add r1, #8\n    lsl r2, r2, #8\n    add r0, r1, r0\n    add r1, r4, #0\n    add r2, r4, r2\n    bl ov43_0222C9A4\n    mov r0, #4\n    ldrsh r0, [r5, r0]\n    mov r3, #0\n    ldr r1, [sp, #0xc]\n    str r0, [sp]\n    str r3, [sp, #4]\n    str r6, [sp, #8]\n    ldrsh r3, [r5, r3]\n    add r0, r5, #0\n    add r2, r4, #0\n    bl ov43_0222C378\n    add r0, r4, #0\n    mov r1, #1\n    bl ov43_0222AD20\n    add sp, #0x20\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    lsl r1, r0, #8\n    asr r0, r1, #2\n    lsr r0, r0, #0x1d\n    add r0, r1, r0\n    asr r6, r0, #3\n    add r0, r5, #0\n    add r0, #0xb2\n    ldrh r0, [r0]\n    cmp r0, #2\n    bne _0222C0CA\n    neg r6, r6\n    ldr r0, [r4]\n    mov r1, #2\n    mov r2, #0\n    add r3, r6, #0\n    bl ScheduleSetBgPosText\n    ldr r0, [r4]\n    mov r1, #3\n    mov r2, #0\n    add r3, r6, #0\n    bl ScheduleSetBgPosText\n    ldr r3, _0222C140 ; =ov43_0222F0FC\n    add r2, sp, #0x10\n    add r7, r2, #0\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldr r1, [sp, #0x10]\n    lsl r0, r6, #0xc\n    add r0, r1, r0\n    str r0, [sp, #0x10]\n    add r0, r4, #0\n    add r0, #8\n    add r1, r7, #0\n    bl GF_SetG2dRendererSurface\n    mov r0, #0xb0\n    ldrsh r3, [r5, r0]\n    mov r0, #0x1f\n    lsr r2, r3, #0x1f\n    lsl r1, r3, #0x1f\n    sub r1, r1, r2\n    ror r1, r0\n    add r0, r2, r1\n    beq _0222C130\n    add r2, r3, r2\n    asr r0, r2, #1\n    lsl r1, r0, #2\n    ldr r0, _0222C144 ; =ov43_0222F0EC\n    ldr r6, [r0, r1]\n    cmp r6, #0\n    beq _0222C130\n    mov r2, #0\n    mov r3, #2\n    ldrsh r2, [r5, r2]\n    ldrsh r3, [r5, r3]\n    add r0, r5, #0\n    add r1, r4, #0\n    blx r6\n    mov r0, #0xb0\n    ldrsh r0, [r5, r0]\n    add r5, #0xb0\n    add r0, r0, #1\n    strh r0, [r5]\n    mov r0, #0\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222C140: .word ov43_0222F0FC\n    _0222C144: .word ov43_0222F0EC"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x20
+    // add r5, r0, #0
+    // mov r0, #0xb0
+    // ldrsh r0, [r5, r0]
+    // str r1, [sp, #0xc]
+    // add r4, r2, #0
+    // add r6, r3, #0
+    // cmp r0, #8
+    // blt _0222C0B4
+    // mov r2, #0
+    // ldr r0, [r4]
+    // mov r1, #2
+    // add r3, r2, #0
+    // bl ScheduleSetBgPosText
+    // mov r2, #0
+    // ldr r0, [r4]
+    // mov r1, #3
+    // add r3, r2, #0
+    // bl ScheduleSetBgPosText
+    // ldr r3, _0222C140 ; =ov43_0222F0FC
+    // add r2, sp, #0x10
+    // add r7, r2, #0
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // add r0, r4, #0
+    // add r0, #8
+    // add r1, r7, #0
+    // bl GF_SetG2dRendererSurface
+    // add r0, r5, #0
+    // add r0, #0xb2
+    // ldrh r0, [r0]
+    // cmp r0, #2
+    // bne _0222C076
+    // mov r2, #2
+    // b _0222C078
+    // mov r2, #1
+    // mov r0, #0x38
+    // add r1, r5, #0
+    // mul r0, r2
+    // mov r2, #2
+    // add r1, #8
+    // lsl r2, r2, #8
+    // add r0, r1, r0
+    // add r1, r4, #0
+    // add r2, r4, r2
+    // bl ov43_0222C9A4
+    // mov r0, #4
+    // ldrsh r0, [r5, r0]
+    // mov r3, #0
+    // ldr r1, [sp, #0xc]
+    // str r0, [sp]
+    // str r3, [sp, #4]
+    // str r6, [sp, #8]
+    // ldrsh r3, [r5, r3]
+    // add r0, r5, #0
+    // add r2, r4, #0
+    // bl ov43_0222C378
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl ov43_0222AD20
+    // add sp, #0x20
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // lsl r1, r0, #8
+    // asr r0, r1, #2
+    // lsr r0, r0, #0x1d
+    // add r0, r1, r0
+    // asr r6, r0, #3
+    // add r0, r5, #0
+    // add r0, #0xb2
+    // ldrh r0, [r0]
+    // cmp r0, #2
+    // bne _0222C0CA
+    // neg r6, r6
+    // ldr r0, [r4]
+    // mov r1, #2
+    // mov r2, #0
+    // add r3, r6, #0
+    // bl ScheduleSetBgPosText
+    // ldr r0, [r4]
+    // mov r1, #3
+    // mov r2, #0
+    // add r3, r6, #0
+    // bl ScheduleSetBgPosText
+    // ldr r3, _0222C140 ; =ov43_0222F0FC
+    // add r2, sp, #0x10
+    // add r7, r2, #0
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldr r1, [sp, #0x10]
+    // lsl r0, r6, #0xc
+    // add r0, r1, r0
+    // str r0, [sp, #0x10]
+    // add r0, r4, #0
+    // add r0, #8
+    // add r1, r7, #0
+    // bl GF_SetG2dRendererSurface
+    // mov r0, #0xb0
+    // ldrsh r3, [r5, r0]
+    // mov r0, #0x1f
+    // lsr r2, r3, #0x1f
+    // lsl r1, r3, #0x1f
+    // sub r1, r1, r2
+    // ror r1, r0
+    // add r0, r2, r1
+    // beq _0222C130
+    // add r2, r3, r2
+    // asr r0, r2, #1
+    // lsl r1, r0, #2
+    // ldr r0, _0222C144 ; =ov43_0222F0EC
+    // ldr r6, [r0, r1]
+    // cmp r6, #0
+    // beq _0222C130
+    // mov r2, #0
+    // mov r3, #2
+    // ldrsh r2, [r5, r2]
+    // ldrsh r3, [r5, r3]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // blx r6
+    // mov r0, #0xb0
+    // ldrsh r0, [r5, r0]
+    // add r5, #0xb0
+    // add r0, r0, #1
+    // strh r0, [r5]
+    // mov r0, #0
+    // add sp, #0x20
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222C140: .word ov43_0222F0FC
+    // _0222C144: .word ov43_0222F0EC
+    // TODO: decompile
 }
+
 
 void ov43_0222C148(void) {
-    /* Original at 0x0222C148 */
-    /* Requires manual decompilation - 101 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x40\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5, #4]\n    add r4, r2, #0\n    str r3, [sp, #0x18]\n    bl sub_0202C6F4\n    str r0, [sp, #0x1c]\n    add r0, r6, #0\n    bl ov43_0222C620\n    str r0, [sp, #0x20]\n    add r7, r5, #0\n    ldr r1, [sp, #0x20]\n    add r7, #0x18\n    ldrb r1, [r7, r1]\n    ldr r0, [sp, #0x1c]\n    mov r2, #8\n    bl sub_0202C090\n    str r0, [sp, #0x24]\n    add r0, sp, #0x28\n    mov r1, #0\n    mov r2, #0x18\n    bl MI_CpuFill8\n    ldr r1, _0222C220 ; =ov43_0222ED9C\n    add r0, sp, #0x28\n    ldrh r2, [r1, #4]\n    strh r2, [r0]\n    ldrh r2, [r1, #6]\n    strh r2, [r0, #2]\n    ldrh r2, [r1, #8]\n    strh r2, [r0, #4]\n    ldrh r2, [r1, #0xa]\n    strh r2, [r0, #6]\n    ldrh r2, [r1, #0xc]\n    ldrh r1, [r1, #0xe]\n    strh r2, [r0, #8]\n    strh r1, [r0, #0xa]\n    ldr r0, [sp, #0x24]\n    cmp r0, #2\n    bne _0222C1AC\n    add r0, r6, #0\n    add r0, #0xe8\n    ldr r0, [r0]\n    str r0, [sp, #0x34]\n    b _0222C1B4\n    add r0, r6, #0\n    add r0, #0xe4\n    ldr r0, [r0]\n    str r0, [sp, #0x34]\n    ldr r0, [r4]\n    mov r1, #4\n    str r0, [sp, #0x38]\n    add r0, sp, #0x28\n    strb r1, [r0, #0x14]\n    mov r0, #5\n    str r0, [sp]\n    mov r0, #0x11\n    str r0, [sp, #4]\n    mov r1, #0\n    ldr r0, _0222C224 ; =ov43_0222C630\n    str r1, [sp, #8]\n    str r0, [sp, #0xc]\n    str r1, [sp, #0x10]\n    mov r0, #1\n    str r0, [sp, #0x14]\n    ldr r2, [r5]\n    ldr r0, [r4, #0x5c]\n    lsl r2, r2, #0x18\n    add r1, sp, #0x28\n    lsr r2, r2, #0x18\n    mov r3, #0xd\n    bl TouchscreenListMenu_CreateWithCallback\n    add r1, r6, #0\n    add r1, #0xec\n    str r0, [r1]\n    ldr r2, [sp, #0x20]\n    ldr r1, [r5, #4]\n    ldrb r2, [r7, r2]\n    ldr r3, [sp, #0x18]\n    add r0, r4, #0\n    bl ov43_0222AB20\n    ldr r3, [sp, #0x18]\n    add r0, r6, #0\n    add r1, r4, #0\n    mov r2, #0xc\n    bl ov43_0222C550\n    add r0, r4, #0\n    mov r1, #0\n    bl ov43_0222AD00\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #4\n    mov r1, #8\n    mov r2, #0\n    mov r3, #0x3d\n    bl StartBrightnessTransition\n    add sp, #0x40\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222C220: .word ov43_0222ED9C\n    _0222C224: .word ov43_0222C630"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x40
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // ldr r0, [r5, #4]
+    // add r4, r2, #0
+    // str r3, [sp, #0x18]
+    // bl sub_0202C6F4
+    // str r0, [sp, #0x1c]
+    // add r0, r6, #0
+    // bl ov43_0222C620
+    // str r0, [sp, #0x20]
+    // add r7, r5, #0
+    // ldr r1, [sp, #0x20]
+    // add r7, #0x18
+    // ldrb r1, [r7, r1]
+    // ldr r0, [sp, #0x1c]
+    // mov r2, #8
+    // bl sub_0202C090
+    // str r0, [sp, #0x24]
+    // add r0, sp, #0x28
+    // mov r1, #0
+    // mov r2, #0x18
+    // bl MI_CpuFill8
+    // ldr r1, _0222C220 ; =ov43_0222ED9C
+    // add r0, sp, #0x28
+    // ldrh r2, [r1, #4]
+    // strh r2, [r0]
+    // ldrh r2, [r1, #6]
+    // strh r2, [r0, #2]
+    // ldrh r2, [r1, #8]
+    // strh r2, [r0, #4]
+    // ldrh r2, [r1, #0xa]
+    // strh r2, [r0, #6]
+    // ldrh r2, [r1, #0xc]
+    // ldrh r1, [r1, #0xe]
+    // strh r2, [r0, #8]
+    // strh r1, [r0, #0xa]
+    // ldr r0, [sp, #0x24]
+    // cmp r0, #2
+    // bne _0222C1AC
+    // add r0, r6, #0
+    // add r0, #0xe8
+    // ldr r0, [r0]
+    // str r0, [sp, #0x34]
+    // b _0222C1B4
+    // add r0, r6, #0
+    // add r0, #0xe4
+    // ldr r0, [r0]
+    // str r0, [sp, #0x34]
+    // ldr r0, [r4]
+    // mov r1, #4
+    // str r0, [sp, #0x38]
+    // add r0, sp, #0x28
+    // strb r1, [r0, #0x14]
+    // mov r0, #5
+    // str r0, [sp]
+    // mov r0, #0x11
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // ldr r0, _0222C224 ; =ov43_0222C630
+    // str r1, [sp, #8]
+    // str r0, [sp, #0xc]
+    // str r1, [sp, #0x10]
+    // mov r0, #1
+    // str r0, [sp, #0x14]
+    // ldr r2, [r5]
+    // ldr r0, [r4, #0x5c]
+    // lsl r2, r2, #0x18
+    // add r1, sp, #0x28
+    // lsr r2, r2, #0x18
+    // mov r3, #0xd
+    // bl TouchscreenListMenu_CreateWithCallback
+    // add r1, r6, #0
+    // add r1, #0xec
+    // str r0, [r1]
+    // ldr r2, [sp, #0x20]
+    // ldr r1, [r5, #4]
+    // ldrb r2, [r7, r2]
+    // ldr r3, [sp, #0x18]
+    // add r0, r4, #0
+    // bl ov43_0222AB20
+    // ldr r3, [sp, #0x18]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // mov r2, #0xc
+    // bl ov43_0222C550
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl ov43_0222AD00
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #4
+    // mov r1, #8
+    // mov r2, #0
+    // mov r3, #0x3d
+    // bl StartBrightnessTransition
+    // add sp, #0x40
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222C220: .word ov43_0222ED9C
+    // _0222C224: .word ov43_0222C630
+    // TODO: decompile
 }
+
 
 void ov43_0222C228(void) {
-    /* Original at 0x0222C228 */
-    /* Requires manual decompilation - 58 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r7, r1, #0\n    add r6, r2, #0\n    bl ov43_0222C5D8\n    cmp r0, #0\n    bne _0222C23C\n    mov r0, #6\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    add r0, #0xec\n    ldr r0, [r0]\n    bl TouchscreenListMenu_HandleInput\n    add r4, r0, #0\n    cmp r4, #3\n    beq _0222C25E\n    mov r0, #1\n    mvn r0, r0\n    cmp r4, r0\n    beq _0222C25E\n    add r0, r0, #1\n    cmp r4, r0\n    bne _0222C268\n    mov r0, #6\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r6, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r4, #2\n    add r0, r5, #0\n    bl ov43_0222C600\n    add r0, r5, #0\n    add r0, #0xec\n    ldr r0, [r0]\n    bl TouchscreenListMenu_WasLastInputTouch\n    str r0, [r7]\n    add r0, r5, #0\n    add r0, #0xec\n    ldr r0, [r0]\n    bl TouchscreenListMenu_Destroy\n    cmp r4, #2\n    bne _0222C2A0\n    add r0, r6, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r2, #4\n    add r0, r5, #0\n    ldrsh r2, [r5, r2]\n    add r0, #8\n    add r1, r6, #0\n    mov r3, #0\n    bl ov43_0222C890\n    mov r0, #0\n    mov r1, #0x3d\n    mov r2, #1\n    bl SetBlendBrightness\n    add r0, r4, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // add r7, r1, #0
+    // add r6, r2, #0
+    // bl ov43_0222C5D8
+    // cmp r0, #0
+    // bne _0222C23C
+    // mov r0, #6
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r5, #0
+    // add r0, #0xec
+    // ldr r0, [r0]
+    // bl TouchscreenListMenu_HandleInput
+    // add r4, r0, #0
+    // cmp r4, #3
+    // beq _0222C25E
+    // mov r0, #1
+    // mvn r0, r0
+    // cmp r4, r0
+    // beq _0222C25E
+    // add r0, r0, #1
+    // cmp r4, r0
+    // bne _0222C268
+    // mov r0, #6
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r6, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r4, #2
+    // add r0, r5, #0
+    // bl ov43_0222C600
+    // add r0, r5, #0
+    // add r0, #0xec
+    // ldr r0, [r0]
+    // bl TouchscreenListMenu_WasLastInputTouch
+    // str r0, [r7]
+    // add r0, r5, #0
+    // add r0, #0xec
+    // ldr r0, [r0]
+    // bl TouchscreenListMenu_Destroy
+    // cmp r4, #2
+    // bne _0222C2A0
+    // add r0, r6, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r2, #4
+    // add r0, r5, #0
+    // ldrsh r2, [r5, r2]
+    // add r0, #8
+    // add r1, r6, #0
+    // mov r3, #0
+    // bl ov43_0222C890
+    // mov r0, #0
+    // mov r1, #0x3d
+    // mov r2, #1
+    // bl SetBlendBrightness
+    // add r0, r4, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222C2B0(void) {
-    /* Original at 0x0222C2B0 */
-    /* Requires manual decompilation - 53 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    add r5, r1, #0\n    str r0, [sp]\n    ldr r0, [r5, #4]\n    add r4, r2, #0\n    str r3, [sp, #4]\n    bl sub_0202C6F4\n    str r0, [sp, #0x1c]\n    ldr r0, [sp]\n    bl ov43_0222C620\n    add r6, r5, #0\n    add r7, r0, #0\n    add r6, #0x18\n    ldrb r1, [r6, r7]\n    ldr r0, [sp, #0x1c]\n    bl sub_0202C23C\n    bl DWC_GetFriendKey\n    str r1, [sp, #0x10]\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #0x10]\n    mov r2, #0\n    eor r0, r2\n    ldr r2, [sp, #0x14]\n    mov r1, #0\n    eor r1, r2\n    orr r0, r1\n    beq _0222C2F6\n    mov r0, #0x3c\n    str r0, [sp, #8]\n    b _0222C2FA\n    mov r0, #0x42\n    str r0, [sp, #8]\n    ldr r0, _0222C328 ; =0x000005DD\n    bl PlaySE\n    ldr r1, [sp, #0x14]\n    ldr r2, [sp, #0x10]\n    add r0, r4, #0\n    bl ov43_0222AAA4\n    ldrb r2, [r6, r7]\n    ldr r1, [r5, #4]\n    ldr r3, [sp, #4]\n    add r0, r4, #0\n    bl ov43_0222AB20\n    ldr r0, [sp]\n    ldr r2, [sp, #8]\n    ldr r3, [sp, #4]\n    add r1, r4, #0\n    bl ov43_0222C550\n    mov r0, #1\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222C328: .word 0x000005DD"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x20
+    // add r5, r1, #0
+    // str r0, [sp]
+    // ldr r0, [r5, #4]
+    // add r4, r2, #0
+    // str r3, [sp, #4]
+    // bl sub_0202C6F4
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp]
+    // bl ov43_0222C620
+    // add r6, r5, #0
+    // add r7, r0, #0
+    // add r6, #0x18
+    // ldrb r1, [r6, r7]
+    // ldr r0, [sp, #0x1c]
+    // bl sub_0202C23C
+    // bl DWC_GetFriendKey
+    // str r1, [sp, #0x10]
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #0x10]
+    // mov r2, #0
+    // eor r0, r2
+    // ldr r2, [sp, #0x14]
+    // mov r1, #0
+    // eor r1, r2
+    // orr r0, r1
+    // beq _0222C2F6
+    // mov r0, #0x3c
+    // str r0, [sp, #8]
+    // b _0222C2FA
+    // mov r0, #0x42
+    // str r0, [sp, #8]
+    // ldr r0, _0222C328 ; =0x000005DD
+    // bl PlaySE
+    // ldr r1, [sp, #0x14]
+    // ldr r2, [sp, #0x10]
+    // add r0, r4, #0
+    // bl ov43_0222AAA4
+    // ldrb r2, [r6, r7]
+    // ldr r1, [r5, #4]
+    // ldr r3, [sp, #4]
+    // add r0, r4, #0
+    // bl ov43_0222AB20
+    // ldr r0, [sp]
+    // ldr r2, [sp, #8]
+    // ldr r3, [sp, #4]
+    // add r1, r4, #0
+    // bl ov43_0222C550
+    // mov r0, #1
+    // add sp, #0x20
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222C328: .word 0x000005DD
+    // TODO: decompile
 }
+
 
 void ov43_0222C32C(void) {
     ov43_0222C620();
@@ -727,85 +4214,357 @@ void ov43_0222C32C(void) {
     ov43_0222C550(r7, r4, 0x39, r6);
 }
 
+
 void ov43_0222C358(void) {
-    /* Original at 0x0222C358 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl ov43_0222C5D8\n    cmp r0, #0\n    bne _0222C36A\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #1\n    bl ov43_0222ADB8\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r1, #0
+    // add r4, r2, #0
+    // bl ov43_0222C5D8
+    // cmp r0, #0
+    // bne _0222C36A
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // mov r2, #1
+    // bl ov43_0222ADB8
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C378(void) {
-    /* Original at 0x0222C378 */
-    /* Requires manual decompilation - 51 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    str r1, [sp, #0x10]\n    ldr r1, [sp, #0x34]\n    add r5, r0, #0\n    add r6, r2, #0\n    add r7, r3, #0\n    cmp r1, #0\n    bne _0222C398\n    ldr r1, [sp, #0x30]\n    strh r7, [r5]\n    strh r1, [r5, #4]\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov43_0222C3E8\n    ldr r1, [sp, #0x34]\n    add r4, r5, #0\n    mov r0, #0x38\n    mul r0, r1\n    mov r2, #2\n    lsl r2, r2, #8\n    add r4, #8\n    str r0, [sp, #0x14]\n    add r0, r4, r0\n    add r1, r6, #0\n    add r2, r6, r2\n    bl ov43_0222C7F8\n    mov r0, #2\n    lsl r0, r0, #8\n    add r0, r6, r0\n    str r0, [sp]\n    ldr r0, [sp, #0x10]\n    add r5, #0xb4\n    add r0, #0x10\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x38]\n    str r7, [sp, #8]\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x14]\n    ldr r1, [sp, #0x10]\n    ldr r3, [r5]\n    add r0, r4, r0\n    add r2, r6, #0\n    bl ov43_0222C918\n    ldr r0, [sp, #0x14]\n    ldr r2, [sp, #0x30]\n    add r0, r4, r0\n    add r1, r6, #0\n    bl ov43_0222C844\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // str r1, [sp, #0x10]
+    // ldr r1, [sp, #0x34]
+    // add r5, r0, #0
+    // add r6, r2, #0
+    // add r7, r3, #0
+    // cmp r1, #0
+    // bne _0222C398
+    // ldr r1, [sp, #0x30]
+    // strh r7, [r5]
+    // strh r1, [r5, #4]
+    // add r1, r6, #0
+    // add r2, r7, #0
+    // bl ov43_0222C3E8
+    // ldr r1, [sp, #0x34]
+    // add r4, r5, #0
+    // mov r0, #0x38
+    // mul r0, r1
+    // mov r2, #2
+    // lsl r2, r2, #8
+    // add r4, #8
+    // str r0, [sp, #0x14]
+    // add r0, r4, r0
+    // add r1, r6, #0
+    // add r2, r6, r2
+    // bl ov43_0222C7F8
+    // mov r0, #2
+    // lsl r0, r0, #8
+    // add r0, r6, r0
+    // str r0, [sp]
+    // ldr r0, [sp, #0x10]
+    // add r5, #0xb4
+    // add r0, #0x10
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #0x38]
+    // str r7, [sp, #8]
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x14]
+    // ldr r1, [sp, #0x10]
+    // ldr r3, [r5]
+    // add r0, r4, r0
+    // add r2, r6, #0
+    // bl ov43_0222C918
+    // ldr r0, [sp, #0x14]
+    // ldr r2, [sp, #0x30]
+    // add r0, r4, r0
+    // add r1, r6, #0
+    // bl ov43_0222C844
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C3E8(void) {
-    /* Original at 0x0222C3E8 */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0x1c\n    mov r0, #0x83\n    add r5, r1, #0\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    add r4, r2, #0\n    mov r2, #0x10\n    add r1, r0, #0\n    str r2, [sp]\n    mov r3, #4\n    str r3, [sp, #4]\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    str r3, [sp, #0x10]\n    ldrh r3, [r0]\n    lsl r3, r3, #0x15\n    lsr r3, r3, #0x18\n    str r3, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    add r3, r1, #0\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r5]\n    bl CopyToBgTilemapRect\n    mov r0, #0x83\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #4\n    str r1, [sp]\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    lsl r2, r4, #2\n    str r1, [sp, #8]\n    lsl r1, r2, #0x18\n    lsr r1, r1, #0x18\n    str r1, [sp, #0xc]\n    mov r1, #8\n    str r1, [sp, #0x10]\n    ldrh r1, [r0]\n    add r2, #0x10\n    lsl r2, r2, #0x18\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r1, #0\n    lsr r2, r2, #0x18\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r5]\n    add r3, r1, #0\n    bl CopyToBgTilemapRect\n    ldr r0, [r5]\n    mov r1, #0\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0x1c
+    // mov r0, #0x83
+    // add r5, r1, #0
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // add r4, r2, #0
+    // mov r2, #0x10
+    // add r1, r0, #0
+    // str r2, [sp]
+    // mov r3, #4
+    // str r3, [sp, #4]
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r1, #0
+    // str r1, [sp, #0xc]
+    // str r3, [sp, #0x10]
+    // ldrh r3, [r0]
+    // lsl r3, r3, #0x15
+    // lsr r3, r3, #0x18
+    // str r3, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // add r3, r1, #0
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5]
+    // bl CopyToBgTilemapRect
+    // mov r0, #0x83
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #4
+    // str r1, [sp]
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // lsl r2, r4, #2
+    // str r1, [sp, #8]
+    // lsl r1, r2, #0x18
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0xc]
+    // mov r1, #8
+    // str r1, [sp, #0x10]
+    // ldrh r1, [r0]
+    // add r2, #0x10
+    // lsl r2, r2, #0x18
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r1, #0
+    // lsr r2, r2, #0x18
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5]
+    // add r3, r1, #0
+    // bl CopyToBgTilemapRect
+    // ldr r0, [r5]
+    // mov r1, #0
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C46C(void) {
-    /* Original at 0x0222C46C */
-    /* Requires manual decompilation - 36 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0x1c\n    mov r0, #0x83\n    add r4, r1, #0\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #4\n    str r1, [sp]\n    lsl r2, r3, #2\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    add r2, #0x10\n    str r1, [sp, #8]\n    lsl r1, r2, #0x18\n    lsr r2, r1, #0x18\n    str r2, [sp, #0xc]\n    mov r1, #8\n    str r1, [sp, #0x10]\n    ldrh r1, [r0]\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r1, #0\n    add r3, r1, #0\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r4]\n    bl CopyToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #0\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0x1c
+    // mov r0, #0x83
+    // add r4, r1, #0
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #4
+    // str r1, [sp]
+    // lsl r2, r3, #2
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // add r2, #0x10
+    // str r1, [sp, #8]
+    // lsl r1, r2, #0x18
+    // lsr r2, r1, #0x18
+    // str r2, [sp, #0xc]
+    // mov r1, #8
+    // str r1, [sp, #0x10]
+    // ldrh r1, [r0]
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r1, #0
+    // add r3, r1, #0
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r4]
+    // bl CopyToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #0
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C4B8(void) {
-    /* Original at 0x0222C4B8 */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0x1c\n    mov r0, #0x83\n    add r5, r1, #0\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    add r4, r2, #0\n    mov r2, #0x10\n    add r1, r0, #0\n    str r2, [sp]\n    mov r3, #4\n    str r3, [sp, #4]\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r1, #0\n    str r1, [sp, #0xc]\n    str r3, [sp, #0x10]\n    ldrh r3, [r0]\n    lsl r3, r3, #0x15\n    lsr r3, r3, #0x18\n    str r3, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    add r3, r1, #0\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r5]\n    bl CopyToBgTilemapRect\n    mov r0, #0x83\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #4\n    str r1, [sp]\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    lsl r2, r4, #2\n    str r1, [sp, #8]\n    lsl r1, r2, #0x18\n    lsr r1, r1, #0x18\n    str r1, [sp, #0xc]\n    mov r1, #8\n    str r1, [sp, #0x10]\n    ldrh r1, [r0]\n    add r2, #0x10\n    lsl r2, r2, #0x18\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r1, #0\n    lsr r2, r2, #0x18\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r5]\n    add r3, r1, #0\n    bl CopyToBgTilemapRect\n    ldr r0, [r5]\n    mov r1, #0\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0x1c
+    // mov r0, #0x83
+    // add r5, r1, #0
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // add r4, r2, #0
+    // mov r2, #0x10
+    // add r1, r0, #0
+    // str r2, [sp]
+    // mov r3, #4
+    // str r3, [sp, #4]
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r1, #0
+    // str r1, [sp, #0xc]
+    // str r3, [sp, #0x10]
+    // ldrh r3, [r0]
+    // lsl r3, r3, #0x15
+    // lsr r3, r3, #0x18
+    // str r3, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // add r3, r1, #0
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5]
+    // bl CopyToBgTilemapRect
+    // mov r0, #0x83
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #4
+    // str r1, [sp]
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // lsl r2, r4, #2
+    // str r1, [sp, #8]
+    // lsl r1, r2, #0x18
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0xc]
+    // mov r1, #8
+    // str r1, [sp, #0x10]
+    // ldrh r1, [r0]
+    // add r2, #0x10
+    // lsl r2, r2, #0x18
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r1, #0
+    // lsr r2, r2, #0x18
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5]
+    // add r3, r1, #0
+    // bl CopyToBgTilemapRect
+    // ldr r0, [r5]
+    // mov r1, #0
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C53C(void) {
-    /* Original at 0x0222C53C */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r3, #3\n    strb r3, [r1, #8]\n    add r1, r0, #0\n    add r1, #0xb2\n    strh r2, [r1]\n    mov r1, #0\n    add r0, #0xb0\n    strh r1, [r0]\n    bx lr"
-    );
-    #endif
+    // mov r3, #3
+    // strb r3, [r1, #8]
+    // add r1, r0, #0
+    // add r1, #0xb2
+    // strh r2, [r1]
+    // mov r1, #0
+    // add r0, #0xb0
+    // strh r1, [r0]
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov43_0222C550(void) {
-    /* Original at 0x0222C550 */
-    /* Requires manual decompilation - 58 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    add r4, r1, #0\n    add r6, r3, #0\n    add r0, #0xc8\n    mov r1, #0xf\n    add r7, r2, #0\n    bl FillWindowPixelBuffer\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    add r6, r0, #0\n    ldr r0, [r4, #0x54]\n    add r1, r7, #0\n    add r2, r6, #0\n    bl ReadMsgDataIntoString\n    add r1, r5, #0\n    add r1, #0xd8\n    ldr r0, [r4, #0x50]\n    ldr r1, [r1]\n    add r2, r6, #0\n    bl StringExpandPlaceholders\n    mov r0, #1\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    mov r3, #0\n    add r0, r5, #0\n    add r2, r5, #0\n    str r3, [sp]\n    add r0, #0xe0\n    ldr r0, [r0]\n    add r2, #0xd8\n    str r0, [sp, #4]\n    ldr r0, _0222C5D4 ; =0x00010200\n    mov r1, #1\n    str r0, [sp, #8]\n    str r3, [sp, #0xc]\n    add r0, r5, #0\n    ldr r2, [r2]\n    add r0, #0xc8\n    bl AddTextPrinterParameterizedWithColor\n    add r1, r5, #0\n    add r1, #0xdc\n    str r0, [r1]\n    add r0, r5, #0\n    add r0, #0xc8\n    mov r1, #1\n    mov r2, #0x46\n    mov r3, #0xc\n    bl DrawFrameAndWindow2\n    add r5, #0xc8\n    add r0, r5, #0\n    bl ScheduleWindowCopyToVram\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222C5D4: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // add r6, r3, #0
+    // add r0, #0xc8
+    // mov r1, #0xf
+    // add r7, r2, #0
+    // bl FillWindowPixelBuffer
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // add r6, r0, #0
+    // ldr r0, [r4, #0x54]
+    // add r1, r7, #0
+    // add r2, r6, #0
+    // bl ReadMsgDataIntoString
+    // add r1, r5, #0
+    // add r1, #0xd8
+    // ldr r0, [r4, #0x50]
+    // ldr r1, [r1]
+    // add r2, r6, #0
+    // bl StringExpandPlaceholders
+    // mov r0, #1
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // mov r3, #0
+    // add r0, r5, #0
+    // add r2, r5, #0
+    // str r3, [sp]
+    // add r0, #0xe0
+    // ldr r0, [r0]
+    // add r2, #0xd8
+    // str r0, [sp, #4]
+    // ldr r0, _0222C5D4 ; =0x00010200
+    // mov r1, #1
+    // str r0, [sp, #8]
+    // str r3, [sp, #0xc]
+    // add r0, r5, #0
+    // ldr r2, [r2]
+    // add r0, #0xc8
+    // bl AddTextPrinterParameterizedWithColor
+    // add r1, r5, #0
+    // add r1, #0xdc
+    // str r0, [r1]
+    // add r0, r5, #0
+    // add r0, #0xc8
+    // mov r1, #1
+    // mov r2, #0x46
+    // mov r3, #0xc
+    // bl DrawFrameAndWindow2
+    // add r5, #0xc8
+    // add r0, r5, #0
+    // bl ScheduleWindowCopyToVram
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222C5D4: .word 0x00010200
+    // TODO: decompile
 }
 
+
 void ov43_0222C5D8(void) {
-    /* Original at 0x0222C5D8 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r0, #0xdc\n    ldr r0, [r0]\n    add r4, r1, #0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0222C5FC\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    bl TextFlags_GetIsTouchSpeedingUpPrint\n    str r0, [r4]\n    mov r0, #1\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r0, #0xdc
+    // ldr r0, [r0]
+    // add r4, r1, #0
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _0222C5FC
+    // mov r0, #0
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // bl TextFlags_GetIsTouchSpeedingUpPrint
+    // str r0, [r4]
+    // mov r0, #1
+    // pop {r4, pc}
+    // mov r0, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C600(void) {
     ClearFrameAndWindow2(1);
@@ -813,229 +4572,1215 @@ void ov43_0222C600(void) {
     ScheduleWindowCopyToVram(r4);
 }
 
+
 void ov43_0222C620(void) {
-    /* Original at 0x0222C620 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #0\n    ldrsh r1, [r0, r1]\n    lsl r2, r1, #3\n    mov r1, #4\n    ldrsh r0, [r0, r1]\n    add r0, r2, r0\n    bx lr"
-    );
-    #endif
+    // mov r1, #0
+    // ldrsh r1, [r0, r1]
+    // lsl r2, r1, #3
+    // mov r1, #4
+    // ldrsh r0, [r0, r1]
+    // add r0, r2, r0
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov43_0222C630(void) {
-    /* Original at 0x0222C630 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    cmp r3, #1\n    bne _0222C63E\n    ldr r0, _0222C658 ; =0x000005DC\n    bl PlaySE\n    pop {r3, pc}\n    cmp r3, #2\n    bne _0222C64A\n    ldr r0, _0222C658 ; =0x000005DC\n    bl PlaySE\n    pop {r3, pc}\n    cmp r3, #3\n    bne _0222C654\n    ldr r0, _0222C658 ; =0x000005DC\n    bl PlaySE\n    pop {r3, pc}\n    nop\n    _0222C658: .word 0x000005DC"
-    );
-    #endif
+    // push {r3, lr}
+    // cmp r3, #1
+    // bne _0222C63E
+    // ldr r0, _0222C658 ; =0x000005DC
+    // bl PlaySE
+    // pop {r3, pc}
+    // cmp r3, #2
+    // bne _0222C64A
+    // ldr r0, _0222C658 ; =0x000005DC
+    // bl PlaySE
+    // pop {r3, pc}
+    // cmp r3, #3
+    // bne _0222C654
+    // ldr r0, _0222C658 ; =0x000005DC
+    // bl PlaySE
+    // pop {r3, pc}
+    // nop
+    // _0222C658: .word 0x000005DC
+    // TODO: decompile
 }
+
 
 void ov43_0222C65C(void) {
-    /* Original at 0x0222C65C */
-    /* Requires manual decompilation - 81 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r0, #0xf8\n    add r4, r1, #0\n    ldr r0, [r0]\n    mov r1, #1\n    bl Sprite_SetDrawFlag\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0xff\n    bl ov43_0222AD74\n    add r0, r5, #0\n    add r0, #0xf8\n    ldr r0, [r0]\n    mov r1, #4\n    bl Sprite_SetAnimCtrlSeq\n    add r0, r5, #0\n    mov r1, #0\n    add r0, #0xfc\n    str r1, [r0]\n    add r0, r5, #0\n    add r0, #0xf8\n    ldr r0, [r0]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    mov r0, #4\n    ldrsh r1, [r5, r0]\n    mov r0, #0xa\n    add r5, #0xf8\n    add r3, r1, #0\n    mul r3, r0\n    ldr r0, _0222C700 ; =ov43_0222EFA0\n    ldrsh r0, [r0, r3]\n    lsl r2, r0, #3\n    ldr r0, _0222C704 ; =ov43_0222EFA2\n    str r2, [sp]\n    ldrsh r0, [r0, r3]\n    lsl r1, r0, #3\n    add r1, #0xfc\n    lsl r0, r2, #0xc\n    str r0, [sp]\n    str r1, [sp, #4]\n    lsl r0, r1, #0xc\n    str r0, [sp, #4]\n    ldr r0, [r5]\n    add r1, sp, #0\n    bl Sprite_SetMatrix\n    ldr r1, _0222C708 ; =0x0400004A\n    ldr r0, _0222C70C ; =0xFFFFC0FF\n    ldrh r2, [r1]\n    and r2, r0\n    mov r0, #7\n    lsl r0, r0, #8\n    orr r2, r0\n    strh r2, [r1]\n    ldrh r3, [r1]\n    mov r2, #0x3f\n    sub r0, #0xd8\n    bic r3, r2\n    mov r2, #0x1f\n    orr r3, r2\n    mov r2, #0x20\n    orr r3, r2\n    strh r3, [r1]\n    lsl r4, r2, #0x15\n    ldr r3, [r4]\n    ldr r1, _0222C710 ; =0xFFFF1FFF\n    and r3, r1\n    lsl r1, r2, #0xa\n    orr r1, r3\n    str r1, [r4]\n    bl PlaySE\n    add sp, #0xc\n    pop {r4, r5, pc}\n    nop\n    _0222C700: .word ov43_0222EFA0\n    _0222C704: .word ov43_0222EFA2\n    _0222C708: .word 0x0400004A\n    _0222C70C: .word 0xFFFFC0FF\n    _0222C710: .word 0xFFFF1FFF"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // add r0, #0xf8
+    // add r4, r1, #0
+    // ldr r0, [r0]
+    // mov r1, #1
+    // bl Sprite_SetDrawFlag
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #0xff
+    // bl ov43_0222AD74
+    // add r0, r5, #0
+    // add r0, #0xf8
+    // ldr r0, [r0]
+    // mov r1, #4
+    // bl Sprite_SetAnimCtrlSeq
+    // add r0, r5, #0
+    // mov r1, #0
+    // add r0, #0xfc
+    // str r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xf8
+    // ldr r0, [r0]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // mov r0, #4
+    // ldrsh r1, [r5, r0]
+    // mov r0, #0xa
+    // add r5, #0xf8
+    // add r3, r1, #0
+    // mul r3, r0
+    // ldr r0, _0222C700 ; =ov43_0222EFA0
+    // ldrsh r0, [r0, r3]
+    // lsl r2, r0, #3
+    // ldr r0, _0222C704 ; =ov43_0222EFA2
+    // str r2, [sp]
+    // ldrsh r0, [r0, r3]
+    // lsl r1, r0, #3
+    // add r1, #0xfc
+    // lsl r0, r2, #0xc
+    // str r0, [sp]
+    // str r1, [sp, #4]
+    // lsl r0, r1, #0xc
+    // str r0, [sp, #4]
+    // ldr r0, [r5]
+    // add r1, sp, #0
+    // bl Sprite_SetMatrix
+    // ldr r1, _0222C708 ; =0x0400004A
+    // ldr r0, _0222C70C ; =0xFFFFC0FF
+    // ldrh r2, [r1]
+    // and r2, r0
+    // mov r0, #7
+    // lsl r0, r0, #8
+    // orr r2, r0
+    // strh r2, [r1]
+    // ldrh r3, [r1]
+    // mov r2, #0x3f
+    // sub r0, #0xd8
+    // bic r3, r2
+    // mov r2, #0x1f
+    // orr r3, r2
+    // mov r2, #0x20
+    // orr r3, r2
+    // strh r3, [r1]
+    // lsl r4, r2, #0x15
+    // ldr r3, [r4]
+    // ldr r1, _0222C710 ; =0xFFFF1FFF
+    // and r3, r1
+    // lsl r1, r2, #0xa
+    // orr r1, r3
+    // str r1, [r4]
+    // bl PlaySE
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // nop
+    // _0222C700: .word ov43_0222EFA0
+    // _0222C704: .word ov43_0222EFA2
+    // _0222C708: .word 0x0400004A
+    // _0222C70C: .word 0xFFFFC0FF
+    // _0222C710: .word 0xFFFF1FFF
+    // TODO: decompile
 }
+
 
 void ov43_0222C714(void) {
-    /* Original at 0x0222C714 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xf8\n    ldr r0, [r0]\n    bl Sprite_IsAnimated\n    cmp r0, #0\n    bne _0222C728\n    mov r0, #1\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0xf8\n    ldr r0, [r0]\n    bl Sprite_GetAnimationFrame\n    add r1, r4, #0\n    add r1, #0xfc\n    ldr r1, [r1]\n    sub r1, r0, r1\n    cmp r1, #2\n    blo _0222C748\n    add r4, #0xfc\n    str r0, [r4]\n    ldr r0, _0222C74C ; =0x00000628\n    bl PlaySE\n    mov r0, #0\n    pop {r4, pc}\n    _0222C74C: .word 0x00000628"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r0, #0xf8
+    // ldr r0, [r0]
+    // bl Sprite_IsAnimated
+    // cmp r0, #0
+    // bne _0222C728
+    // mov r0, #1
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0xf8
+    // ldr r0, [r0]
+    // bl Sprite_GetAnimationFrame
+    // add r1, r4, #0
+    // add r1, #0xfc
+    // ldr r1, [r1]
+    // sub r1, r0, r1
+    // cmp r1, #2
+    // blo _0222C748
+    // add r4, #0xfc
+    // str r0, [r4]
+    // ldr r0, _0222C74C ; =0x00000628
+    // bl PlaySE
+    // mov r0, #0
+    // pop {r4, pc}
+    // _0222C74C: .word 0x00000628
+    // TODO: decompile
 }
+
 
 void ov43_0222C750(void) {
-    /* Original at 0x0222C750 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #1\n    lsl r2, r2, #0x1a\n    add r5, r0, #0\n    add r4, r1, #0\n    ldr r1, [r2]\n    ldr r0, _0222C784 ; =0xFFFF1FFF\n    and r0, r1\n    str r0, [r2]\n    add r0, r5, #0\n    add r0, #0xf8\n    ldr r0, [r0]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    add r5, #0xf8\n    ldr r0, [r5]\n    mov r1, #0\n    bl Sprite_SetAnimActiveFlag\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0xff\n    bl ov43_0222AD74\n    pop {r3, r4, r5, pc}\n    _0222C784: .word 0xFFFF1FFF"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // mov r2, #1
+    // lsl r2, r2, #0x1a
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // ldr r1, [r2]
+    // ldr r0, _0222C784 ; =0xFFFF1FFF
+    // and r0, r1
+    // str r0, [r2]
+    // add r0, r5, #0
+    // add r0, #0xf8
+    // ldr r0, [r0]
+    // mov r1, #0
+    // bl Sprite_SetDrawFlag
+    // add r5, #0xf8
+    // ldr r0, [r5]
+    // mov r1, #0
+    // bl Sprite_SetAnimActiveFlag
+    // add r0, r4, #0
+    // mov r1, #1
+    // mov r2, #0xff
+    // bl ov43_0222AD74
+    // pop {r3, r4, r5, pc}
+    // _0222C784: .word 0xFFFF1FFF
+    // TODO: decompile
 }
 
+
 void ov43_0222C788(void) {
-    /* Original at 0x0222C788 */
-    /* Requires manual decompilation - 48 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r4, r2, #0\n    add r5, r0, #0\n    ldrh r0, [r4]\n    add r6, r1, #0\n    add r7, r3, #0\n    strh r0, [r5]\n    ldrh r0, [r4, #2]\n    strh r0, [r5, #2]\n    ldrh r0, [r4, #4]\n    strh r0, [r5, #4]\n    add r0, r5, #0\n    add r0, #8\n    bl InitWindow\n    mov r0, #2\n    ldrsh r1, [r4, r0]\n    cmp r1, #0\n    bge _0222C7B2\n    neg r1, r1\n    mov r0, #0\n    ldrsh r3, [r4, r0]\n    cmp r3, #0\n    bge _0222C7BC\n    neg r3, r3\n    add r0, r1, #4\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    mov r0, #0x1a\n    str r0, [sp, #4]\n    mov r0, #0x11\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    lsl r0, r7, #0x10\n    lsr r0, r0, #0x10\n    add r3, r3, #4\n    str r0, [sp, #0x10]\n    add r5, #8\n    lsl r3, r3, #0x18\n    ldr r0, [r6]\n    add r1, r5, #0\n    mov r2, #3\n    lsr r3, r3, #0x18\n    bl AddWindowParameterized\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r4, r2, #0
+    // add r5, r0, #0
+    // ldrh r0, [r4]
+    // add r6, r1, #0
+    // add r7, r3, #0
+    // strh r0, [r5]
+    // ldrh r0, [r4, #2]
+    // strh r0, [r5, #2]
+    // ldrh r0, [r4, #4]
+    // strh r0, [r5, #4]
+    // add r0, r5, #0
+    // add r0, #8
+    // bl InitWindow
+    // mov r0, #2
+    // ldrsh r1, [r4, r0]
+    // cmp r1, #0
+    // bge _0222C7B2
+    // neg r1, r1
+    // mov r0, #0
+    // ldrsh r3, [r4, r0]
+    // cmp r3, #0
+    // bge _0222C7BC
+    // neg r3, r3
+    // add r0, r1, #4
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // mov r0, #0x1a
+    // str r0, [sp, #4]
+    // mov r0, #0x11
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // lsl r0, r7, #0x10
+    // lsr r0, r0, #0x10
+    // add r3, r3, #4
+    // str r0, [sp, #0x10]
+    // add r5, #8
+    // lsl r3, r3, #0x18
+    // ldr r0, [r6]
+    // add r1, r5, #0
+    // mov r2, #3
+    // lsr r3, r3, #0x18
+    // bl AddWindowParameterized
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C7EC(void) {
     RemoveWindow();
 }
 
+
 void ov43_0222C7F8(void) {
-    /* Original at 0x0222C7F8 */
-    /* Requires manual decompilation - 36 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    mov r1, #2\n    ldrsh r5, [r0, r1]\n    cmp r5, #0\n    bge _0222C808\n    neg r5, r5\n    mov r1, #0\n    ldrsh r3, [r0, r1]\n    cmp r3, #0\n    bge _0222C812\n    neg r3, r3\n    lsl r0, r5, #0x18\n    ldr r2, [r2, #8]\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldrh r0, [r2]\n    lsl r3, r3, #0x18\n    mov r1, #2\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    ldrh r0, [r2, #2]\n    add r2, #0xc\n    lsr r3, r3, #0x18\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    bl LoadRectToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r4, r1, #0
+    // mov r1, #2
+    // ldrsh r5, [r0, r1]
+    // cmp r5, #0
+    // bge _0222C808
+    // neg r5, r5
+    // mov r1, #0
+    // ldrsh r3, [r0, r1]
+    // cmp r3, #0
+    // bge _0222C812
+    // neg r3, r3
+    // lsl r0, r5, #0x18
+    // ldr r2, [r2, #8]
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // ldrh r0, [r2]
+    // lsl r3, r3, #0x18
+    // mov r1, #2
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // ldrh r0, [r2, #2]
+    // add r2, #0xc
+    // lsr r3, r3, #0x18
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // bl LoadRectToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222C844(void) {
-    /* Original at 0x0222C844 */
-    /* Requires manual decompilation - 34 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    cmp r2, #0xa\n    bne _0222C858\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0xff\n    bl ov43_0222AD74\n    pop {r4, pc}\n    ldr r1, _0222C88C ; =ov43_0222EFA0\n    mov r0, #0xa\n    add r3, r2, #0\n    mul r3, r0\n    add r2, r1, r3\n    ldrsh r1, [r1, r3]\n    mov r3, #2\n    ldrsh r2, [r2, r3]\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    add r1, r1, #7\n    add r2, r2, #2\n    lsl r1, r1, #0x13\n    lsl r2, r2, #0x13\n    ldr r0, [r4, r0]\n    asr r1, r1, #0x10\n    asr r2, r2, #0x10\n    bl Sprite_SetPositionXY\n    add r0, r4, #0\n    mov r1, #1\n    mov r2, #0xff\n    bl ov43_0222AD74\n    pop {r4, pc}\n    nop\n    _0222C88C: .word ov43_0222EFA0"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r1, #0
+    // cmp r2, #0xa
+    // bne _0222C858
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #0xff
+    // bl ov43_0222AD74
+    // pop {r4, pc}
+    // ldr r1, _0222C88C ; =ov43_0222EFA0
+    // mov r0, #0xa
+    // add r3, r2, #0
+    // mul r3, r0
+    // add r2, r1, r3
+    // ldrsh r1, [r1, r3]
+    // mov r3, #2
+    // ldrsh r2, [r2, r3]
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // add r1, r1, #7
+    // add r2, r2, #2
+    // lsl r1, r1, #0x13
+    // lsl r2, r2, #0x13
+    // ldr r0, [r4, r0]
+    // asr r1, r1, #0x10
+    // asr r2, r2, #0x10
+    // bl Sprite_SetPositionXY
+    // add r0, r4, #0
+    // mov r1, #1
+    // mov r2, #0xff
+    // bl ov43_0222AD74
+    // pop {r4, pc}
+    // nop
+    // _0222C88C: .word ov43_0222EFA0
+    // TODO: decompile
 }
+
 
 void ov43_0222C890(void) {
-    /* Original at 0x0222C890 */
-    /* Requires manual decompilation - 64 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    ldr r5, _0222C914 ; =ov43_0222EFA0\n    add r7, r0, #0\n    str r1, [sp, #0xc]\n    str r2, [sp, #0x10]\n    str r3, [sp, #0x14]\n    mov r4, #0\n    ldr r0, [sp, #0x14]\n    cmp r0, #1\n    bne _0222C8B0\n    ldr r0, [sp, #0x10]\n    cmp r0, r4\n    bne _0222C8B0\n    ldrb r0, [r5, #8]\n    b _0222C8B2\n    ldrb r0, [r5, #7]\n    mov r1, #2\n    ldrsh r3, [r7, r1]\n    cmp r3, #0\n    bge _0222C8BC\n    neg r3, r3\n    mov r1, #0\n    ldrsh r2, [r7, r1]\n    cmp r2, #0\n    bge _0222C8C6\n    neg r2, r2\n    ldrb r1, [r5, #4]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r1, [sp]\n    ldrb r1, [r5, #5]\n    mov r6, #0\n    str r1, [sp, #4]\n    str r0, [sp, #8]\n    ldrsh r6, [r5, r6]\n    ldr r0, [sp, #0xc]\n    ldrb r1, [r5, #6]\n    add r2, r6, r2\n    mov r6, #2\n    ldrsh r6, [r5, r6]\n    lsl r2, r2, #0x18\n    ldr r0, [r0]\n    add r3, r6, r3\n    lsl r3, r3, #0x18\n    lsr r2, r2, #0x18\n    lsr r3, r3, #0x18\n    bl BgTilemapRectChangePalette\n    add r4, r4, #1\n    add r5, #0xa\n    cmp r4, #9\n    blt _0222C8A0\n    ldr r0, [sp, #0xc]\n    mov r1, #2\n    ldr r0, [r0]\n    bl ScheduleBgTilemapBufferTransfer\n    ldr r0, [sp, #0xc]\n    mov r1, #0\n    ldr r0, [r0]\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222C914: .word ov43_0222EFA0"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // ldr r5, _0222C914 ; =ov43_0222EFA0
+    // add r7, r0, #0
+    // str r1, [sp, #0xc]
+    // str r2, [sp, #0x10]
+    // str r3, [sp, #0x14]
+    // mov r4, #0
+    // ldr r0, [sp, #0x14]
+    // cmp r0, #1
+    // bne _0222C8B0
+    // ldr r0, [sp, #0x10]
+    // cmp r0, r4
+    // bne _0222C8B0
+    // ldrb r0, [r5, #8]
+    // b _0222C8B2
+    // ldrb r0, [r5, #7]
+    // mov r1, #2
+    // ldrsh r3, [r7, r1]
+    // cmp r3, #0
+    // bge _0222C8BC
+    // neg r3, r3
+    // mov r1, #0
+    // ldrsh r2, [r7, r1]
+    // cmp r2, #0
+    // bge _0222C8C6
+    // neg r2, r2
+    // ldrb r1, [r5, #4]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r1, [sp]
+    // ldrb r1, [r5, #5]
+    // mov r6, #0
+    // str r1, [sp, #4]
+    // str r0, [sp, #8]
+    // ldrsh r6, [r5, r6]
+    // ldr r0, [sp, #0xc]
+    // ldrb r1, [r5, #6]
+    // add r2, r6, r2
+    // mov r6, #2
+    // ldrsh r6, [r5, r6]
+    // lsl r2, r2, #0x18
+    // ldr r0, [r0]
+    // add r3, r6, r3
+    // lsl r3, r3, #0x18
+    // lsr r2, r2, #0x18
+    // lsr r3, r3, #0x18
+    // bl BgTilemapRectChangePalette
+    // add r4, r4, #1
+    // add r5, #0xa
+    // cmp r4, #9
+    // blt _0222C8A0
+    // ldr r0, [sp, #0xc]
+    // mov r1, #2
+    // ldr r0, [r0]
+    // bl ScheduleBgTilemapBufferTransfer
+    // ldr r0, [sp, #0xc]
+    // mov r1, #0
+    // ldr r0, [r0]
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222C914: .word ov43_0222EFA0
+    // TODO: decompile
 }
+
 
 void ov43_0222C918(void) {
-    /* Original at 0x0222C918 */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x1c\n    add r6, r0, #0\n    ldr r0, [sp, #0x30]\n    add r7, r2, #0\n    str r0, [sp, #0x30]\n    ldr r0, [sp, #0x34]\n    str r3, [sp, #0x10]\n    str r0, [sp, #0x34]\n    ldr r0, [sp, #0x3c]\n    str r0, [sp, #0x3c]\n    ldr r0, [r1, #4]\n    bl sub_0202C6F4\n    str r0, [sp, #0x14]\n    add r0, r6, #0\n    add r0, #8\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r0, r6, #0\n    add r1, r7, #0\n    bl ov43_0222CA30\n    ldr r0, [sp, #0x38]\n    ldr r1, [sp, #0x34]\n    lsl r0, r0, #3\n    str r0, [sp, #0x18]\n    mov r4, #0\n    add r5, r1, r0\n    ldr r0, [sp, #0x34]\n    ldr r1, [r0]\n    ldr r0, [sp, #0x18]\n    add r0, r0, r4\n    cmp r1, r0\n    bls _0222C97C\n    ldr r0, [sp, #0x14]\n    str r4, [sp]\n    str r0, [sp, #4]\n    ldrb r0, [r5, #8]\n    ldr r1, [sp, #0x10]\n    ldr r3, [sp, #0x30]\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x3c]\n    add r2, r7, #0\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    bl ov43_0222CA50\n    b _0222C988\n    ldr r2, [sp, #0x30]\n    add r0, r6, #0\n    add r1, r7, #0\n    add r3, r4, #0\n    bl ov43_0222CB34\n    add r4, r4, #1\n    add r5, r5, #1\n    cmp r4, #8\n    blt _0222C954\n    ldr r0, [r7]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add r6, #8\n    add r0, r6, #0\n    bl ScheduleWindowCopyToVram\n    add sp, #0x1c\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x1c
+    // add r6, r0, #0
+    // ldr r0, [sp, #0x30]
+    // add r7, r2, #0
+    // str r0, [sp, #0x30]
+    // ldr r0, [sp, #0x34]
+    // str r3, [sp, #0x10]
+    // str r0, [sp, #0x34]
+    // ldr r0, [sp, #0x3c]
+    // str r0, [sp, #0x3c]
+    // ldr r0, [r1, #4]
+    // bl sub_0202C6F4
+    // str r0, [sp, #0x14]
+    // add r0, r6, #0
+    // add r0, #8
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // bl ov43_0222CA30
+    // ldr r0, [sp, #0x38]
+    // ldr r1, [sp, #0x34]
+    // lsl r0, r0, #3
+    // str r0, [sp, #0x18]
+    // mov r4, #0
+    // add r5, r1, r0
+    // ldr r0, [sp, #0x34]
+    // ldr r1, [r0]
+    // ldr r0, [sp, #0x18]
+    // add r0, r0, r4
+    // cmp r1, r0
+    // bls _0222C97C
+    // ldr r0, [sp, #0x14]
+    // str r4, [sp]
+    // str r0, [sp, #4]
+    // ldrb r0, [r5, #8]
+    // ldr r1, [sp, #0x10]
+    // ldr r3, [sp, #0x30]
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #0x3c]
+    // add r2, r7, #0
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // bl ov43_0222CA50
+    // b _0222C988
+    // ldr r2, [sp, #0x30]
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // add r3, r4, #0
+    // bl ov43_0222CB34
+    // add r4, r4, #1
+    // add r5, r5, #1
+    // cmp r4, #8
+    // blt _0222C954
+    // ldr r0, [r7]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r6, #8
+    // add r0, r6, #0
+    // bl ScheduleWindowCopyToVram
+    // add sp, #0x1c
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222C9A4(void) {
-    /* Original at 0x0222C9A4 */
-    /* Requires manual decompilation - 64 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    add r4, r1, #0\n    bl ov43_0222CA30\n    add r0, r5, #0\n    add r0, #8\n    bl ClearWindowTilemapAndScheduleTransfer\n    mov r0, #2\n    ldrsh r1, [r5, r0]\n    cmp r1, #0\n    bge _0222C9C2\n    neg r1, r1\n    mov r0, #0\n    ldrsh r3, [r5, r0]\n    cmp r3, #0\n    bge _0222C9CC\n    neg r3, r3\n    lsl r0, r1, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldrb r0, [r5, #4]\n    lsl r3, r3, #0x18\n    mov r2, #0\n    str r0, [sp, #4]\n    ldrb r0, [r5, #5]\n    mov r1, #2\n    lsr r3, r3, #0x18\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r4]\n    bl FillBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    mov r0, #2\n    ldrsh r1, [r5, r0]\n    cmp r1, #0\n    bge _0222C9FC\n    neg r1, r1\n    mov r0, #0\n    ldrsh r3, [r5, r0]\n    cmp r3, #0\n    bge _0222CA06\n    neg r3, r3\n    lsl r0, r1, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldrb r0, [r5, #4]\n    lsl r3, r3, #0x18\n    mov r2, #0\n    str r0, [sp, #4]\n    ldrb r0, [r5, #5]\n    mov r1, #3\n    lsr r3, r3, #0x18\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r4]\n    bl FillBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #3\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x10\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // bl ov43_0222CA30
+    // add r0, r5, #0
+    // add r0, #8
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // mov r0, #2
+    // ldrsh r1, [r5, r0]
+    // cmp r1, #0
+    // bge _0222C9C2
+    // neg r1, r1
+    // mov r0, #0
+    // ldrsh r3, [r5, r0]
+    // cmp r3, #0
+    // bge _0222C9CC
+    // neg r3, r3
+    // lsl r0, r1, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // ldrb r0, [r5, #4]
+    // lsl r3, r3, #0x18
+    // mov r2, #0
+    // str r0, [sp, #4]
+    // ldrb r0, [r5, #5]
+    // mov r1, #2
+    // lsr r3, r3, #0x18
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r4]
+    // bl FillBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // mov r0, #2
+    // ldrsh r1, [r5, r0]
+    // cmp r1, #0
+    // bge _0222C9FC
+    // neg r1, r1
+    // mov r0, #0
+    // ldrsh r3, [r5, r0]
+    // cmp r3, #0
+    // bge _0222CA06
+    // neg r3, r3
+    // lsl r0, r1, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // ldrb r0, [r5, #4]
+    // lsl r3, r3, #0x18
+    // mov r2, #0
+    // str r0, [sp, #4]
+    // ldrb r0, [r5, #5]
+    // mov r1, #3
+    // lsr r3, r3, #0x18
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r4]
+    // bl FillBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #3
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222CA30(void) {
     ov42_0222740C(0);
 }
 
+
 void ov43_0222CA50(void) {
-    /* Original at 0x0222CA50 */
-    /* Requires manual decompilation - 102 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r0, #0\n    ldr r0, [sp, #0x48]\n    add r6, r2, #0\n    str r0, [sp, #0x18]\n    str r1, [sp, #0x10]\n    ldr r0, [sp, #0x44]\n    ldr r1, [sp, #0x18]\n    mov r2, #7\n    str r3, [sp, #0x14]\n    ldr r4, [sp, #0x40]\n    bl sub_0202C090\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x44]\n    ldr r1, [sp, #0x18]\n    mov r2, #8\n    bl sub_0202C090\n    add r7, r0, #0\n    cmp r7, #2\n    bne _0222CA8C\n    ldr r2, [sp, #0x14]\n    add r0, r5, #0\n    add r1, r6, #0\n    add r3, r4, #0\n    bl ov43_0222CB34\n    b _0222CAD0\n    mov r0, #0xa\n    add r6, r4, #0\n    mul r6, r0\n    ldr r2, _0222CB28 ; =ov43_0222EFA0\n    mov r1, #0\n    ldrsh r1, [r5, r1]\n    ldrsh r2, [r2, r6]\n    add r0, #0xfc\n    add r1, r1, r2\n    lsl r2, r1, #3\n    add r2, #8\n    add r1, sp, #0x20\n    strh r2, [r1]\n    mov r2, #2\n    ldrsh r3, [r5, r2]\n    ldr r2, _0222CB2C ; =ov43_0222EFA2\n    ldrsh r2, [r2, r6]\n    add r2, r3, r2\n    lsl r2, r2, #3\n    add r0, r2, r0\n    strh r0, [r1, #2]\n    mov r0, #8\n    strh r0, [r1, #4]\n    mov r0, #1\n    strh r0, [r1, #6]\n    ldr r0, [sp, #0x10]\n    ldr r2, [sp, #0x1c]\n    ldr r3, [sp, #0x4c]\n    add r1, sp, #0x20\n    bl ov42_022272BC\n    lsl r1, r4, #2\n    add r1, r5, r1\n    str r0, [r1, #0x18]\n    ldr r1, [sp, #0x4c]\n    mov r0, #0x80\n    bl String_New\n    add r6, r0, #0\n    ldr r0, [sp, #0x44]\n    ldr r1, [sp, #0x18]\n    bl sub_0202C254\n    add r1, r0, #0\n    add r0, r6, #0\n    bl CopyU16ArrayToString\n    add r3, r4, #0\n    mov r0, #0xa\n    mul r3, r0\n    ldr r0, _0222CB2C ; =ov43_0222EFA2\n    ldr r4, _0222CB28 ; =ov43_0222EFA0\n    ldrsh r0, [r0, r3]\n    ldrsh r3, [r4, r3]\n    lsl r1, r7, #2\n    lsl r0, r0, #3\n    sub r0, #0x18\n    str r0, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222CB30 ; =ov43_0222ED94\n    add r5, #8\n    ldr r0, [r0, r1]\n    mov r1, #4\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    add r0, r5, #0\n    add r2, r6, #0\n    lsl r3, r3, #3\n    bl AddTextPrinterParameterizedWithColor\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222CB28: .word ov43_0222EFA0\n    _0222CB2C: .word ov43_0222EFA2\n    _0222CB30: .word ov43_0222ED94"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // add r5, r0, #0
+    // ldr r0, [sp, #0x48]
+    // add r6, r2, #0
+    // str r0, [sp, #0x18]
+    // str r1, [sp, #0x10]
+    // ldr r0, [sp, #0x44]
+    // ldr r1, [sp, #0x18]
+    // mov r2, #7
+    // str r3, [sp, #0x14]
+    // ldr r4, [sp, #0x40]
+    // bl sub_0202C090
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x44]
+    // ldr r1, [sp, #0x18]
+    // mov r2, #8
+    // bl sub_0202C090
+    // add r7, r0, #0
+    // cmp r7, #2
+    // bne _0222CA8C
+    // ldr r2, [sp, #0x14]
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // add r3, r4, #0
+    // bl ov43_0222CB34
+    // b _0222CAD0
+    // mov r0, #0xa
+    // add r6, r4, #0
+    // mul r6, r0
+    // ldr r2, _0222CB28 ; =ov43_0222EFA0
+    // mov r1, #0
+    // ldrsh r1, [r5, r1]
+    // ldrsh r2, [r2, r6]
+    // add r0, #0xfc
+    // add r1, r1, r2
+    // lsl r2, r1, #3
+    // add r2, #8
+    // add r1, sp, #0x20
+    // strh r2, [r1]
+    // mov r2, #2
+    // ldrsh r3, [r5, r2]
+    // ldr r2, _0222CB2C ; =ov43_0222EFA2
+    // ldrsh r2, [r2, r6]
+    // add r2, r3, r2
+    // lsl r2, r2, #3
+    // add r0, r2, r0
+    // strh r0, [r1, #2]
+    // mov r0, #8
+    // strh r0, [r1, #4]
+    // mov r0, #1
+    // strh r0, [r1, #6]
+    // ldr r0, [sp, #0x10]
+    // ldr r2, [sp, #0x1c]
+    // ldr r3, [sp, #0x4c]
+    // add r1, sp, #0x20
+    // bl ov42_022272BC
+    // lsl r1, r4, #2
+    // add r1, r5, r1
+    // str r0, [r1, #0x18]
+    // ldr r1, [sp, #0x4c]
+    // mov r0, #0x80
+    // bl String_New
+    // add r6, r0, #0
+    // ldr r0, [sp, #0x44]
+    // ldr r1, [sp, #0x18]
+    // bl sub_0202C254
+    // add r1, r0, #0
+    // add r0, r6, #0
+    // bl CopyU16ArrayToString
+    // add r3, r4, #0
+    // mov r0, #0xa
+    // mul r3, r0
+    // ldr r0, _0222CB2C ; =ov43_0222EFA2
+    // ldr r4, _0222CB28 ; =ov43_0222EFA0
+    // ldrsh r0, [r0, r3]
+    // ldrsh r3, [r4, r3]
+    // lsl r1, r7, #2
+    // lsl r0, r0, #3
+    // sub r0, #0x18
+    // str r0, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222CB30 ; =ov43_0222ED94
+    // add r5, #8
+    // ldr r0, [r0, r1]
+    // mov r1, #4
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // add r0, r5, #0
+    // add r2, r6, #0
+    // lsl r3, r3, #3
+    // bl AddTextPrinterParameterizedWithColor
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222CB28: .word ov43_0222EFA0
+    // _0222CB2C: .word ov43_0222EFA2
+    // _0222CB30: .word ov43_0222ED94
+    // TODO: decompile
 }
 
+
 void ov43_0222CB34(void) {
-    /* Original at 0x0222CB34 */
-    /* Requires manual decompilation - 56 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x1c\n    add r4, r1, #0\n    add r1, r3, #0\n    mov r3, #2\n    ldrsh r5, [r0, r3]\n    cmp r5, #0\n    bge _0222CB46\n    neg r5, r5\n    mov r3, #0\n    ldrsh r6, [r0, r3]\n    cmp r6, #0\n    bge _0222CB50\n    neg r6, r6\n    ldr r0, [r2, #0xc]\n    add r3, r1, #0\n    mov r1, #3\n    str r1, [sp]\n    mov r1, #4\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r1, #0\n    mov r2, #0xa\n    str r1, [sp, #0xc]\n    mul r3, r2\n    str r1, [sp, #0x10]\n    ldrh r1, [r0]\n    ldr r2, _0222CBA4 ; =ov43_0222EFA0\n    ldrsh r2, [r2, r3]\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    add r2, r2, r6\n    ldr r6, _0222CBA8 ; =ov43_0222EFA2\n    ldrh r0, [r0, #2]\n    ldrsh r3, [r6, r3]\n    lsl r2, r2, #0x18\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    add r3, r3, r5\n    str r0, [sp, #0x18]\n    lsl r3, r3, #0x18\n    ldr r0, [r4]\n    mov r1, #2\n    lsr r2, r2, #0x18\n    lsr r3, r3, #0x18\n    bl CopyToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r3, r4, r5, r6, pc}\n    _0222CBA4: .word ov43_0222EFA0\n    _0222CBA8: .word ov43_0222EFA2"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0x1c
+    // add r4, r1, #0
+    // add r1, r3, #0
+    // mov r3, #2
+    // ldrsh r5, [r0, r3]
+    // cmp r5, #0
+    // bge _0222CB46
+    // neg r5, r5
+    // mov r3, #0
+    // ldrsh r6, [r0, r3]
+    // cmp r6, #0
+    // bge _0222CB50
+    // neg r6, r6
+    // ldr r0, [r2, #0xc]
+    // add r3, r1, #0
+    // mov r1, #3
+    // str r1, [sp]
+    // mov r1, #4
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r1, #0
+    // mov r2, #0xa
+    // str r1, [sp, #0xc]
+    // mul r3, r2
+    // str r1, [sp, #0x10]
+    // ldrh r1, [r0]
+    // ldr r2, _0222CBA4 ; =ov43_0222EFA0
+    // ldrsh r2, [r2, r3]
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // add r2, r2, r6
+    // ldr r6, _0222CBA8 ; =ov43_0222EFA2
+    // ldrh r0, [r0, #2]
+    // ldrsh r3, [r6, r3]
+    // lsl r2, r2, #0x18
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // add r3, r3, r5
+    // str r0, [sp, #0x18]
+    // lsl r3, r3, #0x18
+    // ldr r0, [r4]
+    // mov r1, #2
+    // lsr r2, r2, #0x18
+    // lsr r3, r3, #0x18
+    // bl CopyToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r3, r4, r5, r6, pc}
+    // _0222CBA4: .word ov43_0222EFA0
+    // _0222CBA8: .word ov43_0222EFA2
+    // TODO: decompile
 }
+
 
 void ov43_0222CBAC(void) {
     ov43_0222CD3C();
 }
 
+
 void ov43_0222CBB4(void) {
-    /* Original at 0x0222CBB4 */
-    /* Requires manual decompilation - 158 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r5, r2, #0\n    add r7, r1, #0\n    ldrb r1, [r5, #8]\n    add r4, r0, #0\n    ldr r6, [sp, #0x30]\n    cmp r1, #6\n    bls _0222CBC8\n    b _0222CD26\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0222CBD4: ; jump table\n    add r1, r5, #0\n    add r2, r6, #0\n    bl ov43_0222CD44\n    str r0, [r4, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    str r0, [sp, #0xc]\n    str r0, [sp, #0x10]\n    mov r0, #0\n    str r0, [sp, #0x14]\n    ldr r0, [r5, #4]\n    bl Save_PlayerData_GetOptionsAddr\n    add r3, r0, #0\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    add r0, r6, #0\n    mov r1, #0xc\n    add r2, sp, #8\n    bl sub_02085400\n    str r0, [r4, #8]\n    add r0, r7, #0\n    bl ov43_0222A1DC\n    ldr r0, _0222CD2C ; =gOverlayTemplate_NamingScreen\n    ldr r1, [r4, #4]\n    add r2, r6, #0\n    bl OverlayManager_New\n    str r0, [r4]\n    mov r0, #1\n    strb r0, [r5, #8]\n    b _0222CD26\n    ldr r0, [r4]\n    bl OverlayManager_Run\n    cmp r0, #0\n    beq _0222CD26\n    ldr r0, [r4]\n    bl OverlayManager_Delete\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x14]\n    cmp r0, #0\n    bne _0222CC54\n    ldr r0, _0222CD30 ; =_02102620\n    ldr r1, [r4, #8]\n    add r2, r6, #0\n    bl OverlayManager_New\n    str r0, [r4]\n    mov r0, #2\n    strb r0, [r5, #8]\n    b _0222CD26\n    mov r1, #0\n    add r0, r5, #0\n    add r2, r1, #0\n    bl ov43_0222A318\n    mov r0, #3\n    strb r0, [r5, #8]\n    b _0222CD26\n    ldr r0, [r4]\n    bl OverlayManager_Run\n    cmp r0, #0\n    beq _0222CD26\n    ldr r0, [r4]\n    bl OverlayManager_Delete\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #8]\n    ldr r1, [r1, #0x18]\n    ldr r2, [r2, #0x1c]\n    add r0, r5, #0\n    bl ov43_0222A338\n    add r0, r5, #0\n    mov r1, #0\n    mov r2, #7\n    bl ov43_0222A318\n    mov r0, #3\n    strb r0, [r5, #8]\n    b _0222CD26\n    ldr r0, [r4, #4]\n    bl NamingScreen_DeleteArgs\n    ldr r0, [r4, #8]\n    bl sub_02085438\n    add r0, r7, #0\n    add r1, r6, #0\n    bl ov43_0222A154\n    add sp, #0x18\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    add r1, r5, #0\n    add r2, r6, #0\n    bl ov43_0222CD44\n    str r0, [r4, #4]\n    add r0, r7, #0\n    bl ov43_0222A1DC\n    ldr r0, _0222CD2C ; =gOverlayTemplate_NamingScreen\n    ldr r1, [r4, #4]\n    add r2, r6, #0\n    bl OverlayManager_New\n    str r0, [r4]\n    mov r0, #5\n    strb r0, [r5, #8]\n    b _0222CD26\n    ldr r0, [r4]\n    bl OverlayManager_Run\n    cmp r0, #0\n    beq _0222CD26\n    ldr r0, [r4]\n    bl OverlayManager_Delete\n    ldr r0, [r4, #4]\n    ldr r0, [r0, #0x14]\n    cmp r0, #0\n    bne _0222CD02\n    add r0, r5, #0\n    mov r1, #1\n    mov r2, #0xc\n    bl ov43_0222A318\n    ldr r1, [r4, #4]\n    add r0, r5, #0\n    ldr r1, [r1, #0x18]\n    mov r2, #0\n    bl ov43_0222A338\n    mov r0, #6\n    strb r0, [r5, #8]\n    b _0222CD26\n    add r0, r5, #0\n    mov r1, #1\n    mov r2, #0xd\n    bl ov43_0222A318\n    mov r0, #6\n    strb r0, [r5, #8]\n    b _0222CD26\n    ldr r0, [r4, #4]\n    bl NamingScreen_DeleteArgs\n    add r0, r7, #0\n    add r1, r6, #0\n    bl ov43_0222A154\n    add sp, #0x18\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222CD2C: .word gOverlayTemplate_NamingScreen\n    _0222CD30: .word _02102620"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // add r5, r2, #0
+    // add r7, r1, #0
+    // ldrb r1, [r5, #8]
+    // add r4, r0, #0
+    // ldr r6, [sp, #0x30]
+    // cmp r1, #6
+    // bls _0222CBC8
+    // b _0222CD26
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _0222CBD4: ; jump table
+    // add r1, r5, #0
+    // add r2, r6, #0
+    // bl ov43_0222CD44
+    // str r0, [r4, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // str r0, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // mov r0, #0
+    // str r0, [sp, #0x14]
+    // ldr r0, [r5, #4]
+    // bl Save_PlayerData_GetOptionsAddr
+    // add r3, r0, #0
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // add r0, r6, #0
+    // mov r1, #0xc
+    // add r2, sp, #8
+    // bl sub_02085400
+    // str r0, [r4, #8]
+    // add r0, r7, #0
+    // bl ov43_0222A1DC
+    // ldr r0, _0222CD2C ; =gOverlayTemplate_NamingScreen
+    // ldr r1, [r4, #4]
+    // add r2, r6, #0
+    // bl OverlayManager_New
+    // str r0, [r4]
+    // mov r0, #1
+    // strb r0, [r5, #8]
+    // b _0222CD26
+    // ldr r0, [r4]
+    // bl OverlayManager_Run
+    // cmp r0, #0
+    // beq _0222CD26
+    // ldr r0, [r4]
+    // bl OverlayManager_Delete
+    // ldr r0, [r4, #4]
+    // ldr r0, [r0, #0x14]
+    // cmp r0, #0
+    // bne _0222CC54
+    // ldr r0, _0222CD30 ; =_02102620
+    // ldr r1, [r4, #8]
+    // add r2, r6, #0
+    // bl OverlayManager_New
+    // str r0, [r4]
+    // mov r0, #2
+    // strb r0, [r5, #8]
+    // b _0222CD26
+    // mov r1, #0
+    // add r0, r5, #0
+    // add r2, r1, #0
+    // bl ov43_0222A318
+    // mov r0, #3
+    // strb r0, [r5, #8]
+    // b _0222CD26
+    // ldr r0, [r4]
+    // bl OverlayManager_Run
+    // cmp r0, #0
+    // beq _0222CD26
+    // ldr r0, [r4]
+    // bl OverlayManager_Delete
+    // ldr r1, [r4, #4]
+    // ldr r2, [r4, #8]
+    // ldr r1, [r1, #0x18]
+    // ldr r2, [r2, #0x1c]
+    // add r0, r5, #0
+    // bl ov43_0222A338
+    // add r0, r5, #0
+    // mov r1, #0
+    // mov r2, #7
+    // bl ov43_0222A318
+    // mov r0, #3
+    // strb r0, [r5, #8]
+    // b _0222CD26
+    // ldr r0, [r4, #4]
+    // bl NamingScreen_DeleteArgs
+    // ldr r0, [r4, #8]
+    // bl sub_02085438
+    // add r0, r7, #0
+    // add r1, r6, #0
+    // bl ov43_0222A154
+    // add sp, #0x18
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r1, r5, #0
+    // add r2, r6, #0
+    // bl ov43_0222CD44
+    // str r0, [r4, #4]
+    // add r0, r7, #0
+    // bl ov43_0222A1DC
+    // ldr r0, _0222CD2C ; =gOverlayTemplate_NamingScreen
+    // ldr r1, [r4, #4]
+    // add r2, r6, #0
+    // bl OverlayManager_New
+    // str r0, [r4]
+    // mov r0, #5
+    // strb r0, [r5, #8]
+    // b _0222CD26
+    // ldr r0, [r4]
+    // bl OverlayManager_Run
+    // cmp r0, #0
+    // beq _0222CD26
+    // ldr r0, [r4]
+    // bl OverlayManager_Delete
+    // ldr r0, [r4, #4]
+    // ldr r0, [r0, #0x14]
+    // cmp r0, #0
+    // bne _0222CD02
+    // add r0, r5, #0
+    // mov r1, #1
+    // mov r2, #0xc
+    // bl ov43_0222A318
+    // ldr r1, [r4, #4]
+    // add r0, r5, #0
+    // ldr r1, [r1, #0x18]
+    // mov r2, #0
+    // bl ov43_0222A338
+    // mov r0, #6
+    // strb r0, [r5, #8]
+    // b _0222CD26
+    // add r0, r5, #0
+    // mov r1, #1
+    // mov r2, #0xd
+    // bl ov43_0222A318
+    // mov r0, #6
+    // strb r0, [r5, #8]
+    // b _0222CD26
+    // ldr r0, [r4, #4]
+    // bl NamingScreen_DeleteArgs
+    // add r0, r7, #0
+    // add r1, r6, #0
+    // bl ov43_0222A154
+    // add sp, #0x18
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222CD2C: .word gOverlayTemplate_NamingScreen
+    // _0222CD30: .word _02102620
+    // TODO: decompile
 }
+
 
 void ov43_0222CD34(void) {
     ov43_0222CD40();
 }
 
+
 void ov43_0222CD3C(void) {
-    /* Original at 0x0222CD3C */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov43_0222CD40(void) {
-    /* Original at 0x0222CD40 */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
 
+
 void ov43_0222CD44(void) {
-    /* Original at 0x0222CD44 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #8\n    add r5, r1, #0\n    ldr r0, [r5, #4]\n    add r4, r2, #0\n    bl Save_PlayerData_GetOptionsAddr\n    str r0, [sp]\n    mov r2, #0\n    mov r1, #7\n    str r2, [sp, #4]\n    add r0, r4, #0\n    add r3, r1, #0\n    bl NamingScreen_CreateArgs\n    add r4, r0, #0\n    ldr r0, [r5, #0x64]\n    cmp r0, #1\n    bne _0222CD88\n    ldr r0, [r5, #0x60]\n    ldrh r0, [r0]\n    bl sub_02020B78\n    cmp r0, #0\n    ldr r0, [r4, #0x18]\n    bne _0222CD80\n    ldr r1, [r5, #0x60]\n    bl CopyU16ArrayToString\n    b _0222CD84\n    bl String_SetEmpty\n    mov r0, #0\n    str r0, [r5, #0x64]\n    add r0, r4, #0\n    add sp, #8\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #8
+    // add r5, r1, #0
+    // ldr r0, [r5, #4]
+    // add r4, r2, #0
+    // bl Save_PlayerData_GetOptionsAddr
+    // str r0, [sp]
+    // mov r2, #0
+    // mov r1, #7
+    // str r2, [sp, #4]
+    // add r0, r4, #0
+    // add r3, r1, #0
+    // bl NamingScreen_CreateArgs
+    // add r4, r0, #0
+    // ldr r0, [r5, #0x64]
+    // cmp r0, #1
+    // bne _0222CD88
+    // ldr r0, [r5, #0x60]
+    // ldrh r0, [r0]
+    // bl sub_02020B78
+    // cmp r0, #0
+    // ldr r0, [r4, #0x18]
+    // bne _0222CD80
+    // ldr r1, [r5, #0x60]
+    // bl CopyU16ArrayToString
+    // b _0222CD84
+    // bl String_SetEmpty
+    // mov r0, #0
+    // str r0, [r5, #0x64]
+    // add r0, r4, #0
+    // add sp, #8
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222CD90(void) {
     ov43_0222CE48();
 }
 
+
 void ov43_0222CD98(void) {
-    /* Original at 0x0222CD98 */
-    /* Requires manual decompilation - 50 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    ldrb r3, [r4, #8]\n    add r5, r0, #0\n    add r6, r2, #0\n    cmp r3, #0\n    beq _0222CDB0\n    cmp r3, #1\n    beq _0222CDBA\n    cmp r3, #2\n    beq _0222CDDC\n    b _0222CE04\n    bl ov43_0222D028\n    mov r0, #1\n    strb r0, [r4, #8]\n    b _0222CE04\n    bl ov43_0222CE14\n    cmp r0, #0\n    beq _0222CE04\n    ldr r0, _0222CE08 ; =0x000005DD\n    bl PlaySE\n    add r0, r5, #0\n    add r1, r6, #0\n    mov r2, #1\n    bl ov43_0222D0F8\n    mov r0, #4\n    str r0, [r5, #0x38]\n    mov r0, #2\n    strb r0, [r4, #8]\n    b _0222CE04\n    ldr r1, [r5, #0x38]\n    sub r1, r1, #1\n    str r1, [r5, #0x38]\n    cmp r1, #0\n    bgt _0222CE04\n    add r1, r6, #0\n    mov r2, #0\n    bl ov43_0222D0F8\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #2\n    bl ov43_0222A318\n    add r0, r5, #0\n    add r1, r6, #0\n    bl ov43_0222D090\n    mov r0, #1\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    pop {r4, r5, r6, pc}\n    _0222CE08: .word 0x000005DD"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r4, r1, #0
+    // ldrb r3, [r4, #8]
+    // add r5, r0, #0
+    // add r6, r2, #0
+    // cmp r3, #0
+    // beq _0222CDB0
+    // cmp r3, #1
+    // beq _0222CDBA
+    // cmp r3, #2
+    // beq _0222CDDC
+    // b _0222CE04
+    // bl ov43_0222D028
+    // mov r0, #1
+    // strb r0, [r4, #8]
+    // b _0222CE04
+    // bl ov43_0222CE14
+    // cmp r0, #0
+    // beq _0222CE04
+    // ldr r0, _0222CE08 ; =0x000005DD
+    // bl PlaySE
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // mov r2, #1
+    // bl ov43_0222D0F8
+    // mov r0, #4
+    // str r0, [r5, #0x38]
+    // mov r0, #2
+    // strb r0, [r4, #8]
+    // b _0222CE04
+    // ldr r1, [r5, #0x38]
+    // sub r1, r1, #1
+    // str r1, [r5, #0x38]
+    // cmp r1, #0
+    // bgt _0222CE04
+    // add r1, r6, #0
+    // mov r2, #0
+    // bl ov43_0222D0F8
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #2
+    // bl ov43_0222A318
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // bl ov43_0222D090
+    // mov r0, #1
+    // pop {r4, r5, r6, pc}
+    // mov r0, #0
+    // pop {r4, r5, r6, pc}
+    // _0222CE08: .word 0x000005DD
+    // TODO: decompile
 }
+
 
 void ov43_0222CE0C(void) {
     ov43_0222D008();
 }
 
+
 void ov43_0222CE14(void) {
-    /* Original at 0x0222CE14 */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r0, _0222CE40 ; =ov43_0222ED7A\n    add r4, r1, #0\n    bl TouchscreenHitbox_FindHitboxAtTouchNew\n    cmp r0, #0\n    bne _0222CE28\n    mov r0, #1\n    str r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    bl ov43_0222A320\n    ldr r0, _0222CE44 ; =gSystem\n    ldr r1, [r0, #0x48]\n    mov r0, #3\n    tst r0, r1\n    beq _0222CE3C\n    mov r0, #1\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}\n    _0222CE40: .word ov43_0222ED7A\n    _0222CE44: .word gSystem"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r0, _0222CE40 ; =ov43_0222ED7A
+    // add r4, r1, #0
+    // bl TouchscreenHitbox_FindHitboxAtTouchNew
+    // cmp r0, #0
+    // bne _0222CE28
+    // mov r0, #1
+    // str r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // bl ov43_0222A320
+    // ldr r0, _0222CE44 ; =gSystem
+    // ldr r1, [r0, #0x48]
+    // mov r0, #3
+    // tst r0, r1
+    // beq _0222CE3C
+    // mov r0, #1
+    // pop {r4, pc}
+    // mov r0, #0
+    // pop {r4, pc}
+    // _0222CE40: .word ov43_0222ED7A
+    // _0222CE44: .word gSystem
+    // TODO: decompile
 }
 
+
 void ov43_0222CE48(void) {
-    /* Original at 0x0222CE48 */
-    /* Requires manual decompilation - 192 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r0, #0\n    str r1, [sp, #0x14]\n    add r4, r2, #0\n    add r7, r3, #0\n    bl InitWindow\n    mov r1, #0xb\n    str r1, [sp]\n    mov r0, #0x18\n    str r0, [sp, #4]\n    mov r0, #8\n    str r0, [sp, #8]\n    str r1, [sp, #0xc]\n    mov r0, #1\n    str r0, [sp, #0x10]\n    ldr r0, [r4]\n    add r1, r5, #0\n    mov r2, #3\n    mov r3, #4\n    bl AddWindowParameterized\n    add r0, r5, #0\n    add r0, #0x10\n    bl InitWindow\n    mov r0, #6\n    str r0, [sp]\n    mov r0, #0xe\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    mov r0, #0xc1\n    str r0, [sp, #0x10]\n    add r1, r5, #0\n    ldr r0, [r4]\n    add r1, #0x10\n    mov r2, #3\n    mov r3, #9\n    bl AddWindowParameterized\n    add r0, r5, #0\n    add r0, #0x20\n    bl InitWindow\n    mov r3, #0x15\n    add r1, r5, #0\n    str r3, [sp]\n    mov r0, #9\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    mov r0, #0xdd\n    str r0, [sp, #0x10]\n    ldr r0, [r4]\n    add r1, #0x20\n    mov r2, #3\n    bl AddWindowParameterized\n    add r0, r5, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r0, r5, #0\n    add r0, #0x10\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r0, r5, #0\n    add r0, #0x20\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    mov r0, #0x80\n    add r1, r7, #0\n    bl String_New\n    add r6, r0, #0\n    mov r0, #0x80\n    add r1, r7, #0\n    bl String_New\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #0x14]\n    ldr r0, [r0, #4]\n    bl sub_0202C6F4\n    bl sub_0202C08C\n    bl DWC_CreateFriendKey\n    str r1, [sp, #0x1c]\n    str r0, [sp, #0x24]\n    ldr r0, [sp, #0x1c]\n    mov r2, #0\n    eor r0, r2\n    ldr r2, [sp, #0x24]\n    mov r1, #0\n    eor r1, r2\n    orr r0, r1\n    ldr r0, [r4, #0x54]\n    beq _0222CF86\n    mov r1, #0x35\n    add r2, r6, #0\n    bl ReadMsgDataIntoString\n    mov r0, #0\n    add r1, r6, #0\n    add r2, r0, #0\n    bl FontID_String_GetWidthMultiline\n    mov r1, #0xc0\n    sub r0, r1, r0\n    mov r1, #0\n    lsr r3, r0, #1\n    str r1, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222CFFC ; =0x00010200\n    add r2, r6, #0\n    str r0, [sp, #8]\n    add r0, r5, #0\n    str r1, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    ldr r1, [sp, #0x24]\n    ldr r2, [sp, #0x1c]\n    add r0, r4, #0\n    bl ov43_0222AAA4\n    ldr r0, [r4, #0x54]\n    ldr r2, [sp, #0x20]\n    mov r1, #0x34\n    bl ReadMsgDataIntoString\n    ldr r0, [r4, #0x50]\n    ldr r2, [sp, #0x20]\n    add r1, r6, #0\n    bl StringExpandPlaceholders\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222D000 ; =0x000F0200\n    add r2, r6, #0\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r0, #0x10\n    add r3, r1, #0\n    str r1, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    b _0222CFB4\n    mov r1, #0x36\n    add r2, r6, #0\n    bl ReadMsgDataIntoString\n    mov r0, #0\n    add r1, r6, #0\n    add r2, r0, #0\n    bl FontID_String_GetWidthMultiline\n    mov r1, #0xc0\n    sub r0, r1, r0\n    mov r1, #0\n    lsr r3, r0, #1\n    str r1, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222CFFC ; =0x00010200\n    add r2, r6, #0\n    str r0, [sp, #8]\n    add r0, r5, #0\n    str r1, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    ldr r0, [r4, #0x54]\n    mov r1, #0x33\n    add r2, r6, #0\n    bl ReadMsgDataIntoString\n    mov r3, #0\n    str r3, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222D004 ; =0x00010F00\n    mov r1, #4\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r0, #0x20\n    add r2, r6, #0\n    str r3, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    add r0, r6, #0\n    bl String_Delete\n    ldr r0, [sp, #0x20]\n    bl String_Delete\n    str r7, [sp]\n    add r3, r5, #0\n    ldr r0, [r4, #0x58]\n    mov r1, #0xe\n    mov r2, #1\n    add r3, #0x34\n    bl GfGfxLoader_GetScrnDataFromOpenNarc\n    str r0, [r5, #0x30]\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222CFFC: .word 0x00010200\n    _0222D000: .word 0x000F0200\n    _0222D004: .word 0x00010F00"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // add r5, r0, #0
+    // str r1, [sp, #0x14]
+    // add r4, r2, #0
+    // add r7, r3, #0
+    // bl InitWindow
+    // mov r1, #0xb
+    // str r1, [sp]
+    // mov r0, #0x18
+    // str r0, [sp, #4]
+    // mov r0, #8
+    // str r0, [sp, #8]
+    // str r1, [sp, #0xc]
+    // mov r0, #1
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4]
+    // add r1, r5, #0
+    // mov r2, #3
+    // mov r3, #4
+    // bl AddWindowParameterized
+    // add r0, r5, #0
+    // add r0, #0x10
+    // bl InitWindow
+    // mov r0, #6
+    // str r0, [sp]
+    // mov r0, #0xe
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // mov r0, #0xc1
+    // str r0, [sp, #0x10]
+    // add r1, r5, #0
+    // ldr r0, [r4]
+    // add r1, #0x10
+    // mov r2, #3
+    // mov r3, #9
+    // bl AddWindowParameterized
+    // add r0, r5, #0
+    // add r0, #0x20
+    // bl InitWindow
+    // mov r3, #0x15
+    // add r1, r5, #0
+    // str r3, [sp]
+    // mov r0, #9
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // mov r0, #0xdd
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4]
+    // add r1, #0x20
+    // mov r2, #3
+    // bl AddWindowParameterized
+    // add r0, r5, #0
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // add r0, r5, #0
+    // add r0, #0x10
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // add r0, r5, #0
+    // add r0, #0x20
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // mov r0, #0x80
+    // add r1, r7, #0
+    // bl String_New
+    // add r6, r0, #0
+    // mov r0, #0x80
+    // add r1, r7, #0
+    // bl String_New
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #0x14]
+    // ldr r0, [r0, #4]
+    // bl sub_0202C6F4
+    // bl sub_0202C08C
+    // bl DWC_CreateFriendKey
+    // str r1, [sp, #0x1c]
+    // str r0, [sp, #0x24]
+    // ldr r0, [sp, #0x1c]
+    // mov r2, #0
+    // eor r0, r2
+    // ldr r2, [sp, #0x24]
+    // mov r1, #0
+    // eor r1, r2
+    // orr r0, r1
+    // ldr r0, [r4, #0x54]
+    // beq _0222CF86
+    // mov r1, #0x35
+    // add r2, r6, #0
+    // bl ReadMsgDataIntoString
+    // mov r0, #0
+    // add r1, r6, #0
+    // add r2, r0, #0
+    // bl FontID_String_GetWidthMultiline
+    // mov r1, #0xc0
+    // sub r0, r1, r0
+    // mov r1, #0
+    // lsr r3, r0, #1
+    // str r1, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222CFFC ; =0x00010200
+    // add r2, r6, #0
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // str r1, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // ldr r1, [sp, #0x24]
+    // ldr r2, [sp, #0x1c]
+    // add r0, r4, #0
+    // bl ov43_0222AAA4
+    // ldr r0, [r4, #0x54]
+    // ldr r2, [sp, #0x20]
+    // mov r1, #0x34
+    // bl ReadMsgDataIntoString
+    // ldr r0, [r4, #0x50]
+    // ldr r2, [sp, #0x20]
+    // add r1, r6, #0
+    // bl StringExpandPlaceholders
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222D000 ; =0x000F0200
+    // add r2, r6, #0
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // add r0, #0x10
+    // add r3, r1, #0
+    // str r1, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // b _0222CFB4
+    // mov r1, #0x36
+    // add r2, r6, #0
+    // bl ReadMsgDataIntoString
+    // mov r0, #0
+    // add r1, r6, #0
+    // add r2, r0, #0
+    // bl FontID_String_GetWidthMultiline
+    // mov r1, #0xc0
+    // sub r0, r1, r0
+    // mov r1, #0
+    // lsr r3, r0, #1
+    // str r1, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222CFFC ; =0x00010200
+    // add r2, r6, #0
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // str r1, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0x33
+    // add r2, r6, #0
+    // bl ReadMsgDataIntoString
+    // mov r3, #0
+    // str r3, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222D004 ; =0x00010F00
+    // mov r1, #4
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // add r0, #0x20
+    // add r2, r6, #0
+    // str r3, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // add r0, r6, #0
+    // bl String_Delete
+    // ldr r0, [sp, #0x20]
+    // bl String_Delete
+    // str r7, [sp]
+    // add r3, r5, #0
+    // ldr r0, [r4, #0x58]
+    // mov r1, #0xe
+    // mov r2, #1
+    // add r3, #0x34
+    // bl GfGfxLoader_GetScrnDataFromOpenNarc
+    // str r0, [r5, #0x30]
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222CFFC: .word 0x00010200
+    // _0222D000: .word 0x000F0200
+    // _0222D004: .word 0x00010F00
+    // TODO: decompile
 }
+
 
 void ov43_0222D008(void) {
     RemoveWindow();
@@ -1044,35 +5789,135 @@ void ov43_0222D008(void) {
     Heap_Free(*((u32*)(r4 + 0x30)));
 }
 
+
 void ov43_0222D028(void) {
-    /* Original at 0x0222D028 */
-    /* Requires manual decompilation - 43 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    ldr r0, [r1, #4]\n    add r4, r2, #0\n    bl Save_PlayerData_GetProfile\n    add r2, r0, #0\n    ldr r0, [r4, #0x50]\n    mov r1, #0\n    bl BufferPlayersName\n    add r1, r4, #0\n    add r0, r4, #0\n    add r1, #0x64\n    mov r2, #0x32\n    bl ov43_0222A9F4\n    ldr r2, [r5, #0x34]\n    mov r3, #0\n    str r3, [sp]\n    ldrh r0, [r2]\n    mov r1, #2\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    ldrh r0, [r2, #2]\n    add r2, #0xc\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    bl LoadRectToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add r0, r5, #0\n    bl ScheduleWindowCopyToVram\n    add r0, r5, #0\n    add r0, #0x10\n    bl ScheduleWindowCopyToVram\n    add r5, #0x20\n    add r0, r5, #0\n    bl ScheduleWindowCopyToVram\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // ldr r0, [r1, #4]
+    // add r4, r2, #0
+    // bl Save_PlayerData_GetProfile
+    // add r2, r0, #0
+    // ldr r0, [r4, #0x50]
+    // mov r1, #0
+    // bl BufferPlayersName
+    // add r1, r4, #0
+    // add r0, r4, #0
+    // add r1, #0x64
+    // mov r2, #0x32
+    // bl ov43_0222A9F4
+    // ldr r2, [r5, #0x34]
+    // mov r3, #0
+    // str r3, [sp]
+    // ldrh r0, [r2]
+    // mov r1, #2
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // ldrh r0, [r2, #2]
+    // add r2, #0xc
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // bl LoadRectToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r0, r5, #0
+    // bl ScheduleWindowCopyToVram
+    // add r0, r5, #0
+    // add r0, #0x10
+    // bl ScheduleWindowCopyToVram
+    // add r5, #0x20
+    // add r0, r5, #0
+    // bl ScheduleWindowCopyToVram
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222D090(void) {
-    /* Original at 0x0222D090 */
-    /* Requires manual decompilation - 44 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl ov43_0222AA70\n    mov r2, #0\n    str r2, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0x18\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r4]\n    mov r1, #2\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add r0, r5, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r0, r5, #0\n    add r0, #0x10\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r5, #0x20\n    add r0, r5, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    mov r2, #0\n    str r2, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0x18\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r4]\n    mov r1, #3\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #3\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x10\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222AA70
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0x18
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r4]
+    // mov r1, #2
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r0, r5, #0
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // add r0, r5, #0
+    // add r0, #0x10
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // add r5, #0x20
+    // add r0, r5, #0
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0x18
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r4]
+    // mov r1, #3
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #3
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222D0F8(void) {
-    /* Original at 0x0222D0F8 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    ldr r3, _0222D130 ; =_0222ED5C\n    add r4, r1, #0\n    ldrb r5, [r3, #1]\n    ldrb r3, [r3, #2]\n    add r1, sp, #0xc\n    strb r5, [r1]\n    strb r3, [r1, #1]\n    mov r1, #0xe\n    str r1, [sp]\n    mov r1, #4\n    str r1, [sp, #4]\n    add r0, sp, #0xc\n    ldrb r0, [r0, r2]\n    mov r1, #2\n    mov r2, #0x11\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    mov r3, #0x14\n    bl BgTilemapRectChangePalette\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x10\n    pop {r3, r4, r5, pc}\n    _0222D130: .word _0222ED5C"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // ldr r3, _0222D130 ; =_0222ED5C
+    // add r4, r1, #0
+    // ldrb r5, [r3, #1]
+    // ldrb r3, [r3, #2]
+    // add r1, sp, #0xc
+    // strb r5, [r1]
+    // strb r3, [r1, #1]
+    // mov r1, #0xe
+    // str r1, [sp]
+    // mov r1, #4
+    // str r1, [sp, #4]
+    // add r0, sp, #0xc
+    // ldrb r0, [r0, r2]
+    // mov r1, #2
+    // mov r2, #0x11
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // mov r3, #0x14
+    // bl BgTilemapRectChangePalette
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // _0222D130: .word _0222ED5C
+    // TODO: decompile
 }
+
 
 void ov43_0222D134(void) {
     Save_VarsFlags_Get(*((u32*)(r1 + 4)));
@@ -1081,444 +5926,3424 @@ void ov43_0222D134(void) {
     ov43_0222D584(r5, r4, r6, r7);
 }
 
+
 void ov43_0222D15C(void) {
-    /* Original at 0x0222D15C */
-    /* Requires manual decompilation - 84 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r1, #0\n    ldrb r5, [r6, #8]\n    add r4, r0, #0\n    add r7, r2, #0\n    str r3, [sp]\n    cmp r5, #6\n    bhi _0222D220\n    add r5, r5, r5\n    add r5, pc\n    ldrh r5, [r5, #6]\n    lsl r5, r5, #0x10\n    asr r5, r5, #0x10\n    add pc, r5\n    _0222D178: ; jump table\n    mov r0, #0\n    strh r0, [r4, #0xe]\n    strh r0, [r4]\n    ldr r3, [sp]\n    add r0, r4, #0\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov43_0222D654\n    mov r0, #2\n    strb r0, [r6, #8]\n    b _0222D220\n    bl ov43_0222D47C\n    strb r0, [r6, #8]\n    b _0222D220\n    bl ov43_0222D4C4\n    ldr r3, [sp]\n    add r0, r4, #0\n    add r1, r6, #0\n    add r2, r7, #0\n    bl ov43_0222D508\n    mov r0, #4\n    strb r0, [r6, #8]\n    b _0222D220\n    bl ov43_0222D508\n    cmp r0, #1\n    bne _0222D220\n    mov r0, #2\n    strb r0, [r6, #8]\n    b _0222D220\n    ldrh r0, [r4, #0xe]\n    cmp r0, #0\n    beq _0222D1DC\n    ldrh r0, [r4, #0xc]\n    sub r0, r0, #1\n    strh r0, [r4, #0xc]\n    ldrh r0, [r4, #0xc]\n    cmp r0, #0\n    bne _0222D220\n    ldr r1, [r4, #8]\n    add r0, r6, #0\n    bl ov43_0222DCC4\n    cmp r0, #0\n    beq _0222D206\n    ldr r0, _0222D224 ; =0x000005E5\n    bl PlaySE\n    add r0, r4, #0\n    add r1, r7, #0\n    bl ov43_0222D87C\n    add r0, r6, #0\n    mov r1, #4\n    mov r2, #1\n    bl ov43_0222A318\n    mov r0, #1\n    strh r0, [r4, #0xe]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #2\n    strb r0, [r6, #8]\n    b _0222D220\n    add r1, r7, #0\n    bl ov43_0222D778\n    add r0, r6, #0\n    mov r1, #1\n    mov r2, #9\n    bl ov43_0222A318\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222D224: .word 0x000005E5"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r6, r1, #0
+    // ldrb r5, [r6, #8]
+    // add r4, r0, #0
+    // add r7, r2, #0
+    // str r3, [sp]
+    // cmp r5, #6
+    // bhi _0222D220
+    // add r5, r5, r5
+    // add r5, pc
+    // ldrh r5, [r5, #6]
+    // lsl r5, r5, #0x10
+    // asr r5, r5, #0x10
+    // add pc, r5
+    // _0222D178: ; jump table
+    // mov r0, #0
+    // strh r0, [r4, #0xe]
+    // strh r0, [r4]
+    // ldr r3, [sp]
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // add r2, r7, #0
+    // bl ov43_0222D654
+    // mov r0, #2
+    // strb r0, [r6, #8]
+    // b _0222D220
+    // bl ov43_0222D47C
+    // strb r0, [r6, #8]
+    // b _0222D220
+    // bl ov43_0222D4C4
+    // ldr r3, [sp]
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // add r2, r7, #0
+    // bl ov43_0222D508
+    // mov r0, #4
+    // strb r0, [r6, #8]
+    // b _0222D220
+    // bl ov43_0222D508
+    // cmp r0, #1
+    // bne _0222D220
+    // mov r0, #2
+    // strb r0, [r6, #8]
+    // b _0222D220
+    // ldrh r0, [r4, #0xe]
+    // cmp r0, #0
+    // beq _0222D1DC
+    // ldrh r0, [r4, #0xc]
+    // sub r0, r0, #1
+    // strh r0, [r4, #0xc]
+    // ldrh r0, [r4, #0xc]
+    // cmp r0, #0
+    // bne _0222D220
+    // ldr r1, [r4, #8]
+    // add r0, r6, #0
+    // bl ov43_0222DCC4
+    // cmp r0, #0
+    // beq _0222D206
+    // ldr r0, _0222D224 ; =0x000005E5
+    // bl PlaySE
+    // add r0, r4, #0
+    // add r1, r7, #0
+    // bl ov43_0222D87C
+    // add r0, r6, #0
+    // mov r1, #4
+    // mov r2, #1
+    // bl ov43_0222A318
+    // mov r0, #1
+    // strh r0, [r4, #0xe]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #2
+    // strb r0, [r6, #8]
+    // b _0222D220
+    // add r1, r7, #0
+    // bl ov43_0222D778
+    // add r0, r6, #0
+    // mov r1, #1
+    // mov r2, #9
+    // bl ov43_0222A318
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222D224: .word 0x000005E5
+    // TODO: decompile
 }
+
 
 void ov43_0222D228(void) {
     ov43_0222D610();
 }
 
+
 void ov43_0222D230(void) {
-    /* Original at 0x0222D230 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r0, [r0, #0x10]\n    cmp r0, #1\n    bne _0222D23A\n    mov r0, #8\n    b _0222D23C\n    mov r0, #3\n    sub r0, r0, #1\n    cmp r1, r0\n    bne _0222D246\n    mov r0, #1\n    bx lr\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    // ldr r0, [r0, #0x10]
+    // cmp r0, #1
+    // bne _0222D23A
+    // mov r0, #8
+    // b _0222D23C
+    // mov r0, #3
+    // sub r0, r0, #1
+    // cmp r1, r0
+    // bne _0222D246
+    // mov r0, #1
+    // bx lr
+    // mov r0, #0
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov43_0222D24C(void) {
-    /* Original at 0x0222D24C */
-    /* Requires manual decompilation - 73 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    add r5, r2, #0\n    cmp r3, #5\n    bhi _0222D2F2\n    add r1, r3, r3\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0222D262: ; jump table\n    mov r1, #0\n    ldrsh r1, [r4, r1]\n    bl ov43_0222D230\n    cmp r0, #0\n    beq _0222D2F2\n    ldr r0, _0222D2F8 ; =0x000005DD\n    bl PlaySE\n    mov r0, #6\n    pop {r3, r4, r5, pc}\n    ldr r0, _0222D2F8 ; =0x000005DD\n    bl PlaySE\n    mov r0, #6\n    pop {r3, r4, r5, pc}\n    mov r2, #0\n    ldrsh r2, [r4, r2]\n    add r1, r5, #0\n    bl ov43_0222DB28\n    mov r2, #0\n    ldrsh r2, [r4, r2]\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov43_0222DB94\n    mov r0, #2\n    str r0, [r4, #8]\n    mov r0, #3\n    pop {r3, r4, r5, pc}\n    mov r2, #0\n    ldrsh r2, [r4, r2]\n    add r1, r5, #0\n    bl ov43_0222DB28\n    mov r2, #0\n    ldrsh r2, [r4, r2]\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov43_0222DB94\n    mov r0, #3\n    str r0, [r4, #8]\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    str r0, [r4, #8]\n    mov r0, #4\n    strh r0, [r4, #0xc]\n    add r0, r5, #0\n    mov r1, #2\n    mov r2, #1\n    bl ov43_0222AD40\n    mov r0, #5\n    pop {r3, r4, r5, pc}\n    mov r2, #1\n    str r2, [r4, #8]\n    mov r0, #4\n    strh r0, [r4, #0xc]\n    add r0, r5, #0\n    mov r1, #3\n    bl ov43_0222AD40\n    mov r0, #5\n    pop {r3, r4, r5, pc}\n    mov r0, #2\n    pop {r3, r4, r5, pc}\n    nop\n    _0222D2F8: .word 0x000005DD"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // add r5, r2, #0
+    // cmp r3, #5
+    // bhi _0222D2F2
+    // add r1, r3, r3
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _0222D262: ; jump table
+    // mov r1, #0
+    // ldrsh r1, [r4, r1]
+    // bl ov43_0222D230
+    // cmp r0, #0
+    // beq _0222D2F2
+    // ldr r0, _0222D2F8 ; =0x000005DD
+    // bl PlaySE
+    // mov r0, #6
+    // pop {r3, r4, r5, pc}
+    // ldr r0, _0222D2F8 ; =0x000005DD
+    // bl PlaySE
+    // mov r0, #6
+    // pop {r3, r4, r5, pc}
+    // mov r2, #0
+    // ldrsh r2, [r4, r2]
+    // add r1, r5, #0
+    // bl ov43_0222DB28
+    // mov r2, #0
+    // ldrsh r2, [r4, r2]
+    // add r0, r4, #0
+    // add r1, r5, #0
+    // bl ov43_0222DB94
+    // mov r0, #2
+    // str r0, [r4, #8]
+    // mov r0, #3
+    // pop {r3, r4, r5, pc}
+    // mov r2, #0
+    // ldrsh r2, [r4, r2]
+    // add r1, r5, #0
+    // bl ov43_0222DB28
+    // mov r2, #0
+    // ldrsh r2, [r4, r2]
+    // add r0, r4, #0
+    // add r1, r5, #0
+    // bl ov43_0222DB94
+    // mov r0, #3
+    // str r0, [r4, #8]
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // str r0, [r4, #8]
+    // mov r0, #4
+    // strh r0, [r4, #0xc]
+    // add r0, r5, #0
+    // mov r1, #2
+    // mov r2, #1
+    // bl ov43_0222AD40
+    // mov r0, #5
+    // pop {r3, r4, r5, pc}
+    // mov r2, #1
+    // str r2, [r4, #8]
+    // mov r0, #4
+    // strh r0, [r4, #0xc]
+    // add r0, r5, #0
+    // mov r1, #3
+    // bl ov43_0222AD40
+    // mov r0, #5
+    // pop {r3, r4, r5, pc}
+    // mov r0, #2
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _0222D2F8: .word 0x000005DD
+    // TODO: decompile
 }
+
 
 void ov43_0222D2FC(void) {
-    /* Original at 0x0222D2FC */
-    /* Requires manual decompilation - 85 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, _0222D3B0 ; =gSystem\n    add r4, r1, #0\n    ldr r1, [r0, #0x48]\n    ldr r0, _0222D3B4 ; =0x00000CF3\n    add r6, r2, #0\n    tst r0, r1\n    beq _0222D312\n    mov r0, #0\n    str r0, [r4]\n    ldr r1, _0222D3B0 ; =gSystem\n    mov r0, #3\n    ldr r2, [r1, #0x48]\n    tst r0, r2\n    beq _0222D32A\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #1\n    bl ov43_0222D24C\n    pop {r4, r5, r6, pc}\n    ldr r0, [r1, #0x4c]\n    mov r2, #0x20\n    add r1, r0, #0\n    tst r1, r2\n    bne _0222D340\n    ldrb r1, [r4, #0xe]\n    cmp r1, #0\n    beq _0222D358\n    lsl r2, r2, #4\n    tst r2, r0\n    beq _0222D358\n    mov r1, #0\n    add r0, r5, #0\n    mvn r1, r1\n    bl ov43_0222ED18\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #2\n    bl ov43_0222D24C\n    pop {r4, r5, r6, pc}\n    mov r2, #0x10\n    add r3, r0, #0\n    tst r3, r2\n    bne _0222D36A\n    cmp r1, #0\n    beq _0222D380\n    add r2, #0xf0\n    tst r0, r2\n    beq _0222D380\n    add r0, r5, #0\n    mov r1, #1\n    bl ov43_0222ED18\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #3\n    bl ov43_0222D24C\n    pop {r4, r5, r6, pc}\n    ldr r0, _0222D3B0 ; =gSystem\n    ldr r1, [r0, #0x44]\n    mov r0, #0x40\n    tst r0, r1\n    beq _0222D398\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #4\n    bl ov43_0222D24C\n    pop {r4, r5, r6, pc}\n    mov r0, #0x80\n    tst r0, r1\n    beq _0222D3AC\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    mov r3, #5\n    bl ov43_0222D24C\n    pop {r4, r5, r6, pc}\n    mov r0, #2\n    pop {r4, r5, r6, pc}\n    _0222D3B0: .word gSystem\n    _0222D3B4: .word 0x00000CF3"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // ldr r0, _0222D3B0 ; =gSystem
+    // add r4, r1, #0
+    // ldr r1, [r0, #0x48]
+    // ldr r0, _0222D3B4 ; =0x00000CF3
+    // add r6, r2, #0
+    // tst r0, r1
+    // beq _0222D312
+    // mov r0, #0
+    // str r0, [r4]
+    // ldr r1, _0222D3B0 ; =gSystem
+    // mov r0, #3
+    // ldr r2, [r1, #0x48]
+    // tst r0, r2
+    // beq _0222D32A
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // mov r3, #1
+    // bl ov43_0222D24C
+    // pop {r4, r5, r6, pc}
+    // ldr r0, [r1, #0x4c]
+    // mov r2, #0x20
+    // add r1, r0, #0
+    // tst r1, r2
+    // bne _0222D340
+    // ldrb r1, [r4, #0xe]
+    // cmp r1, #0
+    // beq _0222D358
+    // lsl r2, r2, #4
+    // tst r2, r0
+    // beq _0222D358
+    // mov r1, #0
+    // add r0, r5, #0
+    // mvn r1, r1
+    // bl ov43_0222ED18
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // mov r3, #2
+    // bl ov43_0222D24C
+    // pop {r4, r5, r6, pc}
+    // mov r2, #0x10
+    // add r3, r0, #0
+    // tst r3, r2
+    // bne _0222D36A
+    // cmp r1, #0
+    // beq _0222D380
+    // add r2, #0xf0
+    // tst r0, r2
+    // beq _0222D380
+    // add r0, r5, #0
+    // mov r1, #1
+    // bl ov43_0222ED18
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // mov r3, #3
+    // bl ov43_0222D24C
+    // pop {r4, r5, r6, pc}
+    // ldr r0, _0222D3B0 ; =gSystem
+    // ldr r1, [r0, #0x44]
+    // mov r0, #0x40
+    // tst r0, r1
+    // beq _0222D398
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // mov r3, #4
+    // bl ov43_0222D24C
+    // pop {r4, r5, r6, pc}
+    // mov r0, #0x80
+    // tst r0, r1
+    // beq _0222D3AC
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // mov r3, #5
+    // bl ov43_0222D24C
+    // pop {r4, r5, r6, pc}
+    // mov r0, #2
+    // pop {r4, r5, r6, pc}
+    // _0222D3B0: .word gSystem
+    // _0222D3B4: .word 0x00000CF3
+    // TODO: decompile
 }
+
 
 void ov43_0222D3B8(void) {
-    /* Original at 0x0222D3B8 */
-    /* Requires manual decompilation - 87 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #0x10]\n    add r7, r1, #0\n    add r6, r3, #0\n    str r2, [sp]\n    cmp r0, #0\n    beq _0222D3D0\n    ldr r0, _0222D474 ; =ov43_0222EE84\n    bl TouchscreenHitbox_FindHitboxAtTouchNew\n    b _0222D3D6\n    ldr r0, _0222D478 ; =ov43_0222EE42\n    bl TouchscreenHitbox_FindHitboxAtTouchNew\n    add r4, r0, #0\n    mov r0, #0\n    mvn r0, r0\n    cmp r4, r0\n    bne _0222D3E4\n    mov r0, #2\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r4, #0\n    bne _0222D3FA\n    mov r0, #1\n    str r0, [r6]\n    ldr r2, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    mov r3, #4\n    bl ov43_0222D24C\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r4, #1\n    bne _0222D410\n    mov r0, #1\n    str r0, [r6]\n    ldr r2, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    mov r3, #5\n    bl ov43_0222D24C\n    pop {r3, r4, r5, r6, r7, pc}\n    sub r1, r4, #2\n    lsl r1, r1, #0x10\n    add r0, r5, #0\n    asr r1, r1, #0x10\n    bl ov43_0222D230\n    cmp r0, #0\n    beq _0222D434\n    sub r0, r4, #2\n    strh r0, [r5]\n    mov r3, #1\n    ldr r2, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    str r3, [r6]\n    bl ov43_0222D24C\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    ldrsh r0, [r5, r0]\n    sub r1, r4, #2\n    sub r0, r1, r0\n    lsl r0, r0, #0x10\n    asr r4, r0, #0x10\n    bne _0222D446\n    mov r0, #2\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #1\n    str r0, [r6]\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222ED18\n    cmp r4, #0\n    blt _0222D464\n    ldr r2, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    mov r3, #3\n    bl ov43_0222D24C\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r2, [sp]\n    add r0, r5, #0\n    add r1, r7, #0\n    mov r3, #2\n    bl ov43_0222D24C\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222D474: .word ov43_0222EE84\n    _0222D478: .word ov43_0222EE42"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5, #0x10]
+    // add r7, r1, #0
+    // add r6, r3, #0
+    // str r2, [sp]
+    // cmp r0, #0
+    // beq _0222D3D0
+    // ldr r0, _0222D474 ; =ov43_0222EE84
+    // bl TouchscreenHitbox_FindHitboxAtTouchNew
+    // b _0222D3D6
+    // ldr r0, _0222D478 ; =ov43_0222EE42
+    // bl TouchscreenHitbox_FindHitboxAtTouchNew
+    // add r4, r0, #0
+    // mov r0, #0
+    // mvn r0, r0
+    // cmp r4, r0
+    // bne _0222D3E4
+    // mov r0, #2
+    // pop {r3, r4, r5, r6, r7, pc}
+    // cmp r4, #0
+    // bne _0222D3FA
+    // mov r0, #1
+    // str r0, [r6]
+    // ldr r2, [sp]
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // mov r3, #4
+    // bl ov43_0222D24C
+    // pop {r3, r4, r5, r6, r7, pc}
+    // cmp r4, #1
+    // bne _0222D410
+    // mov r0, #1
+    // str r0, [r6]
+    // ldr r2, [sp]
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // mov r3, #5
+    // bl ov43_0222D24C
+    // pop {r3, r4, r5, r6, r7, pc}
+    // sub r1, r4, #2
+    // lsl r1, r1, #0x10
+    // add r0, r5, #0
+    // asr r1, r1, #0x10
+    // bl ov43_0222D230
+    // cmp r0, #0
+    // beq _0222D434
+    // sub r0, r4, #2
+    // strh r0, [r5]
+    // mov r3, #1
+    // ldr r2, [sp]
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // str r3, [r6]
+    // bl ov43_0222D24C
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // ldrsh r0, [r5, r0]
+    // sub r1, r4, #2
+    // sub r0, r1, r0
+    // lsl r0, r0, #0x10
+    // asr r4, r0, #0x10
+    // bne _0222D446
+    // mov r0, #2
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #1
+    // str r0, [r6]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222ED18
+    // cmp r4, #0
+    // blt _0222D464
+    // ldr r2, [sp]
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // mov r3, #3
+    // bl ov43_0222D24C
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r2, [sp]
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // mov r3, #2
+    // bl ov43_0222D24C
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222D474: .word ov43_0222EE84
+    // _0222D478: .word ov43_0222EE42
+    // TODO: decompile
 }
+
 
 void ov43_0222D47C(void) {
-    /* Original at 0x0222D47C */
-    /* Requires manual decompilation - 33 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r4, r1, #0\n    ldr r1, _0222D4C0 ; =gSystem\n    add r6, r2, #0\n    ldr r2, [r1, #0x44]\n    add r5, r0, #0\n    mov r0, #0\n    mov r1, #0xc0\n    str r0, [sp]\n    tst r1, r2\n    bne _0222D496\n    strh r0, [r5, #0xe]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    add r3, sp, #0\n    bl ov43_0222D3B8\n    ldr r1, [sp]\n    cmp r1, #0\n    beq _0222D4B0\n    mov r1, #1\n    add sp, #4\n    str r1, [r4]\n    pop {r3, r4, r5, r6, pc}\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    bl ov43_0222D2FC\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _0222D4C0: .word gSystem"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // add r4, r1, #0
+    // ldr r1, _0222D4C0 ; =gSystem
+    // add r6, r2, #0
+    // ldr r2, [r1, #0x44]
+    // add r5, r0, #0
+    // mov r0, #0
+    // mov r1, #0xc0
+    // str r0, [sp]
+    // tst r1, r2
+    // bne _0222D496
+    // strh r0, [r5, #0xe]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // add r3, sp, #0
+    // bl ov43_0222D3B8
+    // ldr r1, [sp]
+    // cmp r1, #0
+    // beq _0222D4B0
+    // mov r1, #1
+    // add sp, #4
+    // str r1, [r4]
+    // pop {r3, r4, r5, r6, pc}
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // bl ov43_0222D2FC
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // nop
+    // _0222D4C0: .word gSystem
+    // TODO: decompile
 }
+
 
 void ov43_0222D4C4(void) {
-    /* Original at 0x0222D4C4 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r7, r1, #0\n    add r5, r0, #0\n    add r4, r2, #0\n    mov r1, #0\n    str r1, [r5, #4]\n    add r0, r4, #0\n    add r6, r3, #0\n    bl ov43_0222AD20\n    ldr r0, [r5, #8]\n    cmp r0, #2\n    bne _0222D4E4\n    mov r3, #2\n    b _0222D4E6\n    mov r3, #1\n    mov r0, #0\n    ldrsh r0, [r5, r0]\n    add r1, r7, #0\n    add r2, r4, #0\n    str r0, [sp]\n    add r0, r5, #0\n    str r6, [sp, #4]\n    bl ov43_0222DAE8\n    ldr r0, _0222D504 ; =0x000005E1\n    bl PlaySE\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222D504: .word 0x000005E1"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r7, r1, #0
+    // add r5, r0, #0
+    // add r4, r2, #0
+    // mov r1, #0
+    // str r1, [r5, #4]
+    // add r0, r4, #0
+    // add r6, r3, #0
+    // bl ov43_0222AD20
+    // ldr r0, [r5, #8]
+    // cmp r0, #2
+    // bne _0222D4E4
+    // mov r3, #2
+    // b _0222D4E6
+    // mov r3, #1
+    // mov r0, #0
+    // ldrsh r0, [r5, r0]
+    // add r1, r7, #0
+    // add r2, r4, #0
+    // str r0, [sp]
+    // add r0, r5, #0
+    // str r6, [sp, #4]
+    // bl ov43_0222DAE8
+    // ldr r0, _0222D504 ; =0x000005E1
+    // bl PlaySE
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222D504: .word 0x000005E1
+    // TODO: decompile
 }
+
 
 void ov43_0222D508(void) {
-    /* Original at 0x0222D508 */
-    /* Requires manual decompilation - 56 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    add r7, r1, #0\n    add r4, r2, #0\n    add r6, r3, #0\n    cmp r0, #4\n    ble _0222D55C\n    mov r2, #0\n    ldr r0, [r4]\n    mov r1, #2\n    add r3, r2, #0\n    bl ScheduleSetBgPosText\n    mov r2, #0\n    ldr r0, [r4]\n    mov r1, #3\n    add r3, r2, #0\n    bl ScheduleSetBgPosText\n    mov r3, #0\n    ldrsh r0, [r5, r3]\n    add r1, r7, #0\n    add r2, r4, #0\n    str r0, [sp]\n    add r0, r5, #0\n    str r6, [sp, #4]\n    bl ov43_0222DAE8\n    add r0, r4, #0\n    mov r1, #1\n    bl ov43_0222AD20\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #0xff\n    bl ov43_0222DB94\n    add sp, #8\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    lsl r1, r0, #8\n    asr r0, r1, #1\n    lsr r0, r0, #0x1e\n    add r0, r1, r0\n    asr r3, r0, #2\n    ldr r0, [r5, #8]\n    cmp r0, #2\n    bne _0222D56E\n    neg r3, r3\n    ldr r0, [r4]\n    mov r1, #3\n    mov r2, #0\n    bl ScheduleSetBgPosText\n    ldr r0, [r5, #4]\n    add r0, r0, #1\n    str r0, [r5, #4]\n    mov r0, #0\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r5, r0, #0
+    // ldr r0, [r5, #4]
+    // add r7, r1, #0
+    // add r4, r2, #0
+    // add r6, r3, #0
+    // cmp r0, #4
+    // ble _0222D55C
+    // mov r2, #0
+    // ldr r0, [r4]
+    // mov r1, #2
+    // add r3, r2, #0
+    // bl ScheduleSetBgPosText
+    // mov r2, #0
+    // ldr r0, [r4]
+    // mov r1, #3
+    // add r3, r2, #0
+    // bl ScheduleSetBgPosText
+    // mov r3, #0
+    // ldrsh r0, [r5, r3]
+    // add r1, r7, #0
+    // add r2, r4, #0
+    // str r0, [sp]
+    // add r0, r5, #0
+    // str r6, [sp, #4]
+    // bl ov43_0222DAE8
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl ov43_0222AD20
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // mov r2, #0xff
+    // bl ov43_0222DB94
+    // add sp, #8
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // lsl r1, r0, #8
+    // asr r0, r1, #1
+    // lsr r0, r0, #0x1e
+    // add r0, r1, r0
+    // asr r3, r0, #2
+    // ldr r0, [r5, #8]
+    // cmp r0, #2
+    // bne _0222D56E
+    // neg r3, r3
+    // ldr r0, [r4]
+    // mov r1, #3
+    // mov r2, #0
+    // bl ScheduleSetBgPosText
+    // ldr r0, [r5, #4]
+    // add r0, r0, #1
+    // str r0, [r5, #4]
+    // mov r0, #0
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222D584(void) {
-    /* Original at 0x0222D584 */
-    /* Requires manual decompilation - 62 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x1c\n    add r7, r0, #0\n    str r2, [sp, #8]\n    add r1, r2, #0\n    add r0, #0xf8\n    add r2, r3, #0\n    str r3, [sp, #0xc]\n    bl ov43_0222DD40\n    ldr r1, [sp, #8]\n    add r0, r7, #0\n    bl ov43_0222DDA0\n    mov r0, #0\n    str r0, [sp, #0x18]\n    ldr r0, _0222D600 ; =ov43_0222EDAC\n    add r7, #0x14\n    str r0, [sp, #0x14]\n    ldr r0, _0222D604 ; =ov43_0222EE08\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0xc]\n    ldr r3, [sp, #0x14]\n    str r0, [sp]\n    ldr r1, [sp, #8]\n    ldr r2, [sp, #0x10]\n    ldr r3, [r3]\n    add r0, r7, #0\n    bl ov43_0222DDF0\n    ldr r4, _0222D608 ; =ov43_0222F10C\n    ldr r5, _0222D60C ; =ov43_0222F0D0\n    mov r6, #0\n    ldr r0, [r4]\n    ldr r1, [sp, #8]\n    str r0, [sp]\n    ldr r0, [sp, #0xc]\n    add r2, r6, #0\n    str r0, [sp, #4]\n    ldrb r3, [r5]\n    add r0, r7, #0\n    bl ov43_0222DE14\n    add r6, r6, #1\n    add r4, r4, #4\n    add r5, r5, #1\n    cmp r6, #8\n    blt _0222D5C6\n    ldr r0, [sp, #0x14]\n    add r7, #0x4c\n    add r0, r0, #4\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #0x10]\n    add r0, r0, #6\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x18]\n    add r0, r0, #1\n    str r0, [sp, #0x18]\n    cmp r0, #3\n    blt _0222D5AE\n    add sp, #0x1c\n    pop {r4, r5, r6, r7, pc}\n    _0222D600: .word ov43_0222EDAC\n    _0222D604: .word ov43_0222EE08\n    _0222D608: .word ov43_0222F10C\n    _0222D60C: .word ov43_0222F0D0"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x1c
+    // add r7, r0, #0
+    // str r2, [sp, #8]
+    // add r1, r2, #0
+    // add r0, #0xf8
+    // add r2, r3, #0
+    // str r3, [sp, #0xc]
+    // bl ov43_0222DD40
+    // ldr r1, [sp, #8]
+    // add r0, r7, #0
+    // bl ov43_0222DDA0
+    // mov r0, #0
+    // str r0, [sp, #0x18]
+    // ldr r0, _0222D600 ; =ov43_0222EDAC
+    // add r7, #0x14
+    // str r0, [sp, #0x14]
+    // ldr r0, _0222D604 ; =ov43_0222EE08
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0xc]
+    // ldr r3, [sp, #0x14]
+    // str r0, [sp]
+    // ldr r1, [sp, #8]
+    // ldr r2, [sp, #0x10]
+    // ldr r3, [r3]
+    // add r0, r7, #0
+    // bl ov43_0222DDF0
+    // ldr r4, _0222D608 ; =ov43_0222F10C
+    // ldr r5, _0222D60C ; =ov43_0222F0D0
+    // mov r6, #0
+    // ldr r0, [r4]
+    // ldr r1, [sp, #8]
+    // str r0, [sp]
+    // ldr r0, [sp, #0xc]
+    // add r2, r6, #0
+    // str r0, [sp, #4]
+    // ldrb r3, [r5]
+    // add r0, r7, #0
+    // bl ov43_0222DE14
+    // add r6, r6, #1
+    // add r4, r4, #4
+    // add r5, r5, #1
+    // cmp r6, #8
+    // blt _0222D5C6
+    // ldr r0, [sp, #0x14]
+    // add r7, #0x4c
+    // add r0, r0, #4
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #0x10]
+    // add r0, r0, #6
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0x18]
+    // add r0, r0, #1
+    // str r0, [sp, #0x18]
+    // cmp r0, #3
+    // blt _0222D5AE
+    // add sp, #0x1c
+    // pop {r4, r5, r6, r7, pc}
+    // _0222D600: .word ov43_0222EDAC
+    // _0222D604: .word ov43_0222EE08
+    // _0222D608: .word ov43_0222F10C
+    // _0222D60C: .word ov43_0222F0D0
+    // TODO: decompile
 }
+
 
 void ov43_0222D610(void) {
-    /* Original at 0x0222D610 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    mov r6, #0\n    add r5, r0, #0\n    str r0, [sp]\n    str r2, [sp, #4]\n    add r5, #0x14\n    add r7, r6, #0\n    add r4, r7, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222DED0\n    add r4, r4, #1\n    cmp r4, #8\n    blt _0222D622\n    add r0, r5, #0\n    bl ov43_0222DE10\n    add r6, r6, #1\n    add r5, #0x4c\n    cmp r6, #3\n    blt _0222D620\n    ldr r0, [sp]\n    ldr r1, [sp, #4]\n    bl ov43_0222DDD0\n    ldr r0, [sp]\n    add r0, #0xf8\n    str r0, [sp]\n    bl ov43_0222DD88\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // mov r6, #0
+    // add r5, r0, #0
+    // str r0, [sp]
+    // str r2, [sp, #4]
+    // add r5, #0x14
+    // add r7, r6, #0
+    // add r4, r7, #0
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222DED0
+    // add r4, r4, #1
+    // cmp r4, #8
+    // blt _0222D622
+    // add r0, r5, #0
+    // bl ov43_0222DE10
+    // add r6, r6, #1
+    // add r5, #0x4c
+    // cmp r6, #3
+    // blt _0222D620
+    // ldr r0, [sp]
+    // ldr r1, [sp, #4]
+    // bl ov43_0222DDD0
+    // ldr r0, [sp]
+    // add r0, #0xf8
+    // str r0, [sp]
+    // bl ov43_0222DD88
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222D654(void) {
-    /* Original at 0x0222D654 */
-    /* Requires manual decompilation - 128 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r6, r1, #0\n    add r4, r2, #0\n    mov r2, #0xb\n    ldrsb r2, [r6, r2]\n    add r5, r0, #0\n    ldr r1, [r6, #4]\n    add r2, r6, r2\n    ldrb r2, [r2, #0x18]\n    add r0, r4, #0\n    add r7, r3, #0\n    bl ov43_0222AB20\n    mov r1, #0x4a\n    lsl r1, r1, #2\n    add r0, r4, #0\n    add r1, r5, r1\n    mov r2, #0xd\n    bl ov43_0222A9F4\n    mov r0, #0x45\n    lsl r0, r0, #2\n    ldr r2, [r5, r0]\n    mov r3, #0\n    str r3, [sp]\n    ldrh r0, [r2]\n    mov r1, #5\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    ldrh r0, [r2, #2]\n    add r2, #0xc\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    bl LoadRectToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #5\n    bl ScheduleBgTilemapBufferTransfer\n    add r0, r5, #0\n    add r0, #0xfc\n    mov r1, #0\n    ldr r2, [r0]\n    add r3, r1, #0\n    str r1, [sp]\n    ldrh r0, [r2]\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    ldrh r0, [r2, #2]\n    add r2, #0xc\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    bl LoadRectToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #0\n    bl ScheduleBgTilemapBufferTransfer\n    mov r0, #0x41\n    lsl r0, r0, #2\n    ldr r2, [r5, r0]\n    mov r3, #0\n    str r3, [sp]\n    ldrh r0, [r2]\n    mov r1, #2\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    ldrh r0, [r2, #2]\n    add r2, #0xc\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    bl LoadRectToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add r0, r5, #0\n    add r1, r6, #0\n    add r2, r4, #0\n    add r3, r7, #0\n    bl ov43_0222D8B8\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov43_0222AD98\n    mov r3, #0\n    ldrsh r0, [r5, r3]\n    add r1, r6, #0\n    add r2, r4, #0\n    str r0, [sp]\n    add r0, r5, #0\n    str r7, [sp, #4]\n    bl ov43_0222DAE8\n    add r0, r5, #0\n    add r1, r4, #0\n    mov r2, #0xff\n    bl ov43_0222DB94\n    mov r0, #0x7d\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #0xf4\n    mov r2, #0x18\n    bl Sprite_SetPositionXY\n    add r0, r4, #0\n    mov r1, #2\n    mov r2, #0\n    bl ov43_0222AD40\n    mov r0, #0x7e\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #0xf4\n    mov r2, #0x88\n    bl Sprite_SetPositionXY\n    add r0, r4, #0\n    mov r1, #3\n    mov r2, #0\n    bl ov43_0222AD40\n    add r0, r4, #0\n    mov r1, #1\n    bl ov43_0222AD00\n    mov r0, #2\n    mov r1, #0\n    bl SetBgPriority\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r6, r1, #0
+    // add r4, r2, #0
+    // mov r2, #0xb
+    // ldrsb r2, [r6, r2]
+    // add r5, r0, #0
+    // ldr r1, [r6, #4]
+    // add r2, r6, r2
+    // ldrb r2, [r2, #0x18]
+    // add r0, r4, #0
+    // add r7, r3, #0
+    // bl ov43_0222AB20
+    // mov r1, #0x4a
+    // lsl r1, r1, #2
+    // add r0, r4, #0
+    // add r1, r5, r1
+    // mov r2, #0xd
+    // bl ov43_0222A9F4
+    // mov r0, #0x45
+    // lsl r0, r0, #2
+    // ldr r2, [r5, r0]
+    // mov r3, #0
+    // str r3, [sp]
+    // ldrh r0, [r2]
+    // mov r1, #5
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // ldrh r0, [r2, #2]
+    // add r2, #0xc
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // bl LoadRectToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #5
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r0, r5, #0
+    // add r0, #0xfc
+    // mov r1, #0
+    // ldr r2, [r0]
+    // add r3, r1, #0
+    // str r1, [sp]
+    // ldrh r0, [r2]
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // ldrh r0, [r2, #2]
+    // add r2, #0xc
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // bl LoadRectToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #0
+    // bl ScheduleBgTilemapBufferTransfer
+    // mov r0, #0x41
+    // lsl r0, r0, #2
+    // ldr r2, [r5, r0]
+    // mov r3, #0
+    // str r3, [sp]
+    // ldrh r0, [r2]
+    // mov r1, #2
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // ldrh r0, [r2, #2]
+    // add r2, #0xc
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // bl LoadRectToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // add r2, r4, #0
+    // add r3, r7, #0
+    // bl ov43_0222D8B8
+    // mov r1, #0
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // bl ov43_0222AD98
+    // mov r3, #0
+    // ldrsh r0, [r5, r3]
+    // add r1, r6, #0
+    // add r2, r4, #0
+    // str r0, [sp]
+    // add r0, r5, #0
+    // str r7, [sp, #4]
+    // bl ov43_0222DAE8
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // mov r2, #0xff
+    // bl ov43_0222DB94
+    // mov r0, #0x7d
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #0xf4
+    // mov r2, #0x18
+    // bl Sprite_SetPositionXY
+    // add r0, r4, #0
+    // mov r1, #2
+    // mov r2, #0
+    // bl ov43_0222AD40
+    // mov r0, #0x7e
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #0xf4
+    // mov r2, #0x88
+    // bl Sprite_SetPositionXY
+    // add r0, r4, #0
+    // mov r1, #3
+    // mov r2, #0
+    // bl ov43_0222AD40
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl ov43_0222AD00
+    // mov r0, #2
+    // mov r1, #0
+    // bl SetBgPriority
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222D778(void) {
-    /* Original at 0x0222D778 */
-    /* Requires manual decompilation - 111 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r5, r1, #0\n    add r7, r0, #0\n    add r0, r5, #0\n    mov r1, #0\n    bl ov43_0222AD00\n    mov r0, #0x7d\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #8\n    mov r2, #0x62\n    bl Sprite_SetPositionXY\n    mov r1, #0\n    add r0, r5, #0\n    add r2, r1, #0\n    bl ov43_0222AD40\n    mov r0, #0x7e\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #0xf8\n    mov r2, #0x62\n    bl Sprite_SetPositionXY\n    add r0, r5, #0\n    mov r1, #1\n    mov r2, #0\n    bl ov43_0222AD40\n    add r4, r7, #0\n    mov r6, #0\n    add r4, #0x14\n    add r0, r4, #0\n    add r1, r5, #0\n    bl ov43_0222DF90\n    add r6, r6, #1\n    add r4, #0x4c\n    cmp r6, #3\n    blt _0222D7BE\n    add r0, r7, #0\n    add r1, r5, #0\n    bl ov43_0222DC7C\n    add r0, r7, #0\n    add r1, r5, #0\n    bl ov43_0222DB84\n    add r0, r7, #0\n    bl ov43_0222DACC\n    mov r2, #0\n    str r2, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r5]\n    mov r1, #5\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    mov r2, #0\n    str r2, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r5]\n    mov r1, #4\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    mov r2, #0\n    str r2, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    str r2, [sp, #0xc]\n    ldr r0, [r5]\n    mov r1, #2\n    add r3, r2, #0\n    bl FillBgTilemapRect\n    ldr r0, [r5]\n    mov r1, #5\n    bl ScheduleBgTilemapBufferTransfer\n    ldr r0, [r5]\n    mov r1, #4\n    bl ScheduleBgTilemapBufferTransfer\n    ldr r0, [r5]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    mov r0, #0x43\n    lsl r0, r0, #2\n    mov r1, #0\n    ldr r2, [r7, r0]\n    add r3, r1, #0\n    str r1, [sp]\n    ldrh r0, [r2]\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    ldrh r0, [r2, #2]\n    add r2, #0xc\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    ldr r0, [r5]\n    bl LoadRectToBgTilemapRect\n    ldr r0, [r5]\n    mov r1, #0\n    bl ScheduleBgTilemapBufferTransfer\n    add r0, r5, #0\n    bl ov43_0222AA70\n    mov r0, #2\n    add r1, r0, #0\n    bl SetBgPriority\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r5, r1, #0
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // mov r1, #0
+    // bl ov43_0222AD00
+    // mov r0, #0x7d
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #8
+    // mov r2, #0x62
+    // bl Sprite_SetPositionXY
+    // mov r1, #0
+    // add r0, r5, #0
+    // add r2, r1, #0
+    // bl ov43_0222AD40
+    // mov r0, #0x7e
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #0xf8
+    // mov r2, #0x62
+    // bl Sprite_SetPositionXY
+    // add r0, r5, #0
+    // mov r1, #1
+    // mov r2, #0
+    // bl ov43_0222AD40
+    // add r4, r7, #0
+    // mov r6, #0
+    // add r4, #0x14
+    // add r0, r4, #0
+    // add r1, r5, #0
+    // bl ov43_0222DF90
+    // add r6, r6, #1
+    // add r4, #0x4c
+    // cmp r6, #3
+    // blt _0222D7BE
+    // add r0, r7, #0
+    // add r1, r5, #0
+    // bl ov43_0222DC7C
+    // add r0, r7, #0
+    // add r1, r5, #0
+    // bl ov43_0222DB84
+    // add r0, r7, #0
+    // bl ov43_0222DACC
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r5]
+    // mov r1, #5
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r5]
+    // mov r1, #4
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r2, [sp, #0xc]
+    // ldr r0, [r5]
+    // mov r1, #2
+    // add r3, r2, #0
+    // bl FillBgTilemapRect
+    // ldr r0, [r5]
+    // mov r1, #5
+    // bl ScheduleBgTilemapBufferTransfer
+    // ldr r0, [r5]
+    // mov r1, #4
+    // bl ScheduleBgTilemapBufferTransfer
+    // ldr r0, [r5]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // mov r0, #0x43
+    // lsl r0, r0, #2
+    // mov r1, #0
+    // ldr r2, [r7, r0]
+    // add r3, r1, #0
+    // str r1, [sp]
+    // ldrh r0, [r2]
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // ldrh r0, [r2, #2]
+    // add r2, #0xc
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // ldr r0, [r5]
+    // bl LoadRectToBgTilemapRect
+    // ldr r0, [r5]
+    // mov r1, #0
+    // bl ScheduleBgTilemapBufferTransfer
+    // add r0, r5, #0
+    // bl ov43_0222AA70
+    // mov r0, #2
+    // add r1, r0, #0
+    // bl SetBgPriority
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222D87C(void) {
-    /* Original at 0x0222D87C */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r0, #0\n    add r5, r7, #0\n    add r6, r1, #0\n    mov r4, #0\n    add r5, #0x14\n    add r0, r5, #0\n    add r1, r6, #0\n    bl ov43_0222DF90\n    add r4, r4, #1\n    add r5, #0x4c\n    cmp r4, #3\n    blt _0222D888\n    mov r0, #0x46\n    lsl r0, r0, #2\n    mov r5, #0\n    add r4, r7, r0\n    add r0, r4, #0\n    bl ClearWindowTilemapAndScheduleTransfer\n    add r5, r5, #1\n    add r4, #0x10\n    cmp r5, #5\n    ble _0222D8A0\n    add r0, r6, #0\n    bl ov43_0222AA70\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r7, r0, #0
+    // add r5, r7, #0
+    // add r6, r1, #0
+    // mov r4, #0
+    // add r5, #0x14
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // bl ov43_0222DF90
+    // add r4, r4, #1
+    // add r5, #0x4c
+    // cmp r4, #3
+    // blt _0222D888
+    // mov r0, #0x46
+    // lsl r0, r0, #2
+    // mov r5, #0
+    // add r4, r7, r0
+    // add r0, r4, #0
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // add r5, r5, #1
+    // add r4, #0x10
+    // cmp r5, #5
+    // ble _0222D8A0
+    // add r0, r6, #0
+    // bl ov43_0222AA70
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222D8B8(void) {
-    /* Original at 0x0222D8B8 */
-    /* Requires manual decompilation - 239 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x40\n    add r5, r1, #0\n    add r7, r0, #0\n    ldr r0, [r5, #4]\n    str r2, [sp, #0x18]\n    str r3, [sp, #0x1c]\n    bl sub_0202C6F4\n    mov r1, #0xb\n    ldrsb r1, [r5, r1]\n    mov r2, #8\n    str r0, [sp, #0x24]\n    add r1, r5, r1\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C090\n    str r0, [sp, #0x20]\n    mov r0, #0x46\n    lsl r0, r0, #2\n    mov r6, #0\n    add r4, r7, r0\n    add r0, r4, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r6, r6, #1\n    add r4, #0x10\n    cmp r6, #8\n    blo _0222D8E4\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x18]\n    mov r3, #2\n    add r2, r5, r2\n    add r2, #0x38\n    ldrb r2, [r2]\n    ldr r0, [r0, #0x50]\n    add r2, r2, #1\n    bl BufferIntegerAsString\n    mov r0, #0\n    str r0, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    ldr r0, [sp, #0x18]\n    ldr r2, [r5, #0x14]\n    ldr r0, [r0, #0x50]\n    mov r3, #2\n    bl BufferIntegerAsString\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    ldr r0, _0222DAC0 ; =0x000F0200\n    ldr r2, [sp, #0x18]\n    str r0, [sp, #8]\n    mov r0, #0x46\n    lsl r0, r0, #2\n    add r0, r7, r0\n    add r1, r5, #0\n    mov r3, #0x12\n    bl ov43_0222ECD4\n    ldr r0, [sp, #0x20]\n    cmp r0, #0\n    bne _0222D94A\n    ldr r4, _0222DAC4 ; =0x00050600\n    b _0222D956\n    cmp r0, #1\n    bne _0222D954\n    mov r4, #0xc1\n    lsl r4, r4, #0xa\n    b _0222D956\n    ldr r4, _0222DAC8 ; =0x00010200\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x18]\n    ldr r1, [r5, #4]\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    ldr r3, [sp, #0x1c]\n    bl ov43_0222AB20\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #0x4e\n    lsl r0, r0, #2\n    ldr r2, [sp, #0x18]\n    add r0, r7, r0\n    add r1, r5, #0\n    mov r3, #0x11\n    str r4, [sp, #8]\n    bl ov43_0222ECD4\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    ldr r0, _0222DAC0 ; =0x000F0200\n    ldr r2, [sp, #0x18]\n    str r0, [sp, #8]\n    mov r0, #0x5e\n    lsl r0, r0, #2\n    add r0, r7, r0\n    add r1, r5, #0\n    mov r3, #0xf\n    bl ov43_0222ECD4\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x18]\n    ldr r1, [r5, #4]\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    ldr r3, [sp, #0x1c]\n    bl ov43_0222AB5C\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    ldr r0, _0222DAC8 ; =0x00010200\n    ldr r2, [sp, #0x18]\n    str r0, [sp, #8]\n    mov r0, #0x52\n    lsl r0, r0, #2\n    add r0, r7, r0\n    add r1, r5, #0\n    mov r3, #0x10\n    bl ov43_0222ECD4\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    ldr r0, _0222DAC0 ; =0x000F0200\n    ldr r2, [sp, #0x18]\n    str r0, [sp, #8]\n    mov r0, #0x62\n    lsl r0, r0, #2\n    add r0, r7, r0\n    add r1, r5, #0\n    mov r3, #0x1b\n    bl ov43_0222ECD4\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x18]\n    ldr r1, [r5, #4]\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl ov43_0222AB94\n    cmp r0, #0\n    beq _0222DA0E\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    ldr r0, _0222DAC8 ; =0x00010200\n    ldr r2, [sp, #0x18]\n    str r0, [sp, #8]\n    mov r0, #0x56\n    lsl r0, r0, #2\n    add r0, r7, r0\n    add r1, r5, #0\n    mov r3, #0x1c\n    bl ov43_0222ECD4\n    mov r1, #0xb\n    ldrsb r1, [r5, r1]\n    ldr r0, [sp, #0x24]\n    mov r2, #7\n    add r1, r5, r1\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C090\n    add r1, r0, #0\n    ldr r0, [sp, #0x20]\n    mov r2, #1\n    bl GetUnionRoomAvatarAttrBySprite\n    mov r1, #2\n    add r2, sp, #0x28\n    bl sub_02070D84\n    mov r1, #0x32\n    ldr r0, [sp, #0x1c]\n    lsl r1, r1, #6\n    bl Heap_Alloc\n    mov r3, #0\n    add r4, r0, #0\n    str r3, [sp]\n    mov r0, #0xa\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    str r4, [sp, #0xc]\n    ldr r0, [sp, #0x28]\n    ldr r1, [sp, #0x3c]\n    ldr r2, [sp, #0x1c]\n    bl sub_020141C4\n    mov r0, #0x50\n    str r0, [sp]\n    mov r2, #0\n    str r0, [sp, #4]\n    str r2, [sp, #8]\n    str r2, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r0, [sp, #0x14]\n    mov r0, #0x5a\n    lsl r0, r0, #2\n    add r0, r7, r0\n    add r1, r4, #0\n    add r3, r2, #0\n    bl BlitBitmapRectToWindow\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #0x20\n    str r0, [sp]\n    ldr r0, [sp, #0x1c]\n    mov r3, #0x1e\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x28]\n    ldr r1, [sp, #0x30]\n    mov r2, #4\n    lsl r3, r3, #4\n    bl GfGfxLoader_GXLoadPal\n    mov r1, #4\n    mov r0, #0xa\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #0xf\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x18]\n    add r2, r1, #0\n    ldr r0, [r0]\n    add r3, r1, #0\n    bl BgTilemapRectChangePalette\n    mov r0, #0x46\n    lsl r0, r0, #2\n    mov r4, #0\n    add r5, r7, r0\n    add r0, r5, #0\n    bl ScheduleWindowCopyToVram\n    add r4, r4, #1\n    add r5, #0x10\n    cmp r4, #8\n    blo _0222DAAC\n    add sp, #0x40\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222DAC0: .word 0x000F0200\n    _0222DAC4: .word 0x00050600\n    _0222DAC8: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x40
+    // add r5, r1, #0
+    // add r7, r0, #0
+    // ldr r0, [r5, #4]
+    // str r2, [sp, #0x18]
+    // str r3, [sp, #0x1c]
+    // bl sub_0202C6F4
+    // mov r1, #0xb
+    // ldrsb r1, [r5, r1]
+    // mov r2, #8
+    // str r0, [sp, #0x24]
+    // add r1, r5, r1
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C090
+    // str r0, [sp, #0x20]
+    // mov r0, #0x46
+    // lsl r0, r0, #2
+    // mov r6, #0
+    // add r4, r7, r0
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // add r6, r6, #1
+    // add r4, #0x10
+    // cmp r6, #8
+    // blo _0222D8E4
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x18]
+    // mov r3, #2
+    // add r2, r5, r2
+    // add r2, #0x38
+    // ldrb r2, [r2]
+    // ldr r0, [r0, #0x50]
+    // add r2, r2, #1
+    // bl BufferIntegerAsString
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // ldr r0, [sp, #0x18]
+    // ldr r2, [r5, #0x14]
+    // ldr r0, [r0, #0x50]
+    // mov r3, #2
+    // bl BufferIntegerAsString
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // ldr r0, _0222DAC0 ; =0x000F0200
+    // ldr r2, [sp, #0x18]
+    // str r0, [sp, #8]
+    // mov r0, #0x46
+    // lsl r0, r0, #2
+    // add r0, r7, r0
+    // add r1, r5, #0
+    // mov r3, #0x12
+    // bl ov43_0222ECD4
+    // ldr r0, [sp, #0x20]
+    // cmp r0, #0
+    // bne _0222D94A
+    // ldr r4, _0222DAC4 ; =0x00050600
+    // b _0222D956
+    // cmp r0, #1
+    // bne _0222D954
+    // mov r4, #0xc1
+    // lsl r4, r4, #0xa
+    // b _0222D956
+    // ldr r4, _0222DAC8 ; =0x00010200
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x18]
+    // ldr r1, [r5, #4]
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // ldr r3, [sp, #0x1c]
+    // bl ov43_0222AB20
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #0x4e
+    // lsl r0, r0, #2
+    // ldr r2, [sp, #0x18]
+    // add r0, r7, r0
+    // add r1, r5, #0
+    // mov r3, #0x11
+    // str r4, [sp, #8]
+    // bl ov43_0222ECD4
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // ldr r0, _0222DAC0 ; =0x000F0200
+    // ldr r2, [sp, #0x18]
+    // str r0, [sp, #8]
+    // mov r0, #0x5e
+    // lsl r0, r0, #2
+    // add r0, r7, r0
+    // add r1, r5, #0
+    // mov r3, #0xf
+    // bl ov43_0222ECD4
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x18]
+    // ldr r1, [r5, #4]
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // ldr r3, [sp, #0x1c]
+    // bl ov43_0222AB5C
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // ldr r0, _0222DAC8 ; =0x00010200
+    // ldr r2, [sp, #0x18]
+    // str r0, [sp, #8]
+    // mov r0, #0x52
+    // lsl r0, r0, #2
+    // add r0, r7, r0
+    // add r1, r5, #0
+    // mov r3, #0x10
+    // bl ov43_0222ECD4
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // ldr r0, _0222DAC0 ; =0x000F0200
+    // ldr r2, [sp, #0x18]
+    // str r0, [sp, #8]
+    // mov r0, #0x62
+    // lsl r0, r0, #2
+    // add r0, r7, r0
+    // add r1, r5, #0
+    // mov r3, #0x1b
+    // bl ov43_0222ECD4
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x18]
+    // ldr r1, [r5, #4]
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl ov43_0222AB94
+    // cmp r0, #0
+    // beq _0222DA0E
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // ldr r0, _0222DAC8 ; =0x00010200
+    // ldr r2, [sp, #0x18]
+    // str r0, [sp, #8]
+    // mov r0, #0x56
+    // lsl r0, r0, #2
+    // add r0, r7, r0
+    // add r1, r5, #0
+    // mov r3, #0x1c
+    // bl ov43_0222ECD4
+    // mov r1, #0xb
+    // ldrsb r1, [r5, r1]
+    // ldr r0, [sp, #0x24]
+    // mov r2, #7
+    // add r1, r5, r1
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C090
+    // add r1, r0, #0
+    // ldr r0, [sp, #0x20]
+    // mov r2, #1
+    // bl GetUnionRoomAvatarAttrBySprite
+    // mov r1, #2
+    // add r2, sp, #0x28
+    // bl sub_02070D84
+    // mov r1, #0x32
+    // ldr r0, [sp, #0x1c]
+    // lsl r1, r1, #6
+    // bl Heap_Alloc
+    // mov r3, #0
+    // add r4, r0, #0
+    // str r3, [sp]
+    // mov r0, #0xa
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r4, [sp, #0xc]
+    // ldr r0, [sp, #0x28]
+    // ldr r1, [sp, #0x3c]
+    // ldr r2, [sp, #0x1c]
+    // bl sub_020141C4
+    // mov r0, #0x50
+    // str r0, [sp]
+    // mov r2, #0
+    // str r0, [sp, #4]
+    // str r2, [sp, #8]
+    // str r2, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r0, [sp, #0x14]
+    // mov r0, #0x5a
+    // lsl r0, r0, #2
+    // add r0, r7, r0
+    // add r1, r4, #0
+    // add r3, r2, #0
+    // bl BlitBitmapRectToWindow
+    // add r0, r4, #0
+    // bl Heap_Free
+    // mov r0, #0x20
+    // str r0, [sp]
+    // ldr r0, [sp, #0x1c]
+    // mov r3, #0x1e
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #0x28]
+    // ldr r1, [sp, #0x30]
+    // mov r2, #4
+    // lsl r3, r3, #4
+    // bl GfGfxLoader_GXLoadPal
+    // mov r1, #4
+    // mov r0, #0xa
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #0xf
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #0x18]
+    // add r2, r1, #0
+    // ldr r0, [r0]
+    // add r3, r1, #0
+    // bl BgTilemapRectChangePalette
+    // mov r0, #0x46
+    // lsl r0, r0, #2
+    // mov r4, #0
+    // add r5, r7, r0
+    // add r0, r5, #0
+    // bl ScheduleWindowCopyToVram
+    // add r4, r4, #1
+    // add r5, #0x10
+    // cmp r4, #8
+    // blo _0222DAAC
+    // add sp, #0x40
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222DAC0: .word 0x000F0200
+    // _0222DAC4: .word 0x00050600
+    // _0222DAC8: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222DACC(void) {
     ClearWindowTilemapAndScheduleTransfer(0x46, 0);
 }
 
+
 void ov43_0222DAE8(void) {
-    /* Original at 0x0222DAE8 */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r7, r1, #0\n    add r4, r2, #0\n    add r6, r3, #0\n    bne _0222DB00\n    ldr r2, [sp, #0x20]\n    add r1, r4, #0\n    strh r2, [r5]\n    bl ov43_0222DB28\n    mov r0, #1\n    lsl r0, r0, #8\n    add r0, r5, r0\n    str r0, [sp]\n    ldr r0, [r5, #0x10]\n    add r5, #0x14\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x24]\n    ldr r3, [sp, #0x20]\n    str r0, [sp, #8]\n    mov r0, #0x4c\n    mul r0, r6\n    add r0, r5, r0\n    add r1, r7, #0\n    add r2, r4, #0\n    bl ov43_0222DF4C\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // add r7, r1, #0
+    // add r4, r2, #0
+    // add r6, r3, #0
+    // bne _0222DB00
+    // ldr r2, [sp, #0x20]
+    // add r1, r4, #0
+    // strh r2, [r5]
+    // bl ov43_0222DB28
+    // mov r0, #1
+    // lsl r0, r0, #8
+    // add r0, r5, r0
+    // str r0, [sp]
+    // ldr r0, [r5, #0x10]
+    // add r5, #0x14
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #0x24]
+    // ldr r3, [sp, #0x20]
+    // str r0, [sp, #8]
+    // mov r0, #0x4c
+    // mul r0, r6
+    // add r0, r5, r0
+    // add r1, r7, #0
+    // add r2, r4, #0
+    // bl ov43_0222DF4C
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DB28(void) {
-    /* Original at 0x0222DB28 */
-    /* Requires manual decompilation - 42 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    ldr r0, [r0, #0x10]\n    add r5, r1, #0\n    cmp r0, #1\n    bne _0222DB4A\n    lsl r1, r2, #5\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    add r1, #0x10\n    lsl r1, r1, #0x10\n    ldr r0, [r5, r0]\n    asr r1, r1, #0x10\n    mov r2, #0xb0\n    mov r4, #2\n    bl Sprite_SetPositionXY\n    b _0222DB78\n    cmp r2, #2\n    bne _0222DB60\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #0xf0\n    mov r2, #0xb0\n    mov r4, #2\n    bl Sprite_SetPositionXY\n    b _0222DB78\n    mov r1, #0x70\n    mul r1, r2\n    mov r0, #0x7f\n    lsl r0, r0, #2\n    add r1, #0x38\n    lsl r1, r1, #0x10\n    ldr r0, [r5, r0]\n    asr r1, r1, #0x10\n    mov r2, #0xb0\n    mov r4, #1\n    bl Sprite_SetPositionXY\n    add r0, r5, #0\n    mov r1, #1\n    add r2, r4, #0\n    bl ov43_0222AD74\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // ldr r0, [r0, #0x10]
+    // add r5, r1, #0
+    // cmp r0, #1
+    // bne _0222DB4A
+    // lsl r1, r2, #5
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // add r1, #0x10
+    // lsl r1, r1, #0x10
+    // ldr r0, [r5, r0]
+    // asr r1, r1, #0x10
+    // mov r2, #0xb0
+    // mov r4, #2
+    // bl Sprite_SetPositionXY
+    // b _0222DB78
+    // cmp r2, #2
+    // bne _0222DB60
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #0xf0
+    // mov r2, #0xb0
+    // mov r4, #2
+    // bl Sprite_SetPositionXY
+    // b _0222DB78
+    // mov r1, #0x70
+    // mul r1, r2
+    // mov r0, #0x7f
+    // lsl r0, r0, #2
+    // add r1, #0x38
+    // lsl r1, r1, #0x10
+    // ldr r0, [r5, r0]
+    // asr r1, r1, #0x10
+    // mov r2, #0xb0
+    // mov r4, #1
+    // bl Sprite_SetPositionXY
+    // add r0, r5, #0
+    // mov r1, #1
+    // add r2, r4, #0
+    // bl ov43_0222AD74
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DB84(void) {
-    /* Original at 0x0222DB84 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r3, _0222DB90 ; =ov43_0222AD74\n    add r0, r1, #0\n    mov r1, #0\n    mov r2, #0xff\n    bx r3\n    nop\n    _0222DB90: .word ov43_0222AD74"
-    );
-    #endif
+    // ldr r3, _0222DB90 ; =ov43_0222AD74
+    // add r0, r1, #0
+    // mov r1, #0
+    // mov r2, #0xff
+    // bx r3
+    // nop
+    // _0222DB90: .word ov43_0222AD74
+    // TODO: decompile
 }
+
 
 void ov43_0222DB94(void) {
-    /* Original at 0x0222DB94 */
-    /* Requires manual decompilation - 108 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x1c\n    add r6, r0, #0\n    ldr r0, [r6, #0x10]\n    add r5, r1, #0\n    add r4, r2, #0\n    cmp r0, #1\n    bne _0222DBDC\n    mov r0, #0x83\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #0x20\n    str r1, [sp]\n    mov r1, #4\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r2, #0\n    str r2, [sp, #0xc]\n    mov r1, #0xc\n    str r1, [sp, #0x10]\n    ldrh r1, [r0]\n    mov r3, #0x14\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r1, #2\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r5]\n    bl CopyToBgTilemapRect\n    b _0222DC10\n    mov r0, #0x83\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    mov r1, #0x20\n    str r1, [sp]\n    mov r1, #4\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r2, #0\n    str r2, [sp, #0xc]\n    mov r3, #0x14\n    str r3, [sp, #0x10]\n    ldrh r1, [r0]\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r1, #2\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r5]\n    bl CopyToBgTilemapRect\n    cmp r4, #0xff\n    bne _0222DC20\n    ldr r0, [r5]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r3, r4, r5, r6, pc}\n    mov r0, #0x83\n    ldr r1, [r6, #0x10]\n    lsl r0, r0, #2\n    ldr r3, [r5, r0]\n    ldr r2, _0222DC70 ; =ov43_0222EDB8\n    lsl r0, r1, #3\n    add r2, r2, r0\n    ldr r6, _0222DC74 ; =ov43_0222EDF8\n    ldrb r2, [r4, r2]\n    add r0, r6, r0\n    ldrb r0, [r4, r0]\n    str r0, [sp]\n    mov r0, #4\n    str r0, [sp, #4]\n    add r0, r3, #0\n    add r0, #0xc\n    str r0, [sp, #8]\n    ldr r0, _0222DC78 ; =ov43_0222F0C4\n    str r2, [sp, #0xc]\n    ldrb r0, [r0, r1]\n    mov r1, #2\n    str r0, [sp, #0x10]\n    ldrh r0, [r3]\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x14]\n    ldrh r0, [r3, #2]\n    mov r3, #0x14\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r5]\n    bl CopyToBgTilemapRect\n    ldr r0, [r5]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r3, r4, r5, r6, pc}\n    _0222DC70: .word ov43_0222EDB8\n    _0222DC74: .word ov43_0222EDF8\n    _0222DC78: .word ov43_0222F0C4"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0x1c
+    // add r6, r0, #0
+    // ldr r0, [r6, #0x10]
+    // add r5, r1, #0
+    // add r4, r2, #0
+    // cmp r0, #1
+    // bne _0222DBDC
+    // mov r0, #0x83
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #0x20
+    // str r1, [sp]
+    // mov r1, #4
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r2, #0
+    // str r2, [sp, #0xc]
+    // mov r1, #0xc
+    // str r1, [sp, #0x10]
+    // ldrh r1, [r0]
+    // mov r3, #0x14
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r1, #2
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5]
+    // bl CopyToBgTilemapRect
+    // b _0222DC10
+    // mov r0, #0x83
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // mov r1, #0x20
+    // str r1, [sp]
+    // mov r1, #4
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r2, #0
+    // str r2, [sp, #0xc]
+    // mov r3, #0x14
+    // str r3, [sp, #0x10]
+    // ldrh r1, [r0]
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r1, #2
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5]
+    // bl CopyToBgTilemapRect
+    // cmp r4, #0xff
+    // bne _0222DC20
+    // ldr r0, [r5]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r3, r4, r5, r6, pc}
+    // mov r0, #0x83
+    // ldr r1, [r6, #0x10]
+    // lsl r0, r0, #2
+    // ldr r3, [r5, r0]
+    // ldr r2, _0222DC70 ; =ov43_0222EDB8
+    // lsl r0, r1, #3
+    // add r2, r2, r0
+    // ldr r6, _0222DC74 ; =ov43_0222EDF8
+    // ldrb r2, [r4, r2]
+    // add r0, r6, r0
+    // ldrb r0, [r4, r0]
+    // str r0, [sp]
+    // mov r0, #4
+    // str r0, [sp, #4]
+    // add r0, r3, #0
+    // add r0, #0xc
+    // str r0, [sp, #8]
+    // ldr r0, _0222DC78 ; =ov43_0222F0C4
+    // str r2, [sp, #0xc]
+    // ldrb r0, [r0, r1]
+    // mov r1, #2
+    // str r0, [sp, #0x10]
+    // ldrh r0, [r3]
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x14]
+    // ldrh r0, [r3, #2]
+    // mov r3, #0x14
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5]
+    // bl CopyToBgTilemapRect
+    // ldr r0, [r5]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r3, r4, r5, r6, pc}
+    // _0222DC70: .word ov43_0222EDB8
+    // _0222DC74: .word ov43_0222EDF8
+    // _0222DC78: .word ov43_0222F0C4
+    // TODO: decompile
 }
+
 
 void ov43_0222DC7C(void) {
-    /* Original at 0x0222DC7C */
-    /* Requires manual decompilation - 34 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0x1c\n    mov r0, #0x83\n    add r4, r1, #0\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #0x20\n    str r1, [sp]\n    mov r1, #4\n    str r1, [sp, #4]\n    add r1, r0, #0\n    add r1, #0xc\n    str r1, [sp, #8]\n    mov r2, #0\n    str r2, [sp, #0xc]\n    mov r1, #0x1c\n    str r1, [sp, #0x10]\n    ldrh r1, [r0]\n    mov r3, #0x14\n    lsl r1, r1, #0x15\n    lsr r1, r1, #0x18\n    str r1, [sp, #0x14]\n    ldrh r0, [r0, #2]\n    mov r1, #2\n    lsl r0, r0, #0x15\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x18]\n    ldr r0, [r4]\n    bl CopyToBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #2\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x1c\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0x1c
+    // mov r0, #0x83
+    // add r4, r1, #0
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #0x20
+    // str r1, [sp]
+    // mov r1, #4
+    // str r1, [sp, #4]
+    // add r1, r0, #0
+    // add r1, #0xc
+    // str r1, [sp, #8]
+    // mov r2, #0
+    // str r2, [sp, #0xc]
+    // mov r1, #0x1c
+    // str r1, [sp, #0x10]
+    // ldrh r1, [r0]
+    // mov r3, #0x14
+    // lsl r1, r1, #0x15
+    // lsr r1, r1, #0x18
+    // str r1, [sp, #0x14]
+    // ldrh r0, [r0, #2]
+    // mov r1, #2
+    // lsl r0, r0, #0x15
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x18]
+    // ldr r0, [r4]
+    // bl CopyToBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #2
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x1c
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DCC4(void) {
-    /* Original at 0x0222DCC4 */
-    /* Requires manual decompilation - 57 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    add r7, r1, #0\n    bl sub_0202C6F4\n    add r6, r0, #0\n    mov r0, #0xb\n    ldrsb r4, [r5, r0]\n    cmp r7, #0\n    bne _0222DD0A\n    ldr r1, [r5, #0x10]\n    mov r7, #0\n    sub r0, r1, #1\n    beq _0222DD3A\n    sub r4, r4, #1\n    bpl _0222DCE8\n    add r4, r4, r1\n    add r1, r5, r4\n    ldrb r1, [r1, #0x18]\n    add r0, r6, #0\n    mov r2, #8\n    bl sub_0202C090\n    cmp r0, #2\n    beq _0222DCFE\n    strb r4, [r5, #0xb]\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r1, [r5, #0x10]\n    add r7, r7, #1\n    sub r0, r1, #1\n    cmp r7, r0\n    blo _0222DCE2\n    b _0222DD3A\n    ldr r1, [r5, #0x10]\n    mov r7, #0\n    sub r0, r1, #1\n    beq _0222DD3A\n    add r0, r4, #1\n    bl _u32_div_f\n    add r4, r1, #0\n    add r1, r5, r4\n    ldrb r1, [r1, #0x18]\n    add r0, r6, #0\n    mov r2, #8\n    bl sub_0202C090\n    cmp r0, #2\n    beq _0222DD30\n    strb r4, [r5, #0xb]\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r1, [r5, #0x10]\n    add r7, r7, #1\n    sub r0, r1, #1\n    cmp r7, r0\n    blo _0222DD12\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5, #4]
+    // add r7, r1, #0
+    // bl sub_0202C6F4
+    // add r6, r0, #0
+    // mov r0, #0xb
+    // ldrsb r4, [r5, r0]
+    // cmp r7, #0
+    // bne _0222DD0A
+    // ldr r1, [r5, #0x10]
+    // mov r7, #0
+    // sub r0, r1, #1
+    // beq _0222DD3A
+    // sub r4, r4, #1
+    // bpl _0222DCE8
+    // add r4, r4, r1
+    // add r1, r5, r4
+    // ldrb r1, [r1, #0x18]
+    // add r0, r6, #0
+    // mov r2, #8
+    // bl sub_0202C090
+    // cmp r0, #2
+    // beq _0222DCFE
+    // strb r4, [r5, #0xb]
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r1, [r5, #0x10]
+    // add r7, r7, #1
+    // sub r0, r1, #1
+    // cmp r7, r0
+    // blo _0222DCE2
+    // b _0222DD3A
+    // ldr r1, [r5, #0x10]
+    // mov r7, #0
+    // sub r0, r1, #1
+    // beq _0222DD3A
+    // add r0, r4, #1
+    // bl _u32_div_f
+    // add r4, r1, #0
+    // add r1, r5, r4
+    // ldrb r1, [r1, #0x18]
+    // add r0, r6, #0
+    // mov r2, #8
+    // bl sub_0202C090
+    // cmp r0, #2
+    // beq _0222DD30
+    // strb r4, [r5, #0xb]
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r1, [r5, #0x10]
+    // add r7, r7, #1
+    // sub r0, r1, #1
+    // cmp r7, r0
+    // blo _0222DD12
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222DD40(void) {
-    /* Original at 0x0222DD40 */
-    /* Requires manual decompilation - 34 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r7, r1, #0\n    ldr r1, _0222DD84 ; =_0222ED5C\n    str r2, [sp, #4]\n    ldrh r2, [r1, #0x2e]\n    add r5, r0, #0\n    add r0, sp, #8\n    strh r2, [r0]\n    ldrh r2, [r1, #0x30]\n    add r4, sp, #8\n    mov r6, #0\n    strh r2, [r0, #2]\n    ldrh r2, [r1, #0x32]\n    ldrh r1, [r1, #0x34]\n    strh r2, [r0, #4]\n    strh r1, [r0, #6]\n    ldr r0, [sp, #4]\n    mov r2, #1\n    str r0, [sp]\n    ldrh r1, [r4]\n    ldr r0, [r7, #0x58]\n    add r3, r5, #4\n    bl GfGfxLoader_GetScrnDataFromOpenNarc\n    str r0, [r5]\n    add r6, r6, #1\n    add r5, #8\n    add r4, r4, #2\n    cmp r6, #4\n    blt _0222DD62\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222DD84: .word _0222ED5C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r7, r1, #0
+    // ldr r1, _0222DD84 ; =_0222ED5C
+    // str r2, [sp, #4]
+    // ldrh r2, [r1, #0x2e]
+    // add r5, r0, #0
+    // add r0, sp, #8
+    // strh r2, [r0]
+    // ldrh r2, [r1, #0x30]
+    // add r4, sp, #8
+    // mov r6, #0
+    // strh r2, [r0, #2]
+    // ldrh r2, [r1, #0x32]
+    // ldrh r1, [r1, #0x34]
+    // strh r2, [r0, #4]
+    // strh r1, [r0, #6]
+    // ldr r0, [sp, #4]
+    // mov r2, #1
+    // str r0, [sp]
+    // ldrh r1, [r4]
+    // ldr r0, [r7, #0x58]
+    // add r3, r5, #4
+    // bl GfGfxLoader_GetScrnDataFromOpenNarc
+    // str r0, [r5]
+    // add r6, r6, #1
+    // add r5, #8
+    // add r4, r4, #2
+    // cmp r6, #4
+    // blt _0222DD62
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222DD84: .word _0222ED5C
+    // TODO: decompile
 }
+
 
 void ov43_0222DD88(void) {
     Heap_Free(0);
 }
 
+
 void ov43_0222DDA0(void) {
-    /* Original at 0x0222DDA0 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r7, r1, #0\n    mov r1, #0x46\n    lsl r1, r1, #2\n    ldr r4, _0222DDCC ; =ov43_0222EF20\n    mov r6, #0\n    add r5, r0, r1\n    ldr r0, [r7]\n    add r1, r5, #0\n    add r2, r4, #0\n    bl AddWindow\n    add r0, r5, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r6, r6, #1\n    add r4, #8\n    add r5, #0x10\n    cmp r6, #8\n    blt _0222DDAE\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222DDCC: .word ov43_0222EF20"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r7, r1, #0
+    // mov r1, #0x46
+    // lsl r1, r1, #2
+    // ldr r4, _0222DDCC ; =ov43_0222EF20
+    // mov r6, #0
+    // add r5, r0, r1
+    // ldr r0, [r7]
+    // add r1, r5, #0
+    // add r2, r4, #0
+    // bl AddWindow
+    // add r0, r5, #0
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // add r6, r6, #1
+    // add r4, #8
+    // add r5, #0x10
+    // cmp r6, #8
+    // blt _0222DDAE
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222DDCC: .word ov43_0222EF20
+    // TODO: decompile
 }
+
 
 void ov43_0222DDD0(void) {
-    /* Original at 0x0222DDD0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r1, #0x46\n    lsl r1, r1, #2\n    mov r4, #0\n    add r5, r0, r1\n    add r0, r5, #0\n    bl ClearWindowTilemapAndCopyToVram\n    add r0, r5, #0\n    bl RemoveWindow\n    add r4, r4, #1\n    add r5, #0x10\n    cmp r4, #8\n    blt _0222DDDA\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // mov r1, #0x46
+    // lsl r1, r1, #2
+    // mov r4, #0
+    // add r5, r0, r1
+    // add r0, r5, #0
+    // bl ClearWindowTilemapAndCopyToVram
+    // add r0, r5, #0
+    // bl RemoveWindow
+    // add r4, r4, #1
+    // add r5, #0x10
+    // cmp r4, #8
+    // blt _0222DDDA
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DDF0(void) {
-    /* Original at 0x0222DDF0 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrh r1, [r2]\n    strh r1, [r0]\n    ldrh r1, [r2, #2]\n    strh r1, [r0, #2]\n    ldrh r1, [r2, #4]\n    mov r2, #0\n    strh r1, [r0, #4]\n    str r3, [r0, #8]\n    add r1, r2, #0\n    str r1, [r0, #0xc]\n    str r1, [r0, #0x2c]\n    add r2, r2, #1\n    add r0, r0, #4\n    cmp r2, #8\n    blt _0222DE02\n    bx lr"
-    );
-    #endif
+    // ldrh r1, [r2]
+    // strh r1, [r0]
+    // ldrh r1, [r2, #2]
+    // strh r1, [r0, #2]
+    // ldrh r1, [r2, #4]
+    // mov r2, #0
+    // strh r1, [r0, #4]
+    // str r3, [r0, #8]
+    // add r1, r2, #0
+    // str r1, [r0, #0xc]
+    // str r1, [r0, #0x2c]
+    // add r2, r2, #1
+    // add r0, r0, #4
+    // cmp r2, #8
+    // blt _0222DE02
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov43_0222DE10(void) {
-    /* Original at 0x0222DE10 */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov43_0222DE14(void) {
-    /* Original at 0x0222DE14 */
-    /* Requires manual decompilation - 89 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    str r1, [sp, #0x18]\n    add r1, r3, #0\n    str r0, [sp, #0x14]\n    lsl r1, r1, #0x18\n    ldr r0, [sp, #0x44]\n    lsr r1, r1, #0x18\n    str r3, [sp, #0x1c]\n    lsl r4, r2, #2\n    bl AllocWindows\n    ldr r1, [sp, #0x14]\n    add r7, r1, r4\n    str r0, [r7, #0xc]\n    ldr r0, [sp, #0x1c]\n    str r0, [r7, #0x2c]\n    add r0, r1, #0\n    ldr r0, [r0, #8]\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #0x20]\n    mov r0, #0\n    str r0, [sp, #0x24]\n    ldr r0, [sp, #0x1c]\n    cmp r0, #0\n    bls _0222DECA\n    ldr r4, [sp, #0x24]\n    ldr r5, [sp, #0x40]\n    ldr r0, [r7, #0xc]\n    add r0, r0, r4\n    bl InitWindow\n    ldr r1, [sp, #0x14]\n    mov r0, #2\n    ldrsh r0, [r1, r0]\n    cmp r0, #0\n    bge _0222DE62\n    neg r0, r0\n    ldr r2, [sp, #0x14]\n    mov r1, #0\n    ldrsh r6, [r2, r1]\n    cmp r6, #0\n    bge _0222DE6E\n    neg r6, r6\n    ldrb r1, [r5, #1]\n    mov r2, #3\n    add r0, r1, r0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldrb r0, [r5, #2]\n    str r0, [sp, #4]\n    ldrb r0, [r5, #3]\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x20]\n    str r0, [sp, #0x10]\n    ldrb r3, [r5]\n    ldr r0, [sp, #0x18]\n    ldr r1, [r7, #0xc]\n    add r3, r3, r6\n    lsl r3, r3, #0x18\n    ldr r0, [r0]\n    add r1, r1, r4\n    lsr r3, r3, #0x18\n    bl AddWindowParameterized\n    ldr r0, [r7, #0xc]\n    mov r1, #0\n    add r0, r0, r4\n    bl FillWindowPixelBuffer\n    ldrb r1, [r5, #2]\n    ldrb r0, [r5, #3]\n    add r4, #0x10\n    add r2, r1, #0\n    mul r2, r0\n    ldr r0, [sp, #0x20]\n    add r5, r5, #4\n    add r0, r0, r2\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #0x24]\n    add r1, r0, #1\n    ldr r0, [sp, #0x1c]\n    str r1, [sp, #0x24]\n    cmp r1, r0\n    blo _0222DE4E\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // str r1, [sp, #0x18]
+    // add r1, r3, #0
+    // str r0, [sp, #0x14]
+    // lsl r1, r1, #0x18
+    // ldr r0, [sp, #0x44]
+    // lsr r1, r1, #0x18
+    // str r3, [sp, #0x1c]
+    // lsl r4, r2, #2
+    // bl AllocWindows
+    // ldr r1, [sp, #0x14]
+    // add r7, r1, r4
+    // str r0, [r7, #0xc]
+    // ldr r0, [sp, #0x1c]
+    // str r0, [r7, #0x2c]
+    // add r0, r1, #0
+    // ldr r0, [r0, #8]
+    // lsl r0, r0, #0x10
+    // lsr r0, r0, #0x10
+    // str r0, [sp, #0x20]
+    // mov r0, #0
+    // str r0, [sp, #0x24]
+    // ldr r0, [sp, #0x1c]
+    // cmp r0, #0
+    // bls _0222DECA
+    // ldr r4, [sp, #0x24]
+    // ldr r5, [sp, #0x40]
+    // ldr r0, [r7, #0xc]
+    // add r0, r0, r4
+    // bl InitWindow
+    // ldr r1, [sp, #0x14]
+    // mov r0, #2
+    // ldrsh r0, [r1, r0]
+    // cmp r0, #0
+    // bge _0222DE62
+    // neg r0, r0
+    // ldr r2, [sp, #0x14]
+    // mov r1, #0
+    // ldrsh r6, [r2, r1]
+    // cmp r6, #0
+    // bge _0222DE6E
+    // neg r6, r6
+    // ldrb r1, [r5, #1]
+    // mov r2, #3
+    // add r0, r1, r0
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // ldrb r0, [r5, #2]
+    // str r0, [sp, #4]
+    // ldrb r0, [r5, #3]
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x20]
+    // str r0, [sp, #0x10]
+    // ldrb r3, [r5]
+    // ldr r0, [sp, #0x18]
+    // ldr r1, [r7, #0xc]
+    // add r3, r3, r6
+    // lsl r3, r3, #0x18
+    // ldr r0, [r0]
+    // add r1, r1, r4
+    // lsr r3, r3, #0x18
+    // bl AddWindowParameterized
+    // ldr r0, [r7, #0xc]
+    // mov r1, #0
+    // add r0, r0, r4
+    // bl FillWindowPixelBuffer
+    // ldrb r1, [r5, #2]
+    // ldrb r0, [r5, #3]
+    // add r4, #0x10
+    // add r2, r1, #0
+    // mul r2, r0
+    // ldr r0, [sp, #0x20]
+    // add r5, r5, #4
+    // add r0, r0, r2
+    // lsl r0, r0, #0x10
+    // lsr r0, r0, #0x10
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #0x24]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0x1c]
+    // str r1, [sp, #0x24]
+    // cmp r1, r0
+    // blo _0222DE4E
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DED0(void) {
-    /* Original at 0x0222DED0 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    lsl r4, r1, #2\n    add r0, r5, r4\n    ldr r0, [r0, #0xc]\n    cmp r0, #0\n    beq _0222DEF4\n    add r6, r5, #0\n    add r6, #0x2c\n    ldr r1, [r6, r4]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    bl WindowArray_Delete\n    mov r1, #0\n    add r0, r5, r4\n    str r1, [r0, #0xc]\n    str r1, [r6, r4]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // lsl r4, r1, #2
+    // add r0, r5, r4
+    // ldr r0, [r0, #0xc]
+    // cmp r0, #0
+    // beq _0222DEF4
+    // add r6, r5, #0
+    // add r6, #0x2c
+    // ldr r1, [r6, r4]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x18
+    // bl WindowArray_Delete
+    // mov r1, #0
+    // add r0, r5, r4
+    // str r1, [r0, #0xc]
+    // str r1, [r6, r4]
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DEF8(void) {
-    /* Original at 0x0222DEF8 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    lsl r1, r1, #2\n    add r5, r0, r1\n    ldr r0, [r5, #0x2c]\n    mov r6, #0\n    cmp r0, #0\n    bls _0222DF1A\n    add r4, r6, #0\n    ldr r0, [r5, #0xc]\n    add r0, r0, r4\n    bl ScheduleWindowCopyToVram\n    ldr r0, [r5, #0x2c]\n    add r6, r6, #1\n    add r4, #0x10\n    cmp r6, r0\n    blo _0222DF08\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // lsl r1, r1, #2
+    // add r5, r0, r1
+    // ldr r0, [r5, #0x2c]
+    // mov r6, #0
+    // cmp r0, #0
+    // bls _0222DF1A
+    // add r4, r6, #0
+    // ldr r0, [r5, #0xc]
+    // add r0, r0, r4
+    // bl ScheduleWindowCopyToVram
+    // ldr r0, [r5, #0x2c]
+    // add r6, r6, #1
+    // add r4, #0x10
+    // cmp r6, r0
+    // blo _0222DF08
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DF1C(void) {
-    /* Original at 0x0222DF1C */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    lsl r1, r1, #2\n    add r5, r0, r1\n    ldr r0, [r5, #0x2c]\n    mov r6, #0\n    cmp r0, #0\n    bls _0222DF4A\n    add r4, r6, #0\n    add r7, r6, #0\n    ldr r0, [r5, #0xc]\n    add r0, r0, r4\n    bl ClearWindowTilemapAndScheduleTransfer\n    ldr r0, [r5, #0xc]\n    add r1, r7, #0\n    add r0, r0, r4\n    bl FillWindowPixelBuffer\n    ldr r0, [r5, #0x2c]\n    add r6, r6, #1\n    add r4, #0x10\n    cmp r6, r0\n    blo _0222DF2E\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // lsl r1, r1, #2
+    // add r5, r0, r1
+    // ldr r0, [r5, #0x2c]
+    // mov r6, #0
+    // cmp r0, #0
+    // bls _0222DF4A
+    // add r4, r6, #0
+    // add r7, r6, #0
+    // ldr r0, [r5, #0xc]
+    // add r0, r0, r4
+    // bl ClearWindowTilemapAndScheduleTransfer
+    // ldr r0, [r5, #0xc]
+    // add r1, r7, #0
+    // add r0, r0, r4
+    // bl FillWindowPixelBuffer
+    // ldr r0, [r5, #0x2c]
+    // add r6, r6, #1
+    // add r4, #0x10
+    // cmp r6, r0
+    // blo _0222DF2E
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DF4C(void) {
-    /* Original at 0x0222DF4C */
-    /* Requires manual decompilation - 31 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r2, #0\n    add r7, r1, #0\n    add r1, r5, #0\n    add r6, r0, #0\n    add r4, r3, #0\n    bl ov43_0222DF90\n    ldr r0, [sp, #0x1c]\n    cmp r0, #0\n    beq _0222DF74\n    add r2, r5, #0\n    lsl r5, r4, #2\n    ldr r4, _0222DF88 ; =ov43_0222F12C\n    ldr r3, [sp, #0x20]\n    ldr r4, [r4, r5]\n    add r0, r6, #0\n    add r1, r7, #0\n    blx r4\n    pop {r3, r4, r5, r6, r7, pc}\n    add r2, r5, #0\n    lsl r5, r4, #2\n    ldr r4, _0222DF8C ; =_0222F0E0\n    ldr r3, [sp, #0x20]\n    ldr r4, [r4, r5]\n    add r0, r6, #0\n    add r1, r7, #0\n    blx r4\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222DF88: .word ov43_0222F12C\n    _0222DF8C: .word _0222F0E0"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r2, #0
+    // add r7, r1, #0
+    // add r1, r5, #0
+    // add r6, r0, #0
+    // add r4, r3, #0
+    // bl ov43_0222DF90
+    // ldr r0, [sp, #0x1c]
+    // cmp r0, #0
+    // beq _0222DF74
+    // add r2, r5, #0
+    // lsl r5, r4, #2
+    // ldr r4, _0222DF88 ; =ov43_0222F12C
+    // ldr r3, [sp, #0x20]
+    // ldr r4, [r4, r5]
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // blx r4
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r2, r5, #0
+    // lsl r5, r4, #2
+    // ldr r4, _0222DF8C ; =_0222F0E0
+    // ldr r3, [sp, #0x20]
+    // ldr r4, [r4, r5]
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // blx r4
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222DF88: .word ov43_0222F12C
+    // _0222DF8C: .word _0222F0E0
+    // TODO: decompile
 }
+
 
 void ov43_0222DF90(void) {
-    /* Original at 0x0222DF90 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    mov r4, #0\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov43_0222DF1C\n    add r4, r4, #1\n    cmp r4, #8\n    blt _0222DF98\n    add r0, r6, #0\n    add r1, r5, #0\n    bl ov43_0222EC14\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // add r6, r1, #0
+    // mov r4, #0
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov43_0222DF1C
+    // add r4, r4, #1
+    // cmp r4, #8
+    // blt _0222DF98
+    // add r0, r6, #0
+    // add r1, r5, #0
+    // bl ov43_0222EC14
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222DFB0(void) {
-    /* Original at 0x0222DFB0 */
-    /* Requires manual decompilation - 144 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x2c\n    add r5, r1, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r5, #4]\n    add r4, r2, #0\n    bl sub_0202C6F4\n    str r0, [sp, #0x28]\n    mov r1, #0\n    str r4, [sp]\n    mov r0, #0x13\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldr r0, _0222E0E4 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    add r2, r1, #0\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    add r3, r5, #0\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    str r1, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r6, #0\n    str r6, [sp, #0x24]\n    ldr r0, [sp, #0x24]\n    str r4, [sp]\n    lsl r0, r0, #0x18\n    lsr r7, r0, #0x18\n    add r0, r6, #0\n    add r0, #0x14\n    str r0, [sp, #4]\n    mov r0, #0\n    str r0, [sp, #8]\n    ldr r0, _0222E0E4 ; =0x00010200\n    str r7, [sp, #0xc]\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    mov r1, #0\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    mov r2, #2\n    str r0, [sp, #0x18]\n    mov r0, #0\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r1, #0xb\n    ldrsb r1, [r5, r1]\n    ldr r0, [sp, #0x28]\n    add r2, r6, #1\n    add r1, r5, r1\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C090\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x16\n    str r0, [sp, #4]\n    mov r0, #0\n    str r0, [sp, #8]\n    ldr r0, _0222E0E4 ; =0x00010200\n    str r7, [sp, #0xc]\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    mov r1, #0\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    mov r2, #2\n    str r0, [sp, #0x18]\n    mov r0, #0\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    bl ov43_0222EC58\n    ldr r0, [sp, #0x24]\n    add r6, r6, #1\n    add r0, #0x18\n    str r0, [sp, #0x24]\n    cmp r6, #2\n    blo _0222DFEE\n    str r4, [sp]\n    mov r0, #0x17\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E0E4 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    mov r2, #1\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    add r3, r5, #0\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    str r1, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r1, #0xb\n    ldrsb r1, [r5, r1]\n    ldr r0, [sp, #0x28]\n    mov r2, #3\n    add r1, r5, r1\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C090\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x18\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E0E4 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    add r4, #0x80\n    str r0, [sp, #0x14]\n    ldr r0, [r4]\n    mov r2, #3\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r1, [sp, #0x1c]\n    bl ov43_0222EC58\n    ldr r0, [sp, #0x20]\n    mov r1, #0\n    bl ov43_0222DEF8\n    add sp, #0x2c\n    pop {r4, r5, r6, r7, pc}\n    _0222E0E4: .word 0x00010200"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x2c
+    // add r5, r1, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [r5, #4]
+    // add r4, r2, #0
+    // bl sub_0202C6F4
+    // str r0, [sp, #0x28]
+    // mov r1, #0
+    // str r4, [sp]
+    // mov r0, #0x13
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // ldr r0, _0222E0E4 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // add r2, r1, #0
+    // str r0, [sp, #0x14]
+    // add r0, r4, #0
+    // add r0, #0x80
+    // ldr r0, [r0]
+    // add r3, r5, #0
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // str r1, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r6, #0
+    // str r6, [sp, #0x24]
+    // ldr r0, [sp, #0x24]
+    // str r4, [sp]
+    // lsl r0, r0, #0x18
+    // lsr r7, r0, #0x18
+    // add r0, r6, #0
+    // add r0, #0x14
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // ldr r0, _0222E0E4 ; =0x00010200
+    // str r7, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // mov r1, #0
+    // str r0, [sp, #0x14]
+    // add r0, r4, #0
+    // add r0, #0x80
+    // ldr r0, [r0]
+    // mov r2, #2
+    // str r0, [sp, #0x18]
+    // mov r0, #0
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r1, #0xb
+    // ldrsb r1, [r5, r1]
+    // ldr r0, [sp, #0x28]
+    // add r2, r6, #1
+    // add r1, r5, r1
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C090
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x16
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // ldr r0, _0222E0E4 ; =0x00010200
+    // str r7, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // mov r1, #0
+    // str r0, [sp, #0x14]
+    // add r0, r4, #0
+    // add r0, #0x80
+    // ldr r0, [r0]
+    // mov r2, #2
+    // str r0, [sp, #0x18]
+    // mov r0, #0
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // ldr r0, [sp, #0x24]
+    // add r6, r6, #1
+    // add r0, #0x18
+    // str r0, [sp, #0x24]
+    // cmp r6, #2
+    // blo _0222DFEE
+    // str r4, [sp]
+    // mov r0, #0x17
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E0E4 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // mov r2, #1
+    // str r0, [sp, #0x14]
+    // add r0, r4, #0
+    // add r0, #0x80
+    // ldr r0, [r0]
+    // add r3, r5, #0
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // str r1, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r1, #0xb
+    // ldrsb r1, [r5, r1]
+    // ldr r0, [sp, #0x28]
+    // mov r2, #3
+    // add r1, r5, r1
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C090
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x18
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E0E4 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // add r4, #0x80
+    // str r0, [sp, #0x14]
+    // ldr r0, [r4]
+    // mov r2, #3
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r1, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // ldr r0, [sp, #0x20]
+    // mov r1, #0
+    // bl ov43_0222DEF8
+    // add sp, #0x2c
+    // pop {r4, r5, r6, r7, pc}
+    // _0222E0E4: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222E0E8(void) {
-    /* Original at 0x0222E0E8 */
-    /* Requires manual decompilation - 143 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x20\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5, #4]\n    add r4, r2, #0\n    bl Save_Frontier_GetStatic\n    add r7, r0, #0\n    str r4, [sp]\n    mov r0, #0x1d\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    ldr r0, _0222E21C ; =0x00010200\n    str r2, [sp, #0xc]\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    mov r1, #2\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    add r3, r5, #0\n    str r0, [sp, #0x18]\n    add r0, r6, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    add r0, r7, #0\n    mov r1, #0x64\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    str r4, [sp]\n    add r0, #0x22\n    str r0, [sp, #4]\n    mov r0, #0\n    str r0, [sp, #8]\n    ldr r1, _0222E21C ; =0x00010200\n    str r0, [sp, #0xc]\n    str r1, [sp, #0x10]\n    ldr r1, [r4, #0x7c]\n    mov r2, #1\n    str r1, [sp, #0x14]\n    add r1, r4, #0\n    add r1, #0x80\n    ldr r1, [r1]\n    add r3, r5, #0\n    str r1, [sp, #0x18]\n    str r0, [sp, #0x1c]\n    add r0, r6, #0\n    mov r1, #2\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    add r0, r7, #0\n    mov r1, #0x71\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, _0222E21C ; =0x00010200\n    mov r2, #1\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    mov r1, #2\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    add r0, #0x80\n    ldr r0, [r0]\n    add r3, r5, #0\n    str r0, [sp, #0x18]\n    str r2, [sp, #0x1c]\n    add r0, r6, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x24\n    str r0, [sp, #4]\n    mov r0, #0\n    str r0, [sp, #8]\n    mov r1, #0x18\n    str r1, [sp, #0xc]\n    ldr r1, _0222E21C ; =0x00010200\n    mov r2, #1\n    str r1, [sp, #0x10]\n    ldr r1, [r4, #0x7c]\n    add r3, r5, #0\n    str r1, [sp, #0x14]\n    add r1, r4, #0\n    add r1, #0x80\n    ldr r1, [r1]\n    str r1, [sp, #0x18]\n    str r0, [sp, #0x1c]\n    add r0, r6, #0\n    mov r1, #2\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    add r0, r7, #0\n    mov r1, #0x70\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x18\n    str r0, [sp, #0xc]\n    ldr r0, _0222E21C ; =0x00010200\n    mov r2, #1\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #0x7c]\n    add r4, #0x80\n    str r0, [sp, #0x14]\n    ldr r0, [r4]\n    mov r1, #2\n    str r0, [sp, #0x18]\n    add r0, r6, #0\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    add r0, r6, #0\n    mov r1, #2\n    bl ov43_0222DEF8\n    add sp, #0x20\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222E21C: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x20
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // ldr r0, [r5, #4]
+    // add r4, r2, #0
+    // bl Save_Frontier_GetStatic
+    // add r7, r0, #0
+    // str r4, [sp]
+    // mov r0, #0x1d
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // ldr r0, _0222E21C ; =0x00010200
+    // str r2, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // mov r1, #2
+    // str r0, [sp, #0x14]
+    // add r0, r4, #0
+    // add r0, #0x80
+    // ldr r0, [r0]
+    // add r3, r5, #0
+    // str r0, [sp, #0x18]
+    // add r0, r6, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // add r0, r7, #0
+    // mov r1, #0x64
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // str r4, [sp]
+    // add r0, #0x22
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // ldr r1, _0222E21C ; =0x00010200
+    // str r0, [sp, #0xc]
+    // str r1, [sp, #0x10]
+    // ldr r1, [r4, #0x7c]
+    // mov r2, #1
+    // str r1, [sp, #0x14]
+    // add r1, r4, #0
+    // add r1, #0x80
+    // ldr r1, [r1]
+    // add r3, r5, #0
+    // str r1, [sp, #0x18]
+    // str r0, [sp, #0x1c]
+    // add r0, r6, #0
+    // mov r1, #2
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // add r0, r7, #0
+    // mov r1, #0x71
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E21C ; =0x00010200
+    // mov r2, #1
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // mov r1, #2
+    // str r0, [sp, #0x14]
+    // add r0, r4, #0
+    // add r0, #0x80
+    // ldr r0, [r0]
+    // add r3, r5, #0
+    // str r0, [sp, #0x18]
+    // str r2, [sp, #0x1c]
+    // add r0, r6, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x24
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // mov r1, #0x18
+    // str r1, [sp, #0xc]
+    // ldr r1, _0222E21C ; =0x00010200
+    // mov r2, #1
+    // str r1, [sp, #0x10]
+    // ldr r1, [r4, #0x7c]
+    // add r3, r5, #0
+    // str r1, [sp, #0x14]
+    // add r1, r4, #0
+    // add r1, #0x80
+    // ldr r1, [r1]
+    // str r1, [sp, #0x18]
+    // str r0, [sp, #0x1c]
+    // add r0, r6, #0
+    // mov r1, #2
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // add r0, r7, #0
+    // mov r1, #0x70
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x18
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E21C ; =0x00010200
+    // mov r2, #1
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #0x7c]
+    // add r4, #0x80
+    // str r0, [sp, #0x14]
+    // ldr r0, [r4]
+    // mov r1, #2
+    // str r0, [sp, #0x18]
+    // add r0, r6, #0
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // add r0, r6, #0
+    // mov r1, #2
+    // bl ov43_0222DEF8
+    // add sp, #0x20
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222E21C: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222E220(void) {
-    /* Original at 0x0222E220 */
-    /* Requires manual decompilation - 416 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r1, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r5, #4]\n    add r6, r3, #0\n    add r4, r2, #0\n    bl Save_Frontier_GetStatic\n    str r0, [sp, #0x24]\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    add r7, r0, #0\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    add r6, r0, #0\n    str r4, [sp]\n    mov r0, #0x1e\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    ldr r0, _0222E5B0 ; =0x00010200\n    str r2, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    str r2, [sp, #0x1c]\n    mov r1, #3\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x26\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E5B0 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    mov r2, #1\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x28\n    str r0, [sp, #4]\n    mov r0, #0xd0\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r1, #3\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #2\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #1\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x66\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    cmp r0, #0\n    bne _0222E2C8\n    mov r0, #0x22\n    b _0222E2CA\n    mov r0, #0x23\n    str r4, [sp]\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E5B0 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    mov r2, #2\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x73\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r1, #3\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #2\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x75\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2b\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E5B0 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    mov r2, #2\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x24\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r2, #2\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x72\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r1, #3\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #2\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x74\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2b\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r2, #2\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x27\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E5B0 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    mov r1, #3\n    ldr r0, [sp, #0x20]\n    add r2, r1, #0\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r1, #3\n    str r4, [sp]\n    mov r0, #0x28\n    str r0, [sp, #4]\n    mov r0, #0xd0\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    add r2, r1, #0\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #2\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x68\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    cmp r0, #0\n    bne _0222E460\n    mov r0, #0x22\n    b _0222E462\n    mov r0, #0x23\n    str r4, [sp]\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E5B0 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    mov r2, #4\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x77\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r1, #3\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #4\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x79\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2b\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, _0222E5B0 ; =0x00010200\n    str r1, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    mov r2, #4\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x24\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r2, #4\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x76\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r1, #3\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #4\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x78\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2b\n    str r0, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    mov r0, #0x10\n    str r0, [sp, #0xc]\n    ldr r0, _0222E5B0 ; =0x00010200\n    mov r2, #4\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    str r1, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    add r3, r5, #0\n    bl ov43_0222EC58\n    ldr r0, [sp, #0x20]\n    mov r1, #3\n    bl ov43_0222DEF8\n    add r0, r7, #0\n    bl String_Delete\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222E5B0: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // add r5, r1, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [r5, #4]
+    // add r6, r3, #0
+    // add r4, r2, #0
+    // bl Save_Frontier_GetStatic
+    // str r0, [sp, #0x24]
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // add r7, r0, #0
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // add r6, r0, #0
+    // str r4, [sp]
+    // mov r0, #0x1e
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // str r2, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // str r2, [sp, #0x1c]
+    // mov r1, #3
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x26
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // mov r2, #1
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x28
+    // str r0, [sp, #4]
+    // mov r0, #0xd0
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r1, #3
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #2
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #1
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x66
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // cmp r0, #0
+    // bne _0222E2C8
+    // mov r0, #0x22
+    // b _0222E2CA
+    // mov r0, #0x23
+    // str r4, [sp]
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // mov r2, #2
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x73
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r1, #3
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #2
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x75
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2b
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // mov r2, #2
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x24
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r2, #2
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x72
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r1, #3
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #2
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x74
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2b
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r2, #2
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x27
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // mov r1, #3
+    // ldr r0, [sp, #0x20]
+    // add r2, r1, #0
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r1, #3
+    // str r4, [sp]
+    // mov r0, #0x28
+    // str r0, [sp, #4]
+    // mov r0, #0xd0
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // add r2, r1, #0
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #2
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x68
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // cmp r0, #0
+    // bne _0222E460
+    // mov r0, #0x22
+    // b _0222E462
+    // mov r0, #0x23
+    // str r4, [sp]
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // mov r2, #4
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x77
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r1, #3
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #4
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x79
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2b
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // str r1, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // mov r2, #4
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x24
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r2, #4
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x76
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r1, #3
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #4
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x78
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2b
+    // str r0, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // mov r0, #0x10
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E5B0 ; =0x00010200
+    // mov r2, #4
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // str r1, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // ldr r0, [sp, #0x20]
+    // mov r1, #3
+    // bl ov43_0222DEF8
+    // add r0, r7, #0
+    // bl String_Delete
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222E5B0: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222E5B4(void) {
-    /* Original at 0x0222E5B4 */
-    /* Requires manual decompilation - 212 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r1, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r5, #4]\n    add r6, r3, #0\n    add r4, r2, #0\n    bl Save_Frontier_GetStatic\n    str r0, [sp, #0x24]\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    add r7, r0, #0\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    add r6, r0, #0\n    str r4, [sp]\n    mov r0, #0x1f\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    ldr r0, _0222E788 ; =0x00010200\n    str r2, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    str r2, [sp, #0x1c]\n    mov r1, #4\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x29\n    str r0, [sp, #4]\n    mov r0, #0x68\n    str r0, [sp, #8]\n    mov r0, #0x14\n    str r0, [sp, #0xc]\n    ldr r0, _0222E788 ; =0x00010200\n    mov r2, #0\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #4\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x6c\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    cmp r0, #0\n    bne _0222E638\n    mov r0, #0x22\n    b _0222E63A\n    mov r0, #0x23\n    str r4, [sp]\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222E788 ; =0x00010200\n    mov r1, #4\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x87\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2d\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222E788 ; =0x00010200\n    mov r1, #4\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #0\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x88\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2c\n    str r0, [sp, #4]\n    mov r0, #0xa8\n    str r0, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222E788 ; =0x00010200\n    mov r2, #0\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    str r2, [sp, #0x1c]\n    mov r1, #4\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x24\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x48\n    str r0, [sp, #0xc]\n    ldr r0, _0222E788 ; =0x00010200\n    mov r1, #4\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x86\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2d\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x48\n    str r0, [sp, #0xc]\n    ldr r0, _0222E788 ; =0x00010200\n    mov r1, #4\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #0\n    add r3, r5, #0\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x8a\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2c\n    str r0, [sp, #4]\n    mov r0, #0xa8\n    str r0, [sp, #8]\n    mov r0, #0x48\n    str r0, [sp, #0xc]\n    ldr r0, _0222E788 ; =0x00010200\n    mov r2, #0\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #4\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    ldr r0, [sp, #0x20]\n    mov r1, #4\n    bl ov43_0222DEF8\n    add r0, r7, #0\n    bl String_Delete\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222E788: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // add r5, r1, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [r5, #4]
+    // add r6, r3, #0
+    // add r4, r2, #0
+    // bl Save_Frontier_GetStatic
+    // str r0, [sp, #0x24]
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // add r7, r0, #0
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // add r6, r0, #0
+    // str r4, [sp]
+    // mov r0, #0x1f
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // ldr r0, _0222E788 ; =0x00010200
+    // str r2, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // str r2, [sp, #0x1c]
+    // mov r1, #4
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x29
+    // str r0, [sp, #4]
+    // mov r0, #0x68
+    // str r0, [sp, #8]
+    // mov r0, #0x14
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E788 ; =0x00010200
+    // mov r2, #0
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #4
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x6c
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // cmp r0, #0
+    // bne _0222E638
+    // mov r0, #0x22
+    // b _0222E63A
+    // mov r0, #0x23
+    // str r4, [sp]
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E788 ; =0x00010200
+    // mov r1, #4
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x87
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2d
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E788 ; =0x00010200
+    // mov r1, #4
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #0
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x88
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2c
+    // str r0, [sp, #4]
+    // mov r0, #0xa8
+    // str r0, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E788 ; =0x00010200
+    // mov r2, #0
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // str r2, [sp, #0x1c]
+    // mov r1, #4
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x24
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x48
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E788 ; =0x00010200
+    // mov r1, #4
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x86
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2d
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x48
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E788 ; =0x00010200
+    // mov r1, #4
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #0
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x8a
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2c
+    // str r0, [sp, #4]
+    // mov r0, #0xa8
+    // str r0, [sp, #8]
+    // mov r0, #0x48
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E788 ; =0x00010200
+    // mov r2, #0
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #4
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // ldr r0, [sp, #0x20]
+    // mov r1, #4
+    // bl ov43_0222DEF8
+    // add r0, r7, #0
+    // bl String_Delete
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222E788: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222E78C(void) {
-    /* Original at 0x0222E78C */
-    /* Requires manual decompilation - 167 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x30\n    add r5, r1, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r5, #4]\n    str r3, [sp, #0x24]\n    add r4, r2, #0\n    bl Save_Frontier_GetStatic\n    str r0, [sp, #0x28]\n    ldr r1, [sp, #0x24]\n    mov r0, #0x80\n    bl String_New\n    add r7, r0, #0\n    ldr r1, [sp, #0x24]\n    mov r0, #0x80\n    bl String_New\n    add r6, r0, #0\n    str r4, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    ldr r0, _0222E900 ; =0x00010200\n    str r2, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #5\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x28]\n    mov r1, #0x7c\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    ldr r1, [sp, #0x24]\n    bl GetSpeciesName\n    str r0, [sp, #0x2c]\n    mov r0, #0x18\n    str r0, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, _0222E900 ; =0x00010200\n    mov r1, #0\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x20]\n    str r1, [sp, #0xc]\n    ldr r0, [r0, #0x20]\n    ldr r2, [sp, #0x2c]\n    add r3, r1, #0\n    bl AddTextPrinterParameterizedWithColor\n    ldr r0, [sp, #0x2c]\n    bl String_Delete\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x28]\n    mov r1, #0x6a\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    cmp r0, #0\n    bne _0222E826\n    mov r0, #0x22\n    b _0222E828\n    mov r0, #0x23\n    str r4, [sp]\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222E900 ; =0x00010200\n    mov r1, #5\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x28]\n    mov r1, #0x7b\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222E900 ; =0x00010200\n    mov r1, #5\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #0\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x24\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x48\n    str r0, [sp, #0xc]\n    ldr r0, _0222E900 ; =0x00010200\n    mov r1, #5\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x28]\n    mov r1, #0x7a\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x25\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x48\n    str r0, [sp, #0xc]\n    ldr r0, _0222E900 ; =0x00010200\n    mov r1, #5\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #0\n    add r3, r5, #0\n    bl ov43_0222EC58\n    ldr r0, [sp, #0x20]\n    mov r1, #5\n    bl ov43_0222DEF8\n    add r0, r7, #0\n    bl String_Delete\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0x30\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0222E900: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x30
+    // add r5, r1, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [r5, #4]
+    // str r3, [sp, #0x24]
+    // add r4, r2, #0
+    // bl Save_Frontier_GetStatic
+    // str r0, [sp, #0x28]
+    // ldr r1, [sp, #0x24]
+    // mov r0, #0x80
+    // bl String_New
+    // add r7, r0, #0
+    // ldr r1, [sp, #0x24]
+    // mov r0, #0x80
+    // bl String_New
+    // add r6, r0, #0
+    // str r4, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // ldr r0, _0222E900 ; =0x00010200
+    // str r2, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #5
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x28]
+    // mov r1, #0x7c
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // ldr r1, [sp, #0x24]
+    // bl GetSpeciesName
+    // str r0, [sp, #0x2c]
+    // mov r0, #0x18
+    // str r0, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, _0222E900 ; =0x00010200
+    // mov r1, #0
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #0x20]
+    // str r1, [sp, #0xc]
+    // ldr r0, [r0, #0x20]
+    // ldr r2, [sp, #0x2c]
+    // add r3, r1, #0
+    // bl AddTextPrinterParameterizedWithColor
+    // ldr r0, [sp, #0x2c]
+    // bl String_Delete
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x28]
+    // mov r1, #0x6a
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // cmp r0, #0
+    // bne _0222E826
+    // mov r0, #0x22
+    // b _0222E828
+    // mov r0, #0x23
+    // str r4, [sp]
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E900 ; =0x00010200
+    // mov r1, #5
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x28]
+    // mov r1, #0x7b
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E900 ; =0x00010200
+    // mov r1, #5
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #0
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x24
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x48
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E900 ; =0x00010200
+    // mov r1, #5
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x28]
+    // mov r1, #0x7a
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x25
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x48
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222E900 ; =0x00010200
+    // mov r1, #5
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #0
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // ldr r0, [sp, #0x20]
+    // mov r1, #5
+    // bl ov43_0222DEF8
+    // add r0, r7, #0
+    // bl String_Delete
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0x30
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0222E900: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222E904(void) {
-    /* Original at 0x0222E904 */
-    /* Requires manual decompilation - 141 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r1, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r5, #4]\n    add r6, r3, #0\n    add r4, r2, #0\n    bl Save_Frontier_GetStatic\n    str r0, [sp, #0x24]\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    add r7, r0, #0\n    mov r0, #0x80\n    add r1, r6, #0\n    bl String_New\n    add r6, r0, #0\n    str r4, [sp]\n    mov r0, #0x21\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    ldr r0, _0222EA3C ; =0x00010200\n    str r2, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #6\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x6e\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    cmp r0, #0\n    bne _0222E964\n    mov r0, #0x22\n    b _0222E966\n    mov r0, #0x23\n    str r4, [sp]\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x18\n    str r0, [sp, #0xc]\n    ldr r0, _0222EA3C ; =0x00010200\n    mov r1, #6\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x8f\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2e\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x18\n    str r0, [sp, #0xc]\n    ldr r0, _0222EA3C ; =0x00010200\n    mov r1, #6\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #0\n    add r3, r5, #0\n    bl ov43_0222EC58\n    str r4, [sp]\n    mov r0, #0x24\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222EA3C ; =0x00010200\n    mov r1, #6\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r2, [r5, r2]\n    ldr r0, [sp, #0x24]\n    mov r1, #0x8e\n    add r2, r5, r2\n    ldrb r2, [r2, #0x18]\n    bl FrontierSave_GetStat\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x2e\n    str r0, [sp, #4]\n    mov r0, #0x70\n    str r0, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222EA3C ; =0x00010200\n    mov r1, #6\n    str r0, [sp, #0x10]\n    str r7, [sp, #0x14]\n    str r6, [sp, #0x18]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x20]\n    mov r2, #0\n    add r3, r5, #0\n    bl ov43_0222EC58\n    ldr r0, [sp, #0x20]\n    mov r1, #6\n    bl ov43_0222DEF8\n    add r0, r7, #0\n    bl String_Delete\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222EA3C: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // add r5, r1, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [r5, #4]
+    // add r6, r3, #0
+    // add r4, r2, #0
+    // bl Save_Frontier_GetStatic
+    // str r0, [sp, #0x24]
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // add r7, r0, #0
+    // mov r0, #0x80
+    // add r1, r6, #0
+    // bl String_New
+    // add r6, r0, #0
+    // str r4, [sp]
+    // mov r0, #0x21
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // ldr r0, _0222EA3C ; =0x00010200
+    // str r2, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #6
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x6e
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // cmp r0, #0
+    // bne _0222E964
+    // mov r0, #0x22
+    // b _0222E966
+    // mov r0, #0x23
+    // str r4, [sp]
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x18
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EA3C ; =0x00010200
+    // mov r1, #6
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x8f
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2e
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x18
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EA3C ; =0x00010200
+    // mov r1, #6
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #0
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // str r4, [sp]
+    // mov r0, #0x24
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EA3C ; =0x00010200
+    // mov r1, #6
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r2, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // mov r1, #0x8e
+    // add r2, r5, r2
+    // ldrb r2, [r2, #0x18]
+    // bl FrontierSave_GetStat
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x2e
+    // str r0, [sp, #4]
+    // mov r0, #0x70
+    // str r0, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EA3C ; =0x00010200
+    // mov r1, #6
+    // str r0, [sp, #0x10]
+    // str r7, [sp, #0x14]
+    // str r6, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x20]
+    // mov r2, #0
+    // add r3, r5, #0
+    // bl ov43_0222EC58
+    // ldr r0, [sp, #0x20]
+    // mov r1, #6
+    // bl ov43_0222DEF8
+    // add r0, r7, #0
+    // bl String_Delete
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222EA3C: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222EA40(void) {
-    /* Original at 0x0222EA40 */
-    /* Requires manual decompilation - 180 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x28\n    add r5, r1, #0\n    str r0, [sp, #0x20]\n    ldr r0, [r5, #4]\n    add r4, r2, #0\n    add r7, r3, #0\n    bl Save_Frontier_GetStatic\n    ldr r0, [r5, #4]\n    bl sub_0202C6F4\n    str r0, [sp, #0x24]\n    mov r0, #0x80\n    add r1, r7, #0\n    bl String_New\n    add r6, r0, #0\n    mov r0, #0x80\n    add r1, r7, #0\n    bl String_New\n    add r7, r0, #0\n    str r4, [sp]\n    mov r0, #0x2f\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    ldr r0, _0222EBD4 ; =0x00010200\n    str r2, [sp, #0xc]\n    str r0, [sp, #0x10]\n    str r6, [sp, #0x14]\n    str r7, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #1\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    add r0, r4, #0\n    mov r1, #0\n    bl ov43_0222AC18\n    str r4, [sp]\n    mov r0, #0x30\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x18\n    str r0, [sp, #0xc]\n    ldr r0, _0222EBD4 ; =0x00010200\n    mov r1, #1\n    str r0, [sp, #0x10]\n    str r6, [sp, #0x14]\n    str r7, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r1, #0xb\n    ldrsb r1, [r5, r1]\n    ldr r0, [sp, #0x24]\n    mov r2, #0xa\n    add r1, r5, r1\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C090\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x31\n    str r0, [sp, #4]\n    mov r0, #0x78\n    str r0, [sp, #8]\n    mov r0, #0x18\n    str r0, [sp, #0xc]\n    ldr r0, _0222EBD4 ; =0x00010200\n    mov r2, #0\n    str r0, [sp, #0x10]\n    str r6, [sp, #0x14]\n    str r7, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #1\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    add r0, r4, #0\n    mov r1, #1\n    bl ov43_0222AC18\n    str r4, [sp]\n    mov r0, #0x30\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    str r0, [sp, #0xc]\n    ldr r0, _0222EBD4 ; =0x00010200\n    mov r1, #1\n    str r0, [sp, #0x10]\n    str r6, [sp, #0x14]\n    str r7, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r2, #0xb\n    ldrsb r1, [r5, r2]\n    ldr r0, [sp, #0x24]\n    add r1, r5, r1\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C090\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x31\n    str r0, [sp, #4]\n    mov r0, #0x78\n    str r0, [sp, #8]\n    mov r0, #0x30\n    str r0, [sp, #0xc]\n    ldr r0, _0222EBD4 ; =0x00010200\n    mov r2, #0\n    str r0, [sp, #0x10]\n    str r6, [sp, #0x14]\n    str r7, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #1\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    add r0, r4, #0\n    mov r1, #2\n    bl ov43_0222AC18\n    str r4, [sp]\n    mov r0, #0x30\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    mov r0, #0x48\n    str r0, [sp, #0xc]\n    ldr r0, _0222EBD4 ; =0x00010200\n    mov r1, #1\n    str r0, [sp, #0x10]\n    str r6, [sp, #0x14]\n    str r7, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    mov r1, #0xb\n    ldrsb r1, [r5, r1]\n    ldr r0, [sp, #0x24]\n    mov r2, #0xc\n    add r1, r5, r1\n    ldrb r1, [r1, #0x18]\n    bl sub_0202C090\n    add r1, r0, #0\n    add r0, r4, #0\n    bl ov43_0222ABFC\n    str r4, [sp]\n    mov r0, #0x31\n    str r0, [sp, #4]\n    mov r0, #0x78\n    str r0, [sp, #8]\n    mov r0, #0x48\n    str r0, [sp, #0xc]\n    ldr r0, _0222EBD4 ; =0x00010200\n    mov r2, #0\n    str r0, [sp, #0x10]\n    str r6, [sp, #0x14]\n    str r7, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    mov r1, #1\n    add r3, r5, #0\n    str r2, [sp, #0x1c]\n    bl ov43_0222EC58\n    ldr r0, [sp, #0x20]\n    mov r1, #1\n    bl ov43_0222DEF8\n    add r0, r6, #0\n    bl String_Delete\n    add r0, r7, #0\n    bl String_Delete\n    add sp, #0x28\n    pop {r3, r4, r5, r6, r7, pc}\n    _0222EBD4: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x28
+    // add r5, r1, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [r5, #4]
+    // add r4, r2, #0
+    // add r7, r3, #0
+    // bl Save_Frontier_GetStatic
+    // ldr r0, [r5, #4]
+    // bl sub_0202C6F4
+    // str r0, [sp, #0x24]
+    // mov r0, #0x80
+    // add r1, r7, #0
+    // bl String_New
+    // add r6, r0, #0
+    // mov r0, #0x80
+    // add r1, r7, #0
+    // bl String_New
+    // add r7, r0, #0
+    // str r4, [sp]
+    // mov r0, #0x2f
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // ldr r0, _0222EBD4 ; =0x00010200
+    // str r2, [sp, #0xc]
+    // str r0, [sp, #0x10]
+    // str r6, [sp, #0x14]
+    // str r7, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #1
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl ov43_0222AC18
+    // str r4, [sp]
+    // mov r0, #0x30
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x18
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EBD4 ; =0x00010200
+    // mov r1, #1
+    // str r0, [sp, #0x10]
+    // str r6, [sp, #0x14]
+    // str r7, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r1, #0xb
+    // ldrsb r1, [r5, r1]
+    // ldr r0, [sp, #0x24]
+    // mov r2, #0xa
+    // add r1, r5, r1
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C090
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x31
+    // str r0, [sp, #4]
+    // mov r0, #0x78
+    // str r0, [sp, #8]
+    // mov r0, #0x18
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EBD4 ; =0x00010200
+    // mov r2, #0
+    // str r0, [sp, #0x10]
+    // str r6, [sp, #0x14]
+    // str r7, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #1
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl ov43_0222AC18
+    // str r4, [sp]
+    // mov r0, #0x30
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EBD4 ; =0x00010200
+    // mov r1, #1
+    // str r0, [sp, #0x10]
+    // str r6, [sp, #0x14]
+    // str r7, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r2, #0xb
+    // ldrsb r1, [r5, r2]
+    // ldr r0, [sp, #0x24]
+    // add r1, r5, r1
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C090
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x31
+    // str r0, [sp, #4]
+    // mov r0, #0x78
+    // str r0, [sp, #8]
+    // mov r0, #0x30
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EBD4 ; =0x00010200
+    // mov r2, #0
+    // str r0, [sp, #0x10]
+    // str r6, [sp, #0x14]
+    // str r7, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #1
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // add r0, r4, #0
+    // mov r1, #2
+    // bl ov43_0222AC18
+    // str r4, [sp]
+    // mov r0, #0x30
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // mov r0, #0x48
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EBD4 ; =0x00010200
+    // mov r1, #1
+    // str r0, [sp, #0x10]
+    // str r6, [sp, #0x14]
+    // str r7, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // mov r1, #0xb
+    // ldrsb r1, [r5, r1]
+    // ldr r0, [sp, #0x24]
+    // mov r2, #0xc
+    // add r1, r5, r1
+    // ldrb r1, [r1, #0x18]
+    // bl sub_0202C090
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // bl ov43_0222ABFC
+    // str r4, [sp]
+    // mov r0, #0x31
+    // str r0, [sp, #4]
+    // mov r0, #0x78
+    // str r0, [sp, #8]
+    // mov r0, #0x48
+    // str r0, [sp, #0xc]
+    // ldr r0, _0222EBD4 ; =0x00010200
+    // mov r2, #0
+    // str r0, [sp, #0x10]
+    // str r6, [sp, #0x14]
+    // str r7, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // mov r1, #1
+    // add r3, r5, #0
+    // str r2, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // ldr r0, [sp, #0x20]
+    // mov r1, #1
+    // bl ov43_0222DEF8
+    // add r0, r6, #0
+    // bl String_Delete
+    // add r0, r7, #0
+    // bl String_Delete
+    // add sp, #0x28
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0222EBD4: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222EBD8(void) {
-    /* Original at 0x0222EBD8 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x20\n    add r3, r1, #0\n    str r2, [sp]\n    mov r1, #0xe\n    str r1, [sp, #4]\n    mov r4, #0\n    str r4, [sp, #8]\n    ldr r1, _0222EC10 ; =0x00010200\n    str r4, [sp, #0xc]\n    str r1, [sp, #0x10]\n    ldr r1, [r2, #0x7c]\n    add r2, #0x80\n    str r1, [sp, #0x14]\n    ldr r1, [r2]\n    add r5, r0, #0\n    str r1, [sp, #0x18]\n    mov r1, #7\n    add r2, r4, #0\n    str r4, [sp, #0x1c]\n    bl ov43_0222EC58\n    add r0, r5, #0\n    mov r1, #7\n    bl ov43_0222DEF8\n    add sp, #0x20\n    pop {r3, r4, r5, pc}\n    _0222EC10: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x20
+    // add r3, r1, #0
+    // str r2, [sp]
+    // mov r1, #0xe
+    // str r1, [sp, #4]
+    // mov r4, #0
+    // str r4, [sp, #8]
+    // ldr r1, _0222EC10 ; =0x00010200
+    // str r4, [sp, #0xc]
+    // str r1, [sp, #0x10]
+    // ldr r1, [r2, #0x7c]
+    // add r2, #0x80
+    // str r1, [sp, #0x14]
+    // ldr r1, [r2]
+    // add r5, r0, #0
+    // str r1, [sp, #0x18]
+    // mov r1, #7
+    // add r2, r4, #0
+    // str r4, [sp, #0x1c]
+    // bl ov43_0222EC58
+    // add r0, r5, #0
+    // mov r1, #7
+    // bl ov43_0222DEF8
+    // add sp, #0x20
+    // pop {r3, r4, r5, pc}
+    // _0222EC10: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void ov43_0222EC14(void) {
-    /* Original at 0x0222EC14 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x10\n    add r4, r0, #0\n    mov r0, #2\n    ldrsh r2, [r1, r0]\n    cmp r2, #0\n    bge _0222EC24\n    neg r2, r2\n    mov r0, #0\n    ldrsh r3, [r1, r0]\n    cmp r3, #0\n    bge _0222EC2E\n    neg r3, r3\n    lsl r0, r2, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0x18\n    lsl r3, r3, #0x18\n    str r0, [sp, #8]\n    mov r2, #0\n    str r2, [sp, #0xc]\n    ldr r0, [r4]\n    mov r1, #3\n    lsr r3, r3, #0x18\n    bl FillBgTilemapRect\n    ldr r0, [r4]\n    mov r1, #3\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0x10\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #0x10
+    // add r4, r0, #0
+    // mov r0, #2
+    // ldrsh r2, [r1, r0]
+    // cmp r2, #0
+    // bge _0222EC24
+    // neg r2, r2
+    // mov r0, #0
+    // ldrsh r3, [r1, r0]
+    // cmp r3, #0
+    // bge _0222EC2E
+    // neg r3, r3
+    // lsl r0, r2, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0x18
+    // lsl r3, r3, #0x18
+    // str r0, [sp, #8]
+    // mov r2, #0
+    // str r2, [sp, #0xc]
+    // ldr r0, [r4]
+    // mov r1, #3
+    // lsr r3, r3, #0x18
+    // bl FillBgTilemapRect
+    // ldr r0, [r4]
+    // mov r1, #3
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0x10
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222EC58(void) {
-    /* Original at 0x0222EC58 */
-    /* Requires manual decompilation - 56 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    ldr r6, [sp, #0x30]\n    add r7, r0, #0\n    str r1, [sp, #0x10]\n    str r2, [sp, #0x14]\n    ldr r0, [r6, #0x54]\n    ldr r1, [sp, #0x34]\n    ldr r2, [sp, #0x48]\n    ldr r4, [sp, #0x44]\n    ldr r5, [sp, #0x38]\n    bl ReadMsgDataIntoString\n    ldr r0, [r6, #0x50]\n    ldr r2, [sp, #0x48]\n    add r1, r4, #0\n    bl StringExpandPlaceholders\n    ldr r0, [sp, #0x4c]\n    cmp r0, #1\n    beq _0222EC88\n    cmp r0, #2\n    beq _0222EC9A\n    b _0222ECA6\n    mov r0, #1\n    add r1, r4, #0\n    mov r2, #0\n    bl FontID_String_GetWidth\n    add r0, r0, #1\n    lsr r0, r0, #1\n    sub r5, r5, r0\n    b _0222ECA6\n    mov r0, #1\n    add r1, r4, #0\n    mov r2, #0\n    bl FontID_String_GetWidth\n    sub r5, r5, r0\n    ldr r0, [sp, #0x3c]\n    add r2, r4, #0\n    str r0, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x40]\n    add r3, r5, #0\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x10]\n    lsl r0, r0, #2\n    add r0, r7, r0\n    ldr r1, [r0, #0xc]\n    ldr r0, [sp, #0x14]\n    lsl r0, r0, #4\n    add r0, r1, r0\n    mov r1, #1\n    bl AddTextPrinterParameterizedWithColor\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // ldr r6, [sp, #0x30]
+    // add r7, r0, #0
+    // str r1, [sp, #0x10]
+    // str r2, [sp, #0x14]
+    // ldr r0, [r6, #0x54]
+    // ldr r1, [sp, #0x34]
+    // ldr r2, [sp, #0x48]
+    // ldr r4, [sp, #0x44]
+    // ldr r5, [sp, #0x38]
+    // bl ReadMsgDataIntoString
+    // ldr r0, [r6, #0x50]
+    // ldr r2, [sp, #0x48]
+    // add r1, r4, #0
+    // bl StringExpandPlaceholders
+    // ldr r0, [sp, #0x4c]
+    // cmp r0, #1
+    // beq _0222EC88
+    // cmp r0, #2
+    // beq _0222EC9A
+    // b _0222ECA6
+    // mov r0, #1
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl FontID_String_GetWidth
+    // add r0, r0, #1
+    // lsr r0, r0, #1
+    // sub r5, r5, r0
+    // b _0222ECA6
+    // mov r0, #1
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl FontID_String_GetWidth
+    // sub r5, r5, r0
+    // ldr r0, [sp, #0x3c]
+    // add r2, r4, #0
+    // str r0, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #0x40]
+    // add r3, r5, #0
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x10]
+    // lsl r0, r0, #2
+    // add r0, r7, r0
+    // ldr r1, [r0, #0xc]
+    // ldr r0, [sp, #0x14]
+    // lsl r0, r0, #4
+    // add r0, r1, r0
+    // mov r1, #1
+    // bl AddTextPrinterParameterizedWithColor
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov43_0222ECD4(void) {
-    /* Original at 0x0222ECD4 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    add r4, r2, #0\n    add r2, #0x80\n    add r5, r0, #0\n    ldr r0, [r4, #0x54]\n    ldr r2, [r2]\n    add r1, r3, #0\n    bl ReadMsgDataIntoString\n    add r2, r4, #0\n    add r2, #0x80\n    ldr r0, [r4, #0x50]\n    ldr r1, [r4, #0x7c]\n    ldr r2, [r2]\n    bl StringExpandPlaceholders\n    ldr r0, [sp, #0x24]\n    ldr r3, [sp, #0x20]\n    str r0, [sp]\n    mov r0, #0xff\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x28]\n    mov r1, #1\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r2, [r4, #0x7c]\n    add r0, r5, #0\n    bl AddTextPrinterParameterizedWithColor\n    add sp, #0x10\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // add r4, r2, #0
+    // add r2, #0x80
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x54]
+    // ldr r2, [r2]
+    // add r1, r3, #0
+    // bl ReadMsgDataIntoString
+    // add r2, r4, #0
+    // add r2, #0x80
+    // ldr r0, [r4, #0x50]
+    // ldr r1, [r4, #0x7c]
+    // ldr r2, [r2]
+    // bl StringExpandPlaceholders
+    // ldr r0, [sp, #0x24]
+    // ldr r3, [sp, #0x20]
+    // str r0, [sp]
+    // mov r0, #0xff
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #0x28]
+    // mov r1, #1
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r2, [r4, #0x7c]
+    // add r0, r5, #0
+    // bl AddTextPrinterParameterizedWithColor
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void ov43_0222ED18(void) {
-    /* Original at 0x0222ED18 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    cmp r0, #1\n    bne _0222ED26\n    mov r2, #8\n    b _0222ED28\n    mov r2, #3\n    cmp r1, #0\n    ble _0222ED40\n    mov r0, #0\n    ldrsh r3, [r4, r0]\n    strh r3, [r4, #2]\n    ldrsh r0, [r4, r0]\n    add r0, r0, r1\n    add r1, r2, #0\n    bl _s32_div_f\n    strh r1, [r4]\n    pop {r4, pc}\n    bge _0222ED58\n    mov r0, #0\n    ldrsh r3, [r4, r0]\n    strh r3, [r4, #2]\n    ldrsh r3, [r4, r0]\n    add r1, r3, r1\n    strh r1, [r4]\n    ldrsh r0, [r4, r0]\n    cmp r0, #0\n    bge _0222ED58\n    add r0, r0, r2\n    strh r0, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x10]
+    // cmp r0, #1
+    // bne _0222ED26
+    // mov r2, #8
+    // b _0222ED28
+    // mov r2, #3
+    // cmp r1, #0
+    // ble _0222ED40
+    // mov r0, #0
+    // ldrsh r3, [r4, r0]
+    // strh r3, [r4, #2]
+    // ldrsh r0, [r4, r0]
+    // add r0, r0, r1
+    // add r1, r2, #0
+    // bl _s32_div_f
+    // strh r1, [r4]
+    // pop {r4, pc}
+    // bge _0222ED58
+    // mov r0, #0
+    // ldrsh r3, [r4, r0]
+    // strh r3, [r4, #2]
+    // ldrsh r3, [r4, r0]
+    // add r1, r3, r1
+    // strh r1, [r4]
+    // ldrsh r0, [r4, r0]
+    // cmp r0, #0
+    // bge _0222ED58
+    // add r0, r0, r2
+    // strh r0, [r4]
+    // pop {r4, pc}
+    // TODO: decompile
 }
+

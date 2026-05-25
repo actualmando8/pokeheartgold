@@ -2,75 +2,90 @@
 #include "global.h"
 
 void ov01_021EAF00(void) {
-    /* Original at 0x021EAF00 */
-    /* Requires manual decompilation - 10 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r4, [r0, #0x18]\n    cmp r4, #0\n    bne _021EAF0C\n    bl GF_AssertFail\n    cmp r4, #7\n    blt _021EAF14\n    bl GF_AssertFail\n    sub r0, r4, #1\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r4, [r0, #0x18]
+    // cmp r4, #0
+    // bne _021EAF0C
+    // bl GF_AssertFail
+    // cmp r4, #7
+    // blt _021EAF14
+    // bl GF_AssertFail
+    // sub r0, r4, #1
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021EAF18(void) {
     ov01_021EAF00();
 }
 
+
 void ov01_021EAF34(void) {
     ov01_021EAF00(1);
 }
+
 
 void ov01_021EAF54(void) {
     ov01_021EAF00();
 }
 
+
 void ov01_021EAF70(void) {
     ov01_021EAF00();
 }
 
+
 void ov01_021EAF8C(void) {
-    /* Original at 0x021EAF8C */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
 
+
 void ov01_021EAF90(void) {
-    /* Original at 0x021EAF90 */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
+
 
 u8 ov01_021EAF94(void) {
     return 1;
 }
 
+
 void ov01_021EAF98(void) {
-    /* Original at 0x021EAF98 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _021EAFB0 ; =FS_OVERLAY_ID(OVY_19)\n    mov r1, #2\n    bl HandleLoadOverlay\n    add r0, r4, #0\n    bl FieldSystem_CreateViewPhotoTask\n    add r4, #0xd8\n    str r0, [r4]\n    pop {r4, pc}\n    _021EAFB0: .word FS_OVERLAY_ID(OVY_19)"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _021EAFB0 ; =FS_OVERLAY_ID(OVY_19)
+    // mov r1, #2
+    // bl HandleLoadOverlay
+    // add r0, r4, #0
+    // bl FieldSystem_CreateViewPhotoTask
+    // add r4, #0xd8
+    // str r0, [r4]
+    // pop {r4, pc}
+    // _021EAFB0: .word FS_OVERLAY_ID(OVY_19)
+    // TODO: decompile
 }
 
+
 void ov01_021EAFB4(void) {
-    /* Original at 0x021EAFB4 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl FieldSystem_DestroyViewPhotoTask\n    mov r0, #0\n    add r4, #0xd8\n    str r0, [r4]\n    ldr r0, _021EAFCC ; =FS_OVERLAY_ID(OVY_19)\n    bl UnloadOverlayByID\n    pop {r4, pc}\n    nop\n    _021EAFCC: .word FS_OVERLAY_ID(OVY_19)"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl FieldSystem_DestroyViewPhotoTask
+    // mov r0, #0
+    // add r4, #0xd8
+    // str r0, [r4]
+    // ldr r0, _021EAFCC ; =FS_OVERLAY_ID(OVY_19)
+    // bl UnloadOverlayByID
+    // pop {r4, pc}
+    // nop
+    // _021EAFCC: .word FS_OVERLAY_ID(OVY_19)
+    // TODO: decompile
 }
+
 
 u8 ov01_021EAFD0(void) {
     return 1;
 }
+

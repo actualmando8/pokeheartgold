@@ -2,164 +2,3113 @@
 #include "global.h"
 
 void sub_020755E8(void) {
-    /* Original at 0x020755E8 */
-    /* Requires manual decompilation - 33 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x34\n    ldr r4, _0207562C ; =_020FFF5C\n    add r6, r2, #0\n    add r5, r3, #0\n    add r7, r0, #0\n    mov ip, r1\n    add r3, sp, #0\n    mov r2, #6\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _020755FA\n    ldr r0, [r4]\n    add r1, sp, #0\n    str r0, [r3]\n    strh r6, [r1]\n    strh r5, [r1, #2]\n    add r0, sp, #0x38\n    ldrb r0, [r0, #0x10]\n    add r2, sp, #0\n    strh r0, [r1, #6]\n    add r0, r7, #0\n    mov r1, ip\n    bl SpriteSystem_NewSprite\n    mov r1, #1\n    add r4, r0, #0\n    bl ManagedSprite_SetAnimateFlag\n    add r0, r4, #0\n    add sp, #0x34\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _0207562C: .word _020FFF5C"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x34
+    // ldr r4, _0207562C ; =_020FFF5C
+    // add r6, r2, #0
+    // add r5, r3, #0
+    // add r7, r0, #0
+    // mov ip, r1
+    // add r3, sp, #0
+    // mov r2, #6
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _020755FA
+    // ldr r0, [r4]
+    // add r1, sp, #0
+    // str r0, [r3]
+    // strh r6, [r1]
+    // strh r5, [r1, #2]
+    // add r0, sp, #0x38
+    // ldrb r0, [r0, #0x10]
+    // add r2, sp, #0
+    // strh r0, [r1, #6]
+    // add r0, r7, #0
+    // mov r1, ip
+    // bl SpriteSystem_NewSprite
+    // mov r1, #1
+    // add r4, r0, #0
+    // bl ManagedSprite_SetAnimateFlag
+    // add r0, r4, #0
+    // add sp, #0x34
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _0207562C: .word _020FFF5C
+    // TODO: decompile
 }
+
 
 void sub_02075630(void) {
-    /* Original at 0x02075630 */
-    /* Requires manual decompilation - 144 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x5c\n    add r5, r0, #0\n    ldr r0, [r5, #0x5c]\n    bl SpriteSystem_Alloc\n    add r1, r5, #0\n    add r1, #0xac\n    str r0, [r1]\n    add r0, r5, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    bl SpriteManager_New\n    add r1, r5, #0\n    add r1, #0xb0\n    add r2, sp, #0x3c\n    ldr r4, _02075764 ; =_020FFF14\n    str r0, [r1]\n    ldmia r4!, {r0, r1}\n    add r3, r2, #0\n    stmia r2!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    ldr r6, _02075768 ; =_020FFEE8\n    stmia r2!, {r0, r1}\n    add r4, sp, #0x28\n    ldmia r6!, {r0, r1}\n    add r2, r4, #0\n    stmia r4!, {r0, r1}\n    ldmia r6!, {r0, r1}\n    stmia r4!, {r0, r1}\n    ldr r0, [r6]\n    add r1, r3, #0\n    str r0, [r4]\n    mov r0, #0x10\n    str r0, [sp, #0x28]\n    add r0, r5, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    mov r3, #0x20\n    bl SpriteSystem_Init\n    add r0, r5, #0\n    add r1, r5, #0\n    add r0, #0xac\n    add r1, #0xb0\n    ldr r0, [r0]\n    ldr r1, [r1]\n    mov r2, #0x10\n    bl SpriteSystem_InitSprites\n    ldr r4, _0207576C ; =_020FFEFC\n    add r3, sp, #0x10\n    add r2, r3, #0\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    add r0, r5, #0\n    add r1, r5, #0\n    add r0, #0xac\n    add r1, #0xb0\n    ldr r0, [r0]\n    ldr r1, [r1]\n    bl SpriteSystem_InitManagerWithCapacities\n    add r0, r5, #0\n    add r0, #0xac\n    ldr r6, [r0]\n    add r0, r5, #0\n    add r0, #0xb0\n    ldr r4, [r0]\n    ldr r1, [r5, #0x5c]\n    mov r0, #0xef\n    bl NARC_New\n    add r7, r0, #0\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    str r1, [sp, #0xc]\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    mov r3, #0xb\n    bl SpriteSystem_LoadPlttResObjFromOpenNarc\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #2\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    mov r3, #0xc\n    bl SpriteSystem_LoadCharResObjFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    mov r3, #0xd\n    bl SpriteSystem_LoadCellResObjFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    add r0, r6, #0\n    add r1, r4, #0\n    add r2, r7, #0\n    mov r3, #0xe\n    bl SpriteSystem_LoadAnimResObjFromOpenNarc\n    add r0, r7, #0\n    bl NARC_Delete\n    mov r0, #1\n    str r0, [sp]\n    add r0, r5, #0\n    add r1, r5, #0\n    add r0, #0xac\n    add r1, #0xb0\n    ldr r0, [r0]\n    ldr r1, [r1]\n    mov r2, #0x80\n    mov r3, #0x48\n    bl sub_020755E8\n    add r1, r5, #0\n    add r1, #0xb4\n    str r0, [r1]\n    add r0, r5, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    mov r1, #0\n    bl ManagedSprite_SetDrawFlag\n    mov r0, #1\n    add r5, #0xb8\n    str r0, [r5]\n    add sp, #0x5c\n    pop {r4, r5, r6, r7, pc}\n    _02075764: .word _020FFF14\n    _02075768: .word _020FFEE8\n    _0207576C: .word _020FFEFC"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x5c
+    // add r5, r0, #0
+    // ldr r0, [r5, #0x5c]
+    // bl SpriteSystem_Alloc
+    // add r1, r5, #0
+    // add r1, #0xac
+    // str r0, [r1]
+    // add r0, r5, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // bl SpriteManager_New
+    // add r1, r5, #0
+    // add r1, #0xb0
+    // add r2, sp, #0x3c
+    // ldr r4, _02075764 ; =_020FFF14
+    // str r0, [r1]
+    // ldmia r4!, {r0, r1}
+    // add r3, r2, #0
+    // stmia r2!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // ldr r6, _02075768 ; =_020FFEE8
+    // stmia r2!, {r0, r1}
+    // add r4, sp, #0x28
+    // ldmia r6!, {r0, r1}
+    // add r2, r4, #0
+    // stmia r4!, {r0, r1}
+    // ldmia r6!, {r0, r1}
+    // stmia r4!, {r0, r1}
+    // ldr r0, [r6]
+    // add r1, r3, #0
+    // str r0, [r4]
+    // mov r0, #0x10
+    // str r0, [sp, #0x28]
+    // add r0, r5, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // mov r3, #0x20
+    // bl SpriteSystem_Init
+    // add r0, r5, #0
+    // add r1, r5, #0
+    // add r0, #0xac
+    // add r1, #0xb0
+    // ldr r0, [r0]
+    // ldr r1, [r1]
+    // mov r2, #0x10
+    // bl SpriteSystem_InitSprites
+    // ldr r4, _0207576C ; =_020FFEFC
+    // add r3, sp, #0x10
+    // add r2, r3, #0
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // add r0, r5, #0
+    // add r1, r5, #0
+    // add r0, #0xac
+    // add r1, #0xb0
+    // ldr r0, [r0]
+    // ldr r1, [r1]
+    // bl SpriteSystem_InitManagerWithCapacities
+    // add r0, r5, #0
+    // add r0, #0xac
+    // ldr r6, [r0]
+    // add r0, r5, #0
+    // add r0, #0xb0
+    // ldr r4, [r0]
+    // ldr r1, [r5, #0x5c]
+    // mov r0, #0xef
+    // bl NARC_New
+    // add r7, r0, #0
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // str r1, [sp, #0xc]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // mov r3, #0xb
+    // bl SpriteSystem_LoadPlttResObjFromOpenNarc
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #2
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // mov r3, #0xc
+    // bl SpriteSystem_LoadCharResObjFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // mov r3, #0xd
+    // bl SpriteSystem_LoadCellResObjFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // add r0, r6, #0
+    // add r1, r4, #0
+    // add r2, r7, #0
+    // mov r3, #0xe
+    // bl SpriteSystem_LoadAnimResObjFromOpenNarc
+    // add r0, r7, #0
+    // bl NARC_Delete
+    // mov r0, #1
+    // str r0, [sp]
+    // add r0, r5, #0
+    // add r1, r5, #0
+    // add r0, #0xac
+    // add r1, #0xb0
+    // ldr r0, [r0]
+    // ldr r1, [r1]
+    // mov r2, #0x80
+    // mov r3, #0x48
+    // bl sub_020755E8
+    // add r1, r5, #0
+    // add r1, #0xb4
+    // str r0, [r1]
+    // add r0, r5, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // mov r1, #0
+    // bl ManagedSprite_SetDrawFlag
+    // mov r0, #1
+    // add r5, #0xb8
+    // str r0, [r5]
+    // add sp, #0x5c
+    // pop {r4, r5, r6, r7, pc}
+    // _02075764: .word _020FFF14
+    // _02075768: .word _020FFEE8
+    // _0207576C: .word _020FFEFC
+    // TODO: decompile
 }
+
 
 void sub_02075770(void) {
-    /* Original at 0x02075770 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    add r0, #0xac\n    ldr r4, [r0]\n    add r0, r5, #0\n    add r0, #0xb0\n    ldr r6, [r0]\n    add r0, r5, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _0207578C\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    bl Sprite_DeleteAndFreeResources\n    add r0, r4, #0\n    add r1, r6, #0\n    bl SpriteSystem_FreeResourcesAndManager\n    add r0, r4, #0\n    bl SpriteSystem_Free\n    mov r0, #0\n    add r5, #0xb8\n    str r0, [r5]\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // add r0, #0xac
+    // ldr r4, [r0]
+    // add r0, r5, #0
+    // add r0, #0xb0
+    // ldr r6, [r0]
+    // add r0, r5, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _0207578C
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // bl Sprite_DeleteAndFreeResources
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // bl SpriteSystem_FreeResourcesAndManager
+    // add r0, r4, #0
+    // bl SpriteSystem_Free
+    // mov r0, #0
+    // add r5, #0xb8
+    // str r0, [r5]
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void sub_020757AC(void) {
-    /* Original at 0x020757AC */
-    /* Requires manual decompilation - 38 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r0, #0xb8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _020757BC\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _020757CA\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r0, #0x8b\n    ldrb r0, [r0]\n    cmp r0, #1\n    beq _020757DA\n    cmp r0, #2\n    beq _020757DE\n    b _020757E2\n    mov r4, #0\n    b _020757E6\n    mov r4, #1\n    b _020757E6\n    bl GF_AssertFail\n    ldr r1, _020757FC ; =_020FFEC4\n    lsl r3, r4, #2\n    ldr r2, _02075800 ; =_020FFEC6\n    add r5, #0xb4\n    ldrsh r1, [r1, r3]\n    ldrsh r2, [r2, r3]\n    ldr r0, [r5]\n    bl ManagedSprite_SetPositionXY\n    pop {r3, r4, r5, pc}\n    nop\n    _020757FC: .word _020FFEC4\n    _02075800: .word _020FFEC6"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // add r0, #0xb8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _020757BC
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _020757CA
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r0, #0x8b
+    // ldrb r0, [r0]
+    // cmp r0, #1
+    // beq _020757DA
+    // cmp r0, #2
+    // beq _020757DE
+    // b _020757E2
+    // mov r4, #0
+    // b _020757E6
+    // mov r4, #1
+    // b _020757E6
+    // bl GF_AssertFail
+    // ldr r1, _020757FC ; =_020FFEC4
+    // lsl r3, r4, #2
+    // ldr r2, _02075800 ; =_020FFEC6
+    // add r5, #0xb4
+    // ldrsh r1, [r1, r3]
+    // ldrsh r2, [r2, r3]
+    // ldr r0, [r5]
+    // bl ManagedSprite_SetPositionXY
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _020757FC: .word _020FFEC4
+    // _02075800: .word _020FFEC6
+    // TODO: decompile
 }
+
 
 void sub_02075804(void) {
-    /* Original at 0x02075804 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    add r4, r0, #0\n    add r5, r1, #0\n    add r2, r3, #0\n    ldr r0, [r4, #0xc]\n    ldr r1, [r4, #8]\n    ldr r3, [r4, #0x5c]\n    bl ReadMsgData_ExpandPlaceholders\n    add r4, r0, #0\n    add r0, r5, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    mov r3, #0\n    str r3, [sp]\n    ldr r0, _02075848 ; =0x00010200\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    add r0, r5, #0\n    mov r1, #4\n    add r2, r4, #0\n    str r3, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    add r0, r5, #0\n    bl CopyWindowToVram\n    add r0, r4, #0\n    bl String_Delete\n    add sp, #0x10\n    pop {r3, r4, r5, pc}\n    _02075848: .word 0x00010200"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // add r4, r0, #0
+    // add r5, r1, #0
+    // add r2, r3, #0
+    // ldr r0, [r4, #0xc]
+    // ldr r1, [r4, #8]
+    // ldr r3, [r4, #0x5c]
+    // bl ReadMsgData_ExpandPlaceholders
+    // add r4, r0, #0
+    // add r0, r5, #0
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // mov r3, #0
+    // str r3, [sp]
+    // ldr r0, _02075848 ; =0x00010200
+    // str r3, [sp, #4]
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // mov r1, #4
+    // add r2, r4, #0
+    // str r3, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // add r0, r5, #0
+    // bl CopyWindowToVram
+    // add r0, r4, #0
+    // bl String_Delete
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // _02075848: .word 0x00010200
+    // TODO: decompile
 }
+
 
 void sub_0207584C(void) {
-    /* Original at 0x0207584C */
-    /* Requires manual decompilation - 56 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r0, #0xb8\n    ldr r6, _020758C8 ; =0x0000049D\n    ldr r0, [r0]\n    add r7, r1, #0\n    add r4, r6, #1\n    cmp r0, #0\n    bne _02075862\n    bl GF_AssertFail\n    cmp r7, #0\n    bne _02075878\n    add r2, r5, #0\n    add r2, #0x6c\n    ldrh r2, [r2]\n    ldr r0, [r5, #0xc]\n    mov r1, #0\n    bl BufferMoveName\n    ldr r6, _020758CC ; =0x000004A2\n    add r4, r6, #1\n    add r1, r5, #0\n    ldr r2, [r5, #8]\n    add r0, r5, #0\n    add r1, #0x8c\n    add r3, r6, #0\n    bl sub_02075804\n    add r1, r5, #0\n    ldr r2, [r5, #8]\n    add r0, r5, #0\n    add r1, #0x9c\n    add r3, r4, #0\n    bl sub_02075804\n    add r0, r5, #0\n    mov r1, #0\n    add r0, #0x8a\n    strb r1, [r0]\n    add r0, r5, #0\n    mov r1, #1\n    add r0, #0x8b\n    strb r1, [r0]\n    add r0, r5, #0\n    bl sub_020757AC\n    mov r0, #5\n    mov r1, #1\n    bl ToggleBgLayer\n    mov r0, #6\n    mov r1, #1\n    bl ToggleBgLayer\n    add r5, #0xb4\n    ldr r0, [r5]\n    mov r1, #1\n    bl ManagedSprite_SetDrawFlag\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _020758C8: .word 0x0000049D\n    _020758CC: .word 0x000004A2"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // add r0, #0xb8
+    // ldr r6, _020758C8 ; =0x0000049D
+    // ldr r0, [r0]
+    // add r7, r1, #0
+    // add r4, r6, #1
+    // cmp r0, #0
+    // bne _02075862
+    // bl GF_AssertFail
+    // cmp r7, #0
+    // bne _02075878
+    // add r2, r5, #0
+    // add r2, #0x6c
+    // ldrh r2, [r2]
+    // ldr r0, [r5, #0xc]
+    // mov r1, #0
+    // bl BufferMoveName
+    // ldr r6, _020758CC ; =0x000004A2
+    // add r4, r6, #1
+    // add r1, r5, #0
+    // ldr r2, [r5, #8]
+    // add r0, r5, #0
+    // add r1, #0x8c
+    // add r3, r6, #0
+    // bl sub_02075804
+    // add r1, r5, #0
+    // ldr r2, [r5, #8]
+    // add r0, r5, #0
+    // add r1, #0x9c
+    // add r3, r4, #0
+    // bl sub_02075804
+    // add r0, r5, #0
+    // mov r1, #0
+    // add r0, #0x8a
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // mov r1, #1
+    // add r0, #0x8b
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // bl sub_020757AC
+    // mov r0, #5
+    // mov r1, #1
+    // bl ToggleBgLayer
+    // mov r0, #6
+    // mov r1, #1
+    // bl ToggleBgLayer
+    // add r5, #0xb4
+    // ldr r0, [r5]
+    // mov r1, #1
+    // bl ManagedSprite_SetDrawFlag
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _020758C8: .word 0x0000049D
+    // _020758CC: .word 0x000004A2
+    // TODO: decompile
 }
+
 
 void sub_020758D0(void) {
-    /* Original at 0x020758D0 */
-    /* Requires manual decompilation - 111 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, _020759C0 ; =_020FFECC\n    mov r4, #0\n    bl TouchscreenHitbox_FindRectAtTouchNew\n    add r6, r0, #0\n    add r0, r5, #0\n    add r0, #0xb8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _020758EC\n    bl GF_AssertFail\n    mov r0, #0\n    mvn r0, r0\n    cmp r6, r0\n    beq _02075920\n    ldr r0, _020759C4 ; =0x000005DC\n    bl PlaySE\n    cmp r6, #0\n    beq _02075904\n    cmp r6, #1\n    beq _0207590E\n    b _0207591A\n    add r0, r5, #0\n    mov r4, #1\n    add r0, #0x8b\n    strb r4, [r0]\n    b _020759A0\n    add r0, r5, #0\n    mov r1, #2\n    add r0, #0x8b\n    strb r1, [r0]\n    mov r4, #1\n    b _020759A0\n    bl GF_AssertFail\n    b _020759A0\n    ldr r0, _020759C8 ; =gSystem\n    mov r1, #0x40\n    ldr r0, [r0, #0x48]\n    tst r1, r0\n    beq _0207594A\n    add r0, r5, #0\n    add r0, #0x8b\n    ldrb r0, [r0]\n    cmp r0, #1\n    beq _020759A0\n    add r0, r5, #0\n    mov r1, #1\n    add r0, #0x8b\n    strb r1, [r0]\n    add r0, r5, #0\n    bl sub_020757AC\n    ldr r0, _020759C4 ; =0x000005DC\n    bl PlaySE\n    b _020759A0\n    mov r1, #0x80\n    tst r1, r0\n    beq _02075970\n    add r0, r5, #0\n    add r0, #0x8b\n    ldrb r0, [r0]\n    cmp r0, #2\n    beq _020759A0\n    add r0, r5, #0\n    mov r1, #2\n    add r0, #0x8b\n    strb r1, [r0]\n    add r0, r5, #0\n    bl sub_020757AC\n    ldr r0, _020759C4 ; =0x000005DC\n    bl PlaySE\n    b _020759A0\n    mov r1, #1\n    add r2, r0, #0\n    tst r2, r1\n    beq _02075992\n    add r0, r5, #0\n    add r0, #0x8b\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _0207598E\n    bl GF_AssertFail\n    add r0, r5, #0\n    mov r1, #2\n    add r0, #0x8b\n    strb r1, [r0]\n    mov r4, #1\n    b _020759A0\n    mov r2, #2\n    tst r0, r2\n    beq _020759A0\n    add r0, r5, #0\n    add r0, #0x8b\n    strb r2, [r0]\n    add r4, r1, #0\n    cmp r4, #0\n    beq _020759BA\n    add r0, r5, #0\n    bl sub_020757AC\n    add r5, #0xb4\n    ldr r0, [r5]\n    mov r1, #3\n    bl ManagedSprite_SetAnim\n    ldr r0, _020759C4 ; =0x000005DC\n    bl PlaySE\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}\n    nop\n    _020759C0: .word _020FFECC\n    _020759C4: .word 0x000005DC\n    _020759C8: .word gSystem"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // ldr r0, _020759C0 ; =_020FFECC
+    // mov r4, #0
+    // bl TouchscreenHitbox_FindRectAtTouchNew
+    // add r6, r0, #0
+    // add r0, r5, #0
+    // add r0, #0xb8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _020758EC
+    // bl GF_AssertFail
+    // mov r0, #0
+    // mvn r0, r0
+    // cmp r6, r0
+    // beq _02075920
+    // ldr r0, _020759C4 ; =0x000005DC
+    // bl PlaySE
+    // cmp r6, #0
+    // beq _02075904
+    // cmp r6, #1
+    // beq _0207590E
+    // b _0207591A
+    // add r0, r5, #0
+    // mov r4, #1
+    // add r0, #0x8b
+    // strb r4, [r0]
+    // b _020759A0
+    // add r0, r5, #0
+    // mov r1, #2
+    // add r0, #0x8b
+    // strb r1, [r0]
+    // mov r4, #1
+    // b _020759A0
+    // bl GF_AssertFail
+    // b _020759A0
+    // ldr r0, _020759C8 ; =gSystem
+    // mov r1, #0x40
+    // ldr r0, [r0, #0x48]
+    // tst r1, r0
+    // beq _0207594A
+    // add r0, r5, #0
+    // add r0, #0x8b
+    // ldrb r0, [r0]
+    // cmp r0, #1
+    // beq _020759A0
+    // add r0, r5, #0
+    // mov r1, #1
+    // add r0, #0x8b
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // bl sub_020757AC
+    // ldr r0, _020759C4 ; =0x000005DC
+    // bl PlaySE
+    // b _020759A0
+    // mov r1, #0x80
+    // tst r1, r0
+    // beq _02075970
+    // add r0, r5, #0
+    // add r0, #0x8b
+    // ldrb r0, [r0]
+    // cmp r0, #2
+    // beq _020759A0
+    // add r0, r5, #0
+    // mov r1, #2
+    // add r0, #0x8b
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // bl sub_020757AC
+    // ldr r0, _020759C4 ; =0x000005DC
+    // bl PlaySE
+    // b _020759A0
+    // mov r1, #1
+    // add r2, r0, #0
+    // tst r2, r1
+    // beq _02075992
+    // add r0, r5, #0
+    // add r0, #0x8b
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _0207598E
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // mov r1, #2
+    // add r0, #0x8b
+    // strb r1, [r0]
+    // mov r4, #1
+    // b _020759A0
+    // mov r2, #2
+    // tst r0, r2
+    // beq _020759A0
+    // add r0, r5, #0
+    // add r0, #0x8b
+    // strb r2, [r0]
+    // add r4, r1, #0
+    // cmp r4, #0
+    // beq _020759BA
+    // add r0, r5, #0
+    // bl sub_020757AC
+    // add r5, #0xb4
+    // ldr r0, [r5]
+    // mov r1, #3
+    // bl ManagedSprite_SetAnim
+    // ldr r0, _020759C4 ; =0x000005DC
+    // bl PlaySE
+    // add r0, r4, #0
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _020759C0: .word _020FFECC
+    // _020759C4: .word 0x000005DC
+    // _020759C8: .word gSystem
+    // TODO: decompile
 }
+
 
 void sub_020759CC(void) {
-    /* Original at 0x020759CC */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0xb8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _020759DC\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    bl ManagedSprite_GetActiveAnim\n    cmp r0, #3\n    beq _020759EE\n    bl GF_AssertFail\n    add r4, #0xb4\n    ldr r0, [r4]\n    bl ManagedSprite_IsAnimated\n    cmp r0, #0\n    bne _020759FE\n    mov r0, #1\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r0, #0xb8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _020759DC
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // bl ManagedSprite_GetActiveAnim
+    // cmp r0, #3
+    // beq _020759EE
+    // bl GF_AssertFail
+    // add r4, #0xb4
+    // ldr r0, [r4]
+    // bl ManagedSprite_IsAnimated
+    // cmp r0, #0
+    // bne _020759FE
+    // mov r0, #1
+    // pop {r4, pc}
+    // mov r0, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02075A04(void) {
-    /* Original at 0x02075A04 */
-    /* Requires manual decompilation - 52 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #0\n    add r1, #0x8a\n    ldrb r1, [r1]\n    cmp r1, #0\n    beq _02075A18\n    cmp r1, #1\n    beq _02075A2E\n    b _02075A74\n    bl sub_020758D0\n    cmp r0, #0\n    beq _02075A78\n    add r0, r4, #0\n    add r0, #0x8a\n    ldrb r0, [r0]\n    add r4, #0x8a\n    add r0, r0, #1\n    strb r0, [r4]\n    b _02075A78\n    bl sub_020759CC\n    cmp r0, #0\n    beq _02075A78\n    add r0, r4, #0\n    add r0, #0xb8\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _02075A44\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r0, #0x8b\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _02075A52\n    bl GF_AssertFail\n    mov r0, #5\n    mov r1, #0\n    bl ToggleBgLayer\n    mov r0, #6\n    mov r1, #0\n    bl ToggleBgLayer\n    add r0, r4, #0\n    add r0, #0xb4\n    ldr r0, [r0]\n    mov r1, #0\n    bl ManagedSprite_SetDrawFlag\n    add r4, #0x8b\n    ldrb r0, [r4]\n    pop {r4, pc}\n    bl GF_AssertFail\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r1, r4, #0
+    // add r1, #0x8a
+    // ldrb r1, [r1]
+    // cmp r1, #0
+    // beq _02075A18
+    // cmp r1, #1
+    // beq _02075A2E
+    // b _02075A74
+    // bl sub_020758D0
+    // cmp r0, #0
+    // beq _02075A78
+    // add r0, r4, #0
+    // add r0, #0x8a
+    // ldrb r0, [r0]
+    // add r4, #0x8a
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // b _02075A78
+    // bl sub_020759CC
+    // cmp r0, #0
+    // beq _02075A78
+    // add r0, r4, #0
+    // add r0, #0xb8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _02075A44
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r0, #0x8b
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _02075A52
+    // bl GF_AssertFail
+    // mov r0, #5
+    // mov r1, #0
+    // bl ToggleBgLayer
+    // mov r0, #6
+    // mov r1, #0
+    // bl ToggleBgLayer
+    // add r0, r4, #0
+    // add r0, #0xb4
+    // ldr r0, [r0]
+    // mov r1, #0
+    // bl ManagedSprite_SetDrawFlag
+    // add r4, #0x8b
+    // ldrb r0, [r4]
+    // pop {r4, pc}
+    // bl GF_AssertFail
+    // mov r0, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02075A7C(void) {
-    /* Original at 0x02075A7C */
-    /* Requires manual decompilation - 274 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    add r6, r0, #0\n    add r7, r1, #0\n    ldr r5, [sp, #0x50]\n    ldr r0, _02075CFC ; =gSystem + 0x60\n    mov r1, #0\n    str r2, [sp, #0x14]\n    str r3, [sp, #0x18]\n    strb r1, [r0, #9]\n    bl GfGfx_SwapDisplay\n    mov r0, #4\n    add r1, r5, #0\n    bl FontID_Alloc\n    add r0, r5, #0\n    mov r1, #0xbc\n    bl Heap_Alloc\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r4, #0\n    mov r2, #0xbc\n    bl MIi_CpuClearFast\n    bl sub_02026E8C\n    str r0, [sp, #0x1c]\n    bl GetMainBgPlttAddr\n    add r1, r0, #0\n    ldr r2, [sp, #0x1c]\n    mov r0, #0\n    bl MIi_CpuClear16\n    bl sub_02026E9C\n    str r0, [sp, #0x20]\n    bl GetSubBgPlttAddr\n    add r1, r0, #0\n    ldr r2, [sp, #0x20]\n    mov r0, #0\n    bl MIi_CpuClear16\n    str r6, [r4, #0x24]\n    add r0, r7, #0\n    mov r1, #5\n    mov r2, #0\n    str r7, [r4, #0x28]\n    bl GetMonData\n    add r1, r4, #0\n    add r1, #0x60\n    strh r0, [r1]\n    add r0, r7, #0\n    mov r1, #0x70\n    mov r2, #0\n    bl GetMonData\n    add r1, r4, #0\n    add r1, #0x80\n    strb r0, [r1]\n    add r1, r4, #0\n    ldr r0, [sp, #0x14]\n    add r1, #0x62\n    strh r0, [r1]\n    str r5, [r4, #0x5c]\n    mov r0, #0\n    str r0, [r4, #0x38]\n    mov r0, #0xb4\n    add r1, r5, #0\n    bl NARC_New\n    add r1, r4, #0\n    add r1, #0x84\n    str r0, [r1]\n    add r2, r4, #0\n    add r0, r4, #0\n    add r2, #0x60\n    add r0, #0x84\n    add r1, r4, #0\n    ldrh r2, [r2]\n    ldr r0, [r0]\n    add r1, #0x88\n    mov r3, #1\n    bl sub_020729A4\n    add r2, r4, #0\n    add r0, r4, #0\n    add r2, #0x62\n    add r0, #0x84\n    add r1, r4, #0\n    ldrh r2, [r2]\n    ldr r0, [r0]\n    add r1, #0x89\n    mov r3, #1\n    bl sub_020729A4\n    add r0, r5, #0\n    bl PaletteData_Init\n    str r0, [r4, #0x14]\n    mov r1, #1\n    bl PaletteData_SetAutoTransparent\n    mov r2, #2\n    ldr r0, [r4, #0x14]\n    mov r1, #0\n    lsl r2, r2, #8\n    add r3, r5, #0\n    bl PaletteData_AllocBuffers\n    mov r1, #1\n    ldr r0, [r4, #0x14]\n    lsl r2, r1, #9\n    add r3, r5, #0\n    bl PaletteData_AllocBuffers\n    mov r2, #7\n    ldr r0, [r4, #0x14]\n    mov r1, #2\n    lsl r2, r2, #6\n    add r3, r5, #0\n    bl PaletteData_AllocBuffers\n    add r0, r5, #0\n    bl BgConfig_Alloc\n    str r0, [r4]\n    add r0, r5, #0\n    mov r1, #1\n    bl AllocWindows\n    str r0, [r4, #4]\n    ldr r0, [sp, #0x18]\n    str r0, [r4, #0x2c]\n    add r0, r5, #0\n    bl sub_02077400\n    str r0, [r4, #0x34]\n    bl sub_020773AC\n    bl sub_020773D4\n    bl sub_020774A0\n    ldr r1, [r4]\n    add r0, r4, #0\n    bl sub_02076E64\n    add r0, r4, #0\n    bl sub_02075630\n    mov r0, #0x13\n    str r0, [sp]\n    mov r0, #0x1b\n    str r0, [sp, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    mov r0, #0xb\n    str r0, [sp, #0xc]\n    mov r0, #0x1f\n    str r0, [sp, #0x10]\n    ldr r0, [r4]\n    ldr r1, [r4, #4]\n    mov r2, #1\n    mov r3, #2\n    bl AddWindowParameterized\n    ldr r0, [r4, #4]\n    mov r1, #0xff\n    bl FillWindowPixelBuffer\n    ldr r0, [r4, #4]\n    mov r1, #0\n    mov r2, #1\n    mov r3, #0xa\n    bl DrawFrameAndWindow2\n    mov r0, #8\n    str r0, [sp]\n    mov r0, #0x1a\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xf\n    str r0, [sp, #0xc]\n    mov r0, #0x50\n    str r0, [sp, #0x10]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x8c\n    mov r2, #6\n    mov r3, #3\n    bl AddWindowParameterized\n    mov r0, #0xe\n    str r0, [sp]\n    mov r0, #0x1a\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xf\n    str r0, [sp, #0xc]\n    mov r0, #0x84\n    str r0, [sp, #0x10]\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x9c\n    mov r2, #6\n    mov r3, #3\n    bl AddWindowParameterized\n    add r0, r5, #0\n    bl PokepicManager_Create\n    str r0, [r4, #0x18]\n    add r0, r5, #0\n    mov r1, #1\n    mov r2, #0\n    bl sub_02016EDC\n    str r0, [r4, #0x44]\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x67\n    strb r1, [r0]\n    add r0, r4, #0\n    mov r1, #2\n    add r0, #0x66\n    strb r1, [r0]\n    mov r0, #1\n    mov r1, #0x1b\n    mov r2, #0xc5\n    add r3, r5, #0\n    bl NewMsgDataFromNarc\n    str r0, [r4, #8]\n    add r0, r5, #0\n    bl MessageFormat_New\n    str r0, [r4, #0xc]\n    mov r0, #5\n    lsl r0, r0, #6\n    add r1, r5, #0\n    bl String_New\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    mov r1, #0x3c\n    bl Heap_Alloc\n    str r0, [r4, #0x3c]\n    ldr r1, [r4, #0x3c]\n    mov r0, #0\n    mov r2, #0x3c\n    bl MIi_CpuClearFast\n    ldr r1, [sp, #0x38]\n    ldr r0, [r4, #0x3c]\n    str r1, [r0, #0x2c]\n    ldr r0, [sp, #0x3c]\n    str r0, [r4, #0x48]\n    ldr r0, [sp, #0x40]\n    str r0, [r4, #0x4c]\n    ldr r0, [sp, #0x44]\n    str r0, [r4, #0x50]\n    ldr r0, [sp, #0x48]\n    str r0, [r4, #0x78]\n    ldr r0, [sp, #0x4c]\n    str r0, [r4, #0x7c]\n    add r0, r4, #0\n    bl sub_020771E8\n    mov r0, #0x10\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x14]\n    ldr r2, _02075D00 ; =0x0000FFFF\n    mov r1, #0xf\n    mov r3, #1\n    bl PaletteData_BeginPaletteFade\n    mov r2, #0\n    str r2, [sp]\n    ldr r0, [r4, #0x18]\n    mov r1, #0x10\n    add r3, r2, #0\n    bl Pokepic_StartPaletteFadeAll\n    ldr r0, [r4, #0x14]\n    mov r1, #0\n    mov r2, #0xb\n    add r3, r5, #0\n    bl sub_020163E0\n    mov r1, #1\n    str r0, [r4, #0x58]\n    bl sub_0201649C\n    ldr r0, _02075D04 ; =sub_02075D08\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    mov r0, #1\n    bl TextFlags_SetCanABSpeedUpPrint\n    mov r0, #1\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    bl sub_0203A880\n    add r0, r4, #0\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}\n    _02075CFC: .word gSystem + 0x60\n    _02075D00: .word 0x0000FFFF\n    _02075D04: .word sub_02075D08"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x24
+    // add r6, r0, #0
+    // add r7, r1, #0
+    // ldr r5, [sp, #0x50]
+    // ldr r0, _02075CFC ; =gSystem + 0x60
+    // mov r1, #0
+    // str r2, [sp, #0x14]
+    // str r3, [sp, #0x18]
+    // strb r1, [r0, #9]
+    // bl GfGfx_SwapDisplay
+    // mov r0, #4
+    // add r1, r5, #0
+    // bl FontID_Alloc
+    // add r0, r5, #0
+    // mov r1, #0xbc
+    // bl Heap_Alloc
+    // add r4, r0, #0
+    // mov r0, #0
+    // add r1, r4, #0
+    // mov r2, #0xbc
+    // bl MIi_CpuClearFast
+    // bl sub_02026E8C
+    // str r0, [sp, #0x1c]
+    // bl GetMainBgPlttAddr
+    // add r1, r0, #0
+    // ldr r2, [sp, #0x1c]
+    // mov r0, #0
+    // bl MIi_CpuClear16
+    // bl sub_02026E9C
+    // str r0, [sp, #0x20]
+    // bl GetSubBgPlttAddr
+    // add r1, r0, #0
+    // ldr r2, [sp, #0x20]
+    // mov r0, #0
+    // bl MIi_CpuClear16
+    // str r6, [r4, #0x24]
+    // add r0, r7, #0
+    // mov r1, #5
+    // mov r2, #0
+    // str r7, [r4, #0x28]
+    // bl GetMonData
+    // add r1, r4, #0
+    // add r1, #0x60
+    // strh r0, [r1]
+    // add r0, r7, #0
+    // mov r1, #0x70
+    // mov r2, #0
+    // bl GetMonData
+    // add r1, r4, #0
+    // add r1, #0x80
+    // strb r0, [r1]
+    // add r1, r4, #0
+    // ldr r0, [sp, #0x14]
+    // add r1, #0x62
+    // strh r0, [r1]
+    // str r5, [r4, #0x5c]
+    // mov r0, #0
+    // str r0, [r4, #0x38]
+    // mov r0, #0xb4
+    // add r1, r5, #0
+    // bl NARC_New
+    // add r1, r4, #0
+    // add r1, #0x84
+    // str r0, [r1]
+    // add r2, r4, #0
+    // add r0, r4, #0
+    // add r2, #0x60
+    // add r0, #0x84
+    // add r1, r4, #0
+    // ldrh r2, [r2]
+    // ldr r0, [r0]
+    // add r1, #0x88
+    // mov r3, #1
+    // bl sub_020729A4
+    // add r2, r4, #0
+    // add r0, r4, #0
+    // add r2, #0x62
+    // add r0, #0x84
+    // add r1, r4, #0
+    // ldrh r2, [r2]
+    // ldr r0, [r0]
+    // add r1, #0x89
+    // mov r3, #1
+    // bl sub_020729A4
+    // add r0, r5, #0
+    // bl PaletteData_Init
+    // str r0, [r4, #0x14]
+    // mov r1, #1
+    // bl PaletteData_SetAutoTransparent
+    // mov r2, #2
+    // ldr r0, [r4, #0x14]
+    // mov r1, #0
+    // lsl r2, r2, #8
+    // add r3, r5, #0
+    // bl PaletteData_AllocBuffers
+    // mov r1, #1
+    // ldr r0, [r4, #0x14]
+    // lsl r2, r1, #9
+    // add r3, r5, #0
+    // bl PaletteData_AllocBuffers
+    // mov r2, #7
+    // ldr r0, [r4, #0x14]
+    // mov r1, #2
+    // lsl r2, r2, #6
+    // add r3, r5, #0
+    // bl PaletteData_AllocBuffers
+    // add r0, r5, #0
+    // bl BgConfig_Alloc
+    // str r0, [r4]
+    // add r0, r5, #0
+    // mov r1, #1
+    // bl AllocWindows
+    // str r0, [r4, #4]
+    // ldr r0, [sp, #0x18]
+    // str r0, [r4, #0x2c]
+    // add r0, r5, #0
+    // bl sub_02077400
+    // str r0, [r4, #0x34]
+    // bl sub_020773AC
+    // bl sub_020773D4
+    // bl sub_020774A0
+    // ldr r1, [r4]
+    // add r0, r4, #0
+    // bl sub_02076E64
+    // add r0, r4, #0
+    // bl sub_02075630
+    // mov r0, #0x13
+    // str r0, [sp]
+    // mov r0, #0x1b
+    // str r0, [sp, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // mov r0, #0xb
+    // str r0, [sp, #0xc]
+    // mov r0, #0x1f
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4]
+    // ldr r1, [r4, #4]
+    // mov r2, #1
+    // mov r3, #2
+    // bl AddWindowParameterized
+    // ldr r0, [r4, #4]
+    // mov r1, #0xff
+    // bl FillWindowPixelBuffer
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // mov r2, #1
+    // mov r3, #0xa
+    // bl DrawFrameAndWindow2
+    // mov r0, #8
+    // str r0, [sp]
+    // mov r0, #0x1a
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xf
+    // str r0, [sp, #0xc]
+    // mov r0, #0x50
+    // str r0, [sp, #0x10]
+    // add r1, r4, #0
+    // ldr r0, [r4]
+    // add r1, #0x8c
+    // mov r2, #6
+    // mov r3, #3
+    // bl AddWindowParameterized
+    // mov r0, #0xe
+    // str r0, [sp]
+    // mov r0, #0x1a
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xf
+    // str r0, [sp, #0xc]
+    // mov r0, #0x84
+    // str r0, [sp, #0x10]
+    // add r1, r4, #0
+    // ldr r0, [r4]
+    // add r1, #0x9c
+    // mov r2, #6
+    // mov r3, #3
+    // bl AddWindowParameterized
+    // add r0, r5, #0
+    // bl PokepicManager_Create
+    // str r0, [r4, #0x18]
+    // add r0, r5, #0
+    // mov r1, #1
+    // mov r2, #0
+    // bl sub_02016EDC
+    // str r0, [r4, #0x44]
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x67
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // mov r1, #2
+    // add r0, #0x66
+    // strb r1, [r0]
+    // mov r0, #1
+    // mov r1, #0x1b
+    // mov r2, #0xc5
+    // add r3, r5, #0
+    // bl NewMsgDataFromNarc
+    // str r0, [r4, #8]
+    // add r0, r5, #0
+    // bl MessageFormat_New
+    // str r0, [r4, #0xc]
+    // mov r0, #5
+    // lsl r0, r0, #6
+    // add r1, r5, #0
+    // bl String_New
+    // str r0, [r4, #0x10]
+    // add r0, r5, #0
+    // mov r1, #0x3c
+    // bl Heap_Alloc
+    // str r0, [r4, #0x3c]
+    // ldr r1, [r4, #0x3c]
+    // mov r0, #0
+    // mov r2, #0x3c
+    // bl MIi_CpuClearFast
+    // ldr r1, [sp, #0x38]
+    // ldr r0, [r4, #0x3c]
+    // str r1, [r0, #0x2c]
+    // ldr r0, [sp, #0x3c]
+    // str r0, [r4, #0x48]
+    // ldr r0, [sp, #0x40]
+    // str r0, [r4, #0x4c]
+    // ldr r0, [sp, #0x44]
+    // str r0, [r4, #0x50]
+    // ldr r0, [sp, #0x48]
+    // str r0, [r4, #0x78]
+    // ldr r0, [sp, #0x4c]
+    // str r0, [r4, #0x7c]
+    // add r0, r4, #0
+    // bl sub_020771E8
+    // mov r0, #0x10
+    // str r0, [sp]
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // ldr r2, _02075D00 ; =0x0000FFFF
+    // mov r1, #0xf
+    // mov r3, #1
+    // bl PaletteData_BeginPaletteFade
+    // mov r2, #0
+    // str r2, [sp]
+    // ldr r0, [r4, #0x18]
+    // mov r1, #0x10
+    // add r3, r2, #0
+    // bl Pokepic_StartPaletteFadeAll
+    // ldr r0, [r4, #0x14]
+    // mov r1, #0
+    // mov r2, #0xb
+    // add r3, r5, #0
+    // bl sub_020163E0
+    // mov r1, #1
+    // str r0, [r4, #0x58]
+    // bl sub_0201649C
+    // ldr r0, _02075D04 ; =sub_02075D08
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl SysTask_CreateOnMainQueue
+    // mov r0, #1
+    // bl TextFlags_SetCanABSpeedUpPrint
+    // mov r0, #1
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // bl sub_0203A880
+    // add r0, r4, #0
+    // add sp, #0x24
+    // pop {r4, r5, r6, r7, pc}
+    // _02075CFC: .word gSystem + 0x60
+    // _02075D00: .word 0x0000FFFF
+    // _02075D04: .word sub_02075D08
+    // TODO: decompile
 }
+
 
 void sub_02075D08(void) {
-    /* Original at 0x02075D08 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    add r0, r4, #0\n    bl sub_02075E14\n    ldr r0, [r4, #0x38]\n    cmp r0, #0\n    bne _02075D2C\n    ldr r0, [r4, #0x18]\n    bl PokepicManager_DrawAll\n    bl sub_020774E0\n    mov r0, #1\n    mov r1, #0\n    bl RequestSwap3DBuffers\n    add r4, #0x67\n    ldrb r0, [r4]\n    cmp r0, #0\n    beq _02075D3A\n    add r0, r5, #0\n    bl SysTask_Destroy\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl sub_02075E14
+    // ldr r0, [r4, #0x38]
+    // cmp r0, #0
+    // bne _02075D2C
+    // ldr r0, [r4, #0x18]
+    // bl PokepicManager_DrawAll
+    // bl sub_020774E0
+    // mov r0, #1
+    // mov r1, #0
+    // bl RequestSwap3DBuffers
+    // add r4, #0x67
+    // ldrb r0, [r4]
+    // cmp r0, #0
+    // beq _02075D3A
+    // add r0, r5, #0
+    // bl SysTask_Destroy
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_02075D3C(void) {
-    /* Original at 0x02075D3C */
-    /* Requires manual decompilation - 8 instructions */
-    #ifdef MWERKS
-    asm(
-        "add r0, #0x67\n    ldrb r0, [r0]\n    cmp r0, #1\n    bne _02075D48\n    mov r0, #1\n    bx lr\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    // add r0, #0x67
+    // ldrb r0, [r0]
+    // cmp r0, #1
+    // bne _02075D48
+    // mov r0, #1
+    // bx lr
+    // mov r0, #0
+    // bx lr
+    // TODO: decompile
 }
+
 
 void sub_02075D4C(void) {
-    /* Original at 0x02075D4C */
-    /* Requires manual decompilation - 72 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r0, #0\n    bl sub_0200FBF4\n    mov r0, #1\n    mov r1, #0\n    bl sub_0200FBF4\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetVBlankIntrCB\n    mov r0, #4\n    bl FontID_Release\n    add r0, r4, #0\n    bl sub_02075770\n    ldr r0, [r4, #4]\n    mov r1, #1\n    bl WindowArray_Delete\n    add r0, r4, #0\n    add r0, #0x8c\n    bl RemoveWindow\n    add r0, r4, #0\n    add r0, #0x9c\n    bl RemoveWindow\n    ldr r0, [r4, #0x14]\n    mov r1, #0\n    bl PaletteData_FreeBuffers\n    ldr r0, [r4, #0x14]\n    mov r1, #1\n    bl PaletteData_FreeBuffers\n    ldr r0, [r4, #0x14]\n    mov r1, #2\n    bl PaletteData_FreeBuffers\n    ldr r0, [r4, #0x14]\n    bl PaletteData_Free\n    ldr r0, [r4, #0x18]\n    bl PokepicManager_Delete\n    ldr r0, [r4, #0x44]\n    bl sub_02016F2C\n    ldr r0, [r4, #0x34]\n    bl GF_3DVramMan_Delete\n    ldr r0, [r4]\n    bl sub_020771A0\n    ldr r0, [r4, #8]\n    bl DestroyMsgData\n    ldr r0, [r4, #0xc]\n    bl MessageFormat_Delete\n    ldr r0, [r4, #0x10]\n    bl Heap_Free\n    ldr r0, [r4, #0x3c]\n    bl Heap_Free\n    ldr r0, [r4, #0x58]\n    bl sub_020164C4\n    ldr r0, [r4]\n    bl Heap_Free\n    add r0, r4, #0\n    add r0, #0x84\n    ldr r0, [r0]\n    bl NARC_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #0\n    bl TextFlags_SetCanABSpeedUpPrint\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    ldr r0, _02075E10 ; =gSystem + 0x60\n    mov r1, #1\n    strb r1, [r0, #9]\n    bl GfGfx_SwapDisplay\n    pop {r4, pc}\n    nop\n    _02075E10: .word gSystem + 0x60"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl sub_0200FBF4
+    // mov r0, #1
+    // mov r1, #0
+    // bl sub_0200FBF4
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl Main_SetVBlankIntrCB
+    // mov r0, #4
+    // bl FontID_Release
+    // add r0, r4, #0
+    // bl sub_02075770
+    // ldr r0, [r4, #4]
+    // mov r1, #1
+    // bl WindowArray_Delete
+    // add r0, r4, #0
+    // add r0, #0x8c
+    // bl RemoveWindow
+    // add r0, r4, #0
+    // add r0, #0x9c
+    // bl RemoveWindow
+    // ldr r0, [r4, #0x14]
+    // mov r1, #0
+    // bl PaletteData_FreeBuffers
+    // ldr r0, [r4, #0x14]
+    // mov r1, #1
+    // bl PaletteData_FreeBuffers
+    // ldr r0, [r4, #0x14]
+    // mov r1, #2
+    // bl PaletteData_FreeBuffers
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_Free
+    // ldr r0, [r4, #0x18]
+    // bl PokepicManager_Delete
+    // ldr r0, [r4, #0x44]
+    // bl sub_02016F2C
+    // ldr r0, [r4, #0x34]
+    // bl GF_3DVramMan_Delete
+    // ldr r0, [r4]
+    // bl sub_020771A0
+    // ldr r0, [r4, #8]
+    // bl DestroyMsgData
+    // ldr r0, [r4, #0xc]
+    // bl MessageFormat_Delete
+    // ldr r0, [r4, #0x10]
+    // bl Heap_Free
+    // ldr r0, [r4, #0x3c]
+    // bl Heap_Free
+    // ldr r0, [r4, #0x58]
+    // bl sub_020164C4
+    // ldr r0, [r4]
+    // bl Heap_Free
+    // add r0, r4, #0
+    // add r0, #0x84
+    // ldr r0, [r0]
+    // bl NARC_Delete
+    // add r0, r4, #0
+    // bl Heap_Free
+    // mov r0, #0
+    // bl TextFlags_SetCanABSpeedUpPrint
+    // mov r0, #0
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // ldr r0, _02075E10 ; =gSystem + 0x60
+    // mov r1, #1
+    // strb r1, [r0, #9]
+    // bl GfGfx_SwapDisplay
+    // pop {r4, pc}
+    // nop
+    // _02075E10: .word gSystem + 0x60
+    // TODO: decompile
 }
+
 
 void sub_02075E14(void) {
-    /* Original at 0x02075E14 */
-    /* Requires manual decompilation - 1591 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x90\n    add r4, r0, #0\n    add r0, #0x70\n    ldrb r1, [r0]\n    cmp r1, #0\n    beq _02075EF0\n    mov r0, #1\n    tst r0, r1\n    ldr r0, [r4, #0x1c]\n    bne _02075E82\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    mov r1, #0xc\n    neg r2, r2\n    bl Pokepic_AddAttr\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    ldr r0, [r4, #0x1c]\n    mov r1, #0xd\n    neg r2, r2\n    bl Pokepic_AddAttr\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    ldr r0, [r4, #0x20]\n    mov r1, #0xc\n    bl Pokepic_AddAttr\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    ldr r0, [r4, #0x20]\n    mov r1, #0xd\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #0x1c]\n    mov r1, #0xc\n    bl Pokepic_GetAttr\n    cmp r0, #0\n    bne _02075EF0\n    add r0, r4, #0\n    add r0, #0x70\n    ldrb r1, [r0]\n    mov r0, #1\n    eor r1, r0\n    add r0, r4, #0\n    add r0, #0x70\n    strb r1, [r0]\n    b _02075EF0\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    mov r1, #0xc\n    bl Pokepic_AddAttr\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    ldr r0, [r4, #0x1c]\n    mov r1, #0xd\n    bl Pokepic_AddAttr\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    ldr r0, [r4, #0x20]\n    mov r1, #0xc\n    neg r2, r2\n    bl Pokepic_AddAttr\n    add r2, r4, #0\n    add r2, #0x71\n    ldrb r2, [r2]\n    ldr r0, [r4, #0x20]\n    mov r1, #0xd\n    neg r2, r2\n    bl Pokepic_AddAttr\n    ldr r0, [r4, #0x20]\n    mov r1, #0xc\n    bl Pokepic_GetAttr\n    cmp r0, #0\n    bne _02075EF0\n    add r0, r4, #0\n    add r0, #0x70\n    ldrb r1, [r0]\n    mov r0, #1\n    eor r1, r0\n    add r0, r4, #0\n    add r0, #0x70\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x71\n    ldrb r0, [r0]\n    cmp r0, #0x40\n    bhs _02075EF0\n    add r0, r4, #0\n    add r0, #0x71\n    ldrb r0, [r0]\n    lsl r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x71\n    strb r1, [r0]\n    ldr r1, [r4, #0x7c]\n    mov r0, #1\n    tst r0, r1\n    beq _02075F2A\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    cmp r0, #8\n    bne _02075F2A\n    ldr r0, _02076210 ; =gSystem\n    ldr r1, [r0, #0x48]\n    mov r0, #2\n    tst r0, r1\n    beq _02075F2A\n    mov r3, #0\n    str r3, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    ldr r0, _02076214 ; =0x00007FFF\n    ldr r2, _02076218 ; =0x0000F3FF\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x14]\n    mov r1, #0xf\n    bl PaletteData_BeginPaletteFade\n    add r0, r4, #0\n    mov r1, #0x29\n    add r0, #0x64\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    cmp r0, #0x2d\n    bhi _0207602A\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02075F40: ; jump table\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _0207602A\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    mov r0, #0\n    bl SetMasterBrightnessNeutral\n    mov r0, #1\n    bl SetMasterBrightnessNeutral\n    ldr r0, [r4, #0x58]\n    mov r1, #0\n    bl sub_0201649C\n    ldr r1, [r4, #0x7c]\n    mov r0, #2\n    tst r1, r0\n    beq _02075FE8\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    mov r0, #4\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _0207602A\n    mov r1, #0xe5\n    add r0, r4, #0\n    lsl r1, r1, #2\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    beq _0207602E\n    bl _02076C76\n    mov r0, #4\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02076132\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    add r3, r4, #0\n    add r0, r4, #0\n    add r3, #0x60\n    add r0, #0x84\n    ldrh r3, [r3]\n    ldr r0, [r0]\n    ldr r1, [r4, #0x44]\n    ldr r2, [r4, #0x1c]\n    bl sub_0207294C\n    add r2, r4, #0\n    add r0, r4, #0\n    add r2, #0x60\n    add r0, #0x84\n    ldrh r2, [r2]\n    ldr r0, [r0]\n    add r1, sp, #0x68\n    mov r3, #1\n    bl NARC_ReadPokepicAnimScript\n    ldr r0, [r4, #0x1c]\n    add r1, sp, #0x68\n    bl Pokepic_SetAnimScript\n    ldr r0, [r4, #0x1c]\n    mov r1, #0\n    bl Pokepic_StartAnim\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x60\n    add r1, #0x80\n    ldrh r0, [r0]\n    ldrb r1, [r1]\n    bl PlayCry\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    ldr r1, [r4, #0x7c]\n    mov r0, #2\n    tst r0, r1\n    beq _020760B6\n    ldr r1, _0207621C ; =0x00000395\n    add r0, r4, #0\n    bl sub_020772F8\n    b _020760BE\n    ldr r1, _02076220 ; =0x00000393\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    mov r0, #5\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _02076132\n    bl IsCryFinished\n    cmp r0, #0\n    bne _02076132\n    ldr r0, [r4, #0x44]\n    mov r1, #0\n    bl sub_02017068\n    cmp r0, #1\n    bne _02076132\n    ldr r0, [r4, #0x1c]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    bne _02076132\n    ldr r0, [r4, #0x58]\n    mov r1, #1\n    bl sub_0201649C\n    ldr r0, _02076224 ; =0x000003F3\n    bl sub_02005D10\n    add r0, r4, #0\n    mov r1, #0x14\n    add r0, #0x66\n    strb r1, [r0]\n    mov r0, #6\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _02076136\n    bl _02076C76\n    ldr r0, [r4, #0x5c]\n    str r0, [sp, #0x10]\n    mov r0, #0\n    str r0, [sp, #0x14]\n    add r0, sp, #0x10\n    bl sub_02077604\n    mov r1, #0\n    str r0, [r4, #0x30]\n    bl sub_02077634\n    ldr r0, _02076214 ; =0x00007FFF\n    mov r1, #0\n    str r0, [sp]\n    ldr r0, [r4, #0x1c]\n    mov r2, #0x10\n    mov r3, #4\n    bl Pokepic_StartPaletteFade\n    ldr r0, _02076214 ; =0x00007FFF\n    mov r1, #0\n    str r0, [sp]\n    ldr r0, [r4, #0x20]\n    mov r2, #0x10\n    mov r3, #4\n    bl Pokepic_StartPaletteFade\n    ldr r0, [r4, #0x5c]\n    bl HeapExp_FndGetTotalFreeSize\n    mov r1, #2\n    lsl r1, r1, #0xe\n    cmp r0, r1\n    bhi _0207617E\n    bl GF_AssertFail\n    ldr r0, _02076228 ; =0x000005F8\n    bl PlaySE\n    add r0, r4, #0\n    mov r1, #0x28\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x73\n    ldrb r0, [r0]\n    cmp r0, #0x28\n    bhs _020761C2\n    add r0, r4, #0\n    add r0, #0x73\n    ldrb r0, [r0]\n    add r1, r0, #2\n    add r0, r4, #0\n    add r0, #0x73\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x75\n    ldrb r0, [r0]\n    sub r1, r0, #2\n    add r0, r4, #0\n    add r0, #0x75\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _0207625E\n    ldr r0, [r4, #0x30]\n    mov r1, #1\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #2\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #7\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #8\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #9\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #0xb\n    bl sub_02077634\n    ldr r0, _0207622C ; =0x000005F9\n    b _02076230\n    nop\n    _02076210: .word gSystem\n    _02076214: .word 0x00007FFF\n    _02076218: .word 0x0000F3FF\n    _0207621C: .word 0x00000395\n    _02076220: .word 0x00000393\n    _02076224: .word 0x000003F3\n    _02076228: .word 0x000005F8\n    _0207622C: .word 0x000005F9\n    bl PlaySE\n    add r0, r4, #0\n    mov r1, #0x10\n    add r0, #0x70\n    strb r1, [r0]\n    add r0, r4, #0\n    mov r1, #8\n    add r0, #0x71\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x30]\n    bl sub_02077650\n    cmp r0, #0\n    beq _02076262\n    bl _02076C76\n    ldr r0, [r4, #0x30]\n    mov r1, #3\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #4\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #5\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #6\n    bl sub_02077634\n    ldr r0, [r4, #0x30]\n    mov r1, #0xa\n    bl sub_02077634\n    mov r0, #0\n    str r0, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    ldr r0, _020765D8 ; =0x00007FFF\n    ldr r2, _020765DC ; =0x0000F3FF\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x14]\n    mov r1, #0xf\n    mov r3, #2\n    bl PaletteData_BeginPaletteFade\n    ldr r0, [r4, #0x1c]\n    mov r1, #0xc\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x1c]\n    mov r1, #0xd\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r0, [r4, #0x20]\n    add r2, #0xf4\n    bl Pokepic_SetAttr\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r4, #0x20]\n    add r2, #0xf3\n    bl Pokepic_SetAttr\n    ldr r0, _020765E0 ; =0x000005FA\n    bl PlaySE\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x70\n    strb r1, [r0]\n    add r0, r4, #0\n    mov r1, #8\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x73\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _0207631A\n    add r0, r4, #0\n    add r0, #0x73\n    ldrb r0, [r0]\n    sub r1, r0, #2\n    add r0, r4, #0\n    add r0, #0x73\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x75\n    ldrb r0, [r0]\n    add r1, r0, #2\n    add r0, r4, #0\n    add r0, #0x75\n    strb r1, [r0]\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02076396\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _02076396\n    ldr r0, [r4, #0x30]\n    mov r1, #0xc\n    bl sub_02077634\n    mov r0, #0x10\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    ldr r0, _020765D8 ; =0x00007FFF\n    ldr r2, _020765DC ; =0x0000F3FF\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x14]\n    mov r1, #0xf\n    mov r3, #4\n    bl PaletteData_BeginPaletteFade\n    ldr r0, _020765D8 ; =0x00007FFF\n    mov r1, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #0x18]\n    mov r2, #0\n    mov r3, #3\n    bl Pokepic_StartPaletteFadeAll\n    ldr r0, _020765E4 ; =0x000005FB\n    bl PlaySE\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02076396\n    ldr r0, [r4, #0x30]\n    bl sub_02077650\n    cmp r0, #0\n    beq _0207639A\n    bl _02076C76\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    add r3, r4, #0\n    add r0, r4, #0\n    add r3, #0x62\n    add r0, #0x84\n    ldrh r3, [r3]\n    ldr r0, [r0]\n    ldr r1, [r4, #0x44]\n    ldr r2, [r4, #0x20]\n    bl sub_0207294C\n    add r2, r4, #0\n    add r0, r4, #0\n    add r2, #0x62\n    add r0, #0x84\n    ldrh r2, [r2]\n    ldr r0, [r0]\n    add r1, sp, #0x40\n    mov r3, #1\n    bl NARC_ReadPokepicAnimScript\n    ldr r0, [r4, #0x20]\n    add r1, sp, #0x40\n    bl Pokepic_SetAnimScript\n    ldr r0, [r4, #0x20]\n    mov r1, #0\n    bl Pokepic_StartAnim\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x62\n    add r1, #0x80\n    ldrh r0, [r0]\n    ldrb r1, [r1]\n    bl PlayCry\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    bl IsCryFinished\n    cmp r0, #0\n    bne _020764F4\n    ldr r0, [r4, #0x44]\n    mov r1, #0\n    bl sub_02017068\n    cmp r0, #1\n    bne _020764F4\n    ldr r0, [r4, #0x20]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    bne _020764F4\n    add r2, r4, #0\n    ldr r0, [r4, #0x28]\n    mov r1, #MON_DATA_SPECIES\n    add r2, #0x62\n    bl SetMonData\n    ldr r0, [r4, #0x28]\n    bl UpdateMonAbility\n    ldr r0, [r4, #0x28]\n    bl CalcMonLevelAndStats\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl BufferBoxMonSpeciesName\n    ldr r1, _020765E8 ; =0x00000396\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x28\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _020764F4\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _020764F4\n    ldr r0, [r4, #0x48]\n    ldr r1, [r4, #0x28]\n    bl Pokedex_SetMonCaughtFlag\n    ldr r0, [r4, #0x50]\n    mov r1, #0xd\n    bl GameStats_Inc\n    ldr r0, [r4, #0x50]\n    mov r1, #0x15\n    bl GameStats_AddScore\n    ldr r0, [r4, #0x28]\n    mov r1, #0x4d\n    mov r2, #0\n    bl GetMonData\n    cmp r0, #0\n    bne _020764CE\n    ldr r0, [r4, #0x28]\n    mov r1, #MON_DATA_SPECIES_NAME\n    mov r2, #0\n    bl SetMonData\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r1, r4, #0\n    ldr r0, [r4, #0x28]\n    add r1, #0x68\n    add r2, sp, #0xc\n    bl MonTryLearnMoveOnLevelUp\n    cmp r0, #0\n    beq _020764FE\n    ldr r1, _020765EC ; =0x0000FFFE\n    cmp r0, r1\n    bne _020764F6\n    b _02076C76\n    add r1, r1, #1\n    cmp r0, r1\n    beq _02076508\n    b _0207651C\n    mov r0, #0x27\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, sp, #0xc\n    ldrh r1, [r0]\n    add r0, r4, #0\n    add r0, #0x6c\n    strh r1, [r0]\n    mov r0, #0xe\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    add r2, sp, #0xc\n    ldrh r2, [r2]\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl BufferMoveName\n    add r0, r4, #0\n    mov r1, #4\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    mov r0, #0x25\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    add r2, r4, #0\n    add r2, #0x6c\n    ldrh r2, [r2]\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl BufferMoveName\n    ldr r1, _020765F0 ; =0x000004A9\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    ldr r1, _020765F4 ; =0x000004AA\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r1, _020765F8 ; =0x000004AB\n    b _020765FC\n    nop\n    _020765D8: .word 0x00007FFF\n    _020765DC: .word 0x0000F3FF\n    _020765E0: .word 0x000005FA\n    _020765E4: .word 0x000005FB\n    _020765E8: .word 0x00000396\n    _020765EC: .word 0x0000FFFE\n    _020765F0: .word 0x000004A9\n    _020765F4: .word 0x000004AA\n    _020765F8: .word 0x000004AB\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #1\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _02076646\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _02076648\n    b _02076C76\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    mov r1, #1\n    bl sub_0207584C\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    bl sub_02075A04\n    cmp r0, #1\n    beq _02076682\n    cmp r0, #2\n    beq _020766B2\n    add sp, #0x90\n    pop {r4, pc}\n    add r0, r4, #0\n    mov r1, #0x16\n    add r0, #0x64\n    strb r1, [r0]\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldr r0, [r4, #0x14]\n    ldr r2, _020769A0 ; =0x0000FFFF\n    mov r1, #0xf\n    mov r3, #1\n    bl PaletteData_BeginPaletteFade\n    mov r1, #0\n    str r1, [sp]\n    ldr r0, [r4, #0x18]\n    mov r2, #0x10\n    add r3, r1, #0\n    bl Pokepic_StartPaletteFadeAll\n    add sp, #0x90\n    pop {r4, pc}\n    mov r0, #0x20\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02076752\n    mov r0, #0\n    add r1, r0, #0\n    bl sub_0200FBF4\n    mov r0, #1\n    mov r1, #0\n    bl sub_0200FBF4\n    ldr r0, [r4]\n    bl sub_020771A0\n    add r0, r4, #0\n    bl sub_02075770\n    ldr r0, [r4, #0x1c]\n    mov r1, #6\n    mov r2, #1\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x20]\n    mov r1, #6\n    mov r2, #1\n    bl Pokepic_SetAttr\n    ldr r1, [r4, #0x28]\n    ldr r0, [r4, #0x3c]\n    mov r2, #1\n    str r1, [r0]\n    ldr r1, [r4, #0x2c]\n    ldr r0, [r4, #0x3c]\n    str r1, [r0, #4]\n    ldr r1, [r4, #0x3c]\n    mov r0, #0\n    strb r0, [r1, #0x11]\n    ldr r1, [r4, #0x3c]\n    strb r0, [r1, #0x14]\n    ldr r1, [r4, #0x3c]\n    strb r2, [r1, #0x13]\n    add r1, r4, #0\n    add r1, #0x6c\n    ldrh r2, [r1]\n    ldr r1, [r4, #0x3c]\n    strh r2, [r1, #0x18]\n    ldr r1, [r4, #0x3c]\n    mov r2, #2\n    strb r2, [r1, #0x12]\n    ldr r1, [r4, #0x3c]\n    str r0, [r1, #0x28]\n    ldr r1, [r4, #0x3c]\n    str r0, [r1, #0x30]\n    ldr r0, [r4, #0x3c]\n    ldr r1, _020769A4 ; =_020FFEC0\n    bl sub_02089D40\n    add r0, r4, #0\n    bl sub_02077394\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x38]\n    bl OverlayManager_Run\n    cmp r0, #0\n    bne _02076754\n    b _02076C76\n    ldr r0, [r4, #0x38]\n    bl OverlayManager_Delete\n    mov r0, #0\n    str r0, [r4, #0x38]\n    ldr r1, [r4]\n    add r0, r4, #0\n    bl sub_02076E64\n    add r0, r4, #0\n    bl sub_02075630\n    ldr r0, [r4, #4]\n    mov r1, #0\n    mov r2, #1\n    mov r3, #0xa\n    bl DrawFrameAndWindow2\n    ldr r0, [r4, #0x1c]\n    mov r1, #6\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x20]\n    mov r1, #6\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x1c]\n    bl Pokepic_ScheduleReloadFromNarc\n    ldr r0, [r4, #0x20]\n    bl Pokepic_ScheduleReloadFromNarc\n    mov r0, #0x10\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x14]\n    ldr r2, _020769A0 ; =0x0000FFFF\n    mov r1, #0xf\n    mov r3, #1\n    bl PaletteData_BeginPaletteFade\n    mov r2, #0\n    str r2, [sp]\n    ldr r0, [r4, #0x18]\n    mov r1, #0x10\n    add r3, r2, #0\n    bl Pokepic_StartPaletteFadeAll\n    bl sub_0203A880\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    mov r0, #0\n    bl SetMasterBrightnessNeutral\n    mov r0, #1\n    bl SetMasterBrightnessNeutral\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _020768D4\n    ldr r0, [r4, #0x3c]\n    ldrb r1, [r0, #0x16]\n    cmp r1, #4\n    bne _020767F8\n    mov r0, #0x20\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x6e\n    strb r1, [r0]\n    mov r0, #0x19\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    add r2, r4, #0\n    add r2, #0x6c\n    ldrh r2, [r2]\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferMoveName\n    ldr r1, _020769A8 ; =0x000004AD\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #1\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    mov r1, #0\n    bl sub_0207584C\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    bl sub_02075A04\n    cmp r0, #1\n    beq _02076866\n    cmp r0, #2\n    beq _020768A4\n    add sp, #0x90\n    pop {r4, pc}\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    add r2, r4, #0\n    add r2, #0x6c\n    ldrh r2, [r2]\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl BufferMoveName\n    ldr r1, _020769AC ; =0x000004AE\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    mov r0, #0x24\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    mov r0, #0xe\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _020768D4\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _020768D6\n    b _02076C76\n    mov r0, #0xd\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r1, _020769B0 ; =0x000004AF\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    add r1, r4, #0\n    add r1, #0x6e\n    ldrb r1, [r1]\n    ldr r0, [r4, #0x28]\n    mov r2, #0\n    add r1, #0x36\n    bl GetMonData\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl BufferMoveName\n    mov r1, #0x4b\n    add r0, r4, #0\n    lsl r1, r1, #4\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r1, _020769B4 ; =0x000004B1\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    add r2, r4, #0\n    add r2, #0x6c\n    ldrh r2, [r2]\n    ldr r0, [r4, #0xc]\n    mov r1, #1\n    bl BufferMoveName\n    ldr r1, _020769B8 ; =0x000004B2\n    b _020769BC\n    _020769A0: .word 0x0000FFFF\n    _020769A4: .word _020FFEC0\n    _020769A8: .word 0x000004AD\n    _020769AC: .word 0x000004AE\n    _020769B0: .word 0x000004AF\n    _020769B4: .word 0x000004B1\n    _020769B8: .word 0x000004B2\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    add r2, r4, #0\n    mov r1, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r1, r4, #0\n    add r1, #0x6e\n    ldrb r1, [r1]\n    ldr r0, [r4, #0x28]\n    add r2, #0x66\n    add r1, #MON_DATA_MOVE1_PP_UPS\n    bl SetMonData\n    add r1, r4, #0\n    add r2, r4, #0\n    add r1, #0x6c\n    add r2, #0x6e\n    ldrh r1, [r1]\n    ldrb r2, [r2]\n    ldr r0, [r4, #0x28]\n    bl MonSetMoveInSlot\n    add r0, r4, #0\n    mov r1, #0x1e\n    add r0, #0x66\n    strb r1, [r0]\n    mov r0, #0x25\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _02076A44\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    bl IsFanfarePlaying\n    cmp r0, #0\n    bne _02076A44\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    beq _02076A46\n    b _02076C76\n    mov r0, #0xd\n    add r4, #0x64\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldr r0, [r4, #0x14]\n    ldr r2, _02076C7C ; =0x0000FFFF\n    mov r1, #0xf\n    mov r3, #1\n    bl PaletteData_BeginPaletteFade\n    mov r1, #0\n    str r1, [sp]\n    ldr r0, [r4, #0x18]\n    mov r2, #0x10\n    add r3, r1, #0\n    bl Pokepic_StartPaletteFadeAll\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02076B54\n    ldr r0, [r4, #0x30]\n    bl sub_02077664\n    add r0, r4, #0\n    bl sub_02076C90\n    mov r0, #1\n    add r4, #0x67\n    add sp, #0x90\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02076B54\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r0, [r4, #0x1c]\n    add r2, #0xf4\n    bl Pokepic_SetAttr\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r4, #0x1c]\n    add r2, #0xf3\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x20]\n    mov r1, #0xc\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x20]\n    mov r1, #0xd\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x20]\n    mov r1, #6\n    mov r2, #1\n    bl Pokepic_SetAttr\n    mov r0, #0x10\n    str r0, [sp]\n    mov r3, #0\n    ldr r0, _02076C80 ; =0x00007FFF\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x14]\n    ldr r2, _02076C84 ; =0x0000F3FF\n    mov r1, #0xf\n    bl PaletteData_BeginPaletteFade\n    ldr r0, _02076C80 ; =0x00007FFF\n    mov r2, #0\n    str r0, [sp]\n    ldr r0, [r4, #0x18]\n    mov r1, #0x10\n    add r3, r2, #0\n    bl Pokepic_StartPaletteFadeAll\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x72\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x73\n    strb r1, [r0]\n    add r0, r4, #0\n    mov r2, #0xff\n    add r0, #0x74\n    strb r2, [r0]\n    add r0, r4, #0\n    mov r2, #0xa0\n    add r0, #0x75\n    strb r2, [r0]\n    add r0, r4, #0\n    add r0, #0x70\n    strb r1, [r0]\n    ldr r0, _02076C88 ; =0x000003F3\n    bl StopBGM\n    ldr r0, [r4, #0x30]\n    bl sub_02077664\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    beq _02076B56\n    b _02076C76\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    add r3, r4, #0\n    add r0, r4, #0\n    add r3, #0x60\n    add r0, #0x84\n    ldrh r3, [r3]\n    ldr r0, [r0]\n    ldr r1, [r4, #0x44]\n    ldr r2, [r4, #0x1c]\n    bl sub_0207294C\n    add r2, r4, #0\n    add r0, r4, #0\n    add r2, #0x60\n    add r0, #0x84\n    ldrh r2, [r2]\n    ldr r0, [r0]\n    add r1, sp, #0x18\n    mov r3, #1\n    bl NARC_ReadPokepicAnimScript\n    ldr r0, [r4, #0x1c]\n    add r1, sp, #0x18\n    bl Pokepic_SetAnimScript\n    ldr r0, [r4, #0x1c]\n    mov r1, #0\n    bl Pokepic_StartAnim\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x60\n    add r1, #0x80\n    ldrh r0, [r0]\n    ldrb r1, [r1]\n    bl PlayCry\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    bl IsCryFinished\n    cmp r0, #0\n    bne _02076C76\n    ldr r0, [r4, #0x44]\n    mov r1, #0\n    bl sub_02017068\n    cmp r0, #1\n    bne _02076C76\n    ldr r0, [r4, #0x1c]\n    bl Pokepic_IsAnimFinished\n    cmp r0, #0\n    bne _02076C76\n    ldr r0, [r4, #0x28]\n    bl Mon_GetBoxMon\n    add r2, r0, #0\n    ldr r0, [r4, #0xc]\n    mov r1, #0\n    bl BufferBoxMonNickname\n    ldr r1, _02076C8C ; =0x00000397\n    add r0, r4, #0\n    bl sub_020772F8\n    add r1, r4, #0\n    add r1, #0x65\n    strb r0, [r1]\n    add r0, r4, #0\n    mov r1, #0x14\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x65\n    ldrb r0, [r0]\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _02076C76\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x66\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x66\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _02076C76\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x10\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldr r0, [r4, #0x14]\n    ldr r2, _02076C7C ; =0x0000FFFF\n    mov r1, #0xf\n    mov r3, #1\n    bl PaletteData_BeginPaletteFade\n    mov r1, #0\n    str r1, [sp]\n    ldr r0, [r4, #0x18]\n    mov r2, #0x10\n    add r3, r1, #0\n    bl Pokepic_StartPaletteFadeAll\n    add r0, r4, #0\n    add r0, #0x64\n    ldrb r0, [r0]\n    add r4, #0x64\n    add sp, #0x90\n    add r0, r0, #1\n    strb r0, [r4]\n    pop {r4, pc}\n    ldr r0, [r4, #0x14]\n    bl PaletteData_GetSelectedBuffersBitmask\n    cmp r0, #0\n    bne _02076C76\n    mov r0, #1\n    add r4, #0x67\n    strb r0, [r4]\n    add sp, #0x90\n    pop {r4, pc}\n    nop\n    _02076C7C: .word 0x0000FFFF\n    _02076C80: .word 0x00007FFF\n    _02076C84: .word 0x0000F3FF\n    _02076C88: .word 0x000003F3\n    _02076C8C: .word 0x00000397"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #0x90
+    // add r4, r0, #0
+    // add r0, #0x70
+    // ldrb r1, [r0]
+    // cmp r1, #0
+    // beq _02075EF0
+    // mov r0, #1
+    // tst r0, r1
+    // ldr r0, [r4, #0x1c]
+    // bne _02075E82
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // mov r1, #0xc
+    // neg r2, r2
+    // bl Pokepic_AddAttr
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #0xd
+    // neg r2, r2
+    // bl Pokepic_AddAttr
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xc
+    // bl Pokepic_AddAttr
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xd
+    // bl Pokepic_AddAttr
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #0xc
+    // bl Pokepic_GetAttr
+    // cmp r0, #0
+    // bne _02075EF0
+    // add r0, r4, #0
+    // add r0, #0x70
+    // ldrb r1, [r0]
+    // mov r0, #1
+    // eor r1, r0
+    // add r0, r4, #0
+    // add r0, #0x70
+    // strb r1, [r0]
+    // b _02075EF0
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // mov r1, #0xc
+    // bl Pokepic_AddAttr
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #0xd
+    // bl Pokepic_AddAttr
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xc
+    // neg r2, r2
+    // bl Pokepic_AddAttr
+    // add r2, r4, #0
+    // add r2, #0x71
+    // ldrb r2, [r2]
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xd
+    // neg r2, r2
+    // bl Pokepic_AddAttr
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xc
+    // bl Pokepic_GetAttr
+    // cmp r0, #0
+    // bne _02075EF0
+    // add r0, r4, #0
+    // add r0, #0x70
+    // ldrb r1, [r0]
+    // mov r0, #1
+    // eor r1, r0
+    // add r0, r4, #0
+    // add r0, #0x70
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x71
+    // ldrb r0, [r0]
+    // cmp r0, #0x40
+    // bhs _02075EF0
+    // add r0, r4, #0
+    // add r0, #0x71
+    // ldrb r0, [r0]
+    // lsl r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x71
+    // strb r1, [r0]
+    // ldr r1, [r4, #0x7c]
+    // mov r0, #1
+    // tst r0, r1
+    // beq _02075F2A
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // cmp r0, #8
+    // bne _02075F2A
+    // ldr r0, _02076210 ; =gSystem
+    // ldr r1, [r0, #0x48]
+    // mov r0, #2
+    // tst r0, r1
+    // beq _02075F2A
+    // mov r3, #0
+    // str r3, [sp]
+    // mov r0, #0x10
+    // str r0, [sp, #4]
+    // ldr r0, _02076214 ; =0x00007FFF
+    // ldr r2, _02076218 ; =0x0000F3FF
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // mov r1, #0xf
+    // bl PaletteData_BeginPaletteFade
+    // add r0, r4, #0
+    // mov r1, #0x29
+    // add r0, #0x64
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // cmp r0, #0x2d
+    // bhi _0207602A
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02075F40: ; jump table
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _0207602A
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // mov r0, #0
+    // bl SetMasterBrightnessNeutral
+    // mov r0, #1
+    // bl SetMasterBrightnessNeutral
+    // ldr r0, [r4, #0x58]
+    // mov r1, #0
+    // bl sub_0201649C
+    // ldr r1, [r4, #0x7c]
+    // mov r0, #2
+    // tst r1, r0
+    // beq _02075FE8
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // mov r0, #4
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _0207602A
+    // mov r1, #0xe5
+    // add r0, r4, #0
+    // lsl r1, r1, #2
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x65
+    // ldrb r0, [r0]
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // beq _0207602E
+    // bl _02076C76
+    // mov r0, #4
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _02076132
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // add r3, r4, #0
+    // add r0, r4, #0
+    // add r3, #0x60
+    // add r0, #0x84
+    // ldrh r3, [r3]
+    // ldr r0, [r0]
+    // ldr r1, [r4, #0x44]
+    // ldr r2, [r4, #0x1c]
+    // bl sub_0207294C
+    // add r2, r4, #0
+    // add r0, r4, #0
+    // add r2, #0x60
+    // add r0, #0x84
+    // ldrh r2, [r2]
+    // ldr r0, [r0]
+    // add r1, sp, #0x68
+    // mov r3, #1
+    // bl NARC_ReadPokepicAnimScript
+    // ldr r0, [r4, #0x1c]
+    // add r1, sp, #0x68
+    // bl Pokepic_SetAnimScript
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #0
+    // bl Pokepic_StartAnim
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // add r0, #0x60
+    // add r1, #0x80
+    // ldrh r0, [r0]
+    // ldrb r1, [r1]
+    // bl PlayCry
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // ldr r1, [r4, #0x7c]
+    // mov r0, #2
+    // tst r0, r1
+    // beq _020760B6
+    // ldr r1, _0207621C ; =0x00000395
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // b _020760BE
+    // ldr r1, _02076220 ; =0x00000393
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // mov r0, #5
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x65
+    // ldrb r0, [r0]
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _02076132
+    // bl IsCryFinished
+    // cmp r0, #0
+    // bne _02076132
+    // ldr r0, [r4, #0x44]
+    // mov r1, #0
+    // bl sub_02017068
+    // cmp r0, #1
+    // bne _02076132
+    // ldr r0, [r4, #0x1c]
+    // bl Pokepic_IsAnimFinished
+    // cmp r0, #0
+    // bne _02076132
+    // ldr r0, [r4, #0x58]
+    // mov r1, #1
+    // bl sub_0201649C
+    // ldr r0, _02076224 ; =0x000003F3
+    // bl sub_02005D10
+    // add r0, r4, #0
+    // mov r1, #0x14
+    // add r0, #0x66
+    // strb r1, [r0]
+    // mov r0, #6
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // beq _02076136
+    // bl _02076C76
+    // ldr r0, [r4, #0x5c]
+    // str r0, [sp, #0x10]
+    // mov r0, #0
+    // str r0, [sp, #0x14]
+    // add r0, sp, #0x10
+    // bl sub_02077604
+    // mov r1, #0
+    // str r0, [r4, #0x30]
+    // bl sub_02077634
+    // ldr r0, _02076214 ; =0x00007FFF
+    // mov r1, #0
+    // str r0, [sp]
+    // ldr r0, [r4, #0x1c]
+    // mov r2, #0x10
+    // mov r3, #4
+    // bl Pokepic_StartPaletteFade
+    // ldr r0, _02076214 ; =0x00007FFF
+    // mov r1, #0
+    // str r0, [sp]
+    // ldr r0, [r4, #0x20]
+    // mov r2, #0x10
+    // mov r3, #4
+    // bl Pokepic_StartPaletteFade
+    // ldr r0, [r4, #0x5c]
+    // bl HeapExp_FndGetTotalFreeSize
+    // mov r1, #2
+    // lsl r1, r1, #0xe
+    // cmp r0, r1
+    // bhi _0207617E
+    // bl GF_AssertFail
+    // ldr r0, _02076228 ; =0x000005F8
+    // bl PlaySE
+    // add r0, r4, #0
+    // mov r1, #0x28
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x73
+    // ldrb r0, [r0]
+    // cmp r0, #0x28
+    // bhs _020761C2
+    // add r0, r4, #0
+    // add r0, #0x73
+    // ldrb r0, [r0]
+    // add r1, r0, #2
+    // add r0, r4, #0
+    // add r0, #0x73
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x75
+    // ldrb r0, [r0]
+    // sub r1, r0, #2
+    // add r0, r4, #0
+    // add r0, #0x75
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _0207625E
+    // ldr r0, [r4, #0x30]
+    // mov r1, #1
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #2
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #7
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #8
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #9
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #0xb
+    // bl sub_02077634
+    // ldr r0, _0207622C ; =0x000005F9
+    // b _02076230
+    // nop
+    // _02076210: .word gSystem
+    // _02076214: .word 0x00007FFF
+    // _02076218: .word 0x0000F3FF
+    // _0207621C: .word 0x00000395
+    // _02076220: .word 0x00000393
+    // _02076224: .word 0x000003F3
+    // _02076228: .word 0x000005F8
+    // _0207622C: .word 0x000005F9
+    // bl PlaySE
+    // add r0, r4, #0
+    // mov r1, #0x10
+    // add r0, #0x70
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // mov r1, #8
+    // add r0, #0x71
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x30]
+    // bl sub_02077650
+    // cmp r0, #0
+    // beq _02076262
+    // bl _02076C76
+    // ldr r0, [r4, #0x30]
+    // mov r1, #3
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #4
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #5
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #6
+    // bl sub_02077634
+    // ldr r0, [r4, #0x30]
+    // mov r1, #0xa
+    // bl sub_02077634
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r0, #0x10
+    // str r0, [sp, #4]
+    // ldr r0, _020765D8 ; =0x00007FFF
+    // ldr r2, _020765DC ; =0x0000F3FF
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // mov r1, #0xf
+    // mov r3, #2
+    // bl PaletteData_BeginPaletteFade
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #0xc
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #0xd
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // mov r1, #0xc
+    // add r2, r1, #0
+    // ldr r0, [r4, #0x20]
+    // add r2, #0xf4
+    // bl Pokepic_SetAttr
+    // mov r1, #0xd
+    // add r2, r1, #0
+    // ldr r0, [r4, #0x20]
+    // add r2, #0xf3
+    // bl Pokepic_SetAttr
+    // ldr r0, _020765E0 ; =0x000005FA
+    // bl PlaySE
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x70
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // mov r1, #8
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x73
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // beq _0207631A
+    // add r0, r4, #0
+    // add r0, #0x73
+    // ldrb r0, [r0]
+    // sub r1, r0, #2
+    // add r0, r4, #0
+    // add r0, #0x73
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x75
+    // ldrb r0, [r0]
+    // add r1, r0, #2
+    // add r0, r4, #0
+    // add r0, #0x75
+    // strb r1, [r0]
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _02076396
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _02076396
+    // ldr r0, [r4, #0x30]
+    // mov r1, #0xc
+    // bl sub_02077634
+    // mov r0, #0x10
+    // str r0, [sp]
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // ldr r0, _020765D8 ; =0x00007FFF
+    // ldr r2, _020765DC ; =0x0000F3FF
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // mov r1, #0xf
+    // mov r3, #4
+    // bl PaletteData_BeginPaletteFade
+    // ldr r0, _020765D8 ; =0x00007FFF
+    // mov r1, #0x10
+    // str r0, [sp]
+    // ldr r0, [r4, #0x18]
+    // mov r2, #0
+    // mov r3, #3
+    // bl Pokepic_StartPaletteFadeAll
+    // ldr r0, _020765E4 ; =0x000005FB
+    // bl PlaySE
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _02076396
+    // ldr r0, [r4, #0x30]
+    // bl sub_02077650
+    // cmp r0, #0
+    // beq _0207639A
+    // bl _02076C76
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // add r3, r4, #0
+    // add r0, r4, #0
+    // add r3, #0x62
+    // add r0, #0x84
+    // ldrh r3, [r3]
+    // ldr r0, [r0]
+    // ldr r1, [r4, #0x44]
+    // ldr r2, [r4, #0x20]
+    // bl sub_0207294C
+    // add r2, r4, #0
+    // add r0, r4, #0
+    // add r2, #0x62
+    // add r0, #0x84
+    // ldrh r2, [r2]
+    // ldr r0, [r0]
+    // add r1, sp, #0x40
+    // mov r3, #1
+    // bl NARC_ReadPokepicAnimScript
+    // ldr r0, [r4, #0x20]
+    // add r1, sp, #0x40
+    // bl Pokepic_SetAnimScript
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0
+    // bl Pokepic_StartAnim
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // add r0, #0x62
+    // add r1, #0x80
+    // ldrh r0, [r0]
+    // ldrb r1, [r1]
+    // bl PlayCry
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // bl IsCryFinished
+    // cmp r0, #0
+    // bne _020764F4
+    // ldr r0, [r4, #0x44]
+    // mov r1, #0
+    // bl sub_02017068
+    // cmp r0, #1
+    // bne _020764F4
+    // ldr r0, [r4, #0x20]
+    // bl Pokepic_IsAnimFinished
+    // cmp r0, #0
+    // bne _020764F4
+    // add r2, r4, #0
+    // ldr r0, [r4, #0x28]
+    // mov r1, #MON_DATA_SPECIES
+    // add r2, #0x62
+    // bl SetMonData
+    // ldr r0, [r4, #0x28]
+    // bl UpdateMonAbility
+    // ldr r0, [r4, #0x28]
+    // bl CalcMonLevelAndStats
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #1
+    // bl BufferBoxMonSpeciesName
+    // ldr r1, _020765E8 ; =0x00000396
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x28
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x65
+    // ldrb r0, [r0]
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _020764F4
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _020764F4
+    // ldr r0, [r4, #0x48]
+    // ldr r1, [r4, #0x28]
+    // bl Pokedex_SetMonCaughtFlag
+    // ldr r0, [r4, #0x50]
+    // mov r1, #0xd
+    // bl GameStats_Inc
+    // ldr r0, [r4, #0x50]
+    // mov r1, #0x15
+    // bl GameStats_AddScore
+    // ldr r0, [r4, #0x28]
+    // mov r1, #0x4d
+    // mov r2, #0
+    // bl GetMonData
+    // cmp r0, #0
+    // bne _020764CE
+    // ldr r0, [r4, #0x28]
+    // mov r1, #MON_DATA_SPECIES_NAME
+    // mov r2, #0
+    // bl SetMonData
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r1, r4, #0
+    // ldr r0, [r4, #0x28]
+    // add r1, #0x68
+    // add r2, sp, #0xc
+    // bl MonTryLearnMoveOnLevelUp
+    // cmp r0, #0
+    // beq _020764FE
+    // ldr r1, _020765EC ; =0x0000FFFE
+    // cmp r0, r1
+    // bne _020764F6
+    // b _02076C76
+    // add r1, r1, #1
+    // cmp r0, r1
+    // beq _02076508
+    // b _0207651C
+    // mov r0, #0x27
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, sp, #0xc
+    // ldrh r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x6c
+    // strh r1, [r0]
+    // mov r0, #0xe
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // add r2, sp, #0xc
+    // ldrh r2, [r2]
+    // ldr r0, [r4, #0xc]
+    // mov r1, #1
+    // bl BufferMoveName
+    // add r0, r4, #0
+    // mov r1, #4
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // mov r0, #0x25
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // add r2, r4, #0
+    // add r2, #0x6c
+    // ldrh r2, [r2]
+    // ldr r0, [r4, #0xc]
+    // mov r1, #1
+    // bl BufferMoveName
+    // ldr r1, _020765F0 ; =0x000004A9
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // ldr r1, _020765F4 ; =0x000004AA
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r1, _020765F8 ; =0x000004AB
+    // b _020765FC
+    // nop
+    // _020765D8: .word 0x00007FFF
+    // _020765DC: .word 0x0000F3FF
+    // _020765E0: .word 0x000005FA
+    // _020765E4: .word 0x000005FB
+    // _020765E8: .word 0x00000396
+    // _020765EC: .word 0x0000FFFE
+    // _020765F0: .word 0x000004A9
+    // _020765F4: .word 0x000004AA
+    // _020765F8: .word 0x000004AB
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #1
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x65
+    // ldrb r0, [r0]
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _02076646
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // beq _02076648
+    // b _02076C76
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl sub_0207584C
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // bl sub_02075A04
+    // cmp r0, #1
+    // beq _02076682
+    // cmp r0, #2
+    // beq _020766B2
+    // add sp, #0x90
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // mov r1, #0x16
+    // add r0, #0x64
+    // strb r1, [r0]
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #0x10
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // ldr r2, _020769A0 ; =0x0000FFFF
+    // mov r1, #0xf
+    // mov r3, #1
+    // bl PaletteData_BeginPaletteFade
+    // mov r1, #0
+    // str r1, [sp]
+    // ldr r0, [r4, #0x18]
+    // mov r2, #0x10
+    // add r3, r1, #0
+    // bl Pokepic_StartPaletteFadeAll
+    // add sp, #0x90
+    // pop {r4, pc}
+    // mov r0, #0x20
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _02076752
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl sub_0200FBF4
+    // mov r0, #1
+    // mov r1, #0
+    // bl sub_0200FBF4
+    // ldr r0, [r4]
+    // bl sub_020771A0
+    // add r0, r4, #0
+    // bl sub_02075770
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #6
+    // mov r2, #1
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x20]
+    // mov r1, #6
+    // mov r2, #1
+    // bl Pokepic_SetAttr
+    // ldr r1, [r4, #0x28]
+    // ldr r0, [r4, #0x3c]
+    // mov r2, #1
+    // str r1, [r0]
+    // ldr r1, [r4, #0x2c]
+    // ldr r0, [r4, #0x3c]
+    // str r1, [r0, #4]
+    // ldr r1, [r4, #0x3c]
+    // mov r0, #0
+    // strb r0, [r1, #0x11]
+    // ldr r1, [r4, #0x3c]
+    // strb r0, [r1, #0x14]
+    // ldr r1, [r4, #0x3c]
+    // strb r2, [r1, #0x13]
+    // add r1, r4, #0
+    // add r1, #0x6c
+    // ldrh r2, [r1]
+    // ldr r1, [r4, #0x3c]
+    // strh r2, [r1, #0x18]
+    // ldr r1, [r4, #0x3c]
+    // mov r2, #2
+    // strb r2, [r1, #0x12]
+    // ldr r1, [r4, #0x3c]
+    // str r0, [r1, #0x28]
+    // ldr r1, [r4, #0x3c]
+    // str r0, [r1, #0x30]
+    // ldr r0, [r4, #0x3c]
+    // ldr r1, _020769A4 ; =_020FFEC0
+    // bl sub_02089D40
+    // add r0, r4, #0
+    // bl sub_02077394
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x38]
+    // bl OverlayManager_Run
+    // cmp r0, #0
+    // bne _02076754
+    // b _02076C76
+    // ldr r0, [r4, #0x38]
+    // bl OverlayManager_Delete
+    // mov r0, #0
+    // str r0, [r4, #0x38]
+    // ldr r1, [r4]
+    // add r0, r4, #0
+    // bl sub_02076E64
+    // add r0, r4, #0
+    // bl sub_02075630
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // mov r2, #1
+    // mov r3, #0xa
+    // bl DrawFrameAndWindow2
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #6
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x20]
+    // mov r1, #6
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x1c]
+    // bl Pokepic_ScheduleReloadFromNarc
+    // ldr r0, [r4, #0x20]
+    // bl Pokepic_ScheduleReloadFromNarc
+    // mov r0, #0x10
+    // str r0, [sp]
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // ldr r2, _020769A0 ; =0x0000FFFF
+    // mov r1, #0xf
+    // mov r3, #1
+    // bl PaletteData_BeginPaletteFade
+    // mov r2, #0
+    // str r2, [sp]
+    // ldr r0, [r4, #0x18]
+    // mov r1, #0x10
+    // add r3, r2, #0
+    // bl Pokepic_StartPaletteFadeAll
+    // bl sub_0203A880
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // mov r0, #0
+    // bl SetMasterBrightnessNeutral
+    // mov r0, #1
+    // bl SetMasterBrightnessNeutral
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _020768D4
+    // ldr r0, [r4, #0x3c]
+    // ldrb r1, [r0, #0x16]
+    // cmp r1, #4
+    // bne _020767F8
+    // mov r0, #0x20
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x6e
+    // strb r1, [r0]
+    // mov r0, #0x19
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r2, r4, #0
+    // add r2, #0x6c
+    // ldrh r2, [r2]
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferMoveName
+    // ldr r1, _020769A8 ; =0x000004AD
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #1
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl sub_0207584C
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // bl sub_02075A04
+    // cmp r0, #1
+    // beq _02076866
+    // cmp r0, #2
+    // beq _020768A4
+    // add sp, #0x90
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // add r2, r4, #0
+    // add r2, #0x6c
+    // ldrh r2, [r2]
+    // ldr r0, [r4, #0xc]
+    // mov r1, #1
+    // bl BufferMoveName
+    // ldr r1, _020769AC ; =0x000004AE
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // mov r0, #0x24
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // mov r0, #0xe
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x65
+    // ldrb r0, [r0]
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _020768D4
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // beq _020768D6
+    // b _02076C76
+    // mov r0, #0xd
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r1, _020769B0 ; =0x000004AF
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // add r1, r4, #0
+    // add r1, #0x6e
+    // ldrb r1, [r1]
+    // ldr r0, [r4, #0x28]
+    // mov r2, #0
+    // add r1, #0x36
+    // bl GetMonData
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #1
+    // bl BufferMoveName
+    // mov r1, #0x4b
+    // add r0, r4, #0
+    // lsl r1, r1, #4
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r1, _020769B4 ; =0x000004B1
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // add r2, r4, #0
+    // add r2, #0x6c
+    // ldrh r2, [r2]
+    // ldr r0, [r4, #0xc]
+    // mov r1, #1
+    // bl BufferMoveName
+    // ldr r1, _020769B8 ; =0x000004B2
+    // b _020769BC
+    // _020769A0: .word 0x0000FFFF
+    // _020769A4: .word _020FFEC0
+    // _020769A8: .word 0x000004AD
+    // _020769AC: .word 0x000004AE
+    // _020769B0: .word 0x000004AF
+    // _020769B4: .word 0x000004B1
+    // _020769B8: .word 0x000004B2
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // add r2, r4, #0
+    // mov r1, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r1, r4, #0
+    // add r1, #0x6e
+    // ldrb r1, [r1]
+    // ldr r0, [r4, #0x28]
+    // add r2, #0x66
+    // add r1, #MON_DATA_MOVE1_PP_UPS
+    // bl SetMonData
+    // add r1, r4, #0
+    // add r2, r4, #0
+    // add r1, #0x6c
+    // add r2, #0x6e
+    // ldrh r1, [r1]
+    // ldrb r2, [r2]
+    // ldr r0, [r4, #0x28]
+    // bl MonSetMoveInSlot
+    // add r0, r4, #0
+    // mov r1, #0x1e
+    // add r0, #0x66
+    // strb r1, [r0]
+    // mov r0, #0x25
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x65
+    // ldrb r0, [r0]
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _02076A44
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // bl IsFanfarePlaying
+    // cmp r0, #0
+    // bne _02076A44
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // beq _02076A46
+    // b _02076C76
+    // mov r0, #0xd
+    // add r4, #0x64
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #0x10
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // ldr r2, _02076C7C ; =0x0000FFFF
+    // mov r1, #0xf
+    // mov r3, #1
+    // bl PaletteData_BeginPaletteFade
+    // mov r1, #0
+    // str r1, [sp]
+    // ldr r0, [r4, #0x18]
+    // mov r2, #0x10
+    // add r3, r1, #0
+    // bl Pokepic_StartPaletteFadeAll
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _02076B54
+    // ldr r0, [r4, #0x30]
+    // bl sub_02077664
+    // add r0, r4, #0
+    // bl sub_02076C90
+    // mov r0, #1
+    // add r4, #0x67
+    // add sp, #0x90
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _02076B54
+    // mov r1, #0xc
+    // add r2, r1, #0
+    // ldr r0, [r4, #0x1c]
+    // add r2, #0xf4
+    // bl Pokepic_SetAttr
+    // mov r1, #0xd
+    // add r2, r1, #0
+    // ldr r0, [r4, #0x1c]
+    // add r2, #0xf3
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xc
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xd
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x20]
+    // mov r1, #6
+    // mov r2, #1
+    // bl Pokepic_SetAttr
+    // mov r0, #0x10
+    // str r0, [sp]
+    // mov r3, #0
+    // ldr r0, _02076C80 ; =0x00007FFF
+    // str r3, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // ldr r2, _02076C84 ; =0x0000F3FF
+    // mov r1, #0xf
+    // bl PaletteData_BeginPaletteFade
+    // ldr r0, _02076C80 ; =0x00007FFF
+    // mov r2, #0
+    // str r0, [sp]
+    // ldr r0, [r4, #0x18]
+    // mov r1, #0x10
+    // add r3, r2, #0
+    // bl Pokepic_StartPaletteFadeAll
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x72
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x73
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // mov r2, #0xff
+    // add r0, #0x74
+    // strb r2, [r0]
+    // add r0, r4, #0
+    // mov r2, #0xa0
+    // add r0, #0x75
+    // strb r2, [r0]
+    // add r0, r4, #0
+    // add r0, #0x70
+    // strb r1, [r0]
+    // ldr r0, _02076C88 ; =0x000003F3
+    // bl StopBGM
+    // ldr r0, [r4, #0x30]
+    // bl sub_02077664
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // beq _02076B56
+    // b _02076C76
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // add r3, r4, #0
+    // add r0, r4, #0
+    // add r3, #0x60
+    // add r0, #0x84
+    // ldrh r3, [r3]
+    // ldr r0, [r0]
+    // ldr r1, [r4, #0x44]
+    // ldr r2, [r4, #0x1c]
+    // bl sub_0207294C
+    // add r2, r4, #0
+    // add r0, r4, #0
+    // add r2, #0x60
+    // add r0, #0x84
+    // ldrh r2, [r2]
+    // ldr r0, [r0]
+    // add r1, sp, #0x18
+    // mov r3, #1
+    // bl NARC_ReadPokepicAnimScript
+    // ldr r0, [r4, #0x1c]
+    // add r1, sp, #0x18
+    // bl Pokepic_SetAnimScript
+    // ldr r0, [r4, #0x1c]
+    // mov r1, #0
+    // bl Pokepic_StartAnim
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // add r0, #0x60
+    // add r1, #0x80
+    // ldrh r0, [r0]
+    // ldrb r1, [r1]
+    // bl PlayCry
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // bl IsCryFinished
+    // cmp r0, #0
+    // bne _02076C76
+    // ldr r0, [r4, #0x44]
+    // mov r1, #0
+    // bl sub_02017068
+    // cmp r0, #1
+    // bne _02076C76
+    // ldr r0, [r4, #0x1c]
+    // bl Pokepic_IsAnimFinished
+    // cmp r0, #0
+    // bne _02076C76
+    // ldr r0, [r4, #0x28]
+    // bl Mon_GetBoxMon
+    // add r2, r0, #0
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0
+    // bl BufferBoxMonNickname
+    // ldr r1, _02076C8C ; =0x00000397
+    // add r0, r4, #0
+    // bl sub_020772F8
+    // add r1, r4, #0
+    // add r1, #0x65
+    // strb r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0x14
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x65
+    // ldrb r0, [r0]
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _02076C76
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x66
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x66
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _02076C76
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #0x10
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // ldr r0, [r4, #0x14]
+    // ldr r2, _02076C7C ; =0x0000FFFF
+    // mov r1, #0xf
+    // mov r3, #1
+    // bl PaletteData_BeginPaletteFade
+    // mov r1, #0
+    // str r1, [sp]
+    // ldr r0, [r4, #0x18]
+    // mov r2, #0x10
+    // add r3, r1, #0
+    // bl Pokepic_StartPaletteFadeAll
+    // add r0, r4, #0
+    // add r0, #0x64
+    // ldrb r0, [r0]
+    // add r4, #0x64
+    // add sp, #0x90
+    // add r0, r0, #1
+    // strb r0, [r4]
+    // pop {r4, pc}
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_GetSelectedBuffersBitmask
+    // cmp r0, #0
+    // bne _02076C76
+    // mov r0, #1
+    // add r4, #0x67
+    // strb r0, [r4]
+    // add sp, #0x90
+    // pop {r4, pc}
+    // nop
+    // _02076C7C: .word 0x0000FFFF
+    // _02076C80: .word 0x00007FFF
+    // _02076C84: .word 0x0000F3FF
+    // _02076C88: .word 0x000003F3
+    // _02076C8C: .word 0x00000397
+    // TODO: decompile
 }
+
 
 void sub_02076C90(void) {
-    /* Original at 0x02076C90 */
-    /* Requires manual decompilation - 190 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x20\n    add r4, r0, #0\n    ldr r0, [r4, #0x78]\n    cmp r0, #6\n    bgt _02076CA4\n    bne _02076CA0\n    b _02076E50\n    add sp, #0x20\n    pop {r4, r5, r6, pc}\n    sub r0, #0xd\n    cmp r0, #6\n    bhi _02076CE4\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02076CB6: ; jump table\n    ldr r0, [r4, #0x4c]\n    ldr r2, [r4, #0x5c]\n    mov r1, #4\n    bl Bag_GetQuantity\n    cmp r0, #0\n    beq _02076CE4\n    ldr r0, [r4, #0x24]\n    bl Party_GetCount\n    add r5, r0, #0\n    ldr r0, [r4, #0x24]\n    bl Party_GetMaxCount\n    cmp r5, r0\n    blt _02076CE6\n    b _02076E5E\n    ldr r0, [r4, #0x5c]\n    bl AllocMonZeroed\n    add r5, r0, #0\n    ldr r0, [r4, #0x28]\n    add r1, r5, #0\n    bl CopyPokemonToPokemon\n    mov r0, #0x49\n    lsl r0, r0, #2\n    str r0, [sp]\n    add r0, r5, #0\n    mov r1, #MON_DATA_SPECIES\n    add r2, sp, #0\n    bl SetMonData\n    mov r0, #4\n    str r0, [sp]\n    add r0, r5, #0\n    mov r1, #MON_DATA_POKEBALL\n    add r2, sp, #0\n    bl SetMonData\n    mov r0, #0\n    str r0, [sp]\n    add r0, r5, #0\n    mov r1, #MON_DATA_HELD_ITEM\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #MON_DATA_MARKINGS\n    add r2, sp, #0\n    bl SetMonData\n    mov r1, #MON_DATA_SINNOH_CHAMP_RIBBON\n    str r1, [sp, #4]\n    add r6, sp, #0\n    add r0, r5, #0\n    add r2, r6, #0\n    bl SetMonData\n    ldr r0, [sp, #4]\n    add r1, r0, #1\n    str r1, [sp, #4]\n    cmp r1, #0x36\n    blt _02076D32\n    mov r1, #MON_DATA_COOL_RIBBON\n    str r1, [sp, #4]\n    add r6, sp, #0\n    add r0, r5, #0\n    add r2, r6, #0\n    bl SetMonData\n    ldr r0, [sp, #4]\n    add r1, r0, #1\n    str r1, [sp, #4]\n    cmp r1, #0x6e\n    blt _02076D4A\n    mov r1, #MON_DATA_SUPER_COOL_RIBBON\n    str r1, [sp, #4]\n    add r6, sp, #0\n    add r0, r5, #0\n    add r2, r6, #0\n    bl SetMonData\n    ldr r0, [sp, #4]\n    add r1, r0, #1\n    str r1, [sp, #4]\n    cmp r1, #0x90\n    blt _02076D62\n    add r0, r5, #0\n    mov r1, #MON_DATA_SHINY_LEAF_A\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #MON_DATA_SHINY_LEAF_B\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #MON_DATA_SHINY_LEAF_C\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #MON_DATA_SHINY_LEAF_D\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #MON_DATA_SHINY_LEAF_E\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #MON_DATA_SHINY_LEAF_CROWN\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #MON_DATA_MOOD\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #0xb3\n    mov r2, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #0x4d\n    add r2, sp, #0\n    bl SetMonData\n    add r0, r5, #0\n    mov r1, #0xa0\n    add r2, sp, #0\n    bl SetMonData\n    ldr r0, [r4, #0x5c]\n    bl Mail_New\n    add r6, r0, #0\n    add r0, r5, #0\n    mov r1, #0xaa\n    add r2, r6, #0\n    bl SetMonData\n    add r0, r6, #0\n    bl Heap_Free\n    add r0, r5, #0\n    mov r1, #0xa2\n    add r2, sp, #0\n    bl SetMonData\n    mov r0, #0\n    add r1, sp, #8\n    mov r2, #0x18\n    bl MIi_CpuClearFast\n    add r0, r5, #0\n    mov r1, #0xab\n    add r2, sp, #8\n    bl SetMonData\n    add r0, r5, #0\n    bl UpdateMonAbility\n    add r0, r5, #0\n    bl CalcMonLevelAndStats\n    ldr r0, [r4, #0x24]\n    add r1, r5, #0\n    bl Party_AddMon\n    ldr r0, [r4, #0x48]\n    add r1, r5, #0\n    bl Pokedex_SetMonCaughtFlag\n    ldr r0, [r4, #0x50]\n    mov r1, #0xd\n    bl GameStats_Inc\n    ldr r0, [r4, #0x50]\n    mov r1, #0x15\n    bl GameStats_AddScore\n    add r0, r5, #0\n    bl Heap_Free\n    ldr r0, [r4, #0x4c]\n    ldr r3, [r4, #0x5c]\n    mov r1, #4\n    mov r2, #1\n    bl Bag_TakeItem\n    add sp, #0x20\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    str r0, [sp, #4]\n    ldr r0, [r4, #0x28]\n    mov r1, #6\n    add r2, sp, #4\n    bl SetMonData\n    add sp, #0x20\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x20
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x78]
+    // cmp r0, #6
+    // bgt _02076CA4
+    // bne _02076CA0
+    // b _02076E50
+    // add sp, #0x20
+    // pop {r4, r5, r6, pc}
+    // sub r0, #0xd
+    // cmp r0, #6
+    // bhi _02076CE4
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02076CB6: ; jump table
+    // ldr r0, [r4, #0x4c]
+    // ldr r2, [r4, #0x5c]
+    // mov r1, #4
+    // bl Bag_GetQuantity
+    // cmp r0, #0
+    // beq _02076CE4
+    // ldr r0, [r4, #0x24]
+    // bl Party_GetCount
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x24]
+    // bl Party_GetMaxCount
+    // cmp r5, r0
+    // blt _02076CE6
+    // b _02076E5E
+    // ldr r0, [r4, #0x5c]
+    // bl AllocMonZeroed
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x28]
+    // add r1, r5, #0
+    // bl CopyPokemonToPokemon
+    // mov r0, #0x49
+    // lsl r0, r0, #2
+    // str r0, [sp]
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_SPECIES
+    // add r2, sp, #0
+    // bl SetMonData
+    // mov r0, #4
+    // str r0, [sp]
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_POKEBALL
+    // add r2, sp, #0
+    // bl SetMonData
+    // mov r0, #0
+    // str r0, [sp]
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_HELD_ITEM
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_MARKINGS
+    // add r2, sp, #0
+    // bl SetMonData
+    // mov r1, #MON_DATA_SINNOH_CHAMP_RIBBON
+    // str r1, [sp, #4]
+    // add r6, sp, #0
+    // add r0, r5, #0
+    // add r2, r6, #0
+    // bl SetMonData
+    // ldr r0, [sp, #4]
+    // add r1, r0, #1
+    // str r1, [sp, #4]
+    // cmp r1, #0x36
+    // blt _02076D32
+    // mov r1, #MON_DATA_COOL_RIBBON
+    // str r1, [sp, #4]
+    // add r6, sp, #0
+    // add r0, r5, #0
+    // add r2, r6, #0
+    // bl SetMonData
+    // ldr r0, [sp, #4]
+    // add r1, r0, #1
+    // str r1, [sp, #4]
+    // cmp r1, #0x6e
+    // blt _02076D4A
+    // mov r1, #MON_DATA_SUPER_COOL_RIBBON
+    // str r1, [sp, #4]
+    // add r6, sp, #0
+    // add r0, r5, #0
+    // add r2, r6, #0
+    // bl SetMonData
+    // ldr r0, [sp, #4]
+    // add r1, r0, #1
+    // str r1, [sp, #4]
+    // cmp r1, #0x90
+    // blt _02076D62
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_SHINY_LEAF_A
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_SHINY_LEAF_B
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_SHINY_LEAF_C
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_SHINY_LEAF_D
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_SHINY_LEAF_E
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_SHINY_LEAF_CROWN
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #MON_DATA_MOOD
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #0xb3
+    // mov r2, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #0x4d
+    // add r2, sp, #0
+    // bl SetMonData
+    // add r0, r5, #0
+    // mov r1, #0xa0
+    // add r2, sp, #0
+    // bl SetMonData
+    // ldr r0, [r4, #0x5c]
+    // bl Mail_New
+    // add r6, r0, #0
+    // add r0, r5, #0
+    // mov r1, #0xaa
+    // add r2, r6, #0
+    // bl SetMonData
+    // add r0, r6, #0
+    // bl Heap_Free
+    // add r0, r5, #0
+    // mov r1, #0xa2
+    // add r2, sp, #0
+    // bl SetMonData
+    // mov r0, #0
+    // add r1, sp, #8
+    // mov r2, #0x18
+    // bl MIi_CpuClearFast
+    // add r0, r5, #0
+    // mov r1, #0xab
+    // add r2, sp, #8
+    // bl SetMonData
+    // add r0, r5, #0
+    // bl UpdateMonAbility
+    // add r0, r5, #0
+    // bl CalcMonLevelAndStats
+    // ldr r0, [r4, #0x24]
+    // add r1, r5, #0
+    // bl Party_AddMon
+    // ldr r0, [r4, #0x48]
+    // add r1, r5, #0
+    // bl Pokedex_SetMonCaughtFlag
+    // ldr r0, [r4, #0x50]
+    // mov r1, #0xd
+    // bl GameStats_Inc
+    // ldr r0, [r4, #0x50]
+    // mov r1, #0x15
+    // bl GameStats_AddScore
+    // add r0, r5, #0
+    // bl Heap_Free
+    // ldr r0, [r4, #0x4c]
+    // ldr r3, [r4, #0x5c]
+    // mov r1, #4
+    // mov r2, #1
+    // bl Bag_TakeItem
+    // add sp, #0x20
+    // pop {r4, r5, r6, pc}
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // ldr r0, [r4, #0x28]
+    // mov r1, #6
+    // add r2, sp, #4
+    // bl SetMonData
+    // add sp, #0x20
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
 
+
 void sub_02076E64(void) {
-    /* Original at 0x02076E64 */
-    /* Requires manual decompilation - 360 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0xf0\n    add r5, r0, #0\n    add r4, r1, #0\n    bl GfGfx_DisableEngineAPlanes\n    ldr r6, _02077180 ; =_020FFF34\n    add r3, sp, #0x20\n    mov r2, #5\n    ldmia r6!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _02076E76\n    add r0, sp, #0x20\n    bl GfGfx_SetBanks\n    mov r1, #6\n    mov r2, #2\n    mov r0, #0\n    lsl r1, r1, #0x18\n    lsl r2, r2, #0x12\n    bl MIi_CpuClear32\n    mov r1, #0x62\n    mov r2, #2\n    mov r0, #0\n    lsl r1, r1, #0x14\n    lsl r2, r2, #0x10\n    bl MIi_CpuClear32\n    mov r1, #0x19\n    mov r2, #1\n    mov r0, #0\n    lsl r1, r1, #0x16\n    lsl r2, r2, #0x12\n    bl MIi_CpuClear32\n    mov r1, #0x66\n    mov r2, #2\n    mov r0, #0\n    lsl r1, r1, #0x14\n    lsl r2, r2, #0x10\n    bl MIi_CpuClear32\n    ldr r6, _02077184 ; =_020FFED8\n    add r3, sp, #0x10\n    add r2, r3, #0\n    ldmia r6!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r6!, {r0, r1}\n    stmia r3!, {r0, r1}\n    add r0, r2, #0\n    bl SetBothScreensModesAndDisable\n    ldr r6, _02077188 ; =_020FFF90\n    add r3, sp, #0x9c\n    mov r2, #0xa\n    ldmia r6!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _02076ED6\n    ldr r0, [r6]\n    mov r1, #1\n    str r0, [r3]\n    add r0, r4, #0\n    add r2, sp, #0x9c\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #1\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #2\n    add r2, sp, #0xb8\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #2\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #3\n    add r2, sp, #0xd4\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #3\n    bl BgClearTilemapBufferAndCommit\n    ldr r1, _0207718C ; =0x04000008\n    mov r0, #3\n    ldrh r2, [r1]\n    bic r2, r0\n    mov r0, #1\n    orr r2, r0\n    strh r2, [r1]\n    add r1, r0, #0\n    bl GfGfx_EngineATogglePlanes\n    ldr r6, _02077190 ; =_020FFFE4\n    add r3, sp, #0x48\n    mov r2, #0xa\n    ldmia r6!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _02076F38\n    ldr r0, [r6]\n    mov r1, #4\n    str r0, [r3]\n    add r0, r4, #0\n    add r2, sp, #0x48\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #4\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #5\n    add r2, sp, #0x64\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #5\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #6\n    add r2, sp, #0x80\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #6\n    bl BgClearTilemapBufferAndCommit\n    ldr r0, [r5, #0x2c]\n    bl Options_GetFrame\n    add r6, r0, #0\n    lsl r0, r6, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    ldr r0, [r5, #0x5c]\n    mov r1, #1\n    str r0, [sp, #4]\n    add r0, r4, #0\n    add r2, r1, #0\n    mov r3, #0xa\n    bl sub_0200EB80\n    mov r1, #0\n    str r1, [sp]\n    str r1, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x5c]\n    add r2, r4, #0\n    str r0, [sp, #0xc]\n    mov r0, #0x73\n    mov r3, #3\n    bl GfGfxLoader_LoadCharData\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r1, #1\n    str r1, [sp, #8]\n    ldr r0, [r5, #0x5c]\n    add r2, r4, #0\n    str r0, [sp, #0xc]\n    mov r0, #0x73\n    mov r3, #3\n    bl GfGfxLoader_LoadScrnData\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x40\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldr r0, [r5, #0x14]\n    ldr r3, [r5, #0x5c]\n    mov r1, #0x73\n    mov r2, #8\n    bl PaletteData_LoadNarc\n    add r0, r6, #0\n    bl sub_0200E640\n    add r2, r0, #0\n    mov r0, #0\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0xa0\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x14]\n    ldr r3, [r5, #0x5c]\n    mov r1, #0x26\n    bl PaletteData_LoadNarc\n    mov r0, #0\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0xb0\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x14]\n    ldr r3, [r5, #0x5c]\n    mov r1, #0x10\n    mov r2, #8\n    bl PaletteData_LoadNarc\n    ldr r0, [r5, #0x5c]\n    mov r1, #2\n    str r0, [sp]\n    ldr r0, [r5]\n    mov r2, #1\n    mov r3, #0\n    bl sub_0200E398\n    bl sub_0200E3D8\n    add r2, r0, #0\n    mov r0, #0\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0x80\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x14]\n    ldr r3, [r5, #0x5c]\n    mov r1, #0x26\n    bl PaletteData_LoadNarc\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #0xa0\n    str r0, [sp, #4]\n    mov r2, #0\n    str r2, [sp, #8]\n    ldr r0, [r5, #0x14]\n    ldr r3, [r5, #0x5c]\n    mov r1, #0xef\n    bl PaletteData_LoadNarc\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0x90\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x14]\n    ldr r3, [r5, #0x5c]\n    mov r1, #0xef\n    mov r2, #0xf\n    bl PaletteData_LoadNarc\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #0x20\n    str r0, [sp, #4]\n    mov r0, #0xf0\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x14]\n    ldr r3, [r5, #0x5c]\n    mov r1, #0x10\n    mov r2, #9\n    bl PaletteData_LoadNarc\n    ldr r1, [r5, #0x5c]\n    mov r0, #0xef\n    bl NARC_New\n    mov r1, #0\n    str r1, [sp]\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    ldr r1, [r5, #0x5c]\n    add r2, r4, #0\n    str r1, [sp, #0xc]\n    mov r1, #0x10\n    mov r3, #4\n    add r6, r0, #0\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x5c]\n    mov r1, #0x11\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    add r2, r4, #0\n    mov r3, #4\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x5c]\n    mov r1, #1\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x5c]\n    mov r1, #0xa\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    add r0, r6, #0\n    bl NARC_Delete\n    mov r0, #5\n    mov r1, #0\n    bl ToggleBgLayer\n    mov r0, #6\n    mov r1, #0\n    bl ToggleBgLayer\n    mov r0, #1\n    lsl r0, r0, #0x1a\n    ldr r1, [r0]\n    ldr r2, _02077194 ; =0xFFFF1FFF\n    add r3, r1, #0\n    and r3, r2\n    lsr r1, r0, #0xd\n    orr r1, r3\n    ldr r3, _02077198 ; =0x04001000\n    str r1, [r0]\n    ldr r1, [r3]\n    and r1, r2\n    str r1, [r3]\n    add r3, r0, #0\n    add r3, #0x48\n    ldrh r4, [r3]\n    mov r1, #0x3f\n    mov r2, #0x1f\n    bic r4, r1\n    orr r2, r4\n    strh r2, [r3]\n    add r0, #0x4a\n    ldrh r2, [r0]\n    bic r2, r1\n    mov r1, #0x12\n    orr r1, r2\n    strh r1, [r0]\n    add r0, r5, #0\n    mov r1, #0\n    add r0, #0x72\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0x73\n    strb r1, [r0]\n    add r0, r5, #0\n    mov r1, #0xff\n    add r0, #0x74\n    strb r1, [r0]\n    add r0, r5, #0\n    mov r1, #0xa0\n    add r0, #0x75\n    strb r1, [r0]\n    bl GfGfx_BothDispOn\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    ldr r0, _0207719C ; =sub_02077270\n    add r1, r5, #0\n    bl Main_SetVBlankIntrCB\n    add sp, #0xf0\n    pop {r4, r5, r6, pc}\n    nop\n    _02077180: .word _020FFF34\n    _02077184: .word _020FFED8\n    _02077188: .word _020FFF90\n    _0207718C: .word 0x04000008\n    _02077190: .word _020FFFE4\n    _02077194: .word 0xFFFF1FFF\n    _02077198: .word 0x04001000\n    _0207719C: .word sub_02077270"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0xf0
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // bl GfGfx_DisableEngineAPlanes
+    // ldr r6, _02077180 ; =_020FFF34
+    // add r3, sp, #0x20
+    // mov r2, #5
+    // ldmia r6!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _02076E76
+    // add r0, sp, #0x20
+    // bl GfGfx_SetBanks
+    // mov r1, #6
+    // mov r2, #2
+    // mov r0, #0
+    // lsl r1, r1, #0x18
+    // lsl r2, r2, #0x12
+    // bl MIi_CpuClear32
+    // mov r1, #0x62
+    // mov r2, #2
+    // mov r0, #0
+    // lsl r1, r1, #0x14
+    // lsl r2, r2, #0x10
+    // bl MIi_CpuClear32
+    // mov r1, #0x19
+    // mov r2, #1
+    // mov r0, #0
+    // lsl r1, r1, #0x16
+    // lsl r2, r2, #0x12
+    // bl MIi_CpuClear32
+    // mov r1, #0x66
+    // mov r2, #2
+    // mov r0, #0
+    // lsl r1, r1, #0x14
+    // lsl r2, r2, #0x10
+    // bl MIi_CpuClear32
+    // ldr r6, _02077184 ; =_020FFED8
+    // add r3, sp, #0x10
+    // add r2, r3, #0
+    // ldmia r6!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r6!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // add r0, r2, #0
+    // bl SetBothScreensModesAndDisable
+    // ldr r6, _02077188 ; =_020FFF90
+    // add r3, sp, #0x9c
+    // mov r2, #0xa
+    // ldmia r6!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _02076ED6
+    // ldr r0, [r6]
+    // mov r1, #1
+    // str r0, [r3]
+    // add r0, r4, #0
+    // add r2, sp, #0x9c
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #2
+    // add r2, sp, #0xb8
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #2
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #3
+    // add r2, sp, #0xd4
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #3
+    // bl BgClearTilemapBufferAndCommit
+    // ldr r1, _0207718C ; =0x04000008
+    // mov r0, #3
+    // ldrh r2, [r1]
+    // bic r2, r0
+    // mov r0, #1
+    // orr r2, r0
+    // strh r2, [r1]
+    // add r1, r0, #0
+    // bl GfGfx_EngineATogglePlanes
+    // ldr r6, _02077190 ; =_020FFFE4
+    // add r3, sp, #0x48
+    // mov r2, #0xa
+    // ldmia r6!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _02076F38
+    // ldr r0, [r6]
+    // mov r1, #4
+    // str r0, [r3]
+    // add r0, r4, #0
+    // add r2, sp, #0x48
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #4
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #5
+    // add r2, sp, #0x64
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #5
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #6
+    // add r2, sp, #0x80
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #6
+    // bl BgClearTilemapBufferAndCommit
+    // ldr r0, [r5, #0x2c]
+    // bl Options_GetFrame
+    // add r6, r0, #0
+    // lsl r0, r6, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // ldr r0, [r5, #0x5c]
+    // mov r1, #1
+    // str r0, [sp, #4]
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // mov r3, #0xa
+    // bl sub_0200EB80
+    // mov r1, #0
+    // str r1, [sp]
+    // str r1, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x5c]
+    // add r2, r4, #0
+    // str r0, [sp, #0xc]
+    // mov r0, #0x73
+    // mov r3, #3
+    // bl GfGfxLoader_LoadCharData
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r1, #1
+    // str r1, [sp, #8]
+    // ldr r0, [r5, #0x5c]
+    // add r2, r4, #0
+    // str r0, [sp, #0xc]
+    // mov r0, #0x73
+    // mov r3, #3
+    // bl GfGfxLoader_LoadScrnData
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #0x40
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // ldr r0, [r5, #0x14]
+    // ldr r3, [r5, #0x5c]
+    // mov r1, #0x73
+    // mov r2, #8
+    // bl PaletteData_LoadNarc
+    // add r0, r6, #0
+    // bl sub_0200E640
+    // add r2, r0, #0
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0xa0
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x14]
+    // ldr r3, [r5, #0x5c]
+    // mov r1, #0x26
+    // bl PaletteData_LoadNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0xb0
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x14]
+    // ldr r3, [r5, #0x5c]
+    // mov r1, #0x10
+    // mov r2, #8
+    // bl PaletteData_LoadNarc
+    // ldr r0, [r5, #0x5c]
+    // mov r1, #2
+    // str r0, [sp]
+    // ldr r0, [r5]
+    // mov r2, #1
+    // mov r3, #0
+    // bl sub_0200E398
+    // bl sub_0200E3D8
+    // add r2, r0, #0
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0x80
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x14]
+    // ldr r3, [r5, #0x5c]
+    // mov r1, #0x26
+    // bl PaletteData_LoadNarc
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #0xa0
+    // str r0, [sp, #4]
+    // mov r2, #0
+    // str r2, [sp, #8]
+    // ldr r0, [r5, #0x14]
+    // ldr r3, [r5, #0x5c]
+    // mov r1, #0xef
+    // bl PaletteData_LoadNarc
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0x90
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x14]
+    // ldr r3, [r5, #0x5c]
+    // mov r1, #0xef
+    // mov r2, #0xf
+    // bl PaletteData_LoadNarc
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #0x20
+    // str r0, [sp, #4]
+    // mov r0, #0xf0
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x14]
+    // ldr r3, [r5, #0x5c]
+    // mov r1, #0x10
+    // mov r2, #9
+    // bl PaletteData_LoadNarc
+    // ldr r1, [r5, #0x5c]
+    // mov r0, #0xef
+    // bl NARC_New
+    // mov r1, #0
+    // str r1, [sp]
+    // str r1, [sp, #4]
+    // str r1, [sp, #8]
+    // ldr r1, [r5, #0x5c]
+    // add r2, r4, #0
+    // str r1, [sp, #0xc]
+    // mov r1, #0x10
+    // mov r3, #4
+    // add r6, r0, #0
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x5c]
+    // mov r1, #0x11
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // add r2, r4, #0
+    // mov r3, #4
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x5c]
+    // mov r1, #1
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x5c]
+    // mov r1, #0xa
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // add r0, r6, #0
+    // bl NARC_Delete
+    // mov r0, #5
+    // mov r1, #0
+    // bl ToggleBgLayer
+    // mov r0, #6
+    // mov r1, #0
+    // bl ToggleBgLayer
+    // mov r0, #1
+    // lsl r0, r0, #0x1a
+    // ldr r1, [r0]
+    // ldr r2, _02077194 ; =0xFFFF1FFF
+    // add r3, r1, #0
+    // and r3, r2
+    // lsr r1, r0, #0xd
+    // orr r1, r3
+    // ldr r3, _02077198 ; =0x04001000
+    // str r1, [r0]
+    // ldr r1, [r3]
+    // and r1, r2
+    // str r1, [r3]
+    // add r3, r0, #0
+    // add r3, #0x48
+    // ldrh r4, [r3]
+    // mov r1, #0x3f
+    // mov r2, #0x1f
+    // bic r4, r1
+    // orr r2, r4
+    // strh r2, [r3]
+    // add r0, #0x4a
+    // ldrh r2, [r0]
+    // bic r2, r1
+    // mov r1, #0x12
+    // orr r1, r2
+    // strh r1, [r0]
+    // add r0, r5, #0
+    // mov r1, #0
+    // add r0, #0x72
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0x73
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // mov r1, #0xff
+    // add r0, #0x74
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // mov r1, #0xa0
+    // add r0, #0x75
+    // strb r1, [r0]
+    // bl GfGfx_BothDispOn
+    // mov r0, #0x10
+    // mov r1, #1
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #0x10
+    // mov r1, #1
+    // bl GfGfx_EngineBTogglePlanes
+    // ldr r0, _0207719C ; =sub_02077270
+    // add r1, r5, #0
+    // bl Main_SetVBlankIntrCB
+    // add sp, #0xf0
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _02077180: .word _020FFF34
+    // _02077184: .word _020FFED8
+    // _02077188: .word _020FFF90
+    // _0207718C: .word 0x04000008
+    // _02077190: .word _020FFFE4
+    // _02077194: .word 0xFFFF1FFF
+    // _02077198: .word 0x04001000
+    // _0207719C: .word sub_02077270
+    // TODO: decompile
 }
+
 
 void sub_020771A0(void) {
     GfGfx_EngineATogglePlanes(1, 0);
@@ -172,46 +3121,202 @@ void sub_020771A0(void) {
     FreeBgTilemapBuffer(r4, 6);
 }
 
+
 void sub_020771E8(void) {
-    /* Original at 0x020771E8 */
-    /* Requires manual decompilation - 57 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x20\n    add r4, r0, #0\n    ldr r1, [r4, #0x28]\n    add r0, sp, #0x10\n    mov r2, #2\n    bl GetPokemonSpriteCharAndPlttNarcIds\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    str r0, [sp, #0xc]\n    ldr r0, [r4, #0x18]\n    add r1, sp, #0x10\n    mov r2, #0x80\n    mov r3, #0x50\n    bl PokepicManager_CreatePokepic\n    str r0, [r4, #0x1c]\n    ldr r0, [r4, #0x5c]\n    bl AllocMonZeroed\n    add r5, r0, #0\n    ldr r0, [r4, #0x28]\n    add r1, r5, #0\n    bl CopyPokemonToPokemon\n    add r2, r4, #0\n    add r0, r5, #0\n    mov r1, #5\n    add r2, #0x62\n    bl SetMonData\n    add r0, r5, #0\n    bl CalcMonLevelAndStats\n    add r0, sp, #0x10\n    add r1, r5, #0\n    mov r2, #2\n    bl GetPokemonSpriteCharAndPlttNarcIds\n    add r0, r5, #0\n    bl Heap_Free\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    str r0, [sp, #0xc]\n    ldr r0, [r4, #0x18]\n    add r1, sp, #0x10\n    mov r2, #0x80\n    mov r3, #0x50\n    bl PokepicManager_CreatePokepic\n    str r0, [r4, #0x20]\n    mov r1, #0xc\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4, #0x20]\n    mov r1, #0xd\n    mov r2, #0\n    bl Pokepic_SetAttr\n    add sp, #0x20\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x20
+    // add r4, r0, #0
+    // ldr r1, [r4, #0x28]
+    // add r0, sp, #0x10
+    // mov r2, #2
+    // bl GetPokemonSpriteCharAndPlttNarcIds
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r0, [sp, #0xc]
+    // ldr r0, [r4, #0x18]
+    // add r1, sp, #0x10
+    // mov r2, #0x80
+    // mov r3, #0x50
+    // bl PokepicManager_CreatePokepic
+    // str r0, [r4, #0x1c]
+    // ldr r0, [r4, #0x5c]
+    // bl AllocMonZeroed
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x28]
+    // add r1, r5, #0
+    // bl CopyPokemonToPokemon
+    // add r2, r4, #0
+    // add r0, r5, #0
+    // mov r1, #5
+    // add r2, #0x62
+    // bl SetMonData
+    // add r0, r5, #0
+    // bl CalcMonLevelAndStats
+    // add r0, sp, #0x10
+    // add r1, r5, #0
+    // mov r2, #2
+    // bl GetPokemonSpriteCharAndPlttNarcIds
+    // add r0, r5, #0
+    // bl Heap_Free
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r0, [sp, #0xc]
+    // ldr r0, [r4, #0x18]
+    // add r1, sp, #0x10
+    // mov r2, #0x80
+    // mov r3, #0x50
+    // bl PokepicManager_CreatePokepic
+    // str r0, [r4, #0x20]
+    // mov r1, #0xc
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4, #0x20]
+    // mov r1, #0xd
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // add sp, #0x20
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_02077270(void) {
-    /* Original at 0x02077270 */
-    /* Requires manual decompilation - 58 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    add r0, #0x75\n    ldrb r2, [r0]\n    add r0, r4, #0\n    add r0, #0x73\n    ldrb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x72\n    ldrb r0, [r0]\n    mov r3, #0xff\n    lsl r3, r3, #8\n    lsl r0, r0, #8\n    add r5, r0, #0\n    add r0, r4, #0\n    add r0, #0x74\n    lsl r1, r1, #8\n    and r1, r3\n    ldrb r0, [r0]\n    and r5, r3\n    orr r1, r2\n    orr r5, r0\n    ldr r0, _020772EC ; =0x04000040\n    strh r5, [r0]\n    strh r1, [r0, #4]\n    ldr r0, [r4, #0x18]\n    bl PokepicManager_HandleLoadImgAndOrPltt\n    add r0, r4, #0\n    add r0, #0xb8\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _020772CE\n    add r0, r4, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _020772C0\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    bl SpriteSystem_DrawSprites\n    bl SpriteSystem_TransferOam\n    bl GF_RunVramTransferTasks\n    ldr r0, [r4, #0x14]\n    bl PaletteData_PushTransparentBuffers\n    ldr r0, [r4]\n    bl DoScheduledBgGpuUpdates\n    ldr r3, _020772F0 ; =OS_IRQTable\n    ldr r1, _020772F4 ; =0x00003FF8\n    mov r0, #1\n    ldr r2, [r3, r1]\n    orr r0, r2\n    str r0, [r3, r1]\n    pop {r3, r4, r5, pc}\n    _020772EC: .word 0x04000040\n    _020772F0: .word OS_IRQTable\n    _020772F4: .word 0x00003FF8"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // add r0, #0x75
+    // ldrb r2, [r0]
+    // add r0, r4, #0
+    // add r0, #0x73
+    // ldrb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x72
+    // ldrb r0, [r0]
+    // mov r3, #0xff
+    // lsl r3, r3, #8
+    // lsl r0, r0, #8
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // add r0, #0x74
+    // lsl r1, r1, #8
+    // and r1, r3
+    // ldrb r0, [r0]
+    // and r5, r3
+    // orr r1, r2
+    // orr r5, r0
+    // ldr r0, _020772EC ; =0x04000040
+    // strh r5, [r0]
+    // strh r1, [r0, #4]
+    // ldr r0, [r4, #0x18]
+    // bl PokepicManager_HandleLoadImgAndOrPltt
+    // add r0, r4, #0
+    // add r0, #0xb8
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // beq _020772CE
+    // add r0, r4, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _020772C0
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // bl SpriteSystem_DrawSprites
+    // bl SpriteSystem_TransferOam
+    // bl GF_RunVramTransferTasks
+    // ldr r0, [r4, #0x14]
+    // bl PaletteData_PushTransparentBuffers
+    // ldr r0, [r4]
+    // bl DoScheduledBgGpuUpdates
+    // ldr r3, _020772F0 ; =OS_IRQTable
+    // ldr r1, _020772F4 ; =0x00003FF8
+    // mov r0, #1
+    // ldr r2, [r3, r1]
+    // orr r0, r2
+    // str r0, [r3, r1]
+    // pop {r3, r4, r5, pc}
+    // _020772EC: .word 0x04000040
+    // _020772F0: .word OS_IRQTable
+    // _020772F4: .word 0x00003FF8
+    // TODO: decompile
 }
+
 
 void sub_020772F8(void) {
-    /* Original at 0x020772F8 */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    ldr r0, [r4, #8]\n    bl NewString_ReadMsgData\n    add r5, r0, #0\n    ldr r0, [r4, #0xc]\n    ldr r1, [r4, #0x10]\n    add r2, r5, #0\n    bl StringExpandPlaceholders\n    add r0, r5, #0\n    bl Heap_Free\n    ldr r0, [r4, #4]\n    mov r1, #0xff\n    bl FillWindowPixelBuffer\n    ldr r0, [r4, #0x2c]\n    bl Options_GetTextFrameDelay\n    mov r3, #0\n    str r3, [sp]\n    str r0, [sp, #4]\n    ldr r0, _0207733C ; =sub_02077340\n    mov r1, #1\n    str r0, [sp, #8]\n    ldr r0, [r4, #4]\n    ldr r2, [r4, #0x10]\n    bl AddTextPrinterParameterized\n    add sp, #0xc\n    pop {r4, r5, pc}\n    _0207733C: .word sub_02077340"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // ldr r0, [r4, #8]
+    // bl NewString_ReadMsgData
+    // add r5, r0, #0
+    // ldr r0, [r4, #0xc]
+    // ldr r1, [r4, #0x10]
+    // add r2, r5, #0
+    // bl StringExpandPlaceholders
+    // add r0, r5, #0
+    // bl Heap_Free
+    // ldr r0, [r4, #4]
+    // mov r1, #0xff
+    // bl FillWindowPixelBuffer
+    // ldr r0, [r4, #0x2c]
+    // bl Options_GetTextFrameDelay
+    // mov r3, #0
+    // str r3, [sp]
+    // str r0, [sp, #4]
+    // ldr r0, _0207733C ; =sub_02077340
+    // mov r1, #1
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #4]
+    // ldr r2, [r4, #0x10]
+    // bl AddTextPrinterParameterized
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // _0207733C: .word sub_02077340
+    // TODO: decompile
 }
 
+
 void sub_02077340(void) {
-    /* Original at 0x02077340 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    mov r4, #0\n    cmp r1, #5\n    bhi _02077388\n    add r0, r1, r1\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02077354: ; jump table\n    bl GF_IsAnySEPlaying\n    add r4, r0, #0\n    b _02077388\n    bl IsFanfarePlaying\n    add r4, r0, #0\n    b _02077388\n    ldr r0, _0207738C ; =0x000004A4\n    bl PlayFanfare\n    b _02077388\n    ldr r0, _02077390 ; =0x000005E6\n    bl PlaySE\n    b _02077388\n    mov r0, #0x4a\n    lsl r0, r0, #4\n    bl PlayFanfare\n    add r0, r4, #0\n    pop {r4, pc}\n    _0207738C: .word 0x000004A4\n    _02077390: .word 0x000005E6"
-    );
-    #endif
+    // push {r4, lr}
+    // mov r4, #0
+    // cmp r1, #5
+    // bhi _02077388
+    // add r0, r1, r1
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02077354: ; jump table
+    // bl GF_IsAnySEPlaying
+    // add r4, r0, #0
+    // b _02077388
+    // bl IsFanfarePlaying
+    // add r4, r0, #0
+    // b _02077388
+    // ldr r0, _0207738C ; =0x000004A4
+    // bl PlayFanfare
+    // b _02077388
+    // ldr r0, _02077390 ; =0x000005E6
+    // bl PlaySE
+    // b _02077388
+    // mov r0, #0x4a
+    // lsl r0, r0, #4
+    // bl PlayFanfare
+    // add r0, r4, #0
+    // pop {r4, pc}
+    // _0207738C: .word 0x000004A4
+    // _02077390: .word 0x000005E6
+    // TODO: decompile
 }
+
 
 void sub_02077394(void) {
     OverlayManager_New();
 }
+

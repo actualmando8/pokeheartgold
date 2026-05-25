@@ -2,44 +2,295 @@
 #include "global.h"
 
 void Task_UseSweetScentInField(void) {
-    /* Original at 0x021FCE98 */
-    /* Requires manual decompilation - 138 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    str r0, [sp]\n    bl TaskManager_GetFieldSystem\n    add r6, r0, #0\n    ldr r0, [sp]\n    bl TaskManager_GetEnvironment\n    add r7, r0, #0\n    ldr r0, [sp]\n    bl TaskManager_GetStatePtr\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r5, [r7, #4]\n    cmp r0, #7\n    bls _021FCEBC\n    b _021FCFDE\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _021FCEC8: ; jump table\n    ldr r6, [r5]\n    add r0, r5, #0\n    bl Heap_Free\n    mov r0, #0xb\n    mov r1, #0xc\n    bl Heap_AllocAtEnd\n    str r0, [r7, #4]\n    str r6, [r0, #8]\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _021FCFDE\n    bl GetHoneySweetScentWorkSize\n    add r7, r0, #0\n    mov r0, #0xb\n    add r1, r7, #0\n    bl Heap_AllocAtEnd\n    str r0, [r5, #4]\n    mov r1, #0\n    add r2, r7, #0\n    bl memset\n    ldr r0, [r6, #0x40]\n    bl PlayerAvatar_GetState\n    sub r0, r0, #1\n    cmp r0, #1  ; walking or biking?\n    bhi _021FCF20\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _021FCFDE\n    add r0, r6, #0\n    bl ov01_022062CC\n    ldr r1, [r5, #8]\n    cmp r1, r0\n    bne _021FCF46\n    add r0, r6, #0\n    bl FollowMon_IsVisible\n    cmp r0, #0\n    beq _021FCF46\n    ldr r0, [sp]\n    ldr r1, _021FCFE4 ; =ov01_02205A60\n    mov r2, #0\n    bl TaskManager_Call\n    mov r0, #4\n    str r0, [r4]\n    b _021FCFDE\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _021FCFDE\n    ldr r0, [r6, #0x40]\n    bl PlayerAvatar_GetGender\n    add r3, r0, #0\n    ldr r2, [r7]\n    add r0, r6, #0\n    mov r1, #0\n    bl ov02_02249458\n    str r0, [r5]\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _021FCFDE\n    ldr r0, [r5]\n    bl ov02_0224953C\n    cmp r0, #0\n    beq _021FCFDE\n    ldr r0, [r5]\n    bl ov02_02249548\n    mov r0, #6\n    str r0, [r4]\n    b _021FCFDE\n    add r0, r6, #0\n    mov r1, #0xc\n    bl ov02_02250780\n    cmp r0, #0\n    beq _021FCF9C\n    mov r0, #0x42\n    lsl r0, r0, #2\n    ldr r0, [r6, r0]\n    mov r1, #1\n    mov r5, #2\n    bl FieldSystem_UnkSub108_AddMonMood\n    b _021FCF9E\n    mov r5, #1\n    add r0, r6, #0\n    add r1, r5, #0\n    bl ov02_022507B4\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _021FCFDE\n    add r0, r6, #0\n    bl ov01_021FCFEC\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _021FCFDE\n    ldr r0, [sp]\n    ldr r1, _021FCFE8 ; =Task_HoneyOrSweetScent\n    ldr r2, [r5, #4]\n    bl TaskManager_Call\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _021FCFDE\n    add r0, r5, #0\n    bl Heap_Free\n    add r0, r7, #0\n    bl Heap_Free\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _021FCFE4: .word ov01_02205A60\n    _021FCFE8: .word Task_HoneyOrSweetScent"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // str r0, [sp]
+    // bl TaskManager_GetFieldSystem
+    // add r6, r0, #0
+    // ldr r0, [sp]
+    // bl TaskManager_GetEnvironment
+    // add r7, r0, #0
+    // ldr r0, [sp]
+    // bl TaskManager_GetStatePtr
+    // add r4, r0, #0
+    // ldr r0, [r4]
+    // ldr r5, [r7, #4]
+    // cmp r0, #7
+    // bls _021FCEBC
+    // b _021FCFDE
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _021FCEC8: ; jump table
+    // ldr r6, [r5]
+    // add r0, r5, #0
+    // bl Heap_Free
+    // mov r0, #0xb
+    // mov r1, #0xc
+    // bl Heap_AllocAtEnd
+    // str r0, [r7, #4]
+    // str r6, [r0, #8]
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _021FCFDE
+    // bl GetHoneySweetScentWorkSize
+    // add r7, r0, #0
+    // mov r0, #0xb
+    // add r1, r7, #0
+    // bl Heap_AllocAtEnd
+    // str r0, [r5, #4]
+    // mov r1, #0
+    // add r2, r7, #0
+    // bl memset
+    // ldr r0, [r6, #0x40]
+    // bl PlayerAvatar_GetState
+    // sub r0, r0, #1
+    // cmp r0, #1  ; walking or biking?
+    // bhi _021FCF20
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _021FCFDE
+    // add r0, r6, #0
+    // bl ov01_022062CC
+    // ldr r1, [r5, #8]
+    // cmp r1, r0
+    // bne _021FCF46
+    // add r0, r6, #0
+    // bl FollowMon_IsVisible
+    // cmp r0, #0
+    // beq _021FCF46
+    // ldr r0, [sp]
+    // ldr r1, _021FCFE4 ; =ov01_02205A60
+    // mov r2, #0
+    // bl TaskManager_Call
+    // mov r0, #4
+    // str r0, [r4]
+    // b _021FCFDE
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _021FCFDE
+    // ldr r0, [r6, #0x40]
+    // bl PlayerAvatar_GetGender
+    // add r3, r0, #0
+    // ldr r2, [r7]
+    // add r0, r6, #0
+    // mov r1, #0
+    // bl ov02_02249458
+    // str r0, [r5]
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _021FCFDE
+    // ldr r0, [r5]
+    // bl ov02_0224953C
+    // cmp r0, #0
+    // beq _021FCFDE
+    // ldr r0, [r5]
+    // bl ov02_02249548
+    // mov r0, #6
+    // str r0, [r4]
+    // b _021FCFDE
+    // add r0, r6, #0
+    // mov r1, #0xc
+    // bl ov02_02250780
+    // cmp r0, #0
+    // beq _021FCF9C
+    // mov r0, #0x42
+    // lsl r0, r0, #2
+    // ldr r0, [r6, r0]
+    // mov r1, #1
+    // mov r5, #2
+    // bl FieldSystem_UnkSub108_AddMonMood
+    // b _021FCF9E
+    // mov r5, #1
+    // add r0, r6, #0
+    // add r1, r5, #0
+    // bl ov02_022507B4
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _021FCFDE
+    // add r0, r6, #0
+    // bl ov01_021FCFEC
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _021FCFDE
+    // ldr r0, [sp]
+    // ldr r1, _021FCFE8 ; =Task_HoneyOrSweetScent
+    // ldr r2, [r5, #4]
+    // bl TaskManager_Call
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _021FCFDE
+    // add r0, r5, #0
+    // bl Heap_Free
+    // add r0, r7, #0
+    // bl Heap_Free
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _021FCFE4: .word ov01_02205A60
+    // _021FCFE8: .word Task_HoneyOrSweetScent
+    // TODO: decompile
 }
+
 
 void ov01_021FCFEC(void) {
-    /* Original at 0x021FCFEC */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r0, #4\n    mov r1, #0xd4\n    bl Heap_AllocAtEnd\n    add r4, r0, #0\n    mov r0, #4\n    add r1, r5, #0\n    add r2, r4, #0\n    bl ov01_021FD064\n    ldr r0, [r5, #0x10]\n    ldr r1, _021FD010 ; =ov01_021FD014\n    add r2, r4, #0\n    bl TaskManager_Call\n    pop {r3, r4, r5, pc}\n    _021FD010: .word ov01_021FD014"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // mov r0, #4
+    // mov r1, #0xd4
+    // bl Heap_AllocAtEnd
+    // add r4, r0, #0
+    // mov r0, #4
+    // add r1, r5, #0
+    // add r2, r4, #0
+    // bl ov01_021FD064
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _021FD010 ; =ov01_021FD014
+    // add r2, r4, #0
+    // bl TaskManager_Call
+    // pop {r3, r4, r5, pc}
+    // _021FD010: .word ov01_021FD014
+    // TODO: decompile
 }
+
 
 void ov01_021FD014(void) {
-    /* Original at 0x021FD014 */
-    /* Requires manual decompilation - 34 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    bl TaskManager_GetEnvironment\n    add r5, r0, #0\n    add r0, r4, #0\n    bl TaskManager_GetStatePtr\n    add r4, r0, #0\n    ldr r0, [r4]\n    cmp r0, #0\n    beq _021FD032\n    cmp r0, #1\n    beq _021FD050\n    b _021FD060\n    add r0, r5, #0\n    add r0, #0x20\n    mov r1, #3\n    bl ov01_021FD154\n    cmp r0, #0\n    beq _021FD046\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    add r5, #0x5c\n    add r0, r5, #0\n    bl Field3dObject_Draw\n    b _021FD060\n    add r0, r5, #0\n    bl ov01_021FD128\n    add r0, r5, #0\n    bl Heap_Free\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // bl TaskManager_GetEnvironment
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl TaskManager_GetStatePtr
+    // add r4, r0, #0
+    // ldr r0, [r4]
+    // cmp r0, #0
+    // beq _021FD032
+    // cmp r0, #1
+    // beq _021FD050
+    // b _021FD060
+    // add r0, r5, #0
+    // add r0, #0x20
+    // mov r1, #3
+    // bl ov01_021FD154
+    // cmp r0, #0
+    // beq _021FD046
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // add r5, #0x5c
+    // add r0, r5, #0
+    // bl Field3dObject_Draw
+    // b _021FD060
+    // add r0, r5, #0
+    // bl ov01_021FD128
+    // add r0, r5, #0
+    // bl Heap_Free
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void ov01_021FD064(void) {
-    /* Original at 0x021FD064 */
-    /* Requires manual decompilation - 83 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x14\n    add r4, r2, #0\n    add r5, r0, #0\n    add r6, r1, #0\n    add r0, r4, #0\n    add r1, r5, #0\n    mov r2, #0x20\n    bl HeapExp_FndInitAllocator\n    add r0, r4, #0\n    add r0, #0x10\n    mov r1, #0x86\n    mov r2, #0x17\n    add r3, r5, #0\n    bl Field3dModel_LoadFromFilesystem\n    add r0, r4, #0\n    add r1, r4, #0\n    str r5, [sp]\n    add r0, #0x20\n    add r1, #0x10\n    mov r2, #0x86\n    mov r3, #0x15\n    str r4, [sp, #4]\n    bl Field3dModelAnimation_LoadFromFilesystem\n    add r0, r4, #0\n    add r1, r4, #0\n    str r5, [sp]\n    add r0, #0x34\n    add r1, #0x10\n    mov r2, #0x86\n    mov r3, #0x16\n    str r4, [sp, #4]\n    bl Field3dModelAnimation_LoadFromFilesystem\n    add r0, r4, #0\n    add r1, r4, #0\n    str r5, [sp]\n    add r0, #0x48\n    add r1, #0x10\n    mov r2, #0x86\n    mov r3, #0x14\n    str r4, [sp, #4]\n    bl Field3dModelAnimation_LoadFromFilesystem\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x5c\n    add r1, #0x10\n    bl Field3dObject_InitFromModel\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x5c\n    add r1, #0x20\n    bl Field3dObject_AddAnimation\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x5c\n    add r1, #0x34\n    bl Field3dObject_AddAnimation\n    add r0, r4, #0\n    add r1, r4, #0\n    add r0, #0x5c\n    add r1, #0x48\n    bl Field3dObject_AddAnimation\n    add r0, r4, #0\n    add r0, #0x20\n    mov r1, #3\n    mov r2, #0\n    bl ov01_021FD190\n    add r0, r6, #0\n    bl FollowMon_GetMapObject\n    add r1, sp, #8\n    bl MapObject_CopyPositionVector\n    add r0, r4, #0\n    ldr r1, [sp, #8]\n    ldr r2, [sp, #0xc]\n    ldr r3, [sp, #0x10]\n    add r0, #0x5c\n    bl Field3dObject_SetPosEx\n    add r4, #0x5c\n    add r0, r4, #0\n    mov r1, #1\n    bl Field3dObject_SetActiveFlag\n    add sp, #0x14\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0x14
+    // add r4, r2, #0
+    // add r5, r0, #0
+    // add r6, r1, #0
+    // add r0, r4, #0
+    // add r1, r5, #0
+    // mov r2, #0x20
+    // bl HeapExp_FndInitAllocator
+    // add r0, r4, #0
+    // add r0, #0x10
+    // mov r1, #0x86
+    // mov r2, #0x17
+    // add r3, r5, #0
+    // bl Field3dModel_LoadFromFilesystem
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // str r5, [sp]
+    // add r0, #0x20
+    // add r1, #0x10
+    // mov r2, #0x86
+    // mov r3, #0x15
+    // str r4, [sp, #4]
+    // bl Field3dModelAnimation_LoadFromFilesystem
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // str r5, [sp]
+    // add r0, #0x34
+    // add r1, #0x10
+    // mov r2, #0x86
+    // mov r3, #0x16
+    // str r4, [sp, #4]
+    // bl Field3dModelAnimation_LoadFromFilesystem
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // str r5, [sp]
+    // add r0, #0x48
+    // add r1, #0x10
+    // mov r2, #0x86
+    // mov r3, #0x14
+    // str r4, [sp, #4]
+    // bl Field3dModelAnimation_LoadFromFilesystem
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // add r0, #0x5c
+    // add r1, #0x10
+    // bl Field3dObject_InitFromModel
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // add r0, #0x5c
+    // add r1, #0x20
+    // bl Field3dObject_AddAnimation
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // add r0, #0x5c
+    // add r1, #0x34
+    // bl Field3dObject_AddAnimation
+    // add r0, r4, #0
+    // add r1, r4, #0
+    // add r0, #0x5c
+    // add r1, #0x48
+    // bl Field3dObject_AddAnimation
+    // add r0, r4, #0
+    // add r0, #0x20
+    // mov r1, #3
+    // mov r2, #0
+    // bl ov01_021FD190
+    // add r0, r6, #0
+    // bl FollowMon_GetMapObject
+    // add r1, sp, #8
+    // bl MapObject_CopyPositionVector
+    // add r0, r4, #0
+    // ldr r1, [sp, #8]
+    // ldr r2, [sp, #0xc]
+    // ldr r3, [sp, #0x10]
+    // add r0, #0x5c
+    // bl Field3dObject_SetPosEx
+    // add r4, #0x5c
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl Field3dObject_SetActiveFlag
+    // add sp, #0x14
+    // pop {r3, r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021FD128(void) {
     Field3dModelAnimation_Unload(r0);
@@ -48,22 +299,60 @@ void ov01_021FD128(void) {
     Field3dModel_Unload(r4);
 }
 
+
 void ov01_021FD154(void) {
-    /* Original at 0x021FD154 */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    mov r5, #0\n    add r6, r1, #0\n    add r7, r0, #0\n    add r4, r5, #0\n    cmp r6, #0\n    bls _021FD184\n    mov r0, #0x14\n    mul r0, r4\n    mov r1, #1\n    add r0, r7, r0\n    lsl r1, r1, #0xc\n    bl Field3dModelAnimation_FrameAdvanceAndCheck\n    cmp r0, #0\n    beq _021FD17A\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, r6\n    blo _021FD162\n    cmp r5, r6\n    bne _021FD18C\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // mov r5, #0
+    // add r6, r1, #0
+    // add r7, r0, #0
+    // add r4, r5, #0
+    // cmp r6, #0
+    // bls _021FD184
+    // mov r0, #0x14
+    // mul r0, r4
+    // mov r1, #1
+    // add r0, r7, r0
+    // lsl r1, r1, #0xc
+    // bl Field3dModelAnimation_FrameAdvanceAndCheck
+    // cmp r0, #0
+    // beq _021FD17A
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, r6
+    // blo _021FD162
+    // cmp r5, r6
+    // bne _021FD18C
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov01_021FD190(void) {
-    /* Original at 0x021FD190 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    add r6, r0, #0\n    add r7, r2, #0\n    mov r4, #0\n    cmp r5, #0\n    bls _021FD1B4\n    mov r0, #0x14\n    mul r0, r4\n    add r0, r6, r0\n    add r1, r7, #0\n    bl Field3dModelAnimation_FrameSet\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, r5\n    blo _021FD19E\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // add r7, r2, #0
+    // mov r4, #0
+    // cmp r5, #0
+    // bls _021FD1B4
+    // mov r0, #0x14
+    // mul r0, r4
+    // add r0, r6, r0
+    // add r1, r7, #0
+    // bl Field3dModelAnimation_FrameSet
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, r5
+    // blo _021FD19E
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+

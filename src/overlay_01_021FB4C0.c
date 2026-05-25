@@ -6,96 +6,160 @@ void ov01_021FB4C0(void) {
     ov01_021FB55C();
 }
 
+
 void ov01_021FB4D4(void) {
-    /* Original at 0x021FB4D4 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    beq _021FB4F0\n    ldr r1, [r4]\n    cmp r1, #1\n    bne _021FB4E4\n    bl ov01_021FB514\n    add r0, r4, #0\n    bl ov01_021FB55C\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // beq _021FB4F0
+    // ldr r1, [r4]
+    // cmp r1, #1
+    // bne _021FB4E4
+    // bl ov01_021FB514
+    // add r0, r4, #0
+    // bl ov01_021FB55C
+    // add r0, r4, #0
+    // bl Heap_Free
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021FB4F4(void) {
-    /* Original at 0x021FB4F4 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _021FB510 ; =ov01_021FB594\n    add r1, r4, #0\n    bl Main_SetHBlankIntrCB\n    cmp r0, #1\n    beq _021FB508\n    bl GF_AssertFail\n    mov r0, #1\n    str r0, [r4]\n    pop {r4, pc}\n    nop\n    _021FB510: .word ov01_021FB594"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _021FB510 ; =ov01_021FB594
+    // add r1, r4, #0
+    // bl Main_SetHBlankIntrCB
+    // cmp r0, #1
+    // beq _021FB508
+    // bl GF_AssertFail
+    // mov r0, #1
+    // str r0, [r4]
+    // pop {r4, pc}
+    // nop
+    // _021FB510: .word ov01_021FB594
+    // TODO: decompile
 }
+
 
 void ov01_021FB514(void) {
-    /* Original at 0x021FB514 */
-    /* Requires manual decompilation - 11 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetHBlankIntrCB\n    cmp r0, #1\n    beq _021FB528\n    bl GF_AssertFail\n    mov r0, #0\n    str r0, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl Main_SetHBlankIntrCB
+    // cmp r0, #1
+    // beq _021FB528
+    // bl GF_AssertFail
+    // mov r0, #0
+    // str r0, [r4]
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void ov01_021FB530(void) {
-    /* Original at 0x021FB530 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r6, r2, #0\n    bl ov01_021FB5B4\n    add r4, r0, #0\n    bne _021FB542\n    bl GF_AssertFail\n    cmp r4, #0\n    beq _021FB54E\n    str r6, [r4, #4]\n    str r5, [r4, #8]\n    mov r0, #1\n    str r0, [r4]\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r1, #0
+    // add r6, r2, #0
+    // bl ov01_021FB5B4
+    // add r4, r0, #0
+    // bne _021FB542
+    // bl GF_AssertFail
+    // cmp r4, #0
+    // beq _021FB54E
+    // str r6, [r4, #4]
+    // str r5, [r4, #8]
+    // mov r0, #1
+    // str r0, [r4]
+    // add r0, r4, #0
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021FB554(void) {
     ov01_021FB584();
 }
 
+
 void ov01_021FB55C(void) {
-    /* Original at 0x021FB55C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r3, r0, #0\n    mov r2, #0x1c\n    mov r1, #0\n    strb r1, [r3]\n    add r3, r3, #1\n    sub r2, r2, #1\n    bne _021FB564\n    mov r4, #0\n    str r4, [r0]\n    add r5, r0, #4\n    add r0, r5, #0\n    bl ov01_021FB584\n    add r4, r4, #1\n    add r5, #0xc\n    cmp r4, #2\n    blt _021FB572\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r3, r0, #0
+    // mov r2, #0x1c
+    // mov r1, #0
+    // strb r1, [r3]
+    // add r3, r3, #1
+    // sub r2, r2, #1
+    // bne _021FB564
+    // mov r4, #0
+    // str r4, [r0]
+    // add r5, r0, #4
+    // add r0, r5, #0
+    // bl ov01_021FB584
+    // add r4, r4, #1
+    // add r5, #0xc
+    // cmp r4, #2
+    // blt _021FB572
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021FB584(void) {
-    /* Original at 0x021FB584 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r2, #0\n    ldr r1, _021FB590 ; =ov01_021FB5B0\n    str r2, [r0]\n    str r1, [r0, #8]\n    str r2, [r0, #4]\n    bx lr\n    _021FB590: .word ov01_021FB5B0"
-    );
-    #endif
+    // mov r2, #0
+    // ldr r1, _021FB590 ; =ov01_021FB5B0
+    // str r2, [r0]
+    // str r1, [r0, #8]
+    // str r2, [r0, #4]
+    // bx lr
+    // _021FB590: .word ov01_021FB5B0
+    // TODO: decompile
 }
+
 
 void ov01_021FB594(void) {
-    /* Original at 0x021FB594 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    mov r6, #0\n    add r4, r5, #4\n    ldr r1, [r5, #8]\n    ldr r2, [r5, #0xc]\n    add r0, r4, #0\n    blx r2\n    add r6, r6, #1\n    add r5, #0xc\n    add r4, #0xc\n    cmp r6, #2\n    blt _021FB59C\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // mov r6, #0
+    // add r4, r5, #4
+    // ldr r1, [r5, #8]
+    // ldr r2, [r5, #0xc]
+    // add r0, r4, #0
+    // blx r2
+    // add r6, r6, #1
+    // add r5, #0xc
+    // add r4, #0xc
+    // cmp r6, #2
+    // blt _021FB59C
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021FB5B0(void) {
-    /* Original at 0x021FB5B0 */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
 
+
 void ov01_021FB5B4(void) {
-    /* Original at 0x021FB5B4 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r2, #0\n    add r3, r0, #0\n    ldr r1, [r3, #4]\n    cmp r1, #0\n    bne _021FB5C8\n    add r1, r0, #4\n    mov r0, #0xc\n    mul r0, r2\n    add r0, r1, r0\n    bx lr\n    add r2, r2, #1\n    add r3, #0xc\n    cmp r2, #2\n    blt _021FB5B8\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    // mov r2, #0
+    // add r3, r0, #0
+    // ldr r1, [r3, #4]
+    // cmp r1, #0
+    // bne _021FB5C8
+    // add r1, r0, #4
+    // mov r0, #0xc
+    // mul r0, r2
+    // add r0, r1, r0
+    // bx lr
+    // add r2, r2, #1
+    // add r3, #0xc
+    // cmp r2, #2
+    // blt _021FB5B8
+    // mov r0, #0
+    // bx lr
+    // TODO: decompile
 }
+

@@ -2,849 +2,6407 @@
 #include "global.h"
 
 void ov04_02253E20(void) {
-    /* Original at 0x02253E20 */
-    /* Requires manual decompilation - 77 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0x24\n    add r5, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #4\n    bl Save_Gymmick_AssertMagic_GetData\n    add r3, sp, #0x18\n    ldr r6, _02253ECC ; =_02257328\n    add r4, r0, #0\n    ldmia r6!, {r0, r1}\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldr r0, [r6]\n    mov r1, #0x6f\n    str r0, [r3]\n    ldr r0, [r5, #0x54]\n    mov r3, #0\n    str r0, [sp]\n    add r0, r5, #0\n    add r0, #0x9c\n    ldr r0, [r0]\n    bl ov01_021F3C0C\n    mov r3, #3\n    mov r0, #2\n    str r3, [sp]\n    lsl r0, r0, #0x10\n    str r0, [sp, #4]\n    add r0, r5, #0\n    add r0, #0x98\n    ldr r0, [r0]\n    mov r1, #0xe\n    str r0, [sp, #8]\n    mov r0, #0\n    mov r2, #0x13\n    bl ov01_021FB3E4\n    ldr r0, [r4]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    beq _02253E80\n    cmp r0, #1\n    beq _02253E86\n    b _02253E8C\n    mov r4, #2\n    lsl r4, r4, #0x10\n    b _02253E94\n    mov r4, #0x1f\n    lsl r4, r4, #0x10\n    b _02253E94\n    bl GF_AssertFail\n    mov r4, #2\n    lsl r4, r4, #0x10\n    add r0, r5, #0\n    add r0, #0x9c\n    ldr r0, [r0]\n    mov r1, #0x6f\n    bl ov01_021F3B4C\n    add r6, r0, #0\n    add r0, sp, #0xc\n    add r1, r6, #0\n    bl ov01_021F3B0C\n    add r0, r6, #0\n    add r1, sp, #0xc\n    str r4, [sp, #0x10]\n    bl ov01_021F3B1C\n    add r5, #0x98\n    ldr r2, [r5]\n    mov r0, #0\n    add r1, r4, #0\n    bl ov01_021FB4A0\n    ldr r0, _02253ED0 ; =ov04_02257334\n    bl G3X_SetEdgeColorTable\n    add sp, #0x24\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _02253ECC: .word _02257328\n    _02253ED0: .word ov04_02257334"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0x24
+    // add r5, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #4
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r3, sp, #0x18
+    // ldr r6, _02253ECC ; =_02257328
+    // add r4, r0, #0
+    // ldmia r6!, {r0, r1}
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r6]
+    // mov r1, #0x6f
+    // str r0, [r3]
+    // ldr r0, [r5, #0x54]
+    // mov r3, #0
+    // str r0, [sp]
+    // add r0, r5, #0
+    // add r0, #0x9c
+    // ldr r0, [r0]
+    // bl ov01_021F3C0C
+    // mov r3, #3
+    // mov r0, #2
+    // str r3, [sp]
+    // lsl r0, r0, #0x10
+    // str r0, [sp, #4]
+    // add r0, r5, #0
+    // add r0, #0x98
+    // ldr r0, [r0]
+    // mov r1, #0xe
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // mov r2, #0x13
+    // bl ov01_021FB3E4
+    // ldr r0, [r4]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // beq _02253E80
+    // cmp r0, #1
+    // beq _02253E86
+    // b _02253E8C
+    // mov r4, #2
+    // lsl r4, r4, #0x10
+    // b _02253E94
+    // mov r4, #0x1f
+    // lsl r4, r4, #0x10
+    // b _02253E94
+    // bl GF_AssertFail
+    // mov r4, #2
+    // lsl r4, r4, #0x10
+    // add r0, r5, #0
+    // add r0, #0x9c
+    // ldr r0, [r0]
+    // mov r1, #0x6f
+    // bl ov01_021F3B4C
+    // add r6, r0, #0
+    // add r0, sp, #0xc
+    // add r1, r6, #0
+    // bl ov01_021F3B0C
+    // add r0, r6, #0
+    // add r1, sp, #0xc
+    // str r4, [sp, #0x10]
+    // bl ov01_021F3B1C
+    // add r5, #0x98
+    // ldr r2, [r5]
+    // mov r0, #0
+    // add r1, r4, #0
+    // bl ov01_021FB4A0
+    // ldr r0, _02253ED0 ; =ov04_02257334
+    // bl G3X_SetEdgeColorTable
+    // add sp, #0x24
+    // pop {r3, r4, r5, r6, pc}
+    // nop
+    // _02253ECC: .word _02257328
+    // _02253ED0: .word ov04_02257334
+    // TODO: decompile
 }
+
 
 void ov04_02253ED4(void) {
-    /* Original at 0x02253ED4 */
-    /* Requires manual decompilation - 41 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    mov r0, #0xb\n    mov r1, #8\n    bl Heap_AllocAtEnd\n    add r4, r0, #0\n    mov r0, #0\n    str r0, [r4]\n    add r0, r5, #0\n    str r5, [r4, #4]\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #4\n    bl Save_Gymmick_AssertMagic_GetData\n    add r6, r0, #0\n    ldr r0, [r5, #0x40]\n    add r1, sp, #0\n    bl PlayerAvatar_CopyPositionVector\n    mov r0, #2\n    ldr r1, [sp, #4]\n    lsl r0, r0, #0x10\n    cmp r1, r0\n    ldr r0, [r5, #0x10]\n    bne _02253F20\n    ldr r1, _02253F30 ; =ov04_02253F38\n    add r2, r4, #0\n    bl TaskManager_Call\n    mov r0, #1\n    add sp, #0xc\n    str r0, [r6]\n    pop {r3, r4, r5, r6, pc}\n    ldr r1, _02253F34 ; =ov04_02253F94\n    add r2, r4, #0\n    bl TaskManager_Call\n    mov r0, #0\n    str r0, [r6]\n    add sp, #0xc\n    pop {r3, r4, r5, r6, pc}\n    _02253F30: .word ov04_02253F38\n    _02253F34: .word ov04_02253F94"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // mov r0, #0xb
+    // mov r1, #8
+    // bl Heap_AllocAtEnd
+    // add r4, r0, #0
+    // mov r0, #0
+    // str r0, [r4]
+    // add r0, r5, #0
+    // str r5, [r4, #4]
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #4
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r6, r0, #0
+    // ldr r0, [r5, #0x40]
+    // add r1, sp, #0
+    // bl PlayerAvatar_CopyPositionVector
+    // mov r0, #2
+    // ldr r1, [sp, #4]
+    // lsl r0, r0, #0x10
+    // cmp r1, r0
+    // ldr r0, [r5, #0x10]
+    // bne _02253F20
+    // ldr r1, _02253F30 ; =ov04_02253F38
+    // add r2, r4, #0
+    // bl TaskManager_Call
+    // mov r0, #1
+    // add sp, #0xc
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, pc}
+    // ldr r1, _02253F34 ; =ov04_02253F94
+    // add r2, r4, #0
+    // bl TaskManager_Call
+    // mov r0, #0
+    // str r0, [r6]
+    // add sp, #0xc
+    // pop {r3, r4, r5, r6, pc}
+    // _02253F30: .word ov04_02253F38
+    // _02253F34: .word ov04_02253F94
+    // TODO: decompile
 }
+
 
 void ov04_02253F38(void) {
-    /* Original at 0x02253F38 */
-    /* Requires manual decompilation - 39 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r5, r0, #0\n    add r0, r4, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r1, [r4]\n    cmp r1, #0\n    beq _02253F5A\n    cmp r1, #1\n    beq _02253F6C\n    cmp r1, #5\n    beq _02253F7E\n    b _02253F86\n    ldr r0, [r5, #0x10]\n    ldr r1, _02253F8C ; =ov01_02205A60\n    mov r2, #0\n    bl TaskManager_Call\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _02253F86\n    ldr r0, _02253F90 ; =ov04_02253FF0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _02253F86\n    bl Heap_Free\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    nop\n    _02253F8C: .word ov01_02205A60\n    _02253F90: .word ov04_02253FF0"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // ldr r1, [r4]
+    // cmp r1, #0
+    // beq _02253F5A
+    // cmp r1, #1
+    // beq _02253F6C
+    // cmp r1, #5
+    // beq _02253F7E
+    // b _02253F86
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _02253F8C ; =ov01_02205A60
+    // mov r2, #0
+    // bl TaskManager_Call
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _02253F86
+    // ldr r0, _02253F90 ; =ov04_02253FF0
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl SysTask_CreateOnMainQueue
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _02253F86
+    // bl Heap_Free
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02253F8C: .word ov01_02205A60
+    // _02253F90: .word ov04_02253FF0
+    // TODO: decompile
 }
+
 
 void ov04_02253F94(void) {
-    /* Original at 0x02253F94 */
-    /* Requires manual decompilation - 39 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r5, r0, #0\n    add r0, r4, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r1, [r4]\n    cmp r1, #0\n    beq _02253FB6\n    cmp r1, #1\n    beq _02253FC8\n    cmp r1, #5\n    beq _02253FDA\n    b _02253FE2\n    ldr r0, [r5, #0x10]\n    ldr r1, _02253FE8 ; =ov01_02205A60\n    mov r2, #0\n    bl TaskManager_Call\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _02253FE2\n    ldr r0, _02253FEC ; =ov04_022540C0\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _02253FE2\n    bl Heap_Free\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    nop\n    _02253FE8: .word ov01_02205A60\n    _02253FEC: .word ov04_022540C0"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // ldr r1, [r4]
+    // cmp r1, #0
+    // beq _02253FB6
+    // cmp r1, #1
+    // beq _02253FC8
+    // cmp r1, #5
+    // beq _02253FDA
+    // b _02253FE2
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _02253FE8 ; =ov01_02205A60
+    // mov r2, #0
+    // bl TaskManager_Call
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _02253FE2
+    // ldr r0, _02253FEC ; =ov04_022540C0
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl SysTask_CreateOnMainQueue
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _02253FE2
+    // bl Heap_Free
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02253FE8: .word ov01_02205A60
+    // _02253FEC: .word ov04_022540C0
+    // TODO: decompile
 }
+
 
 void ov04_02253FF0(void) {
-    /* Original at 0x02253FF0 */
-    /* Requires manual decompilation - 90 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x18\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5]\n    ldr r4, [r5, #4]\n    cmp r0, #2\n    beq _0225400C\n    cmp r0, #3\n    beq _02254026\n    cmp r0, #4\n    beq _0225408C\n    add sp, #0x18\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #0x40]\n    mov r1, #0\n    bl PlayerAvatar_ToggleAutomaticHeightUpdating\n    mov r0, #SEQ_SE_DP_ELEBETA>>4\n    lsl r0, r0, #4\n    bl PlaySE\n    ldr r0, [r5]\n    add sp, #0x18\n    add r0, r0, #1\n    str r0, [r5]\n    pop {r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x9c\n    ldr r0, [r0]\n    mov r1, #0x6f\n    bl ov01_021F3B4C\n    add r6, r0, #0\n    add r0, sp, #0xc\n    add r1, r6, #0\n    bl ov01_021F3B0C\n    mov r0, #1\n    ldr r1, [sp, #0x10]\n    lsl r0, r0, #0x10\n    add r1, r1, r0\n    mov r0, #0x1f\n    lsl r0, r0, #0x10\n    str r1, [sp, #0x10]\n    cmp r1, r0\n    blt _02254060\n    str r0, [sp, #0x10]\n    mov r0, #0x61\n    lsl r0, r0, #4\n    mov r1, #0\n    bl StopSE\n    ldr r0, [r5]\n    add r0, r0, #1\n    str r0, [r5]\n    ldr r0, [r4, #0x40]\n    add r1, sp, #0\n    bl PlayerAvatar_CopyPositionVector\n    mov r0, #1\n    ldr r1, [sp, #4]\n    lsl r0, r0, #0x10\n    add r1, r1, r0\n    str r1, [sp, #4]\n    ldr r0, [r4, #0x40]\n    bl PlayerAvatar_SetMapObjectYPosition\n    ldr r1, [sp, #4]\n    add r0, r4, #0\n    bl ov01_02205A34\n    add r0, r6, #0\n    add r1, sp, #0xc\n    bl ov01_021F3B1C\n    add sp, #0x18\n    pop {r4, r5, r6, pc}\n    add r2, r4, #0\n    add r2, #0x98\n    mov r1, #0x1f\n    ldr r2, [r2]\n    mov r0, #0\n    lsl r1, r1, #0x10\n    bl ov01_021FB4A0\n    ldr r0, [r4, #0x40]\n    mov r1, #1\n    bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate\n    ldr r0, _022540BC ; =SEQ_SE_DP_KI_GASYAN\n    bl PlaySE\n    add r0, r6, #0\n    bl SysTask_Destroy\n    ldr r0, [r5]\n    add r0, r0, #1\n    str r0, [r5]\n    add sp, #0x18\n    pop {r4, r5, r6, pc}\n    nop\n    _022540BC: .word SEQ_SE_DP_KI_GASYAN"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x18
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // ldr r0, [r5]
+    // ldr r4, [r5, #4]
+    // cmp r0, #2
+    // beq _0225400C
+    // cmp r0, #3
+    // beq _02254026
+    // cmp r0, #4
+    // beq _0225408C
+    // add sp, #0x18
+    // pop {r4, r5, r6, pc}
+    // ldr r0, [r4, #0x40]
+    // mov r1, #0
+    // bl PlayerAvatar_ToggleAutomaticHeightUpdating
+    // mov r0, #SEQ_SE_DP_ELEBETA>>4
+    // lsl r0, r0, #4
+    // bl PlaySE
+    // ldr r0, [r5]
+    // add sp, #0x18
+    // add r0, r0, #1
+    // str r0, [r5]
+    // pop {r4, r5, r6, pc}
+    // add r0, r4, #0
+    // add r0, #0x9c
+    // ldr r0, [r0]
+    // mov r1, #0x6f
+    // bl ov01_021F3B4C
+    // add r6, r0, #0
+    // add r0, sp, #0xc
+    // add r1, r6, #0
+    // bl ov01_021F3B0C
+    // mov r0, #1
+    // ldr r1, [sp, #0x10]
+    // lsl r0, r0, #0x10
+    // add r1, r1, r0
+    // mov r0, #0x1f
+    // lsl r0, r0, #0x10
+    // str r1, [sp, #0x10]
+    // cmp r1, r0
+    // blt _02254060
+    // str r0, [sp, #0x10]
+    // mov r0, #0x61
+    // lsl r0, r0, #4
+    // mov r1, #0
+    // bl StopSE
+    // ldr r0, [r5]
+    // add r0, r0, #1
+    // str r0, [r5]
+    // ldr r0, [r4, #0x40]
+    // add r1, sp, #0
+    // bl PlayerAvatar_CopyPositionVector
+    // mov r0, #1
+    // ldr r1, [sp, #4]
+    // lsl r0, r0, #0x10
+    // add r1, r1, r0
+    // str r1, [sp, #4]
+    // ldr r0, [r4, #0x40]
+    // bl PlayerAvatar_SetMapObjectYPosition
+    // ldr r1, [sp, #4]
+    // add r0, r4, #0
+    // bl ov01_02205A34
+    // add r0, r6, #0
+    // add r1, sp, #0xc
+    // bl ov01_021F3B1C
+    // add sp, #0x18
+    // pop {r4, r5, r6, pc}
+    // add r2, r4, #0
+    // add r2, #0x98
+    // mov r1, #0x1f
+    // ldr r2, [r2]
+    // mov r0, #0
+    // lsl r1, r1, #0x10
+    // bl ov01_021FB4A0
+    // ldr r0, [r4, #0x40]
+    // mov r1, #1
+    // bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
+    // ldr r0, _022540BC ; =SEQ_SE_DP_KI_GASYAN
+    // bl PlaySE
+    // add r0, r6, #0
+    // bl SysTask_Destroy
+    // ldr r0, [r5]
+    // add r0, r0, #1
+    // str r0, [r5]
+    // add sp, #0x18
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _022540BC: .word SEQ_SE_DP_KI_GASYAN
+    // TODO: decompile
 }
+
 
 void ov04_022540C0(void) {
-    /* Original at 0x022540C0 */
-    /* Requires manual decompilation - 90 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x18\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5]\n    ldr r4, [r5, #4]\n    cmp r0, #2\n    beq _022540DC\n    cmp r0, #3\n    beq _022540F6\n    cmp r0, #4\n    beq _0225415C\n    add sp, #0x18\n    pop {r4, r5, r6, pc}\n    ldr r0, [r4, #0x40]\n    mov r1, #0\n    bl PlayerAvatar_ToggleAutomaticHeightUpdating\n    mov r0, #SEQ_SE_DP_ELEBETA>>4\n    lsl r0, r0, #4\n    bl PlaySE\n    ldr r0, [r5]\n    add sp, #0x18\n    add r0, r0, #1\n    str r0, [r5]\n    pop {r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x9c\n    ldr r0, [r0]\n    mov r1, #0x6f\n    bl ov01_021F3B4C\n    add r6, r0, #0\n    add r0, sp, #0xc\n    add r1, r6, #0\n    bl ov01_021F3B0C\n    mov r0, #1\n    ldr r1, [sp, #0x10]\n    lsl r0, r0, #0x10\n    sub r2, r1, r0\n    lsl r1, r0, #1\n    str r2, [sp, #0x10]\n    cmp r2, r1\n    bgt _02254130\n    lsl r0, r0, #1\n    str r0, [sp, #0x10]\n    mov r0, #0x61\n    lsl r0, r0, #4\n    mov r1, #0\n    bl StopSE\n    ldr r0, [r5]\n    add r0, r0, #1\n    str r0, [r5]\n    ldr r0, [r4, #0x40]\n    add r1, sp, #0\n    bl PlayerAvatar_CopyPositionVector\n    mov r0, #1\n    ldr r1, [sp, #4]\n    lsl r0, r0, #0x10\n    sub r1, r1, r0\n    str r1, [sp, #4]\n    ldr r0, [r4, #0x40]\n    bl PlayerAvatar_SetMapObjectYPosition\n    ldr r1, [sp, #4]\n    add r0, r4, #0\n    bl ov01_02205A34\n    add r0, r6, #0\n    add r1, sp, #0xc\n    bl ov01_021F3B1C\n    add sp, #0x18\n    pop {r4, r5, r6, pc}\n    add r2, r4, #0\n    add r2, #0x98\n    mov r1, #2\n    ldr r2, [r2]\n    mov r0, #0\n    lsl r1, r1, #0x10\n    bl ov01_021FB4A0\n    ldr r0, [r4, #0x40]\n    mov r1, #1\n    bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate\n    ldr r0, _0225418C ; =SEQ_SE_DP_KI_GASYAN\n    bl PlaySE\n    add r0, r6, #0\n    bl SysTask_Destroy\n    ldr r0, [r5]\n    add r0, r0, #1\n    str r0, [r5]\n    add sp, #0x18\n    pop {r4, r5, r6, pc}\n    nop\n    _0225418C: .word SEQ_SE_DP_KI_GASYAN"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x18
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // ldr r0, [r5]
+    // ldr r4, [r5, #4]
+    // cmp r0, #2
+    // beq _022540DC
+    // cmp r0, #3
+    // beq _022540F6
+    // cmp r0, #4
+    // beq _0225415C
+    // add sp, #0x18
+    // pop {r4, r5, r6, pc}
+    // ldr r0, [r4, #0x40]
+    // mov r1, #0
+    // bl PlayerAvatar_ToggleAutomaticHeightUpdating
+    // mov r0, #SEQ_SE_DP_ELEBETA>>4
+    // lsl r0, r0, #4
+    // bl PlaySE
+    // ldr r0, [r5]
+    // add sp, #0x18
+    // add r0, r0, #1
+    // str r0, [r5]
+    // pop {r4, r5, r6, pc}
+    // add r0, r4, #0
+    // add r0, #0x9c
+    // ldr r0, [r0]
+    // mov r1, #0x6f
+    // bl ov01_021F3B4C
+    // add r6, r0, #0
+    // add r0, sp, #0xc
+    // add r1, r6, #0
+    // bl ov01_021F3B0C
+    // mov r0, #1
+    // ldr r1, [sp, #0x10]
+    // lsl r0, r0, #0x10
+    // sub r2, r1, r0
+    // lsl r1, r0, #1
+    // str r2, [sp, #0x10]
+    // cmp r2, r1
+    // bgt _02254130
+    // lsl r0, r0, #1
+    // str r0, [sp, #0x10]
+    // mov r0, #0x61
+    // lsl r0, r0, #4
+    // mov r1, #0
+    // bl StopSE
+    // ldr r0, [r5]
+    // add r0, r0, #1
+    // str r0, [r5]
+    // ldr r0, [r4, #0x40]
+    // add r1, sp, #0
+    // bl PlayerAvatar_CopyPositionVector
+    // mov r0, #1
+    // ldr r1, [sp, #4]
+    // lsl r0, r0, #0x10
+    // sub r1, r1, r0
+    // str r1, [sp, #4]
+    // ldr r0, [r4, #0x40]
+    // bl PlayerAvatar_SetMapObjectYPosition
+    // ldr r1, [sp, #4]
+    // add r0, r4, #0
+    // bl ov01_02205A34
+    // add r0, r6, #0
+    // add r1, sp, #0xc
+    // bl ov01_021F3B1C
+    // add sp, #0x18
+    // pop {r4, r5, r6, pc}
+    // add r2, r4, #0
+    // add r2, #0x98
+    // mov r1, #2
+    // ldr r2, [r2]
+    // mov r0, #0
+    // lsl r1, r1, #0x10
+    // bl ov01_021FB4A0
+    // ldr r0, [r4, #0x40]
+    // mov r1, #1
+    // bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
+    // ldr r0, _0225418C ; =SEQ_SE_DP_KI_GASYAN
+    // bl PlaySE
+    // add r0, r6, #0
+    // bl SysTask_Destroy
+    // ldr r0, [r5]
+    // add r0, r0, #1
+    // str r0, [r5]
+    // add sp, #0x18
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _0225418C: .word SEQ_SE_DP_KI_GASYAN
+    // TODO: decompile
 }
+
 
 void ov04_02254190(void) {
-    /* Original at 0x02254190 */
-    /* Requires manual decompilation - 271 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r4, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #5\n    bl Save_Gymmick_AssertMagic_GetData\n    add r7, r0, #0\n    mov r0, #4\n    mov r1, #0x54\n    bl Heap_Alloc\n    ldr r1, [r4, #4]\n    mov r2, #0x54\n    str r0, [r1, #0x24]\n    ldr r0, [r4, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x24]\n    bl MI_CpuFill8\n    ldr r0, [r4, #4]\n    mov r6, #0\n    ldr r5, [r0, #0x24]\n    mov r1, #0\n    add r0, sp, #4\n    str r1, [r0]\n    str r1, [r0, #4]\n    str r1, [r0, #8]\n    ldrb r0, [r7, r6]\n    ldr r1, _02254400 ; =ov04_022575D4\n    mov r3, #0\n    lsl r2, r0, #2\n    ldr r0, _02254400 ; =ov04_022575D4\n    ldrh r1, [r1, r2]\n    add r0, r0, r2\n    ldrh r0, [r0, #2]\n    lsl r2, r1, #0x10\n    mov r1, #2\n    lsl r1, r1, #0xe\n    lsl r0, r0, #0x10\n    str r2, [sp, #4]\n    add r1, r2, r1\n    str r1, [sp, #4]\n    str r0, [sp, #0xc]\n    ldr r0, [r4, #0x54]\n    mov r1, #0x76\n    str r0, [sp]\n    add r0, r4, #0\n    add r0, #0x9c\n    ldr r0, [r0]\n    add r2, sp, #4\n    bl ov01_021F3C0C\n    str r0, [r5, #4]\n    add r6, r6, #1\n    add r5, r5, #4\n    cmp r6, #4\n    blt _022541C4\n    ldr r0, [r7, #4]\n    cmp r0, #3\n    bls _02254212\n    b _022543F6\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225421E: ; jump table\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x73\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x73\n    mov r2, #1\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x74\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x74\n    mov r2, #1\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x7a\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x7a\n    mov r2, #1\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x75\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x75\n    mov r2, #1\n    bl ov01_021E8970\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x73\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x73\n    mov r2, #1\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x74\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x74\n    add r2, r1, #0\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x7a\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x7a\n    mov r2, #1\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x75\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x75\n    add r2, r1, #0\n    bl ov01_021E8970\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x73\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x73\n    add r2, r1, #0\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x74\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x74\n    mov r2, #1\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x7a\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x7a\n    add r2, r1, #0\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x75\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #0\n    str r0, [sp]\n    mov r0, #0x75\n    mov r2, #1\n    bl ov01_021E8970\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x73\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x73\n    add r2, r1, #0\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x74\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x74\n    add r2, r1, #0\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x7a\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x7a\n    add r2, r1, #0\n    bl ov01_021E8970\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x75\n    bl Field3dObjectList_GetRenderObjectByID\n    add r3, r0, #0\n    ldr r0, [r4, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    mov r0, #0x75\n    add r2, r1, #0\n    bl ov01_021E8970\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    bl GF_AssertFail\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02254400: .word ov04_022575D4"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r4, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #5
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r7, r0, #0
+    // mov r0, #4
+    // mov r1, #0x54
+    // bl Heap_Alloc
+    // ldr r1, [r4, #4]
+    // mov r2, #0x54
+    // str r0, [r1, #0x24]
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #0x24]
+    // bl MI_CpuFill8
+    // ldr r0, [r4, #4]
+    // mov r6, #0
+    // ldr r5, [r0, #0x24]
+    // mov r1, #0
+    // add r0, sp, #4
+    // str r1, [r0]
+    // str r1, [r0, #4]
+    // str r1, [r0, #8]
+    // ldrb r0, [r7, r6]
+    // ldr r1, _02254400 ; =ov04_022575D4
+    // mov r3, #0
+    // lsl r2, r0, #2
+    // ldr r0, _02254400 ; =ov04_022575D4
+    // ldrh r1, [r1, r2]
+    // add r0, r0, r2
+    // ldrh r0, [r0, #2]
+    // lsl r2, r1, #0x10
+    // mov r1, #2
+    // lsl r1, r1, #0xe
+    // lsl r0, r0, #0x10
+    // str r2, [sp, #4]
+    // add r1, r2, r1
+    // str r1, [sp, #4]
+    // str r0, [sp, #0xc]
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0x76
+    // str r0, [sp]
+    // add r0, r4, #0
+    // add r0, #0x9c
+    // ldr r0, [r0]
+    // add r2, sp, #4
+    // bl ov01_021F3C0C
+    // str r0, [r5, #4]
+    // add r6, r6, #1
+    // add r5, r5, #4
+    // cmp r6, #4
+    // blt _022541C4
+    // ldr r0, [r7, #4]
+    // cmp r0, #3
+    // bls _02254212
+    // b _022543F6
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _0225421E: ; jump table
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x73
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x73
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x74
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x74
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x7a
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x7a
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x75
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x75
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x73
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x73
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x74
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x74
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x7a
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x7a
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x75
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x75
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x73
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x73
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x74
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x74
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x7a
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x7a
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x75
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0
+    // str r0, [sp]
+    // mov r0, #0x75
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x73
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x73
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x74
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x74
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x7a
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x7a
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x75
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r3, r0, #0
+    // ldr r0, [r4, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // mov r0, #0x75
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // bl GF_AssertFail
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _02254400: .word ov04_022575D4
+    // TODO: decompile
 }
+
 
 void FlipAzaleaGymSwitch(void) {
-    /* Original at 0x02254404 */
-    /* Requires manual decompilation - 154 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r6, r1, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #5\n    bl Save_Gymmick_AssertMagic_GetData\n    add r4, r0, #0\n    ldr r0, _02254560 ; =SEQ_SE_DP_KI_GASYAN\n    bl PlaySE\n    cmp r6, #0\n    bne _022544B6\n    ldr r2, [r4, #4]\n    mov r1, #1\n    add r0, r2, #0\n    and r0, r1\n    lsl r0, r0, #0x18\n    lsr r6, r0, #0x18\n    add r0, r2, #0\n    eor r0, r1\n    str r0, [r4, #4]\n    add r0, r5, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x74\n    bl Field3dObjectList_GetRenderObjectByID\n    add r7, r0, #0\n    add r0, r5, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x75\n    bl Field3dObjectList_GetRenderObjectByID\n    str r0, [sp, #4]\n    ldr r0, [r5, #0x54]\n    add r1, r7, #0\n    mov r2, #0x74\n    add r3, r6, #0\n    bl ov01_021E8A8C\n    ldr r0, [r5, #0x54]\n    ldr r1, [sp, #4]\n    mov r2, #0x75\n    add r3, r6, #0\n    bl ov01_021E8A8C\n    ldr r0, [r4, #4]\n    mov r2, #1\n    and r0, r2\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    ldr r0, [r5, #0x54]\n    beq _02254498\n    str r0, [sp]\n    mov r0, #0x74\n    add r1, r2, #0\n    add r3, r7, #0\n    bl ov01_021E8970\n    ldr r0, [r5, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    ldr r3, [sp, #4]\n    mov r0, #0x75\n    add r2, r1, #0\n    bl ov01_021E8970\n    b _02254550\n    str r0, [sp]\n    mov r0, #0x74\n    mov r1, #0\n    add r3, r7, #0\n    bl ov01_021E8970\n    ldr r0, [r5, #0x54]\n    ldr r3, [sp, #4]\n    str r0, [sp]\n    mov r0, #0x75\n    mov r1, #0\n    mov r2, #1\n    bl ov01_021E8970\n    b _02254550\n    cmp r6, #1\n    bne _0225454C\n    ldr r1, [r4, #4]\n    mov r0, #1\n    asr r2, r1, #1\n    and r0, r2\n    lsl r0, r0, #0x18\n    lsr r6, r0, #0x18\n    mov r0, #2\n    eor r0, r1\n    str r0, [r4, #4]\n    add r0, r5, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x73\n    bl Field3dObjectList_GetRenderObjectByID\n    add r7, r0, #0\n    add r0, r5, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0x7a\n    bl Field3dObjectList_GetRenderObjectByID\n    str r0, [sp, #8]\n    ldr r0, [r5, #0x54]\n    add r1, r7, #0\n    mov r2, #0x73\n    add r3, r6, #0\n    bl ov01_021E8A8C\n    ldr r0, [r5, #0x54]\n    ldr r1, [sp, #8]\n    mov r2, #0x7a\n    add r3, r6, #0\n    bl ov01_021E8A8C\n    ldr r0, [r4, #4]\n    mov r2, #1\n    asr r0, r0, #1\n    and r0, r2\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    ldr r0, [r5, #0x54]\n    beq _0225452E\n    str r0, [sp]\n    mov r0, #0x73\n    add r1, r2, #0\n    add r3, r7, #0\n    bl ov01_021E8970\n    ldr r0, [r5, #0x54]\n    mov r1, #1\n    str r0, [sp]\n    ldr r3, [sp, #8]\n    mov r0, #0x7a\n    add r2, r1, #0\n    bl ov01_021E8970\n    b _02254550\n    str r0, [sp]\n    mov r0, #0x73\n    mov r1, #0\n    add r3, r7, #0\n    bl ov01_021E8970\n    ldr r0, [r5, #0x54]\n    ldr r3, [sp, #8]\n    str r0, [sp]\n    mov r0, #0x7a\n    mov r1, #0\n    mov r2, #1\n    bl ov01_021E8970\n    b _02254550\n    bl GF_AssertFail\n    ldr r0, [r5, #0x10]\n    ldr r1, _02254564 ; =ov04_02254CA4\n    mov r2, #0\n    bl TaskManager_Call\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02254560: .word SEQ_SE_DP_KI_GASYAN\n    _02254564: .word ov04_02254CA4"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // add r6, r1, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #5
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r4, r0, #0
+    // ldr r0, _02254560 ; =SEQ_SE_DP_KI_GASYAN
+    // bl PlaySE
+    // cmp r6, #0
+    // bne _022544B6
+    // ldr r2, [r4, #4]
+    // mov r1, #1
+    // add r0, r2, #0
+    // and r0, r1
+    // lsl r0, r0, #0x18
+    // lsr r6, r0, #0x18
+    // add r0, r2, #0
+    // eor r0, r1
+    // str r0, [r4, #4]
+    // add r0, r5, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x74
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x75
+    // bl Field3dObjectList_GetRenderObjectByID
+    // str r0, [sp, #4]
+    // ldr r0, [r5, #0x54]
+    // add r1, r7, #0
+    // mov r2, #0x74
+    // add r3, r6, #0
+    // bl ov01_021E8A8C
+    // ldr r0, [r5, #0x54]
+    // ldr r1, [sp, #4]
+    // mov r2, #0x75
+    // add r3, r6, #0
+    // bl ov01_021E8A8C
+    // ldr r0, [r4, #4]
+    // mov r2, #1
+    // and r0, r2
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // ldr r0, [r5, #0x54]
+    // beq _02254498
+    // str r0, [sp]
+    // mov r0, #0x74
+    // add r1, r2, #0
+    // add r3, r7, #0
+    // bl ov01_021E8970
+    // ldr r0, [r5, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // ldr r3, [sp, #4]
+    // mov r0, #0x75
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // b _02254550
+    // str r0, [sp]
+    // mov r0, #0x74
+    // mov r1, #0
+    // add r3, r7, #0
+    // bl ov01_021E8970
+    // ldr r0, [r5, #0x54]
+    // ldr r3, [sp, #4]
+    // str r0, [sp]
+    // mov r0, #0x75
+    // mov r1, #0
+    // mov r2, #1
+    // bl ov01_021E8970
+    // b _02254550
+    // cmp r6, #1
+    // bne _0225454C
+    // ldr r1, [r4, #4]
+    // mov r0, #1
+    // asr r2, r1, #1
+    // and r0, r2
+    // lsl r0, r0, #0x18
+    // lsr r6, r0, #0x18
+    // mov r0, #2
+    // eor r0, r1
+    // str r0, [r4, #4]
+    // add r0, r5, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x73
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0x7a
+    // bl Field3dObjectList_GetRenderObjectByID
+    // str r0, [sp, #8]
+    // ldr r0, [r5, #0x54]
+    // add r1, r7, #0
+    // mov r2, #0x73
+    // add r3, r6, #0
+    // bl ov01_021E8A8C
+    // ldr r0, [r5, #0x54]
+    // ldr r1, [sp, #8]
+    // mov r2, #0x7a
+    // add r3, r6, #0
+    // bl ov01_021E8A8C
+    // ldr r0, [r4, #4]
+    // mov r2, #1
+    // asr r0, r0, #1
+    // and r0, r2
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // ldr r0, [r5, #0x54]
+    // beq _0225452E
+    // str r0, [sp]
+    // mov r0, #0x73
+    // add r1, r2, #0
+    // add r3, r7, #0
+    // bl ov01_021E8970
+    // ldr r0, [r5, #0x54]
+    // mov r1, #1
+    // str r0, [sp]
+    // ldr r3, [sp, #8]
+    // mov r0, #0x7a
+    // add r2, r1, #0
+    // bl ov01_021E8970
+    // b _02254550
+    // str r0, [sp]
+    // mov r0, #0x73
+    // mov r1, #0
+    // add r3, r7, #0
+    // bl ov01_021E8970
+    // ldr r0, [r5, #0x54]
+    // ldr r3, [sp, #8]
+    // str r0, [sp]
+    // mov r0, #0x7a
+    // mov r1, #0
+    // mov r2, #1
+    // bl ov01_021E8970
+    // b _02254550
+    // bl GF_AssertFail
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _02254564 ; =ov04_02254CA4
+    // mov r2, #0
+    // bl TaskManager_Call
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _02254560: .word SEQ_SE_DP_KI_GASYAN
+    // _02254564: .word ov04_02254CA4
+    // TODO: decompile
 }
+
 
 void BeginAzaleaGymSpinarakRide(void) {
-    /* Original at 0x02254568 */
-    /* Requires manual decompilation - 87 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    ldr r0, [r6, #4]\n    add r5, r1, #0\n    ldr r4, [r0, #0x24]\n    mov r0, #0xb\n    mov r1, #8\n    bl Heap_AllocAtEnd\n    add r7, r0, #0\n    mov r1, #0\n    str r1, [r7]\n    str r6, [r7, #4]\n    strb r5, [r4, #0x18]\n    str r1, [r4, #0x30]\n    strb r1, [r4, #0x14]\n    mov r0, #1\n    strb r0, [r4, #0x16]\n    add r0, r6, #0\n    str r1, [r4, #0x1c]\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #5\n    bl Save_Gymmick_AssertMagic_GetData\n    add r2, r0, #0\n    ldr r0, [r2, #4]\n    mov r1, #0\n    strb r0, [r4, #0x15]\n    ldrb r0, [r2, r1]\n    cmp r5, r0\n    bne _022545B0\n    strb r1, [r4, #0x17]\n    b _022545B6\n    add r1, r1, #1\n    cmp r1, #4\n    blt _022545A6\n    cmp r1, #4\n    bne _022545C0\n    bl GF_AssertFail\n    pop {r3, r4, r5, r6, r7, pc}\n    cmp r5, #0xb\n    bhi _02254600\n    add r0, r5, r5\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _022545D0: ; jump table\n    mov r1, #1\n    ldr r0, _02254634 ; =ov04_022575A4\n    lsl r2, r5, #2\n    strb r1, [r4, #0x19]\n    ldr r0, [r0, r2]\n    ldrb r2, [r4, #0x15]\n    lsl r2, r2, #3\n    ldrh r0, [r0, r2]\n    sub r0, r0, #1\n    strb r0, [r4, #0x1a]\n    strb r1, [r4, #0x1b]\n    b _02254608\n    mov r0, #0\n    strb r0, [r4, #0x19]\n    strb r0, [r4, #0x1a]\n    strb r0, [r4, #0x1b]\n    ldr r0, _02254634 ; =ov04_022575A4\n    lsl r1, r5, #2\n    ldr r1, [r0, r1]\n    ldrb r0, [r4, #0x15]\n    lsl r0, r0, #3\n    add r0, r1, r0\n    ldr r2, [r0, #4]\n    ldrb r0, [r4, #0x1a]\n    lsl r1, r0, #2\n    add r0, r2, r1\n    ldrh r1, [r2, r1]\n    add r2, r7, #0\n    lsl r1, r1, #0x10\n    str r1, [r4, #0x2c]\n    ldrh r0, [r0, #2]\n    ldr r1, _02254638 ; =ov04_0225463C\n    lsl r0, r0, #0x10\n    str r0, [r4, #0x34]\n    ldr r0, [r6, #0x10]\n    bl TaskManager_Call\n    pop {r3, r4, r5, r6, r7, pc}\n    _02254634: .word ov04_022575A4\n    _02254638: .word ov04_0225463C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r6, r0, #0
+    // ldr r0, [r6, #4]
+    // add r5, r1, #0
+    // ldr r4, [r0, #0x24]
+    // mov r0, #0xb
+    // mov r1, #8
+    // bl Heap_AllocAtEnd
+    // add r7, r0, #0
+    // mov r1, #0
+    // str r1, [r7]
+    // str r6, [r7, #4]
+    // strb r5, [r4, #0x18]
+    // str r1, [r4, #0x30]
+    // strb r1, [r4, #0x14]
+    // mov r0, #1
+    // strb r0, [r4, #0x16]
+    // add r0, r6, #0
+    // str r1, [r4, #0x1c]
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #5
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r2, r0, #0
+    // ldr r0, [r2, #4]
+    // mov r1, #0
+    // strb r0, [r4, #0x15]
+    // ldrb r0, [r2, r1]
+    // cmp r5, r0
+    // bne _022545B0
+    // strb r1, [r4, #0x17]
+    // b _022545B6
+    // add r1, r1, #1
+    // cmp r1, #4
+    // blt _022545A6
+    // cmp r1, #4
+    // bne _022545C0
+    // bl GF_AssertFail
+    // pop {r3, r4, r5, r6, r7, pc}
+    // cmp r5, #0xb
+    // bhi _02254600
+    // add r0, r5, r5
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _022545D0: ; jump table
+    // mov r1, #1
+    // ldr r0, _02254634 ; =ov04_022575A4
+    // lsl r2, r5, #2
+    // strb r1, [r4, #0x19]
+    // ldr r0, [r0, r2]
+    // ldrb r2, [r4, #0x15]
+    // lsl r2, r2, #3
+    // ldrh r0, [r0, r2]
+    // sub r0, r0, #1
+    // strb r0, [r4, #0x1a]
+    // strb r1, [r4, #0x1b]
+    // b _02254608
+    // mov r0, #0
+    // strb r0, [r4, #0x19]
+    // strb r0, [r4, #0x1a]
+    // strb r0, [r4, #0x1b]
+    // ldr r0, _02254634 ; =ov04_022575A4
+    // lsl r1, r5, #2
+    // ldr r1, [r0, r1]
+    // ldrb r0, [r4, #0x15]
+    // lsl r0, r0, #3
+    // add r0, r1, r0
+    // ldr r2, [r0, #4]
+    // ldrb r0, [r4, #0x1a]
+    // lsl r1, r0, #2
+    // add r0, r2, r1
+    // ldrh r1, [r2, r1]
+    // add r2, r7, #0
+    // lsl r1, r1, #0x10
+    // str r1, [r4, #0x2c]
+    // ldrh r0, [r0, #2]
+    // ldr r1, _02254638 ; =ov04_0225463C
+    // lsl r0, r0, #0x10
+    // str r0, [r4, #0x34]
+    // ldr r0, [r6, #0x10]
+    // bl TaskManager_Call
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02254634: .word ov04_022575A4
+    // _02254638: .word ov04_0225463C
+    // TODO: decompile
 }
+
 
 void ov04_0225463C(void) {
-    /* Original at 0x0225463C */
-    /* Requires manual decompilation - 39 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r5, r0, #0\n    add r0, r4, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r1, [r4]\n    cmp r1, #0\n    beq _0225465E\n    cmp r1, #1\n    beq _02254670\n    cmp r1, #0xa\n    beq _02254682\n    b _0225468A\n    ldr r0, [r5, #0x10]\n    ldr r1, _02254690 ; =ov01_02205A60\n    mov r2, #0\n    bl TaskManager_Call\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225468A\n    ldr r0, _02254694 ; =ov04_02254724\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225468A\n    bl Heap_Free\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    nop\n    _02254690: .word ov01_02205A60\n    _02254694: .word ov04_02254724"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // ldr r1, [r4]
+    // cmp r1, #0
+    // beq _0225465E
+    // cmp r1, #1
+    // beq _02254670
+    // cmp r1, #0xa
+    // beq _02254682
+    // b _0225468A
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _02254690 ; =ov01_02205A60
+    // mov r2, #0
+    // bl TaskManager_Call
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225468A
+    // ldr r0, _02254694 ; =ov04_02254724
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl SysTask_CreateOnMainQueue
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225468A
+    // bl Heap_Free
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02254690: .word ov01_02205A60
+    // _02254694: .word ov04_02254724
+    // TODO: decompile
 }
+
 
 void ov04_02254698(void) {
-    /* Original at 0x02254698 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4}\n    sub sp, #0xc\n    add r3, r0, #0\n    ldrh r4, [r2]\n    ldrh r0, [r1]\n    ldrh r2, [r2, #2]\n    sub r0, r4, r0\n    lsl r0, r0, #0xc\n    str r0, [sp]\n    ldrh r0, [r1, #2]\n    sub r0, r2, r0\n    lsl r0, r0, #0xc\n    str r0, [sp, #8]\n    mov r0, #0\n    add r2, sp, #0\n    str r0, [sp, #4]\n    ldmia r2!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r2]\n    str r0, [r3]\n    add sp, #0xc\n    pop {r4}\n    bx lr"
-    );
-    #endif
+    // push {r4}
+    // sub sp, #0xc
+    // add r3, r0, #0
+    // ldrh r4, [r2]
+    // ldrh r0, [r1]
+    // ldrh r2, [r2, #2]
+    // sub r0, r4, r0
+    // lsl r0, r0, #0xc
+    // str r0, [sp]
+    // ldrh r0, [r1, #2]
+    // sub r0, r2, r0
+    // lsl r0, r0, #0xc
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // add r2, sp, #0
+    // str r0, [sp, #4]
+    // ldmia r2!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r2]
+    // str r0, [r3]
+    // add sp, #0xc
+    // pop {r4}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_022546C8(void) {
-    /* Original at 0x022546C8 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r2, [r0]\n    cmp r2, #0\n    blt _022546D2\n    mov r2, #1\n    b _022546D4\n    mov r2, #0\n    str r2, [r1]\n    ldr r0, [r0, #8]\n    cmp r0, #0\n    blt _022546E2\n    mov r0, #1\n    str r0, [r1, #4]\n    bx lr\n    mov r0, #0\n    str r0, [r1, #4]\n    bx lr"
-    );
-    #endif
+    // ldr r2, [r0]
+    // cmp r2, #0
+    // blt _022546D2
+    // mov r2, #1
+    // b _022546D4
+    // mov r2, #0
+    // str r2, [r1]
+    // ldr r0, [r0, #8]
+    // cmp r0, #0
+    // blt _022546E2
+    // mov r0, #1
+    // str r0, [r1, #4]
+    // bx lr
+    // mov r0, #0
+    // str r0, [r1, #4]
+    // bx lr
+    // TODO: decompile
 }
 
+
 void ov04_022546E8(void) {
-    /* Original at 0x022546E8 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    lsl r3, r3, #0x10\n    add r1, r1, r2\n    mov r4, #0\n    cmp r3, r1\n    bne _022546F8\n    mov r4, #1\n    b _0225470A\n    cmp r0, #0\n    beq _02254704\n    cmp r1, r3\n    ble _0225470A\n    mov r4, #2\n    b _0225470A\n    cmp r1, r3\n    bge _0225470A\n    mov r4, #2\n    add r0, r4, #0\n    pop {r3, r4}\n    bx lr"
-    );
-    #endif
+    // push {r3, r4}
+    // lsl r3, r3, #0x10
+    // add r1, r1, r2
+    // mov r4, #0
+    // cmp r3, r1
+    // bne _022546F8
+    // mov r4, #1
+    // b _0225470A
+    // cmp r0, #0
+    // beq _02254704
+    // cmp r1, r3
+    // ble _0225470A
+    // mov r4, #2
+    // b _0225470A
+    // cmp r1, r3
+    // bge _0225470A
+    // mov r4, #2
+    // add r0, r4, #0
+    // pop {r3, r4}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_02254710(void) {
     Heap_Free(0);
 }
 
+
 void ov04_02254724(void) {
-    /* Original at 0x02254724 */
-    /* Requires manual decompilation - 607 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x98\n    add r6, r1, #0\n    ldr r5, [r6, #4]\n    str r0, [sp, #0x18]\n    ldr r0, [r5, #4]\n    ldr r4, [r0, #0x24]\n    ldr r0, [r6]\n    cmp r0, #9\n    bhi _02254828\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02254744: ; jump table\n    add r0, r5, #0\n    bl FollowMon_IsActive\n    cmp r0, #0\n    ldr r0, [r5, #0x40]\n    beq _0225479C\n    bl PlayerAvatar_GetMapObject\n    add r7, r0, #0\n    add r0, r5, #0\n    bl FollowMon_GetMapObject\n    str r0, [sp, #0x28]\n    ldrb r0, [r4, #0x19]\n    cmp r0, #0\n    beq _0225478A\n    add r0, r7, #0\n    mov r1, #0xd\n    bl MapObject_SetHeldMovement\n    ldr r0, [sp, #0x28]\n    mov r1, #0xd\n    bl MapObject_SetHeldMovement\n    b _022547B4\n    add r0, r7, #0\n    mov r1, #0xc\n    bl MapObject_SetHeldMovement\n    ldr r0, [sp, #0x28]\n    mov r1, #0xc\n    bl MapObject_SetHeldMovement\n    b _022547B4\n    bl PlayerAvatar_GetMapObject\n    ldrb r1, [r4, #0x19]\n    cmp r1, #0\n    beq _022547AE\n    mov r1, #0xd\n    bl MapObject_SetHeldMovement\n    b _022547B4\n    mov r1, #0xc\n    bl MapObject_SetHeldMovement\n    ldr r0, [r6]\n    add r0, r0, #1\n    str r0, [r6]\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r7, r0, #0\n    add r0, r5, #0\n    bl FollowMon_IsActive\n    cmp r0, #0\n    beq _022547FE\n    add r0, r5, #0\n    bl FollowMon_GetMapObject\n    add r5, r0, #0\n    add r0, r7, #0\n    bl MapObject_AreBitsSetForMovementScriptInit\n    cmp r0, #0\n    beq _02254828\n    add r0, r5, #0\n    bl MapObject_AreBitsSetForMovementScriptInit\n    cmp r0, #0\n    beq _02254828\n    add r0, r7, #0\n    mov r1, #0x49\n    bl MapObject_SetHeldMovement\n    mov r0, #0\n    str r0, [r4, #0x50]\n    ldr r0, [r6]\n    add sp, #0x98\n    add r0, r0, #1\n    str r0, [r6]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r7, #0\n    bl MapObject_AreBitsSetForMovementScriptInit\n    cmp r0, #0\n    beq _02254828\n    add r0, r7, #0\n    mov r1, #0x49\n    bl MapObject_SetHeldMovement\n    mov r0, #0\n    str r0, [r4, #0x50]\n    ldr r0, [r6]\n    add sp, #0x98\n    add r0, r0, #1\n    str r0, [r6]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r1, [r4, #0x50]\n    add r0, r1, #1\n    str r0, [r4, #0x50]\n    cmp r1, #4\n    bge _0225482A\n    b _02254C9E\n    add r0, r5, #0\n    add r0, #0x9c\n    ldrb r1, [r4, #0x17]\n    ldr r0, [r0]\n    bl ov01_021F3B44\n    add r4, r0, #0\n    ldr r0, [r5, #0x34]\n    bl ov01_021FB9E0\n    add r7, r0, #0\n    add r0, r4, #0\n    bl ov01_021F3B38\n    str r0, [sp, #0x2c]\n    add r0, r4, #0\n    bl ov01_021F3B3C\n    ldr r1, [sp, #0x2c]\n    mov r2, #1\n    str r1, [sp]\n    str r0, [sp, #4]\n    str r7, [sp, #8]\n    str r2, [sp, #0xc]\n    mov r0, #0xff\n    str r0, [sp, #0x10]\n    mov r0, #0\n    str r0, [sp, #0x14]\n    ldr r0, [r5, #0x54]\n    ldr r1, [r5, #0x58]\n    mov r3, #0x76\n    bl ov01_021E8DE8\n    ldr r0, [r5, #0x58]\n    mov r1, #1\n    mov r2, #0\n    bl ov01_021E8E70\n    ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO\n    bl PlaySE\n    ldr r0, [r6]\n    add sp, #0x98\n    add r0, r0, #1\n    str r0, [r6]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r0, [r4, #0x18]\n    str r0, [sp, #0x24]\n    ldrb r0, [r4, #0x16]\n    ldrb r7, [r4, #0x15]\n    cmp r0, #0\n    beq _02254962\n    ldrb r0, [r4, #0x19]\n    cmp r0, #0\n    beq _022548B0\n    ldr r0, [sp, #0x24]\n    lsl r1, r0, #2\n    ldr r0, _02254BA0 ; =ov04_022575A4\n    ldr r1, [r0, r1]\n    lsl r0, r7, #3\n    add r0, r1, r0\n    ldr r2, [r0, #4]\n    ldrb r0, [r4, #0x1a]\n    lsl r1, r0, #2\n    add r1, r2, r1\n    sub r0, r0, #1\n    b _022548C6\n    ldr r0, [sp, #0x24]\n    lsl r1, r0, #2\n    ldr r0, _02254BA0 ; =ov04_022575A4\n    ldr r1, [r0, r1]\n    lsl r0, r7, #3\n    add r0, r1, r0\n    ldr r2, [r0, #4]\n    ldrb r0, [r4, #0x1a]\n    lsl r1, r0, #2\n    add r1, r2, r1\n    add r0, r0, #1\n    lsl r0, r0, #2\n    add r0, r2, r0\n    str r0, [r4, #0x28]\n    ldr r2, [r4, #0x28]\n    add r0, sp, #0x38\n    bl ov04_02254698\n    add r3, sp, #0x38\n    add r2, r4, #0\n    add r2, #0x38\n    ldmia r3!, {r0, r1}\n    str r2, [sp, #0x30]\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    add r1, r4, #0\n    str r0, [r2]\n    ldr r0, [sp, #0x30]\n    add r1, #0x20\n    bl ov04_022546C8\n    add r0, r4, #0\n    add r0, #0x38\n    add r1, r0, #0\n    bl VEC_Normalize\n    ldr r2, _02254BA4 ; =ov04_02257350\n    add r3, sp, #0x8c\n    ldmia r2!, {r0, r1}\n    mov ip, r3\n    stmia r3!, {r0, r1}\n    ldr r0, [r2]\n    mov r1, ip\n    str r0, [r3]\n    add r0, r4, #0\n    add r0, #0x38\n    bl VEC_DotProduct\n    str r0, [sp, #0x34]\n    add r1, r4, #0\n    add r1, #0x38\n    add r2, sp, #0x80\n    mov r0, #0\n    str r0, [r2]\n    str r0, [r2, #4]\n    str r0, [r2, #8]\n    mov r0, #2\n    lsl r0, r0, #0xc\n    add r3, r1, #0\n    bl VEC_MultAdd\n    ldr r0, [r4, #0x1c]\n    cmp r0, #0\n    bne _0225494A\n    ldr r1, [sp, #0x34]\n    cmp r1, #0\n    beq _0225494A\n    mov r2, #1\n    lsl r2, r2, #0xc\n    cmp r1, r2\n    beq _0225494A\n    mov r0, #1\n    str r0, [r4, #0x1c]\n    ldr r0, [r5, #0x2c]\n    bl ov01_021F6304\n    b _0225495E\n    cmp r0, #1\n    bne _0225495E\n    mov r0, #0\n    str r0, [r4, #0x1c]\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetPositionVector\n    ldr r1, [r5, #0x2c]\n    bl ov01_021F62E8\n    mov r0, #0\n    strb r0, [r4, #0x16]\n    ldr r3, [r4, #0x28]\n    ldr r0, [r4, #0x20]\n    ldrh r3, [r3]\n    ldr r1, [r4, #0x2c]\n    ldr r2, [r4, #0x38]\n    bl ov04_022546E8\n    ldr r3, [r4, #0x28]\n    str r0, [sp, #0x20]\n    ldrh r3, [r3, #2]\n    ldr r0, [r4, #0x24]\n    ldr r1, [r4, #0x34]\n    ldr r2, [r4, #0x40]\n    bl ov04_022546E8\n    ldr r1, [sp, #0x20]\n    cmp r1, #2\n    bne _0225498A\n    mov r1, #0\n    str r1, [r4, #0x38]\n    cmp r0, #2\n    bne _02254992\n    mov r1, #0\n    str r1, [r4, #0x40]\n    ldr r1, [sp, #0x20]\n    cmp r1, #0\n    beq _02254A14\n    cmp r0, #0\n    beq _02254A14\n    ldr r0, [r4, #0x28]\n    lsl r7, r7, #3\n    ldrh r0, [r0]\n    lsl r0, r0, #0x10\n    str r0, [r4, #0x2c]\n    ldr r0, [r4, #0x28]\n    ldrh r0, [r0, #2]\n    lsl r0, r0, #0x10\n    str r0, [r4, #0x34]\n    ldrb r0, [r4, #0x14]\n    add r0, r0, #1\n    strb r0, [r4, #0x14]\n    ldr r0, [sp, #0x24]\n    lsl r1, r0, #2\n    ldr r0, _02254BA0 ; =ov04_022575A4\n    ldr r0, [r0, r1]\n    str r0, [sp, #0x1c]\n    ldr r1, [sp, #0x1c]\n    ldrb r0, [r4, #0x14]\n    ldrh r1, [r1, r7]\n    sub r1, r1, #1\n    cmp r0, r1\n    blt _022549FE\n    add r0, r5, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #5\n    bl Save_Gymmick_AssertMagic_GetData\n    ldr r1, [sp, #0x1c]\n    add r1, r1, r7\n    ldrh r2, [r1, #2]\n    ldrb r1, [r4, #0x17]\n    strb r2, [r0, r1]\n    ldr r0, [r5, #0x54]\n    ldr r1, [r5, #0x58]\n    mov r2, #1\n    bl ov01_021E8ED0\n    ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO\n    mov r1, #1\n    bl StopSE\n    ldr r0, [r6]\n    add r0, r0, #1\n    str r0, [r6]\n    b _02254A22\n    ldrb r0, [r4, #0x19]\n    cmp r0, #0\n    ldrb r0, [r4, #0x1a]\n    beq _02254A0A\n    sub r0, r0, #1\n    b _02254A0C\n    add r0, r0, #1\n    strb r0, [r4, #0x1a]\n    mov r0, #1\n    strb r0, [r4, #0x16]\n    b _02254A22\n    add r0, r4, #0\n    add r0, #0x2c\n    add r1, r4, #0\n    add r1, #0x38\n    add r2, r0, #0\n    bl VEC_Add\n    ldrb r1, [r4, #0x17]\n    add r0, r5, #0\n    add r0, #0x9c\n    lsl r1, r1, #2\n    add r1, r4, r1\n    ldr r1, [r1, #4]\n    ldr r0, [r0]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    bl ov01_021F3B44\n    add r3, r4, #0\n    add r2, sp, #0x74\n    add r3, #0x2c\n    add r6, r0, #0\n    ldmia r3!, {r0, r1}\n    add r7, r2, #0\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    str r0, [r2]\n    mov r0, #2\n    ldr r1, [sp, #0x74]\n    lsl r0, r0, #0xe\n    add r0, r1, r0\n    str r0, [sp, #0x74]\n    add r0, r6, #0\n    add r1, r7, #0\n    bl ov01_021F3B1C\n    ldr r3, _02254BA8 ; =ov04_02257344\n    add r2, sp, #0x5c\n    add r6, r4, #0\n    ldmia r3!, {r0, r1}\n    add r7, r2, #0\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    add r6, #0x2c\n    str r0, [r2]\n    add r3, sp, #0x68\n    ldmia r6!, {r0, r1}\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldr r0, [r6]\n    add r1, r7, #0\n    str r0, [r3]\n    add r0, r2, #0\n    bl VEC_Add\n    mov r0, #0x1b\n    ldrsb r0, [r4, r0]\n    ldr r1, [sp, #0x70]\n    lsl r0, r0, #0x10\n    add r0, r1, r0\n    str r0, [sp, #0x70]\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r1, sp, #0x68\n    bl MapObject_SetPositionVector\n    add r0, r5, #0\n    bl FollowMon_IsActive\n    cmp r0, #0\n    bne _02254AA6\n    b _02254C9E\n    mov r0, #0x1b\n    ldrsb r1, [r4, r0]\n    mov r0, #1\n    add r3, sp, #0x50\n    sub r0, r0, r1\n    lsl r0, r0, #0x18\n    add r4, #0x2c\n    asr r6, r0, #0x18\n    ldmia r4!, {r0, r1}\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldr r0, [r4]\n    add r1, r7, #0\n    str r0, [r3]\n    add r0, r2, #0\n    bl VEC_Add\n    ldr r1, [sp, #0x58]\n    lsl r0, r6, #0x10\n    add r0, r1, r0\n    str r0, [sp, #0x58]\n    add r0, r5, #0\n    bl FollowMon_GetMapObject\n    add r1, sp, #0x50\n    bl MapObject_SetPositionVector\n    add sp, #0x98\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetMapObject\n    ldr r1, [r4, #0x28]\n    add r7, r0, #0\n    ldrh r1, [r1]\n    bl MapObject_SetCurrentX\n    add r0, r7, #0\n    mov r1, #0\n    bl MapObject_SetCurrentY\n    ldr r1, [r4, #0x28]\n    mov r2, #0x1b\n    ldrh r1, [r1, #2]\n    ldrsb r2, [r4, r2]\n    add r0, r7, #0\n    add r1, r1, r2\n    bl MapObject_SetCurrentZ\n    add r0, r7, #0\n    bl sub_02060F78\n    add r0, r7, #0\n    mov r1, #0x4a\n    bl MapObject_SetHeldMovement\n    add r0, r5, #0\n    bl FollowMon_IsActive\n    cmp r0, #0\n    beq _02254B52\n    add r0, r5, #0\n    bl FollowMon_GetMapObject\n    ldr r1, [r4, #0x28]\n    add r7, r0, #0\n    ldrh r1, [r1]\n    bl MapObject_SetCurrentX\n    add r0, r7, #0\n    mov r1, #0\n    bl MapObject_SetCurrentY\n    ldr r1, [r4, #0x28]\n    add r0, r7, #0\n    ldrh r3, [r1, #2]\n    mov r1, #0x1b\n    ldrsb r2, [r4, r1]\n    mov r1, #1\n    sub r1, r1, r2\n    add r1, r3, r1\n    bl MapObject_SetCurrentZ\n    add r0, r7, #0\n    bl sub_02060F78\n    mov r0, #0\n    str r0, [r4, #0x44]\n    str r0, [r4, #0x48]\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetFacingDirection\n    cmp r0, #1\n    bne _02254B68\n    mov r0, #1\n    lsl r0, r0, #0xc\n    b _02254B6A\n    ldr r0, _02254BAC ; =0xFFFFF000\n    str r0, [r4, #0x4c]\n    ldr r0, [r6]\n    add sp, #0x98\n    add r0, r0, #1\n    str r0, [r6]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, sp, #0x44\n    mov r1, #0\n    str r1, [r0]\n    str r1, [r0, #4]\n    str r1, [r0, #8]\n    ldr r2, [r4, #0x4c]\n    str r2, [sp, #0x4c]\n    ldr r3, [r4, #0x48]\n    add r2, r3, #1\n    str r2, [r4, #0x48]\n    cmp r3, #0\n    bne _02254BB0\n    ldr r1, [r5, #0x24]\n    bl Camera_OffsetLookAtPosAndTarget\n    ldr r0, [r4, #0x44]\n    add r0, r0, #1\n    str r0, [r4, #0x44]\n    b _02254BC0\n    _02254B9C: .word SEQ_SE_GS_ITOMARU_ROBO\n    _02254BA0: .word ov04_022575A4\n    _02254BA4: .word ov04_02257350\n    _02254BA8: .word ov04_02257344\n    _02254BAC: .word 0xFFFFF000\n    ldr r0, [r4, #0x48]\n    cmp r0, #1\n    ble _02254BC0\n    str r1, [r4, #0x48]\n    ldr r2, [r4, #0x4c]\n    sub r0, r1, #1\n    mul r0, r2\n    str r0, [r4, #0x4c]\n    ldr r0, [r4, #0x44]\n    cmp r0, #4\n    blt _02254C9E\n    mov r0, #0\n    str r0, [r4, #0x50]\n    ldr r0, [r6]\n    add sp, #0x98\n    add r0, r0, #1\n    str r0, [r6]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r1, [r4, #0x50]\n    add r0, r1, #1\n    str r0, [r4, #0x50]\n    cmp r1, #8\n    blt _02254C9E\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r7, r0, #0\n    add r0, r5, #0\n    bl FollowMon_IsActive\n    cmp r0, #0\n    beq _02254C22\n    add r0, r5, #0\n    bl FollowMon_GetMapObject\n    add r5, r0, #0\n    ldrb r0, [r4, #0x19]\n    cmp r0, #0\n    beq _02254C10\n    add r0, r7, #0\n    mov r1, #0xd\n    bl MapObject_SetHeldMovement\n    add r0, r5, #0\n    mov r1, #0xd\n    bl MapObject_SetHeldMovement\n    b _02254C3A\n    add r0, r7, #0\n    mov r1, #0xc\n    bl MapObject_SetHeldMovement\n    add r0, r5, #0\n    mov r1, #0xc\n    bl MapObject_SetHeldMovement\n    b _02254C3A\n    ldrb r0, [r4, #0x19]\n    cmp r0, #0\n    beq _02254C32\n    add r0, r7, #0\n    mov r1, #0xd\n    bl MapObject_SetHeldMovement\n    b _02254C3A\n    add r0, r7, #0\n    mov r1, #0xc\n    bl MapObject_SetHeldMovement\n    ldr r0, [r6]\n    add sp, #0x98\n    add r0, r0, #1\n    str r0, [r6]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r7, r0, #0\n    add r0, r5, #0\n    bl FollowMon_IsActive\n    cmp r0, #0\n    beq _02254C88\n    add r0, r5, #0\n    bl FollowMon_GetMapObject\n    add r4, r0, #0\n    add r0, r7, #0\n    bl MapObject_AreBitsSetForMovementScriptInit\n    cmp r0, #0\n    beq _02254C9E\n    add r0, r4, #0\n    bl MapObject_AreBitsSetForMovementScriptInit\n    cmp r0, #0\n    beq _02254C9E\n    add r0, r4, #0\n    bl MapObject_ClearHeldMovement\n    ldr r0, [sp, #0x18]\n    bl SysTask_Destroy\n    ldr r0, [r6]\n    add sp, #0x98\n    add r0, r0, #1\n    str r0, [r6]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r7, #0\n    bl MapObject_AreBitsSetForMovementScriptInit\n    cmp r0, #0\n    beq _02254C9E\n    ldr r0, [sp, #0x18]\n    bl SysTask_Destroy\n    ldr r0, [r6]\n    add r0, r0, #1\n    str r0, [r6]\n    add sp, #0x98\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x98
+    // add r6, r1, #0
+    // ldr r5, [r6, #4]
+    // str r0, [sp, #0x18]
+    // ldr r0, [r5, #4]
+    // ldr r4, [r0, #0x24]
+    // ldr r0, [r6]
+    // cmp r0, #9
+    // bhi _02254828
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02254744: ; jump table
+    // add r0, r5, #0
+    // bl FollowMon_IsActive
+    // cmp r0, #0
+    // ldr r0, [r5, #0x40]
+    // beq _0225479C
+    // bl PlayerAvatar_GetMapObject
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // bl FollowMon_GetMapObject
+    // str r0, [sp, #0x28]
+    // ldrb r0, [r4, #0x19]
+    // cmp r0, #0
+    // beq _0225478A
+    // add r0, r7, #0
+    // mov r1, #0xd
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [sp, #0x28]
+    // mov r1, #0xd
+    // bl MapObject_SetHeldMovement
+    // b _022547B4
+    // add r0, r7, #0
+    // mov r1, #0xc
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [sp, #0x28]
+    // mov r1, #0xc
+    // bl MapObject_SetHeldMovement
+    // b _022547B4
+    // bl PlayerAvatar_GetMapObject
+    // ldrb r1, [r4, #0x19]
+    // cmp r1, #0
+    // beq _022547AE
+    // mov r1, #0xd
+    // bl MapObject_SetHeldMovement
+    // b _022547B4
+    // mov r1, #0xc
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [r6]
+    // add r0, r0, #1
+    // str r0, [r6]
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // bl FollowMon_IsActive
+    // cmp r0, #0
+    // beq _022547FE
+    // add r0, r5, #0
+    // bl FollowMon_GetMapObject
+    // add r5, r0, #0
+    // add r0, r7, #0
+    // bl MapObject_AreBitsSetForMovementScriptInit
+    // cmp r0, #0
+    // beq _02254828
+    // add r0, r5, #0
+    // bl MapObject_AreBitsSetForMovementScriptInit
+    // cmp r0, #0
+    // beq _02254828
+    // add r0, r7, #0
+    // mov r1, #0x49
+    // bl MapObject_SetHeldMovement
+    // mov r0, #0
+    // str r0, [r4, #0x50]
+    // ldr r0, [r6]
+    // add sp, #0x98
+    // add r0, r0, #1
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r7, #0
+    // bl MapObject_AreBitsSetForMovementScriptInit
+    // cmp r0, #0
+    // beq _02254828
+    // add r0, r7, #0
+    // mov r1, #0x49
+    // bl MapObject_SetHeldMovement
+    // mov r0, #0
+    // str r0, [r4, #0x50]
+    // ldr r0, [r6]
+    // add sp, #0x98
+    // add r0, r0, #1
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r1, [r4, #0x50]
+    // add r0, r1, #1
+    // str r0, [r4, #0x50]
+    // cmp r1, #4
+    // bge _0225482A
+    // b _02254C9E
+    // add r0, r5, #0
+    // add r0, #0x9c
+    // ldrb r1, [r4, #0x17]
+    // ldr r0, [r0]
+    // bl ov01_021F3B44
+    // add r4, r0, #0
+    // ldr r0, [r5, #0x34]
+    // bl ov01_021FB9E0
+    // add r7, r0, #0
+    // add r0, r4, #0
+    // bl ov01_021F3B38
+    // str r0, [sp, #0x2c]
+    // add r0, r4, #0
+    // bl ov01_021F3B3C
+    // ldr r1, [sp, #0x2c]
+    // mov r2, #1
+    // str r1, [sp]
+    // str r0, [sp, #4]
+    // str r7, [sp, #8]
+    // str r2, [sp, #0xc]
+    // mov r0, #0xff
+    // str r0, [sp, #0x10]
+    // mov r0, #0
+    // str r0, [sp, #0x14]
+    // ldr r0, [r5, #0x54]
+    // ldr r1, [r5, #0x58]
+    // mov r3, #0x76
+    // bl ov01_021E8DE8
+    // ldr r0, [r5, #0x58]
+    // mov r1, #1
+    // mov r2, #0
+    // bl ov01_021E8E70
+    // ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
+    // bl PlaySE
+    // ldr r0, [r6]
+    // add sp, #0x98
+    // add r0, r0, #1
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldrb r0, [r4, #0x18]
+    // str r0, [sp, #0x24]
+    // ldrb r0, [r4, #0x16]
+    // ldrb r7, [r4, #0x15]
+    // cmp r0, #0
+    // beq _02254962
+    // ldrb r0, [r4, #0x19]
+    // cmp r0, #0
+    // beq _022548B0
+    // ldr r0, [sp, #0x24]
+    // lsl r1, r0, #2
+    // ldr r0, _02254BA0 ; =ov04_022575A4
+    // ldr r1, [r0, r1]
+    // lsl r0, r7, #3
+    // add r0, r1, r0
+    // ldr r2, [r0, #4]
+    // ldrb r0, [r4, #0x1a]
+    // lsl r1, r0, #2
+    // add r1, r2, r1
+    // sub r0, r0, #1
+    // b _022548C6
+    // ldr r0, [sp, #0x24]
+    // lsl r1, r0, #2
+    // ldr r0, _02254BA0 ; =ov04_022575A4
+    // ldr r1, [r0, r1]
+    // lsl r0, r7, #3
+    // add r0, r1, r0
+    // ldr r2, [r0, #4]
+    // ldrb r0, [r4, #0x1a]
+    // lsl r1, r0, #2
+    // add r1, r2, r1
+    // add r0, r0, #1
+    // lsl r0, r0, #2
+    // add r0, r2, r0
+    // str r0, [r4, #0x28]
+    // ldr r2, [r4, #0x28]
+    // add r0, sp, #0x38
+    // bl ov04_02254698
+    // add r3, sp, #0x38
+    // add r2, r4, #0
+    // add r2, #0x38
+    // ldmia r3!, {r0, r1}
+    // str r2, [sp, #0x30]
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // add r1, r4, #0
+    // str r0, [r2]
+    // ldr r0, [sp, #0x30]
+    // add r1, #0x20
+    // bl ov04_022546C8
+    // add r0, r4, #0
+    // add r0, #0x38
+    // add r1, r0, #0
+    // bl VEC_Normalize
+    // ldr r2, _02254BA4 ; =ov04_02257350
+    // add r3, sp, #0x8c
+    // ldmia r2!, {r0, r1}
+    // mov ip, r3
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r2]
+    // mov r1, ip
+    // str r0, [r3]
+    // add r0, r4, #0
+    // add r0, #0x38
+    // bl VEC_DotProduct
+    // str r0, [sp, #0x34]
+    // add r1, r4, #0
+    // add r1, #0x38
+    // add r2, sp, #0x80
+    // mov r0, #0
+    // str r0, [r2]
+    // str r0, [r2, #4]
+    // str r0, [r2, #8]
+    // mov r0, #2
+    // lsl r0, r0, #0xc
+    // add r3, r1, #0
+    // bl VEC_MultAdd
+    // ldr r0, [r4, #0x1c]
+    // cmp r0, #0
+    // bne _0225494A
+    // ldr r1, [sp, #0x34]
+    // cmp r1, #0
+    // beq _0225494A
+    // mov r2, #1
+    // lsl r2, r2, #0xc
+    // cmp r1, r2
+    // beq _0225494A
+    // mov r0, #1
+    // str r0, [r4, #0x1c]
+    // ldr r0, [r5, #0x2c]
+    // bl ov01_021F6304
+    // b _0225495E
+    // cmp r0, #1
+    // bne _0225495E
+    // mov r0, #0
+    // str r0, [r4, #0x1c]
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetPositionVector
+    // ldr r1, [r5, #0x2c]
+    // bl ov01_021F62E8
+    // mov r0, #0
+    // strb r0, [r4, #0x16]
+    // ldr r3, [r4, #0x28]
+    // ldr r0, [r4, #0x20]
+    // ldrh r3, [r3]
+    // ldr r1, [r4, #0x2c]
+    // ldr r2, [r4, #0x38]
+    // bl ov04_022546E8
+    // ldr r3, [r4, #0x28]
+    // str r0, [sp, #0x20]
+    // ldrh r3, [r3, #2]
+    // ldr r0, [r4, #0x24]
+    // ldr r1, [r4, #0x34]
+    // ldr r2, [r4, #0x40]
+    // bl ov04_022546E8
+    // ldr r1, [sp, #0x20]
+    // cmp r1, #2
+    // bne _0225498A
+    // mov r1, #0
+    // str r1, [r4, #0x38]
+    // cmp r0, #2
+    // bne _02254992
+    // mov r1, #0
+    // str r1, [r4, #0x40]
+    // ldr r1, [sp, #0x20]
+    // cmp r1, #0
+    // beq _02254A14
+    // cmp r0, #0
+    // beq _02254A14
+    // ldr r0, [r4, #0x28]
+    // lsl r7, r7, #3
+    // ldrh r0, [r0]
+    // lsl r0, r0, #0x10
+    // str r0, [r4, #0x2c]
+    // ldr r0, [r4, #0x28]
+    // ldrh r0, [r0, #2]
+    // lsl r0, r0, #0x10
+    // str r0, [r4, #0x34]
+    // ldrb r0, [r4, #0x14]
+    // add r0, r0, #1
+    // strb r0, [r4, #0x14]
+    // ldr r0, [sp, #0x24]
+    // lsl r1, r0, #2
+    // ldr r0, _02254BA0 ; =ov04_022575A4
+    // ldr r0, [r0, r1]
+    // str r0, [sp, #0x1c]
+    // ldr r1, [sp, #0x1c]
+    // ldrb r0, [r4, #0x14]
+    // ldrh r1, [r1, r7]
+    // sub r1, r1, #1
+    // cmp r0, r1
+    // blt _022549FE
+    // add r0, r5, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #5
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldr r1, [sp, #0x1c]
+    // add r1, r1, r7
+    // ldrh r2, [r1, #2]
+    // ldrb r1, [r4, #0x17]
+    // strb r2, [r0, r1]
+    // ldr r0, [r5, #0x54]
+    // ldr r1, [r5, #0x58]
+    // mov r2, #1
+    // bl ov01_021E8ED0
+    // ldr r0, _02254B9C ; =SEQ_SE_GS_ITOMARU_ROBO
+    // mov r1, #1
+    // bl StopSE
+    // ldr r0, [r6]
+    // add r0, r0, #1
+    // str r0, [r6]
+    // b _02254A22
+    // ldrb r0, [r4, #0x19]
+    // cmp r0, #0
+    // ldrb r0, [r4, #0x1a]
+    // beq _02254A0A
+    // sub r0, r0, #1
+    // b _02254A0C
+    // add r0, r0, #1
+    // strb r0, [r4, #0x1a]
+    // mov r0, #1
+    // strb r0, [r4, #0x16]
+    // b _02254A22
+    // add r0, r4, #0
+    // add r0, #0x2c
+    // add r1, r4, #0
+    // add r1, #0x38
+    // add r2, r0, #0
+    // bl VEC_Add
+    // ldrb r1, [r4, #0x17]
+    // add r0, r5, #0
+    // add r0, #0x9c
+    // lsl r1, r1, #2
+    // add r1, r4, r1
+    // ldr r1, [r1, #4]
+    // ldr r0, [r0]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x18
+    // bl ov01_021F3B44
+    // add r3, r4, #0
+    // add r2, sp, #0x74
+    // add r3, #0x2c
+    // add r6, r0, #0
+    // ldmia r3!, {r0, r1}
+    // add r7, r2, #0
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // str r0, [r2]
+    // mov r0, #2
+    // ldr r1, [sp, #0x74]
+    // lsl r0, r0, #0xe
+    // add r0, r1, r0
+    // str r0, [sp, #0x74]
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // bl ov01_021F3B1C
+    // ldr r3, _02254BA8 ; =ov04_02257344
+    // add r2, sp, #0x5c
+    // add r6, r4, #0
+    // ldmia r3!, {r0, r1}
+    // add r7, r2, #0
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // add r6, #0x2c
+    // str r0, [r2]
+    // add r3, sp, #0x68
+    // ldmia r6!, {r0, r1}
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r6]
+    // add r1, r7, #0
+    // str r0, [r3]
+    // add r0, r2, #0
+    // bl VEC_Add
+    // mov r0, #0x1b
+    // ldrsb r0, [r4, r0]
+    // ldr r1, [sp, #0x70]
+    // lsl r0, r0, #0x10
+    // add r0, r1, r0
+    // str r0, [sp, #0x70]
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r1, sp, #0x68
+    // bl MapObject_SetPositionVector
+    // add r0, r5, #0
+    // bl FollowMon_IsActive
+    // cmp r0, #0
+    // bne _02254AA6
+    // b _02254C9E
+    // mov r0, #0x1b
+    // ldrsb r1, [r4, r0]
+    // mov r0, #1
+    // add r3, sp, #0x50
+    // sub r0, r0, r1
+    // lsl r0, r0, #0x18
+    // add r4, #0x2c
+    // asr r6, r0, #0x18
+    // ldmia r4!, {r0, r1}
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r4]
+    // add r1, r7, #0
+    // str r0, [r3]
+    // add r0, r2, #0
+    // bl VEC_Add
+    // ldr r1, [sp, #0x58]
+    // lsl r0, r6, #0x10
+    // add r0, r1, r0
+    // str r0, [sp, #0x58]
+    // add r0, r5, #0
+    // bl FollowMon_GetMapObject
+    // add r1, sp, #0x50
+    // bl MapObject_SetPositionVector
+    // add sp, #0x98
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // ldr r1, [r4, #0x28]
+    // add r7, r0, #0
+    // ldrh r1, [r1]
+    // bl MapObject_SetCurrentX
+    // add r0, r7, #0
+    // mov r1, #0
+    // bl MapObject_SetCurrentY
+    // ldr r1, [r4, #0x28]
+    // mov r2, #0x1b
+    // ldrh r1, [r1, #2]
+    // ldrsb r2, [r4, r2]
+    // add r0, r7, #0
+    // add r1, r1, r2
+    // bl MapObject_SetCurrentZ
+    // add r0, r7, #0
+    // bl sub_02060F78
+    // add r0, r7, #0
+    // mov r1, #0x4a
+    // bl MapObject_SetHeldMovement
+    // add r0, r5, #0
+    // bl FollowMon_IsActive
+    // cmp r0, #0
+    // beq _02254B52
+    // add r0, r5, #0
+    // bl FollowMon_GetMapObject
+    // ldr r1, [r4, #0x28]
+    // add r7, r0, #0
+    // ldrh r1, [r1]
+    // bl MapObject_SetCurrentX
+    // add r0, r7, #0
+    // mov r1, #0
+    // bl MapObject_SetCurrentY
+    // ldr r1, [r4, #0x28]
+    // add r0, r7, #0
+    // ldrh r3, [r1, #2]
+    // mov r1, #0x1b
+    // ldrsb r2, [r4, r1]
+    // mov r1, #1
+    // sub r1, r1, r2
+    // add r1, r3, r1
+    // bl MapObject_SetCurrentZ
+    // add r0, r7, #0
+    // bl sub_02060F78
+    // mov r0, #0
+    // str r0, [r4, #0x44]
+    // str r0, [r4, #0x48]
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetFacingDirection
+    // cmp r0, #1
+    // bne _02254B68
+    // mov r0, #1
+    // lsl r0, r0, #0xc
+    // b _02254B6A
+    // ldr r0, _02254BAC ; =0xFFFFF000
+    // str r0, [r4, #0x4c]
+    // ldr r0, [r6]
+    // add sp, #0x98
+    // add r0, r0, #1
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, sp, #0x44
+    // mov r1, #0
+    // str r1, [r0]
+    // str r1, [r0, #4]
+    // str r1, [r0, #8]
+    // ldr r2, [r4, #0x4c]
+    // str r2, [sp, #0x4c]
+    // ldr r3, [r4, #0x48]
+    // add r2, r3, #1
+    // str r2, [r4, #0x48]
+    // cmp r3, #0
+    // bne _02254BB0
+    // ldr r1, [r5, #0x24]
+    // bl Camera_OffsetLookAtPosAndTarget
+    // ldr r0, [r4, #0x44]
+    // add r0, r0, #1
+    // str r0, [r4, #0x44]
+    // b _02254BC0
+    // _02254B9C: .word SEQ_SE_GS_ITOMARU_ROBO
+    // _02254BA0: .word ov04_022575A4
+    // _02254BA4: .word ov04_02257350
+    // _02254BA8: .word ov04_02257344
+    // _02254BAC: .word 0xFFFFF000
+    // ldr r0, [r4, #0x48]
+    // cmp r0, #1
+    // ble _02254BC0
+    // str r1, [r4, #0x48]
+    // ldr r2, [r4, #0x4c]
+    // sub r0, r1, #1
+    // mul r0, r2
+    // str r0, [r4, #0x4c]
+    // ldr r0, [r4, #0x44]
+    // cmp r0, #4
+    // blt _02254C9E
+    // mov r0, #0
+    // str r0, [r4, #0x50]
+    // ldr r0, [r6]
+    // add sp, #0x98
+    // add r0, r0, #1
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r1, [r4, #0x50]
+    // add r0, r1, #1
+    // str r0, [r4, #0x50]
+    // cmp r1, #8
+    // blt _02254C9E
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // bl FollowMon_IsActive
+    // cmp r0, #0
+    // beq _02254C22
+    // add r0, r5, #0
+    // bl FollowMon_GetMapObject
+    // add r5, r0, #0
+    // ldrb r0, [r4, #0x19]
+    // cmp r0, #0
+    // beq _02254C10
+    // add r0, r7, #0
+    // mov r1, #0xd
+    // bl MapObject_SetHeldMovement
+    // add r0, r5, #0
+    // mov r1, #0xd
+    // bl MapObject_SetHeldMovement
+    // b _02254C3A
+    // add r0, r7, #0
+    // mov r1, #0xc
+    // bl MapObject_SetHeldMovement
+    // add r0, r5, #0
+    // mov r1, #0xc
+    // bl MapObject_SetHeldMovement
+    // b _02254C3A
+    // ldrb r0, [r4, #0x19]
+    // cmp r0, #0
+    // beq _02254C32
+    // add r0, r7, #0
+    // mov r1, #0xd
+    // bl MapObject_SetHeldMovement
+    // b _02254C3A
+    // add r0, r7, #0
+    // mov r1, #0xc
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [r6]
+    // add sp, #0x98
+    // add r0, r0, #1
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // bl FollowMon_IsActive
+    // cmp r0, #0
+    // beq _02254C88
+    // add r0, r5, #0
+    // bl FollowMon_GetMapObject
+    // add r4, r0, #0
+    // add r0, r7, #0
+    // bl MapObject_AreBitsSetForMovementScriptInit
+    // cmp r0, #0
+    // beq _02254C9E
+    // add r0, r4, #0
+    // bl MapObject_AreBitsSetForMovementScriptInit
+    // cmp r0, #0
+    // beq _02254C9E
+    // add r0, r4, #0
+    // bl MapObject_ClearHeldMovement
+    // ldr r0, [sp, #0x18]
+    // bl SysTask_Destroy
+    // ldr r0, [r6]
+    // add sp, #0x98
+    // add r0, r0, #1
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r7, #0
+    // bl MapObject_AreBitsSetForMovementScriptInit
+    // cmp r0, #0
+    // beq _02254C9E
+    // ldr r0, [sp, #0x18]
+    // bl SysTask_Destroy
+    // ldr r0, [r6]
+    // add r0, r0, #1
+    // str r0, [r6]
+    // add sp, #0x98
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02254CA4(void) {
     IsSEPlaying(0, 1);
 }
 
+
 void ov04_02254CBC(void) {
-    /* Original at 0x02254CBC */
-    /* Requires manual decompilation - 86 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x34\n    add r5, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #1\n    bl Save_Gymmick_AssertMagic_GetData\n    add r7, r0, #0\n    mov r0, #4\n    mov r1, #0x1c\n    bl Heap_Alloc\n    ldr r1, [r5, #4]\n    mov r2, #0x1c\n    str r0, [r1, #0x24]\n    ldr r0, [r5, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x24]\n    bl MI_CpuFill8\n    ldr r0, [r5, #4]\n    mov r1, #1\n    lsl r1, r1, #8\n    ldr r4, [r0, #0x24]\n    add r0, r1, #0\n    add r0, #0x1c\n    str r1, [r5, r0]\n    mov r0, #0xa\n    mov r3, #0\n    str r0, [sp]\n    str r3, [sp, #4]\n    ldr r0, [r5, #0x4c]\n    sub r1, r3, #1\n    mov r2, #1\n    bl ov01_021EA864\n    mov r1, #0\n    ldr r0, [r5, #0x4c]\n    mvn r1, r1\n    mov r2, #0\n    mov r3, #0x1f\n    bl ov01_021EA89C\n    mov r1, #0\n    add r2, sp, #0x14\n    sub r0, r1, #1\n    add r1, r1, #1\n    strb r0, [r2]\n    add r2, r2, #1\n    cmp r1, #0x20\n    blt _02254D1E\n    ldr r0, [r5, #0x4c]\n    add r1, sp, #0x14\n    bl ov01_021EA8C4\n    add r0, r5, #0\n    bl ov04_02254F44\n    mov r6, #0\n    ldr r0, [r5, #0x3c]\n    add r1, r6, #2\n    bl MapObjectManager_GetFirstActiveObjectByID\n    add r1, sp, #8\n    bl MapObject_CopyPositionVector\n    ldr r0, [r5, #0x54]\n    mov r1, #0x80\n    str r0, [sp]\n    add r0, r5, #0\n    add r0, #0x9c\n    ldr r0, [r0]\n    add r2, sp, #8\n    mov r3, #0\n    bl ov01_021F3C0C\n    str r0, [r4]\n    ldrb r0, [r7, r6]\n    cmp r0, #0\n    beq _02254D78\n    add r0, r5, #0\n    ldr r1, [r4]\n    add r0, #0x9c\n    lsl r1, r1, #0x18\n    ldr r0, [r0]\n    lsr r1, r1, #0x18\n    bl ov01_021F3B44\n    mov r1, #1\n    bl ov01_021F3B2C\n    add r6, r6, #1\n    add r4, r4, #4\n    cmp r6, #4\n    blt _02254D38\n    add sp, #0x34\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x34
+    // add r5, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #1
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r7, r0, #0
+    // mov r0, #4
+    // mov r1, #0x1c
+    // bl Heap_Alloc
+    // ldr r1, [r5, #4]
+    // mov r2, #0x1c
+    // str r0, [r1, #0x24]
+    // ldr r0, [r5, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #0x24]
+    // bl MI_CpuFill8
+    // ldr r0, [r5, #4]
+    // mov r1, #1
+    // lsl r1, r1, #8
+    // ldr r4, [r0, #0x24]
+    // add r0, r1, #0
+    // add r0, #0x1c
+    // str r1, [r5, r0]
+    // mov r0, #0xa
+    // mov r3, #0
+    // str r0, [sp]
+    // str r3, [sp, #4]
+    // ldr r0, [r5, #0x4c]
+    // sub r1, r3, #1
+    // mov r2, #1
+    // bl ov01_021EA864
+    // mov r1, #0
+    // ldr r0, [r5, #0x4c]
+    // mvn r1, r1
+    // mov r2, #0
+    // mov r3, #0x1f
+    // bl ov01_021EA89C
+    // mov r1, #0
+    // add r2, sp, #0x14
+    // sub r0, r1, #1
+    // add r1, r1, #1
+    // strb r0, [r2]
+    // add r2, r2, #1
+    // cmp r1, #0x20
+    // blt _02254D1E
+    // ldr r0, [r5, #0x4c]
+    // add r1, sp, #0x14
+    // bl ov01_021EA8C4
+    // add r0, r5, #0
+    // bl ov04_02254F44
+    // mov r6, #0
+    // ldr r0, [r5, #0x3c]
+    // add r1, r6, #2
+    // bl MapObjectManager_GetFirstActiveObjectByID
+    // add r1, sp, #8
+    // bl MapObject_CopyPositionVector
+    // ldr r0, [r5, #0x54]
+    // mov r1, #0x80
+    // str r0, [sp]
+    // add r0, r5, #0
+    // add r0, #0x9c
+    // ldr r0, [r0]
+    // add r2, sp, #8
+    // mov r3, #0
+    // bl ov01_021F3C0C
+    // str r0, [r4]
+    // ldrb r0, [r7, r6]
+    // cmp r0, #0
+    // beq _02254D78
+    // add r0, r5, #0
+    // ldr r1, [r4]
+    // add r0, #0x9c
+    // lsl r1, r1, #0x18
+    // ldr r0, [r0]
+    // lsr r1, r1, #0x18
+    // bl ov01_021F3B44
+    // mov r1, #1
+    // bl ov01_021F3B2C
+    // add r6, r6, #1
+    // add r4, r4, #4
+    // cmp r6, #4
+    // blt _02254D38
+    // add sp, #0x34
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02254D84(void) {
     Heap_Free(0);
 }
 
+
 void ov04_02254D98(void) {
-    /* Original at 0x02254D98 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    ldr r1, [r6, #4]\n    ldr r5, [r1, #0x24]\n    mov r1, #0x1e\n    bl FieldSysGetAttrAddr\n    add r4, r0, #0\n    ldr r0, [r4]\n    bl ov04_MortyGymTrainerObjectToCandleIdx\n    cmp r0, #4\n    bne _02254DB8\n    bl GF_AssertFail\n    pop {r4, r5, r6, pc}\n    str r0, [r5, #0x10]\n    ldr r0, [r4]\n    add r1, r6, #0\n    str r0, [r5, #0x18]\n    ldr r0, _02254DCC ; =ov04_02254E20\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #0x14]\n    pop {r4, r5, r6, pc}\n    _02254DCC: .word ov04_02254E20"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r6, r0, #0
+    // ldr r1, [r6, #4]
+    // ldr r5, [r1, #0x24]
+    // mov r1, #0x1e
+    // bl FieldSysGetAttrAddr
+    // add r4, r0, #0
+    // ldr r0, [r4]
+    // bl ov04_MortyGymTrainerObjectToCandleIdx
+    // cmp r0, #4
+    // bne _02254DB8
+    // bl GF_AssertFail
+    // pop {r4, r5, r6, pc}
+    // str r0, [r5, #0x10]
+    // ldr r0, [r4]
+    // add r1, r6, #0
+    // str r0, [r5, #0x18]
+    // ldr r0, _02254DCC ; =ov04_02254E20
+    // mov r2, #0
+    // bl SysTask_CreateOnMainQueue
+    // str r0, [r5, #0x14]
+    // pop {r4, r5, r6, pc}
+    // _02254DCC: .word ov04_02254E20
+    // TODO: decompile
 }
+
 
 void ov04_02254DD0(void) {
-    /* Original at 0x02254DD0 */
-    /* Requires manual decompilation - 7 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r0, [r0, #4]\n    ldr r3, _02254DDC ; =sub_0200E390\n    ldr r0, [r0, #0x24]\n    ldr r0, [r0, #0x14]\n    bx r3\n    nop\n    _02254DDC: .word SysTask_Destroy"
-    );
-    #endif
+    // ldr r0, [r0, #4]
+    // ldr r3, _02254DDC ; =sub_0200E390
+    // ldr r0, [r0, #0x24]
+    // ldr r0, [r0, #0x14]
+    // bx r3
+    // nop
+    // _02254DDC: .word SysTask_Destroy
+    // TODO: decompile
 }
+
 
 void ov04_02254DE0(void) {
-    /* Original at 0x02254DE0 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r2, [r5, #4]\n    ldr r4, [r2, #0x24]\n    bl FieldSysGetAttrAddr\n    add r6, r0, #0\n    ldr r0, [r6]\n    bl ov04_MortyGymTrainerObjectToCandleIdx\n    str r0, [r4, #0x10]\n    ldr r0, [r6]\n    mov r1, #0x10\n    str r0, [r4, #0x18]\n    mov r0, #0xb\n    bl Heap_AllocAtEnd\n    add r2, r0, #0\n    mov r1, #0\n    str r1, [r2]\n    mov r0, #1\n    str r0, [r2, #4]\n    str r1, [r2, #8]\n    str r5, [r2, #0xc]\n    ldr r0, [r5, #0x10]\n    ldr r1, _02254E1C ; =ov04_02254E50\n    bl TaskManager_Call\n    pop {r4, r5, r6, pc}\n    nop\n    _02254E1C: .word ov04_02254E50"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // ldr r2, [r5, #4]
+    // ldr r4, [r2, #0x24]
+    // bl FieldSysGetAttrAddr
+    // add r6, r0, #0
+    // ldr r0, [r6]
+    // bl ov04_MortyGymTrainerObjectToCandleIdx
+    // str r0, [r4, #0x10]
+    // ldr r0, [r6]
+    // mov r1, #0x10
+    // str r0, [r4, #0x18]
+    // mov r0, #0xb
+    // bl Heap_AllocAtEnd
+    // add r2, r0, #0
+    // mov r1, #0
+    // str r1, [r2]
+    // mov r0, #1
+    // str r0, [r2, #4]
+    // str r1, [r2, #8]
+    // str r5, [r2, #0xc]
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _02254E1C ; =ov04_02254E50
+    // bl TaskManager_Call
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _02254E1C: .word ov04_02254E50
+    // TODO: decompile
 }
+
 
 void ov04_02254E20(void) {
-    /* Original at 0x02254E20 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r1, #0\n    ldr r0, [r5, #4]\n    add r1, sp, #0\n    ldr r4, [r0, #0x24]\n    ldr r0, [r4, #0x18]\n    bl MapObject_CopyPositionVector\n    ldr r1, [r4, #0x10]\n    add r5, #0x9c\n    lsl r1, r1, #2\n    ldr r1, [r4, r1]\n    ldr r0, [r5]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    bl ov01_021F3B44\n    add r1, sp, #0\n    bl ov01_021F3B1C\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r5, r1, #0
+    // ldr r0, [r5, #4]
+    // add r1, sp, #0
+    // ldr r4, [r0, #0x24]
+    // ldr r0, [r4, #0x18]
+    // bl MapObject_CopyPositionVector
+    // ldr r1, [r4, #0x10]
+    // add r5, #0x9c
+    // lsl r1, r1, #2
+    // ldr r1, [r4, r1]
+    // ldr r0, [r5]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x18
+    // bl ov01_021F3B44
+    // add r1, sp, #0
+    // bl ov01_021F3B1C
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02254E50(void) {
-    /* Original at 0x02254E50 */
-    /* Requires manual decompilation - 88 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r1, [r4, #0xc]\n    ldr r0, [r1, #4]\n    ldr r5, [r0, #0x24]\n    ldr r0, [r4]\n    cmp r0, #0\n    beq _02254E6E\n    cmp r0, #1\n    beq _02254E86\n    cmp r0, #2\n    beq _02254EFE\n    b _02254F18\n    ldr r1, [r4, #8]\n    add r0, r1, #1\n    str r0, [r4, #8]\n    cmp r1, #0x1e\n    blt _02254F18\n    ldr r0, _02254F1C ; =SEQ_SE_GS_ROUSOKU_KIERU\n    bl PlaySE\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _02254F18\n    add r1, #0x9c\n    ldr r0, [r1]\n    ldr r1, [r5, #0x10]\n    lsl r1, r1, #2\n    ldr r1, [r5, r1]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    bl ov01_021F3B44\n    ldr r1, [r4, #4]\n    add r6, r0, #0\n    cmp r1, #4\n    blt _02254ECC\n    mov r1, #1\n    bl ov01_021F3B2C\n    ldr r0, [r4, #0xc]\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #1\n    bl Save_Gymmick_AssertMagic_GetData\n    ldr r1, [r5, #0x10]\n    mov r2, #1\n    strb r2, [r0, r1]\n    ldr r0, [r5, #0x18]\n    mov r1, #0xfa\n    bl ov01_021FA930\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _02254ED0\n    add r0, r1, #1\n    str r0, [r4, #4]\n    add r0, r6, #0\n    bl ov01_021F3B04\n    add r5, r0, #0\n    mov r0, #1\n    ldr r1, [r4, #4]\n    lsl r0, r0, #0xc\n    bl _s32_div_f\n    str r0, [r5]\n    mov r0, #1\n    ldr r1, [r4, #4]\n    lsl r0, r0, #0xc\n    bl _s32_div_f\n    str r0, [r5, #4]\n    mov r0, #1\n    ldr r1, [r4, #4]\n    lsl r0, r0, #0xc\n    bl _s32_div_f\n    str r0, [r5, #8]\n    b _02254F18\n    ldr r0, [r5, #0x18]\n    bl ov01_021FA2D4\n    cmp r0, #0\n    bne _02254F18\n    ldr r0, [r4, #0xc]\n    bl ov04_02254F44\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #1\n    pop {r4, r5, r6, pc}\n    mov r0, #0\n    pop {r4, r5, r6, pc}\n    _02254F1C: .word SEQ_SE_GS_ROUSOKU_KIERU"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // ldr r1, [r4, #0xc]
+    // ldr r0, [r1, #4]
+    // ldr r5, [r0, #0x24]
+    // ldr r0, [r4]
+    // cmp r0, #0
+    // beq _02254E6E
+    // cmp r0, #1
+    // beq _02254E86
+    // cmp r0, #2
+    // beq _02254EFE
+    // b _02254F18
+    // ldr r1, [r4, #8]
+    // add r0, r1, #1
+    // str r0, [r4, #8]
+    // cmp r1, #0x1e
+    // blt _02254F18
+    // ldr r0, _02254F1C ; =SEQ_SE_GS_ROUSOKU_KIERU
+    // bl PlaySE
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _02254F18
+    // add r1, #0x9c
+    // ldr r0, [r1]
+    // ldr r1, [r5, #0x10]
+    // lsl r1, r1, #2
+    // ldr r1, [r5, r1]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x18
+    // bl ov01_021F3B44
+    // ldr r1, [r4, #4]
+    // add r6, r0, #0
+    // cmp r1, #4
+    // blt _02254ECC
+    // mov r1, #1
+    // bl ov01_021F3B2C
+    // ldr r0, [r4, #0xc]
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #1
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldr r1, [r5, #0x10]
+    // mov r2, #1
+    // strb r2, [r0, r1]
+    // ldr r0, [r5, #0x18]
+    // mov r1, #0xfa
+    // bl ov01_021FA930
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _02254ED0
+    // add r0, r1, #1
+    // str r0, [r4, #4]
+    // add r0, r6, #0
+    // bl ov01_021F3B04
+    // add r5, r0, #0
+    // mov r0, #1
+    // ldr r1, [r4, #4]
+    // lsl r0, r0, #0xc
+    // bl _s32_div_f
+    // str r0, [r5]
+    // mov r0, #1
+    // ldr r1, [r4, #4]
+    // lsl r0, r0, #0xc
+    // bl _s32_div_f
+    // str r0, [r5, #4]
+    // mov r0, #1
+    // ldr r1, [r4, #4]
+    // lsl r0, r0, #0xc
+    // bl _s32_div_f
+    // str r0, [r5, #8]
+    // b _02254F18
+    // ldr r0, [r5, #0x18]
+    // bl ov01_021FA2D4
+    // cmp r0, #0
+    // bne _02254F18
+    // ldr r0, [r4, #0xc]
+    // bl ov04_02254F44
+    // add r0, r4, #0
+    // bl Heap_Free
+    // mov r0, #1
+    // pop {r4, r5, r6, pc}
+    // mov r0, #0
+    // pop {r4, r5, r6, pc}
+    // _02254F1C: .word SEQ_SE_GS_ROUSOKU_KIERU
+    // TODO: decompile
 }
+
 
 void ov04_MortyGymTrainerObjectToCandleIdx(void) {
-    /* Original at 0x02254F20 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl MapObject_GetID\n    ldr r2, _02254F40 ; =sMortyGymTrainerObjectIds\n    mov r3, #0\n    lsl r1, r3, #2\n    ldr r1, [r2, r1]\n    cmp r0, r1\n    beq _02254F3C\n    add r1, r3, #1\n    lsl r1, r1, #0x18\n    lsr r3, r1, #0x18\n    cmp r3, #4\n    blo _02254F2A\n    add r0, r3, #0\n    pop {r3, pc}\n    _02254F40: .word sMortyGymTrainerObjectIds"
-    );
-    #endif
+    // push {r3, lr}
+    // bl MapObject_GetID
+    // ldr r2, _02254F40 ; =sMortyGymTrainerObjectIds
+    // mov r3, #0
+    // lsl r1, r3, #2
+    // ldr r1, [r2, r1]
+    // cmp r0, r1
+    // beq _02254F3C
+    // add r1, r3, #1
+    // lsl r1, r1, #0x18
+    // lsr r3, r1, #0x18
+    // cmp r3, #4
+    // blo _02254F2A
+    // add r0, r3, #0
+    // pop {r3, pc}
+    // _02254F40: .word sMortyGymTrainerObjectIds
+    // TODO: decompile
 }
+
 
 void ov04_02254F44(void) {
-    /* Original at 0x02254F44 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x3c]\n    bl MapObjectManager_GetObjectCount\n    add r5, r0, #0\n    ldr r0, [r4, #0x3c]\n    bl MapObjectManager_GetObjects\n    mov r4, #0\n    str r0, [sp]\n    cmp r5, #0\n    ble _02254F88\n    add r6, r4, #0\n    add r7, sp, #0\n    ldr r0, [sp]\n    bl MapObject_CheckActive\n    cmp r0, #1\n    bne _02254F7C\n    ldr r0, [sp]\n    bl ov01_021F72DC\n    bl sub_02023F90\n    add r1, r6, #0\n    bl NNS_G3dMdlSetMdlFogEnableFlagAll\n    add r0, r7, #0\n    bl MapObjectArray_NextObject2\n    add r4, r4, #1\n    cmp r4, r5\n    blt _02254F62\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x3c]
+    // bl MapObjectManager_GetObjectCount
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x3c]
+    // bl MapObjectManager_GetObjects
+    // mov r4, #0
+    // str r0, [sp]
+    // cmp r5, #0
+    // ble _02254F88
+    // add r6, r4, #0
+    // add r7, sp, #0
+    // ldr r0, [sp]
+    // bl MapObject_CheckActive
+    // cmp r0, #1
+    // bne _02254F7C
+    // ldr r0, [sp]
+    // bl ov01_021F72DC
+    // bl sub_02023F90
+    // add r1, r6, #0
+    // bl NNS_G3dMdlSetMdlFogEnableFlagAll
+    // add r0, r7, #0
+    // bl MapObjectArray_NextObject2
+    // add r4, r4, #1
+    // cmp r4, r5
+    // blt _02254F62
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov04_02254F8C(void) {
-    /* Original at 0x02254F8C */
-    /* Requires manual decompilation - 110 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x44\n    ldr r3, _02255070 ; =ov04_0225762C\n    str r0, [sp, #4]\n    ldmia r3!, {r0, r1}\n    add r2, sp, #0x38\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    str r0, [r2]\n    ldr r0, [sp, #4]\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #6\n    bl Save_Gymmick_AssertMagic_GetData\n    str r0, [sp, #0x10]\n    ldr r1, _02255074 ; =0x00000754\n    mov r0, #4\n    bl Heap_Alloc\n    ldr r1, [sp, #4]\n    ldr r2, _02255074 ; =0x00000754\n    ldr r1, [r1, #4]\n    str r0, [r1, #0x24]\n    ldr r0, [sp, #4]\n    mov r1, #0\n    ldr r0, [r0, #4]\n    ldr r0, [r0, #0x24]\n    bl MI_CpuFill8\n    ldr r0, [sp, #4]\n    ldr r2, _02255078 ; =ov04_02257620\n    ldr r0, [r0, #4]\n    add r3, sp, #0x14\n    ldr r6, [r0, #0x24]\n    ldr r0, [sp, #4]\n    ldr r4, [sp, #0x10]\n    str r0, [r6]\n    add r0, sp, #0x38\n    str r0, [sp, #0xc]\n    ldmia r2!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r2]\n    mov r5, #0\n    add r7, r6, #4\n    str r0, [r3]\n    add r3, sp, #0x14\n    ldmia r3!, {r0, r1}\n    add r2, sp, #0x2c\n    mov ip, r2\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    mov r1, #0\n    str r0, [r2]\n    add r0, sp, #0x20\n    str r1, [r0]\n    str r1, [r0, #4]\n    str r1, [r0, #8]\n    ldr r0, [sp, #0x10]\n    mov r2, ip\n    add r0, r0, r5\n    str r0, [sp, #8]\n    ldrb r0, [r0, #0xc]\n    add r3, sp, #0x20\n    lsl r0, r0, #0xe\n    neg r0, r0\n    str r0, [sp, #0x24]\n    ldrh r0, [r4]\n    lsl r1, r0, #0x10\n    mov r0, #2\n    lsl r0, r0, #0xe\n    add r0, r1, r0\n    str r0, [sp, #0x2c]\n    ldrh r0, [r4, #6]\n    lsl r1, r0, #0x10\n    mov r0, #2\n    lsl r0, r0, #0xe\n    add r0, r1, r0\n    str r0, [sp, #0x34]\n    ldr r0, [sp, #4]\n    ldr r1, [sp, #0xc]\n    ldr r0, [r0, #0x54]\n    str r0, [sp]\n    ldr r0, [sp, #4]\n    ldr r1, [r1]\n    add r0, #0x9c\n    ldr r0, [r0]\n    bl ov01_021F3C0C\n    strb r0, [r6, #0xb]\n    str r7, [sp]\n    ldr r1, [sp, #8]\n    lsl r0, r5, #0x18\n    ldrb r1, [r1, #0xc]\n    ldrh r2, [r4]\n    ldrh r3, [r4, #6]\n    lsr r0, r0, #0x18\n    bl ov04_02255140\n    ldr r0, [sp, #0xc]\n    add r5, r5, #1\n    add r0, r0, #4\n    str r0, [sp, #0xc]\n    mov r0, #0x27\n    lsl r0, r0, #4\n    add r4, r4, #2\n    add r6, r6, r0\n    add r7, r7, r0\n    cmp r5, #3\n    blt _02254FEC\n    add sp, #0x44\n    pop {r4, r5, r6, r7, pc}\n    _02255070: .word ov04_0225762C\n    _02255074: .word 0x00000754\n    _02255078: .word ov04_02257620"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x44
+    // ldr r3, _02255070 ; =ov04_0225762C
+    // str r0, [sp, #4]
+    // ldmia r3!, {r0, r1}
+    // add r2, sp, #0x38
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // str r0, [r2]
+    // ldr r0, [sp, #4]
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #6
+    // bl Save_Gymmick_AssertMagic_GetData
+    // str r0, [sp, #0x10]
+    // ldr r1, _02255074 ; =0x00000754
+    // mov r0, #4
+    // bl Heap_Alloc
+    // ldr r1, [sp, #4]
+    // ldr r2, _02255074 ; =0x00000754
+    // ldr r1, [r1, #4]
+    // str r0, [r1, #0x24]
+    // ldr r0, [sp, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #4]
+    // ldr r0, [r0, #0x24]
+    // bl MI_CpuFill8
+    // ldr r0, [sp, #4]
+    // ldr r2, _02255078 ; =ov04_02257620
+    // ldr r0, [r0, #4]
+    // add r3, sp, #0x14
+    // ldr r6, [r0, #0x24]
+    // ldr r0, [sp, #4]
+    // ldr r4, [sp, #0x10]
+    // str r0, [r6]
+    // add r0, sp, #0x38
+    // str r0, [sp, #0xc]
+    // ldmia r2!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r2]
+    // mov r5, #0
+    // add r7, r6, #4
+    // str r0, [r3]
+    // add r3, sp, #0x14
+    // ldmia r3!, {r0, r1}
+    // add r2, sp, #0x2c
+    // mov ip, r2
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // mov r1, #0
+    // str r0, [r2]
+    // add r0, sp, #0x20
+    // str r1, [r0]
+    // str r1, [r0, #4]
+    // str r1, [r0, #8]
+    // ldr r0, [sp, #0x10]
+    // mov r2, ip
+    // add r0, r0, r5
+    // str r0, [sp, #8]
+    // ldrb r0, [r0, #0xc]
+    // add r3, sp, #0x20
+    // lsl r0, r0, #0xe
+    // neg r0, r0
+    // str r0, [sp, #0x24]
+    // ldrh r0, [r4]
+    // lsl r1, r0, #0x10
+    // mov r0, #2
+    // lsl r0, r0, #0xe
+    // add r0, r1, r0
+    // str r0, [sp, #0x2c]
+    // ldrh r0, [r4, #6]
+    // lsl r1, r0, #0x10
+    // mov r0, #2
+    // lsl r0, r0, #0xe
+    // add r0, r1, r0
+    // str r0, [sp, #0x34]
+    // ldr r0, [sp, #4]
+    // ldr r1, [sp, #0xc]
+    // ldr r0, [r0, #0x54]
+    // str r0, [sp]
+    // ldr r0, [sp, #4]
+    // ldr r1, [r1]
+    // add r0, #0x9c
+    // ldr r0, [r0]
+    // bl ov01_021F3C0C
+    // strb r0, [r6, #0xb]
+    // str r7, [sp]
+    // ldr r1, [sp, #8]
+    // lsl r0, r5, #0x18
+    // ldrb r1, [r1, #0xc]
+    // ldrh r2, [r4]
+    // ldrh r3, [r4, #6]
+    // lsr r0, r0, #0x18
+    // bl ov04_02255140
+    // ldr r0, [sp, #0xc]
+    // add r5, r5, #1
+    // add r0, r0, #4
+    // str r0, [sp, #0xc]
+    // mov r0, #0x27
+    // lsl r0, r0, #4
+    // add r4, r4, #2
+    // add r6, r6, r0
+    // add r7, r7, r0
+    // cmp r5, #3
+    // blt _02254FEC
+    // add sp, #0x44
+    // pop {r4, r5, r6, r7, pc}
+    // _02255070: .word ov04_0225762C
+    // _02255074: .word 0x00000754
+    // _02255078: .word ov04_02257620
+    // TODO: decompile
 }
+
 
 void ov04_0225507C(void) {
     Heap_Free(0);
 }
 
+
 void ov04_02255090(void) {
-    /* Original at 0x02255090 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    bl Save_Gymmick_GetType\n    cmp r0, #6\n    beq _022550A8\n    mov r0, #0\n    pop {r4, r5, r6, pc}\n    ldr r0, [r5, #4]\n    ldr r4, [r0, #0x24]\n    cmp r4, #0\n    bne _022550B4\n    mov r0, #0\n    pop {r4, r5, r6, pc}\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetXCoord\n    add r6, r0, #0\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetZCoord\n    add r2, r0, #0\n    lsl r1, r6, #0x10\n    lsl r2, r2, #0x10\n    add r0, r4, #0\n    lsr r1, r1, #0x10\n    lsr r2, r2, #0x10\n    bl ov04_02255708\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // bl Save_Gymmick_GetType
+    // cmp r0, #6
+    // beq _022550A8
+    // mov r0, #0
+    // pop {r4, r5, r6, pc}
+    // ldr r0, [r5, #4]
+    // ldr r4, [r0, #0x24]
+    // cmp r4, #0
+    // bne _022550B4
+    // mov r0, #0
+    // pop {r4, r5, r6, pc}
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetXCoord
+    // add r6, r0, #0
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetZCoord
+    // add r2, r0, #0
+    // lsl r1, r6, #0x10
+    // lsl r2, r2, #0x10
+    // add r0, r4, #0
+    // lsr r1, r1, #0x10
+    // lsr r2, r2, #0x10
+    // bl ov04_02255708
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov04_022550D4(void) {
-    /* Original at 0x022550D4 */
-    /* Requires manual decompilation - 51 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    str r0, [sp]\n    ldr r0, [sp, #0x18]\n    mov r6, #0x79\n    str r0, [sp, #0x18]\n    mov r0, #0\n    mov ip, r0\n    ldr r0, [sp]\n    lsl r6, r6, #2\n    ldr r0, [r0, #4]\n    add r3, r1, #0\n    ldr r0, [r0, #0x24]\n    sub r4, r6, #4\n    add r7, r0, #4\n    mov r0, #0\n    add r1, r7, #0\n    ldr r5, [r1, r4]\n    cmp r3, r5\n    bne _0225510A\n    ldr r5, [r1, r6]\n    cmp r2, r5\n    bne _0225510A\n    ldr r0, [sp, #0x18]\n    mov r1, #0\n    str r1, [r0]\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r0, #1\n    add r1, #8\n    cmp r0, #0x12\n    blt _022550F4\n    mov r0, #0x27\n    lsl r0, r0, #4\n    add r7, r7, r0\n    mov r0, ip\n    add r0, r0, #1\n    mov ip, r0\n    cmp r0, #3\n    blt _022550F0\n    ldr r0, [sp]\n    add r1, r3, #0\n    bl GetMetatileBehavior\n    bl sub_0205BAC4\n    cmp r0, #0\n    beq _0225513A\n    ldr r1, [sp, #0x18]\n    mov r0, #1\n    str r0, [r1]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // str r0, [sp]
+    // ldr r0, [sp, #0x18]
+    // mov r6, #0x79
+    // str r0, [sp, #0x18]
+    // mov r0, #0
+    // mov ip, r0
+    // ldr r0, [sp]
+    // lsl r6, r6, #2
+    // ldr r0, [r0, #4]
+    // add r3, r1, #0
+    // ldr r0, [r0, #0x24]
+    // sub r4, r6, #4
+    // add r7, r0, #4
+    // mov r0, #0
+    // add r1, r7, #0
+    // ldr r5, [r1, r4]
+    // cmp r3, r5
+    // bne _0225510A
+    // ldr r5, [r1, r6]
+    // cmp r2, r5
+    // bne _0225510A
+    // ldr r0, [sp, #0x18]
+    // mov r1, #0
+    // str r1, [r0]
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r0, #1
+    // add r1, #8
+    // cmp r0, #0x12
+    // blt _022550F4
+    // mov r0, #0x27
+    // lsl r0, r0, #4
+    // add r7, r7, r0
+    // mov r0, ip
+    // add r0, r0, #1
+    // mov ip, r0
+    // cmp r0, #3
+    // blt _022550F0
+    // ldr r0, [sp]
+    // add r1, r3, #0
+    // bl GetMetatileBehavior
+    // bl sub_0205BAC4
+    // cmp r0, #0
+    // beq _0225513A
+    // ldr r1, [sp, #0x18]
+    // mov r0, #1
+    // str r0, [r1]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02255140(void) {
-    /* Original at 0x02255140 */
-    /* Requires manual decompilation - 414 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    str r1, [sp]\n    str r2, [sp, #4]\n    str r3, [sp, #8]\n    ldr r1, [sp, #0x38]\n    ldr r2, [sp, #4]\n    str r1, [sp, #0x38]\n    str r2, [r1, #8]\n    ldr r2, [sp, #8]\n    str r2, [r1, #0xc]\n    ldr r1, [sp, #4]\n    add r2, r1, #1\n    ldr r1, [sp, #0x38]\n    str r2, [r1, #0x10]\n    ldr r2, [sp, #8]\n    str r2, [r1, #0x14]\n    ldr r1, [sp, #4]\n    sub r7, r1, #1\n    ldr r1, [sp, #0x38]\n    cmp r0, #1\n    str r7, [r1, #0x18]\n    ldr r2, [sp, #8]\n    str r2, [r1, #0x1c]\n    ldr r2, [sp, #4]\n    str r2, [r1, #0x20]\n    ldr r2, [sp, #8]\n    str r2, [r1, #0x24]\n    bne _0225517C\n    b _022552D6\n    mov r0, #0\n    str r0, [r1]\n    mov r2, #5\n    strb r2, [r1, #4]\n    mov r2, #7\n    strb r2, [r1, #5]\n    ldr r1, [sp, #4]\n    ldr r4, [sp, #0x38]\n    str r1, [sp, #0x1c]\n    ldr r1, [sp, #8]\n    str r1, [sp, #0x20]\n    ldr r1, [sp, #4]\n    add r3, r1, #3\n    ldr r1, [sp, #8]\n    str r3, [sp, #0x1c]\n    sub r2, r1, #2\n    str r2, [sp, #0x20]\n    add r1, r2, r0\n    str r3, [r4, #0x28]\n    str r1, [r4, #0x2c]\n    add r0, r0, #1\n    add r4, #8\n    cmp r0, #7\n    blt _0225519E\n    ldr r0, [sp, #4]\n    ldr r3, [sp, #0x38]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    mov r4, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #4]\n    sub r2, r0, #3\n    ldr r0, [sp, #8]\n    str r2, [sp, #0x1c]\n    sub r1, r0, #2\n    str r1, [sp, #0x20]\n    add r0, r1, r4\n    str r2, [r3, #0x68]\n    str r0, [r3, #0x6c]\n    add r4, r4, #1\n    add r3, #8\n    cmp r4, #7\n    blt _022551C4\n    ldr r0, [sp, #4]\n    ldr r2, [sp, #0x38]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    mov r3, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #4]\n    sub r1, r0, #2\n    ldr r0, [sp, #8]\n    str r1, [sp, #0x1c]\n    add r0, r0, #5\n    str r0, [sp, #0x20]\n    add r4, r2, #0\n    add r4, #0xa8\n    str r1, [r4]\n    add r4, r2, #0\n    add r4, #0xac\n    str r0, [r4]\n    add r4, r2, #0\n    add r4, #0xa8\n    ldr r4, [r4]\n    add r5, r4, r3\n    add r4, r2, #0\n    add r4, #0xa8\n    add r3, r3, #1\n    add r2, #8\n    str r5, [r4]\n    cmp r3, #5\n    blt _022551EA\n    ldr r0, [sp, #4]\n    ldr r2, [sp, #0x38]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    mov r3, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #4]\n    sub r1, r0, #2\n    ldr r0, [sp, #8]\n    str r1, [sp, #0x1c]\n    sub r0, r0, #3\n    str r0, [sp, #0x20]\n    add r4, r2, #0\n    add r4, #0xd0\n    str r1, [r4]\n    add r4, r2, #0\n    add r4, #0xd4\n    str r0, [r4]\n    add r4, r2, #0\n    add r4, #0xd0\n    ldr r4, [r4]\n    add r5, r4, r3\n    add r4, r2, #0\n    add r4, #0xd0\n    add r3, r3, #1\n    add r2, #8\n    str r5, [r4]\n    cmp r3, #5\n    blt _02255224\n    ldr r0, [sp, #4]\n    mov r6, #0\n    sub r0, r0, #4\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #8]\n    str r6, [sp, #0x10]\n    add r4, r0, #4\n    ldr r0, [sp, #0xc]\n    str r4, [sp, #0x20]\n    str r0, [sp, #0x1c]\n    sub r2, r0, r6\n    ldr r0, [sp, #0x10]\n    str r2, [sp, #0x1c]\n    lsl r1, r0, #3\n    ldr r0, [sp, #0x38]\n    mov r3, #0\n    add r5, r0, r1\n    add r0, r5, #0\n    add r0, #0xf8\n    str r2, [r0]\n    add r0, r5, #0\n    add r0, #0xfc\n    str r4, [r0]\n    add r0, r5, #0\n    add r0, #0xfc\n    ldr r0, [r0]\n    sub r1, r0, r3\n    add r0, r5, #0\n    add r0, #0xfc\n    add r3, r3, #1\n    add r5, #8\n    str r1, [r0]\n    cmp r3, #7\n    blt _02255268\n    ldr r0, [sp, #0x10]\n    add r6, r6, #1\n    add r0, r0, #7\n    str r0, [sp, #0x10]\n    cmp r6, #2\n    blt _02255254\n    ldr r0, [sp, #0x38]\n    mov r4, #0\n    ldrb r3, [r0, #4]\n    cmp r3, #0\n    ble _022552D4\n    ldr r0, [sp, #4]\n    add r2, r0, #3\n    ldr r0, [sp, #8]\n    str r2, [sp, #0x1c]\n    sub r1, r0, #2\n    str r1, [sp, #0x20]\n    cmp r3, #0\n    ble _022552D4\n    mov r6, #0x6f\n    lsl r6, r6, #2\n    ldr r3, [sp, #0x38]\n    add r0, r6, #0\n    mov r5, #0x6e\n    lsl r5, r5, #2\n    str r2, [r3, r5]\n    add r5, r5, #4\n    str r1, [r3, r5]\n    ldr r5, [r3, r6]\n    add r5, r5, r4\n    str r5, [r3, r0]\n    ldr r5, [sp, #0x38]\n    add r4, r4, #1\n    ldrb r5, [r5, #4]\n    add r3, #8\n    cmp r4, r5\n    blt _022552B8\n    b _02255432\n    ldr r0, [sp, #0x38]\n    mov r1, #1\n    str r1, [r0]\n    mov r1, #4\n    strb r1, [r0, #4]\n    mov r1, #8\n    strb r1, [r0, #5]\n    ldr r0, [sp, #4]\n    ldr r4, [sp, #0x38]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    mov r3, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #4]\n    add r2, r0, #2\n    ldr r0, [sp, #8]\n    str r2, [sp, #0x1c]\n    sub r1, r0, #2\n    str r1, [sp, #0x20]\n    add r0, r1, r3\n    str r2, [r4, #0x28]\n    str r0, [r4, #0x2c]\n    add r3, r3, #1\n    add r4, #8\n    cmp r3, #8\n    blt _022552FC\n    ldr r0, [sp, #4]\n    ldr r3, [sp, #0x38]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    mov r4, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #4]\n    sub r2, r0, #3\n    ldr r0, [sp, #8]\n    str r2, [sp, #0x1c]\n    sub r1, r0, #2\n    str r1, [sp, #0x20]\n    add r0, r1, r4\n    str r2, [r3, #0x68]\n    str r0, [r3, #0x6c]\n    add r4, r4, #1\n    add r3, #8\n    cmp r4, #8\n    blt _02255322\n    ldr r0, [sp, #4]\n    ldr r2, [sp, #0x38]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    mov r3, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #4]\n    sub r1, r0, #2\n    ldr r0, [sp, #8]\n    str r1, [sp, #0x1c]\n    add r0, r0, #6\n    str r0, [sp, #0x20]\n    add r4, r2, #0\n    add r4, #0xa8\n    str r1, [r4]\n    add r4, r2, #0\n    add r4, #0xac\n    str r0, [r4]\n    add r4, r2, #0\n    add r4, #0xa8\n    ldr r4, [r4]\n    add r5, r4, r3\n    add r4, r2, #0\n    add r4, #0xa8\n    add r3, r3, #1\n    add r2, #8\n    str r5, [r4]\n    cmp r3, #4\n    blt _02255348\n    ldr r0, [sp, #4]\n    ldr r2, [sp, #0x38]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    mov r3, #0\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #4]\n    sub r1, r0, #2\n    ldr r0, [sp, #8]\n    str r1, [sp, #0x1c]\n    sub r0, r0, #3\n    str r0, [sp, #0x20]\n    add r4, r2, #0\n    add r4, #0xd0\n    str r1, [r4]\n    add r4, r2, #0\n    add r4, #0xd4\n    str r0, [r4]\n    add r4, r2, #0\n    add r4, #0xd0\n    ldr r4, [r4]\n    add r5, r4, r3\n    add r4, r2, #0\n    add r4, #0xd0\n    add r3, r3, #1\n    add r2, #8\n    str r5, [r4]\n    cmp r3, #4\n    blt _02255382\n    ldr r0, [sp, #4]\n    mov r6, #0\n    sub r0, r0, #4\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #8]\n    str r6, [sp, #0x18]\n    add r4, r0, #5\n    ldr r0, [sp, #0x14]\n    str r4, [sp, #0x20]\n    str r0, [sp, #0x1c]\n    sub r2, r0, r6\n    ldr r0, [sp, #0x18]\n    str r2, [sp, #0x1c]\n    lsl r1, r0, #3\n    ldr r0, [sp, #0x38]\n    mov r3, #0\n    add r5, r0, r1\n    add r0, r5, #0\n    add r0, #0xf8\n    str r2, [r0]\n    add r0, r5, #0\n    add r0, #0xfc\n    str r4, [r0]\n    add r0, r5, #0\n    add r0, #0xfc\n    ldr r0, [r0]\n    sub r1, r0, r3\n    add r0, r5, #0\n    add r0, #0xfc\n    add r3, r3, #1\n    add r5, #8\n    str r1, [r0]\n    cmp r3, #8\n    blt _022553C6\n    ldr r0, [sp, #0x18]\n    add r6, r6, #1\n    add r0, #8\n    str r0, [sp, #0x18]\n    cmp r6, #3\n    blt _022553B2\n    ldr r0, [sp, #0x38]\n    mov r4, #0\n    ldrb r3, [r0, #4]\n    cmp r3, #0\n    ble _02255432\n    ldr r0, [sp, #4]\n    add r2, r0, #3\n    ldr r0, [sp, #8]\n    str r2, [sp, #0x1c]\n    sub r1, r0, #2\n    str r1, [sp, #0x20]\n    cmp r3, #0\n    ble _02255432\n    mov r6, #0x6f\n    lsl r6, r6, #2\n    ldr r3, [sp, #0x38]\n    add r0, r6, #0\n    mov r5, #0x6e\n    lsl r5, r5, #2\n    str r2, [r3, r5]\n    add r5, r5, #4\n    str r1, [r3, r5]\n    ldr r5, [r3, r6]\n    add r5, r5, r4\n    str r5, [r3, r0]\n    ldr r5, [sp, #0x38]\n    add r4, r4, #1\n    ldrb r5, [r5, #4]\n    add r3, #8\n    cmp r4, r5\n    blt _02255416\n    ldr r0, [sp, #8]\n    mov r6, #0x1e\n    sub r2, r0, #1\n    mov r1, #0\n    lsl r6, r6, #4\n    str r7, [sp, #0x1c]\n    str r2, [sp, #0x20]\n    mov ip, r1\n    add r4, r6, #4\n    ldr r3, [sp, #0x38]\n    lsl r5, r1, #3\n    mov r0, #0\n    add r5, r3, r5\n    add r3, r7, r0\n    str r3, [r5, r6]\n    str r2, [r5, r4]\n    add r0, r0, #1\n    add r5, #8\n    cmp r0, #3\n    blt _0225544C\n    mov r0, ip\n    add r0, r0, #1\n    add r1, r1, #3\n    add r2, r2, #1\n    mov ip, r0\n    cmp r0, #6\n    blt _02255444\n    ldr r1, [sp]\n    ldr r0, [sp, #0x38]\n    ldr r3, [sp, #0x38]\n    strb r1, [r0, #6]\n    ldr r0, [sp]\n    ldr r1, [sp, #4]\n    ldr r2, [sp, #8]\n    bl ov04_022554FC\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x24
+    // str r1, [sp]
+    // str r2, [sp, #4]
+    // str r3, [sp, #8]
+    // ldr r1, [sp, #0x38]
+    // ldr r2, [sp, #4]
+    // str r1, [sp, #0x38]
+    // str r2, [r1, #8]
+    // ldr r2, [sp, #8]
+    // str r2, [r1, #0xc]
+    // ldr r1, [sp, #4]
+    // add r2, r1, #1
+    // ldr r1, [sp, #0x38]
+    // str r2, [r1, #0x10]
+    // ldr r2, [sp, #8]
+    // str r2, [r1, #0x14]
+    // ldr r1, [sp, #4]
+    // sub r7, r1, #1
+    // ldr r1, [sp, #0x38]
+    // cmp r0, #1
+    // str r7, [r1, #0x18]
+    // ldr r2, [sp, #8]
+    // str r2, [r1, #0x1c]
+    // ldr r2, [sp, #4]
+    // str r2, [r1, #0x20]
+    // ldr r2, [sp, #8]
+    // str r2, [r1, #0x24]
+    // bne _0225517C
+    // b _022552D6
+    // mov r0, #0
+    // str r0, [r1]
+    // mov r2, #5
+    // strb r2, [r1, #4]
+    // mov r2, #7
+    // strb r2, [r1, #5]
+    // ldr r1, [sp, #4]
+    // ldr r4, [sp, #0x38]
+    // str r1, [sp, #0x1c]
+    // ldr r1, [sp, #8]
+    // str r1, [sp, #0x20]
+    // ldr r1, [sp, #4]
+    // add r3, r1, #3
+    // ldr r1, [sp, #8]
+    // str r3, [sp, #0x1c]
+    // sub r2, r1, #2
+    // str r2, [sp, #0x20]
+    // add r1, r2, r0
+    // str r3, [r4, #0x28]
+    // str r1, [r4, #0x2c]
+    // add r0, r0, #1
+    // add r4, #8
+    // cmp r0, #7
+    // blt _0225519E
+    // ldr r0, [sp, #4]
+    // ldr r3, [sp, #0x38]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // mov r4, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #4]
+    // sub r2, r0, #3
+    // ldr r0, [sp, #8]
+    // str r2, [sp, #0x1c]
+    // sub r1, r0, #2
+    // str r1, [sp, #0x20]
+    // add r0, r1, r4
+    // str r2, [r3, #0x68]
+    // str r0, [r3, #0x6c]
+    // add r4, r4, #1
+    // add r3, #8
+    // cmp r4, #7
+    // blt _022551C4
+    // ldr r0, [sp, #4]
+    // ldr r2, [sp, #0x38]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // mov r3, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #4]
+    // sub r1, r0, #2
+    // ldr r0, [sp, #8]
+    // str r1, [sp, #0x1c]
+    // add r0, r0, #5
+    // str r0, [sp, #0x20]
+    // add r4, r2, #0
+    // add r4, #0xa8
+    // str r1, [r4]
+    // add r4, r2, #0
+    // add r4, #0xac
+    // str r0, [r4]
+    // add r4, r2, #0
+    // add r4, #0xa8
+    // ldr r4, [r4]
+    // add r5, r4, r3
+    // add r4, r2, #0
+    // add r4, #0xa8
+    // add r3, r3, #1
+    // add r2, #8
+    // str r5, [r4]
+    // cmp r3, #5
+    // blt _022551EA
+    // ldr r0, [sp, #4]
+    // ldr r2, [sp, #0x38]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // mov r3, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #4]
+    // sub r1, r0, #2
+    // ldr r0, [sp, #8]
+    // str r1, [sp, #0x1c]
+    // sub r0, r0, #3
+    // str r0, [sp, #0x20]
+    // add r4, r2, #0
+    // add r4, #0xd0
+    // str r1, [r4]
+    // add r4, r2, #0
+    // add r4, #0xd4
+    // str r0, [r4]
+    // add r4, r2, #0
+    // add r4, #0xd0
+    // ldr r4, [r4]
+    // add r5, r4, r3
+    // add r4, r2, #0
+    // add r4, #0xd0
+    // add r3, r3, #1
+    // add r2, #8
+    // str r5, [r4]
+    // cmp r3, #5
+    // blt _02255224
+    // ldr r0, [sp, #4]
+    // mov r6, #0
+    // sub r0, r0, #4
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #8]
+    // str r6, [sp, #0x10]
+    // add r4, r0, #4
+    // ldr r0, [sp, #0xc]
+    // str r4, [sp, #0x20]
+    // str r0, [sp, #0x1c]
+    // sub r2, r0, r6
+    // ldr r0, [sp, #0x10]
+    // str r2, [sp, #0x1c]
+    // lsl r1, r0, #3
+    // ldr r0, [sp, #0x38]
+    // mov r3, #0
+    // add r5, r0, r1
+    // add r0, r5, #0
+    // add r0, #0xf8
+    // str r2, [r0]
+    // add r0, r5, #0
+    // add r0, #0xfc
+    // str r4, [r0]
+    // add r0, r5, #0
+    // add r0, #0xfc
+    // ldr r0, [r0]
+    // sub r1, r0, r3
+    // add r0, r5, #0
+    // add r0, #0xfc
+    // add r3, r3, #1
+    // add r5, #8
+    // str r1, [r0]
+    // cmp r3, #7
+    // blt _02255268
+    // ldr r0, [sp, #0x10]
+    // add r6, r6, #1
+    // add r0, r0, #7
+    // str r0, [sp, #0x10]
+    // cmp r6, #2
+    // blt _02255254
+    // ldr r0, [sp, #0x38]
+    // mov r4, #0
+    // ldrb r3, [r0, #4]
+    // cmp r3, #0
+    // ble _022552D4
+    // ldr r0, [sp, #4]
+    // add r2, r0, #3
+    // ldr r0, [sp, #8]
+    // str r2, [sp, #0x1c]
+    // sub r1, r0, #2
+    // str r1, [sp, #0x20]
+    // cmp r3, #0
+    // ble _022552D4
+    // mov r6, #0x6f
+    // lsl r6, r6, #2
+    // ldr r3, [sp, #0x38]
+    // add r0, r6, #0
+    // mov r5, #0x6e
+    // lsl r5, r5, #2
+    // str r2, [r3, r5]
+    // add r5, r5, #4
+    // str r1, [r3, r5]
+    // ldr r5, [r3, r6]
+    // add r5, r5, r4
+    // str r5, [r3, r0]
+    // ldr r5, [sp, #0x38]
+    // add r4, r4, #1
+    // ldrb r5, [r5, #4]
+    // add r3, #8
+    // cmp r4, r5
+    // blt _022552B8
+    // b _02255432
+    // ldr r0, [sp, #0x38]
+    // mov r1, #1
+    // str r1, [r0]
+    // mov r1, #4
+    // strb r1, [r0, #4]
+    // mov r1, #8
+    // strb r1, [r0, #5]
+    // ldr r0, [sp, #4]
+    // ldr r4, [sp, #0x38]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // mov r3, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #4]
+    // add r2, r0, #2
+    // ldr r0, [sp, #8]
+    // str r2, [sp, #0x1c]
+    // sub r1, r0, #2
+    // str r1, [sp, #0x20]
+    // add r0, r1, r3
+    // str r2, [r4, #0x28]
+    // str r0, [r4, #0x2c]
+    // add r3, r3, #1
+    // add r4, #8
+    // cmp r3, #8
+    // blt _022552FC
+    // ldr r0, [sp, #4]
+    // ldr r3, [sp, #0x38]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // mov r4, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #4]
+    // sub r2, r0, #3
+    // ldr r0, [sp, #8]
+    // str r2, [sp, #0x1c]
+    // sub r1, r0, #2
+    // str r1, [sp, #0x20]
+    // add r0, r1, r4
+    // str r2, [r3, #0x68]
+    // str r0, [r3, #0x6c]
+    // add r4, r4, #1
+    // add r3, #8
+    // cmp r4, #8
+    // blt _02255322
+    // ldr r0, [sp, #4]
+    // ldr r2, [sp, #0x38]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // mov r3, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #4]
+    // sub r1, r0, #2
+    // ldr r0, [sp, #8]
+    // str r1, [sp, #0x1c]
+    // add r0, r0, #6
+    // str r0, [sp, #0x20]
+    // add r4, r2, #0
+    // add r4, #0xa8
+    // str r1, [r4]
+    // add r4, r2, #0
+    // add r4, #0xac
+    // str r0, [r4]
+    // add r4, r2, #0
+    // add r4, #0xa8
+    // ldr r4, [r4]
+    // add r5, r4, r3
+    // add r4, r2, #0
+    // add r4, #0xa8
+    // add r3, r3, #1
+    // add r2, #8
+    // str r5, [r4]
+    // cmp r3, #4
+    // blt _02255348
+    // ldr r0, [sp, #4]
+    // ldr r2, [sp, #0x38]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // mov r3, #0
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #4]
+    // sub r1, r0, #2
+    // ldr r0, [sp, #8]
+    // str r1, [sp, #0x1c]
+    // sub r0, r0, #3
+    // str r0, [sp, #0x20]
+    // add r4, r2, #0
+    // add r4, #0xd0
+    // str r1, [r4]
+    // add r4, r2, #0
+    // add r4, #0xd4
+    // str r0, [r4]
+    // add r4, r2, #0
+    // add r4, #0xd0
+    // ldr r4, [r4]
+    // add r5, r4, r3
+    // add r4, r2, #0
+    // add r4, #0xd0
+    // add r3, r3, #1
+    // add r2, #8
+    // str r5, [r4]
+    // cmp r3, #4
+    // blt _02255382
+    // ldr r0, [sp, #4]
+    // mov r6, #0
+    // sub r0, r0, #4
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #8]
+    // str r6, [sp, #0x18]
+    // add r4, r0, #5
+    // ldr r0, [sp, #0x14]
+    // str r4, [sp, #0x20]
+    // str r0, [sp, #0x1c]
+    // sub r2, r0, r6
+    // ldr r0, [sp, #0x18]
+    // str r2, [sp, #0x1c]
+    // lsl r1, r0, #3
+    // ldr r0, [sp, #0x38]
+    // mov r3, #0
+    // add r5, r0, r1
+    // add r0, r5, #0
+    // add r0, #0xf8
+    // str r2, [r0]
+    // add r0, r5, #0
+    // add r0, #0xfc
+    // str r4, [r0]
+    // add r0, r5, #0
+    // add r0, #0xfc
+    // ldr r0, [r0]
+    // sub r1, r0, r3
+    // add r0, r5, #0
+    // add r0, #0xfc
+    // add r3, r3, #1
+    // add r5, #8
+    // str r1, [r0]
+    // cmp r3, #8
+    // blt _022553C6
+    // ldr r0, [sp, #0x18]
+    // add r6, r6, #1
+    // add r0, #8
+    // str r0, [sp, #0x18]
+    // cmp r6, #3
+    // blt _022553B2
+    // ldr r0, [sp, #0x38]
+    // mov r4, #0
+    // ldrb r3, [r0, #4]
+    // cmp r3, #0
+    // ble _02255432
+    // ldr r0, [sp, #4]
+    // add r2, r0, #3
+    // ldr r0, [sp, #8]
+    // str r2, [sp, #0x1c]
+    // sub r1, r0, #2
+    // str r1, [sp, #0x20]
+    // cmp r3, #0
+    // ble _02255432
+    // mov r6, #0x6f
+    // lsl r6, r6, #2
+    // ldr r3, [sp, #0x38]
+    // add r0, r6, #0
+    // mov r5, #0x6e
+    // lsl r5, r5, #2
+    // str r2, [r3, r5]
+    // add r5, r5, #4
+    // str r1, [r3, r5]
+    // ldr r5, [r3, r6]
+    // add r5, r5, r4
+    // str r5, [r3, r0]
+    // ldr r5, [sp, #0x38]
+    // add r4, r4, #1
+    // ldrb r5, [r5, #4]
+    // add r3, #8
+    // cmp r4, r5
+    // blt _02255416
+    // ldr r0, [sp, #8]
+    // mov r6, #0x1e
+    // sub r2, r0, #1
+    // mov r1, #0
+    // lsl r6, r6, #4
+    // str r7, [sp, #0x1c]
+    // str r2, [sp, #0x20]
+    // mov ip, r1
+    // add r4, r6, #4
+    // ldr r3, [sp, #0x38]
+    // lsl r5, r1, #3
+    // mov r0, #0
+    // add r5, r3, r5
+    // add r3, r7, r0
+    // str r3, [r5, r6]
+    // str r2, [r5, r4]
+    // add r0, r0, #1
+    // add r5, #8
+    // cmp r0, #3
+    // blt _0225544C
+    // mov r0, ip
+    // add r0, r0, #1
+    // add r1, r1, #3
+    // add r2, r2, #1
+    // mov ip, r0
+    // cmp r0, #6
+    // blt _02255444
+    // ldr r1, [sp]
+    // ldr r0, [sp, #0x38]
+    // ldr r3, [sp, #0x38]
+    // strb r1, [r0, #6]
+    // ldr r0, [sp]
+    // ldr r1, [sp, #4]
+    // ldr r2, [sp, #8]
+    // bl ov04_022554FC
+    // add sp, #0x24
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02255480(void) {
-    /* Original at 0x02255480 */
-    /* Requires manual decompilation - 34 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5}\n    ldr r4, [r3]\n    ldr r3, [r3, #4]\n    ldr r5, [sp, #8]\n    sub r4, r4, r1\n    sub r3, r3, r2\n    cmp r0, #1\n    beq _0225549C\n    cmp r0, #2\n    beq _022554A4\n    cmp r0, #3\n    beq _022554AE\n    pop {r4, r5}\n    bx lr\n    neg r0, r3\n    str r0, [r5]\n    str r4, [r5, #4]\n    b _022554B4\n    neg r0, r4\n    str r0, [r5]\n    neg r0, r3\n    str r0, [r5, #4]\n    b _022554B4\n    str r3, [r5]\n    neg r0, r4\n    str r0, [r5, #4]\n    ldr r0, [r5]\n    add r0, r0, r1\n    str r0, [r5]\n    ldr r0, [r5, #4]\n    add r0, r0, r2\n    str r0, [r5, #4]\n    pop {r4, r5}\n    bx lr"
-    );
-    #endif
+    // push {r4, r5}
+    // ldr r4, [r3]
+    // ldr r3, [r3, #4]
+    // ldr r5, [sp, #8]
+    // sub r4, r4, r1
+    // sub r3, r3, r2
+    // cmp r0, #1
+    // beq _0225549C
+    // cmp r0, #2
+    // beq _022554A4
+    // cmp r0, #3
+    // beq _022554AE
+    // pop {r4, r5}
+    // bx lr
+    // neg r0, r3
+    // str r0, [r5]
+    // str r4, [r5, #4]
+    // b _022554B4
+    // neg r0, r4
+    // str r0, [r5]
+    // neg r0, r3
+    // str r0, [r5, #4]
+    // b _022554B4
+    // str r3, [r5]
+    // neg r0, r4
+    // str r0, [r5, #4]
+    // ldr r0, [r5]
+    // add r0, r0, r1
+    // str r0, [r5]
+    // ldr r0, [r5, #4]
+    // add r0, r0, r2
+    // str r0, [r5, #4]
+    // pop {r4, r5}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_022554C4(void) {
-    /* Original at 0x022554C4 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    mov r4, #0\n    cmp r1, #0\n    ble _022554DA\n    ldr r3, [r2]\n    add r4, r4, #1\n    add r3, r3, r0\n    str r3, [r2]\n    add r2, #8\n    cmp r4, r1\n    blt _022554CC\n    pop {r3, r4}\n    bx lr"
-    );
-    #endif
+    // push {r3, r4}
+    // mov r4, #0
+    // cmp r1, #0
+    // ble _022554DA
+    // ldr r3, [r2]
+    // add r4, r4, #1
+    // add r3, r3, r0
+    // str r3, [r2]
+    // add r2, #8
+    // cmp r4, r1
+    // blt _022554CC
+    // pop {r3, r4}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_022554E0(void) {
-    /* Original at 0x022554E0 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    mov r4, #0\n    cmp r1, #0\n    ble _022554F6\n    ldr r3, [r2, #4]\n    add r4, r4, #1\n    add r3, r3, r0\n    str r3, [r2, #4]\n    add r2, #8\n    cmp r4, r1\n    blt _022554E8\n    pop {r3, r4}\n    bx lr"
-    );
-    #endif
+    // push {r3, r4}
+    // mov r4, #0
+    // cmp r1, #0
+    // ble _022554F6
+    // ldr r3, [r2, #4]
+    // add r4, r4, #1
+    // add r3, r3, r0
+    // str r3, [r2, #4]
+    // add r2, #8
+    // cmp r4, r1
+    // blt _022554E8
+    // pop {r3, r4}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_022554FC(void) {
-    /* Original at 0x022554FC */
-    /* Requires manual decompilation - 206 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x4c\n    add r5, r0, #0\n    ldr r0, [r3]\n    add r4, r1, #0\n    add r6, r2, #0\n    str r3, [sp, #4]\n    cmp r0, #0\n    bne _0225551C\n    mov r0, #0xe\n    str r0, [sp, #0x44]\n    mov r0, #5\n    str r0, [sp, #0x20]\n    mov r0, #7\n    str r0, [sp, #0x24]\n    b _02255528\n    mov r0, #0x18\n    str r0, [sp, #0x44]\n    mov r0, #4\n    str r0, [sp, #0x20]\n    mov r0, #8\n    str r0, [sp, #0x24]\n    ldr r3, [sp, #4]\n    add r0, r5, #0\n    add r3, #0x10\n    add r1, r4, #0\n    add r2, r6, #0\n    str r3, [sp]\n    bl ov04_02255480\n    ldr r3, [sp, #4]\n    add r0, r5, #0\n    add r3, #0x18\n    add r1, r4, #0\n    add r2, r6, #0\n    str r3, [sp]\n    bl ov04_02255480\n    mov r0, #0\n    str r0, [sp, #0x48]\n    ldr r0, [sp, #0x24]\n    cmp r0, #0\n    ble _0225557A\n    ldr r7, [sp, #4]\n    add r7, #0x28\n    str r7, [sp, #0x28]\n    ldr r3, [sp, #0x28]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    str r7, [sp]\n    bl ov04_02255480\n    ldr r0, [sp, #0x28]\n    add r7, #8\n    add r0, #8\n    str r0, [sp, #0x28]\n    ldr r0, [sp, #0x48]\n    add r1, r0, #1\n    ldr r0, [sp, #0x24]\n    str r1, [sp, #0x48]\n    cmp r1, r0\n    blt _02255558\n    mov r0, #0\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x24]\n    cmp r0, #0\n    ble _022555AC\n    ldr r7, [sp, #4]\n    add r7, #0x68\n    str r7, [sp, #0x2c]\n    ldr r3, [sp, #0x2c]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    str r7, [sp]\n    bl ov04_02255480\n    ldr r0, [sp, #0x2c]\n    add r7, #8\n    add r0, #8\n    str r0, [sp, #0x2c]\n    ldr r0, [sp, #8]\n    add r1, r0, #1\n    ldr r0, [sp, #0x24]\n    str r1, [sp, #8]\n    cmp r1, r0\n    blt _0225558A\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x20]\n    cmp r0, #0\n    ble _022555DE\n    ldr r7, [sp, #4]\n    add r7, #0xa8\n    str r7, [sp, #0x30]\n    ldr r3, [sp, #0x30]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    str r7, [sp]\n    bl ov04_02255480\n    ldr r0, [sp, #0x30]\n    add r7, #8\n    add r0, #8\n    str r0, [sp, #0x30]\n    ldr r0, [sp, #0xc]\n    add r1, r0, #1\n    ldr r0, [sp, #0x20]\n    str r1, [sp, #0xc]\n    cmp r1, r0\n    blt _022555BC\n    mov r0, #0\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x20]\n    cmp r0, #0\n    ble _02255610\n    ldr r7, [sp, #4]\n    add r7, #0xd0\n    str r7, [sp, #0x34]\n    ldr r3, [sp, #0x34]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    str r7, [sp]\n    bl ov04_02255480\n    ldr r0, [sp, #0x34]\n    add r7, #8\n    add r0, #8\n    str r0, [sp, #0x34]\n    ldr r0, [sp, #0x10]\n    add r1, r0, #1\n    ldr r0, [sp, #0x20]\n    str r1, [sp, #0x10]\n    cmp r1, r0\n    blt _022555EE\n    mov r0, #0\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #0x44]\n    cmp r0, #0\n    ble _02255642\n    ldr r7, [sp, #4]\n    add r7, #0xf8\n    str r7, [sp, #0x38]\n    ldr r3, [sp, #0x38]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    str r7, [sp]\n    bl ov04_02255480\n    ldr r0, [sp, #0x38]\n    add r7, #8\n    add r0, #8\n    str r0, [sp, #0x38]\n    ldr r0, [sp, #0x14]\n    add r1, r0, #1\n    ldr r0, [sp, #0x44]\n    str r1, [sp, #0x14]\n    cmp r1, r0\n    blt _02255620\n    mov r0, #0\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x20]\n    cmp r0, #0\n    ble _02255678\n    mov r1, #0x6e\n    ldr r0, [sp, #4]\n    lsl r1, r1, #2\n    add r7, r0, r1\n    str r7, [sp, #0x3c]\n    ldr r3, [sp, #0x3c]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    str r7, [sp]\n    bl ov04_02255480\n    ldr r0, [sp, #0x3c]\n    add r7, #8\n    add r0, #8\n    str r0, [sp, #0x3c]\n    ldr r0, [sp, #0x18]\n    add r1, r0, #1\n    ldr r0, [sp, #0x20]\n    str r1, [sp, #0x18]\n    cmp r1, r0\n    blt _02255656\n    mov r0, #0\n    str r0, [sp, #0x1c]\n    mov r1, #0x1e\n    ldr r0, [sp, #4]\n    lsl r1, r1, #4\n    add r7, r0, r1\n    str r7, [sp, #0x40]\n    ldr r3, [sp, #0x40]\n    add r0, r5, #0\n    add r1, r4, #0\n    add r2, r6, #0\n    str r7, [sp]\n    bl ov04_02255480\n    ldr r0, [sp, #0x40]\n    add r7, #8\n    add r0, #8\n    str r0, [sp, #0x40]\n    ldr r0, [sp, #0x1c]\n    add r0, r0, #1\n    str r0, [sp, #0x1c]\n    cmp r0, #0x12\n    blt _02255686\n    add sp, #0x4c\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x4c
+    // add r5, r0, #0
+    // ldr r0, [r3]
+    // add r4, r1, #0
+    // add r6, r2, #0
+    // str r3, [sp, #4]
+    // cmp r0, #0
+    // bne _0225551C
+    // mov r0, #0xe
+    // str r0, [sp, #0x44]
+    // mov r0, #5
+    // str r0, [sp, #0x20]
+    // mov r0, #7
+    // str r0, [sp, #0x24]
+    // b _02255528
+    // mov r0, #0x18
+    // str r0, [sp, #0x44]
+    // mov r0, #4
+    // str r0, [sp, #0x20]
+    // mov r0, #8
+    // str r0, [sp, #0x24]
+    // ldr r3, [sp, #4]
+    // add r0, r5, #0
+    // add r3, #0x10
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r3, [sp]
+    // bl ov04_02255480
+    // ldr r3, [sp, #4]
+    // add r0, r5, #0
+    // add r3, #0x18
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r3, [sp]
+    // bl ov04_02255480
+    // mov r0, #0
+    // str r0, [sp, #0x48]
+    // ldr r0, [sp, #0x24]
+    // cmp r0, #0
+    // ble _0225557A
+    // ldr r7, [sp, #4]
+    // add r7, #0x28
+    // str r7, [sp, #0x28]
+    // ldr r3, [sp, #0x28]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r7, [sp]
+    // bl ov04_02255480
+    // ldr r0, [sp, #0x28]
+    // add r7, #8
+    // add r0, #8
+    // str r0, [sp, #0x28]
+    // ldr r0, [sp, #0x48]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0x24]
+    // str r1, [sp, #0x48]
+    // cmp r1, r0
+    // blt _02255558
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #0x24]
+    // cmp r0, #0
+    // ble _022555AC
+    // ldr r7, [sp, #4]
+    // add r7, #0x68
+    // str r7, [sp, #0x2c]
+    // ldr r3, [sp, #0x2c]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r7, [sp]
+    // bl ov04_02255480
+    // ldr r0, [sp, #0x2c]
+    // add r7, #8
+    // add r0, #8
+    // str r0, [sp, #0x2c]
+    // ldr r0, [sp, #8]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0x24]
+    // str r1, [sp, #8]
+    // cmp r1, r0
+    // blt _0225558A
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x20]
+    // cmp r0, #0
+    // ble _022555DE
+    // ldr r7, [sp, #4]
+    // add r7, #0xa8
+    // str r7, [sp, #0x30]
+    // ldr r3, [sp, #0x30]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r7, [sp]
+    // bl ov04_02255480
+    // ldr r0, [sp, #0x30]
+    // add r7, #8
+    // add r0, #8
+    // str r0, [sp, #0x30]
+    // ldr r0, [sp, #0xc]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0x20]
+    // str r1, [sp, #0xc]
+    // cmp r1, r0
+    // blt _022555BC
+    // mov r0, #0
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0x20]
+    // cmp r0, #0
+    // ble _02255610
+    // ldr r7, [sp, #4]
+    // add r7, #0xd0
+    // str r7, [sp, #0x34]
+    // ldr r3, [sp, #0x34]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r7, [sp]
+    // bl ov04_02255480
+    // ldr r0, [sp, #0x34]
+    // add r7, #8
+    // add r0, #8
+    // str r0, [sp, #0x34]
+    // ldr r0, [sp, #0x10]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0x20]
+    // str r1, [sp, #0x10]
+    // cmp r1, r0
+    // blt _022555EE
+    // mov r0, #0
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #0x44]
+    // cmp r0, #0
+    // ble _02255642
+    // ldr r7, [sp, #4]
+    // add r7, #0xf8
+    // str r7, [sp, #0x38]
+    // ldr r3, [sp, #0x38]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r7, [sp]
+    // bl ov04_02255480
+    // ldr r0, [sp, #0x38]
+    // add r7, #8
+    // add r0, #8
+    // str r0, [sp, #0x38]
+    // ldr r0, [sp, #0x14]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0x44]
+    // str r1, [sp, #0x14]
+    // cmp r1, r0
+    // blt _02255620
+    // mov r0, #0
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #0x20]
+    // cmp r0, #0
+    // ble _02255678
+    // mov r1, #0x6e
+    // ldr r0, [sp, #4]
+    // lsl r1, r1, #2
+    // add r7, r0, r1
+    // str r7, [sp, #0x3c]
+    // ldr r3, [sp, #0x3c]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r7, [sp]
+    // bl ov04_02255480
+    // ldr r0, [sp, #0x3c]
+    // add r7, #8
+    // add r0, #8
+    // str r0, [sp, #0x3c]
+    // ldr r0, [sp, #0x18]
+    // add r1, r0, #1
+    // ldr r0, [sp, #0x20]
+    // str r1, [sp, #0x18]
+    // cmp r1, r0
+    // blt _02255656
+    // mov r0, #0
+    // str r0, [sp, #0x1c]
+    // mov r1, #0x1e
+    // ldr r0, [sp, #4]
+    // lsl r1, r1, #4
+    // add r7, r0, r1
+    // str r7, [sp, #0x40]
+    // ldr r3, [sp, #0x40]
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // add r2, r6, #0
+    // str r7, [sp]
+    // bl ov04_02255480
+    // ldr r0, [sp, #0x40]
+    // add r7, #8
+    // add r0, #8
+    // str r0, [sp, #0x40]
+    // ldr r0, [sp, #0x1c]
+    // add r0, r0, #1
+    // str r0, [sp, #0x1c]
+    // cmp r0, #0x12
+    // blt _02255686
+    // add sp, #0x4c
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_022556AC(void) {
-    /* Original at 0x022556AC */
-    /* Requires manual decompilation - 45 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7}\n    mov r6, #0x27\n    mov r4, #0\n    lsl r6, r6, #4\n    add r5, r4, #0\n    mul r5, r6\n    add r5, r0, r5\n    ldr r7, [r5, #0xc]\n    cmp r1, r7\n    bne _022556CE\n    ldr r7, [r5, #0x10]\n    cmp r2, r7\n    bne _022556CE\n    strb r4, [r3]\n    mov r0, #1\n    pop {r4, r5, r6, r7}\n    bx lr\n    ldr r7, [r5, #0x14]\n    cmp r1, r7\n    bne _022556E2\n    ldr r7, [r5, #0x18]\n    cmp r2, r7\n    bne _022556E2\n    strb r4, [r3]\n    mov r0, #2\n    pop {r4, r5, r6, r7}\n    bx lr\n    ldr r7, [r5, #0x1c]\n    cmp r1, r7\n    bne _022556F6\n    ldr r5, [r5, #0x20]\n    cmp r2, r5\n    bne _022556F6\n    strb r4, [r3]\n    mov r0, #3\n    pop {r4, r5, r6, r7}\n    bx lr\n    add r4, r4, #1\n    lsl r4, r4, #0x18\n    lsr r4, r4, #0x18\n    cmp r4, #3\n    blo _022556B4\n    mov r0, #0\n    pop {r4, r5, r6, r7}\n    bx lr"
-    );
-    #endif
+    // push {r4, r5, r6, r7}
+    // mov r6, #0x27
+    // mov r4, #0
+    // lsl r6, r6, #4
+    // add r5, r4, #0
+    // mul r5, r6
+    // add r5, r0, r5
+    // ldr r7, [r5, #0xc]
+    // cmp r1, r7
+    // bne _022556CE
+    // ldr r7, [r5, #0x10]
+    // cmp r2, r7
+    // bne _022556CE
+    // strb r4, [r3]
+    // mov r0, #1
+    // pop {r4, r5, r6, r7}
+    // bx lr
+    // ldr r7, [r5, #0x14]
+    // cmp r1, r7
+    // bne _022556E2
+    // ldr r7, [r5, #0x18]
+    // cmp r2, r7
+    // bne _022556E2
+    // strb r4, [r3]
+    // mov r0, #2
+    // pop {r4, r5, r6, r7}
+    // bx lr
+    // ldr r7, [r5, #0x1c]
+    // cmp r1, r7
+    // bne _022556F6
+    // ldr r5, [r5, #0x20]
+    // cmp r2, r5
+    // bne _022556F6
+    // strb r4, [r3]
+    // mov r0, #3
+    // pop {r4, r5, r6, r7}
+    // bx lr
+    // add r4, r4, #1
+    // lsl r4, r4, #0x18
+    // lsr r4, r4, #0x18
+    // cmp r4, #3
+    // blo _022556B4
+    // mov r0, #0
+    // pop {r4, r5, r6, r7}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_02255708(void) {
-    /* Original at 0x02255708 */
-    /* Requires manual decompilation - 111 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r3, sp, #0\n    add r5, r0, #0\n    bl ov04_022556AC\n    add r6, r0, #0\n    bne _0225571E\n    add sp, #4\n    mov r0, #0\n    pop {r3, r4, r5, r6, pc}\n    mov r0, #0xb\n    mov r1, #0x74\n    bl Heap_AllocAtEnd\n    add r4, r0, #0\n    ldr r0, [r5]\n    add r2, r4, #0\n    str r0, [r4, #0x70]\n    mov r1, #0\n    add r2, #0x4c\n    str r1, [r4]\n    add r0, sp, #0\n    ldrb r3, [r0]\n    cmp r6, #1\n    strb r3, [r2]\n    str r6, [r4, #0x50]\n    beq _0225574A\n    cmp r6, #2\n    beq _02255762\n    cmp r6, #3\n    beq _022557AA\n    b _022557F2\n    mov r0, #8\n    str r0, [r4]\n    ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU\n    bl PlaySE\n    ldr r0, [r5]\n    ldr r1, _022557FC ; =ov04_02255AC4\n    add r2, r4, #0\n    bl FieldSystem_CreateTask\n    mov r1, #1\n    b _022557F2\n    add r2, r4, #0\n    str r1, [r4]\n    add r2, #0x4d\n    strb r1, [r2]\n    ldrb r2, [r0]\n    mov r3, #0x27\n    lsl r3, r3, #4\n    add r6, r2, #0\n    mul r6, r3\n    add r2, r5, r6\n    ldrb r6, [r2, #8]\n    add r2, r4, #0\n    add r2, #0x4e\n    strb r6, [r2]\n    ldrb r0, [r0]\n    add r2, r0, #0\n    mul r2, r3\n    add r0, r5, r2\n    ldrb r0, [r0, #0xa]\n    bl ov04_022558B4\n    add r1, r4, #0\n    add r1, #0x58\n    str r0, [r4, #0x54]\n    bl ov04_022558D0\n    ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU\n    bl PlaySE\n    ldr r0, [r5]\n    ldr r1, _02255800 ; =ov04_022559C8\n    add r2, r4, #0\n    bl FieldSystem_CreateTask\n    mov r1, #1\n    b _022557F2\n    add r2, r4, #0\n    str r1, [r4]\n    add r2, #0x4d\n    strb r1, [r2]\n    ldrb r1, [r0]\n    mov r2, #0x27\n    lsl r2, r2, #4\n    add r3, r1, #0\n    mul r3, r2\n    add r1, r5, r3\n    ldrb r3, [r1, #8]\n    add r1, r4, #0\n    add r1, #0x4e\n    strb r3, [r1]\n    ldrb r0, [r0]\n    add r1, r0, #0\n    mul r1, r2\n    add r0, r5, r1\n    ldrb r0, [r0, #0xa]\n    mov r1, #1\n    bl ov04_022558B4\n    add r1, r4, #0\n    add r1, #0x58\n    str r0, [r4, #0x54]\n    bl ov04_022558D0\n    ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU\n    bl PlaySE\n    ldr r0, [r5]\n    ldr r1, _02255800 ; =ov04_022559C8\n    add r2, r4, #0\n    bl FieldSystem_CreateTask\n    mov r1, #1\n    add r0, r1, #0\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    _022557F8: .word SEQ_SE_GS_GONDORA_IDOU\n    _022557FC: .word ov04_02255AC4\n    _02255800: .word ov04_022559C8"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // add r3, sp, #0
+    // add r5, r0, #0
+    // bl ov04_022556AC
+    // add r6, r0, #0
+    // bne _0225571E
+    // add sp, #4
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, pc}
+    // mov r0, #0xb
+    // mov r1, #0x74
+    // bl Heap_AllocAtEnd
+    // add r4, r0, #0
+    // ldr r0, [r5]
+    // add r2, r4, #0
+    // str r0, [r4, #0x70]
+    // mov r1, #0
+    // add r2, #0x4c
+    // str r1, [r4]
+    // add r0, sp, #0
+    // ldrb r3, [r0]
+    // cmp r6, #1
+    // strb r3, [r2]
+    // str r6, [r4, #0x50]
+    // beq _0225574A
+    // cmp r6, #2
+    // beq _02255762
+    // cmp r6, #3
+    // beq _022557AA
+    // b _022557F2
+    // mov r0, #8
+    // str r0, [r4]
+    // ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU
+    // bl PlaySE
+    // ldr r0, [r5]
+    // ldr r1, _022557FC ; =ov04_02255AC4
+    // add r2, r4, #0
+    // bl FieldSystem_CreateTask
+    // mov r1, #1
+    // b _022557F2
+    // add r2, r4, #0
+    // str r1, [r4]
+    // add r2, #0x4d
+    // strb r1, [r2]
+    // ldrb r2, [r0]
+    // mov r3, #0x27
+    // lsl r3, r3, #4
+    // add r6, r2, #0
+    // mul r6, r3
+    // add r2, r5, r6
+    // ldrb r6, [r2, #8]
+    // add r2, r4, #0
+    // add r2, #0x4e
+    // strb r6, [r2]
+    // ldrb r0, [r0]
+    // add r2, r0, #0
+    // mul r2, r3
+    // add r0, r5, r2
+    // ldrb r0, [r0, #0xa]
+    // bl ov04_022558B4
+    // add r1, r4, #0
+    // add r1, #0x58
+    // str r0, [r4, #0x54]
+    // bl ov04_022558D0
+    // ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU
+    // bl PlaySE
+    // ldr r0, [r5]
+    // ldr r1, _02255800 ; =ov04_022559C8
+    // add r2, r4, #0
+    // bl FieldSystem_CreateTask
+    // mov r1, #1
+    // b _022557F2
+    // add r2, r4, #0
+    // str r1, [r4]
+    // add r2, #0x4d
+    // strb r1, [r2]
+    // ldrb r1, [r0]
+    // mov r2, #0x27
+    // lsl r2, r2, #4
+    // add r3, r1, #0
+    // mul r3, r2
+    // add r1, r5, r3
+    // ldrb r3, [r1, #8]
+    // add r1, r4, #0
+    // add r1, #0x4e
+    // strb r3, [r1]
+    // ldrb r0, [r0]
+    // add r1, r0, #0
+    // mul r1, r2
+    // add r0, r5, r1
+    // ldrb r0, [r0, #0xa]
+    // mov r1, #1
+    // bl ov04_022558B4
+    // add r1, r4, #0
+    // add r1, #0x58
+    // str r0, [r4, #0x54]
+    // bl ov04_022558D0
+    // ldr r0, _022557F8 ; =SEQ_SE_GS_GONDORA_IDOU
+    // bl PlaySE
+    // ldr r0, [r5]
+    // ldr r1, _02255800 ; =ov04_022559C8
+    // add r2, r4, #0
+    // bl FieldSystem_CreateTask
+    // mov r1, #1
+    // add r0, r1, #0
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // _022557F8: .word SEQ_SE_GS_GONDORA_IDOU
+    // _022557FC: .word ov04_02255AC4
+    // _02255800: .word ov04_022559C8
+    // TODO: decompile
 }
+
 
 void ov04_02255804(void) {
-    /* Original at 0x02255804 */
-    /* Requires manual decompilation - 42 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5}\n    ldr r2, [r1, #0x50]\n    cmp r2, #2\n    beq _02255814\n    cmp r2, #3\n    beq _02255836\n    pop {r4, r5}\n    bx lr\n    ldrb r2, [r0, #5]\n    mov r4, #0\n    cmp r2, #0\n    ble _02255854\n    add r5, r0, #0\n    ldr r3, [r5, #0x28]\n    ldr r2, [r5, #0x2c]\n    add r4, r4, #1\n    str r3, [r1, #4]\n    str r2, [r1, #8]\n    ldrb r2, [r0, #5]\n    add r5, #8\n    add r1, #8\n    cmp r4, r2\n    blt _0225581E\n    pop {r4, r5}\n    bx lr\n    ldrb r2, [r0, #5]\n    mov r5, #0\n    cmp r2, #0\n    ble _02255854\n    add r4, r0, #0\n    ldr r3, [r4, #0x68]\n    ldr r2, [r4, #0x6c]\n    add r5, r5, #1\n    str r3, [r1, #4]\n    str r2, [r1, #8]\n    ldrb r2, [r0, #5]\n    add r4, #8\n    add r1, #8\n    cmp r5, r2\n    blt _02255840\n    pop {r4, r5}\n    bx lr"
-    );
-    #endif
+    // push {r4, r5}
+    // ldr r2, [r1, #0x50]
+    // cmp r2, #2
+    // beq _02255814
+    // cmp r2, #3
+    // beq _02255836
+    // pop {r4, r5}
+    // bx lr
+    // ldrb r2, [r0, #5]
+    // mov r4, #0
+    // cmp r2, #0
+    // ble _02255854
+    // add r5, r0, #0
+    // ldr r3, [r5, #0x28]
+    // ldr r2, [r5, #0x2c]
+    // add r4, r4, #1
+    // str r3, [r1, #4]
+    // str r2, [r1, #8]
+    // ldrb r2, [r0, #5]
+    // add r5, #8
+    // add r1, #8
+    // cmp r4, r2
+    // blt _0225581E
+    // pop {r4, r5}
+    // bx lr
+    // ldrb r2, [r0, #5]
+    // mov r5, #0
+    // cmp r2, #0
+    // ble _02255854
+    // add r4, r0, #0
+    // ldr r3, [r4, #0x68]
+    // ldr r2, [r4, #0x6c]
+    // add r5, r5, #1
+    // str r3, [r1, #4]
+    // str r2, [r1, #8]
+    // ldrb r2, [r0, #5]
+    // add r4, #8
+    // add r1, #8
+    // cmp r5, r2
+    // blt _02255840
+    // pop {r4, r5}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_02255858(void) {
-    /* Original at 0x02255858 */
-    /* Requires manual decompilation - 39 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    add r2, r1, #0\n    add r3, r0, #0\n    ldr r0, [r2, #0x54]\n    cmp r0, #3\n    bhi _022558B2\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02255870: ; jump table\n    lsl r1, r3, #0x18\n    mov r0, #1\n    lsr r1, r1, #0x18\n    add r2, r2, #4\n    bl ov04_022554C4\n    pop {r3, pc}\n    lsl r1, r3, #0x18\n    mov r0, #1\n    lsr r1, r1, #0x18\n    add r2, r2, #4\n    bl ov04_022554E0\n    pop {r3, pc}\n    mov r0, #0\n    lsl r1, r3, #0x18\n    mvn r0, r0\n    lsr r1, r1, #0x18\n    add r2, r2, #4\n    bl ov04_022554C4\n    pop {r3, pc}\n    mov r0, #0\n    lsl r1, r3, #0x18\n    mvn r0, r0\n    lsr r1, r1, #0x18\n    add r2, r2, #4\n    bl ov04_022554E0\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // add r2, r1, #0
+    // add r3, r0, #0
+    // ldr r0, [r2, #0x54]
+    // cmp r0, #3
+    // bhi _022558B2
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02255870: ; jump table
+    // lsl r1, r3, #0x18
+    // mov r0, #1
+    // lsr r1, r1, #0x18
+    // add r2, r2, #4
+    // bl ov04_022554C4
+    // pop {r3, pc}
+    // lsl r1, r3, #0x18
+    // mov r0, #1
+    // lsr r1, r1, #0x18
+    // add r2, r2, #4
+    // bl ov04_022554E0
+    // pop {r3, pc}
+    // mov r0, #0
+    // lsl r1, r3, #0x18
+    // mvn r0, r0
+    // lsr r1, r1, #0x18
+    // add r2, r2, #4
+    // bl ov04_022554C4
+    // pop {r3, pc}
+    // mov r0, #0
+    // lsl r1, r3, #0x18
+    // mvn r0, r0
+    // lsr r1, r1, #0x18
+    // add r2, r2, #4
+    // bl ov04_022554E0
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void ov04_022558B4(void) {
-    /* Original at 0x022558B4 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "cmp r1, #0\n    bne _022558BC\n    mov r1, #0\n    b _022558BE\n    mov r1, #2\n    add r0, r1, r0\n    lsr r2, r0, #0x1f\n    lsl r1, r0, #0x1e\n    sub r1, r1, r2\n    mov r0, #0x1e\n    ror r1, r0\n    add r0, r2, r1\n    bx lr"
-    );
-    #endif
+    // cmp r1, #0
+    // bne _022558BC
+    // mov r1, #0
+    // b _022558BE
+    // mov r1, #2
+    // add r0, r1, r0
+    // lsr r2, r0, #0x1f
+    // lsl r1, r0, #0x1e
+    // sub r1, r1, r2
+    // mov r0, #0x1e
+    // ror r1, r0
+    // add r0, r2, r1
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_022558D0(void) {
-    /* Original at 0x022558D0 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r2, #0\n    str r2, [r1]\n    str r2, [r1, #4]\n    str r2, [r1, #8]\n    cmp r0, #3\n    bhi _0225590A\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _022558E8: ; jump table\n    mov r0, #2\n    lsl r0, r0, #0xe\n    str r0, [r1]\n    bx lr\n    mov r0, #2\n    lsl r0, r0, #0xe\n    str r0, [r1, #8]\n    bx lr\n    ldr r0, _0225590C ; =0xFFFF8000\n    str r0, [r1]\n    bx lr\n    ldr r0, _0225590C ; =0xFFFF8000\n    str r0, [r1, #8]\n    bx lr\n    _0225590C: .word 0xFFFF8000"
-    );
-    #endif
+    // mov r2, #0
+    // str r2, [r1]
+    // str r2, [r1, #4]
+    // str r2, [r1, #8]
+    // cmp r0, #3
+    // bhi _0225590A
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _022558E8: ; jump table
+    // mov r0, #2
+    // lsl r0, r0, #0xe
+    // str r0, [r1]
+    // bx lr
+    // mov r0, #2
+    // lsl r0, r0, #0xe
+    // str r0, [r1, #8]
+    // bx lr
+    // ldr r0, _0225590C ; =0xFFFF8000
+    // str r0, [r1]
+    // bx lr
+    // ldr r0, _0225590C ; =0xFFFF8000
+    // str r0, [r1, #8]
+    // bx lr
+    // _0225590C: .word 0xFFFF8000
+    // TODO: decompile
 }
+
 
 void ov04_02255910(void) {
-    /* Original at 0x02255910 */
-    /* Requires manual decompilation - 36 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    mov r0, #0xff\n    add r7, r1, #0\n    add r4, r2, #0\n    mov r6, #0\n    str r0, [sp]\n    cmp r7, #0\n    ble _0225595A\n    ldr r1, [r4]\n    ldr r2, [r4, #4]\n    add r0, r5, #0\n    bl sub_020548C0\n    cmp r0, #0\n    beq _02255938\n    lsl r0, r6, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    b _0225595A\n    ldr r1, [r4]\n    ldr r2, [r4, #4]\n    add r0, r5, #0\n    bl GetMetatileBehavior\n    bl sub_0205BAC4\n    cmp r0, #0\n    bne _02255952\n    lsl r0, r6, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    b _0225595A\n    add r6, r6, #1\n    add r4, #8\n    cmp r6, r7\n    blt _02255922\n    ldr r0, [sp]\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // mov r0, #0xff
+    // add r7, r1, #0
+    // add r4, r2, #0
+    // mov r6, #0
+    // str r0, [sp]
+    // cmp r7, #0
+    // ble _0225595A
+    // ldr r1, [r4]
+    // ldr r2, [r4, #4]
+    // add r0, r5, #0
+    // bl sub_020548C0
+    // cmp r0, #0
+    // beq _02255938
+    // lsl r0, r6, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // b _0225595A
+    // ldr r1, [r4]
+    // ldr r2, [r4, #4]
+    // add r0, r5, #0
+    // bl GetMetatileBehavior
+    // bl sub_0205BAC4
+    // cmp r0, #0
+    // bne _02255952
+    // lsl r0, r6, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // b _0225595A
+    // add r6, r6, #1
+    // add r4, #8
+    // cmp r6, r7
+    // blt _02255922
+    // ldr r0, [sp]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02255960(void) {
-    /* Original at 0x02255960 */
-    /* Requires manual decompilation - 48 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r6, r0, #0\n    mov r0, #1\n    lsl r0, r0, #0xe\n    add r7, r1, #0\n    add r5, r2, #0\n    mov r4, #0\n    str r3, [sp]\n    str r0, [sp, #4]\n    cmp r7, #0\n    ble _022559C0\n    ldr r1, [r5]\n    ldr r2, [r5, #4]\n    add r0, r6, #0\n    bl sub_020548C0\n    cmp r0, #0\n    bne _0225599E\n    ldr r1, [r5]\n    ldr r2, [r5, #4]\n    add r0, r6, #0\n    bl GetMetatileBehavior\n    bl sub_0205BAC4\n    cmp r0, #0\n    bne _0225599C\n    mov r0, #1\n    b _0225599E\n    mov r0, #0\n    cmp r0, #0\n    beq _022559B8\n    ldr r0, [sp]\n    ldrb r0, [r0, r4]\n    lsl r1, r0, #8\n    mov r0, #1\n    lsl r0, r0, #0xe\n    cmp r1, r0\n    bge _022559B8\n    lsl r0, r1, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #4]\n    b _022559C0\n    add r4, r4, #1\n    add r5, #8\n    cmp r4, r7\n    blt _02255978\n    ldr r0, [sp, #4]\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r6, r0, #0
+    // mov r0, #1
+    // lsl r0, r0, #0xe
+    // add r7, r1, #0
+    // add r5, r2, #0
+    // mov r4, #0
+    // str r3, [sp]
+    // str r0, [sp, #4]
+    // cmp r7, #0
+    // ble _022559C0
+    // ldr r1, [r5]
+    // ldr r2, [r5, #4]
+    // add r0, r6, #0
+    // bl sub_020548C0
+    // cmp r0, #0
+    // bne _0225599E
+    // ldr r1, [r5]
+    // ldr r2, [r5, #4]
+    // add r0, r6, #0
+    // bl GetMetatileBehavior
+    // bl sub_0205BAC4
+    // cmp r0, #0
+    // bne _0225599C
+    // mov r0, #1
+    // b _0225599E
+    // mov r0, #0
+    // cmp r0, #0
+    // beq _022559B8
+    // ldr r0, [sp]
+    // ldrb r0, [r0, r4]
+    // lsl r1, r0, #8
+    // mov r0, #1
+    // lsl r0, r0, #0xe
+    // cmp r1, r0
+    // bge _022559B8
+    // lsl r0, r1, #0x10
+    // lsr r0, r0, #0x10
+    // str r0, [sp, #4]
+    // b _022559C0
+    // add r4, r4, #1
+    // add r5, #8
+    // cmp r4, r7
+    // blt _02255978
+    // ldr r0, [sp, #4]
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_022559C8(void) {
-    /* Original at 0x022559C8 */
-    /* Requires manual decompilation - 112 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r4, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r6, r0, #0\n    add r0, r4, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r0, [r6, #4]\n    ldr r5, [r0, #0x24]\n    ldr r0, [r4]\n    cmp r0, #0\n    beq _022559F0\n    cmp r0, #3\n    beq _02255A16\n    cmp r0, #7\n    beq _02255AA2\n    b _02255AB6\n    add r0, r4, #0\n    add r0, #0x4c\n    ldrb r1, [r0]\n    mov r0, #0x27\n    lsl r0, r0, #4\n    mul r0, r1\n    add r2, r5, #4\n    add r0, r2, r0\n    add r1, r4, #0\n    bl ov04_02255804\n    ldr r0, _02255ABC ; =ov04_02255D88\n    add r1, r4, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    mov r0, #1\n    str r0, [r4]\n    b _02255AB6\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r0, r6, #0\n    add r1, r5, r1\n    add r0, #0x9c\n    ldrb r1, [r1, #0xb]\n    ldr r0, [r0]\n    bl ov01_021F3B44\n    add r1, r0, #0\n    add r0, sp, #8\n    bl ov01_021F3B0C\n    ldr r1, [sp, #8]\n    asr r0, r1, #0xf\n    lsr r0, r0, #0x10\n    add r0, r1, r0\n    asr r0, r0, #0x10\n    ldr r1, [sp, #0x10]\n    str r0, [sp, #4]\n    asr r0, r1, #0xf\n    lsr r0, r0, #0x10\n    add r0, r1, r0\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    asr r7, r0, #0x10\n    add r0, r5, #4\n    mul r1, r2\n    add r5, r0, r1\n    add r0, r6, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #6\n    bl Save_Gymmick_AssertMagic_GetData\n    ldr r1, [sp, #4]\n    lsl r1, r1, #0x10\n    lsr r2, r1, #0x10\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r1, [r1]\n    lsl r1, r1, #1\n    strh r2, [r0, r1]\n    lsl r1, r7, #0x10\n    lsr r3, r1, #0x10\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r1, [r1]\n    lsl r1, r1, #1\n    add r0, r0, r1\n    strh r3, [r0, #6]\n    add r0, r4, #0\n    str r5, [sp]\n    add r0, #0x4c\n    ldrb r0, [r0]\n    ldrb r1, [r5, #6]\n    bl ov04_02255140\n    mov r0, #7\n    str r0, [r4]\n    b _02255AB6\n    ldr r0, _02255AC0 ; =SEQ_SE_GS_GONDORA_IDOU\n    mov r1, #0\n    bl StopSE\n    add r0, r4, #0\n    bl Heap_Free\n    add sp, #0x14\n    mov r0, #1\n    pop {r4, r5, r6, r7, pc}\n    mov r0, #0\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}\n    _02255ABC: .word ov04_02255D88\n    _02255AC0: .word SEQ_SE_GS_GONDORA_IDOU"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r4, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r6, r0, #0
+    // add r0, r4, #0
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // ldr r0, [r6, #4]
+    // ldr r5, [r0, #0x24]
+    // ldr r0, [r4]
+    // cmp r0, #0
+    // beq _022559F0
+    // cmp r0, #3
+    // beq _02255A16
+    // cmp r0, #7
+    // beq _02255AA2
+    // b _02255AB6
+    // add r0, r4, #0
+    // add r0, #0x4c
+    // ldrb r1, [r0]
+    // mov r0, #0x27
+    // lsl r0, r0, #4
+    // mul r0, r1
+    // add r2, r5, #4
+    // add r0, r2, r0
+    // add r1, r4, #0
+    // bl ov04_02255804
+    // ldr r0, _02255ABC ; =ov04_02255D88
+    // add r1, r4, #0
+    // mov r2, #0
+    // bl SysTask_CreateOnMainQueue
+    // mov r0, #1
+    // str r0, [r4]
+    // b _02255AB6
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r0, r6, #0
+    // add r1, r5, r1
+    // add r0, #0x9c
+    // ldrb r1, [r1, #0xb]
+    // ldr r0, [r0]
+    // bl ov01_021F3B44
+    // add r1, r0, #0
+    // add r0, sp, #8
+    // bl ov01_021F3B0C
+    // ldr r1, [sp, #8]
+    // asr r0, r1, #0xf
+    // lsr r0, r0, #0x10
+    // add r0, r1, r0
+    // asr r0, r0, #0x10
+    // ldr r1, [sp, #0x10]
+    // str r0, [sp, #4]
+    // asr r0, r1, #0xf
+    // lsr r0, r0, #0x10
+    // add r0, r1, r0
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // asr r7, r0, #0x10
+    // add r0, r5, #4
+    // mul r1, r2
+    // add r5, r0, r1
+    // add r0, r6, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #6
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldr r1, [sp, #4]
+    // lsl r1, r1, #0x10
+    // lsr r2, r1, #0x10
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r1, [r1]
+    // lsl r1, r1, #1
+    // strh r2, [r0, r1]
+    // lsl r1, r7, #0x10
+    // lsr r3, r1, #0x10
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r1, [r1]
+    // lsl r1, r1, #1
+    // add r0, r0, r1
+    // strh r3, [r0, #6]
+    // add r0, r4, #0
+    // str r5, [sp]
+    // add r0, #0x4c
+    // ldrb r0, [r0]
+    // ldrb r1, [r5, #6]
+    // bl ov04_02255140
+    // mov r0, #7
+    // str r0, [r4]
+    // b _02255AB6
+    // ldr r0, _02255AC0 ; =SEQ_SE_GS_GONDORA_IDOU
+    // mov r1, #0
+    // bl StopSE
+    // add r0, r4, #0
+    // bl Heap_Free
+    // add sp, #0x14
+    // mov r0, #1
+    // pop {r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // _02255ABC: .word ov04_02255D88
+    // _02255AC0: .word SEQ_SE_GS_GONDORA_IDOU
+    // TODO: decompile
 }
+
 
 void ov04_02255AC4(void) {
-    /* Original at 0x02255AC4 */
-    /* Requires manual decompilation - 225 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r5, r0, #0\n    add r0, r4, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r0, [r5, #4]\n    ldr r6, [r0, #0x24]\n    ldr r0, [r4]\n    sub r0, #8\n    cmp r0, #4\n    bhi _02255BA4\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02255AEE: ; jump table\n    add r0, r4, #0\n    add r0, #0x4c\n    ldrb r3, [r0]\n    mov r0, #0x27\n    lsl r0, r0, #4\n    add r1, r3, #0\n    mul r1, r0\n    add r0, r4, #0\n    add r2, r6, #4\n    add r1, r2, r1\n    mov r3, #0\n    add r0, #0x4f\n    strb r3, [r0]\n    add r0, r5, #0\n    add r2, sp, #0\n    bl ov04_02255CBC\n    cmp r0, #2\n    bne _02255B24\n    mov r0, #9\n    str r0, [r4]\n    b _02255CB0\n    cmp r0, #1\n    bne _02255B5E\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r1, r6, r1\n    add r5, #0x9c\n    ldrb r1, [r1, #0xb]\n    ldr r0, [r5]\n    bl ov01_021F3B44\n    bl ov01_021F3B08\n    add r1, sp, #0\n    ldrh r1, [r1]\n    str r1, [r4, #0x68]\n    ldr r0, [r0, #4]\n    str r0, [r4, #0x6c]\n    mov r0, #0\n    str r0, [r4, #0x64]\n    mov r0, #0xa\n    str r0, [r4]\n    ldr r0, _02255CB4 ; =SEQ_SE_GS_GONDORA_KABEHIT\n    bl PlaySE\n    b _02255CB0\n    mov r0, #0xc\n    str r0, [r4]\n    b _02255CB0\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r0, r5, #0\n    add r1, r6, r1\n    add r0, #0x9c\n    ldrb r1, [r1, #0xb]\n    ldr r0, [r0]\n    bl ov01_021F3B44\n    bl ov01_021F3B08\n    mov r1, #1\n    ldr r2, [r0, #4]\n    lsl r1, r1, #0xa\n    sub r1, r2, r1\n    str r1, [r0, #4]\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x4f\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    cmp r0, #0x10\n    bhs _02255BA6\n    b _02255CB0\n    add r0, r4, #0\n    add r0, #0x4c\n    ldrb r1, [r0]\n    mov r0, #0x27\n    lsl r0, r0, #4\n    mul r0, r1\n    add r2, r6, #4\n    add r7, r2, r0\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x4f\n    strb r1, [r0]\n    add r0, r5, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #6\n    bl Save_Gymmick_AssertMagic_GetData\n    add r3, r0, #0\n    mov ip, r0\n    add r0, r4, #0\n    add r0, #0x4c\n    ldrb r2, [r0]\n    add r3, #0xc\n    ldrb r0, [r3, r2]\n    add r0, r0, #1\n    lsr r1, r0, #0x1f\n    lsl r6, r0, #0x1e\n    sub r6, r6, r1\n    mov r0, #0x1e\n    ror r6, r0\n    add r0, r1, r6\n    strb r0, [r3, r2]\n    add r0, r4, #0\n    add r0, #0x4c\n    ldrb r1, [r0]\n    mov r0, ip\n    add r0, r0, r1\n    ldrb r0, [r0, #0xc]\n    strb r0, [r7, #6]\n    ldr r0, [r5, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r6, r0, #0\n    bl MapObject_GetXCoord\n    add r5, r0, #0\n    add r0, r6, #0\n    bl MapObject_GetZCoord\n    add r2, r0, #0\n    lsl r1, r5, #0x10\n    lsl r2, r2, #0x10\n    mov r0, #1\n    lsr r1, r1, #0x10\n    lsr r2, r2, #0x10\n    add r3, r7, #0\n    bl ov04_022554FC\n    mov r0, #0xc\n    str r0, [r4]\n    b _02255CB0\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r1, r6, r1\n    add r5, #0x9c\n    ldrb r1, [r1, #0xb]\n    ldr r0, [r5]\n    bl ov01_021F3B44\n    bl ov01_021F3B08\n    mov r1, #1\n    ldr r2, [r0, #4]\n    lsl r1, r1, #0xa\n    sub r2, r2, r1\n    str r2, [r0, #4]\n    ldr r2, [r4, #0x64]\n    add r1, r2, r1\n    str r1, [r4, #0x64]\n    ldr r2, [r4, #0x68]\n    cmp r1, r2\n    blt _02255CB0\n    ldr r1, [r4, #0x6c]\n    sub r1, r1, r2\n    str r1, [r0, #4]\n    mov r0, #0xb\n    str r0, [r4]\n    b _02255CB0\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r1, r6, r1\n    add r5, #0x9c\n    ldrb r1, [r1, #0xb]\n    ldr r0, [r5]\n    bl ov01_021F3B44\n    bl ov01_021F3B08\n    mov r1, #1\n    ldr r2, [r0, #4]\n    lsl r1, r1, #0xa\n    add r2, r2, r1\n    str r2, [r0, #4]\n    ldr r2, [r4, #0x64]\n    sub r1, r2, r1\n    str r1, [r4, #0x64]\n    cmp r1, #0\n    bgt _02255CB0\n    ldr r1, [r4, #0x6c]\n    str r1, [r0, #4]\n    mov r0, #0xc\n    str r0, [r4]\n    b _02255CB0\n    ldr r0, _02255CB8 ; =SEQ_SE_GS_GONDORA_IDOU\n    mov r1, #0\n    bl StopSE\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    _02255CB4: .word SEQ_SE_GS_GONDORA_KABEHIT\n    _02255CB8: .word SEQ_SE_GS_GONDORA_IDOU"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r4, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r5, r0, #0
+    // add r0, r4, #0
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // ldr r0, [r5, #4]
+    // ldr r6, [r0, #0x24]
+    // ldr r0, [r4]
+    // sub r0, #8
+    // cmp r0, #4
+    // bhi _02255BA4
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02255AEE: ; jump table
+    // add r0, r4, #0
+    // add r0, #0x4c
+    // ldrb r3, [r0]
+    // mov r0, #0x27
+    // lsl r0, r0, #4
+    // add r1, r3, #0
+    // mul r1, r0
+    // add r0, r4, #0
+    // add r2, r6, #4
+    // add r1, r2, r1
+    // mov r3, #0
+    // add r0, #0x4f
+    // strb r3, [r0]
+    // add r0, r5, #0
+    // add r2, sp, #0
+    // bl ov04_02255CBC
+    // cmp r0, #2
+    // bne _02255B24
+    // mov r0, #9
+    // str r0, [r4]
+    // b _02255CB0
+    // cmp r0, #1
+    // bne _02255B5E
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r1, r6, r1
+    // add r5, #0x9c
+    // ldrb r1, [r1, #0xb]
+    // ldr r0, [r5]
+    // bl ov01_021F3B44
+    // bl ov01_021F3B08
+    // add r1, sp, #0
+    // ldrh r1, [r1]
+    // str r1, [r4, #0x68]
+    // ldr r0, [r0, #4]
+    // str r0, [r4, #0x6c]
+    // mov r0, #0
+    // str r0, [r4, #0x64]
+    // mov r0, #0xa
+    // str r0, [r4]
+    // ldr r0, _02255CB4 ; =SEQ_SE_GS_GONDORA_KABEHIT
+    // bl PlaySE
+    // b _02255CB0
+    // mov r0, #0xc
+    // str r0, [r4]
+    // b _02255CB0
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r0, r5, #0
+    // add r1, r6, r1
+    // add r0, #0x9c
+    // ldrb r1, [r1, #0xb]
+    // ldr r0, [r0]
+    // bl ov01_021F3B44
+    // bl ov01_021F3B08
+    // mov r1, #1
+    // ldr r2, [r0, #4]
+    // lsl r1, r1, #0xa
+    // sub r1, r2, r1
+    // str r1, [r0, #4]
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // ldrb r0, [r0]
+    // add r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // ldrb r0, [r0]
+    // cmp r0, #0x10
+    // bhs _02255BA6
+    // b _02255CB0
+    // add r0, r4, #0
+    // add r0, #0x4c
+    // ldrb r1, [r0]
+    // mov r0, #0x27
+    // lsl r0, r0, #4
+    // mul r0, r1
+    // add r2, r6, #4
+    // add r7, r2, r0
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x4f
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #6
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r3, r0, #0
+    // mov ip, r0
+    // add r0, r4, #0
+    // add r0, #0x4c
+    // ldrb r2, [r0]
+    // add r3, #0xc
+    // ldrb r0, [r3, r2]
+    // add r0, r0, #1
+    // lsr r1, r0, #0x1f
+    // lsl r6, r0, #0x1e
+    // sub r6, r6, r1
+    // mov r0, #0x1e
+    // ror r6, r0
+    // add r0, r1, r6
+    // strb r0, [r3, r2]
+    // add r0, r4, #0
+    // add r0, #0x4c
+    // ldrb r1, [r0]
+    // mov r0, ip
+    // add r0, r0, r1
+    // ldrb r0, [r0, #0xc]
+    // strb r0, [r7, #6]
+    // ldr r0, [r5, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r6, r0, #0
+    // bl MapObject_GetXCoord
+    // add r5, r0, #0
+    // add r0, r6, #0
+    // bl MapObject_GetZCoord
+    // add r2, r0, #0
+    // lsl r1, r5, #0x10
+    // lsl r2, r2, #0x10
+    // mov r0, #1
+    // lsr r1, r1, #0x10
+    // lsr r2, r2, #0x10
+    // add r3, r7, #0
+    // bl ov04_022554FC
+    // mov r0, #0xc
+    // str r0, [r4]
+    // b _02255CB0
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r1, r6, r1
+    // add r5, #0x9c
+    // ldrb r1, [r1, #0xb]
+    // ldr r0, [r5]
+    // bl ov01_021F3B44
+    // bl ov01_021F3B08
+    // mov r1, #1
+    // ldr r2, [r0, #4]
+    // lsl r1, r1, #0xa
+    // sub r2, r2, r1
+    // str r2, [r0, #4]
+    // ldr r2, [r4, #0x64]
+    // add r1, r2, r1
+    // str r1, [r4, #0x64]
+    // ldr r2, [r4, #0x68]
+    // cmp r1, r2
+    // blt _02255CB0
+    // ldr r1, [r4, #0x6c]
+    // sub r1, r1, r2
+    // str r1, [r0, #4]
+    // mov r0, #0xb
+    // str r0, [r4]
+    // b _02255CB0
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r1, r6, r1
+    // add r5, #0x9c
+    // ldrb r1, [r1, #0xb]
+    // ldr r0, [r5]
+    // bl ov01_021F3B44
+    // bl ov01_021F3B08
+    // mov r1, #1
+    // ldr r2, [r0, #4]
+    // lsl r1, r1, #0xa
+    // add r2, r2, r1
+    // str r2, [r0, #4]
+    // ldr r2, [r4, #0x64]
+    // sub r1, r2, r1
+    // str r1, [r4, #0x64]
+    // cmp r1, #0
+    // bgt _02255CB0
+    // ldr r1, [r4, #0x6c]
+    // str r1, [r0, #4]
+    // mov r0, #0xc
+    // str r0, [r4]
+    // b _02255CB0
+    // ldr r0, _02255CB8 ; =SEQ_SE_GS_GONDORA_IDOU
+    // mov r1, #0
+    // bl StopSE
+    // add r0, r4, #0
+    // bl Heap_Free
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02255CB4: .word SEQ_SE_GS_GONDORA_KABEHIT
+    // _02255CB8: .word SEQ_SE_GS_GONDORA_IDOU
+    // TODO: decompile
 }
+
 
 void ov04_02255CBC(void) {
-    /* Original at 0x02255CBC */
-    /* Requires manual decompilation - 54 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r4, r1, #0\n    ldrb r1, [r4, #4]\n    add r6, r2, #0\n    add r5, r0, #0\n    sub r2, r1, #1\n    lsl r2, r2, #0x18\n    lsr r7, r2, #0x18\n    add r2, r4, #0\n    add r2, #0xa8\n    bl ov04_02255910\n    cmp r0, #0xff\n    beq _02255CDC\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r4, #4]\n    add r2, r4, #0\n    add r0, r5, #0\n    add r2, #0xd0\n    bl ov04_02255910\n    cmp r0, #0xff\n    beq _02255CF0\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    ldrb r1, [r4, #5]\n    add r2, r4, #0\n    add r0, r5, #0\n    add r2, #0x68\n    bl ov04_02255910\n    cmp r0, #0xff\n    beq _02255D04\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    add r2, r4, #0\n    add r0, r5, #0\n    add r1, r7, #0\n    add r2, #0x28\n    bl ov04_02255910\n    cmp r0, #0xff\n    beq _02255D18\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov04_02255D34\n    mov r1, #1\n    lsl r1, r1, #0xe\n    cmp r0, r1\n    bhs _02255D2E\n    strh r0, [r6]\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #2\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r4, r1, #0
+    // ldrb r1, [r4, #4]
+    // add r6, r2, #0
+    // add r5, r0, #0
+    // sub r2, r1, #1
+    // lsl r2, r2, #0x18
+    // lsr r7, r2, #0x18
+    // add r2, r4, #0
+    // add r2, #0xa8
+    // bl ov04_02255910
+    // cmp r0, #0xff
+    // beq _02255CDC
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldrb r1, [r4, #4]
+    // add r2, r4, #0
+    // add r0, r5, #0
+    // add r2, #0xd0
+    // bl ov04_02255910
+    // cmp r0, #0xff
+    // beq _02255CF0
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldrb r1, [r4, #5]
+    // add r2, r4, #0
+    // add r0, r5, #0
+    // add r2, #0x68
+    // bl ov04_02255910
+    // cmp r0, #0xff
+    // beq _02255D04
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r2, r4, #0
+    // add r0, r5, #0
+    // add r1, r7, #0
+    // add r2, #0x28
+    // bl ov04_02255910
+    // cmp r0, #0xff
+    // beq _02255D18
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov04_02255D34
+    // mov r1, #1
+    // lsl r1, r1, #0xe
+    // cmp r0, r1
+    // bhs _02255D2E
+    // strh r0, [r6]
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #2
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02255D34(void) {
-    /* Original at 0x02255D34 */
-    /* Requires manual decompilation - 36 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    add r7, r0, #0\n    ldr r0, [r5]\n    cmp r0, #0\n    bne _02255D48\n    mov r1, #0xe\n    ldr r3, _02255D78 ; =ov04_02257638\n    ldr r4, _02255D7C ; =ov04_02257618\n    b _02255D4E\n    ldr r3, _02255D80 ; =ov04_02257648\n    ldr r4, _02255D84 ; =ov04_02257614\n    mov r1, #0x18\n    ldrb r0, [r5, #4]\n    add r2, r5, #0\n    add r2, #0xf8\n    str r0, [sp]\n    add r0, r7, #0\n    bl ov04_02255960\n    mov r2, #0x6e\n    lsl r2, r2, #2\n    add r6, r0, #0\n    ldr r1, [sp]\n    add r0, r7, #0\n    add r2, r5, r2\n    add r3, r4, #0\n    bl ov04_02255960\n    cmp r6, r0\n    bhi _02255D74\n    add r0, r6, #0\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02255D78: .word ov04_02257638\n    _02255D7C: .word ov04_02257618\n    _02255D80: .word ov04_02257648\n    _02255D84: .word ov04_02257614"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r1, #0
+    // add r7, r0, #0
+    // ldr r0, [r5]
+    // cmp r0, #0
+    // bne _02255D48
+    // mov r1, #0xe
+    // ldr r3, _02255D78 ; =ov04_02257638
+    // ldr r4, _02255D7C ; =ov04_02257618
+    // b _02255D4E
+    // ldr r3, _02255D80 ; =ov04_02257648
+    // ldr r4, _02255D84 ; =ov04_02257614
+    // mov r1, #0x18
+    // ldrb r0, [r5, #4]
+    // add r2, r5, #0
+    // add r2, #0xf8
+    // str r0, [sp]
+    // add r0, r7, #0
+    // bl ov04_02255960
+    // mov r2, #0x6e
+    // lsl r2, r2, #2
+    // add r6, r0, #0
+    // ldr r1, [sp]
+    // add r0, r7, #0
+    // add r2, r5, r2
+    // add r3, r4, #0
+    // bl ov04_02255960
+    // cmp r6, r0
+    // bhi _02255D74
+    // add r0, r6, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _02255D78: .word ov04_02257638
+    // _02255D7C: .word ov04_02257618
+    // _02255D80: .word ov04_02257648
+    // _02255D84: .word ov04_02257614
+    // TODO: decompile
 }
+
 
 void ov04_02255D88(void) {
-    /* Original at 0x02255D88 */
-    /* Requires manual decompilation - 251 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x40\n    add r4, r1, #0\n    ldr r6, [r4, #0x70]\n    add r7, r0, #0\n    ldr r1, [r6, #4]\n    ldr r5, [r1, #0x24]\n    ldr r1, [r4]\n    cmp r1, #6\n    bhi _02255E5C\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02255DA8: ; jump table\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x4f\n    strb r1, [r0]\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r1, r5, r1\n    ldrb r1, [r1, #9]\n    add r0, r6, #0\n    add r2, r4, #4\n    bl ov04_02255910\n    cmp r0, #0xff\n    bne _02255DE2\n    mov r0, #2\n    add sp, #0x40\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #4\n    add sp, #0x40\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r0, r6, #0\n    add r1, r5, r1\n    add r0, #0x9c\n    ldrb r1, [r1, #0xb]\n    ldr r0, [r0]\n    bl ov01_021F3B44\n    str r0, [sp]\n    ldr r1, [sp]\n    add r0, sp, #0x34\n    bl ov01_021F3B0C\n    add r0, sp, #0x34\n    add r1, r4, #0\n    add r1, #0x58\n    add r2, r0, #0\n    bl VEC_Add\n    ldr r0, [sp]\n    add r1, sp, #0x34\n    bl ov01_021F3B1C\n    ldr r0, [r6, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r1, sp, #0x28\n    add r6, r0, #0\n    bl MapObject_CopyPositionVector\n    add r0, sp, #0x28\n    add r1, r4, #0\n    add r1, #0x58\n    add r2, r0, #0\n    bl VEC_Add\n    add r0, r6, #0\n    add r1, sp, #0x28\n    bl MapObject_SetPositionVector\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x4f\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    cmp r0, #2\n    bhs _02255E5E\n    b _02255FB8\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x4f\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4c\n    ldrb r1, [r0]\n    mov r0, #0x27\n    lsl r0, r0, #4\n    mul r0, r1\n    add r0, r5, r0\n    ldrb r0, [r0, #9]\n    add r1, r4, #0\n    bl ov04_02255858\n    add r0, r4, #0\n    add r0, #0x4d\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x4d\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4d\n    ldrb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4e\n    ldrb r0, [r0]\n    cmp r1, r0\n    blo _02255ED6\n    add r0, r6, #0\n    add r1, sp, #0x1c\n    bl MapObject_CopyPositionVector\n    ldr r2, [sp, #0x1c]\n    add r0, r6, #0\n    asr r1, r2, #0xf\n    lsr r1, r1, #0x10\n    add r1, r2, r1\n    asr r1, r1, #0x10\n    bl MapObject_SetCurrentX\n    ldr r2, [sp, #0x24]\n    add r0, r6, #0\n    asr r1, r2, #0xf\n    lsr r1, r1, #0x10\n    add r1, r2, r1\n    asr r1, r1, #0x10\n    bl MapObject_SetCurrentZ\n    add r0, r6, #0\n    bl sub_02060F78\n    add r0, r7, #0\n    bl SysTask_Destroy\n    mov r0, #3\n    add sp, #0x40\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #1\n    add sp, #0x40\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _02255FBC ; =SEQ_SE_GS_GONDORA_KABEHIT\n    bl PlaySE\n    mov r0, #5\n    add sp, #0x40\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r1, r4, #0\n    add r1, #0x4d\n    ldrb r1, [r1]\n    cmp r1, #0\n    bne _02255F02\n    bl SysTask_Destroy\n    mov r0, #7\n    add sp, #0x40\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r1, [r4, #0x58]\n    mov r0, #0\n    mvn r0, r0\n    add r2, r1, #0\n    mul r2, r0\n    str r2, [r4, #0x58]\n    ldr r1, [r4, #0x60]\n    add sp, #0x40\n    mul r0, r1\n    str r0, [r4, #0x60]\n    mov r0, #6\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    add r1, r4, #0\n    add r1, #0x4c\n    ldrb r2, [r1]\n    mov r1, #0x27\n    lsl r1, r1, #4\n    mul r1, r2\n    add r0, r6, #0\n    add r1, r5, r1\n    add r0, #0x9c\n    ldrb r1, [r1, #0xb]\n    ldr r0, [r0]\n    bl ov01_021F3B44\n    add r5, r0, #0\n    add r0, sp, #0x10\n    add r1, r5, #0\n    bl ov01_021F3B0C\n    add r0, sp, #0x10\n    add r1, r4, #0\n    add r1, #0x58\n    add r2, r0, #0\n    bl VEC_Add\n    add r0, r5, #0\n    add r1, sp, #0x10\n    bl ov01_021F3B1C\n    ldr r0, [r6, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r1, sp, #4\n    add r5, r0, #0\n    bl MapObject_CopyPositionVector\n    add r0, sp, #4\n    add r1, r4, #0\n    add r1, #0x58\n    add r2, r0, #0\n    bl VEC_Add\n    add r0, r5, #0\n    add r1, sp, #4\n    bl MapObject_SetPositionVector\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    add r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x4f\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4f\n    ldrb r0, [r0]\n    cmp r0, #2\n    blo _02255FB8\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x4f\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4d\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    add r0, r4, #0\n    add r0, #0x4d\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x4d\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _02255FB8\n    add r0, r7, #0\n    bl SysTask_Destroy\n    mov r0, #7\n    str r0, [r4]\n    add sp, #0x40\n    pop {r3, r4, r5, r6, r7, pc}\n    _02255FBC: .word SEQ_SE_GS_GONDORA_KABEHIT"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x40
+    // add r4, r1, #0
+    // ldr r6, [r4, #0x70]
+    // add r7, r0, #0
+    // ldr r1, [r6, #4]
+    // ldr r5, [r1, #0x24]
+    // ldr r1, [r4]
+    // cmp r1, #6
+    // bhi _02255E5C
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _02255DA8: ; jump table
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x4f
+    // strb r1, [r0]
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r1, r5, r1
+    // ldrb r1, [r1, #9]
+    // add r0, r6, #0
+    // add r2, r4, #4
+    // bl ov04_02255910
+    // cmp r0, #0xff
+    // bne _02255DE2
+    // mov r0, #2
+    // add sp, #0x40
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #4
+    // add sp, #0x40
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r0, r6, #0
+    // add r1, r5, r1
+    // add r0, #0x9c
+    // ldrb r1, [r1, #0xb]
+    // ldr r0, [r0]
+    // bl ov01_021F3B44
+    // str r0, [sp]
+    // ldr r1, [sp]
+    // add r0, sp, #0x34
+    // bl ov01_021F3B0C
+    // add r0, sp, #0x34
+    // add r1, r4, #0
+    // add r1, #0x58
+    // add r2, r0, #0
+    // bl VEC_Add
+    // ldr r0, [sp]
+    // add r1, sp, #0x34
+    // bl ov01_021F3B1C
+    // ldr r0, [r6, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r1, sp, #0x28
+    // add r6, r0, #0
+    // bl MapObject_CopyPositionVector
+    // add r0, sp, #0x28
+    // add r1, r4, #0
+    // add r1, #0x58
+    // add r2, r0, #0
+    // bl VEC_Add
+    // add r0, r6, #0
+    // add r1, sp, #0x28
+    // bl MapObject_SetPositionVector
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // ldrb r0, [r0]
+    // add r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // ldrb r0, [r0]
+    // cmp r0, #2
+    // bhs _02255E5E
+    // b _02255FB8
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x4f
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4c
+    // ldrb r1, [r0]
+    // mov r0, #0x27
+    // lsl r0, r0, #4
+    // mul r0, r1
+    // add r0, r5, r0
+    // ldrb r0, [r0, #9]
+    // add r1, r4, #0
+    // bl ov04_02255858
+    // add r0, r4, #0
+    // add r0, #0x4d
+    // ldrb r0, [r0]
+    // add r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x4d
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4d
+    // ldrb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4e
+    // ldrb r0, [r0]
+    // cmp r1, r0
+    // blo _02255ED6
+    // add r0, r6, #0
+    // add r1, sp, #0x1c
+    // bl MapObject_CopyPositionVector
+    // ldr r2, [sp, #0x1c]
+    // add r0, r6, #0
+    // asr r1, r2, #0xf
+    // lsr r1, r1, #0x10
+    // add r1, r2, r1
+    // asr r1, r1, #0x10
+    // bl MapObject_SetCurrentX
+    // ldr r2, [sp, #0x24]
+    // add r0, r6, #0
+    // asr r1, r2, #0xf
+    // lsr r1, r1, #0x10
+    // add r1, r2, r1
+    // asr r1, r1, #0x10
+    // bl MapObject_SetCurrentZ
+    // add r0, r6, #0
+    // bl sub_02060F78
+    // add r0, r7, #0
+    // bl SysTask_Destroy
+    // mov r0, #3
+    // add sp, #0x40
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #1
+    // add sp, #0x40
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r0, _02255FBC ; =SEQ_SE_GS_GONDORA_KABEHIT
+    // bl PlaySE
+    // mov r0, #5
+    // add sp, #0x40
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r1, r4, #0
+    // add r1, #0x4d
+    // ldrb r1, [r1]
+    // cmp r1, #0
+    // bne _02255F02
+    // bl SysTask_Destroy
+    // mov r0, #7
+    // add sp, #0x40
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r1, [r4, #0x58]
+    // mov r0, #0
+    // mvn r0, r0
+    // add r2, r1, #0
+    // mul r2, r0
+    // str r2, [r4, #0x58]
+    // ldr r1, [r4, #0x60]
+    // add sp, #0x40
+    // mul r0, r1
+    // str r0, [r4, #0x60]
+    // mov r0, #6
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r1, r4, #0
+    // add r1, #0x4c
+    // ldrb r2, [r1]
+    // mov r1, #0x27
+    // lsl r1, r1, #4
+    // mul r1, r2
+    // add r0, r6, #0
+    // add r1, r5, r1
+    // add r0, #0x9c
+    // ldrb r1, [r1, #0xb]
+    // ldr r0, [r0]
+    // bl ov01_021F3B44
+    // add r5, r0, #0
+    // add r0, sp, #0x10
+    // add r1, r5, #0
+    // bl ov01_021F3B0C
+    // add r0, sp, #0x10
+    // add r1, r4, #0
+    // add r1, #0x58
+    // add r2, r0, #0
+    // bl VEC_Add
+    // add r0, r5, #0
+    // add r1, sp, #0x10
+    // bl ov01_021F3B1C
+    // ldr r0, [r6, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r1, sp, #4
+    // add r5, r0, #0
+    // bl MapObject_CopyPositionVector
+    // add r0, sp, #4
+    // add r1, r4, #0
+    // add r1, #0x58
+    // add r2, r0, #0
+    // bl VEC_Add
+    // add r0, r5, #0
+    // add r1, sp, #4
+    // bl MapObject_SetPositionVector
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // ldrb r0, [r0]
+    // add r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4f
+    // ldrb r0, [r0]
+    // cmp r0, #2
+    // blo _02255FB8
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x4f
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4d
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // add r0, r4, #0
+    // add r0, #0x4d
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x4d
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _02255FB8
+    // add r0, r7, #0
+    // bl SysTask_Destroy
+    // mov r0, #7
+    // str r0, [r4]
+    // add sp, #0x40
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02255FBC: .word SEQ_SE_GS_GONDORA_KABEHIT
+    // TODO: decompile
 }
 
+
 void ov04_02255FC0(void) {
-    /* Original at 0x02255FC0 */
-    /* Requires manual decompilation - 53 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #2\n    bl Save_Gymmick_AssertMagic_GetData\n    add r4, r0, #0\n    mov r0, #4\n    add r1, r0, #0\n    bl Heap_Alloc\n    ldr r1, [r5, #4]\n    mov r2, #4\n    str r0, [r1, #0x24]\n    ldr r0, [r5, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x24]\n    bl MI_CpuFill8\n    ldr r0, [r5, #4]\n    ldr r0, [r0, #0x24]\n    str r5, [r0]\n    ldr r0, [r4]\n    cmp r0, #0\n    beq _0225603E\n    add r0, r5, #0\n    bl ov04_02256278\n    add r7, r0, #0\n    ldr r4, _02256040 ; =0x00000000\n    beq _02256026\n    ldr r2, [r5, #0x54]\n    mov r0, #0xae\n    add r1, r4, #0\n    bl ov01_021E8B04\n    add r6, r0, #0\n    mov r1, #1\n    bl ov01_021E8B60\n    add r0, r6, #0\n    bl ov01_021E8B78\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, r7\n    blo _02256004\n    ldr r2, [r5, #0x54]\n    mov r0, #0xaf\n    mov r1, #0\n    bl ov01_021E8B04\n    add r4, r0, #0\n    mov r1, #1\n    bl ov01_021E8B60\n    add r0, r4, #0\n    bl ov01_021E8B78\n    pop {r3, r4, r5, r6, r7, pc}\n    _02256040: .word 0x00000000"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #2
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r4, r0, #0
+    // mov r0, #4
+    // add r1, r0, #0
+    // bl Heap_Alloc
+    // ldr r1, [r5, #4]
+    // mov r2, #4
+    // str r0, [r1, #0x24]
+    // ldr r0, [r5, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #0x24]
+    // bl MI_CpuFill8
+    // ldr r0, [r5, #4]
+    // ldr r0, [r0, #0x24]
+    // str r5, [r0]
+    // ldr r0, [r4]
+    // cmp r0, #0
+    // beq _0225603E
+    // add r0, r5, #0
+    // bl ov04_02256278
+    // add r7, r0, #0
+    // ldr r4, _02256040 ; =0x00000000
+    // beq _02256026
+    // ldr r2, [r5, #0x54]
+    // mov r0, #0xae
+    // add r1, r4, #0
+    // bl ov01_021E8B04
+    // add r6, r0, #0
+    // mov r1, #1
+    // bl ov01_021E8B60
+    // add r0, r6, #0
+    // bl ov01_021E8B78
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, r7
+    // blo _02256004
+    // ldr r2, [r5, #0x54]
+    // mov r0, #0xaf
+    // mov r1, #0
+    // bl ov01_021E8B04
+    // add r4, r0, #0
+    // mov r1, #1
+    // bl ov01_021E8B60
+    // add r0, r4, #0
+    // bl ov01_021E8B78
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02256040: .word 0x00000000
+    // TODO: decompile
 }
+
 
 void ov04_02256044(void) {
     Heap_Free(0);
 }
 
+
 void ov04_02256058(void) {
-    /* Original at 0x02256058 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    add r4, r0, #0\n    bl Save_Gymmick_GetType\n    cmp r0, #2\n    beq _02256072\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    add r0, r4, #0\n    mov r1, #2\n    bl Save_Gymmick_AssertMagic_GetData\n    ldr r1, [r5, #4]\n    ldr r1, [r1, #0x24]\n    cmp r1, #0\n    bne _02256086\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    ldr r0, [r0]\n    cmp r0, #0\n    bne _02256096\n    add r0, r1, #0\n    bl ov04_0225609C\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // add r4, r0, #0
+    // bl Save_Gymmick_GetType
+    // cmp r0, #2
+    // beq _02256072
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // add r0, r4, #0
+    // mov r1, #2
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldr r1, [r5, #4]
+    // ldr r1, [r1, #0x24]
+    // cmp r1, #0
+    // bne _02256086
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // bne _02256096
+    // add r0, r1, #0
+    // bl ov04_0225609C
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov04_0225609C(void) {
-    /* Original at 0x0225609C */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #2\n    bl Save_Gymmick_AssertMagic_GetData\n    add r4, r0, #0\n    mov r0, #0xb\n    mov r1, #0xc\n    bl Heap_AllocAtEnd\n    add r2, r0, #0\n    mov r0, #0\n    str r0, [r2]\n    mov r0, #1\n    str r0, [r4]\n    ldr r0, [r5]\n    ldr r1, _022560D0 ; =ov04_022560D4\n    ldr r0, [r0, #0x10]\n    bl TaskManager_Call\n    pop {r3, r4, r5, pc}\n    _022560D0: .word ov04_022560D4"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5]
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #2
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r4, r0, #0
+    // mov r0, #0xb
+    // mov r1, #0xc
+    // bl Heap_AllocAtEnd
+    // add r2, r0, #0
+    // mov r0, #0
+    // str r0, [r2]
+    // mov r0, #1
+    // str r0, [r4]
+    // ldr r0, [r5]
+    // ldr r1, _022560D0 ; =ov04_022560D4
+    // ldr r0, [r0, #0x10]
+    // bl TaskManager_Call
+    // pop {r3, r4, r5, pc}
+    // _022560D0: .word ov04_022560D4
+    // TODO: decompile
 }
+
 
 void ov04_022560D4(void) {
-    /* Original at 0x022560D4 */
-    /* Requires manual decompilation - 176 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x58\n    add r4, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r6, r0, #0\n    add r0, r4, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    ldr r0, [r6, #0x40]\n    bl PlayerAvatar_GetMapObject\n    ldr r0, [r4]\n    cmp r0, #6\n    bls _022560F6\n    b _0225626C\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02256102: ; jump table\n    ldr r1, [r6, #0x24]\n    add r0, sp, #0xc\n    bl Camera_GetAngle\n    add r0, sp, #4\n    ldrh r1, [r0, #8]\n    strh r1, [r0, #0x18]\n    ldrh r1, [r0, #0xa]\n    strh r1, [r0, #0x1a]\n    ldrh r1, [r0, #0xc]\n    strh r1, [r0, #0x1c]\n    ldrh r1, [r0, #0xe]\n    strh r1, [r0, #0x1e]\n    ldrh r1, [r0, #0x18]\n    add r0, sp, #0x44\n    strh r1, [r0]\n    ldr r0, [r6, #0x24]\n    bl Camera_GetPerspectiveAngle\n    add r1, sp, #0x44\n    ldr r3, _02256274 ; =ov04_02257660\n    strh r0, [r1, #2]\n    ldmia r3!, {r0, r1}\n    add r2, sp, #0x48\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    str r0, [r2]\n    ldr r0, [r6, #0x24]\n    bl Camera_GetDistance\n    str r0, [sp, #0x54]\n    ldr r1, [r6, #0x24]\n    mov r0, #4\n    bl CreateCameraTranslationWrapper\n    str r0, [r4, #8]\n    add r1, sp, #0x44\n    mov r2, #0x18\n    bl SetCameraTranslationPath\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225626C\n    ldr r0, [r4, #8]\n    bl IsCameraTranslationFinished\n    cmp r0, #0\n    beq _0225626C\n    ldr r0, [r4, #8]\n    bl DeleteCameraTranslationWrapper\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225626C\n    add r0, r6, #0\n    bl ov04_02256278\n    mov r5, #0\n    str r0, [sp]\n    cmp r0, #0\n    ble _022561AE\n    ldr r2, [r6, #0x54]\n    mov r0, #0xae\n    add r1, r5, #0\n    bl ov01_021E8B04\n    add r7, r0, #0\n    mov r1, #1\n    bl ov01_021E8B84\n    add r0, r7, #0\n    bl ov01_021E8B6C\n    ldr r0, [sp]\n    add r5, r5, #1\n    cmp r5, r0\n    blt _0225618E\n    ldr r2, [r6, #0x54]\n    mov r0, #0xaf\n    mov r1, #0\n    bl ov01_021E8B04\n    add r5, r0, #0\n    mov r1, #1\n    bl ov01_021E8B84\n    add r0, r5, #0\n    bl ov01_021E8B6C\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225626C\n    ldr r2, [r6, #0x54]\n    mov r0, #0xaf\n    mov r1, #0\n    bl ov01_021E8B04\n    bl ov01_021E8B90\n    cmp r0, #0\n    beq _0225626C\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225626C\n    add r1, sp, #0x24\n    mov r0, #0\n    str r0, [r1]\n    str r0, [r1, #4]\n    str r0, [r1, #8]\n    ldr r1, [r6, #0x24]\n    add r0, sp, #4\n    bl Camera_GetAngle\n    add r0, sp, #4\n    ldrh r1, [r0]\n    strh r1, [r0, #0x10]\n    ldrh r1, [r0, #2]\n    strh r1, [r0, #0x12]\n    ldrh r1, [r0, #4]\n    strh r1, [r0, #0x14]\n    ldrh r1, [r0, #6]\n    strh r1, [r0, #0x16]\n    ldrh r1, [r0, #0x10]\n    strh r1, [r0, #0x2c]\n    ldr r0, [r6, #0x24]\n    bl Camera_GetPerspectiveAngle\n    add r1, sp, #4\n    add r3, sp, #0x24\n    strh r0, [r1, #0x2e]\n    ldmia r3!, {r0, r1}\n    add r2, sp, #0x34\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    str r0, [r2]\n    ldr r0, [r6, #0x24]\n    bl Camera_GetDistance\n    str r0, [sp, #0x40]\n    ldr r1, [r6, #0x24]\n    mov r0, #4\n    bl CreateCameraTranslationWrapper\n    str r0, [r4, #8]\n    add r1, sp, #0x30\n    mov r2, #0x18\n    bl SetCameraTranslationPath\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225626C\n    ldr r0, [r4, #8]\n    bl IsCameraTranslationFinished\n    cmp r0, #0\n    beq _0225626C\n    ldr r0, [r4, #8]\n    bl DeleteCameraTranslationWrapper\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    b _0225626C\n    add r0, r4, #0\n    bl Heap_Free\n    add sp, #0x58\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    add sp, #0x58\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02256274: .word ov04_02257660"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x58
+    // add r4, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r6, r0, #0
+    // add r0, r4, #0
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // ldr r0, [r6, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // ldr r0, [r4]
+    // cmp r0, #6
+    // bls _022560F6
+    // b _0225626C
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02256102: ; jump table
+    // ldr r1, [r6, #0x24]
+    // add r0, sp, #0xc
+    // bl Camera_GetAngle
+    // add r0, sp, #4
+    // ldrh r1, [r0, #8]
+    // strh r1, [r0, #0x18]
+    // ldrh r1, [r0, #0xa]
+    // strh r1, [r0, #0x1a]
+    // ldrh r1, [r0, #0xc]
+    // strh r1, [r0, #0x1c]
+    // ldrh r1, [r0, #0xe]
+    // strh r1, [r0, #0x1e]
+    // ldrh r1, [r0, #0x18]
+    // add r0, sp, #0x44
+    // strh r1, [r0]
+    // ldr r0, [r6, #0x24]
+    // bl Camera_GetPerspectiveAngle
+    // add r1, sp, #0x44
+    // ldr r3, _02256274 ; =ov04_02257660
+    // strh r0, [r1, #2]
+    // ldmia r3!, {r0, r1}
+    // add r2, sp, #0x48
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // str r0, [r2]
+    // ldr r0, [r6, #0x24]
+    // bl Camera_GetDistance
+    // str r0, [sp, #0x54]
+    // ldr r1, [r6, #0x24]
+    // mov r0, #4
+    // bl CreateCameraTranslationWrapper
+    // str r0, [r4, #8]
+    // add r1, sp, #0x44
+    // mov r2, #0x18
+    // bl SetCameraTranslationPath
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225626C
+    // ldr r0, [r4, #8]
+    // bl IsCameraTranslationFinished
+    // cmp r0, #0
+    // beq _0225626C
+    // ldr r0, [r4, #8]
+    // bl DeleteCameraTranslationWrapper
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225626C
+    // add r0, r6, #0
+    // bl ov04_02256278
+    // mov r5, #0
+    // str r0, [sp]
+    // cmp r0, #0
+    // ble _022561AE
+    // ldr r2, [r6, #0x54]
+    // mov r0, #0xae
+    // add r1, r5, #0
+    // bl ov01_021E8B04
+    // add r7, r0, #0
+    // mov r1, #1
+    // bl ov01_021E8B84
+    // add r0, r7, #0
+    // bl ov01_021E8B6C
+    // ldr r0, [sp]
+    // add r5, r5, #1
+    // cmp r5, r0
+    // blt _0225618E
+    // ldr r2, [r6, #0x54]
+    // mov r0, #0xaf
+    // mov r1, #0
+    // bl ov01_021E8B04
+    // add r5, r0, #0
+    // mov r1, #1
+    // bl ov01_021E8B84
+    // add r0, r5, #0
+    // bl ov01_021E8B6C
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225626C
+    // ldr r2, [r6, #0x54]
+    // mov r0, #0xaf
+    // mov r1, #0
+    // bl ov01_021E8B04
+    // bl ov01_021E8B90
+    // cmp r0, #0
+    // beq _0225626C
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225626C
+    // add r1, sp, #0x24
+    // mov r0, #0
+    // str r0, [r1]
+    // str r0, [r1, #4]
+    // str r0, [r1, #8]
+    // ldr r1, [r6, #0x24]
+    // add r0, sp, #4
+    // bl Camera_GetAngle
+    // add r0, sp, #4
+    // ldrh r1, [r0]
+    // strh r1, [r0, #0x10]
+    // ldrh r1, [r0, #2]
+    // strh r1, [r0, #0x12]
+    // ldrh r1, [r0, #4]
+    // strh r1, [r0, #0x14]
+    // ldrh r1, [r0, #6]
+    // strh r1, [r0, #0x16]
+    // ldrh r1, [r0, #0x10]
+    // strh r1, [r0, #0x2c]
+    // ldr r0, [r6, #0x24]
+    // bl Camera_GetPerspectiveAngle
+    // add r1, sp, #4
+    // add r3, sp, #0x24
+    // strh r0, [r1, #0x2e]
+    // ldmia r3!, {r0, r1}
+    // add r2, sp, #0x34
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // str r0, [r2]
+    // ldr r0, [r6, #0x24]
+    // bl Camera_GetDistance
+    // str r0, [sp, #0x40]
+    // ldr r1, [r6, #0x24]
+    // mov r0, #4
+    // bl CreateCameraTranslationWrapper
+    // str r0, [r4, #8]
+    // add r1, sp, #0x30
+    // mov r2, #0x18
+    // bl SetCameraTranslationPath
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225626C
+    // ldr r0, [r4, #8]
+    // bl IsCameraTranslationFinished
+    // cmp r0, #0
+    // beq _0225626C
+    // ldr r0, [r4, #8]
+    // bl DeleteCameraTranslationWrapper
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // b _0225626C
+    // add r0, r4, #0
+    // bl Heap_Free
+    // add sp, #0x58
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // add sp, #0x58
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _02256274: .word ov04_02257660
+    // TODO: decompile
 }
+
 
 void ov04_02256278(void) {
-    /* Original at 0x02256278 */
-    /* Requires manual decompilation - 61 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r4, r0, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0xad\n    bl Field3dObjectList_GetRenderObjectByID\n    add r6, r0, #0\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0xae\n    bl Field3dObjectList_GetRenderObjectByID\n    add r0, r4, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0xaf\n    bl Field3dObjectList_GetRenderObjectByID\n    str r0, [sp, #4]\n    ldr r0, [r4, #0x54]\n    mov r1, #0xad\n    bl ov01_021E8BAC\n    add r7, r0, #0\n    mov r5, #0\n    cmp r7, #0\n    ble _022562C6\n    ldr r0, [r4, #0x54]\n    add r1, r6, #0\n    mov r2, #0xad\n    add r3, r5, #0\n    bl ov01_021E8A8C\n    add r5, r5, #1\n    cmp r5, r7\n    blt _022562B4\n    ldr r0, [r4, #0x54]\n    mov r1, #0xae\n    bl ov01_021E8BAC\n    add r7, r0, #0\n    mov r5, #0\n    cmp r7, #0\n    ble _022562EC\n    ldr r0, [r4, #0x54]\n    add r1, r5, #0\n    str r0, [sp]\n    mov r0, #0xae\n    mov r2, #1\n    add r3, r6, #0\n    bl ov01_021E8970\n    add r5, r5, #1\n    cmp r5, r7\n    blt _022562D6\n    ldr r0, [r4, #0x54]\n    ldr r3, [sp, #4]\n    str r0, [sp]\n    mov r0, #0xaf\n    mov r1, #0\n    mov r2, #1\n    bl ov01_021E8970\n    add r0, r7, #0\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0xad
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r6, r0, #0
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0xae
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r0, r4, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0xaf
+    // bl Field3dObjectList_GetRenderObjectByID
+    // str r0, [sp, #4]
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0xad
+    // bl ov01_021E8BAC
+    // add r7, r0, #0
+    // mov r5, #0
+    // cmp r7, #0
+    // ble _022562C6
+    // ldr r0, [r4, #0x54]
+    // add r1, r6, #0
+    // mov r2, #0xad
+    // add r3, r5, #0
+    // bl ov01_021E8A8C
+    // add r5, r5, #1
+    // cmp r5, r7
+    // blt _022562B4
+    // ldr r0, [r4, #0x54]
+    // mov r1, #0xae
+    // bl ov01_021E8BAC
+    // add r7, r0, #0
+    // mov r5, #0
+    // cmp r7, #0
+    // ble _022562EC
+    // ldr r0, [r4, #0x54]
+    // add r1, r5, #0
+    // str r0, [sp]
+    // mov r0, #0xae
+    // mov r2, #1
+    // add r3, r6, #0
+    // bl ov01_021E8970
+    // add r5, r5, #1
+    // cmp r5, r7
+    // blt _022562D6
+    // ldr r0, [r4, #0x54]
+    // ldr r3, [sp, #4]
+    // str r0, [sp]
+    // mov r0, #0xaf
+    // mov r1, #0
+    // mov r2, #1
+    // bl ov01_021E8970
+    // add r0, r7, #0
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov04_02256304(void) {
-    /* Original at 0x02256304 */
-    /* Requires manual decompilation - 74 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #3\n    bl Save_Gymmick_AssertMagic_GetData\n    str r0, [sp]\n    mov r0, #4\n    add r1, r0, #0\n    bl Heap_Alloc\n    ldr r1, [r5, #4]\n    mov r2, #4\n    str r0, [r1, #0x24]\n    ldr r0, [r5, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x24]\n    bl MI_CpuFill8\n    ldr r0, [r5, #4]\n    ldr r0, [r0, #0x24]\n    str r5, [r0]\n    ldr r0, [sp]\n    ldrb r0, [r0, #2]\n    cmp r0, #0\n    beq _02256370\n    add r0, r5, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0xc7\n    bl Field3dObjectList_GetRenderObjectByID\n    add r7, r0, #0\n    ldr r0, [r5, #0x54]\n    mov r1, #0xc7\n    bl ov01_021E8BAC\n    add r6, r0, #0\n    ldr r4, _022563AC ; =0x00000000\n    beq _02256370\n    ldr r0, [r5, #0x54]\n    add r1, r7, #0\n    mov r2, #0xc7\n    add r3, r4, #0\n    bl ov01_021E8A8C\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, r6\n    blo _0225635A\n    ldr r0, [sp]\n    ldrb r0, [r0, #3]\n    cmp r0, #0\n    beq _022563AA\n    add r0, r5, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    mov r1, #0xc8\n    bl Field3dObjectList_GetRenderObjectByID\n    add r7, r0, #0\n    ldr r0, [r5, #0x54]\n    mov r1, #0xc8\n    bl ov01_021E8BAC\n    add r6, r0, #0\n    ldr r4, _022563AC ; =0x00000000\n    beq _022563AA\n    ldr r0, [r5, #0x54]\n    add r1, r7, #0\n    mov r2, #0xc8\n    add r3, r4, #0\n    bl ov01_021E8A8C\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, r6\n    blo _02256394\n    pop {r3, r4, r5, r6, r7, pc}\n    _022563AC: .word 0x00000000"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #3
+    // bl Save_Gymmick_AssertMagic_GetData
+    // str r0, [sp]
+    // mov r0, #4
+    // add r1, r0, #0
+    // bl Heap_Alloc
+    // ldr r1, [r5, #4]
+    // mov r2, #4
+    // str r0, [r1, #0x24]
+    // ldr r0, [r5, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #0x24]
+    // bl MI_CpuFill8
+    // ldr r0, [r5, #4]
+    // ldr r0, [r0, #0x24]
+    // str r5, [r0]
+    // ldr r0, [sp]
+    // ldrb r0, [r0, #2]
+    // cmp r0, #0
+    // beq _02256370
+    // add r0, r5, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0xc7
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r7, r0, #0
+    // ldr r0, [r5, #0x54]
+    // mov r1, #0xc7
+    // bl ov01_021E8BAC
+    // add r6, r0, #0
+    // ldr r4, _022563AC ; =0x00000000
+    // beq _02256370
+    // ldr r0, [r5, #0x54]
+    // add r1, r7, #0
+    // mov r2, #0xc7
+    // add r3, r4, #0
+    // bl ov01_021E8A8C
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, r6
+    // blo _0225635A
+    // ldr r0, [sp]
+    // ldrb r0, [r0, #3]
+    // cmp r0, #0
+    // beq _022563AA
+    // add r0, r5, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // mov r1, #0xc8
+    // bl Field3dObjectList_GetRenderObjectByID
+    // add r7, r0, #0
+    // ldr r0, [r5, #0x54]
+    // mov r1, #0xc8
+    // bl ov01_021E8BAC
+    // add r6, r0, #0
+    // ldr r4, _022563AC ; =0x00000000
+    // beq _022563AA
+    // ldr r0, [r5, #0x54]
+    // add r1, r7, #0
+    // mov r2, #0xc8
+    // add r3, r4, #0
+    // bl ov01_021E8A8C
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, r6
+    // blo _02256394
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _022563AC: .word 0x00000000
+    // TODO: decompile
 }
+
 
 void ov04_022563B0(void) {
     Heap_Free(0);
 }
 
+
 void ov04_022563C4(void) {
-    /* Original at 0x022563C4 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #3\n    bl Save_Gymmick_AssertMagic_GetData\n    ldrb r2, [r0, #2]\n    cmp r2, #0\n    beq _022563E6\n    ldrb r1, [r0, #3]\n    cmp r1, #0\n    beq _022563E6\n    mov r0, #4\n    pop {r4, pc}\n    cmp r2, #0\n    beq _022563F8\n    ldrb r0, [r0, #1]\n    cmp r4, r0\n    bne _022563F4\n    mov r0, #2\n    pop {r4, pc}\n    mov r0, #3\n    pop {r4, pc}\n    ldrb r0, [r0]\n    cmp r4, r0\n    bne _02256402\n    mov r0, #1\n    b _02256404\n    mov r0, #0\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r1, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #3
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldrb r2, [r0, #2]
+    // cmp r2, #0
+    // beq _022563E6
+    // ldrb r1, [r0, #3]
+    // cmp r1, #0
+    // beq _022563E6
+    // mov r0, #4
+    // pop {r4, pc}
+    // cmp r2, #0
+    // beq _022563F8
+    // ldrb r0, [r0, #1]
+    // cmp r4, r0
+    // bne _022563F4
+    // mov r0, #2
+    // pop {r4, pc}
+    // mov r0, #3
+    // pop {r4, pc}
+    // ldrb r0, [r0]
+    // cmp r4, r0
+    // bne _02256402
+    // mov r0, #1
+    // b _02256404
+    // mov r0, #0
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov04_0225640C(void) {
-    /* Original at 0x0225640C */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r7, r1, #0\n    str r2, [sp]\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #3\n    bl Save_Gymmick_AssertMagic_GetData\n    add r6, r0, #0\n    mov r0, #0xb\n    mov r1, #0x18\n    bl Heap_AllocAtEnd\n    add r4, r0, #0\n    cmp r7, #0\n    beq _02256438\n    cmp r7, #1\n    beq _0225646A\n    b _02256494\n    mov r0, #0xc7\n    str r0, [r4, #0x10]\n    ldr r0, [sp]\n    cmp r0, #0\n    beq _02256456\n    mov r0, #2\n    strb r0, [r4, #0x16]\n    ldr r0, [r5, #0x10]\n    ldr r1, _0225649C ; =ov04_022564A0\n    add r2, r4, #0\n    bl TaskManager_Call\n    mov r0, #0\n    strb r0, [r6, #2]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #1\n    strb r0, [r4, #0x16]\n    ldr r0, [r5, #0x10]\n    ldr r1, _0225649C ; =ov04_022564A0\n    add r2, r4, #0\n    bl TaskManager_Call\n    mov r0, #1\n    strb r0, [r6, #2]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0xc8\n    str r0, [r4, #0x10]\n    ldr r0, [sp]\n    cmp r0, #0\n    beq _02256480\n    bl GF_AssertFail\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #1\n    strb r0, [r4, #0x16]\n    ldr r0, [r5, #0x10]\n    ldr r1, _0225649C ; =ov04_022564A0\n    add r2, r4, #0\n    bl TaskManager_Call\n    mov r0, #1\n    strb r0, [r6, #3]\n    pop {r3, r4, r5, r6, r7, pc}\n    bl GF_AssertFail\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _0225649C: .word ov04_022564A0"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // add r7, r1, #0
+    // str r2, [sp]
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #3
+    // bl Save_Gymmick_AssertMagic_GetData
+    // add r6, r0, #0
+    // mov r0, #0xb
+    // mov r1, #0x18
+    // bl Heap_AllocAtEnd
+    // add r4, r0, #0
+    // cmp r7, #0
+    // beq _02256438
+    // cmp r7, #1
+    // beq _0225646A
+    // b _02256494
+    // mov r0, #0xc7
+    // str r0, [r4, #0x10]
+    // ldr r0, [sp]
+    // cmp r0, #0
+    // beq _02256456
+    // mov r0, #2
+    // strb r0, [r4, #0x16]
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _0225649C ; =ov04_022564A0
+    // add r2, r4, #0
+    // bl TaskManager_Call
+    // mov r0, #0
+    // strb r0, [r6, #2]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #1
+    // strb r0, [r4, #0x16]
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _0225649C ; =ov04_022564A0
+    // add r2, r4, #0
+    // bl TaskManager_Call
+    // mov r0, #1
+    // strb r0, [r6, #2]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0xc8
+    // str r0, [r4, #0x10]
+    // ldr r0, [sp]
+    // cmp r0, #0
+    // beq _02256480
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // bl Heap_Free
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #1
+    // strb r0, [r4, #0x16]
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _0225649C ; =ov04_022564A0
+    // add r2, r4, #0
+    // bl TaskManager_Call
+    // mov r0, #1
+    // strb r0, [r6, #3]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // bl GF_AssertFail
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _0225649C: .word ov04_022564A0
+    // TODO: decompile
 }
+
 
 void ov04_022564A0(void) {
-    /* Original at 0x022564A0 */
-    /* Requires manual decompilation - 183 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r6, r0, #0\n    add r0, r5, #0\n    bl TaskManager_GetEnvironment\n    add r4, r0, #0\n    add r0, r5, #0\n    bl TaskManager_GetStatePtr\n    str r0, [sp, #0xc]\n    ldr r0, [r0]\n    cmp r0, #6\n    bls _022564C4\n    b _02256642\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _022564D0: ; jump table\n    ldr r0, [r4, #0x10]\n    cmp r0, #0xc7\n    ldr r0, [r6, #0x3c]\n    bne _02256502\n    mov r1, #3\n    bl MapObjectManager_GetFirstActiveObjectByID\n    str r0, [r4, #4]\n    ldr r0, [r6, #0x3c]\n    mov r1, #4\n    bl MapObjectManager_GetFirstActiveObjectByID\n    str r0, [r4, #8]\n    ldr r0, [r6, #0x3c]\n    mov r1, #5\n    bl MapObjectManager_GetFirstActiveObjectByID\n    b _0225651C\n    mov r1, #0\n    bl MapObjectManager_GetFirstActiveObjectByID\n    str r0, [r4, #4]\n    ldr r0, [r6, #0x3c]\n    mov r1, #1\n    bl MapObjectManager_GetFirstActiveObjectByID\n    str r0, [r4, #8]\n    ldr r0, [r6, #0x3c]\n    mov r1, #2\n    bl MapObjectManager_GetFirstActiveObjectByID\n    str r0, [r4, #0xc]\n    mov r0, #0\n    strh r0, [r4, #0x14]\n    ldrb r1, [r4, #0x16]\n    ldr r0, [sp, #0xc]\n    str r1, [r0]\n    b _02256642\n    ldr r0, [r4, #4]\n    mov r1, #0x16\n    bl MapObject_SetHeldMovement\n    ldr r0, [r4, #8]\n    mov r1, #0x16\n    bl MapObject_SetHeldMovement\n    ldr r0, [r4, #0xc]\n    mov r1, #0x17\n    bl MapObject_SetHeldMovement\n    ldr r0, [sp, #0xc]\n    mov r1, #3\n    str r1, [r0]\n    b _02256642\n    ldr r0, [r4, #4]\n    mov r1, #0x17\n    bl MapObject_SetHeldMovement\n    ldr r0, [r4, #8]\n    mov r1, #0x17\n    bl MapObject_SetHeldMovement\n    ldr r0, [r4, #0xc]\n    mov r1, #0x16\n    bl MapObject_SetHeldMovement\n    ldr r0, [sp, #0xc]\n    mov r1, #3\n    str r1, [r0]\n    b _02256642\n    mov r5, #0\n    lsl r0, r5, #2\n    add r0, r4, r0\n    ldr r0, [r0, #4]\n    bl MapObject_AreBitsSetForMovementScriptInit\n    cmp r0, #0\n    beq _02256584\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _0225656C\n    cmp r5, #3\n    bne _02256642\n    ldrh r0, [r4, #0x14]\n    add r0, r0, #1\n    strh r0, [r4, #0x14]\n    ldrh r0, [r4, #0x14]\n    cmp r0, #2\n    blo _022565AA\n    ldrb r0, [r4, #0x16]\n    cmp r0, #1\n    bne _022565A2\n    ldr r0, [sp, #0xc]\n    mov r1, #4\n    str r1, [r0]\n    b _02256642\n    ldr r0, [sp, #0xc]\n    mov r1, #5\n    str r1, [r0]\n    b _02256642\n    ldrb r1, [r4, #0x16]\n    ldr r0, [sp, #0xc]\n    str r1, [r0]\n    b _02256642\n    add r0, r6, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    ldr r1, [r4, #0x10]\n    bl Field3dObjectList_GetRenderObjectByID\n    str r0, [sp, #8]\n    ldr r0, [r6, #0x54]\n    ldr r1, [r4, #0x10]\n    bl ov01_021E8BAC\n    add r7, r0, #0\n    ldr r5, _02256648 ; =0x00000000\n    beq _022565E4\n    ldr r0, [r6, #0x54]\n    ldr r1, [sp, #8]\n    ldr r2, [r4, #0x10]\n    add r3, r5, #0\n    bl ov01_021E8A8C\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, r7\n    blo _022565CE\n    ldr r0, _0225664C ; =SEQ_SE_DP_UG_020\n    bl PlaySE\n    ldr r0, [sp, #0xc]\n    mov r1, #6\n    str r1, [r0]\n    b _02256642\n    add r0, r6, #0\n    add r0, #0xc0\n    ldr r0, [r0]\n    ldr r1, [r4, #0x10]\n    bl Field3dObjectList_GetRenderObjectByID\n    str r0, [sp, #4]\n    ldr r0, [r6, #0x54]\n    ldr r1, [r4, #0x10]\n    bl ov01_021E8BAC\n    add r7, r0, #0\n    ldr r5, _02256648 ; =0x00000000\n    beq _02256628\n    ldr r0, [r6, #0x54]\n    ldr r3, [sp, #4]\n    str r0, [sp]\n    ldr r0, [r4, #0x10]\n    add r1, r5, #0\n    mov r2, #0\n    bl ov01_021E8970\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, r7\n    blo _0225660E\n    ldr r0, _0225664C ; =SEQ_SE_DP_UG_020\n    bl PlaySE\n    ldr r0, [sp, #0xc]\n    mov r1, #6\n    str r1, [r0]\n    b _02256642\n    add r0, r4, #0\n    bl Heap_Free\n    add sp, #0x10\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    _02256648: .word 0x00000000\n    _0225664C: .word SEQ_SE_DP_UG_020"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r6, r0, #0
+    // add r0, r5, #0
+    // bl TaskManager_GetEnvironment
+    // add r4, r0, #0
+    // add r0, r5, #0
+    // bl TaskManager_GetStatePtr
+    // str r0, [sp, #0xc]
+    // ldr r0, [r0]
+    // cmp r0, #6
+    // bls _022564C4
+    // b _02256642
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _022564D0: ; jump table
+    // ldr r0, [r4, #0x10]
+    // cmp r0, #0xc7
+    // ldr r0, [r6, #0x3c]
+    // bne _02256502
+    // mov r1, #3
+    // bl MapObjectManager_GetFirstActiveObjectByID
+    // str r0, [r4, #4]
+    // ldr r0, [r6, #0x3c]
+    // mov r1, #4
+    // bl MapObjectManager_GetFirstActiveObjectByID
+    // str r0, [r4, #8]
+    // ldr r0, [r6, #0x3c]
+    // mov r1, #5
+    // bl MapObjectManager_GetFirstActiveObjectByID
+    // b _0225651C
+    // mov r1, #0
+    // bl MapObjectManager_GetFirstActiveObjectByID
+    // str r0, [r4, #4]
+    // ldr r0, [r6, #0x3c]
+    // mov r1, #1
+    // bl MapObjectManager_GetFirstActiveObjectByID
+    // str r0, [r4, #8]
+    // ldr r0, [r6, #0x3c]
+    // mov r1, #2
+    // bl MapObjectManager_GetFirstActiveObjectByID
+    // str r0, [r4, #0xc]
+    // mov r0, #0
+    // strh r0, [r4, #0x14]
+    // ldrb r1, [r4, #0x16]
+    // ldr r0, [sp, #0xc]
+    // str r1, [r0]
+    // b _02256642
+    // ldr r0, [r4, #4]
+    // mov r1, #0x16
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [r4, #8]
+    // mov r1, #0x16
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0x17
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [sp, #0xc]
+    // mov r1, #3
+    // str r1, [r0]
+    // b _02256642
+    // ldr r0, [r4, #4]
+    // mov r1, #0x17
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [r4, #8]
+    // mov r1, #0x17
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [r4, #0xc]
+    // mov r1, #0x16
+    // bl MapObject_SetHeldMovement
+    // ldr r0, [sp, #0xc]
+    // mov r1, #3
+    // str r1, [r0]
+    // b _02256642
+    // mov r5, #0
+    // lsl r0, r5, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #4]
+    // bl MapObject_AreBitsSetForMovementScriptInit
+    // cmp r0, #0
+    // beq _02256584
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _0225656C
+    // cmp r5, #3
+    // bne _02256642
+    // ldrh r0, [r4, #0x14]
+    // add r0, r0, #1
+    // strh r0, [r4, #0x14]
+    // ldrh r0, [r4, #0x14]
+    // cmp r0, #2
+    // blo _022565AA
+    // ldrb r0, [r4, #0x16]
+    // cmp r0, #1
+    // bne _022565A2
+    // ldr r0, [sp, #0xc]
+    // mov r1, #4
+    // str r1, [r0]
+    // b _02256642
+    // ldr r0, [sp, #0xc]
+    // mov r1, #5
+    // str r1, [r0]
+    // b _02256642
+    // ldrb r1, [r4, #0x16]
+    // ldr r0, [sp, #0xc]
+    // str r1, [r0]
+    // b _02256642
+    // add r0, r6, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // ldr r1, [r4, #0x10]
+    // bl Field3dObjectList_GetRenderObjectByID
+    // str r0, [sp, #8]
+    // ldr r0, [r6, #0x54]
+    // ldr r1, [r4, #0x10]
+    // bl ov01_021E8BAC
+    // add r7, r0, #0
+    // ldr r5, _02256648 ; =0x00000000
+    // beq _022565E4
+    // ldr r0, [r6, #0x54]
+    // ldr r1, [sp, #8]
+    // ldr r2, [r4, #0x10]
+    // add r3, r5, #0
+    // bl ov01_021E8A8C
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, r7
+    // blo _022565CE
+    // ldr r0, _0225664C ; =SEQ_SE_DP_UG_020
+    // bl PlaySE
+    // ldr r0, [sp, #0xc]
+    // mov r1, #6
+    // str r1, [r0]
+    // b _02256642
+    // add r0, r6, #0
+    // add r0, #0xc0
+    // ldr r0, [r0]
+    // ldr r1, [r4, #0x10]
+    // bl Field3dObjectList_GetRenderObjectByID
+    // str r0, [sp, #4]
+    // ldr r0, [r6, #0x54]
+    // ldr r1, [r4, #0x10]
+    // bl ov01_021E8BAC
+    // add r7, r0, #0
+    // ldr r5, _02256648 ; =0x00000000
+    // beq _02256628
+    // ldr r0, [r6, #0x54]
+    // ldr r3, [sp, #4]
+    // str r0, [sp]
+    // ldr r0, [r4, #0x10]
+    // add r1, r5, #0
+    // mov r2, #0
+    // bl ov01_021E8970
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, r7
+    // blo _0225660E
+    // ldr r0, _0225664C ; =SEQ_SE_DP_UG_020
+    // bl PlaySE
+    // ldr r0, [sp, #0xc]
+    // mov r1, #6
+    // str r1, [r0]
+    // b _02256642
+    // add r0, r4, #0
+    // bl Heap_Free
+    // add sp, #0x10
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02256648: .word 0x00000000
+    // _0225664C: .word SEQ_SE_DP_UG_020
+    // TODO: decompile
 }
+
 
 void ov04_02256650(void) {
-    /* Original at 0x02256650 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #7\n    bl Save_Gymmick_AssertMagic_GetData\n    ldr r1, _02256698 ; =0x00001DD8\n    mov r0, #4\n    bl Heap_Alloc\n    ldr r1, [r4, #4]\n    ldr r2, _02256698 ; =0x00001DD8\n    str r0, [r1, #0x24]\n    ldr r0, [r4, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x24]\n    bl MI_CpuFill8\n    ldr r0, [r4, #4]\n    mov r1, #4\n    ldr r4, [r0, #0x24]\n    add r0, r4, #0\n    bl ov04_02256758\n    mov r2, #0\n    ldr r0, _0225669C ; =0x00001DB6\n    sub r1, r2, #1\n    add r2, r2, #1\n    strh r1, [r4, r0]\n    add r4, #0xc\n    cmp r2, #3\n    blt _0225668C\n    pop {r4, pc}\n    _02256698: .word 0x00001DD8\n    _0225669C: .word 0x00001DB6"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #7
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldr r1, _02256698 ; =0x00001DD8
+    // mov r0, #4
+    // bl Heap_Alloc
+    // ldr r1, [r4, #4]
+    // ldr r2, _02256698 ; =0x00001DD8
+    // str r0, [r1, #0x24]
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #0x24]
+    // bl MI_CpuFill8
+    // ldr r0, [r4, #4]
+    // mov r1, #4
+    // ldr r4, [r0, #0x24]
+    // add r0, r4, #0
+    // bl ov04_02256758
+    // mov r2, #0
+    // ldr r0, _0225669C ; =0x00001DB6
+    // sub r1, r2, #1
+    // add r2, r2, #1
+    // strh r1, [r4, r0]
+    // add r4, #0xc
+    // cmp r2, #3
+    // blt _0225668C
+    // pop {r4, pc}
+    // _02256698: .word 0x00001DD8
+    // _0225669C: .word 0x00001DB6
+    // TODO: decompile
 }
+
 
 void ov04_022566A0(void) {
-    /* Original at 0x022566A0 */
-    /* Requires manual decompilation - 33 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    str r0, [sp]\n    ldr r0, [r0, #4]\n    ldr r5, [r0, #0x24]\n    add r0, r5, #0\n    bl ov04_0225686C\n    ldr r6, _022566E4 ; =0x00001DB4\n    mov r4, #0\n    mov r7, #0xc\n    add r0, r4, #0\n    mul r0, r7\n    add r1, r5, r0\n    ldrh r0, [r1, r6]\n    cmp r0, #0\n    beq _022566C8\n    ldr r0, _022566E8 ; =0x00001DBC\n    ldr r0, [r1, r0]\n    bl SysTask_Destroy\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #3\n    blo _022566B4\n    add r0, r5, #0\n    bl Heap_Free\n    ldr r0, [sp]\n    mov r1, #0\n    ldr r0, [r0, #4]\n    str r1, [r0, #0x24]\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _022566E4: .word 0x00001DB4\n    _022566E8: .word 0x00001DBC"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // str r0, [sp]
+    // ldr r0, [r0, #4]
+    // ldr r5, [r0, #0x24]
+    // add r0, r5, #0
+    // bl ov04_0225686C
+    // ldr r6, _022566E4 ; =0x00001DB4
+    // mov r4, #0
+    // mov r7, #0xc
+    // add r0, r4, #0
+    // mul r0, r7
+    // add r1, r5, r0
+    // ldrh r0, [r1, r6]
+    // cmp r0, #0
+    // beq _022566C8
+    // ldr r0, _022566E8 ; =0x00001DBC
+    // ldr r0, [r1, r0]
+    // bl SysTask_Destroy
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, #3
+    // blo _022566B4
+    // add r0, r5, #0
+    // bl Heap_Free
+    // ldr r0, [sp]
+    // mov r1, #0
+    // ldr r0, [r0, #4]
+    // str r1, [r0, #0x24]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _022566E4: .word 0x00001DB4
+    // _022566E8: .word 0x00001DBC
+    // TODO: decompile
 }
+
 
 void ov04_022566EC(void) {
-    /* Original at 0x022566EC */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    ldr r0, [r6, #4]\n    ldr r5, [r0, #0x24]\n    add r0, r1, #0\n    add r1, r2, #0\n    bl ov04_022568F0\n    add r4, r0, #0\n    bpl _0225670A\n    mov r0, #SEQ_SE_DP_WALL_HIT>>8\n    lsl r0, r0, #8\n    bl PlaySE\n    pop {r4, r5, r6, pc}\n    ldr r0, _0225672C ; =0x00001DB4\n    add r1, r4, #0\n    add r0, r5, r0\n    bl ov04_02256920\n    cmp r0, #0\n    bne _0225672A\n    lsl r2, r4, #0x18\n    add r0, r5, #0\n    add r1, r6, #0\n    lsr r2, r2, #0x18\n    bl ov04_02256950\n    ldr r0, _02256730 ; =SEQ_SE_GS_TOUMEINAKABEHIT\n    bl PlaySE\n    pop {r4, r5, r6, pc}\n    _0225672C: .word 0x00001DB4\n    _02256730: .word SEQ_SE_GS_TOUMEINAKABEHIT"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r6, r0, #0
+    // ldr r0, [r6, #4]
+    // ldr r5, [r0, #0x24]
+    // add r0, r1, #0
+    // add r1, r2, #0
+    // bl ov04_022568F0
+    // add r4, r0, #0
+    // bpl _0225670A
+    // mov r0, #SEQ_SE_DP_WALL_HIT>>8
+    // lsl r0, r0, #8
+    // bl PlaySE
+    // pop {r4, r5, r6, pc}
+    // ldr r0, _0225672C ; =0x00001DB4
+    // add r1, r4, #0
+    // add r0, r5, r0
+    // bl ov04_02256920
+    // cmp r0, #0
+    // bne _0225672A
+    // lsl r2, r4, #0x18
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // lsr r2, r2, #0x18
+    // bl ov04_02256950
+    // ldr r0, _02256730 ; =SEQ_SE_GS_TOUMEINAKABEHIT
+    // bl PlaySE
+    // pop {r4, r5, r6, pc}
+    // _0225672C: .word 0x00001DB4
+    // _02256730: .word SEQ_SE_GS_TOUMEINAKABEHIT
+    // TODO: decompile
 }
+
 
 void ov04_02256734(void) {
-    /* Original at 0x02256734 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    ldr r4, [r5, #4]\n    mov r1, #4\n    add r0, r4, #4\n    bl ov04_02256A54\n    cmp r0, #0\n    beq _0225674E\n    add r0, r5, #0\n    bl ov04_02256B3C\n    pop {r3, r4, r5, pc}\n    add r4, #0x54\n    add r0, r4, #0\n    bl Field3dObject_Draw\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r1, #0
+    // ldr r4, [r5, #4]
+    // mov r1, #4
+    // add r0, r4, #4
+    // bl ov04_02256A54
+    // cmp r0, #0
+    // beq _0225674E
+    // add r0, r5, #0
+    // bl ov04_02256B3C
+    // pop {r3, r4, r5, pc}
+    // add r4, #0x54
+    // add r0, r4, #0
+    // bl Field3dObject_Draw
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256758(void) {
-    /* Original at 0x02256758 */
-    /* Requires manual decompilation - 130 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x34\n    mov r2, #0x20\n    str r0, [sp, #8]\n    str r1, [sp, #0xc]\n    bl HeapExp_FndInitAllocator\n    mov r0, #0\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #0x14]\n    mov r1, #0x9a\n    add r4, r0, #0\n    lsl r1, r1, #2\n    mul r4, r1\n    ldr r0, [sp, #8]\n    mov r1, #0\n    add r0, r0, r4\n    add r0, #0xd4\n    str r1, [r0]\n    ldr r0, [sp, #0x14]\n    ldr r1, [sp, #8]\n    lsl r0, r0, #4\n    add r1, #0x10\n    str r0, [sp, #0x10]\n    add r0, r1, r0\n    ldr r2, [sp, #0x14]\n    ldr r3, [sp, #0xc]\n    mov r1, #0xf8\n    bl Field3dModel_LoadFromFilesystem\n    mov r0, #0\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    add r0, #0xd8\n    add r0, r0, r4\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #8]\n    str r0, [sp, #0x24]\n    add r0, #0x10\n    str r0, [sp, #0x24]\n    ldr r1, [sp, #0x1c]\n    mov r0, #0xcc\n    add r2, r1, #0\n    mul r2, r0\n    ldr r0, [sp, #0x18]\n    mov r1, #0\n    add r0, r0, r2\n    str r0, [sp, #0x20]\n    ldr r0, [sp, #0x18]\n    add r5, r1, #0\n    str r1, [r0, r2]\n    ldr r0, [sp, #0x20]\n    add r4, r0, #4\n    ldr r0, [sp, #0xc]\n    add r3, r5, #1\n    str r0, [sp]\n    ldr r0, [sp, #8]\n    mov r6, #0xc\n    str r0, [sp, #4]\n    mov r0, #0x14\n    mul r6, r3\n    ldr r3, [sp, #0x14]\n    mul r0, r5\n    ldr r2, [sp, #0x24]\n    ldr r1, [sp, #0x10]\n    add r0, r4, r0\n    add r1, r2, r1\n    mov r2, #0xf8\n    add r3, r6, r3\n    bl Field3dModelAnimation_LoadFromFilesystem\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #4\n    blo _022567C2\n    ldr r0, [sp, #0x20]\n    ldr r2, [sp, #0x24]\n    ldr r1, [sp, #0x10]\n    add r0, #0x54\n    add r1, r2, r1\n    bl Field3dObject_InitFromModel\n    ldr r0, [sp, #0x20]\n    mov r5, #0\n    add r7, r0, #0\n    add r4, r0, #4\n    add r7, #0x54\n    mov r0, #0x14\n    add r6, r5, #0\n    mul r6, r0\n    add r0, r7, #0\n    add r1, r4, r6\n    bl Field3dObject_AddAnimation\n    add r0, r4, r6\n    mov r1, #0\n    bl Field3dModelAnimation_FrameSet\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #4\n    blo _02256808\n    mov r1, #0\n    add r0, sp, #0x28\n    str r1, [r0]\n    str r1, [r0, #4]\n    str r1, [r0, #8]\n    ldr r0, [sp, #0x20]\n    ldr r1, [sp, #0x28]\n    ldr r2, [sp, #0x2c]\n    ldr r3, [sp, #0x30]\n    add r0, #0x54\n    bl Field3dObject_SetPosEx\n    ldr r0, [sp, #0x20]\n    mov r1, #0\n    add r0, #0x54\n    str r0, [sp, #0x20]\n    bl Field3dObject_SetActiveFlag\n    ldr r0, [sp, #0x1c]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x1c]\n    cmp r0, #3\n    blo _022567A8\n    ldr r0, [sp, #0x14]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x14]\n    cmp r0, #0xc\n    blo _0225676A\n    add sp, #0x34\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x34
+    // mov r2, #0x20
+    // str r0, [sp, #8]
+    // str r1, [sp, #0xc]
+    // bl HeapExp_FndInitAllocator
+    // mov r0, #0
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #0x14]
+    // mov r1, #0x9a
+    // add r4, r0, #0
+    // lsl r1, r1, #2
+    // mul r4, r1
+    // ldr r0, [sp, #8]
+    // mov r1, #0
+    // add r0, r0, r4
+    // add r0, #0xd4
+    // str r1, [r0]
+    // ldr r0, [sp, #0x14]
+    // ldr r1, [sp, #8]
+    // lsl r0, r0, #4
+    // add r1, #0x10
+    // str r0, [sp, #0x10]
+    // add r0, r1, r0
+    // ldr r2, [sp, #0x14]
+    // ldr r3, [sp, #0xc]
+    // mov r1, #0xf8
+    // bl Field3dModel_LoadFromFilesystem
+    // mov r0, #0
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // add r0, #0xd8
+    // add r0, r0, r4
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #8]
+    // str r0, [sp, #0x24]
+    // add r0, #0x10
+    // str r0, [sp, #0x24]
+    // ldr r1, [sp, #0x1c]
+    // mov r0, #0xcc
+    // add r2, r1, #0
+    // mul r2, r0
+    // ldr r0, [sp, #0x18]
+    // mov r1, #0
+    // add r0, r0, r2
+    // str r0, [sp, #0x20]
+    // ldr r0, [sp, #0x18]
+    // add r5, r1, #0
+    // str r1, [r0, r2]
+    // ldr r0, [sp, #0x20]
+    // add r4, r0, #4
+    // ldr r0, [sp, #0xc]
+    // add r3, r5, #1
+    // str r0, [sp]
+    // ldr r0, [sp, #8]
+    // mov r6, #0xc
+    // str r0, [sp, #4]
+    // mov r0, #0x14
+    // mul r6, r3
+    // ldr r3, [sp, #0x14]
+    // mul r0, r5
+    // ldr r2, [sp, #0x24]
+    // ldr r1, [sp, #0x10]
+    // add r0, r4, r0
+    // add r1, r2, r1
+    // mov r2, #0xf8
+    // add r3, r6, r3
+    // bl Field3dModelAnimation_LoadFromFilesystem
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #4
+    // blo _022567C2
+    // ldr r0, [sp, #0x20]
+    // ldr r2, [sp, #0x24]
+    // ldr r1, [sp, #0x10]
+    // add r0, #0x54
+    // add r1, r2, r1
+    // bl Field3dObject_InitFromModel
+    // ldr r0, [sp, #0x20]
+    // mov r5, #0
+    // add r7, r0, #0
+    // add r4, r0, #4
+    // add r7, #0x54
+    // mov r0, #0x14
+    // add r6, r5, #0
+    // mul r6, r0
+    // add r0, r7, #0
+    // add r1, r4, r6
+    // bl Field3dObject_AddAnimation
+    // add r0, r4, r6
+    // mov r1, #0
+    // bl Field3dModelAnimation_FrameSet
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #4
+    // blo _02256808
+    // mov r1, #0
+    // add r0, sp, #0x28
+    // str r1, [r0]
+    // str r1, [r0, #4]
+    // str r1, [r0, #8]
+    // ldr r0, [sp, #0x20]
+    // ldr r1, [sp, #0x28]
+    // ldr r2, [sp, #0x2c]
+    // ldr r3, [sp, #0x30]
+    // add r0, #0x54
+    // bl Field3dObject_SetPosEx
+    // ldr r0, [sp, #0x20]
+    // mov r1, #0
+    // add r0, #0x54
+    // str r0, [sp, #0x20]
+    // bl Field3dObject_SetActiveFlag
+    // ldr r0, [sp, #0x1c]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x1c]
+    // cmp r0, #3
+    // blo _022567A8
+    // ldr r0, [sp, #0x14]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x14]
+    // cmp r0, #0xc
+    // blo _0225676A
+    // add sp, #0x34
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_0225686C(void) {
-    /* Original at 0x0225686C */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r6, r0, #0\n    mov r0, #0\n    str r0, [sp, #8]\n    add r0, r6, #0\n    str r0, [sp, #0xc]\n    add r0, #0x10\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    str r0, [sp, #0x10]\n    add r0, #0xd8\n    str r0, [sp, #0x10]\n    mov r7, #0x14\n    ldr r0, [sp, #8]\n    lsl r1, r0, #4\n    ldr r0, [sp, #0xc]\n    add r0, r0, r1\n    bl Field3dModel_Unload\n    mov r0, #0\n    str r0, [sp, #4]\n    ldr r1, [sp, #8]\n    mov r0, #0x9a\n    lsl r0, r0, #2\n    add r2, r1, #0\n    mul r2, r0\n    ldr r0, [sp, #0x10]\n    add r0, r0, r2\n    str r0, [sp]\n    ldr r1, [sp, #4]\n    mov r0, #0xcc\n    add r2, r1, #0\n    mul r2, r0\n    ldr r0, [sp]\n    mov r5, #0\n    add r0, r0, r2\n    add r4, r0, #4\n    add r0, r5, #0\n    mul r0, r7\n    add r0, r4, r0\n    add r1, r6, #0\n    bl Field3dModelAnimation_Unload\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #4\n    blo _022568B8\n    ldr r0, [sp, #4]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    cmp r0, #3\n    blo _022568A8\n    ldr r0, [sp, #8]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #8]\n    cmp r0, #0xc\n    blo _02256888\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r6, r0, #0
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // add r0, r6, #0
+    // str r0, [sp, #0xc]
+    // add r0, #0x10
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // str r0, [sp, #0x10]
+    // add r0, #0xd8
+    // str r0, [sp, #0x10]
+    // mov r7, #0x14
+    // ldr r0, [sp, #8]
+    // lsl r1, r0, #4
+    // ldr r0, [sp, #0xc]
+    // add r0, r0, r1
+    // bl Field3dModel_Unload
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // ldr r1, [sp, #8]
+    // mov r0, #0x9a
+    // lsl r0, r0, #2
+    // add r2, r1, #0
+    // mul r2, r0
+    // ldr r0, [sp, #0x10]
+    // add r0, r0, r2
+    // str r0, [sp]
+    // ldr r1, [sp, #4]
+    // mov r0, #0xcc
+    // add r2, r1, #0
+    // mul r2, r0
+    // ldr r0, [sp]
+    // mov r5, #0
+    // add r0, r0, r2
+    // add r4, r0, #4
+    // add r0, r5, #0
+    // mul r0, r7
+    // add r0, r4, r0
+    // add r1, r6, #0
+    // bl Field3dModelAnimation_Unload
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #4
+    // blo _022568B8
+    // ldr r0, [sp, #4]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // cmp r0, #3
+    // blo _022568A8
+    // ldr r0, [sp, #8]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #8]
+    // cmp r0, #0xc
+    // blo _02256888
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_022568F0(void) {
-    /* Original at 0x022568F0 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    ldr r4, _0225691C ; =ov04_0225766C\n    mov r3, #0\n    ldr r2, [r4]\n    cmp r0, r2\n    bne _02256908\n    ldr r2, [r4, #4]\n    cmp r1, r2\n    bne _02256908\n    add r0, r3, #0\n    pop {r3, r4}\n    bx lr\n    add r2, r3, #1\n    lsl r2, r2, #0x10\n    asr r3, r2, #0x10\n    add r4, #0x14\n    cmp r3, #0x3c\n    blt _022568F6\n    mov r0, #0\n    mvn r0, r0\n    pop {r3, r4}\n    bx lr\n    _0225691C: .word ov04_0225766C"
-    );
-    #endif
+    // push {r3, r4}
+    // ldr r4, _0225691C ; =ov04_0225766C
+    // mov r3, #0
+    // ldr r2, [r4]
+    // cmp r0, r2
+    // bne _02256908
+    // ldr r2, [r4, #4]
+    // cmp r1, r2
+    // bne _02256908
+    // add r0, r3, #0
+    // pop {r3, r4}
+    // bx lr
+    // add r2, r3, #1
+    // lsl r2, r2, #0x10
+    // asr r3, r2, #0x10
+    // add r4, #0x14
+    // cmp r3, #0x3c
+    // blt _022568F6
+    // mov r0, #0
+    // mvn r0, r0
+    // pop {r3, r4}
+    // bx lr
+    // _0225691C: .word ov04_0225766C
+    // TODO: decompile
 }
+
 
 void ov04_02256920(void) {
-    /* Original at 0x02256920 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6}\n    mov r2, #0\n    mov r3, #2\n    mov r4, #0xc\n    add r5, r2, #0\n    mul r5, r4\n    add r6, r0, r5\n    ldrh r5, [r0, r5]\n    cmp r5, #0\n    beq _02256940\n    ldrsh r5, [r6, r3]\n    cmp r1, r5\n    bne _02256940\n    mov r0, #1\n    pop {r3, r4, r5, r6}\n    bx lr\n    add r2, r2, #1\n    lsl r2, r2, #0x18\n    lsr r2, r2, #0x18\n    cmp r2, #3\n    blo _02256928\n    mov r0, #0\n    pop {r3, r4, r5, r6}\n    bx lr"
-    );
-    #endif
+    // push {r3, r4, r5, r6}
+    // mov r2, #0
+    // mov r3, #2
+    // mov r4, #0xc
+    // add r5, r2, #0
+    // mul r5, r4
+    // add r6, r0, r5
+    // ldrh r5, [r0, r5]
+    // cmp r5, #0
+    // beq _02256940
+    // ldrsh r5, [r6, r3]
+    // cmp r1, r5
+    // bne _02256940
+    // mov r0, #1
+    // pop {r3, r4, r5, r6}
+    // bx lr
+    // add r2, r2, #1
+    // lsl r2, r2, #0x18
+    // lsr r2, r2, #0x18
+    // cmp r2, #3
+    // blo _02256928
+    // mov r0, #0
+    // pop {r3, r4, r5, r6}
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov04_02256950(void) {
-    /* Original at 0x02256950 */
-    /* Requires manual decompilation - 113 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r6, r0, #0\n    add r7, r2, #0\n    add r2, r6, #0\n    add r2, #0xd0\n    str r1, [sp]\n    ldr r1, _02256A38 ; =0x00001DB4\n    ldr r3, [r2]\n    mov r2, #0xc\n    add r1, r6, r1\n    mul r2, r3\n    add r5, r1, r2\n    ldrh r1, [r1, r2]\n    cmp r1, #0\n    beq _02256978\n    bl GF_AssertFail\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    add r1, r7, #0\n    bl ov04_02256AC4\n    mov r0, #1\n    strh r0, [r5]\n    mov r0, #0x14\n    add r4, r7, #0\n    mul r4, r0\n    ldr r1, _02256A3C ; =ov04_02257674\n    add r0, r6, #0\n    ldrh r1, [r1, r4]\n    add r0, #0xd4\n    strh r7, [r5, #2]\n    lsl r1, r1, #0x18\n    lsr r2, r1, #0x18\n    mov r1, #0x9a\n    lsl r1, r1, #2\n    mul r1, r2\n    add r0, r0, r1\n    bl ov04_02256A90\n    str r0, [r5, #4]\n    ldr r0, _02256A40 ; =ov04_02256734\n    add r1, r5, #0\n    mov r2, #0\n    bl SysTask_CreateOnMainQueue\n    str r0, [r5, #8]\n    ldr r0, [r5, #4]\n    mov r1, #1\n    add r0, #0x54\n    bl Field3dObject_SetActiveFlag\n    add r1, sp, #4\n    mov r0, #0\n    str r0, [r1]\n    str r0, [r1, #4]\n    str r0, [r1, #8]\n    ldr r0, [sp]\n    ldr r0, [r0, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r1, sp, #4\n    bl MapObject_CopyPositionVector\n    ldr r0, _02256A44 ; =ov04_0225766C\n    ldr r2, _02256A48 ; =ov04_02257677\n    ldr r0, [r0, r4]\n    ldrsb r2, [r2, r4]\n    lsl r1, r0, #4\n    ldr r0, _02256A4C ; =ov04_02257676\n    add r1, #8\n    ldrsb r0, [r0, r4]\n    lsl r2, r2, #4\n    lsl r0, r0, #4\n    add r0, r1, r0\n    lsl r1, r0, #0xc\n    ldr r0, _02256A50 ; =ov04_02257670\n    str r1, [sp, #4]\n    ldr r0, [r0, r4]\n    lsl r0, r0, #4\n    add r0, #8\n    add r0, r0, r2\n    lsl r3, r0, #0xc\n    str r3, [sp, #0xc]\n    ldr r0, [r5, #4]\n    ldr r2, [sp, #8]\n    add r0, #0x54\n    bl Field3dObject_SetPosEx\n    mov r4, #0\n    mov r7, #0x14\n    ldr r0, [r5, #4]\n    add r1, r0, #4\n    add r0, r4, #0\n    mul r0, r7\n    add r0, r1, r0\n    mov r1, #0\n    bl Field3dModelAnimation_FrameSet\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #4\n    blo _02256A08\n    add r0, r6, #0\n    add r0, #0xd0\n    ldr r0, [r0]\n    mov r1, #3\n    add r0, r0, #1\n    bl _s32_div_f\n    add r6, #0xd0\n    str r1, [r6]\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    _02256A38: .word 0x00001DB4\n    _02256A3C: .word ov04_02257674\n    _02256A40: .word ov04_02256734\n    _02256A44: .word ov04_0225766C\n    _02256A48: .word ov04_02257677\n    _02256A4C: .word ov04_02257676\n    _02256A50: .word ov04_02257670"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r6, r0, #0
+    // add r7, r2, #0
+    // add r2, r6, #0
+    // add r2, #0xd0
+    // str r1, [sp]
+    // ldr r1, _02256A38 ; =0x00001DB4
+    // ldr r3, [r2]
+    // mov r2, #0xc
+    // add r1, r6, r1
+    // mul r2, r3
+    // add r5, r1, r2
+    // ldrh r1, [r1, r2]
+    // cmp r1, #0
+    // beq _02256978
+    // bl GF_AssertFail
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r1, r7, #0
+    // bl ov04_02256AC4
+    // mov r0, #1
+    // strh r0, [r5]
+    // mov r0, #0x14
+    // add r4, r7, #0
+    // mul r4, r0
+    // ldr r1, _02256A3C ; =ov04_02257674
+    // add r0, r6, #0
+    // ldrh r1, [r1, r4]
+    // add r0, #0xd4
+    // strh r7, [r5, #2]
+    // lsl r1, r1, #0x18
+    // lsr r2, r1, #0x18
+    // mov r1, #0x9a
+    // lsl r1, r1, #2
+    // mul r1, r2
+    // add r0, r0, r1
+    // bl ov04_02256A90
+    // str r0, [r5, #4]
+    // ldr r0, _02256A40 ; =ov04_02256734
+    // add r1, r5, #0
+    // mov r2, #0
+    // bl SysTask_CreateOnMainQueue
+    // str r0, [r5, #8]
+    // ldr r0, [r5, #4]
+    // mov r1, #1
+    // add r0, #0x54
+    // bl Field3dObject_SetActiveFlag
+    // add r1, sp, #4
+    // mov r0, #0
+    // str r0, [r1]
+    // str r0, [r1, #4]
+    // str r0, [r1, #8]
+    // ldr r0, [sp]
+    // ldr r0, [r0, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r1, sp, #4
+    // bl MapObject_CopyPositionVector
+    // ldr r0, _02256A44 ; =ov04_0225766C
+    // ldr r2, _02256A48 ; =ov04_02257677
+    // ldr r0, [r0, r4]
+    // ldrsb r2, [r2, r4]
+    // lsl r1, r0, #4
+    // ldr r0, _02256A4C ; =ov04_02257676
+    // add r1, #8
+    // ldrsb r0, [r0, r4]
+    // lsl r2, r2, #4
+    // lsl r0, r0, #4
+    // add r0, r1, r0
+    // lsl r1, r0, #0xc
+    // ldr r0, _02256A50 ; =ov04_02257670
+    // str r1, [sp, #4]
+    // ldr r0, [r0, r4]
+    // lsl r0, r0, #4
+    // add r0, #8
+    // add r0, r0, r2
+    // lsl r3, r0, #0xc
+    // str r3, [sp, #0xc]
+    // ldr r0, [r5, #4]
+    // ldr r2, [sp, #8]
+    // add r0, #0x54
+    // bl Field3dObject_SetPosEx
+    // mov r4, #0
+    // mov r7, #0x14
+    // ldr r0, [r5, #4]
+    // add r1, r0, #4
+    // add r0, r4, #0
+    // mul r0, r7
+    // add r0, r1, r0
+    // mov r1, #0
+    // bl Field3dModelAnimation_FrameSet
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, #4
+    // blo _02256A08
+    // add r0, r6, #0
+    // add r0, #0xd0
+    // ldr r0, [r0]
+    // mov r1, #3
+    // add r0, r0, #1
+    // bl _s32_div_f
+    // add r6, #0xd0
+    // str r1, [r6]
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02256A38: .word 0x00001DB4
+    // _02256A3C: .word ov04_02257674
+    // _02256A40: .word ov04_02256734
+    // _02256A44: .word ov04_0225766C
+    // _02256A48: .word ov04_02257677
+    // _02256A4C: .word ov04_02257676
+    // _02256A50: .word ov04_02257670
+    // TODO: decompile
 }
+
 
 void ov04_02256A54(void) {
-    /* Original at 0x02256A54 */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    mov r5, #0\n    add r6, r1, #0\n    add r7, r0, #0\n    add r4, r5, #0\n    cmp r6, #0\n    bls _02256A84\n    mov r0, #0x14\n    mul r0, r4\n    mov r1, #1\n    add r0, r7, r0\n    lsl r1, r1, #0xc\n    bl Field3dModelAnimation_FrameAdvanceAndCheck\n    cmp r0, #0\n    beq _02256A7A\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, r6\n    blo _02256A62\n    cmp r5, r6\n    bne _02256A8C\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // mov r5, #0
+    // add r6, r1, #0
+    // add r7, r0, #0
+    // add r4, r5, #0
+    // cmp r6, #0
+    // bls _02256A84
+    // mov r0, #0x14
+    // mul r0, r4
+    // mov r1, #1
+    // add r0, r7, r0
+    // lsl r1, r1, #0xc
+    // bl Field3dModelAnimation_FrameAdvanceAndCheck
+    // cmp r0, #0
+    // beq _02256A7A
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, r6
+    // blo _02256A62
+    // cmp r5, r6
+    // bne _02256A8C
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256A90(void) {
-    /* Original at 0x02256A90 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r1, [r5]\n    mov r0, #0xcc\n    mul r0, r1\n    add r0, r5, r0\n    ldr r0, [r0, #4]\n    cmp r0, #0\n    beq _02256AA6\n    bl GF_AssertFail\n    ldr r1, [r5]\n    mov r0, #0xcc\n    add r6, r1, #0\n    mul r6, r0\n    add r4, r5, #4\n    mov r0, #1\n    str r0, [r4, r6]\n    ldr r0, [r5]\n    mov r1, #3\n    add r0, r0, #1\n    bl _s32_div_f\n    str r1, [r5]\n    add r0, r4, r6\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // ldr r1, [r5]
+    // mov r0, #0xcc
+    // mul r0, r1
+    // add r0, r5, r0
+    // ldr r0, [r0, #4]
+    // cmp r0, #0
+    // beq _02256AA6
+    // bl GF_AssertFail
+    // ldr r1, [r5]
+    // mov r0, #0xcc
+    // add r6, r1, #0
+    // mul r6, r0
+    // add r4, r5, #4
+    // mov r0, #1
+    // str r0, [r4, r6]
+    // ldr r0, [r5]
+    // mov r1, #3
+    // add r0, r0, #1
+    // bl _s32_div_f
+    // str r1, [r5]
+    // add r0, r4, r6
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256AC4(void) {
-    /* Original at 0x02256AC4 */
-    /* Requires manual decompilation - 56 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    mov r0, #0\n    str r0, [sp, #4]\n    mov r0, #0x14\n    ldr r2, _02256B30 ; =ov04_0225766C\n    mul r0, r1\n    add r0, r2, r0\n    str r0, [sp]\n    ldr r0, _02256B34 ; =0x00001DB4\n    ldr r5, _02256B34 ; =0x00001DB4\n    add r0, r4, r0\n    str r0, [sp, #8]\n    mov r7, #0xc\n    ldr r1, [sp]\n    ldr r0, [sp, #4]\n    add r0, r1, r0\n    mov r1, #0xc\n    ldrsb r1, [r0, r1]\n    cmp r1, #0\n    blt _02256B2C\n    mov r1, #0xc\n    ldrsb r6, [r0, r1]\n    mov r2, #0\n    add r1, r2, #0\n    mul r1, r7\n    add r0, r4, r1\n    ldrh r3, [r0, r5]\n    cmp r3, #0\n    beq _02256B14\n    ldr r3, _02256B38 ; =0x00001DB6\n    ldrsh r0, [r0, r3]\n    cmp r0, r6\n    bne _02256B14\n    ldr r0, [sp, #8]\n    add r0, r0, r1\n    bl ov04_02256B3C\n    b _02256B1E\n    add r0, r2, #1\n    lsl r0, r0, #0x18\n    lsr r2, r0, #0x18\n    cmp r2, #3\n    blo _02256AF6\n    ldr r0, [sp, #4]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    cmp r0, #6\n    blo _02256AE2\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _02256B30: .word ov04_0225766C\n    _02256B34: .word 0x00001DB4\n    _02256B38: .word 0x00001DB6"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // mov r0, #0x14
+    // ldr r2, _02256B30 ; =ov04_0225766C
+    // mul r0, r1
+    // add r0, r2, r0
+    // str r0, [sp]
+    // ldr r0, _02256B34 ; =0x00001DB4
+    // ldr r5, _02256B34 ; =0x00001DB4
+    // add r0, r4, r0
+    // str r0, [sp, #8]
+    // mov r7, #0xc
+    // ldr r1, [sp]
+    // ldr r0, [sp, #4]
+    // add r0, r1, r0
+    // mov r1, #0xc
+    // ldrsb r1, [r0, r1]
+    // cmp r1, #0
+    // blt _02256B2C
+    // mov r1, #0xc
+    // ldrsb r6, [r0, r1]
+    // mov r2, #0
+    // add r1, r2, #0
+    // mul r1, r7
+    // add r0, r4, r1
+    // ldrh r3, [r0, r5]
+    // cmp r3, #0
+    // beq _02256B14
+    // ldr r3, _02256B38 ; =0x00001DB6
+    // ldrsh r0, [r0, r3]
+    // cmp r0, r6
+    // bne _02256B14
+    // ldr r0, [sp, #8]
+    // add r0, r0, r1
+    // bl ov04_02256B3C
+    // b _02256B1E
+    // add r0, r2, #1
+    // lsl r0, r0, #0x18
+    // lsr r2, r0, #0x18
+    // cmp r2, #3
+    // blo _02256AF6
+    // ldr r0, [sp, #4]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // cmp r0, #6
+    // blo _02256AE2
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // _02256B30: .word ov04_0225766C
+    // _02256B34: .word 0x00001DB4
+    // _02256B38: .word 0x00001DB6
+    // TODO: decompile
 }
+
 
 void ov04_02256B3C(void) {
-    /* Original at 0x02256B3C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    mov r1, #0\n    add r0, #0x54\n    bl Field3dObject_SetActiveFlag\n    ldr r0, [r4, #4]\n    mov r1, #0\n    str r1, [r0]\n    strh r1, [r4]\n    sub r0, r1, #1\n    strh r0, [r4, #2]\n    str r1, [r4, #4]\n    ldr r0, [r4, #8]\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #8]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // add r0, #0x54
+    // bl Field3dObject_SetActiveFlag
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // str r1, [r0]
+    // strh r1, [r4]
+    // sub r0, r1, #1
+    // strh r0, [r4, #2]
+    // str r1, [r4, #4]
+    // ldr r0, [r4, #8]
+    // bl SysTask_Destroy
+    // mov r0, #0
+    // str r0, [r4, #8]
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256B64(void) {
-    /* Original at 0x02256B64 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #8\n    bl Save_Gymmick_AssertMagic_GetData\n    ldr r1, _02256B9C ; =0x00000708\n    mov r0, #4\n    bl Heap_Alloc\n    ldr r1, [r4, #4]\n    ldr r2, _02256B9C ; =0x00000708\n    str r0, [r1, #0x24]\n    ldr r0, [r4, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x24]\n    bl MI_CpuFill8\n    ldr r0, [r4, #4]\n    mov r1, #4\n    ldr r0, [r0, #0x24]\n    bl ov04_02256C20\n    pop {r4, pc}\n    nop\n    _02256B9C: .word 0x00000708"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #8
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldr r1, _02256B9C ; =0x00000708
+    // mov r0, #4
+    // bl Heap_Alloc
+    // ldr r1, [r4, #4]
+    // ldr r2, _02256B9C ; =0x00000708
+    // str r0, [r1, #0x24]
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #0x24]
+    // bl MI_CpuFill8
+    // ldr r0, [r4, #4]
+    // mov r1, #4
+    // ldr r0, [r0, #0x24]
+    // bl ov04_02256C20
+    // pop {r4, pc}
+    // nop
+    // _02256B9C: .word 0x00000708
+    // TODO: decompile
 }
+
 
 void ov04_02256BA0(void) {
-    /* Original at 0x02256BA0 */
-    /* Requires manual decompilation - 31 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    str r0, [sp]\n    ldr r0, [r0, #4]\n    ldr r5, [r0, #0x24]\n    add r0, r5, #0\n    bl ov04_02256D00\n    mov r7, #0xa3\n    lsl r7, r7, #2\n    add r6, r7, #0\n    mov r4, #0\n    sub r6, #0x50\n    add r0, r4, #0\n    mul r0, r6\n    add r1, r5, r0\n    ldr r0, [r1, #0x54]\n    cmp r0, #0\n    beq _02256BCA\n    ldr r0, [r1, r7]\n    bl SysTask_Destroy\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #3\n    blo _02256BB8\n    add r0, r5, #0\n    bl Heap_Free\n    ldr r0, [sp]\n    mov r1, #0\n    ldr r0, [r0, #4]\n    str r1, [r0, #0x24]\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // str r0, [sp]
+    // ldr r0, [r0, #4]
+    // ldr r5, [r0, #0x24]
+    // add r0, r5, #0
+    // bl ov04_02256D00
+    // mov r7, #0xa3
+    // lsl r7, r7, #2
+    // add r6, r7, #0
+    // mov r4, #0
+    // sub r6, #0x50
+    // add r0, r4, #0
+    // mul r0, r6
+    // add r1, r5, r0
+    // ldr r0, [r1, #0x54]
+    // cmp r0, #0
+    // beq _02256BCA
+    // ldr r0, [r1, r7]
+    // bl SysTask_Destroy
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, #3
+    // blo _02256BB8
+    // add r0, r5, #0
+    // bl Heap_Free
+    // ldr r0, [sp]
+    // mov r1, #0
+    // ldr r0, [r0, #4]
+    // str r1, [r0, #0x24]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256BE4(void) {
-    /* Original at 0x02256BE4 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r3, r0, #0\n    ldr r0, [r3, #4]\n    add r2, r1, #0\n    ldr r4, [r0, #0x24]\n    mov r1, #0x8f\n    ldr r5, [r4, #0x50]\n    add r0, r4, #0\n    lsl r1, r1, #2\n    add r6, r5, #0\n    add r0, #0x54\n    mul r6, r1\n    ldr r1, [r0, r6]\n    cmp r1, #0\n    bne _02256C18\n    add r0, r0, r6\n    add r1, r3, #0\n    bl ov04_02256D68\n    ldr r0, [r4, #0x50]\n    mov r1, #3\n    add r0, r0, #1\n    bl _s32_div_f\n    str r1, [r4, #0x50]\n    pop {r4, r5, r6, pc}\n    bl GF_AssertFail\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r3, r0, #0
+    // ldr r0, [r3, #4]
+    // add r2, r1, #0
+    // ldr r4, [r0, #0x24]
+    // mov r1, #0x8f
+    // ldr r5, [r4, #0x50]
+    // add r0, r4, #0
+    // lsl r1, r1, #2
+    // add r6, r5, #0
+    // add r0, #0x54
+    // mul r6, r1
+    // ldr r1, [r0, r6]
+    // cmp r1, #0
+    // bne _02256C18
+    // add r0, r0, r6
+    // add r1, r3, #0
+    // bl ov04_02256D68
+    // ldr r0, [r4, #0x50]
+    // mov r1, #3
+    // add r0, r0, #1
+    // bl _s32_div_f
+    // str r1, [r4, #0x50]
+    // pop {r4, r5, r6, pc}
+    // bl GF_AssertFail
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256C20(void) {
-    /* Original at 0x02256C20 */
-    /* Requires manual decompilation - 103 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x2c\n    mov r2, #0x20\n    str r0, [sp, #8]\n    str r1, [sp, #0xc]\n    bl HeapExp_FndInitAllocator\n    ldr r4, [sp, #8]\n    ldr r6, _02256CFC ; =0x00000101\n    mov r5, #0\n    add r4, #0x10\n    lsl r0, r5, #4\n    ldr r3, [sp, #0xc]\n    add r0, r4, r0\n    add r1, r6, #0\n    add r2, r5, #4\n    bl Field3dModel_LoadFromFilesystem\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #4\n    blo _02256C36\n    mov r0, #0\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #8]\n    mov r4, #0\n    add r2, r0, #0\n    str r4, [r0, #0x50]\n    mov r1, #0x8f\n    ldr r0, [sp, #0x14]\n    lsl r1, r1, #2\n    add r2, #0x54\n    mul r1, r0\n    add r7, r2, r1\n    str r4, [r2, r1]\n    str r4, [r7, #4]\n    add r6, r7, #0\n    ldr r0, [sp, #0x14]\n    mov r1, #0x8c\n    mul r1, r0\n    ldr r0, [sp, #8]\n    add r6, #0x1c\n    str r0, [sp, #0x1c]\n    add r0, #0x10\n    str r1, [sp, #0x18]\n    add r7, #8\n    str r0, [sp, #0x1c]\n    lsl r0, r4, #4\n    str r0, [sp, #0x10]\n    mov r0, #0x8c\n    add r5, r4, #0\n    mul r5, r0\n    ldr r0, [sp, #0xc]\n    ldr r2, [sp, #0x1c]\n    ldr r1, [sp, #0x10]\n    str r0, [sp]\n    ldr r0, [sp, #8]\n    add r1, r2, r1\n    str r0, [sp, #4]\n    ldr r2, _02256CFC ; =0x00000101\n    add r0, r7, r5\n    add r3, r4, #0\n    bl Field3dModelAnimation_LoadFromFilesystem\n    ldr r2, [sp, #0x1c]\n    ldr r1, [sp, #0x10]\n    add r0, r6, r5\n    add r1, r2, r1\n    bl Field3dObject_InitFromModel\n    add r0, r6, r5\n    add r1, r7, r5\n    bl Field3dObject_AddAnimation\n    add r0, r7, r5\n    mov r1, #0\n    bl Field3dModelAnimation_FrameSet\n    mov r1, #0\n    add r0, sp, #0x20\n    str r1, [r0]\n    str r1, [r0, #4]\n    str r1, [r0, #8]\n    ldr r0, [sp, #0x18]\n    ldr r1, [sp, #0x20]\n    ldr r2, [sp, #0x24]\n    ldr r3, [sp, #0x28]\n    add r0, r6, r0\n    bl Field3dObject_SetPosEx\n    add r0, r6, r5\n    mov r1, #0\n    bl Field3dObject_SetActiveFlag\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #4\n    blo _02256C80\n    ldr r0, [sp, #0x14]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x14]\n    cmp r0, #3\n    blo _02256C52\n    add sp, #0x2c\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02256CFC: .word 0x00000101"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x2c
+    // mov r2, #0x20
+    // str r0, [sp, #8]
+    // str r1, [sp, #0xc]
+    // bl HeapExp_FndInitAllocator
+    // ldr r4, [sp, #8]
+    // ldr r6, _02256CFC ; =0x00000101
+    // mov r5, #0
+    // add r4, #0x10
+    // lsl r0, r5, #4
+    // ldr r3, [sp, #0xc]
+    // add r0, r4, r0
+    // add r1, r6, #0
+    // add r2, r5, #4
+    // bl Field3dModel_LoadFromFilesystem
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #4
+    // blo _02256C36
+    // mov r0, #0
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #8]
+    // mov r4, #0
+    // add r2, r0, #0
+    // str r4, [r0, #0x50]
+    // mov r1, #0x8f
+    // ldr r0, [sp, #0x14]
+    // lsl r1, r1, #2
+    // add r2, #0x54
+    // mul r1, r0
+    // add r7, r2, r1
+    // str r4, [r2, r1]
+    // str r4, [r7, #4]
+    // add r6, r7, #0
+    // ldr r0, [sp, #0x14]
+    // mov r1, #0x8c
+    // mul r1, r0
+    // ldr r0, [sp, #8]
+    // add r6, #0x1c
+    // str r0, [sp, #0x1c]
+    // add r0, #0x10
+    // str r1, [sp, #0x18]
+    // add r7, #8
+    // str r0, [sp, #0x1c]
+    // lsl r0, r4, #4
+    // str r0, [sp, #0x10]
+    // mov r0, #0x8c
+    // add r5, r4, #0
+    // mul r5, r0
+    // ldr r0, [sp, #0xc]
+    // ldr r2, [sp, #0x1c]
+    // ldr r1, [sp, #0x10]
+    // str r0, [sp]
+    // ldr r0, [sp, #8]
+    // add r1, r2, r1
+    // str r0, [sp, #4]
+    // ldr r2, _02256CFC ; =0x00000101
+    // add r0, r7, r5
+    // add r3, r4, #0
+    // bl Field3dModelAnimation_LoadFromFilesystem
+    // ldr r2, [sp, #0x1c]
+    // ldr r1, [sp, #0x10]
+    // add r0, r6, r5
+    // add r1, r2, r1
+    // bl Field3dObject_InitFromModel
+    // add r0, r6, r5
+    // add r1, r7, r5
+    // bl Field3dObject_AddAnimation
+    // add r0, r7, r5
+    // mov r1, #0
+    // bl Field3dModelAnimation_FrameSet
+    // mov r1, #0
+    // add r0, sp, #0x20
+    // str r1, [r0]
+    // str r1, [r0, #4]
+    // str r1, [r0, #8]
+    // ldr r0, [sp, #0x18]
+    // ldr r1, [sp, #0x20]
+    // ldr r2, [sp, #0x24]
+    // ldr r3, [sp, #0x28]
+    // add r0, r6, r0
+    // bl Field3dObject_SetPosEx
+    // add r0, r6, r5
+    // mov r1, #0
+    // bl Field3dObject_SetActiveFlag
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, #4
+    // blo _02256C80
+    // ldr r0, [sp, #0x14]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x14]
+    // cmp r0, #3
+    // blo _02256C52
+    // add sp, #0x2c
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _02256CFC: .word 0x00000101
+    // TODO: decompile
 }
+
 
 void ov04_02256D00(void) {
-    /* Original at 0x02256D00 */
-    /* Requires manual decompilation - 49 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r6, r0, #0\n    add r5, r6, #0\n    mov r4, #0\n    add r5, #0x10\n    lsl r0, r4, #4\n    add r0, r5, r0\n    bl Field3dModel_Unload\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #4\n    blo _02256D0C\n    mov r0, #0\n    str r0, [sp]\n    add r0, r6, #0\n    str r0, [sp, #4]\n    add r0, #0x54\n    str r0, [sp, #4]\n    mov r7, #0x8c\n    ldr r1, [sp]\n    mov r0, #0x8f\n    lsl r0, r0, #2\n    add r2, r1, #0\n    mul r2, r0\n    ldr r0, [sp, #4]\n    mov r5, #0\n    add r4, r0, r2\n    add r4, #8\n    add r0, r5, #0\n    mul r0, r7\n    add r0, r4, r0\n    add r1, r6, #0\n    bl Field3dModelAnimation_Unload\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #4\n    blo _02256D3E\n    ldr r0, [sp]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    cmp r0, #3\n    blo _02256D2C\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r6, r0, #0
+    // add r5, r6, #0
+    // mov r4, #0
+    // add r5, #0x10
+    // lsl r0, r4, #4
+    // add r0, r5, r0
+    // bl Field3dModel_Unload
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, #4
+    // blo _02256D0C
+    // mov r0, #0
+    // str r0, [sp]
+    // add r0, r6, #0
+    // str r0, [sp, #4]
+    // add r0, #0x54
+    // str r0, [sp, #4]
+    // mov r7, #0x8c
+    // ldr r1, [sp]
+    // mov r0, #0x8f
+    // lsl r0, r0, #2
+    // add r2, r1, #0
+    // mul r2, r0
+    // ldr r0, [sp, #4]
+    // mov r5, #0
+    // add r4, r0, r2
+    // add r4, #8
+    // add r0, r5, #0
+    // mul r0, r7
+    // add r0, r4, r0
+    // add r1, r6, #0
+    // bl Field3dModelAnimation_Unload
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #4
+    // blo _02256D3E
+    // ldr r0, [sp]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // cmp r0, #3
+    // blo _02256D2C
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256D68(void) {
-    /* Original at 0x02256D68 */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    mov r5, #1\n    sub r2, #0x40\n    add r7, r1, #0\n    str r5, [r4]\n    cmp r2, #3\n    bhi _02256D9A\n    add r0, r2, r2\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02256D86: ; jump table\n    mov r5, #2\n    b _02256DA2\n    mov r5, #0\n    b _02256DA2\n    mov r5, #3\n    b _02256DA2\n    bl GF_AssertFail\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    ldr r0, _02256DF8 ; =ov04_02256DFC\n    add r1, r4, #0\n    mov r2, #0\n    str r5, [r4, #4]\n    bl SysTask_CreateOnMainQueue\n    mov r1, #0x8e\n    lsl r1, r1, #2\n    str r0, [r4, r1]\n    add r6, r5, #0\n    mov r0, #0x8c\n    add r5, r4, #0\n    mul r6, r0\n    add r5, #0x1c\n    add r0, r5, r6\n    mov r1, #1\n    bl Field3dObject_SetActiveFlag\n    add r1, sp, #0\n    mov r0, #0\n    str r0, [r1]\n    str r0, [r1, #4]\n    str r0, [r1, #8]\n    ldr r0, [r7, #0x40]\n    bl PlayerAvatar_GetMapObject\n    add r1, sp, #0\n    bl MapObject_CopyPositionVector\n    ldr r1, [sp]\n    ldr r2, [sp, #4]\n    ldr r3, [sp, #8]\n    add r0, r5, r6\n    bl Field3dObject_SetPosEx\n    add r4, #8\n    add r0, r4, r6\n    mov r1, #0\n    bl Field3dModelAnimation_FrameSet\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02256DF8: .word ov04_02256DFC"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // mov r5, #1
+    // sub r2, #0x40
+    // add r7, r1, #0
+    // str r5, [r4]
+    // cmp r2, #3
+    // bhi _02256D9A
+    // add r0, r2, r2
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02256D86: ; jump table
+    // mov r5, #2
+    // b _02256DA2
+    // mov r5, #0
+    // b _02256DA2
+    // mov r5, #3
+    // b _02256DA2
+    // bl GF_AssertFail
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // ldr r0, _02256DF8 ; =ov04_02256DFC
+    // add r1, r4, #0
+    // mov r2, #0
+    // str r5, [r4, #4]
+    // bl SysTask_CreateOnMainQueue
+    // mov r1, #0x8e
+    // lsl r1, r1, #2
+    // str r0, [r4, r1]
+    // add r6, r5, #0
+    // mov r0, #0x8c
+    // add r5, r4, #0
+    // mul r6, r0
+    // add r5, #0x1c
+    // add r0, r5, r6
+    // mov r1, #1
+    // bl Field3dObject_SetActiveFlag
+    // add r1, sp, #0
+    // mov r0, #0
+    // str r0, [r1]
+    // str r0, [r1, #4]
+    // str r0, [r1, #8]
+    // ldr r0, [r7, #0x40]
+    // bl PlayerAvatar_GetMapObject
+    // add r1, sp, #0
+    // bl MapObject_CopyPositionVector
+    // ldr r1, [sp]
+    // ldr r2, [sp, #4]
+    // ldr r3, [sp, #8]
+    // add r0, r5, r6
+    // bl Field3dObject_SetPosEx
+    // add r4, #8
+    // add r0, r4, r6
+    // mov r1, #0
+    // bl Field3dModelAnimation_FrameSet
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _02256DF8: .word ov04_02256DFC
+    // TODO: decompile
 }
 
+
 void ov04_02256DFC(void) {
-    /* Original at 0x02256DFC */
-    /* Requires manual decompilation - 34 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    ldr r0, [r5, #4]\n    lsl r0, r0, #0x18\n    lsr r1, r0, #0x18\n    mov r0, #0x8c\n    add r4, r1, #0\n    mul r4, r0\n    add r0, r5, #0\n    add r0, #8\n    add r0, r0, r4\n    bl ov04_02256E48\n    cmp r0, #0\n    beq _02256E3E\n    add r0, r5, #0\n    add r0, #0x1c\n    add r0, r0, r4\n    mov r1, #0\n    bl Field3dObject_SetActiveFlag\n    mov r0, #0\n    str r0, [r5]\n    mov r0, #0x8e\n    lsl r0, r0, #2\n    ldr r0, [r5, r0]\n    bl SysTask_Destroy\n    mov r0, #0x8e\n    mov r1, #0\n    lsl r0, r0, #2\n    str r1, [r5, r0]\n    pop {r3, r4, r5, pc}\n    add r5, #0x1c\n    add r0, r5, r4\n    bl Field3dObject_Draw\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r1, #0
+    // ldr r0, [r5, #4]
+    // lsl r0, r0, #0x18
+    // lsr r1, r0, #0x18
+    // mov r0, #0x8c
+    // add r4, r1, #0
+    // mul r4, r0
+    // add r0, r5, #0
+    // add r0, #8
+    // add r0, r0, r4
+    // bl ov04_02256E48
+    // cmp r0, #0
+    // beq _02256E3E
+    // add r0, r5, #0
+    // add r0, #0x1c
+    // add r0, r0, r4
+    // mov r1, #0
+    // bl Field3dObject_SetActiveFlag
+    // mov r0, #0
+    // str r0, [r5]
+    // mov r0, #0x8e
+    // lsl r0, r0, #2
+    // ldr r0, [r5, r0]
+    // bl SysTask_Destroy
+    // mov r0, #0x8e
+    // mov r1, #0
+    // lsl r0, r0, #2
+    // str r1, [r5, r0]
+    // pop {r3, r4, r5, pc}
+    // add r5, #0x1c
+    // add r0, r5, r4
+    // bl Field3dObject_Draw
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256E48(void) {
     Field3dModelAnimation_FrameAdvanceAndCheck(0, 1, 1);
 }
 
+
 void ov04_02256E60(void) {
-    /* Original at 0x02256E60 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #9\n    bl Save_Gymmick_AssertMagic_GetData\n    mov r1, #0x8e\n    mov r0, #4\n    lsl r1, r1, #2\n    bl Heap_Alloc\n    ldr r1, [r5, #4]\n    mov r2, #0x8e\n    str r0, [r1, #0x24]\n    ldr r0, [r5, #4]\n    mov r1, #0\n    ldr r0, [r0, #0x24]\n    lsl r2, r2, #2\n    bl MI_CpuFill8\n    ldr r0, [r5, #4]\n    ldr r4, [r0, #0x24]\n    add r0, r4, #0\n    str r5, [r4]\n    bl ov04_02256F50\n    ldr r0, _02256EAC ; =ov04_02257148\n    add r1, r4, #0\n    mov r2, #1\n    bl SysTask_CreateOnMainQueue\n    mov r1, #0x8d\n    lsl r1, r1, #2\n    str r0, [r4, r1]\n    pop {r3, r4, r5, pc}\n    _02256EAC: .word ov04_02257148"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #9
+    // bl Save_Gymmick_AssertMagic_GetData
+    // mov r1, #0x8e
+    // mov r0, #4
+    // lsl r1, r1, #2
+    // bl Heap_Alloc
+    // ldr r1, [r5, #4]
+    // mov r2, #0x8e
+    // str r0, [r1, #0x24]
+    // ldr r0, [r5, #4]
+    // mov r1, #0
+    // ldr r0, [r0, #0x24]
+    // lsl r2, r2, #2
+    // bl MI_CpuFill8
+    // ldr r0, [r5, #4]
+    // ldr r4, [r0, #0x24]
+    // add r0, r4, #0
+    // str r5, [r4]
+    // bl ov04_02256F50
+    // ldr r0, _02256EAC ; =ov04_02257148
+    // add r1, r4, #0
+    // mov r2, #1
+    // bl SysTask_CreateOnMainQueue
+    // mov r1, #0x8d
+    // lsl r1, r1, #2
+    // str r0, [r4, r1]
+    // pop {r3, r4, r5, pc}
+    // _02256EAC: .word ov04_02257148
+    // TODO: decompile
 }
+
 
 void ov04_02256EB0(void) {
-    /* Original at 0x02256EB0 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    ldr r4, [r0, #0x24]\n    mov r0, #0x8d\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl SysTask_Destroy\n    add r0, r4, #0\n    bl ov04_022570EC\n    add r0, r4, #0\n    bl Heap_Free\n    ldr r0, [r5, #4]\n    mov r1, #0\n    str r1, [r0, #0x24]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5, #4]
+    // ldr r4, [r0, #0x24]
+    // mov r0, #0x8d
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // bl SysTask_Destroy
+    // add r0, r4, #0
+    // bl ov04_022570EC
+    // add r0, r4, #0
+    // bl Heap_Free
+    // ldr r0, [r5, #4]
+    // mov r1, #0
+    // str r1, [r0, #0x24]
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256ED8(void) {
-    /* Original at 0x02256ED8 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    ldr r0, [r0, #4]\n    mov r5, #0\n    ldr r4, [r0, #0x24]\n    add r7, r5, #0\n    add r4, #0x4c\n    mov r6, #0xb4\n    add r0, r5, #0\n    mul r0, r6\n    add r0, r4, r0\n    add r1, r7, #0\n    bl Field3dObject_SetActiveFlag\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _02256EE6\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // ldr r0, [r0, #4]
+    // mov r5, #0
+    // ldr r4, [r0, #0x24]
+    // add r7, r5, #0
+    // add r4, #0x4c
+    // mov r6, #0xb4
+    // add r0, r5, #0
+    // mul r0, r6
+    // add r0, r4, r0
+    // add r1, r7, #0
+    // bl Field3dObject_SetActiveFlag
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _02256EE6
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02256F00(void) {
-    /* Original at 0x02256F00 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    ldr r0, [r5, #4]\n    add r6, r1, #0\n    ldr r4, [r0, #0x24]\n    cmp r6, #3\n    bls _02256F14\n    bl GF_AssertFail\n    pop {r4, r5, r6, pc}\n    add r0, r4, #0\n    add r0, #0x4c\n    bl Field3dObject_GetActiveFlag\n    cmp r0, #0\n    bne _02256F24\n    bl GF_AssertFail\n    add r0, r5, #0\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #9\n    bl Save_Gymmick_AssertMagic_GetData\n    str r6, [r0]\n    mov r0, #0x23\n    mov r1, #1\n    lsl r0, r0, #4\n    str r1, [r4, r0]\n    ldr r0, [r5, #0x10]\n    ldr r1, _02256F4C ; =ov04_02257308\n    add r2, r4, #0\n    bl TaskManager_Call\n    pop {r4, r5, r6, pc}\n    nop\n    _02256F4C: .word ov04_02257308"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5, #4]
+    // add r6, r1, #0
+    // ldr r4, [r0, #0x24]
+    // cmp r6, #3
+    // bls _02256F14
+    // bl GF_AssertFail
+    // pop {r4, r5, r6, pc}
+    // add r0, r4, #0
+    // add r0, #0x4c
+    // bl Field3dObject_GetActiveFlag
+    // cmp r0, #0
+    // bne _02256F24
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #9
+    // bl Save_Gymmick_AssertMagic_GetData
+    // str r6, [r0]
+    // mov r0, #0x23
+    // mov r1, #1
+    // lsl r0, r0, #4
+    // str r1, [r4, r0]
+    // ldr r0, [r5, #0x10]
+    // ldr r1, _02256F4C ; =ov04_02257308
+    // add r2, r4, #0
+    // bl TaskManager_Call
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _02256F4C: .word ov04_02257308
+    // TODO: decompile
 }
+
 
 void ov04_02256F50(void) {
-    /* Original at 0x02256F50 */
-    /* Requires manual decompilation - 195 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x6c\n    ldr r3, _022570E0 ; =ov04_02257B28\n    str r0, [sp, #8]\n    ldmia r3!, {r0, r1}\n    add r2, sp, #0x54\n    stmia r2!, {r0, r1}\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldr r3, _022570E4 ; =ov04_02257B1C\n    add r2, sp, #0x48\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldr r0, [r3]\n    mov r1, #4\n    str r0, [r2]\n    ldr r0, [sp, #8]\n    mov r2, #0x20\n    add r0, r0, #4\n    bl HeapExp_FndInitAllocator\n    ldr r4, [sp, #8]\n    mov r5, #0\n    add r4, #0x14\n    add r6, sp, #0x48\n    mov r7, #0xb4\n    add r0, r5, #0\n    lsl r2, r5, #2\n    mul r0, r7\n    ldr r2, [r6, r2]\n    add r0, r4, r0\n    mov r1, #0xae\n    mov r3, #4\n    bl Field3dModel_LoadFromFilesystem\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _02256F88\n    mov r0, #0\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #8]\n    add r0, r0, #4\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #8]\n    str r0, [sp, #0x14]\n    add r0, #0x14\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #8]\n    str r0, [sp, #0x18]\n    add r0, #0x24\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x10]\n    mov r5, #0\n    lsl r1, r0, #3\n    add r0, sp, #0x54\n    add r6, r0, r1\n    ldr r1, [sp, #0x10]\n    mov r0, #0xb4\n    add r7, r1, #0\n    mul r7, r0\n    ldr r0, [sp, #0x18]\n    add r4, r0, r7\n    mov r0, #4\n    str r0, [sp]\n    ldr r0, [sp, #0x1c]\n    ldr r1, [sp, #0x14]\n    str r0, [sp, #4]\n    mov r0, #0x14\n    lsl r3, r5, #2\n    mul r0, r5\n    ldr r3, [r6, r3]\n    add r0, r4, r0\n    add r1, r1, r7\n    mov r2, #0xae\n    bl Field3dModelAnimation_LoadFromFilesystem\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #2\n    blo _02256FD4\n    ldr r0, [sp, #0x10]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x10]\n    cmp r0, #3\n    blo _02256FBE\n    ldr r4, [sp, #8]\n    ldr r6, [sp, #8]\n    mov r5, #0\n    add r4, #0x4c\n    add r6, #0x14\n    mov r7, #0xb4\n    add r1, r5, #0\n    mul r1, r7\n    add r0, r4, r1\n    add r1, r6, r1\n    bl Field3dObject_InitFromModel\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _02257014\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #8]\n    ldr r7, [sp, #8]\n    str r0, [sp, #0x20]\n    add r0, #0x24\n    str r0, [sp, #0x20]\n    add r7, #0x4c\n    ldr r1, [sp, #0xc]\n    mov r0, #0xb4\n    add r6, r1, #0\n    mul r6, r0\n    ldr r0, [sp, #0x20]\n    mov r5, #0\n    add r4, r0, r6\n    mov r1, #0x14\n    mul r1, r5\n    add r0, r7, r6\n    add r1, r4, r1\n    bl Field3dObject_AddAnimation\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #2\n    blo _02257048\n    ldr r0, [sp, #0xc]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0xc]\n    cmp r0, #3\n    blo _0225703A\n    ldr r6, [sp, #8]\n    ldr r7, [sp, #8]\n    mov r5, #0\n    add r6, #0x4c\n    add r7, #0x24\n    mov r0, #0xb4\n    add r4, r5, #0\n    mul r4, r0\n    add r0, r6, r4\n    mov r1, #1\n    bl Field3dObject_SetActiveFlag\n    add r0, r7, r4\n    mov r1, #2\n    mov r2, #0\n    bl ov04_022572E0\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _02257076\n    ldr r4, _022570E8 ; =ov04_02257B40\n    add r3, sp, #0x24\n    mov r2, #4\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _0225709E\n    ldr r0, [r4]\n    mov r5, #0\n    str r0, [r3]\n    ldr r0, [sp, #8]\n    add r4, sp, #0x24\n    add r0, #0x4c\n    str r0, [sp, #8]\n    mov r7, #0xc\n    mov r6, #0xb4\n    add r1, r5, #0\n    mul r1, r7\n    add r2, r5, #0\n    add r3, r4, r1\n    ldr r0, [sp, #8]\n    mul r2, r6\n    add r0, r0, r2\n    ldr r2, [r3, #4]\n    ldr r1, [r4, r1]\n    ldr r3, [r3, #8]\n    bl Field3dObject_SetPosEx\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _022570B8\n    add sp, #0x6c\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _022570E0: .word ov04_02257B28\n    _022570E4: .word ov04_02257B1C\n    _022570E8: .word ov04_02257B40"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x6c
+    // ldr r3, _022570E0 ; =ov04_02257B28
+    // str r0, [sp, #8]
+    // ldmia r3!, {r0, r1}
+    // add r2, sp, #0x54
+    // stmia r2!, {r0, r1}
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldr r3, _022570E4 ; =ov04_02257B1C
+    // add r2, sp, #0x48
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldr r0, [r3]
+    // mov r1, #4
+    // str r0, [r2]
+    // ldr r0, [sp, #8]
+    // mov r2, #0x20
+    // add r0, r0, #4
+    // bl HeapExp_FndInitAllocator
+    // ldr r4, [sp, #8]
+    // mov r5, #0
+    // add r4, #0x14
+    // add r6, sp, #0x48
+    // mov r7, #0xb4
+    // add r0, r5, #0
+    // lsl r2, r5, #2
+    // mul r0, r7
+    // ldr r2, [r6, r2]
+    // add r0, r4, r0
+    // mov r1, #0xae
+    // mov r3, #4
+    // bl Field3dModel_LoadFromFilesystem
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _02256F88
+    // mov r0, #0
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #8]
+    // add r0, r0, #4
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #8]
+    // str r0, [sp, #0x14]
+    // add r0, #0x14
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #8]
+    // str r0, [sp, #0x18]
+    // add r0, #0x24
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #0x10]
+    // mov r5, #0
+    // lsl r1, r0, #3
+    // add r0, sp, #0x54
+    // add r6, r0, r1
+    // ldr r1, [sp, #0x10]
+    // mov r0, #0xb4
+    // add r7, r1, #0
+    // mul r7, r0
+    // ldr r0, [sp, #0x18]
+    // add r4, r0, r7
+    // mov r0, #4
+    // str r0, [sp]
+    // ldr r0, [sp, #0x1c]
+    // ldr r1, [sp, #0x14]
+    // str r0, [sp, #4]
+    // mov r0, #0x14
+    // lsl r3, r5, #2
+    // mul r0, r5
+    // ldr r3, [r6, r3]
+    // add r0, r4, r0
+    // add r1, r1, r7
+    // mov r2, #0xae
+    // bl Field3dModelAnimation_LoadFromFilesystem
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #2
+    // blo _02256FD4
+    // ldr r0, [sp, #0x10]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x10]
+    // cmp r0, #3
+    // blo _02256FBE
+    // ldr r4, [sp, #8]
+    // ldr r6, [sp, #8]
+    // mov r5, #0
+    // add r4, #0x4c
+    // add r6, #0x14
+    // mov r7, #0xb4
+    // add r1, r5, #0
+    // mul r1, r7
+    // add r0, r4, r1
+    // add r1, r6, r1
+    // bl Field3dObject_InitFromModel
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _02257014
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #8]
+    // ldr r7, [sp, #8]
+    // str r0, [sp, #0x20]
+    // add r0, #0x24
+    // str r0, [sp, #0x20]
+    // add r7, #0x4c
+    // ldr r1, [sp, #0xc]
+    // mov r0, #0xb4
+    // add r6, r1, #0
+    // mul r6, r0
+    // ldr r0, [sp, #0x20]
+    // mov r5, #0
+    // add r4, r0, r6
+    // mov r1, #0x14
+    // mul r1, r5
+    // add r0, r7, r6
+    // add r1, r4, r1
+    // bl Field3dObject_AddAnimation
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #2
+    // blo _02257048
+    // ldr r0, [sp, #0xc]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0xc]
+    // cmp r0, #3
+    // blo _0225703A
+    // ldr r6, [sp, #8]
+    // ldr r7, [sp, #8]
+    // mov r5, #0
+    // add r6, #0x4c
+    // add r7, #0x24
+    // mov r0, #0xb4
+    // add r4, r5, #0
+    // mul r4, r0
+    // add r0, r6, r4
+    // mov r1, #1
+    // bl Field3dObject_SetActiveFlag
+    // add r0, r7, r4
+    // mov r1, #2
+    // mov r2, #0
+    // bl ov04_022572E0
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _02257076
+    // ldr r4, _022570E8 ; =ov04_02257B40
+    // add r3, sp, #0x24
+    // mov r2, #4
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _0225709E
+    // ldr r0, [r4]
+    // mov r5, #0
+    // str r0, [r3]
+    // ldr r0, [sp, #8]
+    // add r4, sp, #0x24
+    // add r0, #0x4c
+    // str r0, [sp, #8]
+    // mov r7, #0xc
+    // mov r6, #0xb4
+    // add r1, r5, #0
+    // mul r1, r7
+    // add r2, r5, #0
+    // add r3, r4, r1
+    // ldr r0, [sp, #8]
+    // mul r2, r6
+    // add r0, r0, r2
+    // ldr r2, [r3, #4]
+    // ldr r1, [r4, r1]
+    // ldr r3, [r3, #8]
+    // bl Field3dObject_SetPosEx
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _022570B8
+    // add sp, #0x6c
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _022570E0: .word ov04_02257B28
+    // _022570E4: .word ov04_02257B1C
+    // _022570E8: .word ov04_02257B40
+    // TODO: decompile
 }
+
 
 void ov04_022570EC(void) {
-    /* Original at 0x022570EC */
-    /* Requires manual decompilation - 44 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r6, r0, #0\n    mov r0, #0\n    str r0, [sp, #4]\n    add r0, r6, #0\n    str r0, [sp, #0xc]\n    add r0, #0x14\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    str r0, [sp, #8]\n    add r0, #0x24\n    str r0, [sp, #8]\n    mov r7, #0x14\n    ldr r1, [sp, #4]\n    mov r0, #0xb4\n    mul r0, r1\n    ldr r1, [sp, #8]\n    mov r4, #0\n    str r0, [sp]\n    add r5, r1, r0\n    add r0, r4, #0\n    mul r0, r7\n    add r0, r5, r0\n    add r1, r6, #4\n    bl Field3dModelAnimation_Unload\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #2\n    blo _02257116\n    ldr r1, [sp, #0xc]\n    ldr r0, [sp]\n    add r0, r1, r0\n    bl Field3dModel_Unload\n    ldr r0, [sp, #4]\n    add r0, r0, #1\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #4]\n    cmp r0, #3\n    blo _02257108\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r6, r0, #0
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // add r0, r6, #0
+    // str r0, [sp, #0xc]
+    // add r0, #0x14
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // str r0, [sp, #8]
+    // add r0, #0x24
+    // str r0, [sp, #8]
+    // mov r7, #0x14
+    // ldr r1, [sp, #4]
+    // mov r0, #0xb4
+    // mul r0, r1
+    // ldr r1, [sp, #8]
+    // mov r4, #0
+    // str r0, [sp]
+    // add r5, r1, r0
+    // add r0, r4, #0
+    // mul r0, r7
+    // add r0, r5, r0
+    // add r1, r6, #4
+    // bl Field3dModelAnimation_Unload
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, #2
+    // blo _02257116
+    // ldr r1, [sp, #0xc]
+    // ldr r0, [sp]
+    // add r0, r1, r0
+    // bl Field3dModel_Unload
+    // ldr r0, [sp, #4]
+    // add r0, r0, #1
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #4]
+    // cmp r0, #3
+    // blo _02257108
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02257148(void) {
-    /* Original at 0x02257148 */
-    /* Requires manual decompilation - 110 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r7, r1, #0\n    add r1, sp, #4\n    mov r0, #0\n    strb r0, [r1]\n    strb r0, [r1, #1]\n    strb r0, [r1, #2]\n    ldr r0, [r7]\n    bl FieldSystem_GetSaveData\n    bl Save_GetGymmickPtr\n    mov r1, #9\n    bl Save_Gymmick_AssertMagic_GetData\n    ldr r0, [r0]\n    cmp r0, #3\n    bhi _0225719A\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0225717A: ; jump table\n    mov r1, #1\n    add r0, sp, #4\n    strb r1, [r0]\n    b _0225719E\n    mov r1, #1\n    add r0, sp, #4\n    strb r1, [r0, #1]\n    b _0225719E\n    mov r1, #1\n    add r0, sp, #4\n    strb r1, [r0, #2]\n    b _0225719E\n    bl GF_AssertFail\n    add r4, r7, #0\n    mov r5, #0\n    add r4, #0x14\n    add r6, sp, #4\n    mov r0, #0xb4\n    mul r0, r5\n    ldrb r2, [r6, r5]\n    add r0, r4, r0\n    mov r1, #2\n    bl ov04_02257240\n    str r0, [sp]\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _022571A6\n    add r4, r7, #0\n    mov r5, #0\n    add r4, #0x4c\n    mov r6, #0xb4\n    add r0, r5, #0\n    mul r0, r6\n    add r0, r4, r0\n    bl Field3dObject_Draw\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    cmp r5, #3\n    blo _022571C8\n    ldr r0, [sp]\n    cmp r0, #0\n    beq _022571EA\n    mov r0, #0x23\n    mov r1, #0\n    lsl r0, r0, #4\n    str r1, [r7, r0]\n    mov r5, #0\n    add r6, sp, #8\n    add r7, #0x14\n    mov r0, #0xb4\n    mul r0, r5\n    add r0, r7, r0\n    add r0, #0x10\n    lsl r4, r5, #2\n    bl ov01_021FBF28\n    asr r1, r0, #0xb\n    lsr r1, r1, #0x14\n    add r1, r0, r1\n    asr r0, r1, #0xc\n    str r0, [r6, r4]\n    ldr r0, [r6, r4]\n    mov r1, #0x1e\n    bl _s32_div_f\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    str r1, [r6, r4]\n    cmp r5, #3\n    blo _022571F0\n    ldr r4, [sp, #0xc]\n    ldr r0, [sp, #8]\n    cmp r0, r4\n    beq _02257228\n    bl GF_AssertFail\n    ldr r5, [sp, #0x10]\n    cmp r4, r5\n    beq _02257232\n    bl GF_AssertFail\n    ldr r0, [sp, #8]\n    cmp r5, r0\n    beq _0225723C\n    bl GF_AssertFail\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r7, r1, #0
+    // add r1, sp, #4
+    // mov r0, #0
+    // strb r0, [r1]
+    // strb r0, [r1, #1]
+    // strb r0, [r1, #2]
+    // ldr r0, [r7]
+    // bl FieldSystem_GetSaveData
+    // bl Save_GetGymmickPtr
+    // mov r1, #9
+    // bl Save_Gymmick_AssertMagic_GetData
+    // ldr r0, [r0]
+    // cmp r0, #3
+    // bhi _0225719A
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _0225717A: ; jump table
+    // mov r1, #1
+    // add r0, sp, #4
+    // strb r1, [r0]
+    // b _0225719E
+    // mov r1, #1
+    // add r0, sp, #4
+    // strb r1, [r0, #1]
+    // b _0225719E
+    // mov r1, #1
+    // add r0, sp, #4
+    // strb r1, [r0, #2]
+    // b _0225719E
+    // bl GF_AssertFail
+    // add r4, r7, #0
+    // mov r5, #0
+    // add r4, #0x14
+    // add r6, sp, #4
+    // mov r0, #0xb4
+    // mul r0, r5
+    // ldrb r2, [r6, r5]
+    // add r0, r4, r0
+    // mov r1, #2
+    // bl ov04_02257240
+    // str r0, [sp]
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _022571A6
+    // add r4, r7, #0
+    // mov r5, #0
+    // add r4, #0x4c
+    // mov r6, #0xb4
+    // add r0, r5, #0
+    // mul r0, r6
+    // add r0, r4, r0
+    // bl Field3dObject_Draw
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // cmp r5, #3
+    // blo _022571C8
+    // ldr r0, [sp]
+    // cmp r0, #0
+    // beq _022571EA
+    // mov r0, #0x23
+    // mov r1, #0
+    // lsl r0, r0, #4
+    // str r1, [r7, r0]
+    // mov r5, #0
+    // add r6, sp, #8
+    // add r7, #0x14
+    // mov r0, #0xb4
+    // mul r0, r5
+    // add r0, r7, r0
+    // add r0, #0x10
+    // lsl r4, r5, #2
+    // bl ov01_021FBF28
+    // asr r1, r0, #0xb
+    // lsr r1, r1, #0x14
+    // add r1, r0, r1
+    // asr r0, r1, #0xc
+    // str r0, [r6, r4]
+    // ldr r0, [r6, r4]
+    // mov r1, #0x1e
+    // bl _s32_div_f
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // str r1, [r6, r4]
+    // cmp r5, #3
+    // blo _022571F0
+    // ldr r4, [sp, #0xc]
+    // ldr r0, [sp, #8]
+    // cmp r0, r4
+    // beq _02257228
+    // bl GF_AssertFail
+    // ldr r5, [sp, #0x10]
+    // cmp r4, r5
+    // beq _02257232
+    // bl GF_AssertFail
+    // ldr r0, [sp, #8]
+    // cmp r5, r0
+    // beq _0225723C
+    // bl GF_AssertFail
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_02257240(void) {
-    /* Original at 0x02257240 */
-    /* Requires manual decompilation - 75 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    str r1, [sp, #4]\n    str r0, [sp]\n    str r2, [sp, #8]\n    add r0, #0xb0\n    ldr r0, [r0]\n    mov r6, #0\n    cmp r0, #0\n    beq _0225725C\n    mov r0, #0xf\n    lsl r0, r0, #0xe\n    str r0, [sp, #0xc]\n    b _02257262\n    mov r0, #0x1e\n    lsl r0, r0, #0xc\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #4]\n    mov r5, #0\n    cmp r0, #0\n    bls _022572CE\n    ldr r4, [sp]\n    add r4, #0x10\n    mov r0, #0x14\n    add r7, r5, #0\n    mul r7, r0\n    add r0, r4, r7\n    bl ov01_021FBF28\n    mov r1, #1\n    lsl r1, r1, #0xc\n    add r1, r0, r1\n    ldr r0, [sp, #0xc]\n    cmp r1, r0\n    blt _02257294\n    cmp r5, #0\n    beq _02257292\n    cmp r6, #0\n    bne _02257292\n    bl GF_AssertFail\n    mov r6, #1\n    mov r1, #1\n    add r0, r4, r7\n    lsl r1, r1, #0xc\n    bl Field3dModelAnimation_FrameAdvanceAndLoop\n    cmp r6, #0\n    beq _022572C2\n    ldr r1, [sp]\n    ldr r0, [sp, #8]\n    add r1, #0xb0\n    str r0, [r1]\n    ldr r0, [sp]\n    add r0, #0xb0\n    ldr r0, [r0]\n    cmp r0, #0\n    beq _022572BA\n    mov r1, #0x1e\n    lsl r1, r1, #0xc\n    b _022572BC\n    mov r1, #0\n    add r0, r4, r7\n    bl Field3dModelAnimation_FrameSet\n    add r0, r5, #1\n    lsl r0, r0, #0x18\n    lsr r5, r0, #0x18\n    ldr r0, [sp, #4]\n    cmp r5, r0\n    blo _0225726E\n    cmp r6, #0\n    beq _022572D8\n    add sp, #0x10\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // str r1, [sp, #4]
+    // str r0, [sp]
+    // str r2, [sp, #8]
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // mov r6, #0
+    // cmp r0, #0
+    // beq _0225725C
+    // mov r0, #0xf
+    // lsl r0, r0, #0xe
+    // str r0, [sp, #0xc]
+    // b _02257262
+    // mov r0, #0x1e
+    // lsl r0, r0, #0xc
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #4]
+    // mov r5, #0
+    // cmp r0, #0
+    // bls _022572CE
+    // ldr r4, [sp]
+    // add r4, #0x10
+    // mov r0, #0x14
+    // add r7, r5, #0
+    // mul r7, r0
+    // add r0, r4, r7
+    // bl ov01_021FBF28
+    // mov r1, #1
+    // lsl r1, r1, #0xc
+    // add r1, r0, r1
+    // ldr r0, [sp, #0xc]
+    // cmp r1, r0
+    // blt _02257294
+    // cmp r5, #0
+    // beq _02257292
+    // cmp r6, #0
+    // bne _02257292
+    // bl GF_AssertFail
+    // mov r6, #1
+    // mov r1, #1
+    // add r0, r4, r7
+    // lsl r1, r1, #0xc
+    // bl Field3dModelAnimation_FrameAdvanceAndLoop
+    // cmp r6, #0
+    // beq _022572C2
+    // ldr r1, [sp]
+    // ldr r0, [sp, #8]
+    // add r1, #0xb0
+    // str r0, [r1]
+    // ldr r0, [sp]
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // cmp r0, #0
+    // beq _022572BA
+    // mov r1, #0x1e
+    // lsl r1, r1, #0xc
+    // b _022572BC
+    // mov r1, #0
+    // add r0, r4, r7
+    // bl Field3dModelAnimation_FrameSet
+    // add r0, r5, #1
+    // lsl r0, r0, #0x18
+    // lsr r5, r0, #0x18
+    // ldr r0, [sp, #4]
+    // cmp r5, r0
+    // blo _0225726E
+    // cmp r6, #0
+    // beq _022572D8
+    // add sp, #0x10
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov04_022572E0(void) {
-    /* Original at 0x022572E0 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    add r6, r0, #0\n    add r7, r2, #0\n    mov r4, #0\n    cmp r5, #0\n    bls _02257304\n    mov r0, #0x14\n    mul r0, r4\n    add r0, r6, r0\n    add r1, r7, #0\n    bl Field3dModelAnimation_FrameSet\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, r5\n    blo _022572EE\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // add r7, r2, #0
+    // mov r4, #0
+    // cmp r5, #0
+    // bls _02257304
+    // mov r0, #0x14
+    // mul r0, r4
+    // add r0, r6, r0
+    // add r1, r7, #0
+    // bl Field3dModelAnimation_FrameSet
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, r5
+    // blo _022572EE
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov04_02257308(void) {
-    /* Original at 0x02257308 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl TaskManager_GetFieldSystem\n    add r0, r4, #0\n    bl TaskManager_GetEnvironment\n    mov r1, #0x23\n    lsl r1, r1, #4\n    ldr r0, [r0, r1]\n    cmp r0, #0\n    bne _02257324\n    mov r0, #1\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl TaskManager_GetFieldSystem
+    // add r0, r4, #0
+    // bl TaskManager_GetEnvironment
+    // mov r1, #0x23
+    // lsl r1, r1, #4
+    // ldr r0, [r0, r1]
+    // cmp r0, #0
+    // bne _02257324
+    // mov r0, #1
+    // pop {r4, pc}
+    // mov r0, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
+

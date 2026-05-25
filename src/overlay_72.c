@@ -2,158 +2,932 @@
 #include "global.h"
 
 void ov72_022378C0(void) {
-    /* Original at 0x022378C0 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    ldr r3, _022378D8 ; =_0223B820\n    mov r4, #1\n    str r4, [r3]\n    mov r4, #0\n    str r4, [r3, #4]\n    str r0, [r3, #8]\n    str r1, [r3, #0xc]\n    str r2, [r3, #0x10]\n    pop {r3, r4}\n    bx lr\n    nop\n    _022378D8: .word _0223B820"
-    );
-    #endif
+    // push {r3, r4}
+    // ldr r3, _022378D8 ; =_0223B820
+    // mov r4, #1
+    // str r4, [r3]
+    // mov r4, #0
+    // str r4, [r3, #4]
+    // str r0, [r3, #8]
+    // str r1, [r3, #0xc]
+    // str r2, [r3, #0x10]
+    // pop {r3, r4}
+    // bx lr
+    // nop
+    // _022378D8: .word _0223B820
+    // TODO: decompile
 }
+
 
 void ov72_022378DC(void) {
-    /* Original at 0x022378DC */
-    /* Requires manual decompilation - 257 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r1, _02237B48 ; =_0223B820\n    ldr r0, [r1]\n    cmp r0, #0xc\n    bls _022378E8\n    b _02237B44\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _022378F4: ; jump table\n    bl ov38_0221BF48\n    cmp r0, #1\n    beq _0223791C\n    cmp r0, #7\n    beq _02237934\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C014\n    bl ov72_02237D88\n    ldr r1, _02237B48 ; =_0223B820\n    str r0, [r1, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C020\n    cmp r0, #0\n    ble _0223794A\n    ldr r0, _02237B4C ; =ov72_0223B920\n    ldrb r1, [r0, #3]\n    ldr r0, _02237B48 ; =_0223B820\n    b _02237950\n    mov r1, #1\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    bl ov38_0221BF48\n    cmp r0, #1\n    beq _02237966\n    cmp r0, #7\n    beq _0223797E\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C014\n    bl ov72_02237D88\n    ldr r1, _02237B48 ; =_0223B820\n    str r0, [r1, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C020\n    ldr r1, _02237B50 ; =0x00000A38\n    cmp r0, r1\n    bne _02237996\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0\n    str r1, [r0, #4]\n    b _022379C2\n    ldr r0, _02237B4C ; =ov72_0223B920\n    ldr r0, [r0, #8]\n    ldrb r0, [r0]\n    cmp r0, #2\n    beq _022379A6\n    cmp r0, #5\n    beq _022379B0\n    b _022379BA\n    mov r1, #2\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    b _022379C2\n    mov r1, #1\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    b _022379C2\n    mov r1, #4\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    bl ov38_0221BF48\n    cmp r0, #1\n    beq _022379D6\n    cmp r0, #7\n    beq _022379EE\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C014\n    bl ov72_02237D88\n    ldr r1, _02237B48 ; =_0223B820\n    str r0, [r1, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    ldr r2, _02237B4C ; =ov72_0223B920\n    str r1, [r0]\n    ldrb r2, [r2, #3]\n    cmp r2, #5\n    bhi _02237A2C\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _02237A08: ; jump table\n    mov r1, #0\n    str r1, [r0, #4]\n    b _02237A34\n    sub r1, #0xf\n    str r1, [r0, #4]\n    b _02237A34\n    sub r1, #0xd\n    str r1, [r0, #4]\n    b _02237A34\n    sub r1, #0xe\n    str r1, [r0, #4]\n    b _02237A34\n    mov r1, #4\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    bl ov38_0221BF48\n    cmp r0, #1\n    beq _02237A48\n    cmp r0, #7\n    beq _02237A60\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C014\n    bl ov72_02237D88\n    ldr r1, _02237B48 ; =_0223B820\n    str r0, [r1, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    ldr r2, _02237B4C ; =ov72_0223B920\n    str r1, [r0]\n    ldrb r2, [r2, #3]\n    cmp r2, #5\n    bhi _02237A9E\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _02237A7A: ; jump table\n    mov r1, #0\n    str r1, [r0, #4]\n    b _02237AA6\n    mov r1, #1\n    str r1, [r0, #4]\n    b _02237AA6\n    mov r1, #2\n    str r1, [r0, #4]\n    b _02237AA6\n    sub r1, #0xe\n    str r1, [r0, #4]\n    b _02237AA6\n    mov r1, #4\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    bl ov38_0221BF48\n    cmp r0, #1\n    beq _02237ABA\n    cmp r0, #7\n    beq _02237AD2\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C014\n    bl ov72_02237D88\n    ldr r1, _02237B48 ; =_0223B820\n    str r0, [r1, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    bl ov38_0221C020\n    cmp r0, #8\n    bne _02237AE8\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0\n    str r1, [r0, #4]\n    b _02237B32\n    ldr r0, _02237B4C ; =ov72_0223B920\n    ldrb r0, [r0, #3]\n    cmp r0, #5\n    bhi _02237B2A\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02237AFC: ; jump table\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #0\n    str r1, [r0, #4]\n    b _02237B32\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #1\n    str r1, [r0, #4]\n    b _02237B32\n    ldr r0, _02237B48 ; =_0223B820\n    mov r1, #2\n    str r1, [r0, #4]\n    b _02237B32\n    mov r1, #1\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    b _02237B32\n    mov r1, #4\n    ldr r0, _02237B48 ; =_0223B820\n    mvn r1, r1\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    mov r0, #0xc\n    str r0, [r1]\n    sub r0, #0x10\n    str r0, [r1, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    nop\n    _02237B48: .word _0223B820\n    _02237B4C: .word ov72_0223B920\n    _02237B50: .word 0x00000A38"
-    );
-    #endif
+    // push {r3, lr}
+    // ldr r1, _02237B48 ; =_0223B820
+    // ldr r0, [r1]
+    // cmp r0, #0xc
+    // bls _022378E8
+    // b _02237B44
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _022378F4: ; jump table
+    // bl ov38_0221BF48
+    // cmp r0, #1
+    // beq _0223791C
+    // cmp r0, #7
+    // beq _02237934
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C014
+    // bl ov72_02237D88
+    // ldr r1, _02237B48 ; =_0223B820
+    // str r0, [r1, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C020
+    // cmp r0, #0
+    // ble _0223794A
+    // ldr r0, _02237B4C ; =ov72_0223B920
+    // ldrb r1, [r0, #3]
+    // ldr r0, _02237B48 ; =_0223B820
+    // b _02237950
+    // mov r1, #1
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // bl ov38_0221BF48
+    // cmp r0, #1
+    // beq _02237966
+    // cmp r0, #7
+    // beq _0223797E
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C014
+    // bl ov72_02237D88
+    // ldr r1, _02237B48 ; =_0223B820
+    // str r0, [r1, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C020
+    // ldr r1, _02237B50 ; =0x00000A38
+    // cmp r0, r1
+    // bne _02237996
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0
+    // str r1, [r0, #4]
+    // b _022379C2
+    // ldr r0, _02237B4C ; =ov72_0223B920
+    // ldr r0, [r0, #8]
+    // ldrb r0, [r0]
+    // cmp r0, #2
+    // beq _022379A6
+    // cmp r0, #5
+    // beq _022379B0
+    // b _022379BA
+    // mov r1, #2
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // b _022379C2
+    // mov r1, #1
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // b _022379C2
+    // mov r1, #4
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // bl ov38_0221BF48
+    // cmp r0, #1
+    // beq _022379D6
+    // cmp r0, #7
+    // beq _022379EE
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C014
+    // bl ov72_02237D88
+    // ldr r1, _02237B48 ; =_0223B820
+    // str r0, [r1, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // ldr r2, _02237B4C ; =ov72_0223B920
+    // str r1, [r0]
+    // ldrb r2, [r2, #3]
+    // cmp r2, #5
+    // bhi _02237A2C
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _02237A08: ; jump table
+    // mov r1, #0
+    // str r1, [r0, #4]
+    // b _02237A34
+    // sub r1, #0xf
+    // str r1, [r0, #4]
+    // b _02237A34
+    // sub r1, #0xd
+    // str r1, [r0, #4]
+    // b _02237A34
+    // sub r1, #0xe
+    // str r1, [r0, #4]
+    // b _02237A34
+    // mov r1, #4
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // bl ov38_0221BF48
+    // cmp r0, #1
+    // beq _02237A48
+    // cmp r0, #7
+    // beq _02237A60
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C014
+    // bl ov72_02237D88
+    // ldr r1, _02237B48 ; =_0223B820
+    // str r0, [r1, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // ldr r2, _02237B4C ; =ov72_0223B920
+    // str r1, [r0]
+    // ldrb r2, [r2, #3]
+    // cmp r2, #5
+    // bhi _02237A9E
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _02237A7A: ; jump table
+    // mov r1, #0
+    // str r1, [r0, #4]
+    // b _02237AA6
+    // mov r1, #1
+    // str r1, [r0, #4]
+    // b _02237AA6
+    // mov r1, #2
+    // str r1, [r0, #4]
+    // b _02237AA6
+    // sub r1, #0xe
+    // str r1, [r0, #4]
+    // b _02237AA6
+    // mov r1, #4
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // bl ov38_0221BF48
+    // cmp r0, #1
+    // beq _02237ABA
+    // cmp r0, #7
+    // beq _02237AD2
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C014
+    // bl ov72_02237D88
+    // ldr r1, _02237B48 ; =_0223B820
+    // str r0, [r1, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // bl ov38_0221C020
+    // cmp r0, #8
+    // bne _02237AE8
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0
+    // str r1, [r0, #4]
+    // b _02237B32
+    // ldr r0, _02237B4C ; =ov72_0223B920
+    // ldrb r0, [r0, #3]
+    // cmp r0, #5
+    // bhi _02237B2A
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02237AFC: ; jump table
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #0
+    // str r1, [r0, #4]
+    // b _02237B32
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #1
+    // str r1, [r0, #4]
+    // b _02237B32
+    // ldr r0, _02237B48 ; =_0223B820
+    // mov r1, #2
+    // str r1, [r0, #4]
+    // b _02237B32
+    // mov r1, #1
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // b _02237B32
+    // mov r1, #4
+    // ldr r0, _02237B48 ; =_0223B820
+    // mvn r1, r1
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // mov r0, #0xc
+    // str r0, [r1]
+    // sub r0, #0x10
+    // str r0, [r1, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // nop
+    // _02237B48: .word _0223B820
+    // _02237B4C: .word ov72_0223B920
+    // _02237B50: .word 0x00000A38
+    // TODO: decompile
 }
+
 
 void ov72_02237B54(void) {
-    /* Original at 0x02237B54 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r1, _02237B70 ; =_0223B820\n    ldr r0, [r1]\n    cmp r0, #1\n    beq _02237B62\n    cmp r0, #0xc\n    beq _02237B66\n    b _02237B6C\n    mov r0, #1\n    bx lr\n    mov r0, #1\n    str r0, [r1]\n    bx lr\n    mov r0, #0\n    bx lr\n    _02237B70: .word _0223B820"
-    );
-    #endif
+    // ldr r1, _02237B70 ; =_0223B820
+    // ldr r0, [r1]
+    // cmp r0, #1
+    // beq _02237B62
+    // cmp r0, #0xc
+    // beq _02237B66
+    // b _02237B6C
+    // mov r0, #1
+    // bx lr
+    // mov r0, #1
+    // str r0, [r1]
+    // bx lr
+    // mov r0, #0
+    // bx lr
+    // _02237B70: .word _0223B820
+    // TODO: decompile
 }
+
 
 void ov72_02237B74(void) {
-    /* Original at 0x02237B74 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r0, _02237B7C ; =_0223B820\n    ldr r0, [r0, #4]\n    bx lr\n    nop\n    _02237B7C: .word _0223B820"
-    );
-    #endif
+    // ldr r0, _02237B7C ; =_0223B820
+    // ldr r0, [r0, #4]
+    // bx lr
+    // nop
+    // _02237B7C: .word _0223B820
+    // TODO: decompile
 }
+
 
 void ov72_02237B80(void) {
-    /* Original at 0x02237B80 */
-    /* Requires manual decompilation - 33 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    add r4, r0, #0\n    bl ov38_0221BE84\n    ldr r0, _02237BC0 ; =_0223B820\n    sub r1, r4, #1\n    strb r1, [r0, #0x14]\n    mov r0, #2\n    str r0, [sp]\n    ldr r0, _02237BC4 ; =_0223B4E0\n    ldr r1, _02237BC8 ; =ov72_0223B834\n    ldr r3, _02237BCC ; =ov72_0223B923\n    mov r2, #1\n    bl ov72_02237D50\n    cmp r0, #0\n    beq _02237BAE\n    ldr r0, _02237BC0 ; =_0223B820\n    mov r1, #2\n    str r1, [r0]\n    add sp, #4\n    pop {r3, r4, pc}\n    ldr r0, _02237BC0 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    sub r1, #0x11\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    add sp, #4\n    pop {r3, r4, pc}\n    _02237BC0: .word _0223B820\n    _02237BC4: .word _0223B4E0\n    _02237BC8: .word ov72_0223B834\n    _02237BCC: .word ov72_0223B923"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // add r4, r0, #0
+    // bl ov38_0221BE84
+    // ldr r0, _02237BC0 ; =_0223B820
+    // sub r1, r4, #1
+    // strb r1, [r0, #0x14]
+    // mov r0, #2
+    // str r0, [sp]
+    // ldr r0, _02237BC4 ; =_0223B4E0
+    // ldr r1, _02237BC8 ; =ov72_0223B834
+    // ldr r3, _02237BCC ; =ov72_0223B923
+    // mov r2, #1
+    // bl ov72_02237D50
+    // cmp r0, #0
+    // beq _02237BAE
+    // ldr r0, _02237BC0 ; =_0223B820
+    // mov r1, #2
+    // str r1, [r0]
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // ldr r0, _02237BC0 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // sub r1, #0x11
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // _02237BC0: .word _0223B820
+    // _02237BC4: .word _0223B4E0
+    // _02237BC8: .word ov72_0223B834
+    // _02237BCC: .word ov72_0223B923
+    // TODO: decompile
 }
+
 
 void ov72_02237BD0(void) {
-    /* Original at 0x02237BD0 */
-    /* Requires manual decompilation - 40 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r5, r0, #0\n    ldr r0, _02237C1C ; =ov72_0223B920\n    add r6, r2, #0\n    add r4, r1, #0\n    str r6, [r0, #8]\n    bl ov38_0221BE84\n    ldr r0, _02237C20 ; =_0223B820\n    sub r1, r5, #1\n    strb r1, [r0, #0x14]\n    sub r1, r4, #1\n    strb r1, [r0, #0x15]\n    ldr r0, _02237C24 ; =0x00000A38\n    ldr r1, _02237C28 ; =ov72_0223B834\n    str r0, [sp]\n    ldr r0, _02237C2C ; =ov72_0223B52C\n    mov r2, #2\n    add r3, r6, #0\n    bl ov72_02237D50\n    cmp r0, #0\n    beq _02237C0A\n    ldr r0, _02237C20 ; =_0223B820\n    mov r1, #4\n    str r1, [r0]\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    ldr r0, _02237C20 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    sub r1, #0x11\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    _02237C1C: .word ov72_0223B920\n    _02237C20: .word _0223B820\n    _02237C24: .word 0x00000A38\n    _02237C28: .word ov72_0223B834\n    _02237C2C: .word ov72_0223B52C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // add r5, r0, #0
+    // ldr r0, _02237C1C ; =ov72_0223B920
+    // add r6, r2, #0
+    // add r4, r1, #0
+    // str r6, [r0, #8]
+    // bl ov38_0221BE84
+    // ldr r0, _02237C20 ; =_0223B820
+    // sub r1, r5, #1
+    // strb r1, [r0, #0x14]
+    // sub r1, r4, #1
+    // strb r1, [r0, #0x15]
+    // ldr r0, _02237C24 ; =0x00000A38
+    // ldr r1, _02237C28 ; =ov72_0223B834
+    // str r0, [sp]
+    // ldr r0, _02237C2C ; =ov72_0223B52C
+    // mov r2, #2
+    // add r3, r6, #0
+    // bl ov72_02237D50
+    // cmp r0, #0
+    // beq _02237C0A
+    // ldr r0, _02237C20 ; =_0223B820
+    // mov r1, #4
+    // str r1, [r0]
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // ldr r0, _02237C20 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // sub r1, #0x11
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // _02237C1C: .word ov72_0223B920
+    // _02237C20: .word _0223B820
+    // _02237C24: .word 0x00000A38
+    // _02237C28: .word ov72_0223B834
+    // _02237C2C: .word ov72_0223B52C
+    // TODO: decompile
 }
+
 
 void ov72_02237C30(void) {
-    /* Original at 0x02237C30 */
-    /* Requires manual decompilation - 53 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    add r6, r1, #0\n    add r7, r2, #0\n    add r4, r3, #0\n    bl ov38_0221BE84\n    ldr r0, _02237C94 ; =ov72_0223B834\n    add r1, r4, #0\n    mov r2, #0xe4\n    bl memcpy\n    ldr r0, _02237C98 ; =ov72_0223B900\n    sub r1, r5, #1\n    strb r1, [r0, #0x18]\n    sub r1, r6, #1\n    strb r1, [r0, #0x19]\n    ldr r3, _02237C9C ; =ov72_0223B91B\n    ldr r2, _02237CA0 ; =ov72_0223B82C\n    strb r7, [r0, #0x1a]\n    mov r1, #8\n    ldrb r0, [r2]\n    add r2, r2, #1\n    strb r0, [r3]\n    add r3, r3, #1\n    sub r1, r1, #1\n    bne _02237C5A\n    mov r0, #2\n    str r0, [sp]\n    ldr r0, _02237CA4 ; =ov72_0223B578\n    ldr r1, _02237C94 ; =ov72_0223B834\n    ldr r3, _02237CA8 ; =ov72_0223B923\n    mov r2, #0xef\n    bl ov72_02237D50\n    cmp r0, #0\n    beq _02237C82\n    ldr r0, _02237CAC ; =_0223B820\n    mov r1, #6\n    str r1, [r0]\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, _02237CAC ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    sub r1, #0x11\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02237C94: .word ov72_0223B834\n    _02237C98: .word ov72_0223B900\n    _02237C9C: .word ov72_0223B91B\n    _02237CA0: .word ov72_0223B82C\n    _02237CA4: .word ov72_0223B578\n    _02237CA8: .word ov72_0223B923\n    _02237CAC: .word _0223B820"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // add r6, r1, #0
+    // add r7, r2, #0
+    // add r4, r3, #0
+    // bl ov38_0221BE84
+    // ldr r0, _02237C94 ; =ov72_0223B834
+    // add r1, r4, #0
+    // mov r2, #0xe4
+    // bl memcpy
+    // ldr r0, _02237C98 ; =ov72_0223B900
+    // sub r1, r5, #1
+    // strb r1, [r0, #0x18]
+    // sub r1, r6, #1
+    // strb r1, [r0, #0x19]
+    // ldr r3, _02237C9C ; =ov72_0223B91B
+    // ldr r2, _02237CA0 ; =ov72_0223B82C
+    // strb r7, [r0, #0x1a]
+    // mov r1, #8
+    // ldrb r0, [r2]
+    // add r2, r2, #1
+    // strb r0, [r3]
+    // add r3, r3, #1
+    // sub r1, r1, #1
+    // bne _02237C5A
+    // mov r0, #2
+    // str r0, [sp]
+    // ldr r0, _02237CA4 ; =ov72_0223B578
+    // ldr r1, _02237C94 ; =ov72_0223B834
+    // ldr r3, _02237CA8 ; =ov72_0223B923
+    // mov r2, #0xef
+    // bl ov72_02237D50
+    // cmp r0, #0
+    // beq _02237C82
+    // ldr r0, _02237CAC ; =_0223B820
+    // mov r1, #6
+    // str r1, [r0]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r0, _02237CAC ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // sub r1, #0x11
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _02237C94: .word ov72_0223B834
+    // _02237C98: .word ov72_0223B900
+    // _02237C9C: .word ov72_0223B91B
+    // _02237CA0: .word ov72_0223B82C
+    // _02237CA4: .word ov72_0223B578
+    // _02237CA8: .word ov72_0223B923
+    // _02237CAC: .word _0223B820
+    // TODO: decompile
 }
+
 
 void ov72_02237CB0(void) {
-    /* Original at 0x02237CB0 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    bl ov38_0221BE84\n    mov r0, #2\n    str r0, [sp]\n    ldr r0, _02237CE4 ; =ov72_0223B5C4\n    ldr r1, _02237CE8 ; =ov72_0223B834\n    ldr r3, _02237CEC ; =ov72_0223B923\n    mov r2, #0\n    bl ov72_02237D50\n    cmp r0, #0\n    beq _02237CD2\n    ldr r0, _02237CF0 ; =_0223B820\n    mov r1, #8\n    str r1, [r0]\n    pop {r3, pc}\n    ldr r0, _02237CF0 ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    sub r1, #0x11\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, pc}\n    nop\n    _02237CE4: .word ov72_0223B5C4\n    _02237CE8: .word ov72_0223B834\n    _02237CEC: .word ov72_0223B923\n    _02237CF0: .word _0223B820"
-    );
-    #endif
+    // push {r3, lr}
+    // bl ov38_0221BE84
+    // mov r0, #2
+    // str r0, [sp]
+    // ldr r0, _02237CE4 ; =ov72_0223B5C4
+    // ldr r1, _02237CE8 ; =ov72_0223B834
+    // ldr r3, _02237CEC ; =ov72_0223B923
+    // mov r2, #0
+    // bl ov72_02237D50
+    // cmp r0, #0
+    // beq _02237CD2
+    // ldr r0, _02237CF0 ; =_0223B820
+    // mov r1, #8
+    // str r1, [r0]
+    // pop {r3, pc}
+    // ldr r0, _02237CF0 ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // sub r1, #0x11
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, pc}
+    // nop
+    // _02237CE4: .word ov72_0223B5C4
+    // _02237CE8: .word ov72_0223B834
+    // _02237CEC: .word ov72_0223B923
+    // _02237CF0: .word _0223B820
+    // TODO: decompile
 }
+
 
 void ov72_02237CF4(void) {
-    /* Original at 0x02237CF4 */
-    /* Requires manual decompilation - 37 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r0, #0x1c\n    add r4, r1, #0\n    bl OS_GetMacAddress\n    ldr r0, _02237D40 ; =ov72_0223B834\n    add r1, r5, #0\n    mov r2, #0x64\n    bl memcpy\n    ldr r0, _02237D44 ; =ov72_0223B920\n    str r4, [r0, #8]\n    bl ov38_0221BE84\n    mov r0, #8\n    str r0, [sp]\n    ldr r3, _02237D44 ; =ov72_0223B920\n    ldr r0, _02237D48 ; =ov72_0223B60C\n    ldr r1, _02237D40 ; =ov72_0223B834\n    ldr r3, [r3, #8]\n    mov r2, #0x64\n    bl ov72_02237D50\n    cmp r0, #0\n    beq _02237D30\n    ldr r0, _02237D4C ; =_0223B820\n    mov r1, #0xa\n    str r1, [r0]\n    pop {r3, r4, r5, pc}\n    ldr r0, _02237D4C ; =_0223B820\n    mov r1, #0xc\n    str r1, [r0]\n    sub r1, #0x11\n    str r1, [r0, #4]\n    bl ov38_0221BFEC\n    pop {r3, r4, r5, pc}\n    _02237D40: .word ov72_0223B834\n    _02237D44: .word ov72_0223B920\n    _02237D48: .word ov72_0223B60C\n    _02237D4C: .word _0223B820"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // add r0, #0x1c
+    // add r4, r1, #0
+    // bl OS_GetMacAddress
+    // ldr r0, _02237D40 ; =ov72_0223B834
+    // add r1, r5, #0
+    // mov r2, #0x64
+    // bl memcpy
+    // ldr r0, _02237D44 ; =ov72_0223B920
+    // str r4, [r0, #8]
+    // bl ov38_0221BE84
+    // mov r0, #8
+    // str r0, [sp]
+    // ldr r3, _02237D44 ; =ov72_0223B920
+    // ldr r0, _02237D48 ; =ov72_0223B60C
+    // ldr r1, _02237D40 ; =ov72_0223B834
+    // ldr r3, [r3, #8]
+    // mov r2, #0x64
+    // bl ov72_02237D50
+    // cmp r0, #0
+    // beq _02237D30
+    // ldr r0, _02237D4C ; =_0223B820
+    // mov r1, #0xa
+    // str r1, [r0]
+    // pop {r3, r4, r5, pc}
+    // ldr r0, _02237D4C ; =_0223B820
+    // mov r1, #0xc
+    // str r1, [r0]
+    // sub r1, #0x11
+    // str r1, [r0, #4]
+    // bl ov38_0221BFEC
+    // pop {r3, r4, r5, pc}
+    // _02237D40: .word ov72_0223B834
+    // _02237D44: .word ov72_0223B920
+    // _02237D48: .word ov72_0223B60C
+    // _02237D4C: .word _0223B820
+    // TODO: decompile
 }
+
 
 void ov72_02237D50(void) {
-    /* Original at 0x02237D50 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #8\n    add r5, r1, #0\n    ldr r1, [sp, #0x18]\n    str r3, [sp]\n    str r1, [sp, #4]\n    add r4, r2, #0\n    ldr r1, _02237D84 ; =_0223B820\n    add r2, r5, #0\n    ldr r1, [r1, #8]\n    add r3, r4, #0\n    bl ov38_0221BEA8\n    cmp r0, #0\n    beq _02237D76\n    cmp r0, #1\n    beq _02237D7C\n    cmp r0, #2\n    b _02237D7C\n    add sp, #8\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    add sp, #8\n    pop {r3, r4, r5, pc}\n    nop\n    _02237D84: .word _0223B820"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #8
+    // add r5, r1, #0
+    // ldr r1, [sp, #0x18]
+    // str r3, [sp]
+    // str r1, [sp, #4]
+    // add r4, r2, #0
+    // ldr r1, _02237D84 ; =_0223B820
+    // add r2, r5, #0
+    // ldr r1, [r1, #8]
+    // add r3, r4, #0
+    // bl ov38_0221BEA8
+    // cmp r0, #0
+    // beq _02237D76
+    // cmp r0, #1
+    // beq _02237D7C
+    // cmp r0, #2
+    // b _02237D7C
+    // add sp, #8
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // add sp, #8
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02237D84: .word _0223B820
+    // TODO: decompile
 }
+
 
 void ov72_02237D88(void) {
-    /* Original at 0x02237D88 */
-    /* Requires manual decompilation - 42 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    cmp r0, #0x20\n    bhi _02237E00\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02237D9A: ; jump table\n    mov r4, #4\n    mvn r4, r4\n    b _02237E04\n    mov r4, #4\n    mvn r4, r4\n    b _02237E04\n    mov r4, #6\n    mvn r4, r4\n    b _02237E04\n    mov r4, #6\n    mvn r4, r4\n    b _02237E04\n    mov r4, #1\n    mvn r4, r4\n    b _02237E04\n    mov r4, #1\n    mvn r4, r4\n    b _02237E04\n    mov r4, #4\n    mvn r4, r4\n    mov r0, #4\n    mvn r0, r0\n    cmp r4, r0\n    beq _02237E1C\n    bl WCM_GetPhase\n    cmp r0, #9\n    beq _02237E18\n    mov r4, #5\n    mvn r4, r4\n    bl ov00_021EC210\n    add r0, r4, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // cmp r0, #0x20
+    // bhi _02237E00
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02237D9A: ; jump table
+    // mov r4, #4
+    // mvn r4, r4
+    // b _02237E04
+    // mov r4, #4
+    // mvn r4, r4
+    // b _02237E04
+    // mov r4, #6
+    // mvn r4, r4
+    // b _02237E04
+    // mov r4, #6
+    // mvn r4, r4
+    // b _02237E04
+    // mov r4, #1
+    // mvn r4, r4
+    // b _02237E04
+    // mov r4, #1
+    // mvn r4, r4
+    // b _02237E04
+    // mov r4, #4
+    // mvn r4, r4
+    // mov r0, #4
+    // mvn r0, r0
+    // cmp r4, r0
+    // beq _02237E1C
+    // bl WCM_GetPhase
+    // cmp r0, #9
+    // beq _02237E18
+    // mov r4, #5
+    // mvn r4, r4
+    // bl ov00_021EC210
+    // add r0, r4, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void NintendoWfc_Init(void) {
-    /* Original at 0x02237E20 */
-    /* Requires manual decompilation - 151 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x10\n    add r5, r1, #0\n    add r6, r0, #0\n    ldr r0, [r5]\n    cmp r0, #0\n    beq _02237E36\n    cmp r0, #1\n    bne _02237E34\n    b _02237F4A\n    b _02237F60\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetVBlankIntrCB\n    bl HBlankInterruptDisable\n    bl GfGfx_DisableEngineAPlanes\n    bl GfGfx_DisableEngineBPlanes\n    mov r2, #1\n    lsl r2, r2, #0x1a\n    ldr r1, [r2]\n    ldr r0, _02237F68 ; =0xFFFFE0FF\n    and r1, r0\n    str r1, [r2]\n    ldr r2, _02237F6C ; =0x04001000\n    ldr r1, [r2]\n    and r0, r1\n    str r0, [r2]\n    mov r2, #5\n    mov r0, #3\n    mov r1, #0x43\n    lsl r2, r2, #0x10\n    bl Heap_Create\n    bl LoadDwcOverlay\n    bl LoadOVY38\n    mov r0, #0x43\n    bl sub_02039FD8\n    ldr r1, _02237F70 ; =0x000013A4\n    add r0, r6, #0\n    mov r2, #0x43\n    bl OverlayManager_CreateAndGetData\n    ldr r2, _02237F70 ; =0x000013A4\n    mov r1, #0\n    add r4, r0, #0\n    bl memset\n    mov r0, #0x43\n    bl BgConfig_Alloc\n    str r0, [r4, #4]\n    ldr r0, _02237F74 ; =ov72_0223B92C\n    add r2, sp, #0\n    ldr r3, _02237F78 ; =ov72_0223B354\n    str r4, [r0, #4]\n    add r7, r2, #0\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    ldmia r3!, {r0, r1}\n    stmia r2!, {r0, r1}\n    add r0, r7, #0\n    bl SetBothScreensModesAndDisable\n    mov r0, #0xb\n    mov r1, #0x20\n    mov r2, #0x43\n    bl MessageFormat_New_Custom\n    mov r1, #0xbd\n    lsl r1, r1, #4\n    str r0, [r4, r1]\n    ldr r2, _02237F7C ; =0x00000306\n    mov r0, #0\n    mov r1, #0x1b\n    mov r3, #0x43\n    bl NewMsgDataFromNarc\n    ldr r1, _02237F80 ; =0x00000BD4\n    ldr r2, _02237F84 ; =0x0000030A\n    str r0, [r4, r1]\n    mov r0, #0\n    mov r1, #0x1b\n    mov r3, #0x43\n    bl NewMsgDataFromNarc\n    ldr r1, _02237F88 ; =0x00000BD8\n    str r0, [r4, r1]\n    mov r2, #0x32\n    mov r0, #0\n    mov r1, #0x1b\n    lsl r2, r2, #4\n    mov r3, #0x43\n    bl NewMsgDataFromNarc\n    ldr r1, _02237F8C ; =0x00000BDC\n    str r0, [r4, r1]\n    mov r0, #4\n    mov r1, #8\n    bl SetKeyRepeatTimers\n    add r0, r4, #0\n    add r1, r6, #0\n    bl ov72_02238144\n    add r0, r4, #0\n    bl ov72_022387D8\n    mov r1, #0\n    mov r0, #0x34\n    add r2, r1, #0\n    bl Sound_SetSceneAndPlayBGM\n    ldr r1, _02237F90 ; =0x00020020\n    mov r0, #0x43\n    bl Heap_Alloc\n    str r0, [r4, #0x24]\n    add r0, #0x1f\n    mov r1, #0x1f\n    bic r0, r1\n    mov r1, #2\n    lsl r1, r1, #0x10\n    mov r2, #0\n    bl NNS_FndCreateExpHeapEx\n    str r0, [r4, #0x28]\n    ldr r1, _02237F94 ; =0x0000047D\n    mov r0, #0xb\n    mov r2, #1\n    bl Sound_SetSceneAndPlayBGM\n    mov r0, #1\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    ldr r2, _02237F98 ; =0x04000304\n    ldrh r1, [r2]\n    lsr r0, r2, #0xb\n    orr r0, r1\n    strh r0, [r2]\n    mov r0, #1\n    str r0, [r5]\n    b _02237F60\n    bl sub_02034D8C\n    mov r0, #4\n    mov r1, #0x43\n    bl FontID_Alloc\n    mov r0, #0\n    str r0, [r5]\n    add sp, #0x10\n    mov r0, #1\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0\n    add sp, #0x10\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _02237F68: .word 0xFFFFE0FF\n    _02237F6C: .word 0x04001000\n    _02237F70: .word 0x000013A4\n    _02237F74: .word ov72_0223B92C\n    _02237F78: .word ov72_0223B354\n    _02237F7C: .word 0x00000306\n    _02237F80: .word 0x00000BD4\n    _02237F84: .word 0x0000030A\n    _02237F88: .word 0x00000BD8\n    _02237F8C: .word 0x00000BDC\n    _02237F90: .word 0x00020020\n    _02237F94: .word 0x0000047D\n    _02237F98: .word 0x04000304"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x10
+    // add r5, r1, #0
+    // add r6, r0, #0
+    // ldr r0, [r5]
+    // cmp r0, #0
+    // beq _02237E36
+    // cmp r0, #1
+    // bne _02237E34
+    // b _02237F4A
+    // b _02237F60
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl Main_SetVBlankIntrCB
+    // bl HBlankInterruptDisable
+    // bl GfGfx_DisableEngineAPlanes
+    // bl GfGfx_DisableEngineBPlanes
+    // mov r2, #1
+    // lsl r2, r2, #0x1a
+    // ldr r1, [r2]
+    // ldr r0, _02237F68 ; =0xFFFFE0FF
+    // and r1, r0
+    // str r1, [r2]
+    // ldr r2, _02237F6C ; =0x04001000
+    // ldr r1, [r2]
+    // and r0, r1
+    // str r0, [r2]
+    // mov r2, #5
+    // mov r0, #3
+    // mov r1, #0x43
+    // lsl r2, r2, #0x10
+    // bl Heap_Create
+    // bl LoadDwcOverlay
+    // bl LoadOVY38
+    // mov r0, #0x43
+    // bl sub_02039FD8
+    // ldr r1, _02237F70 ; =0x000013A4
+    // add r0, r6, #0
+    // mov r2, #0x43
+    // bl OverlayManager_CreateAndGetData
+    // ldr r2, _02237F70 ; =0x000013A4
+    // mov r1, #0
+    // add r4, r0, #0
+    // bl memset
+    // mov r0, #0x43
+    // bl BgConfig_Alloc
+    // str r0, [r4, #4]
+    // ldr r0, _02237F74 ; =ov72_0223B92C
+    // add r2, sp, #0
+    // ldr r3, _02237F78 ; =ov72_0223B354
+    // str r4, [r0, #4]
+    // add r7, r2, #0
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // ldmia r3!, {r0, r1}
+    // stmia r2!, {r0, r1}
+    // add r0, r7, #0
+    // bl SetBothScreensModesAndDisable
+    // mov r0, #0xb
+    // mov r1, #0x20
+    // mov r2, #0x43
+    // bl MessageFormat_New_Custom
+    // mov r1, #0xbd
+    // lsl r1, r1, #4
+    // str r0, [r4, r1]
+    // ldr r2, _02237F7C ; =0x00000306
+    // mov r0, #0
+    // mov r1, #0x1b
+    // mov r3, #0x43
+    // bl NewMsgDataFromNarc
+    // ldr r1, _02237F80 ; =0x00000BD4
+    // ldr r2, _02237F84 ; =0x0000030A
+    // str r0, [r4, r1]
+    // mov r0, #0
+    // mov r1, #0x1b
+    // mov r3, #0x43
+    // bl NewMsgDataFromNarc
+    // ldr r1, _02237F88 ; =0x00000BD8
+    // str r0, [r4, r1]
+    // mov r2, #0x32
+    // mov r0, #0
+    // mov r1, #0x1b
+    // lsl r2, r2, #4
+    // mov r3, #0x43
+    // bl NewMsgDataFromNarc
+    // ldr r1, _02237F8C ; =0x00000BDC
+    // str r0, [r4, r1]
+    // mov r0, #4
+    // mov r1, #8
+    // bl SetKeyRepeatTimers
+    // add r0, r4, #0
+    // add r1, r6, #0
+    // bl ov72_02238144
+    // add r0, r4, #0
+    // bl ov72_022387D8
+    // mov r1, #0
+    // mov r0, #0x34
+    // add r2, r1, #0
+    // bl Sound_SetSceneAndPlayBGM
+    // ldr r1, _02237F90 ; =0x00020020
+    // mov r0, #0x43
+    // bl Heap_Alloc
+    // str r0, [r4, #0x24]
+    // add r0, #0x1f
+    // mov r1, #0x1f
+    // bic r0, r1
+    // mov r1, #2
+    // lsl r1, r1, #0x10
+    // mov r2, #0
+    // bl NNS_FndCreateExpHeapEx
+    // str r0, [r4, #0x28]
+    // ldr r1, _02237F94 ; =0x0000047D
+    // mov r0, #0xb
+    // mov r2, #1
+    // bl Sound_SetSceneAndPlayBGM
+    // mov r0, #1
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // ldr r2, _02237F98 ; =0x04000304
+    // ldrh r1, [r2]
+    // lsr r0, r2, #0xb
+    // orr r0, r1
+    // strh r0, [r2]
+    // mov r0, #1
+    // str r0, [r5]
+    // b _02237F60
+    // bl sub_02034D8C
+    // mov r0, #4
+    // mov r1, #0x43
+    // bl FontID_Alloc
+    // mov r0, #0
+    // str r0, [r5]
+    // add sp, #0x10
+    // mov r0, #1
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0
+    // add sp, #0x10
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _02237F68: .word 0xFFFFE0FF
+    // _02237F6C: .word 0x04001000
+    // _02237F70: .word 0x000013A4
+    // _02237F74: .word ov72_0223B92C
+    // _02237F78: .word ov72_0223B354
+    // _02237F7C: .word 0x00000306
+    // _02237F80: .word 0x00000BD4
+    // _02237F84: .word 0x0000030A
+    // _02237F88: .word 0x00000BD8
+    // _02237F8C: .word 0x00000BDC
+    // _02237F90: .word 0x00020020
+    // _02237F94: .word 0x0000047D
+    // _02237F98: .word 0x04000304
+    // TODO: decompile
 }
+
 
 void NintendoWfc_Main(void) {
-    /* Original at 0x02237F9C */
-    /* Requires manual decompilation - 85 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r4, r1, #0\n    bl OverlayManager_GetData\n    add r5, r0, #0\n    bl ov00_021ECB40\n    bl ov72_022378DC\n    bl ov00_021ECB40\n    ldr r1, [r4]\n    cmp r1, #5\n    bhi _02238044\n    add r0, r1, r1\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02237FC4: ; jump table\n    bl sub_02034DB8\n    cmp r0, #0\n    beq _02238044\n    ldr r1, [r5, #0x28]\n    ldr r0, _02238054 ; =ov72_0223B92C\n    str r1, [r0]\n    ldr r0, _02238058 ; =ov72_02238778\n    ldr r1, _0223805C ; =ov72_022387A0\n    bl ov00_021EC294\n    mov r0, #1\n    str r0, [r4]\n    b _02238044\n    ldr r3, [r5, #0x10]\n    mov r2, #0xc\n    add r6, r3, #0\n    mul r6, r2\n    ldr r2, _02238060 ; =ov72_0223B654\n    add r0, r5, #0\n    ldr r2, [r2, r6]\n    blx r2\n    str r0, [r4]\n    b _02238044\n    bl IsPaletteFadeFinished\n    cmp r0, #0\n    beq _02238044\n    mov r0, #3\n    str r0, [r4]\n    b _02238044\n    ldr r3, [r5, #0x10]\n    mov r2, #0xc\n    add r6, r3, #0\n    mul r6, r2\n    ldr r2, _02238064 ; =ov72_0223B658\n    add r0, r5, #0\n    ldr r2, [r2, r6]\n    blx r2\n    str r0, [r4]\n    b _02238044\n    bl IsPaletteFadeFinished\n    cmp r0, #0\n    beq _02238044\n    ldr r3, [r5, #0x10]\n    mov r2, #0xc\n    add r6, r3, #0\n    mul r6, r2\n    ldr r2, _02238068 ; =ov72_0223B65C\n    ldr r1, [r4]\n    ldr r2, [r2, r6]\n    add r0, r5, #0\n    blx r2\n    str r0, [r4]\n    b _02238044\n    mov r0, #1\n    pop {r4, r5, r6, pc}\n    ldr r0, _0223806C ; =0x00000BF8\n    ldr r0, [r5, r0]\n    cmp r0, #0\n    beq _02238050\n    bl SpriteList_RenderAndAnimateSprites\n    mov r0, #0\n    pop {r4, r5, r6, pc}\n    _02238054: .word ov72_0223B92C\n    _02238058: .word ov72_02238778\n    _0223805C: .word ov72_022387A0\n    _02238060: .word ov72_0223B654\n    _02238064: .word ov72_0223B658\n    _02238068: .word ov72_0223B65C\n    _0223806C: .word 0x00000BF8"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r4, r1, #0
+    // bl OverlayManager_GetData
+    // add r5, r0, #0
+    // bl ov00_021ECB40
+    // bl ov72_022378DC
+    // bl ov00_021ECB40
+    // ldr r1, [r4]
+    // cmp r1, #5
+    // bhi _02238044
+    // add r0, r1, r1
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02237FC4: ; jump table
+    // bl sub_02034DB8
+    // cmp r0, #0
+    // beq _02238044
+    // ldr r1, [r5, #0x28]
+    // ldr r0, _02238054 ; =ov72_0223B92C
+    // str r1, [r0]
+    // ldr r0, _02238058 ; =ov72_02238778
+    // ldr r1, _0223805C ; =ov72_022387A0
+    // bl ov00_021EC294
+    // mov r0, #1
+    // str r0, [r4]
+    // b _02238044
+    // ldr r3, [r5, #0x10]
+    // mov r2, #0xc
+    // add r6, r3, #0
+    // mul r6, r2
+    // ldr r2, _02238060 ; =ov72_0223B654
+    // add r0, r5, #0
+    // ldr r2, [r2, r6]
+    // blx r2
+    // str r0, [r4]
+    // b _02238044
+    // bl IsPaletteFadeFinished
+    // cmp r0, #0
+    // beq _02238044
+    // mov r0, #3
+    // str r0, [r4]
+    // b _02238044
+    // ldr r3, [r5, #0x10]
+    // mov r2, #0xc
+    // add r6, r3, #0
+    // mul r6, r2
+    // ldr r2, _02238064 ; =ov72_0223B658
+    // add r0, r5, #0
+    // ldr r2, [r2, r6]
+    // blx r2
+    // str r0, [r4]
+    // b _02238044
+    // bl IsPaletteFadeFinished
+    // cmp r0, #0
+    // beq _02238044
+    // ldr r3, [r5, #0x10]
+    // mov r2, #0xc
+    // add r6, r3, #0
+    // mul r6, r2
+    // ldr r2, _02238068 ; =ov72_0223B65C
+    // ldr r1, [r4]
+    // ldr r2, [r2, r6]
+    // add r0, r5, #0
+    // blx r2
+    // str r0, [r4]
+    // b _02238044
+    // mov r0, #1
+    // pop {r4, r5, r6, pc}
+    // ldr r0, _0223806C ; =0x00000BF8
+    // ldr r0, [r5, r0]
+    // cmp r0, #0
+    // beq _02238050
+    // bl SpriteList_RenderAndAnimateSprites
+    // mov r0, #0
+    // pop {r4, r5, r6, pc}
+    // _02238054: .word ov72_0223B92C
+    // _02238058: .word ov72_02238778
+    // _0223805C: .word ov72_022387A0
+    // _02238060: .word ov72_0223B654
+    // _02238064: .word ov72_0223B658
+    // _02238068: .word ov72_0223B65C
+    // _0223806C: .word 0x00000BF8
+    // TODO: decompile
 }
+
 
 void NintendoWfc_Exit(void) {
-    /* Original at 0x02238070 */
-    /* Requires manual decompilation - 49 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl OverlayManager_GetData\n    add r4, r0, #0\n    bl IsPaletteFadeFinished\n    cmp r0, #0\n    bne _02238086\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    bl TextFlags_SetCanTouchSpeedUpPrint\n    mov r0, #4\n    bl FontID_Release\n    ldr r0, [r4, #0x24]\n    bl Heap_Free\n    bl UnloadOVY38\n    bl UnloadDwcOverlay\n    add r0, r4, #0\n    bl ov72_02238800\n    ldr r0, _022380F0 ; =0x00000BDC\n    ldr r0, [r4, r0]\n    bl DestroyMsgData\n    ldr r0, _022380F4 ; =0x00000BD8\n    ldr r0, [r4, r0]\n    bl DestroyMsgData\n    ldr r0, _022380F8 ; =0x00000BD4\n    ldr r0, [r4, r0]\n    bl DestroyMsgData\n    mov r0, #0xbd\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    bl MessageFormat_Delete\n    add r0, r4, #0\n    bl ov72_02238160\n    bl sub_02034DE0\n    ldr r0, [r4, #4]\n    bl Heap_Free\n    add r0, r5, #0\n    bl OverlayManager_FreeData\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetVBlankIntrCB\n    mov r0, #0x43\n    bl Heap_Destroy\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    _022380F0: .word 0x00000BDC\n    _022380F4: .word 0x00000BD8\n    _022380F8: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // bl OverlayManager_GetData
+    // add r4, r0, #0
+    // bl IsPaletteFadeFinished
+    // cmp r0, #0
+    // bne _02238086
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // bl TextFlags_SetCanTouchSpeedUpPrint
+    // mov r0, #4
+    // bl FontID_Release
+    // ldr r0, [r4, #0x24]
+    // bl Heap_Free
+    // bl UnloadOVY38
+    // bl UnloadDwcOverlay
+    // add r0, r4, #0
+    // bl ov72_02238800
+    // ldr r0, _022380F0 ; =0x00000BDC
+    // ldr r0, [r4, r0]
+    // bl DestroyMsgData
+    // ldr r0, _022380F4 ; =0x00000BD8
+    // ldr r0, [r4, r0]
+    // bl DestroyMsgData
+    // ldr r0, _022380F8 ; =0x00000BD4
+    // ldr r0, [r4, r0]
+    // bl DestroyMsgData
+    // mov r0, #0xbd
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // bl MessageFormat_Delete
+    // add r0, r4, #0
+    // bl ov72_02238160
+    // bl sub_02034DE0
+    // ldr r0, [r4, #4]
+    // bl Heap_Free
+    // add r0, r5, #0
+    // bl OverlayManager_FreeData
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl Main_SetVBlankIntrCB
+    // mov r0, #0x43
+    // bl Heap_Destroy
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // _022380F0: .word 0x00000BDC
+    // _022380F4: .word 0x00000BD8
+    // _022380F8: .word 0x00000BD4
+    // TODO: decompile
 }
 
+
 void ov72_022380FC(void) {
-    /* Original at 0x022380FC */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl GF_RunVramTransferTasks\n    ldr r0, [r4, #4]\n    bl DoScheduledBgGpuUpdates\n    bl OamManager_ApplyAndResetBuffers\n    ldr r3, _0223811C ; =0x027E0000\n    ldr r1, _02238120 ; =0x00003FF8\n    mov r0, #1\n    ldr r2, [r3, r1]\n    orr r0, r2\n    str r0, [r3, r1]\n    pop {r4, pc}\n    _0223811C: .word 0x027E0000\n    _02238120: .word 0x00003FF8"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl GF_RunVramTransferTasks
+    // ldr r0, [r4, #4]
+    // bl DoScheduledBgGpuUpdates
+    // bl OamManager_ApplyAndResetBuffers
+    // ldr r3, _0223811C ; =0x027E0000
+    // ldr r1, _02238120 ; =0x00003FF8
+    // mov r0, #1
+    // ldr r2, [r3, r1]
+    // orr r0, r2
+    // str r0, [r3, r1]
+    // pop {r4, pc}
+    // _0223811C: .word 0x027E0000
+    // _02238120: .word 0x00003FF8
+    // TODO: decompile
 }
+
 
 void ov72_02238124(void) {
     GfGfx_SetBanks(5);
 }
+
 
 void ov72_02238144(void) {
     OverlayManager_GetArgs(r1);
@@ -161,193 +935,1116 @@ void ov72_02238144(void) {
     ov72_022387D0(r4, 0, 0);
 }
 
+
 void ov72_02238160(void) {
-    /* Original at 0x02238160 */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov72_02238164(void) {
-    /* Original at 0x02238164 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #0x10\n    ldr r4, _02238190 ; =ov72_0223B344\n    add r3, sp, #0\n    add r2, r3, #0\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r4!, {r0, r1}\n    stmia r3!, {r0, r1}\n    add r0, r2, #0\n    bl ObjCharTransfer_Init\n    mov r0, #0x14\n    mov r1, #0x43\n    bl ObjPlttTransfer_Init\n    bl ObjCharTransfer_ClearBuffers\n    bl ObjPlttTransfer_Reset\n    add sp, #0x10\n    pop {r4, pc}\n    _02238190: .word ov72_0223B344"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #0x10
+    // ldr r4, _02238190 ; =ov72_0223B344
+    // add r3, sp, #0
+    // add r2, r3, #0
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r4!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // add r0, r2, #0
+    // bl ObjCharTransfer_Init
+    // mov r0, #0x14
+    // mov r1, #0x43
+    // bl ObjPlttTransfer_Init
+    // bl ObjCharTransfer_ClearBuffers
+    // bl ObjPlttTransfer_Reset
+    // add sp, #0x10
+    // pop {r4, pc}
+    // _02238190: .word ov72_0223B344
+    // TODO: decompile
 }
+
 
 void ov72_02238194(void) {
-    /* Original at 0x02238194 */
-    /* Requires manual decompilation - 253 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r5, r0, #0\n    mov r0, #0xef\n    mov r1, #0x43\n    bl NARC_New\n    str r0, [sp, #0x14]\n    mov r0, #0xee\n    mov r1, #0x43\n    bl NARC_New\n    add r7, r0, #0\n    bl NNS_G2dInitOamManagerModule\n    mov r0, #0\n    str r0, [sp]\n    mov r1, #0x7e\n    str r1, [sp, #4]\n    str r0, [sp, #8]\n    mov r3, #0x20\n    str r3, [sp, #0xc]\n    mov r2, #0x43\n    str r2, [sp, #0x10]\n    add r2, r0, #0\n    bl OamManager_Create\n    ldr r1, _022383AC ; =0x00000BFC\n    mov r0, #0x14\n    add r1, r5, r1\n    mov r2, #0x43\n    bl G2dRenderer_Init\n    ldr r1, _022383B0 ; =0x00000BF8\n    mov r2, #1\n    str r0, [r5, r1]\n    add r0, r1, #4\n    add r0, r5, r0\n    mov r1, #0\n    lsl r2, r2, #0x14\n    bl G2dRenderer_SetSubSurfaceCoords\n    mov r6, #0\n    add r4, r5, #0\n    mov r0, #3\n    add r1, r6, #0\n    mov r2, #0x43\n    bl Create2DGfxResObjMan\n    ldr r1, _022383B4 ; =0x00000D24\n    add r6, r6, #1\n    str r0, [r4, r1]\n    add r4, r4, #4\n    cmp r6, #4\n    blt _022381EC\n    mov r3, #0\n    str r3, [sp]\n    mov r0, #2\n    str r0, [sp, #4]\n    mov r0, #0x43\n    str r0, [sp, #8]\n    add r0, r1, #0\n    ldr r0, [r5, r0]\n    add r1, r7, #0\n    mov r2, #1\n    bl AddCharResObjFromOpenNarc\n    ldr r1, _022383B8 ; =0x00000D34\n    mov r2, #0\n    str r0, [r5, r1]\n    str r2, [sp]\n    mov r0, #2\n    str r0, [sp, #4]\n    mov r0, #3\n    str r0, [sp, #8]\n    mov r0, #0x43\n    sub r1, #0xc\n    str r0, [sp, #0xc]\n    ldr r0, [r5, r1]\n    add r1, r7, #0\n    add r3, r2, #0\n    bl AddPlttResObjFromOpenNarc\n    ldr r1, _022383BC ; =0x00000D38\n    mov r3, #0\n    str r0, [r5, r1]\n    str r3, [sp]\n    mov r2, #2\n    str r2, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0xc\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    add r1, r7, #0\n    bl AddCellOrAnimResObjFromOpenNarc\n    ldr r1, _022383C0 ; =0x00000D3C\n    mov r3, #0\n    str r0, [r5, r1]\n    str r3, [sp]\n    mov r2, #3\n    str r2, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0xc\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    add r1, r7, #0\n    bl AddCellOrAnimResObjFromOpenNarc\n    mov r1, #0x35\n    lsl r1, r1, #6\n    str r0, [r5, r1]\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #2\n    str r0, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0x1c\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    add r1, r7, #0\n    mov r2, #5\n    mov r3, #0\n    bl AddCharResObjFromOpenNarc\n    ldr r1, _022383C4 ; =0x00000D44\n    mov r2, #4\n    str r0, [r5, r1]\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #2\n    str r0, [sp, #4]\n    mov r0, #3\n    str r0, [sp, #8]\n    mov r0, #0x43\n    sub r1, #0x1c\n    str r0, [sp, #0xc]\n    ldr r0, [r5, r1]\n    add r1, r7, #0\n    mov r3, #0\n    bl AddPlttResObjFromOpenNarc\n    ldr r1, _022383C8 ; =0x00000D48\n    mov r2, #6\n    str r0, [r5, r1]\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #2\n    str r0, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0x1c\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    add r1, r7, #0\n    mov r3, #0\n    bl AddCellOrAnimResObjFromOpenNarc\n    ldr r1, _022383CC ; =0x00000D4C\n    mov r2, #7\n    str r0, [r5, r1]\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #3\n    str r0, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0x1c\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    add r1, r7, #0\n    mov r3, #0\n    bl AddCellOrAnimResObjFromOpenNarc\n    mov r1, #0xd5\n    lsl r1, r1, #4\n    str r0, [r5, r1]\n    mov r0, #2\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0x2c\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    ldr r1, [sp, #0x14]\n    mov r2, #0xc\n    mov r3, #0\n    bl AddCharResObjFromOpenNarc\n    ldr r1, _022383D0 ; =0x00000D54\n    mov r2, #0xb\n    str r0, [r5, r1]\n    mov r0, #2\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #1\n    str r0, [sp, #8]\n    mov r0, #0x43\n    sub r1, #0x2c\n    str r0, [sp, #0xc]\n    ldr r0, [r5, r1]\n    ldr r1, [sp, #0x14]\n    mov r3, #0\n    bl AddPlttResObjFromOpenNarc\n    ldr r1, _022383D4 ; =0x00000D58\n    mov r2, #0xd\n    str r0, [r5, r1]\n    mov r0, #2\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0x2c\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    ldr r1, [sp, #0x14]\n    mov r3, #0\n    bl AddCellOrAnimResObjFromOpenNarc\n    ldr r1, _022383D8 ; =0x00000D5C\n    mov r2, #0xe\n    str r0, [r5, r1]\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #3\n    str r0, [sp, #4]\n    mov r0, #0x43\n    sub r1, #0x2c\n    str r0, [sp, #8]\n    ldr r0, [r5, r1]\n    ldr r1, [sp, #0x14]\n    mov r3, #0\n    bl AddCellOrAnimResObjFromOpenNarc\n    mov r1, #0xd6\n    lsl r1, r1, #4\n    str r0, [r5, r1]\n    sub r1, #0x2c\n    ldr r0, [r5, r1]\n    bl sub_0200ACF0\n    ldr r0, _022383C4 ; =0x00000D44\n    ldr r0, [r5, r0]\n    bl sub_0200ACF0\n    ldr r0, _022383D0 ; =0x00000D54\n    ldr r0, [r5, r0]\n    bl sub_0200ACF0\n    ldr r0, _022383BC ; =0x00000D38\n    ldr r0, [r5, r0]\n    bl sub_0200AF94\n    ldr r0, _022383C8 ; =0x00000D48\n    ldr r0, [r5, r0]\n    bl sub_0200AF94\n    ldr r0, _022383D4 ; =0x00000D58\n    ldr r0, [r5, r0]\n    bl sub_0200AF94\n    add r0, r7, #0\n    bl NARC_Delete\n    ldr r0, [sp, #0x14]\n    bl NARC_Delete\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _022383AC: .word 0x00000BFC\n    _022383B0: .word 0x00000BF8\n    _022383B4: .word 0x00000D24\n    _022383B8: .word 0x00000D34\n    _022383BC: .word 0x00000D38\n    _022383C0: .word 0x00000D3C\n    _022383C4: .word 0x00000D44\n    _022383C8: .word 0x00000D48\n    _022383CC: .word 0x00000D4C\n    _022383D0: .word 0x00000D54\n    _022383D4: .word 0x00000D58\n    _022383D8: .word 0x00000D5C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // add r5, r0, #0
+    // mov r0, #0xef
+    // mov r1, #0x43
+    // bl NARC_New
+    // str r0, [sp, #0x14]
+    // mov r0, #0xee
+    // mov r1, #0x43
+    // bl NARC_New
+    // add r7, r0, #0
+    // bl NNS_G2dInitOamManagerModule
+    // mov r0, #0
+    // str r0, [sp]
+    // mov r1, #0x7e
+    // str r1, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r3, #0x20
+    // str r3, [sp, #0xc]
+    // mov r2, #0x43
+    // str r2, [sp, #0x10]
+    // add r2, r0, #0
+    // bl OamManager_Create
+    // ldr r1, _022383AC ; =0x00000BFC
+    // mov r0, #0x14
+    // add r1, r5, r1
+    // mov r2, #0x43
+    // bl G2dRenderer_Init
+    // ldr r1, _022383B0 ; =0x00000BF8
+    // mov r2, #1
+    // str r0, [r5, r1]
+    // add r0, r1, #4
+    // add r0, r5, r0
+    // mov r1, #0
+    // lsl r2, r2, #0x14
+    // bl G2dRenderer_SetSubSurfaceCoords
+    // mov r6, #0
+    // add r4, r5, #0
+    // mov r0, #3
+    // add r1, r6, #0
+    // mov r2, #0x43
+    // bl Create2DGfxResObjMan
+    // ldr r1, _022383B4 ; =0x00000D24
+    // add r6, r6, #1
+    // str r0, [r4, r1]
+    // add r4, r4, #4
+    // cmp r6, #4
+    // blt _022381EC
+    // mov r3, #0
+    // str r3, [sp]
+    // mov r0, #2
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // str r0, [sp, #8]
+    // add r0, r1, #0
+    // ldr r0, [r5, r0]
+    // add r1, r7, #0
+    // mov r2, #1
+    // bl AddCharResObjFromOpenNarc
+    // ldr r1, _022383B8 ; =0x00000D34
+    // mov r2, #0
+    // str r0, [r5, r1]
+    // str r2, [sp]
+    // mov r0, #2
+    // str r0, [sp, #4]
+    // mov r0, #3
+    // str r0, [sp, #8]
+    // mov r0, #0x43
+    // sub r1, #0xc
+    // str r0, [sp, #0xc]
+    // ldr r0, [r5, r1]
+    // add r1, r7, #0
+    // add r3, r2, #0
+    // bl AddPlttResObjFromOpenNarc
+    // ldr r1, _022383BC ; =0x00000D38
+    // mov r3, #0
+    // str r0, [r5, r1]
+    // str r3, [sp]
+    // mov r2, #2
+    // str r2, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0xc
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // add r1, r7, #0
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // ldr r1, _022383C0 ; =0x00000D3C
+    // mov r3, #0
+    // str r0, [r5, r1]
+    // str r3, [sp]
+    // mov r2, #3
+    // str r2, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0xc
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // add r1, r7, #0
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // mov r1, #0x35
+    // lsl r1, r1, #6
+    // str r0, [r5, r1]
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #2
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0x1c
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // add r1, r7, #0
+    // mov r2, #5
+    // mov r3, #0
+    // bl AddCharResObjFromOpenNarc
+    // ldr r1, _022383C4 ; =0x00000D44
+    // mov r2, #4
+    // str r0, [r5, r1]
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #2
+    // str r0, [sp, #4]
+    // mov r0, #3
+    // str r0, [sp, #8]
+    // mov r0, #0x43
+    // sub r1, #0x1c
+    // str r0, [sp, #0xc]
+    // ldr r0, [r5, r1]
+    // add r1, r7, #0
+    // mov r3, #0
+    // bl AddPlttResObjFromOpenNarc
+    // ldr r1, _022383C8 ; =0x00000D48
+    // mov r2, #6
+    // str r0, [r5, r1]
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #2
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0x1c
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // add r1, r7, #0
+    // mov r3, #0
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // ldr r1, _022383CC ; =0x00000D4C
+    // mov r2, #7
+    // str r0, [r5, r1]
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #3
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0x1c
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // add r1, r7, #0
+    // mov r3, #0
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // mov r1, #0xd5
+    // lsl r1, r1, #4
+    // str r0, [r5, r1]
+    // mov r0, #2
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0x2c
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // ldr r1, [sp, #0x14]
+    // mov r2, #0xc
+    // mov r3, #0
+    // bl AddCharResObjFromOpenNarc
+    // ldr r1, _022383D0 ; =0x00000D54
+    // mov r2, #0xb
+    // str r0, [r5, r1]
+    // mov r0, #2
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #1
+    // str r0, [sp, #8]
+    // mov r0, #0x43
+    // sub r1, #0x2c
+    // str r0, [sp, #0xc]
+    // ldr r0, [r5, r1]
+    // ldr r1, [sp, #0x14]
+    // mov r3, #0
+    // bl AddPlttResObjFromOpenNarc
+    // ldr r1, _022383D4 ; =0x00000D58
+    // mov r2, #0xd
+    // str r0, [r5, r1]
+    // mov r0, #2
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0x2c
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // ldr r1, [sp, #0x14]
+    // mov r3, #0
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // ldr r1, _022383D8 ; =0x00000D5C
+    // mov r2, #0xe
+    // str r0, [r5, r1]
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #3
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // sub r1, #0x2c
+    // str r0, [sp, #8]
+    // ldr r0, [r5, r1]
+    // ldr r1, [sp, #0x14]
+    // mov r3, #0
+    // bl AddCellOrAnimResObjFromOpenNarc
+    // mov r1, #0xd6
+    // lsl r1, r1, #4
+    // str r0, [r5, r1]
+    // sub r1, #0x2c
+    // ldr r0, [r5, r1]
+    // bl sub_0200ACF0
+    // ldr r0, _022383C4 ; =0x00000D44
+    // ldr r0, [r5, r0]
+    // bl sub_0200ACF0
+    // ldr r0, _022383D0 ; =0x00000D54
+    // ldr r0, [r5, r0]
+    // bl sub_0200ACF0
+    // ldr r0, _022383BC ; =0x00000D38
+    // ldr r0, [r5, r0]
+    // bl sub_0200AF94
+    // ldr r0, _022383C8 ; =0x00000D48
+    // ldr r0, [r5, r0]
+    // bl sub_0200AF94
+    // ldr r0, _022383D4 ; =0x00000D58
+    // ldr r0, [r5, r0]
+    // bl sub_0200AF94
+    // add r0, r7, #0
+    // bl NARC_Delete
+    // ldr r0, [sp, #0x14]
+    // bl NARC_Delete
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _022383AC: .word 0x00000BFC
+    // _022383B0: .word 0x00000BF8
+    // _022383B4: .word 0x00000D24
+    // _022383B8: .word 0x00000D34
+    // _022383BC: .word 0x00000D38
+    // _022383C0: .word 0x00000D3C
+    // _022383C4: .word 0x00000D44
+    // _022383C8: .word 0x00000D48
+    // _022383CC: .word 0x00000D4C
+    // _022383D0: .word 0x00000D54
+    // _022383D4: .word 0x00000D58
+    // _022383D8: .word 0x00000D5C
+    // TODO: decompile
 }
+
 
 void ov72_022383DC(void) {
-    /* Original at 0x022383DC */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    ldr r4, _02238404 ; =0x00000BF8\n    ldr r1, [r1, r4]\n    str r1, [r0]\n    str r2, [r0, #4]\n    mov r2, #0\n    mov r1, #1\n    str r2, [r0, #0x10]\n    lsl r1, r1, #0xc\n    str r1, [r0, #0x14]\n    str r1, [r0, #0x18]\n    str r1, [r0, #0x1c]\n    strh r2, [r0, #0x20]\n    mov r1, #1\n    str r1, [r0, #0x24]\n    str r3, [r0, #0x28]\n    mov r1, #0x43\n    str r1, [r0, #0x2c]\n    pop {r3, r4}\n    bx lr\n    _02238404: .word 0x00000BF8"
-    );
-    #endif
+    // push {r3, r4}
+    // ldr r4, _02238404 ; =0x00000BF8
+    // ldr r1, [r1, r4]
+    // str r1, [r0]
+    // str r2, [r0, #4]
+    // mov r2, #0
+    // mov r1, #1
+    // str r2, [r0, #0x10]
+    // lsl r1, r1, #0xc
+    // str r1, [r0, #0x14]
+    // str r1, [r0, #0x18]
+    // str r1, [r0, #0x1c]
+    // strh r2, [r0, #0x20]
+    // mov r1, #1
+    // str r1, [r0, #0x24]
+    // str r3, [r0, #0x28]
+    // mov r1, #0x43
+    // str r1, [r0, #0x2c]
+    // pop {r3, r4}
+    // bx lr
+    // _02238404: .word 0x00000BF8
+    // TODO: decompile
 }
+
 
 void ov72_02238408(void) {
-    /* Original at 0x02238408 */
-    /* Requires manual decompilation - 262 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x5c\n    mov r1, #0\n    add r6, r0, #0\n    str r1, [sp]\n    sub r0, r1, #1\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    str r1, [sp, #0xc]\n    ldr r2, _02238638 ; =0x00000D24\n    str r1, [sp, #0x10]\n    ldr r0, [r6, r2]\n    add r3, r1, #0\n    str r0, [sp, #0x14]\n    add r0, r2, #4\n    ldr r0, [r6, r0]\n    str r0, [sp, #0x18]\n    add r0, r2, #0\n    add r0, #8\n    ldr r0, [r6, r0]\n    str r0, [sp, #0x1c]\n    add r0, r2, #0\n    add r0, #0xc\n    ldr r0, [r6, r0]\n    add r2, #0x40\n    str r0, [sp, #0x20]\n    str r1, [sp, #0x24]\n    add r0, r6, r2\n    add r2, r1, #0\n    str r1, [sp, #0x28]\n    bl CreateSpriteResourcesHeader\n    mov r1, #1\n    str r1, [sp]\n    sub r0, r1, #2\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r3, _02238638 ; =0x00000D24\n    str r0, [sp, #0x10]\n    ldr r2, [r6, r3]\n    str r2, [sp, #0x14]\n    add r2, r3, #4\n    ldr r2, [r6, r2]\n    str r2, [sp, #0x18]\n    add r2, r3, #0\n    add r2, #8\n    ldr r2, [r6, r2]\n    str r2, [sp, #0x1c]\n    add r2, r3, #0\n    add r2, #0xc\n    ldr r2, [r6, r2]\n    add r3, #0x64\n    str r2, [sp, #0x20]\n    str r0, [sp, #0x24]\n    str r0, [sp, #0x28]\n    add r0, r6, r3\n    add r2, r1, #0\n    add r3, r1, #0\n    bl CreateSpriteResourcesHeader\n    mov r1, #2\n    str r1, [sp]\n    sub r0, r1, #3\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0\n    str r0, [sp, #0xc]\n    ldr r3, _02238638 ; =0x00000D24\n    str r0, [sp, #0x10]\n    ldr r2, [r6, r3]\n    str r2, [sp, #0x14]\n    add r2, r3, #4\n    ldr r2, [r6, r2]\n    str r2, [sp, #0x18]\n    add r2, r3, #0\n    add r2, #8\n    ldr r2, [r6, r2]\n    str r2, [sp, #0x1c]\n    add r2, r3, #0\n    add r2, #0xc\n    ldr r2, [r6, r2]\n    add r3, #0x88\n    str r2, [sp, #0x20]\n    str r0, [sp, #0x24]\n    str r0, [sp, #0x28]\n    add r0, r6, r3\n    add r2, r1, #0\n    add r3, r1, #0\n    bl CreateSpriteResourcesHeader\n    ldr r2, _0223863C ; =0x00000D64\n    add r0, sp, #0x2c\n    add r1, r6, #0\n    add r2, r6, r2\n    mov r3, #2\n    bl ov72_022383DC\n    ldr r4, _02238640 ; =ov72_0223B364\n    mov r7, #0\n    add r5, r6, #0\n    ldrh r0, [r4]\n    lsl r0, r0, #0xc\n    str r0, [sp, #0x34]\n    ldrh r0, [r4, #2]\n    lsl r1, r0, #0xc\n    mov r0, #1\n    lsl r0, r0, #0x14\n    add r0, r1, r0\n    str r0, [sp, #0x38]\n    add r0, sp, #0x2c\n    bl Sprite_CreateAffine\n    ldr r1, _02238644 ; =0x00000DF4\n    str r0, [r5, r1]\n    add r0, r1, #0\n    ldr r0, [r5, r0]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    ldr r0, _02238644 ; =0x00000DF4\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, _02238644 ; =0x00000DF4\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    add r7, r7, #1\n    add r4, r4, #4\n    add r5, r5, #4\n    cmp r7, #3\n    blt _022384D4\n    ldr r2, _02238648 ; =0x00000D88\n    add r0, sp, #0x2c\n    add r1, r6, #0\n    add r2, r6, r2\n    mov r3, #2\n    bl ov72_022383DC\n    mov r0, #2\n    lsl r0, r0, #0x10\n    str r0, [sp, #0x34]\n    ldr r0, _0223864C ; =0x00151000\n    str r0, [sp, #0x38]\n    add r0, sp, #0x2c\n    bl Sprite_CreateAffine\n    mov r1, #0xe\n    lsl r1, r1, #8\n    str r0, [r6, r1]\n    ldr r0, [r6, r1]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldr r0, [r6, r0]\n    mov r1, #1\n    bl Sprite_SetAnimCtrlSeq\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldr r0, [r6, r0]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    mov r0, #6\n    lsl r0, r0, #0x10\n    str r0, [sp, #0x34]\n    ldr r0, _02238650 ; =0x00129000\n    str r0, [sp, #0x38]\n    add r0, sp, #0x2c\n    bl Sprite_CreateAffine\n    ldr r1, _02238654 ; =0x00000E04\n    str r0, [r6, r1]\n    ldr r0, [r6, r1]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    ldr r0, _02238654 ; =0x00000E04\n    mov r1, #0\n    ldr r0, [r6, r0]\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, _02238654 ; =0x00000E04\n    mov r1, #0\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    ldr r4, _02238658 ; =ov72_0223B338\n    mov r7, #0\n    add r5, r6, #0\n    ldrh r0, [r4]\n    lsl r0, r0, #0xc\n    str r0, [sp, #0x34]\n    ldrh r0, [r4, #2]\n    lsl r1, r0, #0xc\n    mov r0, #1\n    lsl r0, r0, #0x14\n    add r0, r1, r0\n    str r0, [sp, #0x38]\n    add r0, sp, #0x2c\n    bl Sprite_CreateAffine\n    ldr r1, _0223865C ; =0x00000E08\n    str r0, [r5, r1]\n    add r0, r1, #0\n    ldr r0, [r5, r0]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    ldr r0, _0223865C ; =0x00000E08\n    mov r1, #3\n    ldr r0, [r5, r0]\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, _0223865C ; =0x00000E08\n    mov r1, #1\n    ldr r0, [r5, r0]\n    bl Sprite_SetPriority\n    ldr r0, _0223865C ; =0x00000E08\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    add r7, r7, #1\n    add r4, r4, #4\n    add r5, r5, #4\n    cmp r7, #3\n    blt _02238592\n    ldr r2, _02238660 ; =0x00000DAC\n    add r0, sp, #0x2c\n    add r1, r6, #0\n    add r2, r6, r2\n    mov r3, #2\n    bl ov72_022383DC\n    mov r0, #2\n    lsl r0, r0, #0x12\n    str r0, [sp, #0x34]\n    ldr r0, _0223864C ; =0x00151000\n    str r0, [sp, #0x38]\n    add r0, sp, #0x2c\n    bl Sprite_CreateAffine\n    ldr r1, _02238664 ; =0x00000E14\n    str r0, [r6, r1]\n    ldr r0, [r6, r1]\n    mov r1, #1\n    bl Sprite_SetAnimActiveFlag\n    ldr r0, _02238664 ; =0x00000E14\n    mov r1, #1\n    ldr r0, [r6, r0]\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, _02238664 ; =0x00000E14\n    mov r1, #0\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    bl sub_0203A880\n    add sp, #0x5c\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _02238638: .word 0x00000D24\n    _0223863C: .word 0x00000D64\n    _02238640: .word ov72_0223B364\n    _02238644: .word 0x00000DF4\n    _02238648: .word 0x00000D88\n    _0223864C: .word 0x00151000\n    _02238650: .word 0x00129000\n    _02238654: .word 0x00000E04\n    _02238658: .word ov72_0223B338\n    _0223865C: .word 0x00000E08\n    _02238660: .word 0x00000DAC\n    _02238664: .word 0x00000E14"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x5c
+    // mov r1, #0
+    // add r6, r0, #0
+    // str r1, [sp]
+    // sub r0, r1, #1
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r1, [sp, #0xc]
+    // ldr r2, _02238638 ; =0x00000D24
+    // str r1, [sp, #0x10]
+    // ldr r0, [r6, r2]
+    // add r3, r1, #0
+    // str r0, [sp, #0x14]
+    // add r0, r2, #4
+    // ldr r0, [r6, r0]
+    // str r0, [sp, #0x18]
+    // add r0, r2, #0
+    // add r0, #8
+    // ldr r0, [r6, r0]
+    // str r0, [sp, #0x1c]
+    // add r0, r2, #0
+    // add r0, #0xc
+    // ldr r0, [r6, r0]
+    // add r2, #0x40
+    // str r0, [sp, #0x20]
+    // str r1, [sp, #0x24]
+    // add r0, r6, r2
+    // add r2, r1, #0
+    // str r1, [sp, #0x28]
+    // bl CreateSpriteResourcesHeader
+    // mov r1, #1
+    // str r1, [sp]
+    // sub r0, r1, #2
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r3, _02238638 ; =0x00000D24
+    // str r0, [sp, #0x10]
+    // ldr r2, [r6, r3]
+    // str r2, [sp, #0x14]
+    // add r2, r3, #4
+    // ldr r2, [r6, r2]
+    // str r2, [sp, #0x18]
+    // add r2, r3, #0
+    // add r2, #8
+    // ldr r2, [r6, r2]
+    // str r2, [sp, #0x1c]
+    // add r2, r3, #0
+    // add r2, #0xc
+    // ldr r2, [r6, r2]
+    // add r3, #0x64
+    // str r2, [sp, #0x20]
+    // str r0, [sp, #0x24]
+    // str r0, [sp, #0x28]
+    // add r0, r6, r3
+    // add r2, r1, #0
+    // add r3, r1, #0
+    // bl CreateSpriteResourcesHeader
+    // mov r1, #2
+    // str r1, [sp]
+    // sub r0, r1, #3
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // str r0, [sp, #0xc]
+    // ldr r3, _02238638 ; =0x00000D24
+    // str r0, [sp, #0x10]
+    // ldr r2, [r6, r3]
+    // str r2, [sp, #0x14]
+    // add r2, r3, #4
+    // ldr r2, [r6, r2]
+    // str r2, [sp, #0x18]
+    // add r2, r3, #0
+    // add r2, #8
+    // ldr r2, [r6, r2]
+    // str r2, [sp, #0x1c]
+    // add r2, r3, #0
+    // add r2, #0xc
+    // ldr r2, [r6, r2]
+    // add r3, #0x88
+    // str r2, [sp, #0x20]
+    // str r0, [sp, #0x24]
+    // str r0, [sp, #0x28]
+    // add r0, r6, r3
+    // add r2, r1, #0
+    // add r3, r1, #0
+    // bl CreateSpriteResourcesHeader
+    // ldr r2, _0223863C ; =0x00000D64
+    // add r0, sp, #0x2c
+    // add r1, r6, #0
+    // add r2, r6, r2
+    // mov r3, #2
+    // bl ov72_022383DC
+    // ldr r4, _02238640 ; =ov72_0223B364
+    // mov r7, #0
+    // add r5, r6, #0
+    // ldrh r0, [r4]
+    // lsl r0, r0, #0xc
+    // str r0, [sp, #0x34]
+    // ldrh r0, [r4, #2]
+    // lsl r1, r0, #0xc
+    // mov r0, #1
+    // lsl r0, r0, #0x14
+    // add r0, r1, r0
+    // str r0, [sp, #0x38]
+    // add r0, sp, #0x2c
+    // bl Sprite_CreateAffine
+    // ldr r1, _02238644 ; =0x00000DF4
+    // str r0, [r5, r1]
+    // add r0, r1, #0
+    // ldr r0, [r5, r0]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // ldr r0, _02238644 ; =0x00000DF4
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // ldr r0, _02238644 ; =0x00000DF4
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // add r7, r7, #1
+    // add r4, r4, #4
+    // add r5, r5, #4
+    // cmp r7, #3
+    // blt _022384D4
+    // ldr r2, _02238648 ; =0x00000D88
+    // add r0, sp, #0x2c
+    // add r1, r6, #0
+    // add r2, r6, r2
+    // mov r3, #2
+    // bl ov72_022383DC
+    // mov r0, #2
+    // lsl r0, r0, #0x10
+    // str r0, [sp, #0x34]
+    // ldr r0, _0223864C ; =0x00151000
+    // str r0, [sp, #0x38]
+    // add r0, sp, #0x2c
+    // bl Sprite_CreateAffine
+    // mov r1, #0xe
+    // lsl r1, r1, #8
+    // str r0, [r6, r1]
+    // ldr r0, [r6, r1]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldr r0, [r6, r0]
+    // mov r1, #1
+    // bl Sprite_SetAnimCtrlSeq
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldr r0, [r6, r0]
+    // mov r1, #0
+    // bl Sprite_SetDrawFlag
+    // mov r0, #6
+    // lsl r0, r0, #0x10
+    // str r0, [sp, #0x34]
+    // ldr r0, _02238650 ; =0x00129000
+    // str r0, [sp, #0x38]
+    // add r0, sp, #0x2c
+    // bl Sprite_CreateAffine
+    // ldr r1, _02238654 ; =0x00000E04
+    // str r0, [r6, r1]
+    // ldr r0, [r6, r1]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // ldr r0, _02238654 ; =0x00000E04
+    // mov r1, #0
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // ldr r0, _02238654 ; =0x00000E04
+    // mov r1, #0
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r4, _02238658 ; =ov72_0223B338
+    // mov r7, #0
+    // add r5, r6, #0
+    // ldrh r0, [r4]
+    // lsl r0, r0, #0xc
+    // str r0, [sp, #0x34]
+    // ldrh r0, [r4, #2]
+    // lsl r1, r0, #0xc
+    // mov r0, #1
+    // lsl r0, r0, #0x14
+    // add r0, r1, r0
+    // str r0, [sp, #0x38]
+    // add r0, sp, #0x2c
+    // bl Sprite_CreateAffine
+    // ldr r1, _0223865C ; =0x00000E08
+    // str r0, [r5, r1]
+    // add r0, r1, #0
+    // ldr r0, [r5, r0]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // ldr r0, _0223865C ; =0x00000E08
+    // mov r1, #3
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // ldr r0, _0223865C ; =0x00000E08
+    // mov r1, #1
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetPriority
+    // ldr r0, _0223865C ; =0x00000E08
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // add r7, r7, #1
+    // add r4, r4, #4
+    // add r5, r5, #4
+    // cmp r7, #3
+    // blt _02238592
+    // ldr r2, _02238660 ; =0x00000DAC
+    // add r0, sp, #0x2c
+    // add r1, r6, #0
+    // add r2, r6, r2
+    // mov r3, #2
+    // bl ov72_022383DC
+    // mov r0, #2
+    // lsl r0, r0, #0x12
+    // str r0, [sp, #0x34]
+    // ldr r0, _0223864C ; =0x00151000
+    // str r0, [sp, #0x38]
+    // add r0, sp, #0x2c
+    // bl Sprite_CreateAffine
+    // ldr r1, _02238664 ; =0x00000E14
+    // str r0, [r6, r1]
+    // ldr r0, [r6, r1]
+    // mov r1, #1
+    // bl Sprite_SetAnimActiveFlag
+    // ldr r0, _02238664 ; =0x00000E14
+    // mov r1, #1
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // ldr r0, _02238664 ; =0x00000E14
+    // mov r1, #0
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // mov r0, #0x10
+    // mov r1, #1
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #0x10
+    // mov r1, #1
+    // bl GfGfx_EngineBTogglePlanes
+    // bl sub_0203A880
+    // add sp, #0x5c
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _02238638: .word 0x00000D24
+    // _0223863C: .word 0x00000D64
+    // _02238640: .word ov72_0223B364
+    // _02238644: .word 0x00000DF4
+    // _02238648: .word 0x00000D88
+    // _0223864C: .word 0x00151000
+    // _02238650: .word 0x00129000
+    // _02238654: .word 0x00000E04
+    // _02238658: .word ov72_0223B338
+    // _0223865C: .word 0x00000E08
+    // _02238660: .word 0x00000DAC
+    // _02238664: .word 0x00000E14
+    // TODO: decompile
 }
 
+
 void ov72_02238668(void) {
-    /* Original at 0x02238668 */
-    /* Requires manual decompilation - 9 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl YesNoPrompt_HandleInput\n    add r4, r0, #0\n    beq _0223867A\n    add r0, r5, #0\n    bl YesNoPrompt_Destroy\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // bl YesNoPrompt_HandleInput
+    // add r4, r0, #0
+    // beq _0223867A
+    // add r0, r5, #0
+    // bl YesNoPrompt_Destroy
+    // add r0, r4, #0
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov72_02238680(void) {
     ((u32*)r0)[0x1c] = r1;
     ((u32*)r0)[0x20] = r2;
 }
 
+
 void ov72_02238688(void) {
-    /* Original at 0x02238688 */
-    /* Requires manual decompilation - 43 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    add r5, r2, #0\n    cmp r1, #0\n    ble _022386A6\n    lsl r0, r1, #0xc\n    bl _fflt\n    add r1, r0, #0\n    mov r0, #0x3f\n    lsl r0, r0, #0x18\n    bl _fadd\n    b _022386B4\n    lsl r0, r1, #0xc\n    bl _fflt\n    mov r1, #0x3f\n    lsl r1, r1, #0x18\n    bl _fsub\n    bl _ffix\n    str r0, [sp]\n    cmp r5, #0\n    ble _022386D0\n    lsl r0, r5, #0xc\n    bl _fflt\n    add r1, r0, #0\n    mov r0, #0x3f\n    lsl r0, r0, #0x18\n    bl _fadd\n    b _022386DE\n    lsl r0, r5, #0xc\n    bl _fflt\n    mov r1, #0x3f\n    lsl r1, r1, #0x18\n    bl _fsub\n    bl _ffix\n    str r0, [sp, #4]\n    mov r0, #0\n    str r0, [sp, #8]\n    add r0, r4, #0\n    add r1, sp, #0\n    bl Sprite_SetMatrix\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // add r5, r2, #0
+    // cmp r1, #0
+    // ble _022386A6
+    // lsl r0, r1, #0xc
+    // bl _fflt
+    // add r1, r0, #0
+    // mov r0, #0x3f
+    // lsl r0, r0, #0x18
+    // bl _fadd
+    // b _022386B4
+    // lsl r0, r1, #0xc
+    // bl _fflt
+    // mov r1, #0x3f
+    // lsl r1, r1, #0x18
+    // bl _fsub
+    // bl _ffix
+    // str r0, [sp]
+    // cmp r5, #0
+    // ble _022386D0
+    // lsl r0, r5, #0xc
+    // bl _fflt
+    // add r1, r0, #0
+    // mov r0, #0x3f
+    // lsl r0, r0, #0x18
+    // bl _fadd
+    // b _022386DE
+    // lsl r0, r5, #0xc
+    // bl _fflt
+    // mov r1, #0x3f
+    // lsl r1, r1, #0x18
+    // bl _fsub
+    // bl _ffix
+    // str r0, [sp, #4]
+    // mov r0, #0
+    // str r0, [sp, #8]
+    // add r0, r4, #0
+    // add r1, sp, #0
+    // bl Sprite_SetMatrix
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void ov72_022386F4(void) {
-    /* Original at 0x022386F4 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    ldr r1, _02238728 ; =ov72_0223B3A4\n    lsl r3, r4, #2\n    ldr r2, _0223872C ; =ov72_0223B3A6\n    ldrh r1, [r1, r3]\n    ldrh r3, [r2, r3]\n    mov r2, #1\n    lsl r2, r2, #8\n    add r2, r3, r2\n    add r5, r0, #0\n    bl ov72_02238688\n    cmp r4, #0xa\n    bge _0223871C\n    add r0, r5, #0\n    mov r1, #1\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}\n    add r0, r5, #0\n    mov r1, #2\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}\n    nop\n    _02238728: .word ov72_0223B3A4\n    _0223872C: .word ov72_0223B3A6"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r1, #0
+    // ldr r1, _02238728 ; =ov72_0223B3A4
+    // lsl r3, r4, #2
+    // ldr r2, _0223872C ; =ov72_0223B3A6
+    // ldrh r1, [r1, r3]
+    // ldrh r3, [r2, r3]
+    // mov r2, #1
+    // lsl r2, r2, #8
+    // add r2, r3, r2
+    // add r5, r0, #0
+    // bl ov72_02238688
+    // cmp r4, #0xa
+    // bge _0223871C
+    // add r0, r5, #0
+    // mov r1, #1
+    // bl Sprite_SetAnimCtrlSeq
+    // pop {r3, r4, r5, pc}
+    // add r0, r5, #0
+    // mov r1, #2
+    // bl Sprite_SetAnimCtrlSeq
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02238728: .word ov72_0223B3A4
+    // _0223872C: .word ov72_0223B3A6
+    // TODO: decompile
 }
+
 
 void ov72_02238730(void) {
     ov72_02238688(0xc);
 }
 
+
 void ov72_02238750(void) {
-    /* Original at 0x02238750 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r3, r2, #0\n    mov r5, #0xc\n    lsl r4, r1, #2\n    mul r3, r5\n    ldr r2, _02238770 ; =ov72_0223B366\n    ldr r1, _02238774 ; =ov72_0223B364\n    add r2, r2, r3\n    add r1, r1, r3\n    ldrh r2, [r4, r2]\n    add r5, #0xf4\n    ldrh r1, [r4, r1]\n    add r2, r2, r5\n    bl ov72_02238688\n    pop {r3, r4, r5, pc}\n    _02238770: .word ov72_0223B366\n    _02238774: .word ov72_0223B364"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r3, r2, #0
+    // mov r5, #0xc
+    // lsl r4, r1, #2
+    // mul r3, r5
+    // ldr r2, _02238770 ; =ov72_0223B366
+    // ldr r1, _02238774 ; =ov72_0223B364
+    // add r2, r2, r3
+    // add r1, r1, r3
+    // ldrh r2, [r4, r2]
+    // add r5, #0xf4
+    // ldrh r1, [r4, r1]
+    // add r2, r2, r5
+    // bl ov72_02238688
+    // pop {r3, r4, r5, pc}
+    // _02238770: .word ov72_0223B366
+    // _02238774: .word ov72_0223B364
+    // TODO: decompile
 }
+
 
 void ov72_02238778(void) {
-    /* Original at 0x02238778 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r1, #0\n    add r4, r2, #0\n    bl OS_DisableInterrupts\n    add r6, r0, #0\n    ldr r0, _0223879C ; =ov72_0223B92C\n    add r1, r5, #0\n    ldr r0, [r0]\n    add r2, r4, #0\n    bl NNS_FndAllocFromExpHeapEx\n    add r4, r0, #0\n    add r0, r6, #0\n    bl OS_RestoreInterrupts\n    add r0, r4, #0\n    pop {r4, r5, r6, pc}\n    _0223879C: .word ov72_0223B92C"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r1, #0
+    // add r4, r2, #0
+    // bl OS_DisableInterrupts
+    // add r6, r0, #0
+    // ldr r0, _0223879C ; =ov72_0223B92C
+    // add r1, r5, #0
+    // ldr r0, [r0]
+    // add r2, r4, #0
+    // bl NNS_FndAllocFromExpHeapEx
+    // add r4, r0, #0
+    // add r0, r6, #0
+    // bl OS_RestoreInterrupts
+    // add r0, r4, #0
+    // pop {r4, r5, r6, pc}
+    // _0223879C: .word ov72_0223B92C
+    // TODO: decompile
 }
 
+
 void ov72_022387A0(void) {
-    /* Original at 0x022387A0 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    beq _022387BC\n    bl OS_DisableInterrupts\n    add r4, r0, #0\n    ldr r0, _022387C0 ; =ov72_0223B92C\n    add r1, r5, #0\n    ldr r0, [r0]\n    bl NNS_FndFreeToExpHeap\n    add r0, r4, #0\n    bl OS_RestoreInterrupts\n    pop {r3, r4, r5, pc}\n    nop\n    _022387C0: .word ov72_0223B92C"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r1, #0
+    // beq _022387BC
+    // bl OS_DisableInterrupts
+    // add r4, r0, #0
+    // ldr r0, _022387C0 ; =ov72_0223B92C
+    // add r1, r5, #0
+    // ldr r0, [r0]
+    // bl NNS_FndFreeToExpHeap
+    // add r0, r4, #0
+    // bl OS_RestoreInterrupts
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _022387C0: .word ov72_0223B92C
+    // TODO: decompile
 }
+
 
 void ov72_022387C4(void) {
     ov00_021EC9D4();
 }
+
 
 void ov72_022387D0(void) {
     ((u32*)r0)[0x14] = r1;
     ((u32*)r0)[0x18] = r2;
 }
 
+
 void ov72_022387D8(void) {
-    /* Original at 0x022387D8 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_02238124\n    bl ov72_02238164\n    add r0, r4, #0\n    bl ov72_02238194\n    add r0, r4, #0\n    bl ov72_02238408\n    ldr r0, _022387FC ; =ov72_022380FC\n    add r1, r4, #0\n    bl Main_SetVBlankIntrCB\n    pop {r4, pc}\n    nop\n    _022387FC: .word ov72_022380FC"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_02238124
+    // bl ov72_02238164
+    // add r0, r4, #0
+    // bl ov72_02238194
+    // add r0, r4, #0
+    // bl ov72_02238408
+    // ldr r0, _022387FC ; =ov72_022380FC
+    // add r1, r4, #0
+    // bl Main_SetVBlankIntrCB
+    // pop {r4, pc}
+    // nop
+    // _022387FC: .word ov72_022380FC
+    // TODO: decompile
 }
+
 
 void ov72_02238800(void) {
-    /* Original at 0x02238800 */
-    /* Requires manual decompilation - 39 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    ldr r0, _02238854 ; =0x00000D34\n    ldr r0, [r6, r0]\n    bl sub_0200AEB0\n    ldr r0, _02238858 ; =0x00000D44\n    ldr r0, [r6, r0]\n    bl sub_0200AEB0\n    ldr r0, _0223885C ; =0x00000D38\n    ldr r0, [r6, r0]\n    bl sub_0200B0A8\n    ldr r0, _02238860 ; =0x00000D48\n    ldr r0, [r6, r0]\n    bl sub_0200B0A8\n    ldr r7, _02238864 ; =0x00000D24\n    mov r4, #0\n    add r5, r6, #0\n    ldr r0, [r5, r7]\n    bl Destroy2DGfxResObjMan\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #4\n    blt _0223882A\n    ldr r0, _02238868 ; =0x00000BF8\n    ldr r0, [r6, r0]\n    bl SpriteList_Delete\n    ldr r0, _02238868 ; =0x00000BF8\n    mov r1, #0\n    str r1, [r6, r0]\n    bl OamManager_Free\n    bl ObjCharTransfer_Destroy\n    bl ObjPlttTransfer_Destroy\n    pop {r3, r4, r5, r6, r7, pc}\n    _02238854: .word 0x00000D34\n    _02238858: .word 0x00000D44\n    _0223885C: .word 0x00000D38\n    _02238860: .word 0x00000D48\n    _02238864: .word 0x00000D24\n    _02238868: .word 0x00000BF8"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r6, r0, #0
+    // ldr r0, _02238854 ; =0x00000D34
+    // ldr r0, [r6, r0]
+    // bl sub_0200AEB0
+    // ldr r0, _02238858 ; =0x00000D44
+    // ldr r0, [r6, r0]
+    // bl sub_0200AEB0
+    // ldr r0, _0223885C ; =0x00000D38
+    // ldr r0, [r6, r0]
+    // bl sub_0200B0A8
+    // ldr r0, _02238860 ; =0x00000D48
+    // ldr r0, [r6, r0]
+    // bl sub_0200B0A8
+    // ldr r7, _02238864 ; =0x00000D24
+    // mov r4, #0
+    // add r5, r6, #0
+    // ldr r0, [r5, r7]
+    // bl Destroy2DGfxResObjMan
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #4
+    // blt _0223882A
+    // ldr r0, _02238868 ; =0x00000BF8
+    // ldr r0, [r6, r0]
+    // bl SpriteList_Delete
+    // ldr r0, _02238868 ; =0x00000BF8
+    // mov r1, #0
+    // str r1, [r6, r0]
+    // bl OamManager_Free
+    // bl ObjCharTransfer_Destroy
+    // bl ObjPlttTransfer_Destroy
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02238854: .word 0x00000D34
+    // _02238858: .word 0x00000D44
+    // _0223885C: .word 0x00000D38
+    // _02238860: .word 0x00000D48
+    // _02238864: .word 0x00000D24
+    // _02238868: .word 0x00000BF8
+    // TODO: decompile
 }
+
 
 void ov72_0223886C(void) {
-    /* Original at 0x0223886C */
-    /* Requires manual decompilation - 92 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    bl ov72_02239040\n    mov r0, #8\n    str r0, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    mov r0, #0x43\n    str r0, [sp, #8]\n    mov r0, #0\n    add r2, r1, #0\n    add r3, r0, #0\n    bl BeginNormalPaletteFade\n    ldr r0, [r4, #4]\n    bl ov72_022389C8\n    add r0, r4, #0\n    bl ov72_02238BEC\n    add r0, r4, #0\n    bl ov72_02238EE4\n    mov r0, #1\n    add r1, r0, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #2\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #1\n    add r1, r0, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #2\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    ldr r0, [r4]\n    mov r1, #0\n    ldr r0, [r0]\n    bl sub_0202D488\n    add r1, r4, #0\n    add r1, #0x90\n    str r0, [r1]\n    add r0, r4, #0\n    add r0, #0x90\n    ldr r1, [r0]\n    add r0, r4, #0\n    add r0, #0x94\n    str r1, [r0]\n    add r0, r4, #0\n    mov r1, #1\n    add r0, #0x9c\n    str r1, [r0]\n    ldr r0, _02238940 ; =0x00000F4C\n    mov r1, #0\n    str r1, [r4, r0]\n    bl ov00_021EC5B4\n    cmp r0, #0\n    bne _0223892E\n    ldr r1, [r4]\n    ldr r0, [r1, #0x24]\n    cmp r0, #0\n    beq _02238922\n    ldr r0, [r1, #0xc]\n    bl sub_02039418\n    ldr r0, _02238944 ; =0x00000F0F\n    mov r2, #1\n    str r0, [sp]\n    ldr r1, _02238948 ; =0x00000BD8\n    add r0, r4, #0\n    ldr r1, [r4, r1]\n    add r3, r2, #0\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #2\n    bl ov72_02238680\n    add r0, r4, #0\n    bl ov72_0223A420\n    b _0223893A\n    mov r0, #4\n    bl Sys_ClearSleepDisableFlag\n    mov r0, #0\n    str r0, [r4, #0x1c]\n    b _0223893A\n    ldr r0, [r4]\n    ldr r0, [r0, #0xc]\n    bl sub_02039418\n    mov r0, #0x33\n    str r0, [r4, #0x1c]\n    mov r0, #2\n    add sp, #0xc\n    pop {r3, r4, pc}\n    _02238940: .word 0x00000F4C\n    _02238944: .word 0x00000F0F\n    _02238948: .word 0x00000BD8"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // bl ov72_02239040
+    // mov r0, #8
+    // str r0, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // mov r0, #0x43
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // add r2, r1, #0
+    // add r3, r0, #0
+    // bl BeginNormalPaletteFade
+    // ldr r0, [r4, #4]
+    // bl ov72_022389C8
+    // add r0, r4, #0
+    // bl ov72_02238BEC
+    // add r0, r4, #0
+    // bl ov72_02238EE4
+    // mov r0, #1
+    // add r1, r0, #0
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #2
+    // mov r1, #1
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #1
+    // add r1, r0, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #2
+    // mov r1, #1
+    // bl GfGfx_EngineBTogglePlanes
+    // ldr r0, [r4]
+    // mov r1, #0
+    // ldr r0, [r0]
+    // bl sub_0202D488
+    // add r1, r4, #0
+    // add r1, #0x90
+    // str r0, [r1]
+    // add r0, r4, #0
+    // add r0, #0x90
+    // ldr r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x94
+    // str r1, [r0]
+    // add r0, r4, #0
+    // mov r1, #1
+    // add r0, #0x9c
+    // str r1, [r0]
+    // ldr r0, _02238940 ; =0x00000F4C
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // bl ov00_021EC5B4
+    // cmp r0, #0
+    // bne _0223892E
+    // ldr r1, [r4]
+    // ldr r0, [r1, #0x24]
+    // cmp r0, #0
+    // beq _02238922
+    // ldr r0, [r1, #0xc]
+    // bl sub_02039418
+    // ldr r0, _02238944 ; =0x00000F0F
+    // mov r2, #1
+    // str r0, [sp]
+    // ldr r1, _02238948 ; =0x00000BD8
+    // add r0, r4, #0
+    // ldr r1, [r4, r1]
+    // add r3, r2, #0
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #2
+    // bl ov72_02238680
+    // add r0, r4, #0
+    // bl ov72_0223A420
+    // b _0223893A
+    // mov r0, #4
+    // bl Sys_ClearSleepDisableFlag
+    // mov r0, #0
+    // str r0, [r4, #0x1c]
+    // b _0223893A
+    // ldr r0, [r4]
+    // ldr r0, [r0, #0xc]
+    // bl sub_02039418
+    // mov r0, #0x33
+    // str r0, [r4, #0x1c]
+    // mov r0, #2
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // _02238940: .word 0x00000F4C
+    // _02238944: .word 0x00000F0F
+    // _02238948: .word 0x00000BD8
+    // TODO: decompile
 }
+
 
 void ov72_0223894C(void) {
-    /* Original at 0x0223894C */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl ov72_022387C4\n    bl sub_0203A930\n    ldr r4, [r5, #0x1c]\n    ldr r1, _02238978 ; =ov72_0223B660\n    lsl r2, r4, #2\n    ldr r1, [r1, r2]\n    add r0, r5, #0\n    blx r1\n    ldr r1, [r5, #0x1c]\n    cmp r4, r1\n    beq _02238976\n    mov r1, #0xfd\n    mov r2, #0\n    lsl r1, r1, #4\n    strh r2, [r5, r1]\n    add r1, r1, #2\n    strh r2, [r5, r1]\n    pop {r3, r4, r5, pc}\n    _02238978: .word ov72_0223B660"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // bl ov72_022387C4
+    // bl sub_0203A930
+    // ldr r4, [r5, #0x1c]
+    // ldr r1, _02238978 ; =ov72_0223B660
+    // lsl r2, r4, #2
+    // ldr r1, [r1, r2]
+    // add r0, r5, #0
+    // blx r1
+    // ldr r1, [r5, #0x1c]
+    // cmp r4, r1
+    // beq _02238976
+    // mov r1, #0xfd
+    // mov r2, #0
+    // lsl r1, r1, #4
+    // strh r2, [r5, r1]
+    // add r1, r1, #2
+    // strh r2, [r5, r1]
+    // pop {r3, r4, r5, pc}
+    // _02238978: .word ov72_0223B660
+    // TODO: decompile
 }
+
 
 void ov72_0223897C(void) {
-    /* Original at 0x0223897C */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _022389C0 ; =0x00000FD8\n    ldr r0, [r4, r0]\n    cmp r0, #0\n    beq _02238996\n    bl SysTask_Destroy\n    ldr r0, _022389C0 ; =0x00000FD8\n    mov r1, #0\n    str r1, [r4, r0]\n    add r0, r0, #4\n    str r1, [r4, r0]\n    add r0, r4, #0\n    bl ov72_02239098\n    add r0, r4, #0\n    bl ov72_02238FFC\n    ldr r0, [r4, #4]\n    bl ov72_02238AEC\n    ldr r0, _022389C4 ; =0x00000FDC\n    mov r1, #0\n    str r1, [r4, r0]\n    ldr r0, [r4, #0x14]\n    str r0, [r4, #0x10]\n    cmp r0, #0\n    bne _022389BA\n    mov r0, #5\n    pop {r4, pc}\n    mov r0, #1\n    pop {r4, pc}\n    nop\n    _022389C0: .word 0x00000FD8\n    _022389C4: .word 0x00000FDC"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _022389C0 ; =0x00000FD8
+    // ldr r0, [r4, r0]
+    // cmp r0, #0
+    // beq _02238996
+    // bl SysTask_Destroy
+    // ldr r0, _022389C0 ; =0x00000FD8
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // add r0, r0, #4
+    // str r1, [r4, r0]
+    // add r0, r4, #0
+    // bl ov72_02239098
+    // add r0, r4, #0
+    // bl ov72_02238FFC
+    // ldr r0, [r4, #4]
+    // bl ov72_02238AEC
+    // ldr r0, _022389C4 ; =0x00000FDC
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // ldr r0, [r4, #0x14]
+    // str r0, [r4, #0x10]
+    // cmp r0, #0
+    // bne _022389BA
+    // mov r0, #5
+    // pop {r4, pc}
+    // mov r0, #1
+    // pop {r4, pc}
+    // nop
+    // _022389C0: .word 0x00000FD8
+    // _022389C4: .word 0x00000FDC
+    // TODO: decompile
 }
 
+
 void ov72_022389C8(void) {
-    /* Original at 0x022389C8 */
-    /* Requires manual decompilation - 125 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0x8c\n    ldr r5, _02238AD8 ; =ov72_0223B42C\n    add r4, r0, #0\n    ldmia r5!, {r0, r1}\n    add r3, sp, #0x70\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r5]\n    mov r1, #0\n    str r0, [r3]\n    add r0, r4, #0\n    add r3, r1, #0\n    bl InitBgFromTemplate\n    mov r0, #1\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    add r0, r4, #0\n    mov r1, #0\n    bl BgClearTilemapBufferAndCommit\n    ldr r5, _02238ADC ; =ov72_0223B410\n    add r3, sp, #0x54\n    ldmia r5!, {r0, r1}\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r5]\n    mov r1, #1\n    str r0, [r3]\n    add r0, r4, #0\n    mov r3, #0\n    bl InitBgFromTemplate\n    mov r0, #2\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    ldr r5, _02238AE0 ; =ov72_0223B448\n    add r3, sp, #0x38\n    ldmia r5!, {r0, r1}\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r5]\n    mov r1, #4\n    str r0, [r3]\n    add r0, r4, #0\n    mov r3, #0\n    bl InitBgFromTemplate\n    mov r0, #1\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    add r0, r4, #0\n    mov r1, #4\n    bl BgClearTilemapBufferAndCommit\n    ldr r5, _02238AE4 ; =ov72_0223B3D8\n    add r3, sp, #0x1c\n    ldmia r5!, {r0, r1}\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r5]\n    mov r1, #5\n    str r0, [r3]\n    add r0, r4, #0\n    mov r3, #0\n    bl InitBgFromTemplate\n    mov r0, #2\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    ldr r5, _02238AE8 ; =ov72_0223B3F4\n    add r3, sp, #0\n    ldmia r5!, {r0, r1}\n    add r2, r3, #0\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    ldr r0, [r5]\n    mov r1, #6\n    str r0, [r3]\n    add r0, r4, #0\n    mov r3, #0\n    bl InitBgFromTemplate\n    mov r0, #4\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    add r0, r4, #0\n    mov r1, #6\n    bl BgClearTilemapBufferAndCommit\n    mov r0, #0\n    mov r1, #0x20\n    add r2, r0, #0\n    mov r3, #0x43\n    bl BG_ClearCharDataRange\n    mov r0, #4\n    mov r1, #0x20\n    mov r2, #0\n    mov r3, #0x43\n    bl BG_ClearCharDataRange\n    mov r0, #6\n    mov r1, #0x20\n    mov r2, #0\n    mov r3, #0x43\n    bl BG_ClearCharDataRange\n    add sp, #0x8c\n    pop {r4, r5, pc}\n    nop\n    _02238AD8: .word ov72_0223B42C\n    _02238ADC: .word ov72_0223B410\n    _02238AE0: .word ov72_0223B448\n    _02238AE4: .word ov72_0223B3D8\n    _02238AE8: .word ov72_0223B3F4"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0x8c
+    // ldr r5, _02238AD8 ; =ov72_0223B42C
+    // add r4, r0, #0
+    // ldmia r5!, {r0, r1}
+    // add r3, sp, #0x70
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r5]
+    // mov r1, #0
+    // str r0, [r3]
+    // add r0, r4, #0
+    // add r3, r1, #0
+    // bl InitBgFromTemplate
+    // mov r0, #1
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl BgClearTilemapBufferAndCommit
+    // ldr r5, _02238ADC ; =ov72_0223B410
+    // add r3, sp, #0x54
+    // ldmia r5!, {r0, r1}
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r5]
+    // mov r1, #1
+    // str r0, [r3]
+    // add r0, r4, #0
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // mov r0, #2
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // ldr r5, _02238AE0 ; =ov72_0223B448
+    // add r3, sp, #0x38
+    // ldmia r5!, {r0, r1}
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r5]
+    // mov r1, #4
+    // str r0, [r3]
+    // add r0, r4, #0
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // mov r0, #1
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // add r0, r4, #0
+    // mov r1, #4
+    // bl BgClearTilemapBufferAndCommit
+    // ldr r5, _02238AE4 ; =ov72_0223B3D8
+    // add r3, sp, #0x1c
+    // ldmia r5!, {r0, r1}
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r5]
+    // mov r1, #5
+    // str r0, [r3]
+    // add r0, r4, #0
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // mov r0, #2
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // ldr r5, _02238AE8 ; =ov72_0223B3F4
+    // add r3, sp, #0
+    // ldmia r5!, {r0, r1}
+    // add r2, r3, #0
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // ldr r0, [r5]
+    // mov r1, #6
+    // str r0, [r3]
+    // add r0, r4, #0
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // mov r0, #4
+    // mov r1, #1
+    // bl GfGfx_EngineBTogglePlanes
+    // add r0, r4, #0
+    // mov r1, #6
+    // bl BgClearTilemapBufferAndCommit
+    // mov r0, #0
+    // mov r1, #0x20
+    // add r2, r0, #0
+    // mov r3, #0x43
+    // bl BG_ClearCharDataRange
+    // mov r0, #4
+    // mov r1, #0x20
+    // mov r2, #0
+    // mov r3, #0x43
+    // bl BG_ClearCharDataRange
+    // mov r0, #6
+    // mov r1, #0x20
+    // mov r2, #0
+    // mov r3, #0x43
+    // bl BG_ClearCharDataRange
+    // add sp, #0x8c
+    // pop {r4, r5, pc}
+    // nop
+    // _02238AD8: .word ov72_0223B42C
+    // _02238ADC: .word ov72_0223B410
+    // _02238AE0: .word ov72_0223B448
+    // _02238AE4: .word ov72_0223B3D8
+    // _02238AE8: .word ov72_0223B3F4
+    // TODO: decompile
 }
+
 
 void ov72_02238AEC(void) {
     FreeBgTilemapBuffer(6);
@@ -357,115 +2054,821 @@ void ov72_02238AEC(void) {
     FreeBgTilemapBuffer(r4, 0);
 }
 
+
 void ov72_02238B18(void) {
-    /* Original at 0x02238B18 */
-    /* Requires manual decompilation - 95 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    ldr r4, [r5, #4]\n    cmp r1, #0\n    bne _02238B86\n    mov r0, #0x58\n    mov r1, #0x43\n    bl NARC_New\n    mov r1, #1\n    lsl r1, r1, #8\n    str r1, [sp]\n    mov r1, #0x43\n    str r1, [sp, #4]\n    mov r1, #3\n    mov r2, #4\n    mov r3, #0\n    add r6, r0, #0\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    mov r1, #0xb\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r1, #0\n    mov r0, #6\n    str r1, [sp]\n    lsl r0, r0, #8\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    mov r1, #0xc\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    ldr r0, _02238BE8 ; =0x00001304\n    mov r1, #0\n    str r1, [r5, r0]\n    add r0, r6, #0\n    bl NARC_Delete\n    add sp, #0x10\n    pop {r4, r5, r6, pc}\n    mov r0, #0xee\n    mov r1, #0x43\n    bl NARC_New\n    ldr r1, _02238BE8 ; =0x00001304\n    mov r2, #1\n    str r2, [r5, r1]\n    mov r1, #0x40\n    str r1, [sp]\n    mov r1, #0x43\n    str r1, [sp, #4]\n    mov r1, #8\n    mov r2, #4\n    mov r3, #0\n    add r6, r0, #0\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    mov r1, #9\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r1, #0\n    mov r0, #6\n    str r1, [sp]\n    lsl r0, r0, #8\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    add r0, r6, #0\n    mov r1, #0xa\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    add r0, r6, #0\n    bl NARC_Delete\n    add sp, #0x10\n    pop {r4, r5, r6, pc}\n    nop\n    _02238BE8: .word 0x00001304"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // ldr r4, [r5, #4]
+    // cmp r1, #0
+    // bne _02238B86
+    // mov r0, #0x58
+    // mov r1, #0x43
+    // bl NARC_New
+    // mov r1, #1
+    // lsl r1, r1, #8
+    // str r1, [sp]
+    // mov r1, #0x43
+    // str r1, [sp, #4]
+    // mov r1, #3
+    // mov r2, #4
+    // mov r3, #0
+    // add r6, r0, #0
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // mov r1, #0xb
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r1, #0
+    // mov r0, #6
+    // str r1, [sp]
+    // lsl r0, r0, #8
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // mov r1, #0xc
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // ldr r0, _02238BE8 ; =0x00001304
+    // mov r1, #0
+    // str r1, [r5, r0]
+    // add r0, r6, #0
+    // bl NARC_Delete
+    // add sp, #0x10
+    // pop {r4, r5, r6, pc}
+    // mov r0, #0xee
+    // mov r1, #0x43
+    // bl NARC_New
+    // ldr r1, _02238BE8 ; =0x00001304
+    // mov r2, #1
+    // str r2, [r5, r1]
+    // mov r1, #0x40
+    // str r1, [sp]
+    // mov r1, #0x43
+    // str r1, [sp, #4]
+    // mov r1, #8
+    // mov r2, #4
+    // mov r3, #0
+    // add r6, r0, #0
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // mov r1, #9
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r1, #0
+    // mov r0, #6
+    // str r1, [sp]
+    // lsl r0, r0, #8
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // add r0, r6, #0
+    // mov r1, #0xa
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // add r0, r6, #0
+    // bl NARC_Delete
+    // add sp, #0x10
+    // pop {r4, r5, r6, pc}
+    // nop
+    // _02238BE8: .word 0x00001304
+    // TODO: decompile
 }
+
 
 void ov72_02238BEC(void) {
-    /* Original at 0x02238BEC */
-    /* Requires manual decompilation - 265 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x3c\n    str r0, [sp, #0x10]\n    ldr r4, [r0, #4]\n    mov r0, #0x58\n    mov r1, #0x43\n    bl NARC_New\n    mov r2, #0\n    str r2, [sp]\n    mov r1, #0x43\n    str r1, [sp, #4]\n    mov r1, #3\n    add r3, r2, #0\n    str r0, [sp, #0x2c]\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    mov r3, #0\n    str r3, [sp]\n    mov r0, #0x43\n    str r0, [sp, #4]\n    ldr r0, [sp, #0x2c]\n    mov r1, #3\n    mov r2, #4\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    mov r1, #0x1a\n    mov r0, #0\n    lsl r1, r1, #4\n    mov r2, #0x43\n    bl LoadFontPal1\n    mov r1, #0x1a\n    mov r0, #4\n    lsl r1, r1, #4\n    mov r2, #0x43\n    bl LoadFontPal1\n    ldr r0, [sp, #0x10]\n    ldr r0, [r0]\n    ldr r0, [r0, #0x10]\n    bl Options_GetFrame\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    mov r0, #0x43\n    str r0, [sp, #4]\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #1\n    mov r3, #0xe\n    bl LoadUserFrameGfx2\n    ldr r0, [sp, #0x10]\n    ldr r0, [r0]\n    ldr r0, [r0, #0x10]\n    bl Options_GetFrame\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp]\n    mov r0, #0x43\n    str r0, [sp, #4]\n    add r0, r4, #0\n    mov r1, #4\n    mov r2, #1\n    mov r3, #0xe\n    bl LoadUserFrameGfx2\n    mov r1, #0\n    str r1, [sp]\n    mov r0, #0x43\n    str r0, [sp, #4]\n    add r0, r4, #0\n    mov r2, #0x1f\n    mov r3, #0xb\n    bl LoadUserFrameGfx1\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x2c]\n    mov r1, #2\n    add r2, r4, #0\n    mov r3, #1\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r1, #0\n    mov r0, #6\n    str r1, [sp]\n    lsl r0, r0, #8\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x2c]\n    mov r1, #6\n    add r2, r4, #0\n    mov r3, #1\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x2c]\n    mov r1, #0xb\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    mov r1, #0\n    mov r0, #6\n    str r1, [sp]\n    lsl r0, r0, #8\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    mov r0, #0x43\n    str r0, [sp, #0xc]\n    ldr r0, [sp, #0x2c]\n    mov r1, #0xc\n    add r2, r4, #0\n    mov r3, #5\n    bl GfGfxLoader_LoadScrnDataFromOpenNarc\n    mov r0, #0\n    add r1, r0, #0\n    bl BG_SetMaskColor\n    mov r0, #4\n    mov r1, #0\n    bl BG_SetMaskColor\n    mov r2, #0x33\n    ldr r1, _02238E28 ; =0x00000FD8\n    ldr r0, [sp, #0x10]\n    lsl r2, r2, #4\n    add r0, r0, r1\n    mov r1, #0\n    bl MI_CpuFill8\n    ldr r0, [sp, #0x2c]\n    mov r1, #5\n    add r2, sp, #0x38\n    mov r3, #0x43\n    bl GfGfxLoader_GetPlttDataFromOpenNarc\n    add r4, r0, #0\n    ldr r0, [sp, #0x38]\n    mov r2, #0xfe\n    ldr r1, [sp, #0x10]\n    lsl r2, r2, #4\n    add r1, r1, r2\n    ldr r0, [r0, #0xc]\n    mov r2, #0x80\n    bl MIi_CpuCopy16\n    ldr r0, [sp, #0x38]\n    ldr r2, _02238E2C ; =0x00001060\n    ldr r1, [sp, #0x10]\n    ldr r0, [r0, #0xc]\n    add r1, r1, r2\n    mov r2, #0x80\n    bl MIi_CpuCopy16\n    add r0, r4, #0\n    bl Heap_Free\n    mov r0, #0\n    str r0, [sp, #0x24]\n    str r0, [sp, #0x28]\n    ldr r1, _02238E2C ; =0x00001060\n    ldr r0, [sp, #0x10]\n    add r0, r0, r1\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x10]\n    sub r1, #0x80\n    add r0, r0, r1\n    str r0, [sp, #0x14]\n    mov r0, #0\n    str r0, [sp, #0x20]\n    str r0, [sp, #0x1c]\n    ldr r0, [sp, #0x28]\n    add r0, r0, #1\n    lsl r1, r0, #5\n    ldr r0, [sp, #0x10]\n    add r0, r0, r1\n    str r0, [sp, #0x30]\n    ldr r0, [sp, #0x24]\n    cmp r0, #0x15\n    blt _02238D7A\n    bl GF_AssertFail\n    ldr r0, [sp, #0x30]\n    mov r7, #1\n    add r4, r0, #2\n    ldr r0, [sp, #0x18]\n    add r6, r0, #2\n    ldr r0, [sp, #0x14]\n    add r5, r0, #2\n    ldr r0, [sp, #0x20]\n    asr r0, r0, #8\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    str r0, [sp, #0x34]\n    mov r0, #0xfe\n    lsl r0, r0, #4\n    ldrh r0, [r4, r0]\n    ldr r3, [sp, #0x34]\n    add r1, r6, #0\n    str r0, [sp]\n    add r0, r5, #0\n    mov r2, #1\n    bl BlendPalette\n    add r7, r7, #1\n    add r4, r4, #2\n    add r6, r6, #2\n    add r5, r5, #2\n    cmp r7, #0x10\n    blt _02238D92\n    ldr r0, [sp, #0x18]\n    add r0, #0x20\n    str r0, [sp, #0x18]\n    ldr r0, [sp, #0x24]\n    add r0, r0, #1\n    str r0, [sp, #0x24]\n    ldr r0, [sp, #0x1c]\n    cmp r0, #1\n    beq _02238DDE\n    mov r0, #3\n    ldr r1, [sp, #0x20]\n    lsl r0, r0, #8\n    add r1, r1, r0\n    mov r0, #1\n    lsl r0, r0, #0xc\n    str r1, [sp, #0x20]\n    cmp r1, r0\n    blt _02238D70\n    str r0, [sp, #0x20]\n    mov r0, #1\n    str r0, [sp, #0x1c]\n    b _02238D70\n    ldr r0, [sp, #0x14]\n    add r0, #0x20\n    str r0, [sp, #0x14]\n    ldr r0, [sp, #0x28]\n    add r0, r0, #1\n    str r0, [sp, #0x28]\n    cmp r0, #3\n    blt _02238D5E\n    ldr r1, _02238E2C ; =0x00001060\n    ldr r0, [sp, #0x10]\n    add r0, r0, r1\n    mov r1, #0x2a\n    lsl r1, r1, #4\n    bl DC_FlushRange\n    ldr r1, _02238E30 ; =0x00000FDC\n    ldr r0, [sp, #0x10]\n    mov r2, #1\n    str r2, [r0, r1]\n    ldr r2, _02238E34 ; =0x00001304\n    mov r3, #0\n    str r3, [r0, r2]\n    sub r2, r1, #4\n    ldr r1, [sp, #0x10]\n    ldr r0, _02238E38 ; =ov72_02238E3C\n    add r1, r1, r2\n    mov r2, #0x14\n    bl SysTask_CreateOnVBlankQueue\n    ldr r2, _02238E28 ; =0x00000FD8\n    ldr r1, [sp, #0x10]\n    str r0, [r1, r2]\n    ldr r0, [sp, #0x2c]\n    bl NARC_Delete\n    add sp, #0x3c\n    pop {r4, r5, r6, r7, pc}\n    _02238E28: .word 0x00000FD8\n    _02238E2C: .word 0x00001060\n    _02238E30: .word 0x00000FDC\n    _02238E34: .word 0x00001304\n    _02238E38: .word ov72_02238E3C"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x3c
+    // str r0, [sp, #0x10]
+    // ldr r4, [r0, #4]
+    // mov r0, #0x58
+    // mov r1, #0x43
+    // bl NARC_New
+    // mov r2, #0
+    // str r2, [sp]
+    // mov r1, #0x43
+    // str r1, [sp, #4]
+    // mov r1, #3
+    // add r3, r2, #0
+    // str r0, [sp, #0x2c]
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // mov r3, #0
+    // str r3, [sp]
+    // mov r0, #0x43
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #0x2c]
+    // mov r1, #3
+    // mov r2, #4
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // mov r1, #0x1a
+    // mov r0, #0
+    // lsl r1, r1, #4
+    // mov r2, #0x43
+    // bl LoadFontPal1
+    // mov r1, #0x1a
+    // mov r0, #4
+    // lsl r1, r1, #4
+    // mov r2, #0x43
+    // bl LoadFontPal1
+    // ldr r0, [sp, #0x10]
+    // ldr r0, [r0]
+    // ldr r0, [r0, #0x10]
+    // bl Options_GetFrame
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // mov r0, #0x43
+    // str r0, [sp, #4]
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #1
+    // mov r3, #0xe
+    // bl LoadUserFrameGfx2
+    // ldr r0, [sp, #0x10]
+    // ldr r0, [r0]
+    // ldr r0, [r0, #0x10]
+    // bl Options_GetFrame
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp]
+    // mov r0, #0x43
+    // str r0, [sp, #4]
+    // add r0, r4, #0
+    // mov r1, #4
+    // mov r2, #1
+    // mov r3, #0xe
+    // bl LoadUserFrameGfx2
+    // mov r1, #0
+    // str r1, [sp]
+    // mov r0, #0x43
+    // str r0, [sp, #4]
+    // add r0, r4, #0
+    // mov r2, #0x1f
+    // mov r3, #0xb
+    // bl LoadUserFrameGfx1
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x2c]
+    // mov r1, #2
+    // add r2, r4, #0
+    // mov r3, #1
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r1, #0
+    // mov r0, #6
+    // str r1, [sp]
+    // lsl r0, r0, #8
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x2c]
+    // mov r1, #6
+    // add r2, r4, #0
+    // mov r3, #1
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x2c]
+    // mov r1, #0xb
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // mov r1, #0
+    // mov r0, #6
+    // str r1, [sp]
+    // lsl r0, r0, #8
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // mov r0, #0x43
+    // str r0, [sp, #0xc]
+    // ldr r0, [sp, #0x2c]
+    // mov r1, #0xc
+    // add r2, r4, #0
+    // mov r3, #5
+    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl BG_SetMaskColor
+    // mov r0, #4
+    // mov r1, #0
+    // bl BG_SetMaskColor
+    // mov r2, #0x33
+    // ldr r1, _02238E28 ; =0x00000FD8
+    // ldr r0, [sp, #0x10]
+    // lsl r2, r2, #4
+    // add r0, r0, r1
+    // mov r1, #0
+    // bl MI_CpuFill8
+    // ldr r0, [sp, #0x2c]
+    // mov r1, #5
+    // add r2, sp, #0x38
+    // mov r3, #0x43
+    // bl GfGfxLoader_GetPlttDataFromOpenNarc
+    // add r4, r0, #0
+    // ldr r0, [sp, #0x38]
+    // mov r2, #0xfe
+    // ldr r1, [sp, #0x10]
+    // lsl r2, r2, #4
+    // add r1, r1, r2
+    // ldr r0, [r0, #0xc]
+    // mov r2, #0x80
+    // bl MIi_CpuCopy16
+    // ldr r0, [sp, #0x38]
+    // ldr r2, _02238E2C ; =0x00001060
+    // ldr r1, [sp, #0x10]
+    // ldr r0, [r0, #0xc]
+    // add r1, r1, r2
+    // mov r2, #0x80
+    // bl MIi_CpuCopy16
+    // add r0, r4, #0
+    // bl Heap_Free
+    // mov r0, #0
+    // str r0, [sp, #0x24]
+    // str r0, [sp, #0x28]
+    // ldr r1, _02238E2C ; =0x00001060
+    // ldr r0, [sp, #0x10]
+    // add r0, r0, r1
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #0x10]
+    // sub r1, #0x80
+    // add r0, r0, r1
+    // str r0, [sp, #0x14]
+    // mov r0, #0
+    // str r0, [sp, #0x20]
+    // str r0, [sp, #0x1c]
+    // ldr r0, [sp, #0x28]
+    // add r0, r0, #1
+    // lsl r1, r0, #5
+    // ldr r0, [sp, #0x10]
+    // add r0, r0, r1
+    // str r0, [sp, #0x30]
+    // ldr r0, [sp, #0x24]
+    // cmp r0, #0x15
+    // blt _02238D7A
+    // bl GF_AssertFail
+    // ldr r0, [sp, #0x30]
+    // mov r7, #1
+    // add r4, r0, #2
+    // ldr r0, [sp, #0x18]
+    // add r6, r0, #2
+    // ldr r0, [sp, #0x14]
+    // add r5, r0, #2
+    // ldr r0, [sp, #0x20]
+    // asr r0, r0, #8
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // str r0, [sp, #0x34]
+    // mov r0, #0xfe
+    // lsl r0, r0, #4
+    // ldrh r0, [r4, r0]
+    // ldr r3, [sp, #0x34]
+    // add r1, r6, #0
+    // str r0, [sp]
+    // add r0, r5, #0
+    // mov r2, #1
+    // bl BlendPalette
+    // add r7, r7, #1
+    // add r4, r4, #2
+    // add r6, r6, #2
+    // add r5, r5, #2
+    // cmp r7, #0x10
+    // blt _02238D92
+    // ldr r0, [sp, #0x18]
+    // add r0, #0x20
+    // str r0, [sp, #0x18]
+    // ldr r0, [sp, #0x24]
+    // add r0, r0, #1
+    // str r0, [sp, #0x24]
+    // ldr r0, [sp, #0x1c]
+    // cmp r0, #1
+    // beq _02238DDE
+    // mov r0, #3
+    // ldr r1, [sp, #0x20]
+    // lsl r0, r0, #8
+    // add r1, r1, r0
+    // mov r0, #1
+    // lsl r0, r0, #0xc
+    // str r1, [sp, #0x20]
+    // cmp r1, r0
+    // blt _02238D70
+    // str r0, [sp, #0x20]
+    // mov r0, #1
+    // str r0, [sp, #0x1c]
+    // b _02238D70
+    // ldr r0, [sp, #0x14]
+    // add r0, #0x20
+    // str r0, [sp, #0x14]
+    // ldr r0, [sp, #0x28]
+    // add r0, r0, #1
+    // str r0, [sp, #0x28]
+    // cmp r0, #3
+    // blt _02238D5E
+    // ldr r1, _02238E2C ; =0x00001060
+    // ldr r0, [sp, #0x10]
+    // add r0, r0, r1
+    // mov r1, #0x2a
+    // lsl r1, r1, #4
+    // bl DC_FlushRange
+    // ldr r1, _02238E30 ; =0x00000FDC
+    // ldr r0, [sp, #0x10]
+    // mov r2, #1
+    // str r2, [r0, r1]
+    // ldr r2, _02238E34 ; =0x00001304
+    // mov r3, #0
+    // str r3, [r0, r2]
+    // sub r2, r1, #4
+    // ldr r1, [sp, #0x10]
+    // ldr r0, _02238E38 ; =ov72_02238E3C
+    // add r1, r1, r2
+    // mov r2, #0x14
+    // bl SysTask_CreateOnVBlankQueue
+    // ldr r2, _02238E28 ; =0x00000FD8
+    // ldr r1, [sp, #0x10]
+    // str r0, [r1, r2]
+    // ldr r0, [sp, #0x2c]
+    // bl NARC_Delete
+    // add sp, #0x3c
+    // pop {r4, r5, r6, r7, pc}
+    // _02238E28: .word 0x00000FD8
+    // _02238E2C: .word 0x00001060
+    // _02238E30: .word 0x00000FDC
+    // _02238E34: .word 0x00001304
+    // _02238E38: .word ov72_02238E3C
+    // TODO: decompile
 }
+
 
 void ov72_02238E3C(void) {
-    /* Original at 0x02238E3C */
-    /* Requires manual decompilation - 80 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r0, [r4, #4]\n    cmp r0, #0\n    beq _02238EDA\n    ldr r1, _02238EDC ; =0x0000032B\n    mov r0, #1\n    ldrb r2, [r4, r1]\n    eor r2, r0\n    strb r2, [r4, r1]\n    ldrb r2, [r4, r1]\n    tst r0, r2\n    bne _02238EDA\n    add r0, r1, #1\n    ldr r0, [r4, r0]\n    cmp r0, #1\n    bhi _02238E72\n    sub r0, r1, #3\n    ldrsh r0, [r4, r0]\n    add r2, r4, #0\n    add r2, #0x88\n    lsl r0, r0, #5\n    add r0, r2, r0\n    mov r1, #0\n    mov r2, #0x20\n    bl GX_LoadBGPltt\n    mov r0, #0xcb\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    cmp r0, #0\n    beq _02238E80\n    cmp r0, #2\n    bne _02238E96\n    mov r0, #0xca\n    lsl r0, r0, #2\n    ldrsh r0, [r4, r0]\n    add r1, r4, #0\n    add r1, #0x88\n    lsl r0, r0, #5\n    add r0, r1, r0\n    mov r1, #0\n    mov r2, #0x20\n    bl GXS_LoadBGPltt\n    ldr r0, _02238EE0 ; =0x0000032A\n    ldrsb r1, [r4, r0]\n    cmp r1, #0\n    bne _02238EBE\n    sub r1, r0, #2\n    ldrsh r1, [r4, r1]\n    add r2, r1, #1\n    sub r1, r0, #2\n    strh r2, [r4, r1]\n    ldrsh r1, [r4, r1]\n    cmp r1, #0x15\n    blt _02238EDA\n    mov r2, #0x13\n    sub r1, r0, #2\n    strh r2, [r4, r1]\n    ldrsb r2, [r4, r0]\n    mov r1, #1\n    eor r1, r2\n    strb r1, [r4, r0]\n    pop {r4, pc}\n    sub r1, r0, #2\n    ldrsh r1, [r4, r1]\n    sub r2, r1, #1\n    sub r1, r0, #2\n    strh r2, [r4, r1]\n    ldrsh r1, [r4, r1]\n    cmp r1, #0\n    bge _02238EDA\n    mov r2, #1\n    sub r1, r0, #2\n    strh r2, [r4, r1]\n    ldrsb r1, [r4, r0]\n    eor r1, r2\n    strb r1, [r4, r0]\n    pop {r4, pc}\n    _02238EDC: .word 0x0000032B\n    _02238EE0: .word 0x0000032A"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r1, #0
+    // ldr r0, [r4, #4]
+    // cmp r0, #0
+    // beq _02238EDA
+    // ldr r1, _02238EDC ; =0x0000032B
+    // mov r0, #1
+    // ldrb r2, [r4, r1]
+    // eor r2, r0
+    // strb r2, [r4, r1]
+    // ldrb r2, [r4, r1]
+    // tst r0, r2
+    // bne _02238EDA
+    // add r0, r1, #1
+    // ldr r0, [r4, r0]
+    // cmp r0, #1
+    // bhi _02238E72
+    // sub r0, r1, #3
+    // ldrsh r0, [r4, r0]
+    // add r2, r4, #0
+    // add r2, #0x88
+    // lsl r0, r0, #5
+    // add r0, r2, r0
+    // mov r1, #0
+    // mov r2, #0x20
+    // bl GX_LoadBGPltt
+    // mov r0, #0xcb
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // cmp r0, #0
+    // beq _02238E80
+    // cmp r0, #2
+    // bne _02238E96
+    // mov r0, #0xca
+    // lsl r0, r0, #2
+    // ldrsh r0, [r4, r0]
+    // add r1, r4, #0
+    // add r1, #0x88
+    // lsl r0, r0, #5
+    // add r0, r1, r0
+    // mov r1, #0
+    // mov r2, #0x20
+    // bl GXS_LoadBGPltt
+    // ldr r0, _02238EE0 ; =0x0000032A
+    // ldrsb r1, [r4, r0]
+    // cmp r1, #0
+    // bne _02238EBE
+    // sub r1, r0, #2
+    // ldrsh r1, [r4, r1]
+    // add r2, r1, #1
+    // sub r1, r0, #2
+    // strh r2, [r4, r1]
+    // ldrsh r1, [r4, r1]
+    // cmp r1, #0x15
+    // blt _02238EDA
+    // mov r2, #0x13
+    // sub r1, r0, #2
+    // strh r2, [r4, r1]
+    // ldrsb r2, [r4, r0]
+    // mov r1, #1
+    // eor r1, r2
+    // strb r1, [r4, r0]
+    // pop {r4, pc}
+    // sub r1, r0, #2
+    // ldrsh r1, [r4, r1]
+    // sub r2, r1, #1
+    // sub r1, r0, #2
+    // strh r2, [r4, r1]
+    // ldrsh r1, [r4, r1]
+    // cmp r1, #0
+    // bge _02238EDA
+    // mov r2, #1
+    // sub r1, r0, #2
+    // strh r2, [r4, r1]
+    // ldrsb r1, [r4, r0]
+    // eor r1, r2
+    // strb r1, [r4, r0]
+    // pop {r4, pc}
+    // _02238EDC: .word 0x0000032B
+    // _02238EE0: .word 0x0000032A
+    // TODO: decompile
 }
+
 
 void ov72_02238EE4(void) {
-    /* Original at 0x02238EE4 */
-    /* Requires manual decompilation - 122 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0x14\n    mov r3, #4\n    add r4, r0, #0\n    str r3, [sp]\n    mov r0, #0x17\n    str r0, [sp, #4]\n    mov r0, #0x10\n    str r0, [sp, #8]\n    mov r0, #0xd\n    str r0, [sp, #0xc]\n    mov r0, #0xa4\n    ldr r1, _02238FE0 ; =0x00000E58\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #4]\n    add r1, r4, r1\n    mov r2, #0\n    bl AddWindowParameterized\n    ldr r0, _02238FE0 ; =0x00000E58\n    mov r1, #0\n    add r0, r4, r0\n    bl FillWindowPixelBuffer\n    mov r0, #0xe\n    str r0, [sp]\n    mov r0, #4\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xd\n    str r0, [sp, #0xc]\n    mov r0, #0x94\n    ldr r1, _02238FE4 ; =0x00000E38\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #4]\n    add r1, r4, r1\n    mov r2, #0\n    mov r3, #0x1a\n    bl AddWindowParameterized\n    ldr r0, _02238FE4 ; =0x00000E38\n    mov r1, #0xf\n    add r0, r4, r0\n    bl FillWindowPixelBuffer\n    mov r0, #0xe\n    str r0, [sp]\n    mov r0, #4\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xd\n    str r0, [sp, #0xc]\n    mov r0, #0x9c\n    ldr r1, _02238FE8 ; =0x00000E28\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #4]\n    add r1, r4, r1\n    mov r2, #0\n    mov r3, #0x1a\n    bl AddWindowParameterized\n    ldr r0, _02238FE8 ; =0x00000E28\n    mov r1, #0xf\n    add r0, r4, r0\n    bl FillWindowPixelBuffer\n    mov r0, #1\n    str r0, [sp]\n    mov r0, #0x18\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xd\n    str r0, [sp, #0xc]\n    mov r0, #0x85\n    lsl r0, r0, #2\n    ldr r1, _02238FEC ; =0x00000E48\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #4]\n    add r1, r4, r1\n    mov r2, #0\n    mov r3, #4\n    bl AddWindowParameterized\n    ldr r0, _02238FEC ; =0x00000E48\n    mov r1, #0\n    add r0, r4, r0\n    bl FillWindowPixelBuffer\n    mov r3, #1\n    ldr r0, _02238FF0 ; =0x000F0E00\n    str r3, [sp]\n    str r0, [sp, #4]\n    ldr r1, _02238FF4 ; =0x00000BE4\n    ldr r0, _02238FEC ; =0x00000E48\n    ldr r1, [r4, r1]\n    add r0, r4, r0\n    mov r2, #0\n    bl ov72_0223A3E0\n    mov r0, #0x13\n    str r0, [sp]\n    mov r0, #0x1b\n    str r0, [sp, #4]\n    mov r0, #4\n    str r0, [sp, #8]\n    mov r0, #0xd\n    str r0, [sp, #0xc]\n    mov r0, #0x28\n    ldr r1, _02238FF8 ; =0x00000E18\n    str r0, [sp, #0x10]\n    ldr r0, [r4, #4]\n    add r1, r4, r1\n    mov r2, #0\n    mov r3, #2\n    bl AddWindowParameterized\n    ldr r0, _02238FF8 ; =0x00000E18\n    mov r1, #0xf\n    add r0, r4, r0\n    bl FillWindowPixelBuffer\n    add sp, #0x14\n    pop {r3, r4, pc}\n    _02238FE0: .word 0x00000E58\n    _02238FE4: .word 0x00000E38\n    _02238FE8: .word 0x00000E28\n    _02238FEC: .word 0x00000E48\n    _02238FF0: .word 0x000F0E00\n    _02238FF4: .word 0x00000BE4\n    _02238FF8: .word 0x00000E18"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0x14
+    // mov r3, #4
+    // add r4, r0, #0
+    // str r3, [sp]
+    // mov r0, #0x17
+    // str r0, [sp, #4]
+    // mov r0, #0x10
+    // str r0, [sp, #8]
+    // mov r0, #0xd
+    // str r0, [sp, #0xc]
+    // mov r0, #0xa4
+    // ldr r1, _02238FE0 ; =0x00000E58
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #4]
+    // add r1, r4, r1
+    // mov r2, #0
+    // bl AddWindowParameterized
+    // ldr r0, _02238FE0 ; =0x00000E58
+    // mov r1, #0
+    // add r0, r4, r0
+    // bl FillWindowPixelBuffer
+    // mov r0, #0xe
+    // str r0, [sp]
+    // mov r0, #4
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xd
+    // str r0, [sp, #0xc]
+    // mov r0, #0x94
+    // ldr r1, _02238FE4 ; =0x00000E38
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #4]
+    // add r1, r4, r1
+    // mov r2, #0
+    // mov r3, #0x1a
+    // bl AddWindowParameterized
+    // ldr r0, _02238FE4 ; =0x00000E38
+    // mov r1, #0xf
+    // add r0, r4, r0
+    // bl FillWindowPixelBuffer
+    // mov r0, #0xe
+    // str r0, [sp]
+    // mov r0, #4
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xd
+    // str r0, [sp, #0xc]
+    // mov r0, #0x9c
+    // ldr r1, _02238FE8 ; =0x00000E28
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #4]
+    // add r1, r4, r1
+    // mov r2, #0
+    // mov r3, #0x1a
+    // bl AddWindowParameterized
+    // ldr r0, _02238FE8 ; =0x00000E28
+    // mov r1, #0xf
+    // add r0, r4, r0
+    // bl FillWindowPixelBuffer
+    // mov r0, #1
+    // str r0, [sp]
+    // mov r0, #0x18
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xd
+    // str r0, [sp, #0xc]
+    // mov r0, #0x85
+    // lsl r0, r0, #2
+    // ldr r1, _02238FEC ; =0x00000E48
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #4]
+    // add r1, r4, r1
+    // mov r2, #0
+    // mov r3, #4
+    // bl AddWindowParameterized
+    // ldr r0, _02238FEC ; =0x00000E48
+    // mov r1, #0
+    // add r0, r4, r0
+    // bl FillWindowPixelBuffer
+    // mov r3, #1
+    // ldr r0, _02238FF0 ; =0x000F0E00
+    // str r3, [sp]
+    // str r0, [sp, #4]
+    // ldr r1, _02238FF4 ; =0x00000BE4
+    // ldr r0, _02238FEC ; =0x00000E48
+    // ldr r1, [r4, r1]
+    // add r0, r4, r0
+    // mov r2, #0
+    // bl ov72_0223A3E0
+    // mov r0, #0x13
+    // str r0, [sp]
+    // mov r0, #0x1b
+    // str r0, [sp, #4]
+    // mov r0, #4
+    // str r0, [sp, #8]
+    // mov r0, #0xd
+    // str r0, [sp, #0xc]
+    // mov r0, #0x28
+    // ldr r1, _02238FF8 ; =0x00000E18
+    // str r0, [sp, #0x10]
+    // ldr r0, [r4, #4]
+    // add r1, r4, r1
+    // mov r2, #0
+    // mov r3, #2
+    // bl AddWindowParameterized
+    // ldr r0, _02238FF8 ; =0x00000E18
+    // mov r1, #0xf
+    // add r0, r4, r0
+    // bl FillWindowPixelBuffer
+    // add sp, #0x14
+    // pop {r3, r4, pc}
+    // _02238FE0: .word 0x00000E58
+    // _02238FE4: .word 0x00000E38
+    // _02238FE8: .word 0x00000E28
+    // _02238FEC: .word 0x00000E48
+    // _02238FF0: .word 0x000F0E00
+    // _02238FF4: .word 0x00000BE4
+    // _02238FF8: .word 0x00000E18
+    // TODO: decompile
 }
+
 
 void ov72_02238FFC(void) {
-    /* Original at 0x02238FFC */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _0223902C ; =0x00000E18\n    add r0, r4, r0\n    bl RemoveWindow\n    ldr r0, _02239030 ; =0x00000E48\n    add r0, r4, r0\n    bl RemoveWindow\n    ldr r0, _02239034 ; =0x00000E28\n    add r0, r4, r0\n    bl RemoveWindow\n    ldr r0, _02239038 ; =0x00000E38\n    add r0, r4, r0\n    bl RemoveWindow\n    ldr r0, _0223903C ; =0x00000E58\n    add r0, r4, r0\n    bl RemoveWindow\n    pop {r4, pc}\n    nop\n    _0223902C: .word 0x00000E18\n    _02239030: .word 0x00000E48\n    _02239034: .word 0x00000E28\n    _02239038: .word 0x00000E38\n    _0223903C: .word 0x00000E58"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _0223902C ; =0x00000E18
+    // add r0, r4, r0
+    // bl RemoveWindow
+    // ldr r0, _02239030 ; =0x00000E48
+    // add r0, r4, r0
+    // bl RemoveWindow
+    // ldr r0, _02239034 ; =0x00000E28
+    // add r0, r4, r0
+    // bl RemoveWindow
+    // ldr r0, _02239038 ; =0x00000E38
+    // add r0, r4, r0
+    // bl RemoveWindow
+    // ldr r0, _0223903C ; =0x00000E58
+    // add r0, r4, r0
+    // bl RemoveWindow
+    // pop {r4, pc}
+    // nop
+    // _0223902C: .word 0x00000E18
+    // _02239030: .word 0x00000E48
+    // _02239034: .word 0x00000E28
+    // _02239038: .word 0x00000E38
+    // _0223903C: .word 0x00000E58
+    // TODO: decompile
 }
+
 
 void ov72_02239040(void) {
-    /* Original at 0x02239040 */
-    /* Requires manual decompilation - 36 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0xb4\n    mov r1, #0x43\n    bl String_New\n    mov r1, #0xbe\n    lsl r1, r1, #4\n    str r0, [r4, r1]\n    mov r0, #4\n    mov r1, #0x43\n    bl String_New\n    ldr r1, _0223908C ; =0x00000BE8\n    str r0, [r4, r1]\n    mov r0, #3\n    mov r1, #0x43\n    bl String_New\n    ldr r1, _02239090 ; =0x00000BEC\n    str r0, [r4, r1]\n    sub r1, #0x18\n    ldr r0, [r4, r1]\n    mov r1, #0xc\n    bl NewString_ReadMsgData\n    ldr r1, _02239094 ; =0x00000BE4\n    str r0, [r4, r1]\n    mov r0, #1\n    lsl r0, r0, #8\n    mov r1, #0x43\n    bl String_New\n    mov r1, #0xbf\n    lsl r1, r1, #4\n    str r0, [r4, r1]\n    pop {r4, pc}\n    nop\n    _0223908C: .word 0x00000BE8\n    _02239090: .word 0x00000BEC\n    _02239094: .word 0x00000BE4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // mov r0, #0xb4
+    // mov r1, #0x43
+    // bl String_New
+    // mov r1, #0xbe
+    // lsl r1, r1, #4
+    // str r0, [r4, r1]
+    // mov r0, #4
+    // mov r1, #0x43
+    // bl String_New
+    // ldr r1, _0223908C ; =0x00000BE8
+    // str r0, [r4, r1]
+    // mov r0, #3
+    // mov r1, #0x43
+    // bl String_New
+    // ldr r1, _02239090 ; =0x00000BEC
+    // str r0, [r4, r1]
+    // sub r1, #0x18
+    // ldr r0, [r4, r1]
+    // mov r1, #0xc
+    // bl NewString_ReadMsgData
+    // ldr r1, _02239094 ; =0x00000BE4
+    // str r0, [r4, r1]
+    // mov r0, #1
+    // lsl r0, r0, #8
+    // mov r1, #0x43
+    // bl String_New
+    // mov r1, #0xbf
+    // lsl r1, r1, #4
+    // str r0, [r4, r1]
+    // pop {r4, pc}
+    // nop
+    // _0223908C: .word 0x00000BE8
+    // _02239090: .word 0x00000BEC
+    // _02239094: .word 0x00000BE4
+    // TODO: decompile
 }
+
 
 void ov72_02239098(void) {
-    /* Original at 0x02239098 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0xbf\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    bl String_Delete\n    ldr r0, _022390CC ; =0x00000BE4\n    ldr r0, [r4, r0]\n    bl String_Delete\n    ldr r0, _022390D0 ; =0x00000BEC\n    ldr r0, [r4, r0]\n    bl String_Delete\n    ldr r0, _022390D4 ; =0x00000BE8\n    ldr r0, [r4, r0]\n    bl String_Delete\n    mov r0, #0xbe\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    bl String_Delete\n    pop {r4, pc}\n    nop\n    _022390CC: .word 0x00000BE4\n    _022390D0: .word 0x00000BEC\n    _022390D4: .word 0x00000BE8"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // mov r0, #0xbf
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // bl String_Delete
+    // ldr r0, _022390CC ; =0x00000BE4
+    // ldr r0, [r4, r0]
+    // bl String_Delete
+    // ldr r0, _022390D0 ; =0x00000BEC
+    // ldr r0, [r4, r0]
+    // bl String_Delete
+    // ldr r0, _022390D4 ; =0x00000BE8
+    // ldr r0, [r4, r0]
+    // bl String_Delete
+    // mov r0, #0xbe
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // bl String_Delete
+    // pop {r4, pc}
+    // nop
+    // _022390CC: .word 0x00000BE4
+    // _022390D0: .word 0x00000BEC
+    // _022390D4: .word 0x00000BE8
+    // TODO: decompile
 }
+
 
 void ov72_022390D8(void) {
-    /* Original at 0x022390D8 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239100 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239104 ; =0x00000BDC\n    mov r2, #0x11\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x30\n    mov r2, #1\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239100: .word 0x00000F0F\n    _02239104: .word 0x00000BDC"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239100 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239104 ; =0x00000BDC
+    // mov r2, #0x11
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x30
+    // mov r2, #1
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239100: .word 0x00000F0F
+    // _02239104: .word 0x00000BDC
+    // TODO: decompile
 }
+
 
 void ov72_02239108(void) {
-    /* Original at 0x02239108 */
-    /* Requires manual decompilation - 39 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    add r4, r0, #0\n    ldr r0, _0223915C ; =0x0000136C\n    add r0, r4, r0\n    bl ov72_0223AF48\n    cmp r0, #0\n    beq _02239154\n    cmp r0, #2\n    bne _02239132\n    bl sub_0203946C\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov72_022387D0\n    mov r0, #0x2e\n    str r0, [r4, #0x1c]\n    b _02239154\n    ldr r0, _02239160 ; =0x00000F0F\n    ldr r1, _02239164 ; =0x00000BD8\n    str r0, [sp]\n    mov r2, #1\n    ldr r1, [r4, r1]\n    add r0, r4, #0\n    add r3, r2, #0\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #2\n    bl ov72_02238680\n    add r0, r4, #0\n    bl ov72_0223A420\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _0223915C: .word 0x0000136C\n    _02239160: .word 0x00000F0F\n    _02239164: .word 0x00000BD8"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // add r4, r0, #0
+    // ldr r0, _0223915C ; =0x0000136C
+    // add r0, r4, r0
+    // bl ov72_0223AF48
+    // cmp r0, #0
+    // beq _02239154
+    // cmp r0, #2
+    // bne _02239132
+    // bl sub_0203946C
+    // mov r1, #0
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // bl ov72_022387D0
+    // mov r0, #0x2e
+    // str r0, [r4, #0x1c]
+    // b _02239154
+    // ldr r0, _02239160 ; =0x00000F0F
+    // ldr r1, _02239164 ; =0x00000BD8
+    // str r0, [sp]
+    // mov r2, #1
+    // ldr r1, [r4, r1]
+    // add r0, r4, #0
+    // add r3, r2, #0
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #2
+    // bl ov72_02238680
+    // add r0, r4, #0
+    // bl ov72_0223A420
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _0223915C: .word 0x0000136C
+    // _02239160: .word 0x00000F0F
+    // _02239164: .word 0x00000BD8
+    // TODO: decompile
 }
+
 
 void ov72_02239168(void) {
-    /* Original at 0x02239168 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239190 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239194 ; =0x00000BD8\n    mov r2, #0xc\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x30\n    mov r2, #0x34\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239190: .word 0x00000F0F\n    _02239194: .word 0x00000BD8"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239190 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239194 ; =0x00000BD8
+    // mov r2, #0xc
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x30
+    // mov r2, #0x34
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239190: .word 0x00000F0F
+    // _02239194: .word 0x00000BD8
+    // TODO: decompile
 }
 
+
 void ov72_02239198(void) {
-    /* Original at 0x02239198 */
-    /* Requires manual decompilation - 35 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _022391E4 ; =0x0000136C\n    add r0, r4, r0\n    bl ov72_0223AF48\n    cmp r0, #0\n    beq _022391E0\n    cmp r0, #2\n    bne _022391C0\n    bl ov00_021EC5B4\n    cmp r0, #0\n    bne _022391BA\n    mov r0, #0\n    str r0, [r4, #0x1c]\n    b _022391E0\n    mov r0, #0x29\n    str r0, [r4, #0x1c]\n    b _022391E0\n    bl ov00_021EC5B4\n    cmp r0, #0\n    bne _022391D6\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov72_022387D0\n    mov r0, #0x2e\n    b _022391D8\n    mov r0, #0x29\n    str r0, [r4, #0x1c]\n    ldr r0, [r4]\n    mov r1, #1\n    str r1, [r0, #0x20]\n    mov r0, #3\n    pop {r4, pc}\n    _022391E4: .word 0x0000136C"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _022391E4 ; =0x0000136C
+    // add r0, r4, r0
+    // bl ov72_0223AF48
+    // cmp r0, #0
+    // beq _022391E0
+    // cmp r0, #2
+    // bne _022391C0
+    // bl ov00_021EC5B4
+    // cmp r0, #0
+    // bne _022391BA
+    // mov r0, #0
+    // str r0, [r4, #0x1c]
+    // b _022391E0
+    // mov r0, #0x29
+    // str r0, [r4, #0x1c]
+    // b _022391E0
+    // bl ov00_021EC5B4
+    // cmp r0, #0
+    // bne _022391D6
+    // mov r1, #0
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // bl ov72_022387D0
+    // mov r0, #0x2e
+    // b _022391D8
+    // mov r0, #0x29
+    // str r0, [r4, #0x1c]
+    // ldr r0, [r4]
+    // mov r1, #1
+    // str r1, [r0, #0x20]
+    // mov r0, #3
+    // pop {r4, pc}
+    // _022391E4: .word 0x0000136C
+    // TODO: decompile
 }
+
 
 void ov72_022391E8(void) {
     sub_02039418(*((u32*)(r0 + 0xc)));
@@ -477,103 +2880,587 @@ void ov72_022391E8(void) {
     *((u32*)(r4 + 0x1c)) = 3;
 }
 
+
 void ov72_02239220(void) {
-    /* Original at 0x02239220 */
-    /* Requires manual decompilation - 51 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0x44\n    add r4, r0, #0\n    bl ov00_021EC60C\n    bl ov00_021EC5B4\n    cmp r0, #0\n    beq _022392A0\n    bl ov00_021EC724\n    cmp r0, #8\n    bhi _0223927E\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02239246: ; jump table\n    add r0, sp, #4\n    bl ov00_021EC0FC\n    mov r1, #0xf5\n    lsl r1, r1, #4\n    str r0, [r4, r1]\n    ldr r2, [sp, #4]\n    add r0, r1, #4\n    str r2, [r4, r0]\n    bl ov00_021EC210\n    bl ov00_021EC8D8\n    add r0, r4, #0\n    bl ov72_0223A444\n    mov r0, #0x37\n    str r0, [r4, #0x1c]\n    b _022392A0\n    add r0, sp, #0\n    bl ov00_021EC0FC\n    add r0, r4, #0\n    bl ov72_0223A444\n    mov r1, #0x35\n    str r1, [r4, #0x1c]\n    ldr r0, _022392A8 ; =0x00000F5C\n    sub r1, #0x37\n    str r1, [r4, r0]\n    b _022392A0\n    add r0, sp, #8\n    bl ov00_021EC9E0\n    mov r0, #4\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    add sp, #0x44\n    pop {r3, r4, pc}\n    nop\n    _022392A8: .word 0x00000F5C"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0x44
+    // add r4, r0, #0
+    // bl ov00_021EC60C
+    // bl ov00_021EC5B4
+    // cmp r0, #0
+    // beq _022392A0
+    // bl ov00_021EC724
+    // cmp r0, #8
+    // bhi _0223927E
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02239246: ; jump table
+    // add r0, sp, #4
+    // bl ov00_021EC0FC
+    // mov r1, #0xf5
+    // lsl r1, r1, #4
+    // str r0, [r4, r1]
+    // ldr r2, [sp, #4]
+    // add r0, r1, #4
+    // str r2, [r4, r0]
+    // bl ov00_021EC210
+    // bl ov00_021EC8D8
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // mov r0, #0x37
+    // str r0, [r4, #0x1c]
+    // b _022392A0
+    // add r0, sp, #0
+    // bl ov00_021EC0FC
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // mov r1, #0x35
+    // str r1, [r4, #0x1c]
+    // ldr r0, _022392A8 ; =0x00000F5C
+    // sub r1, #0x37
+    // str r1, [r4, r0]
+    // b _022392A0
+    // add r0, sp, #8
+    // bl ov00_021EC9E0
+    // mov r0, #4
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // add sp, #0x44
+    // pop {r3, r4, pc}
+    // nop
+    // _022392A8: .word 0x00000F5C
+    // TODO: decompile
 }
+
 
 void ov72_022392AC(void) {
     ov00_021ECD04();
 }
 
+
 void ov72_022392BC(void) {
-    /* Original at 0x022392BC */
-    /* Requires manual decompilation - 68 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #8\n    add r4, r0, #0\n    bl ov00_021ECDC8\n    cmp r0, #5\n    bhi _02239362\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _022392D6: ; jump table\n    mov r0, #6\n    str r0, [r4, #0x1c]\n    b _02239362\n    add r0, r4, #0\n    bl ov72_0223A444\n    add r0, sp, #4\n    add r1, sp, #0\n    bl ov00_021EC11C\n    mov r1, #0xf5\n    lsl r1, r1, #4\n    str r0, [r4, r1]\n    ldr r2, [sp, #4]\n    add r0, r1, #4\n    str r2, [r4, r0]\n    bl ov00_021EC210\n    bl ov00_021EC8D8\n    mov r0, #0x37\n    str r0, [r4, #0x1c]\n    ldr r1, [sp]\n    cmp r1, #7\n    bhi _02239350\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02239320: ; jump table\n    str r0, [r4, #0x1c]\n    b _02239350\n    bl ov00_021FA0D8\n    mov r0, #0x37\n    str r0, [r4, #0x1c]\n    b _02239350\n    str r0, [r4, #0x1c]\n    b _02239350\n    bl ov00_021ED9B4\n    mov r0, #0x37\n    str r0, [r4, #0x1c]\n    b _02239350\n    bl sub_020399EC\n    ldr r1, [sp, #4]\n    ldr r0, _02239368 ; =0xFFFFB1E0\n    cmp r1, r0\n    bge _02239362\n    ldr r0, _0223936C ; =0xFFFF8AD1\n    cmp r1, r0\n    blt _02239362\n    mov r0, #0x37\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    add sp, #8\n    pop {r4, pc}\n    _02239368: .word 0xFFFFB1E0\n    _0223936C: .word 0xFFFF8AD1"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // bl ov00_021ECDC8
+    // cmp r0, #5
+    // bhi _02239362
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _022392D6: ; jump table
+    // mov r0, #6
+    // str r0, [r4, #0x1c]
+    // b _02239362
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // add r0, sp, #4
+    // add r1, sp, #0
+    // bl ov00_021EC11C
+    // mov r1, #0xf5
+    // lsl r1, r1, #4
+    // str r0, [r4, r1]
+    // ldr r2, [sp, #4]
+    // add r0, r1, #4
+    // str r2, [r4, r0]
+    // bl ov00_021EC210
+    // bl ov00_021EC8D8
+    // mov r0, #0x37
+    // str r0, [r4, #0x1c]
+    // ldr r1, [sp]
+    // cmp r1, #7
+    // bhi _02239350
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _02239320: ; jump table
+    // str r0, [r4, #0x1c]
+    // b _02239350
+    // bl ov00_021FA0D8
+    // mov r0, #0x37
+    // str r0, [r4, #0x1c]
+    // b _02239350
+    // str r0, [r4, #0x1c]
+    // b _02239350
+    // bl ov00_021ED9B4
+    // mov r0, #0x37
+    // str r0, [r4, #0x1c]
+    // b _02239350
+    // bl sub_020399EC
+    // ldr r1, [sp, #4]
+    // ldr r0, _02239368 ; =0xFFFFB1E0
+    // cmp r1, r0
+    // bge _02239362
+    // ldr r0, _0223936C ; =0xFFFF8AD1
+    // cmp r1, r0
+    // blt _02239362
+    // mov r0, #0x37
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // add sp, #8
+    // pop {r4, pc}
+    // _02239368: .word 0xFFFFB1E0
+    // _0223936C: .word 0xFFFF8AD1
+    // TODO: decompile
 }
 
+
 void ov72_02239370(void) {
-    /* Original at 0x02239370 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0, #8]\n    bl Save_SysInfo_GetDwcProfileId\n    cmp r0, #0\n    bne _0223938A\n    ldr r1, [r5]\n    ldr r0, [r1, #8]\n    ldr r1, [r1, #0x1c]\n    bl Save_SysInfo_SetDwcProfileId\n    ldr r0, [r5]\n    ldr r0, [r0, #8]\n    bl Save_SysInfo_GetDwcProfileId\n    add r4, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0, #0x14]\n    bl DWC_CreateFriendKey\n    add r3, r0, #0\n    add r2, r1, #0\n    add r0, r4, #0\n    add r1, r3, #0\n    bl ov72_022378C0\n    mov r0, #7\n    str r0, [r5, #0x1c]\n    mov r0, #3\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5]
+    // ldr r0, [r0, #8]
+    // bl Save_SysInfo_GetDwcProfileId
+    // cmp r0, #0
+    // bne _0223938A
+    // ldr r1, [r5]
+    // ldr r0, [r1, #8]
+    // ldr r1, [r1, #0x1c]
+    // bl Save_SysInfo_SetDwcProfileId
+    // ldr r0, [r5]
+    // ldr r0, [r0, #8]
+    // bl Save_SysInfo_GetDwcProfileId
+    // add r4, r0, #0
+    // ldr r0, [r5]
+    // ldr r0, [r0, #0x14]
+    // bl DWC_CreateFriendKey
+    // add r3, r0, #0
+    // add r2, r1, #0
+    // add r0, r4, #0
+    // add r1, r3, #0
+    // bl ov72_022378C0
+    // mov r0, #7
+    // str r0, [r5, #0x1c]
+    // mov r0, #3
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov72_022393B0(void) {
     ov72_02237CB0(3, 8, 0);
 }
 
+
 void ov72_022393CC(void) {
-    /* Original at 0x022393CC */
-    /* Requires manual decompilation - 87 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_02237B54\n    cmp r0, #0\n    beq _02239484\n    bl ov72_02237B74\n    ldr r1, _022394A0 ; =0x00000FD4\n    mov r2, #0\n    str r2, [r4, r1]\n    add r2, r0, #7\n    cmp r2, #9\n    bhi _02239478\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _022393F4: ; jump table\n    add r0, r4, #0\n    bl ov72_0223A444\n    ldr r0, [r4]\n    ldr r0, [r0, #0x18]\n    cmp r0, #0\n    beq _02239420\n    cmp r0, #1\n    beq _0223942C\n    cmp r0, #2\n    beq _02239432\n    b _0223949A\n    add r0, r4, #0\n    mov r1, #0xb\n    mov r2, #0xd\n    bl ov72_02238680\n    b _0223949A\n    mov r0, #0x19\n    str r0, [r4, #0x1c]\n    b _0223949A\n    mov r0, #0x1d\n    str r0, [r4, #0x1c]\n    b _0223949A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _0223949A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _0223949A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _0223949A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _0223949A\n    add r0, r4, #0\n    bl ov72_0223A444\n    bl sub_020399EC\n    b _0223949A\n    ldr r0, _022394A0 ; =0x00000FD4\n    ldr r1, [r4, r0]\n    add r1, r1, #1\n    str r1, [r4, r0]\n    ldr r1, [r4, r0]\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    cmp r1, r0\n    bne _0223949A\n    bl sub_020399EC\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _022394A0: .word 0x00000FD4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_02237B54
+    // cmp r0, #0
+    // beq _02239484
+    // bl ov72_02237B74
+    // ldr r1, _022394A0 ; =0x00000FD4
+    // mov r2, #0
+    // str r2, [r4, r1]
+    // add r2, r0, #7
+    // cmp r2, #9
+    // bhi _02239478
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _022393F4: ; jump table
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // ldr r0, [r4]
+    // ldr r0, [r0, #0x18]
+    // cmp r0, #0
+    // beq _02239420
+    // cmp r0, #1
+    // beq _0223942C
+    // cmp r0, #2
+    // beq _02239432
+    // b _0223949A
+    // add r0, r4, #0
+    // mov r1, #0xb
+    // mov r2, #0xd
+    // bl ov72_02238680
+    // b _0223949A
+    // mov r0, #0x19
+    // str r0, [r4, #0x1c]
+    // b _0223949A
+    // mov r0, #0x1d
+    // str r0, [r4, #0x1c]
+    // b _0223949A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _0223949A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _0223949A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _0223949A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _0223949A
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // bl sub_020399EC
+    // b _0223949A
+    // ldr r0, _022394A0 ; =0x00000FD4
+    // ldr r1, [r4, r0]
+    // add r1, r1, #1
+    // str r1, [r4, r0]
+    // ldr r1, [r4, r0]
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // cmp r1, r0
+    // bne _0223949A
+    // bl sub_020399EC
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _022394A0: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_022394A4(void) {
-    /* Original at 0x022394A4 */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r1, _022394D0 ; =0x00000F64\n    ldr r0, [r0, #0xc]\n    add r1, r4, r1\n    bl sub_0203189C\n    ldr r1, _022394D0 ; =0x00000F64\n    add r0, r4, r1\n    add r1, #0x64\n    add r1, r4, r1\n    bl ov72_02237CF4\n    mov r0, #0xa\n    str r0, [r4, #0x1c]\n    ldr r0, _022394D4 ; =0x00000FD4\n    mov r1, #0\n    str r1, [r4, r0]\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _022394D0: .word 0x00000F64\n    _022394D4: .word 0x00000FD4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4]
+    // ldr r1, _022394D0 ; =0x00000F64
+    // ldr r0, [r0, #0xc]
+    // add r1, r4, r1
+    // bl sub_0203189C
+    // ldr r1, _022394D0 ; =0x00000F64
+    // add r0, r4, r1
+    // add r1, #0x64
+    // add r1, r4, r1
+    // bl ov72_02237CF4
+    // mov r0, #0xa
+    // str r0, [r4, #0x1c]
+    // ldr r0, _022394D4 ; =0x00000FD4
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _022394D0: .word 0x00000F64
+    // _022394D4: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_022394D8(void) {
-    /* Original at 0x022394D8 */
-    /* Requires manual decompilation - 128 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    bl ov72_02237B54\n    cmp r0, #0\n    bne _022394E6\n    b _022395EE\n    bl ov72_02237B74\n    add r5, r0, #0\n    ldr r0, _02239608 ; =0x00000FD4\n    mov r1, #0\n    str r1, [r4, r0]\n    add r1, r5, #7\n    cmp r1, #9\n    bhi _022395E2\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02239504: ; jump table\n    add r0, r4, #0\n    bl ov72_0223A444\n    ldr r0, _0223960C ; =0x00000FC8\n    ldr r1, [r4, r0]\n    cmp r1, #0\n    beq _02239530\n    cmp r1, #1\n    beq _02239586\n    cmp r1, #2\n    beq _02239586\n    b _02239596\n    add r1, r0, #4\n    ldr r1, [r4, r1]\n    cmp r1, #3\n    bhi _02239604\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _02239544: ; jump table\n    ldr r0, [r4]\n    ldr r0, [r0, #0x18]\n    cmp r0, #0\n    beq _0223955E\n    cmp r0, #1\n    beq _0223956A\n    cmp r0, #2\n    beq _02239570\n    b _02239604\n    add r0, r4, #0\n    mov r1, #0xb\n    mov r2, #0xd\n    bl ov72_02238680\n    b _02239604\n    mov r0, #0x19\n    str r0, [r4, #0x1c]\n    b _02239604\n    mov r0, #0x1d\n    str r0, [r4, #0x1c]\n    b _02239604\n    sub r0, #0x6c\n    str r5, [r4, r0]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239604\n    ldr r0, _02239610 ; =0x00000F5C\n    str r5, [r4, r0]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239604\n    add r0, r4, #0\n    bl ov72_0223A444\n    bl sub_020399EC\n    b _02239604\n    sub r0, #0x78\n    str r5, [r4, r0]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239604\n    sub r0, #0x78\n    str r5, [r4, r0]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239604\n    sub r0, #0x78\n    str r5, [r4, r0]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239604\n    sub r0, #0x78\n    str r5, [r4, r0]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239604\n    add r0, r4, #0\n    bl ov72_0223A444\n    bl sub_020399EC\n    b _02239604\n    ldr r0, _02239608 ; =0x00000FD4\n    ldr r1, [r4, r0]\n    add r1, r1, #1\n    str r1, [r4, r0]\n    ldr r1, [r4, r0]\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    cmp r1, r0\n    bne _02239604\n    bl sub_020399EC\n    mov r0, #3\n    pop {r3, r4, r5, pc}\n    _02239608: .word 0x00000FD4\n    _0223960C: .word 0x00000FC8\n    _02239610: .word 0x00000F5C"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // bl ov72_02237B54
+    // cmp r0, #0
+    // bne _022394E6
+    // b _022395EE
+    // bl ov72_02237B74
+    // add r5, r0, #0
+    // ldr r0, _02239608 ; =0x00000FD4
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // add r1, r5, #7
+    // cmp r1, #9
+    // bhi _022395E2
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _02239504: ; jump table
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // ldr r0, _0223960C ; =0x00000FC8
+    // ldr r1, [r4, r0]
+    // cmp r1, #0
+    // beq _02239530
+    // cmp r1, #1
+    // beq _02239586
+    // cmp r1, #2
+    // beq _02239586
+    // b _02239596
+    // add r1, r0, #4
+    // ldr r1, [r4, r1]
+    // cmp r1, #3
+    // bhi _02239604
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _02239544: ; jump table
+    // ldr r0, [r4]
+    // ldr r0, [r0, #0x18]
+    // cmp r0, #0
+    // beq _0223955E
+    // cmp r0, #1
+    // beq _0223956A
+    // cmp r0, #2
+    // beq _02239570
+    // b _02239604
+    // add r0, r4, #0
+    // mov r1, #0xb
+    // mov r2, #0xd
+    // bl ov72_02238680
+    // b _02239604
+    // mov r0, #0x19
+    // str r0, [r4, #0x1c]
+    // b _02239604
+    // mov r0, #0x1d
+    // str r0, [r4, #0x1c]
+    // b _02239604
+    // sub r0, #0x6c
+    // str r5, [r4, r0]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239604
+    // ldr r0, _02239610 ; =0x00000F5C
+    // str r5, [r4, r0]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239604
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // bl sub_020399EC
+    // b _02239604
+    // sub r0, #0x78
+    // str r5, [r4, r0]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239604
+    // sub r0, #0x78
+    // str r5, [r4, r0]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239604
+    // sub r0, #0x78
+    // str r5, [r4, r0]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239604
+    // sub r0, #0x78
+    // str r5, [r4, r0]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239604
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // bl sub_020399EC
+    // b _02239604
+    // ldr r0, _02239608 ; =0x00000FD4
+    // ldr r1, [r4, r0]
+    // add r1, r1, #1
+    // str r1, [r4, r0]
+    // ldr r1, [r4, r0]
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // cmp r1, r0
+    // bne _02239604
+    // bl sub_020399EC
+    // mov r0, #3
+    // pop {r3, r4, r5, pc}
+    // _02239608: .word 0x00000FD4
+    // _0223960C: .word 0x00000FC8
+    // _02239610: .word 0x00000F5C
+    // TODO: decompile
 }
+
 
 void ov72_02239614(void) {
-    /* Original at 0x02239614 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r0, #0x94\n    ldr r0, [r0]\n    bl ov72_02237B80\n    mov r0, #0xc\n    str r0, [r4, #0x1c]\n    ldr r0, _02239634 ; =0x00000FD4\n    mov r1, #0\n    str r1, [r4, r0]\n    add r0, r4, #0\n    bl ov72_0223A420\n    mov r0, #3\n    pop {r4, pc}\n    _02239634: .word 0x00000FD4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r0, #0x94
+    // ldr r0, [r0]
+    // bl ov72_02237B80
+    // mov r0, #0xc
+    // str r0, [r4, #0x1c]
+    // ldr r0, _02239634 ; =0x00000FD4
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // add r0, r4, #0
+    // bl ov72_0223A420
+    // mov r0, #3
+    // pop {r4, pc}
+    // _02239634: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_02239638(void) {
-    /* Original at 0x02239638 */
-    /* Requires manual decompilation - 75 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_02237B54\n    cmp r0, #0\n    beq _022396CA\n    bl ov72_02237B74\n    ldr r1, _022396E4 ; =0x00000FD4\n    mov r2, #0\n    str r2, [r4, r1]\n    add r2, r0, #7\n    cmp r2, #6\n    bhi _022396B4\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _02239660: ; jump table\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    b _022396C2\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    b _022396C2\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    b _022396C2\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    b _022396C2\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    b _022396C2\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    bl sub_020399EC\n    b _022396C2\n    cmp r0, #0\n    ble _022396C2\n    add r1, r4, #0\n    add r1, #0x98\n    str r0, [r1]\n    ldr r0, [r4, #0x20]\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _022396E0\n    ldr r0, _022396E4 ; =0x00000FD4\n    ldr r1, [r4, r0]\n    add r1, r1, #1\n    str r1, [r4, r0]\n    ldr r1, [r4, r0]\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    cmp r1, r0\n    bne _022396E0\n    bl sub_020399EC\n    mov r0, #3\n    pop {r4, pc}\n    _022396E4: .word 0x00000FD4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_02237B54
+    // cmp r0, #0
+    // beq _022396CA
+    // bl ov72_02237B74
+    // ldr r1, _022396E4 ; =0x00000FD4
+    // mov r2, #0
+    // str r2, [r4, r1]
+    // add r2, r0, #7
+    // cmp r2, #6
+    // bhi _022396B4
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _02239660: ; jump table
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // b _022396C2
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // b _022396C2
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // b _022396C2
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // b _022396C2
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // b _022396C2
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // bl sub_020399EC
+    // b _022396C2
+    // cmp r0, #0
+    // ble _022396C2
+    // add r1, r4, #0
+    // add r1, #0x98
+    // str r0, [r1]
+    // ldr r0, [r4, #0x20]
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _022396E0
+    // ldr r0, _022396E4 ; =0x00000FD4
+    // ldr r1, [r4, r0]
+    // add r1, r1, #1
+    // str r1, [r4, r0]
+    // ldr r1, [r4, r0]
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // cmp r1, r0
+    // bne _022396E0
+    // bl sub_020399EC
+    // mov r0, #3
+    // pop {r4, pc}
+    // _022396E4: .word 0x00000FD4
+    // TODO: decompile
 }
 
+
 void ov72_022396E8(void) {
-    /* Original at 0x022396E8 */
-    /* Requires manual decompilation - 53 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #8\n    add r4, r0, #0\n    add r0, #0x98\n    ldr r2, [r0]\n    cmp r2, #0x64\n    blt _02239720\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0xbd\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    mov r1, #0\n    mov r3, #3\n    bl BufferIntegerAsString\n    ldr r0, _02239758 ; =0x00000F0F\n    ldr r1, _0223975C ; =0x00000BD4\n    str r0, [sp]\n    ldr r1, [r4, r1]\n    add r0, r4, #0\n    mov r2, #0xb\n    mov r3, #1\n    bl ov72_0223A280\n    b _02239746\n    mov r3, #2\n    str r3, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0xbd\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    mov r1, #0\n    bl BufferIntegerAsString\n    ldr r0, _02239758 ; =0x00000F0F\n    ldr r1, _0223975C ; =0x00000BD4\n    str r0, [sp]\n    ldr r1, [r4, r1]\n    add r0, r4, #0\n    mov r2, #0\n    mov r3, #1\n    bl ov72_0223A280\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0xe\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #8\n    pop {r4, pc}\n    nop\n    _02239758: .word 0x00000F0F\n    _0223975C: .word 0x00000BD4"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // add r0, #0x98
+    // ldr r2, [r0]
+    // cmp r2, #0x64
+    // blt _02239720
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0xbd
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // mov r1, #0
+    // mov r3, #3
+    // bl BufferIntegerAsString
+    // ldr r0, _02239758 ; =0x00000F0F
+    // ldr r1, _0223975C ; =0x00000BD4
+    // str r0, [sp]
+    // ldr r1, [r4, r1]
+    // add r0, r4, #0
+    // mov r2, #0xb
+    // mov r3, #1
+    // bl ov72_0223A280
+    // b _02239746
+    // mov r3, #2
+    // str r3, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0xbd
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // mov r1, #0
+    // bl BufferIntegerAsString
+    // ldr r0, _02239758 ; =0x00000F0F
+    // ldr r1, _0223975C ; =0x00000BD4
+    // str r0, [sp]
+    // ldr r1, [r4, r1]
+    // add r0, r4, #0
+    // mov r2, #0
+    // mov r3, #1
+    // bl ov72_0223A280
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0xe
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #8
+    // pop {r4, pc}
+    // nop
+    // _02239758: .word 0x00000F0F
+    // _0223975C: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 u32 ov72_02239760(void) {
     ov72_0223A520(1, r0);
@@ -582,115 +3469,520 @@ u32 ov72_02239760(void) {
     return 3;
 }
 
+
 void ov72_02239784(void) {
-    /* Original at 0x02239784 */
-    /* Requires manual decompilation - 45 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0x1c\n    add r5, r0, #0\n    bl ov72_0223A588\n    add r4, r0, #0\n    beq _022397E0\n    cmp r4, #0\n    ble _022397D2\n    add r0, sp, #0\n    add r1, sp, #0x10\n    bl ov00_021ECB94\n    add r0, r5, #0\n    add r0, #0x9c\n    add r1, r5, #0\n    add r2, r5, #0\n    str r4, [r0]\n    add r1, #0x94\n    add r2, #0x9c\n    ldr r0, [r5]\n    ldr r1, [r1]\n    ldr r2, [r2]\n    lsl r1, r1, #0x18\n    lsl r2, r2, #0x18\n    ldr r0, [r0, #4]\n    lsr r1, r1, #0x18\n    lsr r2, r2, #0x18\n    add r3, sp, #0\n    bl sub_0202D720\n    cmp r0, #0\n    beq _022397CC\n    mov r0, #0x14\n    str r0, [r5, #0x1c]\n    b _022397E0\n    mov r0, #0x10\n    str r0, [r5, #0x1c]\n    b _022397E0\n    mov r1, #0\n    add r0, r5, #0\n    add r2, r1, #0\n    bl ov72_0223A41C\n    mov r0, #0x15\n    str r0, [r5, #0x1c]\n    mov r0, #3\n    add sp, #0x1c\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0x1c
+    // add r5, r0, #0
+    // bl ov72_0223A588
+    // add r4, r0, #0
+    // beq _022397E0
+    // cmp r4, #0
+    // ble _022397D2
+    // add r0, sp, #0
+    // add r1, sp, #0x10
+    // bl ov00_021ECB94
+    // add r0, r5, #0
+    // add r0, #0x9c
+    // add r1, r5, #0
+    // add r2, r5, #0
+    // str r4, [r0]
+    // add r1, #0x94
+    // add r2, #0x9c
+    // ldr r0, [r5]
+    // ldr r1, [r1]
+    // ldr r2, [r2]
+    // lsl r1, r1, #0x18
+    // lsl r2, r2, #0x18
+    // ldr r0, [r0, #4]
+    // lsr r1, r1, #0x18
+    // lsr r2, r2, #0x18
+    // add r3, sp, #0
+    // bl sub_0202D720
+    // cmp r0, #0
+    // beq _022397CC
+    // mov r0, #0x14
+    // str r0, [r5, #0x1c]
+    // b _022397E0
+    // mov r0, #0x10
+    // str r0, [r5, #0x1c]
+    // b _022397E0
+    // mov r1, #0
+    // add r0, r5, #0
+    // add r2, r1, #0
+    // bl ov72_0223A41C
+    // mov r0, #0x15
+    // str r0, [r5, #0x1c]
+    // mov r0, #3
+    // add sp, #0x1c
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void ov72_022397E8(void) {
-    /* Original at 0x022397E8 */
-    /* Requires manual decompilation - 50 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #8\n    add r4, r0, #0\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0xbd\n    add r2, r4, #0\n    lsl r0, r0, #4\n    add r2, #0x9c\n    ldr r0, [r4, r0]\n    ldr r2, [r2]\n    mov r1, #0\n    mov r3, #3\n    bl BufferIntegerAsString\n    mov r3, #2\n    mov r0, #0xbd\n    add r2, r4, #0\n    str r3, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    lsl r0, r0, #4\n    add r2, #0x94\n    ldr r0, [r4, r0]\n    ldr r2, [r2]\n    bl BufferIntegerAsString\n    ldr r0, _02239850 ; =0x00000F0F\n    mov r2, #1\n    str r0, [sp]\n    ldr r1, _02239854 ; =0x00000BD4\n    add r0, r4, #0\n    ldr r1, [r4, r1]\n    add r3, r2, #0\n    bl ov72_0223A280\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x11\n    bl ov72_02238680\n    add r4, #0xa0\n    ldr r2, _02239858 ; =0x00000A38\n    mov r0, #0\n    add r1, r4, #0\n    bl MIi_CpuClearFast\n    mov r0, #3\n    add sp, #8\n    pop {r4, pc}\n    _02239850: .word 0x00000F0F\n    _02239854: .word 0x00000BD4\n    _02239858: .word 0x00000A38"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0xbd
+    // add r2, r4, #0
+    // lsl r0, r0, #4
+    // add r2, #0x9c
+    // ldr r0, [r4, r0]
+    // ldr r2, [r2]
+    // mov r1, #0
+    // mov r3, #3
+    // bl BufferIntegerAsString
+    // mov r3, #2
+    // mov r0, #0xbd
+    // add r2, r4, #0
+    // str r3, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // lsl r0, r0, #4
+    // add r2, #0x94
+    // ldr r0, [r4, r0]
+    // ldr r2, [r2]
+    // bl BufferIntegerAsString
+    // ldr r0, _02239850 ; =0x00000F0F
+    // mov r2, #1
+    // str r0, [sp]
+    // ldr r1, _02239854 ; =0x00000BD4
+    // add r0, r4, #0
+    // ldr r1, [r4, r1]
+    // add r3, r2, #0
+    // bl ov72_0223A280
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x11
+    // bl ov72_02238680
+    // add r4, #0xa0
+    // ldr r2, _02239858 ; =0x00000A38
+    // mov r0, #0
+    // add r1, r4, #0
+    // bl MIi_CpuClearFast
+    // mov r0, #3
+    // add sp, #8
+    // pop {r4, pc}
+    // _02239850: .word 0x00000F0F
+    // _02239854: .word 0x00000BD4
+    // _02239858: .word 0x00000A38
+    // TODO: decompile
 }
+
 
 void ov72_0223985C(void) {
-    /* Original at 0x0223985C */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239884 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239888 ; =0x00000BD4\n    mov r2, #2\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A280\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0xd\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239884: .word 0x00000F0F\n    _02239888: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239884 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239888 ; =0x00000BD4
+    // mov r2, #2
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A280
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0xd
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239884: .word 0x00000F0F
+    // _02239888: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 void ov72_0223988C(void) {
-    /* Original at 0x0223988C */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #0\n    add r0, #0x90\n    add r1, #0x9c\n    add r2, r4, #0\n    ldr r0, [r0]\n    ldr r1, [r1]\n    add r2, #0xa0\n    bl ov72_02237BD0\n    add r0, r4, #0\n    bl ov72_0223A420\n    mov r0, #0x12\n    str r0, [r4, #0x1c]\n    ldr r0, _022398B8 ; =0x00000FD4\n    mov r1, #0\n    str r1, [r4, r0]\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _022398B8: .word 0x00000FD4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r1, r4, #0
+    // add r0, #0x90
+    // add r1, #0x9c
+    // add r2, r4, #0
+    // ldr r0, [r0]
+    // ldr r1, [r1]
+    // add r2, #0xa0
+    // bl ov72_02237BD0
+    // add r0, r4, #0
+    // bl ov72_0223A420
+    // mov r0, #0x12
+    // str r0, [r4, #0x1c]
+    // ldr r0, _022398B8 ; =0x00000FD4
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _022398B8: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_022398BC(void) {
-    /* Original at 0x022398BC */
-    /* Requires manual decompilation - 114 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0x1c\n    add r4, r0, #0\n    bl ov72_02237B54\n    cmp r0, #0\n    beq _022399AA\n    bl ov72_02237B74\n    ldr r1, _022399C8 ; =0x00000FD4\n    mov r2, #0\n    str r2, [r4, r1]\n    add r2, r0, #7\n    cmp r2, #7\n    bhi _022399C0\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _022398E6: ; jump table\n    add r2, r4, #0\n    add r3, r4, #0\n    add r2, #0x90\n    add r3, #0x9c\n    ldr r0, [r4]\n    ldr r2, [r2]\n    ldr r3, [r3]\n    add r1, r4, #0\n    lsl r2, r2, #0x18\n    lsl r3, r3, #0x18\n    ldr r0, [r0, #4]\n    add r1, #0xa0\n    lsr r2, r2, #0x18\n    lsr r3, r3, #0x18\n    bl sub_0202D7C0\n    add r0, r4, #0\n    mov r1, #0x27\n    mov r2, #0x13\n    bl ov72_02238680\n    add r0, sp, #0\n    add r1, sp, #0x10\n    bl ov00_021ECB94\n    add r1, r4, #0\n    ldr r0, [r4]\n    add r1, #0x94\n    add r4, #0x9c\n    ldr r1, [r1]\n    ldr r2, [r4]\n    lsl r1, r1, #0x18\n    lsl r2, r2, #0x18\n    ldr r0, [r0, #4]\n    lsr r1, r1, #0x18\n    lsr r2, r2, #0x18\n    add r3, sp, #0\n    bl sub_0202D678\n    b _022399C0\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _022399C0\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _022399C0\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0xb\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _022399C0\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _022399C0\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _022399C0\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    bl sub_020399EC\n    b _022399C0\n    ldr r0, _022399C8 ; =0x00000FD4\n    ldr r1, [r4, r0]\n    add r1, r1, #1\n    str r1, [r4, r0]\n    ldr r1, [r4, r0]\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    cmp r1, r0\n    bne _022399C0\n    bl sub_020399EC\n    mov r0, #3\n    add sp, #0x1c\n    pop {r3, r4, pc}\n    nop\n    _022399C8: .word 0x00000FD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0x1c
+    // add r4, r0, #0
+    // bl ov72_02237B54
+    // cmp r0, #0
+    // beq _022399AA
+    // bl ov72_02237B74
+    // ldr r1, _022399C8 ; =0x00000FD4
+    // mov r2, #0
+    // str r2, [r4, r1]
+    // add r2, r0, #7
+    // cmp r2, #7
+    // bhi _022399C0
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _022398E6: ; jump table
+    // add r2, r4, #0
+    // add r3, r4, #0
+    // add r2, #0x90
+    // add r3, #0x9c
+    // ldr r0, [r4]
+    // ldr r2, [r2]
+    // ldr r3, [r3]
+    // add r1, r4, #0
+    // lsl r2, r2, #0x18
+    // lsl r3, r3, #0x18
+    // ldr r0, [r0, #4]
+    // add r1, #0xa0
+    // lsr r2, r2, #0x18
+    // lsr r3, r3, #0x18
+    // bl sub_0202D7C0
+    // add r0, r4, #0
+    // mov r1, #0x27
+    // mov r2, #0x13
+    // bl ov72_02238680
+    // add r0, sp, #0
+    // add r1, sp, #0x10
+    // bl ov00_021ECB94
+    // add r1, r4, #0
+    // ldr r0, [r4]
+    // add r1, #0x94
+    // add r4, #0x9c
+    // ldr r1, [r1]
+    // ldr r2, [r4]
+    // lsl r1, r1, #0x18
+    // lsl r2, r2, #0x18
+    // ldr r0, [r0, #4]
+    // lsr r1, r1, #0x18
+    // lsr r2, r2, #0x18
+    // add r3, sp, #0
+    // bl sub_0202D678
+    // b _022399C0
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _022399C0
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _022399C0
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0xb
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _022399C0
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _022399C0
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _022399C0
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // bl sub_020399EC
+    // b _022399C0
+    // ldr r0, _022399C8 ; =0x00000FD4
+    // ldr r1, [r4, r0]
+    // add r1, r1, #1
+    // str r1, [r4, r0]
+    // ldr r1, [r4, r0]
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // cmp r1, r0
+    // bne _022399C0
+    // bl sub_020399EC
+    // mov r0, #3
+    // add sp, #0x1c
+    // pop {r3, r4, pc}
+    // nop
+    // _022399C8: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_022399CC(void) {
-    /* Original at 0x022399CC */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239A00 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239A04 ; =0x00000BD4\n    mov r2, #3\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x2d\n    bl ov72_02238680\n    add r0, r4, #0\n    bl ov72_0223A444\n    ldr r0, [r4]\n    mov r1, #0\n    str r1, [r0, #0x20]\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239A00: .word 0x00000F0F\n    _02239A04: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239A00 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239A04 ; =0x00000BD4
+    // mov r2, #3
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x2d
+    // bl ov72_02238680
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // ldr r0, [r4]
+    // mov r1, #0
+    // str r1, [r0, #0x20]
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239A00: .word 0x00000F0F
+    // _02239A04: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 void ov72_02239A08(void) {
-    /* Original at 0x02239A08 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239A34 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239A38 ; =0x00000BD4\n    mov r2, #7\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x1a\n    bl ov72_02238680\n    add r0, r4, #0\n    bl ov72_0223A420\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    _02239A34: .word 0x00000F0F\n    _02239A38: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239A34 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239A38 ; =0x00000BD4
+    // mov r2, #7
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x1a
+    // bl ov72_02238680
+    // add r0, r4, #0
+    // bl ov72_0223A420
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // _02239A34: .word 0x00000F0F
+    // _02239A38: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 void ov72_02239A3C(void) {
-    /* Original at 0x02239A3C */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, [r5]\n    ldr r0, [r0]\n    bl sub_0202D568\n    add r4, r0, #0\n    ldr r0, [r5]\n    add r1, sp, #0\n    ldr r0, [r0, #4]\n    bl sub_0202D7F0\n    ldr r0, [r5]\n    ldr r2, _02239A80 ; =0x00000AD8\n    ldr r0, [r0, #0xc]\n    mov r1, #1\n    add r2, r5, r2\n    bl sub_02069528\n    add r1, sp, #0\n    ldrb r0, [r1]\n    ldr r3, _02239A80 ; =0x00000AD8\n    ldrb r1, [r1, #1]\n    add r2, r4, #0\n    add r3, r5, r3\n    bl ov72_02237C30\n    mov r0, #0x1b\n    str r0, [r5, #0x1c]\n    ldr r0, _02239A84 ; =0x00000FD4\n    mov r1, #0\n    str r1, [r5, r0]\n    mov r0, #3\n    pop {r3, r4, r5, pc}\n    _02239A80: .word 0x00000AD8\n    _02239A84: .word 0x00000FD4"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // ldr r0, [r5]
+    // ldr r0, [r0]
+    // bl sub_0202D568
+    // add r4, r0, #0
+    // ldr r0, [r5]
+    // add r1, sp, #0
+    // ldr r0, [r0, #4]
+    // bl sub_0202D7F0
+    // ldr r0, [r5]
+    // ldr r2, _02239A80 ; =0x00000AD8
+    // ldr r0, [r0, #0xc]
+    // mov r1, #1
+    // add r2, r5, r2
+    // bl sub_02069528
+    // add r1, sp, #0
+    // ldrb r0, [r1]
+    // ldr r3, _02239A80 ; =0x00000AD8
+    // ldrb r1, [r1, #1]
+    // add r2, r4, #0
+    // add r3, r5, r3
+    // bl ov72_02237C30
+    // mov r0, #0x1b
+    // str r0, [r5, #0x1c]
+    // ldr r0, _02239A84 ; =0x00000FD4
+    // mov r1, #0
+    // str r1, [r5, r0]
+    // mov r0, #3
+    // pop {r3, r4, r5, pc}
+    // _02239A80: .word 0x00000AD8
+    // _02239A84: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_02239A88(void) {
-    /* Original at 0x02239A88 */
-    /* Requires manual decompilation - 86 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_02237B54\n    cmp r0, #0\n    beq _02239B3C\n    bl ov72_02237B74\n    ldr r1, _02239B58 ; =0x00000FD4\n    mov r2, #0\n    str r2, [r4, r1]\n    add r2, r0, #7\n    cmp r2, #7\n    bhi _02239B52\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _02239AB0: ; jump table\n    ldr r0, [r4]\n    mov r1, #5\n    ldr r0, [r0]\n    mov r2, #2\n    bl sub_0202D5DC\n    add r0, r4, #0\n    mov r1, #0x27\n    mov r2, #0x1c\n    bl ov72_02238680\n    b _02239B52\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239B52\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239B52\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239B52\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239B52\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239B52\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    bl sub_020399EC\n    b _02239B52\n    ldr r0, _02239B58 ; =0x00000FD4\n    ldr r1, [r4, r0]\n    add r1, r1, #1\n    str r1, [r4, r0]\n    ldr r1, [r4, r0]\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    cmp r1, r0\n    bne _02239B52\n    bl sub_020399EC\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _02239B58: .word 0x00000FD4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_02237B54
+    // cmp r0, #0
+    // beq _02239B3C
+    // bl ov72_02237B74
+    // ldr r1, _02239B58 ; =0x00000FD4
+    // mov r2, #0
+    // str r2, [r4, r1]
+    // add r2, r0, #7
+    // cmp r2, #7
+    // bhi _02239B52
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _02239AB0: ; jump table
+    // ldr r0, [r4]
+    // mov r1, #5
+    // ldr r0, [r0]
+    // mov r2, #2
+    // bl sub_0202D5DC
+    // add r0, r4, #0
+    // mov r1, #0x27
+    // mov r2, #0x1c
+    // bl ov72_02238680
+    // b _02239B52
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239B52
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239B52
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239B52
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239B52
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239B52
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // bl sub_020399EC
+    // b _02239B52
+    // ldr r0, _02239B58 ; =0x00000FD4
+    // ldr r1, [r4, r0]
+    // add r1, r1, #1
+    // str r1, [r4, r0]
+    // ldr r1, [r4, r0]
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // cmp r1, r0
+    // bne _02239B52
+    // bl sub_020399EC
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _02239B58: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_02239B5C(void) {
-    /* Original at 0x02239B5C */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239B90 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239B94 ; =0x00000BD4\n    mov r2, #8\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x2d\n    bl ov72_02238680\n    add r0, r4, #0\n    bl ov72_0223A444\n    ldr r0, [r4]\n    mov r1, #0\n    str r1, [r0, #0x20]\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239B90: .word 0x00000F0F\n    _02239B94: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239B90 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239B94 ; =0x00000BD4
+    // mov r2, #8
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x2d
+    // bl ov72_02238680
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // ldr r0, [r4]
+    // mov r1, #0
+    // str r1, [r0, #0x20]
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239B90: .word 0x00000F0F
+    // _02239B94: .word 0x00000BD4
+    // TODO: decompile
 }
 
+
 void ov72_02239B98(void) {
-    /* Original at 0x02239B98 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239BC0 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239BC4 ; =0x00000BD4\n    mov r2, #5\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x1e\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239BC0: .word 0x00000F0F\n    _02239BC4: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239BC0 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239BC4 ; =0x00000BD4
+    // mov r2, #5
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x1e
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239BC0: .word 0x00000F0F
+    // _02239BC4: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 u32 ov72_02239BC8(void) {
     ov72_0223A41C(1, 1);
@@ -699,25 +3991,87 @@ u32 ov72_02239BC8(void) {
     return 3;
 }
 
+
 void ov72_02239BEC(void) {
-    /* Original at 0x02239BEC */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_0223A588\n    cmp r0, #0\n    beq _02239C10\n    ble _02239C0C\n    add r1, r4, #0\n    add r1, #0x94\n    str r0, [r1]\n    add r0, r4, #0\n    mov r1, #0xb\n    mov r2, #0x20\n    bl ov72_02238680\n    b _02239C10\n    mov r0, #0x17\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_0223A588
+    // cmp r0, #0
+    // beq _02239C10
+    // ble _02239C0C
+    // add r1, r4, #0
+    // add r1, #0x94
+    // str r0, [r1]
+    // add r0, r4, #0
+    // mov r1, #0xb
+    // mov r2, #0x20
+    // bl ov72_02238680
+    // b _02239C10
+    // mov r0, #0x17
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void ov72_02239C14(void) {
-    /* Original at 0x02239C14 */
-    /* Requires manual decompilation - 53 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #8\n    add r4, r0, #0\n    add r0, #0x98\n    ldr r2, [r0]\n    cmp r2, #0x64\n    blt _02239C4C\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0xbd\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    mov r1, #0\n    mov r3, #3\n    bl BufferIntegerAsString\n    ldr r0, _02239C84 ; =0x00000F0F\n    ldr r1, _02239C88 ; =0x00000BD4\n    str r0, [sp]\n    ldr r1, [r4, r1]\n    add r0, r4, #0\n    mov r2, #0xa\n    mov r3, #1\n    bl ov72_0223A280\n    b _02239C72\n    mov r3, #2\n    str r3, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0xbd\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    mov r1, #0\n    bl BufferIntegerAsString\n    ldr r0, _02239C84 ; =0x00000F0F\n    ldr r1, _02239C88 ; =0x00000BD4\n    str r0, [sp]\n    ldr r1, [r4, r1]\n    add r0, r4, #0\n    mov r2, #6\n    mov r3, #1\n    bl ov72_0223A280\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x21\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #8\n    pop {r4, pc}\n    nop\n    _02239C84: .word 0x00000F0F\n    _02239C88: .word 0x00000BD4"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // add r0, #0x98
+    // ldr r2, [r0]
+    // cmp r2, #0x64
+    // blt _02239C4C
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0xbd
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // mov r1, #0
+    // mov r3, #3
+    // bl BufferIntegerAsString
+    // ldr r0, _02239C84 ; =0x00000F0F
+    // ldr r1, _02239C88 ; =0x00000BD4
+    // str r0, [sp]
+    // ldr r1, [r4, r1]
+    // add r0, r4, #0
+    // mov r2, #0xa
+    // mov r3, #1
+    // bl ov72_0223A280
+    // b _02239C72
+    // mov r3, #2
+    // str r3, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0xbd
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // mov r1, #0
+    // bl BufferIntegerAsString
+    // ldr r0, _02239C84 ; =0x00000F0F
+    // ldr r1, _02239C88 ; =0x00000BD4
+    // str r0, [sp]
+    // ldr r1, [r4, r1]
+    // add r0, r4, #0
+    // mov r2, #6
+    // mov r3, #1
+    // bl ov72_0223A280
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x21
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #8
+    // pop {r4, pc}
+    // nop
+    // _02239C84: .word 0x00000F0F
+    // _02239C88: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 u32 ov72_02239C8C(void) {
     ov72_0223A520(1, r0);
@@ -726,123 +4080,387 @@ u32 ov72_02239C8C(void) {
     return 3;
 }
 
+
 void ov72_02239CB4(void) {
-    /* Original at 0x02239CB4 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_0223A588\n    cmp r0, #0\n    beq _02239CD2\n    ble _02239CCE\n    add r1, r4, #0\n    add r1, #0x9c\n    str r0, [r1]\n    mov r0, #0x23\n    str r0, [r4, #0x1c]\n    b _02239CD2\n    mov r0, #0x1d\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_0223A588
+    // cmp r0, #0
+    // beq _02239CD2
+    // ble _02239CCE
+    // add r1, r4, #0
+    // add r1, #0x9c
+    // str r0, [r1]
+    // mov r0, #0x23
+    // str r0, [r4, #0x1c]
+    // b _02239CD2
+    // mov r0, #0x1d
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov72_02239CD8(void) {
-    /* Original at 0x02239CD8 */
-    /* Requires manual decompilation - 44 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #8\n    add r4, r0, #0\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0xbd\n    add r2, r4, #0\n    lsl r0, r0, #4\n    add r2, #0x9c\n    ldr r0, [r4, r0]\n    ldr r2, [r2]\n    mov r1, #0\n    mov r3, #3\n    bl BufferIntegerAsString\n    mov r3, #2\n    mov r0, #0xbd\n    add r2, r4, #0\n    str r3, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    lsl r0, r0, #4\n    add r2, #0x94\n    ldr r0, [r4, r0]\n    ldr r2, [r2]\n    bl BufferIntegerAsString\n    ldr r0, _02239D34 ; =0x00000F0F\n    mov r2, #1\n    str r0, [sp]\n    ldr r1, _02239D38 ; =0x00000BD4\n    add r0, r4, #0\n    ldr r1, [r4, r1]\n    add r3, r2, #0\n    bl ov72_0223A280\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x24\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #8\n    pop {r4, pc}\n    _02239D34: .word 0x00000F0F\n    _02239D38: .word 0x00000BD4"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0xbd
+    // add r2, r4, #0
+    // lsl r0, r0, #4
+    // add r2, #0x9c
+    // ldr r0, [r4, r0]
+    // ldr r2, [r2]
+    // mov r1, #0
+    // mov r3, #3
+    // bl BufferIntegerAsString
+    // mov r3, #2
+    // mov r0, #0xbd
+    // add r2, r4, #0
+    // str r3, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // lsl r0, r0, #4
+    // add r2, #0x94
+    // ldr r0, [r4, r0]
+    // ldr r2, [r2]
+    // bl BufferIntegerAsString
+    // ldr r0, _02239D34 ; =0x00000F0F
+    // mov r2, #1
+    // str r0, [sp]
+    // ldr r1, _02239D38 ; =0x00000BD4
+    // add r0, r4, #0
+    // ldr r1, [r4, r1]
+    // add r3, r2, #0
+    // bl ov72_0223A280
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x24
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #8
+    // pop {r4, pc}
+    // _02239D34: .word 0x00000F0F
+    // _02239D38: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 void ov72_02239D3C(void) {
-    /* Original at 0x02239D3C */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #0\n    add r0, #0x94\n    add r1, #0x9c\n    add r2, r4, #0\n    ldr r0, [r0]\n    ldr r1, [r1]\n    add r2, #0xa0\n    bl ov72_02237BD0\n    mov r0, #0x25\n    str r0, [r4, #0x1c]\n    ldr r0, _02239D68 ; =0x00000FD4\n    mov r1, #0\n    str r1, [r4, r0]\n    add r0, r4, #0\n    bl ov72_0223A420\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _02239D68: .word 0x00000FD4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r1, r4, #0
+    // add r0, #0x94
+    // add r1, #0x9c
+    // add r2, r4, #0
+    // ldr r0, [r0]
+    // ldr r1, [r1]
+    // add r2, #0xa0
+    // bl ov72_02237BD0
+    // mov r0, #0x25
+    // str r0, [r4, #0x1c]
+    // ldr r0, _02239D68 ; =0x00000FD4
+    // mov r1, #0
+    // str r1, [r4, r0]
+    // add r0, r4, #0
+    // bl ov72_0223A420
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _02239D68: .word 0x00000FD4
+    // TODO: decompile
 }
+
 
 void ov72_02239D6C(void) {
-    /* Original at 0x02239D6C */
-    /* Requires manual decompilation - 97 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_02237B54\n    cmp r0, #0\n    beq _02239E34\n    bl ov72_02237B74\n    ldr r1, _02239E50 ; =0x00000FD4\n    mov r2, #0\n    str r2, [r4, r1]\n    add r2, r0, #7\n    cmp r2, #7\n    bhi _02239E4A\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _02239D94: ; jump table\n    add r2, r4, #0\n    add r3, r4, #0\n    add r2, #0x94\n    add r3, #0x9c\n    ldr r0, [r4]\n    ldr r2, [r2]\n    ldr r3, [r3]\n    ldr r1, _02239E54 ; =0x000006DC\n    lsl r2, r2, #0x18\n    lsl r3, r3, #0x18\n    ldr r0, [r0, #4]\n    add r1, r4, r1\n    lsr r2, r2, #0x18\n    lsr r3, r3, #0x18\n    bl sub_0202D8A4\n    add r0, r4, #0\n    mov r1, #0x27\n    mov r2, #0x26\n    bl ov72_02238680\n    b _02239E4A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239E4A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239E4A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0xb\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239E4A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239E4A\n    mov r2, #0xb\n    str r2, [r4, #0x1c]\n    sub r1, #0x78\n    str r0, [r4, r1]\n    add r0, r4, #0\n    bl ov72_0223A444\n    b _02239E4A\n    sub r1, #0x78\n    str r0, [r4, r1]\n    mov r0, #0x35\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    bl sub_020399EC\n    b _02239E4A\n    ldr r0, _02239E50 ; =0x00000FD4\n    ldr r1, [r4, r0]\n    add r1, r1, #1\n    str r1, [r4, r0]\n    ldr r1, [r4, r0]\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    cmp r1, r0\n    bne _02239E4A\n    bl sub_020399EC\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _02239E50: .word 0x00000FD4\n    _02239E54: .word 0x000006DC"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_02237B54
+    // cmp r0, #0
+    // beq _02239E34
+    // bl ov72_02237B74
+    // ldr r1, _02239E50 ; =0x00000FD4
+    // mov r2, #0
+    // str r2, [r4, r1]
+    // add r2, r0, #7
+    // cmp r2, #7
+    // bhi _02239E4A
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _02239D94: ; jump table
+    // add r2, r4, #0
+    // add r3, r4, #0
+    // add r2, #0x94
+    // add r3, #0x9c
+    // ldr r0, [r4]
+    // ldr r2, [r2]
+    // ldr r3, [r3]
+    // ldr r1, _02239E54 ; =0x000006DC
+    // lsl r2, r2, #0x18
+    // lsl r3, r3, #0x18
+    // ldr r0, [r0, #4]
+    // add r1, r4, r1
+    // lsr r2, r2, #0x18
+    // lsr r3, r3, #0x18
+    // bl sub_0202D8A4
+    // add r0, r4, #0
+    // mov r1, #0x27
+    // mov r2, #0x26
+    // bl ov72_02238680
+    // b _02239E4A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239E4A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239E4A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0xb
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239E4A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239E4A
+    // mov r2, #0xb
+    // str r2, [r4, #0x1c]
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // b _02239E4A
+    // sub r1, #0x78
+    // str r0, [r4, r1]
+    // mov r0, #0x35
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // bl sub_020399EC
+    // b _02239E4A
+    // ldr r0, _02239E50 ; =0x00000FD4
+    // ldr r1, [r4, r0]
+    // add r1, r1, #1
+    // str r1, [r4, r0]
+    // ldr r1, [r4, r0]
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // cmp r1, r0
+    // bne _02239E4A
+    // bl sub_020399EC
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _02239E50: .word 0x00000FD4
+    // _02239E54: .word 0x000006DC
+    // TODO: decompile
 }
 
+
 void ov72_02239E58(void) {
-    /* Original at 0x02239E58 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239E8C ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239E90 ; =0x00000BD4\n    mov r2, #3\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x2d\n    bl ov72_02238680\n    add r0, r4, #0\n    bl ov72_0223A444\n    ldr r0, [r4]\n    mov r1, #0\n    str r1, [r0, #0x20]\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239E8C: .word 0x00000F0F\n    _02239E90: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239E8C ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239E90 ; =0x00000BD4
+    // mov r2, #3
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x2d
+    // bl ov72_02238680
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // ldr r0, [r4]
+    // mov r1, #0
+    // str r1, [r0, #0x20]
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239E8C: .word 0x00000F0F
+    // _02239E90: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 void ov72_02239E94(void) {
     ((u32*)r0)[0x1c] = 0x29;
 }
 
+
 void ov72_02239E9C(void) {
     Save_PrepareForAsyncWrite(0x28, 3, 2);
 }
 
+
 void ov72_02239EB4(void) {
-    /* Original at 0x02239EB4 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r0, [r0, #0xc]\n    bl Save_WriteFileAsync\n    cmp r0, #2\n    bne _02239ECE\n    ldr r0, [r4, #0x20]\n    str r0, [r4, #0x1c]\n    add r0, r4, #0\n    bl ov72_0223A444\n    mov r0, #3\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4]
+    // ldr r0, [r0, #0xc]
+    // bl Save_WriteFileAsync
+    // cmp r0, #2
+    // bne _02239ECE
+    // ldr r0, [r4, #0x20]
+    // str r0, [r4, #0x1c]
+    // add r0, r4, #0
+    // bl ov72_0223A444
+    // mov r0, #3
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov72_02239ED4(void) {
-    /* Original at 0x02239ED4 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239EFC ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239F00 ; =0x00000BD4\n    mov r2, #4\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x30\n    mov r2, #0x16\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239EFC: .word 0x00000F0F\n    _02239F00: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239EFC ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239F00 ; =0x00000BD4
+    // mov r2, #4
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x30
+    // mov r2, #0x16
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239EFC: .word 0x00000F0F
+    // _02239F00: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 void ov72_02239F04(void) {
-    /* Original at 0x02239F04 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _02239F2C ; =0x0000136C\n    add r0, r4, r0\n    bl ov72_0223AF48\n    cmp r0, #0\n    beq _02239F28\n    cmp r0, #2\n    bne _02239F1E\n    mov r0, #0xd\n    str r0, [r4, #0x1c]\n    b _02239F28\n    mov r0, #0x29\n    str r0, [r4, #0x1c]\n    ldr r0, [r4]\n    mov r1, #1\n    str r1, [r0, #0x20]\n    mov r0, #3\n    pop {r4, pc}\n    _02239F2C: .word 0x0000136C"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _02239F2C ; =0x0000136C
+    // add r0, r4, r0
+    // bl ov72_0223AF48
+    // cmp r0, #0
+    // beq _02239F28
+    // cmp r0, #2
+    // bne _02239F1E
+    // mov r0, #0xd
+    // str r0, [r4, #0x1c]
+    // b _02239F28
+    // mov r0, #0x29
+    // str r0, [r4, #0x1c]
+    // ldr r0, [r4]
+    // mov r1, #1
+    // str r1, [r0, #0x20]
+    // mov r0, #3
+    // pop {r4, pc}
+    // _02239F2C: .word 0x0000136C
+    // TODO: decompile
 }
+
 
 void ov72_02239F30(void) {
-    /* Original at 0x02239F30 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239F58 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239F5C ; =0x00000BD4\n    mov r2, #9\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x30\n    mov r2, #0x18\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239F58: .word 0x00000F0F\n    _02239F5C: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239F58 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239F5C ; =0x00000BD4
+    // mov r2, #9
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x30
+    // mov r2, #0x18
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239F58: .word 0x00000F0F
+    // _02239F5C: .word 0x00000BD4
+    // TODO: decompile
 }
+
 
 void ov72_02239F60(void) {
-    /* Original at 0x02239F60 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _02239F88 ; =0x0000136C\n    add r0, r4, r0\n    bl ov72_0223AF48\n    cmp r0, #0\n    beq _02239F84\n    cmp r0, #2\n    bne _02239F7A\n    mov r0, #0x1d\n    str r0, [r4, #0x1c]\n    b _02239F84\n    mov r0, #0x29\n    str r0, [r4, #0x1c]\n    ldr r0, [r4]\n    mov r1, #1\n    str r1, [r0, #0x20]\n    mov r0, #3\n    pop {r4, pc}\n    _02239F88: .word 0x0000136C"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _02239F88 ; =0x0000136C
+    // add r0, r4, r0
+    // bl ov72_0223AF48
+    // cmp r0, #0
+    // beq _02239F84
+    // cmp r0, #2
+    // bne _02239F7A
+    // mov r0, #0x1d
+    // str r0, [r4, #0x1c]
+    // b _02239F84
+    // mov r0, #0x29
+    // str r0, [r4, #0x1c]
+    // ldr r0, [r4]
+    // mov r1, #1
+    // str r1, [r0, #0x20]
+    // mov r0, #3
+    // pop {r4, pc}
+    // _02239F88: .word 0x0000136C
+    // TODO: decompile
 }
 
+
 void ov72_02239F8C(void) {
-    /* Original at 0x02239F8C */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _02239FB4 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _02239FB8 ; =0x00000BDC\n    mov r2, #0x1a\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x2f\n    mov r2, #0x2a\n    bl ov72_02238680\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _02239FB4: .word 0x00000F0F\n    _02239FB8: .word 0x00000BDC"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _02239FB4 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _02239FB8 ; =0x00000BDC
+    // mov r2, #0x1a
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // mov r2, #0x2a
+    // bl ov72_02238680
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _02239FB4: .word 0x00000F0F
+    // _02239FB8: .word 0x00000BDC
+    // TODO: decompile
 }
+
 
 u32 ov72_02239FBC(void) {
     ov00_021EC8D8();
@@ -851,443 +4469,1857 @@ u32 ov72_02239FBC(void) {
     return 3;
 }
 
+
 void ov72_02239FD8(void) {
-    /* Original at 0x02239FD8 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    ldr r1, _0223A008 ; =0x00000F0F\n    add r4, r0, #0\n    str r1, [sp]\n    ldr r1, _0223A00C ; =0x00000BDC\n    mov r2, #0x1b\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r4, #0\n    mov r1, #0x31\n    mov r2, #0x2e\n    bl ov72_02238680\n    mov r0, #0xf6\n    mov r1, #0\n    lsl r0, r0, #4\n    str r1, [r4, r0]\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _0223A008: .word 0x00000F0F\n    _0223A00C: .word 0x00000BDC"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // ldr r1, _0223A008 ; =0x00000F0F
+    // add r4, r0, #0
+    // str r1, [sp]
+    // ldr r1, _0223A00C ; =0x00000BDC
+    // mov r2, #0x1b
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r4, #0
+    // mov r1, #0x31
+    // mov r2, #0x2e
+    // bl ov72_02238680
+    // mov r0, #0xf6
+    // mov r1, #0
+    // lsl r0, r0, #4
+    // str r1, [r4, r0]
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _0223A008: .word 0x00000F0F
+    // _0223A00C: .word 0x00000BDC
+    // TODO: decompile
 }
+
 
 u8 ov72_0223A010(void) {
     return 3;
 }
 
+
 void ov72_0223A014(void) {
-    /* Original at 0x0223A014 */
-    /* Requires manual decompilation - 21 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    bl sub_0203A914\n    bl sub_0203946C\n    mov r0, #8\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0x43\n    str r0, [sp, #8]\n    mov r0, #0\n    add r1, r0, #0\n    add r2, r0, #0\n    add r3, r0, #0\n    bl BeginNormalPaletteFade\n    mov r0, #0\n    str r0, [r4, #0x1c]\n    mov r0, #4\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // bl sub_0203A914
+    // bl sub_0203946C
+    // mov r0, #8
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0x43
+    // str r0, [sp, #8]
+    // mov r0, #0
+    // add r1, r0, #0
+    // add r2, r0, #0
+    // add r3, r0, #0
+    // bl BeginNormalPaletteFade
+    // mov r0, #0
+    // str r0, [r4, #0x1c]
+    // mov r0, #4
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void ov72_0223A044(void) {
-    /* Original at 0x0223A044 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _0223A068 ; =0x00001308\n    ldr r0, [r4, r0]\n    bl ov72_02238668\n    cmp r0, #0\n    beq _0223A062\n    cmp r0, #2\n    bne _0223A05E\n    mov r0, #0\n    str r0, [r4, #0x1c]\n    b _0223A062\n    mov r0, #0x29\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _0223A068: .word 0x00001308"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _0223A068 ; =0x00001308
+    // ldr r0, [r4, r0]
+    // bl ov72_02238668
+    // cmp r0, #0
+    // beq _0223A062
+    // cmp r0, #2
+    // bne _0223A05E
+    // mov r0, #0
+    // str r0, [r4, #0x1c]
+    // b _0223A062
+    // mov r0, #0x29
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _0223A068: .word 0x00001308
+    // TODO: decompile
 }
+
 
 void ov72_0223A06C(void) {
-    /* Original at 0x0223A06C */
-    /* Requires manual decompilation - 43 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    ldr r0, _0223A0D4 ; =0x00000F5C\n    mov r4, #0\n    ldr r0, [r5, r0]\n    add r0, r0, #7\n    cmp r0, #9\n    bhi _0223A0AE\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0223A088: ; jump table\n    mov r4, #0xf\n    b _0223A0AE\n    mov r4, #0xd\n    b _0223A0AE\n    mov r4, #0xe\n    b _0223A0AE\n    mov r4, #0x10\n    b _0223A0AE\n    mov r4, #0x11\n    add r0, r5, #0\n    bl ov72_0223A444\n    ldr r0, _0223A0D8 ; =0x00000F0F\n    ldr r1, _0223A0DC ; =0x00000BD4\n    str r0, [sp]\n    ldr r1, [r5, r1]\n    add r0, r5, #0\n    add r2, r4, #0\n    mov r3, #1\n    bl ov72_0223A350\n    add r0, r5, #0\n    mov r1, #0x2f\n    mov r2, #0x36\n    bl ov72_02238680\n    mov r0, #3\n    pop {r3, r4, r5, pc}\n    _0223A0D4: .word 0x00000F5C\n    _0223A0D8: .word 0x00000F0F\n    _0223A0DC: .word 0x00000BD4"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // ldr r0, _0223A0D4 ; =0x00000F5C
+    // mov r4, #0
+    // ldr r0, [r5, r0]
+    // add r0, r0, #7
+    // cmp r0, #9
+    // bhi _0223A0AE
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _0223A088: ; jump table
+    // mov r4, #0xf
+    // b _0223A0AE
+    // mov r4, #0xd
+    // b _0223A0AE
+    // mov r4, #0xe
+    // b _0223A0AE
+    // mov r4, #0x10
+    // b _0223A0AE
+    // mov r4, #0x11
+    // add r0, r5, #0
+    // bl ov72_0223A444
+    // ldr r0, _0223A0D8 ; =0x00000F0F
+    // ldr r1, _0223A0DC ; =0x00000BD4
+    // str r0, [sp]
+    // ldr r1, [r5, r1]
+    // add r0, r5, #0
+    // add r2, r4, #0
+    // mov r3, #1
+    // bl ov72_0223A350
+    // add r0, r5, #0
+    // mov r1, #0x2f
+    // mov r2, #0x36
+    // bl ov72_02238680
+    // mov r0, #3
+    // pop {r3, r4, r5, pc}
+    // _0223A0D4: .word 0x00000F5C
+    // _0223A0D8: .word 0x00000F0F
+    // _0223A0DC: .word 0x00000BD4
+    // TODO: decompile
 }
 
+
 void ov72_0223A0E0(void) {
-    /* Original at 0x0223A0E0 */
-    /* Requires manual decompilation - 89 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    mov r1, #0xfd\n    add r4, r0, #0\n    lsl r1, r1, #4\n    ldrsh r2, [r4, r1]\n    cmp r2, #3\n    bhi _0223A17C\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _0223A0FC: ; jump table\n    sub r1, #0xc1\n    str r1, [sp]\n    ldr r1, _0223A1A0 ; =0x00000BD4\n    mov r2, #0x12\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    mov r0, #0xfd\n    lsl r0, r0, #4\n    ldrsh r1, [r4, r0]\n    add r1, r1, #1\n    strh r1, [r4, r0]\n    b _0223A198\n    ldr r0, _0223A1A4 ; =0x00000BF4\n    ldr r0, [r4, r0]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0223A198\n    bl sub_0203946C\n    bl ov00_021EC8D8\n    mov r0, #0xfd\n    lsl r0, r0, #4\n    ldrsh r1, [r4, r0]\n    add r1, r1, #1\n    strh r1, [r4, r0]\n    b _0223A198\n    sub r1, #0xc1\n    str r1, [sp]\n    ldr r1, _0223A1A0 ; =0x00000BD4\n    mov r2, #0x13\n    ldr r1, [r4, r1]\n    mov r3, #1\n    bl ov72_0223A350\n    mov r0, #0xfd\n    lsl r0, r0, #4\n    ldrsh r1, [r4, r0]\n    add r1, r1, #1\n    strh r1, [r4, r0]\n    b _0223A198\n    ldr r0, _0223A1A4 ; =0x00000BF4\n    ldr r0, [r4, r0]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0223A198\n    mov r0, #0xfd\n    lsl r0, r0, #4\n    ldrsh r1, [r4, r0]\n    add r1, r1, #1\n    strh r1, [r4, r0]\n    b _0223A198\n    ldr r0, _0223A1A8 ; =0x00000FD2\n    ldrsh r1, [r4, r0]\n    add r1, r1, #1\n    strh r1, [r4, r0]\n    ldrsh r0, [r4, r0]\n    cmp r0, #0x1e\n    ble _0223A198\n    mov r1, #0\n    add r0, r4, #0\n    add r2, r1, #0\n    bl ov72_022387D0\n    mov r0, #0x2e\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    add sp, #4\n    pop {r3, r4, pc}\n    nop\n    _0223A1A0: .word 0x00000BD4\n    _0223A1A4: .word 0x00000BF4\n    _0223A1A8: .word 0x00000FD2"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // mov r1, #0xfd
+    // add r4, r0, #0
+    // lsl r1, r1, #4
+    // ldrsh r2, [r4, r1]
+    // cmp r2, #3
+    // bhi _0223A17C
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _0223A0FC: ; jump table
+    // sub r1, #0xc1
+    // str r1, [sp]
+    // ldr r1, _0223A1A0 ; =0x00000BD4
+    // mov r2, #0x12
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // mov r0, #0xfd
+    // lsl r0, r0, #4
+    // ldrsh r1, [r4, r0]
+    // add r1, r1, #1
+    // strh r1, [r4, r0]
+    // b _0223A198
+    // ldr r0, _0223A1A4 ; =0x00000BF4
+    // ldr r0, [r4, r0]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _0223A198
+    // bl sub_0203946C
+    // bl ov00_021EC8D8
+    // mov r0, #0xfd
+    // lsl r0, r0, #4
+    // ldrsh r1, [r4, r0]
+    // add r1, r1, #1
+    // strh r1, [r4, r0]
+    // b _0223A198
+    // sub r1, #0xc1
+    // str r1, [sp]
+    // ldr r1, _0223A1A0 ; =0x00000BD4
+    // mov r2, #0x13
+    // ldr r1, [r4, r1]
+    // mov r3, #1
+    // bl ov72_0223A350
+    // mov r0, #0xfd
+    // lsl r0, r0, #4
+    // ldrsh r1, [r4, r0]
+    // add r1, r1, #1
+    // strh r1, [r4, r0]
+    // b _0223A198
+    // ldr r0, _0223A1A4 ; =0x00000BF4
+    // ldr r0, [r4, r0]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _0223A198
+    // mov r0, #0xfd
+    // lsl r0, r0, #4
+    // ldrsh r1, [r4, r0]
+    // add r1, r1, #1
+    // strh r1, [r4, r0]
+    // b _0223A198
+    // ldr r0, _0223A1A8 ; =0x00000FD2
+    // ldrsh r1, [r4, r0]
+    // add r1, r1, #1
+    // strh r1, [r4, r0]
+    // ldrsh r0, [r4, r0]
+    // cmp r0, #0x1e
+    // ble _0223A198
+    // mov r1, #0
+    // add r0, r4, #0
+    // add r2, r1, #0
+    // bl ov72_022387D0
+    // mov r0, #0x2e
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // nop
+    // _0223A1A0: .word 0x00000BD4
+    // _0223A1A4: .word 0x00000BF4
+    // _0223A1A8: .word 0x00000FD2
+    // TODO: decompile
 }
+
 
 void ov72_0223A1AC(void) {
     TextPrinterCheckActive(3);
 }
 
+
 void ov72_0223A1CC(void) {
-    /* Original at 0x0223A1CC */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _0223A1FC ; =0x00000BF4\n    ldr r0, [r4, r0]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0223A1F8\n    mov r0, #0xf6\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    cmp r0, #0x1e\n    ble _0223A1EE\n    ldr r0, [r4, #0x20]\n    str r0, [r4, #0x1c]\n    mov r0, #0xf6\n    lsl r0, r0, #4\n    ldr r1, [r4, r0]\n    add r1, r1, #1\n    str r1, [r4, r0]\n    mov r0, #3\n    pop {r4, pc}\n    _0223A1FC: .word 0x00000BF4"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _0223A1FC ; =0x00000BF4
+    // ldr r0, [r4, r0]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _0223A1F8
+    // mov r0, #0xf6
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // cmp r0, #0x1e
+    // ble _0223A1EE
+    // ldr r0, [r4, #0x20]
+    // str r0, [r4, #0x1c]
+    // mov r0, #0xf6
+    // lsl r0, r0, #4
+    // ldr r1, [r4, r0]
+    // add r1, r1, #1
+    // str r1, [r4, r0]
+    // mov r0, #3
+    // pop {r4, pc}
+    // _0223A1FC: .word 0x00000BF4
+    // TODO: decompile
 }
+
 
 void ov72_0223A200(void) {
-    /* Original at 0x0223A200 */
-    /* Requires manual decompilation - 59 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _0223A274 ; =0x00000BF4\n    ldr r0, [r4, r0]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl TextPrinterCheckActive\n    cmp r0, #0\n    bne _0223A26E\n    ldr r0, _0223A278 ; =0x00000E14\n    ldr r1, [r4, r0]\n    ldr r0, _0223A27C ; =0x00001370\n    str r1, [r4, r0]\n    ldr r2, [r4, #4]\n    sub r1, r0, #4\n    str r2, [r4, r1]\n    add r1, r0, #0\n    mov r2, #0x43\n    add r1, #0x24\n    str r2, [r4, r1]\n    add r1, r0, #0\n    mov r2, #0\n    add r1, #0x28\n    strb r2, [r4, r1]\n    add r1, r0, #0\n    mov r2, #0xa\n    add r1, #0x2a\n    strb r2, [r4, r1]\n    add r1, r0, #0\n    mov r2, #6\n    add r1, #0x2b\n    strb r2, [r4, r1]\n    add r1, r0, #0\n    mov r2, #4\n    add r1, #0x2e\n    strb r2, [r4, r1]\n    add r1, r0, #0\n    mov r2, #0xb\n    add r1, #0x2c\n    strb r2, [r4, r1]\n    add r1, r0, #0\n    mov r2, #1\n    add r1, #0x2d\n    strb r2, [r4, r1]\n    add r1, r0, #0\n    sub r0, r0, #4\n    add r2, #0xff\n    add r1, #0x30\n    add r0, r4, r0\n    str r2, [r4, r1]\n    bl ov72_0223AF1C\n    ldr r0, [r4, #0x20]\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _0223A274: .word 0x00000BF4\n    _0223A278: .word 0x00000E14\n    _0223A27C: .word 0x00001370"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _0223A274 ; =0x00000BF4
+    // ldr r0, [r4, r0]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl TextPrinterCheckActive
+    // cmp r0, #0
+    // bne _0223A26E
+    // ldr r0, _0223A278 ; =0x00000E14
+    // ldr r1, [r4, r0]
+    // ldr r0, _0223A27C ; =0x00001370
+    // str r1, [r4, r0]
+    // ldr r2, [r4, #4]
+    // sub r1, r0, #4
+    // str r2, [r4, r1]
+    // add r1, r0, #0
+    // mov r2, #0x43
+    // add r1, #0x24
+    // str r2, [r4, r1]
+    // add r1, r0, #0
+    // mov r2, #0
+    // add r1, #0x28
+    // strb r2, [r4, r1]
+    // add r1, r0, #0
+    // mov r2, #0xa
+    // add r1, #0x2a
+    // strb r2, [r4, r1]
+    // add r1, r0, #0
+    // mov r2, #6
+    // add r1, #0x2b
+    // strb r2, [r4, r1]
+    // add r1, r0, #0
+    // mov r2, #4
+    // add r1, #0x2e
+    // strb r2, [r4, r1]
+    // add r1, r0, #0
+    // mov r2, #0xb
+    // add r1, #0x2c
+    // strb r2, [r4, r1]
+    // add r1, r0, #0
+    // mov r2, #1
+    // add r1, #0x2d
+    // strb r2, [r4, r1]
+    // add r1, r0, #0
+    // sub r0, r0, #4
+    // add r2, #0xff
+    // add r1, #0x30
+    // add r0, r4, r0
+    // str r2, [r4, r1]
+    // bl ov72_0223AF1C
+    // ldr r0, [r4, #0x20]
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _0223A274: .word 0x00000BF4
+    // _0223A278: .word 0x00000E14
+    // _0223A27C: .word 0x00001370
+    // TODO: decompile
 }
+
 
 void ov72_0223A280(void) {
-    /* Original at 0x0223A280 */
-    /* Requires manual decompilation - 44 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r0, r1, #0\n    add r1, r2, #0\n    add r4, r3, #0\n    bl NewString_ReadMsgData\n    mov r1, #0xbd\n    add r6, r0, #0\n    lsl r1, r1, #4\n    ldr r0, [r5, r1]\n    add r1, #0x10\n    ldr r1, [r5, r1]\n    add r2, r6, #0\n    bl StringExpandPlaceholders\n    ldr r0, _0223A2E0 ; =0x00000E18\n    mov r1, #0xf\n    add r0, r5, r0\n    bl FillWindowPixelBuffer\n    ldr r0, _0223A2E0 ; =0x00000E18\n    mov r1, #0\n    add r0, r5, r0\n    mov r2, #1\n    mov r3, #0xe\n    bl DrawFrameAndWindow2\n    mov r3, #0\n    str r3, [sp]\n    str r4, [sp, #4]\n    mov r2, #0xbe\n    ldr r0, _0223A2E0 ; =0x00000E18\n    str r3, [sp, #8]\n    lsl r2, r2, #4\n    ldr r2, [r5, r2]\n    add r0, r5, r0\n    mov r1, #1\n    bl AddTextPrinterParameterized\n    ldr r1, _0223A2E4 ; =0x00000BF4\n    str r0, [r5, r1]\n    add r0, r6, #0\n    bl String_Delete\n    add sp, #0xc\n    pop {r3, r4, r5, r6, pc}\n    _0223A2E0: .word 0x00000E18\n    _0223A2E4: .word 0x00000BF4"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // add r0, r1, #0
+    // add r1, r2, #0
+    // add r4, r3, #0
+    // bl NewString_ReadMsgData
+    // mov r1, #0xbd
+    // add r6, r0, #0
+    // lsl r1, r1, #4
+    // ldr r0, [r5, r1]
+    // add r1, #0x10
+    // ldr r1, [r5, r1]
+    // add r2, r6, #0
+    // bl StringExpandPlaceholders
+    // ldr r0, _0223A2E0 ; =0x00000E18
+    // mov r1, #0xf
+    // add r0, r5, r0
+    // bl FillWindowPixelBuffer
+    // ldr r0, _0223A2E0 ; =0x00000E18
+    // mov r1, #0
+    // add r0, r5, r0
+    // mov r2, #1
+    // mov r3, #0xe
+    // bl DrawFrameAndWindow2
+    // mov r3, #0
+    // str r3, [sp]
+    // str r4, [sp, #4]
+    // mov r2, #0xbe
+    // ldr r0, _0223A2E0 ; =0x00000E18
+    // str r3, [sp, #8]
+    // lsl r2, r2, #4
+    // ldr r2, [r5, r2]
+    // add r0, r5, r0
+    // mov r1, #1
+    // bl AddTextPrinterParameterized
+    // ldr r1, _0223A2E4 ; =0x00000BF4
+    // str r0, [r5, r1]
+    // add r0, r6, #0
+    // bl String_Delete
+    // add sp, #0xc
+    // pop {r3, r4, r5, r6, pc}
+    // _0223A2E0: .word 0x00000E18
+    // _0223A2E4: .word 0x00000BF4
+    // TODO: decompile
 }
+
 
 void ov72_0223A2E8(void) {
-    /* Original at 0x0223A2E8 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r1, _0223A310 ; =0x00000F54\n    add r4, r0, #0\n    ldr r0, [r4, r1]\n    add r1, r1, #4\n    ldr r1, [r4, r1]\n    neg r0, r0\n    bl ov00_021E6A70\n    ldr r2, _0223A310 ; =0x00000F54\n    add r1, r0, #0\n    ldr r2, [r4, r2]\n    add r0, r4, #0\n    neg r2, r2\n    bl ov72_0223A4DC\n    mov r0, #0x38\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}\n    _0223A310: .word 0x00000F54"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r1, _0223A310 ; =0x00000F54
+    // add r4, r0, #0
+    // ldr r0, [r4, r1]
+    // add r1, r1, #4
+    // ldr r1, [r4, r1]
+    // neg r0, r0
+    // bl ov00_021E6A70
+    // ldr r2, _0223A310 ; =0x00000F54
+    // add r1, r0, #0
+    // ldr r2, [r4, r2]
+    // add r0, r4, #0
+    // neg r2, r2
+    // bl ov72_0223A4DC
+    // mov r0, #0x38
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // pop {r4, pc}
+    // _0223A310: .word 0x00000F54
+    // TODO: decompile
 }
+
 
 void ov72_0223A314(void) {
-    /* Original at 0x0223A314 */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _0223A344 ; =gSystem\n    ldr r1, [r0, #0x48]\n    mov r0, #1\n    tst r0, r1\n    bne _0223A330\n    mov r0, #2\n    tst r0, r1\n    bne _0223A330\n    ldr r0, _0223A348 ; =gSystem + 0x40\n    ldrh r0, [r0, #0x24]\n    cmp r0, #0\n    beq _0223A33E\n    ldr r0, _0223A34C ; =0x00000E58\n    mov r1, #0\n    add r0, r4, r0\n    bl sub_0200E5D4\n    mov r0, #0\n    str r0, [r4, #0x1c]\n    mov r0, #3\n    pop {r4, pc}\n    nop\n    _0223A344: .word gSystem\n    _0223A348: .word gSystem + 0x40\n    _0223A34C: .word 0x00000E58"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _0223A344 ; =gSystem
+    // ldr r1, [r0, #0x48]
+    // mov r0, #1
+    // tst r0, r1
+    // bne _0223A330
+    // mov r0, #2
+    // tst r0, r1
+    // bne _0223A330
+    // ldr r0, _0223A348 ; =gSystem + 0x40
+    // ldrh r0, [r0, #0x24]
+    // cmp r0, #0
+    // beq _0223A33E
+    // ldr r0, _0223A34C ; =0x00000E58
+    // mov r1, #0
+    // add r0, r4, r0
+    // bl sub_0200E5D4
+    // mov r0, #0
+    // str r0, [r4, #0x1c]
+    // mov r0, #3
+    // pop {r4, pc}
+    // nop
+    // _0223A344: .word gSystem
+    // _0223A348: .word gSystem + 0x40
+    // _0223A34C: .word 0x00000E58
+    // TODO: decompile
 }
+
 
 void ov72_0223A350(void) {
-    /* Original at 0x0223A350 */
-    /* Requires manual decompilation - 38 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r0, r1, #0\n    add r1, r2, #0\n    mov r2, #0xbe\n    lsl r2, r2, #4\n    ldr r2, [r5, r2]\n    add r4, r3, #0\n    bl ReadMsgDataIntoString\n    ldr r0, _0223A3A0 ; =0x00000E18\n    mov r1, #0xf\n    add r0, r5, r0\n    bl FillWindowPixelBuffer\n    ldr r0, _0223A3A0 ; =0x00000E18\n    mov r1, #0\n    add r0, r5, r0\n    mov r2, #1\n    mov r3, #0xe\n    bl DrawFrameAndWindow2\n    mov r3, #0\n    str r3, [sp]\n    str r4, [sp, #4]\n    mov r2, #0xbe\n    ldr r0, _0223A3A0 ; =0x00000E18\n    str r3, [sp, #8]\n    lsl r2, r2, #4\n    ldr r2, [r5, r2]\n    add r0, r5, r0\n    mov r1, #1\n    bl AddTextPrinterParameterized\n    ldr r1, _0223A3A4 ; =0x00000BF4\n    str r0, [r5, r1]\n    add sp, #0xc\n    pop {r4, r5, pc}\n    nop\n    _0223A3A0: .word 0x00000E18\n    _0223A3A4: .word 0x00000BF4"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // add r0, r1, #0
+    // add r1, r2, #0
+    // mov r2, #0xbe
+    // lsl r2, r2, #4
+    // ldr r2, [r5, r2]
+    // add r4, r3, #0
+    // bl ReadMsgDataIntoString
+    // ldr r0, _0223A3A0 ; =0x00000E18
+    // mov r1, #0xf
+    // add r0, r5, r0
+    // bl FillWindowPixelBuffer
+    // ldr r0, _0223A3A0 ; =0x00000E18
+    // mov r1, #0
+    // add r0, r5, r0
+    // mov r2, #1
+    // mov r3, #0xe
+    // bl DrawFrameAndWindow2
+    // mov r3, #0
+    // str r3, [sp]
+    // str r4, [sp, #4]
+    // mov r2, #0xbe
+    // ldr r0, _0223A3A0 ; =0x00000E18
+    // str r3, [sp, #8]
+    // lsl r2, r2, #4
+    // ldr r2, [r5, r2]
+    // add r0, r5, r0
+    // mov r1, #1
+    // bl AddTextPrinterParameterized
+    // ldr r1, _0223A3A4 ; =0x00000BF4
+    // str r0, [r5, r1]
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // nop
+    // _0223A3A0: .word 0x00000E18
+    // _0223A3A4: .word 0x00000BF4
+    // TODO: decompile
 }
+
 
 void ov72_0223A3A8(void) {
-    /* Original at 0x0223A3A8 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    cmp r3, #1\n    beq _0223A3B6\n    cmp r3, #2\n    beq _0223A3CC\n    b _0223A3DA\n    ldr r0, [sp, #0xc]\n    mov r2, #0\n    bl FontID_String_GetWidth\n    ldrb r1, [r4, #7]\n    lsl r1, r1, #3\n    sub r1, r1, r0\n    lsr r0, r1, #0x1f\n    add r0, r1, r0\n    asr r2, r0, #1\n    b _0223A3DA\n    ldr r0, [sp, #0xc]\n    mov r2, #0\n    bl FontID_String_GetWidth\n    ldrb r1, [r4, #7]\n    lsl r1, r1, #3\n    sub r2, r1, r0\n    add r0, r2, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // cmp r3, #1
+    // beq _0223A3B6
+    // cmp r3, #2
+    // beq _0223A3CC
+    // b _0223A3DA
+    // ldr r0, [sp, #0xc]
+    // mov r2, #0
+    // bl FontID_String_GetWidth
+    // ldrb r1, [r4, #7]
+    // lsl r1, r1, #3
+    // sub r1, r1, r0
+    // lsr r0, r1, #0x1f
+    // add r0, r1, r0
+    // asr r2, r0, #1
+    // b _0223A3DA
+    // ldr r0, [sp, #0xc]
+    // mov r2, #0
+    // bl FontID_String_GetWidth
+    // ldrb r1, [r4, #7]
+    // lsl r1, r1, #3
+    // sub r2, r1, r0
+    // add r0, r2, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void ov72_0223A3E0(void) {
-    /* Original at 0x0223A3E0 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x10\n    add r4, r3, #0\n    ldr r3, [sp, #0x24]\n    add r5, r0, #0\n    str r3, [sp]\n    mov r3, #1\n    str r3, [sp, #4]\n    ldr r3, [sp, #0x20]\n    add r6, r1, #0\n    bl ov72_0223A3A8\n    add r3, r0, #0\n    str r4, [sp]\n    mov r1, #0\n    ldr r0, [sp, #0x24]\n    str r1, [sp, #4]\n    str r0, [sp, #8]\n    str r1, [sp, #0xc]\n    add r0, r5, #0\n    mov r1, #1\n    add r2, r6, #0\n    bl AddTextPrinterParameterizedWithColor\n    add sp, #0x10\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x10
+    // add r4, r3, #0
+    // ldr r3, [sp, #0x24]
+    // add r5, r0, #0
+    // str r3, [sp]
+    // mov r3, #1
+    // str r3, [sp, #4]
+    // ldr r3, [sp, #0x20]
+    // add r6, r1, #0
+    // bl ov72_0223A3A8
+    // add r3, r0, #0
+    // str r4, [sp]
+    // mov r1, #0
+    // ldr r0, [sp, #0x24]
+    // str r1, [sp, #4]
+    // str r0, [sp, #8]
+    // str r1, [sp, #0xc]
+    // add r0, r5, #0
+    // mov r1, #1
+    // add r2, r6, #0
+    // bl AddTextPrinterParameterizedWithColor
+    // add sp, #0x10
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov72_0223A414(void) {
     sub_0203A880();
 }
 
+
 void ov72_0223A41C(void) {
-    /* Original at 0x0223A41C */
-    /* Requires manual decompilation - 1 instructions */
-    #ifdef MWERKS
-    asm(
-        "bx lr"
-    );
-    #endif
+    // bx lr
+    // TODO: decompile
 }
 
+
 void ov72_0223A420(void) {
-    /* Original at 0x0223A420 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, _0223A43C ; =0x00000F4C\n    ldr r0, [r4, r0]\n    cmp r0, #0\n    bne _0223A43A\n    ldr r0, _0223A440 ; =0x00000E18\n    mov r1, #1\n    add r0, r4, r0\n    bl WaitingIcon_New\n    ldr r1, _0223A43C ; =0x00000F4C\n    str r0, [r4, r1]\n    pop {r4, pc}\n    _0223A43C: .word 0x00000F4C\n    _0223A440: .word 0x00000E18"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, _0223A43C ; =0x00000F4C
+    // ldr r0, [r4, r0]
+    // cmp r0, #0
+    // bne _0223A43A
+    // ldr r0, _0223A440 ; =0x00000E18
+    // mov r1, #1
+    // add r0, r4, r0
+    // bl WaitingIcon_New
+    // ldr r1, _0223A43C ; =0x00000F4C
+    // str r0, [r4, r1]
+    // pop {r4, pc}
+    // _0223A43C: .word 0x00000F4C
+    // _0223A440: .word 0x00000E18
+    // TODO: decompile
 }
+
 
 void ov72_0223A444(void) {
     sub_0200F450(0);
 }
 
+
 void ov72_0223A460(void) {
-    /* Original at 0x0223A460 */
-    /* Requires manual decompilation - 52 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    mov r0, #1\n    add r6, r1, #0\n    lsl r0, r0, #8\n    mov r1, #0x43\n    bl String_New\n    add r4, r0, #0\n    ldr r0, _0223A4D0 ; =0x00000BDC\n    add r1, r6, #0\n    ldr r0, [r5, r0]\n    add r2, r4, #0\n    bl ReadMsgDataIntoString\n    mov r1, #0xbd\n    lsl r1, r1, #4\n    ldr r0, [r5, r1]\n    add r1, #0x20\n    ldr r1, [r5, r1]\n    add r2, r4, #0\n    bl StringExpandPlaceholders\n    ldr r0, _0223A4D4 ; =0x00000E58\n    mov r1, #0xf\n    add r0, r5, r0\n    bl FillWindowPixelBuffer\n    ldr r0, _0223A4D4 ; =0x00000E58\n    mov r1, #1\n    add r0, r5, r0\n    mov r2, #0x1f\n    mov r3, #0xb\n    bl DrawFrameAndWindow1\n    mov r3, #0\n    str r3, [sp]\n    str r3, [sp, #4]\n    mov r2, #0xbf\n    ldr r0, _0223A4D4 ; =0x00000E58\n    str r3, [sp, #8]\n    lsl r2, r2, #4\n    ldr r2, [r5, r2]\n    add r0, r5, r0\n    mov r1, #1\n    bl AddTextPrinterParameterized\n    ldr r1, _0223A4D8 ; =0x00000BF4\n    str r0, [r5, r1]\n    add r0, r4, #0\n    bl String_Delete\n    add sp, #0xc\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _0223A4D0: .word 0x00000BDC\n    _0223A4D4: .word 0x00000E58\n    _0223A4D8: .word 0x00000BF4"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // mov r0, #1
+    // add r6, r1, #0
+    // lsl r0, r0, #8
+    // mov r1, #0x43
+    // bl String_New
+    // add r4, r0, #0
+    // ldr r0, _0223A4D0 ; =0x00000BDC
+    // add r1, r6, #0
+    // ldr r0, [r5, r0]
+    // add r2, r4, #0
+    // bl ReadMsgDataIntoString
+    // mov r1, #0xbd
+    // lsl r1, r1, #4
+    // ldr r0, [r5, r1]
+    // add r1, #0x20
+    // ldr r1, [r5, r1]
+    // add r2, r4, #0
+    // bl StringExpandPlaceholders
+    // ldr r0, _0223A4D4 ; =0x00000E58
+    // mov r1, #0xf
+    // add r0, r5, r0
+    // bl FillWindowPixelBuffer
+    // ldr r0, _0223A4D4 ; =0x00000E58
+    // mov r1, #1
+    // add r0, r5, r0
+    // mov r2, #0x1f
+    // mov r3, #0xb
+    // bl DrawFrameAndWindow1
+    // mov r3, #0
+    // str r3, [sp]
+    // str r3, [sp, #4]
+    // mov r2, #0xbf
+    // ldr r0, _0223A4D4 ; =0x00000E58
+    // str r3, [sp, #8]
+    // lsl r2, r2, #4
+    // ldr r2, [r5, r2]
+    // add r0, r5, r0
+    // mov r1, #1
+    // bl AddTextPrinterParameterized
+    // ldr r1, _0223A4D8 ; =0x00000BF4
+    // str r0, [r5, r1]
+    // add r0, r4, #0
+    // bl String_Delete
+    // add sp, #0xc
+    // pop {r3, r4, r5, r6, pc}
+    // nop
+    // _0223A4D0: .word 0x00000BDC
+    // _0223A4D4: .word 0x00000E58
+    // _0223A4D8: .word 0x00000BF4
+    // TODO: decompile
 }
+
 
 void ov72_0223A4DC(void) {
-    /* Original at 0x0223A4DC */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #8\n    add r5, r0, #0\n    mov r0, #0\n    add r4, r1, #0\n    mvn r0, r0\n    cmp r4, r0\n    bne _0223A4EE\n    mov r4, #0xb\n    mov r0, #2\n    str r0, [sp]\n    mov r0, #1\n    str r0, [sp, #4]\n    mov r0, #0xbd\n    lsl r0, r0, #4\n    ldr r0, [r5, r0]\n    mov r1, #0\n    mov r3, #5\n    bl BufferIntegerAsString\n    ldr r0, _0223A51C ; =0x00000E18\n    mov r1, #1\n    add r0, r5, r0\n    bl ClearFrameAndWindow2\n    add r0, r5, #0\n    add r1, r4, #0\n    bl ov72_0223A460\n    add sp, #8\n    pop {r3, r4, r5, pc}\n    nop\n    _0223A51C: .word 0x00000E18"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #8
+    // add r5, r0, #0
+    // mov r0, #0
+    // add r4, r1, #0
+    // mvn r0, r0
+    // cmp r4, r0
+    // bne _0223A4EE
+    // mov r4, #0xb
+    // mov r0, #2
+    // str r0, [sp]
+    // mov r0, #1
+    // str r0, [sp, #4]
+    // mov r0, #0xbd
+    // lsl r0, r0, #4
+    // ldr r0, [r5, r0]
+    // mov r1, #0
+    // mov r3, #5
+    // bl BufferIntegerAsString
+    // ldr r0, _0223A51C ; =0x00000E18
+    // mov r1, #1
+    // add r0, r5, r0
+    // bl ClearFrameAndWindow2
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl ov72_0223A460
+    // add sp, #8
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _0223A51C: .word 0x00000E18
+    // TODO: decompile
 }
+
 
 void ov72_0223A520(void) {
-    /* Original at 0x0223A520 */
-    /* Requires manual decompilation - 49 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r3, _0223A580 ; =0x0000130C\n    mov r4, #0\n    strb r1, [r0, r3]\n    add r1, r3, #1\n    strb r2, [r0, r1]\n    add r1, r3, #2\n    strb r4, [r0, r1]\n    add r1, r3, #3\n    strb r4, [r0, r1]\n    cmp r2, #0x64\n    beq _0223A544\n    add r1, r3, #4\n    mov r2, #1\n    strh r2, [r0, r1]\n    add r3, #0x5c\n    str r2, [r0, r3]\n    b _0223A54C\n    add r1, r3, #4\n    strh r4, [r0, r1]\n    add r3, #0x5c\n    str r4, [r0, r3]\n    ldr r3, _0223A584 ; =0x00001312\n    mov r1, #0\n    strb r1, [r0, r3]\n    sub r4, r1, #1\n    add r2, r3, #2\n    strb r4, [r0, r2]\n    add r2, r3, #3\n    strb r4, [r0, r2]\n    add r2, r3, #4\n    strb r4, [r0, r2]\n    add r2, r3, #0\n    add r2, #0x52\n    strh r1, [r0, r2]\n    mov r2, #1\n    add r3, #0x54\n    strh r2, [r0, r3]\n    mov r2, #0xe\n    lsl r2, r2, #8\n    ldr r0, [r0, r2]\n    cmp r0, #0\n    beq _0223A57A\n    bl ov72_022386F4\n    mov r0, #1\n    pop {r4, pc}\n    nop\n    _0223A580: .word 0x0000130C\n    _0223A584: .word 0x00001312"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r3, _0223A580 ; =0x0000130C
+    // mov r4, #0
+    // strb r1, [r0, r3]
+    // add r1, r3, #1
+    // strb r2, [r0, r1]
+    // add r1, r3, #2
+    // strb r4, [r0, r1]
+    // add r1, r3, #3
+    // strb r4, [r0, r1]
+    // cmp r2, #0x64
+    // beq _0223A544
+    // add r1, r3, #4
+    // mov r2, #1
+    // strh r2, [r0, r1]
+    // add r3, #0x5c
+    // str r2, [r0, r3]
+    // b _0223A54C
+    // add r1, r3, #4
+    // strh r4, [r0, r1]
+    // add r3, #0x5c
+    // str r4, [r0, r3]
+    // ldr r3, _0223A584 ; =0x00001312
+    // mov r1, #0
+    // strb r1, [r0, r3]
+    // sub r4, r1, #1
+    // add r2, r3, #2
+    // strb r4, [r0, r2]
+    // add r2, r3, #3
+    // strb r4, [r0, r2]
+    // add r2, r3, #4
+    // strb r4, [r0, r2]
+    // add r2, r3, #0
+    // add r2, #0x52
+    // strh r1, [r0, r2]
+    // mov r2, #1
+    // add r3, #0x54
+    // strh r2, [r0, r3]
+    // mov r2, #0xe
+    // lsl r2, r2, #8
+    // ldr r0, [r0, r2]
+    // cmp r0, #0
+    // beq _0223A57A
+    // bl ov72_022386F4
+    // mov r0, #1
+    // pop {r4, pc}
+    // nop
+    // _0223A580: .word 0x0000130C
+    // _0223A584: .word 0x00001312
+    // TODO: decompile
 }
+
 
 void ov72_0223A588(void) {
-    /* Original at 0x0223A588 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r1, _0223A5A8 ; =0x00001312\n    add r4, r0, #0\n    ldrb r1, [r4, r1]\n    lsl r2, r1, #2\n    ldr r1, _0223A5AC ; =ov72_0223B744\n    ldr r1, [r1, r2]\n    blx r1\n    cmp r0, #1\n    bne _0223A5A2\n    ldr r0, _0223A5B0 ; =0x0000130E\n    ldrsb r0, [r4, r0]\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}\n    nop\n    _0223A5A8: .word 0x00001312\n    _0223A5AC: .word ov72_0223B744\n    _0223A5B0: .word 0x0000130E"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r1, _0223A5A8 ; =0x00001312
+    // add r4, r0, #0
+    // ldrb r1, [r4, r1]
+    // lsl r2, r1, #2
+    // ldr r1, _0223A5AC ; =ov72_0223B744
+    // ldr r1, [r1, r2]
+    // blx r1
+    // cmp r0, #1
+    // bne _0223A5A2
+    // ldr r0, _0223A5B0 ; =0x0000130E
+    // ldrsb r0, [r4, r0]
+    // pop {r4, pc}
+    // mov r0, #0
+    // pop {r4, pc}
+    // nop
+    // _0223A5A8: .word 0x00001312
+    // _0223A5AC: .word ov72_0223B744
+    // _0223A5B0: .word 0x0000130E
+    // TODO: decompile
 }
+
 
 void ov72_0223A5B4(void) {
-    /* Original at 0x0223A5B4 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    mov r0, #4\n    str r0, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    mov r1, #0x43\n    str r1, [sp, #8]\n    mov r1, #0\n    add r2, r1, #0\n    add r3, r1, #0\n    bl BeginNormalPaletteFade\n    ldr r0, _0223A5DC ; =0x00001312\n    mov r1, #1\n    strb r1, [r4, r0]\n    mov r0, #0\n    add sp, #0xc\n    pop {r3, r4, pc}\n    _0223A5DC: .word 0x00001312"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // mov r0, #4
+    // str r0, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // mov r1, #0x43
+    // str r1, [sp, #8]
+    // mov r1, #0
+    // add r2, r1, #0
+    // add r3, r1, #0
+    // bl BeginNormalPaletteFade
+    // ldr r0, _0223A5DC ; =0x00001312
+    // mov r1, #1
+    // strb r1, [r4, r0]
+    // mov r0, #0
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // _0223A5DC: .word 0x00001312
+    // TODO: decompile
 }
+
 
 void ov72_0223A5E0(void) {
-    /* Original at 0x0223A5E0 */
-    /* Requires manual decompilation - 63 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    bl IsPaletteFadeFinished\n    cmp r0, #1\n    bne _0223A65E\n    add r0, r4, #0\n    bl ov72_0223A680\n    ldr r2, _0223A664 ; =0x00001310\n    ldr r0, _0223A668 ; =0x00000E04\n    ldrsh r1, [r4, r2]\n    add r2, #0x58\n    ldr r0, [r4, r0]\n    ldr r2, [r4, r2]\n    bl ov72_02238730\n    add r0, r4, #0\n    mov r1, #1\n    bl ov72_02238B18\n    add r0, r4, #0\n    bl ov72_0223ACA8\n    ldr r1, _0223A66C ; =0x00000BD4\n    ldr r0, _0223A670 ; =0x00001328\n    ldr r1, [r4, r1]\n    add r0, r4, r0\n    mov r2, #0x14\n    bl ov72_0223AD20\n    ldr r1, _0223A66C ; =0x00000BD4\n    ldr r0, _0223A674 ; =0x00001338\n    ldr r1, [r4, r1]\n    add r0, r4, r0\n    mov r2, #0x15\n    bl ov72_0223AD20\n    ldr r1, _0223A66C ; =0x00000BD4\n    ldr r0, _0223A678 ; =0x00001348\n    ldr r1, [r4, r1]\n    add r0, r4, r0\n    mov r2, #0x16\n    bl ov72_0223AD20\n    mov r0, #4\n    mov r1, #1\n    bl ToggleBgLayer\n    mov r0, #4\n    str r0, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    mov r2, #0x43\n    str r2, [sp, #8]\n    add r2, r1, #0\n    mov r3, #0\n    bl BeginNormalPaletteFade\n    ldr r0, _0223A67C ; =0x00001312\n    mov r1, #2\n    strb r1, [r4, r0]\n    mov r0, #0\n    add sp, #0xc\n    pop {r3, r4, pc}\n    _0223A664: .word 0x00001310\n    _0223A668: .word 0x00000E04\n    _0223A66C: .word 0x00000BD4\n    _0223A670: .word 0x00001328\n    _0223A674: .word 0x00001338\n    _0223A678: .word 0x00001348\n    _0223A67C: .word 0x00001312"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // bl IsPaletteFadeFinished
+    // cmp r0, #1
+    // bne _0223A65E
+    // add r0, r4, #0
+    // bl ov72_0223A680
+    // ldr r2, _0223A664 ; =0x00001310
+    // ldr r0, _0223A668 ; =0x00000E04
+    // ldrsh r1, [r4, r2]
+    // add r2, #0x58
+    // ldr r0, [r4, r0]
+    // ldr r2, [r4, r2]
+    // bl ov72_02238730
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl ov72_02238B18
+    // add r0, r4, #0
+    // bl ov72_0223ACA8
+    // ldr r1, _0223A66C ; =0x00000BD4
+    // ldr r0, _0223A670 ; =0x00001328
+    // ldr r1, [r4, r1]
+    // add r0, r4, r0
+    // mov r2, #0x14
+    // bl ov72_0223AD20
+    // ldr r1, _0223A66C ; =0x00000BD4
+    // ldr r0, _0223A674 ; =0x00001338
+    // ldr r1, [r4, r1]
+    // add r0, r4, r0
+    // mov r2, #0x15
+    // bl ov72_0223AD20
+    // ldr r1, _0223A66C ; =0x00000BD4
+    // ldr r0, _0223A678 ; =0x00001348
+    // ldr r1, [r4, r1]
+    // add r0, r4, r0
+    // mov r2, #0x16
+    // bl ov72_0223AD20
+    // mov r0, #4
+    // mov r1, #1
+    // bl ToggleBgLayer
+    // mov r0, #4
+    // str r0, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // mov r2, #0x43
+    // str r2, [sp, #8]
+    // add r2, r1, #0
+    // mov r3, #0
+    // bl BeginNormalPaletteFade
+    // ldr r0, _0223A67C ; =0x00001312
+    // mov r1, #2
+    // strb r1, [r4, r0]
+    // mov r0, #0
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // _0223A664: .word 0x00001310
+    // _0223A668: .word 0x00000E04
+    // _0223A66C: .word 0x00000BD4
+    // _0223A670: .word 0x00001328
+    // _0223A674: .word 0x00001338
+    // _0223A678: .word 0x00001348
+    // _0223A67C: .word 0x00001312
+    // TODO: decompile
 }
 
+
 void ov72_0223A680(void) {
-    /* Original at 0x0223A680 */
-    /* Requires manual decompilation - 61 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    ldr r0, _0223A6FC ; =0x0000130D\n    ldrb r0, [r6, r0]\n    cmp r0, #0x64\n    bne _0223A696\n    ldr r0, _0223A700 ; =0x00000DF4\n    mov r1, #1\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223A704 ; =0x00000DF8\n    mov r1, #1\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223A708 ; =0x00000DFC\n    mov r1, #1\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    ldr r7, _0223A70C ; =0x00001368\n    mov r4, #0\n    add r5, r6, #0\n    ldr r0, _0223A700 ; =0x00000DF4\n    ldr r2, [r6, r7]\n    ldr r0, [r5, r0]\n    add r1, r4, #0\n    bl ov72_02238750\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #3\n    blt _0223A6B0\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldr r0, [r6, r0]\n    mov r1, #1\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223A710 ; =0x00000E04\n    mov r1, #1\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223A714 ; =0x00000E08\n    mov r1, #1\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223A718 ; =0x00000E0C\n    mov r1, #1\n    ldr r0, [r6, r0]\n    bl Sprite_SetDrawFlag\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    ldr r0, [r6, r0]\n    mov r1, #1\n    bl Sprite_SetDrawFlag\n    pop {r3, r4, r5, r6, r7, pc}\n    _0223A6FC: .word 0x0000130D\n    _0223A700: .word 0x00000DF4\n    _0223A704: .word 0x00000DF8\n    _0223A708: .word 0x00000DFC\n    _0223A70C: .word 0x00001368\n    _0223A710: .word 0x00000E04\n    _0223A714: .word 0x00000E08\n    _0223A718: .word 0x00000E0C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r6, r0, #0
+    // ldr r0, _0223A6FC ; =0x0000130D
+    // ldrb r0, [r6, r0]
+    // cmp r0, #0x64
+    // bne _0223A696
+    // ldr r0, _0223A700 ; =0x00000DF4
+    // mov r1, #1
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223A704 ; =0x00000DF8
+    // mov r1, #1
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223A708 ; =0x00000DFC
+    // mov r1, #1
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r7, _0223A70C ; =0x00001368
+    // mov r4, #0
+    // add r5, r6, #0
+    // ldr r0, _0223A700 ; =0x00000DF4
+    // ldr r2, [r6, r7]
+    // ldr r0, [r5, r0]
+    // add r1, r4, #0
+    // bl ov72_02238750
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #3
+    // blt _0223A6B0
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldr r0, [r6, r0]
+    // mov r1, #1
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223A710 ; =0x00000E04
+    // mov r1, #1
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223A714 ; =0x00000E08
+    // mov r1, #1
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223A718 ; =0x00000E0C
+    // mov r1, #1
+    // ldr r0, [r6, r0]
+    // bl Sprite_SetDrawFlag
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // ldr r0, [r6, r0]
+    // mov r1, #1
+    // bl Sprite_SetDrawFlag
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0223A6FC: .word 0x0000130D
+    // _0223A700: .word 0x00000DF4
+    // _0223A704: .word 0x00000DF8
+    // _0223A708: .word 0x00000DFC
+    // _0223A70C: .word 0x00001368
+    // _0223A710: .word 0x00000E04
+    // _0223A714: .word 0x00000E08
+    // _0223A718: .word 0x00000E0C
+    // TODO: decompile
 }
+
 
 void ov72_0223A71C(void) {
     IsPaletteFadeFinished(0, 3);
 }
 
+
 void ov72_0223A738(void) {
-    /* Original at 0x0223A738 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    ldr r1, _0223A754 ; =0x0000130D\n    ldrb r0, [r0, r1]\n    cmp r0, #0x64\n    bne _0223A74A\n    ldr r0, _0223A758 ; =ov72_0223B774\n    bl TouchscreenHitbox_FindRectAtTouchNew\n    pop {r3, pc}\n    ldr r0, _0223A75C ; =ov72_0223B7B8\n    bl TouchscreenHitbox_FindRectAtTouchNew\n    pop {r3, pc}\n    nop\n    _0223A754: .word 0x0000130D\n    _0223A758: .word ov72_0223B774\n    _0223A75C: .word ov72_0223B7B8"
-    );
-    #endif
+    // push {r3, lr}
+    // ldr r1, _0223A754 ; =0x0000130D
+    // ldrb r0, [r0, r1]
+    // cmp r0, #0x64
+    // bne _0223A74A
+    // ldr r0, _0223A758 ; =ov72_0223B774
+    // bl TouchscreenHitbox_FindRectAtTouchNew
+    // pop {r3, pc}
+    // ldr r0, _0223A75C ; =ov72_0223B7B8
+    // bl TouchscreenHitbox_FindRectAtTouchNew
+    // pop {r3, pc}
+    // nop
+    // _0223A754: .word 0x0000130D
+    // _0223A758: .word ov72_0223B774
+    // _0223A75C: .word ov72_0223B7B8
+    // TODO: decompile
 }
+
 
 void ov72_0223A760(void) {
-    /* Original at 0x0223A760 */
-    /* Requires manual decompilation - 69 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4}\n    ldr r3, _0223A7E0 ; =ov72_0223B48C\n    lsl r4, r0, #2\n    add r3, r3, r4\n    ldrb r1, [r1, r3]\n    cmp r1, #0xd\n    bne _0223A776\n    ldrh r1, [r2]\n    ldr r0, _0223A7E4 ; =ov72_0223B464\n    ldrb r1, [r0, r1]\n    b _0223A7D8\n    cmp r1, #0xe\n    bne _0223A782\n    ldrh r1, [r2]\n    ldr r0, _0223A7E8 ; =ov72_0223B466\n    ldrb r1, [r0, r1]\n    b _0223A7D8\n    cmp r1, #0xf\n    bne _0223A78E\n    ldrh r1, [r2, #2]\n    ldr r0, _0223A7EC ; =ov72_0223B468\n    ldrb r1, [r0, r1]\n    b _0223A7D8\n    cmp r1, #0x10\n    bne _0223A79A\n    ldrh r1, [r2, #2]\n    ldr r0, _0223A7F0 ; =ov72_0223B46A\n    ldrb r1, [r0, r1]\n    b _0223A7D8\n    cmp r1, #0xa\n    bne _0223A7BA\n    cmp r0, #5\n    beq _0223A7A6\n    cmp r0, #0\n    bne _0223A7AC\n    mov r0, #0\n    strh r0, [r2]\n    b _0223A7D8\n    cmp r0, #1\n    beq _0223A7B4\n    cmp r0, #6\n    bne _0223A7D8\n    mov r0, #1\n    strh r0, [r2]\n    b _0223A7D8\n    cmp r1, #0xc\n    bne _0223A7D8\n    cmp r0, #3\n    beq _0223A7C6\n    cmp r0, #8\n    bne _0223A7CC\n    mov r0, #0\n    strh r0, [r2, #2]\n    b _0223A7D8\n    cmp r0, #4\n    beq _0223A7D4\n    cmp r0, #9\n    bne _0223A7D8\n    mov r0, #1\n    strh r0, [r2, #2]\n    add r0, r1, #0\n    pop {r3, r4}\n    bx lr\n    nop\n    _0223A7E0: .word ov72_0223B48C\n    _0223A7E4: .word ov72_0223B464\n    _0223A7E8: .word ov72_0223B466\n    _0223A7EC: .word ov72_0223B468\n    _0223A7F0: .word ov72_0223B46A"
-    );
-    #endif
+    // push {r3, r4}
+    // ldr r3, _0223A7E0 ; =ov72_0223B48C
+    // lsl r4, r0, #2
+    // add r3, r3, r4
+    // ldrb r1, [r1, r3]
+    // cmp r1, #0xd
+    // bne _0223A776
+    // ldrh r1, [r2]
+    // ldr r0, _0223A7E4 ; =ov72_0223B464
+    // ldrb r1, [r0, r1]
+    // b _0223A7D8
+    // cmp r1, #0xe
+    // bne _0223A782
+    // ldrh r1, [r2]
+    // ldr r0, _0223A7E8 ; =ov72_0223B466
+    // ldrb r1, [r0, r1]
+    // b _0223A7D8
+    // cmp r1, #0xf
+    // bne _0223A78E
+    // ldrh r1, [r2, #2]
+    // ldr r0, _0223A7EC ; =ov72_0223B468
+    // ldrb r1, [r0, r1]
+    // b _0223A7D8
+    // cmp r1, #0x10
+    // bne _0223A79A
+    // ldrh r1, [r2, #2]
+    // ldr r0, _0223A7F0 ; =ov72_0223B46A
+    // ldrb r1, [r0, r1]
+    // b _0223A7D8
+    // cmp r1, #0xa
+    // bne _0223A7BA
+    // cmp r0, #5
+    // beq _0223A7A6
+    // cmp r0, #0
+    // bne _0223A7AC
+    // mov r0, #0
+    // strh r0, [r2]
+    // b _0223A7D8
+    // cmp r0, #1
+    // beq _0223A7B4
+    // cmp r0, #6
+    // bne _0223A7D8
+    // mov r0, #1
+    // strh r0, [r2]
+    // b _0223A7D8
+    // cmp r1, #0xc
+    // bne _0223A7D8
+    // cmp r0, #3
+    // beq _0223A7C6
+    // cmp r0, #8
+    // bne _0223A7CC
+    // mov r0, #0
+    // strh r0, [r2, #2]
+    // b _0223A7D8
+    // cmp r0, #4
+    // beq _0223A7D4
+    // cmp r0, #9
+    // bne _0223A7D8
+    // mov r0, #1
+    // strh r0, [r2, #2]
+    // add r0, r1, #0
+    // pop {r3, r4}
+    // bx lr
+    // nop
+    // _0223A7E0: .word ov72_0223B48C
+    // _0223A7E4: .word ov72_0223B464
+    // _0223A7E8: .word ov72_0223B466
+    // _0223A7EC: .word ov72_0223B468
+    // _0223A7F0: .word ov72_0223B46A
+    // TODO: decompile
 }
+
 
 void ov72_0223A7F4(void) {
-    /* Original at 0x0223A7F4 */
-    /* Requires manual decompilation - 83 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x24\n    add r7, r0, #0\n    add r6, r1, #0\n    mov r0, #0x64\n    mov r4, #3\n    mov r1, #0\n    add r2, sp, #0x18\n    mov r3, #8\n    add r5, r7, r1\n    ldrsb r5, [r5, r3]\n    add r1, r1, #1\n    cmp r1, #3\n    stmia r2!, {r5}\n    blt _0223A806\n    mov r1, #0\n    mvn r1, r1\n    cmp r6, r1\n    beq _0223A824\n    mov r1, #4\n    ldrsh r1, [r7, r1]\n    lsl r2, r1, #2\n    add r1, sp, #0x18\n    str r6, [r1, r2]\n    mov r1, #0\n    str r1, [sp, #4]\n    str r1, [sp, #8]\n    add r5, r1, #0\n    add r6, sp, #0x18\n    add r2, r7, r5\n    mov r1, #8\n    ldrsb r1, [r2, r1]\n    cmp r1, #0\n    bne _0223A83E\n    ldr r1, [sp, #8]\n    cmp r1, #0\n    beq _0223A844\n    ldr r2, [r6]\n    cmp r2, #0\n    bge _0223A84E\n    mov r1, #0xa\n    bl _s32_div_f\n    sub r4, r4, #1\n    b _0223A860\n    mov r1, #1\n    ldr r3, [sp, #4]\n    str r1, [sp, #8]\n    ldr r1, [sp, #4]\n    add r3, r3, #1\n    str r3, [sp, #4]\n    lsl r1, r1, #2\n    add r3, sp, #0xc\n    str r2, [r3, r1]\n    add r5, r5, #1\n    add r6, r6, #4\n    cmp r5, #3\n    blt _0223A82E\n    mov r6, #0\n    str r6, [sp]\n    cmp r4, #0\n    ble _0223A88A\n    add r5, sp, #0xc\n    ldr r1, [r5]\n    mul r1, r0\n    add r6, r6, r1\n    mov r1, #0xa\n    bl _s32_div_f\n    ldr r1, [sp]\n    add r5, r5, #4\n    add r1, r1, #1\n    str r1, [sp]\n    cmp r1, r4\n    blt _0223A872\n    ldrb r0, [r7, #1]\n    cmp r6, r0\n    ble _0223A898\n    mov r0, #0\n    add sp, #0x24\n    mvn r0, r0\n    pop {r4, r5, r6, r7, pc}\n    add r0, r6, #0\n    add sp, #0x24\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x24
+    // add r7, r0, #0
+    // add r6, r1, #0
+    // mov r0, #0x64
+    // mov r4, #3
+    // mov r1, #0
+    // add r2, sp, #0x18
+    // mov r3, #8
+    // add r5, r7, r1
+    // ldrsb r5, [r5, r3]
+    // add r1, r1, #1
+    // cmp r1, #3
+    // stmia r2!, {r5}
+    // blt _0223A806
+    // mov r1, #0
+    // mvn r1, r1
+    // cmp r6, r1
+    // beq _0223A824
+    // mov r1, #4
+    // ldrsh r1, [r7, r1]
+    // lsl r2, r1, #2
+    // add r1, sp, #0x18
+    // str r6, [r1, r2]
+    // mov r1, #0
+    // str r1, [sp, #4]
+    // str r1, [sp, #8]
+    // add r5, r1, #0
+    // add r6, sp, #0x18
+    // add r2, r7, r5
+    // mov r1, #8
+    // ldrsb r1, [r2, r1]
+    // cmp r1, #0
+    // bne _0223A83E
+    // ldr r1, [sp, #8]
+    // cmp r1, #0
+    // beq _0223A844
+    // ldr r2, [r6]
+    // cmp r2, #0
+    // bge _0223A84E
+    // mov r1, #0xa
+    // bl _s32_div_f
+    // sub r4, r4, #1
+    // b _0223A860
+    // mov r1, #1
+    // ldr r3, [sp, #4]
+    // str r1, [sp, #8]
+    // ldr r1, [sp, #4]
+    // add r3, r3, #1
+    // str r3, [sp, #4]
+    // lsl r1, r1, #2
+    // add r3, sp, #0xc
+    // str r2, [r3, r1]
+    // add r5, r5, #1
+    // add r6, r6, #4
+    // cmp r5, #3
+    // blt _0223A82E
+    // mov r6, #0
+    // str r6, [sp]
+    // cmp r4, #0
+    // ble _0223A88A
+    // add r5, sp, #0xc
+    // ldr r1, [r5]
+    // mul r1, r0
+    // add r6, r6, r1
+    // mov r1, #0xa
+    // bl _s32_div_f
+    // ldr r1, [sp]
+    // add r5, r5, #4
+    // add r1, r1, #1
+    // str r1, [sp]
+    // cmp r1, r4
+    // blt _0223A872
+    // ldrb r0, [r7, #1]
+    // cmp r6, r0
+    // ble _0223A898
+    // mov r0, #0
+    // add sp, #0x24
+    // mvn r0, r0
+    // pop {r4, r5, r6, r7, pc}
+    // add r0, r6, #0
+    // add sp, #0x24
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov72_0223A8A0(void) {
-    /* Original at 0x0223A8A0 */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldrb r1, [r0, #1]\n    cmp r1, #0x64\n    beq _0223A8BA\n    mov r1, #9\n    ldrsb r1, [r0, r1]\n    cmp r1, #0\n    blt _0223A8D6\n    mov r1, #0xa\n    ldrsb r0, [r0, r1]\n    cmp r0, #0\n    blt _0223A8D6\n    mov r0, #1\n    bx lr\n    mov r1, #8\n    ldrsb r1, [r0, r1]\n    cmp r1, #0\n    blt _0223A8D6\n    mov r1, #9\n    ldrsb r1, [r0, r1]\n    cmp r1, #0\n    blt _0223A8D6\n    mov r1, #0xa\n    ldrsb r0, [r0, r1]\n    cmp r0, #0\n    blt _0223A8D6\n    mov r0, #1\n    bx lr\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    // ldrb r1, [r0, #1]
+    // cmp r1, #0x64
+    // beq _0223A8BA
+    // mov r1, #9
+    // ldrsb r1, [r0, r1]
+    // cmp r1, #0
+    // blt _0223A8D6
+    // mov r1, #0xa
+    // ldrsb r0, [r0, r1]
+    // cmp r0, #0
+    // blt _0223A8D6
+    // mov r0, #1
+    // bx lr
+    // mov r1, #8
+    // ldrsb r1, [r0, r1]
+    // cmp r1, #0
+    // blt _0223A8D6
+    // mov r1, #9
+    // ldrsb r1, [r0, r1]
+    // cmp r1, #0
+    // blt _0223A8D6
+    // mov r1, #0xa
+    // ldrsb r0, [r0, r1]
+    // cmp r0, #0
+    // blt _0223A8D6
+    // mov r0, #1
+    // bx lr
+    // mov r0, #0
+    // bx lr
+    // TODO: decompile
 }
+
 
 void ov72_0223A8DC(void) {
     ov72_0223A8A0(0xb);
 }
 
+
 void ov72_0223A8F0(void) {
-    /* Original at 0x0223A8F0 */
-    /* Requires manual decompilation - 170 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    add r4, r0, #0\n    cmp r5, #0xf\n    bls _0223A8FC\n    b _0223AA6A\n    add r0, r5, r5\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _0223A908: ; jump table\n    ldr r0, _0223AA6C ; =0x0000130C\n    sub r1, r5, #3\n    add r0, r4, r0\n    bl ov72_0223A7F4\n    mov r1, #0\n    mvn r1, r1\n    cmp r0, r1\n    beq _0223A99A\n    ldr r1, _0223AA70 ; =0x00001310\n    sub r3, r5, #3\n    ldrsh r0, [r4, r1]\n    add r2, r4, r0\n    add r0, r1, #4\n    strb r3, [r2, r0]\n    ldrsh r0, [r4, r1]\n    cmp r0, #2\n    bge _0223A950\n    add r0, r0, #1\n    strh r0, [r4, r1]\n    ldr r2, _0223AA70 ; =0x00001310\n    ldr r0, _0223AA74 ; =0x00000E04\n    ldrsh r1, [r4, r2]\n    add r2, #0x58\n    ldr r0, [r4, r0]\n    ldr r2, [r4, r2]\n    bl ov72_02238730\n    ldr r0, _0223AA78 ; =0x0000130F\n    sub r1, r5, #3\n    strb r1, [r4, r0]\n    sub r0, r0, #3\n    add r0, r4, r0\n    bl ov72_0223A8DC\n    ldr r1, _0223AA78 ; =0x0000130F\n    strb r0, [r4, r1]\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldrb r1, [r4, r1]\n    ldr r0, [r4, r0]\n    bl ov72_022386F4\n    ldr r0, _0223AA7C ; =0x000005DC\n    bl PlaySE\n    sub r0, r5, #3\n    lsl r3, r0, #1\n    ldr r1, _0223AA80 ; =ov72_0223B478\n    ldr r2, _0223AA84 ; =ov72_0223B479\n    ldrb r1, [r1, r3]\n    ldrb r2, [r2, r3]\n    add r0, r4, #0\n    mov r3, #3\n    bl ov72_0223AED0\n    pop {r3, r4, r5, pc}\n    ldr r0, _0223AA88 ; =0x000005F2\n    bl PlaySE\n    pop {r3, r4, r5, pc}\n    ldr r1, _0223AA70 ; =0x00001310\n    mov r3, #0\n    ldrsh r0, [r4, r1]\n    mvn r3, r3\n    add r2, r4, r0\n    add r0, r1, #4\n    strb r3, [r2, r0]\n    ldrsh r0, [r4, r1]\n    sub r0, r0, #1\n    strh r0, [r4, r1]\n    sub r0, r1, #3\n    ldrb r0, [r4, r0]\n    cmp r0, #0x64\n    ldrsh r0, [r4, r1]\n    bne _0223A9CA\n    cmp r0, #0\n    bge _0223A9D2\n    mov r0, #0\n    strh r0, [r4, r1]\n    b _0223A9D2\n    cmp r0, #1\n    bge _0223A9D2\n    mov r0, #1\n    strh r0, [r4, r1]\n    ldr r0, _0223AA7C ; =0x000005DC\n    bl PlaySE\n    ldr r2, _0223AA70 ; =0x00001310\n    ldr r0, _0223AA74 ; =0x00000E04\n    ldrsh r1, [r4, r2]\n    add r2, #0x58\n    ldr r0, [r4, r0]\n    ldr r2, [r4, r2]\n    bl ov72_02238730\n    ldr r0, _0223AA8C ; =0x00000E08\n    mov r1, #5\n    ldr r0, [r4, r0]\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}\n    ldr r1, _0223AA78 ; =0x0000130F\n    sub r0, r5, #3\n    strb r0, [r4, r1]\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldrb r1, [r4, r1]\n    ldr r0, [r4, r0]\n    bl ov72_022386F4\n    ldr r0, _0223AA6C ; =0x0000130C\n    mov r1, #0\n    add r0, r4, r0\n    mvn r1, r1\n    bl ov72_0223A7F4\n    ldr r1, _0223AA90 ; =0x0000130E\n    strb r0, [r4, r1]\n    ldrsb r0, [r4, r1]\n    cmp r0, #0\n    bgt _0223AA20\n    mov r0, #1\n    strb r0, [r4, r1]\n    ldr r0, _0223AA94 ; =0x00001312\n    mov r1, #7\n    strb r1, [r4, r0]\n    ldr r0, _0223AA7C ; =0x000005DC\n    bl PlaySE\n    ldr r0, _0223AA98 ; =0x00000E0C\n    mov r1, #5\n    ldr r0, [r4, r0]\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}\n    ldr r1, _0223AA78 ; =0x0000130F\n    sub r0, r5, #3\n    mov r2, #0\n    strb r0, [r4, r1]\n    mvn r2, r2\n    sub r0, r1, #1\n    strb r2, [r4, r0]\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldrb r1, [r4, r1]\n    ldr r0, [r4, r0]\n    bl ov72_022386F4\n    ldr r0, _0223AA94 ; =0x00001312\n    mov r1, #7\n    strb r1, [r4, r0]\n    ldr r0, _0223AA7C ; =0x000005DC\n    bl PlaySE\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    mov r1, #5\n    bl Sprite_SetAnimCtrlSeq\n    pop {r3, r4, r5, pc}\n    _0223AA6C: .word 0x0000130C\n    _0223AA70: .word 0x00001310\n    _0223AA74: .word 0x00000E04\n    _0223AA78: .word 0x0000130F\n    _0223AA7C: .word 0x000005DC\n    _0223AA80: .word ov72_0223B478\n    _0223AA84: .word ov72_0223B479\n    _0223AA88: .word 0x000005F2\n    _0223AA8C: .word 0x00000E08\n    _0223AA90: .word 0x0000130E\n    _0223AA94: .word 0x00001312\n    _0223AA98: .word 0x00000E0C"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r1, #0
+    // add r4, r0, #0
+    // cmp r5, #0xf
+    // bls _0223A8FC
+    // b _0223AA6A
+    // add r0, r5, r5
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _0223A908: ; jump table
+    // ldr r0, _0223AA6C ; =0x0000130C
+    // sub r1, r5, #3
+    // add r0, r4, r0
+    // bl ov72_0223A7F4
+    // mov r1, #0
+    // mvn r1, r1
+    // cmp r0, r1
+    // beq _0223A99A
+    // ldr r1, _0223AA70 ; =0x00001310
+    // sub r3, r5, #3
+    // ldrsh r0, [r4, r1]
+    // add r2, r4, r0
+    // add r0, r1, #4
+    // strb r3, [r2, r0]
+    // ldrsh r0, [r4, r1]
+    // cmp r0, #2
+    // bge _0223A950
+    // add r0, r0, #1
+    // strh r0, [r4, r1]
+    // ldr r2, _0223AA70 ; =0x00001310
+    // ldr r0, _0223AA74 ; =0x00000E04
+    // ldrsh r1, [r4, r2]
+    // add r2, #0x58
+    // ldr r0, [r4, r0]
+    // ldr r2, [r4, r2]
+    // bl ov72_02238730
+    // ldr r0, _0223AA78 ; =0x0000130F
+    // sub r1, r5, #3
+    // strb r1, [r4, r0]
+    // sub r0, r0, #3
+    // add r0, r4, r0
+    // bl ov72_0223A8DC
+    // ldr r1, _0223AA78 ; =0x0000130F
+    // strb r0, [r4, r1]
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldrb r1, [r4, r1]
+    // ldr r0, [r4, r0]
+    // bl ov72_022386F4
+    // ldr r0, _0223AA7C ; =0x000005DC
+    // bl PlaySE
+    // sub r0, r5, #3
+    // lsl r3, r0, #1
+    // ldr r1, _0223AA80 ; =ov72_0223B478
+    // ldr r2, _0223AA84 ; =ov72_0223B479
+    // ldrb r1, [r1, r3]
+    // ldrb r2, [r2, r3]
+    // add r0, r4, #0
+    // mov r3, #3
+    // bl ov72_0223AED0
+    // pop {r3, r4, r5, pc}
+    // ldr r0, _0223AA88 ; =0x000005F2
+    // bl PlaySE
+    // pop {r3, r4, r5, pc}
+    // ldr r1, _0223AA70 ; =0x00001310
+    // mov r3, #0
+    // ldrsh r0, [r4, r1]
+    // mvn r3, r3
+    // add r2, r4, r0
+    // add r0, r1, #4
+    // strb r3, [r2, r0]
+    // ldrsh r0, [r4, r1]
+    // sub r0, r0, #1
+    // strh r0, [r4, r1]
+    // sub r0, r1, #3
+    // ldrb r0, [r4, r0]
+    // cmp r0, #0x64
+    // ldrsh r0, [r4, r1]
+    // bne _0223A9CA
+    // cmp r0, #0
+    // bge _0223A9D2
+    // mov r0, #0
+    // strh r0, [r4, r1]
+    // b _0223A9D2
+    // cmp r0, #1
+    // bge _0223A9D2
+    // mov r0, #1
+    // strh r0, [r4, r1]
+    // ldr r0, _0223AA7C ; =0x000005DC
+    // bl PlaySE
+    // ldr r2, _0223AA70 ; =0x00001310
+    // ldr r0, _0223AA74 ; =0x00000E04
+    // ldrsh r1, [r4, r2]
+    // add r2, #0x58
+    // ldr r0, [r4, r0]
+    // ldr r2, [r4, r2]
+    // bl ov72_02238730
+    // ldr r0, _0223AA8C ; =0x00000E08
+    // mov r1, #5
+    // ldr r0, [r4, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // pop {r3, r4, r5, pc}
+    // ldr r1, _0223AA78 ; =0x0000130F
+    // sub r0, r5, #3
+    // strb r0, [r4, r1]
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldrb r1, [r4, r1]
+    // ldr r0, [r4, r0]
+    // bl ov72_022386F4
+    // ldr r0, _0223AA6C ; =0x0000130C
+    // mov r1, #0
+    // add r0, r4, r0
+    // mvn r1, r1
+    // bl ov72_0223A7F4
+    // ldr r1, _0223AA90 ; =0x0000130E
+    // strb r0, [r4, r1]
+    // ldrsb r0, [r4, r1]
+    // cmp r0, #0
+    // bgt _0223AA20
+    // mov r0, #1
+    // strb r0, [r4, r1]
+    // ldr r0, _0223AA94 ; =0x00001312
+    // mov r1, #7
+    // strb r1, [r4, r0]
+    // ldr r0, _0223AA7C ; =0x000005DC
+    // bl PlaySE
+    // ldr r0, _0223AA98 ; =0x00000E0C
+    // mov r1, #5
+    // ldr r0, [r4, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // pop {r3, r4, r5, pc}
+    // ldr r1, _0223AA78 ; =0x0000130F
+    // sub r0, r5, #3
+    // mov r2, #0
+    // strb r0, [r4, r1]
+    // mvn r2, r2
+    // sub r0, r1, #1
+    // strb r2, [r4, r0]
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldrb r1, [r4, r1]
+    // ldr r0, [r4, r0]
+    // bl ov72_022386F4
+    // ldr r0, _0223AA94 ; =0x00001312
+    // mov r1, #7
+    // strb r1, [r4, r0]
+    // ldr r0, _0223AA7C ; =0x000005DC
+    // bl PlaySE
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // mov r1, #5
+    // bl Sprite_SetAnimCtrlSeq
+    // pop {r3, r4, r5, pc}
+    // _0223AA6C: .word 0x0000130C
+    // _0223AA70: .word 0x00001310
+    // _0223AA74: .word 0x00000E04
+    // _0223AA78: .word 0x0000130F
+    // _0223AA7C: .word 0x000005DC
+    // _0223AA80: .word ov72_0223B478
+    // _0223AA84: .word ov72_0223B479
+    // _0223AA88: .word 0x000005F2
+    // _0223AA8C: .word 0x00000E08
+    // _0223AA90: .word 0x0000130E
+    // _0223AA94: .word 0x00001312
+    // _0223AA98: .word 0x00000E0C
+    // TODO: decompile
 }
+
 
 void ov72_0223AA9C(void) {
-    /* Original at 0x0223AA9C */
-    /* Requires manual decompilation - 99 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r1, _0223AB78 ; =gSystem\n    mov r3, #0x40\n    ldr r2, [r1, #0x4c]\n    add r4, r0, #0\n    tst r3, r2\n    beq _0223AAD0\n    ldr r2, _0223AB7C ; =0x0000130F\n    mov r1, #0\n    ldrb r0, [r4, r2]\n    add r2, #0x55\n    add r2, r4, r2\n    bl ov72_0223A760\n    ldr r1, _0223AB7C ; =0x0000130F\n    strb r0, [r4, r1]\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldrb r1, [r4, r1]\n    ldr r0, [r4, r0]\n    bl ov72_022386F4\n    ldr r0, _0223AB80 ; =0x000005DC\n    bl PlaySE\n    b _0223AB74\n    mov r3, #0x80\n    tst r3, r2\n    beq _0223AAFC\n    ldr r2, _0223AB7C ; =0x0000130F\n    mov r1, #1\n    ldrb r0, [r4, r2]\n    add r2, #0x55\n    add r2, r4, r2\n    bl ov72_0223A760\n    ldr r1, _0223AB7C ; =0x0000130F\n    strb r0, [r4, r1]\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldrb r1, [r4, r1]\n    ldr r0, [r4, r0]\n    bl ov72_022386F4\n    ldr r0, _0223AB80 ; =0x000005DC\n    bl PlaySE\n    b _0223AB74\n    mov r3, #0x20\n    tst r3, r2\n    beq _0223AB28\n    ldr r2, _0223AB7C ; =0x0000130F\n    mov r1, #2\n    ldrb r0, [r4, r2]\n    add r2, #0x55\n    add r2, r4, r2\n    bl ov72_0223A760\n    ldr r1, _0223AB7C ; =0x0000130F\n    strb r0, [r4, r1]\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldrb r1, [r4, r1]\n    ldr r0, [r4, r0]\n    bl ov72_022386F4\n    ldr r0, _0223AB80 ; =0x000005DC\n    bl PlaySE\n    b _0223AB74\n    mov r3, #0x10\n    tst r2, r3\n    beq _0223AB54\n    ldr r2, _0223AB7C ; =0x0000130F\n    mov r1, #3\n    ldrb r0, [r4, r2]\n    add r2, #0x55\n    add r2, r4, r2\n    bl ov72_0223A760\n    ldr r1, _0223AB7C ; =0x0000130F\n    strb r0, [r4, r1]\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldrb r1, [r4, r1]\n    ldr r0, [r4, r0]\n    bl ov72_022386F4\n    ldr r0, _0223AB80 ; =0x000005DC\n    bl PlaySE\n    b _0223AB74\n    ldr r2, [r1, #0x48]\n    mov r1, #1\n    tst r1, r2\n    beq _0223AB68\n    ldr r1, _0223AB7C ; =0x0000130F\n    ldrb r1, [r4, r1]\n    add r1, r1, #3\n    bl ov72_0223A8F0\n    b _0223AB74\n    mov r1, #2\n    tst r1, r2\n    beq _0223AB74\n    mov r1, #0xd\n    bl ov72_0223A8F0\n    mov r0, #0\n    pop {r4, pc}\n    _0223AB78: .word gSystem\n    _0223AB7C: .word 0x0000130F\n    _0223AB80: .word 0x000005DC"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r1, _0223AB78 ; =gSystem
+    // mov r3, #0x40
+    // ldr r2, [r1, #0x4c]
+    // add r4, r0, #0
+    // tst r3, r2
+    // beq _0223AAD0
+    // ldr r2, _0223AB7C ; =0x0000130F
+    // mov r1, #0
+    // ldrb r0, [r4, r2]
+    // add r2, #0x55
+    // add r2, r4, r2
+    // bl ov72_0223A760
+    // ldr r1, _0223AB7C ; =0x0000130F
+    // strb r0, [r4, r1]
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldrb r1, [r4, r1]
+    // ldr r0, [r4, r0]
+    // bl ov72_022386F4
+    // ldr r0, _0223AB80 ; =0x000005DC
+    // bl PlaySE
+    // b _0223AB74
+    // mov r3, #0x80
+    // tst r3, r2
+    // beq _0223AAFC
+    // ldr r2, _0223AB7C ; =0x0000130F
+    // mov r1, #1
+    // ldrb r0, [r4, r2]
+    // add r2, #0x55
+    // add r2, r4, r2
+    // bl ov72_0223A760
+    // ldr r1, _0223AB7C ; =0x0000130F
+    // strb r0, [r4, r1]
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldrb r1, [r4, r1]
+    // ldr r0, [r4, r0]
+    // bl ov72_022386F4
+    // ldr r0, _0223AB80 ; =0x000005DC
+    // bl PlaySE
+    // b _0223AB74
+    // mov r3, #0x20
+    // tst r3, r2
+    // beq _0223AB28
+    // ldr r2, _0223AB7C ; =0x0000130F
+    // mov r1, #2
+    // ldrb r0, [r4, r2]
+    // add r2, #0x55
+    // add r2, r4, r2
+    // bl ov72_0223A760
+    // ldr r1, _0223AB7C ; =0x0000130F
+    // strb r0, [r4, r1]
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldrb r1, [r4, r1]
+    // ldr r0, [r4, r0]
+    // bl ov72_022386F4
+    // ldr r0, _0223AB80 ; =0x000005DC
+    // bl PlaySE
+    // b _0223AB74
+    // mov r3, #0x10
+    // tst r2, r3
+    // beq _0223AB54
+    // ldr r2, _0223AB7C ; =0x0000130F
+    // mov r1, #3
+    // ldrb r0, [r4, r2]
+    // add r2, #0x55
+    // add r2, r4, r2
+    // bl ov72_0223A760
+    // ldr r1, _0223AB7C ; =0x0000130F
+    // strb r0, [r4, r1]
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldrb r1, [r4, r1]
+    // ldr r0, [r4, r0]
+    // bl ov72_022386F4
+    // ldr r0, _0223AB80 ; =0x000005DC
+    // bl PlaySE
+    // b _0223AB74
+    // ldr r2, [r1, #0x48]
+    // mov r1, #1
+    // tst r1, r2
+    // beq _0223AB68
+    // ldr r1, _0223AB7C ; =0x0000130F
+    // ldrb r1, [r4, r1]
+    // add r1, r1, #3
+    // bl ov72_0223A8F0
+    // b _0223AB74
+    // mov r1, #2
+    // tst r1, r2
+    // beq _0223AB74
+    // mov r1, #0xd
+    // bl ov72_0223A8F0
+    // mov r0, #0
+    // pop {r4, pc}
+    // _0223AB78: .word gSystem
+    // _0223AB7C: .word 0x0000130F
+    // _0223AB80: .word 0x000005DC
+    // TODO: decompile
 }
+
 
 void ov72_0223AB84(void) {
-    /* Original at 0x0223AB84 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl ov72_0223A738\n    add r1, r0, #0\n    mov r0, #0\n    mvn r0, r0\n    cmp r1, r0\n    bne _0223AB9E\n    add r0, r4, #0\n    bl ov72_0223AA9C\n    b _0223ABA4\n    add r0, r4, #0\n    bl ov72_0223A8F0\n    add r0, r4, #0\n    bl ov72_0223ABB0\n    mov r0, #0\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl ov72_0223A738
+    // add r1, r0, #0
+    // mov r0, #0
+    // mvn r0, r0
+    // cmp r1, r0
+    // bne _0223AB9E
+    // add r0, r4, #0
+    // bl ov72_0223AA9C
+    // b _0223ABA4
+    // add r0, r4, #0
+    // bl ov72_0223A8F0
+    // add r0, r4, #0
+    // bl ov72_0223ABB0
+    // mov r0, #0
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void ov72_0223ABB0(void) {
-    /* Original at 0x0223ABB0 */
-    /* Requires manual decompilation - 30 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r0, #0\n    mov r4, #0\n    add r5, r6, #0\n    sub r7, r4, #1\n    ldr r0, _0223ABEC ; =0x00001314\n    add r1, r6, r4\n    ldrsb r1, [r1, r0]\n    cmp r1, r7\n    bne _0223ABD0\n    ldr r0, _0223ABF0 ; =0x00000DF4\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetAnimCtrlSeq\n    b _0223ABE2\n    cmp r1, #0\n    blt _0223ABE2\n    cmp r1, #9\n    bgt _0223ABE2\n    ldr r0, _0223ABF0 ; =0x00000DF4\n    add r1, r1, #1\n    ldr r0, [r5, r0]\n    bl Sprite_SetAnimCtrlSeq\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #3\n    blt _0223ABBA\n    pop {r3, r4, r5, r6, r7, pc}\n    _0223ABEC: .word 0x00001314\n    _0223ABF0: .word 0x00000DF4"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r6, r0, #0
+    // mov r4, #0
+    // add r5, r6, #0
+    // sub r7, r4, #1
+    // ldr r0, _0223ABEC ; =0x00001314
+    // add r1, r6, r4
+    // ldrsb r1, [r1, r0]
+    // cmp r1, r7
+    // bne _0223ABD0
+    // ldr r0, _0223ABF0 ; =0x00000DF4
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // b _0223ABE2
+    // cmp r1, #0
+    // blt _0223ABE2
+    // cmp r1, #9
+    // bgt _0223ABE2
+    // ldr r0, _0223ABF0 ; =0x00000DF4
+    // add r1, r1, #1
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #3
+    // blt _0223ABBA
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0223ABEC: .word 0x00001314
+    // _0223ABF0: .word 0x00000DF4
+    // TODO: decompile
 }
+
 
 u8 ov72_0223ABF4(void) {
     return 0;
 }
 
+
 u8 ov72_0223ABF8(void) {
     return 0;
 }
+
 
 u8 ov72_0223ABFC(void) {
     return 0;
 }
 
+
 void ov72_0223AC00(void) {
-    /* Original at 0x0223AC00 */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    mov r0, #4\n    str r0, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    mov r1, #0x43\n    str r1, [sp, #8]\n    mov r1, #0\n    add r2, r1, #0\n    add r3, r1, #0\n    bl BeginNormalPaletteFade\n    ldr r0, _0223AC28 ; =0x00001312\n    mov r1, #8\n    strb r1, [r4, r0]\n    mov r0, #0\n    add sp, #0xc\n    pop {r3, r4, pc}\n    _0223AC28: .word 0x00001312"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // mov r0, #4
+    // str r0, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // mov r1, #0x43
+    // str r1, [sp, #8]
+    // mov r1, #0
+    // add r2, r1, #0
+    // add r3, r1, #0
+    // bl BeginNormalPaletteFade
+    // ldr r0, _0223AC28 ; =0x00001312
+    // mov r1, #8
+    // strb r1, [r4, r0]
+    // mov r0, #0
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // _0223AC28: .word 0x00001312
+    // TODO: decompile
 }
 
+
 void ov72_0223AC2C(void) {
-    /* Original at 0x0223AC2C */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    bl IsPaletteFadeFinished\n    cmp r0, #1\n    bne _0223AC62\n    add r0, r4, #0\n    bl ov72_0223AD94\n    add r0, r4, #0\n    mov r1, #0\n    bl ov72_02238B18\n    mov r0, #4\n    str r0, [sp]\n    mov r1, #1\n    str r1, [sp, #4]\n    mov r2, #0x43\n    str r2, [sp, #8]\n    add r2, r1, #0\n    mov r3, #0\n    bl BeginNormalPaletteFade\n    ldr r0, _0223AC68 ; =0x00001312\n    mov r1, #9\n    strb r1, [r4, r0]\n    mov r0, #0\n    add sp, #0xc\n    pop {r3, r4, pc}\n    _0223AC68: .word 0x00001312"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // bl IsPaletteFadeFinished
+    // cmp r0, #1
+    // bne _0223AC62
+    // add r0, r4, #0
+    // bl ov72_0223AD94
+    // add r0, r4, #0
+    // mov r1, #0
+    // bl ov72_02238B18
+    // mov r0, #4
+    // str r0, [sp]
+    // mov r1, #1
+    // str r1, [sp, #4]
+    // mov r2, #0x43
+    // str r2, [sp, #8]
+    // add r2, r1, #0
+    // mov r3, #0
+    // bl BeginNormalPaletteFade
+    // ldr r0, _0223AC68 ; =0x00001312
+    // mov r1, #9
+    // strb r1, [r4, r0]
+    // mov r0, #0
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // _0223AC68: .word 0x00001312
+    // TODO: decompile
 }
+
 
 void ov72_0223AC6C(void) {
     ov72_0223AE6C(0);
 }
 
+
 void ov72_0223AC88(void) {
     IsPaletteFadeFinished(0, 0xb);
 }
+
 
 u8 ov72_0223ACA4(void) {
     return 1;
 }
 
+
 void ov72_0223ACA8(void) {
-    /* Original at 0x0223ACA8 */
-    /* Requires manual decompilation - 55 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    ldr r1, _0223AD14 ; =0x00001328\n    ldr r5, _0223AD18 ; =ov72_0223B46C\n    str r0, [sp, #0x14]\n    mov r7, #0\n    mov r4, #0x1f\n    add r6, r0, r1\n    mov r0, #0x15\n    str r0, [sp]\n    mov r0, #8\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    mov r0, #0xd\n    str r0, [sp, #0xc]\n    lsl r0, r4, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x14]\n    ldr r3, [r5]\n    ldr r0, [r0, #4]\n    lsl r3, r3, #0x18\n    add r1, r6, #0\n    mov r2, #4\n    lsr r3, r3, #0x18\n    bl AddWindowParameterized\n    add r7, r7, #1\n    add r4, #0x40\n    add r5, r5, #4\n    add r6, #0x10\n    cmp r7, #3\n    blt _0223ACB8\n    mov r0, #0x13\n    str r0, [sp]\n    mov r0, #0x1b\n    str r0, [sp, #4]\n    mov r2, #4\n    str r2, [sp, #8]\n    mov r0, #0xd\n    str r0, [sp, #0xc]\n    mov r0, #0x4f\n    str r0, [sp, #0x10]\n    ldr r0, [sp, #0x14]\n    ldr r3, _0223AD1C ; =0x00001318\n    ldr r1, [sp, #0x14]\n    ldr r0, [r0, #4]\n    add r1, r1, r3\n    mov r3, #2\n    bl AddWindowParameterized\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    _0223AD14: .word 0x00001328\n    _0223AD18: .word ov72_0223B46C\n    _0223AD1C: .word 0x00001318"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // ldr r1, _0223AD14 ; =0x00001328
+    // ldr r5, _0223AD18 ; =ov72_0223B46C
+    // str r0, [sp, #0x14]
+    // mov r7, #0
+    // mov r4, #0x1f
+    // add r6, r0, r1
+    // mov r0, #0x15
+    // str r0, [sp]
+    // mov r0, #8
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // mov r0, #0xd
+    // str r0, [sp, #0xc]
+    // lsl r0, r4, #0x10
+    // lsr r0, r0, #0x10
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0x14]
+    // ldr r3, [r5]
+    // ldr r0, [r0, #4]
+    // lsl r3, r3, #0x18
+    // add r1, r6, #0
+    // mov r2, #4
+    // lsr r3, r3, #0x18
+    // bl AddWindowParameterized
+    // add r7, r7, #1
+    // add r4, #0x40
+    // add r5, r5, #4
+    // add r6, #0x10
+    // cmp r7, #3
+    // blt _0223ACB8
+    // mov r0, #0x13
+    // str r0, [sp]
+    // mov r0, #0x1b
+    // str r0, [sp, #4]
+    // mov r2, #4
+    // str r2, [sp, #8]
+    // mov r0, #0xd
+    // str r0, [sp, #0xc]
+    // mov r0, #0x4f
+    // str r0, [sp, #0x10]
+    // ldr r0, [sp, #0x14]
+    // ldr r3, _0223AD1C ; =0x00001318
+    // ldr r1, [sp, #0x14]
+    // ldr r0, [r0, #4]
+    // add r1, r1, r3
+    // mov r3, #2
+    // bl AddWindowParameterized
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0223AD14: .word 0x00001328
+    // _0223AD18: .word ov72_0223B46C
+    // _0223AD1C: .word 0x00001318
+    // TODO: decompile
 }
+
 
 void ov72_0223AD20(void) {
-    /* Original at 0x0223AD20 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    add r5, r0, #0\n    add r0, r1, #0\n    add r1, r2, #0\n    bl NewString_ReadMsgData\n    add r4, r0, #0\n    add r0, r5, #0\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    mov r3, #0\n    str r3, [sp]\n    ldr r0, _0223AD60 ; =0x000F0200\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    add r0, r5, #0\n    mov r1, #4\n    add r2, r4, #0\n    str r3, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    add r0, r5, #0\n    bl CopyWindowToVram\n    add r0, r4, #0\n    bl String_Delete\n    add sp, #0x10\n    pop {r3, r4, r5, pc}\n    nop\n    _0223AD60: .word 0x000F0200"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // add r5, r0, #0
+    // add r0, r1, #0
+    // add r1, r2, #0
+    // bl NewString_ReadMsgData
+    // add r4, r0, #0
+    // add r0, r5, #0
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // mov r3, #0
+    // str r3, [sp]
+    // ldr r0, _0223AD60 ; =0x000F0200
+    // str r3, [sp, #4]
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // mov r1, #4
+    // add r2, r4, #0
+    // str r3, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // add r0, r5, #0
+    // bl CopyWindowToVram
+    // add r0, r4, #0
+    // bl String_Delete
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _0223AD60: .word 0x000F0200
+    // TODO: decompile
 }
+
 
 void ov72_0223AD64(void) {
-    /* Original at 0x0223AD64 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r6, r0, #0\n    ldr r0, _0223AD8C ; =0x00001328\n    mov r4, #0\n    add r5, r6, r0\n    add r0, r5, #0\n    bl ClearWindowTilemapAndCopyToVram\n    add r0, r5, #0\n    bl RemoveWindow\n    add r4, r4, #1\n    add r5, #0x10\n    cmp r4, #3\n    blt _0223AD6E\n    ldr r0, _0223AD90 ; =0x00001318\n    add r0, r6, r0\n    bl RemoveWindow\n    pop {r4, r5, r6, pc}\n    _0223AD8C: .word 0x00001328\n    _0223AD90: .word 0x00001318"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r6, r0, #0
+    // ldr r0, _0223AD8C ; =0x00001328
+    // mov r4, #0
+    // add r5, r6, r0
+    // add r0, r5, #0
+    // bl ClearWindowTilemapAndCopyToVram
+    // add r0, r5, #0
+    // bl RemoveWindow
+    // add r4, r4, #1
+    // add r5, #0x10
+    // cmp r4, #3
+    // blt _0223AD6E
+    // ldr r0, _0223AD90 ; =0x00001318
+    // add r0, r6, r0
+    // bl RemoveWindow
+    // pop {r4, r5, r6, pc}
+    // _0223AD8C: .word 0x00001328
+    // _0223AD90: .word 0x00001318
+    // TODO: decompile
 }
+
 
 void ov72_0223AD94(void) {
-    /* Original at 0x0223AD94 */
-    /* Requires manual decompilation - 54 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    bl ov72_0223AD64\n    ldr r0, _0223AE08 ; =0x00000DF4\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223AE0C ; =0x00000DF8\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223AE10 ; =0x00000DFC\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    mov r0, #0xe\n    lsl r0, r0, #8\n    ldr r0, [r5, r0]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223AE14 ; =0x00000E04\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223AE18 ; =0x00000E08\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    ldr r0, _0223AE1C ; =0x00000E0C\n    mov r1, #0\n    ldr r0, [r5, r0]\n    bl Sprite_SetDrawFlag\n    mov r0, #0xe1\n    lsl r0, r0, #4\n    ldr r0, [r5, r0]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    mov r4, #0\n    ldr r6, _0223AE08 ; =0x00000DF4\n    add r7, r4, #0\n    ldr r0, [r5, r6]\n    add r1, r7, #0\n    bl Sprite_SetAnimCtrlSeq\n    add r4, r4, #1\n    add r5, r5, #4\n    cmp r4, #3\n    blt _0223ADF6\n    pop {r3, r4, r5, r6, r7, pc}\n    _0223AE08: .word 0x00000DF4\n    _0223AE0C: .word 0x00000DF8\n    _0223AE10: .word 0x00000DFC\n    _0223AE14: .word 0x00000E04\n    _0223AE18: .word 0x00000E08\n    _0223AE1C: .word 0x00000E0C"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // bl ov72_0223AD64
+    // ldr r0, _0223AE08 ; =0x00000DF4
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223AE0C ; =0x00000DF8
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223AE10 ; =0x00000DFC
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // mov r0, #0xe
+    // lsl r0, r0, #8
+    // ldr r0, [r5, r0]
+    // mov r1, #0
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223AE14 ; =0x00000E04
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223AE18 ; =0x00000E08
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // ldr r0, _0223AE1C ; =0x00000E0C
+    // mov r1, #0
+    // ldr r0, [r5, r0]
+    // bl Sprite_SetDrawFlag
+    // mov r0, #0xe1
+    // lsl r0, r0, #4
+    // ldr r0, [r5, r0]
+    // mov r1, #0
+    // bl Sprite_SetDrawFlag
+    // mov r4, #0
+    // ldr r6, _0223AE08 ; =0x00000DF4
+    // add r7, r4, #0
+    // ldr r0, [r5, r6]
+    // add r1, r7, #0
+    // bl Sprite_SetAnimCtrlSeq
+    // add r4, r4, #1
+    // add r5, r5, #4
+    // cmp r4, #3
+    // blt _0223ADF6
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _0223AE08: .word 0x00000DF4
+    // _0223AE0C: .word 0x00000DF8
+    // _0223AE10: .word 0x00000DFC
+    // _0223AE14: .word 0x00000E04
+    // _0223AE18: .word 0x00000E08
+    // _0223AE1C: .word 0x00000E0C
+    // TODO: decompile
 }
+
 
 void ov72_0223AE20(void) {
-    /* Original at 0x0223AE20 */
-    /* Requires manual decompilation - 33 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    ldr r0, _0223AE64 ; =0x00001358\n    add r4, r5, r0\n    ldrb r0, [r4]\n    cmp r0, #0\n    bne _0223AE42\n    ldrb r0, [r4, #2]\n    lsl r0, r0, #2\n    add r2, r5, r0\n    ldr r0, _0223AE68 ; =0x00000DF4\n    ldr r0, [r2, r0]\n    bl Sprite_SetAnimCtrlSeq\n    add sp, #0xc\n    pop {r4, r5, pc}\n    ldrb r0, [r4, #4]\n    str r0, [sp]\n    ldrb r0, [r4, #5]\n    str r0, [sp, #4]\n    str r1, [sp, #8]\n    ldrb r1, [r4, #2]\n    ldrb r2, [r4, #6]\n    ldrb r3, [r4, #7]\n    ldr r0, [r5, #4]\n    bl BgTilemapRectChangePalette\n    ldrb r1, [r4, #2]\n    ldr r0, [r5, #4]\n    bl ScheduleBgTilemapBufferTransfer\n    add sp, #0xc\n    pop {r4, r5, pc}\n    _0223AE64: .word 0x00001358\n    _0223AE68: .word 0x00000DF4"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // ldr r0, _0223AE64 ; =0x00001358
+    // add r4, r5, r0
+    // ldrb r0, [r4]
+    // cmp r0, #0
+    // bne _0223AE42
+    // ldrb r0, [r4, #2]
+    // lsl r0, r0, #2
+    // add r2, r5, r0
+    // ldr r0, _0223AE68 ; =0x00000DF4
+    // ldr r0, [r2, r0]
+    // bl Sprite_SetAnimCtrlSeq
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // ldrb r0, [r4, #4]
+    // str r0, [sp]
+    // ldrb r0, [r4, #5]
+    // str r0, [sp, #4]
+    // str r1, [sp, #8]
+    // ldrb r1, [r4, #2]
+    // ldrb r2, [r4, #6]
+    // ldrb r3, [r4, #7]
+    // ldr r0, [r5, #4]
+    // bl BgTilemapRectChangePalette
+    // ldrb r1, [r4, #2]
+    // ldr r0, [r5, #4]
+    // bl ScheduleBgTilemapBufferTransfer
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // _0223AE64: .word 0x00001358
+    // _0223AE68: .word 0x00000DF4
+    // TODO: decompile
 }
+
 
 void ov72_0223AE6C(void) {
-    /* Original at 0x0223AE6C */
-    /* Requires manual decompilation - 47 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r1, _0223AECC ; =0x00001358\n    add r4, r0, r1\n    ldrb r1, [r4, #1]\n    cmp r1, #0\n    beq _0223AE82\n    cmp r1, #1\n    beq _0223AE94\n    cmp r1, #2\n    beq _0223AEB6\n    b _0223AEC6\n    ldrh r1, [r4, #8]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    bl ov72_0223AE20\n    ldrb r0, [r4, #1]\n    add r0, r0, #1\n    strb r0, [r4, #1]\n    b _0223AEC6\n    ldrb r1, [r4, #3]\n    add r1, r1, #1\n    strb r1, [r4, #3]\n    ldrb r1, [r4, #3]\n    cmp r1, #4\n    bne _0223AEC6\n    ldrh r1, [r4, #0xa]\n    lsl r1, r1, #0x18\n    lsr r1, r1, #0x18\n    bl ov72_0223AE20\n    mov r0, #0\n    strb r0, [r4, #3]\n    ldrb r0, [r4, #1]\n    add r0, r0, #1\n    strb r0, [r4, #1]\n    b _0223AEC6\n    ldrb r0, [r4, #3]\n    add r0, r0, #1\n    strb r0, [r4, #3]\n    ldrb r0, [r4, #3]\n    cmp r0, #2\n    bne _0223AEC6\n    mov r0, #0\n    pop {r4, pc}\n    mov r0, #1\n    pop {r4, pc}\n    nop\n    _0223AECC: .word 0x00001358"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r1, _0223AECC ; =0x00001358
+    // add r4, r0, r1
+    // ldrb r1, [r4, #1]
+    // cmp r1, #0
+    // beq _0223AE82
+    // cmp r1, #1
+    // beq _0223AE94
+    // cmp r1, #2
+    // beq _0223AEB6
+    // b _0223AEC6
+    // ldrh r1, [r4, #8]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x18
+    // bl ov72_0223AE20
+    // ldrb r0, [r4, #1]
+    // add r0, r0, #1
+    // strb r0, [r4, #1]
+    // b _0223AEC6
+    // ldrb r1, [r4, #3]
+    // add r1, r1, #1
+    // strb r1, [r4, #3]
+    // ldrb r1, [r4, #3]
+    // cmp r1, #4
+    // bne _0223AEC6
+    // ldrh r1, [r4, #0xa]
+    // lsl r1, r1, #0x18
+    // lsr r1, r1, #0x18
+    // bl ov72_0223AE20
+    // mov r0, #0
+    // strb r0, [r4, #3]
+    // ldrb r0, [r4, #1]
+    // add r0, r0, #1
+    // strb r0, [r4, #1]
+    // b _0223AEC6
+    // ldrb r0, [r4, #3]
+    // add r0, r0, #1
+    // strb r0, [r4, #3]
+    // ldrb r0, [r4, #3]
+    // cmp r0, #2
+    // bne _0223AEC6
+    // mov r0, #0
+    // pop {r4, pc}
+    // mov r0, #1
+    // pop {r4, pc}
+    // nop
+    // _0223AECC: .word 0x00001358
+    // TODO: decompile
 }
 
+
 void ov72_0223AED0(void) {
-    /* Original at 0x0223AED0 */
-    /* Requires manual decompilation - 37 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7}\n    ldr r4, _0223AF18 ; =0x00001358\n    mov r5, #1\n    strb r5, [r0, r4]\n    mov r5, #0\n    add r6, r4, #3\n    strb r5, [r0, r6]\n    add r6, r4, #1\n    strb r5, [r0, r6]\n    mov r7, #5\n    add r6, r4, #2\n    strb r7, [r0, r6]\n    add r7, r4, #0\n    add r7, #8\n    mov r6, #1\n    strh r6, [r0, r7]\n    add r6, r4, #0\n    add r6, #0xa\n    strh r5, [r0, r6]\n    add r5, r4, #6\n    strb r1, [r0, r5]\n    add r1, r4, #7\n    strb r2, [r0, r1]\n    mov r2, #6\n    add r1, r4, #4\n    strb r2, [r0, r1]\n    add r1, r4, #5\n    strb r2, [r0, r1]\n    add r1, r4, #0\n    sub r1, #0x45\n    strb r3, [r0, r1]\n    mov r1, #0xa\n    sub r4, #0x46\n    strb r1, [r0, r4]\n    pop {r4, r5, r6, r7}\n    bx lr\n    _0223AF18: .word 0x00001358"
-    );
-    #endif
+    // push {r4, r5, r6, r7}
+    // ldr r4, _0223AF18 ; =0x00001358
+    // mov r5, #1
+    // strb r5, [r0, r4]
+    // mov r5, #0
+    // add r6, r4, #3
+    // strb r5, [r0, r6]
+    // add r6, r4, #1
+    // strb r5, [r0, r6]
+    // mov r7, #5
+    // add r6, r4, #2
+    // strb r7, [r0, r6]
+    // add r7, r4, #0
+    // add r7, #8
+    // mov r6, #1
+    // strh r6, [r0, r7]
+    // add r6, r4, #0
+    // add r6, #0xa
+    // strh r5, [r0, r6]
+    // add r5, r4, #6
+    // strb r1, [r0, r5]
+    // add r1, r4, #7
+    // strb r2, [r0, r1]
+    // mov r2, #6
+    // add r1, r4, #4
+    // strb r2, [r0, r1]
+    // add r1, r4, #5
+    // strb r2, [r0, r1]
+    // add r1, r4, #0
+    // sub r1, #0x45
+    // strb r3, [r0, r1]
+    // mov r1, #0xa
+    // sub r4, #0x46
+    // strb r1, [r0, r4]
+    // pop {r4, r5, r6, r7}
+    // bx lr
+    // _0223AF18: .word 0x00001358
+    // TODO: decompile
 }
+
 
 void ov72_0223AF1C(void) {
     ov72_0223B0C4(r0, 0);
@@ -1295,69 +6327,429 @@ void ov72_0223AF1C(void) {
     ov72_0223B2E4(r4);
 }
 
+
 void ov72_0223AF48(void) {
-    /* Original at 0x0223AF48 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    add r1, r4, #0\n    add r1, #0x2d\n    ldrb r1, [r1]\n    lsl r2, r1, #2\n    ldr r1, _0223AF6C ; =ov72_0223B7FC\n    ldr r1, [r1, r2]\n    blx r1\n    cmp r0, #1\n    bne _0223AF66\n    add r4, #0x33\n    ldrb r0, [r4]\n    add r0, r0, #1\n    pop {r4, pc}\n    mov r0, #0\n    pop {r4, pc}\n    nop\n    _0223AF6C: .word ov72_0223B7FC"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // add r1, r4, #0
+    // add r1, #0x2d
+    // ldrb r1, [r1]
+    // lsl r2, r1, #2
+    // ldr r1, _0223AF6C ; =ov72_0223B7FC
+    // ldr r1, [r1, r2]
+    // blx r1
+    // cmp r0, #1
+    // bne _0223AF66
+    // add r4, #0x33
+    // ldrb r0, [r4]
+    // add r0, r0, #1
+    // pop {r4, pc}
+    // mov r0, #0
+    // pop {r4, pc}
+    // nop
+    // _0223AF6C: .word ov72_0223B7FC
+    // TODO: decompile
 }
+
 
 void ov72_0223AF70(void) {
-    /* Original at 0x0223AF70 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "mov r1, #1\n    add r0, #0x2d\n    strb r1, [r0]\n    mov r0, #0\n    bx lr"
-    );
-    #endif
+    // mov r1, #1
+    // add r0, #0x2d
+    // strb r1, [r0]
+    // mov r0, #0
+    // bx lr
+    // TODO: decompile
 }
 
+
 void ov72_0223AF7C(void) {
-    /* Original at 0x0223AF7C */
-    /* Requires manual decompilation - 114 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    ldr r0, _0223B078 ; =ov72_0223B4C8\n    bl TouchscreenHitbox_FindRectAtTouchNew\n    add r5, r0, #0\n    mov r0, #0\n    mvn r0, r0\n    cmp r5, r0\n    beq _0223AFE6\n    ldr r0, _0223B07C ; =0x000005DC\n    bl PlaySE\n    cmp r5, #0\n    bne _0223AFBE\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x33\n    strb r1, [r0]\n    add r1, r4, #0\n    add r1, #0x33\n    ldrb r1, [r1]\n    add r0, r4, #0\n    bl ov72_0223B2FC\n    ldr r0, [r4, #4]\n    mov r1, #3\n    bl Sprite_SetAnimCtrlSeq\n    mov r0, #3\n    add r4, #0x2d\n    strb r0, [r4]\n    b _0223B074\n    cmp r5, #1\n    bne _0223B074\n    add r0, r4, #0\n    mov r1, #1\n    add r0, #0x33\n    strb r1, [r0]\n    add r1, r4, #0\n    add r1, #0x33\n    ldrb r1, [r1]\n    add r0, r4, #0\n    bl ov72_0223B2FC\n    ldr r0, [r4, #4]\n    mov r1, #3\n    bl Sprite_SetAnimCtrlSeq\n    mov r0, #3\n    add r4, #0x2d\n    strb r0, [r4]\n    b _0223B074\n    ldr r0, _0223B080 ; =gSystem\n    mov r1, #0x40\n    ldr r0, [r0, #0x48]\n    tst r1, r0\n    beq _0223B00A\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0x33\n    strb r1, [r0]\n    add r0, r4, #0\n    add r4, #0x33\n    ldrb r1, [r4]\n    bl ov72_0223B2FC\n    ldr r0, _0223B07C ; =0x000005DC\n    bl PlaySE\n    b _0223B074\n    mov r1, #0x80\n    tst r1, r0\n    beq _0223B02A\n    add r0, r4, #0\n    mov r1, #1\n    add r0, #0x33\n    strb r1, [r0]\n    add r0, r4, #0\n    add r4, #0x33\n    ldrb r1, [r4]\n    bl ov72_0223B2FC\n    ldr r0, _0223B07C ; =0x000005DC\n    bl PlaySE\n    b _0223B074\n    mov r2, #1\n    add r1, r0, #0\n    tst r1, r2\n    beq _0223B048\n    ldr r0, [r4, #4]\n    mov r1, #3\n    bl Sprite_SetAnimCtrlSeq\n    mov r0, #3\n    add r4, #0x2d\n    strb r0, [r4]\n    ldr r0, _0223B07C ; =0x000005DC\n    bl PlaySE\n    b _0223B074\n    mov r1, #2\n    tst r0, r1\n    beq _0223B074\n    add r0, r4, #0\n    add r0, #0x33\n    add r1, r4, #0\n    strb r2, [r0]\n    add r1, #0x33\n    ldrb r1, [r1]\n    add r0, r4, #0\n    bl ov72_0223B2FC\n    add r0, r4, #0\n    mov r1, #3\n    add r0, #0x2d\n    strb r1, [r0]\n    ldr r0, [r4, #4]\n    bl Sprite_SetAnimCtrlSeq\n    ldr r0, _0223B07C ; =0x000005DC\n    bl PlaySE\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    _0223B078: .word ov72_0223B4C8\n    _0223B07C: .word 0x000005DC\n    _0223B080: .word gSystem"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // ldr r0, _0223B078 ; =ov72_0223B4C8
+    // bl TouchscreenHitbox_FindRectAtTouchNew
+    // add r5, r0, #0
+    // mov r0, #0
+    // mvn r0, r0
+    // cmp r5, r0
+    // beq _0223AFE6
+    // ldr r0, _0223B07C ; =0x000005DC
+    // bl PlaySE
+    // cmp r5, #0
+    // bne _0223AFBE
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x33
+    // strb r1, [r0]
+    // add r1, r4, #0
+    // add r1, #0x33
+    // ldrb r1, [r1]
+    // add r0, r4, #0
+    // bl ov72_0223B2FC
+    // ldr r0, [r4, #4]
+    // mov r1, #3
+    // bl Sprite_SetAnimCtrlSeq
+    // mov r0, #3
+    // add r4, #0x2d
+    // strb r0, [r4]
+    // b _0223B074
+    // cmp r5, #1
+    // bne _0223B074
+    // add r0, r4, #0
+    // mov r1, #1
+    // add r0, #0x33
+    // strb r1, [r0]
+    // add r1, r4, #0
+    // add r1, #0x33
+    // ldrb r1, [r1]
+    // add r0, r4, #0
+    // bl ov72_0223B2FC
+    // ldr r0, [r4, #4]
+    // mov r1, #3
+    // bl Sprite_SetAnimCtrlSeq
+    // mov r0, #3
+    // add r4, #0x2d
+    // strb r0, [r4]
+    // b _0223B074
+    // ldr r0, _0223B080 ; =gSystem
+    // mov r1, #0x40
+    // ldr r0, [r0, #0x48]
+    // tst r1, r0
+    // beq _0223B00A
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0x33
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r4, #0x33
+    // ldrb r1, [r4]
+    // bl ov72_0223B2FC
+    // ldr r0, _0223B07C ; =0x000005DC
+    // bl PlaySE
+    // b _0223B074
+    // mov r1, #0x80
+    // tst r1, r0
+    // beq _0223B02A
+    // add r0, r4, #0
+    // mov r1, #1
+    // add r0, #0x33
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r4, #0x33
+    // ldrb r1, [r4]
+    // bl ov72_0223B2FC
+    // ldr r0, _0223B07C ; =0x000005DC
+    // bl PlaySE
+    // b _0223B074
+    // mov r2, #1
+    // add r1, r0, #0
+    // tst r1, r2
+    // beq _0223B048
+    // ldr r0, [r4, #4]
+    // mov r1, #3
+    // bl Sprite_SetAnimCtrlSeq
+    // mov r0, #3
+    // add r4, #0x2d
+    // strb r0, [r4]
+    // ldr r0, _0223B07C ; =0x000005DC
+    // bl PlaySE
+    // b _0223B074
+    // mov r1, #2
+    // tst r0, r1
+    // beq _0223B074
+    // add r0, r4, #0
+    // add r0, #0x33
+    // add r1, r4, #0
+    // strb r2, [r0]
+    // add r1, #0x33
+    // ldrb r1, [r1]
+    // add r0, r4, #0
+    // bl ov72_0223B2FC
+    // add r0, r4, #0
+    // mov r1, #3
+    // add r0, #0x2d
+    // strb r1, [r0]
+    // ldr r0, [r4, #4]
+    // bl Sprite_SetAnimCtrlSeq
+    // ldr r0, _0223B07C ; =0x000005DC
+    // bl PlaySE
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // _0223B078: .word ov72_0223B4C8
+    // _0223B07C: .word 0x000005DC
+    // _0223B080: .word gSystem
+    // TODO: decompile
 }
+
 
 u8 ov72_0223B084(void) {
     return 0;
 }
 
+
 void ov72_0223B088(void) {
-    /* Original at 0x0223B088 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #4]\n    bl Sprite_IsAnimated\n    cmp r0, #0\n    beq _0223B09A\n    mov r0, #0\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0x2f\n    ldrb r0, [r0]\n    mov r1, #0\n    bl ToggleBgLayer\n    add r0, r4, #0\n    add r0, #0x32\n    ldrb r0, [r0]\n    mov r1, #0\n    bl ToggleBgLayer\n    add r0, r4, #0\n    bl ov72_0223B2C0\n    ldr r0, [r4, #4]\n    mov r1, #0\n    bl Sprite_SetDrawFlag\n    mov r0, #1\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #4]
+    // bl Sprite_IsAnimated
+    // cmp r0, #0
+    // beq _0223B09A
+    // mov r0, #0
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0x2f
+    // ldrb r0, [r0]
+    // mov r1, #0
+    // bl ToggleBgLayer
+    // add r0, r4, #0
+    // add r0, #0x32
+    // ldrb r0, [r0]
+    // mov r1, #0
+    // bl ToggleBgLayer
+    // add r0, r4, #0
+    // bl ov72_0223B2C0
+    // ldr r0, [r4, #4]
+    // mov r1, #0
+    // bl Sprite_SetDrawFlag
+    // mov r0, #1
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void ov72_0223B0C4(void) {
-    /* Original at 0x0223B0C4 */
-    /* Requires manual decompilation - 116 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x1c\n    add r4, r0, #0\n    ldr r1, [r4, #0x28]\n    mov r0, #0xef\n    bl NARC_New\n    add r1, r4, #0\n    add r1, #0x2f\n    ldrb r1, [r1]\n    str r0, [sp, #0x14]\n    cmp r1, #3\n    bhi _0223B108\n    mov r1, #0x20\n    str r1, [sp]\n    ldr r1, [r4, #0x28]\n    add r3, r4, #0\n    str r1, [sp, #4]\n    add r3, #0x2e\n    ldrb r3, [r3]\n    mov r1, #0\n    add r2, r1, #0\n    lsl r3, r3, #5\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    add r1, r4, #0\n    add r1, #0x30\n    ldrb r1, [r1]\n    ldr r2, [r4, #0x28]\n    mov r0, #0\n    lsl r1, r1, #5\n    bl LoadFontPal0\n    b _0223B130\n    mov r1, #0x20\n    str r1, [sp]\n    ldr r1, [r4, #0x28]\n    add r3, r4, #0\n    str r1, [sp, #4]\n    add r3, #0x2e\n    ldrb r3, [r3]\n    mov r1, #0\n    mov r2, #4\n    lsl r3, r3, #5\n    bl GfGfxLoader_GXLoadPalFromOpenNarc\n    add r1, r4, #0\n    add r1, #0x30\n    ldrb r1, [r1]\n    ldr r2, [r4, #0x28]\n    mov r0, #4\n    lsl r1, r1, #5\n    bl LoadFontPal0\n    mov r0, #0\n    str r0, [sp]\n    str r0, [sp, #4]\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x28]\n    add r3, r4, #0\n    str r0, [sp, #0xc]\n    add r3, #0x2f\n    ldrb r3, [r3]\n    ldr r0, [sp, #0x14]\n    ldr r2, [r4]\n    mov r1, #1\n    bl GfGfxLoader_LoadCharDataFromOpenNarc\n    ldr r0, [r4, #0x28]\n    mov r1, #0xa\n    str r0, [sp]\n    ldr r0, [sp, #0x14]\n    mov r2, #0\n    add r3, sp, #0x18\n    bl GfGfxLoader_GetScrnDataFromOpenNarc\n    add r1, r4, #0\n    add r1, #0x2f\n    str r0, [sp, #0x10]\n    ldrb r1, [r1]\n    ldr r0, [r4]\n    bl GetBgTilemapBuffer\n    ldr r2, [sp, #0x18]\n    mov r5, #3\n    ldr r7, _0223B1C4 ; =0x00000FFF\n    add r3, r0, #0\n    mov r1, #0\n    add r2, #0xc\n    lsl r5, r5, #8\n    add r0, r4, #0\n    add r0, #0x2e\n    ldrh r6, [r2]\n    ldrb r0, [r0]\n    add r1, r1, #1\n    and r6, r7\n    lsl r0, r0, #0xc\n    orr r0, r6\n    strh r0, [r3]\n    add r2, r2, #2\n    add r3, r3, #2\n    cmp r1, r5\n    blt _0223B178\n    add r1, r4, #0\n    add r1, #0x2f\n    ldrb r1, [r1]\n    ldr r0, [r4]\n    bl BgCommitTilemapBufferToVram\n    ldr r0, [sp, #0x10]\n    bl Heap_Free\n    ldr r0, [sp, #0x14]\n    bl NARC_Delete\n    add r0, r4, #0\n    add r0, #0x2f\n    ldrb r0, [r0]\n    mov r1, #1\n    bl ToggleBgLayer\n    add r4, #0x32\n    ldrb r0, [r4]\n    mov r1, #1\n    bl ToggleBgLayer\n    add sp, #0x1c\n    pop {r4, r5, r6, r7, pc}\n    _0223B1C4: .word 0x00000FFF"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x1c
+    // add r4, r0, #0
+    // ldr r1, [r4, #0x28]
+    // mov r0, #0xef
+    // bl NARC_New
+    // add r1, r4, #0
+    // add r1, #0x2f
+    // ldrb r1, [r1]
+    // str r0, [sp, #0x14]
+    // cmp r1, #3
+    // bhi _0223B108
+    // mov r1, #0x20
+    // str r1, [sp]
+    // ldr r1, [r4, #0x28]
+    // add r3, r4, #0
+    // str r1, [sp, #4]
+    // add r3, #0x2e
+    // ldrb r3, [r3]
+    // mov r1, #0
+    // add r2, r1, #0
+    // lsl r3, r3, #5
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // add r1, r4, #0
+    // add r1, #0x30
+    // ldrb r1, [r1]
+    // ldr r2, [r4, #0x28]
+    // mov r0, #0
+    // lsl r1, r1, #5
+    // bl LoadFontPal0
+    // b _0223B130
+    // mov r1, #0x20
+    // str r1, [sp]
+    // ldr r1, [r4, #0x28]
+    // add r3, r4, #0
+    // str r1, [sp, #4]
+    // add r3, #0x2e
+    // ldrb r3, [r3]
+    // mov r1, #0
+    // mov r2, #4
+    // lsl r3, r3, #5
+    // bl GfGfxLoader_GXLoadPalFromOpenNarc
+    // add r1, r4, #0
+    // add r1, #0x30
+    // ldrb r1, [r1]
+    // ldr r2, [r4, #0x28]
+    // mov r0, #4
+    // lsl r1, r1, #5
+    // bl LoadFontPal0
+    // mov r0, #0
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x28]
+    // add r3, r4, #0
+    // str r0, [sp, #0xc]
+    // add r3, #0x2f
+    // ldrb r3, [r3]
+    // ldr r0, [sp, #0x14]
+    // ldr r2, [r4]
+    // mov r1, #1
+    // bl GfGfxLoader_LoadCharDataFromOpenNarc
+    // ldr r0, [r4, #0x28]
+    // mov r1, #0xa
+    // str r0, [sp]
+    // ldr r0, [sp, #0x14]
+    // mov r2, #0
+    // add r3, sp, #0x18
+    // bl GfGfxLoader_GetScrnDataFromOpenNarc
+    // add r1, r4, #0
+    // add r1, #0x2f
+    // str r0, [sp, #0x10]
+    // ldrb r1, [r1]
+    // ldr r0, [r4]
+    // bl GetBgTilemapBuffer
+    // ldr r2, [sp, #0x18]
+    // mov r5, #3
+    // ldr r7, _0223B1C4 ; =0x00000FFF
+    // add r3, r0, #0
+    // mov r1, #0
+    // add r2, #0xc
+    // lsl r5, r5, #8
+    // add r0, r4, #0
+    // add r0, #0x2e
+    // ldrh r6, [r2]
+    // ldrb r0, [r0]
+    // add r1, r1, #1
+    // and r6, r7
+    // lsl r0, r0, #0xc
+    // orr r0, r6
+    // strh r0, [r3]
+    // add r2, r2, #2
+    // add r3, r3, #2
+    // cmp r1, r5
+    // blt _0223B178
+    // add r1, r4, #0
+    // add r1, #0x2f
+    // ldrb r1, [r1]
+    // ldr r0, [r4]
+    // bl BgCommitTilemapBufferToVram
+    // ldr r0, [sp, #0x10]
+    // bl Heap_Free
+    // ldr r0, [sp, #0x14]
+    // bl NARC_Delete
+    // add r0, r4, #0
+    // add r0, #0x2f
+    // ldrb r0, [r0]
+    // mov r1, #1
+    // bl ToggleBgLayer
+    // add r4, #0x32
+    // ldrb r0, [r4]
+    // mov r1, #1
+    // bl ToggleBgLayer
+    // add sp, #0x1c
+    // pop {r4, r5, r6, r7, pc}
+    // _0223B1C4: .word 0x00000FFF
+    // TODO: decompile
 }
 
+
 void ov72_0223B1C8(void) {
-    /* Original at 0x0223B1C8 */
-    /* Requires manual decompilation - 109 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x14\n    add r5, r0, #0\n    ldr r3, [r5, #0x28]\n    mov r0, #1\n    mov r1, #0x1b\n    mov r2, #0xbf\n    bl NewMsgDataFromNarc\n    add r4, r0, #0\n    mov r0, #8\n    str r0, [sp]\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r0, #0x30\n    ldrb r0, [r0]\n    add r2, r5, #0\n    add r1, r5, #0\n    str r0, [sp, #0xc]\n    add r0, r5, #0\n    add r0, #0x31\n    ldrb r0, [r0]\n    add r2, #0x32\n    add r1, #8\n    str r0, [sp, #0x10]\n    ldrb r2, [r2]\n    ldr r0, [r5]\n    mov r3, #0xc\n    bl AddWindowParameterized\n    add r0, r5, #0\n    add r0, #8\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    mov r0, #0xe\n    str r0, [sp]\n    mov r0, #8\n    str r0, [sp, #4]\n    mov r0, #2\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r0, #0x30\n    ldrb r0, [r0]\n    add r2, r5, #0\n    add r1, r5, #0\n    str r0, [sp, #0xc]\n    add r0, r5, #0\n    add r0, #0x31\n    ldrb r0, [r0]\n    add r2, #0x32\n    add r1, #0x18\n    add r0, #0x10\n    lsl r0, r0, #0x10\n    lsr r0, r0, #0x10\n    str r0, [sp, #0x10]\n    ldrb r2, [r2]\n    ldr r0, [r5]\n    mov r3, #0xc\n    bl AddWindowParameterized\n    add r0, r5, #0\n    add r0, #0x18\n    mov r1, #0\n    bl FillWindowPixelBuffer\n    add r0, r4, #0\n    mov r1, #0x2e\n    bl NewString_ReadMsgData\n    add r6, r0, #0\n    add r0, r4, #0\n    mov r1, #0x2f\n    bl NewString_ReadMsgData\n    mov r3, #0\n    add r7, r0, #0\n    str r3, [sp]\n    ldr r0, _0223B2BC ; =0x000F0100\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r0, #8\n    mov r1, #4\n    add r2, r6, #0\n    str r3, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    mov r3, #0\n    str r3, [sp]\n    ldr r0, _0223B2BC ; =0x000F0100\n    str r3, [sp, #4]\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r0, #0x18\n    mov r1, #4\n    add r2, r7, #0\n    str r3, [sp, #0xc]\n    bl AddTextPrinterParameterizedWithColor\n    add r0, r5, #0\n    add r0, #8\n    bl CopyWindowToVram\n    add r5, #0x18\n    add r0, r5, #0\n    bl CopyWindowToVram\n    add r0, r7, #0\n    bl String_Delete\n    add r0, r6, #0\n    bl String_Delete\n    add r0, r4, #0\n    bl DestroyMsgData\n    add sp, #0x14\n    pop {r4, r5, r6, r7, pc}\n    nop\n    _0223B2BC: .word 0x000F0100"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x14
+    // add r5, r0, #0
+    // ldr r3, [r5, #0x28]
+    // mov r0, #1
+    // mov r1, #0x1b
+    // mov r2, #0xbf
+    // bl NewMsgDataFromNarc
+    // add r4, r0, #0
+    // mov r0, #8
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // add r0, #0x30
+    // ldrb r0, [r0]
+    // add r2, r5, #0
+    // add r1, r5, #0
+    // str r0, [sp, #0xc]
+    // add r0, r5, #0
+    // add r0, #0x31
+    // ldrb r0, [r0]
+    // add r2, #0x32
+    // add r1, #8
+    // str r0, [sp, #0x10]
+    // ldrb r2, [r2]
+    // ldr r0, [r5]
+    // mov r3, #0xc
+    // bl AddWindowParameterized
+    // add r0, r5, #0
+    // add r0, #8
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // mov r0, #0xe
+    // str r0, [sp]
+    // mov r0, #8
+    // str r0, [sp, #4]
+    // mov r0, #2
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // add r0, #0x30
+    // ldrb r0, [r0]
+    // add r2, r5, #0
+    // add r1, r5, #0
+    // str r0, [sp, #0xc]
+    // add r0, r5, #0
+    // add r0, #0x31
+    // ldrb r0, [r0]
+    // add r2, #0x32
+    // add r1, #0x18
+    // add r0, #0x10
+    // lsl r0, r0, #0x10
+    // lsr r0, r0, #0x10
+    // str r0, [sp, #0x10]
+    // ldrb r2, [r2]
+    // ldr r0, [r5]
+    // mov r3, #0xc
+    // bl AddWindowParameterized
+    // add r0, r5, #0
+    // add r0, #0x18
+    // mov r1, #0
+    // bl FillWindowPixelBuffer
+    // add r0, r4, #0
+    // mov r1, #0x2e
+    // bl NewString_ReadMsgData
+    // add r6, r0, #0
+    // add r0, r4, #0
+    // mov r1, #0x2f
+    // bl NewString_ReadMsgData
+    // mov r3, #0
+    // add r7, r0, #0
+    // str r3, [sp]
+    // ldr r0, _0223B2BC ; =0x000F0100
+    // str r3, [sp, #4]
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // add r0, #8
+    // mov r1, #4
+    // add r2, r6, #0
+    // str r3, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // mov r3, #0
+    // str r3, [sp]
+    // ldr r0, _0223B2BC ; =0x000F0100
+    // str r3, [sp, #4]
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // add r0, #0x18
+    // mov r1, #4
+    // add r2, r7, #0
+    // str r3, [sp, #0xc]
+    // bl AddTextPrinterParameterizedWithColor
+    // add r0, r5, #0
+    // add r0, #8
+    // bl CopyWindowToVram
+    // add r5, #0x18
+    // add r0, r5, #0
+    // bl CopyWindowToVram
+    // add r0, r7, #0
+    // bl String_Delete
+    // add r0, r6, #0
+    // bl String_Delete
+    // add r0, r4, #0
+    // bl DestroyMsgData
+    // add sp, #0x14
+    // pop {r4, r5, r6, r7, pc}
+    // nop
+    // _0223B2BC: .word 0x000F0100
+    // TODO: decompile
 }
+
 
 void ov72_0223B2C0(void) {
     ClearWindowTilemapAndCopyToVram();
@@ -1366,17 +6758,37 @@ void ov72_0223B2C0(void) {
     RemoveWindow(r4);
 }
 
+
 void ov72_0223B2E4(void) {
     Sprite_SetDrawFlag(*((u32*)(r0 + 4)), 1);
     ov72_0223B2FC(r4);
 }
 
+
 void ov72_0223B2FC(void) {
-    /* Original at 0x0223B2FC */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {lr}\n    sub sp, #0xc\n    lsl r3, r1, #2\n    ldr r1, _0223B328 ; =ov72_0223B4C0\n    ldrh r1, [r1, r3]\n    lsl r1, r1, #0xc\n    str r1, [sp]\n    ldr r1, _0223B32C ; =ov72_0223B4C2\n    ldr r2, [r0, #0x34]\n    ldrh r1, [r1, r3]\n    add r1, r2, r1\n    lsl r1, r1, #0xc\n    str r1, [sp, #4]\n    mov r1, #0\n    str r1, [sp, #8]\n    ldr r0, [r0, #4]\n    add r1, sp, #0\n    bl Sprite_SetMatrix\n    add sp, #0xc\n    pop {pc}\n    nop\n    _0223B328: .word ov72_0223B4C0\n    _0223B32C: .word ov72_0223B4C2"
-    );
-    #endif
+    // push {lr}
+    // sub sp, #0xc
+    // lsl r3, r1, #2
+    // ldr r1, _0223B328 ; =ov72_0223B4C0
+    // ldrh r1, [r1, r3]
+    // lsl r1, r1, #0xc
+    // str r1, [sp]
+    // ldr r1, _0223B32C ; =ov72_0223B4C2
+    // ldr r2, [r0, #0x34]
+    // ldrh r1, [r1, r3]
+    // add r1, r2, r1
+    // lsl r1, r1, #0xc
+    // str r1, [sp, #4]
+    // mov r1, #0
+    // str r1, [sp, #8]
+    // ldr r0, [r0, #4]
+    // add r1, sp, #0
+    // bl Sprite_SetMatrix
+    // add sp, #0xc
+    // pop {pc}
+    // nop
+    // _0223B328: .word ov72_0223B4C0
+    // _0223B32C: .word ov72_0223B4C2
+    // TODO: decompile
 }
+

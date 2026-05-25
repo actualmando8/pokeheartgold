@@ -2,69 +2,538 @@
 #include "global.h"
 
 void ov80_02235FC8(void) {
-    /* Original at 0x02235FC8 */
-    /* Requires manual decompilation - 15 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r0, #0xb\n    mov r1, #0xb4\n    bl Heap_Alloc\n    ldr r1, _02235FE8 ; =ov80_0223DD50\n    mov r2, #0xb4\n    str r0, [r1]\n    mov r1, #0\n    bl MI_CpuFill8\n    ldr r0, _02235FE8 ; =ov80_0223DD50\n    ldr r0, [r0]\n    str r4, [r0]\n    pop {r4, pc}\n    _02235FE8: .word ov80_0223DD50"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // mov r0, #0xb
+    // mov r1, #0xb4
+    // bl Heap_Alloc
+    // ldr r1, _02235FE8 ; =ov80_0223DD50
+    // mov r2, #0xb4
+    // str r0, [r1]
+    // mov r1, #0
+    // bl MI_CpuFill8
+    // ldr r0, _02235FE8 ; =ov80_0223DD50
+    // ldr r0, [r0]
+    // str r4, [r0]
+    // pop {r4, pc}
+    // _02235FE8: .word ov80_0223DD50
+    // TODO: decompile
 }
+
 
 void ov80_02235FEC(void) {
     Heap_Free();
 }
 
+
 void ov80_02235FF8(void) {
-    /* Original at 0x02235FF8 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    cmp r1, #5\n    bhi _0223603C\n    add r1, r1, r1\n    add r1, pc\n    ldrh r1, [r1, #6]\n    lsl r1, r1, #0x10\n    asr r1, r1, #0x10\n    add pc, r1\n    _0223600A: ; jump table\n    bl sub_02096A34\n    pop {r3, pc}\n    add r1, r2, #0\n    bl sub_02096AAC\n    pop {r3, pc}\n    add r1, r2, #0\n    add r2, r3, #0\n    bl sub_02096AF4\n    pop {r3, pc}\n    add r1, r2, #0\n    bl sub_02096BF8\n    pop {r3, pc}\n    add r1, r2, #0\n    bl sub_02096C40\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // cmp r1, #5
+    // bhi _0223603C
+    // add r1, r1, r1
+    // add r1, pc
+    // ldrh r1, [r1, #6]
+    // lsl r1, r1, #0x10
+    // asr r1, r1, #0x10
+    // add pc, r1
+    // _0223600A: ; jump table
+    // bl sub_02096A34
+    // pop {r3, pc}
+    // add r1, r2, #0
+    // bl sub_02096AAC
+    // pop {r3, pc}
+    // add r1, r2, #0
+    // add r2, r3, #0
+    // bl sub_02096AF4
+    // pop {r3, pc}
+    // add r1, r2, #0
+    // bl sub_02096BF8
+    // pop {r3, pc}
+    // add r1, r2, #0
+    // bl sub_02096C40
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void ov80_02236040(void) {
-    /* Original at 0x02236040 */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    add r3, r1, #0\n    add r3, #0x98\n    ldr r3, [r3]\n    cmp r2, #4\n    bhi _02236088\n    add r2, r2, r2\n    add r2, pc\n    ldrh r2, [r2, #6]\n    lsl r2, r2, #0x10\n    asr r2, r2, #0x10\n    add pc, r2\n    _02236058: ; jump table\n    add r2, r3, #0\n    mov r3, #0xb\n    bl ov80_0223608C\n    pop {r3, pc}\n    add r2, r3, #0\n    mov r3, #0xb\n    bl ov80_022362B8\n    pop {r3, pc}\n    add r2, r3, #0\n    mov r3, #0xb\n    bl ov80_02236330\n    pop {r3, pc}\n    add r2, r3, #0\n    mov r3, #0xb\n    bl ov80_0223641C\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // add r3, r1, #0
+    // add r3, #0x98
+    // ldr r3, [r3]
+    // cmp r2, #4
+    // bhi _02236088
+    // add r2, r2, r2
+    // add r2, pc
+    // ldrh r2, [r2, #6]
+    // lsl r2, r2, #0x10
+    // asr r2, r2, #0x10
+    // add pc, r2
+    // _02236058: ; jump table
+    // add r2, r3, #0
+    // mov r3, #0xb
+    // bl ov80_0223608C
+    // pop {r3, pc}
+    // add r2, r3, #0
+    // mov r3, #0xb
+    // bl ov80_022362B8
+    // pop {r3, pc}
+    // add r2, r3, #0
+    // mov r3, #0xb
+    // bl ov80_02236330
+    // pop {r3, pc}
+    // add r2, r3, #0
+    // mov r3, #0xb
+    // bl ov80_0223641C
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void ov80_0223608C(void) {
-    /* Original at 0x0223608C */
-    /* Requires manual decompilation - 268 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r6, r0, #0\n    add r5, r1, #0\n    mov r0, #0xb\n    mov r1, #0x44\n    add r4, r2, #0\n    bl Heap_Alloc\n    add r1, r5, #0\n    add r1, #0xa8\n    str r0, [r1]\n    add r1, r5, #0\n    add r1, #0xa8\n    ldr r1, [r1]\n    mov r0, #0\n    mov r2, #0x44\n    bl MIi_CpuClearFast\n    ldr r0, [r5]\n    bl SaveArray_Party_Get\n    add r1, r5, #0\n    add r1, #0xa8\n    ldr r1, [r1]\n    str r0, [r1]\n    ldr r0, [r5]\n    bl Save_Bag_Get\n    add r1, r5, #0\n    add r1, #0xa8\n    ldr r1, [r1]\n    str r0, [r1, #4]\n    ldr r0, [r5]\n    bl Save_Mailbox_Get\n    add r1, r5, #0\n    add r1, #0xa8\n    ldr r1, [r1]\n    str r0, [r1, #8]\n    ldr r0, [r5]\n    bl Save_PlayerData_GetOptionsAddr\n    add r1, r5, #0\n    add r1, #0xa8\n    ldr r1, [r1]\n    str r0, [r1, #0xc]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0\n    add r0, #0x25\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa0\n    ldrb r0, [r0]\n    cmp r0, #1\n    bne _0223610E\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x11\n    add r0, #0x24\n    strb r1, [r0]\n    b _02236148\n    cmp r0, #5\n    bne _02236120\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x16\n    add r0, #0x24\n    strb r1, [r0]\n    b _02236148\n    cmp r0, #4\n    bne _02236132\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x17\n    add r0, #0x24\n    strb r1, [r0]\n    b _02236148\n    cmp r0, #6\n    bne _02236144\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x17\n    add r0, #0x24\n    strb r1, [r0]\n    b _02236148\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    str r4, [r0, #0x1c]\n    add r0, r5, #0\n    add r0, #0x9f\n    ldrb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r0, #0x26\n    strb r1, [r0]\n    mov r1, #0\n    add r2, r5, #0\n    add r0, r5, r1\n    add r2, #0xa8\n    add r0, #0xa1\n    ldr r2, [r2]\n    ldrb r0, [r0]\n    add r2, r2, r1\n    add r2, #0x30\n    strb r0, [r2]\n    add r0, r1, #1\n    lsl r0, r0, #0x18\n    lsr r1, r0, #0x18\n    cmp r1, #2\n    blo _02236162\n    add r0, r5, #0\n    add r0, #0xa0\n    ldrb r0, [r0]\n    cmp r0, #1\n    bne _022361C6\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #2\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf0\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #0x20\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x64\n    add r0, #0x37\n    strb r1, [r0]\n    b _02236290\n    cmp r0, #5\n    bne _02236208\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #1\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf0\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #0x10\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x1e\n    add r0, #0x37\n    strb r1, [r0]\n    b _02236290\n    cmp r0, #4\n    bne _0223624A\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #2\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf0\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #0x20\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x64\n    add r0, #0x37\n    strb r1, [r0]\n    b _02236290\n    cmp r0, #6\n    bne _0223628C\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #2\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x36\n    ldrb r2, [r1]\n    mov r1, #0xf0\n    add r0, #0x36\n    bic r2, r1\n    mov r1, #0x20\n    orr r1, r2\n    strb r1, [r0]\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r1, #0x64\n    add r0, #0x37\n    strb r1, [r0]\n    b _02236290\n    bl GF_AssertFail\n    mov r0, #0x43\n    lsl r0, r0, #2\n    add r1, r4, r0\n    add r0, r5, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    mov r3, #0\n    str r1, [r0, #0x20]\n    str r3, [sp]\n    add r5, #0xa8\n    ldr r1, _022362B4 ; =gOverlayTemplate_PartyMenu\n    ldr r2, [r5]\n    add r0, r6, #0\n    bl Frontier_LaunchApplication\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    nop\n    _022362B4: .word gOverlayTemplate_PartyMenu"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // add r6, r0, #0
+    // add r5, r1, #0
+    // mov r0, #0xb
+    // mov r1, #0x44
+    // add r4, r2, #0
+    // bl Heap_Alloc
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // str r0, [r1]
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // ldr r1, [r1]
+    // mov r0, #0
+    // mov r2, #0x44
+    // bl MIi_CpuClearFast
+    // ldr r0, [r5]
+    // bl SaveArray_Party_Get
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // ldr r1, [r1]
+    // str r0, [r1]
+    // ldr r0, [r5]
+    // bl Save_Bag_Get
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // ldr r1, [r1]
+    // str r0, [r1, #4]
+    // ldr r0, [r5]
+    // bl Save_Mailbox_Get
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // ldr r1, [r1]
+    // str r0, [r1, #8]
+    // ldr r0, [r5]
+    // bl Save_PlayerData_GetOptionsAddr
+    // add r1, r5, #0
+    // add r1, #0xa8
+    // ldr r1, [r1]
+    // str r0, [r1, #0xc]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0
+    // add r0, #0x25
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa0
+    // ldrb r0, [r0]
+    // cmp r0, #1
+    // bne _0223610E
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x11
+    // add r0, #0x24
+    // strb r1, [r0]
+    // b _02236148
+    // cmp r0, #5
+    // bne _02236120
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x16
+    // add r0, #0x24
+    // strb r1, [r0]
+    // b _02236148
+    // cmp r0, #4
+    // bne _02236132
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x17
+    // add r0, #0x24
+    // strb r1, [r0]
+    // b _02236148
+    // cmp r0, #6
+    // bne _02236144
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x17
+    // add r0, #0x24
+    // strb r1, [r0]
+    // b _02236148
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // str r4, [r0, #0x1c]
+    // add r0, r5, #0
+    // add r0, #0x9f
+    // ldrb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r0, #0x26
+    // strb r1, [r0]
+    // mov r1, #0
+    // add r2, r5, #0
+    // add r0, r5, r1
+    // add r2, #0xa8
+    // add r0, #0xa1
+    // ldr r2, [r2]
+    // ldrb r0, [r0]
+    // add r2, r2, r1
+    // add r2, #0x30
+    // strb r0, [r2]
+    // add r0, r1, #1
+    // lsl r0, r0, #0x18
+    // lsr r1, r0, #0x18
+    // cmp r1, #2
+    // blo _02236162
+    // add r0, r5, #0
+    // add r0, #0xa0
+    // ldrb r0, [r0]
+    // cmp r0, #1
+    // bne _022361C6
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #2
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf0
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #0x20
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x64
+    // add r0, #0x37
+    // strb r1, [r0]
+    // b _02236290
+    // cmp r0, #5
+    // bne _02236208
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #1
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf0
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #0x10
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x1e
+    // add r0, #0x37
+    // strb r1, [r0]
+    // b _02236290
+    // cmp r0, #4
+    // bne _0223624A
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #2
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf0
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #0x20
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x64
+    // add r0, #0x37
+    // strb r1, [r0]
+    // b _02236290
+    // cmp r0, #6
+    // bne _0223628C
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #2
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x36
+    // ldrb r2, [r1]
+    // mov r1, #0xf0
+    // add r0, #0x36
+    // bic r2, r1
+    // mov r1, #0x20
+    // orr r1, r2
+    // strb r1, [r0]
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r1, #0x64
+    // add r0, #0x37
+    // strb r1, [r0]
+    // b _02236290
+    // bl GF_AssertFail
+    // mov r0, #0x43
+    // lsl r0, r0, #2
+    // add r1, r4, r0
+    // add r0, r5, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // mov r3, #0
+    // str r1, [r0, #0x20]
+    // str r3, [sp]
+    // add r5, #0xa8
+    // ldr r1, _022362B4 ; =gOverlayTemplate_PartyMenu
+    // ldr r2, [r5]
+    // add r0, r6, #0
+    // bl Frontier_LaunchApplication
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // nop
+    // _022362B4: .word gOverlayTemplate_PartyMenu
+    // TODO: decompile
 }
+
 
 void ov80_022362B8(void) {
-    /* Original at 0x022362B8 */
-    /* Requires manual decompilation - 57 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    add r0, r4, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r1, r0, #0\n    add r1, #0x26\n    ldrb r1, [r1]\n    cmp r1, #6\n    beq _022362E0\n    cmp r1, #7\n    bne _022362F0\n    add r0, r4, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    mov r1, #4\n    strh r1, [r0]\n    add r4, #0x9d\n    strb r1, [r4]\n    pop {r4, pc}\n    add r0, r4, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    mov r1, #4\n    strh r1, [r0]\n    add r4, #0x9d\n    strb r1, [r4]\n    pop {r4, pc}\n    add r1, r4, #0\n    add r0, #0x30\n    add r1, #0xa1\n    mov r2, #2\n    bl MI_CpuCopy8\n    add r0, r4, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    add r0, #0x26\n    ldrb r1, [r0]\n    add r0, r4, #0\n    add r0, #0x9f\n    strb r1, [r0]\n    add r0, r4, #0\n    add r0, #0xa8\n    ldr r0, [r0]\n    bl Heap_Free\n    add r0, r4, #0\n    mov r1, #0\n    add r0, #0xa8\n    str r1, [r0]\n    add r0, r4, #0\n    add r0, #0xb0\n    ldr r0, [r0]\n    mov r1, #2\n    strh r1, [r0]\n    add r4, #0x9d\n    strb r1, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r1, #0
+    // add r0, r4, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r1, r0, #0
+    // add r1, #0x26
+    // ldrb r1, [r1]
+    // cmp r1, #6
+    // beq _022362E0
+    // cmp r1, #7
+    // bne _022362F0
+    // add r0, r4, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // mov r1, #4
+    // strh r1, [r0]
+    // add r4, #0x9d
+    // strb r1, [r4]
+    // pop {r4, pc}
+    // add r0, r4, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // mov r1, #4
+    // strh r1, [r0]
+    // add r4, #0x9d
+    // strb r1, [r4]
+    // pop {r4, pc}
+    // add r1, r4, #0
+    // add r0, #0x30
+    // add r1, #0xa1
+    // mov r2, #2
+    // bl MI_CpuCopy8
+    // add r0, r4, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // add r0, #0x26
+    // ldrb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0x9f
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0xa8
+    // ldr r0, [r0]
+    // bl Heap_Free
+    // add r0, r4, #0
+    // mov r1, #0
+    // add r0, #0xa8
+    // str r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0xb0
+    // ldr r0, [r0]
+    // mov r1, #2
+    // strh r1, [r0]
+    // add r4, #0x9d
+    // strb r1, [r4]
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void ov80_02236330(void) {
-    /* Original at 0x02236330 */
-    /* Requires manual decompilation - 103 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    add r4, r1, #0\n    add r0, r3, #0\n    mov r1, #0x3c\n    bl Heap_AllocAtEnd\n    add r1, r4, #0\n    add r1, #0xac\n    str r0, [r1]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    mov r1, #0\n    mov r2, #0x3c\n    bl MI_CpuFill8\n    ldr r0, [r4]\n    bl Save_PlayerData_GetOptionsAddr\n    add r1, r4, #0\n    add r1, #0xac\n    ldr r1, [r1]\n    str r0, [r1, #4]\n    ldr r0, [r4]\n    bl SaveArray_Party_Get\n    add r1, r4, #0\n    add r1, #0xac\n    ldr r1, [r1]\n    str r0, [r1]\n    ldr r0, [r4]\n    bl SaveArray_IsNatDexEnabled\n    add r1, r4, #0\n    add r1, #0xac\n    ldr r1, [r1]\n    str r0, [r1, #0x1c]\n    ldr r0, [r4]\n    bl sub_02088288\n    add r1, r4, #0\n    add r1, #0xac\n    ldr r1, [r1]\n    str r0, [r1, #0x2c]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    mov r1, #1\n    strb r1, [r0, #0x11]\n    add r0, r4, #0\n    add r0, #0x9f\n    ldrb r1, [r0]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    strb r1, [r0, #0x14]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    ldr r0, [r0]\n    bl Party_GetCount\n    add r1, r4, #0\n    add r1, #0xac\n    ldr r1, [r1]\n    strb r0, [r1, #0x13]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    mov r1, #0\n    strh r1, [r0, #0x18]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    strb r1, [r0, #0x12]\n    ldr r0, [r4]\n    bl Save_SpecialRibbons_Get\n    add r1, r4, #0\n    add r1, #0xac\n    ldr r1, [r1]\n    str r0, [r1, #0x20]\n    ldr r0, [r4]\n    bl sub_0208828C\n    add r1, r4, #0\n    add r1, #0xac\n    ldr r1, [r1]\n    str r0, [r1, #0x34]\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    ldr r1, _02236414 ; =ov80_0223C040\n    bl sub_02089D40\n    ldr r0, [r4]\n    bl Save_PlayerData_GetProfile\n    add r1, r0, #0\n    add r0, r4, #0\n    add r0, #0xac\n    ldr r0, [r0]\n    bl sub_0208AD34\n    mov r3, #0\n    str r3, [sp]\n    add r4, #0xac\n    ldr r1, _02236418 ; =gOverlayTemplate_PokemonSummary\n    ldr r2, [r4]\n    add r0, r5, #0\n    bl Frontier_LaunchApplication\n    pop {r3, r4, r5, pc}\n    _02236414: .word ov80_0223C040\n    _02236418: .word gOverlayTemplate_PokemonSummary"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // add r0, r3, #0
+    // mov r1, #0x3c
+    // bl Heap_AllocAtEnd
+    // add r1, r4, #0
+    // add r1, #0xac
+    // str r0, [r1]
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // mov r1, #0
+    // mov r2, #0x3c
+    // bl MI_CpuFill8
+    // ldr r0, [r4]
+    // bl Save_PlayerData_GetOptionsAddr
+    // add r1, r4, #0
+    // add r1, #0xac
+    // ldr r1, [r1]
+    // str r0, [r1, #4]
+    // ldr r0, [r4]
+    // bl SaveArray_Party_Get
+    // add r1, r4, #0
+    // add r1, #0xac
+    // ldr r1, [r1]
+    // str r0, [r1]
+    // ldr r0, [r4]
+    // bl SaveArray_IsNatDexEnabled
+    // add r1, r4, #0
+    // add r1, #0xac
+    // ldr r1, [r1]
+    // str r0, [r1, #0x1c]
+    // ldr r0, [r4]
+    // bl sub_02088288
+    // add r1, r4, #0
+    // add r1, #0xac
+    // ldr r1, [r1]
+    // str r0, [r1, #0x2c]
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // mov r1, #1
+    // strb r1, [r0, #0x11]
+    // add r0, r4, #0
+    // add r0, #0x9f
+    // ldrb r1, [r0]
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // strb r1, [r0, #0x14]
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // ldr r0, [r0]
+    // bl Party_GetCount
+    // add r1, r4, #0
+    // add r1, #0xac
+    // ldr r1, [r1]
+    // strb r0, [r1, #0x13]
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // mov r1, #0
+    // strh r1, [r0, #0x18]
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // strb r1, [r0, #0x12]
+    // ldr r0, [r4]
+    // bl Save_SpecialRibbons_Get
+    // add r1, r4, #0
+    // add r1, #0xac
+    // ldr r1, [r1]
+    // str r0, [r1, #0x20]
+    // ldr r0, [r4]
+    // bl sub_0208828C
+    // add r1, r4, #0
+    // add r1, #0xac
+    // ldr r1, [r1]
+    // str r0, [r1, #0x34]
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // ldr r1, _02236414 ; =ov80_0223C040
+    // bl sub_02089D40
+    // ldr r0, [r4]
+    // bl Save_PlayerData_GetProfile
+    // add r1, r0, #0
+    // add r0, r4, #0
+    // add r0, #0xac
+    // ldr r0, [r0]
+    // bl sub_0208AD34
+    // mov r3, #0
+    // str r3, [sp]
+    // add r4, #0xac
+    // ldr r1, _02236418 ; =gOverlayTemplate_PokemonSummary
+    // ldr r2, [r4]
+    // add r0, r5, #0
+    // bl Frontier_LaunchApplication
+    // pop {r3, r4, r5, pc}
+    // _02236414: .word ov80_0223C040
+    // _02236418: .word gOverlayTemplate_PokemonSummary
+    // TODO: decompile
 }
+
 
 void ov80_0223641C(void) {
     Heap_Free(r1, *((u8*)(r1 + 0x14)));
 }
+

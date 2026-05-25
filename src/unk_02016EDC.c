@@ -2,521 +2,2127 @@
 #include "global.h"
 
 void sub_02016EDC(void) {
-    /* Original at 0x02016EDC */
-    /* Requires manual decompilation - 37 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r1, #0\n    mov r1, #0xc\n    add r6, r0, #0\n    add r7, r2, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    strb r7, [r4, #8]\n    mov r0, #0x1d\n    strb r5, [r4, #9]\n    lsl r0, r0, #4\n    add r7, r5, #0\n    mul r7, r0\n    add r0, r6, #0\n    add r1, r7, #0\n    str r6, [r4, #4]\n    bl Heap_Alloc\n    mov r1, #0\n    add r2, r7, #0\n    str r0, [r4]\n    bl MI_CpuFill8\n    mov r3, #0\n    cmp r5, #0\n    ble _02016F28\n    mov r0, #0x1d\n    add r6, r3, #0\n    mov r2, #1\n    lsl r0, r0, #4\n    ldr r1, [r4]\n    add r3, r3, #1\n    add r1, r1, r6\n    str r2, [r1, #0x20]\n    add r6, r6, r0\n    cmp r3, r5\n    blt _02016F1A\n    add r0, r4, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r1, #0
+    // mov r1, #0xc
+    // add r6, r0, #0
+    // add r7, r2, #0
+    // bl Heap_Alloc
+    // add r4, r0, #0
+    // strb r7, [r4, #8]
+    // mov r0, #0x1d
+    // strb r5, [r4, #9]
+    // lsl r0, r0, #4
+    // add r7, r5, #0
+    // mul r7, r0
+    // add r0, r6, #0
+    // add r1, r7, #0
+    // str r6, [r4, #4]
+    // bl Heap_Alloc
+    // mov r1, #0
+    // add r2, r7, #0
+    // str r0, [r4]
+    // bl MI_CpuFill8
+    // mov r3, #0
+    // cmp r5, #0
+    // ble _02016F28
+    // mov r0, #0x1d
+    // add r6, r3, #0
+    // mov r2, #1
+    // lsl r0, r0, #4
+    // ldr r1, [r4]
+    // add r3, r3, #1
+    // add r1, r1, r6
+    // str r2, [r1, #0x20]
+    // add r6, r6, r0
+    // cmp r3, r5
+    // blt _02016F1A
+    // add r0, r4, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void sub_02016F2C(void) {
     Heap_Free();
     Heap_Free(r4);
 }
 
+
 void sub_02016F40(void) {
-    /* Original at 0x02016F40 */
-    /* Requires manual decompilation - 139 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    str r3, [sp, #4]\n    add r0, r2, #0\n    ldrh r6, [r0]\n    ldrh r0, [r0, #2]\n    add r7, r1, #0\n    ldrb r1, [r5, #9]\n    str r0, [sp, #8]\n    ldr r0, [sp, #4]\n    str r2, [sp]\n    cmp r0, r1\n    blo _02016F60\n    bl GF_AssertFail\n    ldr r0, [sp, #4]\n    mov r1, #0x1d\n    add r4, r0, #0\n    lsl r1, r1, #4\n    ldr r0, [r5]\n    mul r4, r1\n    add r0, r0, r4\n    ldr r0, [r0, #0x10]\n    cmp r0, #0\n    beq _02016F78\n    bl GF_AssertFail\n    ldr r0, [r5]\n    mov r2, #0x1d\n    add r0, r0, r4\n    mov r1, #0\n    lsl r2, r2, #4\n    bl MI_CpuFill8\n    ldr r0, [r5]\n    mov r1, #1\n    add r0, r0, r4\n    str r1, [r0, #0x10]\n    ldr r0, [r5]\n    cmp r6, #0x8f\n    str r7, [r0, r4]\n    blt _02016F9A\n    mov r6, #0\n    str r6, [sp, #8]\n    ldr r0, [r5]\n    add r0, r0, r4\n    str r6, [r0, #0x14]\n    ldrb r0, [r5, #8]\n    cmp r0, #0\n    beq _02016FAC\n    ldr r0, [sp]\n    ldrb r2, [r0, #4]\n    b _02016FAE\n    mov r2, #0\n    ldr r0, [r5]\n    add r1, r0, r4\n    mov r0, #0x73\n    lsl r0, r0, #2\n    strb r2, [r1, r0]\n    ldr r1, [r5]\n    ldr r2, [r5, #4]\n    add r1, r1, r4\n    ldr r1, [r1, #0x14]\n    mov r0, #0x5a\n    bl AllocAtEndAndReadWholeNarcMemberByIdPair\n    ldr r1, [r5]\n    mov r2, #0\n    add r1, r1, r4\n    str r0, [r1, #8]\n    ldr r0, [r5]\n    mov r6, #0x1c\n    add r1, r0, r4\n    ldr r0, [r1, #8]\n    str r0, [r1, #0xc]\n    ldr r0, [r5]\n    add r0, r0, r4\n    str r2, [r0, #0x1c]\n    ldr r0, [r5]\n    add r0, r0, r4\n    str r2, [r0, #0x20]\n    ldr r0, [r5]\n    add r1, r0, r4\n    ldr r0, _02017060 ; =0x000001CD\n    strb r2, [r1, r0]\n    ldr r1, [r5]\n    add r3, r1, r4\n    add r1, r0, #1\n    strb r6, [r3, r1]\n    ldr r1, [r5]\n    add r0, r0, #2\n    add r1, r1, r4\n    strb r2, [r1, r0]\n    ldr r1, [r5]\n    ldr r0, _02017064 ; =sub_020170C4\n    add r1, r1, r4\n    bl SysTask_CreateOnMainQueue\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #4]\n    ldr r0, [r5]\n    add r1, r0, r4\n    ldr r0, [sp, #8]\n    str r0, [r1, #0x54]\n    add r0, r7, #0\n    mov r1, #0\n    bl Pokepic_GetAttr\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x58]\n    add r0, r7, #0\n    mov r1, #1\n    bl Pokepic_GetAttr\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x5c]\n    ldr r1, [r5]\n    mov r0, #0\n    add r1, r1, r4\n    str r0, [r1, #0x60]\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x64]\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x68]\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x6c]\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x70]\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x74]\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x78]\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}\n    _02017060: .word 0x000001CD\n    _02017064: .word sub_020170C4"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // str r3, [sp, #4]
+    // add r0, r2, #0
+    // ldrh r6, [r0]
+    // ldrh r0, [r0, #2]
+    // add r7, r1, #0
+    // ldrb r1, [r5, #9]
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #4]
+    // str r2, [sp]
+    // cmp r0, r1
+    // blo _02016F60
+    // bl GF_AssertFail
+    // ldr r0, [sp, #4]
+    // mov r1, #0x1d
+    // add r4, r0, #0
+    // lsl r1, r1, #4
+    // ldr r0, [r5]
+    // mul r4, r1
+    // add r0, r0, r4
+    // ldr r0, [r0, #0x10]
+    // cmp r0, #0
+    // beq _02016F78
+    // bl GF_AssertFail
+    // ldr r0, [r5]
+    // mov r2, #0x1d
+    // add r0, r0, r4
+    // mov r1, #0
+    // lsl r2, r2, #4
+    // bl MI_CpuFill8
+    // ldr r0, [r5]
+    // mov r1, #1
+    // add r0, r0, r4
+    // str r1, [r0, #0x10]
+    // ldr r0, [r5]
+    // cmp r6, #0x8f
+    // str r7, [r0, r4]
+    // blt _02016F9A
+    // mov r6, #0
+    // str r6, [sp, #8]
+    // ldr r0, [r5]
+    // add r0, r0, r4
+    // str r6, [r0, #0x14]
+    // ldrb r0, [r5, #8]
+    // cmp r0, #0
+    // beq _02016FAC
+    // ldr r0, [sp]
+    // ldrb r2, [r0, #4]
+    // b _02016FAE
+    // mov r2, #0
+    // ldr r0, [r5]
+    // add r1, r0, r4
+    // mov r0, #0x73
+    // lsl r0, r0, #2
+    // strb r2, [r1, r0]
+    // ldr r1, [r5]
+    // ldr r2, [r5, #4]
+    // add r1, r1, r4
+    // ldr r1, [r1, #0x14]
+    // mov r0, #0x5a
+    // bl AllocAtEndAndReadWholeNarcMemberByIdPair
+    // ldr r1, [r5]
+    // mov r2, #0
+    // add r1, r1, r4
+    // str r0, [r1, #8]
+    // ldr r0, [r5]
+    // mov r6, #0x1c
+    // add r1, r0, r4
+    // ldr r0, [r1, #8]
+    // str r0, [r1, #0xc]
+    // ldr r0, [r5]
+    // add r0, r0, r4
+    // str r2, [r0, #0x1c]
+    // ldr r0, [r5]
+    // add r0, r0, r4
+    // str r2, [r0, #0x20]
+    // ldr r0, [r5]
+    // add r1, r0, r4
+    // ldr r0, _02017060 ; =0x000001CD
+    // strb r2, [r1, r0]
+    // ldr r1, [r5]
+    // add r3, r1, r4
+    // add r1, r0, #1
+    // strb r6, [r3, r1]
+    // ldr r1, [r5]
+    // add r0, r0, #2
+    // add r1, r1, r4
+    // strb r2, [r1, r0]
+    // ldr r1, [r5]
+    // ldr r0, _02017064 ; =sub_020170C4
+    // add r1, r1, r4
+    // bl SysTask_CreateOnMainQueue
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #4]
+    // ldr r0, [r5]
+    // add r1, r0, r4
+    // ldr r0, [sp, #8]
+    // str r0, [r1, #0x54]
+    // add r0, r7, #0
+    // mov r1, #0
+    // bl Pokepic_GetAttr
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x58]
+    // add r0, r7, #0
+    // mov r1, #1
+    // bl Pokepic_GetAttr
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x5c]
+    // ldr r1, [r5]
+    // mov r0, #0
+    // add r1, r1, r4
+    // str r0, [r1, #0x60]
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x64]
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x68]
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x6c]
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x70]
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x74]
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x78]
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // _02017060: .word 0x000001CD
+    // _02017064: .word sub_020170C4
+    // TODO: decompile
 }
+
 
 void sub_02017068(void) {
     GF_AssertFail(0x1d);
 }
 
+
 void sub_02017088(void) {
-    /* Original at 0x02017088 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    mov r0, #0x1d\n    lsl r0, r0, #4\n    add r4, r1, #0\n    mul r4, r0\n    ldr r0, [r5]\n    add r0, r0, r4\n    ldr r0, [r0, #4]\n    cmp r0, #0\n    beq _020170C2\n    bl SysTask_Destroy\n    ldr r1, [r5]\n    mov r0, #0\n    add r1, r1, r4\n    str r0, [r1, #4]\n    ldr r1, [r5]\n    mov r2, #1\n    add r1, r1, r4\n    str r2, [r1, #0x20]\n    ldr r1, [r5]\n    add r1, r1, r4\n    str r0, [r1, #0x10]\n    ldr r0, [r5]\n    add r0, r0, r4\n    ldr r0, [r0, #8]\n    bl Heap_Free\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // mov r0, #0x1d
+    // lsl r0, r0, #4
+    // add r4, r1, #0
+    // mul r4, r0
+    // ldr r0, [r5]
+    // add r0, r0, r4
+    // ldr r0, [r0, #4]
+    // cmp r0, #0
+    // beq _020170C2
+    // bl SysTask_Destroy
+    // ldr r1, [r5]
+    // mov r0, #0
+    // add r1, r1, r4
+    // str r0, [r1, #4]
+    // ldr r1, [r5]
+    // mov r2, #1
+    // add r1, r1, r4
+    // str r2, [r1, #0x20]
+    // ldr r1, [r5]
+    // add r1, r1, r4
+    // str r0, [r1, #0x10]
+    // ldr r0, [r5]
+    // add r0, r0, r4
+    // ldr r0, [r0, #8]
+    // bl Heap_Free
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_020170C4(void) {
-    /* Original at 0x020170C4 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0x54]\n    cmp r0, #0\n    bne _020170D8\n    add r0, r4, #0\n    bl sub_020170FC\n    b _020170DC\n    sub r0, r0, #1\n    str r0, [r4, #0x54]\n    ldr r0, [r4, #0x1c]\n    cmp r0, #0\n    beq _020170FA\n    mov r0, #1\n    str r0, [r4, #0x20]\n    mov r0, #0\n    str r0, [r4, #0x10]\n    add r0, r5, #0\n    bl SysTask_Destroy\n    mov r0, #0\n    str r0, [r4, #4]\n    ldr r0, [r4, #8]\n    bl Heap_Free\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x54]
+    // cmp r0, #0
+    // bne _020170D8
+    // add r0, r4, #0
+    // bl sub_020170FC
+    // b _020170DC
+    // sub r0, r0, #1
+    // str r0, [r4, #0x54]
+    // ldr r0, [r4, #0x1c]
+    // cmp r0, #0
+    // beq _020170FA
+    // mov r0, #1
+    // str r0, [r4, #0x20]
+    // mov r0, #0
+    // str r0, [r4, #0x10]
+    // add r0, r5, #0
+    // bl SysTask_Destroy
+    // mov r0, #0
+    // str r0, [r4, #4]
+    // ldr r0, [r4, #8]
+    // bl Heap_Free
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void sub_020170FC(void) {
-    /* Original at 0x020170FC */
-    /* Requires manual decompilation - 114 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r5, r0, #0\n    mov r6, #0\n    str r6, [r5, #0x18]\n    add r7, r5, #0\n    str r6, [r5, #0x44]\n    add r4, r6, #0\n    add r7, #0x7c\n    mov r0, #0x54\n    add r1, r4, #0\n    mul r1, r0\n    add r0, r7, r1\n    ldr r1, [r7, r1]\n    cmp r1, #0\n    beq _0201713A\n    add r1, r0, #0\n    add r1, #0x2d\n    ldrb r1, [r1]\n    cmp r1, #0\n    bne _0201712C\n    ldr r2, [r0, #0x50]\n    add r1, r5, #0\n    blx r2\n    b _02017140\n    add r1, r0, #0\n    add r1, #0x2d\n    ldrb r1, [r1]\n    add r0, #0x2d\n    sub r1, r1, #1\n    strb r1, [r0]\n    b _02017140\n    add r0, r6, #1\n    lsl r0, r0, #0x18\n    lsr r6, r0, #0x18\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    cmp r4, #4\n    blo _0201710C\n    cmp r6, #4\n    bne _02017154\n    ldr r0, _020171E8 ; =0x000001CD\n    mov r1, #0\n    strb r1, [r5, r0]\n    ldr r0, _020171E8 ; =0x000001CD\n    ldrb r1, [r5, r0]\n    cmp r1, #0\n    beq _0201716A\n    add r0, r5, #0\n    bl sub_020179D4\n    add r0, r5, #0\n    bl sub_02017A1C\n    pop {r3, r4, r5, r6, r7, pc}\n    add r0, r0, #2\n    ldrb r0, [r5, r0]\n    cmp r0, #0\n    beq _02017182\n    ldr r0, [r5]\n    bl Pokepic_ResumePaletteFade\n    cmp r0, #0\n    bne _020171E4\n    ldr r0, _020171EC ; =0x000001CF\n    mov r1, #0\n    strb r1, [r5, r0]\n    add r6, r5, #0\n    add r4, r5, #0\n    ldr r7, _020171F0 ; =_020F61F8\n    add r6, #0xc\n    add r4, #0x44\n    ldr r0, [r4]\n    add r0, r0, #1\n    str r0, [r4]\n    ldr r0, [r5, #0xc]\n    ldr r0, [r0]\n    cmp r0, #0x22\n    blo _0201719E\n    bl GF_AssertFail\n    ldr r1, [r5, #0xc]\n    add r0, r5, #0\n    ldr r1, [r1]\n    lsl r1, r1, #2\n    ldr r1, [r7, r1]\n    blx r1\n    ldr r0, [r5, #0x1c]\n    cmp r0, #0\n    bne _020171E4\n    ldr r0, [r6]\n    add r0, r0, #4\n    str r0, [r6]\n    ldr r0, [r5, #0x18]\n    cmp r0, #0\n    bne _020171E4\n    ldr r0, _020171E8 ; =0x000001CD\n    ldrb r0, [r5, r0]\n    cmp r0, #0\n    beq _020171D2\n    add r0, r5, #0\n    bl sub_020179D4\n    add r0, r5, #0\n    bl sub_02017A1C\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #1\n    ldr r1, [r5, #0x44]\n    lsl r0, r0, #8\n    cmp r1, r0\n    blt _0201718C\n    bl GF_AssertFail\n    mov r0, #1\n    str r0, [r5, #0x1c]\n    pop {r3, r4, r5, r6, r7, pc}\n    nop\n    _020171E8: .word 0x000001CD\n    _020171EC: .word 0x000001CF\n    _020171F0: .word _020F61F8"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r5, r0, #0
+    // mov r6, #0
+    // str r6, [r5, #0x18]
+    // add r7, r5, #0
+    // str r6, [r5, #0x44]
+    // add r4, r6, #0
+    // add r7, #0x7c
+    // mov r0, #0x54
+    // add r1, r4, #0
+    // mul r1, r0
+    // add r0, r7, r1
+    // ldr r1, [r7, r1]
+    // cmp r1, #0
+    // beq _0201713A
+    // add r1, r0, #0
+    // add r1, #0x2d
+    // ldrb r1, [r1]
+    // cmp r1, #0
+    // bne _0201712C
+    // ldr r2, [r0, #0x50]
+    // add r1, r5, #0
+    // blx r2
+    // b _02017140
+    // add r1, r0, #0
+    // add r1, #0x2d
+    // ldrb r1, [r1]
+    // add r0, #0x2d
+    // sub r1, r1, #1
+    // strb r1, [r0]
+    // b _02017140
+    // add r0, r6, #1
+    // lsl r0, r0, #0x18
+    // lsr r6, r0, #0x18
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // cmp r4, #4
+    // blo _0201710C
+    // cmp r6, #4
+    // bne _02017154
+    // ldr r0, _020171E8 ; =0x000001CD
+    // mov r1, #0
+    // strb r1, [r5, r0]
+    // ldr r0, _020171E8 ; =0x000001CD
+    // ldrb r1, [r5, r0]
+    // cmp r1, #0
+    // beq _0201716A
+    // add r0, r5, #0
+    // bl sub_020179D4
+    // add r0, r5, #0
+    // bl sub_02017A1C
+    // pop {r3, r4, r5, r6, r7, pc}
+    // add r0, r0, #2
+    // ldrb r0, [r5, r0]
+    // cmp r0, #0
+    // beq _02017182
+    // ldr r0, [r5]
+    // bl Pokepic_ResumePaletteFade
+    // cmp r0, #0
+    // bne _020171E4
+    // ldr r0, _020171EC ; =0x000001CF
+    // mov r1, #0
+    // strb r1, [r5, r0]
+    // add r6, r5, #0
+    // add r4, r5, #0
+    // ldr r7, _020171F0 ; =_020F61F8
+    // add r6, #0xc
+    // add r4, #0x44
+    // ldr r0, [r4]
+    // add r0, r0, #1
+    // str r0, [r4]
+    // ldr r0, [r5, #0xc]
+    // ldr r0, [r0]
+    // cmp r0, #0x22
+    // blo _0201719E
+    // bl GF_AssertFail
+    // ldr r1, [r5, #0xc]
+    // add r0, r5, #0
+    // ldr r1, [r1]
+    // lsl r1, r1, #2
+    // ldr r1, [r7, r1]
+    // blx r1
+    // ldr r0, [r5, #0x1c]
+    // cmp r0, #0
+    // bne _020171E4
+    // ldr r0, [r6]
+    // add r0, r0, #4
+    // str r0, [r6]
+    // ldr r0, [r5, #0x18]
+    // cmp r0, #0
+    // bne _020171E4
+    // ldr r0, _020171E8 ; =0x000001CD
+    // ldrb r0, [r5, r0]
+    // cmp r0, #0
+    // beq _020171D2
+    // add r0, r5, #0
+    // bl sub_020179D4
+    // add r0, r5, #0
+    // bl sub_02017A1C
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #1
+    // ldr r1, [r5, #0x44]
+    // lsl r0, r0, #8
+    // cmp r1, r0
+    // blt _0201718C
+    // bl GF_AssertFail
+    // mov r0, #1
+    // str r0, [r5, #0x1c]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // nop
+    // _020171E8: .word 0x000001CD
+    // _020171EC: .word 0x000001CF
+    // _020171F0: .word _020F61F8
+    // TODO: decompile
 }
+
 
 void sub_020171F4(void) {
     GF_AssertFail();
 }
 
+
 void sub_02017208(void) {
     sub_020171F4();
 }
+
 
 void sub_02017214(void) {
     sub_02017208();
 }
 
+
 void sub_02017220(void) {
-    /* Original at 0x02017220 */
-    /* Requires manual decompilation - 35 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r1, #0\n    mov r3, #0\n    add r0, #0x7c\n    mov r2, #0x54\n    add r1, r3, #0\n    mul r1, r2\n    add r4, r0, r1\n    ldr r1, [r0, r1]\n    cmp r1, #0\n    bne _02017254\n    add r0, r4, #0\n    mov r1, #0\n    mov r2, #0x54\n    bl MI_CpuFill8\n    mov r0, #1\n    str r0, [r4]\n    mov r0, #0xc\n    add r1, r5, #0\n    mul r1, r0\n    ldr r0, _02017268 ; =_020F61BC\n    ldr r0, [r0, r1]\n    str r0, [r4, #0x50]\n    add r0, r4, #0\n    pop {r3, r4, r5, pc}\n    add r1, r3, #1\n    lsl r1, r1, #0x18\n    lsr r3, r1, #0x18\n    cmp r3, #4\n    blo _0201722A\n    bl GF_AssertFail\n    mov r0, #0\n    pop {r3, r4, r5, pc}\n    nop\n    _02017268: .word _020F61BC"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r1, #0
+    // mov r3, #0
+    // add r0, #0x7c
+    // mov r2, #0x54
+    // add r1, r3, #0
+    // mul r1, r2
+    // add r4, r0, r1
+    // ldr r1, [r0, r1]
+    // cmp r1, #0
+    // bne _02017254
+    // add r0, r4, #0
+    // mov r1, #0
+    // mov r2, #0x54
+    // bl MI_CpuFill8
+    // mov r0, #1
+    // str r0, [r4]
+    // mov r0, #0xc
+    // add r1, r5, #0
+    // mul r1, r0
+    // ldr r0, _02017268 ; =_020F61BC
+    // ldr r0, [r0, r1]
+    // str r0, [r4, #0x50]
+    // add r0, r4, #0
+    // pop {r3, r4, r5, pc}
+    // add r1, r3, #1
+    // lsl r1, r1, #0x18
+    // lsr r3, r1, #0x18
+    // cmp r3, #4
+    // blo _0201722A
+    // bl GF_AssertFail
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02017268: .word _020F61BC
+    // TODO: decompile
 }
+
 
 void sub_0201726C(void) {
     sub_02017214();
 }
 
+
 void sub_02017280(void) {
     sub_02017214();
 }
 
+
 void sub_02017294(void) {
-    /* Original at 0x02017294 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r1, #0\n    ldr r1, [r0, #0xc]\n    add r1, r1, #4\n    str r1, [r0, #0xc]\n    add r0, r1, #0\n    bl sub_02017214\n    strb r0, [r4]\n    ldrb r0, [r4]\n    cmp r0, #8\n    blo _020172B0\n    bl GF_AssertFail\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r1, #0
+    // ldr r1, [r0, #0xc]
+    // add r1, r1, #4
+    // str r1, [r0, #0xc]
+    // add r0, r1, #0
+    // bl sub_02017214
+    // strb r0, [r4]
+    // ldrb r0, [r4]
+    // cmp r0, #8
+    // blo _020172B0
+    // bl GF_AssertFail
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_020172B4(void) {
     sub_02017294();
     sub_02017294(r5, r4);
 }
 
+
 void sub_020172C8(void) {
-    /* Original at 0x020172C8 */
-    /* Requires manual decompilation - 52 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r5, r0, #0\n    add r4, r2, #0\n    add r6, r3, #0\n    bl sub_02017294\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x12\n    bne _02017308\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #2\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #2]\n    add r1, r6, #0\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r4]\n    add r0, r5, #0\n    bl sub_0201726C\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    cmp r0, #0x13\n    bne _02017334\n    add r1, sp, #0\n    add r2, sp, #0\n    add r0, r5, #0\n    add r1, #2\n    add r2, #1\n    bl sub_020172B4\n    add r0, sp, #0\n    ldrb r1, [r0, #2]\n    add sp, #4\n    lsl r1, r1, #2\n    add r1, r5, r1\n    ldr r1, [r1, #0x24]\n    str r1, [r4]\n    ldrb r0, [r0, #1]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r6]\n    pop {r3, r4, r5, r6, pc}\n    bl GF_AssertFail\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // add r5, r0, #0
+    // add r4, r2, #0
+    // add r6, r3, #0
+    // bl sub_02017294
+    // add r0, r5, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x12
+    // bne _02017308
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #2
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #2]
+    // add r1, r6, #0
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r4]
+    // add r0, r5, #0
+    // bl sub_0201726C
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // cmp r0, #0x13
+    // bne _02017334
+    // add r1, sp, #0
+    // add r2, sp, #0
+    // add r0, r5, #0
+    // add r1, #2
+    // add r2, #1
+    // bl sub_020172B4
+    // add r0, sp, #0
+    // ldrb r1, [r0, #2]
+    // add sp, #4
+    // lsl r1, r1, #2
+    // add r1, r5, r1
+    // ldr r1, [r1, #0x24]
+    // str r1, [r4]
+    // ldrb r0, [r0, #1]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, pc}
+    // bl GF_AssertFail
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void sub_0201733C(void) {
-    /* Original at 0x0201733C */
-    /* Requires manual decompilation - 61 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #4\n    add r5, r0, #0\n    add r4, r2, #0\n    add r6, r3, #0\n    bl sub_02017294\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #1\n    bl sub_02017280\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0, #1]\n    cmp r0, #0x12\n    bne _0201736E\n    add r0, r5, #0\n    add r1, r4, #0\n    bl sub_0201726C\n    b _0201738E\n    cmp r0, #0x13\n    bne _0201738A\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #3\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #3]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r4]\n    b _0201738E\n    bl GF_AssertFail\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x12\n    bne _020173A2\n    add r0, r5, #0\n    add r1, r6, #0\n    bl sub_0201726C\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}\n    cmp r0, #0x13\n    bne _020173C0\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #2\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #2]\n    add sp, #4\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r6]\n    pop {r3, r4, r5, r6, pc}\n    bl GF_AssertFail\n    add sp, #4\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #4
+    // add r5, r0, #0
+    // add r4, r2, #0
+    // add r6, r3, #0
+    // bl sub_02017294
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #1
+    // bl sub_02017280
+    // add r0, r5, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0, #1]
+    // cmp r0, #0x12
+    // bne _0201736E
+    // add r0, r5, #0
+    // add r1, r4, #0
+    // bl sub_0201726C
+    // b _0201738E
+    // cmp r0, #0x13
+    // bne _0201738A
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #3
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #3]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r4]
+    // b _0201738E
+    // bl GF_AssertFail
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x12
+    // bne _020173A2
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // bl sub_0201726C
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // cmp r0, #0x13
+    // bne _020173C0
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #2
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #2]
+    // add sp, #4
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r6]
+    // pop {r3, r4, r5, r6, pc}
+    // bl GF_AssertFail
+    // add sp, #4
+    // pop {r3, r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void sub_020173C8(void) {
-    /* Original at 0x020173C8 */
-    /* Requires manual decompilation - 74 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r4, r2, #0\n    add r2, sp, #0\n    add r2, #3\n    add r5, r0, #0\n    add r6, r3, #0\n    bl sub_020172B4\n    add r0, sp, #0\n    ldrb r0, [r0, #3]\n    add r1, sp, #0\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r7, [r0, #0x24]\n    add r0, r5, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x14\n    bne _020173FE\n    add r0, r5, #0\n    add r1, r6, #0\n    bl sub_0201726C\n    b _0201741E\n    cmp r0, #0x15\n    bne _0201741A\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #2\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #2]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r6]\n    b _0201741E\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x14\n    bne _02017438\n    add r0, r5, #0\n    add r1, sp, #4\n    bl sub_0201726C\n    b _02017458\n    cmp r0, #0x15\n    bne _02017454\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #1\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #1]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [sp, #4]\n    b _02017458\n    bl GF_AssertFail\n    ldr r0, [sp, #4]\n    add r0, r7, r0\n    lsr r2, r0, #0x1f\n    lsl r1, r0, #0x10\n    sub r1, r1, r2\n    mov r0, #0x10\n    ror r1, r0\n    add r0, r2, r1\n    str r0, [r4]\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r4, r2, #0
+    // add r2, sp, #0
+    // add r2, #3
+    // add r5, r0, #0
+    // add r6, r3, #0
+    // bl sub_020172B4
+    // add r0, sp, #0
+    // ldrb r0, [r0, #3]
+    // add r1, sp, #0
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r7, [r0, #0x24]
+    // add r0, r5, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x14
+    // bne _020173FE
+    // add r0, r5, #0
+    // add r1, r6, #0
+    // bl sub_0201726C
+    // b _0201741E
+    // cmp r0, #0x15
+    // bne _0201741A
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #2
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #2]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r6]
+    // b _0201741E
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x14
+    // bne _02017438
+    // add r0, r5, #0
+    // add r1, sp, #4
+    // bl sub_0201726C
+    // b _02017458
+    // cmp r0, #0x15
+    // bne _02017454
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #1
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #1]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [sp, #4]
+    // b _02017458
+    // bl GF_AssertFail
+    // ldr r0, [sp, #4]
+    // add r0, r7, r0
+    // lsr r2, r0, #0x1f
+    // lsl r1, r0, #0x10
+    // sub r1, r1, r2
+    // mov r0, #0x10
+    // ror r1, r0
+    // add r0, r2, r1
+    // str r0, [r4]
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017470(void) {
-    /* Original at 0x02017470 */
-    /* Requires manual decompilation - 12 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r2, [r0]\n    ldr r0, [r1]\n    sub r0, r2, r0\n    bpl _0201747C\n    mov r0, #0xf\n    bx lr\n    cmp r0, #0\n    ble _02017484\n    mov r0, #0x10\n    bx lr\n    mov r0, #0x11\n    bx lr"
-    );
-    #endif
+    // ldr r2, [r0]
+    // ldr r0, [r1]
+    // sub r0, r2, r0
+    // bpl _0201747C
+    // mov r0, #0xf
+    // bx lr
+    // cmp r0, #0
+    // ble _02017484
+    // mov r0, #0x10
+    // bx lr
+    // mov r0, #0x11
+    // bx lr
+    // TODO: decompile
 }
 
+
 void sub_02017488(void) {
-    /* Original at 0x02017488 */
-    /* Requires manual decompilation - 13 instructions */
-    #ifdef MWERKS
-    asm(
-        "add r2, r0, #0\n    ldr r0, [r2]\n    ldr r2, [r2, #0x74]\n    mov r1, #1\n    neg r3, r2\n    asr r2, r3, #2\n    lsr r2, r2, #0x1d\n    add r2, r3, r2\n    ldr r3, _020174A0 ; =Pokepic_AddAttr\n    asr r2, r2, #3\n    bx r3\n    nop\n    _020174A0: .word Pokepic_AddAttr"
-    );
-    #endif
+    // add r2, r0, #0
+    // ldr r0, [r2]
+    // ldr r2, [r2, #0x74]
+    // mov r1, #1
+    // neg r3, r2
+    // asr r2, r3, #2
+    // lsr r2, r2, #0x1d
+    // add r2, r3, r2
+    // ldr r3, _020174A0 ; =Pokepic_AddAttr
+    // asr r2, r2, #3
+    // bx r3
+    // nop
+    // _020174A0: .word Pokepic_AddAttr
+    // TODO: decompile
 }
+
 
 void sub_020174A4(void) {
     sub_020174BC();
 }
 
+
 void sub_020174B4(void) {
     ((u32*)r0)[0x18] = 1;
 }
 
+
 void sub_020174BC(void) {
-    /* Original at 0x020174BC */
-    /* Requires manual decompilation - 29 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4]\n    ldr r2, [r4, #0x58]\n    mov r1, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4]\n    ldr r2, [r4, #0x5c]\n    mov r1, #1\n    bl Pokepic_SetAttr\n    ldr r0, [r4]\n    mov r1, #9\n    mov r2, #0\n    bl Pokepic_SetAttr\n    ldr r0, [r4]\n    mov r1, #0xa\n    mov r2, #0\n    bl Pokepic_SetAttr\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r0, [r4]\n    add r2, #0xf4\n    bl Pokepic_SetAttr\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r0, [r4]\n    add r2, #0xf3\n    bl Pokepic_SetAttr\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4]
+    // ldr r2, [r4, #0x58]
+    // mov r1, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4]
+    // ldr r2, [r4, #0x5c]
+    // mov r1, #1
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4]
+    // mov r1, #9
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // ldr r0, [r4]
+    // mov r1, #0xa
+    // mov r2, #0
+    // bl Pokepic_SetAttr
+    // mov r1, #0xc
+    // add r2, r1, #0
+    // ldr r0, [r4]
+    // add r2, #0xf4
+    // bl Pokepic_SetAttr
+    // mov r1, #0xd
+    // add r2, r1, #0
+    // ldr r0, [r4]
+    // add r2, #0xf3
+    // bl Pokepic_SetAttr
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017504(void) {
-    /* Original at 0x02017504 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    add r1, sp, #0\n    add r1, #1\n    add r2, sp, #0\n    add r4, r0, #0\n    bl sub_020172B4\n    add r0, sp, #0\n    ldrb r1, [r0]\n    ldrb r0, [r0, #1]\n    lsl r1, r1, #2\n    add r1, r4, r1\n    lsl r0, r0, #2\n    ldr r1, [r1, #0x24]\n    add r0, r4, r0\n    str r1, [r0, #0x24]\n    add sp, #4\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // add r1, sp, #0
+    // add r1, #1
+    // add r2, sp, #0
+    // add r4, r0, #0
+    // bl sub_020172B4
+    // add r0, sp, #0
+    // ldrb r1, [r0]
+    // ldrb r0, [r0, #1]
+    // lsl r1, r1, #2
+    // add r1, r4, r1
+    // lsl r0, r0, #2
+    // ldr r1, [r1, #0x24]
+    // add r0, r4, r0
+    // str r1, [r0, #0x24]
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_0201752C(void) {
-    /* Original at 0x0201752C */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #0\n    add r2, sp, #8\n    add r3, sp, #4\n    add r4, r0, #0\n    bl sub_020172C8\n    ldr r1, [sp, #8]\n    ldr r0, [sp, #4]\n    add r1, r1, r0\n    add r0, sp, #0\n    ldrb r0, [r0]\n    lsl r0, r0, #2\n    add r0, r4, r0\n    str r1, [r0, #0x24]\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #0
+    // add r2, sp, #8
+    // add r3, sp, #4
+    // add r4, r0, #0
+    // bl sub_020172C8
+    // ldr r1, [sp, #8]
+    // ldr r0, [sp, #4]
+    // add r1, r1, r0
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // str r1, [r0, #0x24]
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017550(void) {
-    /* Original at 0x02017550 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #0\n    add r2, sp, #8\n    add r3, sp, #4\n    add r4, r0, #0\n    bl sub_020172C8\n    ldr r1, [sp, #8]\n    ldr r0, [sp, #4]\n    add r2, r1, #0\n    mul r2, r0\n    add r0, sp, #0\n    ldrb r0, [r0]\n    lsl r0, r0, #2\n    add r0, r4, r0\n    str r2, [r0, #0x24]\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #0
+    // add r2, sp, #8
+    // add r3, sp, #4
+    // add r4, r0, #0
+    // bl sub_020172C8
+    // ldr r1, [sp, #8]
+    // ldr r0, [sp, #4]
+    // add r2, r1, #0
+    // mul r2, r0
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // str r2, [r0, #0x24]
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017578(void) {
-    /* Original at 0x02017578 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #0\n    add r2, sp, #8\n    add r3, sp, #4\n    add r4, r0, #0\n    bl sub_0201733C\n    ldr r1, [sp, #8]\n    ldr r0, [sp, #4]\n    sub r1, r1, r0\n    add r0, sp, #0\n    ldrb r0, [r0]\n    lsl r0, r0, #2\n    add r0, r4, r0\n    str r1, [r0, #0x24]\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #0
+    // add r2, sp, #8
+    // add r3, sp, #4
+    // add r4, r0, #0
+    // bl sub_0201733C
+    // ldr r1, [sp, #8]
+    // ldr r0, [sp, #4]
+    // sub r1, r1, r0
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // str r1, [r0, #0x24]
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_0201759C(void) {
-    /* Original at 0x0201759C */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #0\n    add r2, sp, #8\n    add r3, sp, #4\n    add r4, r0, #0\n    bl sub_0201733C\n    ldr r0, [sp, #8]\n    ldr r1, [sp, #4]\n    bl _s32_div_f\n    add r1, sp, #0\n    ldrb r1, [r1]\n    lsl r1, r1, #2\n    add r1, r4, r1\n    str r0, [r1, #0x24]\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #0
+    // add r2, sp, #8
+    // add r3, sp, #4
+    // add r4, r0, #0
+    // bl sub_0201733C
+    // ldr r0, [sp, #8]
+    // ldr r1, [sp, #4]
+    // bl _s32_div_f
+    // add r1, sp, #0
+    // ldrb r1, [r1]
+    // lsl r1, r1, #2
+    // add r1, r4, r1
+    // str r0, [r1, #0x24]
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_020175C4(void) {
-    /* Original at 0x020175C4 */
-    /* Requires manual decompilation - 17 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #0\n    add r2, sp, #8\n    add r3, sp, #4\n    add r4, r0, #0\n    bl sub_0201733C\n    ldr r0, [sp, #8]\n    ldr r1, [sp, #4]\n    bl _s32_div_f\n    add r0, sp, #0\n    ldrb r0, [r0]\n    lsl r0, r0, #2\n    add r0, r4, r0\n    str r1, [r0, #0x24]\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #0
+    // add r2, sp, #8
+    // add r3, sp, #4
+    // add r4, r0, #0
+    // bl sub_0201733C
+    // ldr r0, [sp, #8]
+    // ldr r1, [sp, #4]
+    // bl _s32_div_f
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // str r1, [r0, #0x24]
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_020175EC(void) {
-    /* Original at 0x020175EC */
-    /* Requires manual decompilation - 99 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #0x10\n    add r1, sp, #0\n    add r5, r0, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x14\n    bne _02017620\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #3\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #3]\n    add r1, sp, #8\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [sp, #0xc]\n    add r0, r5, #0\n    bl sub_0201726C\n    b _0201764E\n    cmp r0, #0x15\n    bne _0201764A\n    add r1, sp, #0\n    add r2, sp, #0\n    add r0, r5, #0\n    add r1, #3\n    add r2, #2\n    bl sub_020172B4\n    add r0, sp, #0\n    ldrb r1, [r0, #3]\n    lsl r1, r1, #2\n    add r1, r5, r1\n    ldr r1, [r1, #0x24]\n    str r1, [sp, #0xc]\n    ldrb r0, [r0, #2]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [sp, #8]\n    b _0201764E\n    bl GF_AssertFail\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #1\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0, #1]\n    cmp r0, #0x11\n    bls _02017664\n    bl GF_AssertFail\n    add r0, sp, #0xc\n    add r1, sp, #8\n    bl sub_02017470\n    add r4, r0, #0\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x14\n    bne _02017692\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #3\n    bl sub_02017294\n    add r0, r5, #0\n    add r1, sp, #4\n    bl sub_0201726C\n    b _020176B6\n    cmp r0, #0x15\n    bne _020176B2\n    add r1, sp, #0\n    add r2, sp, #0\n    add r0, r5, #0\n    add r1, #3\n    add r2, #2\n    bl sub_020172B4\n    add r0, sp, #0\n    ldrb r0, [r0, #2]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [sp, #4]\n    b _020176B6\n    bl GF_AssertFail\n    add r0, sp, #0\n    ldrb r1, [r0, #1]\n    cmp r1, r4\n    bne _020176C8\n    ldrb r0, [r0, #3]\n    ldr r1, [sp, #4]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    str r1, [r0, #0x24]\n    add sp, #0x10\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #0x10
+    // add r1, sp, #0
+    // add r5, r0, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x14
+    // bne _02017620
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #3
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #3]
+    // add r1, sp, #8
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [sp, #0xc]
+    // add r0, r5, #0
+    // bl sub_0201726C
+    // b _0201764E
+    // cmp r0, #0x15
+    // bne _0201764A
+    // add r1, sp, #0
+    // add r2, sp, #0
+    // add r0, r5, #0
+    // add r1, #3
+    // add r2, #2
+    // bl sub_020172B4
+    // add r0, sp, #0
+    // ldrb r1, [r0, #3]
+    // lsl r1, r1, #2
+    // add r1, r5, r1
+    // ldr r1, [r1, #0x24]
+    // str r1, [sp, #0xc]
+    // ldrb r0, [r0, #2]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [sp, #8]
+    // b _0201764E
+    // bl GF_AssertFail
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #1
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0, #1]
+    // cmp r0, #0x11
+    // bls _02017664
+    // bl GF_AssertFail
+    // add r0, sp, #0xc
+    // add r1, sp, #8
+    // bl sub_02017470
+    // add r4, r0, #0
+    // add r0, r5, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x14
+    // bne _02017692
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #3
+    // bl sub_02017294
+    // add r0, r5, #0
+    // add r1, sp, #4
+    // bl sub_0201726C
+    // b _020176B6
+    // cmp r0, #0x15
+    // bne _020176B2
+    // add r1, sp, #0
+    // add r2, sp, #0
+    // add r0, r5, #0
+    // add r1, #3
+    // add r2, #2
+    // bl sub_020172B4
+    // add r0, sp, #0
+    // ldrb r0, [r0, #2]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [sp, #4]
+    // b _020176B6
+    // bl GF_AssertFail
+    // add r0, sp, #0
+    // ldrb r1, [r0, #1]
+    // cmp r1, r4
+    // bne _020176C8
+    // ldrb r0, [r0, #3]
+    // ldr r1, [sp, #4]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // str r1, [r0, #0x24]
+    // add sp, #0x10
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_020176CC(void) {
-    /* Original at 0x020176CC */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    add r4, r0, #0\n    add r1, sp, #0\n    bl sub_02017294\n    ldr r0, [r4, #0xc]\n    add r0, r0, #4\n    str r0, [r4, #0xc]\n    bl sub_02017214\n    add r1, sp, #0\n    ldrb r1, [r1]\n    lsl r1, r1, #2\n    add r1, r4, r1\n    str r0, [r1, #0x24]\n    add sp, #4\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // add r4, r0, #0
+    // add r1, sp, #0
+    // bl sub_02017294
+    // ldr r0, [r4, #0xc]
+    // add r0, r0, #4
+    // str r0, [r4, #0xc]
+    // bl sub_02017214
+    // add r1, sp, #0
+    // ldrb r1, [r1]
+    // lsl r1, r1, #2
+    // add r1, r4, r1
+    // str r0, [r1, #0x24]
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_020176F0(void) {
-    /* Original at 0x020176F0 */
-    /* Requires manual decompilation - 16 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x50]\n    cmp r0, #0\n    beq _020176FE\n    bl GF_AssertFail\n    ldr r0, [r4, #0xc]\n    add r0, r0, #4\n    str r0, [r4, #0xc]\n    str r0, [r4, #0x50]\n    ldr r0, [r4, #0xc]\n    bl sub_02017214\n    str r0, [r4, #0x48]\n    mov r0, #0\n    str r0, [r4, #0x4c]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x50]
+    // cmp r0, #0
+    // beq _020176FE
+    // bl GF_AssertFail
+    // ldr r0, [r4, #0xc]
+    // add r0, r0, #4
+    // str r0, [r4, #0xc]
+    // str r0, [r4, #0x50]
+    // ldr r0, [r4, #0xc]
+    // bl sub_02017214
+    // str r0, [r4, #0x48]
+    // mov r0, #0
+    // str r0, [r4, #0x4c]
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017714(void) {
-    /* Original at 0x02017714 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r1, [r0, #0x4c]\n    add r2, r1, #1\n    str r2, [r0, #0x4c]\n    ldr r1, [r0, #0x48]\n    cmp r2, r1\n    blt _0201772A\n    mov r1, #0\n    str r1, [r0, #0x50]\n    str r1, [r0, #0x4c]\n    str r1, [r0, #0x48]\n    bx lr\n    ldr r1, [r0, #0x50]\n    str r1, [r0, #0xc]\n    bx lr"
-    );
-    #endif
+    // ldr r1, [r0, #0x4c]
+    // add r2, r1, #1
+    // str r2, [r0, #0x4c]
+    // ldr r1, [r0, #0x48]
+    // cmp r2, r1
+    // blt _0201772A
+    // mov r1, #0
+    // str r1, [r0, #0x50]
+    // str r1, [r0, #0x4c]
+    // str r1, [r0, #0x48]
+    // bx lr
+    // ldr r1, [r0, #0x50]
+    // str r1, [r0, #0xc]
+    // bx lr
+    // TODO: decompile
 }
+
 
 void sub_02017730(void) {
-    /* Original at 0x02017730 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #8\n    add r4, r0, #0\n    add r1, sp, #4\n    bl sub_0201726C\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_02017294\n    add r2, sp, #0\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r1, [sp, #4]\n    lsl r2, r2, #2\n    add r2, r4, r2\n    ldr r2, [r2, #0x24]\n    bl Pokepic_SetAttr\n    add sp, #8\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // add r1, sp, #4
+    // bl sub_0201726C
+    // add r0, r4, #0
+    // add r1, sp, #0
+    // bl sub_02017294
+    // add r2, sp, #0
+    // ldrb r2, [r2]
+    // ldr r0, [r4]
+    // ldr r1, [sp, #4]
+    // lsl r2, r2, #2
+    // add r2, r4, r2
+    // ldr r2, [r2, #0x24]
+    // bl Pokepic_SetAttr
+    // add sp, #8
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_0201775C(void) {
-    /* Original at 0x0201775C */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    sub sp, #8\n    add r4, r0, #0\n    add r1, sp, #4\n    bl sub_0201726C\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_02017294\n    add r2, sp, #0\n    ldrb r2, [r2]\n    ldr r0, [r4]\n    ldr r1, [sp, #4]\n    lsl r2, r2, #2\n    add r2, r4, r2\n    ldr r2, [r2, #0x24]\n    bl Pokepic_AddAttr\n    add sp, #8\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // sub sp, #8
+    // add r4, r0, #0
+    // add r1, sp, #4
+    // bl sub_0201726C
+    // add r0, r4, #0
+    // add r1, sp, #0
+    // bl sub_02017294
+    // add r2, sp, #0
+    // ldrb r2, [r2]
+    // ldr r0, [r4]
+    // ldr r1, [sp, #4]
+    // lsl r2, r2, #2
+    // add r2, r4, r2
+    // ldr r2, [r2, #0x24]
+    // bl Pokepic_AddAttr
+    // add sp, #8
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017788(void) {
-    /* Original at 0x02017788 */
-    /* Requires manual decompilation - 55 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #8\n    add r4, r0, #0\n    bl sub_0201726C\n    add r1, sp, #0\n    add r0, r4, #0\n    add r1, #1\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0, #1]\n    cmp r0, #0x14\n    bne _020177B0\n    add r0, r4, #0\n    add r1, sp, #4\n    bl sub_0201726C\n    b _020177D0\n    cmp r0, #0x15\n    bne _020177CC\n    add r1, sp, #0\n    add r0, r4, #0\n    add r1, #2\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #2]\n    lsl r0, r0, #2\n    add r0, r4, r0\n    ldr r0, [r0, #0x24]\n    str r0, [sp, #4]\n    b _020177D0\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x16\n    bne _020177EE\n    ldr r0, [r4]\n    ldr r1, [sp, #8]\n    ldr r2, [sp, #4]\n    bl Pokepic_SetAttr\n    add sp, #0xc\n    pop {r3, r4, pc}\n    cmp r0, #0x17\n    bne _02017800\n    ldr r0, [r4]\n    ldr r1, [sp, #8]\n    ldr r2, [sp, #4]\n    bl Pokepic_AddAttr\n    add sp, #0xc\n    pop {r3, r4, pc}\n    bl GF_AssertFail\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #8
+    // add r4, r0, #0
+    // bl sub_0201726C
+    // add r1, sp, #0
+    // add r0, r4, #0
+    // add r1, #1
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0, #1]
+    // cmp r0, #0x14
+    // bne _020177B0
+    // add r0, r4, #0
+    // add r1, sp, #4
+    // bl sub_0201726C
+    // b _020177D0
+    // cmp r0, #0x15
+    // bne _020177CC
+    // add r1, sp, #0
+    // add r0, r4, #0
+    // add r1, #2
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #2]
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [sp, #4]
+    // b _020177D0
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x16
+    // bne _020177EE
+    // ldr r0, [r4]
+    // ldr r1, [sp, #8]
+    // ldr r2, [sp, #4]
+    // bl Pokepic_SetAttr
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // cmp r0, #0x17
+    // bne _02017800
+    // ldr r0, [r4]
+    // ldr r1, [sp, #8]
+    // ldr r2, [sp, #4]
+    // bl Pokepic_AddAttr
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // bl GF_AssertFail
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017808(void) {
-    /* Original at 0x02017808 */
-    /* Requires manual decompilation - 24 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #0\n    add r2, sp, #8\n    add r3, sp, #4\n    add r4, r0, #0\n    bl sub_020173C8\n    ldr r0, [sp, #8]\n    ldr r2, [sp, #4]\n    asr r0, r0, #4\n    lsl r1, r0, #2\n    ldr r0, _02017838 ; =FX_SinCosTable_\n    ldrsh r0, [r0, r1]\n    mul r0, r2\n    asr r1, r0, #0xc\n    add r0, sp, #0\n    ldrb r0, [r0]\n    lsl r0, r0, #2\n    add r0, r4, r0\n    str r1, [r0, #0x24]\n    add sp, #0xc\n    pop {r3, r4, pc}\n    nop\n    _02017838: .word FX_SinCosTable_"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #0
+    // add r2, sp, #8
+    // add r3, sp, #4
+    // add r4, r0, #0
+    // bl sub_020173C8
+    // ldr r0, [sp, #8]
+    // ldr r2, [sp, #4]
+    // asr r0, r0, #4
+    // lsl r1, r0, #2
+    // ldr r0, _02017838 ; =FX_SinCosTable_
+    // ldrsh r0, [r0, r1]
+    // mul r0, r2
+    // asr r1, r0, #0xc
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // str r1, [r0, #0x24]
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // nop
+    // _02017838: .word FX_SinCosTable_
+    // TODO: decompile
 }
+
 
 void sub_0201783C(void) {
-    /* Original at 0x0201783C */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #0\n    add r2, sp, #8\n    add r3, sp, #4\n    add r4, r0, #0\n    bl sub_020173C8\n    ldr r1, [sp, #8]\n    ldr r0, [sp, #4]\n    asr r1, r1, #4\n    lsl r1, r1, #1\n    add r1, r1, #1\n    lsl r2, r1, #1\n    ldr r1, _02017870 ; =FX_SinCosTable_\n    ldrsh r1, [r1, r2]\n    mul r1, r0\n    add r0, sp, #0\n    ldrb r0, [r0]\n    asr r1, r1, #0xc\n    lsl r0, r0, #2\n    add r0, r4, r0\n    str r1, [r0, #0x24]\n    add sp, #0xc\n    pop {r3, r4, pc}\n    nop\n    _02017870: .word FX_SinCosTable_"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #0
+    // add r2, sp, #8
+    // add r3, sp, #4
+    // add r4, r0, #0
+    // bl sub_020173C8
+    // ldr r1, [sp, #8]
+    // ldr r0, [sp, #4]
+    // asr r1, r1, #4
+    // lsl r1, r1, #1
+    // add r1, r1, #1
+    // lsl r2, r1, #1
+    // ldr r1, _02017870 ; =FX_SinCosTable_
+    // ldrsh r1, [r1, r2]
+    // mul r1, r0
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // asr r1, r1, #0xc
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // str r1, [r0, #0x24]
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // nop
+    // _02017870: .word FX_SinCosTable_
+    // TODO: decompile
 }
+
 
 void sub_02017874(void) {
-    /* Original at 0x02017874 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    add r1, sp, #0\n    add r4, r0, #0\n    add r1, #1\n    bl sub_02017294\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r1, [r0]\n    cmp r1, #8\n    bne _020178A0\n    ldrb r0, [r0, #1]\n    add sp, #4\n    lsl r0, r0, #2\n    add r0, r4, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r4, #0x60]\n    pop {r3, r4, pc}\n    cmp r1, #9\n    bne _020178B2\n    ldrb r0, [r0, #1]\n    add sp, #4\n    lsl r0, r0, #2\n    add r0, r4, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r4, #0x64]\n    pop {r3, r4, pc}\n    bl GF_AssertFail\n    add sp, #4\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // add r1, sp, #0
+    // add r4, r0, #0
+    // add r1, #1
+    // bl sub_02017294
+    // add r0, r4, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r1, [r0]
+    // cmp r1, #8
+    // bne _020178A0
+    // ldrb r0, [r0, #1]
+    // add sp, #4
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r4, #0x60]
+    // pop {r3, r4, pc}
+    // cmp r1, #9
+    // bne _020178B2
+    // ldrb r0, [r0, #1]
+    // add sp, #4
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r4, #0x64]
+    // pop {r3, r4, pc}
+    // bl GF_AssertFail
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_020178BC(void) {
-    /* Original at 0x020178BC */
-    /* Requires manual decompilation - 36 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    add r1, sp, #0\n    add r4, r0, #0\n    add r1, #1\n    bl sub_02017294\n    add r0, r4, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r1, [r0]\n    cmp r1, #8\n    bne _020178EC\n    ldrb r0, [r0, #1]\n    ldr r1, [r4, #0x60]\n    add sp, #4\n    lsl r0, r0, #2\n    add r0, r4, r0\n    ldr r0, [r0, #0x24]\n    add r0, r1, r0\n    str r0, [r4, #0x60]\n    pop {r3, r4, pc}\n    cmp r1, #9\n    bne _02017902\n    ldrb r0, [r0, #1]\n    ldr r1, [r4, #0x64]\n    add sp, #4\n    lsl r0, r0, #2\n    add r0, r4, r0\n    ldr r0, [r0, #0x24]\n    add r0, r1, r0\n    str r0, [r4, #0x64]\n    pop {r3, r4, pc}\n    bl GF_AssertFail\n    add sp, #4\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // add r1, sp, #0
+    // add r4, r0, #0
+    // add r1, #1
+    // bl sub_02017294
+    // add r0, r4, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r1, [r0]
+    // cmp r1, #8
+    // bne _020178EC
+    // ldrb r0, [r0, #1]
+    // ldr r1, [r4, #0x60]
+    // add sp, #4
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #0x24]
+    // add r0, r1, r0
+    // str r0, [r4, #0x60]
+    // pop {r3, r4, pc}
+    // cmp r1, #9
+    // bne _02017902
+    // ldrb r0, [r0, #1]
+    // ldr r1, [r4, #0x64]
+    // add sp, #4
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #0x24]
+    // add r0, r1, r0
+    // str r0, [r4, #0x64]
+    // pop {r3, r4, pc}
+    // bl GF_AssertFail
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_0201790C(void) {
-    /* Original at 0x0201790C */
-    /* Requires manual decompilation - 92 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    sub sp, #8\n    add r1, sp, #0\n    add r1, #3\n    add r5, r0, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0, #3]\n    cmp r0, #8\n    bne _02017928\n    add r4, r5, #0\n    add r4, #0x60\n    b _02017968\n    cmp r0, #9\n    bne _02017932\n    add r4, r5, #0\n    add r4, #0x64\n    b _02017968\n    cmp r0, #0xa\n    bne _0201793C\n    add r4, r5, #0\n    add r4, #0x68\n    b _02017968\n    cmp r0, #0xb\n    bne _02017946\n    add r4, r5, #0\n    add r4, #0x6c\n    b _02017968\n    cmp r0, #0xc\n    bne _02017950\n    add r4, r5, #0\n    add r4, #0x70\n    b _02017968\n    cmp r0, #0xd\n    bne _0201795A\n    add r4, r5, #0\n    add r4, #0x74\n    b _02017968\n    cmp r0, #0xe\n    bne _02017964\n    add r4, r5, #0\n    add r4, #0x78\n    b _02017968\n    bl GF_AssertFail\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #1\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0, #1]\n    cmp r0, #0x14\n    bne _02017984\n    add r0, r5, #0\n    add r1, sp, #4\n    bl sub_0201726C\n    b _020179A4\n    cmp r0, #0x15\n    bne _020179A0\n    add r1, sp, #0\n    add r0, r5, #0\n    add r1, #2\n    bl sub_02017294\n    add r0, sp, #0\n    ldrb r0, [r0, #2]\n    lsl r0, r0, #2\n    add r0, r5, r0\n    ldr r0, [r0, #0x24]\n    str r0, [sp, #4]\n    b _020179A4\n    bl GF_AssertFail\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02017280\n    add r0, sp, #0\n    ldrb r0, [r0]\n    cmp r0, #0x16\n    bne _020179BC\n    ldr r0, [sp, #4]\n    add sp, #8\n    str r0, [r4]\n    pop {r3, r4, r5, pc}\n    cmp r0, #0x17\n    bne _020179CC\n    ldr r0, [sp, #4]\n    ldr r1, [r4]\n    add sp, #8\n    add r0, r1, r0\n    str r0, [r4]\n    pop {r3, r4, r5, pc}\n    bl GF_AssertFail\n    add sp, #8\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // sub sp, #8
+    // add r1, sp, #0
+    // add r1, #3
+    // add r5, r0, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0, #3]
+    // cmp r0, #8
+    // bne _02017928
+    // add r4, r5, #0
+    // add r4, #0x60
+    // b _02017968
+    // cmp r0, #9
+    // bne _02017932
+    // add r4, r5, #0
+    // add r4, #0x64
+    // b _02017968
+    // cmp r0, #0xa
+    // bne _0201793C
+    // add r4, r5, #0
+    // add r4, #0x68
+    // b _02017968
+    // cmp r0, #0xb
+    // bne _02017946
+    // add r4, r5, #0
+    // add r4, #0x6c
+    // b _02017968
+    // cmp r0, #0xc
+    // bne _02017950
+    // add r4, r5, #0
+    // add r4, #0x70
+    // b _02017968
+    // cmp r0, #0xd
+    // bne _0201795A
+    // add r4, r5, #0
+    // add r4, #0x74
+    // b _02017968
+    // cmp r0, #0xe
+    // bne _02017964
+    // add r4, r5, #0
+    // add r4, #0x78
+    // b _02017968
+    // bl GF_AssertFail
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #1
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0, #1]
+    // cmp r0, #0x14
+    // bne _02017984
+    // add r0, r5, #0
+    // add r1, sp, #4
+    // bl sub_0201726C
+    // b _020179A4
+    // cmp r0, #0x15
+    // bne _020179A0
+    // add r1, sp, #0
+    // add r0, r5, #0
+    // add r1, #2
+    // bl sub_02017294
+    // add r0, sp, #0
+    // ldrb r0, [r0, #2]
+    // lsl r0, r0, #2
+    // add r0, r5, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [sp, #4]
+    // b _020179A4
+    // bl GF_AssertFail
+    // add r0, r5, #0
+    // add r1, sp, #0
+    // bl sub_02017280
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // cmp r0, #0x16
+    // bne _020179BC
+    // ldr r0, [sp, #4]
+    // add sp, #8
+    // str r0, [r4]
+    // pop {r3, r4, r5, pc}
+    // cmp r0, #0x17
+    // bne _020179CC
+    // ldr r0, [sp, #4]
+    // ldr r1, [r4]
+    // add sp, #8
+    // add r0, r1, r0
+    // str r0, [r4]
+    // pop {r3, r4, r5, pc}
+    // bl GF_AssertFail
+    // add sp, #8
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_020179D4(void) {
-    /* Original at 0x020179D4 */
-    /* Requires manual decompilation - 32 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    mov r0, #0x73\n    lsl r0, r0, #2\n    ldrb r0, [r4, r0]\n    cmp r0, #0\n    ldr r0, [r4]\n    beq _020179F6\n    ldr r3, [r4, #0x60]\n    ldr r2, [r4, #0x68]\n    ldr r5, [r4, #0x58]\n    add r2, r3, r2\n    mov r1, #0\n    sub r2, r5, r2\n    bl Pokepic_SetAttr\n    b _02017A06\n    ldr r3, [r4, #0x58]\n    ldr r2, [r4, #0x60]\n    ldr r5, [r4, #0x68]\n    add r2, r3, r2\n    mov r1, #0\n    add r2, r5, r2\n    bl Pokepic_SetAttr\n    ldr r3, [r4, #0x5c]\n    ldr r2, [r4, #0x64]\n    ldr r5, [r4, #0x6c]\n    add r2, r3, r2\n    ldr r0, [r4]\n    mov r1, #1\n    add r2, r5, r2\n    bl Pokepic_SetAttr\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // mov r0, #0x73
+    // lsl r0, r0, #2
+    // ldrb r0, [r4, r0]
+    // cmp r0, #0
+    // ldr r0, [r4]
+    // beq _020179F6
+    // ldr r3, [r4, #0x60]
+    // ldr r2, [r4, #0x68]
+    // ldr r5, [r4, #0x58]
+    // add r2, r3, r2
+    // mov r1, #0
+    // sub r2, r5, r2
+    // bl Pokepic_SetAttr
+    // b _02017A06
+    // ldr r3, [r4, #0x58]
+    // ldr r2, [r4, #0x60]
+    // ldr r5, [r4, #0x68]
+    // add r2, r3, r2
+    // mov r1, #0
+    // add r2, r5, r2
+    // bl Pokepic_SetAttr
+    // ldr r3, [r4, #0x5c]
+    // ldr r2, [r4, #0x64]
+    // ldr r5, [r4, #0x6c]
+    // add r2, r3, r2
+    // ldr r0, [r4]
+    // mov r1, #1
+    // add r2, r5, r2
+    // bl Pokepic_SetAttr
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017A1C(void) {
-    /* Original at 0x02017A1C */
-    /* Requires manual decompilation - 45 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    mov r1, #0xc\n    add r2, r1, #0\n    ldr r3, [r4, #0x70]\n    add r2, #0xf4\n    ldr r0, [r4]\n    add r2, r3, r2\n    bl Pokepic_SetAttr\n    mov r1, #0xd\n    add r2, r1, #0\n    ldr r3, [r4, #0x74]\n    add r2, #0xf3\n    ldr r0, [r4]\n    add r2, r3, r2\n    bl Pokepic_SetAttr\n    ldr r2, [r4, #0x78]\n    ldr r0, [r4]\n    lsl r2, r2, #0x10\n    mov r1, #9\n    lsr r2, r2, #0x10\n    bl Pokepic_SetAttr\n    ldr r0, _02017A80 ; =0x000001CE\n    ldrb r0, [r4, r0]\n    cmp r0, #0x1b\n    bne _02017A64\n    ldr r0, [r4, #0x74]\n    cmp r0, #0\n    bge _02017A7E\n    add r0, r4, #0\n    bl sub_02017488\n    pop {r4, pc}\n    cmp r0, #0x1d\n    bne _02017A76\n    ldr r0, [r4, #0x74]\n    cmp r0, #0\n    beq _02017A7E\n    add r0, r4, #0\n    bl sub_02017488\n    pop {r4, pc}\n    cmp r0, #0x1c\n    beq _02017A7E\n    bl GF_AssertFail\n    pop {r4, pc}\n    _02017A80: .word 0x000001CE"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // mov r1, #0xc
+    // add r2, r1, #0
+    // ldr r3, [r4, #0x70]
+    // add r2, #0xf4
+    // ldr r0, [r4]
+    // add r2, r3, r2
+    // bl Pokepic_SetAttr
+    // mov r1, #0xd
+    // add r2, r1, #0
+    // ldr r3, [r4, #0x74]
+    // add r2, #0xf3
+    // ldr r0, [r4]
+    // add r2, r3, r2
+    // bl Pokepic_SetAttr
+    // ldr r2, [r4, #0x78]
+    // ldr r0, [r4]
+    // lsl r2, r2, #0x10
+    // mov r1, #9
+    // lsr r2, r2, #0x10
+    // bl Pokepic_SetAttr
+    // ldr r0, _02017A80 ; =0x000001CE
+    // ldrb r0, [r4, r0]
+    // cmp r0, #0x1b
+    // bne _02017A64
+    // ldr r0, [r4, #0x74]
+    // cmp r0, #0
+    // bge _02017A7E
+    // add r0, r4, #0
+    // bl sub_02017488
+    // pop {r4, pc}
+    // cmp r0, #0x1d
+    // bne _02017A76
+    // ldr r0, [r4, #0x74]
+    // cmp r0, #0
+    // beq _02017A7E
+    // add r0, r4, #0
+    // bl sub_02017488
+    // pop {r4, pc}
+    // cmp r0, #0x1c
+    // beq _02017A7E
+    // bl GF_AssertFail
+    // pop {r4, pc}
+    // _02017A80: .word 0x000001CE
+    // TODO: decompile
 }
 
+
 void sub_02017A84(void) {
-    /* Original at 0x02017A84 */
-    /* Requires manual decompilation - 38 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #4\n    add r4, r0, #0\n    add r1, sp, #0\n    bl sub_02017294\n    ldr r0, [r4, #0xc]\n    add r0, r0, #4\n    str r0, [r4, #0xc]\n    bl sub_02017214\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    cmp r0, #8\n    beq _02017AA6\n    cmp r0, #0xa\n    bne _02017AB6\n    add r0, sp, #0\n    ldrb r0, [r0]\n    add sp, #4\n    lsl r0, r0, #2\n    add r0, r4, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r4, #0x68]\n    pop {r3, r4, pc}\n    cmp r0, #9\n    beq _02017ABE\n    cmp r0, #0xb\n    bne _02017ACE\n    add r0, sp, #0\n    ldrb r0, [r0]\n    add sp, #4\n    lsl r0, r0, #2\n    add r0, r4, r0\n    ldr r0, [r0, #0x24]\n    str r0, [r4, #0x6c]\n    pop {r3, r4, pc}\n    bl GF_AssertFail\n    add sp, #4\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #4
+    // add r4, r0, #0
+    // add r1, sp, #0
+    // bl sub_02017294
+    // ldr r0, [r4, #0xc]
+    // add r0, r0, #4
+    // str r0, [r4, #0xc]
+    // bl sub_02017214
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // cmp r0, #8
+    // beq _02017AA6
+    // cmp r0, #0xa
+    // bne _02017AB6
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // add sp, #4
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r4, #0x68]
+    // pop {r3, r4, pc}
+    // cmp r0, #9
+    // beq _02017ABE
+    // cmp r0, #0xb
+    // bne _02017ACE
+    // add r0, sp, #0
+    // ldrb r0, [r0]
+    // add sp, #4
+    // lsl r0, r0, #2
+    // add r0, r4, r0
+    // ldr r0, [r0, #0x24]
+    // str r0, [r4, #0x6c]
+    // pop {r3, r4, pc}
+    // bl GF_AssertFail
+    // add sp, #4
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017AD8(void) {
     sub_0201726C(1);
 }
 
+
 void sub_02017AEC(void) {
-    /* Original at 0x02017AEC */
-    /* Requires manual decompilation - 26 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r1, sp, #4\n    add r1, #2\n    add r4, r0, #0\n    bl sub_02017280\n    add r1, sp, #4\n    add r0, r4, #0\n    add r1, #1\n    bl sub_02017280\n    add r0, r4, #0\n    add r1, sp, #4\n    bl sub_02017280\n    add r0, r4, #0\n    add r1, sp, #8\n    bl sub_0201726C\n    ldr r0, [sp, #8]\n    add r3, sp, #4\n    str r0, [sp]\n    ldrb r1, [r3, #2]\n    ldrb r2, [r3, #1]\n    ldrb r3, [r3]\n    ldr r0, [r4]\n    bl Pokepic_StartPaletteFade\n    add sp, #0xc\n    pop {r3, r4, pc}"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r1, sp, #4
+    // add r1, #2
+    // add r4, r0, #0
+    // bl sub_02017280
+    // add r1, sp, #4
+    // add r0, r4, #0
+    // add r1, #1
+    // bl sub_02017280
+    // add r0, r4, #0
+    // add r1, sp, #4
+    // bl sub_02017280
+    // add r0, r4, #0
+    // add r1, sp, #8
+    // bl sub_0201726C
+    // ldr r0, [sp, #8]
+    // add r3, sp, #4
+    // str r0, [sp]
+    // ldrb r1, [r3, #2]
+    // ldrb r2, [r3, #1]
+    // ldrb r3, [r3]
+    // ldr r0, [r4]
+    // bl Pokepic_StartPaletteFade
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017B2C(void) {
     Pokepic_ResumePaletteFade(1);
 }
 
+
 void sub_02017B48(void) {
-    /* Original at 0x02017B48 */
-    /* Requires manual decompilation - 5 instructions */
-    #ifdef MWERKS
-    asm(
-        "ldr r1, _02017B50 ; =0x000001CD\n    mov r2, #1\n    strb r2, [r0, r1]\n    bx lr\n    _02017B50: .word 0x000001CD"
-    );
-    #endif
+    // ldr r1, _02017B50 ; =0x000001CD
+    // mov r2, #1
+    // strb r2, [r0, r1]
+    // bx lr
+    // _02017B50: .word 0x000001CD
+    // TODO: decompile
 }
 
+
 void sub_02017B54(void) {
-    /* Original at 0x02017B54 */
-    /* Requires manual decompilation - 25 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    ldr r1, _02017B88 ; =0x000001CE\n    add r4, r0, #0\n    add r1, r4, r1\n    bl sub_02017280\n    ldr r0, _02017B88 ; =0x000001CE\n    mov r1, #1\n    ldrb r0, [r4, r0]\n    add r2, r1, #0\n    cmp r0, #0x1b\n    beq _02017B72\n    cmp r0, #0x1d\n    beq _02017B72\n    mov r2, #0\n    cmp r2, #0\n    bne _02017B7C\n    cmp r0, #0x1c\n    beq _02017B7C\n    mov r1, #0\n    cmp r1, #0\n    bne _02017B84\n    bl GF_AssertFail\n    pop {r4, pc}\n    nop\n    _02017B88: .word 0x000001CE"
-    );
-    #endif
+    // push {r4, lr}
+    // ldr r1, _02017B88 ; =0x000001CE
+    // add r4, r0, #0
+    // add r1, r4, r1
+    // bl sub_02017280
+    // ldr r0, _02017B88 ; =0x000001CE
+    // mov r1, #1
+    // ldrb r0, [r4, r0]
+    // add r2, r1, #0
+    // cmp r0, #0x1b
+    // beq _02017B72
+    // cmp r0, #0x1d
+    // beq _02017B72
+    // mov r2, #0
+    // cmp r2, #0
+    // bne _02017B7C
+    // cmp r0, #0x1c
+    // beq _02017B7C
+    // mov r1, #0
+    // cmp r1, #0
+    // bne _02017B84
+    // bl GF_AssertFail
+    // pop {r4, pc}
+    // nop
+    // _02017B88: .word 0x000001CE
+    // TODO: decompile
 }
+
 
 void sub_02017B8C(void) {
     sub_02017C78();
 }
 
+
 void sub_02017B98(void) {
     sub_02017C78();
 }
+
 
 void sub_02017BA4(void) {
     sub_02017C78();
 }
 
+
 void sub_02017BB0(void) {
     sub_02017C78();
 }
+
 
 void sub_02017BBC(void) {
     sub_02017C78();
 }
 
+
 void sub_02017BC8(void) {
-    /* Original at 0x02017BC8 */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    cmp r0, #0x18\n    bne _02017BD4\n    ldr r0, [r2]\n    str r0, [r3]\n    pop {r3, pc}\n    cmp r0, #0x19\n    bne _02017BE2\n    ldr r1, [r1]\n    ldr r0, [r2]\n    add r0, r1, r0\n    str r0, [r3]\n    pop {r3, pc}\n    cmp r0, #0x1a\n    bne _02017BF0\n    ldr r1, [r3]\n    ldr r0, [r2]\n    add r0, r1, r0\n    str r0, [r3]\n    pop {r3, pc}\n    bl GF_AssertFail\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // cmp r0, #0x18
+    // bne _02017BD4
+    // ldr r0, [r2]
+    // str r0, [r3]
+    // pop {r3, pc}
+    // cmp r0, #0x19
+    // bne _02017BE2
+    // ldr r1, [r1]
+    // ldr r0, [r2]
+    // add r0, r1, r0
+    // str r0, [r3]
+    // pop {r3, pc}
+    // cmp r0, #0x1a
+    // bne _02017BF0
+    // ldr r1, [r3]
+    // ldr r0, [r2]
+    // add r0, r1, r0
+    // str r0, [r3]
+    // pop {r3, pc}
+    // bl GF_AssertFail
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017BF8(void) {
-    /* Original at 0x02017BF8 */
-    /* Requires manual decompilation - 58 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    sub r0, #0x23\n    cmp r0, #4\n    bhi _02017C70\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02017C0C: ; jump table\n    add r0, r1, #0\n    add r0, #0x3c\n    str r0, [r1, #0x24]\n    add r0, r2, #0\n    add r0, #0x68\n    str r0, [r1, #0x28]\n    ldr r0, [r2, #0x68]\n    str r0, [r1, #0x30]\n    pop {r3, pc}\n    add r0, r1, #0\n    add r0, #0x40\n    str r0, [r1, #0x24]\n    add r0, r2, #0\n    add r0, #0x6c\n    str r0, [r1, #0x28]\n    ldr r0, [r2, #0x6c]\n    str r0, [r1, #0x30]\n    pop {r3, pc}\n    add r0, r1, #0\n    add r0, #0x44\n    str r0, [r1, #0x24]\n    add r0, r2, #0\n    add r0, #0x70\n    str r0, [r1, #0x28]\n    ldr r0, [r2, #0x70]\n    str r0, [r1, #0x30]\n    pop {r3, pc}\n    add r0, r1, #0\n    add r0, #0x48\n    str r0, [r1, #0x24]\n    add r0, r2, #0\n    add r0, #0x74\n    str r0, [r1, #0x28]\n    ldr r0, [r2, #0x74]\n    str r0, [r1, #0x30]\n    pop {r3, pc}\n    add r0, r1, #0\n    add r0, #0x4c\n    str r0, [r1, #0x24]\n    add r0, r2, #0\n    add r0, #0x78\n    str r0, [r1, #0x28]\n    ldr r0, [r2, #0x78]\n    str r0, [r1, #0x30]\n    pop {r3, pc}\n    bl GF_AssertFail\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // sub r0, #0x23
+    // cmp r0, #4
+    // bhi _02017C70
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02017C0C: ; jump table
+    // add r0, r1, #0
+    // add r0, #0x3c
+    // str r0, [r1, #0x24]
+    // add r0, r2, #0
+    // add r0, #0x68
+    // str r0, [r1, #0x28]
+    // ldr r0, [r2, #0x68]
+    // str r0, [r1, #0x30]
+    // pop {r3, pc}
+    // add r0, r1, #0
+    // add r0, #0x40
+    // str r0, [r1, #0x24]
+    // add r0, r2, #0
+    // add r0, #0x6c
+    // str r0, [r1, #0x28]
+    // ldr r0, [r2, #0x6c]
+    // str r0, [r1, #0x30]
+    // pop {r3, pc}
+    // add r0, r1, #0
+    // add r0, #0x44
+    // str r0, [r1, #0x24]
+    // add r0, r2, #0
+    // add r0, #0x70
+    // str r0, [r1, #0x28]
+    // ldr r0, [r2, #0x70]
+    // str r0, [r1, #0x30]
+    // pop {r3, pc}
+    // add r0, r1, #0
+    // add r0, #0x48
+    // str r0, [r1, #0x24]
+    // add r0, r2, #0
+    // add r0, #0x74
+    // str r0, [r1, #0x28]
+    // ldr r0, [r2, #0x74]
+    // str r0, [r1, #0x30]
+    // pop {r3, pc}
+    // add r0, r1, #0
+    // add r0, #0x4c
+    // str r0, [r1, #0x24]
+    // add r0, r2, #0
+    // add r0, #0x78
+    // str r0, [r1, #0x28]
+    // ldr r0, [r2, #0x78]
+    // str r0, [r1, #0x30]
+    // pop {r3, pc}
+    // bl GF_AssertFail
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017C78(void) {
-    /* Original at 0x02017C78 */
-    /* Requires manual decompilation - 76 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #8\n    add r6, r1, #0\n    lsl r1, r6, #0x18\n    lsr r1, r1, #0x18\n    add r5, r0, #0\n    bl sub_02017220\n    str r0, [sp, #4]\n    ldr r1, [sp, #4]\n    add r0, r5, #0\n    add r1, #0x2c\n    bl sub_02017280\n    ldr r1, [sp, #4]\n    add r0, r5, #0\n    add r1, #0x2d\n    bl sub_02017280\n    mov r0, #0xc\n    mul r0, r6\n    ldr r1, _02017D14 ; =_020F61C0\n    str r0, [sp]\n    ldr r0, [r1, r0]\n    mov r4, #0\n    cmp r0, #0\n    ble _02017CCE\n    ldr r1, _02017D18 ; =_020F61BC\n    ldr r0, [sp]\n    add r6, r1, r0\n    ldr r0, [sp, #4]\n    add r7, r0, #4\n    lsl r1, r4, #2\n    add r0, r5, #0\n    add r1, r7, r1\n    bl sub_0201726C\n    add r0, r4, #1\n    lsl r0, r0, #0x18\n    lsr r4, r0, #0x18\n    ldr r0, [r6, #4]\n    cmp r4, r0\n    blt _02017CB8\n    ldr r1, _02017D1C ; =_020F61C4\n    ldr r0, [sp]\n    add r2, r5, #0\n    ldr r0, [r1, r0]\n    lsl r1, r0, #2\n    ldr r0, [sp, #4]\n    add r0, r0, r1\n    ldr r0, [r0, #4]\n    ldr r1, [sp, #4]\n    lsl r0, r0, #0x18\n    lsr r0, r0, #0x18\n    bl sub_02017BF8\n    ldr r0, [sp, #4]\n    add r0, #0x2d\n    ldrb r0, [r0]\n    cmp r0, #0\n    bne _02017D00\n    ldr r0, [sp, #4]\n    add r1, r5, #0\n    add r2, r0, #0\n    ldr r2, [r2, #0x50]\n    blx r2\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    ldr r0, [sp, #4]\n    add r0, #0x2d\n    ldrb r0, [r0]\n    sub r1, r0, #1\n    ldr r0, [sp, #4]\n    add r0, #0x2d\n    str r0, [sp, #4]\n    strb r1, [r0]\n    add sp, #8\n    pop {r3, r4, r5, r6, r7, pc}\n    _02017D14: .word _020F61C0\n    _02017D18: .word _020F61BC\n    _02017D1C: .word _020F61C4"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #8
+    // add r6, r1, #0
+    // lsl r1, r6, #0x18
+    // lsr r1, r1, #0x18
+    // add r5, r0, #0
+    // bl sub_02017220
+    // str r0, [sp, #4]
+    // ldr r1, [sp, #4]
+    // add r0, r5, #0
+    // add r1, #0x2c
+    // bl sub_02017280
+    // ldr r1, [sp, #4]
+    // add r0, r5, #0
+    // add r1, #0x2d
+    // bl sub_02017280
+    // mov r0, #0xc
+    // mul r0, r6
+    // ldr r1, _02017D14 ; =_020F61C0
+    // str r0, [sp]
+    // ldr r0, [r1, r0]
+    // mov r4, #0
+    // cmp r0, #0
+    // ble _02017CCE
+    // ldr r1, _02017D18 ; =_020F61BC
+    // ldr r0, [sp]
+    // add r6, r1, r0
+    // ldr r0, [sp, #4]
+    // add r7, r0, #4
+    // lsl r1, r4, #2
+    // add r0, r5, #0
+    // add r1, r7, r1
+    // bl sub_0201726C
+    // add r0, r4, #1
+    // lsl r0, r0, #0x18
+    // lsr r4, r0, #0x18
+    // ldr r0, [r6, #4]
+    // cmp r4, r0
+    // blt _02017CB8
+    // ldr r1, _02017D1C ; =_020F61C4
+    // ldr r0, [sp]
+    // add r2, r5, #0
+    // ldr r0, [r1, r0]
+    // lsl r1, r0, #2
+    // ldr r0, [sp, #4]
+    // add r0, r0, r1
+    // ldr r0, [r0, #4]
+    // ldr r1, [sp, #4]
+    // lsl r0, r0, #0x18
+    // lsr r0, r0, #0x18
+    // bl sub_02017BF8
+    // ldr r0, [sp, #4]
+    // add r0, #0x2d
+    // ldrb r0, [r0]
+    // cmp r0, #0
+    // bne _02017D00
+    // ldr r0, [sp, #4]
+    // add r1, r5, #0
+    // add r2, r0, #0
+    // ldr r2, [r2, #0x50]
+    // blx r2
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // ldr r0, [sp, #4]
+    // add r0, #0x2d
+    // ldrb r0, [r0]
+    // sub r1, r0, #1
+    // ldr r0, [sp, #4]
+    // add r0, #0x2d
+    // str r0, [sp, #4]
+    // strb r1, [r0]
+    // add sp, #8
+    // pop {r3, r4, r5, r6, r7, pc}
+    // _02017D14: .word _020F61C0
+    // _02017D18: .word _020F61BC
+    // _02017D1C: .word _020F61C4
+    // TODO: decompile
 }
+
 
 void sub_02017D20(void) {
-    /* Original at 0x02017D20 */
-    /* Requires manual decompilation - 86 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x1c]\n    ldr r1, [r4, #0x10]\n    add r0, r0, #1\n    ldr r2, [r4, #0x14]\n    mul r0, r1\n    add r0, r2, r0\n    lsl r0, r0, #0x10\n    lsr r1, r0, #0x10\n    ldr r0, [r4, #4]\n    sub r0, #0x1e\n    cmp r0, #3\n    bhi _02017DAC\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02017D48: ; jump table\n    asr r0, r1, #4\n    lsl r1, r0, #2\n    ldr r0, _02017DD4 ; =FX_SinCosTable_\n    ldr r2, [r4, #0xc]\n    ldrsh r0, [r0, r1]\n    mul r0, r2\n    asr r1, r0, #0xc\n    ldr r0, [r4, #0x24]\n    str r1, [r0]\n    b _02017DB0\n    asr r1, r1, #4\n    lsl r1, r1, #1\n    add r1, r1, #1\n    lsl r2, r1, #1\n    ldr r1, _02017DD4 ; =FX_SinCosTable_\n    ldr r0, [r4, #0xc]\n    ldrsh r1, [r1, r2]\n    mul r1, r0\n    ldr r0, [r4, #0x24]\n    asr r1, r1, #0xc\n    str r1, [r0]\n    b _02017DB0\n    asr r0, r1, #4\n    lsl r1, r0, #2\n    ldr r0, _02017DD4 ; =FX_SinCosTable_\n    ldr r2, [r4, #0xc]\n    ldrsh r0, [r0, r1]\n    mul r0, r2\n    asr r0, r0, #0xc\n    neg r1, r0\n    ldr r0, [r4, #0x24]\n    str r1, [r0]\n    b _02017DB0\n    asr r1, r1, #4\n    lsl r1, r1, #1\n    add r1, r1, #1\n    lsl r2, r1, #1\n    ldr r1, _02017DD4 ; =FX_SinCosTable_\n    ldr r0, [r4, #0xc]\n    ldrsh r1, [r1, r2]\n    mul r1, r0\n    asr r0, r1, #0xc\n    neg r1, r0\n    ldr r0, [r4, #0x24]\n    str r1, [r0]\n    b _02017DB0\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r4, #0\n    ldr r2, [r4, #0x24]\n    ldr r3, [r4, #0x28]\n    add r1, #0x30\n    bl sub_02017BC8\n    ldr r0, [r4, #0x1c]\n    add r1, r0, #1\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x18]\n    cmp r1, r0\n    blt _02017DD2\n    mov r0, #0\n    str r0, [r4]\n    pop {r4, pc}\n    _02017DD4: .word FX_SinCosTable_"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x1c]
+    // ldr r1, [r4, #0x10]
+    // add r0, r0, #1
+    // ldr r2, [r4, #0x14]
+    // mul r0, r1
+    // add r0, r2, r0
+    // lsl r0, r0, #0x10
+    // lsr r1, r0, #0x10
+    // ldr r0, [r4, #4]
+    // sub r0, #0x1e
+    // cmp r0, #3
+    // bhi _02017DAC
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02017D48: ; jump table
+    // asr r0, r1, #4
+    // lsl r1, r0, #2
+    // ldr r0, _02017DD4 ; =FX_SinCosTable_
+    // ldr r2, [r4, #0xc]
+    // ldrsh r0, [r0, r1]
+    // mul r0, r2
+    // asr r1, r0, #0xc
+    // ldr r0, [r4, #0x24]
+    // str r1, [r0]
+    // b _02017DB0
+    // asr r1, r1, #4
+    // lsl r1, r1, #1
+    // add r1, r1, #1
+    // lsl r2, r1, #1
+    // ldr r1, _02017DD4 ; =FX_SinCosTable_
+    // ldr r0, [r4, #0xc]
+    // ldrsh r1, [r1, r2]
+    // mul r1, r0
+    // ldr r0, [r4, #0x24]
+    // asr r1, r1, #0xc
+    // str r1, [r0]
+    // b _02017DB0
+    // asr r0, r1, #4
+    // lsl r1, r0, #2
+    // ldr r0, _02017DD4 ; =FX_SinCosTable_
+    // ldr r2, [r4, #0xc]
+    // ldrsh r0, [r0, r1]
+    // mul r0, r2
+    // asr r0, r0, #0xc
+    // neg r1, r0
+    // ldr r0, [r4, #0x24]
+    // str r1, [r0]
+    // b _02017DB0
+    // asr r1, r1, #4
+    // lsl r1, r1, #1
+    // add r1, r1, #1
+    // lsl r2, r1, #1
+    // ldr r1, _02017DD4 ; =FX_SinCosTable_
+    // ldr r0, [r4, #0xc]
+    // ldrsh r1, [r1, r2]
+    // mul r1, r0
+    // asr r0, r1, #0xc
+    // neg r1, r0
+    // ldr r0, [r4, #0x24]
+    // str r1, [r0]
+    // b _02017DB0
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r0, #0x2c
+    // ldrb r0, [r0]
+    // add r1, r4, #0
+    // ldr r2, [r4, #0x24]
+    // ldr r3, [r4, #0x28]
+    // add r1, #0x30
+    // bl sub_02017BC8
+    // ldr r0, [r4, #0x1c]
+    // add r1, r0, #1
+    // str r1, [r4, #0x1c]
+    // ldr r0, [r4, #0x18]
+    // cmp r1, r0
+    // blt _02017DD2
+    // mov r0, #0
+    // str r0, [r4]
+    // pop {r4, pc}
+    // _02017DD4: .word FX_SinCosTable_
+    // TODO: decompile
 }
+
 
 void sub_02017DD8(void) {
-    /* Original at 0x02017DD8 */
-    /* Requires manual decompilation - 89 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x1c]\n    ldr r1, [r4, #0x10]\n    add r0, r0, #1\n    mul r0, r1\n    ldr r1, [r4, #0x18]\n    bl _s32_div_f\n    ldr r1, [r4, #0x14]\n    add r0, r1, r0\n    lsl r0, r0, #0x10\n    lsr r1, r0, #0x10\n    ldr r0, [r4, #4]\n    sub r0, #0x1e\n    cmp r0, #3\n    bhi _02017E6A\n    add r0, r0, r0\n    add r0, pc\n    ldrh r0, [r0, #6]\n    lsl r0, r0, #0x10\n    asr r0, r0, #0x10\n    add pc, r0\n    _02017E06: ; jump table\n    asr r0, r1, #4\n    lsl r1, r0, #2\n    ldr r0, _02017E94 ; =FX_SinCosTable_\n    ldr r2, [r4, #0xc]\n    ldrsh r0, [r0, r1]\n    mul r0, r2\n    asr r1, r0, #0xc\n    ldr r0, [r4, #0x24]\n    str r1, [r0]\n    b _02017E6E\n    asr r1, r1, #4\n    lsl r1, r1, #1\n    add r1, r1, #1\n    lsl r2, r1, #1\n    ldr r1, _02017E94 ; =FX_SinCosTable_\n    ldr r0, [r4, #0xc]\n    ldrsh r1, [r1, r2]\n    mul r1, r0\n    ldr r0, [r4, #0x24]\n    asr r1, r1, #0xc\n    str r1, [r0]\n    b _02017E6E\n    asr r0, r1, #4\n    lsl r1, r0, #2\n    ldr r0, _02017E94 ; =FX_SinCosTable_\n    ldr r2, [r4, #0xc]\n    ldrsh r0, [r0, r1]\n    mul r0, r2\n    asr r0, r0, #0xc\n    neg r1, r0\n    ldr r0, [r4, #0x24]\n    str r1, [r0]\n    b _02017E6E\n    asr r1, r1, #4\n    lsl r1, r1, #1\n    add r1, r1, #1\n    lsl r2, r1, #1\n    ldr r1, _02017E94 ; =FX_SinCosTable_\n    ldr r0, [r4, #0xc]\n    ldrsh r1, [r1, r2]\n    mul r1, r0\n    asr r0, r1, #0xc\n    neg r1, r0\n    ldr r0, [r4, #0x24]\n    str r1, [r0]\n    b _02017E6E\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r4, #0\n    ldr r2, [r4, #0x24]\n    ldr r3, [r4, #0x28]\n    add r1, #0x30\n    bl sub_02017BC8\n    ldr r0, [r4, #0x1c]\n    add r1, r0, #1\n    str r1, [r4, #0x1c]\n    ldr r0, [r4, #0x18]\n    cmp r1, r0\n    blt _02017E90\n    mov r0, #0\n    str r0, [r4]\n    pop {r4, pc}\n    nop\n    _02017E94: .word FX_SinCosTable_"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x1c]
+    // ldr r1, [r4, #0x10]
+    // add r0, r0, #1
+    // mul r0, r1
+    // ldr r1, [r4, #0x18]
+    // bl _s32_div_f
+    // ldr r1, [r4, #0x14]
+    // add r0, r1, r0
+    // lsl r0, r0, #0x10
+    // lsr r1, r0, #0x10
+    // ldr r0, [r4, #4]
+    // sub r0, #0x1e
+    // cmp r0, #3
+    // bhi _02017E6A
+    // add r0, r0, r0
+    // add r0, pc
+    // ldrh r0, [r0, #6]
+    // lsl r0, r0, #0x10
+    // asr r0, r0, #0x10
+    // add pc, r0
+    // _02017E06: ; jump table
+    // asr r0, r1, #4
+    // lsl r1, r0, #2
+    // ldr r0, _02017E94 ; =FX_SinCosTable_
+    // ldr r2, [r4, #0xc]
+    // ldrsh r0, [r0, r1]
+    // mul r0, r2
+    // asr r1, r0, #0xc
+    // ldr r0, [r4, #0x24]
+    // str r1, [r0]
+    // b _02017E6E
+    // asr r1, r1, #4
+    // lsl r1, r1, #1
+    // add r1, r1, #1
+    // lsl r2, r1, #1
+    // ldr r1, _02017E94 ; =FX_SinCosTable_
+    // ldr r0, [r4, #0xc]
+    // ldrsh r1, [r1, r2]
+    // mul r1, r0
+    // ldr r0, [r4, #0x24]
+    // asr r1, r1, #0xc
+    // str r1, [r0]
+    // b _02017E6E
+    // asr r0, r1, #4
+    // lsl r1, r0, #2
+    // ldr r0, _02017E94 ; =FX_SinCosTable_
+    // ldr r2, [r4, #0xc]
+    // ldrsh r0, [r0, r1]
+    // mul r0, r2
+    // asr r0, r0, #0xc
+    // neg r1, r0
+    // ldr r0, [r4, #0x24]
+    // str r1, [r0]
+    // b _02017E6E
+    // asr r1, r1, #4
+    // lsl r1, r1, #1
+    // add r1, r1, #1
+    // lsl r2, r1, #1
+    // ldr r1, _02017E94 ; =FX_SinCosTable_
+    // ldr r0, [r4, #0xc]
+    // ldrsh r1, [r1, r2]
+    // mul r1, r0
+    // asr r0, r1, #0xc
+    // neg r1, r0
+    // ldr r0, [r4, #0x24]
+    // str r1, [r0]
+    // b _02017E6E
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r0, #0x2c
+    // ldrb r0, [r0]
+    // add r1, r4, #0
+    // ldr r2, [r4, #0x24]
+    // ldr r3, [r4, #0x28]
+    // add r1, #0x30
+    // bl sub_02017BC8
+    // ldr r0, [r4, #0x1c]
+    // add r1, r0, #1
+    // str r1, [r4, #0x1c]
+    // ldr r0, [r4, #0x18]
+    // cmp r1, r0
+    // blt _02017E90
+    // mov r0, #0
+    // str r0, [r4]
+    // pop {r4, pc}
+    // nop
+    // _02017E94: .word FX_SinCosTable_
+    // TODO: decompile
 }
+
 
 void sub_02017E98(void) {
-    /* Original at 0x02017E98 */
-    /* Requires manual decompilation - 28 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r4, r0, #0\n    ldr r1, [r4, #0x24]\n    ldr r3, [r4, #0xc]\n    ldr r2, [r4, #0x14]\n    ldr r5, [r4, #8]\n    mul r2, r3\n    ldr r0, [r1]\n    add r2, r5, r2\n    add r0, r0, r2\n    str r0, [r1]\n    add r0, r4, #0\n    add r0, #0x2c\n    add r1, r4, #0\n    ldrb r0, [r0]\n    ldr r2, [r4, #0x24]\n    ldr r3, [r4, #0x28]\n    add r1, #0x30\n    bl sub_02017BC8\n    ldr r0, [r4, #0x14]\n    add r1, r0, #1\n    str r1, [r4, #0x14]\n    ldr r0, [r4, #0x10]\n    cmp r1, r0\n    blt _02017ED0\n    mov r0, #0\n    str r0, [r4]\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r4, r0, #0
+    // ldr r1, [r4, #0x24]
+    // ldr r3, [r4, #0xc]
+    // ldr r2, [r4, #0x14]
+    // ldr r5, [r4, #8]
+    // mul r2, r3
+    // ldr r0, [r1]
+    // add r2, r5, r2
+    // add r0, r0, r2
+    // str r0, [r1]
+    // add r0, r4, #0
+    // add r0, #0x2c
+    // add r1, r4, #0
+    // ldrb r0, [r0]
+    // ldr r2, [r4, #0x24]
+    // ldr r3, [r4, #0x28]
+    // add r1, #0x30
+    // bl sub_02017BC8
+    // ldr r0, [r4, #0x14]
+    // add r1, r0, #1
+    // str r1, [r4, #0x14]
+    // ldr r0, [r4, #0x10]
+    // cmp r1, r0
+    // blt _02017ED0
+    // mov r0, #0
+    // str r0, [r4]
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_02017ED4(void) {
-    /* Original at 0x02017ED4 */
-    /* Requires manual decompilation - 27 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x10]\n    add r1, r0, #1\n    ldr r0, [r4, #8]\n    mul r0, r1\n    ldr r1, [r4, #0xc]\n    bl _s32_div_f\n    ldr r1, [r4, #0x24]\n    str r0, [r1]\n    add r0, r4, #0\n    add r0, #0x2c\n    add r1, r4, #0\n    ldrb r0, [r0]\n    ldr r2, [r4, #0x24]\n    ldr r3, [r4, #0x28]\n    add r1, #0x30\n    bl sub_02017BC8\n    ldr r0, [r4, #0x10]\n    add r1, r0, #1\n    str r1, [r4, #0x10]\n    ldr r0, [r4, #0xc]\n    cmp r1, r0\n    blt _02017F0C\n    mov r0, #0\n    str r0, [r4]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x10]
+    // add r1, r0, #1
+    // ldr r0, [r4, #8]
+    // mul r0, r1
+    // ldr r1, [r4, #0xc]
+    // bl _s32_div_f
+    // ldr r1, [r4, #0x24]
+    // str r0, [r1]
+    // add r0, r4, #0
+    // add r0, #0x2c
+    // add r1, r4, #0
+    // ldrb r0, [r0]
+    // ldr r2, [r4, #0x24]
+    // ldr r3, [r4, #0x28]
+    // add r1, #0x30
+    // bl sub_02017BC8
+    // ldr r0, [r4, #0x10]
+    // add r1, r0, #1
+    // str r1, [r4, #0x10]
+    // ldr r0, [r4, #0xc]
+    // cmp r1, r0
+    // blt _02017F0C
+    // mov r0, #0
+    // str r0, [r4]
+    // pop {r4, pc}
+    // TODO: decompile
 }
 
+
 void sub_02017F10(void) {
-    /* Original at 0x02017F10 */
-    /* Requires manual decompilation - 75 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r1, [r4, #0xc]\n    ldr r0, [r4, #0x14]\n    ldr r2, [r4, #8]\n    mul r0, r1\n    ldr r1, [r4, #0x24]\n    add r2, r2, r0\n    ldr r0, [r1]\n    add r0, r0, r2\n    str r0, [r1]\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    cmp r0, #0x18\n    beq _02017F34\n    cmp r0, #0x1a\n    bne _02017F5A\n    cmp r2, #0\n    ldr r2, [r4, #0x10]\n    bge _02017F4A\n    ldr r1, [r4, #0x24]\n    ldr r0, [r1]\n    cmp r0, r2\n    bgt _02017F90\n    str r2, [r1]\n    mov r0, #0\n    str r0, [r4]\n    b _02017F90\n    ldr r1, [r4, #0x24]\n    ldr r0, [r1]\n    cmp r0, r2\n    blt _02017F90\n    str r2, [r1]\n    mov r0, #0\n    str r0, [r4]\n    b _02017F90\n    cmp r0, #0x19\n    bne _02017F8C\n    ldr r1, [r4, #0x24]\n    ldr r3, [r4, #0x30]\n    ldr r0, [r1]\n    add r3, r3, r0\n    cmp r2, #0\n    ldr r2, [r4, #0x10]\n    bge _02017F7C\n    cmp r3, r2\n    bgt _02017F90\n    sub r2, r2, r3\n    add r0, r0, r2\n    str r0, [r1]\n    mov r0, #0\n    str r0, [r4]\n    b _02017F90\n    cmp r3, r2\n    blt _02017F90\n    sub r2, r3, r2\n    sub r0, r0, r2\n    str r0, [r1]\n    mov r0, #0\n    str r0, [r4]\n    b _02017F90\n    bl GF_AssertFail\n    add r0, r4, #0\n    add r0, #0x2c\n    ldrb r0, [r0]\n    add r1, r4, #0\n    ldr r2, [r4, #0x24]\n    ldr r3, [r4, #0x28]\n    add r1, #0x30\n    bl sub_02017BC8\n    ldr r0, [r4, #0x14]\n    add r0, r0, #1\n    str r0, [r4, #0x14]\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r1, [r4, #0xc]
+    // ldr r0, [r4, #0x14]
+    // ldr r2, [r4, #8]
+    // mul r0, r1
+    // ldr r1, [r4, #0x24]
+    // add r2, r2, r0
+    // ldr r0, [r1]
+    // add r0, r0, r2
+    // str r0, [r1]
+    // add r0, r4, #0
+    // add r0, #0x2c
+    // ldrb r0, [r0]
+    // cmp r0, #0x18
+    // beq _02017F34
+    // cmp r0, #0x1a
+    // bne _02017F5A
+    // cmp r2, #0
+    // ldr r2, [r4, #0x10]
+    // bge _02017F4A
+    // ldr r1, [r4, #0x24]
+    // ldr r0, [r1]
+    // cmp r0, r2
+    // bgt _02017F90
+    // str r2, [r1]
+    // mov r0, #0
+    // str r0, [r4]
+    // b _02017F90
+    // ldr r1, [r4, #0x24]
+    // ldr r0, [r1]
+    // cmp r0, r2
+    // blt _02017F90
+    // str r2, [r1]
+    // mov r0, #0
+    // str r0, [r4]
+    // b _02017F90
+    // cmp r0, #0x19
+    // bne _02017F8C
+    // ldr r1, [r4, #0x24]
+    // ldr r3, [r4, #0x30]
+    // ldr r0, [r1]
+    // add r3, r3, r0
+    // cmp r2, #0
+    // ldr r2, [r4, #0x10]
+    // bge _02017F7C
+    // cmp r3, r2
+    // bgt _02017F90
+    // sub r2, r2, r3
+    // add r0, r0, r2
+    // str r0, [r1]
+    // mov r0, #0
+    // str r0, [r4]
+    // b _02017F90
+    // cmp r3, r2
+    // blt _02017F90
+    // sub r2, r3, r2
+    // sub r0, r0, r2
+    // str r0, [r1]
+    // mov r0, #0
+    // str r0, [r4]
+    // b _02017F90
+    // bl GF_AssertFail
+    // add r0, r4, #0
+    // add r0, #0x2c
+    // ldrb r0, [r0]
+    // add r1, r4, #0
+    // ldr r2, [r4, #0x24]
+    // ldr r3, [r4, #0x28]
+    // add r1, #0x30
+    // bl sub_02017BC8
+    // ldr r0, [r4, #0x14]
+    // add r0, r0, #1
+    // str r0, [r4, #0x14]
+    // pop {r4, pc}
+    // TODO: decompile
 }
+

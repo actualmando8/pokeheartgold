@@ -2,79 +2,551 @@
 #include "global.h"
 
 void sub_020850F4(void) {
-    /* Original at 0x020850F4 */
-    /* Requires manual decompilation - 140 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    mov r2, #1\n    add r5, r0, #0\n    mov r0, #3\n    mov r1, #0x6c\n    lsl r2, r2, #0x12\n    bl Heap_Create\n    mov r1, #0xfd\n    add r0, r5, #0\n    lsl r1, r1, #2\n    mov r2, #0x6c\n    bl OverlayManager_CreateAndGetData\n    mov r2, #0xfd\n    mov r1, #0\n    lsl r2, r2, #2\n    add r4, r0, #0\n    bl memset\n    add r0, r5, #0\n    bl OverlayManager_GetArgs\n    add r5, r0, #0\n    mov r0, #0xee\n    lsl r0, r0, #2\n    add r3, r4, r0\n    mov r2, #6\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _0208512C\n    ldr r0, [r5]\n    str r0, [r3]\n    mov r0, #0\n    add r1, r0, #0\n    bl Main_SetVBlankIntrCB\n    bl HBlankInterruptDisable\n    bl GfGfx_DisableEngineAPlanes\n    bl GfGfx_DisableEngineBPlanes\n    mov r2, #1\n    lsl r2, r2, #0x1a\n    ldr r1, [r2]\n    ldr r0, _02085238 ; =0xFFFFE0FF\n    and r1, r0\n    str r1, [r2]\n    ldr r2, _0208523C ; =0x04001000\n    ldr r1, [r2]\n    and r0, r1\n    str r0, [r2]\n    mov r0, #0xbe\n    mov r1, #0x6c\n    bl NARC_New\n    mov r1, #0xbb\n    lsl r1, r1, #2\n    str r0, [r4, r1]\n    mov r0, #0x6c\n    bl BgConfig_Alloc\n    mov r1, #0xbe\n    lsl r1, r1, #2\n    str r0, [r4, r1]\n    mov r0, #0x6c\n    bl PaletteData_Init\n    mov r1, #0xbf\n    lsl r1, r1, #2\n    str r0, [r4, r1]\n    ldr r0, [r4, r1]\n    mov r1, #1\n    bl PaletteData_SetAutoTransparent\n    mov r2, #0xbf\n    lsl r2, r2, #2\n    ldr r0, [r4, r2]\n    mov r1, #0\n    sub r2, #0xfc\n    mov r3, #0x6c\n    bl PaletteData_AllocBuffers\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    mov r1, #1\n    ldr r0, [r4, r0]\n    lsl r2, r1, #9\n    mov r3, #0x6c\n    bl PaletteData_AllocBuffers\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    mov r1, #2\n    ldr r0, [r4, r0]\n    lsl r2, r1, #8\n    mov r3, #0x6c\n    bl PaletteData_AllocBuffers\n    mov r2, #0xbf\n    lsl r2, r2, #2\n    ldr r0, [r4, r2]\n    mov r1, #3\n    sub r2, #0xfc\n    mov r3, #0x6c\n    bl PaletteData_AllocBuffers\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl sub_0208545C\n    add r0, r4, #0\n    bl sub_020863F4\n    add r0, r4, #0\n    bl sub_02085688\n    bl sub_020210BC\n    mov r0, #4\n    bl sub_02021148\n    add r0, r4, #0\n    bl sub_020860B8\n    mov r0, #0xfa\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    cmp r0, #0\n    beq _0208520A\n    bl sub_0203A880\n    mov r0, #1\n    mov r1, #0x6c\n    bl sub_0203A948\n    mov r0, #7\n    str r0, [sp]\n    ldr r0, _02085240 ; =0x04000050\n    mov r1, #0\n    mov r2, #6\n    mov r3, #0xf\n    bl G2x_SetBlendAlpha_\n    mov r0, #8\n    str r0, [sp]\n    ldr r0, _02085244 ; =0x04001050\n    mov r1, #0\n    mov r2, #0xe\n    mov r3, #7\n    bl G2x_SetBlendAlpha_\n    ldr r0, _02085248 ; =sub_020855CC\n    add r1, r4, #0\n    bl Main_SetVBlankIntrCB\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    nop\n    _02085238: .word 0xFFFFE0FF\n    _0208523C: .word 0x04001000\n    _02085240: .word 0x04000050\n    _02085244: .word 0x04001050\n    _02085248: .word sub_020855CC"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // mov r2, #1
+    // add r5, r0, #0
+    // mov r0, #3
+    // mov r1, #0x6c
+    // lsl r2, r2, #0x12
+    // bl Heap_Create
+    // mov r1, #0xfd
+    // add r0, r5, #0
+    // lsl r1, r1, #2
+    // mov r2, #0x6c
+    // bl OverlayManager_CreateAndGetData
+    // mov r2, #0xfd
+    // mov r1, #0
+    // lsl r2, r2, #2
+    // add r4, r0, #0
+    // bl memset
+    // add r0, r5, #0
+    // bl OverlayManager_GetArgs
+    // add r5, r0, #0
+    // mov r0, #0xee
+    // lsl r0, r0, #2
+    // add r3, r4, r0
+    // mov r2, #6
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _0208512C
+    // ldr r0, [r5]
+    // str r0, [r3]
+    // mov r0, #0
+    // add r1, r0, #0
+    // bl Main_SetVBlankIntrCB
+    // bl HBlankInterruptDisable
+    // bl GfGfx_DisableEngineAPlanes
+    // bl GfGfx_DisableEngineBPlanes
+    // mov r2, #1
+    // lsl r2, r2, #0x1a
+    // ldr r1, [r2]
+    // ldr r0, _02085238 ; =0xFFFFE0FF
+    // and r1, r0
+    // str r1, [r2]
+    // ldr r2, _0208523C ; =0x04001000
+    // ldr r1, [r2]
+    // and r0, r1
+    // str r0, [r2]
+    // mov r0, #0xbe
+    // mov r1, #0x6c
+    // bl NARC_New
+    // mov r1, #0xbb
+    // lsl r1, r1, #2
+    // str r0, [r4, r1]
+    // mov r0, #0x6c
+    // bl BgConfig_Alloc
+    // mov r1, #0xbe
+    // lsl r1, r1, #2
+    // str r0, [r4, r1]
+    // mov r0, #0x6c
+    // bl PaletteData_Init
+    // mov r1, #0xbf
+    // lsl r1, r1, #2
+    // str r0, [r4, r1]
+    // ldr r0, [r4, r1]
+    // mov r1, #1
+    // bl PaletteData_SetAutoTransparent
+    // mov r2, #0xbf
+    // lsl r2, r2, #2
+    // ldr r0, [r4, r2]
+    // mov r1, #0
+    // sub r2, #0xfc
+    // mov r3, #0x6c
+    // bl PaletteData_AllocBuffers
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // mov r1, #1
+    // ldr r0, [r4, r0]
+    // lsl r2, r1, #9
+    // mov r3, #0x6c
+    // bl PaletteData_AllocBuffers
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // mov r1, #2
+    // ldr r0, [r4, r0]
+    // lsl r2, r1, #8
+    // mov r3, #0x6c
+    // bl PaletteData_AllocBuffers
+    // mov r2, #0xbf
+    // lsl r2, r2, #2
+    // ldr r0, [r4, r2]
+    // mov r1, #3
+    // sub r2, #0xfc
+    // mov r3, #0x6c
+    // bl PaletteData_AllocBuffers
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // bl sub_0208545C
+    // add r0, r4, #0
+    // bl sub_020863F4
+    // add r0, r4, #0
+    // bl sub_02085688
+    // bl sub_020210BC
+    // mov r0, #4
+    // bl sub_02021148
+    // add r0, r4, #0
+    // bl sub_020860B8
+    // mov r0, #0xfa
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // cmp r0, #0
+    // beq _0208520A
+    // bl sub_0203A880
+    // mov r0, #1
+    // mov r1, #0x6c
+    // bl sub_0203A948
+    // mov r0, #7
+    // str r0, [sp]
+    // ldr r0, _02085240 ; =0x04000050
+    // mov r1, #0
+    // mov r2, #6
+    // mov r3, #0xf
+    // bl G2x_SetBlendAlpha_
+    // mov r0, #8
+    // str r0, [sp]
+    // ldr r0, _02085244 ; =0x04001050
+    // mov r1, #0
+    // mov r2, #0xe
+    // mov r3, #7
+    // bl G2x_SetBlendAlpha_
+    // ldr r0, _02085248 ; =sub_020855CC
+    // add r1, r4, #0
+    // bl Main_SetVBlankIntrCB
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // nop
+    // _02085238: .word 0xFFFFE0FF
+    // _0208523C: .word 0x04001000
+    // _02085240: .word 0x04000050
+    // _02085244: .word 0x04001050
+    // _02085248: .word sub_020855CC
+    // TODO: decompile
 }
+
 
 void sub_0208524C(void) {
-    /* Original at 0x0208524C */
-    /* Requires manual decompilation - 20 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    bl OverlayManager_GetData\n    add r4, r0, #0\n    bl sub_02085BEC\n    add r5, r0, #0\n    mov r0, #0xfa\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    cmp r0, #0\n    beq _02085270\n    bl ov00_021EC9D4\n    mov r1, #3\n    sub r0, r1, r0\n    bl sub_0203A930\n    cmp r5, #0\n    beq _02085278\n    mov r0, #1\n    pop {r3, r4, r5, pc}\n    mov r0, #0\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // bl OverlayManager_GetData
+    // add r4, r0, #0
+    // bl sub_02085BEC
+    // add r5, r0, #0
+    // mov r0, #0xfa
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // cmp r0, #0
+    // beq _02085270
+    // bl ov00_021EC9D4
+    // mov r1, #3
+    // sub r0, r1, r0
+    // bl sub_0203A930
+    // cmp r5, #0
+    // beq _02085278
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // mov r0, #0
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
+
 
 void sub_0208527C(void) {
-    /* Original at 0x0208527C */
-    /* Requires manual decompilation - 124 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, lr}\n    add r5, r0, #0\n    bl OverlayManager_GetData\n    add r4, r0, #0\n    mov r0, #0xfa\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    cmp r0, #0\n    beq _02085294\n    bl sub_0203A914\n    add r0, r4, #0\n    bl sub_020866CC\n    mov r0, #1\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #2\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #8\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #1\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #2\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #8\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #1\n    bl FreeBgTilemapBuffer\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #2\n    bl FreeBgTilemapBuffer\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #3\n    bl FreeBgTilemapBuffer\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #4\n    bl FreeBgTilemapBuffer\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #5\n    bl FreeBgTilemapBuffer\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #6\n    bl FreeBgTilemapBuffer\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #7\n    bl FreeBgTilemapBuffer\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl Heap_Free\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #0\n    bl PaletteData_FreeBuffers\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #1\n    bl PaletteData_FreeBuffers\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #2\n    bl PaletteData_FreeBuffers\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    mov r1, #3\n    bl PaletteData_FreeBuffers\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl PaletteData_Free\n    mov r0, #0xbb\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl NARC_Delete\n    bl sub_02021238\n    mov r1, #0x2f\n    lsl r1, r1, #4\n    ldr r0, [r4, r1]\n    add r1, r1, #4\n    ldr r1, [r4, r1]\n    bl SpriteSystem_FreeResourcesAndManager\n    mov r0, #0x2f\n    lsl r0, r0, #4\n    ldr r0, [r4, r0]\n    bl SpriteSystem_Free\n    mov r0, #3\n    lsl r0, r0, #8\n    ldr r0, [r4, r0]\n    bl TouchHitboxController_Destroy\n    add r0, r5, #0\n    bl OverlayManager_FreeData\n    mov r0, #0x6c\n    bl Heap_Destroy\n    mov r0, #1\n    pop {r3, r4, r5, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, lr}
+    // add r5, r0, #0
+    // bl OverlayManager_GetData
+    // add r4, r0, #0
+    // mov r0, #0xfa
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // cmp r0, #0
+    // beq _02085294
+    // bl sub_0203A914
+    // add r0, r4, #0
+    // bl sub_020866CC
+    // mov r0, #1
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #2
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #4
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #8
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #1
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #2
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #4
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #8
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #1
+    // bl FreeBgTilemapBuffer
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #2
+    // bl FreeBgTilemapBuffer
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #3
+    // bl FreeBgTilemapBuffer
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #4
+    // bl FreeBgTilemapBuffer
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #5
+    // bl FreeBgTilemapBuffer
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #6
+    // bl FreeBgTilemapBuffer
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #7
+    // bl FreeBgTilemapBuffer
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // bl Heap_Free
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #0
+    // bl PaletteData_FreeBuffers
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #1
+    // bl PaletteData_FreeBuffers
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #2
+    // bl PaletteData_FreeBuffers
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // mov r1, #3
+    // bl PaletteData_FreeBuffers
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // bl PaletteData_Free
+    // mov r0, #0xbb
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // bl NARC_Delete
+    // bl sub_02021238
+    // mov r1, #0x2f
+    // lsl r1, r1, #4
+    // ldr r0, [r4, r1]
+    // add r1, r1, #4
+    // ldr r1, [r4, r1]
+    // bl SpriteSystem_FreeResourcesAndManager
+    // mov r0, #0x2f
+    // lsl r0, r0, #4
+    // ldr r0, [r4, r0]
+    // bl SpriteSystem_Free
+    // mov r0, #3
+    // lsl r0, r0, #8
+    // ldr r0, [r4, r0]
+    // bl TouchHitboxController_Destroy
+    // add r0, r5, #0
+    // bl OverlayManager_FreeData
+    // mov r0, #0x6c
+    // bl Heap_Destroy
+    // mov r0, #1
+    // pop {r3, r4, r5, pc}
+    // TODO: decompile
 }
 
+
 void sub_020853B4(void) {
-    /* Original at 0x020853B4 */
-    /* Requires manual decompilation - 36 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    add r6, r1, #0\n    str r0, [sp]\n    mov r1, #0x34\n    add r5, r2, #0\n    add r7, r3, #0\n    bl Heap_Alloc\n    add r4, r0, #0\n    ldr r1, [sp]\n    add r0, r6, #1\n    str r6, [r4]\n    bl String_New\n    str r0, [r4, #0x1c]\n    str r7, [r4, #0x20]\n    mov r2, #0\n    add r1, r5, #0\n    add r3, r4, #0\n    ldr r0, [r1]\n    add r2, r2, #1\n    str r0, [r3, #4]\n    add r1, r1, #4\n    add r3, r3, #4\n    cmp r2, #4\n    blt _020853DA\n    sub r0, r2, #1\n    lsl r0, r0, #2\n    ldr r1, [r5, r0]\n    lsl r0, r2, #2\n    add r0, r4, r0\n    str r1, [r0, #4]\n    ldr r0, [sp, #0x18]\n    str r0, [r4, #0x2c]\n    ldr r0, [sp, #0x1c]\n    str r0, [r4, #0x30]\n    add r0, r4, #0\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // add r6, r1, #0
+    // str r0, [sp]
+    // mov r1, #0x34
+    // add r5, r2, #0
+    // add r7, r3, #0
+    // bl Heap_Alloc
+    // add r4, r0, #0
+    // ldr r1, [sp]
+    // add r0, r6, #1
+    // str r6, [r4]
+    // bl String_New
+    // str r0, [r4, #0x1c]
+    // str r7, [r4, #0x20]
+    // mov r2, #0
+    // add r1, r5, #0
+    // add r3, r4, #0
+    // ldr r0, [r1]
+    // add r2, r2, #1
+    // str r0, [r3, #4]
+    // add r1, r1, #4
+    // add r3, r3, #4
+    // cmp r2, #4
+    // blt _020853DA
+    // sub r0, r2, #1
+    // lsl r0, r0, #2
+    // ldr r1, [r5, r0]
+    // lsl r0, r2, #2
+    // add r0, r4, r0
+    // str r1, [r0, #4]
+    // ldr r0, [sp, #0x18]
+    // str r0, [r4, #0x2c]
+    // ldr r0, [sp, #0x1c]
+    // str r0, [r4, #0x30]
+    // add r0, r4, #0
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void sub_02085400(void) {
     sub_020853B4(0);
 }
 
+
 void sub_0208541C(void) {
     sub_020853B4();
 }
 
+
 void sub_02085438(void) {
-    /* Original at 0x02085438 */
-    /* Requires manual decompilation - 14 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    ldr r0, [r4, #0x1c]\n    cmp r0, #0\n    bne _02085446\n    bl GF_AssertFail\n    cmp r4, #0\n    bne _0208544E\n    bl GF_AssertFail\n    ldr r0, [r4, #0x1c]\n    bl String_Delete\n    add r0, r4, #0\n    bl Heap_Free\n    pop {r4, pc}"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // ldr r0, [r4, #0x1c]
+    // cmp r0, #0
+    // bne _02085446
+    // bl GF_AssertFail
+    // cmp r4, #0
+    // bne _0208544E
+    // bl GF_AssertFail
+    // ldr r0, [r4, #0x1c]
+    // bl String_Delete
+    // add r0, r4, #0
+    // bl Heap_Free
+    // pop {r4, pc}
+    // TODO: decompile
 }
+
 
 void sub_0208545C(void) {
-    /* Original at 0x0208545C */
-    /* Requires manual decompilation - 149 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xec\n    add r4, r0, #0\n    bl GfGfx_DisableEngineAPlanes\n    ldr r5, _020855BC ; =_02102630\n    add r3, sp, #0\n    mov r2, #5\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _0208546C\n    add r0, sp, #0\n    bl GfGfx_SetBanks\n    mov r1, #6\n    mov r2, #2\n    mov r0, #0\n    lsl r1, r1, #0x18\n    lsl r2, r2, #0x12\n    bl MIi_CpuClear32\n    mov r1, #0x62\n    mov r2, #2\n    mov r0, #0\n    lsl r1, r1, #0x14\n    lsl r2, r2, #0x10\n    bl MIi_CpuClear32\n    mov r1, #0x19\n    mov r2, #1\n    mov r0, #0\n    lsl r1, r1, #0x16\n    lsl r2, r2, #0x12\n    bl MIi_CpuClear32\n    mov r1, #0x66\n    mov r2, #2\n    mov r0, #0\n    lsl r1, r1, #0x14\n    lsl r2, r2, #0x10\n    bl MIi_CpuClear32\n    ldr r5, _020855C0 ; =_02102658\n    add r3, sp, #0x98\n    mov r2, #0xa\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _020854B8\n    ldr r0, [r5]\n    mov r1, #1\n    str r0, [r3]\n    add r0, r4, #0\n    add r2, sp, #0x98\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #2\n    add r2, sp, #0xb4\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #3\n    add r2, sp, #0xd0\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #1\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #2\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #3\n    bl BgClearTilemapBufferAndCommit\n    mov r0, #1\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #2\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #8\n    mov r1, #0\n    bl GfGfx_EngineATogglePlanes\n    ldr r5, _020855C4 ; =_021026AC\n    add r3, sp, #0x28\n    mov r2, #0xe\n    ldmia r5!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _02085526\n    add r0, r4, #0\n    mov r1, #4\n    add r2, sp, #0x28\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #5\n    add r2, sp, #0x44\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #6\n    add r2, sp, #0x60\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #7\n    add r2, sp, #0x7c\n    mov r3, #0\n    bl InitBgFromTemplate\n    add r0, r4, #0\n    mov r1, #4\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #5\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #6\n    bl BgClearTilemapBufferAndCommit\n    add r0, r4, #0\n    mov r1, #7\n    bl BgClearTilemapBufferAndCommit\n    mov r0, #1\n    add r1, r0, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #2\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #4\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    mov r0, #8\n    mov r1, #0\n    bl GfGfx_EngineBTogglePlanes\n    ldr r0, _020855C8 ; =gSystem + 0x60\n    mov r1, #1\n    strb r1, [r0, #9]\n    bl GfGfx_SwapDisplay\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineATogglePlanes\n    mov r0, #0x10\n    mov r1, #1\n    bl GfGfx_EngineBTogglePlanes\n    add sp, #0xec\n    pop {r4, r5, pc}\n    _020855BC: .word _02102630\n    _020855C0: .word _02102658\n    _020855C4: .word _021026AC\n    _020855C8: .word gSystem + 0x60"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xec
+    // add r4, r0, #0
+    // bl GfGfx_DisableEngineAPlanes
+    // ldr r5, _020855BC ; =_02102630
+    // add r3, sp, #0
+    // mov r2, #5
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _0208546C
+    // add r0, sp, #0
+    // bl GfGfx_SetBanks
+    // mov r1, #6
+    // mov r2, #2
+    // mov r0, #0
+    // lsl r1, r1, #0x18
+    // lsl r2, r2, #0x12
+    // bl MIi_CpuClear32
+    // mov r1, #0x62
+    // mov r2, #2
+    // mov r0, #0
+    // lsl r1, r1, #0x14
+    // lsl r2, r2, #0x10
+    // bl MIi_CpuClear32
+    // mov r1, #0x19
+    // mov r2, #1
+    // mov r0, #0
+    // lsl r1, r1, #0x16
+    // lsl r2, r2, #0x12
+    // bl MIi_CpuClear32
+    // mov r1, #0x66
+    // mov r2, #2
+    // mov r0, #0
+    // lsl r1, r1, #0x14
+    // lsl r2, r2, #0x10
+    // bl MIi_CpuClear32
+    // ldr r5, _020855C0 ; =_02102658
+    // add r3, sp, #0x98
+    // mov r2, #0xa
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _020854B8
+    // ldr r0, [r5]
+    // mov r1, #1
+    // str r0, [r3]
+    // add r0, r4, #0
+    // add r2, sp, #0x98
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #2
+    // add r2, sp, #0xb4
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #3
+    // add r2, sp, #0xd0
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #1
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #2
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #3
+    // bl BgClearTilemapBufferAndCommit
+    // mov r0, #1
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #2
+    // mov r1, #1
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #4
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #8
+    // mov r1, #0
+    // bl GfGfx_EngineATogglePlanes
+    // ldr r5, _020855C4 ; =_021026AC
+    // add r3, sp, #0x28
+    // mov r2, #0xe
+    // ldmia r5!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _02085526
+    // add r0, r4, #0
+    // mov r1, #4
+    // add r2, sp, #0x28
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #5
+    // add r2, sp, #0x44
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #6
+    // add r2, sp, #0x60
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #7
+    // add r2, sp, #0x7c
+    // mov r3, #0
+    // bl InitBgFromTemplate
+    // add r0, r4, #0
+    // mov r1, #4
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #5
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #6
+    // bl BgClearTilemapBufferAndCommit
+    // add r0, r4, #0
+    // mov r1, #7
+    // bl BgClearTilemapBufferAndCommit
+    // mov r0, #1
+    // add r1, r0, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #2
+    // mov r1, #1
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #4
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // mov r0, #8
+    // mov r1, #0
+    // bl GfGfx_EngineBTogglePlanes
+    // ldr r0, _020855C8 ; =gSystem + 0x60
+    // mov r1, #1
+    // strb r1, [r0, #9]
+    // bl GfGfx_SwapDisplay
+    // mov r0, #0x10
+    // mov r1, #1
+    // bl GfGfx_EngineATogglePlanes
+    // mov r0, #0x10
+    // mov r1, #1
+    // bl GfGfx_EngineBTogglePlanes
+    // add sp, #0xec
+    // pop {r4, r5, pc}
+    // _020855BC: .word _02102630
+    // _020855C0: .word _02102658
+    // _020855C4: .word _021026AC
+    // _020855C8: .word gSystem + 0x60
+    // TODO: decompile
 }
 
+
 void sub_020855CC(void) {
-    /* Original at 0x020855CC */
-    /* Requires manual decompilation - 22 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, lr}\n    add r4, r0, #0\n    bl GF_RunVramTransferTasks\n    bl SpriteSystem_TransferOam\n    mov r0, #0xbf\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl PaletteData_PushTransparentBuffers\n    mov r0, #0xbe\n    lsl r0, r0, #2\n    ldr r0, [r4, r0]\n    bl DoScheduledBgGpuUpdates\n    ldr r3, _020855FC ; =OS_IRQTable\n    ldr r1, _02085600 ; =0x00003FF8\n    mov r0, #1\n    ldr r2, [r3, r1]\n    orr r0, r2\n    str r0, [r3, r1]\n    pop {r4, pc}\n    nop\n    _020855FC: .word OS_IRQTable\n    _02085600: .word 0x00003FF8"
-    );
-    #endif
+    // push {r4, lr}
+    // add r4, r0, #0
+    // bl GF_RunVramTransferTasks
+    // bl SpriteSystem_TransferOam
+    // mov r0, #0xbf
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // bl PaletteData_PushTransparentBuffers
+    // mov r0, #0xbe
+    // lsl r0, r0, #2
+    // ldr r0, [r4, r0]
+    // bl DoScheduledBgGpuUpdates
+    // ldr r3, _020855FC ; =OS_IRQTable
+    // ldr r1, _02085600 ; =0x00003FF8
+    // mov r0, #1
+    // ldr r2, [r3, r1]
+    // orr r0, r2
+    // str r0, [r3, r1]
+    // pop {r4, pc}
+    // nop
+    // _020855FC: .word OS_IRQTable
+    // _02085600: .word 0x00003FF8
+    // TODO: decompile
 }
+

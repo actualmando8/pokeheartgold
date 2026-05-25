@@ -6,20 +6,48 @@ void ov01_021FF854(void) {
     ov01_021FF880();
 }
 
+
 void ov01_021FF870(void) {
     ov01_021FF8C8();
     ov01_021F1448(r4);
 }
 
+
 void ov01_021FF880(void) {
-    /* Original at 0x021FF880 */
-    /* Requires manual decompilation - 31 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, lr}\n    sub sp, #0xc\n    add r4, r0, #0\n    ldr r0, [r4]\n    mov r1, #7\n    mov r2, #0x7a\n    bl ov01_021F18D4\n    ldr r0, [r4]\n    mov r1, #7\n    mov r2, #0x92\n    bl ov01_021F1908\n    ldr r0, [r4]\n    mov r1, #8\n    mov r2, #0x15\n    mov r3, #1\n    bl ov01_021F1930\n    mov r0, #8\n    str r0, [sp]\n    mov r0, #0\n    str r0, [sp, #4]\n    ldr r0, _021FF8C4 ; =ov01_0220922C\n    mov r2, #7\n    str r0, [sp, #8]\n    ldr r0, [r4]\n    mov r1, #9\n    add r3, r2, #0\n    bl ov01_021F1758\n    add sp, #0xc\n    pop {r3, r4, pc}\n    nop\n    _021FF8C4: .word ov01_0220922C"
-    );
-    #endif
+    // push {r3, r4, lr}
+    // sub sp, #0xc
+    // add r4, r0, #0
+    // ldr r0, [r4]
+    // mov r1, #7
+    // mov r2, #0x7a
+    // bl ov01_021F18D4
+    // ldr r0, [r4]
+    // mov r1, #7
+    // mov r2, #0x92
+    // bl ov01_021F1908
+    // ldr r0, [r4]
+    // mov r1, #8
+    // mov r2, #0x15
+    // mov r3, #1
+    // bl ov01_021F1930
+    // mov r0, #8
+    // str r0, [sp]
+    // mov r0, #0
+    // str r0, [sp, #4]
+    // ldr r0, _021FF8C4 ; =ov01_0220922C
+    // mov r2, #7
+    // str r0, [sp, #8]
+    // ldr r0, [r4]
+    // mov r1, #9
+    // add r3, r2, #0
+    // bl ov01_021F1758
+    // add sp, #0xc
+    // pop {r3, r4, pc}
+    // nop
+    // _021FF8C4: .word ov01_0220922C
+    // TODO: decompile
 }
+
 
 void ov01_021FF8C8(void) {
     ov01_021F18FC(7);
@@ -28,56 +56,367 @@ void ov01_021FF8C8(void) {
     ov01_021F18C8(9);
 }
 
+
 void ov01_021FF8F0(void) {
-    /* Original at 0x021FF8F0 */
-    /* Requires manual decompilation - 48 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    sub sp, #0x38\n    add r5, r0, #0\n    add r6, r1, #0\n    bl ov01_021F146C\n    add r4, r0, #0\n    add r0, r5, #0\n    bl MapObject_GetXCoord\n    str r0, [sp, #8]\n    add r0, r5, #0\n    bl MapObject_GetYCoord\n    str r0, [sp, #0xc]\n    add r0, r5, #0\n    bl MapObject_GetZCoord\n    str r0, [sp, #0x10]\n    mov r1, #0\n    add r0, sp, #8\n    strh r1, [r0, #0x1c]\n    strh r1, [r0, #0x1e]\n    sub r1, r1, #1\n    add r0, sp, #0x28\n    strb r1, [r0]\n    add r0, r4, #0\n    str r4, [sp, #0x18]\n    bl ov01_021F1468\n    str r0, [sp, #0x14]\n    add r0, r4, #0\n    mov r1, #0xc\n    bl ov01_021F1450\n    str r0, [sp, #0x1c]\n    add r0, r5, #0\n    add r1, sp, #0x2c\n    str r5, [sp, #0x20]\n    bl MapObject_CopyPositionVector\n    add r0, r5, #0\n    mov r1, #2\n    bl MapObject_GetPriorityPlusValue\n    add r1, sp, #8\n    str r1, [sp]\n    str r0, [sp, #4]\n    ldr r1, _021FF960 ; =ov01_02209218\n    add r0, r4, #0\n    add r2, sp, #0x2c\n    add r3, r6, #0\n    bl ov01_021F1620\n    add sp, #0x38\n    pop {r4, r5, r6, pc}\n    _021FF960: .word ov01_02209218"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // sub sp, #0x38
+    // add r5, r0, #0
+    // add r6, r1, #0
+    // bl ov01_021F146C
+    // add r4, r0, #0
+    // add r0, r5, #0
+    // bl MapObject_GetXCoord
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // bl MapObject_GetYCoord
+    // str r0, [sp, #0xc]
+    // add r0, r5, #0
+    // bl MapObject_GetZCoord
+    // str r0, [sp, #0x10]
+    // mov r1, #0
+    // add r0, sp, #8
+    // strh r1, [r0, #0x1c]
+    // strh r1, [r0, #0x1e]
+    // sub r1, r1, #1
+    // add r0, sp, #0x28
+    // strb r1, [r0]
+    // add r0, r4, #0
+    // str r4, [sp, #0x18]
+    // bl ov01_021F1468
+    // str r0, [sp, #0x14]
+    // add r0, r4, #0
+    // mov r1, #0xc
+    // bl ov01_021F1450
+    // str r0, [sp, #0x1c]
+    // add r0, r5, #0
+    // add r1, sp, #0x2c
+    // str r5, [sp, #0x20]
+    // bl MapObject_CopyPositionVector
+    // add r0, r5, #0
+    // mov r1, #2
+    // bl MapObject_GetPriorityPlusValue
+    // add r1, sp, #8
+    // str r1, [sp]
+    // str r0, [sp, #4]
+    // ldr r1, _021FF960 ; =ov01_02209218
+    // add r0, r4, #0
+    // add r2, sp, #0x2c
+    // add r3, r6, #0
+    // bl ov01_021F1620
+    // add sp, #0x38
+    // pop {r4, r5, r6, pc}
+    // _021FF960: .word ov01_02209218
+    // TODO: decompile
 }
+
 
 void ov01_021FF964(void) {
-    /* Original at 0x021FF964 */
-    /* Requires manual decompilation - 61 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0x3c\n    add r5, r0, #0\n    str r1, [sp, #8]\n    add r4, r2, #0\n    add r6, r3, #0\n    bl ov01_021F146C\n    add r7, r0, #0\n    add r0, r5, #0\n    str r4, [sp, #0xc]\n    bl MapObject_GetYCoord\n    str r0, [sp, #0x10]\n    add r0, r5, #0\n    str r6, [sp, #0x14]\n    bl MapObject_GetXCoord\n    sub r1, r0, r4\n    add r0, sp, #0xc\n    strh r1, [r0, #0x1c]\n    add r0, r5, #0\n    bl MapObject_GetZCoord\n    sub r1, r0, r6\n    add r0, sp, #0xc\n    strh r1, [r0, #0x1e]\n    ldr r0, [sp, #0x50]\n    cmp r0, #0\n    beq _021FF9AC\n    add r0, r5, #0\n    bl MapObject_GetFacingDirection\n    add r1, sp, #0x2c\n    strb r0, [r1]\n    b _021FF9B4\n    mov r1, #0\n    mvn r1, r1\n    add r0, sp, #0x2c\n    strb r1, [r0]\n    add r0, r7, #0\n    str r7, [sp, #0x1c]\n    bl ov01_021F1468\n    str r0, [sp, #0x18]\n    add r0, r7, #0\n    mov r1, #0xc\n    bl ov01_021F1450\n    str r0, [sp, #0x20]\n    add r0, r5, #0\n    add r1, sp, #0x30\n    str r5, [sp, #0x24]\n    bl MapObject_CopyPositionVector\n    add r0, r5, #0\n    mov r1, #2\n    bl MapObject_GetPriorityPlusValue\n    add r1, sp, #0xc\n    str r1, [sp]\n    str r0, [sp, #4]\n    ldr r1, _021FF9F0 ; =ov01_02209218\n    ldr r3, [sp, #8]\n    add r0, r7, #0\n    add r2, sp, #0x30\n    bl ov01_021F1620\n    add sp, #0x3c\n    pop {r4, r5, r6, r7, pc}\n    _021FF9F0: .word ov01_02209218"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0x3c
+    // add r5, r0, #0
+    // str r1, [sp, #8]
+    // add r4, r2, #0
+    // add r6, r3, #0
+    // bl ov01_021F146C
+    // add r7, r0, #0
+    // add r0, r5, #0
+    // str r4, [sp, #0xc]
+    // bl MapObject_GetYCoord
+    // str r0, [sp, #0x10]
+    // add r0, r5, #0
+    // str r6, [sp, #0x14]
+    // bl MapObject_GetXCoord
+    // sub r1, r0, r4
+    // add r0, sp, #0xc
+    // strh r1, [r0, #0x1c]
+    // add r0, r5, #0
+    // bl MapObject_GetZCoord
+    // sub r1, r0, r6
+    // add r0, sp, #0xc
+    // strh r1, [r0, #0x1e]
+    // ldr r0, [sp, #0x50]
+    // cmp r0, #0
+    // beq _021FF9AC
+    // add r0, r5, #0
+    // bl MapObject_GetFacingDirection
+    // add r1, sp, #0x2c
+    // strb r0, [r1]
+    // b _021FF9B4
+    // mov r1, #0
+    // mvn r1, r1
+    // add r0, sp, #0x2c
+    // strb r1, [r0]
+    // add r0, r7, #0
+    // str r7, [sp, #0x1c]
+    // bl ov01_021F1468
+    // str r0, [sp, #0x18]
+    // add r0, r7, #0
+    // mov r1, #0xc
+    // bl ov01_021F1450
+    // str r0, [sp, #0x20]
+    // add r0, r5, #0
+    // add r1, sp, #0x30
+    // str r5, [sp, #0x24]
+    // bl MapObject_CopyPositionVector
+    // add r0, r5, #0
+    // mov r1, #2
+    // bl MapObject_GetPriorityPlusValue
+    // add r1, sp, #0xc
+    // str r1, [sp]
+    // str r0, [sp, #4]
+    // ldr r1, _021FF9F0 ; =ov01_02209218
+    // ldr r3, [sp, #8]
+    // add r0, r7, #0
+    // add r2, sp, #0x30
+    // bl ov01_021F1620
+    // add sp, #0x3c
+    // pop {r4, r5, r6, r7, pc}
+    // _021FF9F0: .word ov01_02209218
+    // TODO: decompile
 }
 
+
 void ov01_021FF9F4(void) {
-    /* Original at 0x021FF9F4 */
-    /* Requires manual decompilation - 80 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, lr}\n    sub sp, #0xc\n    add r5, r0, #0\n    add r4, r1, #0\n    bl sub_02068D98\n    add r3, r4, #0\n    add r6, r0, #0\n    add r3, #0x18\n    mov r2, #4\n    ldmia r6!, {r0, r1}\n    stmia r3!, {r0, r1}\n    sub r2, r2, #1\n    bne _021FFA08\n    ldr r0, [r6]\n    str r0, [r3]\n    ldr r0, [r4, #0x30]\n    bl MapObject_GetSpriteID\n    str r0, [r4, #4]\n    ldr r0, [r4, #0x30]\n    bl MapObject_GetID\n    str r0, [r4, #8]\n    ldr r0, [r4, #0x30]\n    bl MapObject_GetMapID\n    str r0, [r4, #0xc]\n    ldr r0, [r4, #0x18]\n    lsl r0, r0, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #0x20]\n    lsl r0, r0, #0x10\n    str r0, [sp, #8]\n    ldr r0, [r4, #0x30]\n    bl MapObject_GetPositionVectorYCoord\n    str r0, [sp, #4]\n    ldr r0, [r4, #0x24]\n    add r1, sp, #0\n    bl sub_0206121C\n    str r0, [r4, #0x14]\n    mov r0, #2\n    ldr r1, [sp]\n    lsl r0, r0, #0xe\n    add r0, r1, r0\n    str r0, [sp]\n    mov r0, #0x12\n    ldr r1, [sp, #8]\n    lsl r0, r0, #0xc\n    add r0, r1, r0\n    str r0, [sp, #8]\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02068DA8\n    ldr r0, [r4, #0x28]\n    mov r1, #9\n    add r2, sp, #0\n    bl ov01_021F1740\n    str r0, [r4, #0x3c]\n    mov r1, #2\n    ldr r0, [r4, #0x30]\n    lsl r1, r1, #8\n    bl MapObject_TestFlagsBits\n    cmp r0, #1\n    bne _021FFA88\n    ldr r0, [r4, #0x3c]\n    mov r1, #0\n    bl sub_02023EA4\n    add r0, r5, #0\n    bl sub_02068D90\n    cmp r0, #0\n    bne _021FFAA8\n    mov r1, #3\n    ldr r0, [r4, #0x3c]\n    lsl r1, r1, #0xe\n    bl sub_02023F1C\n    ldr r0, [r4, #0x3c]\n    mov r1, #0\n    bl sub_02023F04\n    mov r0, #2\n    str r0, [r4]\n    mov r0, #1\n    add sp, #0xc\n    pop {r3, r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, lr}
+    // sub sp, #0xc
+    // add r5, r0, #0
+    // add r4, r1, #0
+    // bl sub_02068D98
+    // add r3, r4, #0
+    // add r6, r0, #0
+    // add r3, #0x18
+    // mov r2, #4
+    // ldmia r6!, {r0, r1}
+    // stmia r3!, {r0, r1}
+    // sub r2, r2, #1
+    // bne _021FFA08
+    // ldr r0, [r6]
+    // str r0, [r3]
+    // ldr r0, [r4, #0x30]
+    // bl MapObject_GetSpriteID
+    // str r0, [r4, #4]
+    // ldr r0, [r4, #0x30]
+    // bl MapObject_GetID
+    // str r0, [r4, #8]
+    // ldr r0, [r4, #0x30]
+    // bl MapObject_GetMapID
+    // str r0, [r4, #0xc]
+    // ldr r0, [r4, #0x18]
+    // lsl r0, r0, #0x10
+    // str r0, [sp]
+    // ldr r0, [r4, #0x20]
+    // lsl r0, r0, #0x10
+    // str r0, [sp, #8]
+    // ldr r0, [r4, #0x30]
+    // bl MapObject_GetPositionVectorYCoord
+    // str r0, [sp, #4]
+    // ldr r0, [r4, #0x24]
+    // add r1, sp, #0
+    // bl sub_0206121C
+    // str r0, [r4, #0x14]
+    // mov r0, #2
+    // ldr r1, [sp]
+    // lsl r0, r0, #0xe
+    // add r0, r1, r0
+    // str r0, [sp]
+    // mov r0, #0x12
+    // ldr r1, [sp, #8]
+    // lsl r0, r0, #0xc
+    // add r0, r1, r0
+    // str r0, [sp, #8]
+    // add r0, r5, #0
+    // add r1, sp, #0
+    // bl sub_02068DA8
+    // ldr r0, [r4, #0x28]
+    // mov r1, #9
+    // add r2, sp, #0
+    // bl ov01_021F1740
+    // str r0, [r4, #0x3c]
+    // mov r1, #2
+    // ldr r0, [r4, #0x30]
+    // lsl r1, r1, #8
+    // bl MapObject_TestFlagsBits
+    // cmp r0, #1
+    // bne _021FFA88
+    // ldr r0, [r4, #0x3c]
+    // mov r1, #0
+    // bl sub_02023EA4
+    // add r0, r5, #0
+    // bl sub_02068D90
+    // cmp r0, #0
+    // bne _021FFAA8
+    // mov r1, #3
+    // ldr r0, [r4, #0x3c]
+    // lsl r1, r1, #0xe
+    // bl sub_02023F1C
+    // ldr r0, [r4, #0x3c]
+    // mov r1, #0
+    // bl sub_02023F04
+    // mov r0, #2
+    // str r0, [r4]
+    // mov r0, #1
+    // add sp, #0xc
+    // pop {r3, r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021FFAB0(void) {
     sub_02023DA4();
 }
 
+
 void ov01_021FFABC(void) {
-    /* Original at 0x021FFABC */
-    /* Requires manual decompilation - 122 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, r4, r5, r6, r7, lr}\n    sub sp, #0x18\n    add r4, r1, #0\n    ldr r6, [r4, #0x30]\n    ldr r1, [r4, #4]\n    add r5, r0, #0\n    ldr r2, [r4, #8]\n    ldr r3, [r4, #0xc]\n    add r0, r6, #0\n    bl sub_0205F0F8\n    cmp r0, #0\n    bne _021FFAE0\n    add r0, r5, #0\n    bl ov01_021F1640\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #2\n    add r0, r6, #0\n    lsl r1, r1, #8\n    bl MapObject_TestFlagsBits\n    cmp r0, #1\n    ldr r0, [r4, #0x3c]\n    bne _021FFAF8\n    mov r1, #0\n    bl sub_02023EA4\n    b _021FFAFE\n    mov r1, #1\n    bl sub_02023EA4\n    ldr r0, [r4, #0x14]\n    cmp r0, #0\n    bne _021FFB36\n    add r0, r5, #0\n    add r1, sp, #0xc\n    bl sub_02068DB8\n    ldr r0, [r4, #0x18]\n    add r1, sp, #0\n    lsl r0, r0, #0x10\n    str r0, [sp]\n    ldr r0, [r4, #0x20]\n    lsl r0, r0, #0x10\n    str r0, [sp, #8]\n    ldr r0, [sp, #0x10]\n    str r0, [sp, #4]\n    ldr r0, [r4, #0x24]\n    bl sub_0206121C\n    str r0, [r4, #0x14]\n    cmp r0, #1\n    bne _021FFB36\n    ldr r0, [sp, #4]\n    add r1, sp, #0xc\n    str r0, [sp, #0x10]\n    add r0, r5, #0\n    bl sub_02068DA8\n    ldr r0, [r4]\n    cmp r0, #0\n    beq _021FFB48\n    cmp r0, #1\n    beq _021FFB6C\n    cmp r0, #2\n    beq _021FFB82\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #1\n    ldr r0, [r4, #0x3c]\n    lsl r1, r1, #0xc\n    bl sub_02023F04\n    ldr r0, [r4, #0x3c]\n    bl sub_02023F70\n    asr r1, r0, #0xb\n    lsr r1, r1, #0x14\n    add r1, r0, r1\n    asr r0, r1, #0xc\n    cmp r0, #0xc\n    blt _021FFBCE\n    mov r0, #1\n    add sp, #0x18\n    str r0, [r4]\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r1, #3\n    ldr r0, [r4, #0x3c]\n    lsl r1, r1, #0xe\n    bl sub_02023F1C\n    ldr r0, [r4, #0x3c]\n    mov r1, #0\n    bl sub_02023F04\n    mov r0, #2\n    str r0, [r4]\n    add r0, r6, #0\n    bl MapObject_GetXCoord\n    mov r1, #0x34\n    ldrsh r1, [r4, r1]\n    sub r7, r0, r1\n    add r0, r6, #0\n    bl MapObject_GetZCoord\n    mov r1, #0x36\n    ldrsh r1, [r4, r1]\n    sub r1, r0, r1\n    ldr r0, [r4, #0x18]\n    cmp r0, r7\n    bne _021FFBA6\n    ldr r0, [r4, #0x20]\n    cmp r0, r1\n    beq _021FFBB0\n    add r0, r5, #0\n    bl ov01_021F1640\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}\n    mov r0, #0x38\n    ldrsb r1, [r4, r0]\n    sub r0, #0x39\n    cmp r1, r0\n    beq _021FFBCE\n    add r0, r6, #0\n    bl MapObject_GetFacingDirection\n    mov r1, #0x38\n    ldrsb r1, [r4, r1]\n    cmp r1, r0\n    beq _021FFBCE\n    add r0, r5, #0\n    bl ov01_021F1640\n    add sp, #0x18\n    pop {r3, r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r3, r4, r5, r6, r7, lr}
+    // sub sp, #0x18
+    // add r4, r1, #0
+    // ldr r6, [r4, #0x30]
+    // ldr r1, [r4, #4]
+    // add r5, r0, #0
+    // ldr r2, [r4, #8]
+    // ldr r3, [r4, #0xc]
+    // add r0, r6, #0
+    // bl sub_0205F0F8
+    // cmp r0, #0
+    // bne _021FFAE0
+    // add r0, r5, #0
+    // bl ov01_021F1640
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r1, #2
+    // add r0, r6, #0
+    // lsl r1, r1, #8
+    // bl MapObject_TestFlagsBits
+    // cmp r0, #1
+    // ldr r0, [r4, #0x3c]
+    // bne _021FFAF8
+    // mov r1, #0
+    // bl sub_02023EA4
+    // b _021FFAFE
+    // mov r1, #1
+    // bl sub_02023EA4
+    // ldr r0, [r4, #0x14]
+    // cmp r0, #0
+    // bne _021FFB36
+    // add r0, r5, #0
+    // add r1, sp, #0xc
+    // bl sub_02068DB8
+    // ldr r0, [r4, #0x18]
+    // add r1, sp, #0
+    // lsl r0, r0, #0x10
+    // str r0, [sp]
+    // ldr r0, [r4, #0x20]
+    // lsl r0, r0, #0x10
+    // str r0, [sp, #8]
+    // ldr r0, [sp, #0x10]
+    // str r0, [sp, #4]
+    // ldr r0, [r4, #0x24]
+    // bl sub_0206121C
+    // str r0, [r4, #0x14]
+    // cmp r0, #1
+    // bne _021FFB36
+    // ldr r0, [sp, #4]
+    // add r1, sp, #0xc
+    // str r0, [sp, #0x10]
+    // add r0, r5, #0
+    // bl sub_02068DA8
+    // ldr r0, [r4]
+    // cmp r0, #0
+    // beq _021FFB48
+    // cmp r0, #1
+    // beq _021FFB6C
+    // cmp r0, #2
+    // beq _021FFB82
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r1, #1
+    // ldr r0, [r4, #0x3c]
+    // lsl r1, r1, #0xc
+    // bl sub_02023F04
+    // ldr r0, [r4, #0x3c]
+    // bl sub_02023F70
+    // asr r1, r0, #0xb
+    // lsr r1, r1, #0x14
+    // add r1, r0, r1
+    // asr r0, r1, #0xc
+    // cmp r0, #0xc
+    // blt _021FFBCE
+    // mov r0, #1
+    // add sp, #0x18
+    // str r0, [r4]
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r1, #3
+    // ldr r0, [r4, #0x3c]
+    // lsl r1, r1, #0xe
+    // bl sub_02023F1C
+    // ldr r0, [r4, #0x3c]
+    // mov r1, #0
+    // bl sub_02023F04
+    // mov r0, #2
+    // str r0, [r4]
+    // add r0, r6, #0
+    // bl MapObject_GetXCoord
+    // mov r1, #0x34
+    // ldrsh r1, [r4, r1]
+    // sub r7, r0, r1
+    // add r0, r6, #0
+    // bl MapObject_GetZCoord
+    // mov r1, #0x36
+    // ldrsh r1, [r4, r1]
+    // sub r1, r0, r1
+    // ldr r0, [r4, #0x18]
+    // cmp r0, r7
+    // bne _021FFBA6
+    // ldr r0, [r4, #0x20]
+    // cmp r0, r1
+    // beq _021FFBB0
+    // add r0, r5, #0
+    // bl ov01_021F1640
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // mov r0, #0x38
+    // ldrsb r1, [r4, r0]
+    // sub r0, #0x39
+    // cmp r1, r0
+    // beq _021FFBCE
+    // add r0, r6, #0
+    // bl MapObject_GetFacingDirection
+    // mov r1, #0x38
+    // ldrsb r1, [r4, r1]
+    // cmp r1, r0
+    // beq _021FFBCE
+    // add r0, r5, #0
+    // bl ov01_021F1640
+    // add sp, #0x18
+    // pop {r3, r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
 
+
 void ov01_021FFBD4(void) {
-    /* Original at 0x021FFBD4 */
-    /* Requires manual decompilation - 23 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, lr}\n    sub sp, #0xc\n    add r4, r1, #0\n    add r5, r0, #0\n    ldr r0, [r4, #0x30]\n    ldr r1, [r4, #4]\n    ldr r2, [r4, #8]\n    ldr r3, [r4, #0xc]\n    bl sub_0205F0F8\n    cmp r0, #0\n    bne _021FFBF6\n    add r0, r5, #0\n    bl ov01_021F1640\n    add sp, #0xc\n    pop {r4, r5, pc}\n    add r0, r5, #0\n    add r1, sp, #0\n    bl sub_02068DB8\n    ldr r0, [r4, #0x3c]\n    add r1, sp, #0\n    bl sub_02023E50\n    add sp, #0xc\n    pop {r4, r5, pc}"
-    );
-    #endif
+    // push {r4, r5, lr}
+    // sub sp, #0xc
+    // add r4, r1, #0
+    // add r5, r0, #0
+    // ldr r0, [r4, #0x30]
+    // ldr r1, [r4, #4]
+    // ldr r2, [r4, #8]
+    // ldr r3, [r4, #0xc]
+    // bl sub_0205F0F8
+    // cmp r0, #0
+    // bne _021FFBF6
+    // add r0, r5, #0
+    // bl ov01_021F1640
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // add r0, r5, #0
+    // add r1, sp, #0
+    // bl sub_02068DB8
+    // ldr r0, [r4, #0x3c]
+    // add r1, sp, #0
+    // bl sub_02023E50
+    // add sp, #0xc
+    // pop {r4, r5, pc}
+    // TODO: decompile
 }
+

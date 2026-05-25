@@ -6,78 +6,298 @@ void ov01_021EA8E0(void) {
     MIi_CpuClear32(0, r0, 0x48);
 }
 
+
 void ov01_021EA8FC(void) {
     Heap_FreeExplicit(0, 4);
 }
 
+
 void ov01_021EA910(void) {
-    /* Original at 0x021EA910 */
-    /* Requires manual decompilation - 75 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, r7, lr}\n    sub sp, #0xc\n    str r0, [sp, #8]\n    add r7, r1, #0\n    mov r4, #0\n    add r5, r0, #0\n    add r6, r0, #0\n    mov r0, #1\n    lsl r0, r4\n    tst r0, r7\n    beq _021EA938\n    mov r1, #0\n    mov r2, #2\n    mov r3, #4\n    ldrsh r1, [r5, r1]\n    ldrsh r2, [r5, r2]\n    ldrsh r3, [r5, r3]\n    add r0, r4, #0\n    bl NNS_G3dGlbLightVector\n    add r1, r4, #4\n    mov r0, #1\n    lsl r0, r1\n    tst r0, r7\n    beq _021EA94A\n    ldrh r1, [r6, #0x18]\n    add r0, r4, #0\n    bl NNS_G3dGlbLightColor\n    add r4, r4, #1\n    add r5, r5, #6\n    add r6, r6, #2\n    cmp r4, #4\n    blt _021EA91E\n    mov r0, #3\n    lsl r0, r0, #8\n    tst r0, r7\n    beq _021EA96C\n    ldr r0, [sp, #8]\n    ldr r1, [sp, #8]\n    ldr r2, [sp, #8]\n    ldrh r0, [r0, #0x20]\n    ldrh r1, [r1, #0x22]\n    ldr r2, [r2, #0x28]\n    bl NNS_G3dGlbMaterialColorDiffAmb\n    mov r0, #3\n    lsl r0, r0, #0xa\n    tst r0, r7\n    beq _021EA984\n    ldr r0, [sp, #8]\n    ldr r1, [sp, #8]\n    ldr r2, [sp, #8]\n    ldrh r0, [r0, #0x24]\n    ldrh r1, [r1, #0x26]\n    ldr r2, [r2, #0x2c]\n    bl NNS_G3dGlbMaterialColorSpecEmi\n    mov r0, #1\n    lsl r0, r0, #0xc\n    cmp r7, r0\n    blt _021EA9AC\n    ldr r0, [sp, #8]\n    ldr r1, [sp, #8]\n    ldr r0, [r0, #0x40]\n    ldr r2, [sp, #8]\n    str r0, [sp]\n    ldr r0, [sp, #8]\n    ldr r3, [sp, #8]\n    ldr r0, [r0, #0x44]\n    str r0, [sp, #4]\n    ldr r0, [sp, #8]\n    ldr r1, [r1, #0x34]\n    ldr r0, [r0, #0x30]\n    ldr r2, [r2, #0x38]\n    ldr r3, [r3, #0x3c]\n    bl NNS_G3dGlbPolygonAttr\n    add sp, #0xc\n    pop {r4, r5, r6, r7, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, r7, lr}
+    // sub sp, #0xc
+    // str r0, [sp, #8]
+    // add r7, r1, #0
+    // mov r4, #0
+    // add r5, r0, #0
+    // add r6, r0, #0
+    // mov r0, #1
+    // lsl r0, r4
+    // tst r0, r7
+    // beq _021EA938
+    // mov r1, #0
+    // mov r2, #2
+    // mov r3, #4
+    // ldrsh r1, [r5, r1]
+    // ldrsh r2, [r5, r2]
+    // ldrsh r3, [r5, r3]
+    // add r0, r4, #0
+    // bl NNS_G3dGlbLightVector
+    // add r1, r4, #4
+    // mov r0, #1
+    // lsl r0, r1
+    // tst r0, r7
+    // beq _021EA94A
+    // ldrh r1, [r6, #0x18]
+    // add r0, r4, #0
+    // bl NNS_G3dGlbLightColor
+    // add r4, r4, #1
+    // add r5, r5, #6
+    // add r6, r6, #2
+    // cmp r4, #4
+    // blt _021EA91E
+    // mov r0, #3
+    // lsl r0, r0, #8
+    // tst r0, r7
+    // beq _021EA96C
+    // ldr r0, [sp, #8]
+    // ldr r1, [sp, #8]
+    // ldr r2, [sp, #8]
+    // ldrh r0, [r0, #0x20]
+    // ldrh r1, [r1, #0x22]
+    // ldr r2, [r2, #0x28]
+    // bl NNS_G3dGlbMaterialColorDiffAmb
+    // mov r0, #3
+    // lsl r0, r0, #0xa
+    // tst r0, r7
+    // beq _021EA984
+    // ldr r0, [sp, #8]
+    // ldr r1, [sp, #8]
+    // ldr r2, [sp, #8]
+    // ldrh r0, [r0, #0x24]
+    // ldrh r1, [r1, #0x26]
+    // ldr r2, [r2, #0x2c]
+    // bl NNS_G3dGlbMaterialColorSpecEmi
+    // mov r0, #1
+    // lsl r0, r0, #0xc
+    // cmp r7, r0
+    // blt _021EA9AC
+    // ldr r0, [sp, #8]
+    // ldr r1, [sp, #8]
+    // ldr r0, [r0, #0x40]
+    // ldr r2, [sp, #8]
+    // str r0, [sp]
+    // ldr r0, [sp, #8]
+    // ldr r3, [sp, #8]
+    // ldr r0, [r0, #0x44]
+    // str r0, [sp, #4]
+    // ldr r0, [sp, #8]
+    // ldr r1, [r1, #0x34]
+    // ldr r0, [r0, #0x30]
+    // ldr r2, [r2, #0x38]
+    // ldr r3, [r3, #0x3c]
+    // bl NNS_G3dGlbPolygonAttr
+    // add sp, #0xc
+    // pop {r4, r5, r6, r7, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021EA9B0(void) {
-    /* Original at 0x021EA9B0 */
-    /* Requires manual decompilation - 118 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    mov r0, #1\n    add r4, r2, #0\n    lsl r0, r0, #8\n    add r6, r1, #0\n    tst r0, r4\n    beq _021EA9C8\n    ldrh r1, [r5, #0x20]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlDiffAll\n    mov r0, #2\n    lsl r0, r0, #8\n    tst r0, r4\n    beq _021EA9D8\n    ldrh r1, [r5, #0x22]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlAmbAll\n    mov r0, #1\n    lsl r0, r0, #0xa\n    tst r0, r4\n    beq _021EA9E8\n    ldrh r1, [r5, #0x24]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlSpecAll\n    mov r0, #2\n    lsl r0, r0, #0xa\n    tst r0, r4\n    beq _021EA9F8\n    ldrh r1, [r5, #0x26]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlEmiAll\n    mov r0, #1\n    lsl r0, r0, #0xc\n    tst r0, r4\n    beq _021EAA08\n    ldr r1, [r5, #0x30]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlLightEnableFlagAll\n    mov r0, #2\n    lsl r0, r0, #0xc\n    tst r0, r4\n    beq _021EAA18\n    ldr r1, [r5, #0x34]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlPolygonModeAll\n    mov r0, #1\n    lsl r0, r0, #0xe\n    tst r0, r4\n    beq _021EAA28\n    ldr r1, [r5, #0x38]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlCullModeAll\n    mov r0, #2\n    lsl r0, r0, #0xe\n    tst r0, r4\n    beq _021EAA38\n    ldr r1, [r5, #0x3c]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlPolygonIDAll\n    mov r0, #1\n    lsl r0, r0, #0x10\n    tst r0, r4\n    beq _021EAA48\n    ldr r1, [r5, #0x40]\n    add r0, r6, #0\n    bl NNS_G3dMdlSetMdlAlphaAll\n    mov r1, #2\n    lsl r1, r1, #0x10\n    add r0, r4, #0\n    tst r0, r1\n    beq _021EAA5E\n    ldr r2, [r5, #0x44]\n    lsr r1, r1, #2\n    add r0, r6, #0\n    and r1, r2\n    bl NNS_G3dMdlSetMdlFogEnableFlagAll\n    mov r1, #1\n    lsl r1, r1, #0x12\n    add r0, r4, #0\n    tst r0, r1\n    beq _021EAA74\n    ldr r2, [r5, #0x44]\n    lsr r1, r1, #4\n    add r0, r6, #0\n    and r1, r2\n    bl NNS_G3dMdlSetMdlDepthTestCondAll\n    mov r1, #2\n    lsl r1, r1, #0x12\n    add r0, r4, #0\n    tst r0, r1\n    beq _021EAA8A\n    ldr r2, [r5, #0x44]\n    lsr r1, r1, #6\n    add r0, r6, #0\n    and r1, r2\n    bl NNS_G3dMdlSetMdl1DotAll\n    mov r1, #1\n    lsl r1, r1, #0x14\n    add r0, r4, #0\n    tst r0, r1\n    beq _021EAAA0\n    ldr r2, [r5, #0x44]\n    lsr r1, r1, #8\n    add r0, r6, #0\n    and r1, r2\n    bl NNS_G3dMdlSetMdlFarClipAll\n    mov r1, #2\n    lsl r1, r1, #0x14\n    add r0, r4, #0\n    tst r0, r1\n    beq _021EAAB6\n    ldr r2, [r5, #0x44]\n    lsr r1, r1, #0xa\n    add r0, r6, #0\n    and r1, r2\n    bl NNS_G3dMdlSetMdlXLDepthUpdateAll\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // mov r0, #1
+    // add r4, r2, #0
+    // lsl r0, r0, #8
+    // add r6, r1, #0
+    // tst r0, r4
+    // beq _021EA9C8
+    // ldrh r1, [r5, #0x20]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlDiffAll
+    // mov r0, #2
+    // lsl r0, r0, #8
+    // tst r0, r4
+    // beq _021EA9D8
+    // ldrh r1, [r5, #0x22]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlAmbAll
+    // mov r0, #1
+    // lsl r0, r0, #0xa
+    // tst r0, r4
+    // beq _021EA9E8
+    // ldrh r1, [r5, #0x24]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlSpecAll
+    // mov r0, #2
+    // lsl r0, r0, #0xa
+    // tst r0, r4
+    // beq _021EA9F8
+    // ldrh r1, [r5, #0x26]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlEmiAll
+    // mov r0, #1
+    // lsl r0, r0, #0xc
+    // tst r0, r4
+    // beq _021EAA08
+    // ldr r1, [r5, #0x30]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlLightEnableFlagAll
+    // mov r0, #2
+    // lsl r0, r0, #0xc
+    // tst r0, r4
+    // beq _021EAA18
+    // ldr r1, [r5, #0x34]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlPolygonModeAll
+    // mov r0, #1
+    // lsl r0, r0, #0xe
+    // tst r0, r4
+    // beq _021EAA28
+    // ldr r1, [r5, #0x38]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlCullModeAll
+    // mov r0, #2
+    // lsl r0, r0, #0xe
+    // tst r0, r4
+    // beq _021EAA38
+    // ldr r1, [r5, #0x3c]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlPolygonIDAll
+    // mov r0, #1
+    // lsl r0, r0, #0x10
+    // tst r0, r4
+    // beq _021EAA48
+    // ldr r1, [r5, #0x40]
+    // add r0, r6, #0
+    // bl NNS_G3dMdlSetMdlAlphaAll
+    // mov r1, #2
+    // lsl r1, r1, #0x10
+    // add r0, r4, #0
+    // tst r0, r1
+    // beq _021EAA5E
+    // ldr r2, [r5, #0x44]
+    // lsr r1, r1, #2
+    // add r0, r6, #0
+    // and r1, r2
+    // bl NNS_G3dMdlSetMdlFogEnableFlagAll
+    // mov r1, #1
+    // lsl r1, r1, #0x12
+    // add r0, r4, #0
+    // tst r0, r1
+    // beq _021EAA74
+    // ldr r2, [r5, #0x44]
+    // lsr r1, r1, #4
+    // add r0, r6, #0
+    // and r1, r2
+    // bl NNS_G3dMdlSetMdlDepthTestCondAll
+    // mov r1, #2
+    // lsl r1, r1, #0x12
+    // add r0, r4, #0
+    // tst r0, r1
+    // beq _021EAA8A
+    // ldr r2, [r5, #0x44]
+    // lsr r1, r1, #6
+    // add r0, r6, #0
+    // and r1, r2
+    // bl NNS_G3dMdlSetMdl1DotAll
+    // mov r1, #1
+    // lsl r1, r1, #0x14
+    // add r0, r4, #0
+    // tst r0, r1
+    // beq _021EAAA0
+    // ldr r2, [r5, #0x44]
+    // lsr r1, r1, #8
+    // add r0, r6, #0
+    // and r1, r2
+    // bl NNS_G3dMdlSetMdlFarClipAll
+    // mov r1, #2
+    // lsl r1, r1, #0x14
+    // add r0, r4, #0
+    // tst r0, r1
+    // beq _021EAAB6
+    // ldr r2, [r5, #0x44]
+    // lsr r1, r1, #0xa
+    // add r0, r6, #0
+    // and r1, r2
+    // bl NNS_G3dMdlSetMdlXLDepthUpdateAll
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
 
+
 void ov01_021EAAB8(void) {
-    /* Original at 0x021EAAB8 */
-    /* Requires manual decompilation - 19 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r4, r5, r6, lr}\n    add r5, r0, #0\n    mov r0, #6\n    add r4, r1, #0\n    mul r4, r0\n    strh r2, [r5, r4]\n    add r2, r5, #2\n    strh r3, [r2, r4]\n    add r6, sp, #0\n    mov r0, #0x10\n    ldrsh r0, [r6, r0]\n    add r3, r5, #4\n    strh r0, [r3, r4]\n    add r0, r1, #0\n    ldrsh r1, [r5, r4]\n    ldrsh r2, [r2, r4]\n    ldrsh r3, [r3, r4]\n    bl NNS_G3dGlbLightVector\n    pop {r4, r5, r6, pc}"
-    );
-    #endif
+    // push {r4, r5, r6, lr}
+    // add r5, r0, #0
+    // mov r0, #6
+    // add r4, r1, #0
+    // mul r4, r0
+    // strh r2, [r5, r4]
+    // add r2, r5, #2
+    // strh r3, [r2, r4]
+    // add r6, sp, #0
+    // mov r0, #0x10
+    // ldrsh r0, [r6, r0]
+    // add r3, r5, #4
+    // strh r0, [r3, r4]
+    // add r0, r1, #0
+    // ldrsh r1, [r5, r4]
+    // ldrsh r2, [r2, r4]
+    // ldrsh r3, [r3, r4]
+    // bl NNS_G3dGlbLightVector
+    // pop {r4, r5, r6, pc}
+    // TODO: decompile
 }
+
 
 void ov01_021EAAE0(void) {
     NNS_G3dGlbLightColor();
 }
 
+
 void ov01_021EAAF4(void) {
     ov01_021EA910(1);
 }
+
 
 void ov01_021EAB08(void) {
     ov01_021EA910(2);
 }
 
+
 void ov01_021EAB1C(void) {
     ov01_021EA910(1);
 }
+
 
 void ov01_021EAB30(void) {
     ov01_021EA910(2);
 }
 
+
 void ov01_021EAB44(void) {
     ov01_021EA910(2);
 }
+
 
 void ov01_021EAB58(void) {
     ov01_021EA910(1);
 }
 
+
 void ov01_021EAB6C(void) {
     ov01_021EA910(1);
 }
 
+
 void ov01_021EAB80(void) {
-    /* Original at 0x021EAB80 */
-    /* Requires manual decompilation - 18 instructions */
-    #ifdef MWERKS
-    asm(
-        "push {r3, lr}\n    cmp r2, #1\n    ldr r2, [r0, #0x44]\n    bne _021EAB8E\n    tst r2, r1\n    beq _021EAB92\n    pop {r3, pc}\n    tst r2, r1\n    beq _021EABA4\n    ldr r2, [r0, #0x44]\n    eor r1, r2\n    str r1, [r0, #0x44]\n    cmp r3, #1\n    bne _021EABA4\n    mov r1, #1\n    lsl r1, r1, #0xc\n    bl ov01_021EA910\n    pop {r3, pc}"
-    );
-    #endif
+    // push {r3, lr}
+    // cmp r2, #1
+    // ldr r2, [r0, #0x44]
+    // bne _021EAB8E
+    // tst r2, r1
+    // beq _021EAB92
+    // pop {r3, pc}
+    // tst r2, r1
+    // beq _021EABA4
+    // ldr r2, [r0, #0x44]
+    // eor r1, r2
+    // str r1, [r0, #0x44]
+    // cmp r3, #1
+    // bne _021EABA4
+    // mov r1, #1
+    // lsl r1, r1, #0xc
+    // bl ov01_021EA910
+    // pop {r3, pc}
+    // TODO: decompile
 }
+
