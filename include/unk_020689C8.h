@@ -42,7 +42,7 @@ void sub_02068D78(void *entity, void *src);
 void sub_02068D8C(void *entity, u32 value);
 u32 sub_02068D90(void *entity);
 void sub_02068D94(void *entity, u32 value);
-u32 sub_02068D98(void *entity);
+void *sub_02068D98(void *entity);
 void sub_02068D9C(void *entity, u32 value);
 u32 sub_02068DA0(void *entity);
 void sub_02068DA4(void *entity, u32 value);

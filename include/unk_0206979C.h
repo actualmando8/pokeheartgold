@@ -36,7 +36,7 @@ void sub_020698D0(AnmCtrl *ctrl);
 BOOL sub_020698E8(AnmCtrl *ctrl, s32 frames, BOOL loop);
 BOOL sub_02069948(AnmCtrl *ctrl);
 void sub_02069964(RenderObjWrapper *wrapper, NNSG3dResMdl *mdl);
-void sub_02069978(RenderObjWrapper *wrapper, NNSG3dResMdl *mdl);
+void sub_02069978(void *wrapper, void *mdl);
 void sub_02069984(NNSG3dRenderObj *obj, NNSG3dAnmObj *anmObj);
 void sub_0206998C(RenderObjWrapper *wrapper, NNSG3dAnmObj *anmObj);
 void sub_02069998(RenderObjWrapper *wrapper, NNSG3dResMdl *mdl, NNSG3dAnmObj *anmObj);

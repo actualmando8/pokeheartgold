@@ -12,7 +12,18 @@ typedef struct {
     u8 unk10[4];
 } UnkOv01_021FFECC_sub;
 
-typedef struct {
+/* Forward declaration */
+struct UnkOv01_021FFECC;
+
+typedef struct UnkOv01_021FFF5C {
+    int unk0;
+    FieldSystem *unk4;
+    struct UnkOv01_021FFECC *unk8;
+    LocalMapObject *unkC;
+    NNSG3dRenderObj *unk10;
+} UnkOv01_021FFF5C;
+
+typedef struct UnkOv01_021FFECC {
     void *unk0;
     UnkOv01_021FFECC_sub unk4[4];
     NNSG3dRenderObj unk54[4];
@@ -23,20 +34,9 @@ typedef struct {
     u32 unk4;      /* spriteId */
     u32 unk8;      /* objectID */
     u32 unkC;      /* mapID */
-    u32 unk10;     /* targetX << 16 */
-    u32 unk14;     /* result of sub_0206121C (0 or 1) */
-    u32 unk18;     /* padding or priority */
-    u32 unk1C;     /* task pointer */
-    u32 unk20;     /* targetY << 16 */
-    u32 unk24;     /* arg to sub_0206121C */
-    u32 unk28;     /* config handle */
-    u8 unk2C[4];
-    LocalMapObject *unk30; /* map object */
-    s16 unk34;     /* saved X */
-    s16 unk36;     /* saved Z */
-    s8 unk38;      /* facing direction */
-    u8 unk39[3];
-    u32 unk3C;     /* sprite handle */
+    UnkOv01_021FFF5C unk10;  /* embedded struct at offset 0x10 */
+    u32 localMapObjectId;    /* was unk50 */
+    u32 mapId;               /* was unk54 */
 } UnkOv01_021FFFCD;
 
 typedef BOOL (*UnkOv01_02209280_Cb1)(void *, UnkOv01_021FFFCD *);
@@ -49,14 +49,6 @@ typedef struct {
     UnkOv01_02209280_Cb2 unkC;
     UnkOv01_02209280_Cb2 unk10;
 } UnkOv01_02209280;
-
-typedef struct {
-    int unk0;
-    FieldSystem *unk4;
-    UnkOv01_021FFECC *unk8;
-    LocalMapObject *unkC;
-    NNSG3dRenderObj *unk10;
-} UnkOv01_021FFF5C;
 
 UnkOv01_021FFECC *ov01_021F1430(void *a0, int a1, int a2, int a3);
 FieldSystem *ov01_021F146C(LocalMapObject *mapObject);
