@@ -2,14 +2,13 @@
 #include "global.h"
 
 void sub_02087A78(void) {
-    OverlayManager_GetArgs();
 }
+
 
 
 void sub_02087A84(void) {
-    *(u32*)r0 = r1;
-    ((u32*)r0)[4] = r2;
 }
+
 
 
 void sub_02087A8C(void) {
@@ -72,104 +71,65 @@ void sub_02087A8C(void) {
 }
 
 
+
 void sub_02087B10(void) {
-    sub_02087A8C();
 }
+
 
 
 void sub_02087B1C(void) {
-    sub_02087A8C();
 }
+
 
 
 void sub_02087B28(void) {
-    sub_02087A8C();
 }
+
 
 
 void sub_02087B34(void) {
-    sub_02087A8C();
 }
+
 
 
 void sub_02087B40(void) {
-    sub_02087A8C();
 }
+
 
 
 void sub_02087B4C(void) {
-    sub_02087A8C();
 }
+
 
 
 void sub_02087B58(void) {
-    sub_02087A8C();
 }
 
 
-void sub_02087B64(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // bl OverlayManager_GetData
-    // ldr r1, [r5]
-    // add r4, r0, #0
-    // cmp r1, #0
-    // beq _02087B7A
-    // cmp r1, #1
-    // beq _02087B98
-    // b _02087BA8
-    // mov r1, #0x7e
-    // bl sub_02087BE8
-    // cmp r0, #0
-    // beq _02087BA8
-    // ldr r0, [r4, #0x18]
-    // cmp r0, #1
-    // bne _02087B94
-    // mov r0, #1
-    // str r0, [r5]
-    // mov r0, #0
-    // str r0, [r4]
-    // b _02087BA8
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r1, #0x7e
-    // bl sub_02087C38
-    // cmp r0, #0
-    // beq _02087BA8
-    // mov r0, #0
+
+u32 sub_02087B64(void) {
+    OverlayManager_GetData();
+    sub_02087BE8(0x7e);
     // str r0, [r5]
     // str r0, [r4]
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02087C38(1, 0x7e);
+    // str r0, [r5]
+    // str r0, [r4]
 }
 
 
-void sub_02087BAC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl OverlayManager_GetData
-    // add r4, r0, #0
-    // bl sub_0202FC48
-    // cmp r0, #1
-    // bne _02087BC2
-    // bl sub_0202FC24
-    // ldr r0, [r4, #0x14]
-    // bl Heap_Free
-    // add r0, r5, #0
-    // bl OverlayManager_FreeData
-    // mov r0, #1
-    // mov r1, #0x7f
-    // bl GF_SndHandleSetPlayerVolume
-    // mov r0, #7
-    // mov r1, #0x7f
-    // bl GF_SndHandleSetPlayerVolume
-    // mov r0, #0x7e
-    // bl Heap_Destroy
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+
+u32 sub_02087BAC(void) {
+    OverlayManager_GetData();
+    sub_0202FC48();
+    sub_0202FC24();
+    Heap_Free(*((u32*)(r4 + 0x14)));
+    OverlayManager_FreeData(r5);
+    GF_SndHandleSetPlayerVolume(1, 0x7f);
+    GF_SndHandleSetPlayerVolume(7, 0x7f);
+    Heap_Destroy(0x7e);
 }
+
 
 
 void sub_02087BE8(void) {
@@ -209,6 +169,7 @@ void sub_02087BE8(void) {
     // _02087C34: .word _021028C4
     // TODO: decompile
 }
+
 
 
 void sub_02087C38(void) {
@@ -412,6 +373,7 @@ void sub_02087C38(void) {
 }
 
 
+
 void sub_02087E10(void) {
     // lsl r1, r0, #2
     // ldr r0, _02087E18 ; =_02110594
@@ -422,18 +384,13 @@ void sub_02087E10(void) {
 }
 
 
-void sub_02087E1C(void) {
-    // push {r3, lr}
-    // mov r1, #0x83
-    // lsl r1, r1, #4
+
+u32 sub_02087E1C(void) {
     // ldr r0, [r0, r1]
-    // bl Save_VarsFlags_Get
-    // mov r1, #2
-    // mov r2, #0x1b
-    // bl Save_VarsFlags_FlypointFlagAction
-    // pop {r3, pc}
-    // TODO: decompile
+    Save_VarsFlags_Get((0x83 << 4));
+    Save_VarsFlags_FlypointFlagAction(2, 0x1b);
 }
+
 
 
 void sub_02087E34(void) {
@@ -468,4 +425,5 @@ void sub_02087E34(void) {
     // _02087E6C: .word _021028A0
     // TODO: decompile
 }
+
 

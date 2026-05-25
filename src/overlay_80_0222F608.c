@@ -2,49 +2,24 @@
 #include "global.h"
 
 void FrtCmd_092(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // bl FrontierScript_ReadVar
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
-    // add r6, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // lsl r2, r4, #0x18
-    // lsl r3, r6, #0x18
-    // ldr r0, [r0, #8]
-    // add r1, r7, #0
-    // lsr r2, r2, #0x18
-    // lsr r3, r3, #0x18
-    // bl ov80_0222FD08
-    // add r1, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_SetData
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FrontierScript_ReadVar();
+    FrontierScript_ReadVar(r5);
+    FrontierScript_ReadVar(r5);
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r5)));
+    ov80_0222FD08(*((u32*)(r0 + 8)), r7, ((r4 << 0x18) >> 0x18), ((r6 << 0x18) >> 0x18));
+    Frontier_SetData(*((u32*)*((u32*)r5)), r0);
 }
+
 
 
 u32 FrtCmd_093(void) {
-    FrontierScript_ReadVar();
-    Frontier_GetData();
-    ov80_0222FEEC(r4);
-    return 0;
 }
+
 
 
 u32 FrtCmd_094(void) {
-    Frontier_GetData();
-    ov80_02230424();
-    return 0;
 }
+
 
 
 void FrtCmd_095(void) {
@@ -96,6 +71,7 @@ void FrtCmd_095(void) {
 }
 
 
+
 void FrtCmd_096(void) {
     // push {r3, r4, r5, lr}
     // ldr r0, [r0]
@@ -115,6 +91,7 @@ void FrtCmd_096(void) {
     // _0222F704: .word 0x000004FC
     // TODO: decompile
 }
+
 
 
 void FrtCmd_097(void) {
@@ -148,6 +125,7 @@ void FrtCmd_097(void) {
     // _0222F748: .word gOverlayTemplate_Battle
     // TODO: decompile
 }
+
 
 
 void FrtCmd_098(void) {
@@ -210,38 +188,30 @@ void FrtCmd_098(void) {
 }
 
 
+
 void ov80_0222F7CC(void) {
-    ov80_02230460(*((u32*)(r0 + 0x1c)), r0);
-    Heap_Free(r4);
 }
+
 
 
 u32 FrtCmd_099(void) {
-    Frontier_GetData();
-    ov80_022307F0();
-    return 0;
 }
+
 
 
 u32 FrtCmd_100(void) {
-    Frontier_GetData();
-    ov80_022308C4();
-    return 0;
 }
+
 
 
 u32 FrtCmd_101(void) {
-    Frontier_GetData();
-    ov80_022309F8();
-    return 0;
 }
+
 
 
 u32 FrtCmd_102(void) {
-    Frontier_GetData();
-    ov80_02230A60();
-    return 0;
 }
+
 
 
 void FrtCmd_103(void) {
@@ -651,44 +621,23 @@ void FrtCmd_103(void) {
 }
 
 
+
 void ov80_0222FC08(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // ldr r0, [r4]
-    // mov r1, #2
-    // bl Bg_GetYpos
-    // cmp r0, #0xff
-    // ldr r0, [r4]
-    // blt _0222FC26
-    // mov r1, #2
-    // mov r2, #3
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // pop {r4, pc}
-    // mov r1, #2
-    // mov r2, #4
-    // mov r3, #1
-    // bl ScheduleSetBgPosText
-    // pop {r4, pc}
-    // TODO: decompile
+    Bg_GetYpos(*((u32*)r1), 2);
+    ScheduleSetBgPosText(*((u32*)r4), 2, 3, 0);
+    ScheduleSetBgPosText(2, 4, 1);
 }
+
 
 
 u32 FrtCmd_104(void) {
-    FrontierScript_ReadVarPtr();
-    Frontier_GetData();
-    return 0;
 }
+
 
 
 u32 FrtCmd_105(void) {
-    FrontierScript_ReadVar();
-    FrontierScript_ReadVar(r5);
-    FrontierScript_ReadVarPtr(r5);
-    Frontier_GetData();
-    ov80_02230AF8(r6, r7);
-    return 1;
 }
+
 
 
 void FrtCmd_106(void) {
@@ -707,6 +656,7 @@ void FrtCmd_106(void) {
     // _0222FC9C: .word ov80_0222FCA0
     // TODO: decompile
 }
+
 
 
 void ov80_0222FCA0(void) {
@@ -735,32 +685,16 @@ void ov80_0222FCA0(void) {
 }
 
 
+
 void FrtCmd_107(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // ldr r1, [r5, #0x1c]
-    // add r0, r1, #1
-    // str r0, [r5, #0x1c]
-    // ldr r0, [r5]
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r0)));
+    *((u32*)(r5 + 0x1c)) = (*((u32*)(r5 + 0x1c)) + 1);
     // ldrb r4, [r1]
-    // ldr r0, [r0]
-    // bl Frontier_GetData
-    // add r2, r0, #0
-    // bne _0222FCF4
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // lsl r1, r4, #4
+    Frontier_GetData(*((u32*)*((u32*)r5)), *((u32*)(r5 + 0x1c)));
     // add r1, r4, r1
     // add r2, #0x4c
-    // lsl r1, r1, #4
-    // add r0, r5, #0
     // add r1, r2, r1
-    // bl ov80_0222F44C
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov80_0222F44C(r5, ((r4 << 4) << 4), r0);
 }
+
 

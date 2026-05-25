@@ -153,31 +153,13 @@ void ov01_021EDAFC(void) {
 }
 
 
+
 void ov01_021EDC28(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r7, r1, #0
-    // mov r1, #0x2e
-    // add r6, r0, #0
-    // mov r0, #4
-    // lsl r1, r1, #4
     // str r2, [sp, #0x18]
-    // add r5, r3, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _021EDC48
-    // add sp, #0x1c
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // mov r2, #0x2e
-    // mov r1, #0
-    // lsl r2, r2, #4
-    // bl memset
+    Heap_Alloc(4, (0x2e << 4));
+    memset(0, 0, (0x2e << 4));
     // str r5, [sp]
     // add r0, sp, #0x20
-    // ldrb r0, [r0, #0x10]
-    // add r1, r4, #0
-    // add r2, r7, #0
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x34]
     // str r0, [sp, #8]
@@ -188,18 +170,14 @@ void ov01_021EDC28(void) {
     // ldr r0, [sp, #0x40]
     // str r0, [sp, #0x14]
     // ldr r3, [sp, #0x18]
-    // add r0, r6, #0
-    // bl ov01_021EDAFC
-    // add r0, r4, #0
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov01_021EDAFC(r6, r4, r7);
 }
+
 
 
 void ov01_021EDC7C(void) {
-    ov01_021EDD68();
 }
+
 
 
 void ov01_021EDC84(void) {
@@ -312,157 +290,85 @@ void ov01_021EDC84(void) {
 }
 
 
+
 void ov01_021EDD68(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // mov r0, #0x50
-    // mov r1, #4
-    // add r6, r2, #0
-    // bl String_New
-    // add r4, r0, #0
-    // add r0, r5, #0
+    String_New(0x50, 4);
     // add r0, #0x8c
-    // ldr r0, [r0]
-    // add r1, r7, #0
-    // add r2, r4, #0
-    // bl ReadMsgDataIntoString
-    // add r1, r5, #0
+    ReadMsgDataIntoString(*((u32*)r5), r7, r0);
     // add r1, #0x9b
     // ldrb r1, [r1]
-    // add r0, r5, #0
     // add r0, #0x90
-    // lsl r1, r1, #2
     // add r1, r5, r1
-    // ldr r0, [r0]
-    // ldr r1, [r1, #0x1c]
-    // add r2, r4, #0
-    // bl StringExpandPlaceholders
-    // add r0, r5, #0
+    StringExpandPlaceholders(*((u32*)r5), *((u32*)((r5 << 2) + 0x1c)), r4);
     // add r0, #0x9b
     // ldrb r2, [r0]
-    // lsl r0, r2, #2
     // add r0, r5, r0
-    // ldr r1, [r0, #0x1c]
-    // lsl r0, r2, #3
     // add r0, r5, r0
     // add r0, #0xbc
     // str r1, [r0]
-    // add r0, r4, #0
-    // bl String_Delete
-    // add r0, r5, #0
+    String_Delete(r4, *((u32*)((r2 << 2) + 0x1c)));
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // lsl r0, r0, #3
     // add r0, r5, r0
     // add r0, #0xc0
     // str r6, [r0]
-    // add r0, r5, #0
     // add r0, #0x9b
     // ldrb r0, [r0]
     // add r5, #0x9b
-    // add r0, r0, #1
     // strb r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021EDDD8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // mov r6, #0
-    // add r4, r6, #0
-    // cmp r0, #0
-    // ble _021EDE10
-    // add r5, r7, #0
-    // add r0, r5, #0
     // add r0, #0xbc
-    // ldr r1, [r0]
-    // cmp r1, #0
-    // beq _021EDE10
-    // mov r0, #0
-    // add r2, r0, #0
-    // bl FontID_String_GetWidth
-    // cmp r6, r0
-    // bhs _021EDE02
-    // add r6, r0, #0
-    // add r0, r7, #0
+    FontID_String_GetWidth(0, *((u32*)r0), 0);
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // add r4, r4, #1
     // add r5, #8
-    // cmp r4, r0
-    // blt _021EDDEA
     // add r6, #0xc
-    // add r0, r6, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021EDE18(void) {
-    // add r2, r0, #0
-    // add r1, r0, #0
     // add r2, #0xbc
     // add r1, #0xac
     // str r2, [r1]
-    // add r2, r0, #0
-    // add r1, r0, #0
     // add r2, #8
     // add r1, #0xb0
     // str r2, [r1]
-    // add r1, r0, #0
-    // mov r2, #0
     // add r1, #0xb4
     // strb r2, [r1]
-    // add r1, r0, #0
-    // mov r2, #1
     // add r1, #0xb5
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x9b
     // ldrb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0xb6
     // strb r2, [r1]
-    // add r2, r0, #0
     // add r2, #0xb7
     // ldrb r3, [r2]
-    // mov r2, #0xf
-    // add r1, r0, #0
     // bic r3, r2
-    // add r2, r0, #0
     // add r2, #0xb7
     // strb r3, [r2]
-    // add r2, r0, #0
     // add r2, #0xb7
     // ldrb r3, [r2]
-    // mov r2, #0x30
     // add r1, #0xb7
     // bic r3, r2
-    // add r2, r0, #0
     // add r2, #0xb7
     // strb r3, [r2]
     // add r0, #0x9b
     // ldrb r0, [r0]
     // ldrb r2, [r1]
-    // cmp r0, #4
-    // blo _021EDE82
-    // mov r0, #0xc0
     // bic r2, r0
-    // mov r0, #0x40
     // orr r0, r2
     // strb r0, [r1]
-    // bx lr
-    // mov r0, #0xc0
     // bic r2, r0
     // strb r2, [r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021EDE8C(void) {
@@ -523,33 +429,16 @@ void ov01_021EDE8C(void) {
 }
 
 
+
 void ov01_021EDF00(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x1c]
-    // bl String_Delete
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #0x1c
-    // blt _021EDF08
-    // add r0, r6, #0
+    String_Delete(*((u32*)(r0 + 0x1c)));
     // add r0, #0x97
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1e
-    // lsr r0, r0, #0x1f
-    // cmp r0, #1
-    // bne _021EDF2E
-    // add r0, r6, #0
     // add r0, #0x8c
-    // ldr r0, [r0]
-    // bl DestroyMsgData
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    DestroyMsgData(*((u32*)r6));
+    Heap_Free(r6);
 }
+
 
 
 void ov01_021EDF38(void) {
@@ -582,77 +471,49 @@ void ov01_021EDF38(void) {
 }
 
 
+
 void ov01_021EDF78(void) {
-    ov01_021EDC28();
 }
+
 
 
 void MoveTutorMenu_SetListItem(void) {
-    MoveTutorMenu_SetListItem_Internal();
 }
+
 
 
 void ov01_021EDFA4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl ov01_021EE2E4
-    // mov r1, #7
+    ov01_021EE2E4();
     // tst r1, r0
-    // bne _021EDFB6
-    // lsr r1, r0, #3
-    // b _021EDFBA
-    // lsr r0, r0, #3
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x97
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x19
-    // lsr r0, r0, #0x1f
-    // beq _021EDFD4
-    // add r0, r4, #0
     // add r0, #0x98
     // ldrb r0, [r0]
     // sub r2, r0, r1
-    // add r0, r4, #0
     // add r0, #0x98
     // strb r2, [r0]
-    // add r0, r4, #0
     // add r0, #0x97
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x1f
-    // beq _021EE00A
-    // add r0, r4, #0
     // add r0, #0x9b
     // ldrb r3, [r0]
-    // cmp r3, #8
-    // bls _021EDFFA
-    // add r0, r4, #0
     // add r0, #0x99
     // ldrb r2, [r0]
-    // add r0, r4, #0
     // add r0, #0x99
     // sub r2, #0x10
     // strb r2, [r0]
-    // b _021EE00A
-    // add r0, r4, #0
     // add r0, #0x99
     // ldrb r2, [r0]
-    // lsl r0, r3, #1
     // sub r2, r2, r0
-    // add r0, r4, #0
     // add r0, #0x99
     // strb r2, [r0]
-    // add r0, r4, #0
-    // bl ov01_021EE01C
-    // pop {r4, pc}
-    // TODO: decompile
+    ov01_021EE01C(r4, ((r0 >> 3) + 1));
 }
+
 
 
 void ov01_021EE014(void) {
-    ov01_021EE01C();
 }
+
 
 
 void ov01_021EE01C(void) {
@@ -752,6 +613,7 @@ void ov01_021EE01C(void) {
     // _021EE0E8: .word ov01_021EE49C
     // TODO: decompile
 }
+
 
 
 void ov01_021EE0EC(void) {
@@ -920,119 +782,56 @@ void ov01_021EE0EC(void) {
 }
 
 
+
 void MoveTutorMenu_SetListItem_Internal(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
     // str r1, [sp]
-    // mov r0, #0x50
-    // mov r1, #4
-    // add r7, r2, #0
-    // add r4, r3, #0
-    // bl String_New
-    // add r6, r0, #0
-    // add r0, r5, #0
+    String_New(0x50, 4);
     // add r0, #0x8c
-    // ldr r0, [r0]
     // ldr r1, [sp]
-    // add r2, r6, #0
-    // bl ReadMsgDataIntoString
-    // add r1, r5, #0
+    ReadMsgDataIntoString(*((u32*)r5), r0);
     // add r1, #0x9b
     // ldrb r1, [r1]
-    // add r0, r5, #0
     // add r0, #0x90
-    // lsl r1, r1, #2
     // add r1, r5, r1
-    // ldr r0, [r0]
-    // ldr r1, [r1, #0x1c]
-    // add r2, r6, #0
-    // bl StringExpandPlaceholders
-    // add r0, r5, #0
+    StringExpandPlaceholders(*((u32*)r5), *((u32*)((r5 << 2) + 0x1c)), r6);
     // add r0, #0x9b
     // ldrb r1, [r0]
-    // lsl r0, r1, #2
     // add r0, r5, r0
-    // lsl r1, r1, #3
     // add r2, r5, r1
-    // mov r1, #0x71
-    // ldr r0, [r0, #0x1c]
-    // lsl r1, r1, #2
     // str r0, [r2, r1]
-    // add r0, r6, #0
-    // bl String_Delete
-    // cmp r4, #0xfa
-    // bne _021EE2B4
-    // add r0, r5, #0
+    String_Delete(r6, (0x71 << 2));
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // mov r2, #2
     // mvn r2, r2
-    // lsl r0, r0, #3
     // add r1, r5, r0
-    // mov r0, #0x72
-    // lsl r0, r0, #2
     // str r2, [r1, r0]
-    // b _021EE2C4
-    // add r0, r5, #0
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // lsl r0, r0, #3
     // add r1, r5, r0
-    // mov r0, #0x72
-    // lsl r0, r0, #2
     // str r4, [r1, r0]
-    // add r0, r5, #0
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // lsl r0, r0, #1
     // add r1, r5, r0
-    // mov r0, #0xa9
-    // lsl r0, r0, #2
     // strh r7, [r1, r0]
-    // add r0, r5, #0
     // add r0, #0x9b
     // ldrb r0, [r0]
     // add r5, #0x9b
-    // add r0, r0, #1
     // strb r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021EE2E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // mov r6, #0
-    // add r4, r6, #0
-    // cmp r0, #0
-    // ble _021EE31C
-    // add r5, r7, #0
-    // mov r0, #0x71
-    // lsl r0, r0, #2
     // ldr r1, [r5, r0]
-    // cmp r1, #0
-    // beq _021EE31C
-    // mov r0, #0
-    // add r2, r0, #0
-    // bl FontID_String_GetWidth
-    // cmp r6, r0
-    // bhs _021EE30E
-    // add r6, r0, #0
-    // add r0, r7, #0
+    FontID_String_GetWidth(0, 0);
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // add r4, r4, #1
     // add r5, #8
-    // cmp r4, r0
-    // blt _021EE2F6
     // add r6, #0xc
-    // add r0, r6, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021EE324(void) {
@@ -1171,61 +970,33 @@ void ov01_021EE324(void) {
 }
 
 
+
 void ov01_021EE434(void) {
-    // push {r3, lr}
-    // mov r2, #2
     // mvn r2, r2
-    // cmp r1, r2
-    // bne _021EE44A
-    // mov r1, #3
-    // mov r2, #0xf
-    // mov r3, #4
-    // bl ListMenuOverrideSetColors
-    // pop {r3, pc}
-    // mov r1, #1
-    // mov r2, #0xf
-    // mov r3, #2
-    // bl ListMenuOverrideSetColors
-    // pop {r3, pc}
-    // TODO: decompile
+    ListMenuOverrideSetColors(3, 0xf, 4);
+    ListMenuOverrideSetColors(1, 0xf, 2);
 }
+
 
 
 void ov01_021EE458(void) {
-    // push {r3, r4, r5, lr}
-    // mov r2, #0
     // add r1, sp, #0
-    // strh r2, [r1, #2]
+    *((u16*)(r1 + 2)) = 0;
     // strh r2, [r1]
-    // mov r1, #0x13
-    // add r5, r0, #0
-    // bl ListMenuGetTemplateField
+    ListMenuGetTemplateField(0x13, 0);
     // add r1, sp, #0
-    // add r4, r0, #0
-    // add r0, r5, #0
     // add r1, #2
     // add r2, sp, #0
-    // bl ListMenuGetScrollAndRow
-    // add r0, r4, #0
+    ListMenuGetScrollAndRow(r5);
     // add r0, #0xa4
-    // ldr r2, [r0]
-    // cmp r2, #0
-    // beq _021EE49A
-    // add r0, r4, #0
     // add r0, #0xa8
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _021EE49A
     // add r0, sp, #0
-    // ldrh r1, [r0, #2]
     // add r4, #0xa8
     // strh r1, [r2]
     // ldrh r1, [r0]
-    // ldr r0, [r4]
     // strh r1, [r0]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021EE49C(void) {
@@ -1323,6 +1094,7 @@ void ov01_021EE49C(void) {
 }
 
 
+
 void ov01_021EE568(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -1371,51 +1143,25 @@ void ov01_021EE568(void) {
 }
 
 
+
 void ov01_021EE5D0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
     // str r1, [sp, #0xc]
-    // mov r0, #0x5a
-    // mov r1, #4
-    // add r7, r2, #0
-    // bl String_New
-    // add r4, r0, #0
-    // mov r0, #0x5a
-    // mov r1, #4
-    // bl String_New
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x18]
-    // mov r1, #0xf
-    // bl FillWindowPixelBuffer
-    // add r0, r5, #0
+    String_New(0x5a, 4);
+    String_New(0x5a, 4);
+    FillWindowPixelBuffer(*((u32*)(r5 + 0x18)), 0xf);
     // add r0, #0x8c
-    // ldr r0, [r0]
     // ldr r1, [sp, #0xc]
-    // add r2, r4, #0
-    // bl ReadMsgDataIntoString
-    // add r0, r5, #0
+    ReadMsgDataIntoString(*((u32*)r5), r4);
     // add r0, #0x90
-    // ldr r0, [r0]
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl StringExpandPlaceholders
-    // mov r3, #0
+    StringExpandPlaceholders(*((u32*)r5), r6, r4);
     // str r3, [sp]
     // str r7, [sp, #4]
     // str r3, [sp, #8]
-    // ldr r0, [r5, #0x18]
-    // mov r1, #1
-    // add r2, r6, #0
-    // bl AddTextPrinterParameterized
-    // add r0, r4, #0
-    // bl String_Delete
-    // add r0, r6, #0
-    // bl String_Delete
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    AddTextPrinterParameterized(*((u32*)(r5 + 0x18)), 1, r6, 0);
+    String_Delete(r4);
+    String_Delete(r6);
 }
+
 
 
 void ov01_021EE634(void) {
@@ -1442,6 +1188,7 @@ void ov01_021EE634(void) {
     // _021EE660: .word 0x000001C2
     // TODO: decompile
 }
+
 
 
 void PrintCurFloorInNewWindow(void) {
@@ -1556,51 +1303,27 @@ void PrintCurFloorInNewWindow(void) {
 }
 
 
+
 void ov01_021EE754(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
     // str r1, [sp, #0xc]
-    // add r5, r0, #0
-    // mov r0, #0x5a
-    // mov r1, #4
     // str r2, [sp, #0x10]
-    // add r7, r3, #0
-    // bl String_New
-    // add r4, r0, #0
-    // mov r0, #0x5a
-    // mov r1, #4
-    // bl String_New
-    // add r6, r0, #0
-    // add r0, r5, #0
+    String_New(0x5a, 4);
+    String_New(0x5a, 4);
     // add r0, #0x8c
-    // ldr r0, [r0]
     // ldr r1, [sp, #0xc]
-    // add r2, r4, #0
-    // bl ReadMsgDataIntoString
-    // add r0, r5, #0
+    ReadMsgDataIntoString(*((u32*)r5), r4);
     // add r0, #0x90
-    // ldr r0, [r0]
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl StringExpandPlaceholders
+    StringExpandPlaceholders(*((u32*)r5), r6, r4);
     // str r7, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r1, #0
     // str r1, [sp, #8]
     // add r5, #8
     // ldr r3, [sp, #0x10]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // bl AddTextPrinterParameterized
-    // add r0, r4, #0
-    // bl String_Delete
-    // add r0, r6, #0
-    // bl String_Delete
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    AddTextPrinterParameterized(r5, 0, r6);
+    String_Delete(r4);
+    String_Delete(r6);
 }
+
 
 
 void ov01_021EE7B8(void) {
@@ -1649,6 +1372,7 @@ void ov01_021EE7B8(void) {
     // _021EE818: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void MapNumToFloorNo(void) {
@@ -1782,6 +1506,7 @@ void MapNumToFloorNo(void) {
 }
 
 
+
 void ov01_021EE934(void) {
     // push {r3, r4}
     // ldr r4, _021EE970 ; =0x000001B9
@@ -1816,6 +1541,7 @@ void ov01_021EE934(void) {
     // _021EE970: .word 0x000001B9
     // TODO: decompile
 }
+
 
 
 void ov01_021EE974(void) {
@@ -1916,47 +1642,32 @@ void ov01_021EE974(void) {
 }
 
 
+
 void ov01_021EEA44(void) {
-    // push {r3, r4}
-    // add r4, r0, #0
-    // add r3, r0, #0
     // add r4, #0xbc
     // add r3, #0xac
     // str r4, [r3]
-    // add r4, r0, #0
-    // add r3, r0, #0
     // add r4, #8
     // add r3, #0xb0
     // str r4, [r3]
-    // add r3, r0, #0
-    // mov r4, #0
     // add r3, #0xb4
     // strb r4, [r3]
-    // add r3, r0, #0
     // add r3, #0xb5
     // strb r1, [r3]
-    // add r1, r0, #0
     // add r1, #0xb6
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0xb7
     // ldrb r2, [r1]
-    // mov r1, #0xf
     // bic r2, r1
-    // add r1, r0, #0
     // add r1, #0xb7
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0xb7
     // ldrb r2, [r1]
-    // mov r1, #0x30
     // add r0, #0xb7
     // bic r2, r1
     // strb r2, [r0]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void FieldSystem_ShowMoneyBox(void) {
@@ -2035,10 +1746,10 @@ void FieldSystem_ShowMoneyBox(void) {
 }
 
 
+
 void MoneyBoxSys_Delete(void) {
-    sub_0200E5D4(0);
-    WindowArray_Delete(r4, 1);
 }
+
 
 
 void MoneyBoxSys_Update(void) {
@@ -2119,6 +1830,7 @@ void MoneyBoxSys_Update(void) {
 }
 
 
+
 void ov01_021EEC00(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -2170,107 +1882,50 @@ void ov01_021EEC00(void) {
 }
 
 
+
 void ov01_021EEC68(void) {
-    sub_0200E5D4(0);
-    WindowArray_Delete(r4, 1);
 }
+
 
 
 void ov01_021EEC7C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r5, r0, #0
     // str r1, [sp, #0xc]
-    // add r0, r1, #0
-    // mov r1, #0xf
-    // add r4, r2, #0
-    // bl FillWindowPixelBuffer
-    // mov r0, #0
-    // mov r1, #0x1b
-    // mov r2, #0xbf
-    // mov r3, #4
-    // bl NewMsgDataFromNarc
-    // add r7, r0, #0
-    // mov r0, #4
-    // bl MessageFormat_New
+    FillWindowPixelBuffer(r1, 0xf);
+    NewMsgDataFromNarc(0, 0x1b, 0xbf, 4);
+    MessageFormat_New(4);
     // str r0, [sp, #0x10]
-    // mov r0, #0x10
-    // mov r1, #4
-    // bl String_New
-    // add r6, r0, #0
-    // cmp r4, #0
-    // beq _021EECBA
-    // cmp r4, #1
-    // beq _021EECD2
-    // cmp r4, #2
-    // b _021EECEE
-    // add r0, r7, #0
-    // mov r1, #0xc1
-    // bl NewString_ReadMsgData
-    // add r4, r0, #0
-    // ldr r0, [r5, #0xc]
-    // bl Save_PlayerData_GetCoinsAddr
-    // bl Coins_GetValue
-    // add r2, r0, #0
-    // b _021EED04
-    // add r0, r7, #0
-    // mov r1, #0xdc
-    // bl NewString_ReadMsgData
-    // add r4, r0, #0
-    // ldr r0, [r5, #0xc]
-    // bl Save_FrontierData_Get
-    // mov r1, #0
-    // add r2, r1, #0
-    // bl FrontierData_BattlePointAction
-    // add r2, r0, #0
-    // b _021EED04
-    // add r0, r7, #0
-    // mov r1, #0xdf
-    // bl NewString_ReadMsgData
-    // add r4, r0, #0
-    // ldr r0, [r5, #0xc]
-    // bl Save_Pokeathlon_Get
-    // bl PokeathlonSave_GetAthletePoints
-    // add r2, r0, #0
-    // mov r0, #1
+    String_New(0x10, 4);
+    NewString_ReadMsgData(r7, 0xc1);
+    Save_PlayerData_GetCoinsAddr(*((u32*)(r5 + 0xc)));
+    Coins_GetValue();
+    NewString_ReadMsgData(r7, 0xdc, r0);
+    Save_FrontierData_Get(*((u32*)(r5 + 0xc)));
+    FrontierData_BattlePointAction(0, 0);
+    NewString_ReadMsgData(r7, 0xdf, r0);
+    Save_Pokeathlon_Get(*((u32*)(r5 + 0xc)));
+    PokeathlonSave_GetAthletePoints();
     // str r0, [sp]
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x10]
-    // mov r1, #0
-    // mov r3, #5
-    // bl BufferIntegerAsString
+    BufferIntegerAsString(1, 0, r0, 5);
     // ldr r0, [sp, #0x10]
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl StringExpandPlaceholders
-    // mov r0, #0
-    // add r1, r6, #0
-    // add r2, r0, #0
-    // bl FontID_String_GetWidth
-    // mov r1, #0x50
+    StringExpandPlaceholders(r6, r4);
+    FontID_String_GetWidth(0, r6, 0);
     // sub r3, r1, r0
-    // mov r1, #0
     // str r1, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
     // ldr r0, [sp, #0xc]
-    // add r2, r6, #0
     // str r1, [sp, #8]
-    // bl AddTextPrinterParameterized
-    // add r0, r4, #0
-    // bl String_Delete
-    // add r0, r6, #0
-    // bl String_Delete
+    AddTextPrinterParameterized(0xff, 0, r6);
+    String_Delete(r4);
+    String_Delete(r6);
     // ldr r0, [sp, #0x10]
-    // bl MessageFormat_Delete
-    // add r0, r7, #0
-    // bl DestroyMsgData
+    MessageFormat_Delete();
+    DestroyMsgData(r7);
     // ldr r0, [sp, #0xc]
-    // bl ScheduleWindowCopyToVram
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ScheduleWindowCopyToVram();
 }
+
 
 
 void ov01_021EED60(void) {
@@ -2365,254 +2020,136 @@ void ov01_021EED60(void) {
 }
 
 
+
 void ov01_021EEE30(void) {
-    sub_0200E5D4(0);
-    WindowArray_Delete(r4, 1);
 }
+
 
 
 void ov01_021EEE44(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // mov r3, #0x80
-    // add r7, r0, #0
-    // add r5, r1, #0
     // str r3, [sp]
-    // mov r0, #0x10
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #0xf
-    // mov r2, #0
-    // bl FillWindowPixelRect
-    // mov r0, #0x80
+    FillWindowPixelRect(r1, 0xf, 0, 0x80);
     // str r0, [sp]
-    // mov r0, #0x10
-    // mov r3, #6
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #0xf
-    // mov r2, #0
-    // lsl r3, r3, #6
-    // bl FillWindowPixelRect
-    // mov r0, #0
-    // mov r1, #0x1b
-    // mov r2, #0xbf
-    // mov r3, #4
-    // bl NewMsgDataFromNarc
+    FillWindowPixelRect(r5, 0xf, 0, (6 << 6));
+    NewMsgDataFromNarc(0, 0x1b, 0xbf, 4);
     // str r0, [sp, #0xc]
-    // mov r0, #4
-    // bl MessageFormat_New
-    // add r6, r0, #0
-    // mov r0, #0x10
-    // mov r1, #4
-    // bl String_New
-    // add r4, r0, #0
-    // mov r1, #0x53
+    MessageFormat_New(4);
+    String_New(0x10, 4);
     // ldr r0, [sp, #0xc]
-    // lsl r1, r1, #2
-    // bl NewString_ReadMsgData
+    NewString_ReadMsgData((0x53 << 2));
     // str r0, [sp, #0x10]
-    // ldr r0, [r7, #0xc]
-    // bl SaveData_GetPhoneCallPersistentState
-    // mov r1, #0
-    // add r2, r1, #0
-    // bl PhoneCallPersistentState_MomSavings_BalanceAction
-    // mov r1, #0
-    // add r2, r0, #0
+    SaveData_GetPhoneCallPersistentState(*((u32*)(r7 + 0xc)));
+    PhoneCallPersistentState_MomSavings_BalanceAction(0, 0);
     // str r1, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // mov r3, #6
-    // bl BufferIntegerAsString
+    BufferIntegerAsString(r6, 0, r0, 6);
     // ldr r2, [sp, #0x10]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl StringExpandPlaceholders
-    // mov r0, #0
-    // add r1, r4, #0
-    // add r2, r0, #0
-    // bl FontID_String_GetWidth
-    // mov r1, #0x80
+    StringExpandPlaceholders(r6, r4);
+    FontID_String_GetWidth(0, r4, 0);
     // sub r3, r1, r0
-    // mov r0, #0x10
     // str r0, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r1, #0
-    // add r0, r5, #0
-    // add r2, r4, #0
     // str r1, [sp, #8]
-    // bl AddTextPrinterParameterized
-    // ldr r0, [r7, #0xc]
-    // bl Save_PlayerData_GetProfile
-    // bl PlayerProfile_GetMoney
-    // mov r1, #0
-    // add r2, r0, #0
+    AddTextPrinterParameterized(r5, 0, r4);
+    Save_PlayerData_GetProfile(*((u32*)(r7 + 0xc)));
+    PlayerProfile_GetMoney();
     // str r1, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // mov r3, #6
-    // bl BufferIntegerAsString
+    BufferIntegerAsString(r6, 0, r0, 6);
     // ldr r2, [sp, #0x10]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl StringExpandPlaceholders
-    // mov r0, #0
-    // add r1, r4, #0
-    // add r2, r0, #0
-    // bl FontID_String_GetWidth
-    // mov r1, #0x80
+    StringExpandPlaceholders(r6, r4);
+    FontID_String_GetWidth(0, r4, 0);
     // sub r3, r1, r0
-    // mov r0, #0x30
     // str r0, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r1, #0
-    // add r0, r5, #0
-    // add r2, r4, #0
     // str r1, [sp, #8]
-    // bl AddTextPrinterParameterized
+    AddTextPrinterParameterized(r5, 0, r4);
     // ldr r0, [sp, #0x10]
-    // bl String_Delete
-    // add r0, r4, #0
-    // bl String_Delete
-    // add r0, r6, #0
-    // bl MessageFormat_Delete
+    String_Delete();
+    String_Delete(r4);
+    MessageFormat_Delete(r6);
     // ldr r0, [sp, #0xc]
-    // bl DestroyMsgData
-    // add r0, r5, #0
-    // bl ScheduleWindowCopyToVram
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    DestroyMsgData();
+    ScheduleWindowCopyToVram(r5);
 }
+
 
 
 void ov01_021EEF58(void) {
-    // mov r1, #0x71
-    // lsl r1, r1, #2
     // add r0, r0, r1
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021EEF60(void) {
     // add r0, #0x9b
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021EEF68(void) {
-    AllocWindows(4, 1);
-    ov03_02256730(r5, r0, r6);
 }
+
 
 
 void ov01_021EEF88(void) {
-    sub_0200E5D4(0);
-    WindowArray_Delete(r4, 1);
 }
+
 
 
 void ov01_021EEF9C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // mov r0, #0xa9
-    // lsl r0, r0, #2
     // add r4, r5, r0
-    // lsl r6, r1, #1
     // ldrh r0, [r4, r6]
-    // cmp r0, #0xff
-    // beq _021EF006
-    // mov r0, #0x5a
-    // mov r1, #4
-    // bl String_New
-    // add r7, r0, #0
-    // mov r0, #0x5a
-    // mov r1, #4
-    // bl String_New
+    String_New(0x5a, 4);
+    String_New(0x5a, 4);
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #0x18]
-    // mov r1, #0xf
-    // bl FillWindowPixelBuffer
-    // add r0, r5, #0
+    FillWindowPixelBuffer(*((u32*)(r5 + 0x18)), 0xf);
     // add r0, #0x8c
     // ldrh r1, [r4, r6]
-    // ldr r0, [r0]
-    // add r2, r7, #0
-    // bl ReadMsgDataIntoString
-    // add r0, r5, #0
+    ReadMsgDataIntoString(*((u32*)r5), r7);
     // add r0, #0x90
-    // ldr r0, [r0]
     // ldr r1, [sp, #0xc]
-    // add r2, r7, #0
-    // bl StringExpandPlaceholders
-    // mov r3, #0
+    StringExpandPlaceholders(*((u32*)r5), r7);
     // str r3, [sp]
     // str r3, [sp, #4]
     // str r3, [sp, #8]
-    // ldr r0, [r5, #0x18]
     // ldr r2, [sp, #0xc]
-    // mov r1, #1
-    // bl AddTextPrinterParameterized
-    // add r0, r7, #0
-    // bl String_Delete
+    AddTextPrinterParameterized(*((u32*)(r5 + 0x18)), 1, 0);
+    String_Delete(r7);
     // ldr r0, [sp, #0xc]
-    // bl String_Delete
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    String_Delete();
 }
+
 
 
 void ov01_021EF00C(void) {
     // add r0, #0x97
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1f
-    // lsr r0, r0, #0x1f
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021EF018(void) {
-    // add r2, r0, #0
     // add r2, #0x97
     // ldrb r3, [r2]
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // mov r2, #0x40
-    // lsl r1, r1, #0x1f
     // bic r3, r2
-    // lsr r1, r1, #0x19
     // orr r1, r3
     // add r0, #0x97
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021EF034(void) {
-    // add r2, r0, #0
     // add r2, #0x97
     // ldrb r3, [r2]
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // mov r2, #0x80
-    // lsl r1, r1, #0x1f
     // bic r3, r2
-    // lsr r1, r1, #0x18
     // orr r1, r3
     // add r0, #0x97
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 

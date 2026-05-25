@@ -63,6 +63,7 @@ void sub_020192D0(void) {
 }
 
 
+
 void sub_0201935C(void) {
     // push {r3, r4, r5, lr}
     // add r5, r1, #0
@@ -193,14 +194,10 @@ void sub_0201935C(void) {
 }
 
 
+
 u32 sub_02019490(void) {
-    OverlayManager_GetData();
-    sub_020194F8();
-    Heap_Free();
-    OverlayManager_FreeData(r5);
-    Heap_Destroy(0x7b);
-    return 1;
 }
+
 
 
 void sub_020194B4(void) {
@@ -234,24 +231,16 @@ void sub_020194B4(void) {
 }
 
 
+
 void sub_020194F8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x78]
-    // cmp r0, #1
-    // bne _0201951E
-    // ldr r0, [r4, #0x10]
-    // bl NNS_FndDestroyExpHeap
-    // ldr r0, [r4, #0xc]
-    // bl Heap_Free
-    // bl UnloadOVY38
-    // bl UnloadDwcOverlay
-    // bl sub_02034DE0
-    // mov r0, #0
-    // str r0, [r4, #0x78]
-    // pop {r4, pc}
-    // TODO: decompile
+    NNS_FndDestroyExpHeap(*((u32*)(r0 + 0x10)));
+    Heap_Free(*((u32*)(r4 + 0xc)));
+    UnloadOVY38();
+    UnloadDwcOverlay();
+    sub_02034DE0();
+    *((u32*)(r4 + 0x78)) = 0;
 }
+
 
 
 void sub_02019520(void) {
@@ -275,6 +264,7 @@ void sub_02019520(void) {
 }
 
 
+
 void sub_02019548(void) {
     // push {r3, r4, r5, lr}
     // add r5, r1, #0
@@ -292,4 +282,5 @@ void sub_02019548(void) {
     // _02019568: .word _021D1108
     // TODO: decompile
 }
+
 

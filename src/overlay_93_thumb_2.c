@@ -73,121 +73,62 @@ void ov93_0225FBF0(void) {
 }
 
 
+
 void ov93_0225FC8C(void) {
-    BgClearTilemapBufferAndCommit(0, 1, 7);
 }
+
 
 
 void ov93_0225FCA4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r5, r1, #0
     // str r0, [sp, #4]
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // beq _0225FD86
     // add r0, sp, #0xc
     // str r0, [sp]
-    // add r0, r2, #0
-    // ldr r1, [r5, #4]
-    // ldr r2, [r5, #8]
     // add r3, sp, #0x10
-    // bl ov93_0225FD8C
-    // mov r0, #1
+    ov93_0225FD8C(r2, *((u32*)(r1 + 4)), *((u32*)(r1 + 8)));
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0xc
-    // cmp r1, r0
-    // bne _0225FCD0
-    // mov r7, #0
-    // b _0225FCF0
-    // bge _0225FCE2
-    // lsl r1, r1, #7
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r1, r0, #0xc
-    // mov r0, #0x80
     // sub r7, r0, r1
-    // b _0225FCF0
     // sub r0, r1, r0
-    // lsl r1, r0, #7
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // neg r7, r0
-    // mov r0, #1
     // ldr r1, [sp, #0xc]
-    // lsl r0, r0, #0xc
-    // cmp r1, r0
-    // bne _0225FCFE
-    // mov r6, #0
-    // b _0225FD1E
-    // bge _0225FD10
-    // lsl r1, r1, #7
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r1, r0, #0xc
-    // mov r0, #0x80
     // sub r6, r0, r1
-    // b _0225FD1E
     // sub r0, r1, r0
-    // lsl r1, r0, #7
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // neg r6, r0
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // bne _0225FD28
-    // mov r4, #0
-    // b _0225FD44
-    // bl LCRandom
-    // mov r1, #7
+    LCRandom(*((u32*)(r5 + 0x10)), (0x80 << 7));
     // and r0, r1
-    // add r4, r0, #1
-    // ldr r1, [r5, #0x28]
-    // mov r0, #1
     // tst r0, r1
-    // beq _0225FD3C
     // neg r4, r4
-    // ldr r1, [r5, #0x28]
-    // mov r0, #1
     // eor r0, r1
-    // str r0, [r5, #0x28]
+    *((u32*)(r5 + 0x28)) = 1;
     // ldr r0, [sp, #0x10]
-    // bl FX_Inv
-    // add r5, r0, #0
+    FX_Inv(1, *((u32*)(r5 + 0x28)));
     // ldr r0, [sp, #0xc]
-    // bl FX_Inv
+    FX_Inv();
     // str r0, [sp, #8]
     // ldr r0, [sp, #4]
-    // mov r1, #7
-    // mov r2, #3
-    // add r3, r5, #0
-    // bl ScheduleSetBgAffineScale
+    ScheduleSetBgAffineScale(7, 3, r5);
     // ldr r0, [sp, #4]
     // ldr r3, [sp, #8]
-    // mov r1, #7
-    // mov r2, #6
-    // bl ScheduleSetBgAffineScale
+    ScheduleSetBgAffineScale(7, 6);
     // ldr r0, [sp, #4]
-    // mov r1, #7
-    // mov r2, #0
     // sub r3, r4, r7
-    // bl ScheduleSetBgPosText
-    // mov r3, #0x27
+    ScheduleSetBgPosText(7, 0);
     // ldr r0, [sp, #4]
-    // mov r1, #7
-    // mov r2, #3
     // sub r3, r3, r6
-    // bl ScheduleSetBgPosText
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ScheduleSetBgPosText(7, 3, 0x27);
 }
+
 
 
 void ov93_0225FD8C(void) {
@@ -242,6 +183,7 @@ void ov93_0225FD8C(void) {
 }
 
 
+
 void ov93_0225FDF4(void) {
     // cmp r0, #0xa
     // blt _0225FDFC
@@ -255,6 +197,7 @@ void ov93_0225FDF4(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov93_0225FE08(void) {
@@ -298,26 +241,14 @@ void ov93_0225FE08(void) {
 }
 
 
+
 void ov93_0225FE5C(void) {
-    // ldr r1, [r0, #0x10]
-    // cmp r1, #0
-    // bne _0225FE66
-    // mov r0, #0
-    // bx lr
-    // ldr r2, [r0, #0x14]
-    // cmp r1, r2
-    // bge _0225FE6E
-    // add r2, r1, #0
-    // ldr r1, [r0, #0x10]
     // sub r1, r1, r2
-    // str r1, [r0, #0x10]
-    // ldr r1, [r0, #8]
+    *((u32*)(0 + 0x10)) = *((u32*)(0 + 0x10));
     // add r1, r1, r2
-    // str r1, [r0, #8]
-    // mov r0, #1
-    // bx lr
-    // TODO: decompile
+    *((u32*)(0 + 8)) = *((u32*)(0 + 8));
 }
+
 
 
 void ov93_0225FE80(void) {
@@ -344,6 +275,7 @@ void ov93_0225FE80(void) {
 }
 
 
+
 void ov93_0225FEAC(void) {
     // ldr r1, _0225FEBC ; =0x00001428
     // ldr r3, _0225FEC0 ; =_s32_div_f
@@ -357,6 +289,7 @@ void ov93_0225FEAC(void) {
     // _0225FEC0: .word _s32_div_f
     // TODO: decompile
 }
+
 
 
 void ov93_0225FEC4(void) {
@@ -401,6 +334,7 @@ void ov93_0225FEC4(void) {
     // _0225FF18: .word 0x00001560
     // TODO: decompile
 }
+
 
 
 void ov93_0225FF1C(void) {
@@ -505,6 +439,7 @@ void ov93_0225FF1C(void) {
 }
 
 
+
 void ov93_0225FFF8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -568,6 +503,7 @@ void ov93_0225FFF8(void) {
     // _0226007C: .word 0x00001428
     // TODO: decompile
 }
+
 
 
 void ov93_02260080(void) {
@@ -800,6 +736,7 @@ void ov93_02260080(void) {
 }
 
 
+
 void ov93_0226027C(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0x34
@@ -851,6 +788,7 @@ void ov93_0226027C(void) {
 }
 
 
+
 void ov93_022602E4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r4, #0
@@ -875,6 +813,7 @@ void ov93_022602E4(void) {
     // _02260310: .word 0x00002FEC
     // TODO: decompile
 }
+
 
 
 void ov93_02260314(void) {
@@ -1216,6 +1155,7 @@ void ov93_02260314(void) {
 }
 
 
+
 void ov93_02260608(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -1259,6 +1199,7 @@ void ov93_02260608(void) {
     // _0226065C: .word 0x000033A0
     // TODO: decompile
 }
+
 
 
 void ov93_02260660(void) {
@@ -1585,6 +1526,7 @@ void ov93_02260660(void) {
 }
 
 
+
 void ov93_02260908(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -1642,6 +1584,7 @@ void ov93_02260908(void) {
 }
 
 
+
 void ov93_02260984(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x34
@@ -1687,6 +1630,7 @@ void ov93_02260984(void) {
 }
 
 
+
 void ov93_022609E0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -1715,9 +1659,10 @@ void ov93_022609E0(void) {
 }
 
 
+
 void ov93_02260A14(void) {
-    Sprite_DeleteAndFreeResources(0);
 }
+
 
 
 void ov93_02260A30(void) {
@@ -1742,57 +1687,30 @@ void ov93_02260A30(void) {
 }
 
 
+
 u32 ov93_02260A58(void) {
-    MI_CpuFill8(r1, 0, 0xc);
-    ov93_02260B70(r6);
-    *((u8*)(r5 + 4)) = r0;
-    *((u8*)(r5 + 5)) = 1;
-    ov93_02260984(r7, *((u8*)(r5 + 4)), r4);
-    *((u8*)(r5 + 6)) = r4;
-    *((u16*)(r5 + 8)) = r6;
-    return 1;
 }
+
 
 
 void ov93_02260A8C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldrb r0, [r5, #6]
-    // mov r3, #0x16
     // add r2, sp, #0
-    // lsl r1, r0, #4
-    // mov r0, #0x48
     // sub r0, r0, r1
-    // lsl r0, r0, #0x10
     // asr r4, r0, #0x10
     // add r1, sp, #0
-    // ldr r0, [r5]
     // add r1, #2
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_GetPositionXYWithSubscreenOffset
+    ManagedSprite_GetPositionXYWithSubscreenOffset(*((u32*)r0), (*((u8*)(r0 + 6)) << 4), (0x16 << 0x10));
     // add r1, sp, #0
-    // mov r0, #2
     // ldrsh r2, [r1, r0]
-    // cmp r4, r2
-    // ble _02260AD6
-    // add r2, r2, #2
-    // strh r2, [r1, #2]
+    *((u16*)(r1 + 2)) = (r2 + 2);
     // ldrsh r0, [r1, r0]
-    // cmp r0, r4
-    // ble _02260AC2
-    // strh r4, [r1, #2]
+    *((u16*)(r1 + 2)) = r4;
     // add r3, sp, #0
-    // mov r1, #2
-    // mov r2, #0
     // ldrsh r1, [r3, r1]
     // ldrsh r2, [r3, r2]
-    // mov r3, #0x16
-    // ldr r0, [r5]
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r5), 2, 0, (0x16 << 0x10));
 }
+
 
 
 void ov93_02260AD8(void) {
@@ -1867,6 +1785,7 @@ void ov93_02260AD8(void) {
 }
 
 
+
 void ov93_02260B70(void) {
     // cmp r0, #0xa
     // blt _02260B78
@@ -1880,6 +1799,7 @@ void ov93_02260B70(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov93_02260B84(void) {
@@ -1907,39 +1827,20 @@ void ov93_02260B84(void) {
 }
 
 
+
 void ov93_02260BB0(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // ldr r0, [r4]
     // add r0, #0x30
     // ldrb r0, [r0]
-    // cmp r0, #3
-    // bne _02260BEC
-    // mov r0, #0xc
     // str r0, [sp]
-    // mov r1, #4
     // str r1, [sp, #4]
-    // mov r0, #3
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x2c]
-    // mov r2, #0
-    // mov r3, #0xd
-    // bl BgTilemapRectChangePalette
-    // mov r0, #0xc
+    BgTilemapRectChangePalette(*((u32*)(r0 + 0x2c)), 4, 0, 0xd);
     // str r0, [sp]
-    // mov r1, #4
     // str r1, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x2c]
-    // mov r2, #0x14
-    // mov r3, #0xd
-    // bl BgTilemapRectChangePalette
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    BgTilemapRectChangePalette(*((u32*)(r4 + 0x2c)), 4, 0x14, 0xd);
 }
+
 
 
 void ov93_02260BF0(void) {
@@ -2070,6 +1971,7 @@ void ov93_02260BF0(void) {
     // _02260CF4: .word ov93_02262DA4
     // TODO: decompile
 }
+
 
 
 void ov93_02260CF8(void) {
@@ -2214,6 +2116,7 @@ void ov93_02260CF8(void) {
 }
 
 
+
 void ov93_02260E1C(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x1c
@@ -2334,15 +2237,10 @@ void ov93_02260E1C(void) {
 }
 
 
+
 void ov93_02260F14(void) {
-    MI_CpuFill8(r3, 0, 0x10);
-    sub_0203769C();
-    *((u16*)(r4 + 2)) = r5;
-    *((u32*)(r4 + 4)) = r6;
-    *((u32*)(r4 + 8)) = r6;
-    *((u8*)(r4 + 1)) = 0;
-    *((u8*)(r4 + 0xc)) = 0;
 }
+
 
 
 void ov93_02260F3C(void) {
@@ -2385,6 +2283,7 @@ void ov93_02260F3C(void) {
 }
 
 
+
 void ov93_02260F84(void) {
     // push {r3, r4}
     // ldr r1, _02260FB4 ; =0x00002FAC
@@ -2413,6 +2312,7 @@ void ov93_02260F84(void) {
     // _02260FB4: .word 0x00002FAC
     // TODO: decompile
 }
+
 
 
 void ov93_02260FB8(void) {
@@ -2539,6 +2439,7 @@ void ov93_02260FB8(void) {
 }
 
 
+
 void ov93_022610B0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x38
@@ -2613,9 +2514,10 @@ void ov93_022610B0(void) {
 }
 
 
+
 void ov93_0226114C(void) {
-    Sprite_DeleteAndFreeResources(0);
 }
+
 
 
 void ov93_02261164(void) {
@@ -2783,28 +2685,16 @@ void ov93_02261164(void) {
 }
 
 
+
 void ov93_022612E0(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // mov r4, #0
-    // ldr r0, [r5]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r5, #4]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r5, #8]
-    // bl Sprite_DeleteAndFreeResources
-    // add r1, r5, #0
-    // add r0, r6, #0
+    Sprite_DeleteAndFreeResources(*((u32*)r1));
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 4)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 8)));
     // add r1, #0x30
-    // bl ov93_02262484
-    // add r4, r4, #1
+    ov93_02262484(r6, r5);
     // add r5, #0x4c
-    // cmp r4, #3
-    // blt _022612E8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_02261310(void) {
@@ -2842,6 +2732,7 @@ void ov93_02261310(void) {
     // _02261350: .word ov93_02262CC4
     // TODO: decompile
 }
+
 
 
 void ov93_02261354(void) {
@@ -3050,6 +2941,7 @@ void ov93_02261354(void) {
 }
 
 
+
 void ov93_022614F4(void) {
     // push {r3, r4}
     // ldr r2, _02261524 ; =0x00001468
@@ -3080,13 +2972,10 @@ void ov93_022614F4(void) {
 }
 
 
+
 void ov93_02261528(void) {
-    ((u8*)r0)[0x10] = r1;
-    ((u8*)r0)[0x11] = 0;
-    ((u8*)r0)[0x12] = 0;
-    ((u32*)r0)[0x18] = 0;
-    ((u8*)r0)[0x15] = 0;
 }
+
 
 
 void ov93_02261538(void) {
@@ -3103,9 +2992,10 @@ void ov93_02261538(void) {
 }
 
 
+
 void ov93_0226154C(void) {
-    ((u8*)r2)[0x15] = 0;
 }
+
 
 
 void ov93_02261554(void) {
@@ -3337,6 +3227,7 @@ void ov93_02261554(void) {
 }
 
 
+
 void ov93_02261744(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -3511,6 +3402,7 @@ void ov93_02261744(void) {
     // _022618C0: .word 0x45800000
     // TODO: decompile
 }
+
 
 
 void ov93_022618C4(void) {
@@ -3860,6 +3752,7 @@ void ov93_022618C4(void) {
 }
 
 
+
 void ov93_02261BBC(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x34
@@ -3919,21 +3812,13 @@ void ov93_02261BBC(void) {
 }
 
 
+
 void ov93_02261C3C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // mov r4, #0
-    // ldr r0, [r5]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r5, #4]
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
+    Sprite_DeleteAndFreeResources(*((u32*)r1));
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 4)));
     // add r5, #0x18
-    // cmp r4, #3
-    // blt _02261C42
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_02261C58(void) {
@@ -4027,24 +3912,12 @@ void ov93_02261C58(void) {
 }
 
 
+
 void ov93_02261D1C(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldrb r0, [r5, #0x15]
-    // cmp r0, #1
-    // bne _02261D32
-    // add r0, r6, #0
-    // add r1, r5, #0
-    // bl ov93_02261D3C
-    // add r4, r4, #1
+    ov93_02261D3C(r1, r1);
     // add r5, #0x18
-    // cmp r4, #3
-    // blt _02261D24
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_02261D3C(void) {
@@ -4223,44 +4096,28 @@ void ov93_02261D3C(void) {
 }
 
 
+
 void ov93_02261EB8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x70
     // str r0, [sp, #0x18]
     // str r1, [sp, #0x1c]
     // str r2, [sp, #0x20]
     // ldr r0, [sp, #0x8c]
     // ldr r1, [sp, #0x88]
-    // mov r2, #0
-    // add r5, r3, #0
     // ldr r4, [sp, #0x9c]
-    // bl FontID_String_GetWidthMultiline
-    // add r7, r0, #0
+    FontID_String_GetWidthMultiline(0);
     // asr r1, r7, #2
-    // lsr r1, r1, #0x1d
     // add r1, r7, r1
     // asr r6, r1, #3
-    // mov r1, #8
-    // bl FX_ModS32
-    // cmp r0, #0
-    // beq _02261EE6
-    // add r6, r6, #1
+    FX_ModS32(8);
     // add r0, sp, #0x30
-    // bl InitWindow
-    // mov r0, #0
+    InitWindow();
     // ldr r3, [sp, #0xb0]
     // str r0, [sp]
     // str r0, [sp, #4]
-    // lsl r2, r6, #0x18
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x18]
     // add r1, sp, #0x30
-    // lsr r2, r2, #0x18
-    // lsr r3, r3, #0x18
-    // bl AddTextWindowTopLeftCorner
-    // mov r3, #0
+    AddTextWindowTopLeftCorner(0, ((r6 << 0x18) >> 0x18), ((r3 << 0x18) >> 0x18));
     // str r3, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x90]
     // ldr r1, [sp, #0x8c]
@@ -4270,19 +4127,12 @@ void ov93_02261EB8(void) {
     // ldr r2, [sp, #0x88]
     // add r0, sp, #0x30
     // str r3, [sp, #0x14]
-    // bl AddTextPrinterParameterizedWithColorAndSpacing
+    AddTextPrinterParameterizedWithColorAndSpacing(0xff, 0);
     // add r0, sp, #0x30
-    // mov r1, #1
-    // mov r2, #0x75
-    // bl sub_02013688
-    // mov r1, #1
-    // add r2, r1, #0
+    sub_02013688(1, 0x75);
     // add r3, sp, #0x24
-    // bl sub_02021AC8
+    sub_02021AC8(1, 1);
     // ldr r0, [sp, #0xa4]
-    // cmp r0, #1
-    // bne _02261F42
-    // lsr r0, r7, #0x1f
     // add r0, r7, r0
     // asr r0, r0, #1
     // sub r4, r4, r0
@@ -4291,13 +4141,12 @@ void ov93_02261EB8(void) {
     // add r0, sp, #0x30
     // str r0, [sp, #0x44]
     // ldr r0, [sp, #0x1c]
-    // bl SpriteManager_GetSpriteList
+    SpriteManager_GetSpriteList((r7 >> 0x1f));
     // str r0, [sp, #0x48]
     // ldr r0, [sp, #0x1c]
     // ldr r1, [sp, #0x98]
-    // bl SpriteManager_FindPlttResourceProxy
+    SpriteManager_FindPlttResourceProxy();
     // str r0, [sp, #0x4c]
-    // mov r0, #0
     // str r0, [sp, #0x50]
     // ldr r0, [sp, #0x28]
     // str r4, [sp, #0x58]
@@ -4308,96 +4157,56 @@ void ov93_02261EB8(void) {
     // str r0, [sp, #0x60]
     // ldr r0, [sp, #0xac]
     // str r0, [sp, #0x64]
-    // mov r0, #1
     // str r0, [sp, #0x68]
-    // mov r0, #0x75
     // str r0, [sp, #0x6c]
     // add r0, sp, #0x40
-    // bl sub_020135D8
+    sub_020135D8(0x75);
     // ldr r1, [sp, #0x94]
-    // add r6, r0, #0
-    // cmp r1, #0
-    // beq _02261F8C
-    // bl sub_020138B0
+    sub_020138B0();
     // ldr r2, [sp, #0xa0]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl sub_020136B4
+    sub_020136B4(r6, r4);
     // add r0, sp, #0x30
-    // bl RemoveWindow
+    RemoveWindow();
     // str r6, [r5]
     // add r3, sp, #0x24
     // ldmia r3!, {r0, r1}
-    // add r2, r5, #4
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // strh r7, [r5, #0x10]
-    // add sp, #0x70
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u16*)(r5 + 0x10)) = r7;
 }
+
 
 
 void ov93_02261FB0(void) {
-    FontOAM_Delete();
-    sub_02021B5C((r4 + 4));
 }
+
 
 
 void ov93_02261FC8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
     // str r0, [sp]
-    // mov r7, #0
-    // add r5, r0, #0
     // ldr r0, [sp]
     // add r1, r0, r7
-    // mov r0, #6
-    // lsl r0, r0, #6
     // ldrb r1, [r1, r0]
-    // cmp r1, #0x40
-    // bge _02261FEA
-    // mov r0, #0x40
     // sub r6, r0, r1
-    // add r4, r6, #0
     // sub r4, #0x50
-    // b _02262004
-    // cmp r1, #0x80
-    // bge _02261FFA
-    // mov r0, #0xa0
     // sub r4, r0, r1
     // sub r4, #0x10
-    // add r6, r4, #0
     // sub r6, #0x50
-    // b _02262004
     // sub r1, #0xa0
-    // mov r0, #0x40
     // sub r6, r0, r1
-    // add r4, r6, #0
     // sub r4, #0x50
-    // ldr r0, [r5, #4]
     // add r1, sp, #8
     // add r2, sp, #4
-    // bl sub_02013794
-    // mov r2, #0xa8
-    // ldr r0, [r5, #4]
+    sub_02013794(*((u32*)(r0 + 4)));
     // ldr r1, [sp, #8]
     // sub r2, r2, r6
-    // bl sub_020136B4
-    // mov r2, #0xa8
-    // ldr r0, [r5, #0x18]
+    sub_020136B4(*((u32*)(r5 + 4)), 0xa8);
     // ldr r1, [sp, #8]
     // sub r2, r2, r4
-    // bl sub_020136B4
-    // add r7, r7, #1
+    sub_020136B4(*((u32*)(r5 + 0x18)), 0xa8);
     // add r5, #0x28
-    // cmp r7, #6
-    // blt _02261FD2
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_02262034(void) {
@@ -4450,6 +4259,7 @@ void ov93_02262034(void) {
 }
 
 
+
 void ov93_02262098(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // ldr r5, _022620D0 ; =0x000186A0
@@ -4482,6 +4292,7 @@ void ov93_02262098(void) {
 }
 
 
+
 void ov93_022620D4(void) {
     // push {r4, r5, r6, r7}
     // mov r1, #0x66
@@ -4512,28 +4323,13 @@ void ov93_022620D4(void) {
 }
 
 
+
 void ov93_02262108(void) {
-    // push {r4, r5}
-    // mov r1, #6
-    // lsl r1, r1, #6
-    // mov r5, #0
-    // add r2, r1, #6
     // add r3, r0, r5
     // ldrb r4, [r3, r1]
     // ldrb r3, [r3, r2]
-    // cmp r4, r3
-    // beq _02262122
-    // mov r0, #0
-    // pop {r4, r5}
-    // bx lr
-    // add r5, r5, #1
-    // cmp r5, #6
-    // blt _02262112
-    // mov r0, #1
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov93_02262130(void) {
@@ -4665,6 +4461,7 @@ void ov93_02262130(void) {
 }
 
 
+
 void ov93_02262230(void) {
     // push {r4, lr}
     // add r1, r0, #0
@@ -4681,6 +4478,7 @@ void ov93_02262230(void) {
     // _0226224C: .word ov93_02262F6C
     // TODO: decompile
 }
+
 
 
 void ov93_02262250(void) {
@@ -4772,6 +4570,7 @@ void ov93_02262250(void) {
 }
 
 
+
 void ov93_02262310(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -4795,9 +4594,10 @@ void ov93_02262310(void) {
 }
 
 
+
 void ov93_02262338(void) {
-    Sprite_DeleteAndFreeResources();
 }
+
 
 
 void ov93_02262344(void) {
@@ -4819,103 +4619,50 @@ void ov93_02262344(void) {
 }
 
 
+
 void ov93_02262368(void) {
-    Sprite_DeleteAndFreeResources();
 }
+
 
 
 void ov93_02262374(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // mov r0, #4
     // ldrsh r1, [r4, r0]
-    // cmp r1, #0xa
-    // bhi _0226243E
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _0226238C: ; jump table
-    // mov r3, #0x16
-    // ldr r0, [r4]
-    // mov r1, #0x80
-    // mov r2, #0x10
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldr r0, [r4]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #4
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r1), 0x80, 0x10, (0x16 << 0x10));
+    ManagedSprite_SetDrawFlag(*((u32*)r4), 1);
     // ldrsh r0, [r4, r0]
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // b _0226243E
-    // mov r1, #6
+    *((u16*)(r4 + 4)) = (4 + 1);
     // ldrsh r2, [r4, r1]
-    // add r2, r2, #1
-    // strh r2, [r4, #6]
+    *((u16*)(r4 + 6)) = (r2 + 1);
     // ldrsh r1, [r4, r1]
-    // cmp r1, #0xf
-    // ble _0226243E
-    // mov r1, #0
-    // strh r1, [r4, #6]
-    // mov r1, #1
-    // str r1, [r4, #0x14]
-    // str r1, [r4, #0x18]
-    // mov r1, #0x80
-    // str r1, [r4, #0xc]
-    // mov r1, #0x20
-    // str r1, [r4, #0x10]
+    *((u16*)(r4 + 6)) = 0;
+    *((u32*)(r4 + 0x14)) = 1;
+    *((u32*)(r4 + 0x18)) = 1;
+    *((u32*)(r4 + 0xc)) = 0x80;
+    *((u32*)(r4 + 0x10)) = 0x20;
     // ldrsh r0, [r4, r0]
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // b _0226243E
-    // mov r1, #0
-    // str r1, [r4, #0x18]
-    // ldr r0, [r4, #0x10]
-    // mov r2, #6
-    // add r0, r0, #6
-    // str r0, [r4, #0x10]
-    // ldr r0, [r4]
-    // bl ManagedSprite_OffsetPositionXY
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0x60
-    // ble _0226243E
-    // mov r0, #4
+    *((u16*)(r4 + 4)) = ((4 + 1) + 1);
+    *((u32*)(r4 + 0x18)) = 0;
+    *((u32*)(r4 + 0x10)) = (*((u32*)(r4 + 0x10)) + 6);
+    ManagedSprite_OffsetPositionXY(*((u32*)r4), 0, 6);
     // ldrsh r0, [r4, r0]
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // b _0226243E
-    // mov r1, #0
-    // str r1, [r4, #0x14]
-    // ldr r0, [r4]
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #4
+    *((u16*)(r4 + 4)) = (4 + 1);
+    *((u32*)(r4 + 0x14)) = 0;
+    ManagedSprite_SetDrawFlag(*((u32*)r4), 0);
     // ldrsh r0, [r4, r0]
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // mov r0, #6
+    *((u16*)(r4 + 4)) = (4 + 1);
     // ldrsh r1, [r4, r0]
-    // add r1, r1, #1
-    // strh r1, [r4, #6]
+    *((u16*)(r4 + 6)) = (r1 + 1);
     // ldrsh r0, [r4, r0]
-    // cmp r0, #0x1e
-    // ble _0226243E
-    // mov r0, #0
-    // strh r0, [r4, #6]
-    // mov r0, #4
+    *((u16*)(r4 + 6)) = 0;
     // ldrsh r0, [r4, r0]
-    // add r0, r0, #1
-    // strh r0, [r4, #4]
-    // b _0226243E
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u16*)(r4 + 4)) = (4 + 1);
 }
+
 
 
 void ov93_02262444(void) {
@@ -4949,284 +4696,124 @@ void ov93_02262444(void) {
 }
 
 
+
 void ov93_02262484(void) {
-    Sprite_DeleteAndFreeResources(0);
 }
+
 
 
 void ov93_0226249C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // ldr r0, [r1]
     // add r1, sp, #4
-    // mov r3, #0x16
     // str r2, [sp]
     // add r1, #2
     // add r2, sp, #4
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_GetPositionXYWithSubscreenOffset
+    ManagedSprite_GetPositionXYWithSubscreenOffset(*((u32*)r1), (0x16 << 0x10));
     // ldr r5, [sp]
-    // mov r4, #0
     // add r6, sp, #4
-    // mov r7, #1
-    // mov r2, #0
     // ldrsh r2, [r6, r2]
-    // mov r1, #2
-    // mov r3, #0x16
     // add r2, #0x1c
-    // lsl r2, r2, #0x10
     // ldrsh r1, [r6, r1]
-    // ldr r0, [r5]
     // asr r2, r2, #0x10
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldr r0, [r5]
-    // mov r1, #0x1b
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r5]
-    // mov r1, #1
-    // bl ManagedSprite_SetOamMode
-    // ldr r0, [r5]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // bl LCRandom
-    // lsr r1, r0, #0x1f
-    // lsl r2, r0, #0x14
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r5), 2, (0 << 0x10), (0x16 << 0x10));
+    ManagedSprite_SetAnim(*((u32*)r5), 0x1b);
+    ManagedSprite_SetOamMode(*((u32*)r5), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)r5), 1);
+    LCRandom();
     // sub r2, r2, r1
-    // mov r0, #0x14
     // ror r2, r0
-    // mov r0, #1
     // add r1, r1, r2
-    // lsl r0, r0, #0xc
     // add r0, r1, r0
-    // str r0, [r5, #8]
-    // bl LCRandom
-    // lsr r1, r0, #0x1f
-    // lsl r2, r0, #0x16
+    *((u32*)(r5 + 8)) = (1 << 0xc);
+    LCRandom((1 << 0xc), (r0 >> 0x1f), (r0 << 0x14));
     // sub r2, r2, r1
-    // mov r0, #0x16
     // ror r2, r0
-    // mov r0, #1
     // add r1, r1, r2
-    // lsl r0, r0, #0xa
     // add r0, r1, r0
-    // str r0, [r5, #0x10]
-    // add r0, r4, #0
+    *((u32*)(r5 + 0x10)) = (1 << 0xa);
     // tst r0, r7
-    // beq _0226252A
-    // mov r0, #0
-    // ldr r1, [r5, #8]
     // mvn r0, r0
     // mul r0, r1
-    // str r0, [r5, #8]
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _022624BA
+    *((u32*)(r5 + 8)) = 0;
     // ldr r0, [sp]
-    // mov r1, #0
-    // strb r1, [r0, #0x19]
-    // mov r1, #1
-    // strb r1, [r0, #0x18]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)(0 + 0x19)) = 0;
+    *((u8*)(0 + 0x18)) = 1;
 }
+
 
 
 void ov93_02262540(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r2, #0
-    // ldrb r0, [r6, #0x18]
-    // cmp r0, #0
-    // beq _02262594
-    // cmp r0, #1
-    // bne _02262594
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r2, [r5, #0x10]
-    // ldr r0, [r5]
-    // ldr r1, [r5, #8]
     // neg r2, r2
-    // bl ManagedSprite_AddSpritePrecisePositionXY
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Sprite_TickFrame
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _02262552
-    // ldrb r0, [r6, #0x19]
-    // add r0, r0, #1
-    // strb r0, [r6, #0x19]
-    // ldrb r0, [r6, #0x19]
-    // cmp r0, #8
-    // bls _02262594
-    // mov r5, #0
-    // add r4, r6, #0
-    // add r7, r5, #0
-    // ldr r0, [r4]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetDrawFlag
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #2
-    // blt _02262580
-    // mov r0, #0
-    // strb r0, [r6, #0x18]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_AddSpritePrecisePositionXY(*((u32*)r2), *((u32*)(r2 + 8)), *((u32*)(r2 + 0x10)));
+    Sprite_TickFrame(*((u32*)*((u32*)r5)));
+    *((u8*)(r6 + 0x19)) = (*((u8*)(r6 + 0x19)) + 1);
+    ManagedSprite_SetDrawFlag(*((u32*)r6), 0);
+    *((u8*)(r6 + 0x18)) = 0;
 }
+
 
 
 u32 ov93_02262598(void) {
-    OverlayManager_CreateAndGetData(0xc, 0x75);
-    MI_CpuFill8(0, 0xc);
-    OverlayManager_GetArgs(r5);
-    return 1;
 }
 
 
+
 void ov93_022625BC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // bl OverlayManager_GetData
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // add r1, r0, #0
+    OverlayManager_GetData();
     // add r1, #0x3d
     // ldrb r1, [r1]
-    // cmp r1, #1
-    // bne _02262642
-    // add r1, r0, #0
     // add r1, #0x3e
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // beq _022625E4
-    // cmp r1, #1
-    // beq _02262606
-    // cmp r1, #2
-    // b _0226261E
-    // bl IsPaletteFadeFinished
-    // cmp r0, #1
-    // bne _022625F0
-    // bl sub_0200FB70
-    // mov r0, #0
-    // bl sub_0200FC20
-    // ldr r1, [r4]
-    // add r0, r1, #0
+    IsPaletteFadeFinished(*((u32*)r0), *((u32*)r0));
+    sub_0200FB70();
+    sub_0200FC20(0);
     // add r0, #0x3e
     // ldrb r0, [r0]
     // add r1, #0x3e
-    // add r0, r0, #1
     // strb r0, [r1]
-    // b _0226263E
-    // bl ov90_02258B98
-    // cmp r0, #1
-    // bne _0226263E
-    // ldr r1, [r4]
-    // add r0, r1, #0
+    ov90_02258B98((*((u32*)r4) + 1), *((u32*)r4));
     // add r0, #0x3e
     // ldrb r0, [r0]
     // add r1, #0x3e
-    // add r0, r0, #1
     // strb r0, [r1]
-    // b _0226263E
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // beq _0226262C
-    // bl ov90_02258938
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #8]
-    // cmp r0, #0
-    // beq _0226263A
-    // bl ov90_02258A04
-    // mov r0, #0
-    // str r0, [r4, #8]
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // ldr r1, [r5]
-    // cmp r1, #5
-    // bhi _022626E0
+    ov90_02258938(*((u32*)(r4 + 4)), *((u32*)r4));
+    *((u32*)(r4 + 4)) = 0;
+    ov90_02258A04(*((u32*)(r4 + 8)));
+    *((u32*)(r4 + 8)) = 0;
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02262654: ; jump table
     // add r0, #0x31
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _0226266E
-    // mov r0, #1
     // str r0, [r5]
-    // b _022626E4
-    // mov r0, #3
     // str r0, [r5]
-    // b _022626E4
-    // mov r1, #0x75
-    // bl ov90_0225892C
-    // str r0, [r4, #4]
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    ov90_0225892C(3, 0x75);
+    *((u32*)(r4 + 4)) = r0;
     // str r0, [r5]
-    // b _022626E4
-    // ldr r0, [r4, #4]
-    // bl ov90_022589BC
-    // cmp r0, #1
-    // bne _022626E4
-    // ldr r0, [r4, #4]
-    // bl ov90_022589CC
-    // ldr r1, [r4]
-    // str r0, [r1, #0x34]
-    // ldr r0, [r4, #4]
-    // bl ov90_02258938
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // mov r0, #5
+    ov90_022589BC(*((u32*)(r4 + 4)));
+    ov90_022589CC(*((u32*)(r4 + 4)));
+    *((u32*)(*((u32*)r4) + 0x34)) = r0;
+    ov90_02258938(*((u32*)(r4 + 4)), *((u32*)r4));
+    *((u32*)(r4 + 4)) = 0;
     // str r0, [r5]
-    // b _022626E4
-    // add r1, r0, #0
     // add r1, #0x10
-    // mov r2, #0x75
-    // bl ov90_022589F8
-    // str r0, [r4, #8]
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    ov90_022589F8(5, 5, 0x75);
+    *((u32*)(r4 + 8)) = r0;
     // str r0, [r5]
-    // b _022626E4
-    // ldr r0, [r4, #8]
-    // bl ov90_02258AA0
-    // cmp r0, #1
-    // bne _022626E4
-    // ldr r0, [r4, #8]
-    // bl ov90_02258AA4
-    // ldr r1, [r4]
-    // str r0, [r1, #0x38]
-    // ldr r0, [r4, #8]
-    // bl ov90_02258A04
-    // mov r0, #0
-    // str r0, [r4, #8]
-    // mov r0, #5
+    ov90_02258AA0(*((u32*)(r4 + 8)));
+    ov90_02258AA4(*((u32*)(r4 + 8)));
+    *((u32*)(*((u32*)r4) + 0x38)) = r0;
+    ov90_02258A04(*((u32*)(r4 + 8)), *((u32*)r4));
+    *((u32*)(r4 + 8)) = 0;
     // str r0, [r5]
-    // b _022626E4
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 u32 ov93_022626E8(void) {
-    OverlayManager_GetData();
-    OverlayManager_FreeData(r4);
-    return 1;
 }
+
 
 
 void ov93_022626FC(void) {
@@ -5242,82 +4829,56 @@ void ov93_022626FC(void) {
 }
 
 
+
 u8 ov93_02262710(void) {
-    return 0x14;
 }
+
 
 
 u8 ov93_02262714(void) {
-    return 4;
 }
+
 
 
 void ov93_02262718(void) {
-    ov93_0225E144();
 }
+
 
 
 void ov93_02262724(void) {
-    sub_02037030(0, 0x18, 1, 0x14);
 }
+
 
 
 void ov93_0226273C(void) {
-    // mov r0, #0xbf
-    // mov r1, #1
-    // lsl r0, r0, #6
     // str r1, [r3, r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov93_02262748(void) {
-    sub_02037030(0, 0x19, 1, 0);
 }
+
 
 
 void ov93_02262760(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r3, #0
-    // ldr r3, [r4]
-    // ldr r1, [r2]
-    // add r5, r3, #0
     // add r5, #0x30
     // ldrb r5, [r5]
-    // mov r2, #0
-    // cmp r5, #0
-    // ble _0226278E
-    // add r6, r3, #0
     // add r6, #0x2c
     // ldrb r6, [r6]
-    // cmp r0, r6
-    // bne _02262786
-    // lsl r0, r2, #2
     // add r0, r4, r0
-    // str r1, [r0, #0xc]
-    // b _0226278E
-    // add r2, r2, #1
-    // add r3, r3, #1
-    // cmp r2, r5
-    // blt _02262774
-    // ldr r0, [r4]
+    *((u32*)((0 << 2) + 0xc)) = *((u32*)r2);
     // add r0, #0x30
     // ldrb r0, [r0]
-    // cmp r2, r0
-    // blt _0226279C
-    // bl GF_AssertFail
-    // ldr r0, [r4, #8]
-    // add r0, r0, #1
-    // str r0, [r4, #8]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)r3), *((u32*)r2), (0 + 1), (*((u32*)r3) + 1));
+    *((u32*)(r4 + 8)) = (*((u32*)(r4 + 8)) + 1);
 }
+
 
 
 void ov93_022627A4(void) {
-    sub_02037030(0, 0x17, 0x64, 1, 4);
 }
+
 
 
 void ov93_022627C0(void) {
@@ -5343,71 +4904,41 @@ void ov93_022627C0(void) {
 }
 
 
+
 void ov93_022627E8(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
-    // add r5, r0, #0
-    // add r4, r1, #0
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // mov r0, #1
+    MI_CpuFill8(0, 0x14);
     // str r0, [sp]
     // add r2, sp, #4
     // ldmia r4!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r4!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // add r0, r5, #0
     // add r1, sp, #0
-    // bl ov93_0225E230
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov93_0225E230(r5);
 }
+
 
 
 void ov93_02262814(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl sub_0203769C
-    // ldrb r1, [r4, #4]
-    // cmp r1, r0
-    // beq _0226282C
-    // add r0, r5, #0
-    // add r1, r4, #4
-    // bl ov93_0225FEC4
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0203769C();
+    ov93_0225FEC4(r5, (r4 + 4));
 }
+
 
 
 void ov93_02262830(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0x14
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // add r4, r2, #0
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // mov r0, #2
+    MI_CpuFill8(0, 0x14);
     // str r0, [sp]
     // add r0, sp, #0
-    // strh r5, [r0, #4]
-    // mov r1, #5
-    // strb r1, [r0, #6]
-    // strb r4, [r0, #7]
-    // add r0, r6, #0
+    *((u16*)(2 + 4)) = r5;
+    *((u8*)(2 + 6)) = 5;
+    *((u8*)(2 + 7)) = r4;
     // add r1, sp, #0
-    // bl ov93_0225E230
-    // add sp, #0x14
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    ov93_0225E230(r6, 5);
 }
+
 
 
 void ov93_02262860(void) {
@@ -5430,32 +4961,20 @@ void ov93_02262860(void) {
 }
 
 
+
 void ov93_02262884(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r7, r0, #0
-    // add r5, r1, #0
-    // add r4, r2, #0
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // add r6, r3, #0
-    // bl MI_CpuFill8
-    // mov r0, #3
+    MI_CpuFill8(0, 0x14);
     // str r0, [sp]
     // add r0, sp, #0
-    // strh r5, [r0, #4]
-    // strb r4, [r0, #6]
-    // mov r1, #4
-    // strb r1, [r0, #7]
-    // strb r6, [r0, #8]
-    // add r0, r7, #0
+    *((u16*)(3 + 4)) = r5;
+    *((u8*)(3 + 6)) = r4;
+    *((u8*)(3 + 7)) = 4;
+    *((u8*)(3 + 8)) = r6;
     // add r1, sp, #0
-    // bl ov93_0225E230
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov93_0225E230(r7, 4);
 }
+
 
 
 void ov93_022628B8(void) {
@@ -5488,28 +5007,18 @@ void ov93_022628B8(void) {
 }
 
 
+
 void ov93_022628F4(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
-    // add r5, r0, #0
-    // add r4, r1, #0
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // mov r0, #4
+    MI_CpuFill8(0, 0x14);
     // str r0, [sp]
-    // mov r1, #2
     // add r0, sp, #0
-    // strb r1, [r0, #4]
-    // strb r4, [r0, #5]
-    // add r0, r5, #0
+    *((u8*)(4 + 4)) = 2;
+    *((u8*)(4 + 5)) = r4;
     // add r1, sp, #0
-    // bl ov93_0225E230
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov93_0225E230(r5, 2);
 }
+
 
 
 void ov93_02262920(void) {
@@ -5526,28 +5035,18 @@ void ov93_02262920(void) {
 }
 
 
+
 void ov93_02262934(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
-    // add r5, r0, #0
-    // add r4, r1, #0
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // mov r0, #5
+    MI_CpuFill8(0, 0x14);
     // str r0, [sp]
-    // mov r1, #3
     // add r0, sp, #0
-    // strb r1, [r0, #4]
-    // strb r4, [r0, #5]
-    // add r0, r5, #0
+    *((u8*)(5 + 4)) = 3;
+    *((u8*)(5 + 5)) = r4;
     // add r1, sp, #0
-    // bl ov93_0225E230
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov93_0225E230(r5, 3);
 }
+
 
 
 void ov93_02262960(void) {
@@ -5567,28 +5066,18 @@ void ov93_02262960(void) {
 }
 
 
+
 void ov93_0226297C(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0x14
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // add r4, r2, #0
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // mov r0, #6
+    MI_CpuFill8(0, 0x14);
     // str r0, [sp]
     // add r0, sp, #0
-    // strb r5, [r0, #4]
-    // strb r4, [r0, #5]
-    // add r0, r6, #0
+    *((u8*)(6 + 4)) = r5;
+    *((u8*)(6 + 5)) = r4;
     // add r1, sp, #0
-    // bl ov93_0225E230
-    // add sp, #0x14
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    ov93_0225E230(r6);
 }
+
 
 
 void ov93_022629A8(void) {
@@ -5603,28 +5092,18 @@ void ov93_022629A8(void) {
 }
 
 
+
 void ov93_022629B8(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
-    // add r5, r0, #0
-    // add r4, r1, #0
     // add r0, sp, #0
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // mov r0, #7
+    MI_CpuFill8(0, 0x14);
     // str r0, [sp]
-    // mov r1, #6
     // add r0, sp, #0
-    // strb r1, [r0, #4]
-    // strb r4, [r0, #5]
-    // add r0, r5, #0
+    *((u8*)(7 + 4)) = 6;
+    *((u8*)(7 + 5)) = r4;
     // add r1, sp, #0
-    // bl ov93_0225E230
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov93_0225E230(r5, 6);
 }
+
 
 
 void ov93_022629E4(void) {
@@ -5639,4 +5118,5 @@ void ov93_022629E4(void) {
     // _022629F4: .word ov93_0225E48C
     // TODO: decompile
 }
+
 

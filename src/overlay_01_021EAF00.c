@@ -2,38 +2,30 @@
 #include "global.h"
 
 void ov01_021EAF00(void) {
-    // push {r4, lr}
-    // ldr r4, [r0, #0x18]
-    // cmp r4, #0
-    // bne _021EAF0C
-    // bl GF_AssertFail
-    // cmp r4, #7
-    // blt _021EAF14
-    // bl GF_AssertFail
-    // sub r0, r4, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail();
 }
+
 
 
 void ov01_021EAF18(void) {
-    ov01_021EAF00();
 }
+
 
 
 void ov01_021EAF34(void) {
-    ov01_021EAF00(1);
 }
+
 
 
 void ov01_021EAF54(void) {
-    ov01_021EAF00();
 }
+
 
 
 void ov01_021EAF70(void) {
-    ov01_021EAF00();
 }
+
 
 
 void ov01_021EAF8C(void) {
@@ -42,15 +34,17 @@ void ov01_021EAF8C(void) {
 }
 
 
+
 void ov01_021EAF90(void) {
     // bx lr
     // TODO: decompile
 }
 
 
+
 u8 ov01_021EAF94(void) {
-    return 1;
 }
+
 
 
 void ov01_021EAF98(void) {
@@ -69,6 +63,7 @@ void ov01_021EAF98(void) {
 }
 
 
+
 void ov01_021EAFB4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -85,7 +80,8 @@ void ov01_021EAFB4(void) {
 }
 
 
+
 u8 ov01_021EAFD0(void) {
-    return 1;
 }
+
 

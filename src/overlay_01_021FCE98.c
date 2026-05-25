@@ -144,6 +144,7 @@ void Task_UseSweetScentInField(void) {
 }
 
 
+
 void ov01_021FCFEC(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -165,194 +166,85 @@ void ov01_021FCFEC(void) {
 }
 
 
-void ov01_021FD014(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bl TaskManager_GetEnvironment
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl TaskManager_GetStatePtr
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _021FD032
-    // cmp r0, #1
-    // beq _021FD050
-    // b _021FD060
-    // add r0, r5, #0
+
+u32 ov01_021FD014(void) {
+    TaskManager_GetEnvironment();
+    TaskManager_GetStatePtr(r4);
     // add r0, #0x20
-    // mov r1, #3
-    // bl ov01_021FD154
-    // cmp r0, #0
-    // beq _021FD046
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    ov01_021FD154(r5, 3);
     // str r0, [r4]
     // add r5, #0x5c
-    // add r0, r5, #0
-    // bl Field3dObject_Draw
-    // b _021FD060
-    // add r0, r5, #0
-    // bl ov01_021FD128
-    // add r0, r5, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Field3dObject_Draw(r5);
+    ov01_021FD128(r5);
+    Heap_Free(r5);
 }
 
 
+
 void ov01_021FD064(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0x14
-    // add r4, r2, #0
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // mov r2, #0x20
-    // bl HeapExp_FndInitAllocator
-    // add r0, r4, #0
+    HeapExp_FndInitAllocator(r2, r0, 0x20);
     // add r0, #0x10
-    // mov r1, #0x86
-    // mov r2, #0x17
-    // add r3, r5, #0
-    // bl Field3dModel_LoadFromFilesystem
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dModel_LoadFromFilesystem(r4, 0x86, 0x17, r5);
     // str r5, [sp]
     // add r0, #0x20
     // add r1, #0x10
-    // mov r2, #0x86
-    // mov r3, #0x15
     // str r4, [sp, #4]
-    // bl Field3dModelAnimation_LoadFromFilesystem
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dModelAnimation_LoadFromFilesystem(r4, r4, 0x86, 0x15);
     // str r5, [sp]
     // add r0, #0x34
     // add r1, #0x10
-    // mov r2, #0x86
-    // mov r3, #0x16
     // str r4, [sp, #4]
-    // bl Field3dModelAnimation_LoadFromFilesystem
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dModelAnimation_LoadFromFilesystem(r4, r4, 0x86, 0x16);
     // str r5, [sp]
     // add r0, #0x48
     // add r1, #0x10
-    // mov r2, #0x86
-    // mov r3, #0x14
     // str r4, [sp, #4]
-    // bl Field3dModelAnimation_LoadFromFilesystem
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dModelAnimation_LoadFromFilesystem(r4, r4, 0x86, 0x14);
     // add r0, #0x5c
     // add r1, #0x10
-    // bl Field3dObject_InitFromModel
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dObject_InitFromModel(r4, r4);
     // add r0, #0x5c
     // add r1, #0x20
-    // bl Field3dObject_AddAnimation
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dObject_AddAnimation(r4, r4);
     // add r0, #0x5c
     // add r1, #0x34
-    // bl Field3dObject_AddAnimation
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dObject_AddAnimation(r4, r4);
     // add r0, #0x5c
     // add r1, #0x48
-    // bl Field3dObject_AddAnimation
-    // add r0, r4, #0
+    Field3dObject_AddAnimation(r4, r4);
     // add r0, #0x20
-    // mov r1, #3
-    // mov r2, #0
-    // bl ov01_021FD190
-    // add r0, r6, #0
-    // bl FollowMon_GetMapObject
+    ov01_021FD190(r4, 3, 0);
+    FollowMon_GetMapObject(r6);
     // add r1, sp, #8
-    // bl MapObject_CopyPositionVector
-    // add r0, r4, #0
+    MapObject_CopyPositionVector();
     // ldr r1, [sp, #8]
     // ldr r2, [sp, #0xc]
     // ldr r3, [sp, #0x10]
     // add r0, #0x5c
-    // bl Field3dObject_SetPosEx
+    Field3dObject_SetPosEx(r4);
     // add r4, #0x5c
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Field3dObject_SetActiveFlag
-    // add sp, #0x14
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    Field3dObject_SetActiveFlag(r4, 1);
 }
+
 
 
 void ov01_021FD128(void) {
-    Field3dModelAnimation_Unload(r0);
-    Field3dModelAnimation_Unload(r4, r4);
-    Field3dModelAnimation_Unload(r4, r4);
-    Field3dModel_Unload(r4);
 }
 
 
-void ov01_021FD154(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r5, #0
-    // add r6, r1, #0
-    // add r7, r0, #0
-    // add r4, r5, #0
-    // cmp r6, #0
-    // bls _021FD184
-    // mov r0, #0x14
+
+u32 ov01_021FD154(void) {
     // mul r0, r4
-    // mov r1, #1
     // add r0, r7, r0
-    // lsl r1, r1, #0xc
-    // bl Field3dModelAnimation_FrameAdvanceAndCheck
-    // cmp r0, #0
-    // beq _021FD17A
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, r6
-    // blo _021FD162
-    // cmp r5, r6
-    // bne _021FD18C
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Field3dModelAnimation_FrameAdvanceAndCheck(0x14, (1 << 0xc));
 }
+
 
 
 void ov01_021FD190(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // add r7, r2, #0
-    // mov r4, #0
-    // cmp r5, #0
-    // bls _021FD1B4
-    // mov r0, #0x14
     // mul r0, r4
     // add r0, r6, r0
-    // add r1, r7, #0
-    // bl Field3dModelAnimation_FrameSet
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, r5
-    // blo _021FD19E
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Field3dModelAnimation_FrameSet(0x14, r2);
 }
+
 

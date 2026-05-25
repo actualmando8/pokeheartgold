@@ -72,6 +72,7 @@ void sub_02034354(void) {
 }
 
 
+
 void sub_020343E4(void) {
     // push {r3, r4, r5, lr}
     // ldr r1, _0203441C ; =_021D4130
@@ -105,6 +106,7 @@ void sub_020343E4(void) {
 }
 
 
+
 void sub_02034420(void) {
     // ldr r0, _02034430 ; =_021D4130
     // ldr r0, [r0]
@@ -117,6 +119,7 @@ void sub_02034420(void) {
     // _02034430: .word _021D4130
     // TODO: decompile
 }
+
 
 
 void sub_02034434(void) {
@@ -225,9 +228,10 @@ void sub_02034434(void) {
 }
 
 
+
 u8 sub_02034520(void) {
-    return 0x68;
 }
+
 
 
 void sub_02034524(void) {
@@ -244,6 +248,7 @@ void sub_02034524(void) {
     // _02034538: .word _021D4130
     // TODO: decompile
 }
+
 
 
 void sub_0203453C(void) {
@@ -319,6 +324,7 @@ void sub_0203453C(void) {
 }
 
 
+
 void sub_020345D0(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -369,6 +375,7 @@ void sub_020345D0(void) {
     // _02034634: .word 0x000003A5
     // TODO: decompile
 }
+
 
 
 void sub_02034638(void) {
@@ -446,6 +453,7 @@ void sub_02034638(void) {
 }
 
 
+
 void sub_020346D4(void) {
     // ldr r0, _020346E0 ; =_021D4130
     // ldr r1, [r0]
@@ -457,6 +465,7 @@ void sub_020346D4(void) {
     // _020346E4: .word 0x000003A5
     // TODO: decompile
 }
+
 
 
 void sub_020346E8(void) {
@@ -484,6 +493,7 @@ void sub_020346E8(void) {
 }
 
 
+
 void sub_02034714(void) {
     // ldr r1, _0203472C ; =_021D4130
     // ldr r1, [r1]
@@ -500,6 +510,7 @@ void sub_02034714(void) {
     // _0203472C: .word _021D4130
     // TODO: decompile
 }
+
 
 
 void sub_02034730(void) {
@@ -522,6 +533,7 @@ void sub_02034730(void) {
 }
 
 
+
 void sub_02034750(void) {
     // ldr r1, _02034768 ; =_021D4130
     // ldr r1, [r1]
@@ -540,6 +552,7 @@ void sub_02034750(void) {
 }
 
 
+
 void sub_0203476C(void) {
     // ldr r1, _0203477C ; =_021D4130
     // mov r2, #2
@@ -552,6 +565,7 @@ void sub_0203476C(void) {
     // _0203477C: .word _021D4130
     // TODO: decompile
 }
+
 
 
 void sub_02034780(void) {
@@ -572,6 +586,7 @@ void sub_02034780(void) {
     // _0203479C: .word _021D4130
     // TODO: decompile
 }
+
 
 
 void sub_020347A0(void) {
@@ -598,6 +613,7 @@ void sub_020347A0(void) {
     // _020347C8: .word _021D4130
     // TODO: decompile
 }
+
 
 
 void sub_020347CC(void) {
@@ -639,6 +655,7 @@ void sub_020347CC(void) {
 }
 
 
+
 void sub_02034818(void) {
     // ldr r1, _02034848 ; =_021D4130
     // ldr r3, [r1]
@@ -669,6 +686,7 @@ void sub_02034818(void) {
 }
 
 
+
 void sub_0203484C(void) {
     // ldr r1, _0203486C ; =_021D4130
     // ldr r3, [r1]
@@ -691,6 +709,7 @@ void sub_0203484C(void) {
 }
 
 
+
 void sub_02034870(void) {
     // add r1, r0, #0
     // ldr r0, _0203487C ; =_021D4130
@@ -702,6 +721,7 @@ void sub_02034870(void) {
     // _02034880: .word sub_0203A378
     // TODO: decompile
 }
+
 
 
 void sub_02034884(void) {
@@ -726,6 +746,7 @@ void sub_02034884(void) {
 }
 
 
+
 void sub_020348A8(void) {
     // ldr r1, _020348C8 ; =_021D4130
     // ldr r3, [r1]
@@ -748,6 +769,7 @@ void sub_020348A8(void) {
 }
 
 
+
 void sub_020348CC(void) {
     // ldr r1, _020348EC ; =_021D4130
     // ldr r3, [r1]
@@ -768,6 +790,7 @@ void sub_020348CC(void) {
     // _020348EC: .word _021D4130
     // TODO: decompile
 }
+
 
 
 void sub_020348F0(void) {
@@ -825,6 +848,7 @@ void sub_020348F0(void) {
     // _0203495C: .word 0x0000039D
     // TODO: decompile
 }
+
 
 
 void sub_02034960(void) {
@@ -919,6 +943,7 @@ void sub_02034960(void) {
 }
 
 
+
 void sub_02034A20(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -995,33 +1020,19 @@ void sub_02034A20(void) {
 }
 
 
+
 void sub_02034AC0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // cmp r1, #1
-    // bne _02034AD2
-    // mov r0, #0
-    // mov r1, #1
-    // bl sub_02034960
-    // b _02034AE2
-    // mov r0, #0
+    sub_02034960(0, 1);
     // mvn r0, r0
-    // cmp r1, r0
-    // bne _02034AE2
-    // mov r0, #1
-    // add r1, r0, #0
-    // bl sub_02034960
-    // add r0, r4, #0
-    // bl sub_02034A20
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02034960(1, 1);
+    sub_02034A20(r4);
 }
+
 
 
 void sub_02034AEC(void) {
-    sub_02034960(2);
-    sub_02034A20(r4);
 }
+
 
 
 void sub_02034B00(void) {
@@ -1032,4 +1043,5 @@ void sub_02034B00(void) {
     // _02034B08: .word _021D4130
     // TODO: decompile
 }
+
 

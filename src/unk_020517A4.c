@@ -1,60 +1,20 @@
 /* Decompiled from asm/unk_020517A4.s */
 #include "global.h"
 
-void BattleSetup_GetTransitionAndMusicParam(void) {
-    // push {r4, lr}
-    // add r2, r0, #0
-    // ldr r4, [r2]
-    // mov r0, #1
+int BattleSetup_GetTransitionAndMusicParam(void) {
     // tst r0, r4
-    // beq _02051788
     // add r2, #0x5d ; ->trainers[1].trainerClass
     // ldrb r0, [r2]
-    // bl NPCTrainerGetBattleIntroAndMusicParam
-    // mov r1, #0x80
+    NPCTrainerGetBattleIntroAndMusicParam(1, r0);
     // tst r1, r4
-    // beq _02051764
-    // cmp r0, #39
-    // beq _020517A0
-    // mov r0, #2
     // tst r0, r4
-    // beq _02051760
-    // mov r0, #37
-    // pop {r4, pc}
-    // mov r0, #35
-    // pop {r4, pc}
-    // cmp r0, #29
-    // blo _0205176C
-    // cmp r0, #34
-    // bls _020517A0
-    // cmp r0, #43
-    // beq _020517A0
-    // cmp r0, #44
-    // beq _020517A0
-    // mov r1, #2
     // tst r1, r4
-    // beq _0205177E
-    // mov r0, #37
-    // pop {r4, pc}
-    // mov r1, #4
     // tst r1, r4
-    // beq _020517A0
-    // mov r0, #36
-    // pop {r4, pc}
-    // mov r1, #0x56
-    // lsl r1, r1, #2
-    // ldr r0, [r2, #8] ; ->parties[1]
     // ldr r1, [r2, r1]
-    // bl WildPokemonGetBattleIntroAndMusicParam
-    // cmp r0, #42
-    // blo _020517A0
-    // mov r1, #2
+    WildPokemonGetBattleIntroAndMusicParam(*((u32*)(r2 + 8)), (0x56 << 2));
     // tst r1, r4
-    // beq _020517A0
-    // mov r0, #38
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void BattleStartGetTransition(void) {
@@ -80,20 +40,20 @@ void BattleStartGetTransition(void) {
 }
 
 
+
 void BattleStartGetMusic(void) {
-    GF_AssertFail();
 }
+
 
 
 void BattleSetup_GetWildTransitionEffect(void) {
-    BattleSetup_GetTransitionAndMusicParam();
-    BattleStartGetTransition(r4);
 }
+
 
 
 u8 sub_020517F8(void) {
-    return 1;
 }
+
 
 
 void BattleSetup_GetWildBattleMusic(void) {
@@ -147,6 +107,7 @@ void BattleSetup_GetWildBattleMusic(void) {
 }
 
 
+
 void NPCTrainerGetBattleIntroAndMusicParam(void) {
     // ldr r3, _02051890 ; =_020FC3CA
     // mov r2, #0
@@ -171,6 +132,7 @@ void NPCTrainerGetBattleIntroAndMusicParam(void) {
     // _02051890: .word _020FC3CA
     // TODO: decompile
 }
+
 
 
 void WildPokemonGetBattleIntroAndMusicParam(void) {
@@ -207,4 +169,5 @@ void WildPokemonGetBattleIntroAndMusicParam(void) {
     // _020518D4: .word _020FC3B4
     // TODO: decompile
 }
+
 

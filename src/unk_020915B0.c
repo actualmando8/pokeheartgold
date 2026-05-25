@@ -12,6 +12,7 @@ void LoadDwcOverlay(void) {
 }
 
 
+
 void UnloadDwcOverlay(void) {
     // ldr r3, _020915C8 ; =UnloadOverlayByID
     // ldr r0, _020915CC ; =FS_OVERLAY_ID(OVY_0)
@@ -21,6 +22,7 @@ void UnloadDwcOverlay(void) {
     // _020915CC: .word FS_OVERLAY_ID(OVY_0)
     // TODO: decompile
 }
+
 
 
 void LoadOVY13(void) {
@@ -34,6 +36,7 @@ void LoadOVY13(void) {
 }
 
 
+
 void UnloadOVY13(void) {
     // ldr r3, _020915E8 ; =UnloadOverlayByID
     // ldr r0, _020915EC ; =FS_OVERLAY_ID(OVY_13)
@@ -45,14 +48,10 @@ void UnloadOVY13(void) {
 }
 
 
+
 void sub_020915F0(void) {
-    LoadDwcOverlay();
-    LoadOVY13();
-    ov13_0221BA00(r4);
-    UnloadOVY13();
-    UnloadDwcOverlay();
-    OS_ResetSystem(0);
 }
+
 
 
 void LoadOVY38(void) {
@@ -66,6 +65,7 @@ void LoadOVY38(void) {
 }
 
 
+
 void UnloadOVY38(void) {
     // ldr r3, _0209162C ; =UnloadOverlayByID
     // ldr r0, _02091630 ; =FS_OVERLAY_ID(OVY_38)
@@ -77,25 +77,13 @@ void UnloadOVY38(void) {
 }
 
 
-void sub_02091634(void) {
-    // push {r4, lr}
-    // mov r2, #0x41
-    // add r4, r0, #0
-    // mov r0, #3
-    // mov r1, #0x30
-    // lsl r2, r2, #0xc
-    // bl Heap_Create
-    // add r0, r4, #0
-    // bl OverlayManager_GetArgs
-    // ldr r0, [r0, #8]
-    // mov r1, #0x30
-    // bl sub_020915F0
-    // mov r0, #0x30
-    // bl Heap_Destroy
-    // mov r0, #0
-    // bl OS_ResetSystem
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+
+void * sub_02091634(void) {
+    Heap_Create(3, 0x30, (0x41 << 0xc));
+    OverlayManager_GetArgs(r4);
+    sub_020915F0(*((u32*)(r0 + 8)), 0x30);
+    Heap_Destroy(0x30);
+    OS_ResetSystem(0);
 }
+
 

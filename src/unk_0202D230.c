@@ -2,23 +2,23 @@
 #include "global.h"
 
 u8 sub_0202D230(void) {
-    return 0xe4;
 }
+
 
 
 void sub_0202D234(void) {
-    MI_CpuFill8();
 }
+
 
 
 void sub_0202D240(void) {
-    MI_CpuFill8(1, 0, 0x5a);
 }
+
 
 
 void sub_0202D254(void) {
-    MailMsg_Init_FromTemplate(0);
 }
+
 
 
 void sub_0202D274(void) {
@@ -32,137 +32,65 @@ void sub_0202D274(void) {
 }
 
 
-void sub_0202D284(void) {
-    // push {r3, lr}
-    // cmp r1, #0xa
-    // bhi _0202D302
+
+u32 sub_0202D284(void) {
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _0202D296: ; jump table
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1b
-    // lsr r0, r0, #0x1d
-    // pop {r3, pc}
-    // ldrb r0, [r0, #2]
-    // pop {r3, pc}
-    // ldrb r0, [r0, #3]
-    // pop {r3, pc}
-    // ldrh r0, [r0, #4]
-    // pop {r3, pc}
-    // ldrh r0, [r0, #6]
-    // pop {r3, pc}
-    // add r1, r2, #0
     // add r0, #8
-    // mov r2, #4
-    // bl MI_CpuCopy8
-    // mov r0, #0
-    // pop {r3, pc}
-    // add r1, r2, #0
+    MI_CpuCopy8(*((u16*)(*((u16*)(*((u8*)(*((u8*)(((r0 << 0x1b) >> 0x1d) + 2)) + 3)) + 4)) + 6)), r2, 4);
     // add r0, #0x2c
-    // mov r2, #0x10
-    // bl MI_CpuCopy8
-    // mov r0, #0
-    // pop {r3, pc}
+    MI_CpuCopy8(0, r2, 0x10);
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1f
-    // lsr r0, r0, #0x1f
-    // pop {r3, pc}
-    // add r1, r2, #0
     // add r0, #0xc
-    // mov r2, #0x1c
-    // bl MI_CpuCopy8
-    // mov r0, #0
-    // pop {r3, pc}
+    MI_CpuCopy8(((0 << 0x1f) >> 0x1f), r2, 0x1c);
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x1d
-    // pop {r3, pc}
-    // ldr r0, [r0, #0x28]
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
 }
 
 
+
 void sub_0202D308(void) {
-    // push {r4, lr}
-    // add r3, r0, #0
-    // cmp r1, #0xa
-    // bhi _0202D3AE
     // add r0, r1, r1
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0202D31C: ; jump table
     // ldrb r1, [r3]
-    // mov r0, #0x1c
     // bic r1, r0
     // ldrb r0, [r2]
-    // lsl r0, r0, #0x1d
-    // lsr r0, r0, #0x1b
     // orr r0, r1
     // strb r0, [r3]
-    // pop {r4, pc}
     // ldrb r0, [r2]
-    // strb r0, [r3, #2]
-    // pop {r4, pc}
+    *((u8*)(r0 + 2)) = ((0x1c << 0x1d) >> 0x1b);
     // ldrb r0, [r2]
-    // strb r0, [r3, #3]
-    // pop {r4, pc}
+    *((u8*)(r0 + 3)) = ((0x1c << 0x1d) >> 0x1b);
     // ldrh r0, [r2]
-    // strh r0, [r3, #4]
-    // pop {r4, pc}
+    *((u16*)(r0 + 4)) = ((0x1c << 0x1d) >> 0x1b);
     // ldrh r0, [r2]
-    // strh r0, [r3, #6]
-    // pop {r4, pc}
+    *((u16*)(r0 + 6)) = ((0x1c << 0x1d) >> 0x1b);
     // add r3, #8
-    // add r0, r2, #0
-    // add r1, r3, #0
-    // mov r2, #4
-    // bl MI_CpuCopy8
-    // pop {r4, pc}
+    MI_CpuCopy8(r2, r0, 4, r0);
     // add r3, #0x2c
-    // add r0, r2, #0
-    // add r1, r3, #0
-    // mov r2, #0x10
-    // bl MI_CpuCopy8
-    // pop {r4, pc}
+    MI_CpuCopy8(r2, r3, 0x10);
     // ldrb r4, [r3]
     // ldrb r1, [r2]
-    // mov r0, #1
     // bic r4, r0
-    // mov r0, #1
     // and r0, r1
     // orr r0, r4
     // strb r0, [r3]
-    // pop {r4, pc}
     // add r3, #0xc
-    // add r0, r2, #0
-    // add r1, r3, #0
-    // mov r2, #0x1c
-    // bl MI_CpuCopy8
-    // pop {r4, pc}
-    // ldr r0, [r2]
-    // str r0, [r3, #0x28]
-    // pop {r4, pc}
+    MI_CpuCopy8(r2, r3, 0x1c);
+    *((u32*)(r3 + 0x28)) = *((u32*)r2);
     // ldrb r1, [r3]
-    // mov r0, #0xe0
     // bic r1, r0
     // ldrb r0, [r2]
-    // lsl r0, r0, #0x1d
-    // lsr r0, r0, #0x18
     // orr r0, r1
     // strb r0, [r3]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202D3B0(void) {
@@ -191,28 +119,20 @@ void sub_0202D3B0(void) {
 }
 
 
-void sub_0202D3DC(void) {
+
+u32 sub_0202D3DC(void) {
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1e
-    // lsr r0, r0, #0x1f
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202D3E4(void) {
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // lsl r1, r1, #0x1f
     // ldrb r3, [r0]
-    // mov r2, #2
-    // lsr r1, r1, #0x1e
     // bic r3, r2
     // orr r1, r3
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void FrontierData_BattlePointAction(void) {
@@ -257,104 +177,43 @@ void FrontierData_BattlePointAction(void) {
 }
 
 
-void sub_0202D450(void) {
-    // cmp r1, #2
-    // beq _0202D45A
-    // cmp r1, #3
-    // beq _0202D468
-    // b _0202D484
-    // mov r1, #0
-    // strb r1, [r0, #2]
-    // ldrh r2, [r0, #8]
-    // mov r1, #0x10
+
+u32 sub_0202D450(void) {
+    *((u8*)(r0 + 2)) = 0;
     // bic r2, r1
-    // strh r2, [r0, #8]
-    // b _0202D484
-    // ldrh r1, [r0, #8]
-    // lsl r1, r1, #0x1b
-    // lsr r1, r1, #0x1f
-    // beq _0202D478
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // b _0202D484
-    // mov r1, #1
-    // strb r1, [r0, #2]
-    // ldrh r2, [r0, #8]
-    // mov r1, #0x10
+    *((u16*)(r0 + 8)) = *((u16*)(r0 + 8));
+    *((u8*)(r0 + 2)) = (*((u8*)(r0 + 2)) + 1);
+    *((u8*)(r0 + 2)) = 1;
     // orr r1, r2
-    // strh r1, [r0, #8]
-    // ldrb r0, [r0, #2]
-    // bx lr
-    // TODO: decompile
+    *((u16*)(r0 + 8)) = 0x10;
 }
 
 
-void sub_0202D488(void) {
-    // cmp r1, #2
-    // beq _0202D496
-    // cmp r1, #3
-    // beq _0202D49C
-    // cmp r1, #4
-    // beq _0202D4A8
-    // b _0202D4B2
-    // mov r1, #1
-    // strb r1, [r0, #3]
-    // b _0202D4B2
-    // ldrb r1, [r0, #3]
-    // cmp r1, #0xa
-    // bhs _0202D4B2
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // b _0202D4B2
-    // ldrb r1, [r0, #3]
-    // cmp r1, #1
-    // bls _0202D4B2
-    // sub r1, r1, #1
-    // strb r1, [r0, #3]
-    // ldrb r0, [r0, #3]
-    // bx lr
-    // TODO: decompile
+
+u32 sub_0202D488(void) {
+    *((u8*)(r0 + 3)) = 1;
+    *((u8*)(r0 + 3)) = (*((u8*)(r0 + 3)) + 1);
+    *((u8*)(r0 + 3)) = (*((u8*)(r0 + 3)) - 1);
 }
+
 
 
 void sub_0202D4B8(void) {
-    // push {r3, lr}
-    // add r3, r0, #0
-    // cmp r1, #0
-    // bne _0202D4CE
     // add r3, #0xc0
-    // add r0, r2, #0
-    // add r1, r3, #0
-    // mov r2, #0xa8
-    // bl MI_CpuCopy8
-    // pop {r3, pc}
+    MI_CpuCopy8(r2, r0, 0xa8, r0);
     // add r3, #0x18
-    // add r0, r2, #0
-    // add r1, r3, #0
-    // mov r2, #0xa8
-    // bl MI_CpuCopy8
-    // pop {r3, pc}
-    // TODO: decompile
+    MI_CpuCopy8(r2, r3, 0xa8);
 }
+
 
 
 void sub_0202D4DC(void) {
-    // push {r3, lr}
-    // cmp r1, #0
-    // bne _0202D4EE
-    // add r1, r2, #0
     // add r0, #0xc0
-    // mov r2, #0xa8
-    // bl MI_CpuCopy8
-    // pop {r3, pc}
-    // add r1, r2, #0
+    MI_CpuCopy8(r2, 0xa8);
     // add r0, #0x18
-    // mov r2, #0xa8
-    // bl MI_CpuCopy8
-    // pop {r3, pc}
-    // TODO: decompile
+    MI_CpuCopy8(r2, 0xa8);
 }
+
 
 
 void sub_0202D4FC(void) {
@@ -412,6 +271,7 @@ void sub_0202D4FC(void) {
 }
 
 
+
 void sub_0202D564(void) {
     // ldrh r0, [r0, #0x16]
     // bx lr
@@ -419,9 +279,10 @@ void sub_0202D564(void) {
 }
 
 
+
 void sub_0202D568(void) {
-    _s32_div_f(0xfa);
 }
+
 
 
 void sub_0202D57C(void) {
@@ -464,21 +325,13 @@ void sub_0202D57C(void) {
 }
 
 
-void sub_0202D5C4(void) {
-    // cmp r1, #5
-    // bne _0202D5CC
-    // mov r0, #0
-    // bx lr
-    // cmp r1, #6
-    // bne _0202D5D2
-    // mov r1, #5
+
+u32 sub_0202D5C4(void) {
     // add r0, #0xa
-    // lsl r1, r1, #1
     // strh r2, [r0, r1]
     // ldrh r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202D5DC(void) {
@@ -530,9 +383,10 @@ void sub_0202D5DC(void) {
 }
 
 
+
 void sub_0202D638(void) {
-    ((u32*)r0)[4] = r1;
 }
+
 
 
 void sub_0202D63C(void) {
@@ -540,6 +394,7 @@ void sub_0202D63C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0202D640(void) {
@@ -560,70 +415,33 @@ void sub_0202D640(void) {
 }
 
 
+
 void sub_0202D660(void) {
-    Save_Frontier_GetStatic();
 }
 
 
+
 void sub_0202D678(void) {
-    // push {r3, r4, r5, r6}
-    // add r4, r3, #0
-    // mov r3, #1
-    // cmp r2, #0
-    // beq _0202D6D8
-    // cmp r2, #0xc8
-    // bhi _0202D6D8
-    // cmp r1, #0
-    // beq _0202D6D8
-    // cmp r1, #0xa
-    // bhi _0202D6D8
-    // sub r5, r2, #1
-    // sub r2, r1, #1
-    // mov r1, #0xc8
     // mul r1, r2
     // add r1, r5, r1
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x10
-    // lsr r6, r1, #0x1f
-    // lsl r5, r1, #0x1d
     // sub r5, r5, r6
-    // mov r2, #0x1d
     // ror r5, r2
     // add r2, r6, r5
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x18
     // lsl r3, r2
-    // lsl r2, r3, #0x18
-    // lsl r1, r1, #0x15
-    // lsr r5, r2, #0x18
-    // add r3, r0, #4
-    // lsr r2, r1, #0x18
     // ldrb r1, [r3, r2]
     // orr r1, r5
     // strb r1, [r3, r2]
-    // ldr r3, [r4]
-    // ldr r1, [r4, #8]
-    // lsl r5, r3, #0x18
-    // ldr r3, [r4, #4]
-    // lsl r1, r1, #0x18
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #8
-    // ldr r2, [r4, #0xc]
-    // lsr r1, r1, #0x10
     // orr r3, r5
     // orr r1, r3
     // orr r1, r2
     // str r1, [r0]
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202D6DC(void) {
-    MI_CpuFill8((r0 + 4), 0, 0xfa);
-    MI_CpuFill8(r4, 0, 4);
 }
+
 
 
 void sub_0202D6F8(void) {
@@ -651,95 +469,39 @@ void sub_0202D6F8(void) {
 }
 
 
+
 void sub_0202D720(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r6, r2, #0
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r7, #1
-    // cmp r6, #0xc8
-    // bhi _0202D734
-    // cmp r4, #0xa
-    // bls _0202D73A
-    // add sp, #0x10
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5]
-    // lsr r1, r0, #0x18
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
     // str r1, [sp]
-    // lsr r1, r0, #0x10
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
     // str r1, [sp, #4]
-    // lsr r1, r0, #8
-    // lsl r1, r1, #0x18
-    // lsl r0, r0, #0x18
-    // lsr r1, r1, #0x18
-    // lsr r0, r0, #0x18
     // str r1, [sp, #8]
     // str r0, [sp, #0xc]
-    // add r0, r3, #0
     // add r1, sp, #0
-    // bl sub_0202D6F8
-    // cmp r0, #0
-    // beq _0202D772
-    // add r0, r5, #0
-    // bl sub_0202D6DC
-    // add sp, #0x10
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // sub r1, r4, #1
-    // mov r0, #0xc8
+    sub_0202D6F8(r3, (((*((u32*)r0) >> 8) << 0x18) >> 0x18));
+    sub_0202D6DC(r5);
     // mul r0, r1
-    // sub r2, r6, #1
     // add r0, r2, r0
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // lsr r3, r0, #0x1f
-    // lsl r2, r0, #0x1d
-    // lsl r0, r0, #0x15
-    // lsr r0, r0, #0x18
     // add r0, r5, r0
     // sub r2, r2, r3
-    // mov r1, #0x1d
     // ror r2, r1
     // add r1, r3, r2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // add r2, r7, #0
     // lsl r2, r1
-    // lsl r1, r2, #0x18
-    // ldrb r0, [r0, #4]
-    // lsr r1, r1, #0x18
     // tst r0, r1
-    // beq _0202D7AA
-    // add sp, #0x10
-    // add r0, r7, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
-void sub_0202D7B0(void) {
+
+u32 sub_0202D7B0(void) {
     // add r0, #0xfe
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
-void sub_0202D7B8(void) {
+
+u32 sub_0202D7B8(void) {
     // add r0, #0xff
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202D7C0(void) {
@@ -768,6 +530,7 @@ void sub_0202D7C0(void) {
 }
 
 
+
 void sub_0202D7F0(void) {
     // ldr r2, _0202D800 ; =0x00000101
     // ldrb r3, [r0, r2]
@@ -780,6 +543,7 @@ void sub_0202D7F0(void) {
     // _0202D800: .word 0x00000101
     // TODO: decompile
 }
+
 
 
 void sub_0202D804(void) {
@@ -858,6 +622,7 @@ void sub_0202D804(void) {
 }
 
 
+
 void sub_0202D8A4(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -883,6 +648,7 @@ void sub_0202D8A4(void) {
 }
 
 
+
 void sub_0202D8D0(void) {
     // ldr r2, _0202D8E0 ; =0x00000103
     // ldrb r3, [r0, r2]
@@ -897,38 +663,26 @@ void sub_0202D8D0(void) {
 }
 
 
+
 void sub_0202D8E4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // mov r1, #0xff
-    // lsl r1, r1, #2
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r0, #0x1d
-    // lsl r0, r0, #6
-    // mov r2, #0xff
+    Heap_Alloc(r1, (0xff << 2));
     // add r0, r5, r0
-    // add r1, r4, #0
-    // lsl r2, r2, #2
-    // bl MI_CpuCopy8
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    MI_CpuCopy8((0x1d << 6), r0, (0xff << 2));
 }
+
 
 
 void sub_0202D908(void) {
-    Save_Frontier_GetStatic();
 }
+
 
 
 void Save_FrontierData_Get(void) {
-    Save_Frontier_GetStatic();
 }
+
 
 
 void sub_0202D928(void) {
-    Save_Frontier_GetStatic();
 }
+
 

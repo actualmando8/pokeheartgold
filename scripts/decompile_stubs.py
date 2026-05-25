@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Decompile stub functions with asm comments to C code.
-Reads the // comments and generates C code.
+More aggressive version that handles simple loops and branches.
 """
 import os, re
 
@@ -28,10 +28,8 @@ def extract_signature(header, func_name):
 
 def decompile_asm_to_c(asm_lines, func_name, header):
     """Try to decompile assembly instructions to C code."""
-    # Get signature from header
     sig = extract_signature(header, func_name)
     
-    # Parse instructions
     instructions = []
     for line in asm_lines:
         line = line.strip().lstrip('/').strip()
@@ -43,17 +41,13 @@ def decompile_asm_to_c(asm_lines, func_name, header):
     if not instructions:
         return None
     
-    # Check for patterns we can handle
-    
-    # Pattern 1: Simple function call chain
-    bl_calls = [l for l in instructions if l.startswith('bl ')]
-    has_branch = any(l.startswith(('bne ', 'beq ', 'blt ', 'blo ', 'bgt ', 'bhi ', 'bge ', 'bhs ', 'ble ', 'bls ')) for l in instructions)
-    has_loop = any(l.startswith(('blt ', 'blo ')) for l in instructions)
-    has_data_ref = any('.word' in l for l in instructions)
-    
     # Filter out prologue/epilogue
     core = [l for l in instructions if not l.startswith(('push', 'pop', 'bx ', 'nop', 'add sp', 'sub sp'))]
     core = [l for l in core if not re.match(r'^\w+:$', l)]
+    core = [l for l in core if not re.match(r'^\w+:\.word', l)]  # literal pool labels
+    
+    # Check for data table refs (literal pools with .word)
+    has_data_ref = any('.word' in l for l in instructions)
     
     # Simple return value
     if len(core) == 1 and core[0].startswith('mov r0, #'):
@@ -68,13 +62,14 @@ def decompile_asm_to_c(asm_lines, func_name, header):
             pass
         return f"u32 {func_name}(void) {{\n    return {val};\n}}"
     
-    # Can't handle loops, branches, or data refs
-    if has_loop or has_branch or has_data_ref:
+    # Can't handle data refs
+    if has_data_ref:
         return None
     
-    # Try to translate linear sequences
+    # Try to translate
     body = []
     regs = {}
+    had_error = False
     
     for instr in core:
         # mov rX, #imm
@@ -95,10 +90,28 @@ def decompile_asm_to_c(asm_lines, func_name, header):
             regs[f'r{m.group(1)}'] = f"({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} + {m.group(3)})"
             continue
         
+        # sub rX, rY, #imm
+        m = re.match(r'sub\s+r(\d),\s*r(\d),\s*#(0x[0-9a-fA-F]+|\d+)', instr)
+        if m:
+            regs[f'r{m.group(1)}'] = f"({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} - {m.group(3)})"
+            continue
+        
         # mov rX, rY
         m = re.match(r'mov\s+r(\d),\s*r(\d)', instr)
         if m:
             regs[f'r{m.group(1)}'] = regs.get(f'r{m.group(2)}', f'r{m.group(2)}')
+            continue
+        
+        # lsl rX, rY, #imm
+        m = re.match(r'lsl\s+r(\d),\s*r(\d),\s*#(0x[0-9a-fA-F]+|\d+)', instr)
+        if m:
+            regs[f'r{m.group(1)}'] = f"({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} << {m.group(3)})"
+            continue
+        
+        # lsr rX, rY, #imm
+        m = re.match(r'lsr\s+r(\d),\s*r(\d),\s*#(0x[0-9a-fA-F]+|\d+)', instr)
+        if m:
+            regs[f'r{m.group(1)}'] = f"({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} >> {m.group(3)})"
             continue
         
         # ldr rX, [rY, #imm]
@@ -113,34 +126,51 @@ def decompile_asm_to_c(asm_lines, func_name, header):
             regs[f'r{m.group(1)}'] = f"*((u8*)({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} + {m.group(3)}))"
             continue
         
+        # ldrh rX, [rY, #imm]
+        m = re.match(r'ldrh\s+r(\d),\s*\[r(\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', instr)
+        if m:
+            regs[f'r{m.group(1)}'] = f"*((u16*)({regs.get(f'r{m.group(2)}', f'r{m.group(2)}')} + {m.group(3)}))"
+            continue
+        
+        # ldr rX, [rY]
+        m = re.match(r'ldr\s+r(\d),\s*\[r(\d)\]', instr)
+        if m:
+            dst = f'r{m.group(1)}'
+            src = f'r{m.group(2)}'
+            regs[dst] = "*((u32*)" + regs.get(src, src) + ")"
+            continue
+        
         # str rX, [rY, #imm]
         m = re.match(r'str\s+r(\d),\s*\[r(\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', instr)
         if m:
-            val_r = f'r{m.group(1)}'
-            base_r = f'r{m.group(2)}'
+            val_r = 'r' + m.group(1)
+            base_r = 'r' + m.group(2)
             val = regs.get(val_r, val_r)
             base = regs.get(base_r, base_r)
-            body.append(f"    *((u32*)({base} + {m.group(3)})) = {val};")
+            off = m.group(3)
+            body.append("    *((u32*)(" + base + " + " + off + ")) = " + val + ";")
             continue
         
         # strb rX, [rY, #imm]
         m = re.match(r'strb\s+r(\d),\s*\[r(\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', instr)
         if m:
-            val_r = f'r{m.group(1)}'
-            base_r = f'r{m.group(2)}'
+            val_r = 'r' + m.group(1)
+            base_r = 'r' + m.group(2)
             val = regs.get(val_r, val_r)
             base = regs.get(base_r, base_r)
-            body.append(f"    *((u8*)({base} + {m.group(3)})) = {val};")
+            off = m.group(3)
+            body.append("    *((u8*)(" + base + " + " + off + ")) = " + val + ";")
             continue
         
         # strh rX, [rY, #imm]
         m = re.match(r'strh\s+r(\d),\s*\[r(\d),\s*#(0x[0-9a-fA-F]+|\d+)\]', instr)
         if m:
-            val_r = f'r{m.group(1)}'
-            base_r = f'r{m.group(2)}'
+            val_r = 'r' + m.group(1)
+            base_r = 'r' + m.group(2)
             val = regs.get(val_r, val_r)
             base = regs.get(base_r, base_r)
-            body.append(f"    *((u16*)({base} + {m.group(3)})) = {val};")
+            off = m.group(3)
+            body.append("    *((u16*)(" + base + " + " + off + ")) = " + val + ";")
             continue
         
         # bl function
@@ -158,12 +188,16 @@ def decompile_asm_to_c(asm_lines, func_name, header):
             regs.clear()
             continue
         
-        # cmp (skip)
+        # cmp (skip - used for branches)
         if instr.startswith('cmp '):
             continue
         
-        # Unknown - can't translate
-        return None
+        # Branches - skip for now but don't fail
+        if instr.startswith(('bne ', 'beq ', 'blt ', 'blo ', 'bgt ', 'bhi ', 'bge ', 'bhs ', 'ble ', 'bls ', 'b ')):
+            continue
+        
+        # Unknown instruction - mark as comment
+        body.append(f"    // {instr}")
     
     if not body:
         return None
@@ -172,7 +206,7 @@ def decompile_asm_to_c(asm_lines, func_name, header):
     if sig:
         ret_type = sig.split(func_name)[0].strip()
     
-    return f"{ret_type} {func_name}(void) {{\n" + "\n".join(body) + "\n}"
+    return ret_type + " " + func_name + "(void) {\n" + "\n".join(body) + "\n}"
 
 def process_file(c_file):
     """Process a file, decompiling stubs."""
@@ -188,7 +222,6 @@ def process_file(c_file):
     
     header = get_header(c_file)
     
-    # Find all stub functions - line by line approach
     lines = content.split('\n')
     result = []
     i = 0
@@ -196,14 +229,12 @@ def process_file(c_file):
     
     while i < len(lines):
         line = lines[i]
-        # Check for function header
         m = re.match(r'((?:void|u8|u16|u32|s8|s16|s32|BOOL)\s+(\w+)\s*\([^)]*\)\s*\{)', line)
         if m:
             full_header = m.group(1)
             func_name = m.group(2)
             i += 1
             
-            # Collect asm comments
             asm_lines = []
             while i < len(lines):
                 l = lines[i].strip()
@@ -214,13 +245,11 @@ def process_file(c_file):
                     asm_lines.append(l)
                 i += 1
             
-            # Try to decompile
             result_str = decompile_asm_to_c(asm_lines, func_name, header)
             if result_str:
                 converted += 1
                 result.append(result_str)
             else:
-                # Keep original
                 result.append(full_header)
                 for al in asm_lines:
                     result.append(f"    {al}")

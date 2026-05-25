@@ -2,28 +2,24 @@
 #include "global.h"
 
 void ov01_021FE590(void) {
-    ov01_021F1430(0xc, 0);
 }
+
 
 
 void ov01_021FE5A4(void) {
-    ov01_021FE61C();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_021FE5B4(void) {
-    // ldr r1, [r0]
-    // add r1, r1, #1
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021FE5BC(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov01_021FE5CC(void) {
@@ -66,39 +62,25 @@ void ov01_021FE5CC(void) {
 }
 
 
+
 void ov01_021FE61C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // cmp r0, #1
-    // bne _021FE64A
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #8]
-    // mov r1, #0xb
-    // bl ov01_021F18FC
-    // ldr r0, [r4, #8]
-    // mov r1, #0xb
-    // bl ov01_021F1924
-    // ldr r0, [r4, #8]
-    // mov r1, #0xc
-    // bl ov01_021F1970
-    // ldr r0, [r4, #8]
-    // mov r1, #0xd
-    // bl ov01_021F18C8
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = 0;
+    ov01_021F18FC(*((u32*)(r0 + 8)), 0xb);
+    ov01_021F1924(*((u32*)(r4 + 8)), 0xb);
+    ov01_021F1970(*((u32*)(r4 + 8)), 0xc);
+    ov01_021F18C8(*((u32*)(r4 + 8)), 0xd);
 }
+
 
 
 void ov01_021FE64C(void) {
-    ov01_021FE5CC();
 }
+
 
 
 void ov01_021FE65C(void) {
-    ov01_021FE61C();
 }
+
 
 
 void ov01_021FE66C(void) {
@@ -137,43 +119,27 @@ void ov01_021FE66C(void) {
 }
 
 
-void ov01_021FE6B4(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // add r3, r0, #0
-    // add r2, r4, #0
+
+u32 ov01_021FE6B4(void) {
+    sub_02068D98();
     // ldmia r3!, {r0, r1}
     // add r2, #0xc
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // ldr r0, [r4, #0x10]
-    // bl ov01_021FE64C
-    // add r0, r5, #0
+    ov01_021FE64C(*((u32*)(r4 + 0x10)), r4, r0);
     // add r1, sp, #0
-    // bl sub_02068DB8
-    // ldr r0, [r4, #0xc]
-    // mov r1, #0xd
+    sub_02068DB8(r5);
     // add r2, sp, #0
-    // bl ov01_021F1740
-    // str r0, [r4, #0x18]
-    // ldr r0, [r4, #0x10]
-    // bl ov01_021FE5B4
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov01_021F1740(*((u32*)(r4 + 0xc)), 0xd);
+    *((u32*)(r4 + 0x18)) = r0;
+    ov01_021FE5B4(*((u32*)(r4 + 0x10)));
 }
+
 
 
 void ov01_021FE6F4(void) {
-    sub_02023DA4(*((u32*)(r1 + 0x18)));
-    ov01_021FE5BC(*((u32*)(r4 + 0x10)));
-    ov01_021FE65C(*((u32*)(r4 + 0x10)));
 }
+
 
 
 void ov01_021FE70C(void) {
@@ -223,8 +189,8 @@ void ov01_021FE70C(void) {
 }
 
 
+
 void ov01_021FE768(void) {
-    sub_02068DB8();
-    sub_02023E50(*((u32*)(r4 + 0x18)));
 }
+
 

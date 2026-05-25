@@ -200,48 +200,23 @@ void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(void) {
 }
 
 
+
 void UnkFieldSpriteRenderer_ov01_021E7FDC_Release(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // bl SpriteList_Delete
-    // mov r0, #0x4b
-    // lsl r0, r0, #2
+    SpriteList_Delete(*((u32*)r0));
     // ldr r0, [r5, r0]
-    // bl SpriteResourceHeaderList_Destroy
-    // mov r0, #0x52
-    // lsl r0, r0, #2
+    SpriteResourceHeaderList_Destroy((0x4b << 2));
     // ldr r0, [r5, r0]
-    // bl sub_0200AED4
-    // mov r0, #0x53
-    // lsl r0, r0, #2
+    sub_0200AED4((0x52 << 2));
     // ldr r0, [r5, r0]
-    // bl sub_0200B0CC
-    // mov r0, #0x16
-    // lsl r0, r0, #4
+    sub_0200B0CC((0x53 << 2));
     // ldrh r0, [r5, r0]
-    // mov r6, #0
-    // cmp r0, #0
-    // bls _021E81EC
-    // mov r7, #0x16
-    // add r4, r5, #0
-    // lsl r7, r7, #4
-    // mov r0, #0x52
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // bl Delete2DGfxResObjList
-    // mov r0, #0x13
-    // lsl r0, r0, #4
+    Delete2DGfxResObjList((0x52 << 2));
     // ldr r0, [r4, r0]
-    // bl Destroy2DGfxResObjMan
+    Destroy2DGfxResObjMan((0x13 << 4));
     // ldrh r0, [r5, r7]
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, r0
-    // blo _021E81CE
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021E81F0(void) {
@@ -326,6 +301,7 @@ void ov01_021E81F0(void) {
     // _021E8294: .word ov01_022063FC
     // TODO: decompile
 }
+
 
 
 void ov01_021E8298(void) {
@@ -441,6 +417,7 @@ void ov01_021E8298(void) {
 }
 
 
+
 void ov01_021E8378(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -497,14 +474,15 @@ void ov01_021E8378(void) {
 }
 
 
+
 void ov01_021E83F0(void) {
-    ov01_021E84B0();
 }
+
 
 
 void ov01_021E8404(void) {
-    ov01_021E84B0();
 }
+
 
 
 void ov01_021E8418(void) {
@@ -555,34 +533,12 @@ void ov01_021E8418(void) {
 }
 
 
+
 void ov01_021E847C(void) {
-    // push {r3, r4, r5, r6}
-    // ldr r6, [r0, #4]
-    // mov r3, #0
-    // cmp r6, #0
-    // ble _021E84A8
-    // ldr r5, [r0]
-    // add r4, r5, #0
-    // ldr r2, [r4]
-    // cmp r2, #0
-    // bne _021E84A0
-    // lsl r2, r3, #2
     // str r1, [r5, r2]
-    // ldr r1, [r0, #8]
-    // add r1, r1, #1
-    // str r1, [r0, #8]
-    // mov r0, #1
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // add r3, r3, #1
-    // add r4, r4, #4
-    // cmp r3, r6
-    // blt _021E848A
-    // mov r0, #0
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 8)) = (*((u32*)(r0 + 8)) + 1);
 }
+
 
 
 void ov01_021E84B0(void) {
@@ -635,6 +591,7 @@ void ov01_021E84B0(void) {
     // _021E8518: .word 0x00000162
     // TODO: decompile
 }
+
 
 
 void ov01_021E851C(void) {
@@ -851,42 +808,19 @@ void ov01_021E851C(void) {
 }
 
 
+
 void ov01_021E86F4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // ldr r0, [r6]
-    // bl SpriteList_Delete
-    // mov r0, #0x52
-    // lsl r0, r0, #2
+    SpriteList_Delete(*((u32*)r0));
     // ldr r0, [r6, r0]
-    // bl sub_0200AED4
-    // mov r0, #0x53
-    // lsl r0, r0, #2
+    sub_0200AED4((0x52 << 2));
     // ldr r0, [r6, r0]
-    // bl sub_0200B0CC
-    // mov r0, #0x16
-    // lsl r0, r0, #4
+    sub_0200B0CC((0x53 << 2));
     // ldrh r0, [r6, r0]
-    // mov r4, #0
-    // cmp r0, #0
-    // bls _021E8742
-    // mov r7, #0x16
-    // add r5, r6, #0
-    // lsl r7, r7, #4
-    // mov r0, #0x52
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // bl Delete2DGfxResObjList
-    // mov r0, #0x13
-    // lsl r0, r0, #4
+    Delete2DGfxResObjList((0x52 << 2));
     // ldr r0, [r5, r0]
-    // bl Destroy2DGfxResObjMan
+    Destroy2DGfxResObjMan((0x13 << 4));
     // ldrh r0, [r6, r7]
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, r0
-    // blo _021E8724
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 

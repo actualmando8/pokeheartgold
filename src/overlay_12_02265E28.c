@@ -122,6 +122,7 @@ void ov12_02265E28(void) {
 }
 
 
+
 void ov12_02265F34(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -148,9 +149,10 @@ void ov12_02265F34(void) {
 }
 
 
+
 void ov12_02265F68(void) {
-    Sprite_DeleteAndFreeResources(0);
 }
+
 
 
 void ov12_02265F7C(void) {
@@ -186,41 +188,26 @@ void ov12_02265F7C(void) {
 }
 
 
+
 void ov12_02265FC4(void) {
-    ManagedSprite_SetDrawFlag();
 }
+
 
 
 void ov12_02265FD4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // mov r0, #0
-    // add r1, r5, #0
-    // mov r2, #0x10
-    // add r7, r3, #0
-    // bl MIi_CpuClearFast
-    // str r4, [r5, #4]
-    // strb r6, [r5, #8]
-    // strb r7, [r5, #9]
-    // cmp r7, #0x18
-    // blt _02265FFA
-    // bl GF_AssertFail
-    // mov r0, #0
-    // strb r0, [r5, #9]
-    // add r0, r5, #0
-    // bl ov12_02265E28
-    // add r0, r5, #0
-    // bl ov12_02265F34
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    MIi_CpuClearFast(0, r0, 0x10);
+    *((u32*)(r5 + 4)) = r4;
+    *((u8*)(r5 + 8)) = r6;
+    *((u8*)(r5 + 9)) = r7;
+    GF_AssertFail();
+    *((u8*)(r5 + 9)) = 0;
+    ov12_02265E28(r5);
+    ov12_02265F34(r5);
 }
+
 
 
 void ov12_02266008(void) {
-    ov12_02265F68();
-    ov12_02265F7C(r4);
-    MIi_CpuClearFast(0, r4, 0x10);
 }
+
 

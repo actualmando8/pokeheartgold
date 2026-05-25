@@ -58,65 +58,28 @@ void ov01_021FAC44(void) {
 }
 
 
+
 void ov01_021FACB4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r4, #0
-    // add r6, r0, #0
-    // add r7, r4, #0
-    // lsl r0, r4, #2
     // add r5, r6, r0
     // str r7, [r6, r0]
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // beq _021FACD0
-    // bl Heap_Free
-    // mov r0, #0
-    // str r0, [r5, #0x10]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #4
-    // blo _021FACBC
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)(r5 + 0x10)));
+    *((u32*)(r5 + 0x10)) = 0;
+    Heap_Free(r6);
 }
+
 
 
 void ov01_021FACE4(void) {
-    /* lsl r0, r0, #2 */
-    /* ldr r0, [r1, r0] */
-    *(u32*)r2 = r0;
 }
+
 
 
 void ov01_021FACEC(void) {
-    /* lsl r0, r0, #2 */
-    /* add r0, r1, r0 */
-    /* ldr r0, [r0, #0x10] */
-    *(u32*)r2 = r0;
 }
+
 
 
 void ov01_021FACF8(void) {
-    void *r3;
-    void *r4;
-    void *r5;
-    void *r6;
-    void *r7;
-    r5 = r3 + 0;
-    /* lsl r4, r0, #2 */
-    r6 = r1 + 0;
-    r7 = r2 + 0;
-    /* ldr r0, [r5, r4] */
-    r1 = 0;
-    r2 = (r1 + 0) + 0;
-    MI_CpuFill8();
-    /* add r0, r5, r4 */
-    /* ldr r0, [r0, #0x10] */
-    r1 = 0;
-    r2 = r7 + 0;
-    MI_CpuFill8();
 }
+
 

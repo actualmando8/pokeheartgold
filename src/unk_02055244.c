@@ -1,18 +1,11 @@
 /* Decompiled from asm/unk_02055244.s */
 #include "global.h"
 
-void sub_02055244(void) {
-    // push {r3, lr}
-    // bl TaskManager_GetFieldSystem
-    // bl sub_0203DF7C
-    // cmp r0, #0
-    // bne _02055256
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+u32 sub_02055244(void) {
+    TaskManager_GetFieldSystem();
+    sub_0203DF7C();
 }
+
 
 
 void CallTask_LeaveOverworld(void) {
@@ -38,18 +31,12 @@ void CallTask_LeaveOverworld(void) {
 }
 
 
-void sub_0205528C(void) {
-    // push {r3, lr}
-    // bl TaskManager_GetFieldSystem
-    // bl sub_020505C8
-    // cmp r0, #0
-    // beq _0205529E
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+
+u32 sub_0205528C(void) {
+    TaskManager_GetFieldSystem();
+    sub_020505C8();
 }
+
 
 
 void CallTask_RestoreOverworld(void) {
@@ -75,9 +62,10 @@ void CallTask_RestoreOverworld(void) {
 }
 
 
+
 void sub_020552D4(void) {
-    IsPaletteFadeFinished();
 }
+
 
 
 void PaletteFadeUntilFinished(void) {
@@ -113,6 +101,7 @@ void PaletteFadeUntilFinished(void) {
 }
 
 
+
 void CallTask_FadeFromBlack(void) {
     // push {r3, r4, lr}
     // sub sp, #0xc
@@ -146,37 +135,15 @@ void CallTask_FadeFromBlack(void) {
 }
 
 
-void sub_02055370(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl TaskManager_GetStatePtr
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _0205538A
-    // cmp r0, #1
-    // beq _02055398
-    // cmp r0, #2
-    // beq _020553A6
-    // b _020553AA
-    // add r0, r5, #0
-    // bl PaletteFadeUntilFinished
-    // ldr r0, [r4]
-    // add r0, r0, #1
+
+u32 sub_02055370(void) {
+    TaskManager_GetStatePtr();
+    PaletteFadeUntilFinished(r5);
     // str r0, [r4]
-    // b _020553AA
-    // add r0, r5, #0
-    // bl CallTask_LeaveOverworld
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    CallTask_LeaveOverworld(r5);
     // str r0, [r4]
-    // b _020553AA
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_020553B0(void) {
@@ -190,40 +157,17 @@ void sub_020553B0(void) {
 }
 
 
-void sub_020553C0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl TaskManager_GetStatePtr
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl TaskManager_GetFieldSystem
-    // ldr r1, [r4]
-    // cmp r1, #0
-    // beq _020553E0
-    // cmp r1, #1
-    // beq _020553EE
-    // cmp r1, #2
-    // beq _02055400
-    // b _02055404
-    // add r0, r5, #0
-    // bl CallTask_RestoreOverworld
-    // ldr r0, [r4]
-    // add r0, r0, #1
+
+u32 sub_020553C0(void) {
+    TaskManager_GetStatePtr();
+    TaskManager_GetFieldSystem(r5);
+    CallTask_RestoreOverworld(r5, *((u32*)r4));
     // str r0, [r4]
-    // b _02055404
-    // bl FieldSystem_DrawMapNameAnimation
-    // add r0, r5, #0
-    // bl CallTask_FadeFromBlack
-    // ldr r0, [r4]
-    // add r0, r0, #1
+    FieldSystem_DrawMapNameAnimation((*((u32*)r4) + 1));
+    CallTask_FadeFromBlack(r5);
     // str r0, [r4]
-    // b _02055404
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02055408(void) {
@@ -235,4 +179,5 @@ void sub_02055408(void) {
     // _02055414: .word sub_020553C0
     // TODO: decompile
 }
+
 

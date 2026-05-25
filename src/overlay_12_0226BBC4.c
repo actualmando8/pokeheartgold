@@ -2,84 +2,41 @@
 #include "global.h"
 
 void ov12_0226BBC4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r0, #0xa4
-    // add r1, r2, #0
-    // add r7, r3, #0
-    // bl NARC_New
-    // add r6, r0, #0
+    NARC_New(0xa4, r2);
     // str r6, [sp]
-    // mov r1, #1
     // str r1, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
     // str r1, [sp, #0xc]
-    // mov r0, #2
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #0x34]
-    // mov r1, #3
     // str r0, [sp, #0x14]
-    // add r0, r7, #0
-    // add r2, r5, #0
-    // add r3, r4, #0
-    // bl SpriteSystem_LoadPaletteBufferFromOpenNarc
-    // mov r3, #0
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(r7, 3, r5, r4);
     // str r3, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x30]
-    // add r1, r4, #0
     // str r0, [sp, #8]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // bl SpriteSystem_LoadCharResObjFromOpenNarc
-    // mov r0, #0
+    SpriteSystem_LoadCharResObjFromOpenNarc(r5, r4, r6, 0);
     // str r0, [sp]
     // ldr r0, [sp, #0x38]
-    // add r1, r4, #0
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // mov r3, #2
-    // bl SpriteSystem_LoadCellResObjFromOpenNarc
-    // mov r0, #0
+    SpriteSystem_LoadCellResObjFromOpenNarc(r5, r4, r6, 2);
     // str r0, [sp]
     // ldr r0, [sp, #0x3c]
-    // add r1, r4, #0
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // mov r3, #3
-    // bl SpriteSystem_LoadAnimResObjFromOpenNarc
-    // add r0, r6, #0
-    // bl NARC_Delete
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SpriteSystem_LoadAnimResObjFromOpenNarc(r5, r4, r6, 3);
+    NARC_Delete(r6);
 }
+
 
 
 void ov12_0226BC40(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl SpriteManager_UnloadCharObjById
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl SpriteManager_UnloadPlttObjById
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl SpriteManager_UnloadCellObjById
+    SpriteManager_UnloadCharObjById();
+    SpriteManager_UnloadPlttObjById(r5, r4);
+    SpriteManager_UnloadCellObjById(r5, r6);
     // ldr r1, [sp, #0x10]
-    // add r0, r5, #0
-    // bl SpriteManager_UnloadAnimObjById
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    SpriteManager_UnloadAnimObjById(r5);
 }
+
 
 
 void ov12_0226BC68(void) {
@@ -141,52 +98,38 @@ void ov12_0226BC68(void) {
 }
 
 
+
 void ov12_0226BCE4(void) {
-    Sprite_DeleteAndFreeResources();
-    SysTask_Destroy(*((u32*)(r4 + 4)));
-    Heap_Free(r4);
 }
+
 
 
 void ov12_0226BCFC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl ov12_0226BEB8
-    // str r7, [r5, #8]
-    // str r4, [r5, #0xc]
-    // str r6, [r5, #0x14]
-    // lsl r1, r7, #0x10
-    // lsl r2, r4, #0x10
-    // ldr r0, [r5]
+    ov12_0226BEB8();
+    *((u32*)(r5 + 8)) = r7;
+    *((u32*)(r5 + 0xc)) = r4;
+    *((u32*)(r5 + 0x14)) = r6;
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // add r3, r6, #0
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldr r0, [r5]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r5), (r7 << 0x10), (r4 << 0x10), r6);
+    ManagedSprite_SetDrawFlag(*((u32*)r5), 1);
 }
+
 
 
 void ov12_0226BD2C(void) {
-    ov12_0226BCFC();
 }
+
 
 
 void ov12_0226BD38(void) {
-    ManagedSprite_SetDrawFlag(0);
-    ov12_0226BEB8(r4);
 }
+
 
 
 void ov12_0226BD4C(void) {
-    ((u16*)r0)[0x18] = r1;
 }
+
 
 
 void ov12_0226BD50(void) {
@@ -194,6 +137,7 @@ void ov12_0226BD50(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov12_0226BD54(void) {
@@ -366,10 +310,8 @@ void ov12_0226BD54(void) {
 }
 
 
+
 void ov12_0226BEB8(void) {
-    ((u32*)r0)[0x10] = 0;
-    ((u8*)r0)[0x1c] = 0;
-    ((u8*)r0)[0x1d] = 0;
-    ((u8*)r0)[0x1e] = 0;
 }
+
 

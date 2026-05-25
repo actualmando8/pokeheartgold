@@ -2,25 +2,10 @@
 #include "global.h"
 
 void OamManager_Create(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x14
-    // add r4, r0, #0
-    // cmp r4, #4
-    // bge _0200B164
-    // mov r0, #4
-    // cmp r1, #0x7c
-    // ble _0200B164
     // sub r4, r0, r4
     // sub r1, r1, r4
-    // cmp r2, #1
-    // bge _0200B174
-    // mov r4, #1
-    // cmp r3, #0x1e
-    // ble _0200B176
     // sub r2, r4, r2
     // sub r3, r3, r2
-    // b _0200B176
-    // add r4, r2, #0
     // ldr r2, [sp, #0x20]
     // str r2, [sp]
     // ldr r2, [sp, #0x24]
@@ -31,12 +16,9 @@ void OamManager_Create(void) {
     // str r2, [sp, #0xc]
     // ldr r2, [sp, #0x30]
     // str r2, [sp, #0x10]
-    // add r2, r4, #0
-    // bl sub_0200B194
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_0200B194(4, r2);
 }
+
 
 
 void sub_0200B194(void) {
@@ -108,6 +90,7 @@ void sub_0200B194(void) {
 }
 
 
+
 void OamManager_ApplyAndResetBuffers(void) {
     // push {r3, lr}
     // ldr r0, _0200B240 ; =_021D0EB0
@@ -124,6 +107,7 @@ void OamManager_ApplyAndResetBuffers(void) {
     // _0200B240: .word _021D0EB0
     // TODO: decompile
 }
+
 
 
 void OamManager_Free(void) {
@@ -152,6 +136,7 @@ void OamManager_Free(void) {
     // _0200B278: .word _021D0EB0
     // TODO: decompile
 }
+
 
 
 void sub_0200B27C(void) {
@@ -200,14 +185,15 @@ void sub_0200B27C(void) {
 }
 
 
+
 void thunk_ClearMainOAM(void) {
-    ClearMainOAM();
 }
+
 
 
 void thunk_ClearSubOAM(void) {
-    ClearSubOAM();
 }
+
 
 
 void sub_0200B2F0(void) {
@@ -226,6 +212,7 @@ void sub_0200B2F0(void) {
     // _0200B30C: .word _021D0EB0
     // TODO: decompile
 }
+
 
 
 void sub_0200B310(void) {
@@ -248,6 +235,7 @@ void sub_0200B310(void) {
 }
 
 
+
 void sub_0200B334(void) {
     // push {r4, lr}
     // add r1, r0, #0
@@ -265,6 +253,7 @@ void sub_0200B334(void) {
     // _0200B354: .word 0x0000FFFE
     // TODO: decompile
 }
+
 
 
 void sub_0200B358(void) {
@@ -286,4 +275,5 @@ void sub_0200B358(void) {
     // _0200B37C: .word 0x0000FFFE
     // TODO: decompile
 }
+
 

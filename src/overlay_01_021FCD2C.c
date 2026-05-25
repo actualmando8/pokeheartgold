@@ -32,21 +32,20 @@ void ov01_021FCD2C(void) {
 }
 
 
+
 void ov01_021FCD6C(void) {
-    SysTask_GetData();
 }
+
 
 
 void ov01_021FCD78(void) {
-    SysTask_GetData();
-    Heap_Free();
-    SysTask_Destroy(r4);
 }
+
 
 
 void ov01_021FCD8C(void) {
-    SysTask_GetData(0);
 }
+
 
 
 void ov01_021FCDA8(void) {
@@ -63,67 +62,32 @@ void ov01_021FCDA8(void) {
 }
 
 
+
 void ov01_021FCDBC(void) {
-    ((u32*)r0)[8] = 1;
 }
+
 
 
 void ov01_021FCDC4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4, #4]
-    // cmp r1, #0
-    // beq _021FCDD4
-    // cmp r1, #1
-    // beq _021FCDDE
-    // pop {r4, pc}
-    // bl ov01_021FCE44
-    // ldr r0, [r4, #4]
-    // add r0, r0, #1
-    // str r0, [r4, #4]
-    // add r0, r4, #0
-    // bl ov01_021FCE74
-    // cmp r0, #1
-    // bne _021FCDF2
-    // ldr r0, [r4, #4]
-    // add r0, r0, #1
-    // str r0, [r4, #4]
-    // mov r0, #1
-    // str r0, [r4, #8]
-    // add r0, r4, #0
-    // bl ov01_021FCE34
-    // pop {r4, pc}
-    // TODO: decompile
+    ov01_021FCE44(*((u32*)(r0 + 4)));
+    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) + 1);
+    ov01_021FCE74(r4);
+    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) + 1);
+    *((u32*)(r4 + 8)) = 1;
+    ov01_021FCE34(r4);
 }
+
 
 
 void ov01_021FCDFC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4, #4]
-    // cmp r1, #0
-    // beq _021FCE0C
-    // cmp r1, #1
-    // beq _021FCE16
-    // pop {r4, pc}
-    // bl ov01_021FCE5C
-    // ldr r0, [r4, #4]
-    // add r0, r0, #1
-    // str r0, [r4, #4]
-    // add r0, r4, #0
-    // bl ov01_021FCE74
-    // cmp r0, #1
-    // bne _021FCE2A
-    // ldr r0, [r4, #4]
-    // add r0, r0, #1
-    // str r0, [r4, #4]
-    // mov r0, #1
-    // str r0, [r4, #8]
-    // add r0, r4, #0
-    // bl ov01_021FCE34
-    // pop {r4, pc}
-    // TODO: decompile
+    ov01_021FCE5C(*((u32*)(r0 + 4)));
+    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) + 1);
+    ov01_021FCE74(r4);
+    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) + 1);
+    *((u32*)(r4 + 8)) = 1;
+    ov01_021FCE34(r4);
 }
+
 
 
 void ov01_021FCE34(void) {
@@ -138,34 +102,23 @@ void ov01_021FCE34(void) {
 }
 
 
+
 void ov01_021FCE44(void) {
-    _s32_div_f();
 }
+
 
 
 void ov01_021FCE5C(void) {
-    _s32_div_f();
 }
 
 
-void ov01_021FCE74(void) {
-    // ldr r2, [r0, #0x20]
-    // ldr r1, [r0, #0x28]
+
+u32 ov01_021FCE74(void) {
     // add r1, r2, r1
-    // str r1, [r0, #0x20]
-    // ldr r1, [r0, #0x24]
-    // add r2, r1, #1
-    // str r2, [r0, #0x24]
-    // ldr r1, [r0, #0x1c]
-    // cmp r2, r1
-    // blo _021FCE92
-    // str r1, [r0, #0x24]
-    // ldr r1, [r0, #0x18]
-    // str r1, [r0, #0x20]
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x20)) = *((u32*)(r0 + 0x28));
+    *((u32*)(r0 + 0x24)) = (*((u32*)(r0 + 0x24)) + 1);
+    *((u32*)(r0 + 0x24)) = *((u32*)(r0 + 0x1c));
+    *((u32*)(r0 + 0x20)) = *((u32*)(r0 + 0x18));
 }
+
 

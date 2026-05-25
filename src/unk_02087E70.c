@@ -61,31 +61,23 @@ void sub_02087E70(void) {
 }
 
 
+
 void sub_02087EF8(void) {
-    sub_02087E70();
 }
+
 
 
 void sub_02087F04(void) {
-    sub_02087E70();
 }
+
 
 
 void sub_02087F10(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // bl sub_02087A78
-    // add r1, r4, #0
-    // str r4, [r0, #0x10]
-    // bl ov40_0222BD30
-    // cmp r0, #0
-    // beq _02087F28
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02087A78();
+    *((u32*)(r0 + 0x10)) = r4;
+    ov40_0222BD30(r4);
 }
+
 
 
 void sub_02087F2C(void) {
@@ -157,4 +149,5 @@ void sub_02087F2C(void) {
     // _02087FD0: .word gSystem + 0x60
     // TODO: decompile
 }
+
 

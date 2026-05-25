@@ -35,6 +35,7 @@ void sub_0208C3E4(void) {
 }
 
 
+
 void sub_0208C42C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r4, r0, #0
@@ -121,6 +122,7 @@ void sub_0208C42C(void) {
 }
 
 
+
 void sub_0208C4E0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r4, r0, #0
@@ -183,21 +185,13 @@ void sub_0208C4E0(void) {
 }
 
 
+
 void sub_0208C560(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl sub_0208C4E0
-    // mov r4, #0
-    // add r5, r5, #4
-    // add r0, r5, #0
-    // bl RemoveWindow
-    // add r4, r4, #1
+    sub_0208C4E0();
+    RemoveWindow((r5 + 4));
     // add r5, #0x10
-    // cmp r4, #0x22
-    // blo _0208C56C
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0208C57C(void) {
@@ -270,6 +264,7 @@ void sub_0208C57C(void) {
     // _0208C610: .word 0x00050600
     // TODO: decompile
 }
+
 
 
 void sub_0208C614(void) {
@@ -346,6 +341,7 @@ void sub_0208C614(void) {
 }
 
 
+
 void sub_0208C6B4(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -407,38 +403,19 @@ void sub_0208C6B4(void) {
 }
 
 
+
 void sub_0208C73C(void) {
-    // push {r4, lr}
-    // mov r3, #0x8b
-    // lsl r3, r3, #2
-    // add r1, r0, #0
-    // add r2, r3, #0
     // add r2, #0x18
     // ldr r0, [r1, r3]
     // ldr r4, [r1, r2]
-    // ldr r2, [r0, #0xc]
-    // cmp r4, r2
-    // bne _0208C774
-    // add r2, r3, #0
     // add r2, #0x48
     // ldrb r2, [r1, r2]
-    // ldrb r0, [r0, #0x10]
-    // cmp r2, r0
-    // bne _0208C774
-    // mov r2, #0x7b
     // add r3, #0xc
-    // lsl r2, r2, #4
     // ldr r0, [r1, r3]
     // ldr r1, [r1, r2]
-    // bl String_Compare
-    // cmp r0, #0
-    // bne _0208C774
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    String_Compare(*((u8*)(r0 + 0x10)), r0, (0x7b << 4), (0x8b << 2));
 }
+
 
 
 void sub_0208C778(void) {
@@ -504,6 +481,7 @@ void sub_0208C778(void) {
 }
 
 
+
 void sub_0208C7F8(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -546,28 +524,17 @@ void sub_0208C7F8(void) {
 }
 
 
+
 void sub_0208C850(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r3, #0
-    // mov r3, #0x7a
-    // add r5, r0, #0
-    // lsl r3, r3, #4
     // ldr r0, [r5, r3]
-    // add r4, r1, #0
     // add r3, #0xc
-    // add r1, r2, #0
     // ldr r2, [r5, r3]
-    // bl ReadMsgDataIntoString
-    // add r2, r5, #4
-    // lsl r1, r4, #4
+    ReadMsgDataIntoString(r2, (0x7a << 4));
     // add r1, r2, r1
     // ldr r3, [sp, #0x10]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // bl sub_0208C778
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0208C778(r5, (r4 << 4), r6);
 }
+
 
 
 void sub_0208C87C(void) {
@@ -606,6 +573,7 @@ void sub_0208C87C(void) {
     // _0208C8C4: .word 0x000007A8
     // TODO: decompile
 }
+
 
 
 void sub_0208C8C8(void) {
@@ -711,6 +679,7 @@ void sub_0208C8C8(void) {
     // _0208C9A0: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void sub_0208C9A4(void) {
@@ -963,6 +932,7 @@ void sub_0208C9A4(void) {
 }
 
 
+
 void sub_0208CBD4(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -1042,6 +1012,7 @@ void sub_0208CBD4(void) {
     // _0208CC84: .word 0x000007BC
     // TODO: decompile
 }
+
 
 
 void sub_0208CC88(void) {
@@ -1397,6 +1368,7 @@ void sub_0208CC88(void) {
 }
 
 
+
 void sub_0208CFB4(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -1492,6 +1464,7 @@ void sub_0208CFB4(void) {
 }
 
 
+
 void sub_0208D078(void) {
     // push {r3, r4, r5, r6}
     // ldr r6, _0208D0A0 ; =0x00000299
@@ -1516,6 +1489,7 @@ void sub_0208D078(void) {
     // _0208D0A0: .word 0x00000299
     // TODO: decompile
 }
+
 
 
 void sub_0208D0A4(void) {
@@ -1610,6 +1584,7 @@ void sub_0208D0A4(void) {
     // _0208D174: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void sub_0208D178(void) {
@@ -1942,81 +1917,43 @@ void sub_0208D178(void) {
 }
 
 
+
 void sub_0208D474(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x8b
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // ldrb r0, [r0, #0x12]
-    // cmp r0, #2
-    // beq _0208D48C
-    // add r0, r4, #0
     // add r0, #0x44
-    // bl ScheduleWindowCopyToVram
-    // mov r0, #0x89
-    // lsl r0, r0, #2
-    // ldr r0, [r4, r0]
-    // mov r1, #0
-    // add r0, #0x80
-    // bl FillWindowPixelBuffer
-    // mov r0, #0x89
-    // lsl r0, r0, #2
-    // ldr r0, [r4, r0]
-    // mov r1, #0
-    // add r0, #0x90
-    // bl FillWindowPixelBuffer
-    // mov r0, #0x89
-    // lsl r0, r0, #2
-    // ldr r0, [r4, r0]
-    // mov r1, #0
-    // add r0, #0xa0
-    // bl FillWindowPixelBuffer
-    // mov r0, #0x89
-    // lsl r0, r0, #2
-    // ldr r0, [r4, r0]
-    // mov r1, #0
-    // add r0, #0xb0
-    // bl FillWindowPixelBuffer
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_0208D884
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl sub_0208D884
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl sub_0208D884
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl sub_0208D884
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    ScheduleWindowCopyToVram(r0);
     // ldr r0, [r4, r0]
     // add r0, #0x80
-    // bl ScheduleWindowCopyToVram
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    FillWindowPixelBuffer((0x89 << 2), 0);
     // ldr r0, [r4, r0]
     // add r0, #0x90
-    // bl ScheduleWindowCopyToVram
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    FillWindowPixelBuffer((0x89 << 2), 0);
     // ldr r0, [r4, r0]
     // add r0, #0xa0
-    // bl ScheduleWindowCopyToVram
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    FillWindowPixelBuffer((0x89 << 2), 0);
     // ldr r0, [r4, r0]
     // add r0, #0xb0
-    // bl ScheduleWindowCopyToVram
-    // mov r0, #0x5d
-    // lsl r0, r0, #2
+    FillWindowPixelBuffer((0x89 << 2), 0);
+    sub_0208D884(r4, 0);
+    sub_0208D884(r4, 1);
+    sub_0208D884(r4, 2);
+    sub_0208D884(r4, 3);
+    // ldr r0, [r4, r0]
+    // add r0, #0x80
+    ScheduleWindowCopyToVram((0x89 << 2));
+    // ldr r0, [r4, r0]
+    // add r0, #0x90
+    ScheduleWindowCopyToVram((0x89 << 2));
+    // ldr r0, [r4, r0]
+    // add r0, #0xa0
+    ScheduleWindowCopyToVram((0x89 << 2));
+    // ldr r0, [r4, r0]
+    // add r0, #0xb0
+    ScheduleWindowCopyToVram((0x89 << 2));
     // add r0, r4, r0
-    // bl ScheduleWindowCopyToVram
-    // pop {r4, pc}
-    // TODO: decompile
+    ScheduleWindowCopyToVram((0x5d << 2));
 }
+
 
 
 void sub_0208D520(void) {
@@ -2205,6 +2142,7 @@ void sub_0208D520(void) {
 }
 
 
+
 void sub_0208D6B8(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -2254,6 +2192,7 @@ void sub_0208D6B8(void) {
     // _0208D724: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void sub_0208D728(void) {
@@ -2327,6 +2266,7 @@ void sub_0208D728(void) {
     // _0208D7C0: .word 0x000007AC
     // TODO: decompile
 }
+
 
 
 void sub_0208D7C4(void) {
@@ -2413,6 +2353,7 @@ void sub_0208D7C4(void) {
     // _0208D880: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void sub_0208D884(void) {
@@ -2550,6 +2491,7 @@ void sub_0208D884(void) {
 }
 
 
+
 void sub_0208D9A0(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #4
@@ -2685,75 +2627,47 @@ void sub_0208D9A0(void) {
 }
 
 
+
 void sub_0208DAD4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x61
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // bl ClearWindowTilemapAndScheduleTransfer
-    // mov r0, #0x65
-    // lsl r0, r0, #2
+    ClearWindowTilemapAndScheduleTransfer((0x61 << 2));
     // add r0, r4, r0
-    // bl ClearWindowTilemapAndScheduleTransfer
-    // mov r0, #0x69
-    // lsl r0, r0, #2
+    ClearWindowTilemapAndScheduleTransfer((0x65 << 2));
     // add r0, r4, r0
-    // bl ClearWindowTilemapAndScheduleTransfer
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    ClearWindowTilemapAndScheduleTransfer((0x69 << 2));
     // ldr r0, [r4, r0]
     // add r0, #0xd0
-    // bl ClearWindowTilemapAndScheduleTransfer
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    ClearWindowTilemapAndScheduleTransfer((0x89 << 2));
     // ldr r0, [r4, r0]
     // add r0, #0xe0
-    // bl ClearWindowTilemapAndScheduleTransfer
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    ClearWindowTilemapAndScheduleTransfer((0x89 << 2));
     // ldr r0, [r4, r0]
     // add r0, #0xf0
-    // bl ClearWindowTilemapAndScheduleTransfer
-    // pop {r4, pc}
-    // TODO: decompile
+    ClearWindowTilemapAndScheduleTransfer((0x89 << 2));
 }
+
 
 
 void sub_0208DB1C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x8b
-    // lsl r0, r0, #2
     // ldr r1, [r4, r0]
-    // ldrh r1, [r1, #0x18]
-    // cmp r1, #0
-    // beq _0208DB4E
     // sub r0, #8
     // ldr r0, [r4, r0]
-    // mov r1, #0
     // add r0, #0xc0
-    // bl FillWindowPixelBuffer
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl sub_0208D884
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    FillWindowPixelBuffer((0x8b << 2), 0);
+    sub_0208D884(r4, 4);
     // ldr r0, [r4, r0]
     // add r0, #0xc0
-    // bl ScheduleWindowCopyToVram
-    // pop {r4, pc}
+    ScheduleWindowCopyToVram((0x89 << 2));
     // sub r0, #0xb8
     // add r0, r4, r0
-    // bl ScheduleWindowCopyToVram
-    // pop {r4, pc}
-    // TODO: decompile
+    ScheduleWindowCopyToVram();
 }
+
 
 
 void sub_0208DB58(void) {
-    ScheduleBgTilemapBufferTransfer();
 }
+
 
 
 void sub_0208DB64(void) {
@@ -2824,6 +2738,7 @@ void sub_0208DB64(void) {
 }
 
 
+
 void sub_0208DBF0(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -2878,6 +2793,7 @@ void sub_0208DBF0(void) {
     // _0208DC64: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void sub_0208DC68(void) {
@@ -2966,6 +2882,7 @@ void sub_0208DC68(void) {
 }
 
 
+
 void sub_0208DD20(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -3026,6 +2943,7 @@ void sub_0208DD20(void) {
     // _0208DD9C: .word 0x000007AC
     // TODO: decompile
 }
+
 
 
 void sub_0208DDA0(void) {
@@ -3099,4 +3017,5 @@ void sub_0208DDA0(void) {
     // _0208DE3C: .word 0x000007AC
     // TODO: decompile
 }
+
 

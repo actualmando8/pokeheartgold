@@ -2,71 +2,51 @@
 #include "global.h"
 
 void ov01_021FEA0C(void) {
-    ov01_021F1430(0x7c, 0);
 }
+
 
 
 void ov01_021FEA20(void) {
-    ov01_021FEA7C();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_021FEA30(void) {
-    // ldr r1, [r0]
-    // add r1, r1, #1
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021FEA38(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov01_021FEA48(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // bne _021FEA76
-    // mov r0, #1
     // str r0, [sp]
-    // add r1, r4, #0
-    // ldr r0, [r4, #0x10]
     // add r1, #0x14
-    // mov r2, #0
-    // mov r3, #0x57
-    // bl ov01_021F19F4
-    // add r0, r4, #0
-    // add r1, r4, #0
+    ov01_021F19F4(*((u32*)(r0 + 0x10)), r0, 0, 0x57);
     // add r0, #0x28
     // add r1, #0x14
-    // bl sub_02069978
-    // mov r0, #1
-    // str r0, [r4, #4]
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_02069978(r4, r4);
+    *((u32*)(r4 + 4)) = 1;
 }
+
 
 
 void ov01_021FEA7C(void) {
-    sub_02069784(0);
 }
+
 
 
 void ov01_021FEA90(void) {
-    ov01_021FEA48();
 }
+
 
 
 void ov01_021FEAA0(void) {
-    ov01_021FEA7C();
 }
+
 
 
 void ov01_021FEAB0(void) {
@@ -130,72 +110,46 @@ void ov01_021FEAB0(void) {
 }
 
 
+
 void ov01_021FEB30(void) {
-    sub_02068D74();
 }
 
 
-void ov01_021FEB3C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // add r2, r0, #0
-    // add r6, r2, #0
-    // add r3, r4, #0
+
+u32 ov01_021FEB3C(void) {
+    sub_02068D98();
     // ldmia r6!, {r0, r1}
     // add r3, #0x10
     // stmia r3!, {r0, r1}
     // ldmia r6!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
     // str r0, [r3]
-    // ldr r0, [r2]
-    // str r0, [r4, #4]
-    // add r0, r5, #0
-    // bl sub_02068D90
-    // str r0, [r4, #0xc]
-    // ldr r0, [r4, #0x1c]
-    // bl ov01_021FEA90
-    // ldr r0, [r4, #0x1c]
-    // bl ov01_021FEA30
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 4)) = *((u32*)r0);
+    sub_02068D90(r5, r0, r4);
+    *((u32*)(r4 + 0xc)) = r0;
+    ov01_021FEA90(*((u32*)(r4 + 0x1c)));
+    ov01_021FEA30(*((u32*)(r4 + 0x1c)));
 }
+
 
 
 void ov01_021FEB78(void) {
-    ov01_021FEA38(*((u32*)(r1 + 0x1c)));
-    ov01_021FEAA0(*((u32*)(r4 + 0x1c)));
 }
+
 
 
 void ov01_021FEB8C(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // ldr r0, [r1, #0xc]
-    // ldr r4, [r1, #0x20]
-    // cmp r0, #0
-    // beq _021FEBBA
     // add r1, sp, #0xc
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // add r0, r4, #0
-    // bl sub_0205F9A0
-    // add r0, r4, #0
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    sub_0205F9A0(*((u32*)(r1 + 0x20)));
     // add r1, sp, #0
-    // bl MapObject_CopyPositionVector
-    // add r0, r5, #0
+    MapObject_CopyPositionVector(r4);
     // add r1, sp, #0
-    // bl sub_02068DA8
-    // add sp, #0x18
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02068DA8(r5);
 }
+
 
 
 void ov01_021FEBC0(void) {
@@ -253,4 +207,5 @@ void ov01_021FEBC0(void) {
     // _021FEC34: .word 0x0000010E
     // TODO: decompile
 }
+
 

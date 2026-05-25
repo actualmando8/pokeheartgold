@@ -2,198 +2,108 @@
 #include "global.h"
 
 void sub_02067A60(void) {
-    Heap_Alloc(0x24);
-    MIi_CpuClearFast(0, r0, 0x24);
 }
+
 
 
 void sub_02067A78(void) {
-    Heap_Free();
 }
+
 
 
 void sub_02067A80(void) {
     // add r0, #0xac
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02067A88(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // bl Save_VarsFlags_Get
-    // mov r1, #0
-    // bl StrengthFlagAction
-    // ldr r1, [r5, #0x20]
-    // add r0, r5, #0
-    // ldr r1, [r1]
-    // bl FlypointFlagAction
-    // ldr r0, [r5, #0xc]
-    // bl Save_Roamers_Get
-    // mov r1, #0
-    // bl RoamerSave_SetFlute
-    // add r0, r5, #0
-    // mov r1, #0
+    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
+    StrengthFlagAction(0);
+    FlypointFlagAction(r5, *((u32*)*((u32*)(r5 + 0x20))));
+    Save_Roamers_Get(*((u32*)(r5 + 0xc)));
+    RoamerSave_SetFlute(0);
     // add r0, #0x7e
     // strh r1, [r0]
-    // add r0, r5, #0
     // add r0, #0x7c
     // strh r1, [r0]
-    // ldr r0, [r5, #0xc]
-    // bl Save_VarsFlags_Get
-    // bl Save_VarsFlags_CheckSafariSysFlag
-    // cmp r0, #0
-    // bne _02067AE0
-    // ldr r0, [r5, #0xc]
-    // bl Save_Roamers_Get
-    // ldr r1, [r5, #0x20]
-    // add r4, r0, #0
-    // ldr r1, [r1]
-    // bl UpdatePlayerLocationHistoryIfAnyRoamersActive
-    // add r0, r4, #0
-    // bl Save_UpdateRoamersLocation
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Save_VarsFlags_Get(*((u32*)(r5 + 0xc)), 0);
+    Save_VarsFlags_CheckSafariSysFlag();
+    Save_Roamers_Get(*((u32*)(r5 + 0xc)));
+    UpdatePlayerLocationHistoryIfAnyRoamersActive(*((u32*)*((u32*)(r5 + 0x20))));
+    Save_UpdateRoamersLocation(r4);
 }
+
 
 
 void sub_02067AE4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
     // add r0, #0xac
-    // ldr r0, [r0]
-    // cmp r0, #1
-    // beq _02067B84
-    // ldr r0, [r5, #0xc]
-    // bl Save_VarsFlags_Get
-    // bl ClearFlag972
-    // ldr r0, [r5, #0xc]
-    // bl Save_VarsFlags_Get
-    // mov r1, #0
-    // bl StrengthFlagAction
-    // ldr r1, [r5, #0x20]
-    // add r0, r5, #0
-    // ldr r1, [r1]
-    // bl FlypointFlagAction
-    // ldr r0, [r5, #0xc]
-    // bl Save_Roamers_Get
-    // mov r1, #0
-    // bl RoamerSave_SetFlute
-    // add r0, r5, #0
-    // mov r1, #0
+    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
+    ClearFlag972();
+    Save_VarsFlags_Get(*((u32*)(r5 + 0xc)));
+    StrengthFlagAction(0);
+    FlypointFlagAction(r5, *((u32*)*((u32*)(r5 + 0x20))));
+    Save_Roamers_Get(*((u32*)(r5 + 0xc)));
+    RoamerSave_SetFlute(0);
     // add r0, #0x7e
     // strh r1, [r0]
-    // add r0, r5, #0
     // add r0, #0x7c
     // strh r1, [r0]
-    // ldr r0, [r5, #0xc]
-    // bl Save_Roamers_Get
-    // ldr r1, [r5, #0x20]
-    // ldr r1, [r1]
-    // bl UpdatePlayerLocationHistoryIfAnyRoamersActive
-    // ldr r0, [r5, #0x20]
-    // ldr r0, [r0]
-    // bl MapHeader_IsCave
-    // cmp r0, #0
-    // bne _02067B56
-    // ldr r0, [r5, #0xc]
-    // bl Save_VarsFlags_Get
-    // add r4, r0, #0
-    // bl SysFlagFlashClear
-    // add r0, r4, #0
-    // bl SysFlagDefogClear
-    // ldr r0, [r5, #0xc]
-    // bl Save_LocalFieldData_Get
-    // bl LocalFieldData_GetPlayer
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // cmp r0, #1
-    // bne _02067B7A
-    // ldr r0, [r5, #0x20]
-    // ldr r0, [r0]
-    // bl MapHeader_IsBikeAllowed
-    // cmp r0, #0
-    // bne _02067B7A
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // pop {r3, r4, r5, pc}
-    // ldr r0, [r4, #4]
-    // cmp r0, #2
-    // bne _02067B84
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Save_Roamers_Get(*((u32*)(r5 + 0xc)), 0);
+    UpdatePlayerLocationHistoryIfAnyRoamersActive(*((u32*)*((u32*)(r5 + 0x20))));
+    MapHeader_IsCave(*((u32*)*((u32*)(r5 + 0x20))));
+    Save_VarsFlags_Get(*((u32*)(r5 + 0xc)));
+    SysFlagFlashClear();
+    SysFlagDefogClear(r4);
+    Save_LocalFieldData_Get(*((u32*)(r5 + 0xc)));
+    LocalFieldData_GetPlayer();
+    MapHeader_IsBikeAllowed(*((u32*)*((u32*)(r5 + 0x20))));
+    *((u32*)(r4 + 4)) = 0;
+    *((u32*)(r4 + 4)) = 0;
 }
+
 
 
 void sub_02067B88(void) {
-    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
-    Save_VarsFlags_ClearSafariSysFlag();
-    Save_Roamers_Get(*((u32*)(r4 + 0xc)));
-    Save_RandomizeRoamersLocation();
 }
+
 
 
 void sub_02067BA4(void) {
-    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
-    Save_VarsFlags_ClearSafariSysFlag();
-    Save_Roamers_Get(*((u32*)(r4 + 0xc)));
-    Save_RandomizeRoamersLocation();
 }
+
 
 
 void sub_02067BC0(void) {
-    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
-    Save_VarsFlags_ClearSafariSysFlag();
 }
+
 
 
 void FieldSystem_ClearFollowingTrainer(void) {
-    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
-    Save_VarsFlags_ClearHaveFollowerFlag();
-    Save_VarsFlags_SetFollowerTrainerNum(r4, 0);
 }
+
 
 
 void sub_02067BE8(void) {
-    Save_Roamers_Get(*((u32*)(r0 + 0xc)));
-    Save_RandomizeRoamersLocation();
 }
 
 
-void sub_02067BF8(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // mov r1, #0x1c
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl Heap_AllocAtEnd
-    // add r3, r0, #0
-    // mov r2, #0x1c
-    // mov r1, #0
+
+struct UnkStruct_02067BF8 * sub_02067BF8(void) {
+    Heap_AllocAtEnd(0x1c);
     // strb r1, [r3]
-    // add r3, r3, #1
-    // sub r2, r2, #1
-    // bne _02067C0C
     // str r5, [r0]
-    // str r4, [r0, #0x10]
+    *((u32*)(r0 + 0x10)) = r4;
     // add r2, sp, #0
-    // ldrh r1, [r2, #0x10]
-    // strh r1, [r0, #8]
-    // mov r1, #0x14
+    *((u16*)(r0 + 8)) = *((u16*)((0x1c - 1) + 0x10));
     // ldrsh r1, [r2, r1]
-    // strh r1, [r0, #0xa]
-    // mov r1, #0x18
+    *((u16*)(r0 + 0xa)) = 0x14;
     // ldrsh r1, [r2, r1]
-    // strh r1, [r0, #0xc]
-    // strh r6, [r0, #0xe]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    *((u16*)(r0 + 0xc)) = 0x18;
+    *((u16*)(r0 + 0xe)) = r6;
 }
+
 
 
 void sub_02067C30(void) {
@@ -384,4 +294,5 @@ void sub_02067C30(void) {
     // _02067DF0: .word _020FE7AC
     // TODO: decompile
 }
+
 

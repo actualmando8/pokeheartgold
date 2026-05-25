@@ -216,6 +216,7 @@ void sub_02035900(void) {
 }
 
 
+
 void sub_02035AE0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -536,6 +537,7 @@ void sub_02035AE0(void) {
 }
 
 
+
 void sub_02035DA4(void) {
     // push {r4, lr}
     // ldr r2, _02035DCC ; =_021D4140
@@ -563,9 +565,10 @@ void sub_02035DA4(void) {
 }
 
 
+
 void sub_02035DD8(void) {
-    sub_02035AE0();
 }
+
 
 
 void sub_02035DE0(void) {
@@ -656,6 +659,7 @@ void sub_02035DE0(void) {
 }
 
 
+
 void sub_02035E9C(void) {
     // push {r4, r5, r6, lr}
     // ldr r4, _02035EC8 ; =_021D4140
@@ -683,9 +687,10 @@ void sub_02035E9C(void) {
 }
 
 
+
 void sub_02035ED0(void) {
-    sub_02035DE0();
 }
+
 
 
 void sub_02035ED8(void) {
@@ -717,6 +722,7 @@ void sub_02035ED8(void) {
 }
 
 
+
 void sub_02035F14(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -743,6 +749,7 @@ void sub_02035F14(void) {
     // _02035F48: .word _0210F900
     // TODO: decompile
 }
+
 
 
 void sub_02035F4C(void) {
@@ -790,6 +797,7 @@ void sub_02035F4C(void) {
 }
 
 
+
 void sub_02035FA8(void) {
     // ldr r1, _02035FD0 ; =_021D4140
     // ldr r3, [r1, #8]
@@ -817,14 +825,15 @@ void sub_02035FA8(void) {
 }
 
 
+
 void sub_02035FD8(void) {
-    sub_02035FA8();
 }
+
 
 
 void sub_02035FE4(void) {
-    sub_02035FA8();
 }
+
 
 
 void sub_02035FF0(void) {
@@ -846,9 +855,10 @@ void sub_02035FF0(void) {
 }
 
 
+
 void sub_02036010(void) {
-    sub_02035FF0();
 }
+
 
 
 void sub_02036024(void) {
@@ -933,9 +943,10 @@ void sub_02036024(void) {
 }
 
 
+
 void sub_020360E4(void) {
-    sub_02035218();
 }
+
 
 
 void sub_020360EC(void) {
@@ -962,23 +973,15 @@ void sub_020360EC(void) {
 }
 
 
+
 void sub_0203611C(void) {
-    // push {r3, lr}
-    // bl sub_020357FC
-    // cmp r0, #0
-    // beq _02036140
-    // bl sub_0203769C
-    // cmp r0, #0
-    // bne _0203613C
-    // bl sub_0203567C
-    // cmp r0, #0
-    // bne _02036140
-    // bl sub_02036024
-    // pop {r3, pc}
-    // bl sub_02036024
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_020357FC();
+    sub_0203769C();
+    sub_0203567C();
+    sub_02036024();
+    sub_02036024();
 }
+
 
 
 void sub_02036144(void) {
@@ -1075,9 +1078,10 @@ void sub_02036144(void) {
 }
 
 
+
 void sub_0203622C(void) {
-    sub_02035DA4(0);
 }
+
 
 
 void sub_0203624C(void) {
@@ -1102,6 +1106,7 @@ void sub_0203624C(void) {
 }
 
 
+
 void sub_02036274(void) {
     // push {r4, lr}
     // ldr r0, _02036294 ; =_021D4140
@@ -1120,6 +1125,7 @@ void sub_02036274(void) {
     // _02036294: .word _021D4140
     // TODO: decompile
 }
+
 
 
 void sub_02036298(void) {
@@ -1307,6 +1313,7 @@ void sub_02036298(void) {
 }
 
 
+
 void sub_02036438(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -1406,6 +1413,7 @@ void sub_02036438(void) {
     // _02036504: .word _021D4140
     // TODO: decompile
 }
+
 
 
 void sub_02036508(void) {
@@ -1544,6 +1552,7 @@ void sub_02036508(void) {
 }
 
 
+
 void sub_02036630(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // bl sub_0203993C
@@ -1580,6 +1589,7 @@ void sub_02036630(void) {
     // _02036678: .word 0x0000066C
     // TODO: decompile
 }
+
 
 
 void sub_0203667C(void) {
@@ -1715,9 +1725,10 @@ void sub_0203667C(void) {
 }
 
 
+
 void sub_020367A8(void) {
-    sub_020367B0();
 }
+
 
 
 void sub_020367B0(void) {
@@ -1878,9 +1889,10 @@ void sub_020367B0(void) {
 }
 
 
+
 void sub_02036904(void) {
-    sub_0203690C();
 }
+
 
 
 void sub_0203690C(void) {
@@ -1970,6 +1982,7 @@ void sub_0203690C(void) {
     // _020369C8: .word 0x0000051C
     // TODO: decompile
 }
+
 
 
 void sub_020369CC(void) {
@@ -2072,14 +2085,15 @@ void sub_020369CC(void) {
 }
 
 
+
 void sub_02036AA0(void) {
-    GF_AssertFail();
 }
+
 
 
 void sub_02036ABC(void) {
-    GF_AssertFail();
 }
+
 
 
 void sub_02036AD8(void) {
@@ -2199,6 +2213,7 @@ void sub_02036AD8(void) {
     // _02036BE0: .word 0x0000FFFE
     // TODO: decompile
 }
+
 
 
 void sub_02036BE4(void) {
@@ -2350,6 +2365,7 @@ void sub_02036BE4(void) {
 }
 
 
+
 void sub_02036D14(void) {
     // push {r4, r5, r6, r7}
     // ldr r4, _02036D94 ; =_021D4140
@@ -2420,6 +2436,7 @@ void sub_02036D14(void) {
     // _02036D9C: .word 0x00000654
     // TODO: decompile
 }
+
 
 
 void sub_02036DA0(void) {
@@ -2515,6 +2532,7 @@ void sub_02036DA0(void) {
     // _02036E5C: .word 0x0000065F
     // TODO: decompile
 }
+
 
 
 void sub_02036E60(void) {
@@ -2614,6 +2632,7 @@ void sub_02036E60(void) {
 }
 
 
+
 void sub_02036F30(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -2675,6 +2694,7 @@ void sub_02036F30(void) {
 }
 
 
+
 void sub_02036FA8(void) {
     // push {r3, lr}
     // ldr r0, _02036FD0 ; =_021D4140
@@ -2699,6 +2719,7 @@ void sub_02036FA8(void) {
     // _02036FD4: .word 0x000006BB
     // TODO: decompile
 }
+
 
 
 void sub_02036FD8(void) {
@@ -2744,6 +2765,7 @@ void sub_02036FD8(void) {
 }
 
 
+
 void sub_02037030(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #8
@@ -2785,6 +2807,7 @@ void sub_02037030(void) {
     // _02037084: .word _021D4140
     // TODO: decompile
 }
+
 
 
 void sub_02037088(void) {
@@ -2847,6 +2870,7 @@ void sub_02037088(void) {
 }
 
 
+
 void sub_02037108(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #8
@@ -2905,9 +2929,10 @@ void sub_02037108(void) {
 }
 
 
+
 void sub_02037184(void) {
-    sub_02037108();
 }
+
 
 
 void sub_02037190(void) {
@@ -2924,9 +2949,10 @@ void sub_02037190(void) {
 }
 
 
+
 void sub_020371A8(void) {
-    sub_02034170(0, 0xee);
 }
+
 
 
 void sub_020371C4(void) {
@@ -3060,6 +3086,7 @@ void sub_020371C4(void) {
 }
 
 
+
 void sub_020372E4(void) {
     // push {r4, lr}
     // ldr r0, _02037328 ; =_021D4140
@@ -3097,6 +3124,7 @@ void sub_020372E4(void) {
     // _02037330: .word 0x000004A4
     // TODO: decompile
 }
+
 
 
 void sub_02037334(void) {
@@ -3157,6 +3185,7 @@ void sub_02037334(void) {
     // _020373B0: .word 0x00000494
     // TODO: decompile
 }
+
 
 
 void sub_020373B4(void) {
@@ -3233,9 +3262,10 @@ void sub_020373B4(void) {
 }
 
 
+
 void sub_02037454(void) {
-    sub_020373B4(0);
 }
+
 
 
 void sub_02037474(void) {
@@ -3257,6 +3287,7 @@ void sub_02037474(void) {
 }
 
 
+
 void sub_02037498(void) {
     // ldr r1, _020374A4 ; =_021D4140
     // ldr r2, [r1, #8]
@@ -3270,6 +3301,7 @@ void sub_02037498(void) {
 }
 
 
+
 void sub_020374AC(void) {
     // ldr r1, _020374B8 ; =_021D4140
     // ldr r1, [r1, #8]
@@ -3281,6 +3313,7 @@ void sub_020374AC(void) {
     // _020374BC: .word 0x00000654
     // TODO: decompile
 }
+
 
 
 void sub_020374C0(void) {
@@ -3304,6 +3337,7 @@ void sub_020374C0(void) {
 }
 
 
+
 void sub_020374E4(void) {
     // ldr r0, _020374FC ; =_021D4140
     // ldr r3, [r0, #8]
@@ -3323,6 +3357,7 @@ void sub_020374E4(void) {
 }
 
 
+
 void sub_02037504(void) {
     // ldr r0, _02037514 ; =_021D4140
     // ldr r2, [r0, #8]
@@ -3336,6 +3371,7 @@ void sub_02037504(void) {
     // _02037518: .word 0x0000065C
     // TODO: decompile
 }
+
 
 
 void sub_0203751C(void) {
@@ -3355,6 +3391,7 @@ void sub_0203751C(void) {
     // _02037538: .word 0x0000065C
     // TODO: decompile
 }
+
 
 
 void sub_0203753C(void) {
@@ -3400,6 +3437,7 @@ void sub_0203753C(void) {
     // _02037590: .word _021D4140
     // TODO: decompile
 }
+
 
 
 void sub_02037594(void) {
@@ -3465,6 +3503,7 @@ void sub_02037594(void) {
 }
 
 
+
 void sub_02037618(void) {
     // push {r4, lr}
     // add r4, r2, #0
@@ -3487,6 +3526,7 @@ void sub_02037618(void) {
 }
 
 
+
 void sub_02037640(void) {
     // push {r4, lr}
     // add r4, r2, #0
@@ -3507,6 +3547,7 @@ void sub_02037640(void) {
     // _02037664: .word 0x000006AC
     // TODO: decompile
 }
+
 
 
 void sub_02037668(void) {
@@ -3534,6 +3575,7 @@ void sub_02037668(void) {
     // _02037698: .word 0x000006AB
     // TODO: decompile
 }
+
 
 
 void sub_0203769C(void) {
@@ -3564,24 +3606,25 @@ void sub_0203769C(void) {
 }
 
 
+
 void sub_020376D4(void) {
-    sub_02036FD8();
 }
+
 
 
 void sub_020376E0(void) {
-    sub_02037030();
 }
+
 
 
 void sub_020376EC(void) {
-    sub_02037030();
 }
+
 
 
 void sub_020376F8(void) {
-    sub_0203567C();
 }
+
 
 
 void sub_02037700(void) {
@@ -3607,49 +3650,32 @@ void sub_02037700(void) {
 }
 
 
+
 void sub_0203772C(void) {
-    // push {r3, lr}
-    // bl sub_02033FC4
-    // cmp r0, #5
-    // blo _0203773A
-    // mov r0, #0xc
-    // pop {r3, pc}
-    // bl sub_02035FF0
-    // cmp r0, #0
-    // bne _02037746
-    // mov r0, #0xc
-    // pop {r3, pc}
-    // mov r0, #0x26
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_02033FC4();
+    sub_02035FF0(0xc);
 }
+
 
 
 void sub_0203774C(void) {
-    sub_02033FC4();
 }
+
 
 
 void sub_0203775C(void) {
-    sub_02033FF0();
 }
+
 
 
 void sub_0203776C(void) {
-    // push {r3, lr}
-    // bl sub_020357FC
-    // cmp r0, #0
-    // bne _02037786
-    // bl sub_0203769C
-    // cmp r0, #0
-    // bne _02037786
-    // mov r0, #2
+    sub_020357FC();
+    sub_0203769C();
     // add r1, sp, #0
-    // bl sub_02037184
-    // bl sub_0203581C
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_02037184(2);
+    sub_0203581C();
 }
+
 
 
 void sub_0203778C(void) {
@@ -3727,6 +3753,7 @@ void sub_0203778C(void) {
 }
 
 
+
 void sub_02037824(void) {
     // add r1, r0, #0
     // ldr r0, _02037834 ; =_021D4140
@@ -3740,6 +3767,7 @@ void sub_02037824(void) {
     // _02037838: .word sub_02033F9C
     // TODO: decompile
 }
+
 
 
 void sub_0203783C(void) {
@@ -3757,6 +3785,7 @@ void sub_0203783C(void) {
 }
 
 
+
 void sub_02037854(void) {
     // ldr r0, _02037864 ; =_021D4140
     // ldr r3, _02037868 ; =sub_02033C50
@@ -3772,6 +3801,7 @@ void sub_02037854(void) {
 }
 
 
+
 void sub_0203786C(void) {
     // ldr r1, _02037878 ; =_021D4140
     // ldr r2, [r1, #8]
@@ -3783,6 +3813,7 @@ void sub_0203786C(void) {
     // _0203787C: .word 0x000006B6
     // TODO: decompile
 }
+
 
 
 void sub_02037880(void) {
@@ -3798,6 +3829,7 @@ void sub_02037880(void) {
 }
 
 
+
 void sub_02037894(void) {
     // ldr r2, _020378A4 ; =_021D4140
     // ldr r2, [r2, #8]
@@ -3811,6 +3843,7 @@ void sub_02037894(void) {
     // _020378A8: .word 0x000006A6
     // TODO: decompile
 }
+
 
 
 void sub_020378AC(void) {
@@ -3832,18 +3865,13 @@ void sub_020378AC(void) {
 }
 
 
+
 void sub_020378CC(void) {
-    // push {r3, lr}
-    // bl sub_0203993C
-    // bl sub_02034044
-    // cmp r0, #0
-    // beq _020378E0
-    // bl ov00_021E7080
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_0203993C();
+    sub_02034044();
+    ov00_021E7080();
 }
+
 
 
 void sub_020378E4(void) {
@@ -3884,24 +3912,15 @@ void sub_020378E4(void) {
 }
 
 
+
 void sub_02037930(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_020378E4
-    // bl sub_0203993C
-    // bl sub_02034044
-    // cmp r0, #0
-    // beq _02037956
-    // cmp r4, #0
-    // beq _02037950
-    // mov r0, #0
-    // bl ov00_021E70CC
-    // pop {r4, pc}
-    // mov r0, #1
-    // bl ov00_021E70CC
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_020378E4();
+    sub_0203993C();
+    sub_02034044();
+    ov00_021E70CC(0);
+    ov00_021E70CC(1);
 }
+
 
 
 void sub_02037958(void) {
@@ -3921,6 +3940,7 @@ void sub_02037958(void) {
 }
 
 
+
 void sub_02037974(void) {
     // ldr r0, _02037980 ; =_021D4140
     // mov r2, #1
@@ -3932,6 +3952,7 @@ void sub_02037974(void) {
     // _02037984: .word 0x000006B8
     // TODO: decompile
 }
+
 
 
 void sub_02037988(void) {
@@ -3947,4 +3968,5 @@ void sub_02037988(void) {
     // _0203799C: .word 0x000006B9
     // TODO: decompile
 }
+
 

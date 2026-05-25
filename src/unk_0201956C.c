@@ -44,31 +44,15 @@ void sub_0201956C(void) {
 }
 
 
+
 void sub_020195C0(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldrh r0, [r5, #8]
-    // mov r6, #0
-    // cmp r0, #0
-    // bls _020195E4
-    // add r4, r6, #0
-    // ldr r0, [r5, #4]
     // ldr r0, [r0, r4]
-    // cmp r0, #0
-    // beq _020195DA
-    // bl Heap_Free
-    // ldrh r0, [r5, #8]
-    // add r6, r6, #1
+    Heap_Free(*((u32*)(r0 + 4)));
     // add r4, #0x10
-    // cmp r6, r0
-    // blo _020195CE
-    // ldr r0, [r5, #4]
-    // bl Heap_Free
-    // add r0, r5, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)(r5 + 4)));
+    Heap_Free(r5);
 }
+
 
 
 void sub_020195F4(void) {
@@ -131,76 +115,40 @@ void sub_020195F4(void) {
 }
 
 
+
 void sub_02019668(void) {
-    // push {r4, lr}
-    // ldr r3, [r0, #4]
-    // lsl r1, r1, #4
     // add r4, r3, r1
-    // add r0, r2, #0
-    // ldrh r2, [r4, #4]
     // ldr r1, [r3, r1]
-    // lsl r3, r2, #0x1a
-    // lsl r2, r2, #0x14
-    // lsr r3, r3, #0x1a
-    // lsr r2, r2, #0x1a
     // mul r2, r3
-    // lsl r2, r2, #1
-    // bl MIi_CpuCopy16
-    // pop {r4, pc}
-    // TODO: decompile
+    MIi_CpuCopy16(r2, (r1 << 4), (((*((u16*)(r4 + 4)) << 0x14) >> 0x1a) << 1), ((*((u16*)(r4 + 4)) << 0x1a) >> 0x1a));
 }
+
 
 
 void sub_02019688(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // add r4, r1, #0
     // str r0, [sp]
-    // add r0, r2, #0
-    // add r1, r3, #0
     // ldr r2, [sp, #0x18]
     // add r3, sp, #4
-    // bl GfGfxLoader_GetScrnData
+    GfGfxLoader_GetScrnData(r2, r3);
     // ldr r2, [sp, #4]
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
     // add r2, #0xc
-    // bl sub_02019668
-    // add r0, r6, #0
-    // bl Heap_Free
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_02019668(r5, r4);
+    Heap_Free(r6);
 }
+
 
 
 void sub_020196B8(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // add r4, r1, #0
     // str r0, [sp]
-    // add r0, r2, #0
-    // add r1, r3, #0
     // ldr r2, [sp, #0x18]
     // add r3, sp, #4
-    // bl GfGfxLoader_GetScrnDataFromOpenNarc
+    GfGfxLoader_GetScrnDataFromOpenNarc(r2, r3);
     // ldr r2, [sp, #4]
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
     // add r2, #0xc
-    // bl sub_02019668
-    // add r0, r6, #0
-    // bl Heap_Free
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_02019668(r5, r4);
+    Heap_Free(r6);
 }
+
 
 
 void sub_020196E8(void) {
@@ -339,9 +287,10 @@ void sub_020196E8(void) {
 }
 
 
+
 void sub_020197F4(void) {
-    sub_020196E8(6, 7);
 }
+
 
 
 void sub_0201980C(void) {
@@ -467,6 +416,7 @@ void sub_0201980C(void) {
 }
 
 
+
 void sub_020198FC(void) {
     // push {r3, r4}
     // ldr r4, [r0, #4]
@@ -496,6 +446,7 @@ void sub_020198FC(void) {
     // _02019930: .word 0xFFFF1FFF
     // TODO: decompile
 }
+
 
 
 void sub_02019934(void) {
@@ -533,6 +484,7 @@ void sub_02019934(void) {
     // _02019974: .word 0xFFFF7FFF
     // TODO: decompile
 }
+
 
 
 void sub_02019978(void) {
@@ -591,16 +543,11 @@ void sub_02019978(void) {
 }
 
 
-void sub_020199E4(void) {
-    // ldr r2, [r0, #4]
-    // lsl r0, r1, #4
+
+BOOL sub_020199E4(void) {
     // add r0, r2, r0
-    // ldrh r0, [r0, #4]
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x1d
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020199F4(void) {
@@ -661,162 +608,73 @@ void sub_020199F4(void) {
 }
 
 
+
 void sub_02019A60(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
     // str r0, [sp]
-    // lsl r0, r1, #4
     // str r0, [sp, #0xc]
     // ldr r0, [sp]
-    // mov r6, #0
-    // ldr r1, [r0, #4]
     // ldr r0, [sp, #0xc]
     // add r3, r1, r0
     // ldr r0, [r1, r0]
     // mov ip, r0
-    // ldrh r0, [r3, #4]
-    // lsl r0, r0, #0x1a
-    // lsr r0, r0, #0x1a
     // mov lr, r0
-    // ldrh r0, [r2, #0xa]
-    // lsl r0, r0, #0x11
-    // lsr r7, r0, #0x11
-    // ldrb r0, [r2, #9]
-    // lsl r0, r0, #0x1c
-    // lsr r0, r0, #0x10
     // str r0, [sp, #8]
-    // ldrb r0, [r2, #8]
-    // cmp r0, #0
-    // ble _02019B04
-    // ldrb r0, [r2, #6]
     // add r3, r0, r6
     // ldr r0, [sp]
-    // ldr r1, [r0, #4]
     // ldr r0, [sp, #0xc]
     // add r0, r1, r0
-    // ldrh r0, [r0, #4]
-    // lsl r0, r0, #0x14
-    // lsr r0, r0, #0x1a
-    // cmp r3, r0
-    // bge _02019B04
-    // ldrb r0, [r2, #7]
-    // mov r1, #0
     // str r0, [sp, #4]
-    // cmp r0, #0
-    // ble _02019AF0
     // ldr r0, [sp]
-    // ldrb r5, [r2, #5]
-    // ldr r3, [r0, #4]
     // ldr r0, [sp, #0xc]
     // add r4, r5, r1
     // add r0, r3, r0
-    // ldrh r0, [r0, #4]
-    // lsl r0, r0, #0x1a
-    // lsr r0, r0, #0x1a
-    // cmp r4, r0
-    // bge _02019AF0
     // ldr r0, [sp, #8]
     // add r3, r7, r1
     // add r0, r0, r3
-    // ldrb r3, [r2, #6]
     // add r4, r3, r6
     // mov r3, lr
     // mul r4, r3
     // add r3, r5, r4
     // add r3, r1, r3
-    // lsl r4, r3, #1
     // mov r3, ip
     // strh r0, [r3, r4]
-    // add r0, r1, #1
-    // lsl r0, r0, #0x10
-    // lsr r1, r0, #0x10
-    // ldrb r0, [r2, #7]
     // str r0, [sp, #4]
-    // cmp r1, r0
-    // blt _02019AB4
     // ldr r0, [sp, #4]
     // add r0, r7, r0
-    // lsl r0, r0, #0x10
-    // lsr r7, r0, #0x10
-    // add r0, r6, #1
-    // lsl r0, r0, #0x10
-    // lsr r6, r0, #0x10
-    // ldrb r0, [r2, #8]
-    // cmp r6, r0
-    // blt _02019A94
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
-void sub_02019B08(void) {
-    // ldr r2, [r0, #4]
-    // lsl r0, r1, #4
+
+u16 * sub_02019B08(void) {
     // ldr r0, [r2, r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02019B10(void) {
-    // ldr r2, [r0, #4]
-    // lsl r0, r1, #4
     // add r0, r2, r0
-    // ldrb r0, [r0, #0xa]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02019B1C(void) {
-    // push {r4, r5}
-    // cmp r2, #0
-    // beq _02019B2E
-    // ldr r5, [r0, #4]
-    // lsl r4, r1, #4
     // add r5, r5, r4
-    // mov r4, #6
     // ldrsb r4, [r5, r4]
     // strb r4, [r2]
-    // cmp r3, #0
-    // beq _02019B3E
-    // ldr r2, [r0, #4]
-    // lsl r0, r1, #4
     // add r1, r2, r0
-    // mov r0, #7
     // ldrsb r0, [r1, r0]
     // strb r0, [r3]
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02019B44(void) {
-    // push {r4, r5}
-    // cmp r2, #0
-    // beq _02019B58
-    // ldr r5, [r0, #4]
-    // lsl r4, r1, #4
     // add r4, r5, r4
-    // ldrh r4, [r4, #4]
-    // lsl r4, r4, #0x1a
-    // lsr r4, r4, #0x1a
     // strh r4, [r2]
-    // cmp r3, #0
-    // beq _02019B6A
-    // ldr r2, [r0, #4]
-    // lsl r0, r1, #4
     // add r0, r2, r0
-    // ldrh r0, [r0, #4]
-    // lsl r0, r0, #0x14
-    // lsr r0, r0, #0x1a
     // strh r0, [r3]
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02019B70(void) {
@@ -847,8 +705,10 @@ void sub_02019B70(void) {
 }
 
 
+
 void sub_02019BA0(void) {
     // bx lr
     // TODO: decompile
 }
+
 

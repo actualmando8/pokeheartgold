@@ -2,63 +2,36 @@
 #include "global.h"
 
 void FrtCmd_151(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // bl FrontierScript_ReadVar
+    FrontierScript_ReadVar();
     // str r0, [sp, #0xc]
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
+    FrontierScript_ReadVar(r5);
+    FrontierScript_ReadVar(r5);
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVarPtr
+    FrontierScript_ReadVar(r5);
+    FrontierScript_ReadVar(r5);
+    FrontierScript_ReadVarPtr(r5);
     // str r0, [sp, #0x14]
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r5)));
     // str r6, [sp]
-    // lsl r2, r4, #0x18
     // ldr r1, [sp, #0x14]
     // str r7, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r0, #8]
     // ldr r1, [sp, #0xc]
     // ldr r3, [sp, #0x10]
-    // lsr r2, r2, #0x18
-    // bl ov80_022324C4
-    // add r1, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_SetData
-    // mov r0, #0
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov80_022324C4(*((u32*)(r0 + 8)), ((r4 << 0x18) >> 0x18));
+    Frontier_SetData(*((u32*)*((u32*)r5)), r0);
 }
+
 
 
 u32 FrtCmd_152(void) {
-    FrontierScript_ReadVar();
-    Frontier_GetData();
-    ov80_02232824(r4);
-    return 0;
 }
+
 
 
 u32 FrtCmd_153(void) {
-    Frontier_GetData();
-    ov80_02232ABC();
-    return 0;
 }
+
 
 
 void FrtCmd_154(void) {
@@ -100,6 +73,7 @@ void FrtCmd_154(void) {
 }
 
 
+
 void FrtCmd_164(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -139,62 +113,25 @@ void FrtCmd_164(void) {
 }
 
 
+
 void FrtCmd_155(void) {
-    // push {r3, r4, r5, lr}
-    // ldr r0, [r0]
-    // ldr r0, [r0]
-    // bl Frontier_GetData
-    // add r4, r0, #0
-    // ldr r5, [r4, #0xc]
-    // mov r1, #0
-    // ldr r0, [r5, #4]
-    // bl Party_GetMonByIndex
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x28]
-    // mov r1, #0
-    // bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
-    // ldr r0, [r5, #4]
-    // mov r1, #1
-    // bl Party_GetMonByIndex
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x28]
-    // mov r1, #1
-    // bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
-    // ldrb r0, [r4, #0x10]
-    // bl ov80_02237D8C
-    // cmp r0, #0
-    // bne _02231D84
-    // ldr r0, [r5, #4]
-    // mov r1, #2
-    // bl Party_GetMonByIndex
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x28]
-    // mov r1, #2
-    // bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
-    // b _02231DA8
-    // ldr r0, [r5, #0xc]
-    // mov r1, #0
-    // bl Party_GetMonByIndex
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x28]
-    // mov r1, #2
-    // bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
-    // ldr r0, [r5, #0xc]
-    // mov r1, #1
-    // bl Party_GetMonByIndex
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x28]
-    // mov r1, #3
-    // bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
-    // ldr r0, [r5, #0x14]
-    // bl IsBattleResultWin
-    // str r0, [r4, #0x1c]
-    // add r0, r5, #0
-    // bl BattleSetup_Delete
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Frontier_GetData(*((u32*)*((u32*)r0)));
+    Party_GetMonByIndex(*((u32*)(*((u32*)(r0 + 0xc)) + 4)), 0);
+    Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(*((u32*)(r4 + 0x28)), 0, r0);
+    Party_GetMonByIndex(*((u32*)(r5 + 4)), 1);
+    Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(*((u32*)(r4 + 0x28)), 1, r0);
+    ov80_02237D8C(*((u8*)(r4 + 0x10)));
+    Party_GetMonByIndex(*((u32*)(r5 + 4)), 2);
+    Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(*((u32*)(r4 + 0x28)), 2, r0);
+    Party_GetMonByIndex(*((u32*)(r5 + 0xc)), 0);
+    Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(*((u32*)(r4 + 0x28)), 2, r0);
+    Party_GetMonByIndex(*((u32*)(r5 + 0xc)), 1);
+    Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(*((u32*)(r4 + 0x28)), 3, r0);
+    IsBattleResultWin(*((u32*)(r5 + 0x14)));
+    *((u32*)(r4 + 0x1c)) = r0;
+    BattleSetup_Delete(r5);
 }
+
 
 
 void FrtCmd_156(void) {
@@ -225,6 +162,7 @@ void FrtCmd_156(void) {
     // _02231DF4: .word gOverlayTemplate_Battle
     // TODO: decompile
 }
+
 
 
 void FrtCmd_157(void) {
@@ -264,6 +202,7 @@ void FrtCmd_157(void) {
     // _02231E48: .word ov80_0223BE44
     // TODO: decompile
 }
+
 
 
 void ov80_02231E4C(void) {
@@ -306,24 +245,20 @@ void ov80_02231E4C(void) {
 }
 
 
+
 void ov80_02231E94(void) {
-    ov80_02232AEC(*((u32*)(r0 + 0x24)), r0);
-    Heap_Free(r4);
 }
+
 
 
 u32 FrtCmd_158(void) {
-    Frontier_GetData();
-    ov80_02232F00();
-    return 0;
 }
+
 
 
 u32 FrtCmd_159(void) {
-    Frontier_GetData();
-    ov80_02232F08();
-    return 0;
 }
+
 
 
 void FrtCmd_160(void) {
@@ -722,21 +657,15 @@ void FrtCmd_160(void) {
 }
 
 
+
 u32 FrtCmd_161(void) {
-    FrontierScript_ReadVarPtr();
-    Frontier_GetData();
-    return 0;
 }
+
 
 
 u32 FrtCmd_162(void) {
-    FrontierScript_ReadVar();
-    FrontierScript_ReadVar(r5);
-    FrontierScript_ReadVarPtr(r5);
-    Frontier_GetData();
-    ov80_02233280(r6, r7);
-    return 1;
 }
+
 
 
 void FrtCmd_163(void) {
@@ -755,6 +684,7 @@ void FrtCmd_163(void) {
     // _02232314: .word ov80_02232318
     // TODO: decompile
 }
+
 
 
 void ov80_02232318(void) {
@@ -783,6 +713,7 @@ void ov80_02232318(void) {
 }
 
 
+
 void FrtCmd_165(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -799,6 +730,7 @@ void FrtCmd_165(void) {
     // _02232364: .word ov80_02232368
     // TODO: decompile
 }
+
 
 
 void ov80_02232368(void) {
@@ -831,131 +763,64 @@ void ov80_02232368(void) {
 }
 
 
+
 u32 FrtCmd_080(void) {
-    Frontier_GetData();
-    ov80_022332D0(r0);
-    return 0;
 }
+
 
 
 u32 FrtCmd_081(void) {
-    Frontier_GetData();
-    ov80_022333F0(r0);
-    return 0;
 }
+
 
 
 u32 FrtCmd_082(void) {
-    Frontier_GetData();
-    ov80_02233490(r0);
-    return 0;
 }
+
 
 
 void FrtCmd_166(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // bl FrontierScript_ReadVar
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVarPtr
-    // add r6, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // ldr r0, [r0, #8]
-    // bl Save_Frontier_GetStatic
-    // add r5, r0, #0
-    // lsl r0, r4, #0x18
-    // lsr r0, r0, #0x18
-    // bl sub_0205C1F0
-    // add r7, r0, #0
-    // lsl r0, r4, #0x18
-    // lsr r0, r0, #0x18
-    // bl sub_0205C1F0
-    // bl sub_0205C268
-    // add r2, r0, #0
-    // add r0, r5, #0
-    // add r1, r7, #0
-    // bl FrontierSave_GetStat
+    FrontierScript_ReadVar();
+    FrontierScript_ReadVarPtr(r5);
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r5)));
+    Save_Frontier_GetStatic(*((u32*)(r0 + 8)));
+    sub_0205C1F0(((r4 << 0x18) >> 0x18));
+    sub_0205C1F0(((r4 << 0x18) >> 0x18));
+    sub_0205C268();
+    FrontierSave_GetStat(r5, r7, r0);
     // strh r0, [r6]
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void FrtCmd_167(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl FrontierScript_ReadVar
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
-    // add r6, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // ldr r0, [r0, #8]
-    // bl Save_Frontier_GetStatic
-    // lsl r1, r4, #0x18
-    // lsr r1, r1, #0x18
-    // add r2, r6, #0
-    // bl ov80_02237FA4
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    FrontierScript_ReadVar();
+    FrontierScript_ReadVar(r5);
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r5)));
+    Save_Frontier_GetStatic(*((u32*)(r0 + 8)));
+    ov80_02237FA4(((r4 << 0x18) >> 0x18), r6);
 }
+
 
 
 void FrtCmd_168(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl FrontierScript_ReadVar
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl FrontierScript_ReadVar
-    // add r6, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // lsl r1, r4, #0x18
-    // ldr r0, [r0, #8]
-    // lsr r1, r1, #0x18
-    // add r2, r6, #0
-    // bl ov80_022331E8
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    FrontierScript_ReadVar();
+    FrontierScript_ReadVar(r5);
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r5)));
+    ov80_022331E8(*((u32*)(r0 + 8)), ((r4 << 0x18) >> 0x18), r6);
 }
+
 
 
 void FrtCmd_169(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // ldr r1, [r5, #0x1c]
-    // add r0, r1, #1
-    // str r0, [r5, #0x1c]
-    // ldr r0, [r5]
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r0)));
+    *((u32*)(r5 + 0x1c)) = (*((u32*)(r5 + 0x1c)) + 1);
     // ldrb r4, [r1]
-    // ldr r0, [r0]
-    // bl Frontier_GetData
-    // add r2, r0, #0
-    // bne _022324B0
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // lsl r1, r4, #4
+    Frontier_GetData(*((u32*)*((u32*)r5)), *((u32*)(r5 + 0x1c)));
     // add r1, r4, r1
     // add r2, #0x64
-    // lsl r1, r1, #4
-    // add r0, r5, #0
     // add r1, r2, r1
-    // bl ov80_0222F44C
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov80_0222F44C(r5, ((r4 << 4) << 4), r0);
 }
+
 

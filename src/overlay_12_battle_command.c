@@ -208,6 +208,7 @@ void BattleScript_CalcEffortValues(void) {
 }
 
 
+
 void Task_GetPokemon(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x158
@@ -1541,6 +1542,7 @@ void Task_GetPokemon(void) {
 }
 
 
+
 void ov12_02247228(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -2039,24 +2041,14 @@ void ov12_02247228(void) {
 }
 
 
+
 void ov12_02247668(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r0, #0
-    // mov r1, #1
-    // mov r0, #0x4a
-    // mov r2, #0
-    // mov r3, #3
     // str r1, [sp]
-    // bl GfGfxLoader_LoadFromNarc
-    // lsl r1, r4, #2
+    GfGfxLoader_LoadFromNarc(0x4a, 1, 0, 3);
     // ldr r4, [r0, r1]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    Heap_Free((r4 << 2));
 }
+
 
 
 void GetBattlerIDBySide(void) {
@@ -2322,739 +2314,334 @@ void GetBattlerIDBySide(void) {
 }
 
 
+
 void InitBattleMsgData(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // add r4, r1, #0
-    // mov r6, #0
-    // bl BattleScriptReadWord
+    BattleScriptReadWord();
     // str r0, [r4]
-    // add r0, r7, #0
-    // bl BattleScriptReadWord
-    // str r0, [r4, #4]
-    // cmp r0, #0x3c
-    // bhi _022479A8
+    BattleScriptReadWord(r7);
+    *((u32*)(r4 + 4)) = r0;
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0224791A: ; jump table
-    // b _022479A8
-    // mov r6, #1
-    // b _022479A8
-    // mov r6, #2
-    // b _022479A8
-    // mov r6, #3
-    // b _022479A8
-    // mov r6, #4
-    // b _022479A8
-    // mov r6, #6
-    // mov r5, #0
-    // cmp r6, #0
-    // ble _022479BE
-    // add r0, r7, #0
-    // bl BattleScriptReadWord
-    // str r0, [r4, #8]
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, r6
-    // blt _022479AE
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    BattleScriptReadWord(r7);
+    *((u32*)(r4 + 8)) = r0;
 }
+
 
 
 void InitBattleMsg(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r2, #0
-    // ldr r2, [r4]
-    // add r5, r3, #0
-    // strh r2, [r5, #2]
-    // ldr r2, [r4, #4]
-    // add r7, r0, #0
-    // strb r2, [r5, #1]
-    // ldrb r2, [r5, #1]
-    // add r6, r1, #0
-    // cmp r2, #0x3c
-    // bls _022479DA
-    // b _022480BC
+    *((u16*)(r3 + 2)) = *((u32*)r2);
+    *((u8*)(r3 + 1)) = *((u32*)(r2 + 4));
     // add r2, r2, r2
     // add r2, pc
-    // ldrh r2, [r2, #6]
-    // lsl r2, r2, #0x10
     // asr r2, r2, #0x10
     // add pc, r2
     // _022479E6: ; jump table
-    // ldr r2, [r4, #8]
-    // bl GetBattlerIDBySide
-    // str r0, [r5, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl ov12_022481D0
-    // str r0, [r5, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl ov12_02248184
-    // str r0, [r5, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248220
-    // str r0, [r5, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_022481D0
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_02248190
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022481E8
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_02248200
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_02248184
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r0, [r4, #0xc]
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl GetBattlerIDBySide
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_0224819C
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl ov12_02248184
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_02248184
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248220
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248220
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248220
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248220
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_02248184
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248218
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_02248184
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_022481D0
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_02248190
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_022481DC
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_02248184
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_022481D0
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_022481DC
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r0, [r4, #0xc]
-    // str r0, [r5, #8]
-    // ldr r0, [r4, #0x10]
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #8]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_0224820C
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248220
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248218
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248218
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // ldr r1, [r4, #0x10]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // ldr r1, [r4, #0x14]
-    // add r0, r6, #0
-    // bl GetMoveMessageNo
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // ldr r2, [r4, #0x14]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_0224819C
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // ldr r1, [r4, #0x14]
-    // add r0, r6, #0
-    // bl ov12_022481D0
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_022480C0
-    // str r0, [r5, #4]
-    // ldr r1, [r4, #0xc]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // ldr r1, [r4, #0x14]
-    // add r0, r6, #0
-    // bl ov12_0224810C
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248220
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #0xc]
-    // ldr r2, [r4, #0x14]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248218
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // ldr r2, [r4, #0x14]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248218
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // ldr r2, [r4, #0x14]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248218
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248218
-    // str r0, [r5, #0xc]
-    // ldr r2, [r4, #0x14]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #0x10]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4, #8]
-    // bl ov12_02248218
-    // str r0, [r5, #4]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #8]
-    // ldr r2, [r4, #0x10]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0xc]
-    // ldr r2, [r4, #0x14]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248218
-    // str r0, [r5, #0x10]
-    // ldr r2, [r4, #0x18]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_02248220
-    // str r0, [r5, #0x14]
-    // ldr r2, [r4, #0x1c]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl ov12_022480C0
-    // str r0, [r5, #0x18]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GetBattlerIDBySide(*((u32*)(r2 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022481D0(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248184(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022481D0(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248190(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022481E8(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248200(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248184(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    *((u32*)(r5 + 8)) = *((u32*)(r4 + 0xc));
+    GetMoveMessageNo(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    GetBattlerIDBySide(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_0224819C(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248184(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248184(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248220(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248220(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248220(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248220(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248184(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248218(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248184(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022481D0(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248190(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022481DC(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248184(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022481D0(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022481DC(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    *((u32*)(r5 + 8)) = *((u32*)(r4 + 0xc));
+    *((u32*)(r5 + 0xc)) = *((u32*)(r4 + 0x10));
+    ov12_0224810C(r6, *((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_0224820C(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_02248220(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_02248218(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_02248218(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    GetMoveMessageNo(r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224819C(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022481D0(r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_022480C0(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_0224810C(r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_02248220(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_02248218(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_02248218(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_02248218(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_02248218(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_02248218(*((u32*)(r4 + 8)));
+    *((u32*)(r5 + 4)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0xc)));
+    *((u32*)(r5 + 8)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x10)));
+    *((u32*)(r5 + 0xc)) = r0;
+    ov12_02248218(r7, r6, *((u32*)(r4 + 0x14)));
+    *((u32*)(r5 + 0x10)) = r0;
+    ov12_02248220(r7, r6, *((u32*)(r4 + 0x18)));
+    *((u32*)(r5 + 0x14)) = r0;
+    ov12_022480C0(r7, r6, *((u32*)(r4 + 0x1c)));
+    *((u32*)(r5 + 0x18)) = r0;
 }
+
 
 
 void ov12_022480C0(void) {
@@ -3083,6 +2670,7 @@ void ov12_022480C0(void) {
 }
 
 
+
 void GetMoveMessageNo(void) {
     // cmp r1, #1
     // beq _022480FA
@@ -3099,6 +2687,7 @@ void GetMoveMessageNo(void) {
     // _02248108: .word 0x00003044
     // TODO: decompile
 }
+
 
 
 void ov12_0224810C(void) {
@@ -3162,26 +2751,17 @@ void ov12_0224810C(void) {
 }
 
 
+
 void ov12_02248184(void) {
-    // cmp r1, #0xff
-    // bne _0224818E
-    // mov r1, #0x13
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov12_02248190(void) {
-    // cmp r1, #0xff
-    // bne _0224819A
-    // mov r1, #0x13
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov12_0224819C(void) {
@@ -3212,63 +2792,44 @@ void ov12_0224819C(void) {
 }
 
 
+
 void ov12_022481D0(void) {
-    // cmp r1, #0xff
-    // bne _022481DA
-    // mov r1, #0x13
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov12_022481DC(void) {
-    // cmp r1, #0xff
-    // bne _022481E6
-    // mov r1, #0x13
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov12_022481E8(void) {
-    GetBattlerIDBySide();
 }
+
 
 
 void ov12_02248200(void) {
-    // cmp r1, #0xff
-    // bne _0224820A
-    // mov r1, #0x13
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov12_0224820C(void) {
-    // cmp r1, #0xff
-    // bne _02248216
-    // mov r1, #0x13
-    // lsl r1, r1, #4
     // ldr r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov12_02248218(void) {
-    GetBattlerIDBySide();
 }
+
 
 
 void ov12_02248220(void) {
-    GetBattlerIDBySide();
 }
+
 
 
 void ov12_02248228(void) {
@@ -3560,6 +3121,7 @@ void ov12_02248228(void) {
 }
 
 
+
 void ov12_022484D4(void) {
     // push {r3, r4, r5, lr}
     // add r5, r1, #0
@@ -3609,6 +3171,7 @@ void ov12_022484D4(void) {
     // _02248554: .word 0x00004E2E
     // TODO: decompile
 }
+
 
 
 void UpdateFrienshipFainted(void) {
@@ -3719,23 +3282,17 @@ void UpdateFrienshipFainted(void) {
 }
 
 
+
 void BattlerSetAbility(void) {
     // add r1, r0, r1
-    // mov r0, #0x39
-    // lsl r0, r0, #4
     // strb r2, [r1, r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov12_02248654(void) {
-    // lsl r1, r1, #1
     // add r1, r0, r1
-    // mov r0, #0xe5
-    // lsl r0, r0, #2
     // strh r2, [r1, r0]
-    // bx lr
-    // TODO: decompile
 }
+
 

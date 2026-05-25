@@ -13,6 +13,7 @@ void ov01_021FB878(void) {
 }
 
 
+
 void ov01_021FB888(void) {
     // push {r3, r4, r5, lr}
     // ldr r1, _021FB8F8 ; =0x000008C4
@@ -70,41 +71,25 @@ void ov01_021FB888(void) {
 }
 
 
+
 void ov01_021FB904(void) {
-    // mov r1, #0x23
-    // lsl r1, r1, #6
     // ldr r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021FB90C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bne _021FB918
-    // bl GF_AssertFail
-    // add r2, r4, #4
-    // lsl r1, r5, #2
+    GF_AssertFail();
     // ldr r0, [r2, r1]
-    // cmp r0, #0
-    // bne _021FB930
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // bne _021FB92C
-    // bl GF_AssertFail
-    // add r0, r4, #4
-    // pop {r3, r4, r5, pc}
+    GF_AssertFail(*((u32*)(r4 + 4)), (r5 << 2), (r4 + 4));
     // add r0, r2, r1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021FB934(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov01_021FB944(void) {
@@ -169,14 +154,15 @@ void ov01_021FB944(void) {
 }
 
 
+
 void ov01_021FB9CC(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov01_021FB9E0(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov01_021FB9F4(void) {
@@ -187,6 +173,7 @@ void ov01_021FB9F4(void) {
     // _021FB9FC: .word 0x000008AC
     // TODO: decompile
 }
+
 
 
 void ov01_021FBA00(void) {
@@ -201,6 +188,7 @@ void ov01_021FBA00(void) {
     // _021FBA10: .word 0x000008B7
     // TODO: decompile
 }
+
 
 
 void ov01_021FBA14(void) {
@@ -225,6 +213,7 @@ void ov01_021FBA14(void) {
     // _021FBA38: .word 0x000008B7
     // TODO: decompile
 }
+
 
 
 void ov01_021FBA3C(void) {
@@ -512,6 +501,7 @@ void ov01_021FBA3C(void) {
 }
 
 
+
 void Field3dModel_LoadFromFilesystem(void) {
     // push {r3, r4, r5, lr}
     // mov r5, #0
@@ -560,6 +550,7 @@ void Field3dModel_LoadFromFilesystem(void) {
 }
 
 
+
 void ov01_021FBD38(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -603,11 +594,10 @@ void ov01_021FBD38(void) {
 }
 
 
+
 void ov01_021FBD8C(void) {
-    GF3dRender_AllocAndLoadTexResources(*((u32*)(r1 + 0xc)));
-    GF3dRender_BindModelSet(*((u32*)(r4 + 0xc)));
-    SysTask_Destroy(r5);
 }
+
 
 
 void Field3dModel_Unload(void) {
@@ -652,6 +642,7 @@ void Field3dModel_Unload(void) {
 }
 
 
+
 void ov01_021FBDFC(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -689,134 +680,64 @@ void ov01_021FBDFC(void) {
 }
 
 
+
 void Field3dModelAnimation_LoadFromFilesystem(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r4, r1, #0
-    // mov r6, #0
-    // add r1, r3, #0
-    // add r5, r0, #0
-    // add r0, r2, #0
     // ldr r3, [sp, #0x18]
-    // add r2, r6, #0
     // str r6, [sp]
-    // bl GfGfxLoader_LoadFromNarc
-    // add r2, r0, #0
+    GfGfxLoader_LoadFromNarc(r2, r3, 0);
     // ldr r3, [sp, #0x1c]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov01_021FC030
-    // add r0, r6, #0
-    // str r0, [r5, #0x10]
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    ov01_021FC030(r5, r4, r0);
+    *((u32*)(r5 + 0x10)) = r6;
 }
+
 
 
 void ov01_021FBE70(void) {
-    ov01_021FC030();
 }
+
 
 
 void Field3dModelAnimation_Unload(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _021FBE9E
-    // add r0, r1, #0
-    // ldr r1, [r4, #8]
-    // bl NNS_G3dFreeAnmObj
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0
-    // bne _021FBE9E
-    // ldr r0, [r4]
-    // bl Heap_Free
-    // mov r1, #0x14
-    // mov r0, #0
+    NNS_G3dFreeAnmObj(r1, *((u32*)(r0 + 8)));
+    Heap_Free(*((u32*)r4));
     // strb r0, [r4]
-    // add r4, r4, #1
-    // sub r1, r1, #1
-    // bne _021FBEA2
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void Field3dModelAnimation_FrameAdvanceAndLoop(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #8]
-    // ldr r0, [r0, #8]
-    // ldrh r0, [r0, #4]
-    // lsl r2, r0, #0xc
-    // cmp r1, #0
-    // ble _021FBECA
-    // ldr r0, [r4, #0xc]
     // add r0, r0, r1
-    // add r1, r2, #0
-    // bl _s32_div_f
-    // str r1, [r4, #0xc]
-    // b _021FBEDC
-    // ldr r0, [r4, #0xc]
-    // add r3, r4, #0
+    _s32_div_f(*((u32*)(r0 + 0xc)), (*((u16*)(*((u32*)(*((u32*)(r0 + 8)) + 8)) + 4)) << 0xc), (*((u16*)(*((u32*)(*((u32*)(r0 + 8)) + 8)) + 4)) << 0xc));
+    *((u32*)(r4 + 0xc)) = r1;
     // add r3, #0xc
     // add r0, r0, r1
-    // str r0, [r4, #0xc]
+    *((u32*)(r4 + 0xc)) = *((u32*)(r4 + 0xc));
     // bpl _021FBEDC
-    // ldr r0, [r3]
     // add r0, r0, r2
     // str r0, [r3]
-    // ldr r1, [r4, #0xc]
-    // ldr r0, [r4, #8]
     // str r1, [r0]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void Field3dModelAnimation_FrameAdvanceAndCheck(void) {
-    // push {r3, r4}
-    // ldr r2, [r0, #8]
-    // ldr r3, [r0, #0xc]
-    // ldr r2, [r2, #8]
-    // ldrh r2, [r2, #4]
-    // lsl r4, r2, #0xc
-    // mov r2, #0
-    // cmp r1, #0
-    // ble _021FBF06
     // add r1, r3, r1
-    // cmp r1, r4
-    // bge _021FBF00
-    // str r1, [r0, #0xc]
-    // b _021FBF12
-    // str r4, [r0, #0xc]
-    // mov r2, #1
-    // b _021FBF12
+    *((u32*)(r0 + 0xc)) = r1;
+    *((u32*)(r0 + 0xc)) = (*((u16*)(*((u32*)(*((u32*)(r0 + 8)) + 8)) + 4)) << 0xc);
     // add r1, r3, r1
     // bmi _021FBF0E
-    // str r1, [r0, #0xc]
-    // b _021FBF12
-    // str r2, [r0, #0xc]
-    // mov r2, #1
-    // ldr r1, [r0, #0xc]
-    // ldr r0, [r0, #8]
+    *((u32*)(r0 + 0xc)) = r1;
+    *((u32*)(r0 + 0xc)) = 1;
     // str r1, [r0]
-    // add r0, r2, #0
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void Field3dModelAnimation_FrameSet(void) {
-    // str r1, [r0, #0xc]
-    // ldr r0, [r0, #8]
+    *((u32*)(r0 + 0xc)) = r1;
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021FBF28(void) {
@@ -826,35 +747,26 @@ void ov01_021FBF28(void) {
 }
 
 
+
 void Field3dObject_InitFromModel(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // mov r1, #0
-    // mov r2, #0x78
-    // add r4, r0, #0
-    // bl memset
-    // ldr r1, [r5, #8]
-    // add r0, r4, #0
-    // bl NNS_G3dRenderObjInit
-    // mov r0, #1
-    // str r0, [r4, #0x6c]
-    // lsl r0, r0, #0xc
-    // str r0, [r4, #0x60]
-    // str r0, [r4, #0x64]
-    // str r0, [r4, #0x68]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    memset(0, 0x78);
+    NNS_G3dRenderObjInit(r4, *((u32*)(r5 + 8)));
+    *((u32*)(r4 + 0x6c)) = 1;
+    *((u32*)(r4 + 0x60)) = (1 << 0xc);
+    *((u32*)(r4 + 0x64)) = (1 << 0xc);
+    *((u32*)(r4 + 0x68)) = (1 << 0xc);
 }
+
 
 
 void Field3dObject_AddAnimation(void) {
-    NNS_G3dRenderObjAddAnmObj();
 }
+
 
 
 void Field3dObject_RemoveAnimation(void) {
-    NNS_G3dRenderObjRemoveAnmObj();
 }
+
 
 
 void Field3dObject_Draw(void) {
@@ -931,9 +843,10 @@ void Field3dObject_Draw(void) {
 }
 
 
+
 void Field3dObject_SetActiveFlag(void) {
-    ((u32*)r0)[0x6c] = r1;
 }
+
 
 
 void Field3dObject_GetActiveFlag(void) {
@@ -943,41 +856,30 @@ void Field3dObject_GetActiveFlag(void) {
 }
 
 
+
 void Field3dObject_SetPosEx(void) {
-    ((u32*)r0)[0x54] = r1;
-    ((u32*)r0)[0x58] = r2;
-    ((u32*)r0)[0x5c] = r3;
 }
+
 
 
 void Field3dObject_SetPos(void) {
-    // add r3, r1, #0
-    // add r2, r0, #0
     // ldmia r3!, {r0, r1}
     // add r2, #0x54
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void Field3dObject_SetXRotation(void) {
-    // lsl r2, r2, #1
     // add r0, r0, r2
     // add r0, #0x70
     // strh r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021FC030(void) {
-    NNS_G3dGetAnmByIdx(r2, 0);
-    *((u32*)(r5 + 4)) = r0;
-    NNS_G3dAllocAnmObj(r6, *((u32*)(r5 + 4)), *((u32*)(r4 + 8)));
-    *((u32*)(r5 + 8)) = r0;
-    NNS_G3dAnmObjInit(*((u32*)(r5 + 4)), *((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)));
 }
+
 

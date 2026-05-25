@@ -7,155 +7,81 @@ void sub_0203DB6C(void) {
 }
 
 
+
 void sub_0203DB70(void) {
     // bx lr
     // TODO: decompile
 }
 
 
+
 u8 sub_0203DB74(void) {
-    return 1;
 }
 
 
-void _GetCoordsOfFacingTile(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // ldr r0, [r6, #0x40]
-    // add r4, r1, #0
-    // add r5, r2, #0
-    // bl PlayerAvatar_GetFacingDirection
-    // add r7, r0, #0
-    // ldr r0, [r6, #0x40]
-    // bl PlayerAvatar_GetXCoord
+
+u8 _GetCoordsOfFacingTile(void) {
+    PlayerAvatar_GetFacingDirection(*((u32*)(r0 + 0x40)));
+    PlayerAvatar_GetXCoord(*((u32*)(r6 + 0x40)));
     // str r0, [r4]
-    // ldr r0, [r6, #0x40]
-    // bl PlayerAvatar_GetZCoord
+    PlayerAvatar_GetZCoord(*((u32*)(r6 + 0x40)));
     // str r0, [r5]
-    // cmp r7, #3
-    // bhi _0203DBCE
     // add r0, r7, r7
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0203DBA8: ; jump table
-    // ldr r0, [r5]
-    // sub r0, r0, #1
     // str r0, [r5]
-    // b _0203DBCE
-    // ldr r0, [r5]
-    // add r0, r0, #1
     // str r0, [r5]
-    // b _0203DBCE
-    // ldr r0, [r4]
-    // sub r0, r0, #1
     // str r0, [r4]
-    // b _0203DBCE
-    // ldr r0, [r4]
-    // add r0, r0, #1
     // str r0, [r4]
-    // add r0, r7, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
-void sub_0203DBD4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // bl PlayerAvatar_GetMapObject
-    // bl MapObject_GetPositionVectorYCoordUInt
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_GetPositionVectorYCoordUInt
-    // cmp r4, r0
-    // bne _0203DBF0
-    // mov r0, #1
-    // b _0203DBF2
-    // mov r0, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+
+s32 sub_0203DBD4(void) {
+    PlayerAvatar_GetMapObject();
+    MapObject_GetPositionVectorYCoordUInt();
+    MapObject_GetPositionVectorYCoordUInt(r5);
 }
+
 
 
 void FieldSystem_GetFacingObject(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r6, r1, #0
     // add r1, sp, #4
     // add r2, sp, #0
-    // add r5, r0, #0
-    // bl _GetCoordsOfFacingTile
-    // add r4, r0, #0
+    _GetCoordsOfFacingTile();
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r5, #0
-    // bl GetMetatileBehavior
-    // bl sub_0205B700
-    // cmp r0, #1
-    // bne _0203DC52
-    // cmp r4, #3
-    // bhi _0203DC52
+    GetMetatileBehavior(r5);
+    sub_0205B700();
     // add r0, r4, r4
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0203DC2C: ; jump table
     // ldr r0, [sp]
-    // sub r0, r0, #1
     // str r0, [sp]
-    // b _0203DC52
     // ldr r0, [sp]
-    // add r0, r0, #1
     // str r0, [sp]
-    // b _0203DC52
     // ldr r0, [sp, #4]
-    // sub r0, r0, #1
     // str r0, [sp, #4]
-    // b _0203DC52
     // ldr r0, [sp, #4]
-    // add r0, r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x3c]
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // mov r3, #0
-    // bl MapObjectManager_GetFirstObjectWithXAndZ
+    MapObjectManager_GetFirstObjectWithXAndZ(*((u32*)(r5 + 0x3c)), 0);
     // str r0, [r6]
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
 
 
-void sub_0203DC64(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl FieldSystem_GetFacingObject
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _0203DC8C
-    // bl MapObject_CheckFlag19Disabled
-    // cmp r0, #1
-    // bne _0203DC8C
-    // ldr r0, [r5, #0x40]
-    // ldr r1, [r4]
-    // bl sub_0203DBD4
-    // cmp r0, #1
-    // bne _0203DC8C
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+
+BOOL sub_0203DC64(void) {
+    FieldSystem_GetFacingObject();
+    MapObject_CheckFlag19Disabled(*((u32*)r4));
+    sub_0203DBD4(*((u32*)(r5 + 0x40)), *((u32*)r4));
 }
+
 
 
 void GetInteractedBackgroundEventScript(void) {
@@ -223,82 +149,24 @@ void GetInteractedBackgroundEventScript(void) {
 }
 
 
-void BgEventIsUncollectedHiddenItem(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldrh r0, [r1, #2]
-    // cmp r0, #2
-    // beq _0203DD1E
-    // mov r0, #0
-    // pop {r4, pc}
+
+s32 BgEventIsUncollectedHiddenItem(void) {
     // ldrh r0, [r1]
-    // bl HiddenItemScriptNoToFlagId
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // bl FieldSystem_FlagCheck
-    // cmp r0, #1
-    // beq _0203DD34
-    // mov r0, #1
-    // b _0203DD36
-    // mov r0, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r4, pc}
-    // TODO: decompile
+    HiddenItemScriptNoToFlagId(0);
+    FieldSystem_FlagCheck(r4, r0);
 }
 
 
-void BgEventDirectionIsCompatibleWithPlayerFacing(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // ldrh r1, [r4, #0x10]
-    // cmp r1, #4
-    // bne _0203DD4A
-    // mov r0, #1
-    // pop {r4, pc}
-    // ldr r0, [r0, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // cmp r0, #3
-    // bhi _0203DDA0
+
+s32 BgEventDirectionIsCompatibleWithPlayerFacing(void) {
+    PlayerAvatar_GetFacingDirection(*((u32*)(1 + 0x40)), *((u16*)(r1 + 0x10)));
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0203DD60: ; jump table
-    // ldrh r0, [r4, #0x10]
-    // cmp r0, #0
-    // beq _0203DD72
-    // cmp r0, #6
-    // bne _0203DDA0
-    // mov r0, #1
-    // pop {r4, pc}
-    // ldrh r0, [r4, #0x10]
-    // cmp r0, #3
-    // beq _0203DD80
-    // cmp r0, #6
-    // bne _0203DDA0
-    // mov r0, #1
-    // pop {r4, pc}
-    // ldrh r0, [r4, #0x10]
-    // cmp r0, #2
-    // beq _0203DD8E
-    // cmp r0, #5
-    // bne _0203DDA0
-    // mov r0, #1
-    // pop {r4, pc}
-    // ldrh r0, [r4, #0x10]
-    // cmp r0, #1
-    // beq _0203DD9C
-    // cmp r0, #5
-    // bne _0203DDA0
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0203DDA4(void) {
@@ -349,6 +217,7 @@ void sub_0203DDA4(void) {
     // _0203DE00: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void sub_0203DE04(void) {
@@ -406,4 +275,5 @@ void sub_0203DE04(void) {
     // _0203DE70: .word 0x0000FFFF
     // TODO: decompile
 }
+
 

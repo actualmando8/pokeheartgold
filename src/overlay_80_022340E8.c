@@ -291,16 +291,12 @@ void BattleArcadeData_Alloc(void) {
 
 
 
+
 void BattleArcadeData_Init(void) {
-    // push {r3, lr}
-    // cmp r1, #0
-    // bne _02234388
-    // bl ov80_02234390
-    // pop {r3, pc}
-    // bl ov80_02234424
-    // pop {r3, pc}
-    // TODO: decompile
+    ov80_02234390();
+    ov80_02234424();
 }
+
 
 
 
@@ -376,126 +372,51 @@ void ov80_02234390(void) {
 
 
 
+
 void ov80_02234424(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x18c
-    // add r5, r0, #0
-    // bl ov80_022344D4
-    // mov r4, #0
-    // add r6, r5, #0
-    // add r7, r4, #0
+    ov80_022344D4();
     // str r7, [sp]
-    // lsl r2, r4, #0x18
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // lsr r2, r2, #0x18
-    // add r3, r7, #0
-    // bl sub_02030F34
-    // add r1, r6, #0
+    sub_02030F34(*((u32*)(r5 + 8)), 5, ((0 << 0x18) >> 0x18), 0);
     // add r1, #0x78
-    // add r4, r4, #1
-    // add r6, r6, #2
     // strh r0, [r1]
-    // cmp r4, #0xe
-    // blt _02234434
-    // mov r6, #0
     // add r4, sp, #0x30
-    // add r7, r5, #0
-    // mov r0, #0
     // str r0, [sp]
-    // lsl r2, r6, #0x18
-    // ldr r0, [r5, #8]
-    // mov r1, #7
-    // lsr r2, r2, #0x18
-    // mov r3, #0
-    // bl sub_02030F34
+    sub_02030F34(*((u32*)(r5 + 8)), 7, ((0 << 0x18) >> 0x18), 0);
     // strh r0, [r4]
     // ldrh r1, [r4]
-    // mov r0, #0xc5
-    // lsl r0, r0, #2
     // strh r1, [r7, r0]
-    // add r6, r6, #1
-    // add r4, r4, #2
-    // add r7, r7, #2
-    // cmp r6, #4
-    // blt _02234458
     // add r0, sp, #0x18
     // str r0, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // mov r0, #0xb
     // str r0, [sp, #8]
-    // mov r0, #0xcd
     // str r0, [sp, #0xc]
     // add r0, sp, #0x3c
     // add r1, sp, #0x30
     // add r2, sp, #0x10
-    // mov r3, #0
-    // bl ov80_0222A52C
-    // mov r0, #0xb
-    // bl AllocMonZeroed
-    // add r6, r0, #0
-    // mov r7, #0
+    ov80_0222A52C(0xcd, 0);
+    AllocMonZeroed(0xb);
     // add r4, sp, #0x3c
-    // add r0, r5, #0
-    // bl ov80_02238370
-    // add r2, r0, #0
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // bl ov80_0222A140
-    // ldr r1, [r5, #0x74]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // bl ov80_022383A8
-    // add r7, r7, #1
+    ov80_02238370(r5);
+    ov80_0222A140(r4, r6, r0);
+    ov80_022383A8(r5, *((u32*)(r5 + 0x74)), r6);
     // add r4, #0x38
-    // cmp r7, #4
-    // blt _022344A6
-    // add r0, r6, #0
-    // bl Heap_Free
-    // add sp, #0x18c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free(r6);
 }
+
 
 
 
 void ov80_022344D4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x70]
-    // bl Party_GetCount
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
-    // mov r4, #0
-    // cmp r7, #0
-    // ble _0223451A
-    // ldr r0, [r5, #0x70]
-    // add r1, r4, #0
-    // bl Party_GetMonByIndex
-    // add r6, r0, #0
-    // mov r0, #0
+    Party_GetCount(*((u32*)(r0 + 0x70)));
+    Party_GetMonByIndex(*((u32*)(r5 + 0x70)), 0);
     // str r0, [sp]
-    // lsl r2, r4, #0x18
-    // ldr r0, [r5, #8]
-    // mov r1, #4
-    // lsr r2, r2, #0x18
-    // mov r3, #0
-    // bl sub_02030F34
+    sub_02030F34(*((u32*)(r5 + 8)), 4, ((r4 << 0x18) >> 0x18), 0);
     // add r1, sp, #4
     // strh r0, [r1]
-    // add r0, r6, #0
-    // mov r1, #6
     // add r2, sp, #4
-    // bl SetMonData
-    // add r4, r4, #1
-    // cmp r4, r7
-    // blt _022344EA
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SetMonData(r6, 6);
 }
+
 
 
 
@@ -524,6 +445,7 @@ void BattleArcadeData_Free(void) {
 
 
 
+
 void ov80_02234550(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // ldr r7, _02234570 ; =0x00000418
@@ -546,8 +468,10 @@ void ov80_02234550(void) {
 
 
 
+
 void ov80_02234574(void) {
 }
+
 
 
 
@@ -764,9 +688,10 @@ void ov80_02234588(void) {
 
 
 
+
 void ov80_02234764(void) {
-    *((u8*)(r0 + 0x11)) = (*((u8*)(r0 + 0x11)) + 1);
 }
+
 
 
 
@@ -778,48 +703,33 @@ void ov80_02234770(void) {
 
 
 
+
 void ov80_02234774(void) {
-    // push {r4, lr}
-    // sub sp, #0x30
-    // add r4, r0, #0
-    // bl ov80_022347A8
-    // lsl r1, r0, #0x18
-    // lsr r1, r1, #0x17
+    ov80_022347A8();
     // add r1, r4, r1
     // add r1, #0x78
     // ldrh r1, [r1]
     // add r0, sp, #0
-    // mov r2, #0xb
-    // mov r3, #0xcc
-    // bl ov80_02229F04
-    // bl Heap_Free
+    ov80_02229F04(((r0 << 0x18) >> 0x17), 0xb, 0xcc);
+    Heap_Free();
     // add r0, sp, #0
-    // ldrh r0, [r0, #4]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl ov80_0222A30C
-    // add sp, #0x30
-    // pop {r4, pc}
-    // TODO: decompile
+    ov80_0222A30C(((*((u16*)(r0 + 4)) << 0x18) >> 0x18));
 }
+
 
 
 
 void ov80_022347A8(void) {
-    // ldrb r2, [r0, #0x11]
-    // mov r0, #7
     // mul r0, r1
     // add r0, r2, r0
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 
 void ov80_022347B8(void) {
 }
+
 
 
 
@@ -844,39 +754,24 @@ void ov80_022347C4(void) {
 
 
 
+
 void BattleArcade_SetPartyBeforeBattle(void) {
 }
 
 
 
+
 void BattleArcade_SetPartyAfterBattle(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // mov r1, #1
-    // ldrb r4, [r5, #0x11]
-    // bl BattleArcade_GetOpponentMonCount
-    // add r6, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // bl BattleArcade_MultiplayerCheck
-    // mov r3, #0x33
-    // lsl r3, r3, #4
+    BattleArcade_GetOpponentMonCount(*((u8*)(r0 + 0x10)), 1);
+    BattleArcade_MultiplayerCheck(*((u8*)(r5 + 0x10)));
     // add r1, r5, r3
     // str r1, [sp]
-    // add r1, r3, #0
     // sub r1, #0x14
     // add r1, r5, r1
     // str r1, [sp, #4]
-    // add r1, r3, #0
     // sub r1, #0x10
     // add r1, r5, r1
-    // add r2, r4, #7
     // str r1, [sp, #8]
-    // lsl r0, r0, #0x18
-    // lsl r1, r4, #1
-    // lsl r2, r2, #1
-    // lsr r0, r0, #0x18
     // add r1, r5, r1
     // add r2, r5, r2
     // str r0, [sp, #0xc]
@@ -885,15 +780,11 @@ void BattleArcade_SetPartyAfterBattle(void) {
     // sub r3, #0x1c
     // ldrh r1, [r1]
     // ldrh r2, [r2]
-    // add r0, r6, #0
     // add r3, r5, r3
-    // bl ov80_0222A6B8
-    // add r0, r5, #0
-    // bl ov80_022383C0
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov80_0222A6B8(r6, (r4 << 1), ((r4 + 7) << 1), (0x33 << 4));
+    ov80_022383C0(r5);
 }
+
 
 
 
@@ -934,6 +825,7 @@ void BattleArcade_GetWonBattlePoints(void) {
     // _02234890: .word ov80_0223BE9F
     // TODO: decompile
 }
+
 
 
 
@@ -1038,6 +930,7 @@ void ov80_02234894(void) {
 
 
 
+
 void ov80_02234968(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0x14
@@ -1132,34 +1025,18 @@ void ov80_02234968(void) {
 
 
 
+
 void ov80_02234A38(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r1, #0
-    // mov r0, #0xb7
-    // mov r1, #0x65
-    // bl NARC_New
-    // mov r1, #0
+    NARC_New(0xb7, 0x65);
     // str r1, [sp]
     // str r1, [sp, #4]
-    // mov r1, #1
     // str r1, [sp, #8]
-    // mov r1, #0x65
     // str r1, [sp, #0xc]
-    // ldr r2, [r5]
-    // mov r1, #0x39
-    // mov r3, #3
-    // add r4, r0, #0
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // ldr r0, [r5]
-    // mov r1, #3
-    // bl ScheduleBgTilemapBufferTransfer
-    // add r0, r4, #0
-    // bl NARC_Delete
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadScrnDataFromOpenNarc(0x39, *((u32*)r5), 3);
+    ScheduleBgTilemapBufferTransfer(*((u32*)r5), 3);
+    NARC_Delete(r4);
 }
+
 
 
 
@@ -1247,111 +1124,38 @@ void ov80_02234A74(void) {
 
 
 
+
 void ov80_02234B24(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // add r7, r1, #0
-    // mov r1, #1
-    // add r6, r2, #0
-    // bl BattleArcade_GetMonCount
-    // add r4, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // mov r1, #1
-    // bl BattleArcade_GetOpponentMonCount
+    BattleArcade_GetMonCount(*((u8*)(r0 + 0x10)), 1);
+    BattleArcade_GetOpponentMonCount(*((u8*)(r5 + 0x10)), 1);
     // str r0, [sp]
-    // cmp r6, #0
-    // bne _02234B5E
-    // mov r6, #0
-    // cmp r4, #0
-    // ble _02234B7A
-    // ldr r1, [r5, #0x30]
-    // add r0, r7, #0
-    // add r2, r6, #0
-    // bl ov80_0222F324
-    // add r6, r6, #1
-    // add r5, r5, #4
-    // cmp r6, r4
-    // blt _02234B4A
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _02234B7A
-    // ldr r1, [r5, #0x40]
-    // add r0, r7, #0
-    // add r2, r4, #0
-    // bl ov80_0222F324
+    ov80_0222F324(r7, *((u32*)(r5 + 0x30)), 0);
+    ov80_0222F324(r7, *((u32*)((r5 + 4) + 0x40)), r4);
     // ldr r0, [sp]
-    // add r6, r6, #1
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r6, r0
-    // blt _02234B64
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void ov80_02234B7C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // mov r1, #1
-    // add r6, r2, #0
-    // add r4, r3, #0
-    // bl BattleArcade_GetMonCount
-    // cmp r4, r0
-    // bge _02234BB2
-    // cmp r6, #1
-    // bne _02234BA4
-    // lsl r0, r4, #2
+    BattleArcade_GetMonCount(*((u8*)(r0 + 0x10)), 1);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x30]
-    // mov r1, #1
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // lsl r0, r4, #2
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x30))), 1);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x30]
-    // mov r1, #0
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x30))), 0);
 }
+
 
 
 
 void ov80_02234BB4(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // mov r1, #1
-    // add r6, r2, #0
-    // add r4, r3, #0
-    // bl BattleArcade_GetOpponentMonCount
-    // cmp r4, r0
-    // bge _02234BEA
-    // cmp r6, #1
-    // bne _02234BDC
-    // lsl r0, r4, #2
+    BattleArcade_GetOpponentMonCount(*((u8*)(r0 + 0x10)), 1);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x40]
-    // mov r1, #1
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // lsl r0, r4, #2
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x40))), 1);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x40]
-    // mov r1, #0
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x40))), 0);
 }
+
 
 
 
@@ -1447,230 +1251,84 @@ void ov80_02234BEC(void) {
 
 
 
+
 void ov80_02234CB0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // add r4, r1, #0
-    // mov r1, #1
-    // add r6, r2, #0
-    // bl BattleArcade_GetMonCount
+    BattleArcade_GetMonCount(*((u8*)(r0 + 0x10)), 1);
     // str r0, [sp]
-    // ldrb r0, [r5, #0x10]
-    // mov r1, #1
-    // bl BattleArcade_GetOpponentMonCount
-    // add r7, r0, #0
-    // cmp r6, #0
-    // bne _02234CEC
+    BattleArcade_GetOpponentMonCount(*((u8*)(r5 + 0x10)), 1);
     // ldr r0, [sp]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _02234D02
-    // ldr r1, [r5, #0x50]
-    // add r0, r4, #0
-    // bl ov80_0222F440
+    ov80_0222F440(r4, *((u32*)(r5 + 0x50)));
     // ldr r0, [sp]
-    // add r6, r6, #1
-    // add r5, r5, #4
-    // cmp r6, r0
-    // blt _02234CD8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r6, #0
-    // cmp r7, #0
-    // ble _02234D02
-    // ldr r1, [r5, #0x60]
-    // add r0, r4, #0
-    // bl ov80_0222F440
-    // add r6, r6, #1
-    // add r5, r5, #4
-    // cmp r6, r7
-    // blt _02234CF2
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov80_0222F440(r4, *((u32*)((r5 + 4) + 0x60)));
 }
+
 
 
 
 void ov80_02234D04(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // mov r1, #1
-    // add r6, r2, #0
-    // add r4, r3, #0
-    // bl BattleArcade_GetMonCount
-    // add r7, r0, #0
-    // ldrb r0, [r5, #0x10]
-    // mov r1, #1
-    // bl BattleArcade_GetOpponentMonCount
-    // cmp r6, #0
-    // bne _02234D72
-    // cmp r4, r7
-    // bge _02234DC0
-    // ldr r0, [r5, #0x70]
-    // add r1, r4, #0
-    // bl Party_GetMonByIndex
-    // mov r1, #6
-    // mov r2, #0
-    // bl GetMonData
+    BattleArcade_GetMonCount(*((u8*)(r0 + 0x10)), 1);
+    BattleArcade_GetOpponentMonCount(*((u8*)(r5 + 0x10)), 1);
+    Party_GetMonByIndex(*((u32*)(r5 + 0x70)), r4);
+    GetMonData(6, 0);
     // add r1, sp, #8
-    // ldrh r1, [r1, #0x10]
-    // cmp r1, #1
-    // bne _02234D62
-    // cmp r0, #0
-    // bne _02234D52
-    // lsl r0, r4, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x50]
-    // mov r1, #0
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // lsl r0, r4, #2
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x50))), 0);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x50]
-    // mov r1, #1
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // lsl r0, r4, #2
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x50))), 1);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x50]
-    // mov r1, #0
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // cmp r4, r0
-    // bge _02234DC0
-    // ldr r0, [r5, #0x74]
-    // add r1, r4, #0
-    // bl Party_GetMonByIndex
-    // mov r1, #6
-    // mov r2, #0
-    // bl GetMonData
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x50))), 0);
+    Party_GetMonByIndex(*((u32*)(r5 + 0x74)), r4);
+    GetMonData(6, 0);
     // add r1, sp, #8
-    // ldrh r1, [r1, #0x10]
-    // cmp r1, #1
-    // bne _02234DB2
-    // cmp r0, #0
-    // bne _02234DA2
-    // lsl r0, r4, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x60]
-    // mov r1, #0
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // lsl r0, r4, #2
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x60))), 0);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x60]
-    // mov r1, #1
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // lsl r0, r4, #2
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x60))), 1);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x60]
-    // mov r1, #0
-    // ldr r0, [r0]
-    // bl Sprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag(*((u32*)*((u32*)((r4 << 2) + 0x60))), 0);
 }
+
 
 
 
 void ov80_02234DC4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r7, r0, #0
-    // cmp r1, #0
-    // bne _02234DD6
-    // mov r5, #0x1e
-    // mov r6, #0xa2
-    // lsl r5, r5, #4
-    // b _02234DDC
-    // mov r6, #0xa1
-    // add r5, r6, #0
     // add r5, #0x7f
-    // mov r1, #2
-    // mov r0, #0x65
-    // lsl r1, r1, #0xc
-    // bl Heap_Alloc
-    // mov r2, #2
-    // mov r1, #0
-    // lsl r2, r2, #0xc
-    // add r4, r0, #0
-    // bl memset
-    // mov r0, #0xb7
-    // mov r1, #0x65
-    // bl NARC_New
-    // add r1, r6, #0
+    Heap_Alloc(0x65, (2 << 0xc));
+    memset(0, (2 << 0xc));
+    NARC_New(0xb7, 0x65);
     // add r2, sp, #8
-    // mov r3, #0x65
     // str r0, [sp, #4]
-    // bl GfGfxLoader_GetPlttDataFromOpenNarc
-    // add r6, r0, #0
-    // mov r0, #0
+    GfGfxLoader_GetPlttDataFromOpenNarc(r6, 0x65);
     // str r0, [sp]
     // ldr r0, [sp, #8]
-    // mov r2, #1
-    // ldr r0, [r0, #0xc]
-    // add r1, r4, #0
-    // lsl r2, r2, #0xc
-    // add r3, r7, #0
-    // bl BlendPalette
-    // mov r1, #2
-    // add r0, r4, #0
-    // lsl r1, r1, #0xc
-    // bl DC_FlushRange
-    // bl GX_BeginLoadBGExtPltt
-    // mov r1, #6
-    // add r0, r4, #0
-    // lsl r1, r1, #0xc
-    // add r2, r5, #0
-    // bl GX_LoadBGExtPltt
-    // bl GX_EndLoadBGExtPltt
+    BlendPalette(*((u32*)(0 + 0xc)), r4, (1 << 0xc), r7);
+    DC_FlushRange(r4, (2 << 0xc));
+    GX_BeginLoadBGExtPltt();
+    GX_LoadBGExtPltt(r4, (6 << 0xc), r5);
+    GX_EndLoadBGExtPltt();
     // ldr r0, [sp, #4]
-    // bl NARC_Delete
-    // add r0, r4, #0
-    // bl Heap_Free
-    // add r0, r6, #0
-    // bl Heap_Free
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    NARC_Delete();
+    Heap_Free(r4);
+    Heap_Free(r6);
 }
+
 
 
 
 void ov80_02234E50(void) {
-    // push {r3, lr}
-    // cmp r1, #5
-    // bhi _02234E94
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02234E62: ; jump table
-    // bl ov80_0222BA7C
-    // pop {r3, pc}
-    // bl ov80_0222BAE0
-    // pop {r3, pc}
-    // bl ov80_0222BB54
-    // pop {r3, pc}
-    // add r1, r2, #0
-    // bl ov80_0222BC48
-    // pop {r3, pc}
-    // add r1, r2, #0
-    // bl ov80_0222BC94
-    // pop {r3, pc}
-    // bl ov80_0222BCE0
-    // pop {r3, pc}
-    // TODO: decompile
+    ov80_0222BA7C((*((u16*)(r1 + 6)) << 0x10));
+    ov80_0222BAE0();
+    ov80_0222BB54();
+    ov80_0222BC48(r2);
+    ov80_0222BC94(r2);
+    ov80_0222BCE0();
 }
+
 
 
 
@@ -1700,6 +1358,7 @@ void ov80_02234E98(void) {
     // _02234EC8: .word ov80_0223DCB8
     // TODO: decompile
 }
+
 
 
 
@@ -1747,325 +1406,127 @@ void ov80_02234ECC(void) {
 
 
 
+
 void ov80_02234F28(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
     // str r2, [sp, #8]
     // str r0, [sp]
-    // mov r5, #0
     // ldr r0, [sp, #8]
     // str r1, [sp, #4]
     // str r5, [sp, #0xc]
-    // cmp r0, #0
-    // ble _02234F98
     // ldr r0, [sp, #4]
-    // add r1, r5, #0
-    // bl Party_GetMonByIndex
-    // add r4, r0, #0
-    // mov r1, #0xb1
-    // mov r2, #0
-    // bl GetMonData
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0xb2
-    // mov r2, #0
-    // bl GetMonData
-    // add r7, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // mov r2, #0
-    // bl GetMonData
-    // cmp r6, #3
-    // beq _02234F7A
-    // cmp r7, #3
-    // beq _02234F7A
-    // cmp r6, #8
-    // beq _02234F7A
-    // cmp r7, #8
-    // beq _02234F7A
-    // cmp r0, #0x11
-    // bne _02234F82
+    Party_GetMonByIndex(0);
+    GetMonData(0xb1, 0);
+    GetMonData(r4, 0xb2, 0);
+    GetMonData(r4, 0xa, 0);
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
     // str r0, [sp, #0xc]
-    // b _02234F90
-    // mov r0, #8
     // str r0, [sp, #0x10]
-    // add r0, r4, #0
-    // mov r1, #0xa0
     // add r2, sp, #0x10
-    // bl SetMonData
+    SetMonData(r4, 0xa0);
     // ldr r0, [sp, #8]
-    // add r5, r5, #1
-    // cmp r5, r0
-    // blt _02234F3C
     // ldr r1, [sp, #0xc]
     // ldr r0, [sp, #8]
-    // cmp r1, r0
-    // blt _02234FA6
     // ldr r0, [sp]
-    // mov r1, #1
-    // strb r1, [r0, #0x1f]
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)(r0 + 0x1f)) = 1;
 }
+
 
 
 
 void ov80_02234FAC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
     // str r2, [sp, #8]
     // str r0, [sp]
-    // mov r6, #0
     // ldr r0, [sp, #8]
-    // add r5, r6, #0
     // str r1, [sp, #4]
-    // cmp r0, #0
-    // ble _02235012
     // ldr r0, [sp, #4]
-    // add r1, r5, #0
-    // bl Party_GetMonByIndex
-    // add r4, r0, #0
-    // mov r1, #0xb1
-    // mov r2, #0
-    // bl GetMonData
-    // add r7, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0xb2
-    // mov r2, #0
-    // bl GetMonData
+    Party_GetMonByIndex(0);
+    GetMonData(0xb1, 0);
+    GetMonData(r4, 0xb2, 0);
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // mov r2, #0
-    // bl GetMonData
-    // cmp r7, #4
-    // beq _02234FF8
+    GetMonData(r4, 0xa, 0);
     // ldr r1, [sp, #0xc]
-    // cmp r1, #4
-    // beq _02234FF8
-    // cmp r0, #7
-    // bne _02234FFC
-    // add r6, r6, #1
-    // b _0223500A
-    // mov r0, #0x40
     // str r0, [sp, #0x10]
-    // add r0, r4, #0
-    // mov r1, #0xa0
     // add r2, sp, #0x10
-    // bl SetMonData
+    SetMonData(r4, 0xa0);
     // ldr r0, [sp, #8]
-    // add r5, r5, #1
-    // cmp r5, r0
-    // blt _02234FC0
     // ldr r0, [sp, #8]
-    // cmp r6, r0
-    // blt _0223501E
     // ldr r0, [sp]
-    // mov r1, #1
-    // strb r1, [r0, #0x1f]
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)(r0 + 0x1f)) = 1;
 }
+
 
 
 
 void ov80_02235024(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
     // str r2, [sp, #8]
     // str r0, [sp]
-    // mov r6, #0
     // ldr r0, [sp, #8]
-    // add r5, r6, #0
     // str r1, [sp, #4]
-    // cmp r0, #0
-    // ble _0223508A
     // ldr r0, [sp, #4]
-    // add r1, r5, #0
-    // bl Party_GetMonByIndex
-    // add r4, r0, #0
-    // mov r1, #0xb1
-    // mov r2, #0
-    // bl GetMonData
-    // add r7, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0xb2
-    // mov r2, #0
-    // bl GetMonData
+    Party_GetMonByIndex(0);
+    GetMonData(0xb1, 0);
+    GetMonData(r4, 0xb2, 0);
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // mov r2, #0
-    // bl GetMonData
-    // cmp r7, #0xa
-    // beq _02235070
+    GetMonData(r4, 0xa, 0);
     // ldr r1, [sp, #0xc]
-    // cmp r1, #0xa
-    // beq _02235070
-    // cmp r0, #0x29
-    // bne _02235074
-    // add r6, r6, #1
-    // b _02235082
-    // mov r0, #0x10
     // str r0, [sp, #0x10]
-    // add r0, r4, #0
-    // mov r1, #0xa0
     // add r2, sp, #0x10
-    // bl SetMonData
+    SetMonData(r4, 0xa0);
     // ldr r0, [sp, #8]
-    // add r5, r5, #1
-    // cmp r5, r0
-    // blt _02235038
     // ldr r0, [sp, #8]
-    // cmp r6, r0
-    // blt _02235096
     // ldr r0, [sp]
-    // mov r1, #1
-    // strb r1, [r0, #0x1f]
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)(r0 + 0x1f)) = 1;
 }
+
 
 
 
 void ov80_0223509C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
     // str r0, [sp]
-    // ldrh r0, [r0, #0x20]
-    // add r5, r2, #0
     // str r1, [sp, #4]
-    // add r1, r5, #0
-    // mov r6, #0
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r7, r6, #0
-    // cmp r5, #0
-    // ble _0223510A
+    _s32_div_f(*((u16*)(r0 + 0x20)), r2);
     // ldr r0, [sp, #4]
-    // add r1, r4, #0
-    // bl Party_GetMonByIndex
-    // mov r1, #0xa
-    // mov r2, #0
+    Party_GetMonByIndex((r1 << 0x18), ((r1 << 0x18) >> 0x18));
     // str r0, [sp, #8]
-    // bl GetMonData
-    // cmp r0, #0xf
-    // beq _022350D4
-    // cmp r0, #0x48
-    // bne _022350E4
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r6, r6, #1
-    // cmp r4, r5
-    // blo _02235104
-    // mov r4, #0
-    // b _02235104
-    // bl LCRandom
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1e
+    GetMonData(0xa, 0);
+    LCRandom(((r4 + 1) << 0x18));
     // sub r1, r1, r2
-    // mov r0, #0x1e
     // ror r1, r0
     // add r0, r2, r1
-    // add r0, r0, #2
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #8]
-    // mov r1, #0xa0
     // add r2, sp, #0xc
-    // bl SetMonData
-    // b _0223510A
-    // add r7, r7, #1
-    // cmp r7, r5
-    // blt _022350BA
-    // cmp r6, r5
-    // blt _02235114
+    SetMonData((0x1e + 2), 0xa0, (r0 >> 0x1f));
     // ldr r0, [sp]
-    // mov r1, #1
-    // strb r1, [r0, #0x1f]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)(r0 + 0x1f)) = 1;
 }
+
 
 
 
 void ov80_02235118(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
     // str r0, [sp]
-    // ldrh r0, [r0, #0x20]
-    // add r6, r2, #0
     // str r1, [sp, #4]
-    // add r1, r6, #0
-    // mov r7, #0
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r5, r0, #0x18
-    // add r0, r7, #0
+    _s32_div_f(*((u16*)(r0 + 0x20)), r2);
     // str r0, [sp, #8]
-    // cmp r6, #0
-    // ble _0223519C
     // ldr r0, [sp, #4]
-    // add r1, r5, #0
-    // bl Party_GetMonByIndex
-    // add r4, r0, #0
-    // mov r1, #0xb1
-    // mov r2, #0
-    // bl GetMonData
+    Party_GetMonByIndex(r7, ((r1 << 0x18) >> 0x18));
+    GetMonData(0xb1, 0);
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #0xb2
-    // mov r2, #0
-    // bl GetMonData
+    GetMonData(r4, 0xb2, 0);
     // str r0, [sp, #0x10]
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // mov r2, #0
-    // bl GetMonData
+    GetMonData(r4, 0xa, 0);
     // ldr r1, [sp, #0xc]
-    // cmp r1, #0xf
-    // beq _02235172
     // ldr r1, [sp, #0x10]
-    // cmp r1, #0xf
-    // beq _02235172
-    // cmp r0, #0x28
-    // bne _02235182
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // add r7, r7, #1
-    // cmp r5, r6
-    // blo _02235192
-    // mov r5, #0
-    // b _02235192
-    // mov r0, #0x20
     // str r0, [sp, #0x14]
-    // add r0, r4, #0
-    // mov r1, #0xa0
     // add r2, sp, #0x14
-    // bl SetMonData
-    // b _0223519C
+    SetMonData(r4, 0xa0);
     // ldr r0, [sp, #8]
-    // add r0, r0, #1
     // str r0, [sp, #8]
-    // cmp r0, r6
-    // blt _02235138
-    // cmp r7, r6
-    // blt _022351A6
     // ldr r0, [sp]
-    // mov r1, #1
-    // strb r1, [r0, #0x1f]
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)((r0 + 1) + 0x1f)) = 1;
 }
+
 
 
 
@@ -2116,6 +1577,7 @@ void ov80_022351AC(void) {
 
 
 
+
 void ov80_02235208(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -2163,46 +1625,21 @@ void ov80_02235208(void) {
 
 
 
+
 void ov80_02235264(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r7, r2, #0
-    // mov r4, #0
     // str r1, [sp]
-    // cmp r7, #0
-    // ble _022352B8
     // ldr r0, [sp]
-    // add r1, r4, #0
-    // bl Party_GetMonByIndex
-    // mov r1, #0xa1
-    // mov r2, #0
-    // add r5, r0, #0
-    // bl GetMonData
-    // add r6, r0, #3
-    // cmp r6, #0x64
-    // bls _02235290
-    // bl GF_AssertFail
-    // mov r6, #0x64
-    // add r0, r5, #0
-    // mov r1, #5
-    // mov r2, #0
-    // bl GetMonData
-    // add r1, r6, #0
-    // bl GetMonExpBySpeciesAndLevel
+    Party_GetMonByIndex(0);
+    GetMonData(0xa1, 0);
+    GF_AssertFail();
+    GetMonData(r5, 5, 0);
+    GetMonExpBySpeciesAndLevel(r6);
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #8
     // add r2, sp, #4
-    // bl SetMonData
-    // add r0, r5, #0
-    // bl CalcMonLevelAndStats
-    // add r4, r4, #1
-    // cmp r4, r7
-    // blt _02235272
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SetMonData(r5, 8);
+    CalcMonLevelAndStats(r5);
 }
+
 
 
 
@@ -2217,8 +1654,10 @@ void ov80_022352BC(void) {
 
 
 
+
 void ov80_022352C8(void) {
 }
+
 
 
 
@@ -2227,13 +1666,16 @@ void ov80_022352D0(void) {
 
 
 
+
 void ov80_022352D8(void) {
 }
 
 
 
+
 void ov80_022352E0(void) {
 }
+
 
 
 
@@ -2248,32 +1690,24 @@ void ov80_022352E8(void) {
 
 
 
+
 void ov80_022352F4(void) {
-    // ldrb r1, [r0, #0x1c]
-    // cmp r1, #7
-    // bhs _022352FE
-    // add r1, r1, #1
-    // strb r1, [r0, #0x1c]
-    // bx lr
-    // TODO: decompile
+    *((u8*)(r0 + 0x1c)) = (*((u8*)(r0 + 0x1c)) + 1);
 }
+
 
 
 
 void ov80_02235300(void) {
-    // ldrb r1, [r0, #0x1c]
-    // cmp r1, #0
-    // beq _0223530A
-    // sub r1, r1, #1
-    // strb r1, [r0, #0x1c]
-    // bx lr
-    // TODO: decompile
+    *((u8*)(r0 + 0x1c)) = (*((u8*)(r0 + 0x1c)) - 1);
 }
+
 
 
 
 void ov80_0223530C(void) {
 }
+
 
 
 
@@ -2284,10 +1718,12 @@ void ov80_02235314(void) {
 
 
 
+
 void ov80_02235318(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -2298,10 +1734,12 @@ void ov80_0223531C(void) {
 
 
 
+
 void ov80_02235320(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -2341,7 +1779,9 @@ void ov80_02235324(void) {
 
 
 
+
 void ov80_02235364(void) {
 }
+
 
 

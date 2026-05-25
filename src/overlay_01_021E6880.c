@@ -70,237 +70,116 @@ void ov01_021E6880(void) {
 }
 
 
+
 void ov01_021E690C(void) {
-    ov01_021F6B10();
 }
+
 
 
 void ov01_021E6920(void) {
-    ov01_021F6B64();
 }
+
 
 
 void FieldInput_Update(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r4, r1, #0
-    // add r5, r0, #0
     // str r2, [sp]
-    // add r6, r3, #0
-    // bl ov01_021E6880
-    // add r0, r4, #0
-    // bl FieldSystem_GetPlayerAvatar
-    // bl PlayerAvatar_CheckRunningShoesLock
-    // cmp r0, #0
-    // beq _021E694E
-    // mov r0, #2
+    ov01_021E6880();
+    FieldSystem_GetPlayerAvatar(r4);
+    PlayerAvatar_CheckRunningShoesLock();
     // orr r0, r6
-    // lsl r0, r0, #0x10
-    // lsr r6, r0, #0x10
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetUnk14
+    PlayerAvatar_GetUnk14(*((u32*)(r4 + 0x40)));
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetUnk10
+    PlayerAvatar_GetUnk10(*((u32*)(r4 + 0x40)));
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // add r7, r0, #0
+    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)));
     // ldr r0, [sp]
-    // mov r1, #2
-    // strh r0, [r5, #6]
-    // add r0, r4, #0
-    // strh r6, [r5, #8]
-    // bl FieldSystem_ShouldDrawStartMenuIcon
+    *((u16*)(r5 + 6)) = r0;
+    *((u16*)(r5 + 8)) = r6;
+    FieldSystem_ShouldDrawStartMenuIcon(r4, 2);
     // str r0, [sp, #4]
     // ldr r0, [sp, #0xc]
-    // cmp r0, #3
-    // beq _021E6982
-    // cmp r0, #0
-    // beq _021E6982
-    // b _021E6A88
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // beq _021E6992
-    // mov r1, #2
     // ldr r0, [sp]
-    // lsl r1, r1, #0xa
     // tst r0, r1
-    // bne _021E699C
-    // add r0, r4, #0
     // add r0, #0xd0
     // ldrh r0, [r0]
-    // cmp r0, #9
-    // bne _021E69BC
-    // add r0, r4, #0
-    // bl ov01_021E690C
-    // cmp r0, #1
-    // bne _021E6A66
+    ov01_021E690C(r4, (2 << 0xa));
     // ldrh r1, [r5]
-    // mov r0, #0x18
     // bic r1, r0
-    // mov r0, #8
     // orr r0, r1
     // strh r0, [r5]
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0xd0
     // strh r1, [r0]
-    // b _021E6A66
-    // cmp r0, #0xa
-    // bne _021E69E0
-    // add r0, r4, #0
-    // bl ov01_021E690C
-    // cmp r0, #1
-    // bne _021E6A66
+    ov01_021E690C(r4, 0);
     // ldrh r1, [r5]
-    // mov r0, #0x18
     // bic r1, r0
-    // mov r0, #0x10
     // orr r0, r1
     // strh r0, [r5]
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0xd0
     // strh r1, [r0]
-    // b _021E6A66
-    // cmp r0, #0xb
-    // bne _021E69F8
     // ldrh r1, [r5]
-    // mov r0, #2
-    // lsl r0, r0, #8
     // orr r0, r1
     // strh r0, [r5]
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0xd0
     // strh r1, [r0]
-    // b _021E6A66
-    // mov r2, #1
     // ldr r1, [sp]
-    // lsl r2, r2, #0xa
     // tst r1, r2
-    // bne _021E6A06
-    // cmp r0, #0
-    // beq _021E6A52
-    // add r0, r4, #0
-    // bl ov01_021F6B00
-    // cmp r0, #4
-    // bne _021E6A30
-    // mov r0, #0x43
-    // lsl r0, r0, #2
+    ov01_021F6B00(r4, 0, (1 << 0xa));
     // add r0, r4, r0
-    // mov r1, #0
-    // bl MenuInputStateMgr_SetState
-    // mov r0, #2
+    MenuInputStateMgr_SetState((0x43 << 2), 0);
     // ldrh r1, [r5]
-    // lsl r0, r0, #8
     // orr r0, r1
     // strh r0, [r5]
     // ldrh r1, [r5]
-    // mov r0, #4
     // orr r0, r1
     // strh r0, [r5]
-    // b _021E6A66
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // beq _021E6A66
     // ldrh r1, [r5]
-    // mov r0, #4
     // orr r0, r1
     // strh r0, [r5]
-    // add r0, r4, #0
     // add r0, #0xd0
     // ldrh r0, [r0]
-    // cmp r0, #1
-    // bne _021E6A66
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0xd0
     // strh r1, [r0]
-    // b _021E6A66
     // ldr r0, [sp]
-    // mov r1, #1
     // tst r0, r1
-    // beq _021E6A66
     // ldrh r2, [r5]
-    // mov r0, #1
     // bic r2, r0
-    // add r0, r2, #0
     // orr r0, r1
     // strh r0, [r5]
-    // mov r0, #0xf0
     // tst r0, r6
-    // beq _021E6A7C
     // ldrh r1, [r5]
-    // mov r0, #0x20
     // orr r0, r1
     // strh r0, [r5]
     // ldrh r1, [r5]
-    // mov r0, #0x40
     // orr r0, r1
     // strh r0, [r5]
     // ldrh r1, [r5]
-    // mov r0, #1
-    // lsl r0, r0, #8
     // orr r0, r1
     // strh r0, [r5]
-    // b _021E6A90
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0xd0
     // strh r1, [r0]
     // ldr r0, [sp, #0xc]
-    // cmp r0, #3
-    // bne _021E6AA4
     // ldr r0, [sp, #8]
-    // cmp r0, #1
-    // bne _021E6AA4
     // ldrh r1, [r5]
-    // mov r0, #0x80
     // orr r0, r1
     // strh r0, [r5]
     // ldr r0, [sp, #0xc]
-    // cmp r0, #3
-    // bne _021E6AB2
     // ldrh r1, [r5]
-    // mov r0, #2
     // orr r0, r1
     // strh r0, [r5]
-    // cmp r7, #0
-    // bne _021E6ABC
-    // mov r0, #0x40
     // tst r0, r6
-    // bne _021E6ADA
-    // cmp r7, #1
-    // bne _021E6AC6
-    // mov r0, #0x80
     // tst r0, r6
-    // bne _021E6ADA
-    // cmp r7, #2
-    // bne _021E6AD0
-    // mov r0, #0x20
     // tst r0, r6
-    // bne _021E6ADA
-    // cmp r7, #3
-    // bne _021E6ADE
-    // mov r0, #0x10
     // tst r0, r6
-    // beq _021E6ADE
-    // strb r7, [r5, #5]
-    // b _021E6AE4
-    // mov r0, #0
+    *((u8*)(r5 + 5)) = r7;
     // mvn r0, r0
-    // strb r0, [r5, #5]
-    // ldr r0, [r4, #0x40]
+    *((u8*)(r5 + 5)) = 0;
     // ldr r1, [sp]
-    // add r2, r6, #0
-    // bl sub_0205DD94
-    // strb r0, [r5, #4]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_0205DD94(*((u32*)(r4 + 0x40)), 0, r6);
+    *((u8*)(r5 + 4)) = r0;
 }
+
 
 
 void FieldInput_Process(void) {
@@ -612,6 +491,7 @@ void FieldInput_Process(void) {
 }
 
 
+
 void ov01_021E6DC4(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -640,6 +520,7 @@ void ov01_021E6DC4(void) {
     // _021E6DFC: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void FieldInput_Process_Colosseum(void) {
@@ -736,26 +617,11 @@ void FieldInput_Process_Colosseum(void) {
 }
 
 
+
 void ov01_021E6ED8(void) {
-    // push {r3, r4, r5, lr}
-    // mov r5, #0
-    // mov r4, #1
-    // add r0, r4, #0
-    // bl sub_02034818
-    // cmp r0, #0
-    // beq _021E6EEA
-    // add r5, r5, #1
-    // add r4, r4, #1
-    // cmp r4, #5
-    // blt _021E6EDE
-    // cmp r5, #1
-    // blt _021E6EF8
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02034818(1);
 }
+
 
 
 void FieldInput_Process_UnionRoom(void) {
@@ -848,6 +714,7 @@ void FieldInput_Process_UnionRoom(void) {
     // _021E6FD0: .word SEQ_SE_DP_WIN_OPEN
     // TODO: decompile
 }
+
 
 
 void FieldInput_Process_BattleTower(void) {
@@ -992,6 +859,7 @@ void FieldInput_Process_BattleTower(void) {
 }
 
 
+
 void ov01_021E7114(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -1054,293 +922,110 @@ void ov01_021E7114(void) {
 }
 
 
+
 void ov01_021E7198(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x28
-    // add r5, r1, #0
-    // mov r1, #5
     // ldrsb r2, [r5, r1]
-    // sub r1, r1, #6
-    // add r6, r0, #0
-    // cmp r2, r1
-    // bne _021E71B0
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
     // add r1, sp, #0x10
     // add r2, sp, #0xc
-    // bl PlayerAvatar_GetStandingTileCoords
+    PlayerAvatar_GetStandingTileCoords(0, (5 - 6));
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
-    // bl GetMetatileBehavior
-    // add r4, r0, #0
-    // bl sub_0205BAA0
-    // cmp r0, #0
-    // beq _021E7208
-    // mov r0, #5
+    GetMetatileBehavior(r6);
+    sub_0205BAA0();
     // ldrsb r0, [r5, r0]
-    // cmp r0, #0
-    // bne _021E7202
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
     // add r3, sp, #0x14
-    // bl ov01_021E7B90
-    // cmp r0, #0
-    // beq _021E7202
-    // mov r3, #0
+    ov01_021E7B90(r6);
     // str r3, [sp]
-    // mov r0, #5
     // ldrsb r0, [r5, r0]
     // str r0, [sp, #4]
-    // mov r0, #7
     // str r0, [sp, #8]
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x18]
-    // add r0, r6, #0
-    // bl NewFieldTransitionEnvironment
-    // add sp, #0x28
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r4, #0
-    // bl sub_0205BAAC
-    // cmp r0, #0
-    // beq _021E724E
-    // mov r0, #5
+    NewFieldTransitionEnvironment(r6, 0);
+    sub_0205BAAC(r4);
     // ldrsb r0, [r5, r0]
-    // cmp r0, #1
-    // bne _021E7248
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
     // add r3, sp, #0x14
-    // bl ov01_021E7B90
-    // cmp r0, #0
-    // beq _021E7248
-    // mov r3, #0
+    ov01_021E7B90(r6);
     // str r3, [sp]
-    // mov r0, #5
     // ldrsb r0, [r5, r0]
     // str r0, [sp, #4]
-    // mov r0, #7
     // str r0, [sp, #8]
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x18]
-    // add r0, r6, #0
-    // bl NewFieldTransitionEnvironment
-    // add sp, #0x28
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r6, #0
+    NewFieldTransitionEnvironment(r6, 0);
     // add r1, sp, #0x10
     // add r2, sp, #0xc
-    // bl PlayerAvatar_GetFacingTileCoords
+    PlayerAvatar_GetFacingTileCoords(r6);
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
-    // bl sub_020548C0
-    // cmp r0, #0
-    // bne _021E726C
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
+    sub_020548C0(r6);
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
     // add r3, sp, #0x14
-    // bl ov01_021E7B90
-    // cmp r0, #0
-    // beq _021E72B6
-    // mov r0, #5
+    ov01_021E7B90(r6);
     // ldrsb r1, [r5, r0]
-    // sub r0, r0, #6
-    // cmp r1, r0
-    // beq _021E72B6
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
-    // bl GetMetatileBehavior
-    // bl sub_0205B70C
-    // cmp r0, #0
-    // beq _021E72B6
-    // mov r3, #0
+    GetMetatileBehavior(r6);
+    sub_0205B70C();
     // str r3, [sp]
-    // mov r0, #5
     // ldrsb r0, [r5, r0]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x18]
-    // add r0, r6, #0
-    // bl NewFieldTransitionEnvironment
-    // add sp, #0x28
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // add r0, r6, #0
+    NewFieldTransitionEnvironment(r6, 0);
     // add r1, sp, #0x10
     // add r2, sp, #0xc
-    // bl PlayerAvatar_GetStandingTileCoords
+    PlayerAvatar_GetStandingTileCoords(r6);
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
-    // bl GetMetatileBehavior
-    // add r4, r0, #0
-    // bl sub_0205B718
-    // cmp r0, #0
-    // bne _021E72DE
-    // add r0, r4, #0
-    // bl sub_0205B748
-    // cmp r0, #0
-    // beq _021E72EC
-    // mov r0, #5
+    GetMetatileBehavior(r6);
+    sub_0205B718();
+    sub_0205B748(r4);
     // ldrsb r0, [r5, r0]
-    // cmp r0, #3
-    // beq _021E7360
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r4, #0
-    // bl sub_0205B724
-    // cmp r0, #0
-    // bne _021E7300
-    // add r0, r4, #0
-    // bl sub_0205B754
-    // cmp r0, #0
-    // beq _021E730E
-    // mov r0, #5
+    sub_0205B724(r4);
+    sub_0205B754(r4);
     // ldrsb r0, [r5, r0]
-    // cmp r0, #2
-    // beq _021E7360
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r4, #0
-    // bl sub_0205B73C
-    // cmp r0, #0
-    // bne _021E7322
-    // add r0, r4, #0
-    // bl sub_0205B76C
-    // cmp r0, #0
-    // beq _021E7330
-    // mov r0, #5
+    sub_0205B73C(r4);
+    sub_0205B76C(r4);
     // ldrsb r0, [r5, r0]
-    // cmp r0, #1
-    // beq _021E7360
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r4, #0
-    // bl sub_0205B810
-    // cmp r0, #0
-    // beq _021E7348
-    // mov r0, #5
+    sub_0205B810(r4);
     // ldrsb r0, [r5, r0]
-    // cmp r0, #3
-    // beq _021E7360
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r4, #0
-    // bl sub_0205B81C
-    // cmp r0, #0
-    // beq _021E7360
-    // mov r0, #5
+    sub_0205B81C(r4);
     // ldrsb r0, [r5, r0]
-    // cmp r0, #2
-    // beq _021E7360
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
     // add r3, sp, #0x14
-    // bl ov01_021E7B90
-    // cmp r0, #0
-    // bne _021E7376
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r4, #0
-    // bl sub_0205B70C
-    // cmp r0, #0
-    // beq _021E7384
-    // mov r1, #1
-    // b _021E73FC
-    // add r0, r4, #0
-    // bl sub_0205B810
-    // cmp r0, #0
-    // beq _021E7392
-    // mov r1, #3
-    // b _021E73FC
-    // add r0, r4, #0
-    // bl sub_0205B81C
-    // cmp r0, #0
-    // beq _021E73A0
-    // mov r1, #3
-    // b _021E73FC
-    // add r0, r4, #0
-    // bl sub_0205B718
-    // cmp r0, #0
-    // bne _021E73DC
-    // add r0, r4, #0
-    // bl sub_0205B748
-    // cmp r0, #0
-    // bne _021E73DC
-    // add r0, r4, #0
-    // bl sub_0205B724
-    // cmp r0, #0
-    // bne _021E73DC
-    // add r0, r4, #0
-    // bl sub_0205B754
-    // cmp r0, #0
-    // bne _021E73DC
-    // add r0, r4, #0
-    // bl sub_0205B73C
-    // cmp r0, #0
-    // bne _021E73DC
-    // add r0, r4, #0
-    // bl sub_0205B76C
-    // cmp r0, #0
-    // beq _021E73F6
-    // mov r3, #0
+    ov01_021E7B90(r6);
+    sub_0205B70C(r4);
+    sub_0205B810(r4, 1);
+    sub_0205B81C(r4, 3);
+    sub_0205B718(r4, 3);
+    sub_0205B748(r4);
+    sub_0205B724(r4);
+    sub_0205B754(r4);
+    sub_0205B73C(r4);
+    sub_0205B76C(r4);
     // str r3, [sp]
-    // mov r0, #5
     // ldrsb r0, [r5, r0]
     // str r0, [sp, #4]
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x18]
-    // add r0, r6, #0
-    // bl sub_02055CD8
-    // add sp, #0x28
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // mov r3, #0
+    sub_02055CD8(r6, 0);
     // str r3, [sp]
-    // mov r0, #5
     // ldrsb r0, [r5, r0]
     // str r0, [sp, #4]
     // str r1, [sp, #8]
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x18]
-    // add r0, r6, #0
-    // bl NewFieldTransitionEnvironment
-    // mov r0, #1
-    // add sp, #0x28
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    NewFieldTransitionEnvironment(r6, 0);
 }
+
 
 
 void GetInteractedMetatileScript(void) {
@@ -1556,128 +1241,37 @@ void GetInteractedMetatileScript(void) {
 }
 
 
+
 void ov01_021E7628(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r1, #6
-    // add r5, r0, #0
-    // bl FieldSystem_IsSaveGymmickTypeEqualTo
-    // cmp r0, #0
-    // beq _021E7644
-    // add r0, r5, #0
-    // bl ov04_02255090
-    // cmp r0, #0
-    // beq _021E7644
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // add r2, r0, #0
-    // ldr r1, [r5, #0x40]
-    // add r0, r5, #0
-    // bl ov01_021F3114
-    // cmp r0, #1
-    // ldr r0, [r5, #0x40]
-    // bne _021E7672
-    // bl PlayerAvatar_GetMapObject
-    // bl sub_0205F504
-    // add r1, r0, #0
-    // lsl r1, r1, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl ov04_02256BE4
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl PlayerAvatar_GetXCoord
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetZCoord
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov01_021E7DFC
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl GetMetatileBehavior
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl ov01_021E774C
-    // cmp r0, #1
-    // bne _021E76A4
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // add r3, r7, #0
-    // bl ov01_021E7784
-    // cmp r0, #1
-    // bne _021E76BE
-    // add r0, r5, #0
-    // bl ov01_021E7C70
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_CheckFlag0
-    // cmp r0, #0
-    // beq _021E76CC
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
-    // mov r1, #5
-    // mov r2, #1
-    // bl ov01_021F6830
-    // add r0, r5, #0
-    // bl ov01_021E7A98
-    // add r0, r5, #0
-    // bl ov01_021E794C
-    // cmp r0, #1
-    // bne _021E76EA
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
-    // bl SafariBallsOutCheck
-    // cmp r0, #1
-    // bne _021E76F8
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
-    // bl ov01_021E788C
-    // cmp r0, #1
-    // bne _021E7706
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
-    // bl ov01_021E78D8
-    // cmp r0, #1
-    // bne _021E7714
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
-    // bl ov01_021E7A08
-    // cmp r0, #1
-    // bne _021E7722
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
-    // bl ov01_021E78E4
-    // cmp r0, #0
-    // beq _021E7732
-    // add r0, r5, #0
-    // bl ov01_021E790C
-    // add r0, r5, #0
-    // bl FollowMon_IsVisible
-    // cmp r0, #0
-    // beq _021E7746
-    // mov r0, #0x42
-    // lsl r0, r0, #2
+    FieldSystem_IsSaveGymmickTypeEqualTo(6);
+    ov04_02255090(r5);
+    PlayerAvatar_GetFacingDirection(*((u32*)(r5 + 0x40)));
+    ov01_021F3114(r5, *((u32*)(r5 + 0x40)), r0);
+    PlayerAvatar_GetMapObject(*((u32*)(r5 + 0x40)));
+    sub_0205F504();
+    ov04_02256BE4(r5, ((r0 << 0x18) >> 0x18));
+    PlayerAvatar_GetXCoord(1);
+    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
+    ov01_021E7DFC(r5, r4, r0);
+    GetMetatileBehavior(r5, r4, r6);
+    ov01_021E774C(r5);
+    ov01_021E7784(r5, r4, r6, r7);
+    ov01_021E7C70(r5);
+    PlayerAvatar_CheckFlag0(*((u32*)(r5 + 0x40)));
+    ov01_021F6830(r5, 5, 1);
+    ov01_021E7A98(r5);
+    ov01_021E794C(r5);
+    SafariBallsOutCheck(r5);
+    ov01_021E788C(r5);
+    ov01_021E78D8(r5);
+    ov01_021E7A08(r5);
+    ov01_021E78E4(r5);
+    ov01_021E790C(r5);
+    FollowMon_IsVisible(r5);
     // ldr r0, [r5, r0]
-    // bl FieldSystem_UnkSub108_MoveMoodTowardsNeutral
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FieldSystem_UnkSub108_MoveMoodTowardsNeutral((0x42 << 2));
 }
+
 
 
 void ov01_021E774C(void) {
@@ -1708,124 +1302,48 @@ void ov01_021E774C(void) {
 }
 
 
+
 void ov01_021E7784(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x20
-    // add r5, r3, #0
     // add r3, sp, #0xc
-    // add r4, r0, #0
-    // bl ov01_021E7B90
-    // cmp r0, #0
-    // bne _021E779C
-    // add sp, #0x20
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // bl sub_0205B7F8
-    // cmp r0, #1
-    // bne _021E77E0
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // cmp r0, #2
-    // bne _021E77B4
-    // mov r0, #3
-    // b _021E77C6
-    // cmp r0, #3
-    // bne _021E77BC
-    // mov r0, #2
-    // b _021E77C6
-    // bl GF_AssertFail
-    // add sp, #0x20
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // mov r3, #0
+    ov01_021E7B90();
+    sub_0205B7F8(r5);
+    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)));
+    GF_AssertFail(2);
     // str r3, [sp]
     // str r0, [sp, #4]
-    // mov r0, #2
     // str r0, [sp, #8]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // add r0, r4, #0
-    // bl NewFieldTransitionEnvironment
-    // add sp, #0x20
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // bl sub_0205B804
-    // cmp r0, #1
-    // bne _021E781C
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // cmp r0, #2
-    // beq _021E7802
-    // cmp r0, #3
-    // beq _021E7802
-    // bl GF_AssertFail
-    // add sp, #0x20
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // mov r3, #0
+    NewFieldTransitionEnvironment(r4, 0);
+    sub_0205B804(r5);
+    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)));
+    GF_AssertFail();
     // str r3, [sp]
     // str r0, [sp, #4]
-    // mov r0, #2
     // str r0, [sp, #8]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // add r0, r4, #0
-    // bl NewFieldTransitionEnvironment
-    // add sp, #0x20
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // bl sub_0205B730
-    // cmp r0, #0
-    // bne _021E7830
-    // add r0, r5, #0
-    // bl sub_0205B760
-    // cmp r0, #0
-    // beq _021E7846
-    // mov r3, #0
+    NewFieldTransitionEnvironment(r4, 0);
+    sub_0205B730(r5);
+    sub_0205B760(r5);
     // str r3, [sp]
     // str r3, [sp, #4]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // add r0, r4, #0
-    // bl sub_02055CD8
-    // add sp, #0x20
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // bl sub_0205BA18
-    // cmp r0, #0
-    // beq _021E7860
+    sub_02055CD8(r4, 0);
+    sub_0205BA18(r5);
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // add r0, r4, #0
-    // bl sub_02053E08
-    // add sp, #0x20
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // bl sub_0205BAB8
-    // cmp r0, #0
-    // beq _021E7884
-    // mov r3, #0
+    sub_02053E08(r4);
+    sub_0205BAB8(r5);
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #8
     // str r0, [sp, #8]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // add r0, r4, #0
-    // bl NewFieldTransitionEnvironment
-    // add sp, #0x20
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // add sp, #0x20
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    NewFieldTransitionEnvironment(r4, 0);
 }
+
 
 
 void ov01_021E788C(void) {
@@ -1863,62 +1381,28 @@ void ov01_021E788C(void) {
 }
 
 
+
 void ov01_021E78D8(void) {
-    PlayerStepEvent_RepelCounterDecrement();
 }
+
 
 
 void ov01_021E78E4(void) {
-    // push {r3, r4, r5, lr}
-    // ldr r0, [r0, #0xc]
-    // mov r5, #0
-    // bl Save_VarsFlags_Get
-    // add r4, r0, #0
-    // bl Save_VarsFlags_GetVar404B
-    // add r0, r0, #1
-    // lsl r0, r0, #0x10
-    // lsr r1, r0, #0x10
-    // cmp r1, #0x80
-    // blo _021E7902
-    // add r1, r5, #0
-    // mov r5, #1
-    // add r0, r4, #0
-    // bl Save_VarsFlags_SetVar404B
-    // add r0, r5, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Save_VarsFlags_Get(*((u32*)(r0 + 0xc)));
+    Save_VarsFlags_GetVar404B();
+    Save_VarsFlags_SetVar404B(r4, r5);
 }
+
 
 
 void ov01_021E790C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0xc]
-    // bl SaveArray_Party_Get
-    // add r6, r0, #0
-    // ldr r0, [r4, #0x20]
-    // ldr r0, [r0]
-    // bl MapHeader_GetMapSec
-    // lsl r0, r0, #0x10
-    // lsr r5, r0, #0x10
-    // add r0, r6, #0
-    // bl Party_GetCount
-    // add r7, r0, #0
-    // mov r4, #0
-    // cmp r7, #0
-    // ble _021E7948
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl Party_GetMonByIndex
-    // mov r1, #5
-    // add r2, r5, #0
-    // bl MonApplyFriendshipMod
-    // add r4, r4, #1
-    // cmp r4, r7
-    // blt _021E7932
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SaveArray_Party_Get(*((u32*)(r0 + 0xc)));
+    MapHeader_GetMapSec(*((u32*)*((u32*)(r4 + 0x20))));
+    Party_GetCount(r6);
+    Party_GetMonByIndex(r6, 0);
+    MonApplyFriendshipMod(5, r5);
 }
+
 
 
 void ov01_021E794C(void) {
@@ -1981,6 +1465,7 @@ void ov01_021E794C(void) {
 }
 
 
+
 void SafariBallsOutCheck(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2008,6 +1493,7 @@ void SafariBallsOutCheck(void) {
     // _021E7A04: .word std_safari_balls_out
     // TODO: decompile
 }
+
 
 
 void ov01_021E7A08(void) {
@@ -2050,6 +1536,7 @@ void ov01_021E7A08(void) {
 }
 
 
+
 void BugContestTimeoutCheck(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -2078,114 +1565,68 @@ void BugContestTimeoutCheck(void) {
 }
 
 
+
 void ov01_021E7A98(void) {
-    Save_GameStats_Get(*((u32*)(r0 + 0xc)));
-    GameStats_GetCapped(0);
-    Save_ApricornBox_Get(*((u32*)(r5 + 0xc)));
-    sub_02032058(r4);
 }
+
 
 
 void PlayerAvatar_GetStandingTileCoords(void) {
-    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
-    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
 }
+
 
 
 void PlayerAvatar_GetFacingTileCoords(void) {
-    PlayerAvatar_GetFacingDirection(*((u32*)(r0 + 0x40)));
-    ShiftFieldCoordsByCompassDirection(r5, r0, r4, r6);
 }
+
 
 
 void ShiftFieldCoordsByCompassDirection(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r2, #0
-    // add r5, r3, #0
-    // add r6, r1, #0
-    // add r1, r4, #0
-    // add r2, r5, #0
-    // bl PlayerAvatar_GetStandingTileCoords
-    // cmp r6, #3
-    // bhi _021E7B36
+    PlayerAvatar_GetStandingTileCoords(r2, r3);
     // add r0, r6, r6
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _021E7B10: ; jump table
-    // ldr r0, [r5]
-    // sub r0, r0, #1
     // str r0, [r5]
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r5]
-    // add r0, r0, #1
     // str r0, [r5]
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r4]
-    // sub r0, r0, #1
     // str r0, [r4]
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r4]
-    // add r0, r0, #1
     // str r0, [r4]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021E7B38(void) {
-    // push {r4, lr}
-    // sub sp, #8
     // add r1, sp, #4
     // add r2, sp, #0
-    // add r4, r0, #0
-    // bl PlayerAvatar_GetStandingTileCoords
+    PlayerAvatar_GetStandingTileCoords();
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
-    // bl GetMetatileBehavior
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    GetMetatileBehavior(r4);
 }
+
 
 
 void ov01_021E7B54(void) {
-    // push {r4, lr}
-    // sub sp, #8
     // add r1, sp, #4
     // add r2, sp, #0
-    // add r4, r0, #0
-    // bl PlayerAvatar_GetFacingTileCoords
+    PlayerAvatar_GetFacingTileCoords();
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
-    // bl GetMetatileBehavior
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    GetMetatileBehavior(r4);
 }
+
 
 
 void ov01_021E7B70(void) {
-    // push {r4, lr}
-    // sub sp, #8
     // add r1, sp, #4
     // add r2, sp, #0
-    // add r4, r0, #0
-    // bl PlayerAvatar_GetFacingTileCoords
+    PlayerAvatar_GetFacingTileCoords();
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
-    // bl sub_020548C0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_020548C0(r4);
 }
+
 
 
 void ov01_021E7B90(void) {
@@ -2260,155 +1701,72 @@ void ov01_021E7B90(void) {
 }
 
 
+
 void ov01_021E7C28(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // add r7, r1, #0
     // str r2, [sp]
-    // add r4, r3, #0
-    // bl Save_LocalFieldData_Get
-    // bl LocalFieldData_GetSpecialSpawnWarpPtr
-    // add r6, r0, #0
-    // ldr r3, [r5, #0x20]
-    // add r2, r6, #0
+    Save_LocalFieldData_Get(*((u32*)(r0 + 0xc)));
+    LocalFieldData_GetSpecialSpawnWarpPtr();
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // cmp r4, #0
     // str r0, [r2]
-    // str r4, [r6, #0x10]
+    *((u32*)(r0 + 0x10)) = r4;
     // ldr r0, [sp]
-    // str r7, [r6, #8]
-    // str r0, [r6, #0xc]
-    // bne _021E7C60
-    // ldr r0, [r6, #0xc]
-    // add r0, r0, #1
-    // str r0, [r6, #0xc]
-    // ldr r0, [r5, #0x20]
-    // ldr r0, [r0]
+    *((u32*)(r0 + 8)) = r7;
+    *((u32*)(r0 + 0xc)) = *((u32*)*((u32*)(r5 + 0x20)));
+    *((u32*)(r0 + 0xc)) = (*((u32*)(r0 + 0xc)) + 1);
     // str r0, [r6]
-    // mov r0, #0
     // mvn r0, r0
-    // str r0, [r6, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = 0;
 }
+
 
 
 void ov01_021E7C70(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x1c
     // add r1, sp, #4
     // add r2, sp, #0
-    // add r4, r0, #0
-    // bl PlayerAvatar_GetStandingTileCoords
+    PlayerAvatar_GetStandingTileCoords();
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
     // add r3, sp, #8
-    // bl ov01_021E7B90
-    // cmp r0, #0
-    // beq _021E7CBA
-    // ldr r0, [r4, #0x20]
-    // ldr r0, [r0]
-    // bl MapHeader_MapIsOnMainMatrix
-    // cmp r0, #1
-    // bne _021E7CFC
+    ov01_021E7B90(r4);
+    MapHeader_MapIsOnMainMatrix(*((u32*)*((u32*)(r4 + 0x20))));
     // ldr r0, [sp, #8]
-    // bl MapHeader_MapIsOnMainMatrix
-    // cmp r0, #0
-    // bne _021E7CFC
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // add r3, r0, #0
+    MapHeader_MapIsOnMainMatrix();
+    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)));
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
-    // bl ov01_021E7C28
-    // add sp, #0x1c
-    // pop {r3, r4, pc}
-    // add r0, r4, #0
+    ov01_021E7C28(r4, r0);
     // add r1, sp, #4
     // add r2, sp, #0
-    // bl PlayerAvatar_GetFacingTileCoords
+    PlayerAvatar_GetFacingTileCoords(r4);
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
     // add r3, sp, #8
-    // bl ov01_021E7B90
-    // cmp r0, #0
-    // beq _021E7CFC
-    // ldr r0, [r4, #0x20]
-    // ldr r0, [r0]
-    // bl MapHeader_MapIsOnMainMatrix
-    // cmp r0, #1
-    // bne _021E7CFC
+    ov01_021E7B90(r4);
+    MapHeader_MapIsOnMainMatrix(*((u32*)*((u32*)(r4 + 0x20))));
     // ldr r0, [sp, #8]
-    // bl MapHeader_MapIsOnMainMatrix
-    // cmp r0, #0
-    // bne _021E7CFC
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // add r3, r0, #0
+    MapHeader_MapIsOnMainMatrix();
+    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)));
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
-    // bl ov01_021E7C28
-    // add sp, #0x1c
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov01_021E7C28(r4, r0);
 }
+
 
 
 void ov01_021E7D00(void) {
-    // push {r3, r4, r5, r6}
-    // add r5, r0, #0
-    // lsr r4, r1, #0x1f
-    // lsl r0, r1, #0x1b
     // sub r0, r0, r4
-    // mov r6, #0x1b
     // ror r0, r6
     // add r1, r4, r0
-    // lsr r4, r2, #0x1f
-    // lsl r0, r2, #0x1b
     // sub r0, r0, r4
     // ror r0, r6
     // add r2, r4, r0
-    // ldrh r4, [r5, #2]
-    // mov r3, #0
     // mvn r3, r3
-    // lsr r4, r4, #3
-    // mov r0, #0
-    // cmp r4, #0
-    // ble _021E7D50
-    // add r4, r5, #0
-    // ldrb r6, [r4, #8]
-    // cmp r6, r1
-    // bgt _021E7D44
-    // ldrb r6, [r4, #0xa]
-    // cmp r1, r6
-    // bgt _021E7D44
-    // ldrb r6, [r4, #9]
-    // cmp r6, r2
-    // bgt _021E7D44
-    // ldrb r6, [r4, #0xb]
-    // cmp r2, r6
-    // bgt _021E7D44
-    // add r3, r0, #0
-    // ldrh r6, [r5, #2]
-    // add r0, r0, #1
     // add r4, #8
-    // lsr r6, r6, #3
-    // cmp r0, r6
-    // blt _021E7D2A
-    // add r0, r3, #0
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021E7D58(void) {
@@ -2483,6 +1841,7 @@ void ov01_021E7D58(void) {
     // _021E7DF8: .word 0x0000085D
     // TODO: decompile
 }
+
 
 
 void ov01_021E7DFC(void) {
@@ -2606,38 +1965,22 @@ void ov01_021E7DFC(void) {
 }
 
 
+
 void ov01_021E7F00(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
     // add r0, #0xac
-    // ldr r0, [r0]
-    // add r4, r1, #0
-    // cmp r0, #0
-    // bne _021E7F34
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetXCoord
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetZCoord
-    // add r2, r0, #0
-    // cmp r4, #0
-    // beq _021E7F2C
-    // mov r1, #0
-    // add r0, r5, #0
+    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
+    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
     // mvn r1, r1
     // add r0, #0xc4
     // str r1, [r0]
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl ov01_021E7DFC
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov01_021E7DFC(r5, r6, r0);
 }
+
 
 
 void ov01_021E7F38(void) {
-    FieldSystem_FacingModelIsHeadbuttTree();
 }
+
 
 
 void ov01_021E7F54(void) {
@@ -2681,28 +2024,16 @@ void ov01_021E7F54(void) {
 }
 
 
+
 void FieldSystem_FacingModelIsHeadbuttTree(void) {
-    // push {r4, lr}
-    // sub sp, #8
     // add r1, sp, #4
     // add r2, sp, #0
-    // add r4, r0, #0
-    // bl PlayerAvatar_GetFacingTileCoords
+    PlayerAvatar_GetFacingTileCoords();
     // ldr r1, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r4, #0
-    // bl MapCoordToMatrixIndex
-    // ldr r1, [r4, #0x30]
-    // bl GetMapModelNo
-    // bl MapModel_IsHeadbuttTree
-    // cmp r0, #0
-    // beq _021E7FD4
-    // add sp, #8
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    MapCoordToMatrixIndex(r4);
+    GetMapModelNo(*((u32*)(r4 + 0x30)));
+    MapModel_IsHeadbuttTree();
 }
+
 

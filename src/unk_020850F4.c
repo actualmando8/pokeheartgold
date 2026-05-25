@@ -146,228 +146,110 @@ void sub_020850F4(void) {
 }
 
 
-void sub_0208524C(void) {
-    // push {r3, r4, r5, lr}
-    // bl OverlayManager_GetData
-    // add r4, r0, #0
-    // bl sub_02085BEC
-    // add r5, r0, #0
-    // mov r0, #0xfa
-    // lsl r0, r0, #2
+
+u32 sub_0208524C(void) {
+    OverlayManager_GetData();
+    sub_02085BEC();
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // beq _02085270
-    // bl ov00_021EC9D4
-    // mov r1, #3
+    ov00_021EC9D4((0xfa << 2));
     // sub r0, r1, r0
-    // bl sub_0203A930
-    // cmp r5, #0
-    // beq _02085278
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0203A930(3);
 }
 
 
-void sub_0208527C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl OverlayManager_GetData
-    // add r4, r0, #0
-    // mov r0, #0xfa
-    // lsl r0, r0, #2
+
+u32 sub_0208527C(void) {
+    OverlayManager_GetData();
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // beq _02085294
-    // bl sub_0203A914
-    // add r0, r4, #0
-    // bl sub_020866CC
-    // mov r0, #1
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // mov r0, #2
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // mov r0, #4
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // mov r0, #8
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // mov r0, #1
-    // mov r1, #0
-    // bl GfGfx_EngineBTogglePlanes
-    // mov r0, #2
-    // mov r1, #0
-    // bl GfGfx_EngineBTogglePlanes
-    // mov r0, #4
-    // mov r1, #0
-    // bl GfGfx_EngineBTogglePlanes
-    // mov r0, #8
-    // mov r1, #0
-    // bl GfGfx_EngineBTogglePlanes
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    sub_0203A914((0xfa << 2));
+    sub_020866CC(r4);
+    GfGfx_EngineATogglePlanes(1, 0);
+    GfGfx_EngineATogglePlanes(2, 0);
+    GfGfx_EngineATogglePlanes(4, 0);
+    GfGfx_EngineATogglePlanes(8, 0);
+    GfGfx_EngineBTogglePlanes(1, 0);
+    GfGfx_EngineBTogglePlanes(2, 0);
+    GfGfx_EngineBTogglePlanes(4, 0);
+    GfGfx_EngineBTogglePlanes(8, 0);
     // ldr r0, [r4, r0]
-    // mov r1, #1
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    FreeBgTilemapBuffer((0xbe << 2), 1);
     // ldr r0, [r4, r0]
-    // mov r1, #2
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    FreeBgTilemapBuffer((0xbe << 2), 2);
     // ldr r0, [r4, r0]
-    // mov r1, #3
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    FreeBgTilemapBuffer((0xbe << 2), 3);
     // ldr r0, [r4, r0]
-    // mov r1, #4
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    FreeBgTilemapBuffer((0xbe << 2), 4);
     // ldr r0, [r4, r0]
-    // mov r1, #5
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    FreeBgTilemapBuffer((0xbe << 2), 5);
     // ldr r0, [r4, r0]
-    // mov r1, #6
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    FreeBgTilemapBuffer((0xbe << 2), 6);
     // ldr r0, [r4, r0]
-    // mov r1, #7
-    // bl FreeBgTilemapBuffer
-    // mov r0, #0xbe
-    // lsl r0, r0, #2
+    FreeBgTilemapBuffer((0xbe << 2), 7);
     // ldr r0, [r4, r0]
-    // bl Heap_Free
-    // mov r0, #0xbf
-    // lsl r0, r0, #2
+    Heap_Free((0xbe << 2));
     // ldr r0, [r4, r0]
-    // mov r1, #0
-    // bl PaletteData_FreeBuffers
-    // mov r0, #0xbf
-    // lsl r0, r0, #2
+    PaletteData_FreeBuffers((0xbf << 2), 0);
     // ldr r0, [r4, r0]
-    // mov r1, #1
-    // bl PaletteData_FreeBuffers
-    // mov r0, #0xbf
-    // lsl r0, r0, #2
+    PaletteData_FreeBuffers((0xbf << 2), 1);
     // ldr r0, [r4, r0]
-    // mov r1, #2
-    // bl PaletteData_FreeBuffers
-    // mov r0, #0xbf
-    // lsl r0, r0, #2
+    PaletteData_FreeBuffers((0xbf << 2), 2);
     // ldr r0, [r4, r0]
-    // mov r1, #3
-    // bl PaletteData_FreeBuffers
-    // mov r0, #0xbf
-    // lsl r0, r0, #2
+    PaletteData_FreeBuffers((0xbf << 2), 3);
     // ldr r0, [r4, r0]
-    // bl PaletteData_Free
-    // mov r0, #0xbb
-    // lsl r0, r0, #2
+    PaletteData_Free((0xbf << 2));
     // ldr r0, [r4, r0]
-    // bl NARC_Delete
-    // bl sub_02021238
-    // mov r1, #0x2f
-    // lsl r1, r1, #4
+    NARC_Delete((0xbb << 2));
+    sub_02021238();
     // ldr r0, [r4, r1]
-    // add r1, r1, #4
     // ldr r1, [r4, r1]
-    // bl SpriteSystem_FreeResourcesAndManager
-    // mov r0, #0x2f
-    // lsl r0, r0, #4
+    SpriteSystem_FreeResourcesAndManager(((0x2f << 4) + 4));
     // ldr r0, [r4, r0]
-    // bl SpriteSystem_Free
-    // mov r0, #3
-    // lsl r0, r0, #8
+    SpriteSystem_Free((0x2f << 4));
     // ldr r0, [r4, r0]
-    // bl TouchHitboxController_Destroy
-    // add r0, r5, #0
-    // bl OverlayManager_FreeData
-    // mov r0, #0x6c
-    // bl Heap_Destroy
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    TouchHitboxController_Destroy((3 << 8));
+    OverlayManager_FreeData(r5);
+    Heap_Destroy(0x6c);
 }
+
 
 
 void sub_020853B4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
     // str r0, [sp]
-    // mov r1, #0x34
-    // add r5, r2, #0
-    // add r7, r3, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
+    Heap_Alloc(0x34);
     // ldr r1, [sp]
-    // add r0, r6, #1
     // str r6, [r4]
-    // bl String_New
-    // str r0, [r4, #0x1c]
-    // str r7, [r4, #0x20]
-    // mov r2, #0
-    // add r1, r5, #0
-    // add r3, r4, #0
-    // ldr r0, [r1]
-    // add r2, r2, #1
-    // str r0, [r3, #4]
-    // add r1, r1, #4
-    // add r3, r3, #4
-    // cmp r2, #4
-    // blt _020853DA
-    // sub r0, r2, #1
-    // lsl r0, r0, #2
+    String_New((r6 + 1));
+    *((u32*)(r4 + 0x1c)) = r0;
+    *((u32*)(r4 + 0x20)) = r7;
+    *((u32*)(r4 + 4)) = *((u32*)r5);
     // ldr r1, [r5, r0]
-    // lsl r0, r2, #2
     // add r0, r4, r0
-    // str r1, [r0, #4]
+    *((u32*)(((0 + 1) << 2) + 4)) = (r5 + 4);
     // ldr r0, [sp, #0x18]
-    // str r0, [r4, #0x2c]
+    *((u32*)(r4 + 0x2c)) = ((0 + 1) << 2);
     // ldr r0, [sp, #0x1c]
-    // str r0, [r4, #0x30]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x30)) = ((0 + 1) << 2);
 }
+
 
 
 void sub_02085400(void) {
-    sub_020853B4(0);
 }
+
 
 
 void sub_0208541C(void) {
-    sub_020853B4();
 }
+
 
 
 void sub_02085438(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x1c]
-    // cmp r0, #0
-    // bne _02085446
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _0208544E
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x1c]
-    // bl String_Delete
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)(r0 + 0x1c)));
+    GF_AssertFail();
+    String_Delete(*((u32*)(r4 + 0x1c)));
+    Heap_Free(r4);
 }
+
 
 
 void sub_0208545C(void) {
@@ -524,6 +406,7 @@ void sub_0208545C(void) {
 }
 
 
+
 void sub_020855CC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -549,4 +432,5 @@ void sub_020855CC(void) {
     // _02085600: .word 0x00003FF8
     // TODO: decompile
 }
+
 

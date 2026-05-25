@@ -2,15 +2,13 @@
 #include "global.h"
 
 void ov01_021FF854(void) {
-    ov01_021F1430(4, 0, 0);
-    ov01_021FF880();
 }
+
 
 
 void ov01_021FF870(void) {
-    ov01_021FF8C8();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_021FF880(void) {
@@ -49,12 +47,10 @@ void ov01_021FF880(void) {
 }
 
 
+
 void ov01_021FF8C8(void) {
-    ov01_021F18FC(7);
-    ov01_021F1924(7);
-    ov01_021F1970(8);
-    ov01_021F18C8(9);
 }
+
 
 
 void ov01_021FF8F0(void) {
@@ -108,6 +104,7 @@ void ov01_021FF8F0(void) {
     // _021FF960: .word ov01_02209218
     // TODO: decompile
 }
+
 
 
 void ov01_021FF964(void) {
@@ -176,247 +173,103 @@ void ov01_021FF964(void) {
 }
 
 
-void ov01_021FF9F4(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // add r3, r4, #0
-    // add r6, r0, #0
+
+BOOL ov01_021FF9F4(void) {
+    sub_02068D98();
     // add r3, #0x18
-    // mov r2, #4
     // ldmia r6!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // sub r2, r2, #1
-    // bne _021FFA08
-    // ldr r0, [r6]
     // str r0, [r3]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetSpriteID
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetID
-    // str r0, [r4, #8]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetMapID
-    // str r0, [r4, #0xc]
-    // ldr r0, [r4, #0x18]
-    // lsl r0, r0, #0x10
+    MapObject_GetSpriteID(*((u32*)(r4 + 0x30)), (4 - 1), r4);
+    *((u32*)(r4 + 4)) = r0;
+    MapObject_GetID(*((u32*)(r4 + 0x30)));
+    *((u32*)(r4 + 8)) = r0;
+    MapObject_GetMapID(*((u32*)(r4 + 0x30)));
+    *((u32*)(r4 + 0xc)) = r0;
     // str r0, [sp]
-    // ldr r0, [r4, #0x20]
-    // lsl r0, r0, #0x10
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetPositionVectorYCoord
+    MapObject_GetPositionVectorYCoord(*((u32*)(r4 + 0x30)));
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0x24]
     // add r1, sp, #0
-    // bl sub_0206121C
-    // str r0, [r4, #0x14]
-    // mov r0, #2
+    sub_0206121C(*((u32*)(r4 + 0x24)));
+    *((u32*)(r4 + 0x14)) = r0;
     // ldr r1, [sp]
-    // lsl r0, r0, #0xe
     // add r0, r1, r0
     // str r0, [sp]
-    // mov r0, #0x12
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #0xc
     // add r0, r1, r0
     // str r0, [sp, #8]
-    // add r0, r5, #0
     // add r1, sp, #0
-    // bl sub_02068DA8
-    // ldr r0, [r4, #0x28]
-    // mov r1, #9
+    sub_02068DA8(r5);
     // add r2, sp, #0
-    // bl ov01_021F1740
-    // str r0, [r4, #0x3c]
-    // mov r1, #2
-    // ldr r0, [r4, #0x30]
-    // lsl r1, r1, #8
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #1
-    // bne _021FFA88
-    // ldr r0, [r4, #0x3c]
-    // mov r1, #0
-    // bl sub_02023EA4
-    // add r0, r5, #0
-    // bl sub_02068D90
-    // cmp r0, #0
-    // bne _021FFAA8
-    // mov r1, #3
-    // ldr r0, [r4, #0x3c]
-    // lsl r1, r1, #0xe
-    // bl sub_02023F1C
-    // ldr r0, [r4, #0x3c]
-    // mov r1, #0
-    // bl sub_02023F04
-    // mov r0, #2
+    ov01_021F1740(*((u32*)(r4 + 0x28)), 9);
+    *((u32*)(r4 + 0x3c)) = r0;
+    MapObject_TestFlagsBits(*((u32*)(r4 + 0x30)), (2 << 8));
+    sub_02023EA4(*((u32*)(r4 + 0x3c)), 0);
+    sub_02068D90(r5);
+    sub_02023F1C(*((u32*)(r4 + 0x3c)), (3 << 0xe));
+    sub_02023F04(*((u32*)(r4 + 0x3c)), 0);
     // str r0, [r4]
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021FFAB0(void) {
-    sub_02023DA4();
 }
+
 
 
 void ov01_021FFABC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r4, r1, #0
-    // ldr r6, [r4, #0x30]
-    // ldr r1, [r4, #4]
-    // add r5, r0, #0
-    // ldr r2, [r4, #8]
-    // ldr r3, [r4, #0xc]
-    // add r0, r6, #0
-    // bl sub_0205F0F8
-    // cmp r0, #0
-    // bne _021FFAE0
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r1, #2
-    // add r0, r6, #0
-    // lsl r1, r1, #8
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #1
-    // ldr r0, [r4, #0x3c]
-    // bne _021FFAF8
-    // mov r1, #0
-    // bl sub_02023EA4
-    // b _021FFAFE
-    // mov r1, #1
-    // bl sub_02023EA4
-    // ldr r0, [r4, #0x14]
-    // cmp r0, #0
-    // bne _021FFB36
-    // add r0, r5, #0
+    sub_0205F0F8(*((u32*)(r1 + 0x30)), *((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    ov01_021F1640(r5);
+    MapObject_TestFlagsBits(r6, (2 << 8));
+    sub_02023EA4(*((u32*)(r4 + 0x3c)), 0);
+    sub_02023EA4(1);
     // add r1, sp, #0xc
-    // bl sub_02068DB8
-    // ldr r0, [r4, #0x18]
+    sub_02068DB8(r5);
     // add r1, sp, #0
-    // lsl r0, r0, #0x10
     // str r0, [sp]
-    // ldr r0, [r4, #0x20]
-    // lsl r0, r0, #0x10
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x10]
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0x24]
-    // bl sub_0206121C
-    // str r0, [r4, #0x14]
-    // cmp r0, #1
-    // bne _021FFB36
+    sub_0206121C(*((u32*)(r4 + 0x24)));
+    *((u32*)(r4 + 0x14)) = r0;
     // ldr r0, [sp, #4]
     // add r1, sp, #0xc
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl sub_02068DA8
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _021FFB48
-    // cmp r0, #1
-    // beq _021FFB6C
-    // cmp r0, #2
-    // beq _021FFB82
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r1, #1
-    // ldr r0, [r4, #0x3c]
-    // lsl r1, r1, #0xc
-    // bl sub_02023F04
-    // ldr r0, [r4, #0x3c]
-    // bl sub_02023F70
+    sub_02068DA8(r5);
+    sub_02023F04(*((u32*)(r4 + 0x3c)), (1 << 0xc));
+    sub_02023F70(*((u32*)(r4 + 0x3c)));
     // asr r1, r0, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r0, r1
     // asr r0, r1, #0xc
-    // cmp r0, #0xc
-    // blt _021FFBCE
-    // mov r0, #1
-    // add sp, #0x18
     // str r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r1, #3
-    // ldr r0, [r4, #0x3c]
-    // lsl r1, r1, #0xe
-    // bl sub_02023F1C
-    // ldr r0, [r4, #0x3c]
-    // mov r1, #0
-    // bl sub_02023F04
-    // mov r0, #2
+    sub_02023F1C(*((u32*)(r4 + 0x3c)), (3 << 0xe));
+    sub_02023F04(*((u32*)(r4 + 0x3c)), 0);
     // str r0, [r4]
-    // add r0, r6, #0
-    // bl MapObject_GetXCoord
-    // mov r1, #0x34
+    MapObject_GetXCoord(r6);
     // ldrsh r1, [r4, r1]
     // sub r7, r0, r1
-    // add r0, r6, #0
-    // bl MapObject_GetZCoord
-    // mov r1, #0x36
+    MapObject_GetZCoord(r6, 0x34);
     // ldrsh r1, [r4, r1]
     // sub r1, r0, r1
-    // ldr r0, [r4, #0x18]
-    // cmp r0, r7
-    // bne _021FFBA6
-    // ldr r0, [r4, #0x20]
-    // cmp r0, r1
-    // beq _021FFBB0
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x38
+    ov01_021F1640(r5, 0x36);
     // ldrsb r1, [r4, r0]
     // sub r0, #0x39
-    // cmp r1, r0
-    // beq _021FFBCE
-    // add r0, r6, #0
-    // bl MapObject_GetFacingDirection
-    // mov r1, #0x38
+    MapObject_GetFacingDirection(r6);
     // ldrsb r1, [r4, r1]
-    // cmp r1, r0
-    // beq _021FFBCE
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov01_021F1640(r5, 0x38);
 }
+
 
 
 void ov01_021FFBD4(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x30]
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4, #8]
-    // ldr r3, [r4, #0xc]
-    // bl sub_0205F0F8
-    // cmp r0, #0
-    // bne _021FFBF6
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // add r0, r5, #0
+    sub_0205F0F8(*((u32*)(r1 + 0x30)), *((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    ov01_021F1640(r5);
     // add r1, sp, #0
-    // bl sub_02068DB8
-    // ldr r0, [r4, #0x3c]
+    sub_02068DB8(r5);
     // add r1, sp, #0
-    // bl sub_02023E50
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    sub_02023E50(*((u32*)(r4 + 0x3c)));
 }
+
 

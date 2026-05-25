@@ -36,6 +36,7 @@ void ov01_021FC05C(void) {
 }
 
 
+
 void ov01_021FC0A8(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -63,10 +64,12 @@ void ov01_021FC0A8(void) {
 }
 
 
+
 void ov01_021FC0DC(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov01_021FC0E0(void) {
@@ -94,10 +97,12 @@ void ov01_021FC0E0(void) {
 }
 
 
+
 void ov01_021FC10C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov01_021FC110(void) {
@@ -113,14 +118,15 @@ void ov01_021FC110(void) {
 }
 
 
+
 void ov01_021FC124(void) {
-    Field3dObjectTask_Delete();
 }
+
 
 
 void ov01_021FC12C(void) {
-    Field3dObjectTask_GetData();
 }
+
 
 
 void ov01_021FC138(void) {
@@ -134,6 +140,7 @@ void ov01_021FC138(void) {
     // _021FC148: .word ov01_02208BE4
     // TODO: decompile
 }
+
 
 
 void ov01_021FC14C(void) {
@@ -177,48 +184,32 @@ void ov01_021FC14C(void) {
 }
 
 
+
 void ov01_021FC1A4(void) {
     // str r1, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(r0 + 4)) = r1;
     // sub r1, r2, r1
-    // str r1, [r0, #8]
-    // str r3, [r0, #0x10]
-    // mov r1, #0
-    // str r1, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 8)) = r1;
+    *((u32*)(r0 + 0x10)) = r3;
+    *((u32*)(r0 + 0xc)) = 0;
 }
+
 
 
 void ov01_021FC1B4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4, #0xc]
     // mul r0, r1
-    // ldr r1, [r4, #0x10]
-    // bl _s32_div_f
-    // ldr r1, [r4, #4]
+    _s32_div_f(*((u32*)(r0 + 0xc)), *((u32*)(r0 + 0x10)));
     // add r0, r0, r1
     // str r0, [r4]
-    // ldr r0, [r4, #0xc]
-    // ldr r1, [r4, #0x10]
-    // add r0, r0, #1
-    // cmp r0, r1
-    // bgt _021FC1DA
-    // str r0, [r4, #0xc]
-    // mov r0, #0
-    // pop {r4, pc}
-    // str r1, [r4, #0xc]
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0xc)) = (*((u32*)(r4 + 0xc)) + 1);
+    *((u32*)(r4 + 0xc)) = *((u32*)(r4 + 0x10));
 }
+
 
 
 void ov01_021FC1E0(void) {
-    BG_SetMaskColor();
 }
+
 
 
 void ov01_021FC1EC(void) {
@@ -230,6 +221,7 @@ void ov01_021FC1EC(void) {
     // _021FC1F8: .word 0x00007FFF
     // TODO: decompile
 }
+
 
 
 void ov01_021FC1FC(void) {
@@ -278,6 +270,7 @@ void ov01_021FC1FC(void) {
 }
 
 
+
 void ov01_021FC260(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -324,9 +317,10 @@ void ov01_021FC260(void) {
 }
 
 
+
 u8 ov01_021FC2C4(void) {
-    return 0;
 }
+
 
 
 void ov01_021FC2C8(void) {
@@ -352,25 +346,18 @@ void ov01_021FC2C8(void) {
 }
 
 
+
 void ov01_021FC2F0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _021FC302
-    // bl ov01_021FC124
-    // mov r0, #0
+    ov01_021FC124(*((u32*)r0));
     // str r0, [r4]
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    Heap_Free(r4);
 }
+
 
 
 u8 GetHoneySweetScentWorkSize(void) {
-    return 0xc;
 }
+
 
 
 void Task_HoneyOrSweetScent(void) {
@@ -552,4 +539,5 @@ void Task_HoneyOrSweetScent(void) {
     // _021FC4C0: .word 0x000007E2
     // TODO: decompile
 }
+
 

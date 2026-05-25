@@ -89,51 +89,23 @@ void sub_02066EDC(void) {
 }
 
 
+
 void sub_02066F90(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // bl FieldSystem_ApplicationIsRunning
-    // cmp r0, #0
-    // beq _02066FA2
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // ldr r0, [r5, #0x14]
-    // ldr r4, [r0]
-    // add r0, r4, #0
+    FieldSystem_ApplicationIsRunning(r1);
     // add r0, #0x26
     // ldrb r0, [r0]
-    // cmp r0, #6
-    // beq _02066FBC
-    // cmp r0, #7
-    // bne _02066FC4
-    // mov r0, #0
     // str r0, [r5]
-    // mov r0, #4
-    // pop {r3, r4, r5, pc}
-    // mov r0, #1
     // str r0, [r5]
-    // mov r0, #4
-    // pop {r3, r4, r5, pc}
-    // add r0, r4, #0
-    // add r1, r5, #0
     // add r0, #0x30
     // add r1, #0xe
-    // mov r2, #6
-    // bl MI_CpuCopy8
-    // add r0, r4, #0
+    MI_CpuCopy8(*((u32*)*((u32*)(r5 + 0x14))), r5, 6);
     // add r0, #0x26
     // ldrb r0, [r0]
-    // strb r0, [r5, #0xd]
-    // add r0, r4, #0
-    // bl Heap_Free
-    // ldr r0, [r5, #0x14]
-    // mov r1, #0
+    *((u8*)(r5 + 0xd)) = r4;
+    Heap_Free(r4);
     // str r1, [r0]
-    // mov r0, #2
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02066FEC(void) {
@@ -204,71 +176,35 @@ void sub_02066FEC(void) {
 }
 
 
+
 void sub_02067088(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r0, r1, #0
-    // bl FieldSystem_ApplicationIsRunning
-    // cmp r0, #0
-    // beq _0206709A
-    // mov r0, #3
-    // pop {r4, pc}
-    // ldr r0, [r4, #0x14]
-    // ldr r0, [r0]
-    // ldrb r1, [r0, #0x14]
-    // strb r1, [r4, #0xd]
-    // bl Heap_Free
-    // ldr r1, [r4, #0x14]
-    // mov r0, #0
+    FieldSystem_ApplicationIsRunning(r1);
+    *((u8*)(r4 + 0xd)) = *((u8*)(*((u32*)*((u32*)(r4 + 0x14))) + 0x14));
+    Heap_Free(*((u32*)*((u32*)(r4 + 0x14))), *((u8*)(*((u32*)*((u32*)(r4 + 0x14))) + 0x14)));
     // str r0, [r1]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_020670B0(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bl TaskManager_GetFieldSystem
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl TaskManager_GetEnvironment
-    // add r4, r0, #0
-    // ldr r1, [r4, #4]
-    // cmp r1, #4
-    // bhi _02067112
+    TaskManager_GetFieldSystem();
+    TaskManager_GetEnvironment(r4);
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _020670D4: ; jump table
-    // add r1, r5, #0
-    // mov r2, #0xb
-    // bl sub_02066EDC
-    // str r0, [r4, #4]
-    // b _02067112
-    // add r1, r5, #0
-    // bl sub_02066F90
-    // str r0, [r4, #4]
-    // b _02067112
-    // add r1, r5, #0
-    // mov r2, #0xb
-    // bl sub_02066FEC
-    // str r0, [r4, #4]
-    // b _02067112
-    // add r1, r5, #0
-    // bl sub_02067088
-    // str r0, [r4, #4]
-    // b _02067112
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02066EDC(r5, 0xb);
+    *((u32*)(r4 + 4)) = r0;
+    sub_02066F90(r5);
+    *((u32*)(r4 + 4)) = r0;
+    sub_02066FEC(r5, 0xb);
+    *((u32*)(r4 + 4)) = r0;
+    sub_02067088(r5);
+    *((u32*)(r4 + 4)) = r0;
+    Heap_Free();
 }
+
 
 
 void sub_02067118(void) {
@@ -309,86 +245,36 @@ void sub_02067118(void) {
 }
 
 
+
 void sub_02067164(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // add r4, r0, #0
-    // ldr r0, [r5, #0xc]
-    // bl sub_0203A05C
-    // cmp r0, #0
-    // beq _02067184
-    // ldrh r1, [r4, #0x12]
-    // ldrh r2, [r4, #0x14]
-    // add r0, r5, #0
-    // bl NintendoWifiConnection_LaunchApp
-    // str r0, [r4, #8]
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #1
+    sub_0203A05C(*((u32*)(r1 + 0xc)));
+    NintendoWifiConnection_LaunchApp(r5, *((u16*)(r4 + 0x12)), *((u16*)(r4 + 0x14)));
+    *((u32*)(r4 + 8)) = r0;
     // str r0, [r4]
-    // mov r0, #2
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0206718C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r0, r1, #0
-    // bl FieldSystem_ApplicationIsRunning
-    // cmp r0, #0
-    // beq _0206719E
-    // mov r0, #1
-    // pop {r4, pc}
-    // ldr r0, [r4, #8]
-    // ldr r0, [r0, #0x20]
+    FieldSystem_ApplicationIsRunning(r1);
     // str r0, [r4]
-    // ldr r0, [r4, #8]
-    // bl Heap_Free
-    // mov r0, #2
-    // pop {r4, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)(r4 + 8)));
 }
+
 
 
 void sub_020671B0(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bl TaskManager_GetFieldSystem
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl TaskManager_GetEnvironment
-    // add r4, r0, #0
-    // ldr r1, [r4, #4]
-    // cmp r1, #0
-    // beq _020671D2
-    // cmp r1, #1
-    // beq _020671DC
-    // cmp r1, #2
-    // beq _020671E6
-    // b _020671FC
-    // add r1, r5, #0
-    // bl sub_02067164
-    // str r0, [r4, #4]
-    // b _020671FC
-    // add r1, r5, #0
-    // bl sub_0206718C
-    // str r0, [r4, #4]
-    // b _020671FC
-    // ldrh r1, [r4, #0x10]
-    // add r0, r5, #0
-    // bl GetVarPointer
-    // ldr r1, [r4]
+    TaskManager_GetFieldSystem();
+    TaskManager_GetEnvironment(r4);
+    sub_02067164(r5);
+    *((u32*)(r4 + 4)) = r0;
+    sub_0206718C(r5);
+    *((u32*)(r4 + 4)) = r0;
+    GetVarPointer(r5, *((u16*)(r4 + 0x10)));
     // strh r1, [r0]
-    // add r0, r4, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Heap_Free(r4, *((u32*)r4));
 }
+
 
 
 void sub_02067200(void) {
@@ -419,54 +305,24 @@ void sub_02067200(void) {
 }
 
 
+
 void sub_02067238(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r0, #0
-    // bl TaskManager_GetFieldSystem
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // bl TaskManager_GetEnvironment
-    // add r5, r0, #0
-    // bl sub_0203769C
-    // mov r1, #1
+    TaskManager_GetFieldSystem();
+    TaskManager_GetEnvironment(r4);
+    sub_0203769C();
     // sub r0, r1, r0
-    // bl sub_02037C44
-    // add r7, r0, #0
-    // bne _0206725E
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldrh r1, [r5, #2]
-    // add r0, r6, #0
-    // bl GetVarPointer
-    // add r4, r0, #0
+    sub_02037C44(1);
+    GetVarPointer(r6, *((u16*)(r5 + 2)));
     // ldrh r0, [r5]
-    // cmp r0, #0
-    // beq _02067278
-    // cmp r0, #1
-    // beq _02067284
-    // cmp r0, #2
-    // beq _02067290
-    // b _0206729A
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl sub_0204B610
+    sub_0204B610(r6, r7);
     // strh r0, [r4]
-    // b _0206729A
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl sub_0204B66C
+    sub_0204B66C(r6, r7);
     // strh r0, [r4]
-    // b _0206729A
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl sub_0204B690
+    sub_0204B690(r6, r7);
     // strh r0, [r4]
-    // add r0, r5, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free(r5);
 }
+
 
 
 void sub_020672A4(void) {
@@ -495,226 +351,56 @@ void sub_020672A4(void) {
 }
 
 
-void sub_020672D8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r0, #0
-    // bl Save_Frontier_GetStatic
-    // mov r1, #0
-    // mov r2, #0xff
-    // bl FrontierSave_GetStat
+
+u32 sub_020672D8(void) {
+    Save_Frontier_GetStatic();
+    FrontierSave_GetStat(0, 0xff);
     // str r0, [sp]
-    // cmp r0, #0x14
-    // bhs _020672F2
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r4, #0
-    // bl Save_FrontierData_Get
-    // mov r1, #0xd
-    // mov r2, #0
-    // add r4, r0, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // mov r1, #0
-    // lsr r7, r0, #0x18
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #1
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xe
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // add r0, r4, #0
-    // mov r1, #2
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // add r0, r4, #0
-    // mov r1, #3
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // cmp r7, #0
-    // beq _02067350
-    // cmp r6, #0
-    // beq _02067350
-    // cmp r5, #0
-    // beq _02067350
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // cmp r7, #0
-    // bne _02067362
-    // add r0, r4, #0
-    // mov r1, #0xd
-    // mov r2, #1
-    // bl sub_0202D5DC
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
+    Save_FrontierData_Get(r4);
+    sub_0202D5DC(0xd, 0);
+    sub_0202D5DC(r4, 0, 0);
+    sub_0202D5DC(r4, 1, 0);
+    sub_0202D5DC(r4, 0xe, 0);
+    sub_0202D5DC(r4, 2, 0);
+    sub_0202D5DC(r4, 3, 0);
+    sub_0202D5DC(r4, 0xd, 1);
     // ldr r0, [sp]
-    // cmp r0, #0x32
-    // bhs _0206736C
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // cmp r6, #0
-    // bne _0206737E
-    // add r0, r4, #0
-    // mov r1, #0
-    // mov r2, #1
-    // bl sub_0202D5DC
-    // mov r0, #2
-    // pop {r3, r4, r5, r6, r7, pc}
-    // cmp r0, #0x64
-    // blo _02067386
-    // cmp r5, #0
-    // beq _0206738A
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r1, #1
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // bl sub_0202D5DC
-    // mov r0, #3
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_0202D5DC(r4, 0, 1);
+    sub_0202D5DC(r4, 1, 1);
 }
 
 
-void sub_02067398(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // bl Save_Frontier_GetStatic
-    // mov r1, #0
-    // mov r2, #0xff
-    // bl FrontierSave_GetStat
+
+u32 sub_02067398(void) {
+    Save_Frontier_GetStatic();
+    FrontierSave_GetStat(0, 0xff);
     // str r0, [sp, #8]
-    // cmp r0, #0x14
-    // bhs _020673B6
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // add r0, r4, #0
-    // bl Save_FrontierData_Get
-    // mov r1, #0xd
-    // mov r2, #0
-    // add r7, r0, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // mov r1, #0
-    // lsr r6, r0, #0x18
-    // add r0, r7, #0
-    // add r2, r1, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r7, #0
-    // mov r1, #1
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // add r0, r7, #0
-    // mov r1, #0xe
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    Save_FrontierData_Get(r4);
+    sub_0202D5DC(0xd, 0);
+    sub_0202D5DC(r7, 0, 0);
+    sub_0202D5DC(r7, 1, 0);
+    sub_0202D5DC(r7, 0xe, 0);
     // str r0, [sp, #4]
-    // add r0, r7, #0
-    // mov r1, #2
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    sub_0202D5DC(r7, 2, 0);
     // str r0, [sp]
-    // add r0, r7, #0
-    // mov r1, #3
-    // mov r2, #0
-    // bl sub_0202D5DC
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // cmp r6, #0
-    // beq _02067426
-    // cmp r4, #0
-    // beq _02067426
-    // cmp r5, #0
-    // beq _02067426
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // cmp r6, #0
-    // bne _0206743C
+    sub_0202D5DC(r7, 3, 0);
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // beq _02067436
-    // add sp, #0xc
-    // mov r0, #4
-    // pop {r4, r5, r6, r7, pc}
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
     // ldr r0, [sp, #8]
-    // cmp r0, #0x32
-    // bhs _02067448
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // cmp r4, #0
-    // bne _0206745E
     // ldr r0, [sp]
-    // cmp r0, #0
-    // beq _02067458
-    // add sp, #0xc
-    // mov r0, #5
-    // pop {r4, r5, r6, r7, pc}
-    // add sp, #0xc
-    // mov r0, #2
-    // pop {r4, r5, r6, r7, pc}
-    // cmp r0, #0x64
-    // bhs _02067468
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // cmp r5, #0
-    // beq _02067472
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // cmp r1, #0
-    // beq _0206747C
-    // add sp, #0xc
-    // mov r0, #6
-    // pop {r4, r5, r6, r7, pc}
-    // mov r0, #3
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02067484(void) {
     // add r0, #0xa0
-    // ldr r0, [r0]
-    // ldr r2, [r1]
-    // ldrh r3, [r0, #0x24]
     // add r2, r3, r2
-    // strh r2, [r0, #0x24]
-    // ldrh r3, [r0, #0x28]
-    // ldr r2, [r1, #4]
+    *((u16*)(*((u32*)r0) + 0x24)) = *((u32*)r1);
     // add r2, r3, r2
-    // strh r2, [r0, #0x28]
-    // ldrh r2, [r0, #0x26]
-    // ldr r1, [r1, #8]
+    *((u16*)(*((u32*)r0) + 0x28)) = *((u32*)(r1 + 4));
     // add r1, r2, r1
-    // strh r1, [r0, #0x26]
-    // bx lr
-    // TODO: decompile
+    *((u16*)(*((u32*)r0) + 0x26)) = *((u32*)(r1 + 8));
 }
+
 
 
 void sub_020674A4(void) {
@@ -727,6 +413,7 @@ void sub_020674A4(void) {
 }
 
 
+
 void sub_020674B0(void) {
     // ldr r1, _020674B8 ; =0x5D588B65
     // mul r1, r0
@@ -737,87 +424,45 @@ void sub_020674B0(void) {
 }
 
 
+
 void sub_020674BC(void) {
-    Save_FriendGroup_Get();
-    sub_0202C7DC();
+}
+
+
+
+u32 sub_020674E0(void) {
+    Save_FrontierData_Get();
+    sub_0202D63C();
     sub_020674B0();
-    Save_FrontierData_Get(r5);
-    sub_0202D638(r4);
-}
-
-
-void sub_020674E0(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r5, r0, #0
-    // bl Save_FrontierData_Get
-    // add r6, r0, #0
-    // bl sub_0202D63C
-    // bl sub_020674B0
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl sub_0202D638
-    // add r0, r4, #0
-    // bl sub_020674A4
+    sub_0202D638(r6, r0);
+    sub_020674A4(r4);
     // str r0, [sp]
-    // add r0, r5, #0
-    // bl sub_0202D908
-    // mov r1, #0xa
+    sub_0202D908(r5);
     // add r2, sp, #0
-    // bl sub_0202D308
+    sub_0202D308(0xa);
     // ldr r0, [sp]
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
 }
 
 
-void sub_0206751C(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r6, r0, #0
-    // bl Save_FrontierData_Get
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl sub_0202D908
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl sub_0202D63C
-    // bl sub_020674A4
-    // mov r1, #0
+
+u32 sub_0206751C(void) {
+    Save_FrontierData_Get();
+    sub_0202D908(r6);
+    sub_0202D63C(r4);
+    sub_020674A4();
     // str r0, [sp]
-    // add r0, r5, #0
-    // add r2, r1, #0
-    // bl sub_0202D284
-    // add r1, r0, #0
-    // lsl r1, r1, #0x10
-    // add r0, r4, #0
-    // lsr r1, r1, #0x10
-    // mov r2, #0
-    // bl sub_0202D57C
-    // mov r1, #0x18
-    // add r5, r0, #0
+    sub_0202D284(r5, 0, 0);
+    sub_0202D57C(r4, ((r0 << 0x10) >> 0x10), 0);
     // mul r5, r1
-    // mov r4, #0
-    // cmp r5, #0
-    // ble _0206756E
     // ldr r0, [sp]
-    // bl sub_020674A4
-    // add r4, r4, #1
+    sub_020674A4(0x18);
     // str r0, [sp]
-    // cmp r4, r5
-    // blt _02067562
-    // add r0, r6, #0
-    // bl sub_0202D908
-    // mov r1, #0xa
+    sub_0202D908(r6);
     // add r2, sp, #0
-    // bl sub_0202D308
+    sub_0202D308(0xa);
     // ldr r0, [sp]
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(void) {
@@ -836,54 +481,19 @@ void FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(void) {
 }
 
 
+
 void sub_0206759C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
     // str r1, [sp]
-    // cmp r1, #0
-    // ble _02067606
-    // bl Save_TrainerCard_Get
-    // bl TrainerCard_GetBadgeShininessArr
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl Save_PlayerData_GetProfile
-    // add r7, r0, #0
+    Save_TrainerCard_Get();
+    TrainerCard_GetBadgeShininessArr();
+    Save_PlayerData_GetProfile(r5);
     // ldr r0, [sp]
-    // mov r1, #0xa
-    // add r6, r0, #0
-    // mov r5, #0
     // mul r6, r1
-    // add r0, r7, #0
-    // add r1, r5, #0
-    // bl PlayerProfile_TestBadgeFlag
-    // cmp r0, #0
-    // beq _020675FC
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl GetShininessOfBadgeI
-    // add r1, r0, #0
-    // cmp r1, #0
-    // ble _020675E4
-    // cmp r1, #0xc8
-    // bge _020675E4
+    PlayerProfile_TestBadgeFlag(r0, 0);
+    GetShininessOfBadgeI(r5, r4);
     // sub r1, r1, r6
-    // b _020675EE
-    // cmp r1, #0xc8
-    // blt _020675EC
-    // bl GF_AssertFail
-    // mov r1, #0
-    // cmp r1, #0
-    // bge _020675F4
-    // mov r1, #0
-    // add r0, r5, #0
-    // add r2, r4, #0
-    // bl SetShininessOfBadgeI
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // cmp r5, #8
-    // blo _020675C2
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail(r0);
+    SetShininessOfBadgeI(r5, 0, r4);
 }
+
 

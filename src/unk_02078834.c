@@ -307,12 +307,10 @@ void sub_02078834(void) {
 }
 
 
+
 void sub_02078B2C(void) {
-    Heap_AllocAtEnd(0xb, 0x18);
-    MI_CpuFill8(0, 0x18);
-    Heap_AllocAtEnd(0xb, 0xc);
-    MI_CpuFill8(0, 0xc);
 }
+
 
 
 void sub_02078B58(void) {
@@ -333,6 +331,7 @@ void sub_02078B58(void) {
 }
 
 
+
 void sub_02078B78(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -351,6 +350,7 @@ void sub_02078B78(void) {
     // _02078B98: .word sub_02078834
     // TODO: decompile
 }
+
 
 
 void sub_02078B9C(void) {
@@ -384,39 +384,17 @@ void sub_02078B9C(void) {
 }
 
 
+
 void sub_02078BD8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x10]
-    // ldrb r1, [r0, #3]
-    // cmp r1, #1
-    // bne _02078C04
     // ldrb r1, [r0]
-    // cmp r1, #1
-    // beq _02078BF2
-    // cmp r1, #2
-    // beq _02078BF8
-    // cmp r1, #3
-    // b _02078BFE
-    // mov r1, #0x10
-    // str r1, [r4, #4]
-    // b _02078C08
-    // mov r1, #0x14
-    // str r1, [r4, #4]
-    // b _02078C08
-    // mov r1, #0x18
-    // str r1, [r4, #4]
-    // b _02078C08
-    // mov r1, #1
-    // str r1, [r4, #4]
-    // ldrb r0, [r0, #4]
-    // str r0, [r4, #0x14]
-    // ldr r0, [r4, #0x10]
-    // bl Heap_Free
-    // ldr r0, [r4, #4]
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = 0x10;
+    *((u32*)(r0 + 4)) = 0x14;
+    *((u32*)(r0 + 4)) = 0x18;
+    *((u32*)(r0 + 4)) = 1;
+    *((u32*)(r0 + 0x14)) = *((u8*)(*((u32*)(r0 + 0x10)) + 4));
+    Heap_Free(*((u32*)(r0 + 0x10)), 1);
 }
+
 
 
 void sub_02078C18(void) {
@@ -454,6 +432,7 @@ void sub_02078C18(void) {
 }
 
 
+
 void sub_02078C60(void) {
     // push {r3, lr}
     // bl Heap_Free
@@ -464,6 +443,7 @@ void sub_02078C60(void) {
     // _02078C70: .word FS_OVERLAY_ID(OVY_90)
     // TODO: decompile
 }
+
 
 
 void sub_02078C74(void) {
@@ -497,6 +477,7 @@ void sub_02078C74(void) {
 }
 
 
+
 void sub_02078CB4(void) {
     // push {r3, lr}
     // bl Heap_Free
@@ -507,6 +488,7 @@ void sub_02078CB4(void) {
     // _02078CC4: .word FS_OVERLAY_ID(OVY_90)
     // TODO: decompile
 }
+
 
 
 void sub_02078CC8(void) {
@@ -544,6 +526,7 @@ void sub_02078CC8(void) {
 }
 
 
+
 void sub_02078D10(void) {
     // push {r3, lr}
     // bl Heap_Free
@@ -556,96 +539,13 @@ void sub_02078D10(void) {
 }
 
 
+
 void sub_02078D24(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_020398C8
-    // mov r1, #0x24
-    // ldrb r2, [r0, #0x1b]
+    sub_020398C8();
     // mul r1, r4
     // add r0, r0, r1
     // add r0, #0x3f
     // ldrb r0, [r0]
-    // cmp r2, #0xc
-    // bne _02078D44
-    // cmp r0, #5
-    // bne _02078D44
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0xd
-    // bne _02078D50
-    // cmp r0, #6
-    // bne _02078D50
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0xe
-    // bne _02078D5C
-    // cmp r0, #7
-    // bne _02078D5C
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #9
-    // bne _02078D68
-    // cmp r0, #2
-    // bne _02078D68
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0xa
-    // bne _02078D74
-    // cmp r0, #3
-    // bne _02078D74
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0xb
-    // bne _02078D80
-    // cmp r0, #4
-    // bne _02078D80
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0xf
-    // bne _02078D8C
-    // cmp r0, #8
-    // bne _02078D8C
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0x13
-    // bne _02078D98
-    // cmp r0, #0x12
-    // bne _02078D98
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0x15
-    // bne _02078DA4
-    // cmp r0, #0x14
-    // bne _02078DA4
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0x17
-    // bne _02078DB0
-    // cmp r0, #0x16
-    // bne _02078DB0
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0x19
-    // bne _02078DBC
-    // cmp r0, #0x18
-    // bne _02078DBC
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0x1b
-    // bne _02078DC8
-    // cmp r0, #0x1a
-    // bne _02078DC8
-    // mov r0, #1
-    // pop {r4, pc}
-    // cmp r2, #0x10
-    // bne _02078DD4
-    // cmp r0, #1
-    // bne _02078DD4
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 

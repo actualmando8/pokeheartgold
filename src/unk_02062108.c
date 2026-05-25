@@ -1,124 +1,48 @@
 /* Decompiled from asm/unk_02062108.s */
 #include "global.h"
 
-void MapObject_AreBitsSetForMovementScriptInit(void) {
-    // push {r4, lr}
-    // mov r1, #1
-    // add r4, r0, #0
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #0
-    // bne _0206211A
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #1
-    // bne _0206212A
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #0x10
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #1
-    // bne _02062146
-    // add r0, r4, #0
-    // mov r1, #0x20
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #0
-    // bne _02062146
-    // mov r0, #0
-    // pop {r4, pc}
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+BOOL MapObject_AreBitsSetForMovementScriptInit(void) {
+    MapObject_TestFlagsBits(1);
+    MapObject_TestFlagsBits(r4, 2);
+    MapObject_TestFlagsBits(r4, 0x10);
+    MapObject_TestFlagsBits(r4, 0x20);
 }
+
 
 
 void MapObject_SetHeldMovement(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0x71
-    // blt _0206215A
-    // bl GF_AssertFail
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl MapObject_SetMovementCommand
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl MapObject_SetMovementStep
-    // add r0, r5, #0
-    // mov r1, #0x10
-    // bl MapObject_SetFlagsBits
-    // add r0, r5, #0
-    // mov r1, #0x20
-    // bl MapObject_ClearFlagsBits
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    MapObject_SetMovementCommand(r5, r4);
+    MapObject_SetMovementStep(r5, 0);
+    MapObject_SetFlagsBits(r5, 0x10);
+    MapObject_ClearFlagsBits(r5, 0x20);
 }
+
 
 
 void MapObject_ForceSetHeldMovement(void) {
-    MapObject_SetMovementCommand();
-    MapObject_SetMovementStep(r4, 0);
-    MapObject_ClearFlagsBits(r4, 0x20);
 }
 
 
-void MapObject_IsMovementPaused(void) {
-    // push {r4, lr}
-    // mov r1, #0x10
-    // add r4, r0, #0
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #0
-    // bne _020621AA
-    // mov r0, #1
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #0x20
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #0
-    // beq _020621BA
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+
+BOOL MapObject_IsMovementPaused(void) {
+    MapObject_TestFlagsBits(0x10);
+    MapObject_TestFlagsBits(r4, 0x20);
 }
 
 
-void MapObject_ClearHeldMovementIfActive(void) {
-    // push {r4, lr}
-    // mov r1, #0x10
-    // add r4, r0, #0
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #0
-    // bne _020621D2
-    // mov r0, #1
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #0x20
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #0
-    // bne _020621E2
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #0x30
-    // bl MapObject_ClearFlagsBits
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+
+BOOL MapObject_ClearHeldMovementIfActive(void) {
+    MapObject_TestFlagsBits(0x10);
+    MapObject_TestFlagsBits(r4, 0x20);
+    MapObject_ClearFlagsBits(r4, 0x30);
 }
+
 
 
 void MapObject_ClearHeldMovement(void) {
-    MapObject_ClearFlagsBits(0x10);
-    MapObject_SetFlagsBits(r4, 0x20);
-    MapObject_SetMovementCommand(r4, 0xff);
-    MapObject_SetMovementStep(r4, 0);
 }
+
 
 
 void EventObjectMovementMan_Create(void) {
@@ -157,31 +81,21 @@ void EventObjectMovementMan_Create(void) {
 }
 
 
+
 void EventObjectMovementMan_IsFinish(void) {
-    SysTask_GetData();
 }
+
 
 
 void EventObjectMovementMan_Delete(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl SysTask_GetData
-    // add r4, r0, #0
-    // ldr r0, [r4, #0xc]
-    // bl MapObject_IsMovementPaused
-    // cmp r0, #1
-    // beq _02062284
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0xc]
-    // bl MapObject_ClearHeldMovementIfActive
-    // mov r0, #4
-    // add r1, r4, #0
-    // bl Heap_FreeExplicit
-    // add r0, r5, #0
-    // bl SysTask_Destroy
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    SysTask_GetData();
+    MapObject_IsMovementPaused(*((u32*)(r0 + 0xc)));
+    GF_AssertFail();
+    MapObject_ClearHeldMovementIfActive(*((u32*)(r4 + 0xc)));
+    Heap_FreeExplicit(4, r4);
+    SysTask_Destroy(r5);
 }
+
 
 
 void MovementScriptMachine(void) {
@@ -202,61 +116,41 @@ void MovementScriptMachine(void) {
 }
 
 
+
 void MovementScriptMachineSub_Init(void) {
-    ((u32*)r0)[8] = 0;
-    *(u32*)r0 = 1;
 }
+
 
 
 void MovementScriptMachineSub_WaitReady(void) {
-    MapObject_AreBitsSetForMovementScriptInit(0, 1, 2);
 }
+
 
 
 void MovementScriptMachineSub_SetMovementCommand(void) {
-    MapObject_SetHeldMovement(0, 3);
 }
+
 
 
 void MovementScriptMachineSub_WaitMovementCommand(void) {
-    MapObject_IsMovementPaused(0, 1, 4);
 }
+
 
 
 void MovementScriptMachineSub_LoopCheck(void) {
-    // ldr r1, [r0, #8]
-    // ldr r3, [r0, #0x10]
-    // add r2, r1, #1
-    // str r2, [r0, #8]
-    // ldrh r1, [r3, #2]
-    // cmp r2, r1
-    // bge _0206232A
-    // mov r1, #1
+    *((u32*)(r0 + 8)) = (*((u32*)(r0 + 8)) + 1);
     // str r1, [r0]
-    // add r0, r1, #0
-    // bx lr
-    // add r1, r3, #4
-    // str r1, [r0, #0x10]
-    // ldrh r1, [r3, #4]
-    // cmp r1, #0xfe ; EndMovement
-    // beq _0206233C
-    // mov r1, #0
+    *((u32*)(1 + 0x10)) = (*((u32*)(r0 + 0x10)) + 4);
     // str r1, [r0]
-    // mov r0, #1
-    // bx lr
-    // mov r1, #1
-    // str r1, [r0, #4]
-    // mov r1, #5
+    *((u32*)(1 + 4)) = 1;
     // str r1, [r0]
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 u8 MovementScriptMachineSub_Done(void) {
-    return 0;
 }
+
 
 
 void sub_0206234C(void) {
@@ -295,6 +189,7 @@ void sub_0206234C(void) {
 }
 
 
+
 void sub_02062390(void) {
     // push {r4, r5}
     // ldr r4, _020623C4 ; =_020FD198
@@ -327,16 +222,11 @@ void sub_02062390(void) {
 }
 
 
+
 void sub_020623C8(void) {
     // sub r0, #0x38
-    // cmp r0, #3
-    // bhi _020623D2
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020623D8(void) {
@@ -362,51 +252,23 @@ void sub_020623D8(void) {
 }
 
 
+
 void sub_02062400(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_GetMovementCommand
-    // add r4, r0, #0
-    // cmp r4, #0xff
-    // beq _02062424
-    // add r0, r5, #0
-    // bl MapObject_GetMovementStep
-    // add r2, r0, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl MapObject_RunMovementCommand
-    // cmp r0, #0
-    // bne _02062404
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    MapObject_GetMovementCommand(r0);
+    MapObject_GetMovementStep(r5);
+    MapObject_RunMovementCommand(r5, r4, r0);
 }
+
 
 
 void sub_02062428(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02062400
-    // add r0, r4, #0
-    // mov r1, #0x20
-    // bl MapObject_TestFlagsBits
-    // cmp r0, #0
-    // bne _02062440
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #0x20
-    // bl MapObject_ClearFlagsBits
-    // add r0, r4, #0
-    // mov r1, #0xff
-    // bl MapObject_SetMovementCommand
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl MapObject_SetMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02062400();
+    MapObject_TestFlagsBits(r4, 0x20);
+    MapObject_ClearFlagsBits(r4, 0x20);
+    MapObject_SetMovementCommand(r4, 0xff);
+    MapObject_SetMovementStep(r4, 0);
 }
+
 
 
 void MapObject_RunMovementCommand(void) {
@@ -423,386 +285,325 @@ void MapObject_RunMovementCommand(void) {
 }
 
 
+
 void MapObjectMovementCmd098_Step2(void) {
-    MapObject_SetFlagsBits();
 }
+
 
 
 void sub_0206247C(void) {
-    MapObject_SetFacingDirection();
-    sub_0205F328(r4, 0);
-    sub_02060F78(r4);
-    MapObject_IncrementMovementStep(r4);
 }
+
 
 
 void MapObjectMovementCmd000_Step0(void) {
-    sub_0206247C();
 }
+
 
 
 void MapObjectMovementCmd001_Step0(void) {
-    sub_0206247C();
 }
+
 
 
 void MapObjectMovementCmd002_Step0(void) {
-    sub_0206247C();
 }
+
 
 
 void MapObjectMovementCmd003_Step0(void) {
-    sub_0206247C();
 }
+
 
 
 void sub_020624CC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // mov r1, #0xc
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl sub_0205F3C0
-    // add r1, sp, #8
-    // ldrh r1, [r1, #0x10]
-    // strh r1, [r0]
-    // strh r7, [r0, #2]
-    // str r4, [r0, #4]
-    // str r6, [r0, #8]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl sub_02060F24
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl MapObject_SetOrQueueFacing
-    // add r1, sp, #8
-    // ldrh r1, [r1, #0x10]
-    // add r0, r5, #0
-    // bl sub_0205F328
-    // add r0, r5, #0
-    // mov r1, #4
-    // bl MapObject_SetFlagsBits
-    // add r0, r5, #0
-    // bl MapObject_IncrementMovementStep
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
-}
-
-
-void MapObjectMovementCmd090_Step1(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl sub_0205F3E4
-    // add r4, r0, #0
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4, #8]
-    // add r0, r5, #0
-    // bl sub_0206101C
-    // add r0, r5, #0
-    // bl sub_02061070
-    // mov r0, #2
-    // ldrsh r1, [r4, r0]
-    // sub r1, r1, #1
-    // strh r1, [r4, #2]
-    // ldrsh r0, [r4, r0]
-    // cmp r0, #0
-    // ble _02062540
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // mov r1, #0x28
-    // bl MapObject_SetFlagsBits
-    // add r0, r5, #0
-    // bl sub_02060F78
-    // add r0, r5, #0
-    // bl sub_0205F484
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl sub_0205F328
-    // add r0, r5, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
-}
-
-
-void MapObjectMovementCmd004_Step0(void) {
-    sub_020624CC(1, 0, 1, 0x20);
-}
-
-
-void MapObjectMovementCmd005_Step0(void) {
-    sub_020624CC(1, 1, 0x20);
-}
-
-
-void MapObjectMovementCmd006_Step0(void) {
-    sub_020624CC(1, 1, 2, 0x20);
-}
-
-
-void MapObjectMovementCmd007_Step0(void) {
-    sub_020624CC(1, 3, 1, 0x20);
-}
-
-
-void MapObjectMovementCmd008_Step0(void) {
-    sub_020624CC(1, 0, 2, 0x10);
-}
-
-
-void MapObjectMovementCmd009_Step0(void) {
-    sub_020624CC(1, 1, 2, 0x10);
-}
-
-
-void MapObjectMovementCmd010_Step0(void) {
-    sub_020624CC(1, 2, 0x10);
-}
-
-
-void MapObjectMovementCmd011_Step0(void) {
-    sub_020624CC(1, 3, 2, 0x10);
-}
-
-
-void MapObjectMovementCmd012_Step0(void) {
-    sub_020624CC(1, 0, 3, 2, 8);
-}
-
-
-void MapObjectMovementCmd013_Step0(void) {
-    sub_020624CC(1, 1, 3, 8);
-}
-
-
-void MapObjectMovementCmd014_Step0(void) {
-    sub_020624CC(1, 2, 3, 8);
-}
-
-
-void MapObjectMovementCmd015_Step0(void) {
-    sub_020624CC(1, 3, 2, 8);
-}
-
-
-void MapObjectMovementCmd016_Step0(void) {
-    sub_020624CC(1, 0, 4);
-}
-
-
-void MapObjectMovementCmd017_Step0(void) {
-    sub_020624CC(1, 1, 4);
-}
-
-
-void MapObjectMovementCmd018_Step0(void) {
-    sub_020624CC(1, 2, 4);
-}
-
-
-void MapObjectMovementCmd019_Step0(void) {
-    sub_020624CC(1, 3, 4);
-}
-
-
-void MapObjectMovementCmd020_Step0(void) {
-    sub_020624CC(1, 0, 5, 2, 2);
-}
-
-
-void MapObjectMovementCmd021_Step0(void) {
-    sub_020624CC(1, 1, 5, 2);
-}
-
-
-void MapObjectMovementCmd022_Step0(void) {
-    sub_020624CC(1, 2, 5);
-}
-
-
-void MapObjectMovementCmd023_Step0(void) {
-    sub_020624CC(1, 3, 5, 2, 2);
-}
-
-
-void MapObjectMovementCmd084_Step0(void) {
-    sub_020624CC(1, 0, 1, 1);
-}
-
-
-void MapObjectMovementCmd085_Step0(void) {
-    sub_020624CC(1, 0, 1);
-}
-
-
-void MapObjectMovementCmd086_Step0(void) {
-    sub_020624CC(1, 0, 2, 1);
-}
-
-
-void MapObjectMovementCmd087_Step0(void) {
-    sub_020624CC(1, 0, 3, 1, 1);
-}
-
-
-void MapObjectMovementCmd088_Step0(void) {
-    sub_020624CC(1, 0, 9, 1, 4);
-}
-
-
-void MapObjectMovementCmd089_Step0(void) {
-    sub_020624CC(1, 1, 9, 4);
-}
-
-
-void MapObjectMovementCmd090_Step0(void) {
-    sub_020624CC(1, 2, 9, 4);
-}
-
-
-void MapObjectMovementCmd091_Step0(void) {
-    sub_020624CC(1, 3, 9, 1, 4);
-}
-
-
-void sub_020627B0(void) {
     sub_0205F3C0(0xc);
-    *((u16*)(r0 + 2)) = (r6 + 1);
-    MapObject_SetFacingDirection(r5, r7);
-    sub_0205F328(r5, r4);
-    sub_02060F78(r5);
+    // add r1, sp, #8
+    // strh r1, [r0]
+    *((u16*)(r0 + 2)) = r7;
+    *((u32*)(r0 + 4)) = r4;
+    *((u32*)(r0 + 8)) = r6;
+    sub_02060F24(r5, r4);
+    MapObject_SetOrQueueFacing(r5, r4);
+    // add r1, sp, #8
+    sub_0205F328(r5, *((u16*)(r1 + 0x10)));
+    MapObject_SetFlagsBits(r5, 4);
     MapObject_IncrementMovementStep(r5);
 }
 
 
-void MapObjectMovementCmd040_Step1(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_0205F3E4
-    // mov r1, #2
-    // ldrsh r2, [r0, r1]
-    // sub r2, r2, #1
-    // strh r2, [r0, #2]
-    // ldrsh r0, [r0, r1]
-    // cmp r0, #0
-    // ble _020627FE
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #0x20
-    // bl MapObject_SetFlagsBits
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_0205F328
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+
+void MapObjectMovementCmd090_Step1(void) {
+    sub_0205F3E4();
+    sub_0206101C(r5, *((u32*)(r0 + 4)), *((u32*)(r0 + 8)));
+    sub_02061070(r5);
+    // ldrsh r1, [r4, r0]
+    *((u16*)(r4 + 2)) = (r1 - 1);
+    // ldrsh r0, [r4, r0]
+    MapObject_SetFlagsBits(r5, 0x28);
+    sub_02060F78(r5);
+    sub_0205F484(r5);
+    sub_0205F328(r5, 0);
+    MapObject_IncrementMovementStep(r5);
 }
+
+
+
+void MapObjectMovementCmd004_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd005_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd006_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd007_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd008_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd009_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd010_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd011_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd012_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd013_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd014_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd015_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd016_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd017_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd018_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd019_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd020_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd021_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd022_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd023_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd084_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd085_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd086_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd087_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd088_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd089_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd090_Step0(void) {
+}
+
+
+
+void MapObjectMovementCmd091_Step0(void) {
+}
+
+
+
+void sub_020627B0(void) {
+}
+
+
+
+void MapObjectMovementCmd040_Step1(void) {
+    sub_0205F3E4();
+    // ldrsh r2, [r0, r1]
+    *((u16*)(r0 + 2)) = (r2 - 1);
+    // ldrsh r0, [r0, r1]
+    MapObject_SetFlagsBits(r4, 0x20, (r2 - 1));
+    sub_0205F328(r4, 0);
+    MapObject_IncrementMovementStep(r4);
+}
+
 
 
 void MapObjectMovementCmd024_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd025_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd026_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd027_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd028_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd029_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd030_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd031_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd032_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd033_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd034_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd035_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd036_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd037_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd038_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd039_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd040_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd041_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd042_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void MapObjectMovementCmd043_Step0(void) {
-    sub_020627B0();
 }
+
 
 
 void sub_02062958(void) {
@@ -855,6 +656,7 @@ void sub_02062958(void) {
     // _020629C8: .word SEQ_SE_DP_DANSA
     // TODO: decompile
 }
+
 
 
 void MapObjectMovementCmd092_Step1(void) {
@@ -965,238 +767,184 @@ void MapObjectMovementCmd092_Step1(void) {
 }
 
 
+
 void MapObjectMovementCmd044_Step0(void) {
-    sub_02062958(1, 0, 2, 0x10);
 }
+
 
 
 void MapObjectMovementCmd045_Step0(void) {
-    sub_02062958(1, 1, 2, 0, 0x10);
 }
+
 
 
 void MapObjectMovementCmd046_Step0(void) {
-    sub_02062958(1, 2, 0, 0x10);
 }
+
 
 
 void MapObjectMovementCmd047_Step0(void) {
-    sub_02062958(1, 2, 3, 0, 0x10);
 }
+
 
 
 void MapObjectMovementCmd048_Step0(void) {
-    sub_02062958(1, 0, 3, 2, 8);
 }
+
 
 
 void MapObjectMovementCmd049_Step0(void) {
-    sub_02062958(1, 1, 2, 3, 0, 8);
 }
+
 
 
 void MapObjectMovementCmd050_Step0(void) {
-    sub_02062958(1, 2, 2, 3, 0, 8);
 }
+
 
 
 void MapObjectMovementCmd051_Step0(void) {
-    sub_02062958(1, 3, 0, 2, 8);
 }
+
 
 
 void MapObjectMovementCmd052_Step0(void) {
-    sub_02062958(1, 0, 3, 2, 8);
 }
+
 
 
 void MapObjectMovementCmd053_Step0(void) {
-    sub_02062958(1, 0, 1, 2, 3, 8);
 }
+
 
 
 void MapObjectMovementCmd054_Step0(void) {
-    sub_02062958(1, 0, 2, 2, 3, 8);
 }
+
 
 
 void MapObjectMovementCmd055_Step0(void) {
-    sub_02062958(1, 3, 0, 2, 8);
 }
+
 
 
 void MapObjectMovementCmd056_Step0(void) {
-    sub_02062958(1, 0, 2, 3, 0x10);
 }
+
 
 
 void MapObjectMovementCmd057_Step0(void) {
-    sub_02062958(1, 0, 1, 3, 0x10);
 }
+
 
 
 void MapObjectMovementCmd058_Step0(void) {
-    sub_02062958(1, 0, 2, 3, 0x10);
 }
+
 
 
 void MapObjectMovementCmd059_Step0(void) {
-    sub_02062958(1, 3, 0, 2, 0x10);
 }
+
 
 
 void MapObjectMovementCmd092_Step0(void) {
-    sub_02062958(1, 0, 0xa, 0xf0, 2, 0x10);
 }
+
 
 
 void MapObjectMovementCmd093_Step0(void) {
-    sub_02062958(1, 0, 0xa, 0xf0, 3, 1, 0x10);
 }
+
 
 
 void MapObjectMovementCmd094_Step0(void) {
-    sub_02062958(1, 0, 0xb, 2, 5, 0xc);
 }
+
 
 
 void MapObjectMovementCmd095_Step0(void) {
-    // push {lr}
-    // sub sp, #0xc
-    // mov r1, #0xb
     // str r1, [sp]
-    // mov r1, #0
     // str r1, [sp, #4]
-    // mov r1, #5
-    // lsl r1, r1, #6
-    // mov r2, #1
     // str r1, [sp, #8]
-    // mov r1, #3
-    // lsl r2, r2, #0xe
-    // mov r3, #0xc
-    // bl sub_02062958
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {pc}
-    // TODO: decompile
+    sub_02062958(3, (1 << 0xe), 0xc);
 }
+
 
 
 void sub_02062D54(void) {
-    sub_0205F3C0(4);
-    MapObject_IncrementMovementStep(r5);
 }
+
 
 
 void MapObjectMovementCmd064_Step1(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_0205F3E4
-    // ldr r1, [r0]
-    // cmp r1, #0
-    // beq _02062D82
-    // sub r1, r1, #1
+    sub_0205F3E4();
     // str r1, [r0]
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    MapObject_IncrementMovementStep(r4, (*((u32*)r0) - 1));
 }
+
 
 
 void MapObjectMovementCmd060_Step0(void) {
-    sub_02062D54();
 }
+
 
 
 void MapObjectMovementCmd061_Step0(void) {
-    sub_02062D54();
 }
+
 
 
 void MapObjectMovementCmd062_Step0(void) {
-    sub_02062D54();
 }
+
 
 
 void MapObjectMovementCmd063_Step0(void) {
-    sub_02062D54();
 }
+
 
 
 void MapObjectMovementCmd064_Step0(void) {
-    sub_02062D54();
 }
+
 
 
 void MapObjectMovementCmd065_Step0(void) {
-    sub_02062D54();
 }
+
 
 
 void MapObjectMovementCmd066_Step0(void) {
-    sub_02062D54();
 }
+
 
 
 void MapObjectMovementCmd067_Step0(void) {
-    // push {r4, lr}
-    // mov r1, #8
-    // add r4, r0, #0
-    // bl sub_0205F3C0
-    // mov r1, #1
-    // lsl r1, r1, #0x10
-    // str r1, [r0, #4]
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_0205F328
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_0205F3C0(8);
+    *((u32*)(r0 + 4)) = (1 << 0x10);
+    sub_0205F328(r4, 0);
+    MapObject_IncrementMovementStep(r4);
 }
+
 
 
 void MapObjectMovementCmd067_Step1(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // bl sub_0205F3E4
-    // add r4, r0, #0
-    // ldr r1, [r4]
-    // ldr r0, [r4, #4]
+    sub_0205F3E4();
     // add r0, r1, r0
     // str r0, [r4]
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // ldr r0, [r4]
+    *((u32*)(*((u32*)r0) + 4)) = 0;
+    *((u32*)(*((u32*)r0) + 8)) = 0;
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // bl MapObject_SetFacingVector
-    // ldr r1, [r4]
+    MapObject_SetFacingVector(r5, *((u32*)r0));
     // asr r0, r1, #0xe
-    // lsr r0, r0, #0x11
     // add r0, r1, r0
     // asr r0, r0, #0xf
-    // cmp r0, #0x28
-    // bge _02062E40
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, pc}
-    // add r0, r5, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    MapObject_IncrementMovementStep(r5, *((u32*)r4));
 }
+
 
 
 void MapObjectMovementCmd068_Step0(void) {
@@ -1222,313 +970,199 @@ void MapObjectMovementCmd068_Step0(void) {
 }
 
 
+
 void MapObjectMovementCmd068_Step1(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // bl sub_0205F3E4
-    // add r4, r0, #0
-    // ldr r1, [r4]
-    // ldr r0, [r4, #4]
+    sub_0205F3E4();
     // add r0, r1, r0
     // str r0, [r4]
     // bpl _02062E92
-    // mov r0, #0
     // str r0, [r4]
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // ldr r0, [r4]
+    *((u32*)(*((u32*)r0) + 4)) = 0;
+    *((u32*)(*((u32*)r0) + 8)) = 0;
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // bl MapObject_SetFacingVector
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // ble _02062EB2
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, pc}
-    // add r0, r5, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    MapObject_SetFacingVector(r5, *((u32*)r0));
+    MapObject_IncrementMovementStep(r5);
 }
+
 
 
 void MapObjectMovementCmd069_Step0(void) {
-    // push {r4, lr}
-    // mov r1, #2
-    // add r4, r0, #0
-    // lsl r1, r1, #8
-    // bl MapObject_SetFlagsBits
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    MapObject_SetFlagsBits((2 << 8));
+    MapObject_IncrementMovementStep(r4);
 }
+
 
 
 void MapObjectMovementCmd070_Step0(void) {
-    // push {r4, lr}
-    // mov r1, #2
-    // add r4, r0, #0
-    // lsl r1, r1, #8
-    // bl MapObject_ClearFlagsBits
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    MapObject_ClearFlagsBits((2 << 8));
+    MapObject_IncrementMovementStep(r4);
 }
+
 
 
 u32 MapObjectMovementCmd071_Step0(void) {
-    MapObject_SetFlagsBits(0x80);
-    MapObject_IncrementMovementStep(r4);
-    return 1;
 }
+
 
 
 u32 MapObjectMovementCmd072_Step0(void) {
-    MapObject_ClearFlagsBits(0x80);
-    MapObject_IncrementMovementStep(r4);
-    return 1;
 }
+
 
 
 void MapObjectMovementCmd073_Step0(void) {
-    // push {r4, lr}
-    // mov r1, #1
-    // add r4, r0, #0
-    // lsl r1, r1, #8
-    // bl MapObject_SetFlagsBits
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    MapObject_SetFlagsBits((1 << 8));
+    MapObject_IncrementMovementStep(r4);
 }
+
 
 
 void MapObjectMovementCmd074_Step0(void) {
-    // push {r4, lr}
-    // mov r1, #1
-    // add r4, r0, #0
-    // lsl r1, r1, #8
-    // bl MapObject_ClearFlagsBits
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    MapObject_ClearFlagsBits((1 << 8));
+    MapObject_IncrementMovementStep(r4);
 }
+
 
 
 void sub_02062F48(void) {
-    sub_0205F3C0(8);
-    ov01_02200540(r5, r6, 1);
-    *((u32*)(r4 + 4)) = r0;
-    MapObject_IncrementMovementStep(r5);
 }
+
 
 
 void MapObjectMovementCmd075_Step1(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl sub_0205F3E4
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // bl ov01_022003F4
-    // cmp r0, #1
-    // bne _02062F90
-    // ldr r0, [r4, #4]
-    // bl sub_02068B48
-    // add r0, r5, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
-}
-
-
-void MapObjectMovementCmd075_Step0(void) {
-    sub_02062F48();
-}
-
-
-void MapObjectMovementCmd103_Step0(void) {
-    sub_02062F48();
-}
-
-
-void sub_02062FAC(void) {
-    sub_0205F3C0(8);
-    *((u16*)(r0 + 2)) = r6;
-    *((u16*)(r0 + 4)) = r7;
-    sub_02060F24(r5, r4);
-    MapObject_SetOrQueueFacing(r5, r4);
-    sub_0205F328(r5, r6);
-    MapObject_SetFlagsBits(r5, 4);
+    sub_0205F3E4();
+    ov01_022003F4(*((u32*)(r0 + 4)));
+    sub_02068B48(*((u32*)(r4 + 4)));
     MapObject_IncrementMovementStep(r5);
 }
 
 
-void sub_02062FEC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // bl sub_0205F3E4
-    // add r4, r0, #0
-    // mov r2, #6
-    // ldrsh r2, [r4, r2]
-    // mov r1, #0
-    // ldrsh r1, [r4, r1]
-    // lsl r2, r2, #2
-    // ldr r2, [r6, r2]
-    // add r0, r5, #0
-    // bl sub_0206101C
-    // add r0, r5, #0
-    // bl sub_02061070
-    // mov r0, #6
-    // ldrsh r1, [r4, r0]
-    // add r1, r1, #1
-    // strh r1, [r4, #6]
-    // ldrsh r1, [r4, r0]
-    // mov r0, #4
-    // ldrsh r0, [r4, r0]
-    // cmp r1, r0
-    // bge _02063026
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r5, #0
-    // mov r1, #0x28
-    // bl MapObject_SetFlagsBits
-    // add r0, r5, #0
-    // bl sub_02060F78
-    // add r0, r5, #0
-    // bl sub_0205F484
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl sub_0205F328
-    // add r0, r5, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+
+void MapObjectMovementCmd075_Step0(void) {
 }
+
+
+
+void MapObjectMovementCmd103_Step0(void) {
+}
+
+
+
+void sub_02062FAC(void) {
+}
+
+
+
+void sub_02062FEC(void) {
+    sub_0205F3E4();
+    // ldrsh r2, [r4, r2]
+    // ldrsh r1, [r4, r1]
+    // ldr r2, [r6, r2]
+    sub_0206101C(r5, 0, (6 << 2));
+    sub_02061070(r5);
+    // ldrsh r1, [r4, r0]
+    *((u16*)(r4 + 6)) = (r1 + 1);
+    // ldrsh r1, [r4, r0]
+    // ldrsh r0, [r4, r0]
+    MapObject_SetFlagsBits(r5, 0x28);
+    sub_02060F78(r5);
+    sub_0205F484(r5);
+    sub_0205F328(r5, 0);
+    MapObject_IncrementMovementStep(r5);
+}
+
 
 
 void MapObjectMovementCmd076_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd077_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd078_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd079_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd076_Step1(void) {
-    sub_02062FEC(0, 1);
 }
+
 
 
 void MapObjectMovementCmd080_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd081_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd082_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd083_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd082_Step1(void) {
-    sub_02062FEC(0, 1);
 }
+
 
 
 void MapObjectMovementCmd096_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd097_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd098_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd099_Step0(void) {
-    sub_02062FAC();
 }
+
 
 
 void MapObjectMovementCmd098_Step1(void) {
-    sub_02062FEC(0, 1);
 }
+
 
 
 u32 MapObjectMovementCmd100_Step0(void) {
-    sub_0205F3C0(4);
-    sub_0205F328(r4, 9);
-    MapObject_IncrementMovementStep(r4);
-    return 0;
 }
+
 
 
 void MapObjectMovementCmd100_Step1(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_0205F3E4
-    // ldr r1, [r0]
-    // add r1, r1, #1
+    sub_0205F3E4();
     // str r1, [r0]
-    // cmp r1, #8
-    // blt _02063198
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl MapObject_SetFacingDirection
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_0205F328
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    MapObject_SetFacingDirection(r4, 1);
+    sub_0205F328(r4, 0);
+    MapObject_IncrementMovementStep(r4);
 }
+
 
 
 void MapObjectMovementCmd101_Step0(void) {
@@ -1567,6 +1201,7 @@ void MapObjectMovementCmd101_Step0(void) {
     // _020631EC: .word 0x00010004
     // TODO: decompile
 }
+
 
 
 void MapObjectMovementCmd101_Step1(void) {
@@ -1618,37 +1253,21 @@ void MapObjectMovementCmd101_Step1(void) {
 }
 
 
+
 u32 MapObjectMovementCmd102_Step0(void) {
-    sub_0205F3C0(4);
-    sub_0205F328(r4, 0);
-    MapObject_IncrementMovementStep(r4);
-    return 0;
 }
+
 
 
 u32 MapObjectMovementCmd104_Step0(void) {
-    sub_0205F3C0(4);
-    sub_0205F328(r4, 1);
-    MapObject_IncrementMovementStep(r4);
-    return 0;
 }
+
 
 
 void MapObjectMovementCmd102_Step1(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_0205F3E4
-    // ldr r1, [r0]
-    // add r1, r1, #1
+    sub_0205F3E4();
     // str r1, [r0]
-    // cmp r1, #0x15
-    // bhs _020632A6
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // bl MapObject_IncrementMovementStep
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    MapObject_IncrementMovementStep(r4, (*((u32*)r0) + 1));
 }
+
 

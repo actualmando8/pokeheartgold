@@ -14,6 +14,7 @@ void sub_0208F814(void) {
 }
 
 
+
 void sub_0208F828(void) {
     // push {r3, r4, r5, lr}
     // add r5, r2, #0
@@ -84,6 +85,7 @@ void sub_0208F828(void) {
 }
 
 
+
 void sub_0208F8BC(void) {
     // push {r3, r4}
     // cmp r0, #0
@@ -106,6 +108,7 @@ void sub_0208F8BC(void) {
     // _0208F8E0: .word 0x000093BD
     // TODO: decompile
 }
+
 
 
 void sub_0208F8E4(void) {
@@ -136,6 +139,7 @@ void sub_0208F8E4(void) {
     // _0208F914: .word 0x00004382
     // TODO: decompile
 }
+
 
 
 void sub_0208F918(void) {
@@ -170,6 +174,7 @@ void sub_0208F918(void) {
     // _0208F95C: .word 0x000093F4
     // TODO: decompile
 }
+
 
 
 void sub_0208F960(void) {
@@ -283,10 +288,12 @@ void sub_0208F960(void) {
 }
 
 
+
 void sub_0208FA50(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0208FA54(void) {
@@ -316,10 +323,12 @@ void sub_0208FA54(void) {
 }
 
 
+
 void sub_0208FA88(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0208FA8C(void) {
@@ -328,19 +337,12 @@ void sub_0208FA8C(void) {
 }
 
 
+
 void sub_0208FA90(void) {
-    // push {r4, lr}
-    // add r4, r3, #0
-    // bl sub_0203769C
-    // cmp r0, #0
-    // beq _0208FAA6
-    // add r0, r4, #0
-    // mov r1, #0xf
-    // mov r2, #0
-    // bl ov37_021E6FC8
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_0203769C();
+    ov37_021E6FC8(r4, 0xf, 0);
 }
+
 
 
 void sub_0208FAA8(void) {
@@ -376,6 +378,7 @@ void sub_0208FAA8(void) {
 }
 
 
+
 void sub_0208FAEC(void) {
     // ldr r0, _0208FAF4 ; =0x000093F4
     // mov r1, #1
@@ -384,6 +387,7 @@ void sub_0208FAEC(void) {
     // _0208FAF4: .word 0x000093F4
     // TODO: decompile
 }
+
 
 
 void sub_0208FAF8(void) {
@@ -429,25 +433,21 @@ void sub_0208FAF8(void) {
 }
 
 
-void sub_0208FB4C(void) {
-    // mov r2, #2
-    // lsl r2, r2, #0xe
+
+u32 sub_0208FB4C(void) {
     // add r2, r1, r2
-    // mov r1, #0x3f
-    // lsl r1, r1, #4
     // mul r1, r0
     // add r0, r2, r1
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 u8 sub_0208FB5C(void) {
-    return 4;
 }
+
 
 
 u8 sub_0208FB60(void) {
-    return 4;
 }
+
 

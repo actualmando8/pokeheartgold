@@ -2,121 +2,47 @@
 #include "global.h"
 
 void ov01_021F3F50(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // ldr r4, [r1, #0xc]
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl Save_LocalFieldData_Get
-    // bl LocalFieldData_GetCurrentPosition
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // bl Save_Pokedex_Get
-    // add r7, r0, #0
-    // ldr r0, [r6]
-    // bl MapHeader_GetMapSec
-    // str r0, [r5, #4]
-    // add r0, r7, #0
-    // bl Pokedex_IsEnabled
-    // cmp r0, #0
-    // beq _021F3F84
-    // add r0, r7, #0
-    // bl Pokedex_CountDexOwned
-    // b _021F3F86
-    // mov r0, #0
+    Save_LocalFieldData_Get(*((u32*)(r1 + 0xc)));
+    LocalFieldData_GetCurrentPosition();
+    Save_Pokedex_Get(r4);
+    MapHeader_GetMapSec(*((u32*)r6));
+    *((u32*)(r5 + 4)) = r0;
+    Pokedex_IsEnabled(r7);
+    Pokedex_CountDexOwned(r7);
     // str r0, [r5]
-    // add r0, r4, #0
-    // bl Save_PlayerData_GetProfile
-    // str r0, [r5, #8]
-    // add r0, r4, #0
-    // bl Save_PlayerData_GetIGTAddr
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Save_PlayerData_GetProfile(r4);
+    *((u32*)(r5 + 8)) = r0;
+    Save_PlayerData_GetIGTAddr(r4);
+    *((u32*)(r5 + 0xc)) = r0;
 }
+
 
 
 void ov01_021F3F9C(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r4, r1, #0
-    // ldr r2, [r4, #4]
-    // mov r1, #0
-    // add r5, r0, #0
-    // bl BufferLandmarkName
-    // ldr r2, [r4, #8]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl BufferPlayersName
-    // ldr r0, [r4, #8]
-    // bl PlayerProfile_CountBadges
-    // add r2, r0, #0
-    // mov r0, #0
+    BufferLandmarkName(0, *((u32*)(r1 + 4)));
+    BufferPlayersName(r5, 1, *((u32*)(r4 + 8)));
+    PlayerProfile_CountBadges(*((u32*)(r4 + 8)));
     // str r0, [sp]
-    // mov r0, #1
-    // mov r1, #2
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // add r3, r1, #0
-    // bl BufferIntegerAsString
-    // ldr r2, [r4]
-    // cmp r2, #0x64
-    // blt _021F3FDC
-    // mov r3, #3
-    // mov r0, #0
-    // b _021F3FEA
-    // cmp r2, #0xa
-    // blt _021F3FE6
-    // mov r3, #3
-    // mov r0, #1
-    // b _021F3FEA
-    // mov r3, #2
-    // mov r0, #1
+    BufferIntegerAsString(r5, 2, r0, 2);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl BufferIntegerAsString
-    // ldr r0, [r4, #0xc]
-    // bl GetIGTHours
-    // add r2, r0, #0
-    // cmp r2, #0x64
-    // blt _021F400A
-    // mov r3, #3
-    // mov r0, #0
-    // b _021F4018
-    // cmp r2, #0xa
-    // blt _021F4014
-    // mov r3, #3
-    // mov r0, #1
-    // b _021F4018
-    // mov r3, #2
-    // mov r0, #1
+    BufferIntegerAsString(r5, 3, *((u32*)r4), 2);
+    GetIGTHours(*((u32*)(r4 + 0xc)));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #4
-    // bl BufferIntegerAsString
-    // ldr r0, [r4, #0xc]
-    // bl GetIGTMinutes
-    // mov r3, #2
-    // add r2, r0, #0
+    BufferIntegerAsString(r5, 4, r0, 2);
+    GetIGTMinutes(*((u32*)(r4 + 0xc)));
     // str r3, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #5
-    // bl BufferIntegerAsString
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    BufferIntegerAsString(r5, 5, r0, 2);
 }
+
 
 
 u8 ov01_021F4044(void) {
-    return 0xa;
 }
+
 
 
 void ov01_021F4048(void) {
@@ -223,6 +149,7 @@ void ov01_021F4048(void) {
 }
 
 
+
 void Field_SaveStatsPrinter_Print(void) {
     // push {r3, r4, lr}
     // sub sp, #0x14
@@ -279,11 +206,10 @@ void Field_SaveStatsPrinter_Print(void) {
 }
 
 
+
 void Field_SaveStatsPrinter_RemoveFromScreen(void) {
-    sub_0200E5D4(*((u32*)(r0 + 0x10)), 0);
-    RemoveWindow(*((u32*)(r4 + 0x10)));
-    Heap_Free(*((u32*)(r4 + 0x10)));
 }
+
 
 
 void Field_SaveStatsPrinter_New(void) {
@@ -330,42 +256,21 @@ void Field_SaveStatsPrinter_New(void) {
 }
 
 
+
 void Field_SaveStatsPrinter_Delete(void) {
-    DestroyMsgData(*((u32*)(r0 + 0x18)));
-    MessageFormat_Delete(*((u32*)(r4 + 0x14)));
-    Heap_Free(r4);
 }
+
 
 
 void ov01_021F4234(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r4, #0
-    // cmp r2, #1
-    // beq _021F4244
-    // cmp r2, #2
-    // beq _021F4254
-    // b _021F4268
-    // add r0, r3, #0
-    // add r2, r4, #0
-    // bl FontID_String_GetWidth
-    // ldrb r1, [r5, #7]
-    // lsl r1, r1, #3
+    FontID_String_GetWidth(r3, 0);
     // sub r4, r1, r0
-    // b _021F4268
-    // add r0, r3, #0
-    // add r2, r4, #0
-    // bl FontID_String_GetWidth
-    // ldrb r1, [r5, #7]
-    // lsl r1, r1, #3
+    FontID_String_GetWidth(r3, (*((u8*)(r5 + 7)) << 3), r4);
     // sub r1, r1, r0
-    // lsr r0, r1, #0x1f
     // add r0, r1, r0
     // asr r4, r0, #1
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021F426C(void) {
@@ -435,6 +340,7 @@ void ov01_021F426C(void) {
 }
 
 
+
 void ov01_021F42F8(void) {
     // push {r3, r4, lr}
     // sub sp, #0x14
@@ -476,10 +382,10 @@ void ov01_021F42F8(void) {
 }
 
 
+
 void ov01_021F434C(void) {
-    RemoveWindow(*((u32*)(r0 + 0x10)));
-    Heap_Free(*((u32*)(r4 + 0x10)));
 }
+
 
 
 void ov01_021F4360(void) {
@@ -533,74 +439,37 @@ void ov01_021F4360(void) {
 }
 
 
+
 void ov01_021F43D0(void) {
-    DestroyMsgData(*((u32*)(r0 + 0x18)));
-    MessageFormat_Delete(*((u32*)(r4 + 0x14)));
-    Heap_Free(r4);
 }
+
 
 
 void Field_SaveGameNormal(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl ov01_021F4404
-    // ldr r0, [r4, #0xc]
-    // bl SaveGameNormal
-    // cmp r0, #2
-    // bne _021F43FE
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    ov01_021F4404();
+    SaveGameNormal(*((u32*)(r4 + 0xc)));
 }
+
 
 
 void ov01_021F4404(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl FieldSystem_SyncMapObjectsToSave
-    // add r0, r4, #0
-    // mov r1, #4
-    // mov r2, #0
-    // bl ov01_021F6830
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetXCoord
-    // ldr r1, [r4, #0x20]
-    // str r0, [r1, #8]
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetZCoord
-    // ldr r1, [r4, #0x20]
-    // str r0, [r1, #0xc]
-    // mov r1, #0
-    // ldr r0, [r4, #0x20]
+    FieldSystem_SyncMapObjectsToSave();
+    ov01_021F6830(r4, 4, 0);
+    PlayerAvatar_GetXCoord(*((u32*)(r4 + 0x40)));
+    *((u32*)(*((u32*)(r4 + 0x20)) + 8)) = r0;
+    PlayerAvatar_GetZCoord(*((u32*)(r4 + 0x40)), *((u32*)(r4 + 0x20)));
+    *((u32*)(*((u32*)(r4 + 0x20)) + 0xc)) = r0;
     // mvn r1, r1
-    // str r1, [r0, #4]
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // ldr r1, [r4, #0x20]
-    // str r0, [r1, #0x10]
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u32*)(*((u32*)(r4 + 0x20)) + 4)) = 0;
+    PlayerAvatar_GetFacingDirection(*((u32*)(r4 + 0x40)), 0);
+    *((u32*)(*((u32*)(r4 + 0x20)) + 0x10)) = r0;
 }
+
 
 
 void ov01_021F4440(void) {
-    // push {r3, lr}
-    // cmp r0, #0
-    // bne _021F444C
-    // bl GF_AssertFail
-    // pop {r3, pc}
-    // ldr r1, [r0, #0x20]
-    // ldr r1, [r1]
-    // cmp r1, #MAP_UNION
-    // beq _021F4460
-    // cmp r1, #MAP_WIFI_SINGLE_BATTLE_AREA
-    // beq _021F4460
-    // cmp r1, #MAP_WIFI_MULTI_BATTLE_AREA
-    // beq _021F4460
-    // bl ov01_021F4404
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    ov01_021F4404(*((u32*)*((u32*)(r0 + 0x20))));
 }
+
 

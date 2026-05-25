@@ -2,51 +2,35 @@
 #include "global.h"
 
 void sub_02087284(void) {
-    // push {r0, r1, r2, r3}
-    // push {r4, lr}
     // ldr r4, [sp, #0xc]
-    // mov r1, #0x42
-    // add r0, r4, #0
-    // lsl r1, r1, #2
-    // bl Heap_Alloc
+    Heap_Alloc(r4, (0x42 << 2));
     // ldr r1, [sp, #8]
-    // mov r3, #0
-    // str r1, [r0, #0x10]
+    *((u32*)(r0 + 0x10)) = r1;
     // ldr r1, [sp, #0x10]
-    // str r4, [r0, #0x14]
-    // str r1, [r0, #0x18]
+    *((u32*)(r0 + 0x14)) = r4;
+    *((u32*)(r0 + 0x18)) = r1;
     // ldr r1, [sp, #0x14]
-    // mov r2, #0xf
-    // str r1, [r0, #0x1c]
+    *((u32*)(r0 + 0x1c)) = r1;
     // ldr r1, [sp, #0x18]
-    // str r1, [r0, #0x20]
+    *((u32*)(r0 + 0x20)) = r1;
     // ldr r1, [sp, #0x1c]
-    // str r1, [r0, #4]
+    *((u32*)(r0 + 4)) = r1;
     // ldr r1, [sp, #0x20]
-    // str r1, [r0, #8]
+    *((u32*)(r0 + 8)) = r1;
     // ldr r1, [sp, #0x24]
-    // str r1, [r0, #0xc]
-    // add r1, r0, #0
+    *((u32*)(r0 + 0xc)) = r1;
     // add r1, #0xe4
     // str r3, [r1]
-    // add r1, r0, #0
     // add r1, #0xfc
     // str r2, [r1]
-    // add r1, r2, #0
     // add r1, #0xf1
     // str r2, [r0, r1]
-    // add r1, r0, #0
     // add r1, #0xf4
     // str r3, [r1]
-    // add r1, r0, #0
     // add r1, #0xf0
     // str r3, [r1]
-    // pop {r4}
-    // pop {r3}
-    // add sp, #0x10
-    // bx r3
-    // TODO: decompile
 }
+
 
 
 void sub_020872DC(void) {
@@ -149,6 +133,7 @@ void sub_020872DC(void) {
     // _020873D0: .word 0x45800000
     // TODO: decompile
 }
+
 
 
 void sub_020873D4(void) {
@@ -422,6 +407,7 @@ void sub_020873D4(void) {
 }
 
 
+
 void sub_0208763C(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x1c
@@ -476,6 +462,7 @@ void sub_0208763C(void) {
     // _020876AC: .word _02102814
     // TODO: decompile
 }
+
 
 
 void sub_020876B0(void) {
@@ -603,6 +590,7 @@ void sub_020876B0(void) {
 }
 
 
+
 void sub_020877B4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x38
@@ -666,6 +654,7 @@ void sub_020877B4(void) {
 }
 
 
+
 void sub_02087830(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -702,6 +691,7 @@ void sub_02087830(void) {
 }
 
 
+
 void sub_02087878(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -730,262 +720,109 @@ void sub_02087878(void) {
 }
 
 
+
 void sub_020878B0(void) {
-    /* add r0, #0xf0 */
-    *(u32*)r0 = r1;
-    r0 = 1;
 }
+
 
 
 void sub_020878B8(void) {
-    // push {r3, r4}
-    // strh r1, [r0, #0x28]
-    // add r1, r0, #0
-    // strh r2, [r0, #0x2a]
-    // mov r2, #0xff
+    *((u16*)(r0 + 0x28)) = r1;
+    *((u16*)(r0 + 0x2a)) = r2;
     // add r1, #0xe8
     // str r2, [r1]
-    // add r1, r0, #0
-    // mov r3, #0
     // add r1, #0xec
     // str r3, [r1]
-    // ldr r1, [r0, #0x10]
-    // cmp r1, #0
-    // ble _020878E4
-    // add r4, r0, #0
-    // add r2, r3, #0
-    // str r2, [r4, #0x2c]
-    // ldr r1, [r0, #0x10]
-    // add r3, r3, #1
+    *((u32*)(r0 + 0x2c)) = 0;
     // add r4, #0x10
-    // cmp r3, r1
-    // blt _020878D8
-    // mov r0, #1
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020878EC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // bl sub_02087930
-    // cmp r0, #0
-    // bne _02087900
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // strh r4, [r5, #0x28]
-    // add r0, r5, #0
-    // strh r6, [r5, #0x2a]
-    // mov r1, #0xff
+    sub_02087930();
+    *((u16*)(r5 + 0x28)) = r4;
+    *((u16*)(r5 + 0x2a)) = r6;
     // add r0, #0xe8
     // str r1, [r0]
-    // add r0, r5, #0
-    // mov r2, #0
     // add r0, #0xec
     // str r2, [r0]
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // ble _0208792A
-    // add r3, r5, #0
-    // add r1, r2, #0
-    // str r1, [r3, #0x2c]
-    // ldr r0, [r5, #0x10]
-    // add r2, r2, #1
+    *((u32*)(r5 + 0x2c)) = 0;
     // add r3, #0x10
-    // cmp r2, r0
-    // blt _0208791E
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02087930(void) {
-    // mov r3, #0x28
     // ldrsh r3, [r0, r3]
-    // cmp r3, r1
-    // bne _02087944
-    // mov r1, #0x2a
     // ldrsh r0, [r0, r1]
-    // cmp r0, r2
-    // bne _02087944
-    // mov r0, #0
-    // bx lr
-    // mov r0, #1
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02087948(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
     // str r2, [sp]
-    // mov r1, #0xff
     // add r0, #0xe8
     // str r1, [r0]
-    // add r0, r5, #0
-    // mov r7, #0
     // add r0, #0xec
     // str r7, [r0]
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // ble _02087982
-    // add r4, r5, #0
-    // strh r6, [r4, #0x28]
+    *((u16*)(r0 + 0x28)) = r1;
     // ldr r0, [sp]
-    // add r1, r6, #0
-    // strh r0, [r4, #0x2a]
-    // ldr r0, [r4, #0x24]
+    *((u16*)(r0 + 0x2a)) = *((u32*)(r0 + 0x10));
     // ldr r2, [sp]
-    // ldr r3, [r5, #0x20]
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldr r0, [r5, #0x10]
-    // add r7, r7, #1
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r0 + 0x24)), r1, *((u32*)(r0 + 0x20)));
     // add r4, #0x10
-    // cmp r7, r0
-    // blt _02087966
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02087988(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r1, r4, #0
     // add r1, #0xe4
-    // ldr r1, [r1]
-    // cmp r1, #0
-    // beq _0208799C
-    // cmp r1, #1
-    // beq _020879B0
-    // b _020879C6
-    // mov r1, #0
-    // bl sub_020878B0
-    // add r0, r4, #0
+    sub_020878B0(0);
     // add r0, #0xe4
-    // ldr r0, [r0]
     // add r4, #0xe4
-    // add r0, r0, #1
     // str r0, [r4]
-    // b _020879DA
     // add r0, #0xf4
-    // ldr r0, [r0]
-    // bl SysTask_Destroy
-    // add r0, r4, #0
+    SysTask_Destroy(*((u32*)(*((u32*)r4) + 1)));
     // add r0, #0xe4
-    // ldr r0, [r0]
     // add r4, #0xe4
-    // add r0, r0, #1
     // str r0, [r4]
-    // b _020879DA
-    // bl sub_02087830
-    // ldr r0, [r4]
-    // bl NARC_Delete
-    // add r0, r4, #0
-    // bl Heap_Free
-    // mov r0, #0
-    // pop {r4, pc}
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02087830((*((u32*)r4) + 1));
+    NARC_Delete(*((u32*)r4));
+    Heap_Free(r4);
 }
+
 
 
 void sub_020879E0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // ldr r0, [r6, #0x10]
-    // add r7, r1, #0
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _02087A02
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x24]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r6, #0x10]
-    // add r4, r4, #1
+    ManagedSprite_SetDrawFlag(*((u32*)(r0 + 0x24)), r1);
     // add r5, #0x10
-    // cmp r4, r0
-    // blt _020879F0
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02087A08(void) {
-    // cmp r1, #0
-    // beq _02087A1E
-    // cmp r2, #0
-    // beq _02087A1E
-    // add r3, r0, #0
     // add r3, #0xfc
     // str r1, [r3]
-    // mov r1, #1
-    // lsl r1, r1, #8
     // str r2, [r0, r1]
-    // bx lr
-    // add r1, r0, #0
-    // mov r2, #0xf
     // add r1, #0xfc
     // str r2, [r1]
-    // add r1, r2, #0
     // add r1, #0xf1
     // str r2, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02087A30(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // ldr r0, [r6, #0x10]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _02087A52
-    // add r5, r6, #0
-    // mov r7, #1
-    // ldr r0, [r5, #0x24]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r6, #0x10]
-    // add r4, r4, #1
+    ManagedSprite_SetAnim(*((u32*)(r0 + 0x24)), 1);
     // add r5, #0x10
-    // cmp r4, r0
-    // blt _02087A40
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02087A54(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // ldr r0, [r6, #0x10]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _02087A76
-    // add r5, r6, #0
-    // add r7, r4, #0
-    // ldr r0, [r5, #0x24]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r6, #0x10]
-    // add r4, r4, #1
+    ManagedSprite_SetAnim(*((u32*)(r0 + 0x24)), 0);
     // add r5, #0x10
-    // cmp r4, r0
-    // blt _02087A64
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 

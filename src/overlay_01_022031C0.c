@@ -2,109 +2,57 @@
 #include "global.h"
 
 void ov01_022031C0(void) {
-    // push {r3, r4, r5, lr}
-    // mov r1, #5
-    // mov r2, #0
-    // lsl r1, r1, #6
-    // add r3, r2, #0
-    // add r5, r0, #0
-    // bl ov01_021F1430
-    // add r4, r0, #0
-    // add r0, r4, #4
-    // mov r1, #4
-    // mov r2, #0x20
+    ov01_021F1430((5 << 6), 0, 0);
     // str r5, [r4]
-    // bl HeapExp_FndInitAllocator
-    // add r0, r4, #0
-    // bl ov01_022031F8
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    HeapExp_FndInitAllocator((r0 + 4), 4, 0x20);
+    ov01_022031F8(r4);
 }
+
 
 
 void ov01_022031E8(void) {
-    ov01_02203270();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_022031F8(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // mov r1, #0x81
-    // mov r2, #0
-    // bl ov01_021F14B4
-    // str r0, [r4, #0x14]
-    // add r0, r4, #0
-    // ldr r1, [r4, #0x14]
+    ov01_021F14B4(*((u32*)r0), 0x81, 0);
+    *((u32*)(r4 + 0x14)) = r0;
     // add r0, #0x1c
-    // bl ov01_021FBD38
-    // add r0, r4, #0
-    // add r1, r4, #0
+    ov01_021FBD38(r4, *((u32*)(r4 + 0x14)));
     // add r0, #0x3c
     // add r1, #0x1c
-    // bl Field3dObject_InitFromModel
-    // ldr r0, [r4]
-    // mov r1, #0x68
-    // mov r2, #0
-    // bl ov01_021F14B4
-    // str r0, [r4, #0x18]
-    // add r0, r4, #0
-    // ldr r1, [r4, #0x18]
+    Field3dObject_InitFromModel(r4, r4);
+    ov01_021F14B4(*((u32*)r4), 0x68, 0);
+    *((u32*)(r4 + 0x18)) = r0;
     // add r0, #0x2c
-    // bl ov01_021FBD38
-    // add r0, r4, #0
-    // add r1, r4, #0
+    ov01_021FBD38(r4, *((u32*)(r4 + 0x18)));
     // add r0, #0xb4
     // add r1, #0x2c
-    // bl Field3dObject_InitFromModel
-    // mov r0, #4
+    Field3dObject_InitFromModel(r4, r4);
     // str r0, [sp]
-    // add r0, r4, #4
     // str r0, [sp, #4]
-    // mov r0, #0x4b
-    // lsl r0, r0, #2
-    // add r1, r4, #0
     // add r0, r4, r0
     // add r1, #0x2c
-    // mov r2, #0x67
-    // mov r3, #0xa4
-    // bl Field3dModelAnimation_LoadFromFilesystem
-    // mov r1, #0x4b
-    // add r0, r4, #0
-    // lsl r1, r1, #2
+    Field3dModelAnimation_LoadFromFilesystem((0x4b << 2), r4, 0x67, 0xa4);
     // add r0, #0xb4
     // add r1, r4, r1
-    // bl Field3dObject_AddAnimation
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    Field3dObject_AddAnimation(r4, (0x4b << 2));
 }
+
 
 
 void ov01_02203270(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
     // add r0, #0x1c
-    // bl ov01_021FBDFC
-    // ldr r0, [r4, #0x14]
-    // bl ov01_021F1448
-    // add r0, r4, #0
+    ov01_021FBDFC();
+    ov01_021F1448(*((u32*)(r4 + 0x14)));
     // add r0, #0x2c
-    // bl ov01_021FBDFC
-    // ldr r0, [r4, #0x18]
-    // bl ov01_021F1448
-    // mov r0, #0x4b
-    // lsl r0, r0, #2
+    ov01_021FBDFC(r4);
+    ov01_021F1448(*((u32*)(r4 + 0x18)));
     // add r0, r4, r0
-    // add r1, r4, #4
-    // bl Field3dModelAnimation_Unload
-    // pop {r4, pc}
-    // TODO: decompile
+    Field3dModelAnimation_Unload((0x4b << 2), (r4 + 4));
 }
+
 
 
 void ov01_0220329C(void) {
@@ -194,65 +142,39 @@ void ov01_0220329C(void) {
 }
 
 
+
 void ov01_0220335C(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // add r3, r0, #0
-    // mov r0, #0
-    // add r2, r4, #0
+    sub_02068D98();
     // str r0, [r4]
     // add r2, #0x18
-    // mov r6, #4
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // sub r6, r6, #1
-    // bne _02203374
-    // ldr r0, [r3]
     // str r0, [r2]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetSpriteID
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetID
-    // str r0, [r4, #8]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetMapID
-    // add r6, r4, #0
+    MapObject_GetSpriteID(*((u32*)(r4 + 0x30)), r4, r0);
+    *((u32*)(r4 + 4)) = r0;
+    MapObject_GetID(*((u32*)(r4 + 0x30)));
+    *((u32*)(r4 + 8)) = r0;
+    MapObject_GetMapID(*((u32*)(r4 + 0x30)));
     // add r3, sp, #0
     // add r6, #0x18
-    // str r0, [r4, #0xc]
+    *((u32*)(r4 + 0xc)) = r0;
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
-    // add r1, r2, #0
     // str r0, [r3]
-    // ldr r0, [r4, #0x24]
-    // bl sub_0206121C
-    // str r0, [r4, #0x14]
-    // add r0, r5, #0
+    sub_0206121C(*((u32*)(r4 + 0x24)), r3, r3);
+    *((u32*)(r4 + 0x14)) = r0;
     // add r1, sp, #0
-    // bl sub_02068DA8
-    // ldr r0, [r4, #0x2c]
+    sub_02068DA8(r5);
     // add r1, sp, #0
     // add r0, #0x3c
-    // bl Field3dObject_SetPos
-    // ldr r0, [r4, #0x2c]
+    Field3dObject_SetPos(*((u32*)(r4 + 0x2c)));
     // add r1, sp, #0
     // add r0, #0xb4
-    // bl Field3dObject_SetPos
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #0
+    Field3dObject_SetPos(*((u32*)(r4 + 0x2c)));
     // add r0, #0xb4
-    // bl Field3dObject_SetActiveFlag
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    Field3dObject_SetActiveFlag(*((u32*)(r4 + 0x2c)), 0);
 }
+
 
 
 void ov01_022033E0(void) {
@@ -261,299 +183,124 @@ void ov01_022033E0(void) {
 }
 
 
+
 void ov01_022033E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r4, r1, #0
-    // ldr r6, [r4, #0x30]
-    // ldr r1, [r4, #4]
-    // add r5, r0, #0
-    // ldr r2, [r4, #8]
-    // ldr r3, [r4, #0xc]
-    // add r0, r6, #0
-    // bl sub_0205F0F8
-    // cmp r0, #0
-    // bne _02203408
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4, #0x14]
-    // cmp r0, #0
-    // bne _02203440
-    // add r0, r5, #0
+    sub_0205F0F8(*((u32*)(r1 + 0x30)), *((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    ov01_021F1640(r5);
     // add r1, sp, #0xc
-    // bl sub_02068DB8
-    // add r3, r4, #0
+    sub_02068DB8(r5);
     // add r3, #0x18
     // add r2, sp, #0
     // ldmia r3!, {r0, r1}
-    // add r7, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // add r1, r7, #0
     // str r0, [r2]
-    // ldr r0, [r4, #0x24]
-    // bl sub_0206121C
-    // str r0, [r4, #0x14]
-    // cmp r0, #1
-    // bne _02203440
+    sub_0206121C(*((u32*)(r4 + 0x24)), r2, r4);
+    *((u32*)(r4 + 0x14)) = r0;
     // ldr r0, [sp, #4]
     // add r1, sp, #0xc
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl sub_02068DA8
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _02203452
-    // cmp r0, #1
-    // beq _02203464
-    // cmp r0, #2
-    // beq _02203498
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4, #0x10]
-    // add r0, r0, #1
-    // str r0, [r4, #0x10]
-    // cmp r0, #2
-    // blt _022034B2
-    // mov r0, #1
-    // add sp, #0x18
+    sub_02068DA8(r5);
+    *((u32*)(r4 + 0x10)) = (*((u32*)(r4 + 0x10)) + 1);
     // str r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #0
     // add r0, #0x3c
-    // bl Field3dObject_SetActiveFlag
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #1
+    Field3dObject_SetActiveFlag(*((u32*)(r4 + 0x2c)), 0);
     // add r0, #0xb4
-    // bl Field3dObject_SetActiveFlag
-    // add r0, r6, #0
-    // mov r1, #0
-    // bl sub_02069DC8
-    // add r0, r6, #0
-    // bl sub_0205F484
-    // mov r0, #0x4b
-    // ldr r1, [r4, #0x2c]
-    // lsl r0, r0, #2
+    Field3dObject_SetActiveFlag(*((u32*)(r4 + 0x2c)), 1);
+    sub_02069DC8(r6, 0);
+    sub_0205F484(r6);
     // add r0, r1, r0
-    // mov r1, #0
-    // bl Field3dModelAnimation_FrameSet
-    // mov r0, #2
+    Field3dModelAnimation_FrameSet((0x4b << 2), 0);
     // str r0, [r4]
-    // mov r0, #0x4b
-    // ldr r1, [r4, #0x2c]
-    // lsl r0, r0, #2
     // add r0, r1, r0
-    // mov r1, #1
-    // lsl r1, r1, #0xc
-    // bl Field3dModelAnimation_FrameAdvanceAndCheck
-    // cmp r0, #0
-    // beq _022034B2
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Field3dModelAnimation_FrameAdvanceAndCheck((0x4b << 2), (1 << 0xc));
+    ov01_021F1640(r5);
 }
+
 
 
 void ov01_022034B8(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x30]
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4, #8]
-    // ldr r3, [r4, #0xc]
-    // bl sub_0205F0F8
-    // cmp r0, #0
-    // bne _022034DA
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // add r0, r5, #0
+    sub_0205F0F8(*((u32*)(r1 + 0x30)), *((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    ov01_021F1640(r5);
     // add r1, sp, #0
-    // bl sub_02068DB8
-    // ldr r0, [r4, #0x2c]
+    sub_02068DB8(r5);
     // add r0, #0x3c
-    // bl Field3dObject_Draw
-    // ldr r0, [r4, #0x2c]
+    Field3dObject_Draw(*((u32*)(r4 + 0x2c)));
     // add r0, #0xb4
-    // bl Field3dObject_Draw
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    Field3dObject_Draw(*((u32*)(r4 + 0x2c)));
 }
+
 
 
 void ov01_022034F8(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x18
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x30]
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4, #8]
-    // ldr r3, [r4, #0xc]
-    // bl sub_0205F0F8
-    // cmp r0, #0
-    // bne _0220351A
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r4, #0x14]
-    // cmp r0, #0
-    // bne _02203552
-    // add r0, r5, #0
+    sub_0205F0F8(*((u32*)(r1 + 0x30)), *((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    ov01_021F1640(r5);
     // add r1, sp, #0xc
-    // bl sub_02068DB8
-    // add r6, r4, #0
+    sub_02068DB8(r5);
     // add r6, #0x18
     // add r3, sp, #0
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
-    // add r1, r2, #0
     // str r0, [r3]
-    // ldr r0, [r4, #0x24]
-    // bl sub_0206121C
-    // str r0, [r4, #0x14]
-    // cmp r0, #1
-    // bne _02203552
+    sub_0206121C(*((u32*)(r4 + 0x24)), r3, r3);
+    *((u32*)(r4 + 0x14)) = r0;
     // ldr r0, [sp, #4]
     // add r1, sp, #0xc
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl sub_02068DA8
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _02203560
-    // cmp r0, #1
-    // beq _02203586
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #0
+    sub_02068DA8(r5);
     // add r0, #0x3c
-    // bl Field3dObject_SetActiveFlag
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #1
+    Field3dObject_SetActiveFlag(*((u32*)(r4 + 0x2c)), 0);
     // add r0, #0xb4
-    // bl Field3dObject_SetActiveFlag
-    // mov r0, #0x4b
-    // ldr r1, [r4, #0x2c]
-    // lsl r0, r0, #2
+    Field3dObject_SetActiveFlag(*((u32*)(r4 + 0x2c)), 1);
     // add r0, r1, r0
-    // mov r1, #0
-    // bl Field3dModelAnimation_FrameSet
-    // mov r0, #1
+    Field3dModelAnimation_FrameSet((0x4b << 2), 0);
     // str r0, [r4]
-    // mov r0, #0x4b
-    // ldr r1, [r4, #0x2c]
-    // lsl r0, r0, #2
     // add r0, r1, r0
-    // mov r1, #1
-    // lsl r1, r1, #0xc
-    // bl Field3dModelAnimation_FrameAdvanceAndCheck
-    // cmp r0, #0
-    // beq _022035A0
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Field3dModelAnimation_FrameAdvanceAndCheck((0x4b << 2), (1 << 0xc));
+    ov01_021F1640(r5);
 }
+
 
 
 void ov01_022035A4(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x30]
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4, #8]
-    // ldr r3, [r4, #0xc]
-    // bl sub_0205F0F8
-    // cmp r0, #0
-    // bne _022035C6
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // add r0, r5, #0
+    sub_0205F0F8(*((u32*)(r1 + 0x30)), *((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    ov01_021F1640(r5);
     // add r1, sp, #0
-    // bl sub_02068DB8
-    // ldr r0, [r4, #0x2c]
+    sub_02068DB8(r5);
     // add r0, #0xb4
-    // bl Field3dObject_Draw
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    Field3dObject_Draw(*((u32*)(r4 + 0x2c)));
 }
+
 
 
 void ov01_022035DC(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // add r3, r0, #0
-    // mov r0, #0
-    // add r2, r4, #0
+    sub_02068D98();
     // str r0, [r4]
     // add r2, #0x18
-    // mov r6, #4
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // sub r6, r6, #1
-    // bne _022035F4
-    // ldr r0, [r3]
     // str r0, [r2]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetSpriteID
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetID
-    // str r0, [r4, #8]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetMapID
-    // add r6, r4, #0
+    MapObject_GetSpriteID(*((u32*)(r4 + 0x30)), r4, r0);
+    *((u32*)(r4 + 4)) = r0;
+    MapObject_GetID(*((u32*)(r4 + 0x30)));
+    *((u32*)(r4 + 8)) = r0;
+    MapObject_GetMapID(*((u32*)(r4 + 0x30)));
     // add r3, sp, #0
     // add r6, #0x18
-    // str r0, [r4, #0xc]
+    *((u32*)(r4 + 0xc)) = r0;
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
-    // add r1, r2, #0
     // str r0, [r3]
-    // ldr r0, [r4, #0x24]
-    // bl sub_0206121C
-    // str r0, [r4, #0x14]
-    // add r0, r5, #0
+    sub_0206121C(*((u32*)(r4 + 0x24)), r3, r3);
+    *((u32*)(r4 + 0x14)) = r0;
     // add r1, sp, #0
-    // bl sub_02068DA8
-    // ldr r0, [r4, #0x2c]
+    sub_02068DA8(r5);
     // add r1, sp, #0
     // add r0, #0x3c
-    // bl Field3dObject_SetPos
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #0
+    Field3dObject_SetPos(*((u32*)(r4 + 0x2c)));
     // add r0, #0x3c
-    // bl Field3dObject_SetActiveFlag
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    Field3dObject_SetActiveFlag(*((u32*)(r4 + 0x2c)), 0);
 }
+
 
 
 void ov01_02203654(void) {
@@ -736,85 +483,44 @@ void ov01_02203654(void) {
 }
 
 
+
 void ov01_022037E8(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x30]
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4, #8]
-    // ldr r3, [r4, #0xc]
-    // bl sub_0205F0F8
-    // cmp r0, #0
-    // bne _0220380A
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // add r0, r5, #0
+    sub_0205F0F8(*((u32*)(r1 + 0x30)), *((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
+    ov01_021F1640(r5);
     // add r1, sp, #0
-    // bl sub_02068DB8
-    // ldr r0, [r4, #0x2c]
+    sub_02068DB8(r5);
     // add r0, #0x3c
-    // bl Field3dObject_Draw
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    Field3dObject_Draw(*((u32*)(r4 + 0x2c)));
 }
+
 
 
 void ov01_02203820(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // add r3, r0, #0
-    // mov r0, #0
-    // add r2, r4, #0
+    sub_02068D98();
     // str r0, [r4]
     // add r2, #0x18
-    // mov r6, #4
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // sub r6, r6, #1
-    // bne _02203838
-    // ldr r0, [r3]
     // str r0, [r2]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetSpriteID
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetID
-    // str r0, [r4, #8]
-    // ldr r0, [r4, #0x30]
-    // bl MapObject_GetMapID
-    // add r6, r4, #0
+    MapObject_GetSpriteID(*((u32*)(r4 + 0x30)), r4, r0);
+    *((u32*)(r4 + 4)) = r0;
+    MapObject_GetID(*((u32*)(r4 + 0x30)));
+    *((u32*)(r4 + 8)) = r0;
+    MapObject_GetMapID(*((u32*)(r4 + 0x30)));
     // add r3, sp, #0
     // add r6, #0x18
-    // str r0, [r4, #0xc]
+    *((u32*)(r4 + 0xc)) = r0;
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
-    // add r1, r2, #0
     // str r0, [r3]
-    // add r0, r5, #0
-    // bl sub_02068DA8
-    // ldr r0, [r4, #0x2c]
+    sub_02068DA8(r5, r3, r3);
     // add r1, sp, #0
     // add r0, #0x3c
-    // bl Field3dObject_SetPos
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #0
+    Field3dObject_SetPos(*((u32*)(r4 + 0x2c)));
     // add r0, #0x3c
-    // bl Field3dObject_SetActiveFlag
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    Field3dObject_SetActiveFlag(*((u32*)(r4 + 0x2c)), 0);
 }
+
 
 
 void ov01_02203890(void) {
@@ -953,49 +659,29 @@ void ov01_02203890(void) {
 }
 
 
+
 void ov01_022039BC(void) {
-    // cmp r0, #3
-    // bhi _022039DC
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _022039CC: ; jump table
     // add r1, #8
     // str r1, [r2]
-    // bx lr
     // str r1, [r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_022039E0(void) {
-    // push {r3, lr}
-    // cmp r0, #3
-    // bhi _02203A0E
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _022039F2: ; jump table
-    // mov r0, #0
     // mvn r0, r0
-    // pop {r3, pc}
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #9
     // mvn r0, r0
-    // pop {r3, pc}
-    // mov r0, #0xa
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(0xa);
 }
+
 

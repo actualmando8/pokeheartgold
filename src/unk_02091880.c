@@ -32,17 +32,12 @@ void sub_02091880(void) {
 }
 
 
+
 void sub_020918C0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // beq _020918D2
-    // ldr r0, [r4, #4]
-    // bl EasyChatManager_Delete
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    EasyChatManager_Delete(*((u32*)(r0 + 4)));
+    Heap_Free(r4);
 }
+
 
 
 void sub_020918D4(void) {
@@ -79,6 +74,7 @@ void sub_020918D4(void) {
     // _02091910: .word sECMenuSpecs
     // TODO: decompile
 }
+
 
 
 void ECMenuBuild_Pokemon(void) {
@@ -131,6 +127,7 @@ void ECMenuBuild_Pokemon(void) {
 }
 
 
+
 void ECMenuBuild_Move(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
@@ -172,6 +169,7 @@ void ECMenuBuild_Move(void) {
     // _020919C0: .word 0x0000189E
     // TODO: decompile
 }
+
 
 
 void ECMenuBuild_TrendySayings(void) {
@@ -230,6 +228,7 @@ void ECMenuBuild_TrendySayings(void) {
     // _02091A34: .word 0x0000189E
     // TODO: decompile
 }
+
 
 
 void ECMenuBuild_Greetings(void) {
@@ -298,6 +297,7 @@ void ECMenuBuild_Greetings(void) {
     // _02091ABC: .word 0x0000189E
     // TODO: decompile
 }
+
 
 
 void ECMenuBuild_Generic(void) {
@@ -369,6 +369,7 @@ void ECMenuBuild_Generic(void) {
 }
 
 
+
 void sub_02091B44(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -404,6 +405,7 @@ void sub_02091B44(void) {
     // _02091B88: .word 0x00000C18
     // TODO: decompile
 }
+
 
 
 void sub_02091B8C(void) {
@@ -494,32 +496,26 @@ void sub_02091B8C(void) {
 }
 
 
+
 void sub_02091C38(void) {
-    // lsl r1, r1, #2
     // add r0, r0, r1
-    // ldr r0, [r0, #8]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02091C40(void) {
-    EasyChatManager_ReadWordIntoString();
 }
+
 
 
 void sub_02091C60(void) {
-    // lsl r1, r1, #2
     // add r1, r0, r1
-    // ldr r1, [r1, #0x38]
     // add r1, r1, r2
-    // lsl r1, r1, #1
     // add r0, r0, r1
     // add r0, #0x68
     // ldrh r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02091C74(void) {
@@ -532,6 +528,7 @@ void sub_02091C74(void) {
     // _02091C80: .word 0x00000C18
     // TODO: decompile
 }
+
 
 
 void sub_02091C84(void) {
@@ -554,6 +551,7 @@ void sub_02091C84(void) {
     // _02091CA8: .word 0x00000C18
     // TODO: decompile
 }
+
 
 
 void sub_02091CAC(void) {
@@ -581,4 +579,5 @@ void sub_02091CAC(void) {
     // _02091CD8: .word 0x0000FFFF
     // TODO: decompile
 }
+
 

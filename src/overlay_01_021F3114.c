@@ -1,48 +1,16 @@
 /* Decompiled from asm/overlay_01_021F3114.s */
 #include "global.h"
 
-void ov01_021F3114(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // bl PlayerAvatar_GetMapObject
-    // bl sub_0205F504
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // bl sub_0205B9DC
-    // cmp r0, #1
-    // bne _021F3136
-    // mov r2, #3
-    // b _021F3164
-    // add r0, r4, #0
-    // bl sub_0205B9E8
-    // cmp r0, #1
-    // bne _021F3144
-    // mov r2, #2
-    // b _021F3164
-    // add r0, r4, #0
-    // bl sub_0205B9F4
-    // cmp r0, #1
-    // bne _021F3152
-    // mov r2, #0
-    // b _021F3164
-    // add r0, r4, #0
-    // bl sub_0205BA00
-    // cmp r0, #1
-    // bne _021F3160
-    // mov r2, #1
-    // b _021F3164
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl ov01_021F3170
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+u32 ov01_021F3114(void) {
+    PlayerAvatar_GetMapObject(r1);
+    sub_0205F504();
+    sub_0205B9DC(((r0 << 0x18) >> 0x18));
+    sub_0205B9E8(r4, 3);
+    sub_0205B9F4(r4, 2);
+    sub_0205BA00(r4, 0);
+    ov01_021F3170(r5, r6, 1);
 }
+
 
 
 void ov01_021F3170(void) {
@@ -69,28 +37,15 @@ void ov01_021F3170(void) {
 }
 
 
-void ov01_021F31A0(void) {
-    // cmp r0, #3
-    // bhi _021F31C8
+
+u32 ov01_021F31A0(void) {
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _021F31B0: ; jump table
-    // mov r0, #2
-    // bx lr
-    // mov r0, #1
-    // bx lr
-    // mov r0, #3
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021F31CC(void) {
@@ -255,26 +210,16 @@ void ov01_021F31CC(void) {
 }
 
 
-void ov01_021F3348(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r0, #4
-    // add r1, r5, #0
-    // bl Heap_AllocAtEnd
-    // add r4, r0, #0
-    // bne _021F335C
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #0
-    // add r2, r5, #0
-    // bl memset
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+
+void * ov01_021F3348(void) {
+    Heap_AllocAtEnd(4, r0);
+    GF_AssertFail();
+    memset(r4, 0, r5);
 }
+
 
 
 void ov01_021F336C(void) {
-    Heap_FreeExplicit();
 }
+
 

@@ -2,51 +2,24 @@
 #include "global.h"
 
 void sub_02016EDC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // mov r1, #0xc
-    // add r6, r0, #0
-    // add r7, r2, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // strb r7, [r4, #8]
-    // mov r0, #0x1d
-    // strb r5, [r4, #9]
-    // lsl r0, r0, #4
-    // add r7, r5, #0
+    Heap_Alloc(0xc);
+    *((u8*)(r0 + 8)) = r7;
+    *((u8*)(r0 + 9)) = r5;
     // mul r7, r0
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // str r6, [r4, #4]
-    // bl Heap_Alloc
-    // mov r1, #0
-    // add r2, r7, #0
+    *((u32*)(r0 + 4)) = r6;
+    Heap_Alloc(r6, r5);
     // str r0, [r4]
-    // bl MI_CpuFill8
-    // mov r3, #0
-    // cmp r5, #0
-    // ble _02016F28
-    // mov r0, #0x1d
-    // add r6, r3, #0
-    // mov r2, #1
-    // lsl r0, r0, #4
-    // ldr r1, [r4]
-    // add r3, r3, #1
+    MI_CpuFill8(0, r7);
     // add r1, r1, r6
-    // str r2, [r1, #0x20]
+    *((u32*)(*((u32*)r4) + 0x20)) = 1;
     // add r6, r6, r0
-    // cmp r3, r5
-    // blt _02016F1A
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02016F2C(void) {
-    Heap_Free();
-    Heap_Free(r4);
 }
+
 
 
 void sub_02016F40(void) {
@@ -193,72 +166,38 @@ void sub_02016F40(void) {
 }
 
 
+
 void sub_02017068(void) {
-    GF_AssertFail(0x1d);
 }
+
 
 
 void sub_02017088(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r0, #0x1d
-    // lsl r0, r0, #4
-    // add r4, r1, #0
     // mul r4, r0
-    // ldr r0, [r5]
     // add r0, r0, r4
-    // ldr r0, [r0, #4]
-    // cmp r0, #0
-    // beq _020170C2
-    // bl SysTask_Destroy
-    // ldr r1, [r5]
-    // mov r0, #0
+    SysTask_Destroy(*((u32*)(*((u32*)r0) + 4)));
     // add r1, r1, r4
-    // str r0, [r1, #4]
-    // ldr r1, [r5]
-    // mov r2, #1
+    *((u32*)(*((u32*)r5) + 4)) = 0;
     // add r1, r1, r4
-    // str r2, [r1, #0x20]
-    // ldr r1, [r5]
+    *((u32*)(*((u32*)r5) + 0x20)) = 1;
     // add r1, r1, r4
-    // str r0, [r1, #0x10]
-    // ldr r0, [r5]
+    *((u32*)(*((u32*)r5) + 0x10)) = 0;
     // add r0, r0, r4
-    // ldr r0, [r0, #8]
-    // bl Heap_Free
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)(*((u32*)r5) + 8)), *((u32*)r5), 1);
 }
+
 
 
 void sub_020170C4(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x54]
-    // cmp r0, #0
-    // bne _020170D8
-    // add r0, r4, #0
-    // bl sub_020170FC
-    // b _020170DC
-    // sub r0, r0, #1
-    // str r0, [r4, #0x54]
-    // ldr r0, [r4, #0x1c]
-    // cmp r0, #0
-    // beq _020170FA
-    // mov r0, #1
-    // str r0, [r4, #0x20]
-    // mov r0, #0
-    // str r0, [r4, #0x10]
-    // add r0, r5, #0
-    // bl SysTask_Destroy
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #8]
-    // bl Heap_Free
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_020170FC(r1);
+    *((u32*)(r4 + 0x54)) = (r0 - 1);
+    *((u32*)(r4 + 0x20)) = 1;
+    *((u32*)(r4 + 0x10)) = 0;
+    SysTask_Destroy(r5);
+    *((u32*)(r4 + 4)) = 0;
+    Heap_Free(*((u32*)(r4 + 8)));
 }
+
 
 
 void sub_020170FC(void) {
@@ -380,19 +319,20 @@ void sub_020170FC(void) {
 }
 
 
+
 void sub_020171F4(void) {
-    GF_AssertFail();
 }
+
 
 
 void sub_02017208(void) {
-    sub_020171F4();
 }
+
 
 
 void sub_02017214(void) {
-    sub_02017208();
 }
+
 
 
 void sub_02017220(void) {
@@ -435,257 +375,136 @@ void sub_02017220(void) {
 }
 
 
+
 void sub_0201726C(void) {
-    sub_02017214();
 }
+
 
 
 void sub_02017280(void) {
-    sub_02017214();
 }
+
 
 
 void sub_02017294(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // ldr r1, [r0, #0xc]
-    // add r1, r1, #4
-    // str r1, [r0, #0xc]
-    // add r0, r1, #0
-    // bl sub_02017214
+    *((u32*)(r0 + 0xc)) = (*((u32*)(r0 + 0xc)) + 4);
+    sub_02017214((*((u32*)(r0 + 0xc)) + 4), (*((u32*)(r0 + 0xc)) + 4));
     // strb r0, [r4]
     // ldrb r0, [r4]
-    // cmp r0, #8
-    // blo _020172B0
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
 }
+
 
 
 void sub_020172B4(void) {
-    sub_02017294();
-    sub_02017294(r5, r4);
 }
+
 
 
 void sub_020172C8(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl sub_02017294
-    // add r0, r5, #0
+    sub_02017294();
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x12
-    // bne _02017308
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #2
-    // bl sub_02017294
+    sub_02017294(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #2]
-    // add r1, r6, #0
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [r4]
-    // add r0, r5, #0
-    // bl sub_0201726C
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // cmp r0, #0x13
-    // bne _02017334
+    sub_0201726C(r5, r6);
     // add r1, sp, #0
     // add r2, sp, #0
-    // add r0, r5, #0
     // add r1, #2
     // add r2, #1
-    // bl sub_020172B4
+    sub_020172B4(r5);
     // add r0, sp, #0
-    // ldrb r1, [r0, #2]
-    // add sp, #4
-    // lsl r1, r1, #2
     // add r1, r5, r1
-    // ldr r1, [r1, #0x24]
     // str r1, [r4]
-    // ldrb r0, [r0, #1]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [r6]
-    // pop {r3, r4, r5, r6, pc}
-    // bl GF_AssertFail
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24)), *((u32*)((*((u8*)(r0 + 2)) << 2) + 0x24)));
 }
+
 
 
 void sub_0201733C(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl sub_02017294
+    sub_02017294();
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #1
-    // bl sub_02017280
-    // add r0, r5, #0
+    sub_02017280(r5);
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #1]
-    // cmp r0, #0x12
-    // bne _0201736E
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl sub_0201726C
-    // b _0201738E
-    // cmp r0, #0x13
-    // bne _0201738A
+    sub_0201726C(r5, r4);
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #3
-    // bl sub_02017294
+    sub_02017294(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #3]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [r4]
-    // b _0201738E
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 3)) << 2) + 0x24)));
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x12
-    // bne _020173A2
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl sub_0201726C
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // cmp r0, #0x13
-    // bne _020173C0
+    sub_0201726C(r5, r6);
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #2
-    // bl sub_02017294
+    sub_02017294(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #2]
-    // add sp, #4
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [r6]
-    // pop {r3, r4, r5, r6, pc}
-    // bl GF_AssertFail
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 2)) << 2) + 0x24)));
 }
+
 
 
 void sub_020173C8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r4, r2, #0
     // add r2, sp, #0
     // add r2, #3
-    // add r5, r0, #0
-    // add r6, r3, #0
-    // bl sub_020172B4
+    sub_020172B4();
     // add r0, sp, #0
-    // ldrb r0, [r0, #3]
     // add r1, sp, #0
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r7, [r0, #0x24]
-    // add r0, r5, #0
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x14
-    // bne _020173FE
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl sub_0201726C
-    // b _0201741E
-    // cmp r0, #0x15
-    // bne _0201741A
+    sub_0201726C(r5, r6);
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #2
-    // bl sub_02017294
+    sub_02017294(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #2]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [r6]
-    // b _0201741E
-    // bl GF_AssertFail
-    // add r0, r5, #0
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 2)) << 2) + 0x24)));
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x14
-    // bne _02017438
-    // add r0, r5, #0
     // add r1, sp, #4
-    // bl sub_0201726C
-    // b _02017458
-    // cmp r0, #0x15
-    // bne _02017454
+    sub_0201726C(r5);
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #1
-    // bl sub_02017294
+    sub_02017294(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #1]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [sp, #4]
-    // b _02017458
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24)));
     // ldr r0, [sp, #4]
     // add r0, r7, r0
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x10
     // sub r1, r1, r2
-    // mov r0, #0x10
     // ror r1, r0
     // add r0, r2, r1
     // str r0, [r4]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02017470(void) {
-    // ldr r2, [r0]
-    // ldr r0, [r1]
     // sub r0, r2, r0
     // bpl _0201747C
-    // mov r0, #0xf
-    // bx lr
-    // cmp r0, #0
-    // ble _02017484
-    // mov r0, #0x10
-    // bx lr
-    // mov r0, #0x11
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02017488(void) {
@@ -706,453 +525,273 @@ void sub_02017488(void) {
 }
 
 
+
 void sub_020174A4(void) {
-    sub_020174BC();
 }
+
 
 
 void sub_020174B4(void) {
-    ((u32*)r0)[0x18] = 1;
 }
+
 
 
 void sub_020174BC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // ldr r2, [r4, #0x58]
-    // mov r1, #0
-    // bl Pokepic_SetAttr
-    // ldr r0, [r4]
-    // ldr r2, [r4, #0x5c]
-    // mov r1, #1
-    // bl Pokepic_SetAttr
-    // ldr r0, [r4]
-    // mov r1, #9
-    // mov r2, #0
-    // bl Pokepic_SetAttr
-    // ldr r0, [r4]
-    // mov r1, #0xa
-    // mov r2, #0
-    // bl Pokepic_SetAttr
-    // mov r1, #0xc
-    // add r2, r1, #0
-    // ldr r0, [r4]
+    Pokepic_SetAttr(*((u32*)r0), 0, *((u32*)(r0 + 0x58)));
+    Pokepic_SetAttr(*((u32*)r4), 1, *((u32*)(r4 + 0x5c)));
+    Pokepic_SetAttr(*((u32*)r4), 9, 0);
+    Pokepic_SetAttr(*((u32*)r4), 0xa, 0);
     // add r2, #0xf4
-    // bl Pokepic_SetAttr
-    // mov r1, #0xd
-    // add r2, r1, #0
-    // ldr r0, [r4]
+    Pokepic_SetAttr(*((u32*)r4), 0xc, 0xc);
     // add r2, #0xf3
-    // bl Pokepic_SetAttr
-    // pop {r4, pc}
-    // TODO: decompile
+    Pokepic_SetAttr(*((u32*)r4), 0xd, 0xd);
 }
+
 
 
 void sub_02017504(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
     // add r1, sp, #0
     // add r1, #1
     // add r2, sp, #0
-    // add r4, r0, #0
-    // bl sub_020172B4
+    sub_020172B4();
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // ldrb r0, [r0, #1]
-    // lsl r1, r1, #2
     // add r1, r4, r1
-    // lsl r0, r0, #2
-    // ldr r1, [r1, #0x24]
     // add r0, r4, r0
-    // str r1, [r0, #0x24]
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24)) = *((u32*)((r1 << 2) + 0x24));
 }
 
 
+
 void sub_0201752C(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #0
     // add r2, sp, #8
     // add r3, sp, #4
-    // add r4, r0, #0
-    // bl sub_020172C8
+    sub_020172C8();
     // ldr r1, [sp, #8]
     // ldr r0, [sp, #4]
     // add r1, r1, r0
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // str r1, [r0, #0x24]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)((r0 << 2) + 0x24)) = r1;
 }
+
 
 
 void sub_02017550(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #0
     // add r2, sp, #8
     // add r3, sp, #4
-    // add r4, r0, #0
-    // bl sub_020172C8
+    sub_020172C8();
     // ldr r1, [sp, #8]
     // ldr r0, [sp, #4]
-    // add r2, r1, #0
     // mul r2, r0
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // str r2, [r0, #0x24]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)((r0 << 2) + 0x24)) = r1;
 }
 
 
+
 void sub_02017578(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #0
     // add r2, sp, #8
     // add r3, sp, #4
-    // add r4, r0, #0
-    // bl sub_0201733C
+    sub_0201733C();
     // ldr r1, [sp, #8]
     // ldr r0, [sp, #4]
     // sub r1, r1, r0
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // str r1, [r0, #0x24]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)((r0 << 2) + 0x24)) = r1;
 }
+
 
 
 void sub_0201759C(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #0
     // add r2, sp, #8
     // add r3, sp, #4
-    // add r4, r0, #0
-    // bl sub_0201733C
+    sub_0201733C();
     // ldr r0, [sp, #8]
     // ldr r1, [sp, #4]
-    // bl _s32_div_f
+    _s32_div_f();
     // add r1, sp, #0
     // ldrb r1, [r1]
-    // lsl r1, r1, #2
     // add r1, r4, r1
-    // str r0, [r1, #0x24]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)((r1 << 2) + 0x24)) = r0;
 }
+
 
 
 void sub_020175C4(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #0
     // add r2, sp, #8
     // add r3, sp, #4
-    // add r4, r0, #0
-    // bl sub_0201733C
+    sub_0201733C();
     // ldr r0, [sp, #8]
     // ldr r1, [sp, #4]
-    // bl _s32_div_f
+    _s32_div_f();
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // str r1, [r0, #0x24]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)((r0 << 2) + 0x24)) = r1;
 }
+
 
 
 void sub_020175EC(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
     // add r1, sp, #0
-    // add r5, r0, #0
-    // bl sub_02017280
+    sub_02017280();
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x14
-    // bne _02017620
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #3
-    // bl sub_02017294
+    sub_02017294(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #3]
     // add r1, sp, #8
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [sp, #0xc]
-    // add r0, r5, #0
-    // bl sub_0201726C
-    // b _0201764E
-    // cmp r0, #0x15
-    // bne _0201764A
+    sub_0201726C(r5);
     // add r1, sp, #0
     // add r2, sp, #0
-    // add r0, r5, #0
     // add r1, #3
     // add r2, #2
-    // bl sub_020172B4
+    sub_020172B4(r5);
     // add r0, sp, #0
-    // ldrb r1, [r0, #3]
-    // lsl r1, r1, #2
     // add r1, r5, r1
-    // ldr r1, [r1, #0x24]
     // str r1, [sp, #0xc]
-    // ldrb r0, [r0, #2]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [sp, #8]
-    // b _0201764E
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 2)) << 2) + 0x24)), *((u32*)((*((u8*)(r0 + 3)) << 2) + 0x24)));
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #1
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #1]
-    // cmp r0, #0x11
-    // bls _02017664
-    // bl GF_AssertFail
+    GF_AssertFail(*((u8*)(r0 + 1)));
     // add r0, sp, #0xc
     // add r1, sp, #8
-    // bl sub_02017470
-    // add r4, r0, #0
-    // add r0, r5, #0
+    sub_02017470();
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x14
-    // bne _02017692
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #3
-    // bl sub_02017294
-    // add r0, r5, #0
+    sub_02017294(r5);
     // add r1, sp, #4
-    // bl sub_0201726C
-    // b _020176B6
-    // cmp r0, #0x15
-    // bne _020176B2
+    sub_0201726C(r5);
     // add r1, sp, #0
     // add r2, sp, #0
-    // add r0, r5, #0
     // add r1, #3
     // add r2, #2
-    // bl sub_020172B4
+    sub_020172B4(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #2]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [sp, #4]
-    // b _020176B6
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 2)) << 2) + 0x24)));
     // add r0, sp, #0
-    // ldrb r1, [r0, #1]
-    // cmp r1, r4
-    // bne _020176C8
-    // ldrb r0, [r0, #3]
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // str r1, [r0, #0x24]
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    *((u32*)((*((u8*)(r0 + 3)) << 2) + 0x24)) = *((u8*)(r0 + 1));
 }
+
 
 
 void sub_020176CC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r0, #0
     // add r1, sp, #0
-    // bl sub_02017294
-    // ldr r0, [r4, #0xc]
-    // add r0, r0, #4
-    // str r0, [r4, #0xc]
-    // bl sub_02017214
+    sub_02017294();
+    *((u32*)(r4 + 0xc)) = (*((u32*)(r4 + 0xc)) + 4);
+    sub_02017214((*((u32*)(r4 + 0xc)) + 4));
     // add r1, sp, #0
     // ldrb r1, [r1]
-    // lsl r1, r1, #2
     // add r1, r4, r1
-    // str r0, [r1, #0x24]
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)((r1 << 2) + 0x24)) = r0;
 }
+
 
 
 void sub_020176F0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x50]
-    // cmp r0, #0
-    // beq _020176FE
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0xc]
-    // add r0, r0, #4
-    // str r0, [r4, #0xc]
-    // str r0, [r4, #0x50]
-    // ldr r0, [r4, #0xc]
-    // bl sub_02017214
-    // str r0, [r4, #0x48]
-    // mov r0, #0
-    // str r0, [r4, #0x4c]
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)(r0 + 0x50)));
+    *((u32*)(r4 + 0xc)) = (*((u32*)(r4 + 0xc)) + 4);
+    *((u32*)(r4 + 0x50)) = (*((u32*)(r4 + 0xc)) + 4);
+    sub_02017214(*((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x48)) = r0;
+    *((u32*)(r4 + 0x4c)) = 0;
 }
+
 
 
 void sub_02017714(void) {
-    // ldr r1, [r0, #0x4c]
-    // add r2, r1, #1
-    // str r2, [r0, #0x4c]
-    // ldr r1, [r0, #0x48]
-    // cmp r2, r1
-    // blt _0201772A
-    // mov r1, #0
-    // str r1, [r0, #0x50]
-    // str r1, [r0, #0x4c]
-    // str r1, [r0, #0x48]
-    // bx lr
-    // ldr r1, [r0, #0x50]
-    // str r1, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x4c)) = (*((u32*)(r0 + 0x4c)) + 1);
+    *((u32*)(r0 + 0x50)) = 0;
+    *((u32*)(r0 + 0x4c)) = 0;
+    *((u32*)(r0 + 0x48)) = 0;
+    *((u32*)(r0 + 0xc)) = *((u32*)(r0 + 0x50));
 }
+
 
 
 void sub_02017730(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
     // add r1, sp, #4
-    // bl sub_0201726C
-    // add r0, r4, #0
+    sub_0201726C();
     // add r1, sp, #0
-    // bl sub_02017294
+    sub_02017294(r4);
     // add r2, sp, #0
     // ldrb r2, [r2]
-    // ldr r0, [r4]
     // ldr r1, [sp, #4]
-    // lsl r2, r2, #2
     // add r2, r4, r2
-    // ldr r2, [r2, #0x24]
-    // bl Pokepic_SetAttr
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    Pokepic_SetAttr(*((u32*)r4), *((u32*)((r2 << 2) + 0x24)));
 }
+
 
 
 void sub_0201775C(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
     // add r1, sp, #4
-    // bl sub_0201726C
-    // add r0, r4, #0
+    sub_0201726C();
     // add r1, sp, #0
-    // bl sub_02017294
+    sub_02017294(r4);
     // add r2, sp, #0
     // ldrb r2, [r2]
-    // ldr r0, [r4]
     // ldr r1, [sp, #4]
-    // lsl r2, r2, #2
     // add r2, r4, r2
-    // ldr r2, [r2, #0x24]
-    // bl Pokepic_AddAttr
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    Pokepic_AddAttr(*((u32*)r4), *((u32*)((r2 << 2) + 0x24)));
 }
+
 
 
 void sub_02017788(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #8
-    // add r4, r0, #0
-    // bl sub_0201726C
+    sub_0201726C();
     // add r1, sp, #0
-    // add r0, r4, #0
     // add r1, #1
-    // bl sub_02017280
+    sub_02017280(r4);
     // add r0, sp, #0
-    // ldrb r0, [r0, #1]
-    // cmp r0, #0x14
-    // bne _020177B0
-    // add r0, r4, #0
     // add r1, sp, #4
-    // bl sub_0201726C
-    // b _020177D0
-    // cmp r0, #0x15
-    // bne _020177CC
+    sub_0201726C(r4);
     // add r1, sp, #0
-    // add r0, r4, #0
     // add r1, #2
-    // bl sub_02017294
+    sub_02017294(r4);
     // add r0, sp, #0
-    // ldrb r0, [r0, #2]
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [sp, #4]
-    // b _020177D0
-    // bl GF_AssertFail
-    // add r0, r4, #0
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 2)) << 2) + 0x24)));
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r4);
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x16
-    // bne _020177EE
-    // ldr r0, [r4]
     // ldr r1, [sp, #8]
     // ldr r2, [sp, #4]
-    // bl Pokepic_SetAttr
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // cmp r0, #0x17
-    // bne _02017800
-    // ldr r0, [r4]
+    Pokepic_SetAttr(*((u32*)r4));
     // ldr r1, [sp, #8]
     // ldr r2, [sp, #4]
-    // bl Pokepic_AddAttr
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // bl GF_AssertFail
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    Pokepic_AddAttr(*((u32*)r4));
+    GF_AssertFail();
 }
+
 
 
 void sub_02017808(void) {
@@ -1182,6 +821,7 @@ void sub_02017808(void) {
     // _02017838: .word FX_SinCosTable_
     // TODO: decompile
 }
+
 
 
 void sub_0201783C(void) {
@@ -1215,216 +855,96 @@ void sub_0201783C(void) {
 }
 
 
+
 void sub_02017874(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
     // add r1, sp, #0
-    // add r4, r0, #0
     // add r1, #1
-    // bl sub_02017294
-    // add r0, r4, #0
+    sub_02017294();
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r4);
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // cmp r1, #8
-    // bne _020178A0
-    // ldrb r0, [r0, #1]
-    // add sp, #4
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // ldr r0, [r0, #0x24]
-    // str r0, [r4, #0x60]
-    // pop {r3, r4, pc}
-    // cmp r1, #9
-    // bne _020178B2
-    // ldrb r0, [r0, #1]
-    // add sp, #4
-    // lsl r0, r0, #2
+    *((u32*)(r4 + 0x60)) = *((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24));
     // add r0, r4, r0
-    // ldr r0, [r0, #0x24]
-    // str r0, [r4, #0x64]
-    // pop {r3, r4, pc}
-    // bl GF_AssertFail
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x64)) = *((u32*)((*((u8*)(*((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24)) + 1)) << 2) + 0x24));
+    GF_AssertFail(*((u32*)((*((u8*)(*((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24)) + 1)) << 2) + 0x24)));
 }
+
 
 
 void sub_020178BC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
     // add r1, sp, #0
-    // add r4, r0, #0
     // add r1, #1
-    // bl sub_02017294
-    // add r0, r4, #0
+    sub_02017294();
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r4);
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // cmp r1, #8
-    // bne _020178EC
-    // ldrb r0, [r0, #1]
-    // ldr r1, [r4, #0x60]
-    // add sp, #4
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // ldr r0, [r0, #0x24]
     // add r0, r1, r0
-    // str r0, [r4, #0x60]
-    // pop {r3, r4, pc}
-    // cmp r1, #9
-    // bne _02017902
-    // ldrb r0, [r0, #1]
-    // ldr r1, [r4, #0x64]
-    // add sp, #4
-    // lsl r0, r0, #2
+    *((u32*)(r4 + 0x60)) = *((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24));
     // add r0, r4, r0
-    // ldr r0, [r0, #0x24]
     // add r0, r1, r0
-    // str r0, [r4, #0x64]
-    // pop {r3, r4, pc}
-    // bl GF_AssertFail
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x64)) = *((u32*)((*((u8*)(*((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24)) + 1)) << 2) + 0x24));
+    GF_AssertFail(*((u32*)((*((u8*)(*((u32*)((*((u8*)(r0 + 1)) << 2) + 0x24)) + 1)) << 2) + 0x24)), *((u32*)(r4 + 0x64)));
 }
+
 
 
 void sub_0201790C(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
     // add r1, sp, #0
     // add r1, #3
-    // add r5, r0, #0
-    // bl sub_02017280
+    sub_02017280();
     // add r0, sp, #0
-    // ldrb r0, [r0, #3]
-    // cmp r0, #8
-    // bne _02017928
-    // add r4, r5, #0
     // add r4, #0x60
-    // b _02017968
-    // cmp r0, #9
-    // bne _02017932
-    // add r4, r5, #0
     // add r4, #0x64
-    // b _02017968
-    // cmp r0, #0xa
-    // bne _0201793C
-    // add r4, r5, #0
     // add r4, #0x68
-    // b _02017968
-    // cmp r0, #0xb
-    // bne _02017946
-    // add r4, r5, #0
     // add r4, #0x6c
-    // b _02017968
-    // cmp r0, #0xc
-    // bne _02017950
-    // add r4, r5, #0
     // add r4, #0x70
-    // b _02017968
-    // cmp r0, #0xd
-    // bne _0201795A
-    // add r4, r5, #0
     // add r4, #0x74
-    // b _02017968
-    // cmp r0, #0xe
-    // bne _02017964
-    // add r4, r5, #0
     // add r4, #0x78
-    // b _02017968
-    // bl GF_AssertFail
+    GF_AssertFail(*((u8*)(r0 + 3)));
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #1
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #1]
-    // cmp r0, #0x14
-    // bne _02017984
-    // add r0, r5, #0
     // add r1, sp, #4
-    // bl sub_0201726C
-    // b _020179A4
-    // cmp r0, #0x15
-    // bne _020179A0
+    sub_0201726C(r5);
     // add r1, sp, #0
-    // add r0, r5, #0
     // add r1, #2
-    // bl sub_02017294
+    sub_02017294(r5);
     // add r0, sp, #0
-    // ldrb r0, [r0, #2]
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x24]
     // str r0, [sp, #4]
-    // b _020179A4
-    // bl GF_AssertFail
-    // add r0, r5, #0
+    GF_AssertFail(*((u32*)((*((u8*)(r0 + 2)) << 2) + 0x24)));
     // add r1, sp, #0
-    // bl sub_02017280
+    sub_02017280(r5);
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // cmp r0, #0x16
-    // bne _020179BC
     // ldr r0, [sp, #4]
-    // add sp, #8
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // cmp r0, #0x17
-    // bne _020179CC
     // ldr r0, [sp, #4]
-    // ldr r1, [r4]
-    // add sp, #8
     // add r0, r1, r0
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // bl GF_AssertFail
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)r4));
 }
+
 
 
 void sub_020179D4(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // mov r0, #0x73
-    // lsl r0, r0, #2
     // ldrb r0, [r4, r0]
-    // cmp r0, #0
-    // ldr r0, [r4]
-    // beq _020179F6
-    // ldr r3, [r4, #0x60]
-    // ldr r2, [r4, #0x68]
-    // ldr r5, [r4, #0x58]
     // add r2, r3, r2
-    // mov r1, #0
     // sub r2, r5, r2
-    // bl Pokepic_SetAttr
-    // b _02017A06
-    // ldr r3, [r4, #0x58]
-    // ldr r2, [r4, #0x60]
-    // ldr r5, [r4, #0x68]
+    Pokepic_SetAttr(*((u32*)r0), 0, *((u32*)(r0 + 0x68)), *((u32*)(r0 + 0x60)));
     // add r2, r3, r2
-    // mov r1, #0
     // add r2, r5, r2
-    // bl Pokepic_SetAttr
-    // ldr r3, [r4, #0x5c]
-    // ldr r2, [r4, #0x64]
-    // ldr r5, [r4, #0x6c]
+    Pokepic_SetAttr(0, *((u32*)(r4 + 0x60)), *((u32*)(r4 + 0x58)));
     // add r2, r3, r2
-    // ldr r0, [r4]
-    // mov r1, #1
     // add r2, r5, r2
-    // bl Pokepic_SetAttr
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Pokepic_SetAttr(*((u32*)r4), 1, *((u32*)(r4 + 0x64)), *((u32*)(r4 + 0x5c)));
 }
+
 
 
 void sub_02017A1C(void) {
@@ -1477,88 +997,53 @@ void sub_02017A1C(void) {
 }
 
 
+
 void sub_02017A84(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r0, #0
     // add r1, sp, #0
-    // bl sub_02017294
-    // ldr r0, [r4, #0xc]
-    // add r0, r0, #4
-    // str r0, [r4, #0xc]
-    // bl sub_02017214
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // cmp r0, #8
-    // beq _02017AA6
-    // cmp r0, #0xa
-    // bne _02017AB6
+    sub_02017294();
+    *((u32*)(r4 + 0xc)) = (*((u32*)(r4 + 0xc)) + 4);
+    sub_02017214((*((u32*)(r4 + 0xc)) + 4));
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // add sp, #4
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // ldr r0, [r0, #0x24]
-    // str r0, [r4, #0x68]
-    // pop {r3, r4, pc}
-    // cmp r0, #9
-    // beq _02017ABE
-    // cmp r0, #0xb
-    // bne _02017ACE
+    *((u32*)(r4 + 0x68)) = *((u32*)((((r0 << 0x18) >> 0x18) << 2) + 0x24));
     // add r0, sp, #0
     // ldrb r0, [r0]
-    // add sp, #4
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // ldr r0, [r0, #0x24]
-    // str r0, [r4, #0x6c]
-    // pop {r3, r4, pc}
-    // bl GF_AssertFail
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x6c)) = *((u32*)((*((u32*)((((r0 << 0x18) >> 0x18) << 2) + 0x24)) << 2) + 0x24));
+    GF_AssertFail(*((u32*)((*((u32*)((((r0 << 0x18) >> 0x18) << 2) + 0x24)) << 2) + 0x24)));
 }
+
 
 
 void sub_02017AD8(void) {
-    sub_0201726C(1);
 }
+
 
 
 void sub_02017AEC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
     // add r1, sp, #4
     // add r1, #2
-    // add r4, r0, #0
-    // bl sub_02017280
+    sub_02017280();
     // add r1, sp, #4
-    // add r0, r4, #0
     // add r1, #1
-    // bl sub_02017280
-    // add r0, r4, #0
+    sub_02017280(r4);
     // add r1, sp, #4
-    // bl sub_02017280
-    // add r0, r4, #0
+    sub_02017280(r4);
     // add r1, sp, #8
-    // bl sub_0201726C
+    sub_0201726C(r4);
     // ldr r0, [sp, #8]
     // add r3, sp, #4
     // str r0, [sp]
-    // ldrb r1, [r3, #2]
-    // ldrb r2, [r3, #1]
     // ldrb r3, [r3]
-    // ldr r0, [r4]
-    // bl Pokepic_StartPaletteFade
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    Pokepic_StartPaletteFade(*((u32*)r4), *((u8*)(r3 + 2)), *((u8*)(r3 + 1)));
 }
+
 
 
 void sub_02017B2C(void) {
-    Pokepic_ResumePaletteFade(1);
 }
+
 
 
 void sub_02017B48(void) {
@@ -1569,6 +1054,7 @@ void sub_02017B48(void) {
     // _02017B50: .word 0x000001CD
     // TODO: decompile
 }
+
 
 
 void sub_02017B54(void) {
@@ -1601,119 +1087,78 @@ void sub_02017B54(void) {
 }
 
 
+
 void sub_02017B8C(void) {
-    sub_02017C78();
 }
+
 
 
 void sub_02017B98(void) {
-    sub_02017C78();
 }
+
 
 
 void sub_02017BA4(void) {
-    sub_02017C78();
 }
+
 
 
 void sub_02017BB0(void) {
-    sub_02017C78();
 }
+
 
 
 void sub_02017BBC(void) {
-    sub_02017C78();
 }
+
 
 
 void sub_02017BC8(void) {
-    // push {r3, lr}
-    // cmp r0, #0x18
-    // bne _02017BD4
-    // ldr r0, [r2]
     // str r0, [r3]
-    // pop {r3, pc}
-    // cmp r0, #0x19
-    // bne _02017BE2
-    // ldr r1, [r1]
-    // ldr r0, [r2]
     // add r0, r1, r0
     // str r0, [r3]
-    // pop {r3, pc}
-    // cmp r0, #0x1a
-    // bne _02017BF0
-    // ldr r1, [r3]
-    // ldr r0, [r2]
     // add r0, r1, r0
     // str r0, [r3]
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)r2), *((u32*)r3));
 }
+
 
 
 void sub_02017BF8(void) {
-    // push {r3, lr}
     // sub r0, #0x23
-    // cmp r0, #4
-    // bhi _02017C70
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02017C0C: ; jump table
-    // add r0, r1, #0
     // add r0, #0x3c
-    // str r0, [r1, #0x24]
-    // add r0, r2, #0
+    *((u32*)(r1 + 0x24)) = r1;
     // add r0, #0x68
-    // str r0, [r1, #0x28]
-    // ldr r0, [r2, #0x68]
-    // str r0, [r1, #0x30]
-    // pop {r3, pc}
-    // add r0, r1, #0
+    *((u32*)(r1 + 0x28)) = r2;
+    *((u32*)(r1 + 0x30)) = *((u32*)(r2 + 0x68));
     // add r0, #0x40
-    // str r0, [r1, #0x24]
-    // add r0, r2, #0
+    *((u32*)(r1 + 0x24)) = r1;
     // add r0, #0x6c
-    // str r0, [r1, #0x28]
-    // ldr r0, [r2, #0x6c]
-    // str r0, [r1, #0x30]
-    // pop {r3, pc}
-    // add r0, r1, #0
+    *((u32*)(r1 + 0x28)) = r2;
+    *((u32*)(r1 + 0x30)) = *((u32*)(r2 + 0x6c));
     // add r0, #0x44
-    // str r0, [r1, #0x24]
-    // add r0, r2, #0
+    *((u32*)(r1 + 0x24)) = r1;
     // add r0, #0x70
-    // str r0, [r1, #0x28]
-    // ldr r0, [r2, #0x70]
-    // str r0, [r1, #0x30]
-    // pop {r3, pc}
-    // add r0, r1, #0
+    *((u32*)(r1 + 0x28)) = r2;
+    *((u32*)(r1 + 0x30)) = *((u32*)(r2 + 0x70));
     // add r0, #0x48
-    // str r0, [r1, #0x24]
-    // add r0, r2, #0
+    *((u32*)(r1 + 0x24)) = r1;
     // add r0, #0x74
-    // str r0, [r1, #0x28]
-    // ldr r0, [r2, #0x74]
-    // str r0, [r1, #0x30]
-    // pop {r3, pc}
-    // add r0, r1, #0
+    *((u32*)(r1 + 0x28)) = r2;
+    *((u32*)(r1 + 0x30)) = *((u32*)(r2 + 0x74));
     // add r0, #0x4c
-    // str r0, [r1, #0x24]
-    // add r0, r2, #0
+    *((u32*)(r1 + 0x24)) = r1;
     // add r0, #0x78
-    // str r0, [r1, #0x28]
-    // ldr r0, [r2, #0x78]
-    // str r0, [r1, #0x30]
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // pop {r3, pc}
-    // TODO: decompile
+    *((u32*)(r1 + 0x28)) = r2;
+    *((u32*)(r1 + 0x30)) = *((u32*)(r2 + 0x78));
+    GF_AssertFail(*((u32*)(r2 + 0x78)));
 }
+
 
 
 void sub_02017C78(void) {
@@ -1795,6 +1240,7 @@ void sub_02017C78(void) {
     // _02017D1C: .word _020F61C4
     // TODO: decompile
 }
+
 
 
 void sub_02017D20(void) {
@@ -1886,6 +1332,7 @@ void sub_02017D20(void) {
     // _02017DD4: .word FX_SinCosTable_
     // TODO: decompile
 }
+
 
 
 void sub_02017DD8(void) {
@@ -1982,147 +1429,62 @@ void sub_02017DD8(void) {
 }
 
 
+
 void sub_02017E98(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4, #0x24]
-    // ldr r3, [r4, #0xc]
-    // ldr r2, [r4, #0x14]
-    // ldr r5, [r4, #8]
     // mul r2, r3
-    // ldr r0, [r1]
     // add r2, r5, r2
     // add r0, r0, r2
     // str r0, [r1]
-    // add r0, r4, #0
     // add r0, #0x2c
-    // add r1, r4, #0
     // ldrb r0, [r0]
-    // ldr r2, [r4, #0x24]
-    // ldr r3, [r4, #0x28]
     // add r1, #0x30
-    // bl sub_02017BC8
-    // ldr r0, [r4, #0x14]
-    // add r1, r0, #1
-    // str r1, [r4, #0x14]
-    // ldr r0, [r4, #0x10]
-    // cmp r1, r0
-    // blt _02017ED0
-    // mov r0, #0
+    sub_02017BC8(r0, r0, *((u32*)(r0 + 0x24)), *((u32*)(r0 + 0x28)));
+    *((u32*)(r4 + 0x14)) = (*((u32*)(r4 + 0x14)) + 1);
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02017ED4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x10]
-    // add r1, r0, #1
-    // ldr r0, [r4, #8]
     // mul r0, r1
-    // ldr r1, [r4, #0xc]
-    // bl _s32_div_f
-    // ldr r1, [r4, #0x24]
+    _s32_div_f(*((u32*)(r0 + 8)), *((u32*)(r0 + 0xc)));
     // str r0, [r1]
-    // add r0, r4, #0
     // add r0, #0x2c
-    // add r1, r4, #0
     // ldrb r0, [r0]
-    // ldr r2, [r4, #0x24]
-    // ldr r3, [r4, #0x28]
     // add r1, #0x30
-    // bl sub_02017BC8
-    // ldr r0, [r4, #0x10]
-    // add r1, r0, #1
-    // str r1, [r4, #0x10]
-    // ldr r0, [r4, #0xc]
-    // cmp r1, r0
-    // blt _02017F0C
-    // mov r0, #0
+    sub_02017BC8(r4, r4, *((u32*)(r4 + 0x24)), *((u32*)(r4 + 0x28)));
+    *((u32*)(r4 + 0x10)) = (*((u32*)(r4 + 0x10)) + 1);
     // str r0, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02017F10(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4, #0xc]
-    // ldr r0, [r4, #0x14]
-    // ldr r2, [r4, #8]
     // mul r0, r1
-    // ldr r1, [r4, #0x24]
     // add r2, r2, r0
-    // ldr r0, [r1]
     // add r0, r0, r2
     // str r0, [r1]
-    // add r0, r4, #0
     // add r0, #0x2c
     // ldrb r0, [r0]
-    // cmp r0, #0x18
-    // beq _02017F34
-    // cmp r0, #0x1a
-    // bne _02017F5A
-    // cmp r2, #0
-    // ldr r2, [r4, #0x10]
-    // bge _02017F4A
-    // ldr r1, [r4, #0x24]
-    // ldr r0, [r1]
-    // cmp r0, r2
-    // bgt _02017F90
     // str r2, [r1]
-    // mov r0, #0
     // str r0, [r4]
-    // b _02017F90
-    // ldr r1, [r4, #0x24]
-    // ldr r0, [r1]
-    // cmp r0, r2
-    // blt _02017F90
     // str r2, [r1]
-    // mov r0, #0
     // str r0, [r4]
-    // b _02017F90
-    // cmp r0, #0x19
-    // bne _02017F8C
-    // ldr r1, [r4, #0x24]
-    // ldr r3, [r4, #0x30]
-    // ldr r0, [r1]
     // add r3, r3, r0
-    // cmp r2, #0
-    // ldr r2, [r4, #0x10]
-    // bge _02017F7C
-    // cmp r3, r2
-    // bgt _02017F90
     // sub r2, r2, r3
     // add r0, r0, r2
     // str r0, [r1]
-    // mov r0, #0
     // str r0, [r4]
-    // b _02017F90
-    // cmp r3, r2
-    // blt _02017F90
     // sub r2, r3, r2
     // sub r0, r0, r2
     // str r0, [r1]
-    // mov r0, #0
     // str r0, [r4]
-    // b _02017F90
-    // bl GF_AssertFail
-    // add r0, r4, #0
+    GF_AssertFail(0, *((u32*)(r0 + 0x24)), *((u32*)(r0 + 0x10)), *((u32*)(r0 + 0x30)));
     // add r0, #0x2c
     // ldrb r0, [r0]
-    // add r1, r4, #0
-    // ldr r2, [r4, #0x24]
-    // ldr r3, [r4, #0x28]
     // add r1, #0x30
-    // bl sub_02017BC8
-    // ldr r0, [r4, #0x14]
-    // add r0, r0, #1
-    // str r0, [r4, #0x14]
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02017BC8(r4, r4, *((u32*)(r4 + 0x24)), *((u32*)(r4 + 0x28)));
+    *((u32*)(r4 + 0x14)) = (*((u32*)(r4 + 0x14)) + 1);
 }
+
 

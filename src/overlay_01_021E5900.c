@@ -2,13 +2,8 @@
 #include "global.h"
 
 void ov01_021E5900(void) {
-    DoScheduledBgGpuUpdates(*((u32*)(r0 + 8)));
-    GF_RunVramTransferTasks();
-    OamManager_ApplyAndResetBuffers();
-    sub_0205F1A0(*((u32*)(r4 + 0x3c)));
-    ov01_021FA1D0();
-    sub_02023910();
 }
+
 
 
 void ov01_021E5924(void) {
@@ -289,35 +284,16 @@ void ov01_021E5924(void) {
 }
 
 
+
 void ov01_021E5BE4(void) {
-    // push {r4, lr}
-    // bl OverlayManager_GetArgs
-    // add r4, r0, #0
-    // bl ov01_021E5ED4
-    // cmp r0, #0
-    // beq _021E5C04
-    // mov r1, #1
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // bl ov01_021F6830
-    // add r0, r4, #0
-    // bl ov01_021E5F04
-    // add r1, r4, #0
+    OverlayManager_GetArgs();
+    ov01_021E5ED4();
+    ov01_021F6830(r4, 1, 1);
+    ov01_021E5F04(r4);
     // add r1, #0xbc
-    // ldr r1, [r1]
-    // add r0, r4, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov01_021E5FC0
-    // ldr r0, [r4, #0x6c]
-    // cmp r0, #0
-    // beq _021E5C1E
-    // mov r0, #0
-    // pop {r4, pc}
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    ov01_021E5FC0(r4, ((*((u32*)r4) << 0x18) >> 0x18));
 }
+
 
 
 void ov01_021E5C24(void) {
@@ -574,188 +550,90 @@ void ov01_021E5C24(void) {
 }
 
 
+
 void ov01_021E5EB8(void) {
-    // push {r3, lr}
-    // bl FieldSystem_GetSaveData
-    // bl Save_GetGymmickPtr
-    // bl Save_Gymmick_GetType
-    // cmp r0, #0
-    // bne _021E5ECE
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    FieldSystem_GetSaveData();
+    Save_GetGymmickPtr();
+    Save_Gymmick_GetType();
 }
+
 
 
 void ov01_021E5ED4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetXCoord
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetZCoord
-    // ldr r2, [r5, #0x20]
-    // ldr r1, [r2, #8]
-    // cmp r4, r1
-    // bne _021E5EF4
-    // ldr r1, [r2, #0xc]
-    // cmp r0, r1
-    // beq _021E5EFE
-    // str r4, [r2, #8]
-    // ldr r1, [r5, #0x20]
-    // str r0, [r1, #0xc]
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
+    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
+    *((u32*)(*((u32*)(r5 + 0x20)) + 8)) = r4;
+    *((u32*)(*((u32*)(r5 + 0x20)) + 0xc)) = r0;
 }
+
 
 
 void ov01_021E5F04(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetXCoord
+    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
     // asr r1, r0, #4
-    // lsr r1, r1, #0x1b
     // add r1, r0, r1
-    // ldr r0, [r5, #0x40]
     // asr r4, r1, #5
-    // bl PlayerAvatar_GetZCoord
+    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)), (r1 >> 0x1b));
     // asr r1, r0, #4
-    // lsr r1, r1, #0x1b
     // add r1, r0, r1
     // asr r2, r1, #5
-    // ldr r0, [r5, #0x30]
-    // add r1, r4, #0
-    // bl MapMatrix_GetMapHeader
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x20]
-    // ldr r6, [r0]
-    // cmp r4, r6
-    // bne _021E5F3E
-    // add sp, #8
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5, #0xc]
-    // bl Save_LocalFieldData_Get
-    // add r7, r0, #0
-    // ldr r0, [r5, #0x20]
-    // add r1, r4, #0
+    MapMatrix_GetMapHeader(*((u32*)(r5 + 0x30)), r4);
+    Save_LocalFieldData_Get(*((u32*)(r5 + 0xc)));
     // str r4, [r0]
-    // add r0, r5, #0
-    // bl Field_InitMapEvents
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl sub_02053038
-    // add r0, r5, #0
-    // bl Field_GetNumObjectEvents
+    Field_InitMapEvents(r5, r4);
+    sub_02053038(r5, 1);
+    Field_GetNumObjectEvents(r5);
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // bl Field_GetObjectEvents
+    Field_GetObjectEvents(r5);
     // str r0, [sp]
-    // ldr r0, [r5, #0x3c]
     // ldr r3, [sp, #4]
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl sub_0205E104
-    // ldr r1, [r5, #0x20]
-    // add r0, r5, #0
-    // ldr r1, [r1]
-    // bl FieldBGM_GetEffective
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // mov r2, #1
-    // bl FieldBGM_TryFadeOut
-    // add r0, r5, #0
-    // bl Field_InitMapObjectsFromZoneEventData
-    // add r0, r7, #0
-    // bl LocalFieldData_GetWeatherType
-    // add r1, r0, #0
-    // ldr r0, [r5, #4]
-    // ldr r0, [r0, #0xc]
-    // bl FieldWeatherUpdate_UsedFlash
-    // add r0, r6, #0
-    // bl MapHeader_GetMapSec
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // bl MapHeader_GetMapSec
-    // cmp r6, r0
-    // beq _021E5FB8
-    // add r0, r5, #0
-    // bl FieldSystem_DrawMapNameAnimation
-    // mov r0, #1
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_0205E104(*((u32*)(r5 + 0x3c)), r6, r4);
+    FieldBGM_GetEffective(r5, *((u32*)*((u32*)(r5 + 0x20))));
+    FieldBGM_TryFadeOut(r5, r0, 1);
+    Field_InitMapObjectsFromZoneEventData(r5);
+    LocalFieldData_GetWeatherType(r7);
+    FieldWeatherUpdate_UsedFlash(*((u32*)(*((u32*)(r5 + 4)) + 0xc)), r0);
+    MapHeader_GetMapSec(r6);
+    MapHeader_GetMapSec(r4);
+    FieldSystem_DrawMapNameAnimation(r5);
 }
+
 
 
 void ov01_021E5FC0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl FieldSystem_TaskIsRunning
-    // cmp r0, #0
-    // bne _021E5FD4
-    // add r0, r5, #0
-    // bl FieldSystem_StartBugContestTimer
-    // ldr r0, [r5, #0x50]
-    // bl ov01_021EA2A4
-    // mov r0, #0x41
-    // lsl r0, r0, #2
+    FieldSystem_TaskIsRunning();
+    FieldSystem_StartBugContestTimer(r5);
+    ov01_021EA2A4(*((u32*)(r5 + 0x50)));
     // ldr r0, [r5, r0]
-    // bl ov01_022047DC
-    // ldr r0, [r5, #0x28]
-    // bl ov01_021EAD8C
-    // add r0, r5, #0
-    // bl ov01_021F3D98
-    // mov r0, #1
+    ov01_022047DC((0x41 << 2));
+    ov01_021EAD8C(*((u32*)(r5 + 0x28)));
+    ov01_021F3D98(r5);
     // tst r0, r4
-    // beq _021E5FFE
-    // ldr r0, [r5, #4]
-    // ldr r0, [r0, #0x10]
-    // bl ov01_021EB114
-    // mov r0, #8
+    ov01_021EB114(*((u32*)(*((u32*)(r5 + 4)) + 0x10)));
     // tst r0, r4
-    // beq _021E600E
-    // add r0, r5, #0
     // add r0, #0xc8
-    // ldr r0, [r0]
-    // bl ov01_02204350
-    // mov r0, #2
+    ov01_02204350(*((u32*)r5));
     // tst r0, r4
-    // beq _021E601A
-    // ldr r0, [r5, #0x2c]
-    // bl ov01_021F50F0
-    // mov r0, #4
+    ov01_021F50F0(*((u32*)(r5 + 0x2c)));
     // tst r0, r4
-    // beq _021E6026
-    // add r0, r5, #0
-    // bl ov01_021E6220
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov01_021E6220(r5);
 }
+
 
 
 void ov01_021E6028(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov01_021E6048(void) {
-    ov01_021E6058();
 }
+
 
 
 void ov01_021E6050(void) {
-    ov01_021E6138();
 }
+
 
 
 void ov01_021E6058(void) {
@@ -859,70 +737,37 @@ void ov01_021E6058(void) {
 }
 
 
+
 void ov01_021E6138(void) {
-    GfGfx_EngineATogglePlanes(1, 0);
-    GfGfx_EngineATogglePlanes(2, 0);
-    GfGfx_EngineATogglePlanes(4, 0);
-    GfGfx_EngineATogglePlanes(8, 0);
-    FreeBgTilemapBuffer(r4, 1);
-    FreeBgTilemapBuffer(r4, 2);
-    FreeBgTilemapBuffer(r4, 3);
 }
+
 
 
 void ov01_021E6178(void) {
-    // push {lr}
-    // sub sp, #0x14
-    // bl NNS_G2dInitOamManagerModule
-    // mov r0, #0
+    NNS_G2dInitOamManagerModule();
     // str r0, [sp]
-    // mov r1, #0x7c
     // str r1, [sp, #4]
     // str r0, [sp, #8]
-    // mov r3, #0x1f
     // str r3, [sp, #0xc]
-    // mov r2, #4
     // str r2, [sp, #0x10]
-    // add r2, r0, #0
-    // bl OamManager_Create
-    // add sp, #0x14
-    // pop {pc}
-    // TODO: decompile
+    OamManager_Create(0, 0x7c, 0, 0x1f);
 }
+
 
 
 void ov01_021E619C(void) {
-    OamManager_Free();
 }
+
 
 
 void ov01_021E61A4(void) {
-    // push {r4, lr}
-    // mov r1, #0
-    // add r4, r0, #0
-    // add r2, r1, #0
-    // bl ov01_021EAB44
-    // add r0, r4, #0
-    // mov r1, #2
-    // mov r2, #0
-    // bl ov01_021EAB58
-    // add r0, r4, #0
-    // mov r1, #0x1f
-    // mov r2, #0
-    // bl ov01_021EAB6C
-    // mov r1, #2
-    // add r0, r4, #0
-    // lsl r1, r1, #0xe
-    // mov r2, #1
-    // mov r3, #0
-    // bl ov01_021EAB80
-    // mov r1, #1
-    // add r0, r4, #0
-    // lsl r1, r1, #0x16
-    // bl ov01_021EA910
-    // pop {r4, pc}
-    // TODO: decompile
+    ov01_021EAB44(0, 0);
+    ov01_021EAB58(r4, 2, 0);
+    ov01_021EAB6C(r4, 0x1f, 0);
+    ov01_021EAB80(r4, (2 << 0xe), 1, 0);
+    ov01_021EA910(r4, (1 << 0x16));
 }
+
 
 
 void ov01_021E61E0(void) {
@@ -951,10 +796,10 @@ void ov01_021E61E0(void) {
 }
 
 
+
 void ov01_021E6214(void) {
-    ObjCharTransfer_Destroy();
-    ObjPlttTransfer_Destroy();
 }
+
 
 
 void ov01_021E6220(void) {
@@ -1069,98 +914,52 @@ void ov01_021E6220(void) {
 }
 
 
+
 void ov01_021E631C(void) {
-    // cmp r1, #1
-    // bne _021E6330
-    // add r1, r0, #0
     // add r1, #0xbc
-    // ldr r2, [r1]
-    // mov r1, #4
     // orr r1, r2
     // add r0, #0xbc
     // str r1, [r0]
-    // bx lr
-    // add r1, r0, #0
     // add r1, #0xbc
-    // ldr r2, [r1]
-    // mov r1, #4
     // bic r2, r1
     // add r0, #0xbc
     // str r2, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021E6340(void) {
-    // cmp r1, #1
-    // bne _021E6354
-    // add r1, r0, #0
     // add r1, #0xbc
-    // ldr r2, [r1]
-    // mov r1, #1
     // orr r1, r2
     // add r0, #0xbc
     // str r1, [r0]
-    // bx lr
-    // add r1, r0, #0
     // add r1, #0xbc
-    // ldr r2, [r1]
-    // mov r1, #1
     // bic r2, r1
     // add r0, #0xbc
     // str r2, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021E6364(void) {
-    // mov r1, #0xf
     // add r0, #0xbc
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021E636C(void) {
-    // push {lr}
-    // sub sp, #0xc
-    // cmp r0, #1
-    // bne _021E638E
-    // mov r0, #6
     // str r0, [sp]
-    // mov r1, #1
     // str r1, [sp, #4]
-    // mov r0, #4
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r2, r1, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add sp, #0xc
-    // pop {pc}
-    // cmp r0, #0
-    // bne _021E63AE
-    // mov r0, #6
+    BeginNormalPaletteFade(0, 1, 1, 0);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // mov r0, #4
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add sp, #0xc
-    // pop {pc}
-    // bl GF_AssertFail
-    // add sp, #0xc
-    // pop {pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    GF_AssertFail();
 }
+
 
 
 void ov01_021E63B8(void) {
@@ -1235,40 +1034,21 @@ void ov01_021E63B8(void) {
 }
 
 
+
 void ov01_021E6460(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
     // add r0, #0xcc
-    // ldr r0, [r0]
-    // add r2, r4, #0
     // str r0, [sp]
-    // ldr r0, [r4, #0x64]
     // add r2, #0xc0
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0xc]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x30]
-    // ldr r1, [r4, #0x34]
-    // ldr r2, [r2]
-    // ldr r3, [r4, #0x54]
-    // bl ov01_021F6020
-    // str r0, [r4, #0x2c]
-    // mov r0, #8
-    // mov r1, #4
-    // bl ov01_021FB3A4
-    // add r1, r4, #0
+    ov01_021F6020(*((u32*)(r0 + 0x30)), *((u32*)(r0 + 0x34)), *((u32*)r0), *((u32*)(r0 + 0x54)));
+    *((u32*)(r4 + 0x2c)) = r0;
+    ov01_021FB3A4(8, 4);
     // add r1, #0x98
     // str r0, [r1]
-    // ldr r2, [r4, #0x20]
-    // ldr r0, [r4, #0x2c]
-    // ldr r1, [r2, #8]
-    // ldr r2, [r2, #0xc]
-    // bl ov01_021F6118
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov01_021F6118(*((u32*)(r4 + 0x2c)), *((u32*)(*((u32*)(r4 + 0x20)) + 8)), *((u32*)(*((u32*)(r4 + 0x20)) + 0xc)));
 }
+
 
 
 void ov01_021E64A4(void) {
@@ -1365,6 +1145,7 @@ void ov01_021E64A4(void) {
 }
 
 
+
 void ov01_021E6580(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -1434,18 +1215,12 @@ void ov01_021E6580(void) {
 }
 
 
+
 void ov01_021E662C(void) {
-    // push {r3, lr}
-    // bl CARD_SpiWaitGetStatus
-    // bl CARD_SpiWaitGetStatus
-    // cmp r0, #0xaa
-    // bne _021E663E
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    CARD_SpiWaitGetStatus();
+    CARD_SpiWaitGetStatus();
 }
+
 
 
 void ov01_021E6644(void) {
@@ -1491,6 +1266,7 @@ void ov01_021E6644(void) {
 }
 
 
+
 void ov01_021E6698(void) {
     // add r0, r0, #4
     // bx lr
@@ -1498,16 +1274,16 @@ void ov01_021E6698(void) {
 }
 
 
+
 void ov01_021E669C(void) {
     // ldrh r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021E66A0(void) {
-    Heap_Free();
 }
+
 
 
 void ov01_021E66A8(void) {
@@ -1522,6 +1298,7 @@ void ov01_021E66A8(void) {
 }
 
 
+
 void ov01_021E66B8(void) {
     // ldr r3, _021E66C4 ; =Heap_AllocAtEnd
     // mov r1, #0xfa
@@ -1532,6 +1309,7 @@ void ov01_021E66B8(void) {
     // _021E66C4: .word Heap_AllocAtEnd
     // TODO: decompile
 }
+
 
 
 void ov01_021E66C8(void) {
@@ -1546,10 +1324,12 @@ void ov01_021E66C8(void) {
 }
 
 
+
 void ov01_021E66D8(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov01_021E66DC(void) {
@@ -1558,8 +1338,10 @@ void ov01_021E66DC(void) {
 }
 
 
+
 void ov01_021E66E0(void) {
     // bx lr
     // TODO: decompile
 }
+
 

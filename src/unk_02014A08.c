@@ -2,92 +2,49 @@
 #include "global.h"
 
 void sub_02014A08(void) {
-    Heap_Alloc(0xc);
-    *((u8*)(r0 + 1)) = 0;
-    *((u8*)(r0 + 2)) = 0;
-    *((u8*)(r0 + 3)) = 0;
-    *((u8*)(r0 + 4)) = 0;
-    *((u8*)(r0 + 5)) = 0;
-    *((u8*)(r0 + 6)) = 0;
-    *((u8*)(r0 + 7)) = 0;
-    *((u8*)(r0 + 8)) = 0;
-    *((u8*)(r0 + 9)) = 0;
-    *((u8*)(r0 + 0xa)) = 0;
-    *((u8*)(r0 + 0xb)) = 0;
-    *((u8*)(r0 + 9)) = 1;
-    *((u32*)(r0 + 4)) = r4;
 }
+
 
 
 void sub_02014A38(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _02014A42
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    Heap_Free(r4);
 }
+
 
 
 void sub_02014A4C(void) {
-    GF_AssertFail();
 }
+
 
 
 void sub_02014A60(void) {
-    GF_AssertFail(1);
 }
+
 
 
 void sub_02014A78(void) {
-    GF_AssertFail();
 }
+
 
 
 void sub_02014A8C(void) {
-    // cmp r0, #0
-    // beq _02014A9E
-    // ldrb r1, [r0, #9]
-    // cmp r1, #0
-    // beq _02014A9E
-    // ldrb r2, [r0, #8]
-    // mov r1, #1
     // eor r1, r2
-    // strb r1, [r0, #8]
-    // bx lr
-    // TODO: decompile
+    *((u8*)(r0 + 8)) = 1;
 }
+
 
 
 void sub_02014AA0(void) {
-    MI_StopDma(0);
-    MI_WaitDma(0);
 }
+
 
 
 void sub_02014AB0(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // add r4, r2, #0
-    // cmp r3, #1
-    // bne _02014ACA
-    // mov r0, #0
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // add r3, r4, #0
-    // bl MI_HBlankDmaCopy32
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // add r3, r4, #0
-    // bl MI_HBlankDmaCopy16
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    MI_HBlankDmaCopy32(0, r0, r1, r2);
+    MI_HBlankDmaCopy16(0, r6, r5, r4);
 }
+
 
 
 void sub_02014AD8(void) {
@@ -113,6 +70,7 @@ void sub_02014AD8(void) {
     // _02014B04: .word 0x0000079C
     // TODO: decompile
 }
+
 
 
 void sub_02014B08(void) {
@@ -183,6 +141,7 @@ void sub_02014B08(void) {
 }
 
 
+
 void sub_02014B9C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -212,20 +171,15 @@ void sub_02014B9C(void) {
 }
 
 
+
 void sub_02014BD8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02014B9C
-    // bl sub_02014D68
-    // mov r0, #6
-    // lsl r0, r0, #8
+    sub_02014B9C();
+    sub_02014D68();
     // ldr r0, [r4, r0]
-    // bl sub_02014A38
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02014A38((6 << 8));
+    Heap_Free(r4);
 }
+
 
 
 void sub_02014BF8(void) {
@@ -238,6 +192,7 @@ void sub_02014BF8(void) {
     // _02014C04: .word sub_02014A4C
     // TODO: decompile
 }
+
 
 
 void sub_02014C08(void) {
@@ -268,6 +223,7 @@ void sub_02014C08(void) {
 }
 
 
+
 void sub_02014C40(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -284,6 +240,7 @@ void sub_02014C40(void) {
     // _02014C5C: .word 0x00000604
     // TODO: decompile
 }
+
 
 
 void sub_02014C60(void) {
@@ -332,6 +289,7 @@ void sub_02014C60(void) {
     // _02014CB8: .word 0x00000000
     // TODO: decompile
 }
+
 
 
 void sub_02014CBC(void) {
@@ -417,32 +375,19 @@ void sub_02014CBC(void) {
 }
 
 
+
 void sub_02014D68(void) {
-    sub_02014AA0();
 }
+
 
 
 void sub_02014D70(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bne _02014D7A
-    // bl GF_AssertFail
-    // mov r0, #6
-    // lsl r0, r0, #8
+    GF_AssertFail();
     // ldr r0, [r4, r0]
-    // bl sub_02014A60
-    // mov r1, #3
-    // lsl r1, r1, #8
-    // add r5, r0, #0
-    // bl DC_FlushRange
-    // mov r1, #0x79
-    // lsl r1, r1, #4
+    sub_02014A60((6 << 8));
+    DC_FlushRange((3 << 8));
     // ldr r1, [r4, r1]
-    // add r0, r5, #0
-    // mov r2, #4
-    // mov r3, #1
-    // bl sub_02014AB0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02014AB0(r5, (0x79 << 4), 4, 1);
 }
+
 

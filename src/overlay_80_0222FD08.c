@@ -207,16 +207,12 @@ void ov80_0222FD08(void) {
 
 
 
+
 void ov80_0222FEEC(void) {
-    // push {r3, lr}
-    // cmp r1, #0
-    // bne _0222FEF8
-    // bl ov80_0222FF00
-    // pop {r3, pc}
-    // bl ov80_02230270
-    // pop {r3, pc}
-    // TODO: decompile
+    ov80_0222FF00();
+    ov80_02230270();
 }
+
 
 
 
@@ -437,6 +433,7 @@ void ov80_0222FF00(void) {
 
 
 
+
 void ov80_022300D4(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xdc
@@ -646,6 +643,7 @@ void ov80_022300D4(void) {
 
 
 
+
 void ov80_02230270(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x19c
@@ -844,6 +842,7 @@ void ov80_02230270(void) {
 
 
 
+
 void ov80_02230424(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -873,6 +872,7 @@ void ov80_02230424(void) {
 
 
 
+
 void ov80_02230460(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // ldr r7, _02230480 ; =0x000004DC
@@ -895,8 +895,10 @@ void ov80_02230460(void) {
 
 
 
+
 void ov80_02230484(void) {
 }
+
 
 
 
@@ -1217,9 +1219,10 @@ void ov80_0223049C(void) {
 
 
 
+
 void ov80_02230784(void) {
-    *((u8*)(r0 + 6)) = (*((u8*)(r0 + 6)) + 1);
 }
+
 
 
 
@@ -1231,37 +1234,24 @@ void ov80_02230790(void) {
 
 
 
+
 void ov80_02230794(void) {
-    // push {r4, lr}
-    // sub sp, #0x30
-    // add r2, r0, #0
-    // ldrb r4, [r2, #6]
-    // mov r3, #7
     // mul r3, r1
     // add r1, r4, r3
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x17
     // add r1, r2, r1
-    // ldrh r1, [r1, #0x18]
     // add r0, sp, #0
-    // mov r2, #0xb
-    // mov r3, #0xcc
-    // bl ov80_02229F04
-    // bl Heap_Free
+    ov80_02229F04(*((u16*)(((r1 << 0x18) >> 0x17) + 0x18)), 0xb, 0xcc);
+    Heap_Free();
     // add r0, sp, #0
-    // ldrh r0, [r0, #4]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl ov80_0222A30C
-    // add sp, #0x30
-    // pop {r4, pc}
-    // TODO: decompile
+    ov80_0222A30C(((*((u16*)(r0 + 4)) << 0x18) >> 0x18));
 }
+
 
 
 
 void ov80_022307C8(void) {
 }
+
 
 
 
@@ -1281,6 +1271,7 @@ void ov80_022307D4(void) {
     // _022307EC: .word ov80_0223049C
     // TODO: decompile
 }
+
 
 
 
@@ -1377,6 +1368,7 @@ void ov80_022307F0(void) {
     // _022308C0: .word 0x000004D8
     // TODO: decompile
 }
+
 
 
 
@@ -1525,6 +1517,7 @@ void ov80_022308C4(void) {
 
 
 
+
 void ov80_022309F8(void) {
     // push {r4, lr}
     // ldr r1, _02230A50 ; =0x000004DC
@@ -1571,6 +1564,7 @@ void ov80_022309F8(void) {
     // _02230A5C: .word 0x000004F8
     // TODO: decompile
 }
+
 
 
 
@@ -1635,6 +1629,7 @@ void ov80_02230A60(void) {
 
 
 
+
 void ov80_02230AE4(void) {
     // ldrh r2, [r0, #8]
     // ldr r1, _02230AF4 ; =0x0000270F
@@ -1650,37 +1645,22 @@ void ov80_02230AE4(void) {
 
 
 
+
 void ov80_02230AF8(void) {
-    // push {r3, lr}
-    // cmp r1, #6
-    // bhi _02230B48
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02230B0A: ; jump table
-    // bl ov80_0222B108
-    // pop {r3, pc}
-    // bl ov80_0222B174
-    // pop {r3, pc}
-    // bl ov80_0222B1DC
-    // pop {r3, pc}
-    // bl ov80_0222B2C4
-    // pop {r3, pc}
-    // lsl r1, r2, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov80_0222B3B0
-    // pop {r3, pc}
-    // lsl r1, r2, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov80_0222B3FC
-    // pop {r3, pc}
-    // bl ov80_0222B448
-    // pop {r3, pc}
-    // TODO: decompile
+    ov80_0222B108((*((u16*)(r1 + 6)) << 0x10));
+    ov80_0222B174();
+    ov80_0222B1DC();
+    ov80_0222B2C4();
+    ov80_0222B3B0(((r2 << 0x18) >> 0x18));
+    ov80_0222B3FC(((r2 << 0x18) >> 0x18));
+    ov80_0222B448();
 }
+
 
 
 
@@ -1717,5 +1697,6 @@ void ov80_02230B4C(void) {
     // _02230B88: .word ov80_0223BDE0
     // TODO: decompile
 }
+
 
 

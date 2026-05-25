@@ -19,9 +19,10 @@ void GF_TouchpadInit(void) {
 }
 
 
+
 void sub_020210BC(void) {
-    GF_AssertFail(0);
 }
+
 
 
 void sub_020210D8(void) {
@@ -81,6 +82,7 @@ void sub_020210D8(void) {
 }
 
 
+
 void sub_02021148(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -132,6 +134,7 @@ void sub_02021148(void) {
 }
 
 
+
 void sub_020211AC(void) {
     // push {r4, lr}
     // ldr r4, _020211D0 ; =_021D2198 + 0x40
@@ -158,19 +161,12 @@ void sub_020211AC(void) {
 }
 
 
+
 void sub_020211E0(void) {
-    // mov r3, #0
-    // cmp r1, #0
-    // ble _020211F2
-    // add r2, r3, #0
-    // add r3, r3, #1
-    // strh r2, [r0, #4]
+    *((u16*)(r0 + 4)) = 0;
     // add r0, #8
-    // cmp r3, r1
-    // blt _020211E8
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void GF_TouchpadStopAutoSampling(void) {
@@ -208,6 +204,7 @@ void GF_TouchpadStopAutoSampling(void) {
 }
 
 
+
 void sub_02021238(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -243,6 +240,7 @@ void sub_02021238(void) {
     // _0202127C: .word _021D2198 + 0x40
     // TODO: decompile
 }
+
 
 
 void sub_02021280(void) {
@@ -297,37 +295,22 @@ void sub_02021280(void) {
 }
 
 
+
 void sub_020212EC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // mov r7, #0
     // str r1, [sp]
-    // add r0, r1, #0
-    // beq _02021322
-    // add r4, r5, #0
     // add r6, sp, #4
     // add r0, sp, #4
-    // add r1, r5, #0
-    // bl TP_GetCalibratedPoint
+    TP_GetCalibratedPoint(r1, r0);
     // ldrh r0, [r6]
-    // add r7, r7, #1
     // add r5, #8
     // strh r0, [r4]
-    // ldrh r0, [r6, #2]
-    // strh r0, [r4, #2]
-    // ldrh r0, [r6, #4]
-    // strh r0, [r4, #4]
-    // ldrh r0, [r6, #6]
-    // strh r0, [r4, #6]
+    *((u16*)(r4 + 2)) = *((u16*)(r6 + 2));
+    *((u16*)(r4 + 4)) = *((u16*)(r6 + 4));
+    *((u16*)(r4 + 6)) = *((u16*)(r6 + 6));
     // ldr r0, [sp]
     // add r4, #8
-    // cmp r7, r0
-    // blo _020212FE
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void GF_TouchpadResumeOnLidOpen(void) {
@@ -357,6 +340,7 @@ void GF_TouchpadResumeOnLidOpen(void) {
 }
 
 
+
 void GF_TouchpadPauseOnLidClose(void) {
     // push {r3, lr}
     // ldr r0, _02021380 ; =_021D2198 + 0x40
@@ -377,6 +361,7 @@ void GF_TouchpadPauseOnLidClose(void) {
     // _02021380: .word _021D2198 + 0x40
     // TODO: decompile
 }
+
 
 
 void GF_TouchpadStartAutoSampling(void) {
@@ -414,25 +399,17 @@ void GF_TouchpadStartAutoSampling(void) {
 }
 
 
+
 void sub_020213C8(void) {
-    // push {r3, lr}
-    // cmp r0, #5
-    // bhi _020213F2
     // add r3, r0, r0
     // add r3, pc
-    // ldrh r3, [r3, #6]
-    // lsl r3, r3, #0x10
     // asr r3, r3, #0x10
     // add pc, r3
     // _020213DA: ; jump table
-    // bl sub_020213F8
-    // pop {r3, pc}
-    // bl sub_020214B0
-    // pop {r3, pc}
-    // mov r0, #1
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_020213F8((*((u16*)(r3 + 6)) << 0x10));
+    sub_020214B0();
 }
+
 
 
 void sub_020213F8(void) {
@@ -529,6 +506,7 @@ void sub_020213F8(void) {
 }
 
 
+
 void sub_020214B0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // ldr r5, _02021520 ; =_021D2198
@@ -591,21 +569,16 @@ void sub_020214B0(void) {
 }
 
 
+
 void sub_02021528(void) {
-    // mov r2, #0
     // strh r2, [r0]
-    // add r1, r2, #0
-    // strh r1, [r0, #8]
-    // strh r1, [r0, #6]
-    // strh r1, [r0, #2]
-    // strh r1, [r0, #4]
-    // add r2, r2, #1
+    *((u16*)(r0 + 8)) = 0;
+    *((u16*)(r0 + 6)) = 0;
+    *((u16*)(r0 + 2)) = 0;
+    *((u16*)(r0 + 4)) = 0;
     // add r0, #8
-    // cmp r2, #8
-    // blt _0202152E
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02021540(void) {
@@ -656,4 +629,5 @@ void sub_02021540(void) {
     // _0202159C: .word _021D2198
     // TODO: decompile
 }
+
 

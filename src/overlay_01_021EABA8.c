@@ -64,23 +64,20 @@ void ov01_021EABA8(void) {
 }
 
 
+
 void ov01_021EAC30(void) {
-    ov01_021EAC64(*((u32*)(r0 + 0x28)));
-    Camera_UnsetStaticPtr();
-    Camera_History_Delete(*((u32*)(r4 + 0x24)));
-    Camera_Delete(*((u32*)(r4 + 0x24)));
 }
+
 
 
 void ov01_021EAC4C(void) {
-    Heap_Alloc(0x34);
-    MI_CpuFill8(0, 0x34);
 }
+
 
 
 void ov01_021EAC64(void) {
-    Heap_Free();
 }
+
 
 
 void ov01_021EAC6C(void) {
@@ -122,6 +119,7 @@ void ov01_021EAC6C(void) {
     // _021EACB8: .word ov01_02206464
     // TODO: decompile
 }
+
 
 
 void ov01_021EACBC(void) {
@@ -227,6 +225,7 @@ void ov01_021EACBC(void) {
 }
 
 
+
 void ov01_021EAD8C(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -325,96 +324,54 @@ void ov01_021EAD8C(void) {
 }
 
 
+
 void ov01_021EAE50(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
     // add r4, sp, #0
-    // mov r0, #0
     // strh r0, [r4]
-    // strh r0, [r4, #2]
-    // strh r0, [r4, #4]
-    // strh r0, [r4, #6]
+    *((u16*)(r4 + 2)) = 0;
+    *((u16*)(r4 + 4)) = 0;
+    *((u16*)(r4 + 6)) = 0;
     // ldrh r4, [r1]
     // ldrh r0, [r2]
-    // cmp r0, r4
-    // blo _021EAE7E
     // sub r0, r0, r4
-    // lsl r0, r0, #0x10
-    // lsr r1, r0, #0x10
-    // add r0, r1, #0
     // add r1, sp, #8
-    // ldrb r1, [r1, #0x10]
     // mul r0, r3
-    // bl _s32_div_f
-    // b _021EAE92
+    _s32_div_f(((0 << 0x10) >> 0x10), *((u8*)(((0 << 0x10) >> 0x10) + 0x10)));
     // sub r0, r4, r0
-    // lsl r0, r0, #0x10
-    // lsr r1, r0, #0x10
-    // add r0, r1, #0
     // add r1, sp, #8
-    // ldrb r1, [r1, #0x10]
     // mul r0, r3
-    // bl _s32_div_f
+    _s32_div_f(((r0 << 0x10) >> 0x10), *((u8*)(((r0 << 0x10) >> 0x10) + 0x10)));
     // neg r0, r0
     // add r1, r4, r0
     // add r0, sp, #0
     // strh r1, [r0]
     // add r0, sp, #0
-    // add r1, r5, #0
-    // bl Camera_SetAnglePos
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Camera_SetAnglePos(r5);
 }
+
 
 
 void ov01_021EAEA4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r7, r0, #0
-    // add r5, r1, #0
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // ldr r0, [r5]
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov01_021EAEE0
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    ov01_021EAEE0(*((u32*)r1), r2, r3);
     // str r0, [sp]
-    // ldr r0, [r5, #8]
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov01_021EAEE0
+    ov01_021EAEE0(*((u32*)(r5 + 8)), r4, r6);
     // str r0, [sp, #8]
     // add r0, sp, #0
-    // add r1, r7, #0
-    // bl Camera_OffsetLookAtPosAndTarget
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Camera_OffsetLookAtPosAndTarget(r7);
 }
 
 
-void ov01_021EAEE0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r7, r2, #0
-    // add r5, r0, #0
+
+s32 ov01_021EAEE0(void) {
     // mul r0, r4
-    // add r1, r7, #0
-    // bl _s32_div_f
-    // add r6, r0, #0
-    // sub r0, r4, #1
+    _s32_div_f(r2);
     // mul r0, r5
-    // add r1, r7, #0
-    // bl _s32_div_f
+    _s32_div_f((r4 - 1), r7);
     // sub r0, r6, r0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 

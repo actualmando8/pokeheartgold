@@ -15,6 +15,7 @@ void sub_02014DA0(void) {
 }
 
 
+
 void sub_02014DB4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -138,6 +139,7 @@ void sub_02014DB4(void) {
 }
 
 
+
 void sub_02014EBC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -234,9 +236,10 @@ void sub_02014EBC(void) {
 }
 
 
+
 void sub_02014F84(void) {
-    sub_02014EBC(0);
 }
+
 
 
 void sub_02014FA4(void) {
@@ -264,6 +267,7 @@ void sub_02014FA4(void) {
 }
 
 
+
 void sub_02014FD0(void) {
     // push {r4, lr}
     // ldr r1, _02014FF8 ; =_021D10A0
@@ -287,6 +291,7 @@ void sub_02014FD0(void) {
     // _02014FF8: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_02014FFC(void) {
@@ -314,6 +319,7 @@ void sub_02014FFC(void) {
 }
 
 
+
 void sub_02015028(void) {
     // push {r4, lr}
     // ldr r1, _02015050 ; =_021D10A0
@@ -337,6 +343,7 @@ void sub_02015028(void) {
     // _02015050: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_02015054(void) {
@@ -364,6 +371,7 @@ void sub_02015054(void) {
 }
 
 
+
 void sub_02015080(void) {
     // push {r4, lr}
     // ldr r1, _020150A8 ; =_021D10A0
@@ -387,6 +395,7 @@ void sub_02015080(void) {
     // _020150A8: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_020150AC(void) {
@@ -414,6 +423,7 @@ void sub_020150AC(void) {
 }
 
 
+
 void sub_020150D8(void) {
     // push {r4, lr}
     // ldr r1, _02015100 ; =_021D10A0
@@ -437,6 +447,7 @@ void sub_020150D8(void) {
     // _02015100: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_02015104(void) {
@@ -464,6 +475,7 @@ void sub_02015104(void) {
 }
 
 
+
 void sub_02015130(void) {
     // push {r4, lr}
     // ldr r1, _02015158 ; =_021D10A0
@@ -487,6 +499,7 @@ void sub_02015130(void) {
     // _02015158: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_0201515C(void) {
@@ -514,6 +527,7 @@ void sub_0201515C(void) {
 }
 
 
+
 void sub_02015188(void) {
     // push {r4, lr}
     // ldr r1, _020151B0 ; =_021D10A0
@@ -537,6 +551,7 @@ void sub_02015188(void) {
     // _020151B0: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_020151B4(void) {
@@ -564,6 +579,7 @@ void sub_020151B4(void) {
 }
 
 
+
 void sub_020151E0(void) {
     // push {r4, lr}
     // ldr r1, _02015208 ; =_021D10A0
@@ -587,6 +603,7 @@ void sub_020151E0(void) {
     // _02015208: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_0201520C(void) {
@@ -614,6 +631,7 @@ void sub_0201520C(void) {
 }
 
 
+
 void sub_02015238(void) {
     // push {r4, lr}
     // ldr r1, _02015260 ; =_021D10A0
@@ -639,9 +657,10 @@ void sub_02015238(void) {
 }
 
 
+
 void sub_02015264(void) {
-    AllocAndReadWholeNarcMemberByIdPair();
 }
+
 
 
 void sub_0201526C(void) {
@@ -716,6 +735,7 @@ void sub_0201526C(void) {
 }
 
 
+
 void sub_02015300(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -747,10 +767,10 @@ void sub_02015300(void) {
 }
 
 
+
 void sub_02015340(void) {
-    sub_02015300(r1);
-    SysTask_Destroy(r4);
 }
+
 
 
 void sub_02015354(void) {
@@ -784,6 +804,7 @@ void sub_02015354(void) {
     // _02015390: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_02015394(void) {
@@ -821,6 +842,7 @@ void sub_02015394(void) {
 }
 
 
+
 void sub_020153D8(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -848,9 +870,10 @@ void sub_020153D8(void) {
 }
 
 
+
 void sub_02015414(void) {
-    SPL_Calc();
 }
+
 
 
 void sub_02015420(void) {
@@ -869,6 +892,7 @@ void sub_02015420(void) {
     // _02015438: .word _021D10A8
     // TODO: decompile
 }
+
 
 
 void sub_0201543C(void) {
@@ -892,6 +916,7 @@ void sub_0201543C(void) {
 }
 
 
+
 void sub_02015460(void) {
     // push {r4, r5, r6, lr}
     // mov r4, #0
@@ -913,14 +938,15 @@ void sub_02015460(void) {
 }
 
 
+
 void sub_02015484(void) {
-    SPL_Create();
 }
+
 
 
 void sub_02015494(void) {
-    SPL_CreateWithInitialize(0);
 }
+
 
 
 void sub_020154B0(void) {
@@ -931,14 +957,15 @@ void sub_020154B0(void) {
 }
 
 
+
 void sub_020154B8(void) {
-    SPL_DeleteAll();
 }
+
 
 
 void sub_020154C4(void) {
-    SPL_Delete();
 }
+
 
 
 void sub_020154D0(void) {
@@ -948,22 +975,19 @@ void sub_020154D0(void) {
 }
 
 
+
 void sub_020154D4(void) {
-    // add r2, r0, #0
     // add r2, #0x40
-    // add r3, r1, #0
     // ldmia r2!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // ldr r0, [r2]
     // str r0, [r3]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020154E4(void) {
-    Camera_SetLookAtCamUp();
 }
+
 
 
 void sub_02015504(void) {
@@ -974,6 +998,7 @@ void sub_02015504(void) {
     // _0201550C: .word _021D10A0
     // TODO: decompile
 }
+
 
 
 void sub_02015510(void) {
@@ -990,6 +1015,7 @@ void sub_02015510(void) {
 }
 
 
+
 void sub_02015524(void) {
     // ldr r0, [r0, #0x20]
     // bx lr
@@ -997,37 +1023,33 @@ void sub_02015524(void) {
 }
 
 
+
 void sub_02015528(void) {
     // add r0, #0xdb
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02015530(void) {
     // add r0, #0xdb
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02015538(void) {
-    // add r2, r0, #0
     // add r2, #0x50
     // ldrh r2, [r2]
     // strh r2, [r1]
-    // add r2, r0, #0
     // add r2, #0x52
     // ldrh r2, [r2]
     // add r0, #0x54
-    // strh r2, [r1, #2]
+    *((u16*)(r1 + 2)) = r0;
     // ldrh r0, [r0]
-    // strh r0, [r1, #4]
-    // bx lr
-    // TODO: decompile
+    *((u16*)(r1 + 4)) = r0;
 }
+
 
 
 void sub_02015550(void) {
@@ -1118,117 +1140,92 @@ void sub_02015550(void) {
 }
 
 
+
 void sub_0201560C(void) {
-    sub_02015550(0);
 }
+
 
 
 void sub_02015628(void) {
-    sub_02015550(2);
 }
+
 
 
 void sub_02015640(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // mov r1, #2
-    // bl sub_02015550
-    // add r2, r0, #0
-    // bne _02015666
+    sub_02015550(2);
     // add r2, sp, #0
-    // mov r0, #0
     // str r0, [r2]
-    // str r0, [r2, #4]
-    // str r0, [r2, #8]
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 8)) = 0;
     // ldmia r2!, {r0, r1}
     // stmia r4!, {r0, r1}
-    // ldr r0, [r2]
-    // add sp, #0xc
     // str r0, [r4]
-    // pop {r3, r4, pc}
     // ldmia r2!, {r0, r1}
     // stmia r4!, {r0, r1}
-    // ldr r0, [r2]
     // str r0, [r4]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02015674(void) {
-    sub_02015550(0, 2);
 }
+
 
 
 void sub_0201568C(void) {
-    sub_02015550(0, 0xc, 2);
 }
+
 
 
 void sub_020156A8(void) {
-    sub_02015550(3);
 }
+
 
 
 void sub_020156BC(void) {
-    sub_02015550(0, 3);
 }
+
 
 
 void sub_020156D8(void) {
-    sub_02015550(3);
 }
+
 
 
 void sub_020156EC(void) {
-    sub_02015550(0, 3);
 }
+
 
 
 void sub_02015708(void) {
-    sub_02015550(5);
 }
+
 
 
 void sub_02015720(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // mov r1, #5
-    // bl sub_02015550
-    // add r2, r0, #0
-    // bne _02015746
+    sub_02015550(5);
     // add r2, sp, #0
-    // mov r0, #0
     // str r0, [r2]
-    // str r0, [r2, #4]
-    // str r0, [r2, #8]
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 8)) = 0;
     // ldmia r2!, {r0, r1}
     // stmia r4!, {r0, r1}
-    // ldr r0, [r2]
-    // add sp, #0xc
     // str r0, [r4]
-    // pop {r3, r4, pc}
     // ldmia r2!, {r0, r1}
     // stmia r4!, {r0, r1}
-    // ldr r0, [r2]
     // str r0, [r4]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02015754(void) {
-    sub_02015550(0, 5);
 }
+
 
 
 void sub_0201576C(void) {
-    sub_02015550(0, 0xc, 5);
 }
+
 
 
 void ListMenuCursorNew(void) {
@@ -1255,50 +1252,27 @@ void ListMenuCursorNew(void) {
 }
 
 
+
 void DestroyListMenuCursorObj(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _020157C2
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // beq _020157D6
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // beq _020157D0
-    // bl String_Delete
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    String_Delete(*((u32*)(r4 + 4)));
+    Heap_Free(r4);
 }
+
 
 
 void ListMenuCursorSetColor(void) {
-    GF_AssertFail();
 }
+
 
 
 void ListMenuUpdateCursorObj(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x10
-    // add r6, r0, #0
     // str r3, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // ldr r0, [r6]
-    // add r5, r1, #0
     // str r0, [sp, #8]
-    // mov r1, #0
-    // add r4, r2, #0
     // str r1, [sp, #0xc]
-    // ldr r2, [r6, #4]
-    // add r0, r5, #0
-    // add r3, r4, #0
-    // bl AddTextPrinterParameterizedWithColor
-    // add r0, r5, #0
-    // bl CopyWindowPixelsToVram_TextMode
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    AddTextPrinterParameterizedWithColor(r1, 0, *((u32*)(r0 + 4)), r2);
+    CopyWindowPixelsToVram_TextMode(r5);
 }
+
 

@@ -2,11 +2,8 @@
 #include "global.h"
 
 u32 FrtCmd_091(void) {
-    FrontierScriptContext_ReadHalfWord();
-    GF_GetCurrentPlayingBGM();
-    StopBGM(0);
-    return 0;
 }
+
 
 
 void FrtCmd_132(void) {
@@ -123,6 +120,7 @@ void FrtCmd_132(void) {
 }
 
 
+
 void ov80_0223558C(void) {
     // cmp r1, #2
     // bne _02235598
@@ -161,44 +159,24 @@ void ov80_0223558C(void) {
 }
 
 
-void FrtCmd_133(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // ldr r1, [r5, #0x1c]
-    // add r0, r1, #1
-    // str r0, [r5, #0x1c]
-    // ldr r0, [r5]
+
+BOOL FrtCmd_133(void) {
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r0)));
+    *((u32*)(r5 + 0x1c)) = (*((u32*)(r5 + 0x1c)) + 1);
     // ldrb r6, [r1]
-    // ldr r0, [r0]
-    // bl Frontier_GetData
-    // add r4, r0, #0
-    // bne _022355F4
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // ldrb r0, [r4, #0xf]
-    // bl ov80_02236B18
-    // lsl r1, r6, #4
+    Frontier_GetData(*((u32*)*((u32*)r5)), *((u32*)(r5 + 0x1c)));
+    ov80_02236B18(*((u8*)(r0 + 0xf)));
     // add r1, r6, r1
-    // add r2, r0, #0
     // add r4, #0x90
-    // lsl r1, r1, #4
-    // add r0, r5, #0
     // add r1, r4, r1
-    // bl ov80_0222F458
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov80_0222F458(r5, ((r6 << 4) << 4), r0);
 }
+
 
 
 u32 FrtCmd_134(void) {
-    Frontier_GetData();
-    FrontierFieldSystem_Free();
-    return 0;
 }
+
 
 
 void FrtCmd_135(void) {
@@ -239,6 +217,7 @@ void FrtCmd_135(void) {
 }
 
 
+
 void FrtCmd_136(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -265,6 +244,7 @@ void FrtCmd_136(void) {
     // _022356A8: .word 0x000008CC
     // TODO: decompile
 }
+
 
 
 void FrtCmd_137(void) {
@@ -312,6 +292,7 @@ void FrtCmd_137(void) {
 }
 
 
+
 void FrtCmd_138(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -335,64 +316,29 @@ void FrtCmd_138(void) {
 }
 
 
+
 void ov80_0223573C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetLaunchArgs
-    // add r4, r0, #0
-    // ldr r0, [r5]
-    // ldr r0, [r0]
-    // bl Frontier_GetData
-    // add r1, r0, #0
-    // add r0, r5, #0
+    Frontier_GetLaunchArgs(*((u32*)*((u32*)r0)));
+    Frontier_GetData(*((u32*)*((u32*)r5)));
     // add r0, #0x7a
     // ldrh r0, [r0]
     // str r0, [sp]
-    // add r0, r5, #0
     // add r5, #0x78
     // ldrh r3, [r5]
-    // ldr r2, [r4, #8]
-    // bl ov80_02235774
-    // cmp r0, #1
-    // bne _02235770
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov80_02235774(r5, r0, *((u32*)(r4 + 8)));
 }
 
 
-void ov80_02235774(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r0, #0
-    // add r6, r1, #0
-    // add r5, r3, #0
-    // bl sub_0203769C
-    // mov r1, #1
+
+BOOL ov80_02235774(void) {
+    sub_0203769C();
     // sub r0, r1, r0
-    // bl sub_02037C44
-    // add r7, r0, #0
-    // bne _02235790
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
+    sub_02037C44(1);
     // add r1, sp, #8
-    // ldrh r1, [r1, #0x10]
-    // add r0, r4, #0
-    // bl ov80_0222BE24
-    // add r4, r0, #0
-    // cmp r5, #2
-    // bne _022357AC
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl ov80_02236AD8
+    ov80_0222BE24(r4, *((u16*)(r1 + 0x10)));
+    ov80_02236AD8(r6, r7);
     // strh r0, [r4]
-    // b _022357B0
-    // bl GF_AssertFail
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail();
 }
+
 

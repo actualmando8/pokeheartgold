@@ -1,54 +1,26 @@
 /* Decompiled from asm/overlay_01_021FB5D4.s */
 #include "global.h"
 
-void ov01_021FB5D4(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // mov r1, #0xca
-    // lsl r1, r1, #2
-    // add r6, r0, #0
-    // bl Heap_Alloc
-    // mov r2, #0xca
-    // mov r1, #0
-    // lsl r2, r2, #2
-    // add r4, r0, #0
-    // bl memset
-    // mov r2, #0x63
-    // mov r0, #0
-    // add r1, r4, #0
-    // lsl r2, r2, #2
+void * ov01_021FB5D4(void) {
+    Heap_Alloc((0xca << 2));
+    memset(0, (0xca << 2));
     // str r0, [r4]
-    // add r0, r6, #0
     // add r1, #0xc
     // add r2, r4, r2
-    // bl sub_02014A08
-    // mov r1, #0xc3
-    // lsl r1, r1, #2
+    sub_02014A08(r6, r4, (0x63 << 2));
     // str r0, [r4, r1]
-    // add r0, r1, #4
     // str r5, [r4, r0]
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021FB610(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4]
-    // cmp r1, #1
-    // bne _021FB61E
-    // bl ov01_021FB82C
-    // mov r0, #0xc3
-    // lsl r0, r0, #2
+    ov01_021FB82C(*((u32*)r0));
     // ldr r0, [r4, r0]
-    // bl sub_02014A38
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02014A38((0xc3 << 2));
+    Heap_Free(r4);
 }
+
 
 
 void ov01_021FB630(void) {
@@ -117,69 +89,31 @@ void ov01_021FB630(void) {
 }
 
 
+
 void ov01_021FB6C4(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // ldr r0, [r4, #8]
-    // cmp r0, #3
-    // bhi _021FB74C
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _021FB6DA: ; jump table
-    // mov r0, #3
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #8]
-    // add r0, r0, #1
-    // str r0, [r4, #8]
-    // pop {r4, pc}
-    // ldr r0, [r4, #4]
-    // sub r0, r0, #1
-    // str r0, [r4, #4]
-    // mov r0, #0xc3
-    // lsl r0, r0, #2
+    *((u32*)(r1 + 4)) = 3;
+    *((u32*)(r1 + 8)) = (*((u32*)(r1 + 8)) + 1);
+    *((u32*)(r1 + 4)) = (*((u32*)(r1 + 4)) - 1);
     // ldr r0, [r4, r0]
-    // bl sub_02014A4C
-    // ldr r1, [r4, #4]
-    // mov r2, #3
+    sub_02014A4C((0xc3 << 2));
     // sub r1, r2, r1
-    // bl ov01_021FB788
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // bgt _021FB74C
-    // mov r0, #3
-    // str r0, [r4, #4]
-    // ldr r0, [r4, #8]
-    // add r0, r0, #1
-    // str r0, [r4, #8]
-    // pop {r4, pc}
-    // ldr r0, [r4, #4]
-    // sub r0, r0, #1
-    // str r0, [r4, #4]
-    // mov r0, #0xc3
-    // lsl r0, r0, #2
+    ov01_021FB788(*((u32*)(r4 + 4)), 3);
+    *((u32*)(r4 + 4)) = 3;
+    *((u32*)(r4 + 8)) = (*((u32*)(r4 + 8)) + 1);
+    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) - 1);
     // ldr r0, [r4, r0]
-    // bl sub_02014A4C
-    // ldr r1, [r4, #4]
-    // mov r2, #3
-    // bl ov01_021FB788
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // bgt _021FB74C
-    // ldr r0, [r4, #8]
-    // add r0, r0, #1
-    // str r0, [r4, #8]
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // bl ov01_021FB82C
-    // mov r0, #0
-    // bl G3X_SetHOffset
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02014A4C((0xc3 << 2));
+    ov01_021FB788(*((u32*)(r4 + 4)), 3);
+    *((u32*)(r4 + 8)) = (*((u32*)(r4 + 8)) + 1);
+    ov01_021FB82C(r4);
+    G3X_SetHOffset(0);
 }
+
 
 
 void ov01_021FB750(void) {
@@ -211,41 +145,19 @@ void ov01_021FB750(void) {
 }
 
 
+
 void ov01_021FB788(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // lsl r0, r1, #1
     // add r0, r1, r0
-    // add r1, r2, #0
-    // mov r4, #1
-    // bl _s32_div_f
+    _s32_div_f((r1 << 1), r2);
     // neg r1, r0
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x10
-    // lsl r0, r0, #0x10
-    // mov r6, #0
     // str r1, [sp]
-    // lsr r7, r0, #0x10
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // cmp r1, #0
-    // bne _021FB7B6
-    // mov r0, #1
+    _s32_div_f(0, 0xa);
     // eor r4, r0
-    // cmp r4, #0
-    // beq _021FB7BE
     // strh r7, [r5]
-    // b _021FB7C2
     // ldr r0, [sp]
     // strh r0, [r5]
-    // add r6, r6, #1
-    // add r5, r5, #2
-    // cmp r6, #0xc0
-    // blt _021FB7A6
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021FB7CC(void) {
@@ -260,60 +172,42 @@ void ov01_021FB7CC(void) {
 }
 
 
+
 void ov01_021FB7DC(void) {
-    ov01_021FB7E8();
 }
+
 
 
 void ov01_021FB7E8(void) {
-    ov01_021FB750(0xc6);
 }
+
 
 
 void ov01_021FB800(void) {
-    ov01_021FB80C();
 }
+
 
 
 void ov01_021FB80C(void) {
-    sub_02014A8C(0xc3, 0xc6, 1);
 }
+
 
 
 void ov01_021FB82C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0xc5
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // bl ov01_021FB554
-    // mov r0, #0xc5
-    // mov r1, #0
-    // lsl r0, r0, #2
+    ov01_021FB554((0xc5 << 2));
     // str r1, [r4, r0]
     // add r0, #8
     // ldr r0, [r4, r0]
-    // bl SysTask_Destroy
-    // mov r0, #0xc7
-    // mov r1, #0
-    // lsl r0, r0, #2
+    SysTask_Destroy((0xc5 << 2), 0);
     // str r1, [r4, r0]
-    // add r0, r0, #4
     // ldr r0, [r4, r0]
-    // bl SysTask_Destroy
-    // mov r0, #0x32
-    // mov r1, #0
-    // lsl r0, r0, #4
+    SysTask_Destroy(((0xc7 << 2) + 4), 0);
     // str r1, [r4, r0]
-    // add r0, r0, #4
     // ldr r0, [r4, r0]
-    // bl SysTask_Destroy
-    // mov r0, #0xc9
-    // mov r1, #0
-    // lsl r0, r0, #2
+    SysTask_Destroy(((0x32 << 4) + 4), 0);
     // str r1, [r4, r0]
     // str r1, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 

@@ -1,41 +1,29 @@
 /* Decompiled from asm/overlay_01_02203E40.s */
 #include "global.h"
 
-void ov01_02203E40(void) {
-    // push {r3, r4, r5, lr}
-    // mov r2, #0
-    // mov r1, #0x68
-    // add r3, r2, #0
-    // add r5, r0, #0
-    // bl ov01_021F1430
-    // add r4, r0, #0
+void * ov01_02203E40(void) {
+    ov01_021F1430(0x68, 0, 0);
     // str r5, [r4]
-    // mov r1, #0
-    // str r1, [r4, #0x60]
-    // mov r1, #0xfe
-    // lsl r1, r1, #0x16
-    // str r1, [r4, #0x64]
-    // bl ov01_02203E74
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    *((u32*)(r0 + 0x60)) = 0;
+    *((u32*)(r0 + 0x64)) = (0xfe << 0x16);
+    ov01_02203E74((0xfe << 0x16));
 }
+
 
 
 void ov01_02203E64(void) {
-    ov01_02203E94();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_02203E74(void) {
-    ov01_021F1AB8(0x6a, 0);
 }
+
 
 
 void ov01_02203E94(void) {
-    ov01_021F1448();
 }
+
 
 
 void ov01_02203EA0(void) {
@@ -100,33 +88,25 @@ void ov01_02203EA0(void) {
 }
 
 
+
 void ov01_02203F2C(void) {
-    sub_02068D74();
 }
 
 
-void ov01_02203F3C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // add r3, r0, #0
+
+u32 ov01_02203F3C(void) {
+    sub_02068D98();
     // ldmia r3!, {r0, r1}
-    // add r2, r4, #4
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // add r0, r5, #0
-    // bl sub_02068D90
+    sub_02068D90(r5, (r4 + 4), r0);
     // str r0, [r4]
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_02203F68(void) {
@@ -135,11 +115,10 @@ void ov01_02203F68(void) {
 }
 
 
+
 void ov01_02203F6C(void) {
-    MapObject_CopyPositionVector(*((u32*)(r1 + 0xc)));
-    VEC_MultAdd(*((u32*)(r4 + 0x10)), r4);
-    sub_02068DA8(r5);
 }
+
 
 
 void ov01_02203F98(void) {
@@ -189,4 +168,5 @@ void ov01_02203F98(void) {
     // _02204000: .word 0x45800000
     // TODO: decompile
 }
+
 

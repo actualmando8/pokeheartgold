@@ -2,27 +2,17 @@
 #include "global.h"
 
 void sub_02018030(void) {
-    // push {r3, r4, r5, lr}
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // add r1, r2, #0
     // str r4, [sp]
-    // add r2, r4, #0
-    // bl GfGfxLoader_LoadFromOpenNarc
+    GfGfxLoader_LoadFromOpenNarc(r1, r2, 0);
     // str r0, [r5]
-    // add r0, r5, #0
-    // bl sub_02018324
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02018324(r5);
 }
+
 
 
 void sub_0201804C(void) {
-    GF3dRender_AllocAndLoadTexResources(*((u32*)(r1 + 0xc)));
-    GF3dRender_BindModelSet(*((u32*)(r4 + 0xc)));
-    SysTask_Destroy(r5);
 }
+
 
 
 void sub_02018068(void) {
@@ -67,134 +57,64 @@ void sub_02018068(void) {
 }
 
 
+
 void sub_020180BC(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r4, r1, #0
-    // mov r6, #0
-    // add r1, r3, #0
-    // add r5, r0, #0
-    // add r0, r2, #0
     // ldr r3, [sp, #0x18]
-    // add r2, r6, #0
     // str r6, [sp]
-    // bl GfGfxLoader_LoadFromOpenNarc
-    // add r2, r0, #0
+    GfGfxLoader_LoadFromOpenNarc(r2, r3, 0);
     // ldr r3, [sp, #0x1c]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl sub_020182F8
-    // add r0, r6, #0
-    // str r0, [r5, #0x10]
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    sub_020182F8(r5, r4, r0);
+    *((u32*)(r5 + 0x10)) = r6;
 }
+
 
 
 void sub_020180E8(void) {
-    sub_020182F8();
 }
+
 
 
 void sub_020180F8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _02018116
-    // add r0, r1, #0
-    // ldr r1, [r4, #8]
-    // bl NNS_G3dFreeAnmObj
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0
-    // bne _02018116
-    // ldr r0, [r4]
-    // bl Heap_Free
-    // mov r1, #0x14
-    // mov r0, #0
+    NNS_G3dFreeAnmObj(r1, *((u32*)(r0 + 8)));
+    Heap_Free(*((u32*)r4));
     // strb r0, [r4]
-    // add r4, r4, #1
-    // sub r1, r1, #1
-    // bne _0201811A
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02018124(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #8]
-    // ldr r0, [r0, #8]
-    // ldrh r0, [r0, #4]
-    // lsl r2, r0, #0xc
-    // cmp r1, #0
-    // ble _02018142
-    // ldr r0, [r4, #0xc]
     // add r0, r0, r1
-    // add r1, r2, #0
-    // bl _s32_div_f
-    // str r1, [r4, #0xc]
-    // b _02018154
-    // ldr r0, [r4, #0xc]
-    // add r3, r4, #0
+    _s32_div_f(*((u32*)(r0 + 0xc)), (*((u16*)(*((u32*)(*((u32*)(r0 + 8)) + 8)) + 4)) << 0xc), (*((u16*)(*((u32*)(*((u32*)(r0 + 8)) + 8)) + 4)) << 0xc));
+    *((u32*)(r4 + 0xc)) = r1;
     // add r3, #0xc
     // add r0, r0, r1
-    // str r0, [r4, #0xc]
+    *((u32*)(r4 + 0xc)) = *((u32*)(r4 + 0xc));
     // bpl _02018154
-    // ldr r0, [r3]
     // add r0, r0, r2
     // str r0, [r3]
-    // ldr r1, [r4, #0xc]
-    // ldr r0, [r4, #8]
     // str r1, [r0]
-    // pop {r4, pc}
-    // TODO: decompile
 }
 
 
-void sub_0201815C(void) {
-    // push {r3, r4}
-    // ldr r2, [r0, #8]
-    // ldr r3, [r0, #0xc]
-    // ldr r2, [r2, #8]
-    // ldrh r2, [r2, #4]
-    // lsl r4, r2, #0xc
-    // mov r2, #0
-    // cmp r1, #0
-    // ble _0201817E
+
+u32 sub_0201815C(void) {
     // add r1, r3, r1
-    // cmp r1, r4
-    // bge _02018178
-    // str r1, [r0, #0xc]
-    // b _0201818A
-    // str r4, [r0, #0xc]
-    // mov r2, #1
-    // b _0201818A
+    *((u32*)(r0 + 0xc)) = r1;
+    *((u32*)(r0 + 0xc)) = (*((u16*)(*((u32*)(*((u32*)(r0 + 8)) + 8)) + 4)) << 0xc);
     // add r1, r3, r1
     // bmi _02018186
-    // str r1, [r0, #0xc]
-    // b _0201818A
-    // str r2, [r0, #0xc]
-    // mov r2, #1
-    // ldr r1, [r0, #0xc]
-    // ldr r0, [r0, #8]
+    *((u32*)(r0 + 0xc)) = r1;
+    *((u32*)(r0 + 0xc)) = 1;
     // str r1, [r0]
-    // add r0, r2, #0
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02018198(void) {
-    // str r1, [r0, #0xc]
-    // ldr r0, [r0, #8]
+    *((u32*)(r0 + 0xc)) = r1;
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020181A0(void) {
@@ -202,6 +122,7 @@ void sub_020181A0(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_020181A4(void) {
@@ -214,35 +135,26 @@ void sub_020181A4(void) {
 }
 
 
+
 void sub_020181B0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // mov r1, #0
-    // mov r2, #0x78
-    // add r4, r0, #0
-    // bl memset
-    // ldr r1, [r5, #8]
-    // add r0, r4, #0
-    // bl NNS_G3dRenderObjInit
-    // mov r0, #1
-    // str r0, [r4, #0x6c]
-    // lsl r0, r0, #0xc
-    // str r0, [r4, #0x60]
-    // str r0, [r4, #0x64]
-    // str r0, [r4, #0x68]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    memset(0, 0x78);
+    NNS_G3dRenderObjInit(r4, *((u32*)(r5 + 8)));
+    *((u32*)(r4 + 0x6c)) = 1;
+    *((u32*)(r4 + 0x60)) = (1 << 0xc);
+    *((u32*)(r4 + 0x64)) = (1 << 0xc);
+    *((u32*)(r4 + 0x68)) = (1 << 0xc);
 }
+
 
 
 void sub_020181D4(void) {
-    NNS_G3dRenderObjAddAnmObj();
 }
+
 
 
 void sub_020181E0(void) {
-    NNS_G3dRenderObjRemoveAnmObj();
 }
+
 
 
 void sub_020181EC(void) {
@@ -319,14 +231,15 @@ void sub_020181EC(void) {
 }
 
 
+
 void sub_02018288(void) {
-    GF3dRender_DrawModel();
 }
+
 
 
 void sub_020182A0(void) {
-    ((u32*)r0)[0x6c] = r1;
 }
+
 
 
 void sub_020182A4(void) {
@@ -336,75 +249,52 @@ void sub_020182A4(void) {
 }
 
 
+
 void sub_020182A8(void) {
-    ((u32*)r0)[0x54] = r1;
-    ((u32*)r0)[0x58] = r2;
-    ((u32*)r0)[0x5c] = r3;
 }
+
 
 
 void sub_020182B0(void) {
-    // push {r3, r4}
-    // ldr r4, [r0, #0x54]
     // str r4, [r1]
-    // ldr r1, [r0, #0x58]
     // str r1, [r2]
-    // ldr r0, [r0, #0x5c]
     // str r0, [r3]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020182C4(void) {
-    ((u32*)r0)[0x60] = r1;
-    ((u32*)r0)[0x64] = r2;
-    ((u32*)r0)[0x68] = r3;
 }
+
 
 
 void sub_020182CC(void) {
-    // push {r3, r4}
-    // ldr r4, [r0, #0x60]
     // str r4, [r1]
-    // ldr r1, [r0, #0x64]
     // str r1, [r2]
-    // ldr r0, [r0, #0x68]
     // str r0, [r3]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020182E0(void) {
-    // lsl r2, r2, #1
     // add r0, r0, r2
     // add r0, #0x70
     // strh r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
-void sub_020182EC(void) {
-    // lsl r1, r1, #1
+
+s16 sub_020182EC(void) {
     // add r0, r0, r1
     // add r0, #0x70
     // ldrh r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020182F8(void) {
-    NNS_G3dGetAnmByIdx(r2, 0);
-    *((u32*)(r5 + 4)) = r0;
-    NNS_G3dAllocAnmObj(r6, *((u32*)(r5 + 4)), *((u32*)(r4 + 8)));
-    *((u32*)(r5 + 8)) = r0;
-    NNS_G3dAnmObjInit(*((u32*)(r5 + 4)), *((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)));
 }
+
 
 
 void sub_02018324(void) {
@@ -451,4 +341,5 @@ void sub_02018324(void) {
     // _0201837C: .word sub_0201804C
     // TODO: decompile
 }
+
 

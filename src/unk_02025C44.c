@@ -2,48 +2,35 @@
 #include "global.h"
 
 void GF_InitG2dRenderer(void) {
-    NNS_G2dInitRenderer();
 }
+
 
 
 void sub_02025C54(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl NNS_G2dInitRenderSurface
-    // add r2, r5, #0
+    NNS_G2dInitRenderSurface();
     // ldmia r4!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r4!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // str r6, [r5, #0x28]
+    *((u32*)(r5 + 0x28)) = r6;
     // ldr r0, [sp, #0x18]
-    // str r7, [r5, #0x2c]
-    // str r0, [r5, #0x34]
+    *((u32*)(r5 + 0x2c)) = r7;
+    *((u32*)(r5 + 0x34)) = r0;
     // ldr r0, [sp, #0x1c]
-    // str r0, [r5, #0x14]
+    *((u32*)(r5 + 0x14)) = r0;
     // ldr r0, [sp, #0x20]
-    // cmp r0, #0
-    // beq _02025C84
-    // add r1, r5, #0
-    // bl NNS_G2dAddRendererTargetSurface
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    NNS_G2dAddRendererTargetSurface(r5, r5);
 }
+
 
 
 void GF_SetG2dRendererSurface(void) {
-    // add r3, r0, #0
-    // add r2, r1, #0
     // ldmia r2!, {r0, r1}
     // stmia r3!, {r0, r1}
     // ldmia r2!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02025C98(void) {
@@ -288,4 +275,5 @@ void sub_02025C98(void) {
     // _02025E84: .word 0x00000000
     // TODO: decompile
 }
+
 

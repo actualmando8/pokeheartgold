@@ -68,6 +68,7 @@ void sub_02058AEC(void) {
 }
 
 
+
 void sub_02058B84(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -191,113 +192,50 @@ void sub_02058B84(void) {
 }
 
 
+
 void sub_02058C80(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r0, r1, #0
-    // bl FieldSystem_ApplicationIsRunning
-    // cmp r0, #0
-    // beq _02058C92
-    // mov r0, #0
-    // pop {r4, pc}
-    // ldr r0, [r4, #4]
-    // add r1, r4, #0
+    FieldSystem_ApplicationIsRunning(r1);
     // add r0, #0x30
     // add r1, #0x3d
-    // mov r2, #6
-    // bl MI_CpuCopy8
-    // ldr r0, [r4, #4]
+    MI_CpuCopy8(*((u32*)(r4 + 4)), r4, 6);
     // add r0, #0x26
     // ldrb r0, [r0]
-    // cmp r0, #6
-    // beq _02058CB4
-    // cmp r0, #7
-    // bne _02058CBA
-    // mov r0, #0
-    // str r0, [r4, #0x38]
-    // b _02058CBE
-    // mov r0, #1
-    // str r0, [r4, #0x38]
-    // b _02058CBE
-    // mov r0, #2
-    // str r0, [r4, #0x38]
-    // ldr r0, [r4, #4]
+    *((u32*)(r4 + 0x38)) = 0;
+    *((u32*)(r4 + 0x38)) = 1;
+    *((u32*)(r4 + 0x38)) = 2;
     // add r0, #0x26
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x3c
     // strb r1, [r0]
-    // ldr r0, [r4, #4]
-    // bl Heap_Free
-    // mov r0, #0
-    // str r0, [r4, #4]
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)(r4 + 4)));
+    *((u32*)(r4 + 4)) = 0;
 }
+
 
 
 void sub_02058CD8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r0, r1, #0
-    // bl FieldSystem_ApplicationIsRunning
-    // cmp r0, #0
-    // beq _02058CEA
-    // mov r0, #0
-    // pop {r4, pc}
-    // ldr r0, [r4]
-    // ldrb r1, [r0, #0x14]
-    // add r0, r4, #0
+    FieldSystem_ApplicationIsRunning(r1);
     // add r0, #0x3c
     // strb r1, [r0]
-    // ldr r0, [r4]
-    // bl Heap_Free
-    // mov r0, #0
+    Heap_Free(*((u32*)r4), *((u8*)(*((u32*)r4) + 0x14)));
     // str r0, [r4]
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02058D04(void) {
-    // push {r3, lr}
-    // ldr r0, [r0, #0x24]
-    // bl sub_020505C8
-    // cmp r0, #0
-    // beq _02058D1E
-    // mov r0, #1
-    // bl ov01_021E636C
-    // bl sub_02056E60
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_020505C8(*((u32*)(r0 + 0x24)));
+    ov01_021E636C(1);
+    sub_02056E60();
 }
+
 
 
 void sub_02058D24(void) {
-    // push {r3, r4, r5, lr}
-    // bl sub_02037454
-    // add r5, r0, #0
-    // mov r4, #0
-    // cmp r5, #0
-    // ble _02058D46
-    // add r0, r4, #0
-    // bl sub_02037B5C
-    // cmp r0, #0x5e
-    // bne _02058D40
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // add r4, r4, #1
-    // cmp r4, r5
-    // blt _02058D32
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02037454();
+    sub_02037B5C(0);
 }
+
 
 
 void sub_02058D4C(void) {
@@ -1070,91 +1008,45 @@ void sub_02058D4C(void) {
 }
 
 
+
 void sub_02059478(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r5, #0
     // add r4, #0x14
-    // add r0, r4, #0
-    // add r6, r1, #0
-    // bl WindowIsInUse
-    // cmp r0, #0
-    // bne _020594AA
-    // ldr r0, [r5, #0x24]
-    // add r1, r4, #0
-    // ldr r0, [r0, #8]
-    // mov r2, #3
-    // bl sub_0205B514
-    // ldr r0, [r5, #0x24]
-    // ldr r0, [r0, #0xc]
-    // bl Save_PlayerData_GetOptionsAddr
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // bl sub_0205B564
-    // b _020594B0
-    // add r0, r4, #0
-    // bl sub_0205B5A8
-    // ldr r0, [r5, #0x24]
-    // ldr r0, [r0, #0xc]
-    // bl Save_PlayerData_GetOptionsAddr
-    // add r2, r0, #0
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // mov r3, #1
-    // bl sub_0205B5B4
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    WindowIsInUse(r0);
+    sub_0205B514(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), r4, 3);
+    Save_PlayerData_GetOptionsAddr(*((u32*)(*((u32*)(r5 + 0x24)) + 0xc)));
+    sub_0205B564(r4, r0);
+    sub_0205B5A8(r4);
+    Save_PlayerData_GetOptionsAddr(*((u32*)(*((u32*)(r5 + 0x24)) + 0xc)));
+    sub_0205B5B4(r4, r6, r0, 1);
 }
+
 
 
 void sub_020594C8(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
     // add r0, #0x14
-    // add r4, r1, #0
-    // bl WindowIsInUse
-    // cmp r0, #0
-    // beq _020594FE
-    // cmp r4, #0
-    // beq _020594EE
-    // add r0, r5, #0
+    WindowIsInUse();
     // add r0, #0x14
-    // mov r1, #0
-    // bl ClearFrameAndWindow2
-    // add r0, r5, #0
+    ClearFrameAndWindow2(r5, 0);
     // add r0, #0x14
-    // bl ClearWindowTilemapAndCopyToVram
-    // add r0, r5, #0
+    ClearWindowTilemapAndCopyToVram(r5);
     // add r0, #0x14
-    // bl RemoveWindow
-    // add r0, r5, #0
+    RemoveWindow(r5);
     // add r0, #0x14
-    // bl InitWindow
-    // add r0, r5, #0
+    InitWindow(r5);
     // add r0, #0x54
-    // bl WindowIsInUse
-    // cmp r0, #0
-    // beq _0205951A
-    // add r0, r5, #0
+    WindowIsInUse(r5);
     // add r0, #0x54
-    // bl RemoveWindow
-    // add r0, r5, #0
+    RemoveWindow(r5);
     // add r0, #0x54
-    // bl InitWindow
-    // add r0, r5, #0
+    InitWindow(r5);
     // add r0, #0x64
-    // bl WindowIsInUse
-    // cmp r0, #0
-    // beq _02059536
-    // add r0, r5, #0
+    WindowIsInUse(r5);
     // add r0, #0x64
-    // bl RemoveWindow
+    RemoveWindow(r5);
     // add r5, #0x64
-    // add r0, r5, #0
-    // bl InitWindow
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    InitWindow(r5);
 }
+
 
 
 void sub_02059538(void) {
@@ -1282,469 +1174,224 @@ void sub_02059538(void) {
 }
 
 
+
 void sub_02059650(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x50]
-    // cmp r0, #0
-    // beq _0205965E
-    // bl Heap_Free
-    // ldr r0, [r4, #0x4c]
-    // cmp r0, #0
-    // beq _02059668
-    // bl Heap_Free
-    // ldr r0, [r4, #0x48]
-    // cmp r0, #0
-    // beq _02059672
-    // bl Heap_Free
-    // ldr r0, [r4, #0x2c]
-    // bl DestroyMsgData
-    // ldr r0, [r4, #0x28]
-    // bl MessageFormat_Delete
-    // ldr r0, [r4, #0xc]
-    // bl String_Delete
-    // ldr r0, [r4, #0x10]
-    // bl String_Delete
-    // ldr r0, [r4, #0x78]
-    // bl DestroyListMenuCursorObj
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl sub_020594C8
-    // pop {r4, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)(r0 + 0x50)));
+    Heap_Free(*((u32*)(r4 + 0x4c)));
+    Heap_Free(*((u32*)(r4 + 0x48)));
+    DestroyMsgData(*((u32*)(r4 + 0x2c)));
+    MessageFormat_Delete(*((u32*)(r4 + 0x28)));
+    String_Delete(*((u32*)(r4 + 0xc)));
+    String_Delete(*((u32*)(r4 + 0x10)));
+    DestroyListMenuCursorObj(*((u32*)(r4 + 0x78)));
+    sub_020594C8(r4, 1);
 }
+
 
 
 void sub_0205969C(void) {
-    TaskManager_GetEnvironment();
 }
 
 
+
 void sub_020596A8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // ldr r0, [r7, #0x24]
-    // add r5, r1, #0
-    // ldr r0, [r0, #0xc]
-    // bl SaveArray_Party_Get
+    SaveArray_Party_Get(*((u32*)(*((u32*)(r0 + 0x24)) + 0xc)));
     // str r0, [sp]
-    // ldr r4, [r7, #0x4c]
-    // bl sub_02070D90
-    // add r6, r0, #0
-    // lsl r0, r6, #1
+    sub_02070D90();
     // add r0, r6, r0
     // str r5, [r4, r0]
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // beq _020596EC
-    // mov r5, #0
     // add r1, r7, r5
     // add r1, #0x3d
     // ldrb r1, [r1]
     // ldr r0, [sp]
-    // sub r1, r1, #1
-    // bl Party_GetMonByIndex
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl MI_CpuCopy8
-    // add r5, r5, #1
+    Party_GetMonByIndex((r0 << 1), (r1 - 1));
+    MI_CpuCopy8(r4, r6);
     // add r4, r4, r6
-    // cmp r5, #3
-    // blt _020596CE
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_020596F0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
     // add r0, #0x89
     // ldrb r1, [r0]
-    // mov r0, #1
     // tst r1, r0
-    // bne _02059734
-    // ldr r4, [r5, #0x4c]
-    // bl sub_02059B08
-    // add r2, r0, #0
-    // add r0, r5, #0
+    sub_02059B08(1);
     // add r0, #0x86
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // bne _0205971A
-    // mov r0, #0x6a
-    // add r1, r4, #0
-    // bl sub_02037088
-    // b _02059722
-    // mov r0, #0x6a
-    // add r1, r4, #0
-    // bl sub_02036FD8
-    // cmp r0, #0
-    // beq _02059734
-    // add r1, r5, #0
+    sub_02037088(0x6a, r4, r0);
+    sub_02036FD8(0x6a, r4);
     // add r1, #0x89
     // ldrb r2, [r1]
-    // mov r1, #1
     // add r5, #0x89
     // orr r1, r2
     // strb r1, [r5]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02059738(void) {
     // add r0, #0x89
     // ldrb r0, [r0]
-    // cmp r0, #3
-    // bne _02059744
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02059748(void) {
-    sub_02070D90();
 }
+
 
 
 void sub_0205975C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
     // add r0, #0x86
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // bne _02059776
-    // add r1, r4, #0
-    // mov r0, #0x6b
     // add r1, #0x84
-    // mov r2, #1
-    // bl sub_02037108
-    // b _02059782
-    // add r1, r4, #0
-    // mov r0, #0x6b
+    sub_02037108(0x6b, r0, 1);
     // add r1, #0x84
-    // mov r2, #1
-    // bl sub_02037030
-    // cmp r0, #0
-    // beq _02059794
-    // add r1, r4, #0
+    sub_02037030(0x6b, r4, 1);
     // add r1, #0x89
     // ldrb r2, [r1]
-    // mov r1, #1
     // add r4, #0x89
     // orr r1, r2
     // strb r1, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02059798(void) {
     // add r0, #0x89
     // ldrb r0, [r0]
-    // cmp r0, #3
-    // bne _020597A4
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_020597A8(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl sub_02070D90
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x50]
-    // mov r1, #3
-    // bl Party_InitWithMaxSize
-    // mov r4, #0
-    // add r1, r4, #0
-    // ldr r2, [r5, #0x48]
+    sub_02070D90();
+    Party_InitWithMaxSize(*((u32*)(r5 + 0x50)), 3);
     // mul r1, r6
-    // ldr r0, [r5, #0x50]
     // add r1, r2, r1
-    // bl Party_AddMon
-    // add r4, r4, #1
-    // cmp r4, #3
-    // blt _020597BC
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Party_AddMon(*((u32*)(r5 + 0x50)), 0, *((u32*)(r5 + 0x48)));
 }
+
 
 
 void sub_020597D4(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // bl sub_02070D90
-    // add r4, r0, #0
-    // add r0, r6, #0
+    sub_02070D90();
     // add r0, #0x84
     // ldrb r0, [r0]
-    // ldr r2, [r6, #0x48]
-    // ldr r3, [r6, #0x4c]
-    // add r1, r0, #0
     // mul r1, r4
     // add r0, r2, r1
-    // add r1, r6, #0
     // add r1, #0x85
     // ldrb r1, [r1]
-    // add r2, r1, #0
     // mul r2, r4
     // add r1, r3, r2
-    // add r2, r4, #0
-    // bl MI_CpuCopy8
-    // ldr r0, [r6, #0x50]
-    // mov r1, #3
-    // bl Party_InitWithMaxSize
-    // mov r5, #0
-    // add r1, r5, #0
-    // ldr r2, [r6, #0x4c]
+    MI_CpuCopy8(r6, r6, r0, *((u32*)(r6 + 0x4c)));
+    Party_InitWithMaxSize(*((u32*)(r6 + 0x50)), 3);
     // mul r1, r4
-    // ldr r0, [r6, #0x50]
     // add r1, r2, r1
-    // bl Party_AddMon
-    // add r5, r5, #1
-    // cmp r5, #3
-    // blt _0205980A
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Party_AddMon(*((u32*)(r6 + 0x50)), 0, *((u32*)(r6 + 0x4c)));
 }
+
 
 
 void sub_02059820(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r5, r0, #0
     // str r0, [sp, #0x20]
     // add r0, #0x54
     // str r1, [sp, #0x14]
     // str r0, [sp, #0x20]
-    // bl WindowIsInUse
-    // cmp r0, #0
-    // bne _020598EC
-    // mov r0, #1
-    // mov r1, #0x1b
-    // mov r2, #0xed
-    // mov r3, #4
-    // bl NewMsgDataFromNarc
+    WindowIsInUse();
+    NewMsgDataFromNarc(1, 0x1b, 0xed, 4);
     // str r0, [sp, #0x18]
-    // bl sub_02070D90
+    sub_02070D90();
     // str r0, [sp, #0x1c]
-    // mov r0, #9
     // str r0, [sp]
-    // mov r1, #0xa
     // str r1, [sp, #4]
-    // mov r0, #8
     // str r0, [sp, #8]
-    // mov r0, #0xd
     // str r0, [sp, #0xc]
     // str r1, [sp, #0x10]
-    // ldr r0, [r5, #0x24]
     // ldr r1, [sp, #0x20]
-    // ldr r0, [r0, #8]
-    // mov r2, #3
-    // mov r3, #0x15
-    // bl AddWindowParameterized
-    // mov r0, #0
+    AddWindowParameterized(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), 0xa, 3, 0x15);
     // str r0, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x24]
-    // mov r1, #3
-    // ldr r0, [r0, #8]
-    // mov r2, #1
-    // mov r3, #0xb
-    // bl LoadUserFrameGfx1
+    LoadUserFrameGfx1(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), 3, 1, 0xb);
     // ldr r0, [sp, #0x20]
-    // mov r1, #0xf
-    // bl FillWindowPixelBuffer
-    // mov r7, #0
-    // add r6, r7, #0
-    // add r4, r7, #0
-    // ldr r0, [r5, #0x48]
-    // mov r1, #5
+    FillWindowPixelBuffer(0xf);
     // add r0, r0, r6
-    // mov r2, #0
-    // bl GetMonData
-    // add r1, r0, #0
+    GetMonData(*((u32*)(r5 + 0x48)), 5, 0);
     // ldr r0, [sp, #0x18]
-    // ldr r2, [r5, #0xc]
-    // bl ReadMsgDataIntoString
+    ReadMsgDataIntoString(r0, *((u32*)(r5 + 0xc)));
     // str r4, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x20]
-    // ldr r2, [r5, #0xc]
-    // mov r1, #0
-    // mov r3, #0x10
-    // bl AddTextPrinterParameterized
+    AddTextPrinterParameterized(0, 0, *((u32*)(r5 + 0xc)), 0x10);
     // ldr r0, [sp, #0x1c]
-    // add r7, r7, #1
     // add r6, r6, r0
     // add r4, #0x10
-    // cmp r7, #3
-    // blt _0205988E
-    // ldr r0, [r5, #0x2c]
-    // ldr r2, [r5, #0xc]
-    // mov r1, #0x15
-    // bl ReadMsgDataIntoString
-    // lsl r0, r7, #4
+    ReadMsgDataIntoString(*((u32*)(r5 + 0x2c)), 0x15, *((u32*)(r5 + 0xc)));
     // str r0, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r1, #0
     // str r1, [sp, #8]
     // ldr r0, [sp, #0x20]
-    // ldr r2, [r5, #0xc]
-    // mov r3, #0x10
-    // bl AddTextPrinterParameterized
+    AddTextPrinterParameterized(0xff, 0, *((u32*)(r5 + 0xc)), 0x10);
     // ldr r0, [sp, #0x18]
-    // bl DestroyMsgData
-    // mov r0, #0x10
+    DestroyMsgData();
     // str r0, [sp]
     // ldr r0, [sp, #0x20]
-    // mov r2, #0
-    // ldrb r0, [r0, #8]
-    // mov r1, #0xf
-    // add r3, r2, #0
-    // lsl r0, r0, #0x13
-    // lsr r0, r0, #0x10
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x20]
-    // bl FillWindowPixelRect
+    FillWindowPixelRect(((*((u8*)(0x10 + 8)) << 0x13) >> 0x10), 0xf, 0, 0);
     // ldr r3, [sp, #0x14]
-    // add r1, r5, #0
-    // ldr r0, [r5, #0x78]
     // add r1, #0x54
-    // mov r2, #0
-    // lsl r3, r3, #4
-    // bl ListMenuUpdateCursorObj
-    // add r0, r5, #0
+    ListMenuUpdateCursorObj(*((u32*)(r5 + 0x78)), r5, 0, (r3 << 4));
     // add r0, #0x54
-    // mov r1, #0
-    // mov r2, #1
-    // mov r3, #0xb
-    // bl DrawFrameAndWindow1
-    // add r1, r5, #0
+    DrawFrameAndWindow1(r5, 0, 1, 0xb);
     // ldr r0, [sp, #0x14]
     // add r1, #0x81
     // strb r0, [r1]
-    // add r0, r5, #0
-    // mov r1, #4
     // add r0, #0x80
     // strb r1, [r0]
     // ldr r0, [sp, #0x20]
-    // str r0, [r5, #0x7c]
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 0x7c)) = r5;
 }
+
 
 
 void sub_0205993C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // add r7, r5, #0
     // add r7, #0x64
-    // add r0, r7, #0
     // str r1, [sp, #0x14]
-    // bl WindowIsInUse
-    // cmp r0, #0
-    // bne _020599BE
-    // mov r0, #0xb
+    WindowIsInUse(r0);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #6
     // str r0, [sp, #8]
-    // mov r0, #0xd
     // str r0, [sp, #0xc]
-    // mov r0, #0x5a
     // str r0, [sp, #0x10]
-    // ldr r0, [r5, #0x24]
-    // add r1, r7, #0
-    // ldr r0, [r0, #8]
-    // mov r2, #3
-    // mov r3, #0x14
-    // bl AddWindowParameterized
-    // mov r0, #0
+    AddWindowParameterized(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), r7, 3, 0x14);
     // str r0, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x24]
-    // mov r1, #3
-    // ldr r0, [r0, #8]
-    // mov r2, #1
-    // mov r3, #0xb
-    // bl LoadUserFrameGfx1
-    // add r0, r7, #0
-    // mov r1, #0xf
-    // bl FillWindowPixelBuffer
-    // mov r6, #0
-    // add r4, r6, #0
-    // add r1, r6, #0
-    // ldr r0, [r5, #0x2c]
-    // ldr r2, [r5, #0xc]
+    LoadUserFrameGfx1(*((u32*)(*((u32*)(r5 + 0x24)) + 8)), 3, 1, 0xb);
+    FillWindowPixelBuffer(r7, 0xf);
     // add r1, #0x16
-    // bl ReadMsgDataIntoString
+    ReadMsgDataIntoString(*((u32*)(r5 + 0x2c)), 0, *((u32*)(r5 + 0xc)));
     // str r4, [sp]
-    // mov r0, #0xff
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // ldr r2, [r5, #0xc]
-    // add r0, r7, #0
-    // mov r1, #0
-    // mov r3, #0x10
-    // bl AddTextPrinterParameterized
-    // add r6, r6, #1
+    AddTextPrinterParameterized(r7, 0, *((u32*)(r5 + 0xc)), 0x10);
     // add r4, #0x10
-    // cmp r6, #3
-    // blt _02059994
-    // add r0, r5, #0
-    // mov r1, #3
     // add r0, #0x80
     // strb r1, [r0]
-    // add r1, r5, #0
     // ldr r0, [sp, #0x14]
-    // str r7, [r5, #0x7c]
+    *((u32*)(r5 + 0x7c)) = r7;
     // add r1, #0x81
     // strb r0, [r1]
-    // mov r0, #0x10
     // str r0, [sp]
-    // ldrb r0, [r7, #8]
-    // mov r2, #0
-    // mov r1, #0xf
-    // lsl r0, r0, #0x13
-    // lsr r0, r0, #0x10
     // str r0, [sp, #4]
-    // add r0, r7, #0
-    // add r3, r2, #0
-    // bl FillWindowPixelRect
+    FillWindowPixelRect(r7, 0xf, 0, 0);
     // ldr r3, [sp, #0x14]
-    // ldr r0, [r5, #0x78]
-    // ldr r1, [r5, #0x7c]
-    // mov r2, #0
-    // lsl r3, r3, #4
-    // bl ListMenuUpdateCursorObj
-    // ldr r0, [r5, #0x7c]
-    // mov r1, #0
-    // mov r2, #1
-    // mov r3, #0xb
-    // bl DrawFrameAndWindow1
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ListMenuUpdateCursorObj(*((u32*)(r5 + 0x78)), *((u32*)(r5 + 0x7c)), 0, (r3 << 4));
+    DrawFrameAndWindow1(*((u32*)(r5 + 0x7c)), 0, 1, 0xb);
 }
+
 
 
 void sub_02059A08(void) {
@@ -1848,68 +1495,49 @@ void sub_02059A08(void) {
 }
 
 
+
 void sub_02059AD8(void) {
-    sub_0200E5D4();
 }
+
 
 
 void sub_02059AE4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r0, r3, #0
-    // bl sub_0205969C
-    // add r1, r0, #0
+    sub_0205969C(r3);
     // add r1, #0x86
     // ldrh r1, [r1]
-    // cmp r1, r4
-    // beq _02059B06
-    // add r1, r0, #0
     // add r1, #0x89
     // ldrb r2, [r1]
-    // mov r1, #2
     // add r0, #0x89
     // orr r1, r2
     // strb r1, [r0]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02059B08(void) {
-    sub_02070D90();
 }
+
 
 
 void sub_02059B18(void) {
-    sub_0205969C(0);
 }
+
 
 
 void sub_02059B34(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r3, #0
-    // add r4, r2, #0
-    // bl sub_0205969C
-    // add r1, r0, #0
+    sub_0205969C(r3);
     // add r1, #0x86
     // ldrh r1, [r1]
-    // cmp r1, r5
-    // beq _02059B60
     // ldrb r2, [r4]
-    // add r1, r0, #0
     // add r1, #0x85
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x89
     // ldrb r2, [r1]
-    // mov r1, #2
     // add r0, #0x89
     // orr r1, r2
     // strb r1, [r0]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02059B64(void) {
@@ -2102,6 +1730,7 @@ void sub_02059B64(void) {
 }
 
 
+
 void sub_02059D44(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
@@ -2149,6 +1778,7 @@ void sub_02059D44(void) {
 }
 
 
+
 void sub_02059DB0(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -2189,9 +1819,10 @@ void sub_02059DB0(void) {
 }
 
 
+
 void sub_02059E04(void) {
-    sub_0205A034(5);
 }
+
 
 
 void sub_02059E1C(void) {
@@ -2244,6 +1875,7 @@ void sub_02059E1C(void) {
 }
 
 
+
 void sub_02059E88(void) {
     // push {r4, lr}
     // sub sp, #8
@@ -2267,6 +1899,7 @@ void sub_02059E88(void) {
     // _02059EB8: .word sub_02059EBC
     // TODO: decompile
 }
+
 
 
 void sub_02059EBC(void) {
@@ -2321,6 +1954,7 @@ void sub_02059EBC(void) {
 }
 
 
+
 void sub_02059F30(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2340,26 +1974,11 @@ void sub_02059F30(void) {
 }
 
 
+
 void sub_02059F54(void) {
-    // push {r3, r4, r5, lr}
-    // mov r5, #0
-    // mov r4, #1
-    // add r0, r4, #0
-    // bl sub_02034818
-    // cmp r0, #0
-    // beq _02059F66
-    // add r5, r5, #1
-    // add r4, r4, #1
-    // cmp r4, #5
-    // blt _02059F5A
-    // cmp r5, #1
-    // blt _02059F74
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02034818(1);
 }
+
 
 
 void sub_02059F78(void) {
@@ -2416,6 +2035,7 @@ void sub_02059F78(void) {
 }
 
 
+
 void sub_02059FF8(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2443,10 +2063,10 @@ void sub_02059FF8(void) {
 }
 
 
+
 void sub_0205A034(void) {
-    ((u32*)r0)[0x10] = r1;
-    ((u32*)r0)[0x14] = r2;
 }
+
 
 
 void sub_0205A03C(void) {
@@ -2483,6 +2103,7 @@ void sub_0205A03C(void) {
 }
 
 
+
 void sub_0205A07C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2503,17 +2124,12 @@ void sub_0205A07C(void) {
 }
 
 
+
 void sub_0205A0A0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02037474
-    // cmp r0, #0
-    // bne _0205A0B2
-    // add r0, r4, #0
-    // bl sub_0205A1D4
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02037474();
+    sub_0205A1D4(r4);
 }
+
 
 
 void sub_0205A0B4(void) {
@@ -2559,6 +2175,7 @@ void sub_0205A0B4(void) {
 }
 
 
+
 void sub_0205A114(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2580,6 +2197,7 @@ void sub_0205A114(void) {
     // _0205A140: .word sub_02059F30
     // TODO: decompile
 }
+
 
 
 void sub_0205A144(void) {
@@ -2628,6 +2246,7 @@ void sub_0205A144(void) {
 }
 
 
+
 void sub_0205A1AC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2648,19 +2267,13 @@ void sub_0205A1AC(void) {
 }
 
 
+
 void sub_0205A1D4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // beq _0205A1EC
-    // ldr r0, [r4, #0xc]
-    // bl SysTask_Destroy
-    // add r0, r4, #0
-    // bl Heap_Free
-    // mov r0, #0x1f
-    // bl Heap_Destroy
-    // pop {r4, pc}
-    // TODO: decompile
+    SysTask_Destroy(*((u32*)(r0 + 0xc)));
+    Heap_Free(r4);
+    Heap_Destroy(0x1f);
 }
+
 
 
 void sub_0205A1F0(void) {
@@ -2670,15 +2283,12 @@ void sub_0205A1F0(void) {
 }
 
 
+
 void sub_0205A1F4(void) {
-    // lsl r1, r1, #2
     // add r1, r0, r1
-    // mov r0, #0x11
-    // lsl r0, r0, #4
     // ldr r0, [r1, r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0205A200(void) {
@@ -2734,6 +2344,7 @@ void sub_0205A200(void) {
     // _0205A280: .word _021D41CC
     // TODO: decompile
 }
+
 
 
 void sub_0205A284(void) {
@@ -2833,6 +2444,7 @@ void sub_0205A284(void) {
 }
 
 
+
 void sub_0205A358(void) {
     // ldr r0, [r0, #0x1c]
     // bx lr
@@ -2840,86 +2452,39 @@ void sub_0205A358(void) {
 }
 
 
-void sub_0205A35C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x44]
-    // cmp r0, #0
-    // beq _0205A36A
-    // mov r0, #7
-    // pop {r4, pc}
-    // bl sub_02037454
-    // cmp r0, #2
-    // bge _0205A376
-    // mov r0, #7
-    // pop {r4, pc}
-    // bl sub_0203769C
-    // cmp r0, #0
-    // bne _0205A38A
-    // bl sub_02037FCC
-    // cmp r0, #1
-    // bne _0205A396
-    // ldr r0, [r4, #0x40]
-    // pop {r4, pc}
-    // bl sub_02037F94
-    // cmp r0, #1
-    // bne _0205A396
-    // ldr r0, [r4, #0x40]
-    // pop {r4, pc}
-    // mov r0, #7
-    // pop {r4, pc}
-    // TODO: decompile
+
+u32 sub_0205A35C(void) {
+    sub_02037454(7);
+    sub_0203769C(7);
+    sub_02037FCC();
+    sub_02037F94(*((u32*)(r4 + 0x40)));
 }
+
 
 
 void sub_0205A39C(void) {
-    sub_02037FCC(7);
 }
+
 
 
 void sub_0205A3B0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r2, #0
     // add r0, sp, #0
-    // strb r4, [r0, #2]
-    // cmp r1, #0
-    // beq _0205A3C4
-    // cmp r1, #1
-    // beq _0205A3DC
-    // pop {r3, r4, r5, pc}
-    // ldr r1, [r5, #0x44]
-    // cmp r1, #0
-    // bne _0205A404
-    // ldrb r0, [r0, #2]
+    *((u8*)(r0 + 2)) = r2;
     // add r1, sp, #0
     // add r1, #2
-    // str r0, [r5, #0x34]
-    // mov r0, #0x63
-    // mov r2, #1
-    // bl sub_02037030
-    // pop {r3, r4, r5, pc}
-    // cmp r4, #0
-    // bne _0205A3F4
-    // ldr r1, [r5, #0x30]
-    // mov r2, #1
-    // strb r1, [r0, #1]
+    *((u32*)(r0 + 0x34)) = *((u8*)(r0 + 2));
+    sub_02037030(0x63, *((u32*)(r0 + 0x44)), 1);
+    *((u8*)(r0 + 1)) = *((u32*)(r5 + 0x30));
     // add r1, sp, #0
-    // mov r0, #0x67
     // add r1, #1
-    // bl sub_02037108
-    // str r4, [r5, #0x3c]
-    // pop {r3, r4, r5, pc}
-    // mov r1, #7
+    sub_02037108(0x67, *((u32*)(r5 + 0x30)), 1);
+    *((u32*)(r5 + 0x3c)) = r4;
     // strb r1, [r0]
-    // mov r0, #0x67
     // add r1, sp, #0
-    // mov r2, #1
-    // bl sub_02037108
-    // str r4, [r5, #0x3c]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02037108(0x67, 7, 1);
+    *((u32*)(r5 + 0x3c)) = r4;
 }
+
 
 
 void sub_0205A408(void) {
@@ -2928,10 +2493,12 @@ void sub_0205A408(void) {
 }
 
 
+
 void sub_0205A40C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0205A410(void) {
@@ -2952,6 +2519,7 @@ void sub_0205A410(void) {
 }
 
 
+
 void sub_0205A430(void) {
     // add r3, #0x80
     // ldr r1, [r3]
@@ -2968,4 +2536,5 @@ void sub_0205A430(void) {
     // _0205A448: .word _021D41CC
     // TODO: decompile
 }
+
 

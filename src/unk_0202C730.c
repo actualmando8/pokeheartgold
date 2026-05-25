@@ -2,30 +2,20 @@
 #include "global.h"
 
 void Save_FriendGroup_sizeof(void) {
-    r0 = r0 << 2;
 }
 
 
+
 void sub_0202C738(void) {
-    // push {r4, r5}
-    // add r5, r2, #0
-    // mov r3, #0x2c
-    // add r2, r1, #0
     // mul r2, r3
     // mul r5, r3
     // add r4, r0, r2
     // add r3, r0, r5
-    // mov r2, #5
     // ldmia r4!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // sub r2, r2, #1
-    // bne _0202C74A
-    // ldr r0, [r4]
     // str r0, [r3]
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void Save_FriendGroup_Init(void) {
@@ -54,42 +44,25 @@ void Save_FriendGroup_Init(void) {
 }
 
 
+
 void sub_0202C78C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r7, #0
-    // mov r4, #0
-    // cmp r6, #0
-    // bls _0202C7A8
-    // ldr r0, [r5, #0x28]
-    // bl PRandom
-    // add r4, r4, #1
-    // str r0, [r5, #0x28]
-    // cmp r4, r6
-    // blo _0202C79A
-    // add r7, r7, #1
+    PRandom(*((u32*)(r0 + 0x28)));
+    *((u32*)(r5 + 0x28)) = r0;
     // add r5, #0x2c
-    // cmp r7, #6
-    // blo _0202C794
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
-void Save_FriendGroup_GetGroupId(void) {
-    // mov r2, #0x2c
+
+u32 Save_FriendGroup_GetGroupId(void) {
     // mul r2, r1
     // add r0, r0, r2
-    // ldr r0, [r0, #0x24]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202C7C0(void) {
-    PRandom(0x2c);
 }
+
 
 
 void sub_0202C7DC(void) {
@@ -99,98 +72,73 @@ void sub_0202C7DC(void) {
 }
 
 
-void sub_0202C7E0(void) {
-    // cmp r2, #0
-    // bne _0202C7EC
-    // mov r2, #0x2c
+
+void * sub_0202C7E0(void) {
     // mul r2, r1
     // add r0, r0, r2
-    // bx lr
-    // mov r2, #0x2c
     // mul r2, r1
     // add r0, r0, r2
     // add r0, #0x10
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202C7F8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // cmp r2, #0
-    // bne _0202C810
-    // mov r2, #0x2c
     // mul r2, r1
     // add r1, r4, r2
-    // add r0, r3, #0
-    // mov r2, #8
-    // bl CopyStringToU16Array
-    // pop {r4, pc}
-    // mov r2, #0x2c
+    CopyStringToU16Array(r3, 8);
     // mul r2, r1
     // add r1, r4, r2
-    // add r0, r3, #0
     // add r1, #0x10
-    // mov r2, #8
-    // bl CopyStringToU16Array
-    // pop {r4, pc}
-    // TODO: decompile
+    CopyStringToU16Array(r3, 8);
 }
+
 
 
 void sub_0202C824(void) {
-    // mov r3, #0x2c
     // mul r3, r1
     // add r0, r0, r3
     // add r0, #0x20
     // strb r2, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
-void sub_0202C830(void) {
-    // mov r2, #0x2c
+
+u8 sub_0202C830(void) {
     // mul r2, r1
     // add r0, r0, r2
     // add r0, #0x20
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
-void sub_0202C83C(void) {
-    // mov r2, #0x2c
+
+u8 sub_0202C83C(void) {
     // mul r2, r1
     // add r0, r0, r2
     // add r0, #0x21
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202C848(void) {
-    // mov r3, #0x2c
     // mul r3, r1
     // add r0, r0, r3
     // add r0, #0x21
     // strb r2, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void Save_FriendGroup_Get(void) {
-    SaveArray_Get();
 }
+
 
 
 void sub_0202C860(void) {
-    sub_0202C8C4(0, 1, 0x2c);
 }
+
 
 
 void sub_0202C878(void) {
@@ -205,6 +153,7 @@ void sub_0202C878(void) {
     // _0202C888: .word sub_0202C8E4
     // TODO: decompile
 }
+
 
 
 void sub_0202C88C(void) {
@@ -238,6 +187,7 @@ void sub_0202C88C(void) {
 }
 
 
+
 void sub_0202C8C4(void) {
     // ldrh r2, [r0]
     // ldr r1, _0202C8E0 ; =0x0000FFFF
@@ -258,54 +208,20 @@ void sub_0202C8C4(void) {
 }
 
 
-void sub_0202C8E4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
+
+u32 sub_0202C8E4(void) {
     // add r0, #0x10
     // add r1, #0x10
-    // mov r2, #8
-    // bl StringNotEqualN
-    // cmp r0, #0
-    // beq _0202C8FC
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // mov r2, #8
-    // bl StringNotEqualN
-    // cmp r0, #0
-    // beq _0202C90E
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
+    StringNotEqualN(8);
+    StringNotEqualN(r5, r4, 8);
     // add r0, #0x20
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x20
     // ldrb r0, [r0]
-    // cmp r1, r0
-    // beq _0202C922
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
     // add r0, #0x21
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x21
     // ldrb r0, [r0]
-    // cmp r1, r0
-    // beq _0202C936
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // ldr r1, [r5, #0x24]
-    // ldr r0, [r4, #0x24]
-    // cmp r1, r0
-    // bne _0202C942
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 

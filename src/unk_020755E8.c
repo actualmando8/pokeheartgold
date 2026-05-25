@@ -39,6 +39,7 @@ void sub_020755E8(void) {
 }
 
 
+
 void sub_02075630(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x5c
@@ -188,35 +189,20 @@ void sub_02075630(void) {
 }
 
 
+
 void sub_02075770(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
     // add r0, #0xac
-    // ldr r4, [r0]
-    // add r0, r5, #0
     // add r0, #0xb0
-    // ldr r6, [r0]
-    // add r0, r5, #0
     // add r0, #0xb4
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // bne _0207578C
-    // bl GF_AssertFail
-    // add r0, r5, #0
+    GF_AssertFail(*((u32*)r0));
     // add r0, #0xb4
-    // ldr r0, [r0]
-    // bl Sprite_DeleteAndFreeResources
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // bl SpriteSystem_FreeResourcesAndManager
-    // add r0, r4, #0
-    // bl SpriteSystem_Free
-    // mov r0, #0
+    Sprite_DeleteAndFreeResources(*((u32*)r5));
+    SpriteSystem_FreeResourcesAndManager(r4, r6);
+    SpriteSystem_Free(r4);
     // add r5, #0xb8
     // str r0, [r5]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_020757AC(void) {
@@ -262,6 +248,7 @@ void sub_020757AC(void) {
 }
 
 
+
 void sub_02075804(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -295,6 +282,7 @@ void sub_02075804(void) {
     // _02075848: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void sub_0207584C(void) {
@@ -356,6 +344,7 @@ void sub_0207584C(void) {
     // _020758CC: .word 0x000004A2
     // TODO: decompile
 }
+
 
 
 void sub_020758D0(void) {
@@ -474,89 +463,42 @@ void sub_020758D0(void) {
 }
 
 
+
 void sub_020759CC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
     // add r0, #0xb8
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // bne _020759DC
-    // bl GF_AssertFail
-    // add r0, r4, #0
+    GF_AssertFail(*((u32*)r0));
     // add r0, #0xb4
-    // ldr r0, [r0]
-    // bl ManagedSprite_GetActiveAnim
-    // cmp r0, #3
-    // beq _020759EE
-    // bl GF_AssertFail
+    ManagedSprite_GetActiveAnim(*((u32*)r4));
+    GF_AssertFail();
     // add r4, #0xb4
-    // ldr r0, [r4]
-    // bl ManagedSprite_IsAnimated
-    // cmp r0, #0
-    // bne _020759FE
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    ManagedSprite_IsAnimated(*((u32*)r4));
 }
+
 
 
 void sub_02075A04(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r1, r4, #0
     // add r1, #0x8a
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // beq _02075A18
-    // cmp r1, #1
-    // beq _02075A2E
-    // b _02075A74
-    // bl sub_020758D0
-    // cmp r0, #0
-    // beq _02075A78
-    // add r0, r4, #0
+    sub_020758D0(r0);
     // add r0, #0x8a
     // ldrb r0, [r0]
     // add r4, #0x8a
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _02075A78
-    // bl sub_020759CC
-    // cmp r0, #0
-    // beq _02075A78
-    // add r0, r4, #0
+    sub_020759CC((r4 + 1));
     // add r0, #0xb8
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // bne _02075A44
-    // bl GF_AssertFail
-    // add r0, r4, #0
+    GF_AssertFail(*((u32*)r4));
     // add r0, #0x8b
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02075A52
-    // bl GF_AssertFail
-    // mov r0, #5
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // mov r0, #6
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // add r0, r4, #0
+    GF_AssertFail(r4);
+    ToggleBgLayer(5, 0);
+    ToggleBgLayer(6, 0);
     // add r0, #0xb4
-    // ldr r0, [r0]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
+    ManagedSprite_SetDrawFlag(*((u32*)r4), 0);
     // add r4, #0x8b
     // ldrb r0, [r4]
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
 }
+
 
 
 void sub_02075A7C(void) {
@@ -838,43 +780,24 @@ void sub_02075A7C(void) {
 }
 
 
+
 void sub_02075D08(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl sub_02075E14
-    // ldr r0, [r4, #0x38]
-    // cmp r0, #0
-    // bne _02075D2C
-    // ldr r0, [r4, #0x18]
-    // bl PokepicManager_DrawAll
-    // bl sub_020774E0
-    // mov r0, #1
-    // mov r1, #0
-    // bl RequestSwap3DBuffers
+    sub_02075E14(r1);
+    PokepicManager_DrawAll(*((u32*)(r4 + 0x18)));
+    sub_020774E0();
+    RequestSwap3DBuffers(1, 0);
     // add r4, #0x67
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _02075D3A
-    // add r0, r5, #0
-    // bl SysTask_Destroy
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    SysTask_Destroy(r5);
 }
 
 
-void sub_02075D3C(void) {
+
+BOOL sub_02075D3C(void) {
     // add r0, #0x67
     // ldrb r0, [r0]
-    // cmp r0, #1
-    // bne _02075D48
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02075D4C(void) {
@@ -952,6 +875,7 @@ void sub_02075D4C(void) {
     // _02075E10: .word gSystem + 0x60
     // TODO: decompile
 }
+
 
 
 void sub_02075E14(void) {
@@ -2550,199 +2474,100 @@ void sub_02075E14(void) {
 }
 
 
+
 void sub_02076C90(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x20
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x78]
-    // cmp r0, #6
-    // bgt _02076CA4
-    // bne _02076CA0
-    // b _02076E50
-    // add sp, #0x20
-    // pop {r4, r5, r6, pc}
     // sub r0, #0xd
-    // cmp r0, #6
-    // bhi _02076CE4
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02076CB6: ; jump table
-    // ldr r0, [r4, #0x4c]
-    // ldr r2, [r4, #0x5c]
-    // mov r1, #4
-    // bl Bag_GetQuantity
-    // cmp r0, #0
-    // beq _02076CE4
-    // ldr r0, [r4, #0x24]
-    // bl Party_GetCount
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x24]
-    // bl Party_GetMaxCount
-    // cmp r5, r0
-    // blt _02076CE6
-    // b _02076E5E
-    // ldr r0, [r4, #0x5c]
-    // bl AllocMonZeroed
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x28]
-    // add r1, r5, #0
-    // bl CopyPokemonToPokemon
-    // mov r0, #0x49
-    // lsl r0, r0, #2
+    Bag_GetQuantity(*((u32*)(r0 + 0x4c)), 4, *((u32*)(r0 + 0x5c)));
+    Party_GetCount(*((u32*)(r4 + 0x24)));
+    Party_GetMaxCount(*((u32*)(r4 + 0x24)));
+    AllocMonZeroed(*((u32*)(r4 + 0x5c)));
+    CopyPokemonToPokemon(*((u32*)(r4 + 0x28)), r0);
     // str r0, [sp]
-    // add r0, r5, #0
     // mov r1, #MON_DATA_SPECIES
     // add r2, sp, #0
-    // bl SetMonData
-    // mov r0, #4
+    SetMonData(r5);
     // str r0, [sp]
-    // add r0, r5, #0
     // mov r1, #MON_DATA_POKEBALL
     // add r2, sp, #0
-    // bl SetMonData
-    // mov r0, #0
+    SetMonData(r5);
     // str r0, [sp]
-    // add r0, r5, #0
     // mov r1, #MON_DATA_HELD_ITEM
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
+    SetMonData(r5);
     // mov r1, #MON_DATA_MARKINGS
     // add r2, sp, #0
-    // bl SetMonData
+    SetMonData(r5);
     // mov r1, #MON_DATA_SINNOH_CHAMP_RIBBON
     // str r1, [sp, #4]
     // add r6, sp, #0
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // bl SetMonData
+    SetMonData(r5, r6);
     // ldr r0, [sp, #4]
-    // add r1, r0, #1
     // str r1, [sp, #4]
-    // cmp r1, #0x36
-    // blt _02076D32
     // mov r1, #MON_DATA_COOL_RIBBON
     // str r1, [sp, #4]
     // add r6, sp, #0
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // bl SetMonData
+    SetMonData(r5, (r0 + 1), r6);
     // ldr r0, [sp, #4]
-    // add r1, r0, #1
     // str r1, [sp, #4]
-    // cmp r1, #0x6e
-    // blt _02076D4A
     // mov r1, #MON_DATA_SUPER_COOL_RIBBON
     // str r1, [sp, #4]
     // add r6, sp, #0
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // bl SetMonData
+    SetMonData(r5, (r0 + 1), r6);
     // ldr r0, [sp, #4]
-    // add r1, r0, #1
     // str r1, [sp, #4]
-    // cmp r1, #0x90
-    // blt _02076D62
-    // add r0, r5, #0
     // mov r1, #MON_DATA_SHINY_LEAF_A
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
+    SetMonData(r5, (r0 + 1));
     // mov r1, #MON_DATA_SHINY_LEAF_B
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
+    SetMonData(r5);
     // mov r1, #MON_DATA_SHINY_LEAF_C
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
+    SetMonData(r5);
     // mov r1, #MON_DATA_SHINY_LEAF_D
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
+    SetMonData(r5);
     // mov r1, #MON_DATA_SHINY_LEAF_E
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
+    SetMonData(r5);
     // mov r1, #MON_DATA_SHINY_LEAF_CROWN
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
+    SetMonData(r5);
     // mov r1, #MON_DATA_MOOD
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
-    // mov r1, #0xb3
-    // mov r2, #0
-    // bl SetMonData
-    // add r0, r5, #0
-    // mov r1, #0x4d
+    SetMonData(r5);
+    SetMonData(r5, 0xb3, 0);
     // add r2, sp, #0
-    // bl SetMonData
-    // add r0, r5, #0
-    // mov r1, #0xa0
+    SetMonData(r5, 0x4d);
     // add r2, sp, #0
-    // bl SetMonData
-    // ldr r0, [r4, #0x5c]
-    // bl Mail_New
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // mov r1, #0xaa
-    // add r2, r6, #0
-    // bl SetMonData
-    // add r0, r6, #0
-    // bl Heap_Free
-    // add r0, r5, #0
-    // mov r1, #0xa2
+    SetMonData(r5, 0xa0);
+    Mail_New(*((u32*)(r4 + 0x5c)));
+    SetMonData(r5, 0xaa, r0);
+    Heap_Free(r6);
     // add r2, sp, #0
-    // bl SetMonData
-    // mov r0, #0
+    SetMonData(r5, 0xa2);
     // add r1, sp, #8
-    // mov r2, #0x18
-    // bl MIi_CpuClearFast
-    // add r0, r5, #0
-    // mov r1, #0xab
+    MIi_CpuClearFast(0, 0x18);
     // add r2, sp, #8
-    // bl SetMonData
-    // add r0, r5, #0
-    // bl UpdateMonAbility
-    // add r0, r5, #0
-    // bl CalcMonLevelAndStats
-    // ldr r0, [r4, #0x24]
-    // add r1, r5, #0
-    // bl Party_AddMon
-    // ldr r0, [r4, #0x48]
-    // add r1, r5, #0
-    // bl Pokedex_SetMonCaughtFlag
-    // ldr r0, [r4, #0x50]
-    // mov r1, #0xd
-    // bl GameStats_Inc
-    // ldr r0, [r4, #0x50]
-    // mov r1, #0x15
-    // bl GameStats_AddScore
-    // add r0, r5, #0
-    // bl Heap_Free
-    // ldr r0, [r4, #0x4c]
-    // ldr r3, [r4, #0x5c]
-    // mov r1, #4
-    // mov r2, #1
-    // bl Bag_TakeItem
-    // add sp, #0x20
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
+    SetMonData(r5, 0xab);
+    UpdateMonAbility(r5);
+    CalcMonLevelAndStats(r5);
+    Party_AddMon(*((u32*)(r4 + 0x24)), r5);
+    Pokedex_SetMonCaughtFlag(*((u32*)(r4 + 0x48)), r5);
+    GameStats_Inc(*((u32*)(r4 + 0x50)), 0xd);
+    GameStats_AddScore(*((u32*)(r4 + 0x50)), 0x15);
+    Heap_Free(r5);
+    Bag_TakeItem(*((u32*)(r4 + 0x4c)), 4, 1, *((u32*)(r4 + 0x5c)));
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0x28]
-    // mov r1, #6
     // add r2, sp, #4
-    // bl SetMonData
-    // add sp, #0x20
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    SetMonData(*((u32*)(r4 + 0x28)), 6);
 }
+
 
 
 void sub_02076E64(void) {
@@ -3110,78 +2935,41 @@ void sub_02076E64(void) {
 }
 
 
+
 void sub_020771A0(void) {
-    GfGfx_EngineATogglePlanes(1, 0);
-    GfGfx_EngineATogglePlanes(2, 0);
-    FreeBgTilemapBuffer(r4, 1);
-    FreeBgTilemapBuffer(r4, 2);
-    FreeBgTilemapBuffer(r4, 3);
-    FreeBgTilemapBuffer(r4, 4);
-    FreeBgTilemapBuffer(r4, 5);
-    FreeBgTilemapBuffer(r4, 6);
 }
+
 
 
 void sub_020771E8(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x20
-    // add r4, r0, #0
-    // ldr r1, [r4, #0x28]
     // add r0, sp, #0x10
-    // mov r2, #2
-    // bl GetPokemonSpriteCharAndPlttNarcIds
-    // mov r0, #0
+    GetPokemonSpriteCharAndPlttNarcIds(*((u32*)(r0 + 0x28)), 2);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x18]
     // add r1, sp, #0x10
-    // mov r2, #0x80
-    // mov r3, #0x50
-    // bl PokepicManager_CreatePokepic
-    // str r0, [r4, #0x1c]
-    // ldr r0, [r4, #0x5c]
-    // bl AllocMonZeroed
-    // add r5, r0, #0
-    // ldr r0, [r4, #0x28]
-    // add r1, r5, #0
-    // bl CopyPokemonToPokemon
-    // add r2, r4, #0
-    // add r0, r5, #0
-    // mov r1, #5
+    PokepicManager_CreatePokepic(*((u32*)(r4 + 0x18)), 0x80, 0x50);
+    *((u32*)(r4 + 0x1c)) = r0;
+    AllocMonZeroed(*((u32*)(r4 + 0x5c)));
+    CopyPokemonToPokemon(*((u32*)(r4 + 0x28)), r0);
     // add r2, #0x62
-    // bl SetMonData
-    // add r0, r5, #0
-    // bl CalcMonLevelAndStats
+    SetMonData(r5, 5, r4);
+    CalcMonLevelAndStats(r5);
     // add r0, sp, #0x10
-    // add r1, r5, #0
-    // mov r2, #2
-    // bl GetPokemonSpriteCharAndPlttNarcIds
-    // add r0, r5, #0
-    // bl Heap_Free
-    // mov r0, #0
+    GetPokemonSpriteCharAndPlttNarcIds(r5, 2);
+    Heap_Free(r5);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x18]
     // add r1, sp, #0x10
-    // mov r2, #0x80
-    // mov r3, #0x50
-    // bl PokepicManager_CreatePokepic
-    // str r0, [r4, #0x20]
-    // mov r1, #0xc
-    // mov r2, #0
-    // bl Pokepic_SetAttr
-    // ldr r0, [r4, #0x20]
-    // mov r1, #0xd
-    // mov r2, #0
-    // bl Pokepic_SetAttr
-    // add sp, #0x20
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    PokepicManager_CreatePokepic(*((u32*)(r4 + 0x18)), 0x80, 0x50);
+    *((u32*)(r4 + 0x20)) = r0;
+    Pokepic_SetAttr(0xc, 0);
+    Pokepic_SetAttr(*((u32*)(r4 + 0x20)), 0xd, 0);
 }
+
 
 
 void sub_02077270(void) {
@@ -3247,6 +3035,7 @@ void sub_02077270(void) {
 }
 
 
+
 void sub_020772F8(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -3279,6 +3068,7 @@ void sub_020772F8(void) {
     // _0207733C: .word sub_02077340
     // TODO: decompile
 }
+
 
 
 void sub_02077340(void) {
@@ -3316,7 +3106,8 @@ void sub_02077340(void) {
 }
 
 
+
 void sub_02077394(void) {
-    OverlayManager_New();
 }
+
 

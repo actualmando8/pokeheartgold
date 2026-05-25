@@ -71,6 +71,7 @@ void sub_0208DE40(void) {
 }
 
 
+
 void sub_0208DEDC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -89,29 +90,18 @@ void sub_0208DEDC(void) {
 }
 
 
+
 void sub_0208DEFC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0xa7
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // bl Camera_Delete
-    // mov r0, #0xb3
-    // lsl r0, r0, #2
+    Camera_Delete((0xa7 << 2));
     // ldr r0, [r4, r0]
-    // mov r1, #0
-    // bl sub_02017088
-    // mov r0, #0xb3
-    // lsl r0, r0, #2
+    sub_02017088((0xb3 << 2), 0);
     // ldr r0, [r4, r0]
-    // bl sub_02016F2C
-    // mov r0, #0x2a
-    // lsl r0, r0, #4
+    sub_02016F2C((0xb3 << 2));
     // ldr r0, [r4, r0]
-    // bl PokepicManager_Delete
-    // pop {r4, pc}
-    // TODO: decompile
+    PokepicManager_Delete((0x2a << 4));
 }
+
 
 
 void sub_0208DF2C(void) {
@@ -168,55 +158,32 @@ void sub_0208DF2C(void) {
 }
 
 
+
 void sub_0208DF9C(void) {
-    // push {r4, r5}
-    // cmp r2, #0xff
-    // bne _0208DFB2
     // ldrh r2, [r0]
     // strh r2, [r1]
-    // ldrh r2, [r0, #2]
-    // strh r2, [r1, #2]
-    // ldrh r0, [r0, #4]
-    // strh r0, [r1, #4]
-    // pop {r4, r5}
-    // bx lr
-    // cmp r2, #0
-    // bne _0208DFC6
-    // ldrh r2, [r0, #6]
+    *((u16*)(r1 + 2)) = *((u16*)(r0 + 2));
+    *((u16*)(r1 + 4)) = *((u16*)(r0 + 4));
     // strh r2, [r1]
-    // ldrh r2, [r0, #8]
-    // strh r2, [r1, #2]
-    // ldrh r0, [r0, #0xa]
-    // strh r0, [r1, #4]
-    // pop {r4, r5}
-    // bx lr
-    // mov r3, #6
+    *((u16*)(r1 + 2)) = *((u16*)(*((u16*)(r0 + 4)) + 8));
+    *((u16*)(r1 + 4)) = *((u16*)(*((u16*)(r0 + 4)) + 0xa));
     // ldrsh r5, [r0, r3]
-    // mov r3, #0xc
     // ldrsh r3, [r0, r3]
-    // add r4, r3, #0
     // mul r4, r2
     // add r3, r5, r4
     // strh r3, [r1]
-    // mov r3, #8
     // ldrsh r5, [r0, r3]
-    // mov r3, #0xe
     // ldrsh r3, [r0, r3]
-    // add r4, r3, #0
     // mul r4, r2
     // add r3, r5, r4
-    // strh r3, [r1, #2]
-    // mov r3, #0xa
+    *((u16*)(r1 + 2)) = 0xe;
     // ldrsh r4, [r0, r3]
-    // mov r3, #0x10
     // ldrsh r0, [r0, r3]
     // mul r2, r0
     // add r0, r4, r2
-    // strh r0, [r1, #4]
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
+    *((u16*)(r1 + 4)) = *((u16*)(*((u16*)(r0 + 4)) + 0xa));
 }
+
 
 
 void sub_0208DFF8(void) {
@@ -362,6 +329,7 @@ void sub_0208DFF8(void) {
     // _0208E170: .word 0x40800000
     // TODO: decompile
 }
+
 
 
 void sub_0208E174(void) {
@@ -605,6 +573,7 @@ void sub_0208E174(void) {
 }
 
 
+
 void sub_0208E3AC(void) {
     // push {r4, lr}
     // sub sp, #0x20
@@ -677,6 +646,7 @@ void sub_0208E3AC(void) {
 }
 
 
+
 void sub_0208E444(void) {
     // push {r3, r4, lr}
     // sub sp, #0xc
@@ -734,25 +704,16 @@ void sub_0208E444(void) {
 }
 
 
+
 void sub_0208E4B4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0xb3
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // mov r1, #0
-    // bl sub_02017088
-    // mov r0, #0x2a
-    // lsl r0, r0, #4
+    sub_02017088((0xb3 << 2), 0);
     // ldr r0, [r4, r0]
-    // bl PokepicManager_Delete
-    // add r0, r4, #0
-    // bl sub_0208E3AC
-    // add r0, r4, #0
-    // bl sub_0208E444
-    // pop {r4, pc}
-    // TODO: decompile
+    PokepicManager_Delete((0x2a << 4));
+    sub_0208E3AC(r4);
+    sub_0208E444(r4);
 }
+
 
 
 void sub_0208E4DC(void) {
@@ -807,7 +768,8 @@ void sub_0208E4DC(void) {
 }
 
 
+
 void sub_0208E544(void) {
-    sub_0208E4DC(0xff, 0);
 }
+
 

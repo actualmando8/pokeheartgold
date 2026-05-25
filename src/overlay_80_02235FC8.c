@@ -21,73 +21,40 @@ void ov80_02235FC8(void) {
 }
 
 
+
 void ov80_02235FEC(void) {
-    Heap_Free();
 }
+
 
 
 void ov80_02235FF8(void) {
-    // push {r3, lr}
-    // cmp r1, #5
-    // bhi _0223603C
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _0223600A: ; jump table
-    // bl sub_02096A34
-    // pop {r3, pc}
-    // add r1, r2, #0
-    // bl sub_02096AAC
-    // pop {r3, pc}
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // bl sub_02096AF4
-    // pop {r3, pc}
-    // add r1, r2, #0
-    // bl sub_02096BF8
-    // pop {r3, pc}
-    // add r1, r2, #0
-    // bl sub_02096C40
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_02096A34((*((u16*)(r1 + 6)) << 0x10));
+    sub_02096AAC(r2);
+    sub_02096AF4(r2, r3);
+    sub_02096BF8(r2);
+    sub_02096C40(r2);
 }
+
 
 
 void ov80_02236040(void) {
-    // push {r3, lr}
-    // add r3, r1, #0
     // add r3, #0x98
-    // ldr r3, [r3]
-    // cmp r2, #4
-    // bhi _02236088
     // add r2, r2, r2
     // add r2, pc
-    // ldrh r2, [r2, #6]
-    // lsl r2, r2, #0x10
     // asr r2, r2, #0x10
     // add pc, r2
     // _02236058: ; jump table
-    // add r2, r3, #0
-    // mov r3, #0xb
-    // bl ov80_0223608C
-    // pop {r3, pc}
-    // add r2, r3, #0
-    // mov r3, #0xb
-    // bl ov80_022362B8
-    // pop {r3, pc}
-    // add r2, r3, #0
-    // mov r3, #0xb
-    // bl ov80_02236330
-    // pop {r3, pc}
-    // add r2, r3, #0
-    // mov r3, #0xb
-    // bl ov80_0223641C
-    // pop {r3, pc}
-    // TODO: decompile
+    ov80_0223608C(*((u32*)r1), 0xb);
+    ov80_022362B8(r3, 0xb);
+    ov80_02236330(r3, 0xb);
+    ov80_0223641C(r3, 0xb);
 }
+
 
 
 void ov80_0223608C(void) {
@@ -363,66 +330,37 @@ void ov80_0223608C(void) {
 }
 
 
+
 void ov80_022362B8(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // add r0, r4, #0
     // add r0, #0xa8
-    // ldr r0, [r0]
-    // add r1, r0, #0
     // add r1, #0x26
     // ldrb r1, [r1]
-    // cmp r1, #6
-    // beq _022362E0
-    // cmp r1, #7
-    // bne _022362F0
-    // add r0, r4, #0
     // add r0, #0xb0
-    // ldr r0, [r0]
-    // mov r1, #4
     // strh r1, [r0]
     // add r4, #0x9d
     // strb r1, [r4]
-    // pop {r4, pc}
-    // add r0, r4, #0
     // add r0, #0xb0
-    // ldr r0, [r0]
-    // mov r1, #4
     // strh r1, [r0]
     // add r4, #0x9d
     // strb r1, [r4]
-    // pop {r4, pc}
-    // add r1, r4, #0
     // add r0, #0x30
     // add r1, #0xa1
-    // mov r2, #2
-    // bl MI_CpuCopy8
-    // add r0, r4, #0
+    MI_CpuCopy8(*((u32*)r1), r1, 2);
     // add r0, #0xa8
-    // ldr r0, [r0]
     // add r0, #0x26
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9f
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xa8
-    // ldr r0, [r0]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // mov r1, #0
+    Heap_Free(*((u32*)r4));
     // add r0, #0xa8
     // str r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xb0
-    // ldr r0, [r0]
-    // mov r1, #2
     // strh r1, [r0]
     // add r4, #0x9d
     // strb r1, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov80_02236330(void) {
@@ -533,7 +471,8 @@ void ov80_02236330(void) {
 }
 
 
+
 void ov80_0223641C(void) {
-    Heap_Free(r1, *((u8*)(r1 + 0x14)));
 }
+
 

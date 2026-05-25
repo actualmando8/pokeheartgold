@@ -2,24 +2,11 @@
 #include "global.h"
 
 void sub_0205B4EC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // cmp r1, #1
-    // bne _0205B4F8
-    // bl ResetAllTextPrinters
-    // mov r1, #0x1a
-    // add r0, r4, #0
-    // lsl r1, r1, #4
-    // mov r2, #4
-    // bl LoadFontPal0
-    // mov r1, #6
-    // add r0, r4, #0
-    // lsl r1, r1, #6
-    // mov r2, #4
-    // bl LoadFontPal1
-    // pop {r4, pc}
-    // TODO: decompile
+    ResetAllTextPrinters();
+    LoadFontPal0(r4, (0x1a << 4), 4);
+    LoadFontPal1(r4, (6 << 6), 4);
 }
+
 
 
 void sub_0205B514(void) {
@@ -64,6 +51,7 @@ void sub_0205B514(void) {
 }
 
 
+
 void sub_0205B564(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #8
@@ -97,70 +85,42 @@ void sub_0205B564(void) {
 }
 
 
+
 void sub_0205B5A8(void) {
-    FillWindowPixelBuffer();
 }
+
 
 
 void sub_0205B5B4(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r0, r3, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // bl TextFlags_SetCanABSpeedUpPrint
-    // mov r0, #0
-    // bl TextFlags_SetAutoScrollParam
-    // mov r0, #0
-    // bl TextFlags_SetCanTouchSpeedUpPrint
-    // add r0, r6, #0
-    // bl Options_GetTextFrameDelay
-    // mov r3, #0
+    TextFlags_SetCanABSpeedUpPrint(r3);
+    TextFlags_SetAutoScrollParam(0);
+    TextFlags_SetCanTouchSpeedUpPrint(0);
+    Options_GetTextFrameDelay(r6);
     // str r3, [sp]
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // str r3, [sp, #8]
-    // bl AddTextPrinterParameterized
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    AddTextPrinterParameterized(r5, 1, r4, 0);
 }
+
 
 
 void sub_0205B5EC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
     // add r0, sp, #0x10
-    // ldrb r0, [r0, #0x10]
-    // add r6, r1, #0
-    // add r7, r2, #0
-    // add r4, r3, #0
-    // bl TextFlags_SetCanABSpeedUpPrint
+    TextFlags_SetCanABSpeedUpPrint(*((u8*)(r0 + 0x10)));
     // ldr r0, [sp, #0x24]
-    // bl TextFlags_SetAutoScrollParam
-    // mov r0, #0
-    // bl TextFlags_SetCanTouchSpeedUpPrint
-    // mov r3, #0
+    TextFlags_SetAutoScrollParam();
+    TextFlags_SetCanTouchSpeedUpPrint(0);
     // str r3, [sp]
     // str r4, [sp, #4]
-    // add r0, r5, #0
-    // add r1, r7, #0
-    // add r2, r6, #0
     // str r3, [sp, #8]
-    // bl AddTextPrinterParameterized
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    AddTextPrinterParameterized(r5, r7, r6, 0);
 }
+
 
 
 void IsPrintFinished(void) {
-    TextPrinterCheckActive(0, 1);
 }
+
 
 
 void sub_0205B63C(void) {
@@ -215,6 +175,7 @@ void sub_0205B63C(void) {
 }
 
 
+
 void sub_0205B6A0(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0xc
@@ -249,4 +210,5 @@ void sub_0205B6A0(void) {
     // _0205B6E4: .word 0x000002A3
     // TODO: decompile
 }
+
 

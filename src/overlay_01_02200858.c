@@ -2,40 +2,27 @@
 #include "global.h"
 
 void ov01_02200858(void) {
-    ov01_021F1430(0x6c, 0, 0);
-    ov01_02200884();
 }
+
 
 
 void ov01_02200874(void) {
-    ov01_022008A8();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_02200884(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // mov r2, #0
-    // add r4, r0, #0
     // str r2, [sp]
-    // ldr r0, [r4]
-    // add r1, r4, #4
-    // mov r3, #0x55
-    // bl ov01_021F19F4
-    // add r0, r4, #0
+    ov01_021F19F4(*((u32*)r0), (r0 + 4), 0, 0x55);
     // add r0, #0x18
-    // add r1, r4, #4
-    // bl sub_02069978
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_02069978(r4, (r4 + 4));
 }
+
 
 
 void ov01_022008A8(void) {
-    sub_02069784();
 }
+
 
 
 void ov01_022008B4(void) {
@@ -75,33 +62,22 @@ void ov01_022008B4(void) {
 }
 
 
-void ov01_02200900(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // bl sub_02068D98
-    // add r4, r0, #0
-    // add r3, r4, #0
-    // add r2, r5, #0
+
+u32 ov01_02200900(void) {
+    sub_02068D98();
     // ldmia r3!, {r0, r1}
     // add r2, #0x24
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // ldr r0, [r4, #8]
-    // bl PlayerAvatar_GetMapObject
-    // mov r1, #0
+    PlayerAvatar_GetMapObject(*((u32*)(r0 + 8)), r5, r0);
     // mvn r1, r1
-    // add r4, r0, #0
-    // str r1, [r5, #4]
-    // bl MapObject_GetID
-    // str r0, [r5, #0x14]
-    // add r0, r4, #0
-    // bl MapObject_GetMapID
-    // str r0, [r5, #0x18]
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 4)) = 0;
+    MapObject_GetID(0);
+    *((u32*)(r5 + 0x14)) = r0;
+    MapObject_GetMapID(r4);
+    *((u32*)(r5 + 0x18)) = r0;
 }
+
 
 
 void ov01_02200938(void) {
@@ -110,98 +86,51 @@ void ov01_02200938(void) {
 }
 
 
-void ov01_0220093C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r5, r1, #0
+
+u32 ov01_0220093C(void) {
     // str r0, [sp]
-    // ldr r0, [r5, #0x2c]
     // str r0, [sp, #4]
-    // bl PlayerAvatar_GetMapObject
-    // ldr r1, [r5, #0x14]
-    // ldr r2, [r5, #0x18]
-    // add r6, r0, #0
-    // bl sub_0205F0A8
-    // cmp r0, #0
-    // bne _02200964
+    PlayerAvatar_GetMapObject(*((u32*)(r1 + 0x2c)));
+    sub_0205F0A8(*((u32*)(r5 + 0x14)), *((u32*)(r5 + 0x18)));
     // ldr r0, [sp]
-    // bl ov01_021F1640
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // ldr r7, [r5, #4]
-    // add r0, r6, #0
-    // bl sub_0205F504
-    // strb r0, [r5, #8]
-    // ldrb r0, [r5, #8]
-    // bl ov01_02200AB0
-    // str r0, [r5, #4]
-    // mov r0, #0
+    ov01_021F1640();
+    sub_0205F504(r6);
+    *((u8*)(r5 + 8)) = r0;
+    ov01_02200AB0(*((u8*)(r5 + 8)));
+    *((u32*)(r5 + 4)) = r0;
     // str r0, [r5]
-    // ldr r4, [r5, #4]
-    // sub r0, r0, #1
-    // cmp r4, r0
-    // beq _0220098C
     // ldr r0, [sp, #4]
-    // bl PlayerAvatar_GetFacingDirection
-    // cmp r4, r0
-    // beq _0220099A
-    // mov r0, #0
-    // str r0, [r5, #0x1c]
-    // str r0, [r5, #0x20]
-    // mov r0, #1
-    // add sp, #0x24
+    PlayerAvatar_GetFacingDirection((0 - 1));
+    *((u32*)(r5 + 0x1c)) = 0;
+    *((u32*)(r5 + 0x20)) = 0;
     // str r0, [r5]
-    // pop {r4, r5, r6, r7, pc}
-    // cmp r7, r4
-    // beq _022009A4
-    // mov r0, #0
-    // str r0, [r5, #0x1c]
-    // str r0, [r5, #0x20]
-    // add r0, r6, #0
-    // bl MapObject_GetXCoord
-    // add r4, r0, #0
-    // ldr r0, [r5, #4]
-    // bl GetDeltaXByFacingDirection
-    // add r7, r0, #0
-    // add r0, r6, #0
-    // bl MapObject_GetZCoord
+    *((u32*)(r5 + 0x1c)) = 0;
+    *((u32*)(r5 + 0x20)) = 0;
+    MapObject_GetXCoord(r6);
+    GetDeltaXByFacingDirection(*((u32*)(r5 + 4)));
+    MapObject_GetZCoord(r6);
     // str r0, [sp, #8]
-    // ldr r0, [r5, #4]
-    // bl GetDeltaYByFacingDirection
-    // add r2, r0, #0
+    GetDeltaYByFacingDirection(*((u32*)(r5 + 4)));
     // ldr r1, [sp, #8]
     // add r0, r4, r7
     // add r1, r1, r2
     // add r2, sp, #0xc
-    // bl sub_020611C8
-    // add r0, r6, #0
+    sub_020611C8(r0);
     // add r1, sp, #0x18
-    // bl MapObject_CopyPositionVector
+    MapObject_CopyPositionVector(r6);
     // ldr r0, [sp, #0x1c]
     // add r1, sp, #0xc
     // str r0, [sp, #0x10]
     // ldr r0, [sp]
-    // bl sub_02068DA8
-    // ldr r0, [r5, #0x1c]
-    // add r0, r0, #1
-    // str r0, [r5, #0x1c]
-    // cmp r0, #0xf
-    // ble _02200A04
-    // mov r0, #0
-    // str r0, [r5, #0x1c]
-    // ldr r0, [r5, #0x20]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
+    sub_02068DA8();
+    *((u32*)(r5 + 0x1c)) = (*((u32*)(r5 + 0x1c)) + 1);
+    *((u32*)(r5 + 0x1c)) = 0;
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
-    // str r0, [r5, #0x20]
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 0x20)) = 0x1f;
 }
+
 
 
 void ov01_02200A08(void) {
@@ -285,35 +214,13 @@ void ov01_02200A08(void) {
 }
 
 
-void ov01_02200AB0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_0205B730
-    // cmp r0, #0
-    // beq _02200AC0
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // bl sub_0205B73C
-    // cmp r0, #0
-    // beq _02200ACE
-    // mov r0, #1
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // bl sub_0205B724
-    // cmp r0, #0
-    // beq _02200ADC
-    // mov r0, #2
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // bl sub_0205B718
-    // cmp r0, #0
-    // beq _02200AEA
-    // mov r0, #3
-    // pop {r4, pc}
-    // mov r0, #0
+
+u32 ov01_02200AB0(void) {
+    sub_0205B730();
+    sub_0205B73C(r4);
+    sub_0205B724(r4);
+    sub_0205B718(r4);
     // mvn r0, r0
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 

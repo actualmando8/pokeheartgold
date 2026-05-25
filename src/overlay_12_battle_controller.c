@@ -2,211 +2,88 @@
 #include "global.h"
 
 void BattleController_SendData(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r7, r0, #0
-    // add r6, r3, #0
     // str r1, [sp]
     // str r2, [sp, #4]
-    // cmp r1, #1
-    // bne _022620BE
-    // bl BattleSystem_GetRecvBufferPtr
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl ov12_0223A984
-    // add r5, r0, #0
-    // add r0, r7, #0
-    // bl ov12_0223A990
-    // b _022620D2
-    // bl BattleSystem_GetSendBufferPtr
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl ov12_0223A960
-    // add r5, r0, #0
-    // add r0, r7, #0
-    // bl ov12_0223A96C
-    // add r7, r0, #0
+    BattleSystem_GetRecvBufferPtr();
+    ov12_0223A984(r7);
+    ov12_0223A990(r7);
+    BattleSystem_GetSendBufferPtr();
+    ov12_0223A960(r7);
+    ov12_0223A96C(r7);
     // add r0, sp, #0x10
     // ldrh r2, [r5]
-    // ldrb r3, [r0, #0x10]
-    // add r0, r2, #5
     // add r1, r0, r3
-    // mov r0, #1
-    // lsl r0, r0, #0xc
-    // cmp r1, r0
-    // bls _022620EC
     // strh r2, [r7]
-    // mov r0, #0
     // strh r0, [r5]
     // ldr r1, [sp]
     // add r0, sp, #8
     // strb r1, [r0]
     // ldr r1, [sp, #4]
-    // strb r1, [r0, #1]
+    *((u8*)(0 + 1)) = r1;
     // add r1, sp, #0x10
-    // ldrb r1, [r1, #0x10]
-    // strh r1, [r0, #2]
+    *((u16*)(0 + 2)) = *((u8*)(r1 + 0x10));
     // add r1, sp, #8
-    // mov r0, #0
     // ldrb r7, [r1, r0]
     // ldrh r2, [r5]
-    // add r0, r0, #1
     // strb r7, [r4, r2]
     // ldrh r2, [r5]
-    // add r2, r2, #1
     // strh r2, [r5]
-    // cmp r0, #4
-    // blo _02262100
-    // mov r0, #0
-    // cmp r3, #0
-    // ble _0226212A
     // ldrb r2, [r6, r0]
     // ldrh r1, [r5]
-    // add r0, r0, #1
     // strb r2, [r4, r1]
     // ldrh r1, [r5]
-    // add r1, r1, #1
     // strh r1, [r5]
-    // cmp r0, r3
-    // blt _02262118
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void BattleController_RecvData(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r3, r1, #0
-    // ldrb r6, [r3, #3]
     // ldrb r1, [r3]
-    // ldrb r7, [r3, #2]
-    // lsl r6, r6, #8
-    // add r5, r0, #0
-    // mov r2, #0
     // orr r6, r7
-    // ldrb r4, [r3, #1]
-    // cmp r1, #0
-    // bne _02262176
-    // ldr r0, [r5, #0x30]
-    // lsl r1, r4, #8
     // add r4, r0, r1
-    // mov r0, #0x23
-    // lsl r0, r0, #8
     // ldrb r0, [r4, r0]
-    // cmp r0, #0
-    // bne _022621C0
-    // cmp r6, #0
-    // ble _02262172
-    // mov r4, #0x23
-    // lsl r4, r4, #8
     // add r0, r3, r2
-    // ldr r7, [r5, #0x30]
-    // ldrb r0, [r0, #4]
     // add r7, r1, r7
     // add r7, r2, r7
-    // add r2, r2, #1
     // strb r0, [r7, r4]
-    // cmp r2, r6
-    // blt _02262160
-    // mov r2, #1
-    // b _022621C0
-    // cmp r1, #1
-    // bne _022621A2
-    // lsl r0, r4, #2
     // add r0, r5, r0
-    // ldr r1, [r0, #0x34]
     // add r1, #0x94
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // bne _022621C0
-    // cmp r6, #0
-    // ble _0226219E
     // add r1, r3, r2
-    // ldrb r4, [r1, #4]
-    // ldr r1, [r0, #0x34]
     // add r1, r1, r2
     // add r1, #0x94
-    // add r2, r2, #1
     // strb r4, [r1]
-    // cmp r2, r6
-    // blt _0226218C
-    // mov r2, #1
-    // b _022621C0
-    // cmp r1, #2
-    // bne _022621C0
-    // ldrb r7, [r3, #4]
-    // ldrb r6, [r3, #5]
-    // bl ov12_0223B688
-    // cmp r0, #0
-    // beq _022621BE
-    // ldr r0, [r5, #0x30]
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // add r3, r7, #0
-    // bl ov12_0224ED00
-    // mov r2, #1
-    // add r0, r2, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov12_0223B688(((0x23 << 8) << 2), *((u32*)(((0x23 << 8) << 2) + 0x34)), 1, r1);
+    ov12_0224ED00(*((u32*)(r5 + 0x30)), r6, r4, r7);
 }
+
 
 
 void ov12_022621C4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // cmp r1, #1
-    // bne _022621EA
-    // bl BattleSystem_GetRecvBufferPtr
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl ov12_0223A978
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl ov12_0223A984
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl ov12_0223A990
-    // b _02262206
-    // bl BattleSystem_GetSendBufferPtr
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl ov12_0223A954
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl ov12_0223A960
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl ov12_0223A96C
+    BattleSystem_GetRecvBufferPtr();
+    ov12_0223A978(r5);
+    ov12_0223A984(r5);
+    ov12_0223A990(r5);
+    BattleSystem_GetSendBufferPtr();
+    ov12_0223A954(r5);
+    ov12_0223A960(r5);
+    ov12_0223A96C(r5);
     // ldrh r1, [r4]
     // ldrh r2, [r7]
-    // cmp r1, r2
-    // beq _0226223C
     // ldrh r2, [r0]
-    // cmp r1, r2
-    // bne _0226221A
-    // mov r1, #0
     // strh r1, [r4]
     // strh r1, [r0]
     // ldrh r1, [r4]
-    // add r0, r5, #0
     // add r1, r6, r1
-    // bl BattleController_RecvData
-    // cmp r0, #1
-    // bne _0226223C
+    BattleController_RecvData(r5, 0);
     // ldrh r0, [r4]
-    // add r1, r0, #2
     // ldrb r2, [r6, r1]
-    // add r1, r0, #3
     // ldrb r1, [r6, r1]
-    // lsl r1, r1, #8
     // orr r1, r2
-    // add r1, r1, #4
     // add r0, r0, r1
     // strh r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov12_02262240(void) {
@@ -275,26 +152,16 @@ void ov12_02262240(void) {
 }
 
 
+
 void BattleController_EmitPlayEncounterAnimation(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // mov r1, #1
-    // add r5, r0, #0
     // str r1, [sp, #4]
-    // bl BattleSystem_GetRandTemp
+    BattleSystem_GetRandTemp(1);
     // str r0, [sp, #8]
-    // mov r0, #8
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitPokemonEncounter(void) {
@@ -419,6 +286,7 @@ void BattleController_EmitPokemonEncounter(void) {
     // _022623EC: .word 0x00002D66
     // TODO: decompile
 }
+
 
 
 void BattleController_EmitPokemonSlideIn(void) {
@@ -566,6 +434,7 @@ void BattleController_EmitPokemonSlideIn(void) {
     // _02262520: .word 0x00002D66
     // TODO: decompile
 }
+
 
 
 void BattleController_EmitPokemonSendOut(void) {
@@ -822,6 +691,7 @@ void BattleController_EmitPokemonSendOut(void) {
 }
 
 
+
 void BattleController_EmitRecallPokemon(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x3c
@@ -998,6 +868,7 @@ void BattleController_EmitRecallPokemon(void) {
 }
 
 
+
 void ov12_022628A0(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -1090,37 +961,29 @@ void ov12_022628A0(void) {
 }
 
 
+
 void BattleController_EmitDeletePokemon(void) {
-    ov12_02262240(1, 4, 7);
 }
 
 
+
 void BattleController_EmitTrainerEncounter(void) {
-    // push {r3, lr}
-    // sub sp, #8
-    // add r2, r1, #0
-    // mov r1, #8
     // add r3, sp, #4
     // strb r1, [r3]
-    // mov r1, #0x34
     // mul r1, r2
     // add r1, r0, r1
     // add r1, #0xad
     // ldrb r1, [r1]
-    // strh r1, [r3, #2]
+    *((u16*)(r3 + 2)) = 0x34;
     // add r1, r0, r2
     // add r1, #0xa8
     // ldrb r1, [r1]
-    // strb r1, [r3, #1]
-    // mov r1, #4
+    *((u8*)(r3 + 1)) = 0x34;
     // str r1, [sp]
-    // mov r1, #1
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #8
-    // pop {r3, pc}
-    // TODO: decompile
+    ov12_02262240(1, r1);
 }
+
 
 
 void BattleController_EmitThrowPokeball(void) {
@@ -1153,39 +1016,30 @@ void BattleController_EmitThrowPokeball(void) {
 }
 
 
+
 void BattleController_EmitTrainerSlideOut(void) {
-    ov12_02262240(0xa, 1, 4);
 }
 
 
+
 void BattleController_EmitTrainerSlideIn(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r3, r1, #0
-    // mov r1, #0xb
     // add r4, sp, #4
     // strb r1, [r4]
-    // mov r1, #0x34
     // mul r1, r3
     // add r1, r0, r1
     // add r1, #0xad
     // ldrb r1, [r1]
-    // strh r1, [r4, #2]
+    *((u16*)(r4 + 2)) = 0x34;
     // add r1, r0, r3
     // add r1, #0xa8
     // ldrb r1, [r1]
-    // strb r1, [r4, #1]
+    *((u8*)(r4 + 1)) = 0x34;
     // str r2, [sp, #8]
-    // mov r1, #8
     // str r1, [sp]
-    // add r2, r3, #0
-    // mov r1, #1
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov12_02262240(1, r1, r1);
 }
+
 
 
 void BattleController_EmitHealthbarSlideIn(void) {
@@ -1334,9 +1188,10 @@ void BattleController_EmitHealthbarSlideIn(void) {
 }
 
 
+
 void BattleController_EmitHealthbarSlideOut(void) {
-    ov12_02262240(0xd, 1, 4);
 }
+
 
 
 void ov12_02262B80(void) {
@@ -1757,9 +1612,10 @@ void ov12_02262B80(void) {
 }
 
 
+
 void ov12_02262F24(void) {
-    ov12_02262240(0, 4);
 }
+
 
 
 void ov12_02262F40(void) {
@@ -1838,9 +1694,10 @@ void ov12_02262F40(void) {
 }
 
 
+
 void ov12_02262FE0(void) {
-    ov12_02262240(0, 4);
 }
+
 
 
 void ov12_02262FFC(void) {
@@ -1984,9 +1841,10 @@ void ov12_02262FFC(void) {
 }
 
 
+
 void ov12_0226311C(void) {
-    ov12_02262240(0, 4);
 }
+
 
 
 void ov12_02263138(void) {
@@ -2178,9 +2036,10 @@ void ov12_02263138(void) {
 }
 
 
+
 void ov12_022632C0(void) {
-    ov12_02262240(0, 4);
 }
+
 
 
 void BattleController_EmitShowMonList(void) {
@@ -2249,41 +2108,28 @@ void BattleController_EmitShowMonList(void) {
 }
 
 
+
 void ov12_02263360(void) {
-    ov12_02262240(0, 4);
 }
+
 
 
 void BattleController_EmitDrawYesNoBox(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x10
-    // add r5, r2, #0
-    // add r6, r0, #0
-    // add r0, r1, #0
-    // add r1, r5, #0
-    // add r4, r3, #0
-    // bl BattleBuffer_Clear
-    // mov r1, #0x13
+    BattleBuffer_Clear(r1, r2);
     // add r0, sp, #4
     // strb r1, [r0]
     // ldr r1, [sp, #0x20]
-    // strh r4, [r0, #2]
-    // strb r1, [r0, #1]
+    *((u16*)(r0 + 2)) = r4;
+    *((u8*)(r0 + 1)) = 0x13;
     // ldr r0, [sp, #0x24]
-    // mov r1, #1
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x28]
-    // add r2, r5, #0
     // str r0, [sp, #0xc]
-    // mov r0, #0xc
     // str r0, [sp]
-    // add r0, r6, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov12_02262240(r6, 1, r5);
 }
+
 
 
 void BattleController_EmitPrintAttackMessage(void) {
@@ -2316,67 +2162,44 @@ void BattleController_EmitPrintAttackMessage(void) {
 }
 
 
+
 void BattleController_EmitPrintMessage(void) {
-    ov12_02262240(0x15, 0x24, 1);
 }
+
 
 
 void BattleController_SetMoveAnimation(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x68
-    // mov r3, #0
-    // add r4, r1, #0
     // str r3, [sp]
-    // ldr r6, [r4, #0x64]
-    // add r5, r0, #0
     // str r6, [sp, #4]
-    // ldr r6, [r4, #0x6c]
     // str r6, [sp, #8]
     // str r2, [sp, #0xc]
     // add r2, sp, #0x10
-    // bl ov12_022643C8
-    // mov r0, #0x58
+    ov12_022643C8(0);
     // str r0, [sp]
-    // ldr r2, [r4, #0x64]
-    // add r0, r5, #0
-    // mov r1, #1
     // add r3, sp, #0x10
-    // bl ov12_02262240
-    // add sp, #0x68
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, *((u32*)(r4 + 0x64)));
 }
 
 
+
 void ov12_0226343C(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x68
-    // add r4, r3, #0
-    // mov r3, #0
     // str r3, [sp]
     // ldr r6, [sp, #0x78]
     // str r4, [sp, #4]
     // str r6, [sp, #8]
     // str r2, [sp, #0xc]
     // add r2, sp, #0x10
-    // add r5, r0, #0
-    // bl ov12_022643C8
-    // mov r0, #0x58
+    ov12_022643C8(0);
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #0x10
-    // bl ov12_02262240
-    // add sp, #0x68
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitMonFlicker(void) {
-    ov12_02262240(0x17, 1, 4);
 }
+
 
 
 void BattleController_EmitHealthbarUpdate(void) {
@@ -2481,6 +2304,7 @@ void BattleController_EmitHealthbarUpdate(void) {
 }
 
 
+
 void ov12_02263564(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x1c
@@ -2541,6 +2365,7 @@ void ov12_02263564(void) {
     // _022635E4: .word 0x00002DA4
     // TODO: decompile
 }
+
 
 
 void BattleController_EmitPlayFaintAnimation(void) {
@@ -2679,14 +2504,15 @@ void BattleController_EmitPlayFaintAnimation(void) {
 }
 
 
+
 void BattleController_EmitPlaySE(void) {
-    ov12_02262240(1, 4, 0x1b);
 }
+
 
 
 void BattleController_EmitFadeOutBattle(void) {
-    ov12_02262240(0x1c, 1, 4, 0);
 }
+
 
 
 void BattleController_EmitToggleVanish(void) {
@@ -2791,67 +2617,44 @@ void BattleController_EmitToggleVanish(void) {
 }
 
 
+
 void BattleController_EmitHealthbarStatus(void) {
-    ov12_02262240(1, 4, 0x1e);
 }
+
 
 
 void BattleController_EmitPrintTrainerMessage(void) {
-    ov12_02262240(1, 4, 0x1f);
 }
+
 
 
 void BattleController_EmitSetStatus2Effect(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x68
-    // add r4, r2, #0
     // str r3, [sp]
     // str r4, [sp, #4]
     // str r4, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // add r2, sp, #0x10
-    // mov r3, #1
-    // add r5, r0, #0
-    // bl ov12_022643C8
-    // mov r0, #0x58
+    ov12_022643C8(0, 1);
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #0x10
-    // bl ov12_02262240
-    // add sp, #0x68
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitCopyStatus2Effect(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x68
-    // add r4, r2, #0
     // ldr r2, [sp, #0x78]
-    // add r5, r0, #0
     // str r2, [sp]
     // str r4, [sp, #4]
     // str r3, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // add r2, sp, #0x10
-    // mov r3, #1
-    // bl ov12_022643C8
-    // mov r0, #0x58
+    ov12_022643C8(0, 1);
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #0x10
-    // bl ov12_02262240
-    // add sp, #0x68
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitPrintReturnMessage(void) {
@@ -2887,6 +2690,7 @@ void BattleController_EmitPrintReturnMessage(void) {
     // _022638E8: .word 0x00002E4C
     // TODO: decompile
 }
+
 
 
 void BattleController_EmitPrintSendOutMessage(void) {
@@ -2929,9 +2733,10 @@ void BattleController_EmitPrintSendOutMessage(void) {
 }
 
 
+
 void BattleController_EmitPrintEncounterMessage(void) {
-    ov12_02262240(0x22, 1, 4);
 }
+
 
 
 void BattleController_EmitPrintFirstSendOutMessage(void) {
@@ -2973,51 +2778,32 @@ void BattleController_EmitPrintFirstSendOutMessage(void) {
 }
 
 
+
 void ov12_0226399C(void) {
-    ov12_02262240(0x24, 1, 4);
 }
 
 
+
 void ov12_022639B8(void) {
-    // push {r0, r1, r2, r3}
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0x2c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl BattleSystem_GetBattleContext
-    // add r1, r4, #0
-    // bl BattleBuffer_Clear
-    // mov r1, #0x25
+    BattleSystem_GetBattleContext();
+    BattleBuffer_Clear(r4);
     // add r0, sp, #4
     // strb r1, [r0]
     // add r6, sp, #0x48
     // add r3, sp, #8
-    // mov r2, #4
     // ldmia r6!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // sub r2, r2, #1
-    // bne _022639D8
-    // ldr r0, [r6]
-    // mov r1, #1
     // str r0, [r3]
-    // mov r0, #0x28
     // str r0, [sp]
-    // add r0, r5, #0
-    // add r2, r4, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0x2c
-    // pop {r3, r4, r5, r6}
-    // pop {r3}
-    // add sp, #0x10
-    // bx r3
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void ov12_02263A00(void) {
-    ov12_02262240(0, 1, 4);
 }
+
 
 
 void ov12_02263A1C(void) {
@@ -3160,6 +2946,7 @@ void ov12_02263A1C(void) {
     // _02263B48: .word 0x00002DA4
     // TODO: decompile
 }
+
 
 
 void BattleController_EmitBattleMonToPartyMonCopy(void) {
@@ -3333,14 +3120,15 @@ void BattleController_EmitBattleMonToPartyMonCopy(void) {
 }
 
 
+
 void BattleController_EmitBackgroundSlideIn(void) {
-    ov12_02262240(0x28, 1, 4);
 }
+
 
 
 void ov12_02263CCC(void) {
-    ov12_02262240(0x29, 1, 4);
 }
+
 
 
 void BattleControl_EmitPartyStatusHeal(void) {
@@ -3368,37 +3156,24 @@ void BattleControl_EmitPartyStatusHeal(void) {
 }
 
 
+
 void ov12_02263D14(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r1, #0
-    // add r7, r0, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl BattleSystem_GetBattleContext
-    // add r1, r5, #0
-    // bl BattleBuffer_Clear
-    // mov r1, #0x2b
+    BattleSystem_GetBattleContext();
+    BattleBuffer_Clear(r5);
     // add r0, sp, #4
     // strb r1, [r0]
-    // strh r4, [r0, #2]
-    // strb r6, [r0, #1]
-    // mov r0, #4
+    *((u16*)(r0 + 2)) = r4;
+    *((u8*)(r0 + 1)) = r6;
     // str r0, [sp]
-    // add r0, r7, #0
-    // mov r1, #1
-    // add r2, r5, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov12_02262240(r7, 1, r5);
 }
+
 
 
 void BattleController_EmitPlayMosaicAnimation(void) {
-    ov12_02262240(1, 4, 0x2c);
 }
+
 
 
 void BattleController_EmitChangeForm(void) {
@@ -3476,121 +3251,74 @@ void BattleController_EmitChangeForm(void) {
 }
 
 
+
 void BattleController_EmitSetBattleBackground(void) {
-    ov12_02262240(0x2e, 1, 4);
 }
+
 
 
 void ov12_02263E18(void) {
-    ov12_02262240(0x2f, 1, 4);
 }
+
 
 
 void BattleController_EmitInitStartBallGauge(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
     // str r4, [sp]
-    // ldr r1, [r5, #0x30]
     // add r2, sp, #4
-    // mov r3, #0x30
-    // bl ov12_022645F8
-    // mov r0, #8
+    ov12_022645F8(*((u32*)(r0 + 0x30)), 0x30);
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitDeleteStartBallGauge(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
     // str r4, [sp]
-    // ldr r1, [r5, #0x30]
     // add r2, sp, #4
-    // mov r3, #0x31
-    // bl ov12_022645F8
-    // mov r0, #8
+    ov12_022645F8(*((u32*)(r0 + 0x30)), 0x31);
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitInitBallGauge(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
     // str r4, [sp]
-    // ldr r1, [r5, #0x30]
     // add r2, sp, #4
-    // mov r3, #0x32
-    // bl ov12_022645F8
-    // mov r0, #8
+    ov12_022645F8(*((u32*)(r0 + 0x30)), 0x32);
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitDeleteBallGauge(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
     // str r4, [sp]
-    // ldr r1, [r5, #0x30]
     // add r2, sp, #4
-    // mov r3, #0x33
-    // bl ov12_022645F8
-    // mov r0, #8
+    ov12_022645F8(*((u32*)(r0 + 0x30)), 0x33);
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // add r2, r4, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, r4);
 }
+
 
 
 void BattleController_EmitLoadBallGfx(void) {
-    ov12_02262240(0x34, 1, 4, 0);
 }
+
 
 
 void BattleController_EmitDeleteBallGfx(void) {
-    ov12_02262240(0x35, 1, 4, 0);
 }
+
 
 
 void BattleController_EmitIncrementGameStat(void) {
-    ov12_02262240(1, 4, 0x36);
 }
+
 
 
 void BattleController_EmitShowWaitMessage(void) {
@@ -3636,6 +3364,7 @@ void BattleController_EmitShowWaitMessage(void) {
     // _02263F88: .word 0x0000240C
     // TODO: decompile
 }
+
 
 
 void ov12_02263F8C(void) {
@@ -3723,19 +3452,20 @@ void ov12_02263F8C(void) {
 }
 
 
+
 void ov12_02264038(void) {
-    ov12_02262240(0x39, 1, 4);
 }
+
 
 
 void ov12_02264054(void) {
-    ov12_02262240(0x3a, 1, 4);
 }
+
 
 
 void BattleController_EmitPrintResultMessage(void) {
-    ov12_02262240(0x3b, 1, 4, 0);
 }
+
 
 
 void BattleController_EmitRunAwayMessage(void) {
@@ -3807,6 +3537,7 @@ void BattleController_EmitRunAwayMessage(void) {
 }
 
 
+
 void BattleController_EmitForefitMessage(void) {
     // push {r3, r4, lr}
     // sub sp, #0x24
@@ -3850,6 +3581,7 @@ void BattleController_EmitForefitMessage(void) {
     // _02264178: .word 0x0000240C
     // TODO: decompile
 }
+
 
 
 void BattleController_EmitSwapToSubstituteSprite(void) {
@@ -3937,6 +3669,7 @@ void BattleController_EmitSwapToSubstituteSprite(void) {
 }
 
 
+
 void BattleController_EmitPlayMoveSE(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #8
@@ -3972,9 +3705,10 @@ void BattleController_EmitPlayMoveSE(void) {
 }
 
 
+
 void BattleController_EmitPlaySong(void) {
-    ov12_02262240(1, 4, 0x40);
 }
+
 
 
 void BattleController_EmitSetBattleResults(void) {
@@ -4027,108 +3761,47 @@ void BattleController_EmitSetBattleResults(void) {
 }
 
 
+
 void BattleController_EmitBlankMessage(void) {
-    ov12_02262240(0x42, 1, 4, 0);
 }
+
 
 
 void ov12_0226430C(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
     // add r0, sp, #4
-    // add r4, r1, #0
     // strb r2, [r0]
-    // bl sub_0203769C
+    sub_0203769C();
     // add r1, sp, #4
-    // strb r0, [r1, #1]
-    // mov r0, #4
+    *((u8*)(r1 + 1)) = r0;
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #2
-    // add r2, r4, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 2, r4);
 }
+
 
 
 void ov12_02264334(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // mov r1, #1
-    // ldrb r3, [r5, #3]
     // str r1, [sp]
     // ldrb r2, [r5]
-    // ldrb r1, [r5, #2]
-    // lsl r3, r3, #8
-    // add r4, r0, #0
     // orr r1, r3
-    // ldrb r6, [r5, #1]
-    // cmp r2, #0
-    // bne _0226436E
-    // mov r2, #0
-    // cmp r1, #0
-    // ble _022643C2
-    // mov r7, #0x23
-    // lsl r3, r6, #8
-    // lsl r7, r7, #8
     // add r0, r5, r2
-    // ldr r6, [r4, #0x30]
-    // ldrb r0, [r0, #4]
     // add r6, r3, r6
     // add r6, r2, r6
-    // add r2, r2, #1
     // strb r0, [r6, r7]
-    // cmp r2, r1
-    // blt _0226435A
-    // b _022643C2
-    // cmp r2, #1
-    // bne _022643A6
-    // lsl r0, r6, #2
     // add r0, r4, r0
-    // mov r3, #0x6a
-    // ldr r4, [r0, #0x34]
-    // lsl r3, r3, #2
     // ldrb r2, [r4, r3]
-    // cmp r2, #0
-    // bne _022643A0
     // ldr r2, [sp]
     // strb r2, [r4, r3]
-    // mov r2, #0
-    // cmp r1, #0
-    // ble _022643C2
     // add r3, r5, r2
-    // ldrb r4, [r3, #4]
-    // ldr r3, [r0, #0x34]
     // add r3, r3, r2
     // add r3, #0x94
-    // add r2, r2, #1
     // strb r4, [r3]
-    // cmp r2, r1
-    // blt _0226438C
-    // b _022643C2
-    // mov r0, #0
     // str r0, [sp]
-    // b _022643C2
-    // cmp r2, #2
-    // bne _022643C2
-    // ldrb r7, [r5, #4]
-    // ldrb r5, [r5, #5]
-    // bl ov12_0223B688
-    // cmp r0, #0
-    // beq _022643C2
-    // ldr r0, [r4, #0x30]
-    // add r1, r5, #0
-    // add r2, r6, #0
-    // add r3, r7, #0
-    // bl ov12_0224ED00
+    ov12_0223B688(0, *((u8*)(r1 + 2)), (0 + 1), *((u32*)((*((u32*)(r0 + 0x30)) << 2) + 0x34)));
+    ov12_0224ED00(*((u32*)(r4 + 0x30)), r5, r6, r7);
     // ldr r0, [sp]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov12_022643C8(void) {
@@ -4377,30 +4050,18 @@ void ov12_022643C8(void) {
 }
 
 
+
 void ov12_022645C8(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r4, r2, #0
     // add r0, sp, #4
-    // mov r1, #0
-    // mov r2, #4
-    // bl MI_CpuFill8
-    // mov r1, #0x43
+    MI_CpuFill8(0, 4);
     // add r0, sp, #4
     // strb r1, [r0]
-    // strb r4, [r0, #1]
-    // mov r0, #4
+    *((u8*)(r0 + 1)) = r4;
     // str r0, [sp]
-    // add r0, r5, #0
-    // mov r1, #1
-    // mov r2, #0
     // add r3, sp, #4
-    // bl ov12_02262240
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov12_02262240(r5, 1, 0);
 }
+
 
 
 void ov12_022645F8(void) {
@@ -4653,4 +4314,5 @@ void ov12_022645F8(void) {
     // _02264820: .word 0x000001EE
     // TODO: decompile
 }
+
 

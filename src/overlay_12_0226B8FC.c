@@ -2,86 +2,41 @@
 #include "global.h"
 
 void ov12_0226B8FC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r0, #8
-    // add r1, r3, #0
-    // add r7, r2, #0
-    // bl NARC_New
-    // add r6, r0, #0
+    NARC_New(8, r3);
     // str r6, [sp]
-    // mov r0, #0x50
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // mov r0, #1
     // str r0, [sp, #0xc]
-    // mov r0, #2
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #0x34]
-    // mov r1, #3
     // str r0, [sp, #0x14]
-    // add r0, r7, #0
-    // add r2, r5, #0
-    // add r3, r4, #0
-    // bl SpriteSystem_LoadPaletteBufferFromOpenNarc
-    // mov r0, #1
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(r7, 3, r5, r4);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x30]
-    // add r1, r4, #0
     // str r0, [sp, #8]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // mov r3, #0xfa
-    // bl SpriteSystem_LoadCharResObjFromOpenNarc
-    // mov r0, #1
+    SpriteSystem_LoadCharResObjFromOpenNarc(r5, r4, r6, 0xfa);
     // str r0, [sp]
     // ldr r0, [sp, #0x38]
-    // add r1, r4, #0
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // mov r3, #0xfb
-    // bl SpriteSystem_LoadCellResObjFromOpenNarc
-    // mov r0, #1
+    SpriteSystem_LoadCellResObjFromOpenNarc(r5, r4, r6, 0xfb);
     // str r0, [sp]
     // ldr r0, [sp, #0x3c]
-    // add r1, r4, #0
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // mov r3, #0xfc
-    // bl SpriteSystem_LoadAnimResObjFromOpenNarc
-    // add r0, r6, #0
-    // bl NARC_Delete
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SpriteSystem_LoadAnimResObjFromOpenNarc(r5, r4, r6, 0xfc);
+    NARC_Delete(r6);
 }
+
 
 
 void ov12_0226B97C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl SpriteManager_UnloadCharObjById
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl SpriteManager_UnloadPlttObjById
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl SpriteManager_UnloadCellObjById
+    SpriteManager_UnloadCharObjById();
+    SpriteManager_UnloadPlttObjById(r5, r4);
+    SpriteManager_UnloadCellObjById(r5, r6);
     // ldr r1, [sp, #0x10]
-    // add r0, r5, #0
-    // bl SpriteManager_UnloadAnimObjById
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    SpriteManager_UnloadAnimObjById(r5);
 }
+
 
 
 void ov12_0226B9A4(void) {
@@ -147,93 +102,44 @@ void ov12_0226B9A4(void) {
 }
 
 
+
 void ov12_0226BA28(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5]
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #5
-    // blt _0226BA30
-    // ldr r0, [r6, #0x14]
-    // bl SysTask_Destroy
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_DeleteAndFreeResources(*((u32*)r0));
+    SysTask_Destroy(*((u32*)(r6 + 0x14)));
+    Heap_Free(r6);
 }
+
 
 
 void ov12_0226BA4C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // lsl r1, r1, #0x10
-    // lsl r2, r2, #0x10
     // ldr r4, [sp, #0x24]
-    // add r6, r3, #0
-    // ldr r0, [r5]
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // add r3, r4, #0
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)r0), (r1 << 0x10), (r2 << 0x10), r4);
     // ldr r2, [sp, #0x10]
-    // lsl r1, r6, #0x10
-    // lsl r2, r2, #0x10
-    // ldr r0, [r5, #4]
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // add r3, r4, #0
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r5 + 4)), (r6 << 0x10), (r2 << 0x10), r4);
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x18]
-    // lsl r1, r1, #0x10
-    // lsl r2, r2, #0x10
-    // ldr r0, [r5, #8]
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // add r3, r4, #0
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r5 + 8)), (r1 << 0x10), (r2 << 0x10), r4);
     // ldr r1, [sp, #0x1c]
     // ldr r2, [sp, #0x20]
-    // lsl r1, r1, #0x10
-    // lsl r2, r2, #0x10
-    // ldr r0, [r5, #0xc]
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // add r3, r4, #0
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldr r0, [r5]
-    // mov r1, #0
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r5, #4]
-    // mov r1, #1
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r5, #8]
-    // mov r1, #2
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r5, #0xc]
-    // mov r1, #3
-    // bl ManagedSprite_SetAnim
-    // mov r4, #0
-    // mov r6, #1
-    // ldr r0, [r5]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetDrawFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _0226BAC2
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r5 + 0xc)), (r1 << 0x10), (r2 << 0x10), r4);
+    ManagedSprite_SetAnim(*((u32*)r5), 0);
+    ManagedSprite_SetAnim(*((u32*)(r5 + 4)), 1);
+    ManagedSprite_SetAnim(*((u32*)(r5 + 8)), 2);
+    ManagedSprite_SetAnim(*((u32*)(r5 + 0xc)), 3);
+    ManagedSprite_SetDrawFlag(*((u32*)r5), 1);
 }
 
 
+
 void ov12_0226BAD4(void) {
-    // push {r4, lr}
-    // sub sp, #0x18
     // ldr r4, [sp, #0x20]
     // str r4, [sp]
     // ldr r4, [sp, #0x24]
@@ -244,80 +150,48 @@ void ov12_0226BAD4(void) {
     // str r4, [sp, #0xc]
     // ldr r4, [sp, #0x30]
     // str r4, [sp, #0x10]
-    // mov r4, #3
-    // lsl r4, r4, #0x12
     // str r4, [sp, #0x14]
-    // bl ov12_0226BA4C
-    // add sp, #0x18
-    // pop {r4, pc}
-    // TODO: decompile
-}
-
-
-void ov12_0226BAFC(void) {
-    ov12_0226BAD4();
-}
-
-
-void ov12_0226BB1C(void) {
     ov12_0226BA4C();
 }
 
 
+
+void ov12_0226BAFC(void) {
+}
+
+
+
+void ov12_0226BB1C(void) {
+}
+
+
+
 void ov12_0226BB40(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r3, #0
-    // lsl r1, r1, #0x10
-    // lsl r2, r2, #0x10
-    // ldr r0, [r5, #0x10]
     // ldr r3, [sp, #0x10]
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldr r0, [r5, #0x10]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r5, #0x10]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r0 + 0x10)), (r1 << 0x10), (r2 << 0x10));
+    ManagedSprite_SetAnim(*((u32*)(r5 + 0x10)), r4);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x10)), 1);
 }
+
 
 
 void ov12_0226BB68(void) {
-    ManagedSprite_SetDrawFlag(0);
 }
+
 
 
 void ov12_0226BB84(void) {
-    ManagedSprite_SetDrawFlag();
 }
+
 
 
 void ov12_0226BB90(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // ldr r0, [r6]
-    // bl ManagedSprite_GetDrawFlag
-    // cmp r0, #0
-    // beq _0226BBC0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5]
-    // bl ManagedSprite_TickFrame
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _0226BBA2
-    // ldr r0, [r6, #0x10]
-    // bl ManagedSprite_GetDrawFlag
-    // cmp r0, #1
-    // bne _0226BBC0
-    // ldr r0, [r6, #0x10]
-    // bl ManagedSprite_TickFrame
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ManagedSprite_GetDrawFlag(*((u32*)r1));
+    ManagedSprite_TickFrame(*((u32*)r6));
+    ManagedSprite_GetDrawFlag(*((u32*)(r6 + 0x10)));
+    ManagedSprite_TickFrame(*((u32*)(r6 + 0x10)));
 }
+
 

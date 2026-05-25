@@ -18,159 +18,88 @@ void sub_0202B614(void) {
 }
 
 
+
 void sub_0202B630(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r1, #0
-    // add r6, r2, #0
-    // add r4, r0, #0
     // add r1, sp, #4
     // add r2, sp, #0
-    // add r7, r3, #0
-    // bl ov41_02249780
-    // add r0, r4, #0
-    // bl ov41_02249710
-    // add r4, r0, #0
-    // mov r0, #1
+    ov41_02249780();
+    ov41_02249710(r4);
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #8
-    // cmp r1, r0
-    // blt _0202B65A
-    // bl GF_AssertFail
-    // mov r0, #1
+    GF_AssertFail((1 << 8));
     // ldr r1, [sp]
-    // lsl r0, r0, #8
-    // cmp r1, r0
-    // blt _0202B668
-    // bl GF_AssertFail
-    // mov r0, #0x7f
+    GF_AssertFail((1 << 8));
     // mvn r0, r0
-    // cmp r4, r0
-    // bgt _0202B674
-    // bl GF_AssertFail
+    GF_AssertFail(0x7f);
     // ldr r0, [sp, #4]
     // strb r0, [r5]
     // ldr r0, [sp]
     // strb r0, [r6]
     // strb r4, [r7]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202B684(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // add r0, r4, #0
     // mov r1, #MON_DATA_SPECIES
-    // mov r2, #0
-    // add r7, r3, #0
-    // bl GetMonData
-    // add r2, r5, #0
-    // strh r0, [r5, #8]
-    // add r0, r4, #0
+    GetMonData(r1, 0);
+    *((u16*)(r5 + 8)) = r0;
     // mov r1, #MON_DATA_NICKNAME
     // add r2, #0xa
-    // bl GetMonData
+    GetMonData(r4, r5);
     // mov r1, #MON_DATA_PERSONALITY
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // bl GetMonData
+    GetMonData(r4, r1);
     // str r0, [r5]
-    // add r0, r4, #0
     // mov r1, #MON_DATA_OT_ID
-    // mov r2, #0
-    // bl GetMonData
-    // str r0, [r5, #4]
-    // add r0, r4, #0
+    GetMonData(r4, 0);
+    *((u32*)(r5 + 4)) = r0;
     // mov r1, #MON_DATA_FORM
-    // mov r2, #0
-    // bl GetMonData
-    // add r1, r5, #0
+    GetMonData(r4, 0);
     // add r1, #0x33
     // strb r0, [r1]
-    // add r0, r5, #0
     // add r0, #0x31
     // strb r6, [r0]
-    // add r0, r5, #0
     // add r0, #0x32
     // strb r7, [r0]
     // add r1, sp, #8
-    // mov r0, #0x10
     // ldrsb r0, [r1, r0]
     // add r5, #0x30
     // strb r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void sub_0202B6E8(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r0, r2, #0
     // add r1, sp, #4
     // add r2, sp, #4
     // add r1, #2
     // add r2, #1
     // add r3, sp, #4
-    // bl sub_0202B630
+    sub_0202B630(r2);
     // add r3, sp, #4
-    // mov r0, #0
     // ldrsb r0, [r3, r0]
-    // add r1, r4, #0
     // str r0, [sp]
-    // ldrb r2, [r3, #2]
-    // ldrb r3, [r3, #1]
-    // add r0, r5, #0
-    // bl sub_0202B684
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0202B684(r5, r4, *((u8*)(r3 + 2)), *((u8*)(r3 + 1)));
 }
+
 
 
 void sub_0202B718(void) {
-    CopyStringToU16Array(8);
 }
+
 
 
 void sub_0202B730(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r4, r1, #0
-    // mov r1, #1
-    // add r5, r0, #0
     // str r1, [sp]
-    // ldr r0, [r5]
-    // mov r2, #0
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r5, #4]
-    // add r3, r2, #0
     // str r0, [sp, #0xc]
-    // ldrh r1, [r5, #8]
-    // add r0, r4, #0
-    // bl CreateMon
-    // add r2, r5, #0
-    // add r0, r4, #0
-    // mov r1, #0x75
+    CreateMon(r1, *((u16*)(r0 + 8)), 0, 0);
     // add r2, #0xa
-    // bl SetMonData
+    SetMonData(r4, 0x75, r5);
     // add r5, #0x33
-    // add r0, r4, #0
-    // mov r1, #0x70
-    // add r2, r5, #0
-    // bl SetMonData
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    SetMonData(r4, 0x70, r5);
 }
+
 
 
 void sub_0202B770(void) {
@@ -187,220 +116,98 @@ void sub_0202B770(void) {
 }
 
 
+
 void sub_0202B784(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r2, #0
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // cmp r4, #0x3d
-    // blo _0202B794
-    // bl GF_AssertFail
-    // lsr r2, r4, #0x1f
-    // lsl r1, r4, #0x1d
+    GF_AssertFail();
     // sub r1, r1, r2
-    // mov r0, #0x1d
     // ror r1, r0
     // add r0, r2, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // lsl r0, r0, #0x1a
-    // lsr r1, r0, #0x18
-    // lsr r0, r4, #3
-    // lsl r0, r0, #0x18
-    // mov r2, #0xf
-    // lsr r0, r0, #0x16
     // lsl r2, r1
     // ldr r3, [r5, r0]
     // mvn r2, r2
     // and r2, r3
     // str r2, [r5, r0]
-    // add r2, r6, #0
     // ldr r3, [r5, r0]
     // lsl r2, r1
-    // add r1, r3, #0
     // orr r1, r2
     // str r1, [r5, r0]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202B7C8(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0x3d
-    // blo _0202B7D6
-    // bl GF_AssertFail
-    // lsr r3, r4, #0x1f
-    // lsl r2, r4, #0x1d
-    // lsr r0, r4, #3
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x16
+    GF_AssertFail();
     // sub r2, r2, r3
-    // mov r1, #0x1d
     // ror r2, r1
     // add r1, r3, r2
-    // lsl r1, r1, #0x18
     // ldr r0, [r5, r0]
-    // lsr r1, r1, #0x18
-    // lsl r1, r1, #0x1a
-    // add r2, r0, #0
-    // lsr r1, r1, #0x18
     // lsr r2, r1
-    // mov r0, #0xf
     // and r0, r2
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // cmp r0, #9
-    // bls _0202B804
-    // mov r0, #9
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202B808(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #2
-    // blo _0202B818
-    // bl GF_AssertFail
-    // lsr r2, r6, #0x1f
-    // lsl r1, r6, #0x1b
+    GF_AssertFail();
     // sub r1, r1, r2
-    // mov r0, #0x1b
     // ror r1, r0
     // add r0, r2, r1
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // lsr r0, r6, #5
-    // lsl r0, r0, #0x18
-    // mov r2, #1
-    // lsr r0, r0, #0x16
     // lsl r2, r1
     // ldr r3, [r5, r0]
     // mvn r2, r2
     // and r2, r3
     // str r2, [r5, r0]
-    // add r2, r4, #0
     // ldr r3, [r5, r0]
     // lsl r2, r1
-    // add r1, r3, #0
     // orr r1, r2
     // str r1, [r5, r0]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202B848(void) {
-    // lsr r2, r1, #5
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x16
     // ldr r3, [r0, r2]
-    // lsr r2, r1, #0x1f
-    // lsl r1, r1, #0x1b
     // sub r1, r1, r2
-    // mov r0, #0x1b
     // ror r1, r0
     // add r0, r2, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // add r1, r3, #0
     // lsr r1, r0
-    // mov r0, #1
     // and r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void sub_0202B870(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #0x12
-    // bls _0202B880
-    // bl GF_AssertFail
-    // lsr r2, r6, #0x1f
-    // lsl r1, r6, #0x1e
+    GF_AssertFail();
     // sub r1, r1, r2
-    // mov r0, #0x1e
     // ror r1, r0
     // add r0, r2, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // lsl r0, r0, #0x1b
-    // lsr r1, r0, #0x18
-    // lsr r0, r6, #2
-    // lsl r0, r0, #0x18
-    // mov r2, #0xff
-    // lsr r0, r0, #0x16
     // lsl r2, r1
     // ldr r3, [r5, r0]
     // mvn r2, r2
     // and r2, r3
     // str r2, [r5, r0]
-    // add r2, r4, #0
     // ldr r3, [r5, r0]
     // lsl r2, r1
-    // add r1, r3, #0
     // orr r1, r2
     // str r1, [r5, r0]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202B8B4(void) {
-    // lsr r2, r1, #2
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x16
     // ldr r0, [r0, r2]
-    // lsr r3, r1, #0x1f
-    // lsl r2, r1, #0x1e
     // sub r2, r2, r3
-    // mov r1, #0x1e
     // ror r2, r1
     // add r1, r3, r2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // lsl r1, r1, #0x1b
-    // lsr r1, r1, #0x18
     // lsr r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202B8D8(void) {
-    // push {r4, r5, r6, lr}
-    // mov r5, #0
-    // add r6, r0, #0
-    // add r4, r5, #0
-    // lsl r1, r4, #0x18
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // bl sub_0202B8B4
-    // cmp r0, #0x12
-    // beq _0202B8F0
-    // add r5, r5, #1
-    // add r4, r4, #1
-    // cmp r4, #0x12
-    // blt _0202B8E0
-    // lsl r0, r5, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202B8B4(r0, ((0 << 0x18) >> 0x18));
 }
+
 
 
 void sub_0202B8FC(void) {
@@ -414,26 +221,13 @@ void sub_0202B8FC(void) {
 }
 
 
+
 void sub_0202B908(void) {
-    // push {r4, r5, r6, lr}
-    // mov r1, #0
-    // mov r2, #0x40
-    // add r5, r0, #0
-    // bl memset
-    // mov r4, #0
+    memset(0, 0x40);
     // add r5, #0x28
-    // mov r6, #0x12
-    // lsl r2, r4, #0x18
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // lsr r2, r2, #0x18
-    // bl sub_0202B870
-    // add r4, r4, #1
-    // cmp r4, #0x12
-    // blt _0202B91A
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202B870(r5, 0x12, ((0 << 0x18) >> 0x18));
 }
+
 
 
 void Save_FashionData_Init(void) {
@@ -481,6 +275,7 @@ void Save_FashionData_Init(void) {
 }
 
 
+
 void Save_FashionData_sizeof(void) {
     // ldr r0, _0202B990 ; =0x00000834
     // bx lr
@@ -489,9 +284,10 @@ void Save_FashionData_sizeof(void) {
 }
 
 
+
 u8 sub_0202B994(void) {
-    return 0x74;
 }
+
 
 
 void sub_0202B998(void) {
@@ -512,25 +308,16 @@ void sub_0202B998(void) {
 }
 
 
+
 void sub_0202B9B8(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // cmp r6, #0xb
-    // blt _0202B9C6
-    // bl GF_AssertFail
-    // mov r0, #0x74
-    // add r4, r6, #0
+    GF_AssertFail();
     // mul r4, r0
     // ldr r0, [r5, r4]
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202B9DA
-    // bl GF_AssertFail
+    sub_0202B614(0x74);
+    GF_AssertFail();
     // add r0, r5, r4
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void Save_FashionData_GetFashionCase(void) {
@@ -543,20 +330,14 @@ void Save_FashionData_GetFashionCase(void) {
 }
 
 
+
 void sub_0202B9EC(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0xb
-    // blt _0202B9FA
-    // bl GF_AssertFail
-    // mov r0, #0x74
+    GF_AssertFail();
     // mul r0, r4
     // add r0, r5, r0
-    // bl sub_0202BC10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0202BC10(0x74);
 }
+
 
 
 void sub_0202BA08(void) {
@@ -579,237 +360,93 @@ void sub_0202BA08(void) {
 }
 
 
+
 void sub_0202BA2C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r1, #0
-    // add r5, r2, #0
-    // mov r4, #1
-    // bl sub_0202BA70
-    // add r6, r0, #0
-    // add r0, r7, #0
-    // bl sub_0202B8FC
-    // cmp r0, #0
-    // beq _0202BA4E
+    sub_0202BA70();
+    sub_0202B8FC(r7);
     // add r0, r6, r5
-    // cmp r0, #9
-    // bls _0202BA56
-    // mov r4, #0
-    // b _0202BA56
     // add r0, r6, r5
-    // cmp r0, #1
-    // bls _0202BA56
-    // mov r4, #0
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202BA5C(void) {
-    sub_0202BAB0();
 }
+
 
 
 void sub_0202BA70(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // add r4, r0, #0
-    // cmp r5, #0x64
-    // blo _0202BA7E
-    // bl GF_AssertFail
-    // add r0, r5, #0
-    // bl sub_0202B8FC
-    // cmp r0, #0
-    // beq _0202BA94
-    // lsl r1, r5, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl sub_0202B7C8
-    // pop {r3, r4, r5, pc}
-    // cmp r5, #0x3d
-    // bhs _0202BA9C
-    // bl GF_AssertFail
+    GF_AssertFail();
+    sub_0202B8FC(r5);
+    sub_0202B7C8(r4, ((r5 << 0x18) >> 0x18));
+    GF_AssertFail();
     // sub r5, #0x3d
-    // lsl r0, r5, #0x18
-    // lsr r1, r0, #0x18
     // add r4, #0x20
-    // lsl r1, r1, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl sub_0202B848
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0202B848(r4, ((((r5 << 0x18) >> 0x18) << 0x18) >> 0x18));
 }
+
 
 
 void sub_0202BAB0(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0x12
-    // blo _0202BABE
-    // bl GF_AssertFail
+    GF_AssertFail();
     // add r5, #0x28
-    // lsl r1, r4, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl sub_0202B8B4
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0202B8B4(r5, ((r4 << 0x18) >> 0x18));
 }
+
 
 
 void FashionCase_CountAccessories(void) {
-    sub_0202BA70(0);
 }
+
 
 
 void FashionCase_CountWallpapers(void) {
-    // push {r4, r5, r6, lr}
-    // mov r5, #0
-    // add r6, r0, #0
-    // add r4, r5, #0
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl sub_0202BAB0
-    // cmp r0, #0x12
-    // beq _0202BAFE
-    // add r5, r5, #1
-    // add r4, r4, #1
-    // cmp r4, #0x12
-    // blt _0202BAF0
-    // add r0, r5, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202BAB0(r0, 0);
 }
+
 
 
 void FashionCase_GiveFashionItem(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #0x64
-    // blo _0202BB18
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // bl sub_0202B8FC
-    // cmp r0, #0
-    // beq _0202BB44
-    // lsl r1, r4, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl sub_0202B7C8
+    GF_AssertFail();
+    sub_0202B8FC(r4);
+    sub_0202B7C8(r5, ((r4 << 0x18) >> 0x18));
     // add r0, r0, r6
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // cmp r1, #9
-    // bls _0202BB38
-    // mov r1, #9
-    // lsl r2, r4, #0x18
-    // add r0, r5, #0
-    // lsr r2, r2, #0x18
-    // bl sub_0202B784
-    // pop {r4, r5, r6, pc}
-    // add r0, r5, #0
-    // lsl r1, r4, #0x18
+    sub_0202B784(r5, 9, ((r4 << 0x18) >> 0x18));
     // add r0, #0x20
-    // lsr r1, r1, #0x18
-    // bl sub_0202B848
+    sub_0202B848(r5, ((r4 << 0x18) >> 0x18));
     // add r0, r0, r6
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // cmp r6, #1
-    // bls _0202BB5C
-    // mov r6, #1
-    // cmp r4, #0x3d
-    // bhs _0202BB64
-    // bl GF_AssertFail
+    GF_AssertFail((r0 << 0x18));
     // sub r4, #0x3d
-    // lsl r0, r4, #0x18
-    // lsr r2, r0, #0x18
     // add r5, #0x20
-    // lsl r2, r2, #0x18
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // lsr r2, r2, #0x18
-    // bl sub_0202B808
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202B808(r5, r6, ((((r4 << 0x18) >> 0x18) << 0x18) >> 0x18));
 }
+
 
 
 void sub_0202BB7C(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #0x64
-    // blo _0202BB8C
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // bl sub_0202B8FC
-    // cmp r0, #0
-    // beq _0202BBBA
-    // lsl r1, r4, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl sub_0202B7C8
-    // cmp r0, r6
-    // bls _0202BBAC
+    GF_AssertFail();
+    sub_0202B8FC(r4);
+    sub_0202B7C8(r5, ((r4 << 0x18) >> 0x18));
     // sub r0, r0, r6
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // b _0202BBAE
-    // mov r1, #0
-    // lsl r2, r4, #0x18
-    // add r0, r5, #0
-    // lsr r2, r2, #0x18
-    // bl sub_0202B784
-    // pop {r4, r5, r6, pc}
-    // cmp r4, #0x3d
-    // bhs _0202BBC2
-    // bl GF_AssertFail
+    sub_0202B784(r5, 0, ((r4 << 0x18) >> 0x18));
+    GF_AssertFail();
     // sub r4, #0x3d
-    // lsl r0, r4, #0x18
-    // lsr r2, r0, #0x18
     // add r5, #0x20
-    // lsl r2, r2, #0x18
-    // add r0, r5, #0
-    // mov r1, #0
-    // lsr r2, r2, #0x18
-    // bl sub_0202B808
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202B808(r5, 0, ((((r4 << 0x18) >> 0x18) << 0x18) >> 0x18));
 }
+
 
 
 void FashionCase_GiveContestBackground(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0x12
-    // blo _0202BBE6
-    // bl GF_AssertFail
-    // add r0, r5, #0
-    // lsl r1, r4, #0x18
+    GF_AssertFail();
     // add r0, #0x28
-    // lsr r1, r1, #0x18
-    // bl sub_0202B8B4
-    // cmp r0, #0x12
-    // bne _0202BC0C
-    // add r0, r5, #0
+    sub_0202B8B4(r5, ((r4 << 0x18) >> 0x18));
     // add r0, #0x28
-    // bl sub_0202B8D8
-    // lsl r2, r4, #0x18
+    sub_0202B8D8(r5);
     // add r5, #0x28
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // lsr r2, r2, #0x18
-    // bl sub_0202B870
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0202B870(r5, r0, ((r4 << 0x18) >> 0x18));
 }
+
 
 
 void sub_0202BC10(void) {
@@ -834,6 +471,7 @@ void sub_0202BC10(void) {
 }
 
 
+
 void sub_0202BC38(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -853,6 +491,7 @@ void sub_0202BC38(void) {
     // _0202BC5C: .word gGameLanguage
     // TODO: decompile
 }
+
 
 
 void sub_0202BC60(void) {
@@ -876,280 +515,143 @@ void sub_0202BC60(void) {
 }
 
 
+
 void sub_0202BC88(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BC9E
-    // bl GF_AssertFail
-    // add r0, r5, #4
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl sub_0202B6E8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
+    sub_0202B6E8((r5 + 4), r4, r6);
 }
 
 
+
 void sub_0202BCAC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4, #4]
-    // add r6, r2, #0
-    // bl sub_02015FCC
+    sub_02015FCC(*((u32*)(r1 + 4)));
     // add r1, sp, #0xc
     // strh r0, [r1]
-    // lsr r0, r0, #0x10
-    // strh r0, [r1, #2]
+    *((u16*)(r1 + 2)) = (r0 >> 0x10);
     // ldrh r0, [r1]
-    // strh r0, [r1, #4]
-    // ldrh r0, [r1, #2]
-    // strh r0, [r1, #6]
-    // ldr r0, [r4, #4]
-    // bl sub_02015FF8
-    // add r7, r0, #0
-    // cmp r6, #0xa
-    // blt _0202BCDC
-    // bl GF_AssertFail
+    *((u16*)(r1 + 4)) = (r0 >> 0x10);
+    *((u16*)(r1 + 6)) = *((u16*)(r1 + 2));
+    sub_02015FF8(*((u32*)(r4 + 4)));
+    GF_AssertFail();
     // add r1, sp, #0xc
-    // mov r0, #4
     // ldrsh r1, [r1, r0]
     // add r0, #0xfc
-    // cmp r1, r0
-    // blt _0202BCEC
-    // bl GF_AssertFail
+    GF_AssertFail(4);
     // add r0, sp, #0xc
-    // mov r1, #6
     // ldrsh r0, [r0, r1]
     // add r1, #0xfa
     // str r0, [sp, #8]
     // ldr r0, [sp, #8]
-    // cmp r0, r1
-    // blt _0202BD00
-    // bl GF_AssertFail
-    // mov r0, #0x7f
+    GF_AssertFail(6);
     // mvn r0, r0
-    // cmp r7, r0
-    // bgt _0202BD0C
-    // bl GF_AssertFail
-    // mov r0, #1
+    GF_AssertFail(0x7f);
     // lsl r0, r6
-    // ldr r1, [r5, #0x3c]
     // str r0, [sp, #4]
     // tst r0, r1
-    // beq _0202BD1C
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BD2A
-    // bl GF_AssertFail
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
+    GF_AssertFail(1, *((u32*)(r5 + 0x3c)));
+    sub_0202B614(*((u32*)r5));
+    GF_AssertFail();
     // str r0, [sp]
-    // add r1, r5, #0
     // add r3, sp, #0xc
-    // mov r2, #4
     // ldrsh r2, [r3, r2]
     // ldr r3, [sp, #8]
     // add r1, #0x48
-    // lsl r0, r6, #2
     // add r0, r1, r0
-    // ldr r1, [r4]
-    // lsl r2, r2, #0x18
-    // lsl r1, r1, #0x18
-    // lsl r3, r3, #0x18
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x18
-    // lsr r3, r3, #0x18
-    // bl sub_0202B770
-    // ldr r1, [r5, #0x3c]
+    sub_0202B770((r6 << 2), ((*((u32*)r4) << 0x18) >> 0x18), ((4 << 0x18) >> 0x18), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #4]
     // orr r0, r1
-    // str r0, [r5, #0x3c]
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 0x3c)) = r0;
 }
+
 
 
 void sub_0202BD60(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BD74
-    // bl GF_AssertFail
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
     // add r5, #0x70
     // strb r4, [r5]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202BD7C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BD90
-    // bl GF_AssertFail
-    // add r0, r5, #0
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
     // add r0, #0x40
-    // bl MailMsg_Init
+    MailMsg_Init(r5);
     // add r5, #0x40
-    // add r0, r5, #0
-    // mov r1, #0
-    // add r2, r4, #0
-    // bl MailMsg_SetFieldI
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    MailMsg_SetFieldI(r5, 0, r4);
 }
+
 
 
 void sub_0202BDA8(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BDBC
-    // bl GF_AssertFail
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // mov r2, #0x74
-    // bl memcpy
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
+    memcpy(r5, r4, 0x74);
 }
+
 
 
 void sub_0202BDC8(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BDDE
-    // bl GF_AssertFail
-    // add r0, r5, #4
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl sub_0202B718
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
+    sub_0202B718((r5 + 4), r4, r6);
 }
+
 
 
 void sub_0202BDEC(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0xa
-    // blt _0202BDFA
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BE08
-    // bl GF_AssertFail
-    // mov r0, #1
-    // ldr r1, [r5, #0x3c]
+    GF_AssertFail();
+    sub_0202B614(*((u32*)r5));
+    GF_AssertFail();
     // lsl r0, r4
     // and r0, r1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202BE14(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BE26
-    // bl GF_AssertFail
-    // add r0, r4, #4
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
 }
+
 
 
 void sub_0202BE2C(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0xa
-    // blt _0202BE3A
-    // bl GF_AssertFail
-    // mov r0, #1
-    // ldr r1, [r5, #0x3c]
+    GF_AssertFail();
     // lsl r0, r4
     // tst r0, r1
-    // bne _0202BE48
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BE56
-    // bl GF_AssertFail
+    GF_AssertFail(1, *((u32*)(r5 + 0x3c)));
+    sub_0202B614(*((u32*)r5));
+    GF_AssertFail();
     // add r5, #0x48
-    // lsl r0, r4, #2
     // add r0, r5, r0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202BE60(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BE74
-    // bl GF_AssertFail
-    // add r0, r5, #4
-    // add r1, r4, #0
-    // bl sub_0202BECC
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
+    sub_0202BECC((r5 + 4), r4);
 }
+
 
 
 void sub_0202BE80(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // bl sub_0202B614
-    // cmp r0, #0
-    // bne _0202BE92
-    // bl GF_AssertFail
+    sub_0202B614(*((u32*)r0));
+    GF_AssertFail();
     // add r4, #0x70
     // ldrb r0, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202BE98(void) {
-    MailMsg_GetFieldI();
 }
+
 
 
 void sub_0202BEA4(void) {
@@ -1174,6 +676,7 @@ void sub_0202BEA4(void) {
 }
 
 
+
 void sub_0202BECC(void) {
     // add r2, r0, #0
     // ldr r3, _0202BED8 ; =CopyU16ArrayToString
@@ -1186,40 +689,36 @@ void sub_0202BECC(void) {
 }
 
 
+
 void sub_0202BEDC(void) {
-    // mov r1, #0x30
     // ldrsb r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202BEE4(void) {
     // add r0, #0x31
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202BEEC(void) {
     // add r0, #0x32
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202BEF4(void) {
-    sub_0202B730();
 }
+
 
 
 void sub_0202BEFC(void) {
     // ldrb r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202BF00(void) {
@@ -1229,6 +728,7 @@ void sub_0202BF00(void) {
 }
 
 
+
 void sub_0202BF04(void) {
     // ldrb r0, [r0, #2]
     // bx lr
@@ -1236,12 +736,11 @@ void sub_0202BF04(void) {
 }
 
 
+
 void sub_0202BF08(void) {
-    // mov r1, #3
     // ldrsb r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_0202BF10(void) {
@@ -1298,88 +797,33 @@ void sub_0202BF10(void) {
 }
 
 
+
 void sub_0202BF80(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
     // str r0, [sp]
-    // mov r7, #0
     // ldr r0, [sp]
     // str r1, [sp, #4]
-    // add r5, r2, #0
-    // add r6, r7, #0
     // str r3, [sp, #8]
-    // cmp r0, #0
-    // ble _0202BFBA
-    // add r4, r3, #0
     // ldr r0, [sp, #4]
-    // cmp r6, r0
-    // beq _0202BFB0
-    // ldr r1, [r4]
-    // cmp r1, #0
-    // beq _0202BFB0
-    // add r0, r5, #0
-    // bl sub_0202BF10
-    // cmp r0, #1
-    // bne _0202BFB0
-    // add r7, r7, #1
+    sub_0202BF10(r2, *((u32*)r3));
     // ldr r0, [sp]
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, r0
-    // blt _0202BF98
-    // mov r4, #0xa
     // add r1, r4, r7
-    // cmp r1, #0xb
-    // bge _0202BFDA
-    // add r0, r5, #0
-    // bl sub_0202B9B8
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl sub_0202B9B8
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // bl sub_0202BDA8
-    // sub r4, r4, #1
-    // cmp r4, #1
-    // bge _0202BFBC
+    sub_0202B9B8(r5);
+    sub_0202B9B8(r5, r4);
+    sub_0202BDA8(r6, r0);
     // ldr r0, [sp]
-    // mov r6, #1
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _0202C022
     // ldr r0, [sp, #4]
-    // cmp r4, r0
-    // beq _0202C014
     // ldr r0, [sp, #8]
-    // ldr r7, [r0]
-    // cmp r7, #0
-    // beq _0202C014
-    // add r0, r5, #0
-    // add r1, r7, #0
-    // bl sub_0202BF10
-    // cmp r0, #1
-    // bne _0202C014
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl sub_0202B9B8
-    // add r1, r7, #0
-    // add r6, r6, #1
-    // bl sub_0202BDA8
+    sub_0202BF10(r5, *((u32*)r0));
+    sub_0202B9B8(r5, r6);
+    sub_0202BDA8(r7);
     // ldr r0, [sp, #8]
-    // add r4, r4, #1
-    // add r0, r0, #4
     // str r0, [sp, #8]
     // ldr r0, [sp]
-    // cmp r4, r0
-    // blt _0202BFEA
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void Save_FashionData_Get(void) {
-    SaveArray_Get();
 }
+
 

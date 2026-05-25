@@ -2,685 +2,416 @@
 #include "global.h"
 
 void sub_02030A98(void) {
-    MI_CpuFill8();
 }
 
 
+
 void sub_02030AA4(void) {
-    // push {r3, r4}
-    // cmp r1, #0xa
-    // bne _02030ACE
     // ldrb r1, [r3]
-    // cmp r1, #1
-    // blo _02030ABE
-    // mov r1, #1
     // ldrb r3, [r0]
     // lsl r1, r2
     // orr r1, r3
     // strb r1, [r0]
-    // pop {r3, r4}
-    // bx lr
-    // mov r1, #1
-    // add r3, r1, #0
     // ldrb r4, [r0]
     // lsl r3, r2
-    // mov r1, #0xff
     // eor r1, r3
     // and r1, r4
     // strb r1, [r0]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02030AD4(void) {
-    // cmp r1, #0xa
-    // bne _02030AE4
     // ldrb r0, [r0]
-    // add r1, r0, #0
     // asr r1, r2
-    // mov r0, #1
     // and r0, r1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02030AE8(void) {
-    Save_Frontier_GetStatic();
 }
+
 
 
 void sub_02030AF8(void) {
-    MI_CpuFill8();
 }
+
 
 
 void sub_02030B04(void) {
-    Save_Frontier_GetStatic();
 }
+
 
 
 void sub_02030B14(void) {
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1c
-    // lsr r0, r0, #0x1f
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02030B1C(void) {
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // lsl r1, r1, #0x1f
     // ldrb r3, [r0]
-    // mov r2, #8
-    // lsr r1, r1, #0x1c
     // bic r3, r2
     // orr r1, r3
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void sub_02030B30(void) {
-    // push {r4, lr}
     // ldr r3, [sp, #8]
-    // cmp r1, #4
-    // bhi _02030B82
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02030B44: ; jump table
     // ldrb r4, [r0]
     // ldrb r2, [r3]
-    // mov r1, #7
     // bic r4, r1
-    // mov r1, #7
     // and r1, r2
     // orr r1, r4
     // strb r1, [r0]
-    // pop {r4, pc}
     // ldrb r1, [r3]
-    // strb r1, [r0, #1]
-    // pop {r4, pc}
+    *((u8*)(r0 + 1)) = 7;
     // ldrh r3, [r3]
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // strh r3, [r0, #4]
-    // pop {r4, pc}
+    *((u16*)(r0 + 4)) = r3;
     // ldrb r1, [r3]
     // add r0, r0, r2
-    // strb r1, [r0, #2]
-    // pop {r4, pc}
+    *((u8*)(r0 + 2)) = (r2 << 1);
     // ldrh r3, [r3]
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // strh r3, [r0, #0x2c]
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u16*)(r0 + 0x2c)) = r3;
+    GF_AssertFail((r2 << 1));
 }
 
 
+
 void sub_02030B88(void) {
-    // push {r3, lr}
-    // cmp r1, #4
-    // bhi _02030BC6
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02030B9A: ; jump table
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1d
-    // lsr r0, r0, #0x1d
-    // pop {r3, pc}
-    // ldrb r0, [r0, #1]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // ldrh r0, [r0, #4]
-    // pop {r3, pc}
     // add r0, r0, r2
-    // ldrb r0, [r0, #2]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // ldrh r0, [r0, #0x2c]
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u16*)(*((u8*)(*((u16*)(*((u8*)(((r0 << 0x1d) >> 0x1d) + 1)) + 4)) + 2)) + 0x2c)), (r2 << 1));
 }
+
 
 
 void sub_02030BD0(void) {
-    // lsl r2, r0, #0x17
-    // lsr r2, r2, #0x18
     // ldrb r3, [r1, r2]
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x16
-    // add r1, r3, #0
     // asr r1, r0
-    // mov r0, #0xf
     // and r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02030BF4(void) {
-    // push {r3, r4, r5, r6}
-    // lsr r5, r0, #0x1f
-    // lsl r4, r0, #0x1f
-    // lsl r3, r0, #0x17
     // sub r4, r4, r5
-    // mov r0, #0x1f
     // ror r4, r0
     // add r0, r5, r4
-    // lsl r0, r0, #0x18
-    // lsr r3, r3, #0x18
-    // lsr r0, r0, #0x18
-    // bne _02030C14
     // add r4, r1, r3
     // ldrb r6, [r1, r3]
-    // mov r5, #0xf0
-    // b _02030C1A
     // ldrb r6, [r1, r3]
     // add r4, r1, r3
-    // mov r5, #0xf
     // and r5, r6
     // strb r5, [r1, r3]
-    // lsl r0, r0, #2
-    // add r1, r2, #0
     // lsl r1, r0
-    // lsl r0, r1, #0x18
     // ldrb r3, [r4]
-    // lsr r0, r0, #0x18
     // orr r0, r3
     // strb r0, [r4]
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02030C34(void) {
-    sub_02030BF4(0);
 }
+
 
 
 void sub_02030C50(void) {
-    MI_CpuFill8();
 }
+
 
 
 void sub_02030C5C(void) {
-    Save_Frontier_GetStatic();
 }
 
 
+
 void sub_02030C6C(void) {
-    // push {r4, lr}
     // ldr r3, [sp, #8]
-    // cmp r1, #5
-    // bne _02030C98
     // ldrb r1, [r3]
-    // cmp r1, #1
-    // blo _02030C86
-    // mov r1, #1
     // ldrb r3, [r0]
     // lsl r1, r2
     // orr r1, r3
     // strb r1, [r0]
-    // pop {r4, pc}
-    // mov r1, #1
-    // add r3, r1, #0
     // ldrb r4, [r0]
     // lsl r3, r2
-    // mov r1, #0xff
     // eor r1, r3
     // and r1, r4
     // strb r1, [r0]
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail(0xff, 1);
 }
+
 
 
 void sub_02030CA0(void) {
-    GF_AssertFail(0, 1);
 }
+
 
 
 void sub_02030CBC(void) {
-    MI_CpuFill8();
 }
+
 
 
 void sub_02030CC8(void) {
-    Save_Frontier_GetStatic();
 }
+
 
 
 void sub_02030CD8(void) {
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1c
-    // lsr r0, r0, #0x1f
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02030CE0(void) {
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // lsl r1, r1, #0x1f
     // ldrb r3, [r0]
-    // mov r2, #8
-    // lsr r1, r1, #0x1c
     // bic r3, r2
     // orr r1, r3
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void sub_02030CF4(void) {
-    // push {r4, lr}
     // ldr r4, [sp, #8]
-    // cmp r1, #8
-    // bhi _02030D7E
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02030D08: ; jump table
     // ldrb r3, [r0]
     // ldrb r2, [r4]
-    // mov r1, #7
     // bic r3, r1
-    // mov r1, #7
     // and r1, r2
     // orr r1, r3
     // strb r1, [r0]
-    // pop {r4, pc}
     // ldrb r1, [r4]
-    // strb r1, [r0, #1]
-    // pop {r4, pc}
+    *((u8*)(r0 + 1)) = 7;
     // ldrh r3, [r4]
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // strh r3, [r0, #0x22]
-    // pop {r4, pc}
-    // lsl r1, r2, #2
+    *((u16*)(r0 + 0x22)) = r3;
     // add r0, r0, r1
     // add r0, r0, r3
     // ldrb r4, [r4]
     // add r0, #0x2a
     // strb r4, [r0]
-    // pop {r4, pc}
-    // lsl r1, r2, #2
-    // ldr r3, [r4]
     // add r0, r0, r1
-    // str r3, [r0, #0x3c]
-    // pop {r4, pc}
-    // lsl r1, r2, #1
+    *((u32*)(r0 + 0x3c)) = *((u32*)r4);
     // add r0, r0, r1
     // ldrh r3, [r4]
     // add r0, #0x4c
     // strh r3, [r0]
-    // pop {r4, pc}
     // ldrh r3, [r4]
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // strh r3, [r0, #6]
-    // pop {r4, pc}
+    *((u16*)(r0 + 6)) = *((u32*)r4);
     // ldrb r1, [r4]
     // add r0, r0, r2
-    // strb r1, [r0, #3]
-    // pop {r4, pc}
-    // lsl r1, r2, #1
+    *((u8*)(r0 + 3)) = (r2 << 1);
     // add r0, r0, r1
     // ldrh r3, [r4]
     // add r0, #0x54
     // strh r3, [r0]
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail((r2 << 1), *((u32*)r4));
 }
 
 
+
 void sub_02030D84(void) {
-    // push {r3, lr}
-    // cmp r1, #8
-    // bhi _02030DF2
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02030D96: ; jump table
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1d
-    // lsr r0, r0, #0x1d
-    // pop {r3, pc}
-    // ldrb r0, [r0, #1]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // ldrh r0, [r0, #0x22]
-    // pop {r3, pc}
-    // lsl r1, r2, #2
     // add r0, r0, r1
     // add r0, r0, r3
     // add r0, #0x2a
     // ldrb r0, [r0]
-    // pop {r3, pc}
-    // lsl r1, r2, #2
     // add r0, r0, r1
-    // ldr r0, [r0, #0x3c]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
     // add r0, #0x4c
     // ldrh r0, [r0]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // ldrh r0, [r0, #6]
-    // pop {r3, pc}
     // add r0, r0, r2
-    // ldrb r0, [r0, #3]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
     // add r0, #0x54
     // ldrh r0, [r0]
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u8*)(*((u16*)(*((u32*)(*((u16*)(*((u8*)(((r0 << 0x1d) >> 0x1d) + 1)) + 0x22)) + 0x3c)) + 6)) + 3)), (r2 << 1));
 }
+
 
 
 void sub_02030DFC(void) {
-    MI_CpuFill8();
 }
+
 
 
 void sub_02030E08(void) {
-    Save_Frontier_GetStatic();
 }
 
 
+
 void sub_02030E18(void) {
-    // push {r4, lr}
     // ldr r3, [sp, #8]
-    // cmp r1, #9
-    // beq _02030E26
-    // cmp r1, #0xa
-    // beq _02030E4A
-    // b _02030E50
     // ldrb r1, [r3]
-    // cmp r1, #1
-    // blo _02030E38
-    // mov r1, #1
     // ldrb r3, [r0]
     // lsl r1, r2
     // orr r1, r3
     // strb r1, [r0]
-    // pop {r4, pc}
-    // mov r1, #1
-    // add r3, r1, #0
     // ldrb r4, [r0]
     // lsl r3, r2
-    // mov r1, #0xff
     // eor r1, r3
     // and r1, r4
     // strb r1, [r0]
-    // pop {r4, pc}
-    // mov r1, #1
-    // strb r1, [r0, #1]
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u8*)(r0 + 1)) = 1;
+    GF_AssertFail(1, 1);
 }
 
 
-void sub_02030E58(void) {
-    // push {r3, lr}
-    // cmp r1, #9
-    // beq _02030E64
-    // cmp r1, #0xa
-    // beq _02030E70
-    // b _02030E74
+
+u32 sub_02030E58(void) {
     // ldrb r0, [r0]
-    // add r1, r0, #0
     // asr r1, r2
-    // mov r0, #1
     // and r0, r1
-    // pop {r3, pc}
-    // ldrb r0, [r0, #1]
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u8*)(1 + 1)), r0);
 }
+
 
 
 void sub_02030E7C(void) {
-    MI_CpuFill8();
 }
+
 
 
 void sub_02030E88(void) {
-    Save_Frontier_GetStatic();
 }
 
 
-void sub_02030E98(void) {
+
+u32 sub_02030E98(void) {
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1c
-    // lsr r0, r0, #0x1f
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02030EA0(void) {
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // lsl r1, r1, #0x1f
     // ldrb r3, [r0]
-    // mov r2, #8
-    // lsr r1, r1, #0x1c
     // bic r3, r2
     // orr r1, r3
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void sub_02030EB4(void) {
-    // push {r4, lr}
     // ldr r3, [sp, #8]
-    // cmp r1, #7
-    // bhi _02030F2E
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02030EC8: ; jump table
     // ldrb r4, [r0]
     // ldrb r2, [r3]
-    // mov r1, #7
     // bic r4, r1
-    // mov r1, #7
     // and r1, r2
     // orr r1, r4
     // strb r1, [r0]
-    // pop {r4, pc}
     // ldrb r2, [r0]
-    // mov r1, #0x10
     // bic r2, r1
     // ldrb r1, [r3]
-    // lsl r1, r1, #0x1f
-    // lsr r1, r1, #0x1b
     // orr r1, r2
     // strb r1, [r0]
-    // pop {r4, pc}
     // ldrb r1, [r3]
-    // strb r1, [r0, #1]
-    // pop {r4, pc}
+    *((u8*)(r0 + 1)) = ((0x10 << 0x1f) >> 0x1b);
     // ldrb r1, [r3]
-    // strb r1, [r0, #2]
-    // pop {r4, pc}
+    *((u8*)(r0 + 2)) = ((0x10 << 0x1f) >> 0x1b);
     // ldrh r3, [r3]
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // strh r3, [r0, #6]
-    // pop {r4, pc}
+    *((u16*)(r0 + 6)) = r3;
     // ldrh r3, [r3]
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // strh r3, [r0, #0xe]
-    // pop {r4, pc}
+    *((u16*)(r0 + 0xe)) = r3;
     // ldrb r1, [r3]
     // add r0, r0, r2
-    // strb r1, [r0, #3]
-    // pop {r4, pc}
+    *((u8*)(r0 + 3)) = (r2 << 1);
     // ldrh r3, [r3]
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // strh r3, [r0, #0x2a]
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u16*)(r0 + 0x2a)) = r3;
+    GF_AssertFail((r2 << 1));
 }
 
 
+
 void sub_02030F34(void) {
-    // push {r3, lr}
-    // cmp r1, #7
-    // bhi _02030F8C
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02030F46: ; jump table
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1d
-    // lsr r0, r0, #0x1d
-    // pop {r3, pc}
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1b
-    // lsr r0, r0, #0x1f
-    // pop {r3, pc}
-    // ldrb r0, [r0, #1]
-    // pop {r3, pc}
-    // ldrb r0, [r0, #2]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // ldrh r0, [r0, #6]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // ldrh r0, [r0, #0xe]
-    // pop {r3, pc}
     // add r0, r0, r2
-    // ldrb r0, [r0, #3]
-    // pop {r3, pc}
-    // lsl r1, r2, #1
     // add r0, r0, r1
-    // ldrh r0, [r0, #0x2a]
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u16*)(*((u8*)(*((u16*)(*((u16*)(*((u8*)(*((u8*)(((((r0 << 0x1d) >> 0x1d) << 0x1b) >> 0x1f) + 1)) + 2)) + 6)) + 0xe)) + 3)) + 0x2a)), (r2 << 1));
 }
+
 
 
 void sub_02030F94(void) {
-    MI_CpuFill8();
 }
+
 
 
 void sub_02030FA0(void) {
-    Save_Frontier_GetStatic();
 }
 
 
+
 void sub_02030FB0(void) {
-    // push {r4, lr}
     // ldr r3, [sp, #8]
-    // cmp r1, #8
-    // bne _02030FDC
     // ldrb r1, [r3]
-    // cmp r1, #1
-    // blo _02030FCA
-    // mov r1, #1
     // ldrb r3, [r0]
     // lsl r1, r2
     // orr r1, r3
     // strb r1, [r0]
-    // pop {r4, pc}
-    // mov r1, #1
-    // add r3, r1, #0
     // ldrb r4, [r0]
     // lsl r3, r2
-    // mov r1, #0xff
     // eor r1, r3
     // and r1, r4
     // strb r1, [r0]
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail(0xff, 1);
 }
+
 
 
 void sub_02030FE4(void) {
-    GF_AssertFail(0, 1);
 }
+
 
 
 void Save_Frontier_sizeof(void) {
@@ -689,6 +420,7 @@ void Save_Frontier_sizeof(void) {
     // _02031004: .word 0x00001628
     // TODO: decompile
 }
+
 
 
 void Save_Frontier_Init(void) {
@@ -736,12 +468,14 @@ void Save_Frontier_Init(void) {
 }
 
 
+
 void Save_Frontier_GetStatic(void) {
     // ldr r0, _02031080 ; =_021D2AFC
     // bx lr
     // _02031080: .word _021D2AFC
     // TODO: decompile
 }
+
 
 
 void Save_Frontier_Commit(void) {
@@ -759,6 +493,7 @@ void Save_Frontier_Commit(void) {
 }
 
 
+
 void Save_Frontier_Load(void) {
     // push {r3, lr}
     // mov r1, #0x13
@@ -774,45 +509,22 @@ void Save_Frontier_Load(void) {
 }
 
 
-void FrontierSave_GetStat(void) {
-    // push {r3, lr}
-    // cmp r1, #0x70
-    // bge _020310E6
-    // cmp r1, #0x64
-    // blt _020310E0
-    // cmp r2, #0x10
-    // blt _020310CE
-    // add r1, r1, #1
+
+int FrontierSave_GetStat(void) {
     // sub r2, #0x10
-    // lsl r1, r1, #1
     // ldrh r0, [r0, r1]
-    // add r1, r0, #0
     // asr r1, r2
-    // mov r0, #1
     // and r0, r1
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // pop {r3, pc}
-    // lsl r1, r1, #1
     // ldrh r0, [r0, r1]
-    // pop {r3, pc}
-    // mov r3, #0
     // mvn r3, r3
-    // cmp r2, r3
-    // bne _020310F6
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // lsl r2, r2, #6
+    GF_AssertFail(((1 << 0x10) >> 0x10), (r0 << 1), 0);
     // sub r1, #0x70
     // add r2, r0, r2
-    // lsl r0, r1, #1
     // add r0, r2, r0
     // add r0, #0xe0
     // ldrh r0, [r0]
-    // pop {r3, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02031108(void) {
@@ -879,76 +591,33 @@ void sub_02031108(void) {
 }
 
 
+
 void sub_02031188(void) {
-    // push {r4, lr}
-    // mov r2, #2
-    // add r4, r0, #0
     // add r0, #0xe0
-    // mov r1, #0
-    // lsl r2, r2, #0xa
-    // bl MI_CpuFill8
-    // mov r1, #0x64
+    MI_CpuFill8(0, (2 << 0xa));
     // add r4, #0xc8
-    // mov r0, #0
-    // add r1, r1, #1
     // strh r0, [r4]
-    // add r4, r4, #2
-    // cmp r1, #0x6f
-    // ble _0203119E
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_020311AC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // cmp r5, #0xff
-    // bne _020311BA
-    // bl GF_AssertFail
-    // cmp r5, #0x1f
-    // bge _02031200
-    // add r0, r6, #0
+    GF_AssertFail();
     // str r0, [sp]
     // add r0, #0xe0
-    // lsl r1, r5, #6
     // str r0, [sp]
     // add r7, r0, r1
-    // add r0, r5, #1
-    // lsl r1, r0, #6
     // ldr r0, [sp]
-    // mov r2, #0x40
     // add r0, r0, r1
-    // add r1, r7, #0
-    // bl MI_CpuCopy8
-    // mov r4, #0x64
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // add r2, r5, #1
-    // bl FrontierSave_GetStat
-    // add r3, r0, #0
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // add r2, r5, #0
-    // bl sub_02031108
-    // add r4, r4, #2
-    // cmp r4, #0x6f
-    // blt _020311DC
-    // add r5, r5, #1
+    MI_CpuCopy8((r5 + 1), r7, 0x40);
+    FrontierSave_GetStat(r6, 0x64, (r5 + 1));
+    sub_02031108(r6, r4, r5, r0);
     // add r7, #0x40
-    // cmp r5, #0x1f
-    // blt _020311CA
-    // mov r0, #0x1f
     // add r6, #0xe0
-    // lsl r0, r0, #6
     // add r0, r6, r0
-    // mov r1, #0
-    // mov r2, #0x40
-    // bl MI_CpuFill8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    MI_CpuFill8((0x1f << 6), 0, 0x40);
 }
+
 
 
 void sub_02031214(void) {
@@ -965,44 +634,22 @@ void sub_02031214(void) {
 }
 
 
+
 void sub_02031228(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r3, #0
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r7, r2, #0
-    // bl FrontierSave_GetStat
+    FrontierSave_GetStat();
     // add r0, r0, r4
-    // lsl r0, r0, #0x10
-    // lsr r3, r0, #0x10
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // add r2, r7, #0
-    // bl sub_02031108
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02031108(r5, r6, r7, ((r0 << 0x10) >> 0x10));
 }
+
 
 
 void sub_02031248(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r7, r2, #0
-    // add r4, r3, #0
-    // bl FrontierSave_GetStat
+    FrontierSave_GetStat();
     // sub r3, r0, r4
     // bpl _0203125C
-    // mov r3, #0
-    // lsl r3, r3, #0x10
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // add r2, r7, #0
-    // lsr r3, r3, #0x10
-    // bl sub_02031108
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02031108(r5, r6, r7, ((0 << 0x10) >> 0x10));
 }
+
 
 
 void sub_0203126C(void) {
@@ -1034,32 +681,28 @@ void sub_0203126C(void) {
 }
 
 
+
 void sub_020312A4(void) {
-    r0 = r0 << 4;
 }
+
 
 
 void sub_020312AC(void) {
-    MI_CpuFill8(0, 0, 0xba);
 }
+
 
 
 void sub_020312C4(void) {
-    sub_02027144();
 }
+
 
 
 void sub_020312CC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl sub_02027158
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl SaveGameNormal
+    sub_02027158();
+    SaveGameNormal(r5);
     // orr r0, r4
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_020312E0(void) {
@@ -1102,6 +745,7 @@ void sub_020312E0(void) {
 }
 
 
+
 void sub_0203132C(void) {
     // push {r4, lr}
     // ldr r4, _02031370 ; =0x0000270F
@@ -1142,6 +786,7 @@ void sub_0203132C(void) {
 }
 
 
+
 void sub_02031378(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -1178,6 +823,7 @@ void sub_02031378(void) {
     // _020313C0: .word 0x0000270F
     // TODO: decompile
 }
+
 
 
 void sub_020313C4(void) {
@@ -1285,15 +931,15 @@ void sub_020313C4(void) {
 }
 
 
+
 void sub_020314A4(void) {
-    Heap_Alloc(0x80);
-    MI_CpuFill8(0, 0x80);
 }
+
 
 
 void sub_020314BC(void) {
-    Heap_Free();
 }
+
 
 
 void sub_020314C4(void) {
@@ -1404,10 +1050,10 @@ void sub_020314C4(void) {
 }
 
 
+
 void sub_020315B8(void) {
-    String_New(0xf);
-    CopyU16ArrayToStringN(r5, 0xf);
 }
+
 
 
 void sub_020315D0(void) {
@@ -1422,6 +1068,7 @@ void sub_020315D0(void) {
 }
 
 
+
 void sub_020315E0(void) {
     // ldrh r0, [r0, #0x1c]
     // ldr r1, _020315EC ; =0x000001EF
@@ -1434,9 +1081,10 @@ void sub_020315E0(void) {
 }
 
 
+
 void sub_020315F0(void) {
-    sub_02070438(0);
 }
+
 
 
 void sub_02031610(void) {
@@ -1451,6 +1099,7 @@ void sub_02031610(void) {
 }
 
 
+
 void sub_02031620(void) {
     // ldrb r0, [r0, #0x17]
     // cmp r0, #0xea
@@ -1461,9 +1110,10 @@ void sub_02031620(void) {
 }
 
 
+
 void sub_0203162C(void) {
-    LocationGmmDatRegionCountGetByCountryMsgNo(0, 0);
 }
+
 
 
 void sub_0203164C(void) {
@@ -1545,6 +1195,7 @@ void sub_0203164C(void) {
 }
 
 
+
 void sub_020316F0(void) {
     // ldrb r0, [r0, #0x15]
     // cmp r0, #1
@@ -1557,6 +1208,7 @@ void sub_020316F0(void) {
 }
 
 
+
 void sub_02031700(void) {
     // ldrb r0, [r0, #0x16]
     // cmp r0, #0xf
@@ -1565,4 +1217,5 @@ void sub_02031700(void) {
     // bx lr
     // TODO: decompile
 }
+
 

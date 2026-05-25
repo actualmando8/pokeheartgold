@@ -28,13 +28,12 @@ void ScrCmd_808(void) {
 }
 
 
+
 void ov01_02205424(void) {
-    // mov r1, #1
     // add r0, #0xf9
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_0220542C(void) {
@@ -127,6 +126,7 @@ void ov01_0220542C(void) {
 }
 
 
+
 void ov01_022054E0(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0xc0
@@ -173,421 +173,191 @@ void ov01_022054E0(void) {
 }
 
 
-void ov01_0220553C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl MapObject_GetID
-    // cmp r0, #0xfd
-    // beq _02205554
-    // cmp r0, #0xfa
-    // beq _02205554
-    // cmp r0, #0xfb
-    // beq _02205554
-    // mov r0, #0
-    // pop {r4, pc}
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl MapObject_GetParam
-    // mov r1, #1
+
+BOOL ov01_0220553C(void) {
+    MapObject_GetID();
+    MapObject_GetParam(r4, 2);
     // and r0, r1
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_02205564(void) {
-    MapObject_GetSpriteID(0, 1);
 }
+
 
 
 void ov01_02205584(void) {
-    // push {r3, r4, r5, lr}
-    // mov r1, #1
-    // add r4, r0, #0
-    // bl MapObject_GetParam
-    // lsl r0, r0, #0x10
-    // lsr r5, r0, #0x10
-    // add r0, r4, #0
-    // bl MapObject_GetID
-    // cmp r0, #0xfd
-    // beq _022055A0
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // lsl r0, r5, #0x18
-    // lsr r0, r0, #0x18
+    MapObject_GetParam(1);
+    MapObject_GetID(r4);
     // asr r1, r0, #4
-    // mov r0, #0xf
     // and r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_022055B0(void) {
-    // push {r3, r4, r5, lr}
-    // mov r1, #1
-    // add r4, r0, #0
-    // bl MapObject_GetParam
-    // lsl r0, r0, #0x10
-    // lsr r5, r0, #0x10
-    // add r0, r4, #0
-    // bl MapObject_GetID
-    // cmp r0, #0xfd
-    // beq _022055CC
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // lsl r0, r5, #0x18
-    // lsr r1, r0, #0x18
-    // mov r0, #0xf
+    MapObject_GetParam(1);
+    MapObject_GetID(r4);
     // and r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_022055DC(void) {
-    // push {r3, r4, r5, lr}
-    // mov r1, #1
-    // add r4, r0, #0
-    // bl MapObject_GetParam
-    // lsl r0, r0, #0x10
-    // lsr r5, r0, #0x10
-    // add r0, r4, #0
-    // bl MapObject_GetID
-    // cmp r0, #0xfd
-    // beq _022055F8
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
+    MapObject_GetParam(1);
+    MapObject_GetID(r4);
     // asr r1, r5, #8
-    // mov r0, #0xf
     // and r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_02205604(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // add r4, r1, #0
-    // add r5, r2, #0
-    // bl MapObject_GetFacingDirection
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // add r0, r7, #0
-    // bl MapObject_GetXCoord
+    MapObject_GetFacingDirection();
+    MapObject_GetXCoord(r7);
     // str r0, [r4]
-    // add r0, r7, #0
-    // bl MapObject_GetZCoord
+    MapObject_GetZCoord(r7);
     // str r0, [r5]
-    // cmp r6, #3
-    // bhi _0220565C
     // add r0, r6, r6
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02205634: ; jump table
-    // ldr r0, [r5]
-    // add r0, r0, #1
     // str r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5]
-    // sub r0, r0, #1
     // str r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4]
-    // add r0, r0, #1
     // str r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4]
-    // sub r0, r0, #1
     // str r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail((*((u32*)r4) - 1));
 }
+
 
 
 void ov01_02205664(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // add r4, r1, #0
-    // add r5, r2, #0
-    // bl MapObject_GetFacingDirection
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // add r0, r7, #0
-    // bl MapObject_GetPreviousXCoord
+    MapObject_GetFacingDirection();
+    MapObject_GetPreviousXCoord(r7);
     // str r0, [r4]
-    // add r0, r7, #0
-    // bl MapObject_GetPreviousZCoord
+    MapObject_GetPreviousZCoord(r7);
     // str r0, [r5]
-    // cmp r6, #3
-    // bhi _022056BC
     // add r0, r6, r6
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02205694: ; jump table
-    // ldr r0, [r5]
-    // add r0, r0, #1
     // str r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5]
-    // sub r0, r0, #1
     // str r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4]
-    // add r0, r0, #1
     // str r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4]
-    // sub r0, r0, #1
     // str r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail((*((u32*)r4) - 1));
 }
+
 
 
 void ov01_022056C4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // bl MapObject_GetFieldSystem
-    // add r7, r0, #0
-    // add r0, r6, #0
-    // bl MapObject_GetXCoord
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl MapObject_GetZCoord
-    // add r2, r0, #0
-    // cmp r5, #5
-    // bhi _02205716
+    MapObject_GetFieldSystem();
+    MapObject_GetXCoord(r6);
+    MapObject_GetZCoord(r6);
     // add r0, r5, r5
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _022056F0: ; jump table
-    // sub r2, r2, #1
-    // b _02205716
-    // add r2, r2, #1
-    // b _02205716
-    // sub r4, r4, #1
-    // b _02205716
-    // add r4, r4, #1
-    // b _02205716
-    // add r4, r4, #1
-    // add r2, r2, #1
-    // b _02205716
-    // sub r4, r4, #1
-    // add r2, r2, #1
-    // add r0, r7, #0
-    // add r1, r4, #0
-    // bl GetMetatileBehavior
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GetMetatileBehavior(r7, ((((r4 - 1) + 1) + 1) - 1), ((((r0 - 1) + 1) + 1) + 1));
 }
+
 
 
 void ov01_02205720(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
     // add r1, sp, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl MapObject_CopyPositionVector
-    // cmp r4, #3
-    // bhi _02205776
+    MapObject_CopyPositionVector();
     // add r0, r4, r4
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02205740: ; jump table
-    // mov r0, #1
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #0x10
     // sub r0, r1, r0
     // str r0, [sp, #8]
-    // b _02205776
-    // mov r0, #1
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp, #8]
-    // b _02205776
-    // mov r0, #1
     // ldr r1, [sp]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp]
-    // b _02205776
-    // mov r0, #1
     // ldr r1, [sp]
-    // lsl r0, r0, #0x10
     // sub r0, r1, r0
     // str r0, [sp]
-    // add r0, r5, #0
     // add r1, sp, #0
-    // add r2, r6, #0
-    // bl MapObject_SetPositionFromVectorAndDirection
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    MapObject_SetPositionFromVectorAndDirection(r5, r6);
 }
+
 
 
 void ov01_02205784(void) {
-    ov01_0220329C();
 }
+
 
 
 void ov01_02205790(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl FollowMon_IsActive
-    // cmp r0, #0
-    // beq _022057BE
-    // add r0, r5, #0
-    // bl FollowMon_GetMapObject
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetMapObject
+    FollowMon_IsActive();
+    FollowMon_GetMapObject(r5);
+    PlayerAvatar_GetMapObject(*((u32*)(r5 + 0x40)));
     // add r1, sp, #0
-    // bl MapObject_CopyPositionVector
-    // add r0, r6, #0
+    MapObject_CopyPositionVector();
     // add r1, sp, #0
-    // add r2, r4, #0
-    // bl MapObject_SetPositionFromVectorAndDirection
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    MapObject_SetPositionFromVectorAndDirection(r6, r4);
 }
+
 
 
 void ov01_022057C4(void) {
-    FollowMon_GetMapObject();
-    MapObject_CheckVisible();
 }
+
 
 
 void ov01_022057D0(void) {
-    FollowMon_GetMapObject();
-    sub_020659B8();
 }
+
 
 
 void ov01_022057DC(void) {
-    // push {r3, lr}
-    // bl sub_0205F1A0
+    sub_0205F1A0();
     // add r0, #0xfc
-    // ldr r0, [r0]
-    // mov r1, #0x16
-    // bl ov01_021FC5A4
-    // ldr r2, [r0]
-    // add r1, r0, #4
-    // lsl r0, r2, #1
+    ov01_021FC5A4(*((u32*)r0), 0x16);
     // add r0, r1, r0
     // add r3, r0, r2
-    // mov r1, #0
-    // cmp r2, #0
-    // ble _02205806
-    // mov r0, #1
     // strb r0, [r3, r1]
-    // add r1, r1, #1
-    // cmp r1, r2
-    // blt _022057FE
-    // pop {r3, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_02205808(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x28
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // add r4, r2, #0
-    // bl MapObject_GetManager
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_GetSpriteID
-    // add r1, r0, #0
-    // add r0, r7, #0
+    MapObject_GetManager(r1);
+    MapObject_GetSpriteID(r5);
     // add r2, sp, #0
-    // bl ov01_021F9744
-    // add r0, r5, #0
-    // bl MapObject_GetID
-    // cmp r0, #0xfd
-    // beq _0220583C
-    // cmp r0, #0xfa
-    // beq _0220583C
-    // cmp r0, #0xfb
-    // bne _0220586A
-    // add r0, r6, #0
-    // add r1, r5, #0
-    // add r2, r4, #0
+    ov01_021F9744(r7, r0);
+    MapObject_GetID(r5);
     // add r3, sp, #0
-    // bl ov01_02205870
-    // add r0, r4, #0
+    ov01_02205870(r6, r5, r4);
     // add r1, sp, #0
-    // bl sub_02023EC8
-    // add r0, r5, #0
-    // bl MapObject_GetFacingDirection
-    // bl ov01_021FA44C
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // bl sub_02023EE0
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl sub_02023F40
-    // add sp, #0x28
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02023EC8(r4);
+    MapObject_GetFacingDirection(r5);
+    ov01_021FA44C();
+    sub_02023EE0(r4, r0);
+    sub_02023F40(r4, 0);
 }
+
 
 
 void ov01_02205870(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // add r4, r3, #0
-    // bl MapObject_GetManager
-    // bl sub_0205F1A0
-    // cmp r5, #0
-    // beq _02205888
-    // mov r1, #0x16
-    // b _0220588A
-    // mov r1, #0x15
+    MapObject_GetManager(r1);
+    sub_0205F1A0();
     // add r0, #0xfc
-    // ldr r0, [r0]
-    // bl ov01_021FC5A4
+    ov01_021FC5A4(*((u32*)r0), 0x15);
     // add r4, #0xc
-    // add r1, r4, #0
-    // bl sub_02026E18
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02026E18(r4);
 }
+
 
 
 void ov01_0220589C(void) {
@@ -678,193 +448,81 @@ void ov01_0220589C(void) {
 }
 
 
+
 void ov01_0220596C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl GF_GetNumPendingVramTransferTasks
-    // cmp r0, #0
-    // bne _0220598C
-    // add r0, r5, #0
-    // bl SysTask_Destroy
-    // ldr r0, [r4]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_GetNumPendingVramTransferTasks();
+    SysTask_Destroy(r5);
+    Heap_Free(*((u32*)r4));
+    Heap_Free(r4);
 }
+
 
 
 void ov01_02205990(void) {
-    // str r0, [r3, #4]
-    // str r1, [r3, #8]
-    // str r2, [r3, #0xc]
-    // ldr r0, [r3, #0x1c]
-    // cmp r0, #3
-    // bne _022059A2
-    // mov r0, #2
-    // str r0, [r3, #0x1c]
-    // bx lr
-    // cmp r0, #0
-    // bne _022059AA
-    // mov r0, #1
-    // str r0, [r3, #0x1c]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r3 + 4)) = r0;
+    *((u32*)(r3 + 8)) = r1;
+    *((u32*)(r3 + 0xc)) = r2;
+    *((u32*)(r3 + 0x1c)) = 2;
+    *((u32*)(r3 + 0x1c)) = 1;
 }
+
 
 
 void ov01_022059AC(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r5, r0, #0
     // add r0, #0xf9
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02205A2A
-    // add r0, r5, #0
     // add r0, #0xfa
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02205A02
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetXCoord
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetZCoord
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetFacingDirection
-    // add r3, r0, #0
-    // ldr r0, [r5, #0x20]
-    // add r1, r4, #0
-    // ldr r0, [r0]
-    // add r2, r6, #0
+    PlayerAvatar_GetXCoord(*((u32*)(r0 + 0x40)));
+    PlayerAvatar_GetZCoord(*((u32*)(r5 + 0x40)));
+    PlayerAvatar_GetFacingDirection(*((u32*)(r5 + 0x40)));
     // str r0, [sp]
-    // ldr r0, [r5, #0x3c]
-    // bl FollowMon_InitMapObject
-    // add r1, r5, #0
+    FollowMon_InitMapObject(*((u32*)(r5 + 0x3c)), r4, r6, r0);
     // add r1, #0xfa
-    // add r0, r5, #0
     // add r0, #0xe4
     // ldrb r1, [r1]
-    // ldr r0, [r0]
-    // cmp r1, #1
-    // bne _02205A2A
-    // bl ov01_021F9048
-    // b _02205A2A
-    // add r0, r5, #0
+    ov01_021F9048(*((u32*)r5), r5);
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // bl FollowMon_GetSpecies
-    // ldr r1, [r5, #0x20]
-    // ldr r1, [r1]
-    // bl FollowMon_GetPermissionBySpeciesAndMap
-    // cmp r0, #0
-    // bne _02205A2A
-    // add r0, r5, #0
+    FollowMon_GetSpecies(*((u32*)r5));
+    FollowMon_GetPermissionBySpeciesAndMap(*((u32*)*((u32*)(r5 + 0x20))));
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // bl MapObject_Remove
-    // add r0, r5, #0
-    // mov r1, #0
+    MapObject_Remove(*((u32*)r5));
     // add r0, #0xfa
     // strb r1, [r0]
-    // mov r0, #0
     // add r5, #0xf9
     // strb r0, [r5]
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_02205A34(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // add r5, r1, #0
-    // bl FollowMon_IsActive
-    // cmp r0, #0
-    // beq _02205A5C
-    // add r0, r4, #0
-    // bl FollowMon_GetMapObject
-    // add r4, r0, #0
+    FollowMon_IsActive();
+    FollowMon_GetMapObject(r4);
     // add r1, sp, #0
-    // bl MapObject_CopyPositionVector
-    // add r0, r4, #0
+    MapObject_CopyPositionVector();
     // add r1, sp, #0
     // str r5, [sp, #4]
-    // bl MapObject_SetPositionVector
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    MapObject_SetPositionVector(r4);
 }
 
 
-void ov01_02205A60(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bl TaskManager_GetFieldSystem
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl TaskManager_GetStatePtr
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl FollowMon_IsActive
-    // cmp r0, #0
-    // bne _02205A80
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // ldr r0, [r4]
+
+BOOL ov01_02205A60(void) {
+    TaskManager_GetFieldSystem();
+    TaskManager_GetStatePtr(r4);
+    FollowMon_IsActive(r5);
     // add r5, #0xe4
-    // ldr r5, [r5]
-    // cmp r0, #0
-    // beq _02205A94
-    // cmp r0, #1
-    // beq _02205AB0
-    // cmp r0, #2
-    // beq _02205ACE
-    // b _02205AE6
-    // add r0, r5, #0
-    // bl MapObject_CheckMovementPaused
-    // cmp r0, #0
-    // beq _02205AAA
-    // add r0, r5, #0
-    // bl MapObject_UnpauseMovement
-    // mov r0, #1
+    MapObject_CheckMovementPaused(*((u32*)r5));
+    MapObject_UnpauseMovement(r5);
     // str r0, [r4]
-    // b _02205AE6
-    // mov r0, #2
     // str r0, [r4]
-    // b _02205AE6
-    // add r0, r5, #0
-    // bl MapObject_IsMovementPaused
-    // cmp r0, #0
-    // beq _02205AE6
-    // add r0, r5, #0
-    // bl MapObject_AreBitsSetForMovementScriptInit
-    // cmp r0, #0
-    // beq _02205AE6
-    // add r0, r5, #0
-    // bl MapObject_PauseMovement
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // add r0, r5, #0
-    // bl MapObject_IsMovementPaused
-    // cmp r0, #0
-    // beq _02205AE6
-    // add r0, r5, #0
-    // bl MapObject_AreBitsSetForMovementScriptInit
-    // cmp r0, #0
-    // beq _02205AE6
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    MapObject_IsMovementPaused(r5);
+    MapObject_AreBitsSetForMovementScriptInit(r5);
+    MapObject_PauseMovement(r5);
+    MapObject_IsMovementPaused(r5);
+    MapObject_AreBitsSetForMovementScriptInit(r5);
 }
+
 
 
 void ov01_02205AEC(void) {
@@ -887,6 +545,7 @@ void ov01_02205AEC(void) {
     // _02205B10: .word ov01_02205B14
     // TODO: decompile
 }
+
 
 
 void ov01_02205B14(void) {
@@ -1094,60 +753,26 @@ void ov01_02205B14(void) {
 }
 
 
+
 void ov01_02205CF0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x40]
-    // add r4, r1, #0
-    // bl PlayerAvatar_GetMapObject
-    // bl MapObject_GetXCoord
+    PlayerAvatar_GetMapObject(*((u32*)(r0 + 0x40)));
+    MapObject_GetXCoord();
     // str r0, [sp]
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetMapObject
-    // bl MapObject_GetZCoord
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl FollowMon_GetMapObject
-    // bl MapObject_GetXCoord
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl FollowMon_GetMapObject
-    // bl MapObject_GetZCoord
+    PlayerAvatar_GetMapObject(*((u32*)(r5 + 0x40)));
+    MapObject_GetZCoord();
+    FollowMon_GetMapObject(r5);
+    MapObject_GetXCoord();
+    FollowMon_GetMapObject(r5);
+    MapObject_GetZCoord();
     // ldr r1, [sp]
-    // cmp r6, r1
-    // bne _02205D38
-    // add r1, r7, #1
-    // cmp r0, r1
-    // bne _02205D38
-    // mov r0, #1
-    // str r0, [r4, #0x44]
-    // mov r0, #2
-    // pop {r3, r4, r5, r6, r7, pc}
+    *((u32*)(r4 + 0x44)) = 1;
     // ldr r1, [sp]
-    // add r1, r1, #1
-    // cmp r6, r1
-    // bne _02205D4C
-    // cmp r0, r7
-    // bne _02205D4C
-    // mov r0, #0
-    // str r0, [r4, #0x44]
-    // mov r0, #3
-    // pop {r3, r4, r5, r6, r7, pc}
+    *((u32*)(r4 + 0x44)) = 0;
     // ldr r1, [sp]
-    // add r2, r6, #1
-    // cmp r2, r1
-    // bne _02205D60
-    // cmp r0, r7
-    // bne _02205D60
-    // mov r0, #1
-    // str r0, [r4, #0x44]
-    // mov r0, #3
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // mov r0, #2
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x44)) = 1;
+    GF_AssertFail(3, ((r7 + 1) + 1), (r6 + 1));
 }
+
 
 
 void ov01_02205D68(void) {
@@ -1184,6 +809,7 @@ void ov01_02205D68(void) {
     // _02205DB0: .word ov01_02205DB4
     // TODO: decompile
 }
+
 
 
 void ov01_02205DB4(void) {
@@ -1309,6 +935,7 @@ void ov01_02205DB4(void) {
 }
 
 
+
 void ov01_02205EE0(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -1327,201 +954,89 @@ void ov01_02205EE0(void) {
 }
 
 
+
 void ov01_02205F00(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl TaskManager_GetFieldSystem
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl TaskManager_GetEnvironment
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl TaskManager_GetStatePtr
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // cmp r0, #6
-    // bls _02205F22
-    // b _02206024
+    TaskManager_GetFieldSystem();
+    TaskManager_GetEnvironment(r5);
+    TaskManager_GetStatePtr(r5);
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02205F2E: ; jump table
-    // add r0, r4, #0
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // bl sub_020659CC
+    sub_020659CC(*((u32*)r4));
     // add r4, #0xe4
-    // ldr r0, [r4]
-    // bl sub_0205F484
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    sub_0205F484(*((u32*)r4));
     // str r0, [r5]
-    // b _02206024
-    // add r0, r4, #0
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // bl MapObject_AreBitsSetForMovementScriptInit
-    // cmp r0, #1
-    // bne _02206024
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetMapObject
+    MapObject_AreBitsSetForMovementScriptInit(*((u32*)r4));
+    PlayerAvatar_GetMapObject(*((u32*)(r4 + 0x40)));
     // add r4, #0xe4
-    // ldr r1, [r4]
-    // bl ov01_02206028
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    ov01_02206028(*((u32*)r4));
     // str r0, [r5]
-    // b _02206024
-    // add r0, r4, #0
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // bl MapObject_AreBitsSetForMovementScriptInit
-    // cmp r0, #1
-    // bne _02206024
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetMapObject
-    // bl MapObject_GetFacingDirection
+    MapObject_AreBitsSetForMovementScriptInit(*((u32*)r4));
+    PlayerAvatar_GetMapObject(*((u32*)(r4 + 0x40)));
+    MapObject_GetFacingDirection();
     // add r4, #0xe4
-    // add r1, r0, #0
-    // ldr r0, [r4]
-    // bl MapObject_SetFacingDirection
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    MapObject_SetFacingDirection(*((u32*)r4), r0);
     // str r0, [r5]
-    // b _02206024
-    // ldr r0, [r6]
-    // add r0, r0, #1
     // str r0, [r6]
-    // cmp r0, #0xa
-    // ble _02206024
-    // ldr r0, [r5]
-    // add r0, r0, #1
     // str r0, [r5]
-    // b _02206024
-    // add r0, r4, #0
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // bl MapObject_AreBitsSetForMovementScriptInit
-    // cmp r0, #1
-    // bne _02206024
-    // add r0, r4, #0
+    MapObject_AreBitsSetForMovementScriptInit(*((u32*)r4));
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // mov r1, #0
-    // bl sub_0206A040
-    // ldr r0, [r4, #0x40]
-    // bl PlayerAvatar_GetMapObject
-    // bl MapObject_GetFacingDirection
-    // mov r1, #0x34
-    // bl sub_0206234C
+    sub_0206A040(*((u32*)r4), 0);
+    PlayerAvatar_GetMapObject(*((u32*)(r4 + 0x40)));
+    MapObject_GetFacingDirection();
+    sub_0206234C(0x34);
     // add r4, #0xe4
-    // add r1, r0, #0
-    // ldr r0, [r4]
-    // bl MapObject_SetHeldMovement
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    MapObject_SetHeldMovement(*((u32*)r4), r0);
     // str r0, [r5]
-    // b _02206024
-    // add r0, r4, #0
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // bl MapObject_AreBitsSetForMovementScriptInit
-    // cmp r0, #1
-    // bne _02206024
-    // add r0, r4, #0
+    MapObject_AreBitsSetForMovementScriptInit(*((u32*)r4));
     // add r0, #0xe4
-    // ldr r0, [r0]
-    // mov r1, #2
-    // bl ov01_0220329C
-    // add r0, r4, #0
-    // bl sub_0206A054
-    // ldr r0, [r5]
-    // add r0, r0, #1
+    ov01_0220329C(*((u32*)r4), 2);
+    sub_0206A054(r4);
     // str r0, [r5]
-    // b _02206024
-    // add r0, r6, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Heap_Free(r6);
 }
+
 
 
 void ov01_02206028(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
-    // add r5, r1, #0
-    // bl MapObject_GetXCoord
-    // add r6, r0, #0
+    MapObject_GetXCoord();
     // ldr r0, [sp]
-    // bl MapObject_GetZCoord
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_GetXCoord
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl MapObject_GetZCoord
+    MapObject_GetZCoord();
+    MapObject_GetXCoord(r5);
+    MapObject_GetZCoord(r5);
     // sub r6, r6, r4
     // sub r4, r7, r0
     // ldr r0, [sp]
-    // bl MapObject_GetFacingDirection
-    // cmp r6, #0
-    // bge _02206062
-    // add r0, r5, #0
-    // mov r1, #0xa
-    // bl MapObject_SetHeldMovement
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ble _0220606E
-    // add r0, r5, #0
-    // mov r1, #0xb
-    // bl MapObject_SetHeldMovement
-    // pop {r3, r4, r5, r6, r7, pc}
-    // cmp r4, #0
-    // bge _0220607C
-    // add r0, r5, #0
-    // mov r1, #8
-    // bl MapObject_SetHeldMovement
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ble _02206086
-    // add r0, r5, #0
-    // mov r1, #9
-    // bl MapObject_SetHeldMovement
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    MapObject_GetFacingDirection();
+    MapObject_SetHeldMovement(r5, 0xa);
+    MapObject_SetHeldMovement(r5, 0xb);
+    MapObject_SetHeldMovement(r5, 8);
+    MapObject_SetHeldMovement(r5, 9);
 }
+
 
 
 void ov01_02206088(void) {
-    // push {r3, lr}
-    // bl GetMoveModelNoBySpriteId
-    // cmp r0, #0
-    // bge _02206098
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GetMoveModelNoBySpriteId();
+    GF_AssertFail();
 }
+
 
 
 void ov01_0220609C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl FollowMon_IsActive
-    // cmp r0, #0
-    // beq _022060B4
+    FollowMon_IsActive();
     // add r5, #0xe4
-    // ldr r0, [r5]
-    // add r1, r4, #0
-    // bl MapObject_SetFacingDirection
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    MapObject_SetFacingDirection(*((u32*)r5), r4);
 }
+
 
 
 void ov01_022060B8(void) {
@@ -1563,6 +1078,7 @@ void ov01_022060B8(void) {
     // _02206108: .word ov01_0220610C
     // TODO: decompile
 }
+
 
 
 void ov01_0220610C(void) {
@@ -1717,57 +1233,20 @@ void ov01_0220610C(void) {
 }
 
 
+
 void ov01_02206268(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // bl FollowMon_IsVisible
-    // cmp r0, #0
-    // bne _02206278
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5, #0x40]
-    // bl PlayerAvatar_GetMapObject
+    FollowMon_IsVisible();
+    PlayerAvatar_GetMapObject(*((u32*)(r5 + 0x40)));
     // add r5, #0xe4
-    // add r4, r0, #0
-    // ldr r7, [r5]
-    // bl MapObject_GetXCoord
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl MapObject_GetZCoord
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl MapObject_GetXCoord
-    // add r6, r0, #0
-    // add r0, r7, #0
-    // bl MapObject_GetZCoord
-    // cmp r5, r6
-    // bne _022062B4
-    // add r1, r4, #1
-    // cmp r1, r0
-    // beq _022062B0
-    // sub r1, r4, #1
-    // cmp r1, r0
-    // bne _022062C8
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // cmp r4, r0
-    // bne _022062C8
-    // add r0, r5, #1
-    // cmp r0, r6
-    // beq _022062C4
-    // sub r0, r5, #1
-    // cmp r0, r6
-    // bne _022062C8
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    MapObject_GetXCoord();
+    MapObject_GetZCoord(r4);
+    MapObject_GetXCoord(r7);
+    MapObject_GetZCoord(r7);
 }
+
 
 
 void ov01_022062CC(void) {
-    SaveArray_Party_Get(*((u32*)(r0 + 0xc)));
-    GetIdxOfFirstAliveMonInParty_CrashIfNone();
 }
+
 

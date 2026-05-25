@@ -63,20 +63,17 @@ void sub_0203A3B0(void) {
 }
 
 
+
 void sub_0203A42C(void) {
-    sub_0203A700();
 }
+
 
 
 void sub_0203A438(void) {
-    // cmp r1, #4
-    // bge _0203A442
-    // str r1, [r0, #4]
-    // mov r1, #0
-    // str r1, [r0, #8]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = r1;
+    *((u32*)(r0 + 8)) = 0;
 }
+
 
 
 void sub_0203A444(void) {
@@ -106,32 +103,14 @@ void sub_0203A444(void) {
 }
 
 
+
 void sub_0203A478(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // mov r2, #7
-    // ldrb r1, [r5, #0x10]
-    // mov r0, #2
-    // lsl r2, r2, #6
-    // add r3, r6, #0
-    // bl sub_0203A4D4
-    // ldrb r1, [r5, #0x10]
-    // mov r0, #2
-    // add r2, r6, #0
-    // bl sub_0203A59C
-    // cmp r4, #0
-    // beq _0203A4A0
-    // mov r0, #1
-    // b _0203A4A2
-    // mov r0, #2
-    // strb r0, [r5, #0x11]
-    // mov r0, #1
-    // strb r0, [r5, #0x12]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0203A4D4(2, *((u8*)(r0 + 0x10)), (7 << 6), r2);
+    sub_0203A59C(2, *((u8*)(r5 + 0x10)), r6);
+    *((u8*)(r5 + 0x11)) = 2;
+    *((u8*)(r5 + 0x12)) = 1;
 }
+
 
 
 void sub_0203A4AC(void) {
@@ -153,6 +132,7 @@ void sub_0203A4AC(void) {
     // _0203A4D0: .word _0210F930
     // TODO: decompile
 }
+
 
 
 void sub_0203A4D4(void) {
@@ -200,6 +180,7 @@ void sub_0203A4D4(void) {
 }
 
 
+
 void sub_0203A534(void) {
     // push {r0, r1, r2, r3}
     // push {r3, lr}
@@ -244,6 +225,7 @@ void sub_0203A534(void) {
     // _0203A598: .word _0210F964
     // TODO: decompile
 }
+
 
 
 void sub_0203A59C(void) {
@@ -407,6 +389,7 @@ void sub_0203A59C(void) {
     // _0203A6FC: .word 0x0001FE00
     // TODO: decompile
 }
+
 
 
 void sub_0203A700(void) {
@@ -587,52 +570,26 @@ void sub_0203A700(void) {
 }
 
 
+
 void sub_0203A86C(void) {
-    sub_0203A700();
 }
+
 
 
 void sub_0203A880(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // mov r4, #0
-    // bl sub_02039998
-    // cmp r0, #0
-    // beq _0203A890
-    // mov r4, #1
-    // mov r0, #7
-    // lsl r0, r0, #6
+    sub_02039998();
     // str r0, [sp]
-    // mov r0, #0xf0
-    // mov r1, #0
-    // add r2, r4, #0
-    // mov r3, #1
-    // bl sub_0203A8CC
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_0203A8CC(0xf0, 0, 1, 1);
 }
+
 
 
 void sub_0203A8A8(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r4, #0
-    // bl sub_02039998
-    // cmp r0, #0
-    // beq _0203A8B8
-    // mov r4, #1
-    // mov r0, #0x1e
-    // lsl r0, r0, #4
+    sub_02039998();
     // str r0, [sp]
-    // mov r0, #0xf0
-    // mov r1, #0
-    // add r2, r4, #0
-    // add r3, r5, #0
-    // bl sub_0203A8CC
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_0203A8CC(0xf0, 0, 1, r5);
 }
+
 
 
 void sub_0203A8CC(void) {
@@ -671,66 +628,42 @@ void sub_0203A8CC(void) {
 }
 
 
+
 void sub_0203A914(void) {
-    sub_0203A444(0);
 }
+
 
 
 void sub_0203A930(void) {
-    sub_0203A438();
 }
+
 
 
 void sub_0203A948(void) {
-    sub_0203A478();
 }
+
 
 
 void sub_0203A964(void) {
-    // push {r3, lr}
-    // bl sub_02037474
-    // cmp r0, #0
-    // beq _0203A984
-    // bl sub_02037454
-    // cmp r0, #1
-    // bgt _0203A97E
-    // bl sub_02039998
-    // cmp r0, #0
-    // beq _0203A990
-    // bl sub_0203A880
-    // pop {r3, pc}
-    // bl sub_02039998
-    // cmp r0, #0
-    // beq _0203A990
-    // bl sub_0203A880
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_02037474();
+    sub_02037454();
+    sub_02039998();
+    sub_0203A880();
+    sub_02039998();
+    sub_0203A880();
 }
+
 
 
 void sub_0203A994(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl sub_02037474
-    // cmp r0, #0
-    // beq _0203A9B8
-    // bl sub_02037454
-    // cmp r0, #1
-    // bgt _0203A9B0
-    // bl sub_02039998
-    // cmp r0, #0
-    // beq _0203A9C6
-    // add r0, r4, #0
-    // bl sub_0203A8A8
-    // pop {r4, pc}
-    // bl sub_02039998
-    // cmp r0, #0
-    // beq _0203A9C6
-    // add r0, r4, #0
-    // bl sub_0203A8A8
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_02037474();
+    sub_02037454();
+    sub_02039998();
+    sub_0203A8A8(r4);
+    sub_02039998();
+    sub_0203A8A8(r4);
 }
+
 
 
 void sub_0203A9C8(void) {
@@ -745,4 +678,5 @@ void sub_0203A9C8(void) {
     // _0203A9D8: .word _021D4154
     // TODO: decompile
 }
+
 

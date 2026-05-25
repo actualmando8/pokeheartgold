@@ -45,6 +45,7 @@ void Frontier_Init(void) {
 }
 
 
+
 void Frontier_Main(void) {
     // push {r4, r5, r6, lr}
     // add r5, r1, #0
@@ -177,24 +178,20 @@ void Frontier_Main(void) {
 }
 
 
+
 u32 Frontier_Exit(void) {
-    OverlayManager_GetData();
-    ov80_0222A920(*((u32*)(r0 + 0x14)));
-    Frontier_FreeMap(r4);
-    OverlayManager_FreeData(r5);
-    Frontier_UnloadOverlays();
-    return 1;
 }
+
 
 
 void Frontier_CreateMap(void) {
-    FrontierMap_Init();
 }
+
 
 
 void Frontier_FreeMap(void) {
-    FrontierMap_Free();
 }
+
 
 
 void sub_02096780(void) {
@@ -230,6 +227,7 @@ void sub_02096780(void) {
 }
 
 
+
 void Frontier_LoadOverlays(void) {
     // push {r3, lr}
     // ldr r0, _020967D8 ; =FS_OVERLAY_ID(OVY_80)
@@ -249,6 +247,7 @@ void Frontier_LoadOverlays(void) {
 }
 
 
+
 void Frontier_UnloadOverlays(void) {
     // push {r3, lr}
     // ldr r0, _020967FC ; =FS_OVERLAY_ID(OVY_80)
@@ -266,6 +265,7 @@ void Frontier_UnloadOverlays(void) {
 }
 
 
+
 void Frontier_GetLaunchArgs(void) {
     // ldr r0, [r0]
     // bx lr
@@ -273,11 +273,13 @@ void Frontier_GetLaunchArgs(void) {
 }
 
 
+
 void sub_0209680C(void) {
     // ldr r0, [r0, #0x18]
     // bx lr
     // TODO: decompile
 }
+
 
 
 void Frontier_GetData(void) {
@@ -288,81 +290,59 @@ void Frontier_GetData(void) {
 }
 
 
+
 void Frontier_SetData(void) {
-    // ldr r0, [r0]
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void Frontier_LaunchApplication(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #4]
-    // add r7, r1, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // cmp r0, #0
-    // beq _02096834
-    // bl GF_AssertFail
-    // add r0, r7, #0
-    // add r1, r4, #0
-    // mov r2, #0xb
-    // bl OverlayManager_New
-    // str r0, [r5, #4]
-    // str r4, [r5, #8]
+    GF_AssertFail(*((u32*)(r0 + 4)));
+    OverlayManager_New(r7, r4, 0xb);
+    *((u32*)(r5 + 4)) = r0;
+    *((u32*)(r5 + 8)) = r4;
     // ldr r0, [sp, #0x18]
-    // strb r6, [r5, #0x10]
-    // str r0, [r5, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)(r5 + 0x10)) = r6;
+    *((u32*)(r5 + 0xc)) = r0;
 }
+
 
 
 void sub_0209684C(void) {
-    // mov r1, #1
     // add r0, #0x22
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02096854(void) {
-    // ldr r3, [r0]
     // add r3, #0x20
     // strb r1, [r3]
-    // mov r1, #1
-    // strb r1, [r0, #0x1e]
-    // strh r2, [r0, #0x20]
-    // bx lr
-    // TODO: decompile
+    *((u8*)(r0 + 0x1e)) = 1;
+    *((u16*)(r0 + 0x20)) = r2;
 }
 
 
-void sub_02096864(void) {
+
+u16 * sub_02096864(void) {
     // add r0, #0x24
-    // bx lr
-    // TODO: decompile
 }
 
 
-void sub_02096868(void) {
+
+u16 * sub_02096868(void) {
     // add r0, #0x84
-    // bx lr
-    // TODO: decompile
 }
 
 
-void sub_0209686C(void) {
-    // mov r2, #0x3c
+
+u16 * sub_0209686C(void) {
     // add r0, #0x84
     // mul r2, r1
     // add r0, r0, r2
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02096878(void) {
@@ -373,6 +353,7 @@ void sub_02096878(void) {
     // _02096880: .word 0x00000A04
     // TODO: decompile
 }
+
 
 
 void sub_02096884(void) {
@@ -397,4 +378,5 @@ void sub_02096884(void) {
     // _020968AC: .word 0x0000FFFF
     // TODO: decompile
 }
+
 

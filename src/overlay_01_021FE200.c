@@ -19,10 +19,10 @@ void ov01_021FE200(void) {
 }
 
 
+
 void ov01_021FE220(void) {
-    ov01_021FE2B8();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_021FE230(void) {
@@ -91,24 +91,15 @@ void ov01_021FE230(void) {
 }
 
 
+
 void ov01_021FE2B8(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // mov r6, #0
-    // add r4, r0, #4
     // add r5, #0xcc
-    // add r0, r4, #0
-    // bl sub_02069784
-    // add r0, r5, #0
-    // bl sub_02069784
-    // add r6, r6, #1
+    sub_02069784((r0 + 4));
+    sub_02069784(r5);
     // add r4, #0x14
     // add r5, #0x14
-    // cmp r6, #0xa
-    // blt _021FE2C2
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov01_021FE2DC(void) {
@@ -173,6 +164,7 @@ void ov01_021FE2DC(void) {
 }
 
 
+
 void ov01_021FE35C(void) {
     // push {r4, lr}
     // mov r4, #0
@@ -224,29 +216,30 @@ void ov01_021FE35C(void) {
 }
 
 
+
 void ov01_021FE3C4(void) {
-    ov01_021FE3F8();
 }
+
 
 
 void ov01_021FE3D0(void) {
-    ov01_021FE3F8();
 }
+
 
 
 void ov01_021FE3DC(void) {
-    ov01_021FE3F8();
 }
+
 
 
 void ov01_021FE3E8(void) {
-    ov01_021FE3F8();
 }
+
 
 
 u8 ov01_021FE3F4(void) {
-    return 0;
 }
+
 
 
 void ov01_021FE3F8(void) {
@@ -365,16 +358,10 @@ void ov01_021FE3F8(void) {
 }
 
 
+
 u32 ov01_021FE4FC(void) {
-    sub_02068D90();
-    *((u32*)(r4 + 0x10)) = r0;
-    sub_02068D98(r5);
-    *((u32*)(r4 + 0x18)) = *((u32*)(r0 + 8));
-    *((u32*)(r4 + 0x14)) = *((u32*)(r0 + 4));
-    *((u32*)(r4 + 0xc)) = 0x1f;
-    *((u32*)(r4 + 0x10)) = r0;
-    return 1;
 }
+
 
 
 void ov01_021FE524(void) {
@@ -383,57 +370,24 @@ void ov01_021FE524(void) {
 }
 
 
+
 void ov01_021FE528(void) {
-    // push {r3, lr}
-    // ldr r2, [r1]
-    // cmp r2, #0
-    // beq _021FE536
-    // cmp r2, #1
-    // beq _021FE548
-    // pop {r3, pc}
-    // ldr r0, [r1, #4]
-    // add r0, r0, #1
-    // str r0, [r1, #4]
-    // cmp r0, #0x10
-    // blt _021FE554
-    // ldr r0, [r1]
-    // add r0, r0, #1
+    *((u32*)(r1 + 4)) = (*((u32*)(r1 + 4)) + 1);
     // str r0, [r1]
-    // pop {r3, pc}
-    // ldr r2, [r1, #0xc]
-    // sub r2, r2, #2
-    // str r2, [r1, #0xc]
+    *((u32*)(r1 + 0xc)) = (*((u32*)(r1 + 0xc)) - 2);
     // bpl _021FE554
-    // bl ov01_021F1640
-    // pop {r3, pc}
-    // TODO: decompile
+    ov01_021F1640((*((u32*)r1) + 1), (*((u32*)(r1 + 0xc)) - 2));
 }
+
 
 
 void ov01_021FE558(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // ldr r1, [r4, #8]
-    // cmp r1, #0
-    // bne _021FE58A
     // add r1, sp, #0
-    // bl sub_02068DB8
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x1f
-    // ldr r0, [r0, #0xc]
-    // mov r1, #1
-    // lsl r2, r2, #0x10
-    // bl NNSi_G3dModifyPolygonAttrMask
-    // ldr r0, [r4, #0x14]
-    // ldr r1, [r4, #0xc]
-    // ldr r0, [r0, #0xc]
-    // bl NNS_G3dMdlSetMdlAlphaAll
-    // ldr r0, [r4, #0x18]
+    sub_02068DB8(*((u32*)(r1 + 8)));
+    NNSi_G3dModifyPolygonAttrMask(*((u32*)(*((u32*)(r4 + 0x14)) + 0xc)), 1, (0x1f << 0x10));
+    NNS_G3dMdlSetMdlAlphaAll(*((u32*)(*((u32*)(r4 + 0x14)) + 0xc)), *((u32*)(r4 + 0xc)));
     // add r1, sp, #0
-    // bl sub_020699BC
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_020699BC(*((u32*)(r4 + 0x18)));
 }
+
 

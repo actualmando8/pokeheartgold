@@ -58,6 +58,7 @@ void ov96_021E604C(void) {
 }
 
 
+
 void ov96_021E60C0(void) {
     // ldr r3, _021E60D4 ; =0x00000618
     // add r3, r0, r3
@@ -74,144 +75,61 @@ void ov96_021E60C0(void) {
 }
 
 
+
 void ov96_021E60D8(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // add r4, r2, #0
-    // cmp r5, #4
-    // blt _021E60E8
-    // bl GF_AssertFail
-    // cmp r4, #3
-    // blt _021E60F0
-    // bl GF_AssertFail
-    // mov r0, #0xfe
-    // lsl r0, r0, #2
+    GF_AssertFail();
+    GF_AssertFail();
     // add r1, r6, r0
-    // mov r0, #0x7c
     // mul r0, r5
     // add r1, r1, r0
-    // mov r0, #0x28
     // mul r0, r4
     // add r0, r1, r0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 u8 ov96_021E6104(void) {
-    return 0x50;
 }
+
 
 
 void ov96_021E6108(void) {
-    // push {r3, lr}
-    // cmp r0, #0
-    // bne _021E6112
-    // mov r0, #0
-    // pop {r3, pc}
-    // ldrb r0, [r0, #8]
-    // cmp r0, #1
-    // beq _021E6122
-    // cmp r0, #2
-    // beq _021E6126
-    // cmp r0, #3
-    // beq _021E612A
-    // b _021E612E
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #2
-    // pop {r3, pc}
-    // mov r0, #3
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(3);
 }
+
 
 
 void ov96_021E6138(void) {
-    // push {r3, lr}
-    // cmp r0, #0
-    // bne _021E6142
-    // mov r0, #0
-    // pop {r3, pc}
-    // ldrb r0, [r0, #6]
-    // cmp r0, #1
-    // beq _021E6152
-    // cmp r0, #2
-    // beq _021E6156
-    // cmp r0, #3
-    // beq _021E615A
-    // b _021E615E
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #2
-    // pop {r3, pc}
-    // mov r0, #3
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(3);
 }
+
 
 
 void ov96_021E6168(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r2, #0
-    // add r7, r0, #0
-    // add r6, r1, #0
-    // add r4, r3, #0
-    // cmp r5, #3
-    // blt _021E617A
-    // bl GF_AssertFail
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl PokeathlonCourse_GetParticipantUnk04
-    // mov r1, #0x28
-    // add r3, r5, #0
+    GF_AssertFail();
+    PokeathlonCourse_GetParticipantUnk04(r7, r6);
     // mul r3, r1
     // add r1, r0, r3
-    // ldrb r2, [r1, #0x10]
-    // strb r2, [r4, #6]
+    *((u8*)(r4 + 6)) = *((u8*)(0x28 + 0x10));
     // ldrh r0, [r0, r3]
     // strh r0, [r4]
-    // ldrh r0, [r1, #2]
-    // strh r0, [r4, #2]
-    // ldrb r0, [r1, #0x11]
-    // strb r0, [r4, #7]
-    // str r6, [r4, #8]
-    // ldr r0, [r1, #4]
-    // str r0, [r4, #0xc]
+    *((u16*)(r4 + 2)) = *((u16*)(0x28 + 2));
+    *((u8*)(r4 + 7)) = *((u8*)(0x28 + 0x11));
+    *((u32*)(r4 + 8)) = r6;
+    *((u32*)(r4 + 0xc)) = *((u32*)(0x28 + 4));
     // ldrh r0, [r4]
-    // cmp r0, #0
-    // bne _021E61AA
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)(0x28 + 4)), 0x28, *((u8*)(0x28 + 0x10)), r5);
     // ldrh r0, [r4]
-    // cmp r0, #0
-    // bne _021E61B4
-    // mov r0, #1
     // strh r0, [r4]
     // ldrh r0, [r4]
-    // bl SpeciesToOverworldModelIndexOffset
-    // add r2, r0, #0
+    SpeciesToOverworldModelIndexOffset(1);
     // add r0, sp, #0
-    // mov r1, #0x8d
-    // bl ReadWholeNarcMemberByIdPair
+    ReadWholeNarcMemberByIdPair(0x8d, r0);
     // add r0, sp, #0
-    // ldrb r0, [r0, #1]
-    // cmp r0, #0
-    // beq _021E61D2
-    // mov r0, #1
-    // strh r0, [r4, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // strh r0, [r4, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u16*)(r4 + 4)) = 1;
+    *((u16*)(r4 + 4)) = 0;
 }
+
 
 
 void ov96_021E61D8(void) {
@@ -301,10 +219,10 @@ void ov96_021E61D8(void) {
 }
 
 
+
 void ov96_021E6290(void) {
-    ov96_021EB5E8(r3);
-    ov96_021E61D8(r5, r4, r6, r0);
 }
+
 
 
 void ov96_021E62AC(void) {
@@ -387,30 +305,18 @@ void ov96_021E62AC(void) {
 }
 
 
+
 void ov96_021E634C(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r0, r3, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // bl ov96_021EB5E8
-    // add r3, r0, #0
+    ov96_021EB5E8(r3);
     // ldr r0, [sp, #0x20]
-    // add r1, r4, #0
     // str r0, [sp]
     // add r0, sp, #0x10
-    // ldrb r0, [r0, #0x14]
-    // add r2, r6, #0
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x28]
     // str r0, [sp, #8]
-    // add r0, r5, #0
-    // bl ov96_021E62AC
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E62AC(r5, r4, r6, r0);
 }
+
 
 
 void ov96_021E637C(void) {
@@ -507,6 +413,7 @@ void ov96_021E637C(void) {
 }
 
 
+
 void ov96_021E6454(void) {
     // push {r3, r4, r5, lr}
     // add r1, #0x1d
@@ -553,6 +460,7 @@ void ov96_021E6454(void) {
 }
 
 
+
 void ov96_021E64B8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r0, #0
@@ -585,6 +493,7 @@ void ov96_021E64B8(void) {
     // _021E64F4: .word 0x00000D38
     // TODO: decompile
 }
+
 
 
 void ov96_021E64F8(void) {
@@ -632,6 +541,7 @@ void ov96_021E64F8(void) {
 }
 
 
+
 void ov96_021E6550(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r4, #0
@@ -664,6 +574,7 @@ void ov96_021E6550(void) {
 }
 
 
+
 void ov96_021E658C(void) {
     // lsl r1, r1, #4
     // add r1, r0, r1
@@ -677,6 +588,7 @@ void ov96_021E658C(void) {
     // _021E65A0: .word Sprite_TryChangeAnimSeq
     // TODO: decompile
 }
+
 
 
 void ov96_021E65A4(void) {
@@ -704,6 +616,7 @@ void ov96_021E65A4(void) {
     // _021E65D4: .word 0x00000D3C
     // TODO: decompile
 }
+
 
 
 void ov96_021E65D8(void) {
@@ -739,6 +652,7 @@ void ov96_021E65D8(void) {
     // _021E6618: .word 0x0000071C
     // TODO: decompile
 }
+
 
 
 void ov96_021E661C(void) {
@@ -784,6 +698,7 @@ void ov96_021E661C(void) {
 }
 
 
+
 void ov96_021E6670(void) {
     // ldr r2, _021E6678 ; =0x00000718
     // str r1, [r0, r2]
@@ -792,6 +707,7 @@ void ov96_021E6670(void) {
     // _021E6678: .word 0x00000718
     // TODO: decompile
 }
+
 
 
 void ov96_021E667C(void) {
@@ -922,6 +838,7 @@ void ov96_021E667C(void) {
 }
 
 
+
 void ov96_021E679C(void) {
     // lsl r2, r0, #1
     // ldr r0, _021E67A8 ; =ov96_0221AAE8
@@ -934,21 +851,14 @@ void ov96_021E679C(void) {
 }
 
 
+
 void ov96_021E67AC(void) {
-    // push {r3, lr}
-    // mov r2, #0x7d
-    // lsl r2, r2, #2
     // ldr r1, [r0, r2]
-    // cmp r1, #0
-    // beq _021E67C2
     // sub r2, #0x14
     // ldr r2, [r0, r2]
-    // mov r1, #0
-    // ldr r2, [r2, #4]
     // blx r2
-    // pop {r3, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E67C4(void) {
@@ -990,50 +900,22 @@ void ov96_021E67C4(void) {
 }
 
 
+
 void ov96_021E6814(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0xa
-    // lsl r0, r0, #6
     // ldr r0, [r4, r0]
-    // bl OverlayManager_Run
-    // cmp r0, #0
-    // beq _021E686C
-    // mov r0, #0xa
-    // lsl r0, r0, #6
+    OverlayManager_Run((0xa << 6));
     // ldr r0, [r4, r0]
-    // bl OverlayManager_Delete
-    // mov r1, #0x7e
-    // lsl r1, r1, #2
+    OverlayManager_Delete((0xa << 6));
     // ldr r0, [r4, r1]
-    // ldr r2, [r0, #4]
-    // cmp r2, #0
-    // bne _021E6860
-    // add r1, r1, #4
     // ldr r1, [r4, r1]
-    // cmp r1, #0
-    // beq _021E6852
-    // mov r1, #1
-    // strb r1, [r0, #0xe]
-    // add r0, r4, #0
-    // mov r1, #0x25
-    // bl PokeathlonCourse_SetStateField07
-    // b _021E686C
-    // mov r1, #0
-    // strb r1, [r0, #0xe]
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl PokeathlonCourse_SetStateField07
-    // b _021E686C
-    // mov r1, #0
-    // strb r1, [r0, #0xe]
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u8*)(r0 + 0xe)) = 1;
+    PokeathlonCourse_SetStateField07(r4, 0x25, *((u32*)(r0 + 4)));
+    *((u8*)(r0 + 0xe)) = 0;
+    PokeathlonCourse_SetStateField07(r4, 3);
+    *((u8*)(r0 + 0xe)) = 0;
+    PokeathlonCourse_SetStateField07(r4, 2);
 }
+
 
 
 void ov96_021E6870(void) {
@@ -1148,57 +1030,27 @@ void ov96_021E6870(void) {
 }
 
 
+
 void ov96_021E695C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #2
-    // mov r1, #0
-    // lsl r0, r0, #8
     // str r1, [r4, r0]
-    // bl ov96_021E99F8
-    // mov r3, #2
-    // lsl r3, r3, #8
+    ov96_021E99F8((2 << 8), 0);
     // add r1, r4, r3
     // add r3, #0x88
-    // add r2, r0, #0
     // ldr r3, [r4, r3]
-    // mov r0, #0x17
-    // bl ov96_021E87EC
-    // cmp r0, #0
-    // beq _021E698A
-    // add r0, r4, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021E87EC(0x17, r0, (2 << 8));
+    PokeathlonCourse_SetStateField07(r4, 0x26);
 }
+
 
 
 void ov96_021E6990(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // mov r1, #0
-    // bl PokeathlonCourse_GetParticipantData
-    // add r4, r0, #0
-    // bl ov96_021E99FC
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetSystem
-    // add r3, r0, #0
-    // mov r0, #0x18
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov96_021E87EC
-    // cmp r0, #0
-    // beq _021E69C0
-    // add r0, r5, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetParticipantData(0);
+    ov96_021E99FC();
+    PokeathlonCourse_GetSystem(r5);
+    ov96_021E87EC(0x18, r4, r6, r0);
+    PokeathlonCourse_SetStateField07(r5, 0x26);
 }
+
 
 
 void ov96_021E69C4(void) {
@@ -1231,45 +1083,22 @@ void ov96_021E69C4(void) {
 }
 
 
+
 void ov96_021E6A00(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // mov r0, #0x7e
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // ldr r0, [r0]
-    // bl Save_Pokeathlon_Get
-    // bl PokeathlonSave_GetAgainUnkB00
-    // add r5, r0, #0
-    // mov r0, #9
-    // lsl r0, r0, #8
+    Save_Pokeathlon_Get(*((u32*)(0x7e << 2)));
+    PokeathlonSave_GetAgainUnkB00();
     // add r3, r4, r0
-    // mov r2, #0xe
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // sub r2, r2, #1
-    // bne _021E6A1E
-    // ldr r0, [r5]
     // str r0, [r3]
-    // bl ov96_021E9A10
-    // mov r3, #0xa2
-    // mov r1, #9
-    // lsl r3, r3, #2
-    // lsl r1, r1, #8
-    // add r2, r0, #0
+    ov96_021E9A10(*((u32*)r0), (0xe - 1));
     // ldr r3, [r4, r3]
-    // mov r0, #0x1a
     // add r1, r4, r1
-    // bl ov96_021E87EC
-    // cmp r0, #0
-    // beq _021E6A4E
-    // add r0, r4, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_021E87EC(0x1a, (9 << 8), r0, (0xa2 << 2));
+    PokeathlonCourse_SetStateField07(r4, 0x26);
 }
+
 
 
 void ov96_021E6A54(void) {
@@ -1301,6 +1130,7 @@ void ov96_021E6A54(void) {
     // _021E6A90: .word ov96_0221DA50
     // TODO: decompile
 }
+
 
 
 void ov96_021E6A94(void) {
@@ -1339,6 +1169,7 @@ void ov96_021E6A94(void) {
     // _021E6AE4: .word 0x0000046F
     // TODO: decompile
 }
+
 
 
 void ov96_021E6AE8(void) {
@@ -1443,28 +1274,15 @@ void ov96_021E6AE8(void) {
 }
 
 
+
 void ov96_021E6BC0(void) {
-    // push {r4, lr}
-    // mov r2, #0x1e
-    // add r4, r0, #0
-    // lsl r2, r2, #4
     // ldr r2, [r4, r2]
-    // mov r1, #0
-    // ldr r2, [r2, #0xc]
     // blx r2
-    // mov r0, #0x79
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // beq _021E6BDE
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #0xb
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail((0x79 << 2), 0, *((u32*)((0x1e << 4) + 0xc)));
+    PokeathlonCourse_SetStateField07(r4, 0xb);
 }
+
 
 
 void ov96_021E6BEC(void) {
@@ -1494,22 +1312,13 @@ void ov96_021E6BEC(void) {
 }
 
 
+
 void ov96_021E6C20(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl PokeathlonCourse_RunSubStateLoop
-    // cmp r0, #0
-    // beq _021E6C3C
-    // add r0, r4, #0
-    // mov r1, #7
-    // bl PokeathlonCourse_SetStateTransitionType
-    // add r0, r4, #0
-    // mov r1, #0xd
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    PokeathlonCourse_RunSubStateLoop();
+    PokeathlonCourse_SetStateTransitionType(r4, 7);
+    PokeathlonCourse_SetStateField07(r4, 0xd);
 }
+
 
 
 void ov96_021E6C40(void) {
@@ -1573,28 +1382,15 @@ void ov96_021E6C40(void) {
 }
 
 
+
 void ov96_021E6CB8(void) {
-    // push {r4, lr}
-    // mov r2, #0x1e
-    // add r4, r0, #0
-    // lsl r2, r2, #4
     // ldr r2, [r4, r2]
-    // mov r1, #0
-    // ldr r2, [r2, #0xc]
     // blx r2
-    // mov r0, #0x79
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // beq _021E6CD6
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #0xf
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail((0x79 << 2), 0, *((u32*)((0x1e << 4) + 0xc)));
+    PokeathlonCourse_SetStateField07(r4, 0xf);
 }
+
 
 
 void ov96_021E6CE4(void) {
@@ -1648,6 +1444,7 @@ void ov96_021E6CE4(void) {
     // _021E6D50: .word _0221DA00
     // TODO: decompile
 }
+
 
 
 void ov96_021E6D54(void) {
@@ -1713,43 +1510,20 @@ void ov96_021E6D54(void) {
 }
 
 
+
 void ov96_021E6DE8(void) {
-    // push {r4, lr}
-    // mov r1, #0x3b
-    // add r4, r0, #0
-    // lsl r1, r1, #4
     // ldr r1, [r4, r1]
-    // cmp r1, #0
-    // beq _021E6E2C
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021E6E22
-    // mov r2, #0xe9
-    // lsl r2, r2, #2
-    // mov r3, #0xa2
+    ov96_021E5F24((0x3b << 4));
     // ldr r1, [r4, r2]
     // add r2, #8
-    // lsl r3, r3, #2
     // ldr r2, [r4, r2]
     // ldr r3, [r4, r3]
-    // mov r0, #0x1c
-    // bl ov96_021E87EC
-    // cmp r0, #0
-    // beq _021E6E32
-    // add r0, r4, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // b _021E6E32
-    // add r0, r4, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // b _021E6E32
-    // mov r1, #0x12
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021E87EC(0x1c, (0xe9 << 2), (0xa2 << 2));
+    PokeathlonCourse_SetStateField07(r4, 0x26);
+    PokeathlonCourse_SetStateField07(r4, 0x26);
+    PokeathlonCourse_SetStateField07(0x12);
 }
+
 
 
 void ov96_021E6E38(void) {
@@ -1857,175 +1631,78 @@ void ov96_021E6E38(void) {
 }
 
 
+
 u32 ov96_021E6F18(void) {
-    PokeathlonCourse_ResetDataCopyArea();
-    PokeathlonCourse_SetStateField07(r4, 0x14);
-    return 0;
 }
+
 
 
 void ov96_021E6F2C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // mov r1, #0x1e
-    // add r7, r0, #0
-    // lsl r1, r1, #4
     // ldr r2, [r7, r1]
-    // ldr r2, [r2, #0x10]
-    // cmp r2, #0
-    // beq _021E6FD0
     // add r1, #0xac
     // add r0, r7, r1
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl ov96_021E5F24
-    // lsl r0, r0, #2
+    ov96_021E8A20((0x1e << 4), *((u32*)(r2 + 0x10)));
+    ov96_021E5F24(r7);
     // add r2, r7, r0
-    // mov r0, #0x5e
-    // lsl r0, r0, #4
     // ldrh r1, [r2, r0]
-    // add r0, r0, #2
     // strh r1, [r4]
     // ldrh r0, [r2, r0]
-    // strh r0, [r4, #2]
-    // bl ov96_021E9A14
-    // mov r3, #0xa3
-    // lsl r3, r3, #2
+    *((u16*)(r4 + 2)) = ((0x5e << 4) + 2);
+    ov96_021E9A14(((0x5e << 4) + 2));
     // add r1, r7, r3
-    // sub r3, r3, #4
-    // add r2, r0, #0
     // ldr r3, [r7, r3]
-    // mov r0, #0x1d
-    // bl ov96_021E87B4
+    ov96_021E87B4(0x1d, r0, ((0xa3 << 2) - 4));
     // str r0, [sp, #4]
-    // cmp r0, #0
-    // beq _021E6FE6
-    // add r0, r7, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021E6FE6
-    // add r0, r7, #0
-    // bl PokeathlonCourse_GetUnkConstant4
-    // add r6, r0, #0
-    // add r0, r7, #0
-    // bl PokeathlonCourse_GetParticipantCount
+    ov96_021E5F24(r7);
+    PokeathlonCourse_GetUnkConstant4(r7);
+    PokeathlonCourse_GetParticipantCount(r7);
     // str r0, [sp]
-    // cmp r0, #4
-    // bge _021E6FE6
-    // mov r0, #0x5e
-    // lsl r0, r0, #4
     // add r1, r7, r0
     // ldr r0, [sp]
-    // lsl r0, r0, #2
     // add r4, r1, r0
     // ldr r0, [sp]
-    // add r5, r0, #0
     // mul r5, r6
-    // mov r0, #0xad
-    // lsl r0, r0, #2
     // add r0, r7, r0
-    // bl ov96_021E8A20
+    ov96_021E8A20((0xad << 2));
     // add r0, r0, r5
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl memcpy
+    memcpy(r4, r6);
     // ldr r0, [sp]
-    // add r4, r4, #4
-    // add r0, r0, #1
     // add r5, r5, r6
     // str r0, [sp]
-    // cmp r0, #4
-    // blt _021E6FAC
-    // b _021E6FE6
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021E6FE2
-    // add r0, r7, #0
-    // bl ov96_021E75E4
+    ov96_021E5F24((r0 + 1));
+    ov96_021E75E4(r7);
     // str r0, [sp, #4]
-    // b _021E6FE6
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // beq _021E6FF4
-    // add r0, r7, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    PokeathlonCourse_SetStateField07(r7, 0x26);
 }
+
 
 
 void ov96_021E6FFC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r4, r0, #0
-    // bl ov96_021E9A14
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetSystem
+    PokeathlonCourse_GetDataCopyArea();
+    ov96_021E9A14();
+    PokeathlonCourse_GetSystem(r5);
     // add r4, #0x28
-    // add r3, r0, #0
-    // mov r0, #0x1e
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov96_021E87B4
-    // cmp r0, #0
-    // beq _021E702C
-    // add r0, r5, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E87B4(0x1e, r4, r6, r0);
+    PokeathlonCourse_SetStateField07(r5, 0x26);
 }
+
 
 
 void ov96_021E7030(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0xdf
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // bl ov96_021E8A20
-    // mov r1, #0x5f
-    // lsl r1, r1, #4
+    ov96_021E8A20((0xdf << 2));
     // add r3, r4, r1
-    // mov r2, #0x12
     // ldrh r1, [r0]
-    // add r0, r0, #2
     // strh r1, [r3]
-    // add r3, r3, #2
-    // sub r2, r2, #1
-    // bne _021E7046
-    // mov r0, #0x1e
-    // lsl r0, r0, #4
     // ldr r0, [r4, r0]
-    // ldr r2, [r0, #8]
-    // cmp r2, #0
-    // beq _021E7064
-    // add r0, r4, #0
-    // mov r1, #0
     // blx r2
-    // mov r1, #0x1f
-    // lsl r1, r1, #4
     // ldr r1, [r4, r1]
-    // add r0, r4, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_021E7658
-    // add r0, r4, #0
-    // mov r1, #0x17
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021E7658(r4, (((0x1f << 4) << 0x18) >> 0x18), *((u32*)((0x1e << 4) + 8)), (r3 + 2));
+    PokeathlonCourse_SetStateField07(r4, 0x17);
 }
+
 
 
 void ov96_021E7080(void) {
@@ -2082,6 +1759,7 @@ void ov96_021E7080(void) {
 }
 
 
+
 void ov96_021E70F0(void) {
     // push {r3, lr}
     // mov r1, #0x1f
@@ -2104,6 +1782,7 @@ void ov96_021E70F0(void) {
     // _021E7118: .word 0x0000072A
     // TODO: decompile
 }
+
 
 
 void ov96_021E711C(void) {
@@ -2133,35 +1812,20 @@ void ov96_021E711C(void) {
 }
 
 
+
 void ov96_021E7150(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl PokeathlonCourse_RunSubStateLoop
-    // cmp r0, #0
-    // beq _021E718C
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r1, r0, #0
-    // mov r2, #0
+    PokeathlonCourse_RunSubStateLoop();
+    PokeathlonCourse_GetDataCopyArea(r4);
     // add r1, #0x24
     // strb r2, [r1]
-    // mov r1, #1
     // add r0, #0x4c
     // strb r1, [r0]
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetSystem
-    // mov r1, #1
-    // bl ov96_021E87B0
-    // add r0, r4, #0
-    // mov r1, #0xb
-    // bl PokeathlonCourse_SetStateTransitionType
-    // add r0, r4, #0
-    // mov r1, #0x1b
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetSystem(r4, 1, 0);
+    ov96_021E87B0(1);
+    PokeathlonCourse_SetStateTransitionType(r4, 0xb);
+    PokeathlonCourse_SetStateField07(r4, 0x1b);
 }
+
 
 
 void ov96_021E7190(void) {
@@ -2266,28 +1930,15 @@ void ov96_021E7190(void) {
 }
 
 
+
 void ov96_021E7268(void) {
-    // push {r4, lr}
-    // mov r2, #0x1e
-    // add r4, r0, #0
-    // lsl r2, r2, #4
     // ldr r2, [r4, r2]
-    // mov r1, #0
-    // ldr r2, [r2, #0xc]
     // blx r2
-    // mov r0, #0x79
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // beq _021E7286
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #0x18
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail((0x79 << 2), 0, *((u32*)((0x1e << 4) + 0xc)));
+    PokeathlonCourse_SetStateField07(r4, 0x18);
 }
+
 
 
 void ov96_021E7294(void) {
@@ -2316,6 +1967,7 @@ void ov96_021E7294(void) {
     // _021E72C8: .word ov96_0221DA5C
     // TODO: decompile
 }
+
 
 
 void ov96_021E72CC(void) {
@@ -2354,6 +2006,7 @@ void ov96_021E72CC(void) {
     // _021E731C: .word 0x00000474
     // TODO: decompile
 }
+
 
 
 void ov96_021E7320(void) {
@@ -2458,6 +2111,7 @@ void ov96_021E7320(void) {
 }
 
 
+
 void ov96_021E73F8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r2, #0x1e
@@ -2539,6 +2193,7 @@ void ov96_021E73F8(void) {
 }
 
 
+
 void ov96_021E74AC(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2565,30 +2220,15 @@ void ov96_021E74AC(void) {
 }
 
 
+
 void ov96_021E74E0(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // mov r1, #0
-    // bl PokeathlonCourse_GetFieldData_AtIndex
-    // add r4, r0, #0
-    // bl ov96_021E9A1C
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetSystem
-    // add r3, r0, #0
-    // mov r0, #0x20
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov96_021E87EC
-    // cmp r0, #0
-    // beq _021E7510
-    // add r0, r5, #0
-    // mov r1, #0x26
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetFieldData_AtIndex(0);
+    ov96_021E9A1C();
+    PokeathlonCourse_GetSystem(r5);
+    ov96_021E87EC(0x20, r4, r6, r0);
+    PokeathlonCourse_SetStateField07(r5, 0x26);
 }
+
 
 
 void ov96_021E7514(void) {
@@ -2614,6 +2254,7 @@ void ov96_021E7514(void) {
     // _021E7540: .word 0x00000D64
     // TODO: decompile
 }
+
 
 
 void ov96_021E7544(void) {
@@ -2651,31 +2292,19 @@ void ov96_021E7544(void) {
 }
 
 
+
 void ov96_021E7590(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x5c
-    // bl GF_heap_c_dummy_return_true
-    // cmp r0, #0
-    // bne _021E75A2
-    // bl GF_AssertFail
-    // mov r0, #0x7e
-    // lsl r0, r0, #2
+    GF_heap_c_dummy_return_true(0x5c);
+    GF_AssertFail();
     // ldr r0, [r4, r0]
-    // ldrb r0, [r0, #0xe]
-    // cmp r0, #0
-    // bne _021E75B4
-    // add r0, r4, #0
-    // bl ov96_021E7718
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021E7718(r4);
 }
+
 
 
 u8 ov96_021E75B8(void) {
-    return 0;
 }
+
 
 
 void ov96_021E75BC(void) {
@@ -2698,58 +2327,31 @@ void ov96_021E75BC(void) {
 }
 
 
+
 void ov96_021E75E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r7, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // str r0, [sp]
-    // add r0, r7, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // beq _021E7604
-    // bl GF_AssertFail
-    // add sp, #8
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x5e
-    // lsl r0, r0, #4
+    ov96_021E5F24(r7);
+    GF_AssertFail();
     // add r5, r7, r0
     // ldr r0, [sp]
-    // mov r4, #0
     // str r0, [sp, #4]
     // add r0, #0x28
     // str r0, [sp, #4]
-    // add r0, r7, #0
-    // bl PokeathlonCourse_GetUnkConstant4
-    // add r6, r0, #0
+    PokeathlonCourse_GetUnkConstant4(r7);
     // ldr r0, [sp, #4]
-    // bl ov96_021E8A20
-    // add r1, r4, #0
+    ov96_021E8A20();
     // mul r1, r6
     // add r0, r0, r1
-    // add r1, r5, #0
-    // add r2, r6, #0
-    // bl memcpy
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _021E7614
-    // bl ov96_021E9A14
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl PokeathlonCourse_GetSystem
+    memcpy(r5, r6);
+    ov96_021E9A14();
+    PokeathlonCourse_GetSystem(r7);
     // ldr r1, [sp]
-    // add r3, r0, #0
     // add r1, #0x28
-    // mov r0, #0x1e
-    // add r2, r4, #0
     // str r1, [sp]
-    // bl ov96_021E87B4
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E87B4(0x1e, r4, r0);
 }
+
 
 
 void ov96_021E7658(void) {
@@ -2842,6 +2444,7 @@ void ov96_021E7658(void) {
     // _021E7714: .word 0x000008F8
     // TODO: decompile
 }
+
 
 
 void ov96_021E7718(void) {
@@ -2992,6 +2595,7 @@ void ov96_021E7718(void) {
 }
 
 
+
 void ov96_021E786C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r2, #0x7e
@@ -3087,6 +2691,7 @@ void ov96_021E786C(void) {
     // _021E7934: .word 0xFFFF3FFF
     // TODO: decompile
 }
+
 
 
 void ov96_021E7938(void) {
@@ -3207,6 +2812,7 @@ void ov96_021E7938(void) {
     // _021E7A28: .word 0x000008D4
     // TODO: decompile
 }
+
 
 
 void ov96_021E7A2C(void) {
@@ -3394,6 +3000,7 @@ void ov96_021E7A2C(void) {
 }
 
 
+
 void ov96_021E7BA8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -3441,23 +3048,14 @@ void ov96_021E7BA8(void) {
 }
 
 
+
 void ov96_021E7C04(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r6, r2, #0
-    // add r7, r0, #0
-    // add r0, r6, #0
-    // add r4, r1, #0
     // add r0, #0x80
     // ldrh r0, [r0]
     // ldrh r1, [r4]
-    // add r2, r7, #0
-    // bl ov96_021E7D18
-    // cmp r0, #0
-    // beq _021E7C90
+    ov96_021E7D18(r2, r0);
     // add r6, #0x80
     // ldmia r4!, {r0, r1}
-    // add r5, r6, #0
     // stmia r6!, {r0, r1}
     // ldmia r4!, {r0, r1}
     // stmia r6!, {r0, r1}
@@ -3465,19 +3063,12 @@ void ov96_021E7C04(void) {
     // stmia r6!, {r0, r1}
     // ldmia r4!, {r0, r1}
     // stmia r6!, {r0, r1}
-    // mov r4, #4
-    // add r0, r5, #0
     // sub r0, #0x20
     // ldrh r0, [r0]
     // ldrh r1, [r5]
-    // add r2, r7, #0
-    // bl ov96_021E7D18
-    // cmp r0, #0
-    // beq _021E7C90
-    // add r3, r5, #0
+    ov96_021E7D18(r6, r7);
     // sub r3, #0x20
     // add r2, sp, #0
-    // add r6, r2, #0
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
@@ -3486,8 +3077,6 @@ void ov96_021E7C04(void) {
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // add r2, r5, #0
-    // add r3, r5, #0
     // sub r2, #0x20
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
@@ -3497,7 +3086,6 @@ void ov96_021E7C04(void) {
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // add r2, r5, #0
     // ldmia r6!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r6!, {r0, r1}
@@ -3505,93 +3093,41 @@ void ov96_021E7C04(void) {
     // ldmia r6!, {r0, r1}
     // stmia r2!, {r0, r1}
     // ldmia r6!, {r0, r1}
-    // sub r4, r4, #1
     // sub r5, #0x20
     // stmia r2!, {r0, r1}
-    // cmp r4, #0
-    // bgt _021E7C36
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E7C94(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // add r4, r2, #0
-    // bl ov96_021E5F24
-    // mov r2, #0
-    // add r1, r2, #0
+    ov96_021E5F24();
     // ldrh r0, [r4]
-    // add r3, r1, #0
-    // add r6, r4, #0
     // strh r0, [r5]
-    // add r7, r5, #0
-    // ldrh r0, [r6, #2]
-    // add r3, r3, #1
-    // add r6, r6, #2
-    // strh r0, [r7, #2]
-    // add r7, r7, #2
-    // cmp r3, #3
-    // blt _021E7CAC
-    // add r2, r2, #1
+    *((u16*)(r5 + 2)) = *((u16*)(r4 + 2));
     // add r4, #0x20
     // add r5, #8
-    // cmp r2, #5
-    // blt _021E7CA2
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021E7CC8(void) {
-    // push {r4, r5, r6, r7}
-    // mov r0, #0
-    // add r3, r1, #0
     // ldrh r4, [r2]
-    // mov r5, #0
-    // add r6, r2, #0
     // strh r4, [r1]
-    // add r7, r1, #0
-    // ldrh r4, [r6, #2]
-    // add r5, r5, #1
-    // add r6, r6, #2
-    // strh r4, [r7, #2]
-    // add r7, r7, #2
-    // cmp r5, #3
-    // blt _021E7CD8
-    // ldr r4, [r2, #8]
-    // mov r5, #0
-    // str r4, [r3, #0x2c]
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // ldrh r4, [r6, #0xc]
-    // add r5, r5, #1
-    // add r6, r6, #2
-    // strh r4, [r7, #0x30]
-    // add r7, r7, #2
-    // cmp r5, #8
-    // blt _021E7CF0
-    // ldrb r5, [r2, #0x1c]
-    // add r4, r3, #0
+    *((u16*)(r1 + 2)) = *((u16*)(r2 + 2));
+    *((u32*)(r1 + 0x2c)) = *((u32*)(r2 + 8));
+    *((u16*)(r1 + 0x30)) = *((u16*)(r2 + 0xc));
     // add r4, #0x40
-    // add r0, r0, #1
     // strb r5, [r4]
     // add r2, #0x20
     // add r1, #8
     // add r3, #0x18
-    // cmp r0, #5
-    // blt _021E7CCE
-    // pop {r4, r5, r6, r7}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021E7D18(void) {
-    ov96_021E7D30(1);
 }
+
 
 
 void ov96_021E7D30(void) {
@@ -3625,6 +3161,7 @@ void ov96_021E7D30(void) {
     // _021E7D68: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void ov96_021E7D6C(void) {
@@ -3846,195 +3383,82 @@ void ov96_021E7D6C(void) {
 }
 
 
+
 void ov96_021E7F48(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // mov r0, #0x7e
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // ldr r0, [r0]
-    // bl Save_Pokeathlon_FriendshipRecords_Get
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r2, r0, #0x18
-    // mov r0, #0x3f
-    // lsl r0, r0, #4
+    Save_Pokeathlon_FriendshipRecords_Get(*((u32*)(0x7e << 2)));
+    ov96_021E5F24(r5);
     // add r1, r5, r0
-    // mov r0, #0x7c
     // mul r0, r2
     // add r3, r1, r0
-    // mov r2, #0
-    // mov r5, #0x28
-    // add r6, r2, #0
     // mul r6, r5
     // add r1, r3, r6
     // ldrh r6, [r3, r6]
-    // lsl r7, r2, #2
     // add r0, r4, r7
     // strh r6, [r4, r7]
-    // ldrh r6, [r1, #2]
-    // strb r6, [r0, #3]
-    // ldrb r1, [r1, #0x11]
-    // strb r1, [r0, #2]
-    // add r0, r2, #1
-    // lsl r0, r0, #0x18
-    // lsr r2, r0, #0x18
-    // cmp r2, #3
-    // blo _021E7F74
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u8*)(0x7c + 3)) = *((u16*)(r1 + 2));
+    *((u8*)(0x7c + 2)) = *((u8*)(r1 + 0x11));
 }
+
 
 
 void ov96_021E7F98(void) {
-    // ldr r3, [r2]
     // add r0, r3, r0
-    // cmp r0, r1
-    // bls _021E7FA4
     // str r1, [r2]
-    // bx lr
     // str r0, [r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021E7FA8(void) {
-    // push {r3, lr}
-    // mov r1, #0x7e
-    // lsl r1, r1, #2
     // ldr r1, [r0, r1]
-    // ldrb r1, [r1, #0xc]
-    // cmp r1, #9
-    // bhi _021E8024
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _021E7FC2: ; jump table
-    // mov r1, #1
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #2
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #4
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #8
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #0x10
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #0x11
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #0x14
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #6
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #0xa
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // mov r1, #9
-    // bl ov96_021E8028
-    // pop {r3, pc}
-    // TODO: decompile
+    ov96_021E8028(1);
+    ov96_021E8028(2);
+    ov96_021E8028(4);
+    ov96_021E8028(8);
+    ov96_021E8028(0x10);
+    ov96_021E8028(0x11);
+    ov96_021E8028(0x14);
+    ov96_021E8028(6);
+    ov96_021E8028(0xa);
+    ov96_021E8028(9);
 }
+
 
 
 void ov96_021E8028(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // mov r0, #0x7e
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // add r6, r1, #0
-    // ldr r0, [r0]
-    // bl Save_Pokeathlon_Get
-    // add r7, r0, #0
-    // mov r4, #0
-    // mov r2, #0x28
+    Save_Pokeathlon_Get(*((u32*)(0x7e << 2)));
     // mul r2, r4
     // add r3, r5, r2
-    // mov r2, #0x81
-    // lsl r2, r2, #2
     // ldrh r2, [r3, r2]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl PokeathlonSave_SetUnkDC_AtIndex
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _021E803E
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    PokeathlonSave_SetUnkDC_AtIndex(r0, r6, (0x81 << 2));
 }
+
 
 
 void ov96_021E8060(void) {
-    // mov r3, #0
-    // mov r2, #0x2c
-    // add r1, r3, #0
     // mul r1, r2
     // add r1, r0, r1
-    // ldrh r1, [r1, #6]
-    // cmp r1, #0
-    // bne _021E8074
-    // mov r0, #0
-    // bx lr
-    // add r1, r3, #1
-    // lsl r1, r1, #0x18
-    // lsr r3, r1, #0x18
-    // cmp r3, #5
-    // blo _021E8064
-    // mov r0, #1
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021E8084(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // mov r0, #0x7e
-    // lsl r0, r0, #2
     // ldr r0, [r6, r0]
-    // ldr r0, [r0]
-    // bl Save_Pokeathlon_Get
-    // add r7, r0, #0
-    // mov r4, #0
-    // mov r0, #0x28
+    Save_Pokeathlon_Get(*((u32*)(0x7e << 2)));
     // mul r0, r4
     // add r1, r6, r0
-    // mov r0, #0x81
-    // lsl r0, r0, #2
     // ldrh r0, [r1, r0]
-    // sub r5, r0, #1
-    // add r0, r7, #0
-    // bl PokeathlonSave_GetUnkDC
+    PokeathlonSave_GetUnkDC(r0);
     // ldrb r0, [r0, r5]
-    // cmp r0, #0x1f
-    // bne _021E80B6
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _021E8098
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E80C4(void) {
@@ -4078,6 +3502,7 @@ void ov96_021E80C4(void) {
     // _021E8118: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void ov96_021E811C(void) {
@@ -4159,43 +3584,24 @@ void ov96_021E811C(void) {
 }
 
 
+
 void ov96_021E81D8(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x14
-    // add r4, r1, #0
-    // ldr r0, [r4, #4]
     // add r1, sp, #4
     // add r2, sp, #0
-    // bl ov96_021EAEC8
-    // ldr r0, [r4, #8]
-    // mov r1, #1
-    // bl Sprite_SetDrawFlag
-    // mov r0, #0
+    ov96_021EAEC8(*((u32*)(r1 + 4)));
+    Sprite_SetDrawFlag(*((u32*)(r4 + 8)), 1);
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #4]
     // add r1, sp, #8
-    // lsl r0, r0, #0xc
     // str r0, [sp, #8]
     // ldr r0, [sp]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #8]
-    // bl Sprite_SetMatrix
-    // ldr r0, [r4, #4]
-    // bl ov96_021EB120
-    // cmp r0, #0
-    // ldr r0, [r4, #8]
-    // beq _021E821E
-    // mov r1, #1
-    // bl Sprite_SetDrawFlag
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    Sprite_SetMatrix(*((u32*)(r4 + 8)));
+    ov96_021EB120(*((u32*)(r4 + 4)));
+    Sprite_SetDrawFlag(*((u32*)(r4 + 8)), 1);
+    Sprite_SetDrawFlag(0);
 }
+
 
 
 void ov96_021E8228(void) {
@@ -4304,6 +3710,7 @@ void ov96_021E8228(void) {
 }
 
 
+
 void ov96_021E8318(void) {
     // ldr r2, _021E8320 ; =0x00000D2A
     // strh r1, [r0, r2]
@@ -4314,9 +3721,10 @@ void ov96_021E8318(void) {
 }
 
 
+
 void ov96_021E8324(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_021E8340(void) {
@@ -4358,6 +3766,7 @@ void ov96_021E8340(void) {
     // _021E8398: .word 0x0000270F
     // TODO: decompile
 }
+
 
 
 void ov96_021E839C(void) {
@@ -4425,39 +3834,22 @@ void ov96_021E839C(void) {
 }
 
 
+
 void ov96_021E8424(void) {
-    GF_AssertFail(0);
 }
+
 
 
 void ov96_021E8448(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r1, #0
-    // beq _021E847A
-    // cmp r5, #0x64
-    // bhi _021E847A
-    // bl PokeathlonCourse_GetHeapID
-    // add r1, r0, #0
-    // mov r0, #0x41
-    // lsl r0, r0, #2
-    // bl NARC_New
-    // add r4, r0, #0
-    // sub r1, r5, #1
+    PokeathlonCourse_GetHeapID();
+    NARC_New((0x41 << 2), r0);
     // add r2, sp, #0
-    // bl NARC_ReadWholeMember
-    // add r0, r4, #0
-    // bl NARC_Delete
+    NARC_ReadWholeMember((r5 - 1));
+    NARC_Delete(r4);
     // add r0, sp, #0
-    // add sp, #8
-    // ldrb r0, [r0, #7]
-    // pop {r3, r4, r5, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u8*)(r0 + 7)));
 }
+
 
 
 void ov96_021E8484(void) {
@@ -4634,124 +4026,48 @@ void ov96_021E8484(void) {
 }
 
 
+
 void ov96_021E860C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x28
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // mov r1, #0
     // str r2, [sp]
-    // add r4, r3, #0
-    // add r2, r1, #0
     // strb r2, [r4, r1]
-    // add r1, r1, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // cmp r1, #3
-    // blo _021E861C
-    // cmp r0, #0xa
-    // bne _021E8678
     // add r1, sp, #0xc
-    // mov r7, #0x19
     // add r1, #1
-    // add r0, r2, #1
-    // lsl r0, r0, #0x18
     // strb r2, [r1, r2]
-    // lsr r2, r0, #0x18
-    // cmp r2, #0x19
-    // blo _021E8632
-    // mov r6, #0
-    // cmp r5, #0
-    // bls _021E86C4
-    // bl LCRandom
-    // add r1, r7, #0
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
+    LCRandom(((0 + 1) << 0x18), (((0 + 1) << 0x18) >> 0x18), (((0 + 1) << 0x18) >> 0x18));
+    _s32_div_f(r7);
     // add r1, sp, #0xc
-    // lsr r0, r0, #0x18
     // add r1, #1
     // ldrb r1, [r1, r0]
     // strb r1, [r4, r6]
     // add r1, #0x19
     // strb r1, [r4, r6]
-    // sub r1, r7, #1
-    // lsl r1, r1, #0x18
-    // lsr r7, r1, #0x18
     // add r1, sp, #0xc
     // add r1, #1
     // ldrb r2, [r1, r7]
     // strb r2, [r1, r0]
-    // add r0, r6, #1
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // cmp r6, r5
-    // blo _021E8644
-    // b _021E86C4
-    // mov r7, #5
     // add r1, sp, #8
     // strb r2, [r1, r2]
-    // add r2, r2, #1
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x18
-    // cmp r2, #5
-    // blo _021E867C
-    // mov r6, #0
-    // cmp r5, #0
-    // bls _021E86C4
-    // lsl r1, r0, #2
     // add r0, r0, r1
     // str r0, [sp, #4]
-    // bl LCRandom
-    // add r1, r7, #0
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x18
+    LCRandom(((r6 + 1) << 0x18), (((r6 + 1) << 0x18) << 2), (((r2 + 1) << 0x18) >> 0x18));
+    _s32_div_f(r7);
     // add r1, sp, #8
     // ldrb r2, [r1, r0]
     // ldr r1, [sp, #4]
     // strb r2, [r4, r6]
     // add r1, r2, r1
     // strb r1, [r4, r6]
-    // sub r1, r7, #1
-    // lsl r1, r1, #0x18
-    // lsr r7, r1, #0x18
     // add r1, sp, #8
     // ldrb r2, [r1, r7]
     // strb r2, [r1, r0]
-    // add r0, r6, #1
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // cmp r6, r5
-    // blo _021E8694
     // ldr r0, [sp]
-    // cmp r0, #0
-    // beq _021E86E0
-    // mov r1, #0
-    // cmp r5, #0
-    // bls _021E86E0
     // ldrb r0, [r4, r1]
     // add r0, #0x32
     // strb r0, [r4, r1]
-    // add r0, r1, #1
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // cmp r1, r5
-    // blo _021E86D0
-    // mov r1, #0
-    // cmp r5, #0
-    // bls _021E86F6
     // ldrb r0, [r4, r1]
-    // add r0, r0, #1
     // strb r0, [r4, r1]
-    // add r0, r1, #1
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // cmp r1, r5
-    // blo _021E86E6
-    // add sp, #0x28
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E86FC(void) {
@@ -4779,149 +4095,77 @@ void ov96_021E86FC(void) {
 }
 
 
+
 void ov96_021E872C(void) {
-    // push {lr}
-    // sub sp, #0x24
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0x18]
-    // lsl r0, r1, #0xc
-    // mov r1, #0
     // str r0, [sp, #0x1c]
-    // lsl r0, r2, #0xc
     // str r0, [sp, #0xc]
-    // lsl r0, r3, #0xc
     // str r0, [sp, #0x10]
     // str r1, [sp, #0x20]
     // str r1, [sp, #0x14]
     // add r0, sp, #0x18
     // add r1, sp, #0xc
     // add r2, sp, #0
-    // bl VEC_Subtract
+    VEC_Subtract((r3 << 0xc), 0);
     // add r0, sp, #0
-    // bl VEC_Mag
+    VEC_Mag();
     // ldr r1, [sp, #0x2c]
     // str r0, [r1]
     // ldr r1, [sp, #0x28]
-    // lsl r1, r1, #0xc
-    // cmp r0, r1
-    // bge _021E8768
-    // add sp, #0x24
-    // mov r0, #1
-    // pop {pc}
-    // mov r0, #0
-    // add sp, #0x24
-    // pop {pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E8770(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r7, r1, #0
     // ldr r0, [sp, #0x18]
-    // mov r1, #8
     // str r2, [sp]
-    // add r5, r3, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r0, #0
+    Heap_Alloc(8);
     // strh r5, [r4]
-    // strh r0, [r4, #2]
-    // str r0, [r4, #4]
-    // cmp r5, #1
-    // bne _021E879C
+    *((u16*)(r0 + 2)) = 0;
+    *((u32*)(r0 + 4)) = 0;
     // ldr r2, [sp]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl sub_0203410C
-    // b _021E87AA
+    sub_0203410C(r6, r7);
     // ldr r2, [sp]
     // ldr r3, [sp, #0x18]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl ov96_021E883C
-    // str r0, [r4, #4]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E883C(r6, r7);
+    *((u32*)(r4 + 4)) = r0;
 }
+
 
 
 void ov96_021E87B0(void) {
-    ((u16*)r0)[2] = r1;
 }
+
 
 
 void ov96_021E87B4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r3, #0
-    // add r6, r0, #0
-    // ldrh r0, [r4, #2]
-    // add r7, r1, #0
-    // add r5, r2, #0
-    // cmp r0, #0
-    // beq _021E87CC
-    // cmp r5, #0x26
-    // ble _021E87CC
-    // bl GF_AssertFail
+    GF_AssertFail(*((u16*)(r3 + 2)));
     // ldrh r0, [r4]
-    // cmp r0, #1
-    // bne _021E87DE
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // add r2, r5, #0
-    // bl sub_02037030
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r4, #4]
-    // add r1, r6, #0
-    // add r2, r7, #0
-    // add r3, r5, #0
-    // bl ov96_021E8914
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02037030(r6, r7, r5);
+    ov96_021E8914(*((u32*)(r4 + 4)), r6, r7, r5);
 }
+
 
 
 void ov96_021E87EC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r3, #0
     // ldrh r3, [r6]
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r7, r2, #0
-    // cmp r3, #1
-    // bne _021E8802
-    // bl sub_02036FD8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r6, #4]
-    // add r1, r5, #0
-    // add r2, r4, #0
-    // add r3, r7, #0
-    // bl ov96_021E8988
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02036FD8();
+    ov96_021E8988(*((u32*)(r6 + 4)), r5, r4, r7);
 }
+
 
 
 void ov96_021E8810(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
     // ldrh r0, [r4]
-    // cmp r0, #0
-    // bne _021E8820
-    // ldr r0, [r4, #4]
-    // bl ov96_021E88FC
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021E88FC(*((u32*)(r0 + 4)));
+    Heap_Free(r4);
 }
+
 
 
 void ov96_021E8828(void) {
-    sub_0203769C();
 }
+
 
 
 void ov96_021E883C(void) {
@@ -4960,139 +4204,64 @@ void ov96_021E883C(void) {
 }
 
 
+
 void ov96_021E8884(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r7, r1, #0
-    // mov r0, #0
     // str r0, [sp]
-    // add r6, r7, #0
-    // ldr r0, [r6]
-    // cmp r0, #1
-    // bne _021E88EA
-    // ldr r1, [r6, #0x30]
-    // cmp r1, #0x26
-    // bgt _021E88BE
-    // mov r4, #7
-    // lsl r4, r4, #6
     // ldr r4, [r7, r4]
-    // mov r3, #0x72
     // str r4, [sp, #4]
-    // ldr r4, [r6, #4]
-    // mov r5, #0xc
     // mul r5, r4
     // ldr r4, [sp, #4]
-    // lsl r3, r3, #2
-    // add r2, r6, #0
     // ldr r3, [r7, r3]
     // ldr r4, [r4, r5]
-    // mov r0, #0
     // add r2, #8
     // blx r4
-    // b _021E88E0
-    // mov r4, #7
-    // lsl r4, r4, #6
     // ldr r4, [r7, r4]
-    // mov r3, #0x72
     // mov ip, r4
-    // ldr r4, [r6, #4]
-    // mov r5, #0xc
     // mul r5, r4
     // str r5, [sp, #8]
-    // lsl r3, r3, #2
     // ldr r4, [sp, #8]
     // mov r5, ip
-    // ldr r2, [r6, #0x34]
     // ldr r3, [r7, r3]
     // ldr r4, [r5, r4]
-    // mov r0, #0
     // blx r4
-    // add r0, r6, #0
-    // mov r1, #0
-    // mov r2, #0x38
-    // bl memset
+    memset(r1, 0, 0x38, (0x72 << 2));
     // ldr r0, [sp]
     // add r6, #0x38
-    // add r0, r0, #1
     // str r0, [sp]
-    // cmp r0, #8
-    // blt _021E8890
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E88FC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x73
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // bl SysTask_Destroy
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    SysTask_Destroy((0x73 << 2));
+    Heap_Free(r4);
 }
+
 
 
 void ov96_021E8914(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // mov r4, #0
     // str r2, [sp]
-    // add r7, r1, #0
-    // add r5, r3, #0
-    // add r0, r4, #0
-    // add r2, r6, #0
-    // ldr r1, [r2]
-    // cmp r1, #0
-    // bne _021E8932
-    // mov r1, #0x38
     // mul r1, r0
     // add r4, r6, r1
-    // b _021E893A
-    // add r0, r0, #1
     // add r2, #0x38
-    // cmp r0, #8
-    // blt _021E8924
-    // cmp r4, #0
-    // bne _021E8942
-    // bl GF_AssertFail
-    // mov r0, #7
-    // lsl r0, r0, #6
-    // add r1, r7, #0
+    GF_AssertFail((0 + 1), 0x38, r0);
     // ldr r2, [r6, r0]
     // sub r1, #0x16
-    // mov r0, #0xc
     // mul r0, r1
     // add r0, r2, r0
-    // ldr r0, [r0, #4]
-    // cmp r0, #0
-    // beq _021E8962
     // blx r0
-    // cmp r0, r5
-    // beq _021E8962
-    // bl GF_AssertFail
-    // cmp r5, #0x26
-    // ble _021E896A
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)(0xc + 4)), r7);
+    GF_AssertFail();
     // sub r7, #0x16
-    // str r7, [r4, #4]
-    // cmp r5, #0
-    // ble _021E897E
-    // add r0, r4, #0
+    *((u32*)(r4 + 4)) = r7;
     // ldr r1, [sp]
     // add r0, #8
-    // add r2, r5, #0
-    // bl memcpy
-    // str r5, [r4, #0x30]
-    // mov r0, #1
+    memcpy(r4, r5);
+    *((u32*)(r4 + 0x30)) = r5;
     // str r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E8988(void) {
@@ -5172,10 +4341,12 @@ void ov96_021E8988(void) {
 }
 
 
+
 void ov96_021E8A20(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov96_021E8A24(void) {
@@ -5186,121 +4357,55 @@ void ov96_021E8A24(void) {
 }
 
 
+
 u8 ov96_021E8A2C(void) {
-    return 0xc;
 }
+
 
 
 void ov96_021E8A30(void) {
-    Heap_Alloc();
 }
+
 
 
 void ov96_021E8A44(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r6, r0, #0
-    // add r5, r2, #0
-    // cmp r4, #0x10
-    // bls _021E8A54
-    // bl GF_AssertFail
-    // strh r4, [r6, #4]
-    // mov r0, #0
-    // strh r0, [r6, #6]
-    // str r0, [r6, #0xc]
-    // str r0, [r6, #8]
-    // mov r1, #0x2c
-    // ldr r0, [r6]
+    GF_AssertFail();
+    *((u16*)(r6 + 4)) = r4;
+    *((u16*)(r6 + 6)) = 0;
+    *((u32*)(r6 + 0xc)) = 0;
+    *((u32*)(r6 + 8)) = 0;
     // mul r1, r4
-    // bl Heap_Alloc
-    // mov r1, #0x55
-    // lsl r1, r1, #2
+    Heap_Alloc(*((u32*)r6), 0x2c);
     // str r0, [r6, r1]
-    // cmp r5, #0
-    // bne _021E8A86
-    // ldrh r0, [r6, #4]
-    // add r1, r6, #0
-    // ldr r2, [r6]
     // add r1, #0x1c
-    // bl G2dRenderer_Init
-    // str r0, [r6, #0x14]
-    // str r0, [r6, #0x18]
-    // mov r0, #1
-    // b _021E8A8A
-    // str r5, [r6, #0x18]
-    // mov r0, #0
-    // mov r7, #0x51
-    // str r0, [r6, #0x10]
-    // mov r4, #0
-    // add r5, r6, #0
-    // lsl r7, r7, #2
-    // ldrh r0, [r6, #4]
-    // ldr r2, [r6]
-    // add r1, r4, #0
-    // bl Create2DGfxResObjMan
+    G2dRenderer_Init(*((u16*)(r6 + 4)), r6, *((u32*)r6));
+    *((u32*)(r6 + 0x14)) = r0;
+    *((u32*)(r6 + 0x18)) = r0;
+    *((u32*)(r6 + 0x18)) = r5;
+    *((u32*)(r6 + 0x10)) = 0;
+    Create2DGfxResObjMan(*((u16*)(r6 + 4)), 0, *((u32*)r6));
     // str r0, [r5, r7]
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _021E8A94
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E8AAC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldrh r0, [r5, #4]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _021E8AE4
-    // mov r7, #0x55
-    // lsl r7, r7, #2
-    // mov r0, #0x2c
-    // add r6, r4, #0
     // mul r6, r0
-    // mov r0, #0x55
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
     // ldr r0, [r0, r6]
-    // bl sub_0200AEB0
+    sub_0200AEB0((0x55 << 2));
     // ldr r0, [r5, r7]
     // add r0, r0, r6
-    // ldr r0, [r0, #4]
-    // bl sub_0200B0A8
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // ldrh r0, [r5, #4]
-    // cmp r4, r0
-    // blt _021E8ABC
-    // mov r6, #0x51
-    // mov r4, #0
-    // lsl r6, r6, #2
-    // lsl r0, r4, #2
+    sub_0200B0A8(*((u32*)(r0 + 4)));
     // add r0, r5, r0
     // ldr r0, [r0, r6]
-    // bl Destroy2DGfxResObjMan
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #4
-    // blo _021E8AEA
-    // mov r0, #0x55
-    // lsl r0, r0, #2
+    Destroy2DGfxResObjMan((0 << 2));
     // ldr r0, [r5, r0]
-    // bl Heap_Free
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // beq _021E8B14
-    // ldr r0, [r5, #0x14]
-    // bl SpriteList_Delete
-    // add r0, r5, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free((0x55 << 2));
+    SpriteList_Delete(*((u32*)(r5 + 0x14)));
+    Heap_Free(r5);
 }
+
 
 
 void ov96_021E8B1C(void) {
@@ -5359,6 +4464,7 @@ void ov96_021E8B1C(void) {
 }
 
 
+
 void ov96_021E8B88(void) {
     // ldr r0, [r0, #0xc]
     // bx lr
@@ -5366,9 +4472,10 @@ void ov96_021E8B88(void) {
 }
 
 
+
 void ov96_021E8B8C(void) {
-    GF_AssertFail(0x2c, 0x55);
 }
+
 
 
 void ov96_021E8BAC(void) {
@@ -5378,445 +4485,211 @@ void ov96_021E8BAC(void) {
 }
 
 
+
 void ov96_021E8BB0(void) {
     // add r0, #0x14
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021E8BB4(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r0, #0
-    // add r5, r1, #0
-    // add r6, r2, #0
     // ldrh r0, [r4]
-    // ldrh r1, [r4, #2]
-    // ldrb r2, [r4, #7]
-    // bl ov96_021E91B8
-    // add r1, r0, #0
-    // mov r0, #0x51
-    // add r2, r5, #0
-    // bl AllocAndReadWholeNarcMemberByIdPair
-    // add r5, r0, #0
-    // bl NNS_G3dGetTex
-    // ldr r1, [r0, #0x38]
+    ov96_021E91B8(*((u16*)(r0 + 2)), *((u8*)(r0 + 7)));
+    AllocAndReadWholeNarcMemberByIdPair(0x51, r0, r5);
+    NNS_G3dGetTex();
     // add r0, r0, r1
-    // ldrb r1, [r4, #6]
-    // cmp r1, #0
-    // beq _021E8BE2
     // add r0, #0x20
-    // add r1, r6, #0
-    // mov r2, #0x20
-    // bl MI_CpuCopy8
-    // add r0, r5, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    MI_CpuCopy8(r6, 0x20);
+    Heap_Free(r5);
 }
+
 
 
 void ov96_021E8BF4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r4, #0
-    // add r6, r0, #0
-    // add r7, r3, #0
     // str r4, [sp]
-    // cmp r2, #3
-    // bne _021E8C08
-    // mov r4, #1
     // str r4, [sp]
-    // b _021E8C14
-    // cmp r2, #1
-    // bne _021E8C12
-    // mov r0, #1
     // str r0, [sp]
-    // b _021E8C14
-    // mov r4, #1
-    // mov r0, #0x2c
-    // add r5, r1, #0
     // mul r5, r0
-    // mov r0, #0x55
-    // lsl r0, r0, #2
     // ldr r0, [r6, r0]
     // ldr r0, [r0, r5]
-    // bl sub_0200AF00
-    // add r1, r0, #0
-    // mov r0, #0x55
-    // lsl r0, r0, #2
+    sub_0200AF00((0x55 << 2));
     // ldr r0, [r6, r0]
     // add r0, r0, r5
-    // ldr r0, [r0, #4]
-    // bl SpriteTransfer_GetPaletteProxy
-    // add r5, r0, #0
-    // add r0, r7, #0
-    // mov r1, #0x20
-    // bl DC_FlushRange
+    SpriteTransfer_GetPaletteProxy(*((u32*)((0x55 << 2) + 4)), r0);
+    DC_FlushRange(r7, 0x20);
     // ldr r0, [sp]
-    // cmp r0, #0
-    // beq _021E8C58
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl NNS_G2dGetImagePaletteLocation
-    // add r1, r0, #0
-    // add r0, r7, #0
-    // mov r2, #0x20
-    // bl GX_LoadOBJPltt
-    // cmp r4, #0
-    // beq _021E8C6E
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl NNS_G2dGetImagePaletteLocation
-    // add r1, r0, #0
-    // add r0, r7, #0
-    // mov r2, #0x20
-    // bl GXS_LoadOBJPltt
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    NNS_G2dGetImagePaletteLocation(r5, 1);
+    GX_LoadOBJPltt(r7, r0, 0x20);
+    NNS_G2dGetImagePaletteLocation(r5, 2);
+    GXS_LoadOBJPltt(r7, r0, 0x20);
 }
 
 
+
 void ov96_021E8C70(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x48
-    // add r5, r0, #0
     // ldr r0, [sp, #0x64]
-    // add r4, r1, #0
-    // add r6, r3, #0
     // str r2, [sp, #0x10]
     // str r0, [sp, #0x64]
-    // cmp r0, #0
-    // beq _021E8CA4
-    // add r0, r2, #0
-    // ldrh r0, [r0, #4]
-    // cmp r0, #0
-    // beq _021E8C98
-    // mov r0, #0xa
     // str r0, [sp, #0x44]
-    // mov r0, #9
-    // mov r2, #0xb
     // str r0, [sp, #0x40]
-    // b _021E8CC2
-    // mov r0, #7
     // str r0, [sp, #0x44]
-    // mov r0, #6
-    // mov r2, #8
     // str r0, [sp, #0x40]
-    // b _021E8CC2
-    // add r0, r2, #0
-    // ldrh r0, [r0, #4]
-    // cmp r0, #0
-    // beq _021E8CB8
-    // mov r0, #4
     // str r0, [sp, #0x44]
-    // mov r0, #3
-    // mov r2, #5
     // str r0, [sp, #0x40]
-    // b _021E8CC2
-    // mov r0, #1
     // str r0, [sp, #0x44]
-    // mov r0, #0
-    // mov r2, #2
     // str r0, [sp, #0x40]
     // add r0, sp, #0x50
-    // ldrb r7, [r0, #0x10]
-    // mov r1, #0x95
-    // mov r3, #0
     // str r7, [sp]
     // str r6, [sp, #4]
-    // ldr r0, [r5]
     // str r0, [sp, #8]
-    // mov r0, #0x51
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // bl AddCharResObjFromNarc
+    AddCharResObjFromNarc((0x51 << 2), 0x95, 2, 0);
     // str r0, [r4]
     // str r7, [sp]
     // str r6, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r5]
-    // mov r1, #0x31
     // str r0, [sp, #0xc]
-    // mov r0, #0x52
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // mov r2, #0x1e
-    // mov r3, #0
-    // bl AddPlttResObjFromNarc
-    // str r0, [r4, #4]
+    AddPlttResObjFromNarc((0x52 << 2), 0x31, 0x1e, 0);
+    *((u32*)(r4 + 4)) = r0;
     // str r7, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // ldr r2, [sp, #0x44]
     // str r0, [sp, #8]
-    // mov r0, #0x53
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // mov r1, #0x95
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #8]
+    AddCellOrAnimResObjFromNarc((0x53 << 2), 0x95, 0);
+    *((u32*)(r4 + 8)) = r0;
     // str r7, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // ldr r2, [sp, #0x40]
     // str r0, [sp, #8]
-    // mov r0, #0x15
-    // lsl r0, r0, #4
     // ldr r0, [r5, r0]
-    // mov r1, #0x95
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0xc]
-    // ldr r0, [r4]
-    // bl sub_0200ADA4
-    // ldr r0, [r4, #4]
-    // bl sub_0200AF94
-    // mov r0, #0
+    AddCellOrAnimResObjFromNarc((0x15 << 4), 0x95, 0);
+    *((u32*)(r4 + 0xc)) = r0;
+    sub_0200ADA4(*((u32*)r4));
+    sub_0200AF94(*((u32*)(r4 + 4)));
     // str r0, [sp, #0x1c]
     // str r0, [sp, #0x18]
-    // ldr r0, [r4]
-    // bl sub_0200AF00
+    sub_0200AF00(*((u32*)r4));
     // str r0, [sp, #0x24]
-    // ldr r0, [r4, #4]
     // ldr r1, [sp, #0x24]
-    // bl SpriteTransfer_GetPaletteProxy
+    SpriteTransfer_GetPaletteProxy(*((u32*)(r4 + 4)));
     // str r0, [sp, #0x28]
-    // ldr r0, [r4]
-    // bl GF2DGfxResObj_GetCharDataPtr
+    GF2DGfxResObj_GetCharDataPtr(*((u32*)r4));
     // str r0, [sp, #0x20]
-    // cmp r6, #3
-    // bne _021E8D6C
-    // mov r0, #1
     // str r0, [sp, #0x1c]
     // str r0, [sp, #0x18]
-    // b _021E8D7A
-    // cmp r6, #1
-    // bne _021E8D76
-    // mov r0, #1
     // str r0, [sp, #0x1c]
-    // b _021E8D7A
-    // mov r0, #1
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0x10]
     // ldrh r0, [r0]
-    // ldrh r1, [r1, #2]
-    // ldrb r2, [r2, #7]
-    // bl ov96_021E91B8
-    // add r1, r0, #0
-    // ldr r2, [r5]
-    // mov r0, #0x51
-    // bl AllocAndReadWholeNarcMemberByIdPair
+    ov96_021E91B8(1, *((u16*)(r1 + 2)), *((u8*)(r2 + 7)));
+    AllocAndReadWholeNarcMemberByIdPair(0x51, r0, *((u32*)r5));
     // str r0, [sp, #0x34]
     // ldr r0, [sp, #0x10]
-    // ldrh r0, [r0, #4]
-    // cmp r0, #0
-    // beq _021E8DAA
-    // mov r0, #2
-    // lsl r0, r0, #0xa
     // str r0, [sp, #0x14]
-    // mov r0, #8
     // str r0, [sp, #0x3c]
-    // b _021E8DB4
-    // mov r0, #2
-    // lsl r0, r0, #8
     // str r0, [sp, #0x14]
-    // mov r0, #4
     // str r0, [sp, #0x3c]
     // ldr r0, [sp, #0x34]
-    // bl NNS_G3dGetTex
-    // ldr r1, [r0, #0x14]
+    NNS_G3dGetTex(4);
     // str r0, [sp, #0x2c]
     // add r0, r0, r1
     // str r0, [sp, #0x30]
     // ldr r0, [sp, #0x3c]
-    // mov r4, #0
-    // lsl r1, r0, #5
-    // mov r0, #2
-    // lsl r0, r0, #0xa
     // str r4, [sp, #0x38]
     // sub r7, r0, r1
     // add r6, r5, r1
     // ldr r0, [sp, #0x3c]
-    // mov r2, #0
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #0x56
-    // lsl r0, r0, #2
     // add r0, r5, r0
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x30]
     // ldr r1, [sp, #0x3c]
     // add r0, r0, r4
-    // add r3, r2, #0
-    // bl sub_020145B4
+    sub_020145B4((0x56 << 2), (r0 << 5), 0, 0);
     // ldr r0, [sp, #0x64]
-    // cmp r0, #0
-    // bne _021E8E72
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _021E8E2A
     // ldr r0, [sp, #0x10]
-    // ldrh r0, [r0, #4]
-    // cmp r0, #0
-    // beq _021E8E2A
-    // mov r0, #0
-    // cmp r0, r7
-    // bge _021E8E16
-    // mov r1, #0x56
     // add r2, r6, r0
-    // lsl r1, r1, #2
     // ldrb r3, [r2, r1]
     // add r2, r5, r0
     // strb r3, [r2, r1]
-    // b _021E8E20
-    // mov r2, #0x56
     // add r3, r5, r0
-    // lsl r2, r2, #2
-    // mov r1, #0
     // strb r1, [r3, r2]
-    // mov r1, #2
-    // add r0, r0, #1
-    // lsl r1, r1, #0xa
-    // cmp r0, r1
-    // blt _021E8E04
-    // mov r0, #0x56
-    // lsl r0, r0, #2
     // ldr r1, [sp, #0x14]
     // add r0, r5, r0
-    // bl DC_FlushRange
+    DC_FlushRange((0x56 << 2), (2 << 0xa), (0x56 << 2));
     // ldr r0, [sp, #0x1c]
-    // cmp r0, #0
-    // beq _021E8E54
     // ldr r0, [sp, #0x24]
-    // mov r1, #1
-    // bl NNS_G2dGetImageLocation
-    // add r1, r0, #0
-    // mov r0, #0x56
-    // lsl r0, r0, #2
+    NNS_G2dGetImageLocation(1);
     // ldr r2, [sp, #0x14]
     // add r0, r5, r0
     // add r1, r1, r4
-    // bl GX_LoadOBJ
+    GX_LoadOBJ((0x56 << 2), r0);
     // ldr r0, [sp, #0x18]
-    // cmp r0, #0
-    // beq _021E8E72
     // ldr r0, [sp, #0x24]
-    // mov r1, #2
-    // bl NNS_G2dGetImageLocation
-    // add r1, r0, #0
-    // mov r0, #0x56
-    // lsl r0, r0, #2
+    NNS_G2dGetImageLocation(2);
     // ldr r2, [sp, #0x14]
     // add r0, r5, r0
     // add r1, r1, r4
-    // bl GXS_LoadOBJ
+    GXS_LoadOBJ((0x56 << 2), r0);
     // ldr r1, [sp, #0x20]
-    // mov r0, #0x56
-    // ldr r1, [r1, #0x14]
-    // lsl r0, r0, #2
     // ldr r2, [sp, #0x14]
     // add r0, r5, r0
     // add r1, r1, r4
-    // bl MIi_CpuCopyFast
+    MIi_CpuCopyFast((0x56 << 2), *((u32*)(r1 + 0x14)));
     // ldr r0, [sp, #0x14]
     // add r4, r4, r0
     // ldr r0, [sp, #0x38]
-    // add r0, r0, #1
     // str r0, [sp, #0x38]
-    // cmp r0, #8
-    // blt _021E8DD2
     // ldr r0, [sp, #0x2c]
-    // ldr r1, [r0, #0x38]
     // add r4, r0, r1
     // ldr r0, [sp, #0x10]
-    // ldrb r0, [r0, #6]
-    // cmp r0, #0
-    // beq _021E8EA2
     // add r4, #0x20
-    // add r0, r4, #0
-    // mov r1, #0x20
-    // bl DC_FlushRange
+    DC_FlushRange(r4, 0x20);
     // ldr r0, [sp, #0x1c]
-    // cmp r0, #0
-    // beq _021E8EC2
     // ldr r0, [sp, #0x28]
-    // mov r1, #1
-    // bl NNS_G2dGetImagePaletteLocation
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // mov r2, #0x20
-    // bl GX_LoadOBJPltt
+    NNS_G2dGetImagePaletteLocation(1);
+    GX_LoadOBJPltt(r4, r0, 0x20);
     // ldr r0, [sp, #0x18]
-    // cmp r0, #0
-    // beq _021E8EDA
     // ldr r0, [sp, #0x28]
-    // mov r1, #2
-    // bl NNS_G2dGetImagePaletteLocation
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // mov r2, #0x20
-    // bl GXS_LoadOBJPltt
+    NNS_G2dGetImagePaletteLocation(2);
+    GXS_LoadOBJPltt(r4, r0, 0x20);
     // ldr r0, [sp, #0x34]
-    // bl Heap_Free
-    // add sp, #0x48
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
 }
 
 
+
 void ov96_021E8EE4(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x80
-    // add r4, r0, #0
     // add r0, sp, #0x80
-    // add r5, r3, #0
-    // ldrb r3, [r0, #0x10]
-    // mov r0, #0
     // mvn r0, r0
     // str r3, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // str r2, [sp, #0xc]
     // str r1, [sp, #0x10]
-    // mov r1, #0x51
-    // lsl r1, r1, #2
     // ldr r0, [r4, r1]
-    // add r2, r3, #0
     // str r0, [sp, #0x14]
-    // add r0, r1, #4
     // ldr r0, [r4, r0]
     // str r0, [sp, #0x18]
-    // add r0, r1, #0
     // add r0, #8
     // ldr r0, [r4, r0]
     // add r1, #0xc
     // str r0, [sp, #0x1c]
     // ldr r0, [r4, r1]
-    // add r1, r3, #0
     // str r0, [sp, #0x20]
-    // mov r0, #0
     // str r0, [sp, #0x24]
     // str r0, [sp, #0x28]
     // add r0, sp, #0x5c
-    // bl CreateSpriteResourcesHeader
-    // cmp r5, #3
-    // bne _021E8F30
-    // mov r5, #1
-    // ldr r0, [r4, #0x18]
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0, *((u8*)(r0 + 0x10)), *((u8*)(r0 + 0x10)), *((u8*)(r0 + 0x10)));
     // str r0, [sp, #0x2c]
     // add r0, sp, #0x5c
     // str r0, [sp, #0x30]
-    // ldr r0, [r4]
     // str r0, [sp, #0x58]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r1, [sp, #0x34]
     // str r1, [sp, #0x38]
     // str r1, [sp, #0x3c]
@@ -5824,114 +4697,52 @@ void ov96_021E8EE4(void) {
     // str r0, [sp, #0x44]
     // str r0, [sp, #0x48]
     // add r0, sp, #0x2c
-    // strh r1, [r0, #0x20]
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r5, [sp, #0x54]
     // add r0, sp, #0x80
     // str r1, [sp, #0x50]
-    // ldrb r1, [r0, #0x14]
-    // mov r0, #0x2c
-    // add r5, r1, #0
     // mul r5, r0
     // add r0, sp, #0x2c
-    // bl Sprite_CreateAffine
-    // mov r1, #0x55
-    // lsl r1, r1, #2
+    Sprite_CreateAffine(0x2c, *((u8*)((1 << 0xc) + 0x14)));
     // ldr r2, [r4, r1]
     // add r2, r2, r5
-    // str r0, [r2, #0x10]
+    *((u32*)(r2 + 0x10)) = r0;
     // ldr r0, [r4, r1]
     // add r0, r0, r5
-    // ldr r0, [r0, #0x10]
-    // cmp r0, #0
-    // bne _021E8F7E
-    // bl GF_AssertFail
-    // mov r0, #0x55
-    // lsl r0, r0, #2
+    GF_AssertFail(*((u32*)(r0 + 0x10)), (0x55 << 2));
     // ldr r0, [r4, r0]
-    // mov r1, #1
     // add r0, r0, r5
-    // ldr r0, [r0, #0x10]
-    // bl Sprite_SetAnimActiveFlag
-    // mov r0, #0x55
-    // lsl r0, r0, #2
+    Sprite_SetAnimActiveFlag(*((u32*)((0x55 << 2) + 0x10)), 1);
     // ldr r0, [r4, r0]
-    // mov r1, #0
     // add r0, r0, r5
-    // ldr r0, [r0, #0x10]
-    // bl Sprite_SetAnimCtrlSeq
-    // mov r0, #0x55
-    // lsl r0, r0, #2
+    Sprite_SetAnimCtrlSeq(*((u32*)((0x55 << 2) + 0x10)), 0);
     // ldr r0, [r4, r0]
-    // mov r1, #0
     // add r0, r0, r5
-    // ldr r0, [r0, #0x10]
-    // bl Sprite_SetDrawFlag
-    // add sp, #0x80
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag(*((u32*)((0x55 << 2) + 0x10)), 0);
 }
+
 
 
 void ov96_021E8FB4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r0, r4, #0
-    // bl ov96_021E8FE0
-    // cmp r0, #0
-    // beq _021E8FD8
-    // ldr r0, [r4, #0xc]
-    // mov r1, #1
-    // str r1, [r0, #0xc]
-    // add r0, r4, #0
-    // bl Heap_Free
-    // add r0, r5, #0
-    // bl SysTask_Destroy
-    // pop {r3, r4, r5, pc}
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0
-    // bne _021E8FBA
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_021E8FE0(r1);
+    *((u32*)(*((u32*)(r4 + 0xc)) + 0xc)) = 1;
+    Heap_Free(r4, 1);
+    SysTask_Destroy(r5);
 }
 
 
+
 void ov96_021E8FE0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _021E8FF2
-    // cmp r0, #1
-    // beq _021E90BE
-    // b _021E90F4
-    // ldrh r0, [r5, #2]
-    // ldr r1, [r5, #4]
-    // add r2, r5, #0
     // add r0, r1, r0
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
-    // mov r0, #0x2c
-    // add r4, r7, #0
     // mul r4, r0
-    // ldr r0, [r5, #0xc]
-    // lsl r6, r7, #4
     // str r7, [sp]
-    // ldr r1, [r5, #0x18]
     // add r2, #0x54
     // str r1, [sp, #4]
-    // mov r1, #0x55
-    // lsl r1, r1, #2
     // ldr r1, [r0, r1]
-    // ldr r3, [r5, #0x1c]
     // add r1, r1, r4
     // add r2, r2, r6
-    // bl ov96_021E8C70
-    // mov r0, #0x55
+    ov96_021E8C70(*((u32*)(r0 + 0xc)), (0x55 << 2), r0, *((u32*)(r0 + 0x1c)));
     // add r3, r5, r6
-    // ldr r1, [r5, #0xc]
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
     // add r3, #0x54
     // add r2, r0, r4
@@ -5940,101 +4751,43 @@ void ov96_021E8FE0(void) {
     // stmia r2!, {r0, r1}
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // mov r0, #0x55
-    // ldr r1, [r5, #0xc]
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
     // add r0, r0, r4
-    // bl ov96_021E9104
-    // mov r1, #0x55
-    // ldr r2, [r5, #0xc]
-    // lsl r1, r1, #2
+    ov96_021E9104((0x55 << 2), *((u32*)(r5 + 0xc)));
     // ldr r1, [r2, r1]
     // add r1, r1, r4
-    // str r0, [r1, #0x24]
-    // ldr r2, [r5, #0xc]
-    // mov r1, #0
-    // ldr r0, [r2, #8]
-    // cmp r0, #0
-    // beq _021E9068
+    *((u32*)((0x55 << 2) + 0x24)) = r0;
     // add r0, r5, r6
     // add r0, #0x58
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // beq _021E9068
-    // mov r1, #1
-    // mov r3, #0x55
-    // lsl r3, r3, #2
-    // mov r0, #0x2c
     // ldr r2, [r2, r3]
     // mul r0, r7
     // add r2, r2, r0
-    // str r1, [r2, #0x28]
-    // ldr r1, [r5, #0xc]
+    *((u32*)(*((u32*)(r5 + 0xc)) + 0x28)) = 1;
     // ldr r1, [r1, r3]
     // add r0, r1, r0
-    // ldr r0, [r0, #0x28]
-    // cmp r0, #0
-    // beq _021E908A
     // add r1, #0x24
     // ldr r0, [r1, r4]
     // add r0, #8
     // str r0, [r1, r4]
-    // ldr r0, [r5, #0x18]
-    // cmp r0, #0
-    // bne _021E90A6
-    // mov r0, #0x55
-    // ldr r1, [r5, #0xc]
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
     // add r6, r0, r4
     // ldr r0, [r0, r4]
-    // bl sub_0200A740
-    // ldr r0, [r6, #4]
-    // bl sub_0200A740
-    // ldrh r0, [r5, #2]
-    // add r0, r0, #1
-    // strh r0, [r5, #2]
-    // ldrh r1, [r5, #2]
+    sub_0200A740((0x55 << 2), *((u32*)(r5 + 0xc)), *((u32*)(r5 + 0xc)), (0x55 << 2));
+    sub_0200A740(*((u32*)(r6 + 4)));
+    *((u16*)(r5 + 2)) = (*((u16*)(r5 + 2)) + 1);
     // ldrh r0, [r5]
-    // cmp r1, r0
-    // blo _021E90F4
-    // mov r0, #0
-    // strh r0, [r5, #2]
-    // mov r0, #1
-    // str r0, [r5, #8]
-    // b _021E90F4
-    // ldrh r0, [r5, #2]
-    // ldr r1, [r5, #4]
+    *((u16*)(r5 + 2)) = 0;
+    *((u32*)(r5 + 8)) = 1;
     // add r0, r1, r0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0xc]
-    // ldr r1, [r5, #0x14]
-    // ldr r2, [r5, #0x18]
-    // ldr r3, [r5, #0x20]
-    // bl ov96_021E8EE4
-    // ldrh r0, [r5, #2]
-    // add r0, r0, #1
-    // strh r0, [r5, #2]
-    // ldr r1, [r5, #0xc]
-    // ldrh r0, [r1, #6]
-    // add r0, r0, #1
-    // strh r0, [r1, #6]
-    // ldrh r1, [r5, #2]
+    ov96_021E8EE4(*((u32*)(r5 + 0xc)), *((u32*)(r5 + 0x14)), *((u32*)(r5 + 0x18)), *((u32*)(r5 + 0x20)));
+    *((u16*)(r5 + 2)) = (*((u16*)(r5 + 2)) + 1);
+    *((u16*)(*((u32*)(r5 + 0xc)) + 6)) = (*((u16*)(*((u32*)(r5 + 0xc)) + 6)) + 1);
     // ldrh r0, [r5]
-    // cmp r1, r0
-    // blo _021E90F4
-    // add sp, #8
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E90FC(void) {
@@ -6046,99 +4799,33 @@ void ov96_021E90FC(void) {
 }
 
 
+
 void ov96_021E9104(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // bl GF2DGfxResObj_GetCharDataPtr
-    // ldrh r1, [r4, #0x18]
-    // cmp r1, #0
-    // beq _021E911A
-    // mov r6, #8
-    // b _021E911C
-    // mov r6, #4
-    // mov r1, #0xff
+    GF2DGfxResObj_GetCharDataPtr(*((u32*)r0));
     // str r1, [sp, #8]
-    // ldr r0, [r0, #0x14]
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // cmp r6, #0
-    // ble _021E916E
-    // add r7, r0, #0
-    // mov r4, #0xff
-    // mov r5, #0
-    // cmp r6, #0
-    // ble _021E9150
     // add r1, r5, r7
     // ldr r0, [sp]
-    // lsl r1, r1, #5
-    // bl ov96_021E9180
-    // cmp r0, #0xff
-    // beq _021E914A
-    // cmp r4, r0
-    // bls _021E914A
-    // add r4, r0, #0
-    // add r5, r5, #1
-    // cmp r5, r6
-    // blt _021E9136
-    // cmp r4, #0xff
-    // beq _021E9162
+    ov96_021E9180(0, (0xff << 5));
     // ldr r0, [sp, #4]
-    // lsl r0, r0, #3
     // add r0, r4, r0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #8]
-    // b _021E916E
     // ldr r0, [sp, #4]
     // add r7, r7, r6
-    // add r0, r0, #1
     // str r0, [sp, #4]
-    // cmp r0, r6
-    // blt _021E912E
     // ldr r0, [sp, #8]
-    // cmp r0, #0xff
-    // bne _021E9178
-    // bl GF_AssertFail
+    GF_AssertFail(((((r0 << 3) << 0x18) >> 0x18) + 1));
     // ldr r0, [sp, #8]
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E9180(void) {
-    // push {r4, r5}
-    // mov r4, #0
-    // mov r2, #0xff
     // add r0, r0, r1
-    // add r3, r4, #0
-    // add r5, r3, #0
     // ldrb r1, [r0]
-    // cmp r1, #0
-    // beq _021E9196
-    // add r2, r4, #0
-    // b _021E91A2
-    // add r1, r5, #1
-    // lsl r1, r1, #0x18
-    // lsr r5, r1, #0x18
-    // add r0, r0, #1
-    // cmp r5, #4
-    // blo _021E918C
-    // cmp r5, #4
-    // bne _021E91B0
-    // add r1, r4, #1
-    // lsl r1, r1, #0x18
-    // lsr r4, r1, #0x18
-    // cmp r4, #8
-    // blo _021E918A
-    // add r0, r2, #0
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021E91B8(void) {
@@ -6177,6 +4864,7 @@ void ov96_021E91B8(void) {
     // _021E9200: .word 0x00000129
     // TODO: decompile
 }
+
 
 
 void ov96_021E9204(void) {
@@ -6239,20 +4927,13 @@ void ov96_021E9204(void) {
 }
 
 
+
 void ov96_021E9290(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _021E929A
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0xc]
-    // cmp r0, #0
-    // beq _021E92A4
-    // bl GF_AssertFail
-    // mov r0, #1
-    // str r0, [r4, #8]
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 8)) = 1;
 }
+
 
 
 void ov96_021E92AC(void) {
@@ -6262,330 +4943,146 @@ void ov96_021E92AC(void) {
 }
 
 
+
 void ov96_021E92B0(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r2, #0
-    // add r5, r1, #0
     // ldr r2, [sp, #0x10]
-    // add r1, r3, #0
-    // bl ObjCharTransfer_InitEx
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ObjPlttTransfer_Init
-    // bl ObjCharTransfer_ClearBuffers
-    // bl ObjPlttTransfer_Reset
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ObjCharTransfer_InitEx(r3);
+    ObjPlttTransfer_Init(r5, r4);
+    ObjCharTransfer_ClearBuffers();
+    ObjPlttTransfer_Reset();
 }
+
 
 
 void ov96_021E92D0(void) {
-    OamManager_Free();
-    ObjCharTransfer_Destroy();
-    ObjPlttTransfer_Destroy();
 }
+
 
 
 void ov96_021E92E0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r1, #0x85
-    // lsl r1, r1, #2
-    // add r5, r0, #0
-    // bl Heap_Alloc
-    // mov r2, #0x85
-    // mov r1, #0
-    // lsl r2, r2, #2
+    Heap_Alloc((0x85 << 2));
     // str r0, [sp]
-    // bl MI_CpuFill8
+    MI_CpuFill8(0, (0x85 << 2));
     // ldr r4, [sp]
-    // mov r6, #0
-    // mov r7, #0x25
-    // add r0, r7, #0
-    // add r1, r5, #0
-    // bl String_New
-    // str r0, [r4, #0x34]
-    // mov r0, #0xb
-    // add r1, r5, #0
-    // bl String_New
-    // str r0, [r4, #0x38]
-    // add r6, r6, #1
+    String_New(0x25, r5);
+    *((u32*)(r4 + 0x34)) = r0;
+    String_New(0xb, r5);
+    *((u32*)(r4 + 0x38)) = r0;
     // add r4, #0x18
-    // cmp r6, #0xc
-    // blt _021E92FE
     // ldr r0, [sp]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E9320(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x34]
-    // bl String_Delete
-    // ldr r0, [r5, #0x38]
-    // bl String_Delete
-    // add r4, r4, #1
+    String_Delete(*((u32*)(r0 + 0x34)));
+    String_Delete(*((u32*)(r5 + 0x38)));
     // add r5, #0x18
-    // cmp r4, #0xc
-    // blt _021E9328
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Heap_Free(r6);
 }
+
 
 
 void ov96_021E9344(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #8]
-    // cmp r0, #4
-    // blt _021E9352
-    // bl GF_AssertFail
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // cmp r1, r0
-    // blt _021E935E
-    // bl GF_AssertFail
-    // ldr r1, [r4, #8]
-    // add r0, r1, #1
-    // str r0, [r4, #8]
-    // mov r0, #0x18
+    GF_AssertFail(*((u32*)(r0 + 8)));
+    GF_AssertFail(*((u32*)r4), *((u32*)(r4 + 8)));
+    *((u32*)(r4 + 8)) = (*((u32*)(r4 + 8)) + 1);
     // add r4, #0x24
     // mul r0, r1
     // add r0, r4, r0
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E9370(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #4
-    // blo _021E937E
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // cmp r4, r0
-    // blt _021E9388
-    // bl GF_AssertFail
-    // mov r0, #0x18
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)r5));
     // add r5, #0x24
     // mul r0, r4
     // add r0, r5, r0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E9394(void) {
-    // mov r3, #0
     // str r3, [r0]
-    // str r3, [r0, #4]
-    // str r3, [r0, #8]
-    // str r3, [r0, #0xc]
-    // mov r1, #0x51
-    // str r3, [r0, #0x10]
-    // add r2, r3, #0
-    // lsl r1, r1, #2
-    // add r3, r3, #1
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 8)) = 0;
+    *((u32*)(r0 + 0xc)) = 0;
+    *((u32*)(r0 + 0x10)) = 0;
     // str r2, [r0, r1]
-    // add r0, r0, #4
-    // cmp r3, #0xc
-    // blt _021E93A6
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_021E93B4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xa4
     // str r0, [sp]
     // add r0, sp, #0x14
     // str r0, [sp, #8]
     // str r0, [sp, #0xc]
-    // mov r0, #0
     // str r0, [sp, #0x10]
-    // cmp r1, #0
-    // beq _021E93D2
-    // cmp r1, #1
-    // beq _021E93D8
-    // cmp r1, #2
-    // beq _021E93DE
-    // b _021E93E4
-    // mov r0, #1
     // str r0, [sp, #4]
-    // b _021E93E8
-    // mov r0, #1
     // str r0, [sp, #4]
-    // b _021E93E8
-    // mov r0, #2
     // str r0, [sp, #4]
-    // b _021E93E8
-    // bl GF_AssertFail
+    GF_AssertFail(2);
     // ldr r1, [sp, #4]
     // ldr r0, [sp]
-    // mov r6, #0
-    // str r1, [r0, #0xc]
-    // ldr r4, [r0]
-    // cmp r4, #0
-    // ble _021E949E
+    *((u32*)(r0 + 0xc)) = r1;
     // add r0, #0x24
     // mov ip, r0
-    // add r3, r6, #1
-    // add r2, r3, #0
-    // mov r0, #0xc
     // add r1, sp, #8
     // mul r2, r0
     // add r0, r1, r2
     // mov r3, ip
-    // mov r7, #0
-    // str r3, [r0, #8]
-    // str r7, [r0, #4]
+    *((u32*)(0xc + 8)) = (0 + 1);
+    *((u32*)(0xc + 4)) = 0;
     // str r7, [r1, r2]
-    // cmp r6, #0
-    // ble _021E9486
     // ldr r2, [sp, #4]
-    // ldr r1, [r1, #4]
-    // cmp r2, #1
-    // ldr r5, [r0, #8]
-    // bne _021E9450
-    // ldr r3, [r1, #8]
-    // ldr r4, [r5, #0xc]
-    // ldr r2, [r3, #0xc]
-    // cmp r2, r4
-    // bge _021E9436
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)*((u32*)(r1 + 4))) + 4)) = 0xc;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(0xc + 4)) = *((u32*)(r1 + 4));
     // str r0, [r1]
-    // b _021E9486
-    // cmp r2, r4
-    // bne _021E9480
-    // ldr r2, [r3]
-    // ldr r3, [r5]
-    // cmp r2, r3
-    // ble _021E9480
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)*((u32*)(r1 + 4))) + 4)) = 0xc;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(0xc + 4)) = *((u32*)(r1 + 4));
     // str r0, [r1]
-    // b _021E9480
-    // ldr r3, [r1, #8]
-    // ldr r4, [r5, #0xc]
-    // ldr r2, [r3, #0xc]
-    // cmp r2, r4
-    // ble _021E9468
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)*((u32*)(r1 + 4))) + 4)) = 0xc;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(0xc + 4)) = *((u32*)(r1 + 4));
     // str r0, [r1]
-    // b _021E9486
-    // cmp r2, r4
-    // bne _021E9480
-    // ldr r2, [r3]
-    // ldr r3, [r5]
-    // cmp r2, r3
-    // ble _021E9480
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)*((u32*)(r1 + 4))) + 4)) = 0xc;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(0xc + 4)) = *((u32*)(r1 + 4));
     // str r0, [r1]
-    // add r7, r7, #1
-    // cmp r7, r6
-    // blt _021E9414
-    // cmp r7, r6
-    // bne _021E948E
-    // str r0, [r1, #4]
+    *((u32*)(*((u32*)(r1 + 4)) + 4)) = 0xc;
     // str r1, [r0]
     // mov r0, ip
     // add r0, #0x18
     // mov ip, r0
     // ldr r0, [sp]
-    // add r6, r6, #1
-    // ldr r4, [r0]
-    // cmp r6, r4
-    // blt _021E93FA
-    // mov r1, #0
     // mvn r1, r1
-    // mov r3, #0
     // add r0, sp, #8
-    // add r2, r1, #0
-    // add r5, r3, #0
-    // cmp r4, #0
-    // ble _021E94E8
-    // mov r7, #0x51
     // ldr r4, [sp]
-    // lsl r7, r7, #2
-    // ldr r0, [r0, #4]
-    // ldr r6, [r0, #8]
     // str r6, [r4, r7]
-    // ldr r6, [r0, #8]
-    // ldr r6, [r6, #0xc]
-    // cmp r1, r6
-    // beq _021E94D2
-    // add r1, r6, #0
-    // cmp r3, #0
-    // beq _021E94CE
-    // add r2, r5, #0
-    // mov r3, #0
-    // b _021E94D4
-    // add r2, r2, #1
-    // b _021E94D4
-    // mov r3, #1
-    // mov r6, #0x51
-    // lsl r6, r6, #2
     // ldr r6, [r4, r6]
-    // add r5, r5, #1
-    // strb r2, [r6, #9]
+    *((u8*)((0x51 << 2) + 9)) = (0 + 1);
     // ldr r6, [sp]
-    // add r4, r4, #4
-    // ldr r6, [r6]
-    // cmp r5, r6
-    // blt _021E94B4
-    // add sp, #0xa4
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E94EC(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #4
-    // blo _021E94FA
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // cmp r4, r0
-    // blt _021E9504
-    // bl GF_AssertFail
-    // lsl r0, r4, #2
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)r5));
     // add r1, r5, r0
-    // mov r0, #0x51
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E9510(void) {
-    ov96_021E9394(0, 4);
 }
+
 
 
 void ov96_021E9524(void) {
@@ -6595,6 +5092,7 @@ void ov96_021E9524(void) {
 }
 
 
+
 void ov96_021E9528(void) {
     // ldr r0, [r0, #4]
     // bx lr
@@ -6602,116 +5100,47 @@ void ov96_021E9528(void) {
 }
 
 
+
 void ov96_021E952C(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0
-    // beq _021E953A
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0
-    // bne _021E956C
-    // ldr r0, [r4]
-    // mov r2, #0
-    // cmp r0, #0
-    // ble _021E9568
-    // mov r5, #0x51
-    // add r3, r4, #0
-    // lsl r5, r5, #2
+    GF_AssertFail(*((u32*)(r0 + 0x10)));
     // ldr r1, [r3, r5]
-    // add r2, r2, #1
-    // ldr r0, [r1]
-    // ldrh r1, [r1, #0xa]
-    // lsl r0, r0, #2
     // add r0, r4, r0
-    // ldr r6, [r0, #0x14]
-    // add r3, r3, #4
     // add r1, r6, r1
-    // str r1, [r0, #0x14]
-    // ldr r0, [r4]
-    // cmp r2, r0
-    // blt _021E954E
-    // mov r0, #1
-    // str r0, [r4, #0x10]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    *((u32*)((*((u32*)r1) << 2) + 0x14)) = *((u16*)(r1 + 0xa));
+    *((u32*)(r4 + 0x10)) = 1;
 }
+
 
 
 void ov96_021E9570(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r4, r0, #0
     // str r1, [sp]
     // add r1, sp, #4
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // str r0, [r1, #0xc]
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    *((u32*)(r1 + 0xc)) = 0;
     // ldr r0, [sp]
-    // cmp r0, #0xa
-    // blt _021E958E
-    // bl GF_AssertFail
-    // ldr r1, [r4]
-    // mov r0, #0
-    // cmp r1, #0
-    // ble _021E95B6
-    // mov r7, #0x51
-    // add r1, r4, #0
+    GF_AssertFail(0);
     // add r6, sp, #4
-    // lsl r7, r7, #2
     // ldr r2, [r1, r7]
-    // add r0, r0, #1
-    // ldr r3, [r2]
-    // ldrh r2, [r2, #0xa]
-    // lsl r5, r3, #2
     // ldr r3, [r6, r5]
-    // add r1, r1, #4
     // add r2, r3, r2
     // str r2, [r6, r5]
-    // ldr r2, [r4]
-    // cmp r0, r2
-    // blt _021E959E
     // ldr r1, [sp]
-    // mov r0, #0
-    // lsl r1, r1, #4
     // add r4, r4, r1
-    // mov r1, #0x5d
     // add r3, sp, #4
-    // lsl r1, r1, #2
-    // ldr r2, [r3]
-    // add r0, r0, #1
     // str r2, [r4, r1]
-    // add r3, r3, #4
-    // add r4, r4, #4
-    // cmp r0, #4
-    // blt _021E95C4
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E95D8(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #0xa
-    // blt _021E95E8
-    // bl GF_AssertFail
-    // lsl r0, r4, #4
+    GF_AssertFail();
     // add r1, r5, r0
-    // lsl r0, r6, #2
     // add r1, r1, r0
-    // mov r0, #0x5d
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021E95F8(void) {
@@ -6764,6 +5193,7 @@ void ov96_021E95F8(void) {
     // _021E9668: .word 0x00000135
     // TODO: decompile
 }
+
 
 
 void ov96_021E966C(void) {
@@ -6829,364 +5259,205 @@ void ov96_021E966C(void) {
 }
 
 
+
 void ov96_021E96F8(void) {
-    ov96_021E5E04(r3, r2);
-    PokeathlonCourse_SetStateTransitionType(r4, 1);
-    PokeathlonCourse_SetStateField07(r4, 1);
 }
+
 
 
 void ov96_021E9718(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r3, #0
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // add r6, r1, #0
-    // add r7, r2, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021E9780
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl PokeathlonCourse_GetParticipantData
-    // add r1, r7, #0
-    // add r2, r6, #0
-    // bl memcpy
-    // add r0, r4, #0
-    // bl PokeathlonCourse_IncrementField1EF
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetField1EF
-    // cmp r5, r0
-    // bne _021E9780
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetField1EF
-    // cmp r0, #4
-    // bhs _021E9772
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetField1EF
-    // mov r1, #4
+    ov96_021E5F24(r3);
+    PokeathlonCourse_GetParticipantData(r4, r5);
+    memcpy(r7, r6);
+    PokeathlonCourse_IncrementField1EF(r4);
+    PokeathlonCourse_GetParticipantCount(r4);
+    PokeathlonCourse_GetField1EF(r4);
+    PokeathlonCourse_GetField1EF(r4);
+    PokeathlonCourse_GetField1EF(r4);
     // sub r1, r1, r0
-    // lsl r1, r1, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_021E8484
-    // add r0, r4, #0
-    // bl PokeathlonCourse_ResetField1EF
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl PokeathlonCourse_SetStateField07
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E8484(r4, ((4 << 0x18) >> 0x18));
+    PokeathlonCourse_ResetField1EF(r4);
+    PokeathlonCourse_SetStateField07(r4, 4);
 }
+
 
 
 void ov96_021E9784(void) {
-    PokeathlonCourse_GetParticipantData(r3, r0);
-    memcpy(r7, r5);
-    ov96_021E604C(r4);
-    PokeathlonCourse_SetStateTransitionType(r4, 3);
-    PokeathlonCourse_SetStateField07(r4, 5);
 }
+
 
 
 void ov96_021E97B8(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r3, #0
-    // add r0, r4, #0
-    // add r5, r1, #0
-    // add r6, r2, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // beq _021E97DA
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl PokeathlonCourse_GetPlayerProfileFromData
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // bl memcpy
-    // add r0, r4, #0
-    // mov r1, #4
-    // bl PokeathlonCourse_SetStateTransitionType
-    // add r0, r4, #0
-    // mov r1, #6
-    // bl PokeathlonCourse_SetStateField07
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E5F24(r3);
+    PokeathlonCourse_GetPlayerProfileFromData(r4, 0);
+    memcpy(r6, r5);
+    PokeathlonCourse_SetStateTransitionType(r4, 4);
+    PokeathlonCourse_SetStateField07(r4, 6);
 }
+
 
 
 void ov96_021E97EC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r3, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_IncrementField1EF
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetField1EF
-    // cmp r4, r0
-    // bne _021E981E
-    // add r0, r5, #0
-    // bl PokeathlonCourse_ResetField1EF
-    // add r0, r5, #0
-    // mov r1, #5
-    // bl PokeathlonCourse_SetStateTransitionType
-    // add r0, r5, #0
-    // mov r1, #7
-    // bl PokeathlonCourse_SetStateField07
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    PokeathlonCourse_IncrementField1EF(r3);
+    PokeathlonCourse_GetParticipantCount(r5);
+    PokeathlonCourse_GetField1EF(r5);
+    PokeathlonCourse_ResetField1EF(r5);
+    PokeathlonCourse_SetStateTransitionType(r5, 5);
+    PokeathlonCourse_SetStateField07(r5, 7);
 }
+
 
 
 void ov96_021E9820(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // add r0, r3, #0
-    // add r6, r1, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r1, r4, #0
+    PokeathlonCourse_GetDataCopyArea(r3);
     // add r1, #0x24
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // beq _021E9844
     // add r0, #0xf0
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl memcpy
-    // pop {r4, r5, r6, pc}
-    // mov r1, #0x28
+    memcpy(r4, r6);
     // add r0, #0x50
     // mul r1, r5
     // add r0, r0, r1
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl memcpy
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    memcpy(r4, r6);
 }
+
 
 
 void ov96_021E9858(void) {
-    PokeathlonCourse_SetStateTransitionType(r3, 0xa);
-    PokeathlonCourse_SetStateField07(r4, 0x12);
 }
+
 
 
 void ov96_021E9870(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r3, #0
-    // add r6, r0, #0
-    // add r0, r5, #0
     // str r2, [sp]
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021E98CE
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetUnkConstant4
+    PokeathlonCourse_GetDataCopyArea(r3);
+    ov96_021E5F24(r5);
+    PokeathlonCourse_GetUnkConstant4(r5);
     // add r7, #0x28
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl ov96_021E8A20
-    // add r1, r6, #0
+    ov96_021E8A20(r7);
     // mul r1, r4
     // add r0, r0, r1
     // ldr r1, [sp]
-    // add r2, r4, #0
-    // bl memcpy
-    // add r0, r5, #0
-    // bl PokeathlonCourse_IncrementField1EF
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetField1EF
-    // cmp r4, r0
-    // bne _021E98CE
-    // add r0, r5, #0
-    // bl PokeathlonCourse_ResetField1EF
-    // add r0, r5, #0
-    // mov r1, #0x15
-    // bl PokeathlonCourse_SetStateField07
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    memcpy(r6, r4);
+    PokeathlonCourse_IncrementField1EF(r5);
+    PokeathlonCourse_GetParticipantCount(r5);
+    PokeathlonCourse_GetField1EF(r5);
+    PokeathlonCourse_ResetField1EF(r5);
+    PokeathlonCourse_SetStateField07(r5, 0x15);
 }
+
 
 
 void ov96_021E98D0(void) {
-    PokeathlonCourse_GetDataCopyArea(r3);
-    memcpy(r4, r5);
-    PokeathlonCourse_SetStateField07(r6, 0x16);
 }
 
 
+
 void ov96_021E98F4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r0, #0
     // str r3, [sp]
-    // add r0, r3, #0
-    // add r7, r2, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea(r3);
     // ldr r0, [sp]
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021E9990
-    // lsl r1, r4, #0x18
+    ov96_021E5F24();
     // ldr r0, [sp]
-    // lsr r1, r1, #0x18
-    // bl PokeathlonCourse_GetFieldData_AtIndex
-    // add r5, r0, #0
-    // mov r6, #0
-    // lsl r4, r6, #5
+    PokeathlonCourse_GetFieldData_AtIndex(((r4 << 0x18) >> 0x18));
     // ldr r1, [r5, r4]
     // ldr r0, [r7, r4]
     // add r3, r7, r4
     // add r0, r1, r0
     // str r0, [r5, r4]
     // add r2, r5, r4
-    // ldr r1, [r2, #4]
-    // ldr r0, [r3, #4]
     // add r0, r1, r0
-    // str r0, [r2, #4]
-    // ldr r1, [r2, #8]
-    // ldr r0, [r3, #8]
+    *((u32*)(r2 + 4)) = *((u32*)(r3 + 4));
     // add r0, r1, r0
-    // str r0, [r2, #8]
-    // ldr r1, [r2, #0xc]
-    // ldr r0, [r3, #0xc]
+    *((u32*)(r2 + 8)) = *((u32*)(r3 + 8));
     // add r0, r1, r0
-    // str r0, [r2, #0xc]
-    // ldr r1, [r2, #0x10]
-    // ldr r0, [r3, #0x10]
+    *((u32*)(r2 + 0xc)) = *((u32*)(r3 + 0xc));
     // add r0, r1, r0
-    // str r0, [r2, #0x10]
-    // ldr r1, [r2, #0x14]
-    // ldr r0, [r3, #0x14]
+    *((u32*)(r2 + 0x10)) = *((u32*)(r3 + 0x10));
     // add r0, r1, r0
-    // str r0, [r2, #0x14]
-    // ldr r1, [r2, #0x18]
-    // ldr r0, [r3, #0x18]
+    *((u32*)(r2 + 0x14)) = *((u32*)(r3 + 0x14));
     // add r0, r1, r0
-    // str r0, [r2, #0x18]
-    // ldr r1, [r2, #0x1c]
-    // ldr r0, [r3, #0x1c]
+    *((u32*)(r2 + 0x18)) = *((u32*)(r3 + 0x18));
     // add r0, r1, r0
-    // str r0, [r2, #0x1c]
-    // add r0, r6, #1
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // cmp r6, #3
-    // blo _021E991A
+    *((u32*)(r2 + 0x1c)) = *((u32*)(r3 + 0x1c));
     // ldr r0, [sp]
-    // bl PokeathlonCourse_IncrementField1EF
+    PokeathlonCourse_IncrementField1EF(((0 + 1) << 0x18), *((u32*)(r2 + 0x1c)));
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r4, r0, #0
+    PokeathlonCourse_GetParticipantCount();
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetField1EF
-    // cmp r4, r0
-    // bne _021E9990
+    PokeathlonCourse_GetField1EF();
     // ldr r0, [sp]
-    // bl PokeathlonCourse_ResetField1EF
+    PokeathlonCourse_ResetField1EF();
     // ldr r0, [sp]
-    // mov r1, #0x1e
-    // bl PokeathlonCourse_SetStateField07
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    PokeathlonCourse_SetStateField07(0x1e);
 }
+
 
 
 void ov96_021E9994(void) {
-    PokeathlonCourse_GetDataCopyArea(r3);
-    ov96_021E5F24(r4);
-    PokeathlonCourse_SetStateTransitionType(r4, 0xd);
-    PokeathlonCourse_SetStateField07(r4, 0x1f);
 }
+
 
 
 void ov96_021E99B8(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r3, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r0, r5, #0
-    // bl PokeathlonCourse_IncrementField1EF
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetField1EF
-    // cmp r4, r0
-    // bne _021E99F0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_ResetField1EF
-    // add r0, r5, #0
-    // mov r1, #0xf
-    // bl PokeathlonCourse_SetStateTransitionType
-    // add r0, r5, #0
-    // mov r1, #0x24
-    // bl PokeathlonCourse_SetStateField07
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetDataCopyArea(r3);
+    PokeathlonCourse_IncrementField1EF(r5);
+    PokeathlonCourse_GetParticipantCount(r5);
+    PokeathlonCourse_GetField1EF(r5);
+    PokeathlonCourse_ResetField1EF(r5);
+    PokeathlonCourse_SetStateTransitionType(r5, 0xf);
+    PokeathlonCourse_SetStateField07(r5, 0x24);
 }
+
 
 
 u8 ov96_021E99F4(void) {
-    return 4;
 }
+
 
 
 u8 ov96_021E99F8(void) {
-    return 0x7c;
 }
+
 
 
 void ov96_021E99FC(void) {
-    r0 = r0 << 4;
 }
+
 
 
 void ov96_021E9A04(void) {
-    PlayerProfile_sizeof();
 }
+
 
 
 u8 ov96_021E9A10(void) {
-    return 0x74;
 }
+
 
 
 u8 ov96_021E9A14(void) {
-    return 0x26;
 }
+
 
 
 u8 ov96_021E9A18(void) {
-    return 0x60;
 }
+
 
 
 void ov96_021E9A1C(void) {
-    r0 = r0 << 6;
 }
+
 
 
 void ov96_021E9A24(void) {
-    sub_02031B10();
 }
+
 
 
 void ov96_021E9A2C(void) {
-    PokeathlonCourse_GetField3A4();
 }
+
 
 
 void ov96_021E9A38(void) {
@@ -7201,14 +5472,15 @@ void ov96_021E9A38(void) {
 }
 
 
+
 void ov96_021E9A48(void) {
-    PokeathlonCourse_GetFieldData_AtIndex();
 }
+
 
 
 void ov96_021E9A54(void) {
-    PokeathlonCourse_GetFieldBA4();
 }
+
 
 
 void ov96_021E9A68(void) {
@@ -7223,959 +5495,400 @@ void ov96_021E9A68(void) {
 }
 
 
+
 void ov96_021E9A78(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // mov r1, #0
-    // add r5, r0, #0
     // add r2, sp, #0
-    // add r0, r1, #0
-    // add r1, r1, #1
     // strb r0, [r2]
-    // add r2, r2, #1
-    // cmp r1, #4
-    // blt _021E9A86
-    // mov r0, #1
     // tst r0, r4
-    // beq _021E9AAA
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #4
+    *((u8*)(1 + 2)) = (*((u8*)(1 + 2)) + 1);
+    *((u8*)(1 + 3)) = (*((u8*)(1 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9AC4
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #2
+    *((u8*)(4 + 2)) = (*((u8*)(4 + 2)) + 1);
+    *((u8*)(4 + 3)) = (*((u8*)(4 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9ADE
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #8
+    *((u8*)(2 + 2)) = (*((u8*)(2 + 2)) + 1);
+    *((u8*)(2 + 3)) = (*((u8*)(2 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9AF8
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #0x10
+    *((u8*)(8 + 2)) = (*((u8*)(8 + 2)) + 1);
+    *((u8*)(8 + 3)) = (*((u8*)(8 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9B12
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #0x20
+    *((u8*)(0x10 + 2)) = (*((u8*)(0x10 + 2)) + 1);
+    *((u8*)(0x10 + 3)) = (*((u8*)(0x10 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9B2C
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #0x40
+    *((u8*)(0x20 + 2)) = (*((u8*)(0x20 + 2)) + 1);
+    *((u8*)(0x20 + 3)) = (*((u8*)(0x20 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9B46
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #0x80
+    *((u8*)(0x40 + 2)) = (*((u8*)(0x40 + 2)) + 1);
+    *((u8*)(0x40 + 3)) = (*((u8*)(0x40 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9B60
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #1
-    // lsl r0, r0, #8
+    *((u8*)(0x80 + 2)) = (*((u8*)(0x80 + 2)) + 1);
+    *((u8*)(0x80 + 3)) = (*((u8*)(0x80 + 3)) + 1);
     // tst r0, r4
-    // beq _021E9B7C
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #2
-    // lsl r0, r0, #8
+    *((u8*)((1 << 8) + 2)) = (*((u8*)((1 << 8) + 2)) + 1);
+    *((u8*)((1 << 8) + 3)) = (*((u8*)((1 << 8) + 3)) + 1);
     // tst r0, r4
-    // beq _021E9B98
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #1
-    // lsl r0, r0, #0xa
+    *((u8*)((2 << 8) + 2)) = (*((u8*)((2 << 8) + 2)) + 1);
+    *((u8*)((2 << 8) + 3)) = (*((u8*)((2 << 8) + 3)) + 1);
     // tst r0, r4
-    // beq _021E9BB4
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r0, #2
-    // lsl r0, r0, #0xa
+    *((u8*)((1 << 0xa) + 2)) = (*((u8*)((1 << 0xa) + 2)) + 1);
+    *((u8*)((1 << 0xa) + 3)) = (*((u8*)((1 << 0xa) + 3)) + 1);
     // tst r0, r4
-    // beq _021E9BD0
     // add r0, sp, #0
     // ldrb r1, [r0]
-    // add r1, r1, #1
     // strb r1, [r0]
-    // ldrb r1, [r0, #2]
-    // add r1, r1, #1
-    // strb r1, [r0, #2]
-    // ldrb r1, [r0, #3]
-    // add r1, r1, #1
-    // strb r1, [r0, #3]
-    // mov r1, #2
+    *((u8*)((2 << 0xa) + 2)) = (*((u8*)((2 << 0xa) + 2)) + 1);
+    *((u8*)((2 << 0xa) + 3)) = (*((u8*)((2 << 0xa) + 3)) + 1);
     // add r0, sp, #0
-    // strb r1, [r0, #1]
-    // add r0, r5, #0
-    // mov r1, #0xb4
-    // bl Heap_Alloc
-    // add r7, r0, #0
+    *((u8*)((2 << 0xa) + 1)) = 2;
+    Heap_Alloc(r0, 0xb4, (r2 + 1));
     // str r5, [r7]
-    // str r4, [r7, #4]
-    // str r6, [r7, #8]
-    // mov r5, #0
+    *((u32*)(r0 + 4)) = r4;
+    *((u32*)(r0 + 8)) = r6;
     // add r4, sp, #0
-    // add r6, r7, #0
     // ldrb r0, [r4]
-    // ldr r2, [r7]
-    // add r1, r5, #0
-    // bl Create2DGfxResObjMan
-    // str r0, [r6, #0xc]
-    // add r5, r5, #1
-    // add r4, r4, #1
-    // add r6, r6, #4
-    // cmp r5, #4
-    // blt _021E9BEC
-    // add r0, r7, #0
-    // bl ov96_021E9D10
-    // add r0, r7, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Create2DGfxResObjMan(0, *((u32*)r0));
+    *((u32*)(r6 + 0xc)) = r0;
+    ov96_021E9D10(r7);
 }
+
 
 
 void ov96_021E9C0C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r1, [r5, #4]
-    // mov r0, #1
     // tst r0, r1
-    // beq _021E9C1E
-    // ldr r0, [r5, #0x1c]
-    // bl sub_0200AEB0
-    // ldr r1, [r5, #4]
-    // mov r0, #4
+    sub_0200AEB0(*((u32*)(r0 + 0x1c)), *((u32*)(r0 + 4)));
     // tst r0, r1
-    // beq _021E9C2C
-    // ldr r0, [r5, #0x20]
-    // bl sub_0200AEB0
-    // ldr r1, [r5, #4]
-    // mov r0, #2
+    sub_0200AEB0(*((u32*)(r5 + 0x20)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9C3A
-    // ldr r0, [r5, #0x24]
-    // bl sub_0200AEB0
-    // ldr r1, [r5, #4]
-    // mov r0, #8
+    sub_0200AEB0(*((u32*)(r5 + 0x24)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9C48
-    // ldr r0, [r5, #0x28]
-    // bl sub_0200AEB0
-    // ldr r1, [r5, #4]
-    // mov r0, #0x10
+    sub_0200AEB0(*((u32*)(r5 + 0x28)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9C56
-    // ldr r0, [r5, #0x2c]
-    // bl sub_0200AEB0
-    // ldr r1, [r5, #4]
-    // mov r0, #0x20
+    sub_0200AEB0(*((u32*)(r5 + 0x2c)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9C64
-    // ldr r0, [r5, #0x30]
-    // bl sub_0200AEB0
-    // ldr r1, [r5, #4]
-    // mov r0, #0x40
+    sub_0200AEB0(*((u32*)(r5 + 0x30)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9C72
-    // ldr r0, [r5, #0x34]
-    // bl sub_0200AEB0
-    // ldr r1, [r5, #4]
-    // mov r0, #0x80
+    sub_0200AEB0(*((u32*)(r5 + 0x34)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9C80
-    // ldr r0, [r5, #0x38]
-    // bl sub_0200AEB0
-    // mov r0, #1
-    // ldr r1, [r5, #4]
-    // lsl r0, r0, #8
+    sub_0200AEB0(*((u32*)(r5 + 0x38)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9C90
-    // ldr r0, [r5, #0x3c]
-    // bl sub_0200AEB0
-    // mov r0, #2
-    // ldr r1, [r5, #4]
-    // lsl r0, r0, #8
+    sub_0200AEB0(*((u32*)(r5 + 0x3c)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9CA0
-    // ldr r0, [r5, #0x40]
-    // bl sub_0200AEB0
-    // mov r0, #1
-    // ldr r1, [r5, #4]
-    // lsl r0, r0, #0xa
+    sub_0200AEB0(*((u32*)(r5 + 0x40)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9CB0
-    // ldr r0, [r5, #0x44]
-    // bl sub_0200AEB0
-    // mov r0, #2
-    // ldr r1, [r5, #4]
-    // lsl r0, r0, #0xa
+    sub_0200AEB0(*((u32*)(r5 + 0x44)), *((u32*)(r5 + 4)));
     // tst r0, r1
-    // beq _021E9CC0
-    // ldr r0, [r5, #0x48]
-    // bl sub_0200AEB0
-    // add r0, r5, #0
+    sub_0200AEB0(*((u32*)(r5 + 0x48)), *((u32*)(r5 + 4)));
     // add r0, #0xac
-    // ldr r0, [r0]
-    // bl sub_0200B0A8
-    // add r0, r5, #0
+    sub_0200B0A8(*((u32*)r5));
     // add r0, #0xb0
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _021E9CD8
-    // bl sub_0200B0A8
-    // mov r6, #0
-    // add r4, r5, #0
-    // ldr r0, [r4, #0xc]
-    // bl Destroy2DGfxResObjMan
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #4
-    // blt _021E9CDC
-    // add r0, r5, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0200B0A8(*((u32*)r5));
+    Destroy2DGfxResObjMan(*((u32*)(r5 + 0xc)));
+    Heap_Free(r5);
 }
+
 
 
 void ov96_021E9CF4(void) {
-    // cmp r0, #0
-    // bne _021E9CFC
-    // mov r0, #0
-    // bx lr
-    // ldr r0, [r0, #4]
     // and r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021E9D08(void) {
-    // lsl r1, r1, #2
     // add r0, r0, r1
-    // ldr r0, [r0, #0xc]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021E9D10(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // ldr r1, [r4, #4]
-    // mov r0, #1
     // tst r1, r0
-    // beq _021E9D6E
-    // mov r1, #0x14
     // str r1, [sp]
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #3
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x1c]
-    // mov r0, #0x14
+    AddCharResObjFromNarc(*((u32*)(r0 + 0xc)), 0x99, 3, 0);
+    *((u32*)(r4 + 0x1c)) = r0;
     // str r0, [sp]
-    // mov r2, #2
     // str r2, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x4c]
-    // mov r0, #0x14
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 2, 0);
+    *((u32*)(r4 + 0x4c)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #1
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x7c]
-    // ldr r0, [r4, #0x1c]
-    // bl sub_0200ADA4
-    // ldr r1, [r4, #4]
-    // mov r0, #4
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 1, 0);
+    *((u32*)(r4 + 0x7c)) = r0;
+    sub_0200ADA4(*((u32*)(r4 + 0x1c)));
     // tst r0, r1
-    // beq _021E9DCE
-    // mov r0, #0x15
     // str r0, [sp]
-    // ldr r0, [r4, #8]
-    // mov r1, #0x99
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r2, #6
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x20]
-    // mov r0, #0x15
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 6, 0);
+    *((u32*)(r4 + 0x20)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #5
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x50]
-    // mov r0, #0x15
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 5, 0);
+    *((u32*)(r4 + 0x50)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #4
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 4, 0);
     // add r1, #0x80
     // str r0, [r1]
-    // ldr r0, [r4, #0x20]
-    // bl sub_0200ADA4
-    // ldr r1, [r4, #4]
-    // mov r0, #2
+    sub_0200ADA4(*((u32*)(r4 + 0x20)), r4);
     // tst r0, r1
-    // beq _021E9E2E
-    // mov r0, #0x16
     // str r0, [sp]
-    // ldr r0, [r4, #8]
-    // mov r1, #0x99
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r2, #9
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x24]
-    // mov r0, #0x16
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 9, 0);
+    *((u32*)(r4 + 0x24)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #8
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x54]
-    // mov r0, #0x16
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 8, 0);
+    *((u32*)(r4 + 0x54)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #7
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 7, 0);
     // add r1, #0x84
     // str r0, [r1]
-    // ldr r0, [r4, #0x24]
-    // bl sub_0200ADA4
-    // ldr r0, [r4, #4]
-    // mov r2, #0x10
+    sub_0200ADA4(*((u32*)(r4 + 0x24)), r4);
     // tst r0, r2
-    // beq _021E9E8C
-    // mov r0, #0x1a
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x2c]
-    // mov r0, #0x1a
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x10, 0);
+    *((u32*)(r4 + 0x2c)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0xf
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x5c]
-    // mov r0, #0x1a
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0xf, 0);
+    *((u32*)(r4 + 0x5c)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0xe
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0xe, 0);
     // add r1, #0x8c
     // str r0, [r1]
-    // ldr r0, [r4, #0x2c]
-    // bl sub_0200ADA4
-    // ldr r1, [r4, #4]
-    // mov r0, #0x20
+    sub_0200ADA4(*((u32*)(r4 + 0x2c)), r4);
     // tst r0, r1
-    // beq _021E9EEC
-    // mov r0, #0x1b
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #0x13
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x30]
-    // mov r0, #0x1b
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x13, 0);
+    *((u32*)(r4 + 0x30)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x12
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x60]
-    // mov r0, #0x1b
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0x12, 0);
+    *((u32*)(r4 + 0x60)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0x11
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0x11, 0);
     // add r1, #0x90
     // str r0, [r1]
-    // ldr r0, [r4, #0x30]
-    // bl sub_0200ADA4
-    // ldr r1, [r4, #4]
-    // mov r0, #8
+    sub_0200ADA4(*((u32*)(r4 + 0x30)), r4);
     // tst r0, r1
-    // beq _021E9F4C
-    // mov r0, #0x19
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #0xd
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x28]
-    // mov r0, #0x19
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0xd, 0);
+    *((u32*)(r4 + 0x28)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0xc
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x58]
-    // mov r0, #0x19
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0xc, 0);
+    *((u32*)(r4 + 0x58)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0xb
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0xb, 0);
     // add r1, #0x88
     // str r0, [r1]
-    // ldr r0, [r4, #0x28]
-    // bl sub_0200ADA4
-    // ldr r1, [r4, #4]
-    // mov r0, #0x40
+    sub_0200ADA4(*((u32*)(r4 + 0x28)), r4);
     // tst r0, r1
-    // beq _021E9FAC
-    // mov r0, #0x1c
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #0x16
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x34]
-    // mov r0, #0x1c
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x16, 0);
+    *((u32*)(r4 + 0x34)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x15
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x64]
-    // mov r0, #0x1c
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0x15, 0);
+    *((u32*)(r4 + 0x64)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0x14
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0x14, 0);
     // add r1, #0x94
     // str r0, [r1]
-    // ldr r0, [r4, #0x34]
-    // bl sub_0200ADA4
-    // ldr r1, [r4, #4]
-    // mov r0, #0x80
+    sub_0200ADA4(*((u32*)(r4 + 0x34)), r4);
     // tst r0, r1
-    // beq _021EA00C
-    // mov r0, #0x1d
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #0x19
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x38]
-    // mov r0, #0x1d
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x19, 0);
+    *((u32*)(r4 + 0x38)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x18
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x68]
-    // mov r0, #0x1d
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0x18, 0);
+    *((u32*)(r4 + 0x68)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0x17
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0x17, 0);
     // add r1, #0x98
     // str r0, [r1]
-    // ldr r0, [r4, #0x38]
-    // bl sub_0200ADA4
-    // mov r0, #1
-    // ldr r1, [r4, #4]
-    // lsl r0, r0, #8
+    sub_0200ADA4(*((u32*)(r4 + 0x38)), r4);
     // tst r0, r1
-    // beq _021EA06E
-    // mov r0, #0x1e
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #0x1c
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x3c]
-    // mov r0, #0x1e
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x1c, 0);
+    *((u32*)(r4 + 0x3c)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x1b
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x6c]
-    // mov r0, #0x1e
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0x1b, 0);
+    *((u32*)(r4 + 0x6c)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0x1a
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0x1a, 0);
     // add r1, #0x9c
     // str r0, [r1]
-    // ldr r0, [r4, #0x3c]
-    // bl sub_0200ADA4
-    // mov r0, #2
-    // ldr r1, [r4, #4]
-    // lsl r0, r0, #8
+    sub_0200ADA4(*((u32*)(r4 + 0x3c)), r4);
     // tst r0, r1
-    // beq _021EA0CE
-    // mov r2, #0x1f
     // str r2, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x40]
-    // mov r0, #0x1f
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x1f, 0);
+    *((u32*)(r4 + 0x40)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x1e
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x70]
-    // mov r0, #0x1f
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0x1e, 0);
+    *((u32*)(r4 + 0x70)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0x1d
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0x1d, 0);
     // add r1, #0xa0
     // str r0, [r1]
-    // ldr r0, [r4, #0x40]
-    // bl sub_0200ADA4
-    // mov r0, #1
-    // ldr r1, [r4, #4]
-    // lsl r0, r0, #0xa
+    sub_0200ADA4(*((u32*)(r4 + 0x40)), r4);
     // tst r0, r1
-    // beq _021EA130
-    // mov r0, #0x1f
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #0x22
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x44]
-    // mov r0, #0x1f
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x22, 0);
+    *((u32*)(r4 + 0x44)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x21
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x74]
-    // mov r0, #0x1f
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0x21, 0);
+    *((u32*)(r4 + 0x74)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0x20
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0x20, 0);
     // add r1, #0xa4
     // str r0, [r1]
-    // ldr r0, [r4, #0x44]
-    // bl sub_0200ADA4
-    // mov r0, #2
-    // ldr r1, [r4, #4]
-    // lsl r0, r0, #0xa
+    sub_0200ADA4(*((u32*)(r4 + 0x44)), r4);
     // tst r0, r1
-    // beq _021EA192
-    // mov r0, #0x20
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r2, #0x25
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // str r0, [r4, #0x48]
-    // mov r0, #0x20
+    AddCharResObjFromNarc(*((u32*)(r4 + 0xc)), 0x99, 0x25, 0);
+    *((u32*)(r4 + 0x48)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r2, #0x24
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // str r0, [r4, #0x78]
-    // mov r0, #0x20
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x14)), 0x99, 0x24, 0);
+    *((u32*)(r4 + 0x78)) = r0;
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x18]
-    // mov r2, #0x23
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // add r1, r4, #0
+    AddCellOrAnimResObjFromNarc(*((u32*)(r4 + 0x18)), 0x99, 0x23, 0);
     // add r1, #0xa8
     // str r0, [r1]
-    // ldr r0, [r4, #0x48]
-    // bl sub_0200ADA4
-    // ldr r1, [r4, #8]
-    // cmp r1, #2
-    // bne _021EA19A
-    // mov r1, #3
-    // mov r0, #0x17
+    sub_0200ADA4(*((u32*)(r4 + 0x48)), r4);
     // str r0, [sp]
     // str r1, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r2, #0
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x10]
-    // mov r1, #0x99
-    // add r3, r2, #0
-    // bl AddPlttResObjFromNarc
-    // add r1, r4, #0
+    AddPlttResObjFromNarc(*((u32*)(r4 + 0x10)), 0x99, 0, 0);
     // add r1, #0xac
     // str r0, [r1]
-    // add r0, r4, #0
     // add r0, #0xac
-    // ldr r0, [r0]
-    // bl sub_0200AF94
-    // add r0, r4, #0
-    // mov r1, #0
+    sub_0200AF94(*((u32*)r4), r4);
     // add r0, #0xb0
     // str r1, [r0]
-    // ldr r2, [r4, #4]
-    // mov r1, #8
-    // add r0, r2, #0
     // tst r0, r1
-    // bne _021EA1E4
-    // add r0, r1, #0
     // add r0, #0xf8
     // tst r0, r2
-    // bne _021EA1E4
-    // lsl r0, r1, #7
     // tst r0, r2
-    // beq _021EA20E
-    // mov r0, #0x18
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0x99
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x10]
-    // mov r2, #0xa
-    // mov r3, #0
-    // bl AddPlttResObjFromNarc
-    // add r1, r4, #0
+    AddPlttResObjFromNarc(*((u32*)(r4 + 0x10)), 0x99, 0xa, 0);
     // add r1, #0xb0
     // add r4, #0xb0
     // str r0, [r1]
-    // ldr r0, [r4]
-    // bl sub_0200AF94
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_0200AF94(*((u32*)r4), r4);
 }
 
 
+
 void ov96_021EA214(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x14
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x15
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8188,17 +5901,12 @@ void ov96_021EA214(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x17
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x14, 0x17, 0x14);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
     // ldr r0, [sp, #0xa0]
     // str r4, [sp, #0x38]
     // str r0, [sp, #0x64]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r1, [sp, #0x40]
     // str r1, [sp, #0x44]
     // str r1, [sp, #0x48]
@@ -8206,58 +5914,31 @@ void ov96_021EA214(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
     // str r7, [sp, #0x60]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA2A4
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine((1 << 0xc), 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA2C4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x19
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x1a
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8270,14 +5951,9 @@ void ov96_021EA2C4(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x18
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x19, 0x18, 0x19);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r4, [sp, #0x38]
     // str r7, [sp, #0x64]
     // str r1, [sp, #0x40]
@@ -8287,59 +5963,31 @@ void ov96_021EA2C4(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
-    // mov r0, #2
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x60]
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA354
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(2, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA374(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x1c
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x1d
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8352,14 +6000,9 @@ void ov96_021EA374(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x17
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x1c, 0x17, 0x1c);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r4, [sp, #0x38]
     // str r7, [sp, #0x64]
     // str r1, [sp, #0x40]
@@ -8369,59 +6012,31 @@ void ov96_021EA374(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
-    // mov r0, #1
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x60]
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA404
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(1, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA424(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x1a
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x1b
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8434,14 +6049,9 @@ void ov96_021EA424(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x17
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x1a, 0x17, 0x1a);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r4, [sp, #0x38]
     // str r7, [sp, #0x64]
     // str r1, [sp, #0x40]
@@ -8451,59 +6061,31 @@ void ov96_021EA424(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
-    // mov r0, #1
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x60]
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA4B4
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(1, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA4D4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x1b
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x1c
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8516,14 +6098,9 @@ void ov96_021EA4D4(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x17
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x1b, 0x17, 0x1b);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r4, [sp, #0x38]
     // str r7, [sp, #0x64]
     // str r1, [sp, #0x40]
@@ -8533,59 +6110,31 @@ void ov96_021EA4D4(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
-    // mov r0, #1
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x60]
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA564
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(1, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA584(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x1d
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x1e
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8598,14 +6147,9 @@ void ov96_021EA584(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x17
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x1d, 0x17, 0x1d);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r4, [sp, #0x38]
     // str r7, [sp, #0x64]
     // str r1, [sp, #0x40]
@@ -8615,59 +6159,31 @@ void ov96_021EA584(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
-    // mov r0, #1
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x60]
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA614
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(1, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA634(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x1e
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x1f
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8680,14 +6196,9 @@ void ov96_021EA634(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x18
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x1e, 0x18, 0x1e);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r4, [sp, #0x38]
     // str r7, [sp, #0x64]
     // str r1, [sp, #0x40]
@@ -8697,65 +6208,32 @@ void ov96_021EA634(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
-    // mov r0, #2
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x60]
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA6C4
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(2, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA6E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x90
-    // add r4, r2, #0
-    // add r5, r0, #0
-    // add r7, r1, #0
     // str r3, [sp, #0x2c]
-    // cmp r4, #1
-    // bne _021EA6F8
-    // mov r6, #0x17
-    // b _021EA6FA
-    // mov r6, #0x18
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(r0, 0);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x38]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x1f
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x20
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // ldr r3, [sp, #0x2c]
     // str r2, [sp, #0xc]
     // str r3, [sp, #0x10]
@@ -8769,17 +6247,12 @@ void ov96_021EA6E4(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x6c
-    // add r2, r6, #0
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x1f, r6, 0x1f);
     // add r0, sp, #0x6c
     // str r0, [sp, #0x40]
     // ldr r0, [sp, #0xa8]
     // str r7, [sp, #0x3c]
     // str r0, [sp, #0x68]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r1, [sp, #0x44]
     // str r1, [sp, #0x48]
     // str r1, [sp, #0x4c]
@@ -8787,59 +6260,31 @@ void ov96_021EA6E4(void) {
     // str r0, [sp, #0x54]
     // str r0, [sp, #0x58]
     // add r0, sp, #0x3c
-    // strh r1, [r0, #0x20]
-    // mov r0, #1
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x60]
     // add r0, sp, #0x3c
     // str r4, [sp, #0x64]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA784
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x90
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(1, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
 
 
+
 void ov96_021EA7A4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(0);
     // str r0, [sp, #0x2c]
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 1);
     // str r0, [sp, #0x30]
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(r5, 2);
     // str r0, [sp, #0x34]
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0x20
-    // add r2, r1, #0
+    ov96_021E9D08(r5, 3);
     // str r1, [sp]
     // sub r2, #0x21
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
     // ldr r3, [sp, #0x2c]
     // str r6, [sp, #0x10]
@@ -8852,14 +6297,9 @@ void ov96_021EA7A4(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, sp, #0x68
-    // mov r2, #0x17
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0x20, 0x17, 0x20);
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r4, [sp, #0x38]
     // str r7, [sp, #0x64]
     // str r1, [sp, #0x40]
@@ -8869,69 +6309,41 @@ void ov96_021EA7A4(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
-    // mov r0, #2
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // str r0, [sp, #0x5c]
-    // mov r0, #1
     // str r0, [sp, #0x60]
     // add r0, sp, #0x38
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // bne _021EA836
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine(1, 0);
+    GF_AssertFail();
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
+
 
 
 void ov96_021EA854(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
-    // mov r1, #0xd3
-    // lsl r1, r1, #2
-    // add r5, r0, #0
-    // add r7, r2, #0
     // str r3, [sp]
-    // bl Heap_Alloc
-    // mov r2, #0xd3
-    // add r4, r0, #0
-    // mov r1, #0
-    // lsl r2, r2, #2
-    // bl MI_CpuFill8
+    Heap_Alloc((0xd3 << 2));
+    MI_CpuFill8(0, (0xd3 << 2));
     // str r5, [r4]
     // ldr r0, [sp]
-    // str r6, [r4, #4]
-    // str r0, [r4, #0x18]
+    *((u32*)(r4 + 4)) = r6;
+    *((u32*)(r4 + 0x18)) = r0;
     // ldr r0, [sp, #0x18]
-    // str r0, [r4, #0x10]
-    // add r0, r5, #0
-    // str r7, [r4, #8]
-    // bl ov96_021E8A30
+    *((u32*)(r4 + 0x10)) = r0;
+    *((u32*)(r4 + 8)) = r7;
+    ov96_021E8A30(r5);
     // ldr r2, [sp, #0x18]
-    // add r1, r6, #0
-    // str r0, [r4, #0x14]
-    // bl ov96_021E8A44
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x14)) = r0;
+    ov96_021E8A44(r6);
 }
+
 
 
 void ov96_021EA894(void) {
-    ov96_021E8AAC(*((u32*)(r0 + 0x14)));
-    Heap_Free(r4);
 }
+
 
 
 void ov96_021EA8A8(void) {
@@ -9096,6 +6508,7 @@ void ov96_021EA8A8(void) {
 }
 
 
+
 void ov96_021EAA00(void) {
     // ldr r0, [r0, #0xc]
     // bx lr
@@ -9103,9 +6516,10 @@ void ov96_021EAA00(void) {
 }
 
 
+
 void ov96_021EAA04(void) {
-    GF_AssertFail(0x44);
 }
+
 
 
 void ov96_021EAA20(void) {
@@ -9115,89 +6529,48 @@ void ov96_021EAA20(void) {
 }
 
 
+
 void ov96_021EAA24(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
     // str r0, [sp]
-    // ldr r0, [r1, #0x14]
     // str r1, [sp, #4]
-    // bl ov96_021E8B88
-    // cmp r0, #0
-    // beq _021EAA82
+    ov96_021E8B88(*((u32*)(r1 + 0x14)));
     // ldr r0, [sp, #4]
-    // mov r4, #0
-    // ldr r7, [r0, #8]
-    // ldr r0, [r0, #4]
-    // cmp r0, #0
-    // ble _021EAA76
     // ldr r5, [sp, #4]
-    // add r6, r5, #0
     // add r6, #0x1c
     // ldr r0, [sp, #4]
-    // lsl r1, r4, #0x18
-    // ldr r0, [r0, #0x14]
-    // lsr r1, r1, #0x18
-    // bl ov96_021E8B8C
-    // str r0, [r5, #0x1c]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl ov96_021EABA8
-    // ldr r0, [r5, #0x1c]
-    // add r7, r7, #1
-    // bl ov96_021E90FC
-    // str r0, [r5, #0x44]
+    ov96_021E8B8C(*((u32*)(*((u32*)(r0 + 4)) + 0x14)), ((0 << 0x18) >> 0x18));
+    *((u32*)(r5 + 0x1c)) = r0;
+    ov96_021EABA8(r6, r7);
+    ov96_021E90FC(*((u32*)(r5 + 0x1c)));
+    *((u32*)(r5 + 0x44)) = r0;
     // ldr r0, [sp, #4]
-    // add r4, r4, #1
-    // ldr r0, [r0, #4]
     // add r5, #0x44
     // add r6, #0x44
-    // cmp r4, r0
-    // blt _021EAA48
     // ldr r0, [sp, #4]
-    // mov r1, #1
-    // str r1, [r0, #0xc]
+    *((u32*)(*((u32*)(r0 + 4)) + 0xc)) = 1;
     // ldr r0, [sp]
-    // bl SysTask_Destroy
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SysTask_Destroy(*((u32*)(r0 + 4)), 1);
 }
 
 
+
 void ov96_021EAA88(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x8c
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x18]
-    // add r6, r1, #0
-    // mov r1, #0
-    // add r4, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E9D08
+    ov96_021E9D08(*((u32*)(r0 + 0x18)), 0);
     // str r0, [sp, #0x2c]
-    // ldr r0, [r5, #0x18]
-    // mov r1, #1
-    // bl ov96_021E9D08
+    ov96_021E9D08(*((u32*)(r5 + 0x18)), 1);
     // str r0, [sp, #0x30]
-    // ldr r0, [r5, #0x18]
-    // mov r1, #2
-    // bl ov96_021E9D08
+    ov96_021E9D08(*((u32*)(r5 + 0x18)), 2);
     // str r0, [sp, #0x34]
-    // ldr r0, [r5, #0x18]
-    // mov r1, #3
-    // bl ov96_021E9D08
-    // mov r1, #0
+    ov96_021E9D08(*((u32*)(r5 + 0x18)), 3);
     // str r7, [sp]
     // mvn r1, r1
     // str r1, [sp, #4]
     // str r1, [sp, #8]
-    // mov r1, #0
     // str r1, [sp, #0xc]
     // ldr r2, [sp, #0x2c]
     // str r6, [sp, #0x10]
     // str r2, [sp, #0x14]
     // ldr r2, [sp, #0x30]
-    // add r3, r7, #0
     // str r2, [sp, #0x18]
     // ldr r2, [sp, #0x34]
     // str r2, [sp, #0x1c]
@@ -9205,21 +6578,11 @@ void ov96_021EAA88(void) {
     // str r1, [sp, #0x24]
     // str r1, [sp, #0x28]
     // add r0, sp, #0x68
-    // add r1, r7, #0
-    // mov r2, #0x17
-    // bl CreateSpriteResourcesHeader
-    // cmp r4, #3
-    // bne _021EAAEE
-    // mov r4, #1
-    // ldr r0, [r5, #0x10]
-    // mov r1, #0
+    CreateSpriteResourcesHeader(r7, 0x17, r7);
     // str r0, [sp, #0x38]
     // add r0, sp, #0x68
     // str r0, [sp, #0x3c]
-    // ldr r0, [r5]
     // str r0, [sp, #0x64]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r1, [sp, #0x40]
     // str r1, [sp, #0x44]
     // str r1, [sp, #0x48]
@@ -9227,553 +6590,273 @@ void ov96_021EAA88(void) {
     // str r0, [sp, #0x50]
     // str r0, [sp, #0x54]
     // add r0, sp, #0x38
-    // strh r1, [r0, #0x20]
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // add r0, sp, #0x38
     // str r1, [sp, #0x5c]
     // str r4, [sp, #0x60]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // add r0, r4, #0
-    // add sp, #0x8c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_CreateAffine((1 << 0xc), 0);
+    Sprite_SetAnimActiveFlag(1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
 }
+
 
 
 void ov96_021EAB38(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // bl ov96_021E8BAC
-    // add r1, r4, #0
-    // bl Sprite_SetDrawFlag
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // beq _021EAB64
-    // ldr r1, [r5, #0x40]
-    // cmp r1, #0
-    // beq _021EAB5E
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // b _021EAB64
-    // add r1, r4, #0
-    // bl Sprite_SetDrawFlag
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _021EAB70
-    // add r1, r4, #0
-    // bl Sprite_SetDrawFlag
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_021E8BAC(*((u32*)r0));
+    Sprite_SetDrawFlag(r4);
+    Sprite_SetDrawFlag(*((u32*)(r5 + 4)), 0);
+    Sprite_SetDrawFlag(r4);
+    Sprite_SetDrawFlag(*((u32*)(r5 + 8)), r4);
 }
+
 
 
 void ov96_021EAB74(void) {
-    // push {r3, lr}
-    // ldr r2, [r0, #4]
-    // cmp r2, #0
-    // beq _021EAB92
-    // ldr r0, [r0, #0x40]
-    // cmp r0, #0
-    // beq _021EAB8C
-    // add r0, r2, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // pop {r3, pc}
-    // add r0, r2, #0
-    // bl Sprite_SetDrawFlag
-    // pop {r3, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag(*((u32*)(r0 + 4)), 0, *((u32*)(r0 + 4)));
+    Sprite_SetDrawFlag(r2);
 }
+
 
 
 void ov96_021EAB94(void) {
-    ov96_021E8BAC();
-    Sprite_SetDrawFlag(r4);
 }
+
 
 
 void ov96_021EABA8(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // bl ov96_021E8BAC
-    // add r1, r4, #0
-    // bl Sprite_SetDrawPriority
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // beq _021EABCA
-    // ldr r1, [r5, #0x3c]
-    // lsl r1, r1, #1
+    ov96_021E8BAC(*((u32*)r0));
+    Sprite_SetDrawPriority(r4);
     // add r1, r4, r1
-    // bl Sprite_SetDrawPriority
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _021EABD8
-    // ldr r1, [r5, #0x3c]
+    Sprite_SetDrawPriority(*((u32*)(r5 + 4)), (*((u32*)(r5 + 0x3c)) << 1));
     // add r1, r4, r1
-    // bl Sprite_SetDrawPriority
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Sprite_SetDrawPriority(*((u32*)(r5 + 8)), *((u32*)(r5 + 0x3c)));
 }
+
 
 
 void ov96_021EABDC(void) {
-    ((u32*)r0)[0x3c] = r1;
 }
+
 
 
 void ov96_021EABE0(void) {
-    ov96_021E8BAC();
-    Sprite_SetAffineOverwriteMode(r4);
 }
+
 
 
 void ov96_021EABF4(void) {
-    ov96_021E8BAC();
-    Sprite_SetAffineMatrix(r4);
 }
+
 
 
 void ov96_021EAC08(void) {
-    ((u32*)r0)[0x34] = r1;
 }
+
 
 
 void ov96_021EAC0C(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // str r4, [r0, #0x34]
-    // beq _021EAC5A
-    // ldr r0, [r0]
-    // bl ov96_021E8BAC
-    // cmp r4, #6
-    // bhi _021EAC50
+    *((u32*)(r0 + 0x34)) = r1;
+    ov96_021E8BAC(*((u32*)r0));
     // add r1, r4, r4
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _021EAC2A: ; jump table
-    // mov r1, #0
-    // b _021EAC56
-    // mov r1, #1
-    // b _021EAC56
-    // mov r1, #2
-    // b _021EAC56
-    // mov r1, #3
-    // b _021EAC56
-    // mov r1, #4
-    // b _021EAC56
-    // mov r1, #8
-    // b _021EAC56
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // bl Sprite_TryChangeAnimSeq
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail(8);
+    Sprite_TryChangeAnimSeq();
 }
 
 
+
 void ov96_021EAC5C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // bl ov96_021E8BAC
-    // cmp r4, #8
-    // bgt _021EAC7E
-    // bge _021EACAE
-    // cmp r4, #4
-    // bgt _021EAD04
-    // cmp r4, #0
-    // blt _021EAD04
-    // beq _021EACAE
-    // cmp r4, #4
-    // beq _021EACAE
-    // pop {r3, r4, r5, pc}
-    // cmp r4, #0x16
-    // bgt _021EACAA
-    // add r1, r4, #0
+    ov96_021E8BAC(*((u32*)r0));
     // sub r1, #0xc
     // bmi _021EAD04
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _021EAC94: ; jump table
-    // cmp r4, #0x1a
-    // bne _021EAD04
-    // str r4, [r5, #0x38]
-    // b _021EACB4
-    // pop {r3, r4, r5, pc}
-    // cmp r4, #0x14
-    // beq _021EACFC
-    // cmp r4, #0x15
-    // beq _021EACFC
-    // ldr r1, [r5, #0x34]
-    // cmp r1, #4
-    // bhi _021EACF6
+    *((u32*)(r5 + 0x38)) = r4;
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _021EACCE: ; jump table
-    // lsl r1, r4, #0x18
-    // lsr r1, r1, #0x18
-    // b _021EAD00
-    // add r1, r4, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // b _021EAD00
-    // add r1, r4, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // b _021EAD00
-    // add r1, r4, #3
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // b _021EAD00
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, pc}
-    // lsl r1, r4, #0x18
-    // lsr r1, r1, #0x18
-    // bl Sprite_TryChangeAnimSeq
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail((((r4 + 3) << 0x18) >> 0x18));
+    Sprite_TryChangeAnimSeq(((r4 << 0x18) >> 0x18));
 }
+
 
 
 void ov96_021EAD08(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // add r5, r1, #0
-    // bl ov96_021E8BAC
-    // cmp r5, #0
-    // beq _021EAD22
-    // cmp r5, #0x14
-    // beq _021EAD28
-    // cmp r5, #0x15
-    // beq _021EAD2E
-    // pop {r3, r4, r5, pc}
-    // mov r1, #0
-    // str r1, [r4, #0x38]
-    // b _021EAD32
-    // mov r1, #4
-    // str r1, [r4, #0x38]
-    // b _021EAD32
-    // mov r1, #5
-    // str r1, [r4, #0x38]
-    // cmp r5, #0x14
-    // beq _021EAD6C
-    // cmp r5, #0x15
-    // beq _021EAD6C
-    // ldr r1, [r4, #0x34]
-    // cmp r1, #4
-    // bhi _021EAD66
+    ov96_021E8BAC(*((u32*)r0));
+    *((u32*)(r4 + 0x38)) = 0;
+    *((u32*)(r4 + 0x38)) = 4;
+    *((u32*)(r4 + 0x38)) = 5;
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _021EAD4C: ; jump table
-    // mov r1, #0
-    // b _021EAD72
-    // mov r1, #1
-    // b _021EAD72
-    // mov r1, #2
-    // b _021EAD72
-    // mov r1, #3
-    // b _021EAD72
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, pc}
-    // ldr r1, [r4, #0x38]
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl Sprite_TryChangeAnimSeq
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail(3);
+    Sprite_TryChangeAnimSeq(((*((u32*)(r4 + 0x38)) << 0x18) >> 0x18));
 }
+
 
 
 void ov96_021EAD78(void) {
-    ov96_021E8BAC();
-    Sprite_IsAnimated();
 }
 
 
+
 void ov96_021EAD88(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r5, r0, #0
-    // add r4, r1, #0
     // add r1, sp, #4
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // ldr r0, [r5]
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl ov96_021E8BAC
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    ov96_021E8BAC(*((u32*)r0));
     // str r0, [sp]
-    // lsl r0, r4, #0xc
     // str r0, [sp, #4]
-    // lsl r0, r6, #0xc
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0x14]
     // add r0, r4, r0
-    // str r0, [r5, #0x20]
-    // ldr r0, [r5, #0x18]
+    *((u32*)(r5 + 0x20)) = *((u32*)(r5 + 0x14));
     // add r0, r6, r0
-    // str r0, [r5, #0x24]
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _021EADF0
+    *((u32*)(r5 + 0x24)) = *((u32*)(r5 + 0x18));
     // add r4, sp, #4
     // ldmia r4!, {r0, r1}
     // add r3, sp, #0x10
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r4]
     // str r0, [r3]
-    // ldr r0, [r5, #0x14]
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0xc
     // add r0, r1, r0
     // str r0, [sp, #0x10]
-    // ldr r1, [r5, #0x18]
     // ldr r0, [sp, #0x14]
-    // lsl r3, r1, #1
-    // ldr r1, [r5, #0xc]
     // sub r1, r3, r1
-    // lsl r1, r1, #0xc
     // add r0, r0, r1
     // str r0, [sp, #0x14]
-    // ldr r0, [r5, #8]
-    // add r1, r2, #0
-    // bl Sprite_SetMatrix
-    // cmp r7, #0
-    // beq _021EAE2A
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // beq _021EAE2A
+    Sprite_SetMatrix(*((u32*)(r5 + 8)), r3, r3, (*((u32*)(r5 + 0x18)) << 1));
     // add r4, sp, #4
     // ldmia r4!, {r0, r1}
     // add r3, sp, #0x10
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r4]
     // str r0, [r3]
-    // ldr r0, [r5, #0x14]
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0xc
     // add r0, r1, r0
     // str r0, [sp, #0x10]
-    // ldr r1, [r5, #0x18]
     // ldr r0, [sp, #0x14]
-    // lsl r3, r1, #1
-    // ldr r1, [r5, #0x10]
     // sub r1, r3, r1
-    // lsl r1, r1, #0xc
     // add r0, r0, r1
     // str r0, [sp, #0x14]
-    // ldr r0, [r5, #4]
-    // add r1, r2, #0
-    // bl Sprite_SetMatrix
-    // ldr r0, [r5]
-    // bl ov96_021E92AC
-    // cmp r0, #0
-    // beq _021EAE3E
-    // mov r0, #2
+    Sprite_SetMatrix(*((u32*)(r5 + 4)), r3, r3, (*((u32*)(r5 + 0x18)) << 1));
+    ov96_021E92AC(*((u32*)r5));
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #0xe
     // add r0, r1, r0
     // str r0, [sp, #8]
     // ldr r0, [sp]
     // add r1, sp, #4
-    // bl Sprite_SetMatrix
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetMatrix((2 << 0xe));
 }
+
 
 
 void ov96_021EAE4C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r1, #0
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // ldr r0, [r5]
-    // add r6, r2, #0
-    // bl ov96_021E8BAC
-    // add r7, r0, #0
-    // lsl r0, r4, #0xc
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    ov96_021E8BAC(*((u32*)r0));
     // str r0, [sp]
-    // lsl r0, r6, #0xc
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x14]
     // add r0, r4, r0
-    // str r0, [r5, #0x20]
-    // ldr r0, [r5, #0x18]
+    *((u32*)(r5 + 0x20)) = *((u32*)(r5 + 0x14));
     // add r0, r6, r0
-    // str r0, [r5, #0x24]
-    // ldr r0, [r5]
-    // bl ov96_021E92AC
-    // cmp r0, #0
-    // beq _021EAE90
-    // mov r0, #2
+    *((u32*)(r5 + 0x24)) = *((u32*)(r5 + 0x18));
+    ov96_021E92AC(*((u32*)r5));
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0xe
     // add r0, r1, r0
     // str r0, [sp, #4]
-    // add r0, r7, #0
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetMatrix(r7);
 }
+
 
 
 void ov96_021EAE9C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // add r4, r2, #0
-    // bl ov96_021EAA20
-    // bl ov96_021E8BAC
-    // bl Sprite_GetMatrixPtr
-    // ldr r2, [r0]
+    ov96_021EAA20();
+    ov96_021E8BAC();
+    Sprite_GetMatrixPtr();
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
     // asr r1, r1, #0xc
     // str r1, [r5]
-    // ldr r1, [r0, #4]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EAEC8(void) {
-    // ldr r3, [r0, #0x20]
     // str r3, [r1]
-    // ldr r0, [r0, #0x24]
     // str r0, [r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021EAED4(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x20]
-    // add r6, r3, #0
     // add r0, r0, r1
-    // str r0, [r5, #0x20]
-    // ldr r0, [r5, #0x24]
+    *((u32*)(r0 + 0x20)) = *((u32*)(r0 + 0x20));
     // add r0, r0, r2
-    // str r0, [r5, #0x24]
-    // lsl r0, r1, #0xc
+    *((u32*)(r0 + 0x24)) = *((u32*)(r0 + 0x24));
     // str r0, [sp, #0xc]
-    // lsl r0, r2, #0xc
     // str r0, [sp, #0x10]
-    // mov r0, #0
     // str r0, [sp, #0x14]
-    // ldr r0, [r5]
-    // bl ov96_021E8BAC
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl ov96_021EAC0C
-    // add r0, r4, #0
-    // bl Sprite_GetMatrixPtr
-    // add r1, r0, #0
+    ov96_021E8BAC(*((u32*)r0));
+    ov96_021EAC0C(r5, r6);
+    Sprite_GetMatrixPtr(r4);
     // add r0, sp, #0xc
     // add r2, sp, #0
-    // bl VEC_Add
-    // add r0, r4, #0
+    VEC_Add(r0);
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _021EAF38
-    // bl Sprite_GetMatrixPtr
-    // add r1, r0, #0
+    Sprite_SetMatrix(r4);
+    Sprite_GetMatrixPtr(*((u32*)(r5 + 8)));
     // add r0, sp, #0xc
     // add r2, sp, #0
-    // bl VEC_Add
-    // ldr r0, [r5, #8]
+    VEC_Add(r0);
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
+    Sprite_SetMatrix(*((u32*)(r5 + 8)));
     // ldr r0, [sp, #0x28]
-    // cmp r0, #0
-    // beq _021EAF5A
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // beq _021EAF5A
-    // bl Sprite_GetMatrixPtr
-    // add r1, r0, #0
+    Sprite_GetMatrixPtr(*((u32*)(r5 + 4)));
     // add r0, sp, #0xc
     // add r2, sp, #0
-    // bl VEC_Add
-    // ldr r0, [r5, #4]
+    VEC_Add(r0);
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetMatrix(*((u32*)(r5 + 4)));
 }
+
 
 
 void ov96_021EAF60(void) {
-    ov96_021E8BF4();
 }
+
 
 
 void ov96_021EAF6C(void) {
-    ((u32*)r0)[0x1c] = r1;
 }
+
 
 
 void ov96_021EAF70(void) {
-    ((u32*)r0)[0x2c] = r1;
-    ((u32*)r0)[0x30] = r2;
 }
+
 
 
 void ov96_021EAF78(void) {
-    ov96_021EB03C();
 }
+
 
 
 void ov96_021EAF8C(void) {
@@ -9783,6 +6866,7 @@ void ov96_021EAF8C(void) {
 }
 
 
+
 void ov96_021EAF90(void) {
     // ldr r0, [r0, #0x2c]
     // bx lr
@@ -9790,151 +6874,83 @@ void ov96_021EAF90(void) {
 }
 
 
+
 void ov96_021EAF94(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r5, r0, #0
-    // add r4, r1, #0
     // add r1, sp, #4
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // ldr r0, [r5]
-    // add r6, r2, #0
-    // bl ov96_021E8BAC
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    ov96_021E8BAC(*((u32*)r0));
     // add r2, sp, #0x10
     // add r3, sp, #4
     // str r0, [sp]
     // ldmia r3!, {r0, r1}
-    // add r7, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // lsl r0, r4, #0xc
     // str r0, [sp, #0x10]
-    // lsl r0, r6, #0xc
     // str r0, [sp, #0x14]
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // beq _021EAFD2
-    // add r1, r7, #0
-    // bl Sprite_SetMatrix
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _021EAFDE
+    Sprite_SetMatrix(*((u32*)(r5 + 4)), r2);
     // add r1, sp, #0x10
-    // bl Sprite_SetMatrix
-    // ldr r0, [r5, #0x10]
+    Sprite_SetMatrix(*((u32*)(r5 + 8)));
     // add r1, r6, r0
-    // ldr r0, [r5, #0x18]
-    // lsl r0, r0, #1
     // sub r0, r1, r0
-    // ldr r1, [r5, #0x14]
-    // str r4, [r5, #0x20]
+    *((u32*)(r5 + 0x20)) = r4;
     // sub r2, r4, r1
-    // ldr r1, [r5, #0x18]
     // add r1, r0, r1
-    // str r1, [r5, #0x24]
-    // lsl r1, r2, #0xc
-    // lsl r0, r0, #0xc
+    *((u32*)(r5 + 0x24)) = *((u32*)(r5 + 0x18));
     // str r1, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5]
-    // bl ov96_021E92AC
-    // cmp r0, #0
-    // beq _021EB010
-    // mov r0, #2
+    ov96_021E92AC(*((u32*)r5), (r2 << 0xc));
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #0xe
     // add r0, r1, r0
     // str r0, [sp, #8]
     // ldr r0, [sp]
     // add r1, sp, #4
-    // bl Sprite_SetMatrix
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetMatrix((2 << 0xe));
 }
+
 
 
 void ov96_021EB01C(void) {
-    ov96_021EAD88();
 }
 
 
+
 void ov96_021EB03C(void) {
-    // push {r4, r5, r6, r7}
-    // add r4, r0, #0
-    // add r7, r1, #0
-    // ldr r1, [r4, #0x18]
-    // add r6, r3, #0
-    // ldr r3, [r4, #0x28]
-    // lsl r5, r1, #1
-    // add r0, r2, #0
     // sub r2, r5, r3
-    // lsr r1, r2, #0x1f
     // add r1, r2, r1
     // asr r1, r1, #1
     // add r1, r3, r1
-    // lsl r1, r1, #0xc
     // sub r0, r0, r1
-    // ldr r1, [r4, #0x2c]
     // sub r1, r5, r1
-    // lsl r1, r1, #0xc
     // add r1, r0, r1
     // ldr r0, [sp, #0x10]
     // str r7, [r6]
     // str r1, [r0]
-    // pop {r4, r5, r6, r7}
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_021EB06C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r0, #0
-    // add r7, r1, #0
-    // ldr r1, [r4, #4]
-    // add r0, r2, #0
-    // add r6, r3, #0
-    // cmp r1, #0
-    // bne _021EB082
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r4, #0x18]
-    // ldr r3, [r4, #0x28]
-    // lsl r5, r1, #1
+    GF_AssertFail(r2, *((u32*)(r0 + 4)));
     // sub r2, r5, r3
-    // lsr r1, r2, #0x1f
     // add r1, r2, r1
     // asr r1, r1, #1
     // add r1, r3, r1
     // sub r0, r0, r1
     // add r1, r0, r5
-    // ldr r0, [r4, #0x10]
     // sub r1, r1, r0
     // ldr r0, [sp, #0x18]
     // str r7, [r6]
     // str r1, [r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021EB0A4(void) {
-    // push {r3, r4}
-    // ldr r4, [r0, #0x10]
     // add r4, r2, r4
-    // ldr r2, [r0, #0x18]
     // str r1, [r3]
-    // ldr r1, [r0, #0x28]
-    // ldr r0, [r0, #0x18]
-    // lsl r2, r2, #1
-    // lsl r0, r0, #1
     // sub r3, r0, r1
-    // lsr r0, r3, #0x1f
     // add r0, r3, r0
     // sub r2, r4, r2
     // asr r0, r0, #1
@@ -9942,467 +6958,210 @@ void ov96_021EB0A4(void) {
     // add r1, r1, r0
     // ldr r0, [sp, #8]
     // str r1, [r0]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_021EB0CC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x24
-    // add r4, r0, #0
-    // lsl r0, r3, #0xc
     // str r0, [sp]
     // ldr r0, [sp, #0x30]
     // str r1, [sp, #0xc]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r2, [sp, #0x10]
     // str r0, [sp, #8]
     // str r0, [sp, #0x14]
     // add r0, sp, #0
     // add r1, sp, #0xc
     // add r2, sp, #0x18
-    // bl VEC_Subtract
+    VEC_Subtract(0);
     // add r0, sp, #0x18
-    // bl VEC_Mag
-    // ldr r1, [r4, #0x1c]
-    // lsl r1, r1, #0xc
-    // cmp r0, r1
-    // bge _021EB104
-    // add sp, #0x24
-    // mov r0, #1
-    // pop {r3, r4, pc}
-    // mov r0, #0
-    // add sp, #0x24
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    VEC_Mag();
 }
+
 
 
 void ov96_021EB10C(void) {
-    ov96_021EAA20();
-    ov96_021E9204(r5, r4);
 }
+
 
 
 void ov96_021EB120(void) {
-    // push {r3, lr}
-    // ldr r0, [r0]
-    // bl ov96_021E8BAC
-    // bl Sprite_GetDrawFlag
-    // cmp r0, #0
-    // beq _021EB134
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    ov96_021E8BAC(*((u32*)r0));
+    Sprite_GetDrawFlag();
 }
+
 
 
 void ov96_021EB138(void) {
-    ov96_021E9290();
 }
+
 
 
 void ov96_021EB144(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #4]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _021EB17C
-    // cmp r1, #0
-    // bne _021EB158
-    // mov r6, #1
-    // b _021EB15A
-    // add r6, r4, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov96_021EAA04
-    // bl ov96_021EAA20
-    // bl ov96_021E8BAC
-    // add r1, r6, #0
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // ldr r0, [r5, #4]
-    // cmp r4, r0
-    // blt _021EB15A
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021EAA04(r0, 0);
+    ov96_021EAA20();
+    ov96_021E8BAC();
+    Sprite_SetAnimActiveFlag(r6);
 }
+
 
 
 void ov96_021EB180(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // mov r1, #0x56
-    // lsl r1, r1, #2
-    // add r6, r0, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r2, #0x56
-    // mov r0, #0
-    // add r1, r4, #0
-    // lsl r2, r2, #2
-    // bl MIi_CpuClearFast
+    Heap_Alloc((0x56 << 2));
+    MIi_CpuClearFast(0, r0, (0x56 << 2));
     // str r6, [r4]
-    // add r2, r4, #0
     // ldmia r5!, {r0, r1}
     // add r2, #8
     // stmia r2!, {r0, r1}
-    // ldr r0, [r5]
-    // mov r1, #0x14
     // str r0, [r2]
-    // ldr r2, [r4, #0xc]
-    // add r0, r6, #0
     // mul r1, r2
-    // bl Heap_Alloc
-    // mov r1, #0x15
-    // lsl r1, r1, #4
+    Heap_Alloc(r6, 0x14, *((u32*)(r4 + 0xc)));
     // str r0, [r4, r1]
-    // ldr r3, [r4, #0xc]
-    // mov r2, #0x14
     // ldr r1, [r4, r1]
-    // mov r0, #0
     // mul r2, r3
-    // bl MIi_CpuClear32
-    // ldr r2, [r4, #8]
-    // mov r1, #0xc
-    // ldr r0, [r4]
+    MIi_CpuClear32(0, (0x15 << 4), 0x14, *((u32*)(r4 + 0xc)));
     // mul r1, r2
-    // bl Heap_Alloc
-    // mov r1, #0x55
-    // lsl r1, r1, #2
+    Heap_Alloc(*((u32*)r4), 0xc, *((u32*)(r4 + 8)));
     // str r0, [r4, r1]
-    // ldr r3, [r4, #8]
-    // mov r2, #0xc
     // ldr r1, [r4, r1]
-    // mov r0, #0
     // mul r2, r3
-    // bl MIi_CpuClear32
-    // add r1, r4, #0
-    // ldr r0, [r4, #8]
-    // ldr r2, [r4]
+    MIi_CpuClear32(0, (0x55 << 2), 0xc, *((u32*)(r4 + 8)));
     // add r1, #0x18
-    // bl G2dRenderer_Init
-    // mov r7, #5
-    // str r0, [r4, #0x14]
-    // mov r5, #0
-    // add r6, r4, #0
-    // lsl r7, r7, #6
+    G2dRenderer_Init(*((u32*)(r4 + 8)), r4, *((u32*)r4));
+    *((u32*)(r4 + 0x14)) = r0;
     // add r0, r4, r5
-    // ldrb r0, [r0, #0x10]
-    // ldr r2, [r4]
-    // add r1, r5, #0
-    // bl Create2DGfxResObjMan
+    Create2DGfxResObjMan(*((u8*)(r0 + 0x10)), 0, *((u32*)r4));
     // str r0, [r6, r7]
-    // add r5, r5, #1
-    // add r6, r6, #4
-    // cmp r5, #4
-    // blt _021EB200
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB21C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _021EB25E
-    // mov r7, #0x15
-    // lsl r7, r7, #4
-    // mov r0, #0x14
-    // add r6, r4, #0
     // mul r6, r0
     // ldr r0, [r5, r7]
     // add r0, r0, r6
-    // ldr r0, [r0, #4]
-    // cmp r0, #0
-    // beq _021EB240
-    // bl sub_0200AEB0
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    sub_0200AEB0(*((u32*)(0x14 + 4)));
     // ldr r0, [r5, r0]
     // add r0, r0, r6
-    // ldr r0, [r0, #8]
-    // cmp r0, #0
-    // beq _021EB252
-    // bl sub_0200B0A8
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // ldr r0, [r5, #0xc]
-    // cmp r4, r0
-    // blt _021EB22C
-    // mov r6, #5
-    // mov r4, #0
-    // lsl r6, r6, #6
-    // lsl r0, r4, #2
+    sub_0200B0A8(*((u32*)((0x15 << 4) + 8)));
     // add r0, r5, r0
     // ldr r0, [r0, r6]
-    // bl Destroy2DGfxResObjMan
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #4
-    // blo _021EB264
-    // ldr r0, [r5, #0x14]
-    // bl SpriteList_Delete
-    // mov r0, #0x55
-    // lsl r0, r0, #2
+    Destroy2DGfxResObjMan((0 << 2));
+    SpriteList_Delete(*((u32*)(r5 + 0x14)));
     // ldr r0, [r5, r0]
-    // bl Heap_Free
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    Heap_Free((0x55 << 2));
     // ldr r0, [r5, r0]
-    // bl Heap_Free
-    // add r0, r5, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free((0x15 << 4));
+    Heap_Free(r5);
 }
+
 
 
 void ov96_021EB29C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // cmp r4, r0
-    // blt _021EB2AE
-    // bl GF_AssertFail
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    GF_AssertFail(*((u32*)(r0 + 0xc)));
     // ldr r1, [r5, r0]
-    // mov r0, #0x14
     // mul r0, r4
     // str r6, [r1, r0]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB2BC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r6, r1, #0
-    // add r7, r2, #0
     // str r3, [sp, #0xc]
-    // add r1, r3, #0
-    // mov r2, #0
-    // add r5, r0, #0
-    // bl ov96_021EB5EC
-    // add r4, r0, #0
+    ov96_021EB5EC(r3, 0);
     // ldr r0, [sp, #0xc]
-    // add r1, r6, #0
     // str r0, [sp]
     // ldr r0, [sp, #0x28]
-    // add r2, r7, #0
     // str r0, [sp, #4]
-    // ldr r0, [r5]
-    // mov r3, #0
     // str r0, [sp, #8]
-    // mov r0, #5
-    // lsl r0, r0, #6
     // ldr r0, [r5, r0]
-    // bl AddCharResObjFromNarc
+    AddCharResObjFromNarc((5 << 6), r6, r7, 0);
     // str r0, [r4]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB2F4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r6, r1, #0
-    // add r7, r2, #0
     // str r3, [sp, #0x10]
-    // add r1, r3, #0
-    // mov r2, #1
-    // add r5, r0, #0
-    // bl ov96_021EB5EC
-    // add r4, r0, #0
+    ov96_021EB5EC(r3, 1);
     // ldr r0, [sp, #0x10]
-    // add r1, r6, #0
     // str r0, [sp]
     // ldr r0, [sp, #0x28]
-    // add r2, r7, #0
     // str r0, [sp, #4]
     // add r0, sp, #0x18
-    // ldrb r0, [r0, #0x14]
-    // mov r3, #0
     // str r0, [sp, #8]
-    // ldr r0, [r5]
     // str r0, [sp, #0xc]
-    // mov r0, #0x51
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // bl AddPlttResObjFromNarc
+    AddPlttResObjFromNarc((0x51 << 2), r6, r7, 0);
     // str r0, [r4]
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB334(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r6, r1, #0
-    // add r7, r2, #0
     // str r3, [sp, #0xc]
-    // add r1, r3, #0
-    // mov r2, #2
-    // add r5, r0, #0
-    // bl ov96_021EB5EC
-    // add r4, r0, #0
+    ov96_021EB5EC(r3, 2);
     // ldr r0, [sp, #0xc]
-    // add r1, r6, #0
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r5]
-    // add r2, r7, #0
     // str r0, [sp, #8]
-    // mov r0, #0x52
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
+    AddCellOrAnimResObjFromNarc((0x52 << 2), r6, r7, 0);
     // str r0, [r4]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB36C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r6, r1, #0
-    // add r7, r2, #0
     // str r3, [sp, #0xc]
-    // add r1, r3, #0
-    // mov r2, #3
-    // add r5, r0, #0
-    // bl ov96_021EB5EC
-    // add r4, r0, #0
+    ov96_021EB5EC(r3, 3);
     // ldr r0, [sp, #0xc]
-    // add r1, r6, #0
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r5]
-    // add r2, r7, #0
     // str r0, [sp, #8]
-    // mov r0, #0x53
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
+    AddCellOrAnimResObjFromNarc((0x53 << 2), r6, r7, 0);
     // str r0, [r4]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB3A4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _021EB3E0
-    // mov r7, #0x15
-    // add r4, r6, #0
-    // lsl r7, r7, #4
     // ldr r0, [r5, r7]
     // add r0, r0, r4
-    // ldr r0, [r0, #4]
-    // cmp r0, #0
-    // beq _021EB3C4
-    // bl sub_0200ADA4
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    sub_0200ADA4(*((u32*)(*((u32*)(r0 + 0xc)) + 4)));
     // ldr r0, [r5, r0]
     // add r0, r0, r4
-    // ldr r0, [r0, #8]
-    // cmp r0, #0
-    // beq _021EB3D6
-    // bl sub_0200AF94
-    // ldr r0, [r5, #0xc]
-    // add r6, r6, #1
+    sub_0200AF94(*((u32*)((0x15 << 4) + 8)));
     // add r4, #0x14
-    // cmp r6, r0
-    // blt _021EB3B6
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB3E4(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
     // add r6, sp, #8
-    // ldrb r6, [r6, #0x10]
-    // add r5, r0, #0
-    // add r4, r3, #0
     // str r6, [sp]
-    // bl ov96_021EB408
+    ov96_021EB408();
     // add r2, sp, #8
-    // ldrb r2, [r2, #0x10]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov96_021EB4F4
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021EB4F4(r5, r4, *((u8*)(r2 + 0x10)));
 }
 
 
+
 void ov96_021EB408(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x84
-    // add r5, r0, #0
     // str r3, [sp, #0x2c]
-    // add r4, r1, #0
-    // ldr r1, [r5, #4]
-    // ldr r0, [r5, #8]
-    // add r6, r2, #0
-    // cmp r1, r0
-    // blt _021EB420
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)(r0 + 8)), *((u32*)(r0 + 4)));
     // ldr r0, [sp, #0x2c]
-    // mov r2, #5
     // str r0, [sp]
-    // mov r0, #0
     // mvn r0, r0
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0
     // str r0, [sp, #0xc]
     // str r4, [sp, #0x10]
-    // lsl r2, r2, #6
     // ldr r1, [r5, r2]
     // str r1, [sp, #0x14]
-    // add r1, r2, #4
     // ldr r1, [r5, r1]
     // str r1, [sp, #0x18]
-    // add r1, r2, #0
     // add r1, #8
     // ldr r1, [r5, r1]
     // add r2, #0xc
@@ -10413,18 +7172,11 @@ void ov96_021EB408(void) {
     // str r0, [sp, #0x28]
     // ldr r1, [sp, #0x2c]
     // add r0, sp, #0x60
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // ldr r0, [r5, #0x14]
-    // mov r1, #0
+    CreateSpriteResourcesHeader(0, (5 << 6), (5 << 6), (5 << 6));
     // str r0, [sp, #0x30]
     // add r0, sp, #0x60
     // str r0, [sp, #0x34]
-    // ldr r0, [r5]
     // str r0, [sp, #0x5c]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // str r1, [sp, #0x38]
     // str r1, [sp, #0x3c]
     // str r1, [sp, #0x40]
@@ -10432,158 +7184,95 @@ void ov96_021EB408(void) {
     // str r0, [sp, #0x48]
     // str r0, [sp, #0x4c]
     // add r0, sp, #0x30
-    // strh r1, [r0, #0x20]
+    *((u16*)((1 << 0xc) + 0x20)) = 0;
     // add r0, sp, #0x30
     // str r1, [sp, #0x54]
     // str r6, [sp, #0x58]
-    // bl Sprite_CreateAffine
-    // add r4, r0, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // mov r7, #0x55
-    // ldr r1, [r5, #4]
-    // lsl r7, r7, #2
+    Sprite_CreateAffine((1 << 0xc), 0);
+    Sprite_SetAnimActiveFlag(1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
+    Sprite_SetDrawFlag(r4, 0);
     // ldr r3, [r5, r7]
-    // mov r0, #0xc
-    // add r2, r1, #0
-    // mov r6, #0
     // mul r2, r0
     // strh r6, [r3, r2]
-    // ldr r1, [r5, #4]
     // ldr r3, [r5, r7]
-    // add r2, r1, #0
     // mul r2, r0
     // add r1, r3, r2
-    // strh r6, [r1, #2]
-    // ldr r1, [r5, #4]
+    *((u16*)(*((u32*)(r5 + 4)) + 2)) = 0;
     // ldr r3, [r5, r7]
-    // add r2, r1, #0
     // mul r2, r0
     // add r1, r3, r2
-    // str r4, [r1, #4]
+    *((u32*)(*((u32*)(r5 + 4)) + 4)) = r4;
     // add r1, sp, #0x88
-    // ldrb r6, [r1, #0x10]
-    // ldr r1, [r5, #4]
     // ldr r3, [r5, r7]
-    // add r2, r1, #0
     // mul r2, r0
     // add r1, r3, r2
-    // strh r6, [r1, #8]
-    // ldr r1, [r5, #4]
+    *((u16*)(*((u32*)(r5 + 4)) + 8)) = *((u8*)(*((u32*)(r5 + 4)) + 0x10));
     // ldr r2, [r5, r7]
     // mul r0, r1
     // add r1, r2, r0
     // ldr r0, [sp, #0x2c]
-    // strh r0, [r1, #0xa]
-    // ldr r0, [r5, #4]
-    // add r0, r0, #1
-    // str r0, [r5, #4]
-    // add r0, r4, #0
-    // add sp, #0x84
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u16*)(*((u32*)(r5 + 4)) + 0xa)) = 0xc;
+    *((u32*)(r5 + 4)) = (*((u32*)(r5 + 4)) + 1);
 }
+
 
 
 void ov96_021EB4F4(void) {
-    // push {r3, r4, r5, lr}
-    // ldr r4, [r0, #8]
-    // mov r3, #0
-    // cmp r4, #0
-    // ble _021EB524
-    // mov r5, #0x55
-    // lsl r5, r5, #2
     // ldr r0, [r0, r5]
     // ldrh r5, [r0]
-    // cmp r5, #0
-    // bne _021EB51C
-    // ldrh r5, [r0, #0xa]
-    // cmp r5, r1
-    // bne _021EB51C
-    // ldrh r5, [r0, #8]
-    // cmp r5, r2
-    // bne _021EB51C
-    // mov r1, #1
     // strh r1, [r0]
-    // pop {r3, r4, r5, pc}
-    // add r3, r3, #1
     // add r0, #0xc
-    // cmp r3, r4
-    // blt _021EB504
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail(1, (0 + 1));
 }
+
 
 
 void ov96_021EB52C(void) {
-    // push {r3, lr}
     // ldrh r3, [r0]
-    // cmp r3, #0
-    // beq _021EB55C
-    // cmp r1, #0
-    // beq _021EB550
-    // mov r1, #1
-    // strh r1, [r0, #2]
-    // cmp r2, #0
-    // ldr r0, [r0, #4]
-    // beq _021EB548
-    // bl Sprite_SetDrawFlag
-    // pop {r3, pc}
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // pop {r3, pc}
-    // mov r1, #0
-    // strh r1, [r0, #2]
-    // ldr r0, [r0, #4]
-    // bl Sprite_SetDrawFlag
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // pop {r3, pc}
-    // TODO: decompile
+    *((u16*)(r0 + 2)) = 1;
+    Sprite_SetDrawFlag(*((u32*)(r0 + 4)), 1);
+    Sprite_SetDrawFlag(0);
+    *((u16*)(r0 + 2)) = 0;
+    Sprite_SetDrawFlag(*((u32*)(r0 + 4)), 0);
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EB564(void) {
-    sub_020248F0();
 }
+
 
 
 void ov96_021EB570(void) {
-    Sprite_TryChangeAnimSeq();
 }
+
 
 
 void ov96_021EB57C(void) {
-    Sprite_IsAnimated();
 }
+
 
 
 void ov96_021EB588(void) {
-    Sprite_SetMatrix();
 }
+
 
 
 void ov96_021EB594(void) {
-    Sprite_GetMatrixPtr();
 }
+
 
 
 void ov96_021EB5A0(void) {
-    Sprite_SetScaleAndAffineType();
 }
+
 
 
 void ov96_021EB5AC(void) {
-    Sprite_SetRotationAndAffineType();
 }
+
 
 
 void ov96_021EB5B8(void) {
@@ -10593,28 +7282,20 @@ void ov96_021EB5B8(void) {
 }
 
 
+
 void ov96_021EB5BC(void) {
-    SpriteList_RenderAndAnimateSprites();
 }
+
 
 
 void ov96_021EB5C8(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r2, #0
-    // add r5, r0, #0
-    // add r4, r1, #0
     // ldr r2, [sp, #0x10]
     // add r0, #0x18
-    // add r1, r3, #0
-    // bl G2dRenderer_SetSubSurfaceCoords
+    G2dRenderer_SetSubSurfaceCoords(r3);
     // add r5, #0x18
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl G2dRenderer_SetMainSurfaceCoords
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    G2dRenderer_SetMainSurfaceCoords(r5, r4, r6);
 }
+
 
 
 void ov96_021EB5E8(void) {
@@ -10624,163 +7305,86 @@ void ov96_021EB5E8(void) {
 }
 
 
+
 void ov96_021EB5EC(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r2, #0
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // cmp r6, #4
-    // blo _021EB5FC
-    // bl GF_AssertFail
-    // ldr r2, [r5, #0xc]
-    // mov r0, #0
-    // cmp r2, #0
-    // ble _021EB628
-    // mov r1, #0x15
-    // lsl r1, r1, #4
+    GF_AssertFail();
     // ldr r1, [r5, r1]
-    // add r5, r1, #0
-    // ldr r3, [r5]
-    // cmp r4, r3
-    // bne _021EB620
-    // mov r2, #0x14
     // mul r2, r0
     // add r0, r1, r2
-    // add r1, r0, #4
-    // lsl r0, r6, #2
     // add r0, r1, r0
-    // pop {r4, r5, r6, pc}
-    // add r0, r0, #1
     // add r5, #0x14
-    // cmp r0, r2
-    // blt _021EB60C
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(((r6 << 2) + 1), (0 + 4), 0x14, *((u32*)(0x15 << 4)));
 }
+
 
 
 void ov96_021EB630(void) {
-    Sprite_SetDrawPriority();
 }
+
 
 
 void ov96_021EB63C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #8]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _021EB676
-    // add r4, r6, #0
-    // cmp r1, #0
-    // bne _021EB652
-    // mov r7, #1
-    // b _021EB654
-    // add r7, r6, #0
-    // mov r0, #0x55
-    // lsl r0, r0, #2
     // ldr r1, [r5, r0]
     // ldrh r0, [r1, r4]
-    // cmp r0, #0
-    // beq _021EB66C
     // add r0, r1, r4
-    // bl ov96_021EB5B8
-    // add r1, r7, #0
-    // bl Sprite_SetAnimActiveFlag
-    // ldr r0, [r5, #8]
-    // add r6, r6, #1
+    ov96_021EB5B8((0x55 << 2));
+    Sprite_SetAnimActiveFlag(r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _021EB654
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EB678(void) {
-    ov96_021ED1D0();
 }
+
 
 
 void ov96_021EB680(void) {
-    ov96_021ED47C();
 }
+
 
 
 void ov96_021EB688(void) {
-    ov96_021ED48C();
 }
+
 
 
 void ov96_021EB690(void) {
-    ov96_021ED1D0();
 }
+
 
 
 void ov96_021EB698(void) {
-    ov96_021ED47C();
 }
+
 
 
 void ov96_021EB6A0(void) {
-    ov96_021ED48C();
 }
+
 
 
 void ov96_021EB6A8(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021EB6C8(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _021EB6E2
-    // cmp r0, #1
-    // beq _021EB712
-    // b _021EB724
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021EB6F2
-    // add r0, r5, #0
-    // bl ov96_021ED8DC
-    // mov r0, #6
+    ov96_021E5F24(r5);
+    ov96_021ED8DC(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6]
-    // mov r1, #3
     // str r0, [sp, #8]
-    // mov r0, #4
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl BeginNormalPaletteFade
+    BeginNormalPaletteFade(4, 3, 3, 0);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021EB728
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021EB728
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl PokeathlonCourse_SetStateField07
-    // b _021EB728
-    // bl GF_AssertFail
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    IsPaletteFadeFinished((r0 + 1));
+    PokeathlonCourse_SetStateField07(r5, 1);
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EB730(void) {
@@ -11170,6 +7774,7 @@ void ov96_021EB730(void) {
 }
 
 
+
 void ov96_021EBA98(void) {
     // push {r3, r4, lr}
     // sub sp, #0xc
@@ -11217,53 +7822,23 @@ void ov96_021EBA98(void) {
 }
 
 
+
 void ov96_021EBAFC(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _021EBB16
-    // cmp r0, #1
-    // beq _021EBB46
-    // b _021EBB58
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021EBB26
-    // add r0, r5, #0
-    // bl ov96_021EDA58
-    // mov r0, #6
+    ov96_021E5F24(r5);
+    ov96_021EDA58(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6]
-    // mov r1, #3
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r2, r1, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
+    BeginNormalPaletteFade(0, 3, 3, 0);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021EBB5C
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021EBB5C
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl PokeathlonCourse_SetStateField07
-    // b _021EBB5C
-    // bl GF_AssertFail
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    IsPaletteFadeFinished((r0 + 1));
+    PokeathlonCourse_SetStateField07(r5, 1);
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EBB64(void) {
@@ -11966,6 +8541,7 @@ void ov96_021EBB64(void) {
 }
 
 
+
 void ov96_021EC1B0(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -12015,63 +8591,26 @@ void ov96_021EC1B0(void) {
 }
 
 
+
 void ov96_021EC218(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
     // ldrh r0, [r5]
-    // ldr r4, [r5, #8]
-    // cmp r0, #0
-    // beq _021EC230
-    // cmp r0, #1
-    // beq _021EC248
-    // cmp r0, #2
-    // beq _021EC25A
-    // b _021EC290
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl ov96_021EAC0C
-    // add r0, r4, #0
-    // mov r1, #0x10
-    // bl ov96_021EAC5C
+    ov96_021EAC0C(*((u32*)(r1 + 8)), 2);
+    ov96_021EAC5C(r4, 0x10);
     // ldrh r0, [r5]
-    // add r0, r0, #1
     // strh r0, [r5]
-    // pop {r4, r5, r6, pc}
-    // ldr r1, [r5, #4]
-    // add r0, r1, #1
-    // str r0, [r5, #4]
-    // cmp r1, #0x3c
-    // ble _021EC294
+    *((u32*)(r5 + 4)) = (*((u32*)(r5 + 4)) + 1);
     // ldrh r0, [r5]
-    // add r0, r0, #1
     // strh r0, [r5]
-    // pop {r4, r5, r6, pc}
-    // add r0, r4, #0
-    // bl ov96_021EAD78
-    // cmp r0, #0
-    // bne _021EC294
-    // bl IsCryFinished
-    // cmp r0, #0
-    // bne _021EC294
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl ov96_021EAC0C
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ov96_021EAC5C
-    // ldr r0, [r5, #0xc]
-    // mov r1, #0
+    ov96_021EAD78(r4, *((u32*)(r5 + 4)));
+    IsCryFinished();
+    ov96_021EAC0C(r4, 1);
+    ov96_021EAC5C(r4, 0);
     // str r1, [r0]
-    // add r0, r5, #0
-    // bl Heap_Free
-    // add r0, r6, #0
-    // bl SysTask_Destroy
-    // pop {r4, r5, r6, pc}
-    // bl GF_AssertFail
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Heap_Free(r5, 0);
+    SysTask_Destroy(r6);
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EC298(void) {
@@ -12110,12 +8649,11 @@ void ov96_021EC298(void) {
 }
 
 
+
 void ov96_021EC2E0(void) {
     // add r0, #0x98
-    // ldr r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021EC2E8(void) {
@@ -12227,98 +8765,51 @@ void ov96_021EC2E8(void) {
 }
 
 
+
 void ov96_021EC3D8(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // mov r3, #0
-    // str r3, [sp]
-    // add r5, r0, #0
-    // str r3, [sp, #4]
-    // add r4, r1, #0
-    // str r3, [sp, #8]
-    // mov r0, #0x9a
-    // mov r1, #3
-    // add r2, r5, #0
-    // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    // mov r0, #0x9a
-    // mov r1, #1
-    // add r2, r5, #0
-    // mov r3, #5
-    // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadCharData
-    // mov r3, #0
     // str r3, [sp]
     // str r3, [sp, #4]
     // str r3, [sp, #8]
-    // mov r0, #0x9a
-    // mov r1, #6
-    // add r2, r5, #0
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0x9a, 3, r0, 0);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9a
-    // mov r1, #4
-    // add r2, r5, #0
-    // mov r3, #5
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
+    GfGfxLoader_LoadCharData(0x9a, 1, r5, 5);
+    // str r3, [sp]
+    // str r3, [sp, #4]
+    // str r3, [sp, #8]
+    // str r4, [sp, #0xc]
+    GfGfxLoader_LoadScrnData(0x9a, 6, r5, 0);
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r4, [sp, #0xc]
+    GfGfxLoader_LoadScrnData(0x9a, 4, r5, 5);
     // str r1, [sp]
-    // mov r0, #0x9a
-    // add r2, r1, #0
-    // add r3, r1, #0
     // str r4, [sp, #4]
-    // bl GfGfxLoader_GXLoadPal
-    // mov r1, #0
+    GfGfxLoader_GXLoadPal(0x9a, 0, 0, 0);
     // str r1, [sp]
-    // mov r0, #0x9a
-    // mov r2, #4
-    // add r3, r1, #0
     // str r4, [sp, #4]
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0x9a, 0, 4, 0);
 }
+
 
 
 void ov96_021EC458(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // mov r0, #0
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // add r4, r1, #0
-    // str r0, [sp, #8]
-    // mov r0, #0x9a
-    // mov r1, #3
-    // add r2, r5, #0
-    // mov r3, #1
-    // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9a
-    // mov r1, #7
-    // add r2, r5, #0
-    // mov r3, #1
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadCharData(0x9a, 3, r0, 1);
+    // str r0, [sp]
+    // str r0, [sp, #4]
+    // str r0, [sp, #8]
+    // str r4, [sp, #0xc]
+    GfGfxLoader_LoadScrnData(0x9a, 7, r5, 1);
 }
+
 
 
 void ov96_021EC490(void) {
@@ -12386,41 +8877,19 @@ void ov96_021EC490(void) {
 }
 
 
+
 void ov96_021EC51C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r4, #0
-    // add r6, r0, #0
-    // add r7, r4, #0
-    // lsl r0, r4, #2
     // add r5, r6, r0
-    // ldr r0, [r5, #0x20]
-    // cmp r0, #0
-    // beq _021EC534
-    // bl Sprite_DeleteAndFreeResources
-    // str r7, [r5, #0x20]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #0x1a
-    // blo _021EC524
-    // ldr r0, [r6, #0x18]
-    // ldr r1, [r6, #0x1c]
-    // bl SpriteSystem_FreeResourcesAndManager
-    // ldr r0, [r6, #0x18]
-    // bl SpriteSystem_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 0x20)));
+    *((u32*)(r5 + 0x20)) = r7;
+    SpriteSystem_FreeResourcesAndManager(*((u32*)(r6 + 0x18)), *((u32*)(r6 + 0x1c)));
+    SpriteSystem_Free(*((u32*)(r6 + 0x18)));
 }
 
 
+
 void ov96_021EC550(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x34
-    // mov r4, #0
-    // add r7, r0, #0
     // add r2, sp, #0
-    // add r0, r4, #0
-    // add r1, r4, #0
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
@@ -12428,57 +8897,30 @@ void ov96_021EC550(void) {
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // str r0, [r2]
-    // mov r5, #0x20
-    // add r6, r7, #0
-    // add r0, r4, #0
     // add r0, #0x64
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x18]
-    // mov r0, #0x64
     // str r0, [sp, #0x1c]
     // str r0, [sp, #0x20]
-    // mov r0, #2
     // str r0, [sp, #0x10]
-    // mov r0, #1
-    // mov r1, #0x88
     // str r0, [sp, #0x2c]
     // str r0, [sp, #8]
     // add r0, sp, #0
     // strh r5, [r0]
-    // strh r1, [r0, #2]
-    // cmp r4, #4
-    // bne _021EC59C
-    // mov r1, #0x80
+    *((u16*)(1 + 2)) = 0x88;
     // strh r1, [r0]
-    // mov r1, #0x70
-    // strh r1, [r0, #2]
-    // mov r3, #0x83
-    // ldr r0, [r7, #0x18]
-    // ldr r1, [r7, #0x1c]
+    *((u16*)(1 + 2)) = 0x70;
     // add r2, sp, #0
-    // lsl r3, r3, #0xe
-    // bl SpriteSystem_NewSpriteWithYOffset
-    // mov r1, #1
-    // str r0, [r6, #0x20]
-    // bl ManagedSprite_SetAnimateFlag
-    // add r4, r4, #1
+    SpriteSystem_NewSpriteWithYOffset(*((u32*)(r0 + 0x18)), *((u32*)(r0 + 0x1c)), (0x83 << 0xe));
+    *((u32*)(r6 + 0x20)) = r0;
+    ManagedSprite_SetAnimateFlag(1);
     // add r5, #0x40
-    // add r6, r6, #4
-    // cmp r4, #5
-    // blt _021EC570
-    // add sp, #0x34
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021EC5C0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x40
-    // add r5, r0, #0
-    // mov r0, #0
     // add r2, sp, #0xc
-    // add r1, r0, #0
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
@@ -12487,45 +8929,28 @@ void ov96_021EC5C0(void) {
     // stmia r2!, {r0, r1}
     // str r0, [sp, #8]
     // str r0, [r2]
-    // mov r0, #5
     // str r0, [sp, #4]
-    // mov r0, #0x20
     // str r0, [sp]
-    // mov r0, #0x69
     // str r0, [sp, #0x20]
     // str r0, [sp, #0x24]
-    // mov r0, #0x65
-    // mov r1, #2
     // str r0, [sp, #0x28]
     // str r0, [sp, #0x2c]
-    // mov r0, #1
     // str r0, [sp, #0x38]
     // ldr r0, [sp]
     // str r1, [sp, #0x1c]
     // str r1, [sp, #0x14]
     // add r1, sp, #0xc
     // strh r0, [r1]
-    // mov r0, #0x48
-    // strh r0, [r1, #2]
-    // mov r0, #0
-    // strh r0, [r1, #6]
+    *((u16*)(2 + 2)) = 0x48;
+    *((u16*)(2 + 6)) = 0;
     // ldr r0, [sp, #8]
-    // mov r3, #0x83
-    // add r0, r0, #1
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #4]
-    // ldr r1, [r5, #0x1c]
-    // lsl r0, r0, #2
     // add r4, r5, r0
-    // ldr r0, [r5, #0x18]
     // add r2, sp, #0xc
-    // lsl r3, r3, #0xe
-    // bl SpriteSystem_NewSpriteWithYOffset
-    // mov r1, #1
-    // str r0, [r4, #0x20]
-    // bl ManagedSprite_SetAnimateFlag
-    // mov r2, #1
-    // mov r4, #0
+    SpriteSystem_NewSpriteWithYOffset(*((u32*)(r0 + 0x18)), *((u32*)(r0 + 0x1c)), (0x83 << 0xe));
+    *((u32*)(r4 + 0x20)) = r0;
+    ManagedSprite_SetAnimateFlag(1);
     // str r4, [sp, #0x18]
     // str r2, [sp, #0x38]
     // str r2, [sp, #0x14]
@@ -12533,55 +8958,32 @@ void ov96_021EC5C0(void) {
     // ldrsh r1, [r0, r4]
     // sub r1, #0x10
     // strh r1, [r0]
-    // strh r2, [r0, #6]
+    *((u16*)(r0 + 6)) = 1;
     // ldr r0, [sp, #4]
-    // add r7, r0, #1
     // add r0, r7, r4
-    // lsl r0, r0, #2
     // add r6, r5, r0
-    // mov r3, #0x83
-    // ldr r0, [r5, #0x18]
-    // ldr r1, [r5, #0x1c]
     // add r2, sp, #0xc
-    // lsl r3, r3, #0xe
-    // bl SpriteSystem_NewSpriteWithYOffset
-    // mov r1, #1
-    // str r0, [r6, #0x20]
-    // bl ManagedSprite_SetAnimateFlag
+    SpriteSystem_NewSpriteWithYOffset(*((u32*)(r5 + 0x18)), *((u32*)(r5 + 0x1c)), 1, (0x83 << 0xe));
+    *((u32*)(r6 + 0x20)) = r0;
+    ManagedSprite_SetAnimateFlag(1);
     // add r1, sp, #0xc
-    // mov r0, #0
     // ldrsh r1, [r1, r0]
     // add r0, sp, #0xc
-    // add r4, r4, #1
     // add r1, #0x10
     // strh r1, [r0]
-    // cmp r4, #3
-    // blt _021EC642
     // ldr r0, [sp, #4]
-    // add r0, r0, #4
     // str r0, [sp, #4]
     // ldr r0, [sp]
     // add r0, #0x40
     // str r0, [sp]
     // ldr r0, [sp, #8]
-    // add r0, r0, #1
     // str r0, [sp, #8]
-    // cmp r0, #4
-    // blt _021EC5E4
-    // add sp, #0x40
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EC68C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x38
-    // mov r4, #0
-    // add r7, r0, #0
     // add r2, sp, #4
-    // add r0, r4, #0
-    // add r1, r4, #0
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
@@ -12589,64 +8991,35 @@ void ov96_021EC68C(void) {
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // str r0, [r2]
-    // mov r0, #2
-    // mov r5, #0x30
     // str r0, [sp]
-    // add r0, r4, #0
     // add r0, #0x6d
     // str r0, [sp, #0x18]
-    // mov r0, #0x6a
     // str r0, [sp, #0x1c]
-    // mov r0, #0x68
     // str r0, [sp, #0x20]
     // str r0, [sp, #0x24]
-    // mov r0, #1
     // str r0, [sp, #0x14]
     // add r0, sp, #4
     // strh r5, [r0]
-    // mov r1, #0x70
-    // strh r1, [r0, #2]
-    // mov r0, #0
+    *((u16*)(1 + 2)) = 0x70;
     // str r0, [sp, #0x30]
-    // mov r0, #1
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
     // add r0, #0x15
-    // lsl r0, r0, #2
     // add r6, r7, r0
-    // mov r3, #0x83
-    // ldr r0, [r7, #0x18]
-    // ldr r1, [r7, #0x1c]
     // add r2, sp, #4
-    // lsl r3, r3, #0xe
-    // bl SpriteSystem_NewSpriteWithYOffset
+    SpriteSystem_NewSpriteWithYOffset(*((u32*)(r0 + 0x18)), *((u32*)(r0 + 0x1c)), (0x83 << 0xe));
     // ldr r1, [sp]
-    // str r0, [r6, #0x20]
-    // bl ManagedSprite_SetPaletteOverride
-    // ldr r0, [r6, #0x20]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
+    *((u32*)(r6 + 0x20)) = r0;
+    ManagedSprite_SetPaletteOverride();
+    ManagedSprite_SetDrawFlag(*((u32*)(r6 + 0x20)), 0);
     // ldr r0, [sp]
-    // add r4, r4, #1
-    // add r0, r0, #3
     // add r5, #0x50
     // str r0, [sp]
-    // cmp r4, #3
-    // blt _021EC6AE
-    // add sp, #0x38
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021EC70C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x34
-    // mov r7, #0
-    // add r5, r0, #0
     // add r2, sp, #0
-    // add r0, r7, #0
-    // add r1, r7, #0
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
@@ -12654,657 +9027,283 @@ void ov96_021EC70C(void) {
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // str r0, [r2]
-    // mov r4, #0x60
-    // add r1, r7, #0
     // add r1, #0x6b
     // str r1, [sp, #0x14]
     // str r1, [sp, #0x18]
-    // mov r1, #0x67
     // str r1, [sp, #0x1c]
     // str r1, [sp, #0x20]
-    // mov r1, #1
     // str r1, [sp, #0x10]
-    // mov r1, #0
     // str r1, [sp, #0x2c]
-    // mov r1, #2
     // str r1, [sp, #8]
     // add r1, sp, #0
-    // add r0, r7, #0
     // strh r4, [r1]
-    // mov r2, #0x38
-    // strh r2, [r1, #2]
-    // add r1, r5, #0
+    *((u16*)(2 + 2)) = 0x38;
     // add r1, #0xb1
     // ldrb r1, [r1]
     // add r0, #0x18
-    // cmp r1, #5
-    // bhs _021EC760
-    // mov r2, #0x80
     // add r1, sp, #0
     // strh r2, [r1]
-    // lsl r0, r0, #2
     // add r6, r5, r0
-    // mov r3, #0x83
-    // ldr r0, [r5, #0x18]
-    // ldr r1, [r5, #0x1c]
     // add r2, sp, #0
-    // lsl r3, r3, #0xe
-    // bl SpriteSystem_NewSpriteWithYOffset
-    // str r0, [r6, #0x20]
-    // mov r1, #1
-    // bl ManagedSprite_SetAnimateFlag
-    // ldr r0, [r6, #0x20]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // add r7, r7, #1
+    SpriteSystem_NewSpriteWithYOffset(*((u32*)(r0 + 0x18)), *((u32*)(r0 + 0x1c)), 0x80, (0x83 << 0xe));
+    *((u32*)(r6 + 0x20)) = r0;
+    ManagedSprite_SetAnimateFlag(1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r6 + 0x20)), 0);
     // add r4, #0x40
-    // cmp r7, #2
-    // blt _021EC72A
-    // add sp, #0x34
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021EC790(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x40
     // str r0, [sp, #0xc]
     // str r1, [sp, #0x10]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // bl PokeathlonCourse_GetParticipantUnk04
+    PokeathlonCourse_GetParticipantUnk04();
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // bl PokeathlonCourse_GetParticipantData
-    // mov r0, #0
+    PokeathlonCourse_GetParticipantData();
     // str r0, [sp, #0x14]
-    // add r6, r4, #0
-    // mov r5, #1
     // add r7, sp, #0x1c
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0x14]
     // add r3, sp, #0x30
-    // bl ov96_021E6168
-    // ldr r0, [r4]
+    ov96_021E6168(0);
     // add r1, sp, #0x30
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x74]
-    // mov r2, #1
-    // mov r3, #0
-    // bl ov96_021EEBF8
-    // ldrb r0, [r7, #0x1a]
-    // mov r3, #2
+    ov96_021EEBF8(*((u32*)(r6 + 0x74)), 1, 0);
     // str r0, [sp]
-    // ldrh r0, [r7, #0x16]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x3c]
     // str r0, [sp, #8]
-    // ldrh r1, [r7, #0x14]
-    // ldrb r2, [r7, #0x1b]
     // add r0, sp, #0x20
-    // bl GetMonSpriteCharAndPlttNarcIdsEx
-    // ldrh r0, [r7, #4]
-    // ldrh r1, [r7, #8]
-    // ldr r3, [r4]
+    GetMonSpriteCharAndPlttNarcIdsEx(((*((u16*)(r7 + 0x16)) << 0x18) >> 0x18), *((u16*)(r7 + 0x14)), *((u8*)(r7 + 0x1b)), 2);
     // add r2, sp, #0x1c
-    // bl GfGfxLoader_GetPlttData
+    GfGfxLoader_GetPlttData(*((u16*)(r7 + 4)), *((u16*)(r7 + 8)), *((u32*)r4));
     // ldr r3, [sp, #0x1c]
     // str r0, [sp, #0x18]
-    // lsl r1, r5, #0x18
-    // ldr r0, [r4, #0x14]
-    // ldr r3, [r3, #0xc]
-    // lsr r1, r1, #0x18
-    // mov r2, #1
-    // bl ov96_021EAF60
+    ov96_021EAF60(*((u32*)(r4 + 0x14)), ((r5 << 0x18) >> 0x18), 1, *((u32*)(r3 + 0xc)));
     // ldr r0, [sp, #0x18]
-    // bl Heap_Free
+    Heap_Free();
     // ldr r0, [sp, #0x14]
-    // add r6, r6, #4
-    // add r0, r0, #1
-    // add r5, r5, #3
     // str r0, [sp, #0x14]
-    // cmp r0, #3
-    // blt _021EC7B8
-    // add sp, #0x40
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EC82C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // ldr r6, [r0, #0x18]
-    // ldr r4, [r0, #0x1c]
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp, #0x10]
-    // mov r7, #0
-    // mov r0, #1
-    // add r5, r7, #0
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // add r5, #0x64
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #9
     // str r5, [sp, #8]
-    // bl SpriteSystem_LoadCharResObj
-    // mov r0, #0
+    SpriteSystem_LoadCharResObj(*((u32*)(r0 + 0x18)), *((u32*)(r0 + 0x1c)), 0x9a, 9);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // mov r0, #2
     // str r0, [sp, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #8
     // str r5, [sp, #0xc]
-    // bl SpriteSystem_LoadPlttResObj
-    // add r0, r7, #1
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
-    // cmp r7, #5
-    // blo _021EC83C
-    // mov r0, #1
+    SpriteSystem_LoadPlttResObj(r6, r4, 0x9a, 8);
     // str r0, [sp]
-    // mov r0, #0x64
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0xa
-    // bl SpriteSystem_LoadCellResObj
-    // mov r0, #1
+    SpriteSystem_LoadCellResObj(r6, r4, 0x9a, 0xa);
     // str r0, [sp]
-    // mov r0, #0x64
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0xb
-    // bl SpriteSystem_LoadAnimResObj
-    // mov r0, #1
+    SpriteSystem_LoadAnimResObj(r6, r4, 0x9a, 0xb);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // mov r0, #0x69
     // str r0, [sp, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0xd
-    // bl SpriteSystem_LoadCharResObj
-    // mov r0, #0
+    SpriteSystem_LoadCharResObj(r6, r4, 0x9a, 0xd);
     // str r0, [sp]
-    // mov r0, #5
     // str r0, [sp, #4]
-    // mov r0, #2
     // str r0, [sp, #8]
-    // mov r0, #0x69
     // str r0, [sp, #0xc]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0xc
-    // bl SpriteSystem_LoadPlttResObj
-    // mov r0, #1
+    SpriteSystem_LoadPlttResObj(r6, r4, 0x9a, 0xc);
     // str r0, [sp]
-    // mov r0, #0x65
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0xe
-    // bl SpriteSystem_LoadCellResObj
-    // mov r0, #1
+    SpriteSystem_LoadCellResObj(r6, r4, 0x9a, 0xe);
     // str r0, [sp]
-    // mov r0, #0x65
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0xf
-    // bl SpriteSystem_LoadAnimResObj
+    SpriteSystem_LoadAnimResObj(r6, r4, 0x9a, 0xf);
     // ldr r0, [sp, #0x10]
-    // bl ov96_021ECA18
-    // mov r0, #1
+    ov96_021ECA18();
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #0x6a
     // str r0, [sp, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0x10
-    // bl SpriteSystem_LoadCharResObj
-    // mov r0, #0
+    SpriteSystem_LoadCharResObj(r6, r4, 0x9a, 0x10);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x6a
     // str r0, [sp, #0xc]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0xc
-    // bl SpriteSystem_LoadPlttResObj
-    // mov r0, #1
+    SpriteSystem_LoadPlttResObj(r6, r4, 0x9a, 0xc);
     // str r0, [sp]
-    // mov r0, #0x66
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0x11
-    // bl SpriteSystem_LoadCellResObj
-    // mov r0, #1
+    SpriteSystem_LoadCellResObj(r6, r4, 0x9a, 0x11);
     // str r0, [sp]
-    // mov r0, #0x66
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0x12
-    // bl SpriteSystem_LoadAnimResObj
+    SpriteSystem_LoadAnimResObj(r6, r4, 0x9a, 0x12);
     // ldr r0, [sp, #0x10]
-    // mov r1, #0
     // add r0, #0xb1
     // ldrb r5, [r0]
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl ov96_021EDC38
-    // add r3, r0, #0
-    // mov r0, #0
+    ov96_021EDC38(r5, 0);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x6b
     // str r0, [sp, #0xc]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
     // add r3, #0x17
-    // bl SpriteSystem_LoadPlttResObj
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021EDC38
-    // add r3, r0, #0
-    // mov r0, #0
+    SpriteSystem_LoadPlttResObj(r6, r4, 0x9a, r0);
+    ov96_021EDC38(r5, 1);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x6c
     // str r0, [sp, #0xc]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
     // add r3, #0x17
-    // bl SpriteSystem_LoadPlttResObj
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl ov96_021EDC38
-    // add r3, r0, #0
-    // mov r0, #1
+    SpriteSystem_LoadPlttResObj(r6, r4, 0x9a, r0);
+    ov96_021EDC38(r5, 0);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #0x6b
     // str r0, [sp, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
     // add r3, #0x1c
-    // bl SpriteSystem_LoadCharResObj
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ov96_021EDC38
-    // add r3, r0, #0
-    // mov r0, #1
+    SpriteSystem_LoadCharResObj(r6, r4, 0x9a, r0);
+    ov96_021EDC38(r5, 1);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #0x6c
     // str r0, [sp, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
     // add r3, #0x1c
-    // bl SpriteSystem_LoadCharResObj
-    // mov r0, #1
+    SpriteSystem_LoadCharResObj(r6, r4, 0x9a, r0);
     // str r0, [sp]
-    // mov r0, #0x67
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0x21
-    // bl SpriteSystem_LoadCellResObj
-    // mov r0, #1
+    SpriteSystem_LoadCellResObj(r6, r4, 0x9a, 0x21);
     // str r0, [sp]
-    // mov r0, #0x67
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r2, #0x9a
-    // mov r3, #0x22
-    // bl SpriteSystem_LoadAnimResObj
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SpriteSystem_LoadAnimResObj(r6, r4, 0x9a, 0x22);
 }
+
 
 
 void ov96_021ECA18(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // ldr r6, [r0, #0x18]
-    // ldr r5, [r0, #0x1c]
-    // mov r7, #1
-    // mov r4, #0
-    // mov r0, #1
     // str r0, [sp]
-    // add r0, r4, #0
     // str r7, [sp, #4]
     // add r0, #0x6d
     // str r0, [sp, #8]
-    // add r0, r6, #0
-    // add r1, r5, #0
-    // mov r2, #0x9a
-    // mov r3, #0x14
-    // bl SpriteSystem_LoadCharResObj
-    // add r4, r4, #1
-    // cmp r4, #3
-    // blt _021ECA24
-    // mov r0, #1
+    SpriteSystem_LoadCharResObj(*((u32*)(r0 + 0x18)), *((u32*)(r0 + 0x1c)), 0x9a, 0x14);
     // str r0, [sp]
-    // mov r0, #0x68
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r5, #0
-    // mov r2, #0x9a
-    // mov r3, #0x15
-    // bl SpriteSystem_LoadCellResObj
-    // mov r0, #1
+    SpriteSystem_LoadCellResObj(r6, r5, 0x9a, 0x15);
     // str r0, [sp]
-    // mov r0, #0x68
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r5, #0
-    // mov r2, #0x9a
-    // mov r3, #0x16
-    // bl SpriteSystem_LoadAnimResObj
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SpriteSystem_LoadAnimResObj(r6, r5, 0x9a, 0x16);
 }
+
 
 
 void ov96_021ECA70(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
     // str r0, [sp]
     // str r1, [sp, #4]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
-    // mov r7, #0
-    // mov r4, #1
-    // mov r5, #2
-    // lsl r1, r4, #0x18
-    // ldr r0, [r6, #0x14]
-    // lsr r1, r1, #0x18
-    // bl ov96_021EAA04
+    PokeathlonCourse_GetHeapAllocPtr4();
+    ov96_021EAA04(*((u32*)(r0 + 0x14)), ((1 << 0x18) >> 0x18));
     // str r0, [sp, #8]
-    // lsl r1, r5, #0x18
-    // ldr r0, [r6, #0x14]
-    // lsr r1, r1, #0x18
-    // bl ov96_021EAA04
+    ov96_021EAA04(*((u32*)(r6 + 0x14)), ((r5 << 0x18) >> 0x18));
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #8]
-    // mov r1, #0
-    // bl ov96_021EAB38
+    ov96_021EAB38(0);
     // ldr r0, [sp, #0xc]
-    // mov r1, #0
-    // bl ov96_021EAB38
-    // add r7, r7, #1
-    // add r4, r4, #3
-    // add r5, r5, #3
-    // cmp r7, #4
-    // blt _021ECA84
+    ov96_021EAB38(0);
     // ldr r0, [sp]
     // ldr r1, [sp, #4]
-    // bl ov96_021EC790
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EC790();
 }
+
 
 
 void ov96_021ECAC4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r7, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp]
     // add r0, #0x20
-    // mov r4, #0
-    // add r5, r7, #0
     // str r0, [sp]
-    // add r0, r6, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // cmp r4, #4
-    // bne _021ECAF6
-    // mov r0, #2
-    // bl ov96_021EEBC8
-    // add r1, r0, #0
-    // ldr r0, [r5, #0x20]
-    // ldr r3, [r7]
-    // mov r2, #0xb
-    // bl ov96_021EEA88
-    // b _021ECB2C
-    // cmp r4, r0
-    // bge _021ECB0A
-    // lsl r2, r4, #0x18
+    PokeathlonCourse_GetParticipantCount(r6);
+    ov96_021EEBC8(2);
+    ov96_021EEA88(*((u32*)(r5 + 0x20)), r0, 0xb, *((u32*)r7));
     // ldr r0, [sp]
-    // add r1, r6, #0
-    // lsr r2, r2, #0x18
-    // mov r3, #0
-    // bl ov96_021EEB74
-    // b _021ECB2C
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl PokeathlonCourse_GetParticipantData
-    // ldr r0, [r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl ov96_021E8424
-    // bl ov96_021EEDCC
-    // add r1, r0, #0
-    // ldr r0, [r5, #0x20]
-    // ldr r3, [r7]
-    // mov r2, #0
-    // bl ov96_021EEA88
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #5
-    // blt _021ECAD8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EEB74(r6, ((r4 << 0x18) >> 0x18), 0);
+    PokeathlonCourse_GetParticipantData(r6, r4);
+    ov96_021E8424(((*((u32*)r0) << 0x18) >> 0x18));
+    ov96_021EEDCC();
+    ov96_021EEA88(*((u32*)(r5 + 0x20)), r0, 0, *((u32*)r7));
 }
+
 
 
 void ov96_021ECB38(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r2, #0
     // str r0, [sp]
     // str r1, [sp, #4]
-    // add r0, r1, #0
-    // add r1, r5, #0
-    // add r7, r3, #0
-    // bl PokeathlonCourse_GetParticipantData
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // ble _021ECB56
-    // mov r6, #1
-    // b _021ECB58
-    // mov r6, #0
-    // cmp r7, #1
-    // beq _021ECB62
-    // cmp r7, #2
-    // beq _021ECB66
-    // b _021ECB72
-    // mov r4, #0
-    // b _021ECB76
-    // cmp r6, #0
-    // beq _021ECB6E
-    // mov r4, #0xb
-    // b _021ECB76
-    // mov r4, #0x1b
-    // b _021ECB76
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // beq _021ECBA6
+    PokeathlonCourse_GetParticipantData(r1, r2);
+    GF_AssertFail(*((u32*)r0));
     // ldr r0, [sp, #4]
-    // add r1, r5, #0
-    // bl PokeathlonCourse_GetParticipantData
-    // ldr r0, [r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl ov96_021E8424
-    // bl ov96_021EEDCC
-    // add r1, r0, #0
+    PokeathlonCourse_GetParticipantData(r5);
+    ov96_021E8424(((*((u32*)r0) << 0x18) >> 0x18));
+    ov96_021EEDCC();
     // ldr r0, [sp]
-    // lsl r2, r5, #2
     // ldr r0, [r0, r2]
-    // lsl r2, r4, #0x18
     // ldr r3, [sp, #0x20]
-    // lsr r2, r2, #0x18
-    // bl ov96_021EEA88
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // lsl r2, r5, #0x18
+    ov96_021EEA88(r0, ((r4 << 0x18) >> 0x18));
     // ldr r0, [sp]
     // ldr r1, [sp, #4]
-    // lsr r2, r2, #0x18
-    // add r3, r4, #0
-    // bl ov96_021EEB74
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EEB74(((r5 << 0x18) >> 0x18), r4);
 }
+
 
 
 void ov96_021ECBB8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r1, #0
-    // mov r1, #0x70
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #0x70
+    Heap_Alloc(0x70);
     // str r0, [sp]
-    // bl MI_CpuFill8
+    MI_CpuFill8(0, 0x70);
     // ldr r3, [sp]
-    // mov r1, #0
-    // mov r4, #5
-    // lsl r0, r4, #2
-    // mov r2, #0
     // add r5, r7, r0
-    // add r6, r3, #0
-    // ldr r0, [r5]
-    // add r2, r2, #1
-    // add r5, r5, #4
     // stmia r6!, {r0}
-    // cmp r2, #4
-    // blt _021ECBDA
-    // add r1, r1, #1
     // add r3, #0x1c
-    // add r4, r4, #4
-    // cmp r1, #4
-    // blt _021ECBD2
     // ldr r0, [sp]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ECBF4(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_021ECBFC(void) {
-    ov96_021ECD24(0);
 }
+
 
 
 void ov96_021ECC14(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r4, #0
-    // add r5, r0, #0
-    // mov r6, #1
-    // add r7, r4, #0
-    // add r0, r5, #0
-    // bl ov96_021ECDC4
-    // cmp r0, #0
-    // bne _021ECC2A
-    // add r6, r7, #0
-    // add r4, r4, #1
+    ov96_021ECDC4(r0);
     // add r5, #0x1c
-    // cmp r4, #4
-    // blt _021ECC1E
-    // add r0, r6, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ECC38(void) {
-    ov96_021ECDD4(0x1c);
 }
+
 
 
 void ov96_021ECC4C(void) {
-    // mov r2, #0x1c
     // mul r2, r1
     // add r0, r0, r2
-    // ldr r0, [r0, #0x10]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021ECC58(void) {
-    // ldr r1, [r1]
-    // ldr r0, [r0]
-    // lsl r1, r1, #0x10
-    // lsl r0, r0, #0x10
-    // lsr r1, r1, #0x10
-    // lsr r0, r0, #0x10
-    // cmp r0, r1
-    // bne _021ECC6C
-    // mov r0, #0
-    // bx lr
-    // cmp r0, r1
-    // bhs _021ECC74
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021ECC7C(void) {
@@ -13389,6 +9388,7 @@ void ov96_021ECC7C(void) {
 }
 
 
+
 void ov96_021ECD24(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -13462,6 +9462,7 @@ void ov96_021ECD24(void) {
 }
 
 
+
 void ov96_021ECDC4(void) {
     // ldr r0, [r0, #0x18]
     // cmp r0, #0
@@ -13472,6 +9473,7 @@ void ov96_021ECDC4(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov96_021ECDD4(void) {
@@ -13488,6 +9490,7 @@ void ov96_021ECDD4(void) {
     // _021ECDE8: .word 0x000003E7
     // TODO: decompile
 }
+
 
 
 void ov96_021ECDEC(void) {
@@ -13632,6 +9635,7 @@ void ov96_021ECDEC(void) {
 }
 
 
+
 void ov96_021ECF48(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -13716,6 +9720,7 @@ void ov96_021ECF48(void) {
 }
 
 
+
 void ov96_021ECFF8(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x34
@@ -13762,157 +9767,66 @@ void ov96_021ECFF8(void) {
 }
 
 
+
 void ov96_021ED054(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // add r7, r0, #0
-    // add r6, r2, #0
-    // cmp r5, #0
-    // bne _021ED064
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021ED06C
-    // bl GF_AssertFail
-    // mov r1, #6
-    // add r0, r7, #0
-    // lsl r1, r1, #6
-    // bl Heap_Alloc
-    // mov r2, #6
-    // mov r1, #0
-    // lsl r2, r2, #6
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // mov r0, #0x5b
+    GF_AssertFail();
+    GF_AssertFail();
+    Heap_Alloc(r7, (6 << 6));
+    MI_CpuFill8(0, (6 << 6));
     // str r7, [r4]
-    // lsl r0, r0, #2
     // str r5, [r4, r0]
-    // add r0, r0, #4
     // str r6, [r4, r0]
-    // bl ov96_021ED6E8
-    // mov r1, #0x5e
-    // lsl r1, r1, #2
+    ov96_021ED6E8(((0x5b << 2) + 4));
     // str r0, [r4, r1]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED09C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // bne _021ED0A6
-    // bl GF_AssertFail
-    // mov r4, #0
-    // add r5, r7, #0
-    // add r6, r4, #0
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // beq _021ED0B8
-    // bl Sprite_DeleteAndFreeResources
-    // str r6, [r5, #4]
-    // add r4, r4, #1
+    GF_AssertFail();
+    Sprite_DeleteAndFreeResources(*((u32*)(r7 + 4)));
+    *((u32*)(r5 + 4)) = r6;
     // add r5, #0x18
-    // cmp r4, #0xf
-    // blt _021ED0AC
-    // add r0, r7, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free(r7);
 }
+
 
 
 void ov96_021ED0C8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // bne _021ED0D2
-    // bl GF_AssertFail
-    // mov r2, #0x5f
-    // lsl r2, r2, #2
+    GF_AssertFail();
     // ldr r0, [r5, r2]
-    // cmp r0, #0
-    // beq _021ED11E
-    // add r1, r2, #0
     // sub r1, #8
-    // add r0, r2, #0
     // ldr r1, [r5, r1]
     // sub r0, #8
-    // add r3, r1, #1
-    // add r1, r2, #0
     // ldr r0, [r5, r0]
     // sub r1, #8
     // str r3, [r5, r1]
-    // sub r1, r2, #4
     // ldr r1, [r5, r1]
-    // cmp r0, r1
-    // bls _021ED11E
-    // bl MTRandom
-    // add r2, r0, #0
-    // mov r1, #1
+    MTRandom((0x5f << 2), ((0x5f << 2) - 4), (0x5f << 2), ((0x5f << 2) + 1));
     // and r1, r2
-    // add r1, r1, #2
-    // lsl r1, r1, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_021ED17C
-    // bl ov96_021ED6E8
-    // mov r1, #0x5e
-    // lsl r1, r1, #2
+    ov96_021ED17C(r5, (((1 + 2) << 0x18) >> 0x18), r0);
+    ov96_021ED6E8();
     // str r0, [r5, r1]
-    // mov r2, #0
-    // sub r0, r1, #4
     // str r2, [r5, r0]
-    // add r6, r5, #0
-    // mov r7, #0
     // add r6, #0x18
-    // add r4, r5, #4
-    // ldr r0, [r6]
-    // lsl r0, r0, #0xb
-    // lsr r0, r0, #0x1f
-    // cmp r0, #1
-    // bne _021ED14C
-    // add r0, r4, #0
-    // bl ov96_021ECF48
-    // cmp r0, #0
-    // beq _021ED14C
-    // mov r1, #0x5b
-    // mov r2, #0x17
-    // lsl r1, r1, #2
-    // lsl r2, r2, #4
+    ov96_021ECF48((r5 + 4), (0x5e << 2), 0);
     // ldr r1, [r5, r1]
     // ldr r2, [r5, r2]
-    // add r0, r4, #0
-    // bl ov96_021ECFF8
-    // add r7, r7, #1
+    ov96_021ECFF8(r4, (0x5b << 2), (0x17 << 4));
     // add r6, #0x18
     // add r4, #0x18
-    // cmp r7, #0xf
-    // blt _021ED126
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED158(void) {
-    // push {r3, lr}
-    // sub sp, #8
-    // mov r2, #0x5f
-    // lsl r2, r2, #2
     // str r1, [r0, r2]
-    // mov r1, #0x20
     // str r1, [sp]
-    // ldr r0, [r0]
-    // mov r1, #0xc
     // str r0, [sp, #4]
-    // mov r0, #0x9a
-    // add r3, r0, #0
-    // mov r2, #1
     // add r3, #0xc6
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #8
-    // pop {r3, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0x9a, 0xc, 1, 0x9a);
 }
+
 
 
 void ov96_021ED17C(void) {
@@ -13957,6 +9871,7 @@ void ov96_021ED17C(void) {
     // _021ED1CC: .word 0x00000000
     // TODO: decompile
 }
+
 
 
 void ov96_021ED1D0(void) {
@@ -14242,11 +10157,10 @@ void ov96_021ED1D0(void) {
 }
 
 
+
 u32 ov96_021ED47C(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    SpriteSystem_DrawSprites(*((u32*)(r0 + 0x1c)));
-    return 1;
 }
+
 
 
 void ov96_021ED48C(void) {
@@ -14309,623 +10223,288 @@ void ov96_021ED48C(void) {
 }
 
 
+
 void ov96_021ED524(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r6, r0, #0
-    // add r7, r1, #0
-    // add r5, r2, #0
     // str r3, [sp, #8]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl PokeathlonCourse_GetParticipantUnk04
-    // add r6, r0, #0
-    // ldr r1, [r4]
-    // mov r0, #0xb
-    // bl String_New
-    // mov r1, #0x28
+    PokeathlonCourse_GetHeapAllocPtr4();
+    PokeathlonCourse_GetParticipantUnk04(r6, r7);
+    String_New(0xb, *((u32*)r4));
     // mul r1, r5
     // add r1, r6, r1
     // add r1, #0x12
-    // add r7, r0, #0
-    // bl CopyU16ArrayToString
-    // ldr r0, [r4, #0xc]
-    // bl ov96_021EE97C
-    // mov r1, #1
+    CopyU16ArrayToString(0x28);
+    ov96_021EE97C(*((u32*)(r4 + 0xc)));
     // str r1, [sp]
-    // mov r1, #0
     // str r1, [sp, #4]
     // ldr r1, [sp, #8]
-    // add r2, r7, #0
-    // mov r3, #2
-    // bl BufferString
-    // add r0, r7, #0
-    // bl String_Delete
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    BufferString(0, r7, 2);
+    String_Delete(r7);
 }
+
 
 
 void ov96_021ED578(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EE97C(*((u32*)(r0 + 0xc)));
-    PokeathlonCourse_GetPlayerProfileFromData(r5, r6);
-    BufferPlayersName(r4, 0, r0);
-    ov96_021EDF3C(r4, r7, 3, 1);
 }
+
 
 
 void ov96_021ED5AC(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EE97C(*((u32*)(r0 + 0xc)));
-    PokeathlonCourse_GetPlayerProfileFromData(r5, r4);
-    BufferPlayersName(r7, 0, r0);
-    ov96_021ED524(r5, r4, r6, 1);
 }
+
 
 
 void ov96_021ED5E0(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r6, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED5FA
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021ED602
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED60A
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // lsl r0, r0, #5
-    // lsr r0, r0, #0x14
-    // bl MATH_CountPopulation
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
+    MATH_CountPopulation(((*((u32*)(r4 + 4)) << 5) >> 0x14));
 }
+
 
 
 void ov96_021ED618(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // lsl r3, r1, #1
     // add r1, r1, r3
-    // add r6, r0, #0
     // add r4, r2, r1
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea((r1 << 1));
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r5, r0, #0
-    // cmp r6, #0
-    // bne _021ED638
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED640
-    // bl GF_AssertFail
-    // cmp r5, #0
-    // bne _021ED648
-    // bl GF_AssertFail
-    // cmp r4, #0xc
-    // blt _021ED650
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // lsl r0, r0, #5
-    // lsr r1, r0, #0x14
-    // mov r0, #1
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // lsl r0, r4
     // and r0, r1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED660(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // lsl r3, r1, #1
     // add r1, r1, r3
-    // add r6, r0, #0
     // add r4, r2, r1
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea((r1 << 1));
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r5, r0, #0
-    // cmp r6, #0
-    // bne _021ED680
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED688
-    // bl GF_AssertFail
-    // cmp r5, #0
-    // bne _021ED690
-    // bl GF_AssertFail
-    // cmp r4, #0xc
-    // blt _021ED698
-    // bl GF_AssertFail
-    // ldr r0, [r5, #8]
-    // lsl r0, r0, #4
-    // lsr r1, r0, #0x14
-    // mov r0, #1
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // lsl r0, r4
     // and r0, r1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED6A8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // lsl r3, r1, #1
     // add r1, r1, r3
-    // add r6, r0, #0
     // add r4, r2, r1
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea((r1 << 1));
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r5, r0, #0
-    // cmp r6, #0
-    // bne _021ED6C8
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED6D0
-    // bl GF_AssertFail
-    // cmp r5, #0
-    // bne _021ED6D8
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // lsl r0, r0, #0x11
-    // lsr r1, r0, #0x14
-    // mov r0, #1
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // lsl r0, r4
     // and r0, r1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED6E8(void) {
-    MTRandom();
 }
+
 
 
 void ov96_021ED6F8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED714
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED71C
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED724
-    // bl GF_AssertFail
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // ldrb r0, [r4, r6]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED728(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // add r1, r2, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetField3D8_AtIndex
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetGraphicsSystem
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov96_021E95D8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetField3D8_AtIndex(r2);
+    PokeathlonCourse_GetGraphicsSystem(r5);
+    ov96_021E95D8(r4, r6);
 }
+
 
 
 u8 ov96_021ED748(void) {
-    return 0xa;
 }
+
 
 
 u8 ov96_021ED74C(void) {
-    return 0x14;
 }
+
 
 
 u8 ov96_021ED750(void) {
-    return 0xa;
 }
+
 
 
 void ov96_021ED754(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r6, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED76E
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021ED776
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED77E
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // lsl r0, r0, #5
-    // lsr r0, r0, #0x14
-    // bl MATH_CountPopulation
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
+    MATH_CountPopulation(((*((u32*)(r4 + 4)) << 5) >> 0x14));
 }
+
 
 
 void ov96_021ED78C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r6, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED7A6
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021ED7AE
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED7B6
-    // bl GF_AssertFail
-    // ldr r0, [r4, #8]
-    // lsl r0, r0, #4
-    // lsr r0, r0, #0x14
-    // bl MATH_CountPopulation
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
+    MATH_CountPopulation(((*((u32*)(r4 + 8)) << 4) >> 0x14));
 }
+
 
 
 void ov96_021ED7C4(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r6, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED7DE
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021ED7E6
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED7EE
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // lsl r0, r0, #0x11
-    // lsr r0, r0, #0x14
-    // bl MATH_CountPopulation
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
+    MATH_CountPopulation(((*((u32*)(r4 + 4)) << 0x11) >> 0x14));
 }
+
 
 
 void ov96_021ED7FC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r6, #0
-    // bne _021ED818
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED820
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED828
-    // bl GF_AssertFail
-    // mov r1, #0
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r0, r4, r1
-    // ldrb r0, [r0, #0xd]
     // strb r0, [r5, r1]
-    // add r1, r1, #1
-    // cmp r1, #4
-    // blt _021ED82A
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED838(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED854
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED85C
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED864
-    // bl GF_AssertFail
-    // lsl r0, r6, #3
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // ldr r0, [r4, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED86C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED888
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED890
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED898
-    // bl GF_AssertFail
-    // lsl r0, r6, #3
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r0, r4, r0
-    // ldr r0, [r0, #4]
-    // lsl r0, r0, #8
-    // lsr r0, r0, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED8A4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r7, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021ED8C0
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _021ED8C8
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021ED8D0
-    // bl GF_AssertFail
-    // lsl r0, r6, #3
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r0, r4, r0
-    // ldr r0, [r0, #4]
-    // lsr r0, r0, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED8DC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0x28
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetMode
-    // cmp r0, #0
-    // bne _021ED922
-    // mov r6, #0
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // cmp r6, r0
-    // bne _021ED90C
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_021EE0AC
-    // b _021ED918
-    // lsl r2, r6, #0x18
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // lsr r2, r2, #0x18
-    // bl ov96_021EE1D8
-    // add r6, r6, #1
+    ov96_021E8A20();
+    PokeathlonCourse_GetMode(r5);
+    ov96_021E5F24(r5);
+    ov96_021EE0AC(r4, r5);
+    ov96_021EE1D8(r4, r5, ((r6 << 0x18) >> 0x18));
     // add r4, #8
-    // cmp r6, #4
-    // blt _021ED8F8
-    // pop {r4, r5, r6, pc}
-    // mov r6, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // cmp r0, r6
-    // ble _021ED93C
-    // lsl r2, r6, #0x18
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // lsr r2, r2, #0x18
-    // bl ov96_021EE144
-    // b _021ED948
-    // lsl r2, r6, #0x18
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // lsr r2, r2, #0x18
-    // bl ov96_021EE1D8
-    // add r6, r6, #1
+    PokeathlonCourse_GetParticipantCount(r5);
+    ov96_021EE144(r4, r5, ((r6 << 0x18) >> 0x18));
+    ov96_021EE1D8(r4, r5, ((r6 << 0x18) >> 0x18));
     // add r4, #8
-    // cmp r6, #4
-    // blt _021ED924
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021ED954(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r4, r0, #0
-    // add r5, r1, #0
-    // mov r6, #0x4b
-    // bl PokeathlonCourse_GetHeapID
-    // add r1, r0, #0
-    // mov r0, #0xa9
-    // bl NARC_New
+    PokeathlonCourse_GetHeapID();
+    NARC_New(0xa9, r0);
     // str r0, [sp]
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl PokeathlonCourse_GetParticipantUnk04
-    // add r5, r0, #0
-    // mov r7, #0
+    PokeathlonCourse_GetParticipantUnk04(r4, r5);
     // add r4, sp, #4
     // ldrh r0, [r5]
-    // ldrh r1, [r5, #2]
-    // bl ov96_021E679C
-    // add r1, r0, #0
+    ov96_021E679C(*((u16*)(r0 + 2)));
     // ldr r0, [sp]
     // add r2, sp, #4
-    // bl NARC_ReadWholeMember
+    NARC_ReadWholeMember(r0);
     // ldrb r0, [r4]
-    // add r7, r7, #1
     // add r5, #0x28
-    // add r0, r0, #1
     // sub r1, r6, r0
-    // ldrb r0, [r4, #1]
-    // add r0, r0, #1
     // sub r1, r1, r0
-    // ldrb r0, [r4, #2]
-    // add r0, r0, #1
     // sub r1, r1, r0
-    // ldrb r0, [r4, #3]
-    // add r0, r0, #1
     // sub r1, r1, r0
-    // ldrb r0, [r4, #4]
-    // add r0, r0, #1
     // sub r6, r1, r0
-    // cmp r7, #3
-    // blt _021ED97A
-    // cmp r6, #0x4b
-    // ble _021ED9BA
-    // mov r6, #0x4b
-    // b _021ED9C0
-    // cmp r6, #0
-    // bge _021ED9C0
-    // mov r6, #0
     // ldr r0, [sp]
-    // bl NARC_Delete
-    // add r0, r6, #0
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    NARC_Delete((*((u8*)(r4 + 4)) + 1));
 }
 
 
+
 void ov96_021ED9CC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r7, r0, #0
-    // mov r0, #0
     // str r0, [sp, #4]
-    // bl MTRandom
-    // mov r1, #3
+    MTRandom(0);
     // and r0, r1
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #0xc]
-    // mov r0, #0
     // str r0, [sp, #8]
     // ldr r0, [sp]
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
     // ldr r0, [sp, #8]
-    // mov r5, #0
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // lsl r3, r5, #0x18
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // lsr r3, r3, #0x18
-    // bl ov96_021EDCEC
-    // cmp r0, #0
-    // beq _021EDA0E
-    // mov r0, #1
+    ov96_021EDCEC(r7, ((0 << 0x18) >> 0x18), (((0 << 0x18) << 0x18) >> 0x18), ((0 << 0x18) >> 0x18));
     // str r0, [sp, #4]
-    // b _021EDA14
-    // add r5, r5, #1
-    // cmp r5, #3
-    // blt _021ED9F6
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // bne _021EDA24
     // ldr r0, [sp, #8]
-    // add r0, r0, #1
     // str r0, [sp, #8]
-    // cmp r0, #4
-    // blt _021ED9EE
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // bne _021EDA46
     // ldr r0, [sp]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1e
     // sub r1, r1, r2
-    // mov r0, #0x1e
     // ror r1, r0
     // add r0, r2, r1
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
     // str r0, [sp, #0xc]
-    // cmp r0, #4
-    // blt _021ED9E4
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // bne _021EDA50
-    // mov r0, #4
     // str r0, [sp]
     // ldr r0, [sp]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EDA58(void) {
@@ -15160,269 +10739,114 @@ void ov96_021EDA58(void) {
 }
 
 
+
 void ov96_021EDC38(void) {
-    // cmp r0, #0xa
-    // bhi _021EDCB0
     // add r2, r0, r0
     // add r2, pc
-    // ldrh r2, [r2, #6]
-    // lsl r2, r2, #0x10
     // asr r2, r2, #0x10
     // add pc, r2
     // _021EDC48: ; jump table
-    // mov r0, #0
-    // bx lr
-    // cmp r1, #0
-    // beq _021EDC6A
-    // mov r0, #4
-    // b _021EDC6C
-    // mov r0, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // cmp r1, #0
-    // beq _021EDC7A
-    // mov r0, #2
-    // b _021EDC7C
-    // mov r0, #4
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // cmp r1, #0
-    // beq _021EDC8A
-    // mov r0, #1
-    // b _021EDC8C
-    // mov r0, #2
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // cmp r1, #0
-    // beq _021EDC9A
-    // mov r0, #3
-    // b _021EDC9C
-    // mov r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // cmp r1, #0
-    // beq _021EDCAA
-    // mov r0, #0
-    // b _021EDCAC
-    // mov r0, #3
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021EDCB4(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r6, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021EDCCE
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021EDCD6
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021EDCDE
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // lsl r0, r0, #0x1d
-    // lsr r0, r0, #0x1d
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EDCEC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r1, #0
-    // add r4, r2, #0
-    // add r5, r3, #0
-    // bl PokeathlonCourse_GetFieldData
-    // add r6, r0, #0
-    // cmp r4, #4
-    // blo _021EDD02
-    // bl GF_AssertFail
-    // cmp r5, #3
-    // blo _021EDD0A
-    // bl GF_AssertFail
-    // cmp r7, #3
-    // bhi _021EDD58
+    PokeathlonCourse_GetFieldData();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r0, r7, r7
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _021EDD1A: ; jump table
-    // mov r0, #0x60
     // mul r0, r4
     // add r1, r6, r0
-    // lsl r0, r5, #5
     // add r0, r1, r0
-    // ldr r0, [r0, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x60
     // mul r0, r4
     // add r1, r6, r0
-    // lsl r0, r5, #5
     // add r0, r1, r0
-    // ldr r0, [r0, #0xc]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x60
     // mul r0, r4
-    // lsl r1, r5, #5
     // add r0, r6, r0
     // ldr r0, [r1, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0x60
     // mul r0, r4
     // add r1, r6, r0
-    // lsl r0, r5, #5
     // add r0, r1, r0
-    // ldr r0, [r0, #0x14]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)((r5 << 5) + 0x14)), (r5 << 5));
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EDD64(void) {
-    // add r1, r0, #0
     // add r1, #0xb3
     // ldrb r1, [r1]
-    // add r2, r1, #1
-    // add r1, r0, #0
     // add r1, #0xb3
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0xb3
     // ldrb r1, [r1]
-    // cmp r1, #3
-    // blo _021EDD92
-    // add r1, r0, #0
-    // mov r2, #0
     // add r1, #0xb3
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0xb2
     // ldrb r1, [r1]
-    // add r2, r1, #1
-    // add r1, r0, #0
     // add r1, #0xb2
     // strb r2, [r1]
     // add r0, #0xb2
     // ldrb r0, [r0]
-    // cmp r0, #4
-    // bne _021EDD9E
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021EDDA4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r7, r2, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // add r1, r4, #0
-    // add r2, r4, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r1, #0xb2
     // add r2, #0xb3
     // ldrb r1, [r1]
     // ldrb r2, [r2]
-    // add r0, r5, #0
     // blx r6
-    // cmp r0, #0
-    // bne _021EDDD0
-    // add r0, r4, #0
-    // bl ov96_021EDD64
-    // cmp r0, #0
-    // beq _021EDDB2
-    // add r0, r4, #0
+    ov96_021EDD64(r0, r0, r0);
     // add r0, #0xb2
     // ldrb r1, [r0]
-    // cmp r1, #4
-    // bhs _021EDE5E
-    // add r0, r4, #0
     // add r0, #0xb3
     // ldrb r2, [r0]
-    // lsl r0, r1, #1
     // add r0, r1, r0
     // add r6, r2, r0
-    // add r0, r4, #0
     // add r0, #0xac
     // ldrb r2, [r0, r1]
-    // add r2, r2, #1
     // strb r2, [r0, r1]
-    // add r0, r4, #0
     // add r0, #0xb4
     // ldrb r0, [r0]
-    // add r2, r4, #0
     // add r2, #0xb3
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0xb4
     // strb r1, [r0]
-    // add r1, r4, #0
     // add r1, #0xb2
     // ldrb r1, [r1]
     // ldrb r2, [r2]
-    // add r0, r5, #0
-    // bl ov96_021ED5AC
-    // add r1, r4, #0
-    // add r0, r4, #0
+    ov96_021ED5AC(r5, r4, r4);
     // add r1, #0xb2
     // add r0, #0x8c
-    // lsl r2, r7, #0x10
     // ldrb r1, [r1]
-    // ldr r0, [r0]
-    // lsr r2, r2, #0x10
-    // bl ov96_021ECC38
-    // lsl r1, r6, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_021EC298
-    // lsl r1, r6, #0x18
-    // ldr r0, [r4, #0x14]
-    // lsr r1, r1, #0x18
-    // bl ov96_021EAA04
-    // bl ov96_021EAA20
-    // bl ov96_021E8BB0
-    // add r5, r0, #0
-    // mov r0, #1
-    // bl sub_02006E3C
-    // ldrh r1, [r5, #2]
+    ov96_021ECC38(*((u32*)r4), r4, ((r7 << 0x10) >> 0x10));
+    ov96_021EC298(r4, ((r6 << 0x18) >> 0x18));
+    ov96_021EAA04(*((u32*)(r4 + 0x14)), ((r6 << 0x18) >> 0x18));
+    ov96_021EAA20();
+    ov96_021E8BB0();
+    sub_02006E3C(1);
     // ldrh r0, [r5]
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl PlayCry
-    // add r0, r4, #0
-    // bl ov96_021EDD64
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    PlayCry(((*((u16*)(r5 + 2)) << 0x18) >> 0x18));
+    ov96_021EDD64(r4);
 }
+
 
 
 void ov96_021EDE64(void) {
@@ -15528,9 +10952,10 @@ void ov96_021EDE64(void) {
 }
 
 
+
 void ov96_021EDF3C(void) {
-    BufferIntegerAsString(0, 1);
 }
+
 
 
 void ov96_021EDF5C(void) {
@@ -15553,76 +10978,37 @@ void ov96_021EDF5C(void) {
 }
 
 
+
 void ov96_021EDF7C(void) {
-    // lsl r0, r0, #2
     // add r0, #0x20
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021EDF84(void) {
-    // push {r4, r5}
-    // mov r4, #0
-    // add r3, r4, #0
-    // add r5, r1, #0
-    // ldr r2, [r5, #0x44]
-    // add r3, r3, #1
     // add r4, r4, r2
-    // add r5, r5, #4
-    // cmp r3, #0xa
-    // blt _021EDF8C
-    // ldr r2, [r1, #4]
-    // mov r5, #0
     // str r2, [r0]
-    // ldr r2, [r1, #8]
-    // add r3, r1, #0
-    // str r2, [r0, #4]
-    // ldr r2, [r1, #0xc]
-    // str r2, [r0, #8]
-    // str r4, [r0, #0xc]
-    // ldr r2, [r1, #0x6c]
-    // add r4, r0, #0
-    // str r2, [r0, #0x10]
-    // ldr r2, [r1, #0x10]
-    // str r2, [r0, #0x14]
-    // ldr r2, [r1, #0x14]
-    // str r2, [r0, #0x18]
-    // ldr r2, [r1, #0x18]
-    // str r2, [r0, #0x1c]
-    // ldr r2, [r1, #0x1c]
-    // str r2, [r0, #0x20]
-    // ldr r2, [r1, #0x20]
-    // str r2, [r0, #0x24]
-    // ldr r2, [r1, #0x24]
-    // str r2, [r0, #0x28]
-    // ldr r2, [r1, #0x28]
-    // str r2, [r0, #0x2c]
-    // ldr r2, [r1, #0x2c]
-    // str r2, [r0, #0x30]
-    // ldr r2, [r1, #0x30]
-    // str r2, [r0, #0x34]
-    // ldr r2, [r1, #0x38]
-    // str r2, [r0, #0x38]
-    // ldr r2, [r1, #0x3c]
-    // str r2, [r0, #0x3c]
-    // ldr r2, [r1, #0x40]
-    // str r2, [r0, #0x40]
-    // ldr r2, [r3, #0x44]
-    // add r5, r5, #1
-    // str r2, [r4, #0x44]
-    // add r3, r3, #4
-    // add r4, r4, #4
-    // cmp r5, #0xa
-    // blt _021EDFE0
-    // ldr r2, [r1, #0x34]
-    // str r2, [r0, #0x6c]
-    // ldr r1, [r1, #0x70]
-    // str r1, [r0, #0x70]
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = *((u32*)(r1 + 8));
+    *((u32*)(r0 + 8)) = *((u32*)(r1 + 0xc));
+    *((u32*)(r0 + 0xc)) = 0;
+    *((u32*)(r0 + 0x10)) = *((u32*)(r1 + 0x6c));
+    *((u32*)(r0 + 0x14)) = *((u32*)(r1 + 0x10));
+    *((u32*)(r0 + 0x18)) = *((u32*)(r1 + 0x14));
+    *((u32*)(r0 + 0x1c)) = *((u32*)(r1 + 0x18));
+    *((u32*)(r0 + 0x20)) = *((u32*)(r1 + 0x1c));
+    *((u32*)(r0 + 0x24)) = *((u32*)(r1 + 0x20));
+    *((u32*)(r0 + 0x28)) = *((u32*)(r1 + 0x24));
+    *((u32*)(r0 + 0x2c)) = *((u32*)(r1 + 0x28));
+    *((u32*)(r0 + 0x30)) = *((u32*)(r1 + 0x2c));
+    *((u32*)(r0 + 0x34)) = *((u32*)(r1 + 0x30));
+    *((u32*)(r0 + 0x38)) = *((u32*)(r1 + 0x38));
+    *((u32*)(r0 + 0x3c)) = *((u32*)(r1 + 0x3c));
+    *((u32*)(r0 + 0x40)) = *((u32*)(r1 + 0x40));
+    *((u32*)(r0 + 0x44)) = *((u32*)(r1 + 0x44));
+    *((u32*)(r0 + 0x6c)) = *((u32*)(r1 + 0x34));
+    *((u32*)(r0 + 0x70)) = *((u32*)(r1 + 0x70));
 }
+
 
 
 void ov96_021EDFFC(void) {
@@ -15657,6 +11043,7 @@ void ov96_021EDFFC(void) {
     // _021EE03C: .word ov96_0221B124
     // TODO: decompile
 }
+
 
 
 void ov96_021EE040(void) {
@@ -15713,6 +11100,7 @@ void ov96_021EE040(void) {
     // _021EE0A8: .word ov96_0221AF54
     // TODO: decompile
 }
+
 
 
 void ov96_021EE0AC(void) {
@@ -15787,6 +11175,7 @@ void ov96_021EE0AC(void) {
 }
 
 
+
 void ov96_021EE144(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0x94
@@ -15859,6 +11248,7 @@ void ov96_021EE144(void) {
 }
 
 
+
 void ov96_021EE1D8(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -15929,31 +11319,12 @@ void ov96_021EE1D8(void) {
 }
 
 
+
 void ov96_021EE264(void) {
-    // push {r3, r4}
-    // mov r3, #0
-    // add r4, r0, #0
-    // ldr r2, [r4]
-    // lsl r2, r2, #4
-    // lsr r2, r2, #0x1c
-    // cmp r1, r2
-    // bne _021EE280
-    // lsl r1, r3, #2
     // ldr r0, [r0, r1]
-    // lsl r0, r0, #8
-    // lsr r0, r0, #0x18
-    // pop {r3, r4}
-    // bx lr
-    // add r3, r3, #1
-    // add r4, r4, #4
-    // cmp r3, #4
-    // blt _021EE26A
-    // mov r0, #0
     // mvn r0, r0
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021EE290(void) {
@@ -16031,99 +11402,57 @@ void ov96_021EE290(void) {
 }
 
 
+
 void ov96_021EE324(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r7, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp, #0x14]
-    // add r0, r7, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea(r7);
     // str r0, [sp, #0x10]
     // add r0, #0x28
-    // bl ov96_021E8A20
+    ov96_021E8A20();
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x10]
     // add r0, #0xf0
-    // bl ov96_021E8A20
+    ov96_021E8A20();
     // str r0, [sp, #8]
-    // add r0, r7, #0
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
+    ov96_021E5F24(r7);
     // ldr r0, [sp, #0x14]
     // add r0, #0xb7
     // ldrb r6, [r0]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // cmp r1, #0
-    // bne _021EE3FC
-    // mov r0, #1
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
     // add r0, #0x20
     // strb r6, [r0]
     // ldr r0, [sp, #0x10]
     // add r0, #0x50
-    // bl ov96_021E8A20
-    // add r4, r0, #0
+    ov96_021E8A20(1, ((r0 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x10]
-    // bl ov96_021E8A20
-    // mov r2, #0x24
+    ov96_021E8A20();
     // ldrb r1, [r0]
-    // add r0, r0, #1
     // strb r1, [r4]
-    // add r4, r4, #1
-    // sub r2, r2, #1
-    // bne _021EE37E
-    // add r0, r7, #0
-    // mov r4, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // cmp r0, #0
-    // ble _021EE3C8
+    PokeathlonCourse_GetParticipantCount(r7, (0x24 - 1));
     // ldr r5, [sp, #0x10]
     // add r5, #0x50
-    // add r0, r5, #0
-    // bl ov96_021E8A20
+    ov96_021E8A20(r5);
     // ldrb r1, [r0]
-    // cmp r1, r6
-    // blo _021EE3AC
-    // ldrb r1, [r0, #1]
-    // cmp r1, #1
-    // bne _021EE3B0
-    // mov r1, #1
     // str r1, [sp, #4]
-    // ldrb r0, [r0, #2]
-    // cmp r0, #0
-    // bne _021EE3BA
-    // mov r0, #0
     // str r0, [sp]
-    // add r0, r7, #0
     // add r5, #0x28
-    // add r4, r4, #1
-    // bl PokeathlonCourse_GetParticipantCount
-    // cmp r4, r0
-    // blt _021EE39A
+    PokeathlonCourse_GetParticipantCount(r7, 1);
     // ldr r0, [sp]
-    // cmp r0, #0
-    // beq _021EE3DE
     // ldr r0, [sp, #0xc]
     // add r0, #0x21
     // ldrb r1, [r0]
-    // mov r0, #2
     // orr r1, r0
     // ldr r0, [sp, #0xc]
     // add r0, #0x21
     // strb r1, [r0]
     // ldr r0, [sp, #0xc]
-    // mov r1, #1
     // add r0, #0x21
     // ldrb r0, [r0]
     // bic r0, r1
     // ldr r1, [sp, #4]
-    // lsl r1, r1, #0x18
-    // lsr r2, r1, #0x18
-    // mov r1, #1
     // and r1, r2
     // orr r1, r0
     // ldr r0, [sp, #0xc]
@@ -16131,38 +11460,24 @@ void ov96_021EE324(void) {
     // str r0, [sp, #0xc]
     // strb r1, [r0]
     // ldr r0, [sp, #0x10]
-    // bl ov96_021E8A20
-    // add r4, r0, #0
+    ov96_021E8A20(2, 1, ((1 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x14]
     // strb r6, [r4]
-    // ldr r0, [r0, #0xc]
-    // bl ov96_021EEA80
-    // strb r0, [r4, #1]
+    ov96_021EEA80(*((u32*)(r0 + 0xc)));
+    *((u8*)(r4 + 1)) = r0;
     // ldr r0, [sp, #0x14]
     // add r0, #0xb8
     // str r0, [sp, #0x14]
-    // ldr r0, [r0]
-    // strb r0, [r4, #2]
+    *((u8*)(r4 + 2)) = *((u32*)r0);
     // ldr r0, [sp, #8]
     // add r0, #0x21
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x1f
-    // lsr r0, r0, #0x1f
-    // beq _021EE438
     // ldr r0, [sp, #8]
     // add r0, #0x20
     // str r0, [sp, #8]
     // ldrb r0, [r0]
-    // cmp r6, r0
-    // blo _021EE438
-    // add sp, #0x18
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EE440(void) {
@@ -16291,87 +11606,45 @@ void ov96_021EE440(void) {
 }
 
 
+
 void ov96_021EE54C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r6, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021EE566
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021EE56E
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021EE576
-    // bl GF_AssertFail
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r4, #0x21
     // ldrb r0, [r4]
-    // lsl r0, r0, #0x1e
-    // lsr r0, r0, #0x1f
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EE580(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r6, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // cmp r5, #0
-    // bne _021EE59A
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _021EE5A2
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _021EE5AA
-    // bl GF_AssertFail
-    // ldr r0, [r4, #8]
-    // lsl r0, r0, #2
-    // lsr r0, r0, #0x1f
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021E8A20();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EE5B4(void) {
-    Heap_Alloc(r1, 0x30);
-    MI_CpuFill8(0, 0x30);
-    *((u32*)(r4 + 8)) = r5;
-    NARC_New(0xdd, r6);
-    *((u32*)(r4 + 0xc)) = r0;
 }
+
 
 
 void ov96_021EE5E0(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // add r5, r6, #0
-    // mov r4, #0
     // add r5, #0x10
-    // add r0, r5, #0
-    // bl ClearWindowTilemapAndCopyToVram
-    // add r0, r5, #0
-    // bl RemoveWindow
-    // add r4, r4, #1
+    ClearWindowTilemapAndCopyToVram(r0);
+    RemoveWindow(r5);
     // add r5, #0x10
-    // cmp r4, #2
-    // blt _021EE5EA
-    // ldr r0, [r6, #0xc]
-    // bl NARC_Delete
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    NARC_Delete(*((u32*)(r6 + 0xc)));
+    Heap_Free(r6);
 }
+
 
 
 void ov96_021EE60C(void) {
@@ -16403,52 +11676,25 @@ void ov96_021EE60C(void) {
 }
 
 
+
 void ov96_021EE644(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // ldr r0, [r5, #8]
-    // mov r2, #6
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // mov r0, #0
-    // str r0, [sp]
-    // ldr r0, [r5]
-    // mov r1, #0xb
-    // str r0, [sp, #4]
-    // ldr r0, [r5, #0xc]
-    // lsl r3, r2, #0xc
-    // bl GfGfxLoader_GXLoadPalFromOpenNarc
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
+    GfGfxLoader_GXLoadPalFromOpenNarc(*((u32*)(r0 + 0xc)), 0xb, 6, (6 << 0xc));
+    // str r0, [sp]
+    // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5]
-    // add r1, r4, #0
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #0xc]
-    // ldr r2, [r5, #4]
     // add r1, #0xc
-    // mov r3, #7
-    // bl GfGfxLoader_LoadCharDataFromOpenNarc
-    // mov r0, #0
+    GfGfxLoader_LoadCharDataFromOpenNarc(*((u32*)(r5 + 0xc)), r4, *((u32*)(r5 + 4)), 7);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r5]
     // add r4, #0x16
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #0xc]
-    // ldr r2, [r5, #4]
-    // add r1, r4, #0
-    // mov r3, #7
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r5 + 0xc)), r4, *((u32*)(r5 + 4)), 7);
 }
+
 
 
 void ov96_021EE6A0(void) {
@@ -16497,6 +11743,7 @@ void ov96_021EE6A0(void) {
 }
 
 
+
 void ov96_021EE700(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -16529,11 +11776,10 @@ void ov96_021EE700(void) {
 }
 
 
+
 void ov96_021EE740(void) {
-    Heap_Alloc(0x38);
-    MI_CpuFill8(0, 0x38);
-    *((u32*)(r4 + 0x14)) = r5;
 }
+
 
 
 void ov96_021EE75C(void) {
@@ -16613,24 +11859,15 @@ void ov96_021EE75C(void) {
 }
 
 
+
 void ov96_021EE808(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #8]
-    // bl DestroyMsgData
-    // ldr r0, [r4, #0xc]
-    // bl DestroyMsgData
-    // ldr r0, [r4, #4]
-    // bl MessageFormat_Delete
-    // ldr r0, [r4, #0x10]
-    // cmp r0, #0
-    // beq _021EE828
-    // bl String_Delete
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    DestroyMsgData(*((u32*)(r0 + 8)));
+    DestroyMsgData(*((u32*)(r4 + 0xc)));
+    MessageFormat_Delete(*((u32*)(r4 + 4)));
+    String_Delete(*((u32*)(r4 + 0x10)));
+    Heap_Free(r4);
 }
+
 
 
 void ov96_021EE830(void) {
@@ -16711,114 +11948,53 @@ void ov96_021EE830(void) {
 }
 
 
+
 void ov96_021EE8CC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x14
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // add r2, r4, #0
     // str r0, [sp]
-    // ldr r0, [r4, #8]
     // add r2, #0x10
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r4, #0x34]
-    // add r1, r4, #0
-    // lsl r0, r0, #5
-    // lsr r0, r0, #0x1d
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x14]
     // add r1, #0x18
     // str r0, [sp, #0x10]
-    // ldr r3, [r4, #0x34]
-    // ldr r0, [r4]
-    // lsl r3, r3, #8
-    // lsr r3, r3, #0x18
-    // bl ov96_021EEA08
-    // str r0, [r4, #0x2c]
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov96_021EEA08(*((u32*)r0), r0, r0, ((*((u32*)(r0 + 0x34)) << 8) >> 0x18));
+    *((u32*)(r4 + 0x2c)) = r0;
 }
+
 
 
 void ov96_021EE908(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x14
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // add r2, r4, #0
     // str r0, [sp]
-    // ldr r0, [r4, #0xc]
     // add r2, #0x10
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r4, #0x34]
-    // add r1, r4, #0
-    // lsl r0, r0, #5
-    // lsr r0, r0, #0x1d
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x14]
     // add r1, #0x18
     // str r0, [sp, #0x10]
-    // ldr r3, [r4, #0x34]
-    // ldr r0, [r4]
-    // lsl r3, r3, #8
-    // lsr r3, r3, #0x18
-    // bl ov96_021EEA08
-    // str r0, [r4, #0x2c]
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov96_021EEA08(*((u32*)r0), r0, r0, ((*((u32*)(r0 + 0x34)) << 8) >> 0x18));
+    *((u32*)(r4 + 0x2c)) = r0;
 }
+
 
 
 void ov96_021EE944(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0
-    // ldr r1, [r4, #0x2c]
     // mvn r0, r0
-    // cmp r1, r0
-    // beq _021EE95A
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x18
-    // bl RemoveTextPrinter
-    // ldr r0, [r4, #0x18]
-    // cmp r0, #0
-    // beq _021EE97A
-    // add r0, r4, #0
+    RemoveTextPrinter(((*((u32*)(r0 + 0x2c)) << 0x18) >> 0x18), *((u32*)(r0 + 0x2c)));
     // add r0, #0x18
-    // mov r1, #0
-    // bl ClearFrameAndWindow2
-    // add r0, r4, #0
+    ClearFrameAndWindow2(r4, 0);
     // add r0, #0x18
-    // bl ClearWindowTilemapAndCopyToVram
+    ClearWindowTilemapAndCopyToVram(r4);
     // add r4, #0x18
-    // add r0, r4, #0
-    // bl RemoveWindow
-    // pop {r4, pc}
-    // TODO: decompile
+    RemoveWindow(r4);
 }
+
 
 
 void ov96_021EE97C(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _021EE986
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // bne _021EE990
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)(r4 + 4)));
 }
+
 
 
 void ov96_021EE994(void) {
@@ -16842,20 +12018,13 @@ void ov96_021EE994(void) {
 }
 
 
+
 void ov96_021EE9BC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _021EE9C6
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x30]
-    // cmp r0, #0
-    // bne _021EE9D0
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x30]
-    // bl sub_0200F450
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)(r4 + 0x30)));
+    sub_0200F450(*((u32*)(r4 + 0x30)));
 }
+
 
 
 void ov96_021EE9D8(void) {
@@ -16882,6 +12051,7 @@ void ov96_021EE9D8(void) {
     // _021EEA04: .word 0x000003D2
     // TODO: decompile
 }
+
 
 
 void ov96_021EEA08(void) {
@@ -16942,6 +12112,7 @@ void ov96_021EEA08(void) {
 }
 
 
+
 void ov96_021EEA80(void) {
     // ldr r0, [r0, #0x34]
     // lsl r0, r0, #3
@@ -16951,160 +12122,91 @@ void ov96_021EEA80(void) {
 }
 
 
+
 void ov96_021EEA88(void) {
-    ov96_021EEA94();
 }
 
 
+
 void ov96_021EEA94(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r5, r1, #0
     // str r3, [sp, #0xc]
-    // mov r1, #0
-    // add r6, r0, #0
-    // add r4, r2, #0
-    // bl thunk_Sprite_SetDrawFlag
+    thunk_Sprite_SetDrawFlag(0);
     // ldr r1, [sp, #0xc]
-    // mov r0, #0x51
-    // bl NARC_New
+    NARC_New(0x51);
     // ldr r2, [sp, #0xc]
-    // add r1, r5, #0
     // str r0, [sp, #0x14]
-    // bl NARC_AllocAndReadWholeMember
+    NARC_AllocAndReadWholeMember(r5);
     // str r0, [sp, #0x10]
-    // bl NNS_G3dGetTex
-    // add r5, r0, #0
-    // beq _021EEAE8
+    NNS_G3dGetTex();
     // add r0, #0x3c
-    // beq _021EEAE4
-    // add r1, r5, #0
     // add r1, #0x3d
     // ldrb r1, [r1]
-    // cmp r4, r1
-    // bhs _021EEAE4
-    // add r1, r5, #0
     // add r1, #0x42
     // ldrh r1, [r1]
     // add r2, r0, r1
     // ldrh r0, [r0, r1]
-    // add r2, r2, #4
-    // add r1, r0, #0
     // mul r1, r4
     // add r0, r2, r1
-    // b _021EEAEA
-    // mov r0, #0
-    // b _021EEAEA
-    // mov r0, #0
-    // ldr r0, [r0]
-    // mov r1, #2
-    // lsl r0, r0, #0x10
-    // lsr r4, r0, #0xd
-    // ldr r0, [r5, #0x14]
-    // lsl r1, r1, #8
     // add r7, r5, r0
     // ldr r0, [sp, #0xc]
-    // bl Heap_AllocAtEnd
-    // mov r1, #4
+    Heap_AllocAtEnd(*((u32*)(r0 + 0x14)), (2 << 8), (r2 + 4));
     // str r1, [sp]
     // str r1, [sp, #4]
-    // mov r2, #0
     // str r0, [sp, #0x18]
     // str r0, [sp, #8]
     // add r0, r7, r4
-    // add r3, r2, #0
-    // bl sub_020145B4
-    // mov r2, #2
+    sub_020145B4(4, 0, 0);
     // ldr r1, [sp, #0x18]
-    // add r0, r6, #0
-    // lsl r2, r2, #8
-    // bl ov96_021EED64
+    ov96_021EED64(r6, (2 << 8));
     // ldr r0, [sp, #0x18]
-    // bl Heap_Free
-    // add r0, r6, #0
-    // bl Sprite_GetVramType
-    // ldr r4, [r5, #0x38]
-    // add r7, r0, #0
+    Heap_Free();
+    Sprite_GetVramType(r6);
     // add r0, r5, r4
-    // mov r1, #0x20
-    // bl DC_FlushRange
-    // add r0, r6, #0
-    // bl Sprite_GetPaletteProxy
-    // add r1, r7, #0
-    // bl NNS_G2dGetImagePaletteLocation
-    // add r1, r0, #0
-    // cmp r7, #1
-    // bne _021EEB52
+    DC_FlushRange(0x20);
+    Sprite_GetPaletteProxy(r6);
+    NNS_G2dGetImagePaletteLocation(r7);
     // add r0, r5, r4
-    // mov r2, #0x20
-    // bl GX_LoadOBJPltt
-    // b _021EEB5A
+    GX_LoadOBJPltt(r0, 0x20);
     // add r0, r5, r4
-    // mov r2, #0x20
-    // bl GXS_LoadOBJPltt
+    GXS_LoadOBJPltt(0x20);
     // ldr r0, [sp, #0x10]
-    // bl Heap_Free
+    Heap_Free();
     // ldr r0, [sp, #0x14]
-    // bl NARC_Delete
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl thunk_Sprite_SetDrawFlag
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    NARC_Delete();
+    thunk_Sprite_SetDrawFlag(r6, 1);
 }
+
 
 
 void ov96_021EEB74(void) {
-    ov96_021EEB84();
 }
+
 
 
 void ov96_021EEB84(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // add r1, r2, #0
-    // add r5, r3, #0
-    // bl PokeathlonCourse_GetPlayerProfileFromData
-    // add r7, r0, #0
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetHeapID
-    // add r4, r0, #0
-    // add r0, r7, #0
-    // bl PlayerProfile_GetTrainerGender
-    // cmp r0, #0
-    // bne _021EEBB0
-    // mov r0, #0
-    // bl ov96_021EEBC8
-    // b _021EEBB6
-    // mov r0, #1
-    // bl ov96_021EEBC8
-    // lsl r2, r5, #0x18
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // lsr r2, r2, #0x18
-    // add r3, r4, #0
-    // bl ov96_021EEA94
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetPlayerProfileFromData(r1, r2);
+    PokeathlonCourse_GetHeapID(r4);
+    PlayerProfile_GetTrainerGender(r7);
+    ov96_021EEBC8(0);
+    ov96_021EEBC8(1);
+    ov96_021EEA94(r6, r0, ((r5 << 0x18) >> 0x18), r4);
 }
+
 
 
 void ov96_021EEBC8(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_021EEBE4(void) {
-    ov96_021EEC0C();
 }
+
 
 
 void ov96_021EEBF8(void) {
-    ov96_021EEC0C();
 }
+
 
 
 void ov96_021EEC0C(void) {
@@ -17189,90 +12291,48 @@ void ov96_021EEC0C(void) {
 }
 
 
+
 void ov96_021EECB8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
     // ldrh r0, [r4]
-    // ldrh r2, [r4, #2]
-    // mov r1, #0
-    // add r7, r3, #0
-    // bl GetMonIconNaixEx
-    // add r1, r0, #0
+    GetMonIconNaixEx(0, *((u16*)(r1 + 2)));
     // ldr r0, [sp, #0x24]
-    // mov r2, #0
     // str r0, [sp]
-    // add r0, r7, #0
     // add r3, sp, #4
-    // bl GfGfxLoader_GetCharDataFromOpenNarc
-    // add r7, r0, #0
-    // bne _021EECE6
-    // bl GF_AssertFail
+    GfGfxLoader_GetCharDataFromOpenNarc(r7, r0, 0);
+    GF_AssertFail();
     // ldr r1, [sp, #4]
-    // mov r2, #2
-    // ldr r0, [r5]
-    // ldr r1, [r1, #0x14]
     // ldr r3, [sp, #0x20]
-    // lsl r2, r2, #8
-    // bl ov96_021EED14
-    // add r0, r7, #0
-    // bl Heap_Free
+    ov96_021EED14(*((u32*)r5), *((u32*)(r1 + 0x14)), (2 << 8));
+    Heap_Free(r7);
     // ldrh r0, [r4]
-    // ldrh r1, [r4, #2]
-    // mov r2, #0
-    // bl GetMonIconPaletteEx
-    // add r1, r0, #0
-    // add r0, r5, #0
+    GetMonIconPaletteEx(*((u16*)(r4 + 2)), 0);
     // add r1, r6, r1
-    // bl ManagedSprite_SetPaletteOverride
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_SetPaletteOverride(r5, r0);
 }
+
 
 
 void ov96_021EED14(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r7, r1, #0
     // str r2, [sp]
-    // add r5, r3, #0
-    // bl Sprite_GetVramType
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl Sprite_GetImageProxy
-    // add r1, r4, #0
-    // bl NNS_G2dGetImageLocation
-    // add r6, r0, #0
+    Sprite_GetVramType();
+    Sprite_GetImageProxy(r6);
+    NNS_G2dGetImageLocation(r4);
     // ldr r1, [sp]
-    // add r0, r7, #0
-    // bl DC_FlushRange
-    // cmp r4, #1
-    // beq _021EED44
-    // cmp r4, #2
-    // beq _021EED50
-    // b _021EED5C
+    DC_FlushRange(r7);
     // ldr r2, [sp]
-    // add r0, r7, #0
     // add r1, r6, r5
-    // bl GX_LoadOBJ
-    // pop {r3, r4, r5, r6, r7, pc}
+    GX_LoadOBJ(r7);
     // ldr r2, [sp]
-    // add r0, r7, #0
     // add r1, r6, r5
-    // bl GXS_LoadOBJ
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GXS_LoadOBJ(r7);
+    GF_AssertFail();
 }
+
 
 
 void ov96_021EED64(void) {
-    ov96_021EED14();
 }
+
 
 
 void ov96_021EED70(void) {
@@ -17320,6 +12380,7 @@ void ov96_021EED70(void) {
 }
 
 
+
 void ov96_021EEDCC(void) {
     // push {r3, r4, r5, lr}
     // ldr r5, _021EEDFC ; =ov96_0221B1D4
@@ -17350,6 +12411,7 @@ void ov96_021EEDCC(void) {
     // _021EEE08: .word ov96_0221B1D8
     // TODO: decompile
 }
+
 
 
 void ov96_021EEE0C(void) {
@@ -17425,24 +12487,25 @@ void ov96_021EEE0C(void) {
 }
 
 
+
 u8 ov96_021EEEBC(void) {
-    return 1;
 }
+
 
 
 void ov96_021EEEC0(void) {
-    ov96_021EF05C();
 }
+
 
 
 void ov96_021EEECC(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021EEEEC(void) {
-    DoScheduledBgGpuUpdates(1);
 }
+
 
 
 void ov96_021EEF0C(void) {
@@ -17508,10 +12571,10 @@ void ov96_021EEF0C(void) {
 }
 
 
+
 void ov96_021EEF98(void) {
-    FreeBgTilemapBuffer(*((u32*)(r0 + 4)), 0);
-    Heap_Free(*((u32*)(r4 + 4)));
 }
+
 
 
 void ov96_021EEFAC(void) {
@@ -17587,132 +12650,58 @@ void ov96_021EEFAC(void) {
 }
 
 
+
 void ov96_021EF05C(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    Main_SetVBlankIntrCB(0, 0);
-    Main_SetHBlankIntrCB(0, 0);
-    sub_0203A914();
-    ov96_021EE808(*((u32*)(r4 + 8)));
-    ov96_021EEF98(r4);
-    PokeathlonCourse_FreePtr4HeapAlloc(r5);
-    Heap_Destroy(0x9f);
 }
+
 
 
 void ov96_021EF094(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r5]
-    // cmp r0, #0
-    // beq _021EF0AC
-    // cmp r0, #1
-    // beq _021EF0DC
-    // b _021EF0F0
-    // ldr r0, [r4, #0xc]
-    // add r0, r0, #1
-    // str r0, [r4, #0xc]
-    // cmp r0, #0xf
-    // ble _021EF0F4
-    // ldr r0, [r4, #8]
-    // bl ov96_021EE9BC
-    // mov r0, #4
+    *((u32*)(r0 + 0xc)) = (*((u32*)(r0 + 0xc)) + 1);
+    ov96_021EE9BC(*((u32*)(r0 + 8)));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r4]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
+    BeginNormalPaletteFade(0, 0, 0, 0);
     // ldrb r0, [r5]
-    // add r0, r0, #1
     // strb r0, [r5]
-    // b _021EF0F4
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021EF0F4
-    // ldr r0, [r4, #8]
-    // bl ov96_021EE944
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    IsPaletteFadeFinished((r0 + 1));
+    ov96_021EE944(*((u32*)(r4 + 8)));
+    GF_AssertFail(1);
 }
+
 
 
 void ov96_021EF0FC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetField1ED
-    // cmp r0, #0
-    // beq _021EF116
-    // cmp r0, #1
-    // beq _021EF124
-    // b _021EF182
-    // add r0, r5, #0
-    // bl ov96_021EF2C0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_IncrementField1ED
-    // b _021EF186
-    // add r0, r4, #0
-    // bl ov96_021EF818
-    // ldr r0, [r4, #4]
-    // ldr r1, [r4, #0xc]
-    // bl ov96_021EF4D0
-    // add r0, r4, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
+    PokeathlonCourse_GetField1ED(r5);
+    ov96_021EF2C0(r5);
+    PokeathlonCourse_IncrementField1ED(r5);
+    ov96_021EF818(r4);
+    ov96_021EF4D0(*((u32*)(r4 + 4)), *((u32*)(r4 + 0xc)));
     // add r0, #0x20
     // ldrb r0, [r0]
-    // ldr r1, [r4, #0xc]
-    // bl ov96_021EE5B4
-    // str r0, [r4, #0x34]
-    // ldr r1, [r4, #4]
-    // bl ov96_021EE60C
-    // add r0, r4, #0
-    // bl ov96_021EF54C
-    // ldr r0, [r4, #0x34]
-    // bl ov96_021EE644
-    // add r0, r4, #0
-    // bl ov96_021EFA28
-    // mov r0, #2
-    // bl sub_0203A994
-    // mov r0, #0x10
-    // mov r1, #1
-    // bl GfGfx_EngineATogglePlanes
-    // mov r0, #0x10
-    // mov r1, #1
-    // bl GfGfx_EngineBTogglePlanes
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl PokeathlonCourse_SetField1F4
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl PokeathlonCourse_SetField1ED
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_021EE5B4(r4, *((u32*)(r4 + 0xc)));
+    *((u32*)(r4 + 0x34)) = r0;
+    ov96_021EE60C(*((u32*)(r4 + 4)));
+    ov96_021EF54C(r4);
+    ov96_021EE644(*((u32*)(r4 + 0x34)));
+    ov96_021EFA28(r4);
+    sub_0203A994(2);
+    GfGfx_EngineATogglePlanes(0x10, 1);
+    GfGfx_EngineBTogglePlanes(0x10, 1);
+    PokeathlonCourse_SetField1F4(r5, 1);
+    PokeathlonCourse_SetField1ED(r5, 0);
+    GF_AssertFail(1);
 }
+
 
 
 u32 ov96_021EF18C(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    SpriteSystem_DrawSprites(*((u32*)(r0 + 0x14)));
-    return 1;
 }
+
 
 
 void ov96_021EF19C(void) {
@@ -17781,6 +12770,7 @@ void ov96_021EF19C(void) {
 }
 
 
+
 void ov96_021EF23C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -17800,40 +12790,30 @@ void ov96_021EF23C(void) {
 }
 
 
+
 void ov96_021EF260(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021EF280(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl GF_GetCurrentPlayingBGM
-    // add r1, r5, #0
+    GF_GetCurrentPlayingBGM();
     // add r2, sp, #0
-    // bl sub_02005B78
+    sub_02005B78(r5);
     // add r1, sp, #0
-    // mov r0, #0
     // ldrsh r1, [r1, r0]
-    // cmp r1, r4
-    // blt _021EF29E
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EF2A0(void) {
-    PokeathlonCourse_GetField3D8_ForCurrentParticipant();
 }
+
 
 
 void ov96_021EF2AC(void) {
-    PokeathlonCourse_GetSaveData();
-    Save_VarsFlags_Get();
-    Save_VarsFlags_CheckFlagInArray(0xef);
 }
+
 
 
 void ov96_021EF2C0(void) {
@@ -17932,146 +12912,66 @@ void ov96_021EF2C0(void) {
 }
 
 
+
 void ov96_021EF3A8(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // mov r1, #1
-    // ldr r2, [r4, #0xc]
-    // mov r0, #6
-    // lsl r1, r1, #0xe
-    // bl LoadFontPal0
-    // ldr r0, [r4, #0x34]
-    // bl ov96_021EE644
-    // mov r3, #0
+    LoadFontPal0(6, (1 << 0xe), *((u32*)(r0 + 0xc)));
+    ov96_021EE644(*((u32*)(r4 + 0x34)));
     // str r3, [sp]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #4
     // str r0, [sp, #4]
-    // ldr r0, [r4, #8]
-    // add r2, r1, #0
-    // bl GfGfxLoader_GXLoadPalFromOpenNarc
-    // mov r0, #0
+    GfGfxLoader_GXLoadPalFromOpenNarc(*((u32*)(r4 + 8)), 4, 4, 0);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #8]
-    // ldr r2, [r4, #4]
-    // mov r3, #4
-    // bl GfGfxLoader_LoadCharDataFromOpenNarc
-    // ldr r0, [r4, #0x28]
-    // cmp r0, #0
-    // beq _021EF410
-    // mov r0, #0
+    GfGfxLoader_LoadCharDataFromOpenNarc(*((u32*)(r4 + 8)), 5, *((u32*)(r4 + 4)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #0xa
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #8]
-    // ldr r2, [r4, #4]
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // add sp, #0x10
-    // pop {r4, pc}
-    // mov r0, #0
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r4 + 8)), 0xa, *((u32*)(r4 + 4)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #9
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #8]
-    // ldr r2, [r4, #4]
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r4 + 8)), 9, *((u32*)(r4 + 4)), 4);
 }
 
 
+
 void ov96_021EF430(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x20
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0xa
-    // blt _021EF440
-    // bl GF_AssertFail
-    // mov r0, #0
+    GF_AssertFail();
     // str r0, [sp]
-    // ldr r0, [r5, #0xc]
-    // add r1, r4, #0
     // str r0, [sp, #4]
-    // mov r2, #6
-    // ldr r0, [r5, #8]
     // add r1, #0x20
-    // lsl r3, r2, #0xc
-    // bl GfGfxLoader_GXLoadPalFromOpenNarc
-    // mov r0, #0
+    GfGfxLoader_GXLoadPalFromOpenNarc(*((u32*)(r5 + 8)), r4, 6, (6 << 0xc));
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0xc]
-    // add r1, r4, #0
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #8]
-    // ldr r2, [r5, #4]
     // add r1, #0x2a
-    // mov r3, #7
-    // bl GfGfxLoader_LoadCharDataFromOpenNarc
-    // mov r0, #0
+    GfGfxLoader_LoadCharDataFromOpenNarc(*((u32*)(r5 + 8)), r4, *((u32*)(r5 + 4)), 7);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0xc]
     // add r4, #0x34
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #8]
-    // ldr r2, [r5, #4]
-    // add r1, r4, #0
-    // mov r3, #7
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // mov r0, #4
-    // mov r1, #0
-    // bl BG_SetMaskColor
-    // mov r0, #0
-    // mov r1, #1
-    // lsl r1, r1, #0xc
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r5 + 8)), r4, *((u32*)(r5 + 4)), 7);
+    BG_SetMaskColor(4, 0);
     // str r1, [sp, #0x10]
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x18]
     // str r1, [sp, #0x1c]
-    // bl OS_WaitVBlankIntr
-    // mov r3, #0
+    OS_WaitVBlankIntr(0, (1 << 0xc));
     // str r3, [sp]
-    // ldr r0, [r5, #4]
-    // mov r1, #7
     // add r2, sp, #0x10
-    // bl SetBgAffine
+    SetBgAffine(*((u32*)(r5 + 4)), 7, 0);
     // add r0, sp, #0x10
     // str r0, [sp]
-    // mov r3, #0
     // str r3, [sp, #4]
     // str r3, [sp, #8]
-    // ldr r0, [r5, #4]
-    // mov r1, #7
-    // mov r2, #3
-    // bl Bg_SetTextDimAndAffineParams
-    // add sp, #0x20
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Bg_SetTextDimAndAffineParams(*((u32*)(r5 + 4)), 7, 3, 0);
 }
+
 
 
 void ov96_021EF4D0(void) {
@@ -18131,6 +13031,7 @@ void ov96_021EF4D0(void) {
     // _021EF548: .word ov96_0221BA18
     // TODO: decompile
 }
+
 
 
 void ov96_021EF54C(void) {
@@ -18212,19 +13113,15 @@ void ov96_021EF54C(void) {
 }
 
 
+
 void ov96_021EF5F4(void) {
-    // push {r4, lr}
-    // ldr r0, [r0]
-    // add r4, r1, #0
-    // bl PokeathlonCourse_GetSaveData
-    // bl Save_Pokeathlon_Get
-    // bl PokeathlonSave_GetRecordsSolo2
-    // mov r1, #0x2c
+    PokeathlonCourse_GetSaveData(*((u32*)r0));
+    Save_Pokeathlon_Get();
+    PokeathlonSave_GetRecordsSolo2();
     // mul r1, r4
     // ldrh r0, [r0, r1]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021EF610(void) {
@@ -18387,88 +13284,41 @@ void ov96_021EF610(void) {
 }
 
 
+
 void ov96_021EF770(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
     // add r0, #0x20
     // ldrb r1, [r0]
-    // mov r2, #0xf4
-    // mov r3, #0
-    // lsl r0, r1, #1
     // add r4, r1, r0
-    // ldr r0, [r5, #0x30]
-    // mov r1, #8
     // add r4, #0xd2
-    // bl ov98_0221EBD8
-    // mov r3, #0
+    ov98_0221EBD8(*((u32*)(r0 + 0x30)), 8, 0xf4, 0);
     // str r3, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x30]
-    // mov r1, #9
-    // mov r2, #0xf2
-    // bl ov98_0221EBEC
-    // mov r3, #0
+    ov98_0221EBEC(*((u32*)(r5 + 0x30)), 9, 0xf2, 0);
     // str r3, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x30]
-    // mov r1, #0xa
-    // mov r2, #0xf3
-    // bl ov98_0221EBEC
-    // mov r3, #0
+    ov98_0221EBEC(*((u32*)(r5 + 0x30)), 0xa, 0xf3, 0);
     // str r3, [sp]
-    // ldr r0, [r5, #0x30]
-    // mov r1, #0xb
-    // add r2, r4, #0
-    // bl ov98_0221EC08
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov98_0221EC08(*((u32*)(r5 + 0x30)), 0xb, r4, 0);
 }
+
 
 
 void ov96_021EF7C4(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
     // add r0, #0x20
     // ldrb r1, [r0]
-    // mov r2, #0xf5
-    // mov r3, #0
-    // lsl r0, r1, #1
     // add r4, r1, r0
-    // ldr r0, [r5, #0x30]
-    // mov r1, #8
     // add r4, #0xd3
-    // bl ov98_0221EBD8
-    // mov r3, #0
+    ov98_0221EBD8(*((u32*)(r0 + 0x30)), 8, 0xf5, 0);
     // str r3, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x30]
-    // mov r1, #9
-    // mov r2, #0xf1
-    // bl ov98_0221EBEC
-    // mov r3, #0
+    ov98_0221EBEC(*((u32*)(r5 + 0x30)), 9, 0xf1, 0);
     // str r3, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x30]
-    // mov r1, #0xa
-    // mov r2, #0xf3
-    // bl ov98_0221EBEC
-    // mov r3, #0
+    ov98_0221EBEC(*((u32*)(r5 + 0x30)), 0xa, 0xf3, 0);
     // str r3, [sp]
-    // ldr r0, [r5, #0x30]
-    // mov r1, #0xb
-    // add r2, r4, #0
-    // bl ov98_0221EC08
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov98_0221EC08(*((u32*)(r5 + 0x30)), 0xb, r4, 0);
 }
+
 
 
 void ov96_021EF818(void) {
@@ -18546,84 +13396,40 @@ void ov96_021EF818(void) {
 }
 
 
+
 void ov96_021EF8C0(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // ldr r4, [r5, #0x14]
-    // ldr r6, [r5, #0x10]
-    // mov r3, #0
     // str r3, [sp]
-    // mov r0, #0x10
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r3, [sp, #0xc]
-    // ldr r2, [r5, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl SpriteSystem_LoadPlttResObjFromOpenNarc
-    // mov r3, #1
+    SpriteSystem_LoadPlttResObjFromOpenNarc(*((u32*)(r0 + 0x10)), *((u32*)(r0 + 0x14)), *((u32*)(r0 + 8)), 0);
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // ldr r2, [r5, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl SpriteSystem_LoadCharResObjFromOpenNarc
-    // mov r0, #1
+    SpriteSystem_LoadCharResObjFromOpenNarc(r6, r4, *((u32*)(r5 + 8)), 1);
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // ldr r2, [r5, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r3, #2
-    // bl SpriteSystem_LoadCellResObjFromOpenNarc
-    // mov r0, #1
+    SpriteSystem_LoadCellResObjFromOpenNarc(r6, r4, *((u32*)(r5 + 8)), 2);
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // ldr r2, [r5, #8]
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // mov r3, #3
-    // bl SpriteSystem_LoadAnimResObjFromOpenNarc
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    SpriteSystem_LoadAnimResObjFromOpenNarc(r6, r4, *((u32*)(r5 + 8)), 3);
 }
+
 
 
 void ov96_021EF924(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x40]
-    // bl ManagedSprite_IsAnimated
-    // cmp r0, #0
-    // bne _021EF958
-    // add r0, r4, #0
+    ManagedSprite_IsAnimated(*((u32*)(r0 + 0x40)));
     // add r0, #0x21
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x21
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x21
     // ldrb r0, [r0]
-    // cmp r0, #2
-    // blo _021EF952
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0x21
     // strb r1, [r0]
-    // add r0, r4, #0
-    // bl ov96_021EFA04
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EFA04(r4, 0);
 }
+
 
 
 void ov96_021EF95C(void) {
@@ -18653,6 +13459,7 @@ void ov96_021EF95C(void) {
 }
 
 
+
 void ov96_021EF98C(void) {
     // add r1, r0, #0
     // ldr r3, _021EF998 ; =ov96_021EFA04
@@ -18663,6 +13470,7 @@ void ov96_021EF98C(void) {
     // _021EF998: .word ov96_021EFA04
     // TODO: decompile
 }
+
 
 
 void ov96_021EF99C(void) {
@@ -18716,6 +13524,7 @@ void ov96_021EF99C(void) {
 }
 
 
+
 void ov96_021EFA04(void) {
     // push {r4, lr}
     // add r2, r0, #0
@@ -18737,10 +13546,10 @@ void ov96_021EFA04(void) {
 }
 
 
+
 void ov96_021EFA28(void) {
-    GfGfx_EngineBTogglePlanes(4, 0);
-    GfGfx_EngineBTogglePlanes(8, 0);
 }
+
 
 
 void ov96_021EFA3C(void) {
@@ -18812,46 +13621,25 @@ void ov96_021EFA3C(void) {
 }
 
 
+
 void ov96_021EFACC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x14
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x1c]
-    // mov r1, #0xe
-    // add r0, r0, #1
-    // str r0, [r4, #0x1c]
-    // lsl r0, r0, #0xc
-    // bl _s32_div_f
-    // mov r1, #0
+    *((u32*)(r0 + 0x1c)) = (*((u32*)(r0 + 0x1c)) + 1);
+    _s32_div_f(((*((u32*)(r0 + 0x1c)) + 1) << 0xc), 0xe);
     // str r0, [sp, #4]
     // str r1, [sp, #8]
     // str r1, [sp, #0xc]
     // str r0, [sp, #0x10]
-    // bl OS_WaitVBlankIntr
-    // mov r0, #0x60
+    OS_WaitVBlankIntr(0);
     // str r0, [sp]
-    // ldr r0, [r4, #4]
-    // mov r1, #7
     // add r2, sp, #4
-    // mov r3, #0x80
-    // bl SetBgAffine
-    // mov r0, #0x60
+    SetBgAffine(*((u32*)(r4 + 4)), 7, 0x80);
     // str r0, [sp]
-    // ldr r0, [r4, #4]
-    // mov r1, #6
     // add r2, sp, #4
-    // mov r3, #0x80
-    // bl SetBgAffine
-    // ldr r0, [r4, #0x1c]
-    // cmp r0, #0xe
-    // blt _021EFB1A
-    // mov r0, #0
-    // str r0, [r4, #0x1c]
-    // str r0, [r4, #0x2c]
-    // add sp, #0x14
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    SetBgAffine(*((u32*)(r4 + 4)), 6, 0x80);
+    *((u32*)(r4 + 0x1c)) = 0;
+    *((u32*)(r4 + 0x2c)) = 0;
 }
+
 
 
 void ov96_021EFB20(void) {
@@ -18880,198 +13668,91 @@ void ov96_021EFB20(void) {
 }
 
 
+
 void ov96_021EFB50(void) {
-    IsPaletteFadeFinished();
 }
 
 
+
 void ov96_021EFB58(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x20
-    // mov r3, #0
     // str r3, [sp]
-    // add r5, r0, #0
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0xc]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #8]
-    // ldr r2, [r5, #4]
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // add r0, r5, #0
-    // bl ov96_021EF3A8
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl ov96_021EF95C
-    // ldr r0, [r5, #0x38]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0x3c]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0x40]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0x44]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #5
-    // mov r1, #1
-    // bl ToggleBgLayer
-    // mov r0, #6
-    // mov r1, #1
-    // bl ToggleBgLayer
-    // mov r0, #4
-    // mov r1, #1
-    // bl ToggleBgLayer
-    // mov r0, #1
-    // add r1, r0, #0
-    // bl ToggleBgLayer
-    // add r0, r5, #0
-    // bl ov96_021EF610
-    // ldr r0, [r5, #0x28]
-    // mov r4, #0
-    // cmp r0, #0
-    // bne _021EFBD4
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r0 + 8)), 6, *((u32*)(r0 + 4)), 0);
+    ov96_021EF3A8(r5);
+    ov96_021EF95C(r5, 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x38)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x3c)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x40)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x44)), 1);
+    ToggleBgLayer(5, 1);
+    ToggleBgLayer(6, 1);
+    ToggleBgLayer(4, 1);
+    ToggleBgLayer(1, 1);
+    ov96_021EF610(r5);
     // sub r4, #0x20
-    // mov r1, #1
-    // lsl r1, r1, #0xc
-    // mov r0, #0
     // str r1, [sp, #0x10]
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x18]
     // str r1, [sp, #0x1c]
-    // bl OS_WaitVBlankIntr
-    // mov r3, #0
+    OS_WaitVBlankIntr(0, (1 << 0xc));
     // str r3, [sp]
-    // ldr r0, [r5, #4]
-    // mov r1, #7
     // add r2, sp, #0x10
-    // bl SetBgAffine
+    SetBgAffine(*((u32*)(r5 + 4)), 7, 0);
     // add r0, sp, #0x10
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5, #4]
-    // mov r1, #7
-    // mov r2, #3
-    // add r3, r4, #0
-    // bl Bg_SetTextDimAndAffineParams
-    // add sp, #0x20
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Bg_SetTextDimAndAffineParams(*((u32*)(r5 + 4)), 7, 3, r4);
 }
+
 
 
 void ov96_021EFC10(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // add r1, r4, #0
     // add r1, #0x20
     // ldrb r1, [r1]
-    // bl ov96_021EF430
-    // mov r3, #0
+    ov96_021EF430(r0);
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #7
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #8]
-    // ldr r2, [r4, #4]
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl ov96_021EF95C
-    // ldr r0, [r4, #0x38]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r4, #0x3c]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r4, #0x40]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r4, #0x44]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #5
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // mov r0, #6
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // mov r0, #4
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // mov r0, #1
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // add r0, r4, #0
-    // bl ov96_021EF770
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r4 + 8)), 7, *((u32*)(r4 + 4)), 0);
+    ov96_021EF95C(r4, 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x38)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x3c)), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x40)), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x44)), 0);
+    ToggleBgLayer(5, 0);
+    ToggleBgLayer(6, 0);
+    ToggleBgLayer(4, 0);
+    ToggleBgLayer(1, 0);
+    ov96_021EF770(r4);
 }
+
 
 
 void ov96_021EFC8C(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // add r1, r4, #0
     // add r1, #0x20
     // ldrb r1, [r1]
-    // bl ov96_021EF430
-    // mov r3, #0
+    ov96_021EF430(r0);
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #7
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #8]
-    // ldr r2, [r4, #4]
-    // bl GfGfxLoader_LoadScrnDataFromOpenNarc
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl ov96_021EF95C
-    // ldr r0, [r4, #0x38]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r4, #0x3c]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r4, #0x40]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r4, #0x44]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #5
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // mov r0, #6
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // mov r0, #4
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // mov r0, #1
-    // mov r1, #0
-    // bl ToggleBgLayer
-    // add r0, r4, #0
-    // bl ov96_021EF7C4
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadScrnDataFromOpenNarc(*((u32*)(r4 + 8)), 7, *((u32*)(r4 + 4)), 0);
+    ov96_021EF95C(r4, 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x38)), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x3c)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x40)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r4 + 0x44)), 0);
+    ToggleBgLayer(5, 0);
+    ToggleBgLayer(6, 0);
+    ToggleBgLayer(4, 0);
+    ToggleBgLayer(1, 0);
+    ov96_021EF7C4(r4);
 }
+
 
 
 void ov96_021EFD08(void) {
@@ -19136,6 +13817,7 @@ void ov96_021EFD08(void) {
     // _021EFD98: .word 0x00007FFF
     // TODO: decompile
 }
+
 
 
 void ov96_021EFD9C(void) {
@@ -19263,6 +13945,7 @@ void ov96_021EFD9C(void) {
 }
 
 
+
 void ov96_021EFEB8(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -19319,6 +14002,7 @@ void ov96_021EFEB8(void) {
     // _021EFF38: .word 0x000005DC
     // TODO: decompile
 }
+
 
 
 void ov96_021EFF3C(void) {
@@ -19395,6 +14079,7 @@ void ov96_021EFF3C(void) {
 }
 
 
+
 void ov96_021EFFE4(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0xc
@@ -19469,6 +14154,7 @@ void ov96_021EFFE4(void) {
 }
 
 
+
 void ov96_021F008C(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0xc
@@ -19525,6 +14211,7 @@ void ov96_021F008C(void) {
     // _021F0108: .word 0x00007FFF
     // TODO: decompile
 }
+
 
 
 void ov96_021F010C(void) {
@@ -20385,11 +15072,10 @@ void ov96_021F010C(void) {
 }
 
 
+
 u32 ov96_021F08E4(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EB5BC(*((u32*)(r0 + 0x18)));
-    return 1;
 }
+
 
 
 void ov96_021F08F4(void) {
@@ -20437,6 +15123,7 @@ void ov96_021F08F4(void) {
     // _021F0958: .word 0x00000125
     // TODO: decompile
 }
+
 
 
 void ov96_021F095C(void) {
@@ -20535,179 +15222,75 @@ void ov96_021F095C(void) {
 }
 
 
+
 void ov96_021F0A5C(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021F0A7C(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r1, [r4]
-    // cmp r1, #0
-    // beq _021F0A98
-    // cmp r1, #1
-    // beq _021F0AA8
-    // cmp r1, #2
-    // beq _021F0AC8
-    // b _021F0AD8
-    // add r0, r5, #0
-    // mov r1, #0x15
-    // bl PokeathlonCourse_SetStateTransitionType
+    PokeathlonCourse_SetStateTransitionType(r5, 0x15);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F0AD8
-    // mov r1, #6
     // str r1, [sp]
-    // mov r1, #1
     // str r1, [sp, #4]
-    // ldr r0, [r0, #0x14]
-    // mov r1, #3
     // str r0, [sp, #8]
-    // mov r0, #2
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl BeginNormalPaletteFade
+    BeginNormalPaletteFade(2, 3, 3, 0);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F0AD8
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021F0AD8
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    IsPaletteFadeFinished((r0 + 1));
+    PokeathlonCourse_SetStateField07(r5, 1);
 }
+
 
 
 void ov96_021F0AE0(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _021F0AFE
-    // cmp r0, #1
-    // beq _021F0B10
-    // cmp r0, #2
-    // beq _021F0B28
-    // b _021F0B52
-    // add r0, r5, #0
-    // bl ov96_021E637C
-    // cmp r0, #0
-    // beq _021F0B52
+    ov96_021E637C(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F0B52
-    // add r0, r5, #0
-    // bl ov96_021F1170
-    // add r0, r5, #0
-    // bl ov96_021F107C
-    // cmp r0, #0
-    // beq _021F0B52
+    ov96_021F1170(r5);
+    ov96_021F107C(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F0B52
-    // add r0, r5, #0
-    // bl ov96_021E667C
-    // cmp r0, #0
-    // beq _021F0B52
-    // mov r0, #6
+    ov96_021E667C(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x14]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    PokeathlonCourse_SetStateField07(r5, 2);
 }
+
 
 
 void ov96_021F0B58(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
     // str r0, [sp]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp, #4]
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // bne _021F0B7E
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021F0B78
-    // mov r0, #1
+    IsPaletteFadeFinished();
     // strb r0, [r4]
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
     // ldr r0, [sp]
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // beq _021F0B8E
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
-    // mov r0, #0
+    ov96_021E5F24(0);
     // str r0, [sp, #8]
     // ldr r0, [sp, #8]
-    // mov r6, #0
-    // lsl r0, r0, #0x18
     // ldr r5, [sp, #4]
-    // add r4, r6, #0
-    // lsr r7, r0, #0x18
-    // add r0, r5, #0
     // add r0, #0x62
     // ldrh r0, [r0]
-    // add r1, r7, #0
     // add r6, r6, r0
-    // lsl r2, r6, #0x10
     // ldr r0, [sp]
-    // lsr r2, r2, #0x10
-    // bl PokeathlonCourse_SetField5E0_AtIndex
-    // add r4, r4, #1
+    PokeathlonCourse_SetField5E0_AtIndex(r5, ((0 << 0x18) >> 0x18), ((0 << 0x10) >> 0x10));
     // add r5, #0x90
-    // cmp r4, #3
-    // blt _021F0B9E
-    // mov r0, #0x1b
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #4
     // add r0, r1, r0
     // str r0, [sp, #4]
     // ldr r0, [sp, #8]
-    // add r0, r0, #1
     // str r0, [sp, #8]
-    // cmp r0, #4
-    // blt _021F0B92
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F0BD4(void) {
@@ -20884,6 +15467,7 @@ void ov96_021F0BD4(void) {
     // _021F0D5C: .word ov96_0221BD20
     // TODO: decompile
 }
+
 
 
 void ov96_021F0D60(void) {
@@ -21077,6 +15661,7 @@ void ov96_021F0D60(void) {
 }
 
 
+
 void ov96_021F0F04(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x14
@@ -21267,6 +15852,7 @@ void ov96_021F0F04(void) {
 }
 
 
+
 void ov96_021F107C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -21371,6 +15957,7 @@ void ov96_021F107C(void) {
     // _021F116C: .word gSystem + 0x40
     // TODO: decompile
 }
+
 
 
 void ov96_021F1170(void) {
@@ -21930,6 +16517,7 @@ void ov96_021F1170(void) {
     // _021F1610: .word 0x000006F4
     // TODO: decompile
 }
+
 
 
 void ov96_021F1614(void) {
@@ -22694,6 +17282,7 @@ void ov96_021F1614(void) {
 }
 
 
+
 void ov96_021F1CC0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x80
@@ -23139,185 +17728,94 @@ void ov96_021F1CC0(void) {
 }
 
 
+
 void ov96_021F208C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // add r0, r1, #0
-    // lsl r6, r4, #0xc
-    // lsl r4, r0, #0xc
-    // mov r0, #0
     // str r0, [sp, #8]
     // add r0, sp, #0
-    // add r1, r2, #0
-    // add r2, r0, #0
-    // add r7, r3, #0
     // ldr r5, [sp, #0x20]
     // str r6, [sp]
     // str r4, [sp, #4]
-    // bl VEC_Subtract
+    VEC_Subtract(0, r2, 0);
     // add r0, sp, #0
-    // bl VEC_Mag
-    // cmp r0, r7
-    // ble _021F20C0
+    VEC_Mag();
     // str r6, [r5]
-    // str r4, [r5, #4]
-    // mov r0, #0
-    // str r0, [r5, #8]
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 4)) = r4;
+    *((u32*)(r5 + 8)) = 0;
 }
 
 
+
 void ov96_021F20C4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x2c
     // str r1, [sp, #8]
     // str r2, [sp, #0xc]
     // str r3, [sp, #0x10]
-    // add r7, r0, #0
-    // bl ov96_021E6104
-    // mov r1, #0x1b
-    // mov r5, #0
+    ov96_021E6104();
     // str r0, [sp, #0x14]
-    // lsl r6, r0, #0xc
     // ldr r0, [sp, #8]
-    // lsl r1, r1, #4
     // add r7, #0x20
     // mul r1, r0
-    // add r4, r5, #0
     // add r7, r7, r1
-    // mov r0, #0x90
     // mul r0, r4
     // add r1, r7, r0
     // ldr r0, [sp, #0x14]
     // str r0, [sp]
     // add r0, sp, #0x18
     // str r0, [sp, #4]
-    // ldr r0, [r1, #0x28]
-    // ldr r1, [r1, #0x2c]
     // asr r2, r0, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r0, r2
     // asr r0, r2, #0xc
     // asr r2, r1, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r1, r2
     // asr r1, r2, #0xc
     // ldr r2, [sp, #0xc]
     // ldr r3, [sp, #0x10]
-    // bl ov96_021E872C
-    // cmp r0, #0
+    ov96_021E872C(*((u32*)((0x1b << 4) + 0x28)), *((u32*)((0x1b << 4) + 0x2c)), ((r2 >> 0x14) >> 0x14));
     // add r0, sp, #0x20
-    // beq _021F212C
     // ldr r2, [sp, #0x18]
-    // lsl r1, r4, #2
     // str r2, [r0, r1]
-    // mov r1, #1
     // add r0, sp, #0x1c
     // strb r1, [r0, r4]
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // b _021F2136
-    // lsl r2, r4, #2
-    // mov r1, #0
     // str r1, [r0, r2]
     // add r0, sp, #0x1c
     // strb r1, [r0, r4]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _021F20E8
-    // cmp r5, #0
-    // bne _021F214A
-    // add sp, #0x2c
-    // mov r0, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // mov r2, #3
-    // mov r3, #0
     // add r0, sp, #0x20
     // add r1, sp, #0x1c
     // ldrb r4, [r1, r3]
-    // cmp r4, #0
-    // beq _021F2164
-    // lsl r4, r3, #2
     // ldr r4, [r0, r4]
-    // cmp r4, r6
-    // bge _021F2164
-    // add r2, r3, #0
-    // add r6, r4, #0
-    // add r3, r3, #1
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #0x18
-    // cmp r3, #3
-    // blo _021F2152
-    // cmp r2, #3
-    // bne _021F217C
-    // bl GF_AssertFail
-    // add sp, #0x2c
-    // mov r0, #0xc
-    // pop {r4, r5, r6, r7, pc}
+    GF_AssertFail(0xc, 0, 0, (((0 + 1) << 0x18) >> 0x18));
     // ldr r0, [sp, #8]
-    // lsl r1, r0, #1
     // add r0, r0, r1
     // add r0, r2, r0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // add sp, #0x2c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021F218C(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x34
-    // add r2, r0, #0
     // add r0, sp, #0x20
     // str r0, [sp]
     // add r0, sp, #0xc
     // str r0, [sp, #4]
-    // add r4, r1, #0
-    // ldr r0, [r2]
-    // ldr r1, [r2, #0x28]
-    // ldr r2, [r2, #0x2c]
     // add r3, sp, #0x1c
-    // bl ov96_021EAF78
+    ov96_021EAF78(*((u32*)r0), *((u32*)(r0 + 0x28)), *((u32*)(r0 + 0x2c)));
     // add r0, sp, #0x14
     // str r0, [sp]
     // add r0, sp, #8
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // ldr r1, [r4, #0x28]
-    // ldr r2, [r4, #0x2c]
     // add r3, sp, #0x10
-    // bl ov96_021EAF78
+    ov96_021EAF78(*((u32*)r4), *((u32*)(r4 + 0x28)), *((u32*)(r4 + 0x2c)));
     // ldr r1, [sp, #0xc]
     // ldr r0, [sp, #8]
     // add r2, sp, #0x28
     // add r0, r1, r0
-    // lsl r4, r0, #0xc
-    // mov r0, #0
     // str r0, [sp, #0x24]
     // str r0, [sp, #0x18]
     // add r0, sp, #0x1c
     // add r1, sp, #0x10
-    // bl VEC_Subtract
+    VEC_Subtract(0);
     // add r0, sp, #0x28
-    // bl VEC_Mag
-    // cmp r0, r4
-    // bgt _021F21E4
-    // add sp, #0x34
-    // mov r0, #1
-    // pop {r3, r4, pc}
-    // mov r0, #0
-    // add sp, #0x34
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    VEC_Mag();
 }
+
 
 
 void ov96_021F21EC(void) {
@@ -23455,6 +17953,7 @@ void ov96_021F21EC(void) {
 }
 
 
+
 void ov96_021F22FC(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -23495,6 +17994,7 @@ void ov96_021F22FC(void) {
     // _021F2348: .word _0221DCA0
     // TODO: decompile
 }
+
 
 
 void ov96_021F234C(void) {
@@ -24009,92 +18509,52 @@ void ov96_021F234C(void) {
 }
 
 
+
 void ov96_021F2780(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // add r4, r1, #0
-    // cmp r0, #0xc
-    // blt _021F2790
-    // bl GF_AssertFail
-    // ldr r1, [r5, #0xc]
-    // cmp r1, #0xc
-    // blt _021F279A
-    // mov r0, #0xff
-    // pop {r3, r4, r5, pc}
-    // add r0, r1, #1
-    // str r0, [r5, #0xc]
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x18
+    GF_AssertFail(*((u32*)(r0 + 0xc)));
+    *((u32*)(r5 + 0xc)) = (*((u32*)(r5 + 0xc)) + 1);
     // strb r4, [r5, r0]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F27A8(void) {
-    // ldr r1, [r0, #0xc]
-    // sub r1, r1, #1
     // bpl _021F27B2
-    // mov r0, #0xff
-    // bx lr
-    // str r1, [r0, #0xc]
+    *((u32*)(0xff + 0xc)) = (*((u32*)(r0 + 0xc)) - 1);
     // ldrb r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F27B8(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0x24
-    // add r5, r1, #0
     // add r1, sp, #0x18
-    // add r4, r0, #0
-    // add r6, r2, #0
-    // bl VEC_Normalize
-    // add r0, r5, #0
+    VEC_Normalize();
     // add r1, sp, #0xc
-    // bl VEC_Normalize
+    VEC_Normalize(r5);
     // add r0, sp, #0x18
     // add r1, sp, #0xc
-    // bl VEC_DotProduct
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl VEC_Mag
-    // add r2, r0, #0
+    VEC_DotProduct();
+    VEC_Mag(r4);
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
     // asr r1, r5, #0x1f
-    // add r0, r5, #0
     // asr r3, r2, #0x1f
-    // bl _ll_mul
-    // mov r2, #2
-    // mov r3, #0
-    // lsl r2, r2, #0xa
+    _ll_mul(r5, r0);
     // add r0, r0, r2
     // adc r1, r3
-    // lsl r1, r1, #0x14
-    // lsr r0, r0, #0xc
     // orr r0, r1
     // add r1, sp, #0xc
     // add r2, sp, #0
-    // add r3, r6, #0
-    // bl VEC_MultAdd
-    // add sp, #0x24
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    VEC_MultAdd((r0 >> 0xc), (r1 << 0x14), (2 << 0xa), r6);
 }
+
 
 
 void ov96_021F2814(void) {
-    VEC_Normalize();
-    VEC_Normalize(r4);
-    VEC_DotProduct();
 }
+
 
 
 void ov96_021F2834(void) {
@@ -24243,91 +18703,28 @@ void ov96_021F2834(void) {
 }
 
 
+
 void ov96_021F295C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r4, #1
-    // cmp r5, #1
-    // blt _021F2978
-    // lsl r0, r4, #0x18
-    // lsr r0, r0, #0x18
-    // add r1, r6, #0
-    // bl ov96_021F2984
-    // add r4, r4, #1
-    // cmp r4, r5
-    // ble _021F2968
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl ScheduleBgTilemapBufferTransfer
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021F2984(((1 << 0x18) >> 0x18), r1);
+    ScheduleBgTilemapBufferTransfer(r6, 1);
 }
+
 
 
 void ov96_021F2984(void) {
-    // push {r3, lr}
-    // sub sp, #0x10
-    // cmp r0, #1
-    // blo _021F299A
-    // cmp r0, #6
-    // bhi _021F299A
-    // sub r0, r0, #1
-    // lsl r3, r0, #1
     // add r3, #0x12
-    // mov r0, #2
-    // b _021F29DC
-    // cmp r0, #0x10
-    // blo _021F29AE
-    // cmp r0, #0x1c
-    // bhi _021F29AE
     // sub r0, #0x10
-    // lsl r2, r0, #1
-    // mov r0, #0x1a
     // sub r3, r0, r2
-    // mov r0, #0x14
-    // b _021F29DC
-    // cmp r0, #0x26
-    // blo _021F29C0
-    // cmp r0, #0x2b
-    // bhs _021F29C0
     // sub r0, #0x26
-    // lsl r0, r0, #1
-    // add r3, r0, #4
-    // mov r0, #2
-    // b _021F29DC
-    // cmp r0, #7
-    // blo _021F29D2
-    // cmp r0, #0xf
-    // bhi _021F29D2
-    // sub r0, r0, #7
-    // lsl r0, r0, #1
-    // mov r3, #0x1c
-    // add r0, r0, #4
-    // b _021F29DC
     // sub r0, #0x1d
-    // lsl r2, r0, #1
-    // mov r0, #0x12
-    // mov r3, #2
     // sub r0, r0, r2
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x10
-    // lsl r3, r3, #0x18
     // str r0, [sp, #0xc]
-    // add r0, r1, #0
-    // mov r1, #1
-    // mov r2, #0
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // add sp, #0x10
-    // pop {r3, pc}
-    // TODO: decompile
+    FillBgTilemapRect(r1, 1, 0, ((2 << 0x18) >> 0x18));
 }
+
 
 
 void ov96_021F2A00(void) {
@@ -24399,131 +18796,72 @@ void ov96_021F2A00(void) {
 }
 
 
+
 void ov96_021F2A84(void) {
-    // mov r2, #0x1b
-    // lsl r2, r2, #4
     // mul r2, r1
-    // mov r3, #0
     // add r1, r0, r2
-    // ldr r0, [r1, #0x38]
-    // cmp r0, #0
-    // beq _021F2A98
-    // mov r0, #0
-    // bx lr
-    // add r3, r3, #1
     // add r1, #0x90
-    // cmp r3, #3
-    // blt _021F2A8E
-    // mov r0, #1
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_021F2AA4(void) {
-    // add r1, r0, #0
     // add r1, #0x44
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // beq _021F2AE0
-    // add r1, r0, #0
     // add r1, #0x45
     // ldrb r1, [r1]
-    // sub r2, r1, #1
-    // add r1, r0, #0
     // add r1, #0x45
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x45
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // bne _021F2B20
-    // add r1, r0, #0
-    // mov r2, #0
     // add r1, #0x45
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x44
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x8c
     // ldrh r1, [r1]
     // add r0, #0x8e
     // strh r1, [r0]
-    // bx lr
-    // add r1, r0, #0
     // add r1, #0x8e
     // ldrh r1, [r1]
-    // add r2, r1, #2
-    // add r1, r0, #0
     // add r1, #0x8e
     // strh r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x8c
     // ldrh r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x8e
     // ldrh r1, [r1]
-    // cmp r1, r2
-    // bls _021F2B04
-    // add r1, r0, #0
     // add r1, #0x8e
     // strh r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x8e
     // ldrh r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x8c
     // ldrh r1, [r1]
-    // cmp r2, r1
-    // bne _021F2B20
-    // add r1, r0, #0
-    // mov r2, #0
     // add r1, #0x45
     // strb r2, [r1]
     // add r0, #0x44
     // strb r2, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F2B24(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
     // ldr r4, [sp, #0x10]
-    // bl ov96_021E60D8
+    ov96_021E60D8(r2, r3);
     // ldrb r1, [r0]
-    // lsl r1, r1, #2
     // ldr r2, [r5, r1]
-    // add r1, r4, #0
     // add r1, #0x8a
     // strh r2, [r1]
-    // ldrb r1, [r0, #3]
-    // lsl r1, r1, #2
     // add r1, r5, r1
-    // ldr r2, [r1, #0x14]
-    // add r1, r4, #0
     // add r1, #0x8c
     // strh r2, [r1]
-    // ldrb r1, [r0, #3]
-    // lsl r1, r1, #2
     // add r1, r5, r1
-    // ldr r2, [r1, #0x14]
-    // add r1, r4, #0
     // add r1, #0x8e
     // strh r2, [r1]
-    // ldrb r0, [r0, #1]
     // add r4, #0x89
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x28]
     // strb r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F2B68(void) {
@@ -24560,6 +18898,7 @@ void ov96_021F2B68(void) {
     // _021F2BB0: .word ov96_021F2CD0
     // TODO: decompile
 }
+
 
 
 void ov96_021F2BB4(void) {
@@ -24600,6 +18939,7 @@ void ov96_021F2BB4(void) {
     // _021F2C00: .word ov96_021F2D68
     // TODO: decompile
 }
+
 
 
 void ov96_021F2C04(void) {
@@ -24699,6 +19039,7 @@ void ov96_021F2C04(void) {
 }
 
 
+
 void ov96_021F2CD0(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -24775,6 +19116,7 @@ void ov96_021F2CD0(void) {
 }
 
 
+
 void ov96_021F2D68(void) {
     // push {r4, lr}
     // mov r2, #0x24
@@ -24800,6 +19142,7 @@ void ov96_021F2D68(void) {
     // _021F2D94: .word ov96_0221DB70
     // TODO: decompile
 }
+
 
 
 void ov96_021F2D98(void) {
@@ -24872,9 +19215,10 @@ void ov96_021F2D98(void) {
 }
 
 
+
 void ov96_021F2E2C(void) {
-    SysTask_CreateOnMainQueue(0);
 }
+
 
 
 void ov96_021F2E4C(void) {
@@ -24906,41 +19250,19 @@ void ov96_021F2E4C(void) {
 }
 
 
+
 void ov96_021F2E80(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x28]
-    // add r4, r3, #0
-    // add r7, r2, #0
-    // cmp r0, r4
-    // bne _021F2EC4
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(r3, 3);
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r2, r1, #0
+    _s32_div_f(r4, 3);
     // ldr r1, [sp, #4]
-    // add r0, r6, #0
-    // bl ov96_021E60D8
-    // ldrb r0, [r0, #2]
-    // cmp r0, #0
-    // beq _021F2EC4
-    // mov r1, #0
+    ov96_021E60D8(r6, r1);
     // str r1, [sp]
-    // mov r2, #0x2c
     // ldrsh r2, [r5, r2]
     // ldr r3, [sp, #0x20]
-    // add r0, r7, #0
-    // bl ov96_021EAED4
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EAED4(r7, 0, 0x2c);
 }
+
 
 
 void ov96_021F2EC8(void) {
@@ -24968,6 +19290,7 @@ void ov96_021F2EC8(void) {
     // _021F2EF8: .word ov96_0221BC5C
     // TODO: decompile
 }
+
 
 
 void ov96_021F2EFC(void) {
@@ -25027,68 +19350,31 @@ void ov96_021F2EFC(void) {
 }
 
 
+
 void ov96_021F2F7C(void) {
-    // push {lr}
-    // sub sp, #0xc
     // add r3, sp, #4
     // str r3, [sp]
     // asr r3, r1, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r1, r3
     // asr r1, r3, #0xc
     // asr r3, r2, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r2, r3
     // asr r2, r3, #0xc
     // add r3, sp, #8
-    // bl ov96_021EB06C
+    ov96_021EB06C(((r3 >> 0x14) >> 0x14));
     // ldr r0, [sp, #8]
-    // cmp r0, #0x10
-    // blt _021F2FAE
-    // cmp r0, #0xf0
-    // bge _021F2FAE
     // ldr r0, [sp, #4]
-    // cmp r0, #0x10
-    // blt _021F2FAE
-    // cmp r0, #0xb0
-    // blt _021F2FB4
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F2FBC(void) {
-    // ldrh r3, [r1, #2]
-    // ldrh r2, [r0, #2]
-    // cmp r2, r3
-    // bls _021F2FCA
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // cmp r2, r3
-    // bhs _021F2FD2
-    // mov r0, #1
-    // bx lr
     // ldrh r1, [r1]
     // ldrh r0, [r0]
-    // cmp r0, r1
-    // bhs _021F2FE0
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // cmp r0, r1
-    // bls _021F2FE8
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F2FEC(void) {
@@ -25180,107 +19466,41 @@ void ov96_021F2FEC(void) {
 }
 
 
+
 void ov96_021F30A4(void) {
-    Heap_Alloc(0x84);
-    MI_CpuFill8(0, 0x84);
 }
+
 
 
 void ov96_021F30BC(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_021F30C4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // mov r4, #0
-    // add r0, r7, #0
-    // mov r1, #0x65
-    // mov r2, #2
-    // bl ov96_021EB4F4
-    // str r0, [r5, #0xc]
-    // bl ov96_021EB5B8
-    // add r6, r0, #0
-    // mov r1, #1
-    // bl Sprite_SetOamMode
-    // add r0, r6, #0
-    // mov r1, #0x64
-    // bl Sprite_SetDrawPriority
-    // add r4, r4, #1
+    ov96_021EB4F4(r1, 0x65, 2);
+    *((u32*)(r5 + 0xc)) = r0;
+    ov96_021EB5B8();
+    Sprite_SetOamMode(1);
+    Sprite_SetDrawPriority(r6, 0x64);
     // add r5, #0x10
-    // cmp r4, #8
-    // blt _021F30CC
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F30F8(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // cmp r5, #0xf
-    // bne _021F3104
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // cmp r5, #1
-    // bhs _021F310C
-    // mov r0, #0
-    // b _021F311E
-    // cmp r5, #6
-    // bhs _021F3114
-    // mov r0, #1
-    // b _021F311E
-    // cmp r5, #0xa
-    // bhs _021F311C
-    // mov r0, #2
-    // b _021F311E
-    // mov r0, #3
-    // cmp r1, #1
-    // bne _021F3128
-    // mov r4, #1
-    // mov r6, #5
-    // b _021F3136
-    // cmp r1, #2
-    // bne _021F3132
-    // mov r4, #6
-    // mov r6, #4
-    // b _021F3136
-    // mov r4, #0xa
-    // mov r6, #5
-    // cmp r1, r0
-    // bne _021F316C
-    // cmp r5, r4
-    // bhs _021F3142
-    // bl GF_AssertFail
-    // bl LCRandom
-    // sub r1, r6, #1
-    // bl _s32_div_f
+    GF_AssertFail(3);
+    LCRandom();
+    _s32_div_f((r6 - 1));
     // sub r0, r5, r4
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // add r0, r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // add r1, r6, #0
-    // bl _u32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x18
+    _u32_div_f((((((r0 + 1) << 0x18) >> 0x18) << 0x18) >> 0x18), r6);
     // add r0, r0, r4
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r4, r5, r6, pc}
-    // bl LCRandom
-    // add r1, r6, #0
-    // bl _s32_div_f
+    LCRandom(((((r1 << 0x18) >> 0x18) << 0x18) >> 0x18));
+    _s32_div_f(r6);
     // add r0, r4, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F3180(void) {
@@ -25339,6 +19559,7 @@ void ov96_021F3180(void) {
     // _021F31EC: .word ov96_0221DBB8
     // TODO: decompile
 }
+
 
 
 void ov96_021F31F0(void) {
@@ -25424,92 +19645,43 @@ void ov96_021F31F0(void) {
 }
 
 
+
 void ov96_021F3298(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r4, #0
-    // mov r7, #0xf
-    // ldr r0, [r5, #8]
-    // cmp r6, r0
-    // bne _021F32BA
-    // str r7, [r5, #8]
-    // mov r0, #0
-    // str r0, [r5, #4]
+    *((u32*)(r0 + 8)) = 0xf;
+    *((u32*)(r0 + 4)) = 0;
     // str r0, [r5]
-    // mov r1, #0
-    // ldr r0, [r5, #0xc]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // add r4, r4, #1
+    ov96_021EB52C(*((u32*)(r0 + 0xc)), 0, 0);
     // add r5, #0x10
-    // cmp r4, #8
-    // blt _021F32A2
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F32C4(void) {
-    // push {r4, lr}
-    // mov r4, #0
-    // cmp r0, #5
-    // bhi _021F32F4
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _021F32D8: ; jump table
-    // mov r4, #1
-    // b _021F32F8
-    // mov r4, #2
-    // b _021F32F8
-    // mov r4, #3
-    // b _021F32F8
-    // mov r4, #4
-    // b _021F32F8
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail((*((u16*)(r0 + 6)) << 0x10));
 }
 
 
+
 void ov96_021F32FC(void) {
-    // push {r3, lr}
-    // sub sp, #0x18
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0xc]
-    // lsl r0, r1, #0xc
     // str r0, [sp, #0x10]
-    // mov r1, #0
-    // lsl r0, r2, #0xc
     // str r0, [sp]
-    // lsl r0, r3, #0xc
     // str r0, [sp, #4]
     // add r0, sp, #0xc
     // str r1, [sp, #0x14]
     // str r1, [sp, #8]
     // add r1, sp, #0
-    // add r2, r0, #0
-    // bl VEC_Subtract
+    VEC_Subtract((r3 << 0xc), 0, (r3 << 0xc));
     // add r0, sp, #0xc
-    // bl VEC_Mag
+    VEC_Mag();
     // add r1, sp, #0x10
-    // ldrh r1, [r1, #0x10]
-    // lsl r1, r1, #0xc
-    // cmp r1, r0
-    // ble _021F3336
-    // add sp, #0x18
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // add sp, #0x18
-    // pop {r3, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F333C(void) {
@@ -25557,6 +19729,7 @@ void ov96_021F333C(void) {
 }
 
 
+
 void ov96_021F3390(void) {
     // push {r4, r5, r6, lr}
     // add r5, r1, #0
@@ -25597,6 +19770,7 @@ void ov96_021F3390(void) {
 }
 
 
+
 void ov96_021F33E0(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -25634,9 +19808,10 @@ void ov96_021F33E0(void) {
 }
 
 
+
 void ov96_021F3424(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_021F342C(void) {
@@ -25746,6 +19921,7 @@ void ov96_021F342C(void) {
     // _021F3508: .word 0x000004E8
     // TODO: decompile
 }
+
 
 
 void ov96_021F350C(void) {
@@ -26108,531 +20284,218 @@ void ov96_021F350C(void) {
 }
 
 
+
 void ov96_021F380C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
     // ldr r0, [sp]
-    // add r5, r1, #0
-    // mov r7, #0
-    // cmp r0, #0
-    // bls _021F3884
-    // lsl r4, r7, #2
     // ldr r6, [r5, r4]
-    // ldr r0, [r6, #0x10]
-    // cmp r0, #0
-    // beq _021F386A
-    // bl LCRandom
-    // ldr r1, [r6]
-    // lsl r3, r0, #0x1b
-    // lsl r2, r1, #5
-    // lsr r1, r0, #0x1f
+    LCRandom(*((u32*)(r6 + 0x10)));
     // sub r3, r3, r1
-    // mov r0, #0x1b
     // ror r3, r0
     // add r2, #0x10
     // add r0, r1, r3
     // add r0, r2, r0
-    // str r0, [r6, #8]
+    *((u32*)(r6 + 8)) = 0x1b;
     // ldr r6, [r5, r4]
-    // bl LCRandom
-    // ldr r1, [r6, #4]
-    // lsl r3, r0, #0x1b
-    // lsl r2, r1, #5
-    // lsr r1, r0, #0x1f
+    LCRandom(0x1b, (r0 >> 0x1f), (*((u32*)r6) << 5), (r0 << 0x1b));
     // sub r3, r3, r1
-    // mov r0, #0x1b
     // ror r3, r0
     // add r0, r1, r3
     // add r2, #0x10
     // add r0, r2, r0
-    // str r0, [r6, #0xc]
+    *((u32*)(r6 + 0xc)) = 0x1b;
     // ldr r0, [r5, r4]
-    // mov r1, #7
-    // ldr r2, [r0, #4]
-    // ldr r3, [r0]
     // mul r1, r2
     // add r1, r3, r1
-    // str r1, [r0, #0x14]
-    // b _021F3878
-    // mov r0, #0
+    *((u32*)(0x1b + 0x14)) = 7;
     // mvn r0, r0
-    // str r0, [r6, #8]
+    *((u32*)(r6 + 8)) = 0;
     // ldr r1, [r5, r4]
-    // str r0, [r1, #0xc]
+    *((u32*)(7 + 0xc)) = 0;
     // ldr r1, [r5, r4]
-    // str r0, [r1, #0x14]
-    // add r0, r7, #1
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
+    *((u32*)(7 + 0x14)) = 0;
     // ldr r0, [sp]
-    // cmp r7, r0
-    // blo _021F381A
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021F3888(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
     // str r1, [sp, #0xc]
-    // add r7, r0, #0
     // ldr r0, [sp, #0xc]
-    // mov r4, #0
     // str r2, [sp, #0x10]
     // str r3, [sp, #0x14]
     // ldr r5, [sp, #0x30]
-    // cmp r0, #0
-    // bls _021F38F6
-    // lsl r6, r4, #2
     // ldr r2, [r5, r6]
-    // ldr r0, [r2, #0x10]
-    // cmp r0, #0
-    // bne _021F38B0
-    // mov r0, #0x63
     // mvn r0, r0
-    // str r0, [r2, #0x18]
-    // b _021F38EA
-    // ldr r0, [r2, #8]
+    *((u32*)(r2 + 0x18)) = 0x63;
     // ldr r1, [sp, #0x10]
     // str r0, [sp]
-    // ldr r0, [r2, #0xc]
     // ldr r3, [sp, #0x14]
     // str r0, [sp, #4]
     // add r0, sp, #0x18
     // str r0, [sp, #8]
-    // ldr r2, [r2, #0x14]
-    // add r0, r7, #0
-    // bl ov96_021F3930
+    ov96_021F3930(r0, *((u32*)(r2 + 0x14)));
     // ldr r1, [r5, r6]
-    // str r0, [r1, #0x18]
+    *((u32*)(r1 + 0x18)) = r0;
     // ldr r0, [sp, #0x18]
-    // cmp r0, #0
-    // beq _021F38EA
     // ldr r3, [r5, r6]
     // ldr r1, [sp, #0x10]
-    // add r0, r3, #0
     // add r0, #0xc
     // str r0, [sp]
-    // ldr r2, [r3, #0x14]
-    // add r0, r7, #0
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x18
     // add r3, #8
-    // bl ov96_021F3AD8
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
+    ov96_021F3AD8(r7, ((*((u32*)(r3 + 0x14)) << 0x18) >> 0x18));
     // ldr r0, [sp, #0xc]
-    // cmp r4, r0
-    // blo _021F389E
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F38FC(void) {
     // sub r0, #0x10
     // asr r2, r0, #4
-    // lsr r2, r2, #0x1b
     // add r2, r0, r2
     // sub r1, #0x10
     // asr r0, r1, #4
-    // lsr r0, r0, #0x1b
     // asr r3, r2, #5
     // add r0, r1, r0
     // asr r2, r0, #5
-    // cmp r3, #0
-    // blt _021F3918
-    // cmp r2, #0
-    // bge _021F391E
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // mov r1, #7
-    // add r0, r2, #0
     // mul r0, r1
     // add r0, r3, r0
-    // cmp r0, #0x22
-    // ble _021F392E
-    // add r0, r1, #0
     // sub r0, #8
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F3930(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r2, #0
     // str r0, [sp]
     // str r1, [sp, #4]
-    // add r6, r3, #0
-    // mov r4, #0
     // ldr r7, [sp, #0x28]
-    // cmp r5, #0
-    // bge _021F394A
-    // add sp, #8
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
     // str r4, [r7]
-    // ldr r0, [r6, #8]
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // beq _021F3992
-    // ldr r0, [r6, #0x10]
-    // ldr r0, [r0]
-    // cmp r0, #1
-    // bne _021F3992
-    // add r0, r1, #0
     // ldr r1, [sp, #0x20]
     // ldr r2, [sp, #0x24]
-    // lsl r1, r1, #0xc
-    // lsl r2, r2, #0xc
-    // bl ov96_021F3A5C
-    // cmp r0, #0
-    // beq _021F3970
-    // add r4, r4, #5
-    // lsl r1, r5, #0x18
+    ov96_021F3A5C(r1, (r1 << 0xc), (r2 << 0xc));
     // ldr r0, [sp]
-    // lsr r1, r1, #0x18
-    // bl ov96_021F3AB0
-    // cmp r0, #0
-    // beq _021F3984
-    // mov r0, #1
-    // add r4, r4, #4
+    ov96_021F3AB0(((r5 << 0x18) >> 0x18));
     // str r0, [r7]
     // ldr r0, [sp]
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // bl ov96_021F39F0
+    ov96_021F39F0(1, r6, r5);
     // add r4, r4, r0
-    // b _021F39E8
     // ldr r1, [sp, #0x20]
     // ldr r2, [sp, #0x24]
     // ldr r0, [sp, #4]
-    // lsl r1, r1, #0xc
-    // lsl r2, r2, #0xc
-    // bl ov96_021F3A5C
-    // cmp r0, #0
-    // beq _021F39A6
-    // add r4, r4, #5
-    // lsl r1, r5, #0x18
+    ov96_021F3A5C((r1 << 0xc), (r2 << 0xc));
     // ldr r0, [sp]
-    // lsr r1, r1, #0x18
-    // bl ov96_021F3AB0
-    // cmp r0, #0
-    // beq _021F39BA
-    // mov r0, #1
-    // add r4, r4, #4
+    ov96_021F3AB0(((r5 << 0x18) >> 0x18));
     // str r0, [r7]
     // ldr r0, [sp]
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // bl ov96_021F39F0
-    // cmp r0, #0
-    // bne _021F39CA
-    // add r4, r4, #2
-    // ldr r1, [r6]
-    // cmp r1, r5
-    // bne _021F39D2
-    // add r4, r4, #2
-    // cmp r0, #0
-    // beq _021F39D8
-    // mov r4, #0
-    // ldr r2, [r6, #0xc]
+    ov96_021F39F0(1, r6, r5);
     // ldr r0, [sp, #4]
     // ldmia r2!, {r1, r2}
-    // bl ov96_021F3A5C
-    // cmp r0, #0
-    // beq _021F39E8
-    // add r4, r4, #4
-    // add r0, r4, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021F3A5C(*((u32*)r6), *((u32*)(r6 + 0xc)));
 }
+
 
 
 void ov96_021F39F0(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r0, r1, #0
     // str r1, [sp]
-    // ldr r1, [r0]
-    // mov r0, #0
     // mvn r0, r0
     // str r2, [sp, #4]
-    // cmp r1, r0
-    // bne _021F3A0C
-    // add sp, #0xc
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
     // ldr r0, [sp]
-    // mov r4, #0
-    // ldr r7, [r0, #0x14]
-    // add r6, r4, #0
-    // cmp r6, r7
-    // beq _021F3A4C
-    // ldr r1, [r5]
     // ldr r0, [sp, #4]
-    // cmp r0, r1
-    // bne _021F3A4C
     // ldr r0, [sp]
-    // ldr r1, [r0, #4]
-    // ldr r0, [r5, #4]
-    // cmp r1, r0
-    // bge _021F3A4A
-    // add r0, r7, #0
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(*((u32*)(0 + 0x14)), 3);
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0x14]
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(*((u32*)(r5 + 0x14)), 3);
     // ldr r1, [sp, #8]
-    // cmp r1, r0
-    // bne _021F3A46
-    // sub r4, r4, #1
-    // b _021F3A4C
-    // sub r4, r4, #2
-    // b _021F3A4C
-    // sub r4, r4, #1
-    // add r6, r6, #1
     // add r5, #0x20
-    // cmp r6, #0xc
-    // blt _021F3A14
-    // add r0, r4, #0
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F3A5C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // mov r4, #0
-    // add r5, r0, #0
     // str r1, [sp, #0xc]
     // str r2, [sp, #0x10]
     // str r4, [sp, #0x14]
-    // add r7, r4, #0
     // add r6, sp, #0
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // ble _021F3AA8
-    // ldrh r0, [r5, #4]
-    // add r1, r6, #0
-    // add r2, r6, #0
-    // lsl r0, r0, #0xc
     // str r0, [sp]
-    // ldrh r0, [r5, #6]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
     // add r0, sp, #0xc
     // str r7, [sp, #8]
-    // bl VEC_Subtract
-    // add r0, r6, #0
-    // bl VEC_Mag
-    // ldr r1, [r5]
-    // lsl r1, r1, #0xc
-    // cmp r0, r1
-    // bge _021F3AA0
-    // add sp, #0x18
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r4, r4, #1
+    VEC_Subtract((*((u16*)(r0 + 6)) << 0xc), r6, r6);
+    VEC_Mag(r6);
     // add r5, #8
-    // cmp r4, #4
-    // blt _021F3A6E
-    // mov r0, #0
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F3AB0(void) {
-    // push {r4, r5}
-    // mov r5, #0
-    // mov r2, #0x4a
-    // lsl r2, r2, #4
-    // sub r3, r5, #1
     // ldr r4, [r0, r2]
-    // cmp r4, r3
-    // beq _021F3AD2
-    // cmp r1, r4
-    // bne _021F3ACA
-    // mov r0, #1
-    // pop {r4, r5}
-    // bx lr
-    // add r5, r5, #1
-    // add r0, r0, #4
-    // cmp r5, #4
-    // blt _021F3ABA
-    // mov r0, #0
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F3AD8(void) {
-    // push {r3, r4, r5, r6}
-    // mov r4, #0x4a
-    // mov r6, #0
-    // lsl r4, r4, #4
     // ldr r5, [r0, r4]
-    // cmp r2, r5
-    // bne _021F3AF8
-    // lsl r0, r6, #3
     // add r1, r1, r0
-    // ldrh r0, [r1, #4]
     // str r0, [r3]
-    // ldrh r1, [r1, #6]
     // ldr r0, [sp, #0x10]
     // str r1, [r0]
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // add r6, r6, #1
-    // add r0, r0, #4
-    // cmp r6, #4
-    // blt _021F3AE0
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_021F3B04(void) {
-    // push {r3, r4}
     // sub r0, #0x10
     // asr r4, r0, #4
-    // lsr r4, r4, #0x1b
     // add r4, r0, r4
     // asr r0, r4, #5
     // sub r1, #0x10
     // strh r0, [r2]
     // asr r0, r1, #4
-    // lsr r0, r0, #0x1b
     // add r0, r1, r0
     // asr r0, r0, #5
     // strh r0, [r3]
-    // mov r0, #0
     // ldrsh r1, [r2, r0]
-    // cmp r1, #0
-    // blt _021F3B2C
     // ldrsh r0, [r3, r0]
-    // cmp r0, #0
-    // bge _021F3B32
-    // mov r0, #0
-    // pop {r3, r4}
-    // bx lr
-    // mov r0, #1
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F3B38(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x13c
-    // add r6, r0, #0
     // add r0, sp, #0x10
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0
     // str r0, [sp]
-    // add r7, r2, #0
     // str r0, [sp, #0xc]
     // mov ip, r1
     // ldr r0, [sp]
-    // cmp r6, #0
-    // bls _021F3BAE
-    // add r2, r0, #1
-    // mov r1, #0xc
     // mul r1, r2
     // add r2, sp, #4
-    // lsl r4, r0, #2
     // mov r3, ip
     // ldr r3, [r3, r4]
     // add r2, r2, r1
-    // str r3, [r2, #8]
-    // mov r3, #0
-    // str r3, [r2, #4]
-    // add r4, r3, #0
+    *((u32*)((0 + 1) + 8)) = r3;
+    *((u32*)((0 + 1) + 4)) = 0;
     // add r3, sp, #4
     // str r4, [r3, r1]
-    // add r1, r4, #0
-    // cmp r0, #0
-    // bls _021F3B9C
-    // ldr r4, [r2, #8]
-    // ldr r4, [r4, #0x18]
-    // ldr r3, [r3, #4]
-    // ldr r5, [r3, #8]
-    // ldr r5, [r5, #0x18]
-    // cmp r5, r4
-    // bge _021F3B92
-    // ldr r4, [r3]
-    // str r2, [r4, #4]
-    // ldr r4, [r3]
+    *((u32*)(*((u32*)*((u32*)(0 + 4))) + 4)) = (0 + 1);
     // str r4, [r2]
-    // str r3, [r2, #4]
+    *((u32*)((0 + 1) + 4)) = *((u32*)(0 + 4));
     // str r2, [r3]
-    // b _021F3B9C
-    // add r1, r1, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // cmp r1, r0
-    // blo _021F3B7A
-    // cmp r1, r0
-    // bne _021F3BA4
-    // str r2, [r3, #4]
+    *((u32*)(*((u32*)(0 + 4)) + 4)) = (0 + 1);
     // str r3, [r2]
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // cmp r0, r6
-    // blo _021F3B54
     // ldr r0, [sp, #8]
-    // mov r2, #0
-    // ldr r0, [r0, #8]
-    // cmp r6, #0
-    // ldr r1, [r0, #0x18]
     // add r0, sp, #4
-    // bls _021F3BE0
-    // ldr r0, [r0, #4]
-    // lsl r4, r2, #2
-    // ldr r3, [r0, #8]
     // str r3, [r7, r4]
     // ldr r3, [r7, r4]
-    // ldr r3, [r3, #0x18]
-    // cmp r1, r3
-    // bne _021F3BD6
     // ldr r3, [sp]
-    // add r3, r3, #1
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #0x18
     // str r3, [sp]
-    // add r2, r2, #1
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x18
-    // cmp r2, r6
-    // blo _021F3BBC
     // ldr r0, [sp]
-    // cmp r0, #0
-    // bne _021F3BEA
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)(*((u32*)((((0 + 1) << 0x18) >> 0x18) + 8)) + 4)), *((u32*)(*((u32*)((((0 + 1) << 0x18) >> 0x18) + 8)) + 0x18)), (((0 + 1) << 0x18) >> 0x18), (((*((u32*)(*((u32*)(*((u32*)(*((u32*)((((0 + 1) << 0x18) >> 0x18) + 8)) + 4)) + 8)) + 0x18)) + 1) << 0x18) >> 0x18));
     // ldr r0, [sp]
-    // add sp, #0x13c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F3BF0(void) {
@@ -26670,258 +20533,114 @@ void ov96_021F3BF0(void) {
 }
 
 
+
 void ov96_021F3C38(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r7, r0, #0
-    // mov r4, #0
-    // add r5, r7, #0
-    // add r0, r5, #0
     // add r0, #0x98
-    // ldr r0, [r0]
-    // bl Heap_Free
-    // add r0, r5, #0
+    Heap_Free(*((u32*)r0));
     // add r0, #0x9c
-    // ldr r0, [r0]
-    // bl Heap_Free
-    // add r4, r4, #1
+    Heap_Free(*((u32*)r5));
     // add r5, #8
-    // cmp r4, #0xc
-    // blt _021F3C40
-    // mov r6, #0x55
-    // mov r5, #0
-    // add r4, r7, #0
-    // lsl r6, r6, #2
     // ldr r0, [r4, r6]
-    // bl Heap_Free
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #4
-    // blt _021F3C64
-    // mov r0, #0x59
-    // lsl r0, r0, #2
+    Heap_Free();
     // ldr r0, [r7, r0]
-    // bl Heap_Free
-    // mov r6, #0x5a
-    // mov r5, #0
-    // add r4, r7, #0
-    // lsl r6, r6, #2
+    Heap_Free((0x59 << 2));
     // ldr r0, [r4, r6]
-    // bl Heap_Free
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #2
-    // blt _021F3C84
-    // ldr r0, [r7, #0x60]
-    // bl MessageFormat_Delete
-    // ldr r0, [r7, #0x5c]
-    // bl DestroyMsgData
-    // add r4, r7, #0
-    // mov r5, #0
+    Heap_Free();
+    MessageFormat_Delete(*((u32*)(r7 + 0x60)));
+    DestroyMsgData(*((u32*)(r7 + 0x5c)));
     // add r4, #0xc
-    // add r0, r4, #0
-    // bl RemoveWindow
-    // add r5, r5, #1
+    RemoveWindow(r7);
     // add r4, #0x10
-    // cmp r5, #5
-    // blt _021F3CA4
-    // add r0, r7, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free(r7);
 }
+
 
 
 void ov96_021F3CBC(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // mov r1, #0xd
     // str r0, [sp]
-    // mov r0, #0xa7
-    // mov r2, #0
     // add r3, sp, #0xc
-    // bl GfGfxLoader_GetScrnData
+    GfGfxLoader_GetScrnData(0xa7, 0xd, 0);
     // ldr r3, [sp, #0xc]
-    // add r4, r0, #0
-    // add r2, r3, #0
-    // ldr r0, [r5, #8]
-    // ldr r3, [r3, #8]
-    // mov r1, #5
     // add r2, #0xc
-    // bl BG_LoadScreenTilemapData
-    // mov r0, #0x20
+    BG_LoadScreenTilemapData(*((u32*)(r5 + 8)), 5, r3, *((u32*)(r3 + 8)));
     // str r0, [sp]
-    // mov r0, #0x18
     // str r0, [sp, #4]
-    // mov r0, #2
     // str r0, [sp, #8]
-    // mov r2, #0
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // add r3, r2, #0
-    // bl BgTilemapRectChangePalette
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // bl ScheduleBgTilemapBufferTransfer
-    // add r0, r4, #0
-    // bl Heap_Free
-    // mov r1, #0x17
-    // ldr r0, [r5]
-    // add r3, r1, #0
+    BgTilemapRectChangePalette(*((u32*)(r5 + 8)), 5, 0, 0);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 8)), 5);
+    Heap_Free(r4);
     // add r3, #0xe9
     // str r0, [sp]
-    // mov r0, #0xa7
-    // mov r2, #0
     // add r3, r5, r3
-    // bl GfGfxLoader_GetScrnData
-    // mov r1, #0x5a
-    // lsl r1, r1, #2
+    GfGfxLoader_GetScrnData(0xa7, 0x17, 0, 0x17);
     // str r0, [r5, r1]
-    // mov r1, #0x18
-    // ldr r0, [r5]
-    // add r3, r1, #0
     // add r3, #0xec
     // str r0, [sp]
-    // mov r0, #0xa7
-    // mov r2, #0
     // add r3, r5, r3
-    // bl GfGfxLoader_GetScrnData
-    // mov r1, #0x5b
-    // lsl r1, r1, #2
+    GfGfxLoader_GetScrnData(0xa7, 0x18, 0, 0x18);
     // str r0, [r5, r1]
     // sub r1, #0x6c
     // ldr r3, [r5, r1]
-    // ldr r0, [r5, #8]
-    // add r2, r3, #0
-    // ldr r3, [r3, #8]
-    // mov r1, #7
     // add r2, #0xc
-    // bl BG_LoadScreenTilemapData
-    // mov r0, #8
-    // mov r1, #0
-    // bl GfGfx_EngineBTogglePlanes
-    // mov r1, #0x12
-    // ldr r0, [r5]
-    // add r3, r1, #0
+    BG_LoadScreenTilemapData(*((u32*)(r5 + 8)), 7, r3, *((u32*)(r3 + 8)));
+    GfGfx_EngineBTogglePlanes(8, 0);
     // add r3, #0xfa
     // str r0, [sp]
-    // mov r0, #0xa7
-    // mov r2, #0
     // add r3, r5, r3
-    // bl GfGfxLoader_GetScrnData
-    // mov r1, #0x55
-    // lsl r1, r1, #2
+    GfGfxLoader_GetScrnData(0xa7, 0x12, 0, 0x12);
     // str r0, [r5, r1]
-    // mov r1, #0x13
-    // ldr r0, [r5]
-    // add r3, r1, #0
     // add r3, #0xfd
     // str r0, [sp]
-    // mov r0, #0xa7
-    // mov r2, #0
     // add r3, r5, r3
-    // bl GfGfxLoader_GetScrnData
-    // mov r1, #0x56
-    // lsl r1, r1, #2
+    GfGfxLoader_GetScrnData(0xa7, 0x13, 0, 0x13);
     // str r0, [r5, r1]
-    // mov r1, #0x11
-    // ldr r0, [r5]
-    // add r3, r1, #0
     // add r3, #0xf7
     // str r0, [sp]
-    // mov r0, #0xa7
-    // mov r2, #0
     // add r3, r5, r3
-    // bl GfGfxLoader_GetScrnData
-    // mov r1, #0x57
-    // lsl r1, r1, #2
+    GfGfxLoader_GetScrnData(0xa7, 0x11, 0, 0x11);
     // str r0, [r5, r1]
-    // ldr r0, [r5]
-    // mov r1, #0x14
     // str r0, [sp]
-    // mov r0, #0xa7
-    // add r3, r0, #0
     // add r3, #0x6d
-    // mov r2, #0
     // add r3, r5, r3
-    // bl GfGfxLoader_GetScrnData
-    // mov r1, #0x16
-    // lsl r1, r1, #4
+    GfGfxLoader_GetScrnData(0xa7, 0x14, 0, 0xa7);
     // str r0, [r5, r1]
-    // ldr r0, [r5]
-    // mov r1, #0x10
     // str r0, [sp]
-    // mov r0, #0xa7
-    // add r3, r0, #0
     // add r3, #0x71
-    // mov r2, #0
     // add r3, r5, r3
-    // bl GfGfxLoader_GetScrnData
-    // mov r1, #0x59
-    // lsl r1, r1, #2
+    GfGfxLoader_GetScrnData(0xa7, 0x10, 0, 0xa7);
     // str r0, [r5, r1]
-    // mov r0, #0x80
-    // add r1, r0, #0
     // add r1, #0x8c
     // ldr r1, [r5, r1]
-    // bl ov96_021F4FD8
-    // mov r0, #0x80
-    // add r1, r0, #0
+    ov96_021F4FD8(0x80, 0x80);
     // add r1, #0x90
     // ldr r1, [r5, r1]
-    // bl ov96_021F4FD8
-    // mov r0, #0x80
-    // add r1, r0, #0
+    ov96_021F4FD8(0x80, 0x80);
     // add r1, #0x94
     // ldr r1, [r5, r1]
-    // bl ov96_021F4FD8
-    // mov r0, #0x80
-    // add r1, r0, #0
+    ov96_021F4FD8(0x80, 0x80);
     // add r1, #0x88
     // ldr r1, [r5, r1]
-    // bl ov96_021F4FD8
-    // mov r0, #0x80
-    // add r1, r0, #0
+    ov96_021F4FD8(0x80, 0x80);
     // add r1, #0x98
     // ldr r1, [r5, r1]
-    // bl ov96_021F4FD8
-    // mov r0, #0x43
-    // lsl r0, r0, #2
+    ov96_021F4FD8(0x80, 0x80);
     // ldr r3, [r5, r0]
-    // ldr r0, [r5, #8]
-    // add r2, r3, #0
-    // ldr r3, [r3, #8]
-    // mov r1, #6
     // add r2, #0xc
-    // bl BG_LoadScreenTilemapData
-    // add r0, r5, #0
-    // ldr r1, [r5, #8]
+    BG_LoadScreenTilemapData(*((u32*)(r5 + 8)), 6, r3, *((u32*)(r3 + 8)));
     // add r0, #0x68
-    // bl ov96_021F4EF8
-    // mov r0, #0x20
+    ov96_021F4EF8(r5, *((u32*)(r5 + 8)));
     // str r0, [sp]
-    // mov r0, #0x18
     // str r0, [sp, #4]
-    // mov r0, #3
     // str r0, [sp, #8]
-    // mov r2, #0
-    // ldr r0, [r5, #8]
-    // mov r1, #6
-    // add r3, r2, #0
-    // bl BgTilemapRectChangePalette
-    // ldr r0, [r5, #8]
-    // mov r1, #6
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    BgTilemapRectChangePalette(*((u32*)(r5 + 8)), 6, 0, 0);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 8)), 6);
 }
+
 
 
 void ov96_021F3E58(void) {
-    ov96_021F4484();
 }
+
 
 
 void ov96_021F3E60(void) {
@@ -26970,6 +20689,7 @@ void ov96_021F3E60(void) {
     // _021F3EBC: .word ov96_0221BFF4
     // TODO: decompile
 }
+
 
 
 void ov96_021F3EC0(void) {
@@ -27063,6 +20783,7 @@ void ov96_021F3EC0(void) {
     // _021F3F7C: .word ov96_0221BFF4
     // TODO: decompile
 }
+
 
 
 void ov96_021F3F80(void) {
@@ -27385,6 +21106,7 @@ void ov96_021F3F80(void) {
 }
 
 
+
 void ov96_021F424C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -27513,70 +21235,37 @@ void ov96_021F424C(void) {
 }
 
 
+
 void ov96_021F4364(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r2, [r5, #0x64]
-    // add r4, r1, #0
-    // cmp r2, r4
-    // beq _021F438E
-    // str r4, [r5, #0x64]
-    // bl ov96_021F459C
-    // mov r0, #0x12
-    // lsl r0, r0, #4
+    *((u32*)(r0 + 0x64)) = r1;
+    ov96_021F459C(*((u32*)(r0 + 0x64)));
     // ldr r0, [r5, r0]
-    // bl ov96_021EB5B8
-    // add r1, r4, #0
-    // bl Sprite_SetAnimCtrlSeq
+    ov96_021EB5B8((0x12 << 4));
+    Sprite_SetAnimCtrlSeq(r4);
     // add r5, #0x4c
-    // add r0, r5, #0
-    // bl CopyWindowToVram
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    CopyWindowToVram(r5);
 }
 
 
+
 void ov96_021F4390(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r7, r1, #0
-    // cmp r2, #4
-    // bhi _021F43C0
     // add r0, r2, r2
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _021F43A6: ; jump table
-    // mov r5, #0x12
-    // b _021F43C6
-    // mov r5, #0x13
-    // b _021F43C6
-    // mov r5, #0x14
-    // b _021F43C6
-    // mov r5, #0x15
-    // b _021F43C6
-    // bl GF_AssertFail
-    // mov r5, #0x12
-    // mov r0, #5
-    // lsl r0, r0, #6
+    GF_AssertFail((*((u16*)(r0 + 6)) << 0x10));
     // add r4, r6, r0
     // add r1, r6, r7
     // add r0, #0x30
     // ldrb r0, [r1, r0]
-    // mov r1, #1
-    // add r2, r1, #0
-    // lsl r6, r0, #2
     // ldr r0, [r4, r6]
-    // bl ov96_021EB52C
+    ov96_021EB52C((5 << 6), 1, 1);
     // ldr r0, [r4, r6]
-    // bl ov96_021EB5B8
-    // add r1, r5, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EB5B8();
+    Sprite_SetAnimCtrlSeq(r5);
 }
+
 
 
 void ov96_021F43EC(void) {
@@ -27597,6 +21286,7 @@ void ov96_021F43EC(void) {
     // _021F4408: .word ov96_021F4724
     // TODO: decompile
 }
+
 
 
 void ov96_021F440C(void) {
@@ -27657,107 +21347,55 @@ void ov96_021F440C(void) {
 }
 
 
+
 void ov96_021F4484(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x30
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
     // add r7, sp, #0x10
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(0, 3);
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r2, r1, #0
-    // ldr r0, [r6, #4]
+    _s32_div_f(r4, 3);
     // ldr r1, [sp, #0xc]
     // add r3, sp, #0x10
-    // bl ov96_021E6168
-    // ldrb r0, [r7, #6]
-    // mov r3, #2
+    ov96_021E6168(*((u32*)(r6 + 4)), r1);
     // str r0, [sp]
-    // ldrh r0, [r7, #2]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x1c]
     // str r0, [sp, #8]
     // ldrh r1, [r7]
-    // ldrb r2, [r7, #7]
     // add r0, sp, #0x20
-    // bl GetMonSpriteCharAndPlttNarcIdsEx
-    // mov r0, #0
+    GetMonSpriteCharAndPlttNarcIdsEx(((*((u16*)(r7 + 2)) << 0x18) >> 0x18), *((u8*)(r7 + 7)), 2);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // ldrh r0, [r7]
     // str r0, [sp, #8]
-    // ldrh r0, [r7, #0x10]
-    // ldrh r1, [r7, #0x12]
-    // ldr r2, [r6]
     // ldr r3, [sp, #0x1c]
-    // bl sub_0201457C
-    // add r1, r5, #0
+    sub_0201457C(*((u16*)(r7 + 0x10)), *((u16*)(r7 + 0x12)), *((u32*)r6));
     // add r1, #0x98
     // str r0, [r1]
-    // ldrh r0, [r7, #0x10]
-    // ldrh r1, [r7, #0x14]
-    // ldr r2, [r6]
-    // bl sub_02014450
-    // add r1, r5, #0
+    sub_02014450(*((u16*)(r7 + 0x10)), *((u16*)(r7 + 0x14)), *((u32*)r6));
     // add r1, #0x9c
-    // add r4, r4, #1
     // add r5, #8
     // str r0, [r1]
-    // cmp r4, #0xc
-    // blt _021F4490
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F4504(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // cmp r6, #2
-    // blo _021F4514
-    // bl GF_AssertFail
-    // cmp r4, #0xc
-    // blo _021F451C
-    // bl GF_AssertFail
-    // add r7, r5, #0
-    // lsl r4, r4, #3
+    GF_AssertFail();
+    GF_AssertFail();
     // add r7, #0x30
-    // mov r1, #0x32
     // ldr r0, [r7, r4]
-    // lsl r1, r1, #6
-    // bl DC_FlushRange
-    // lsl r6, r6, #2
+    DC_FlushRange((0x32 << 6));
     // add r1, r5, r6
-    // mov r2, #0x32
     // ldr r0, [r7, r4]
-    // ldr r1, [r1, #0x20]
-    // lsl r2, r2, #6
-    // bl GXS_LoadOBJ
-    // add r7, r5, #0
+    GXS_LoadOBJ(*((u32*)(r1 + 0x20)), (0x32 << 6));
     // add r7, #0x34
     // ldr r0, [r7, r4]
-    // mov r1, #0x20
-    // bl DC_FlushRange
+    DC_FlushRange(0x20);
     // add r1, r5, r6
     // ldr r0, [r7, r4]
-    // ldr r1, [r1, #0x28]
-    // mov r2, #0x20
-    // bl GXS_LoadOBJPltt
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GXS_LoadOBJPltt(*((u32*)(r1 + 0x28)), 0x20);
 }
+
 
 
 void ov96_021F4558(void) {
@@ -27793,6 +21431,7 @@ void ov96_021F4558(void) {
     // _021F4598: .word ov96_0221C028
     // TODO: decompile
 }
+
 
 
 void ov96_021F459C(void) {
@@ -27836,6 +21475,7 @@ void ov96_021F459C(void) {
     // _021F45F0: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_021F45F4(void) {
@@ -27906,77 +21546,33 @@ void ov96_021F45F4(void) {
 }
 
 
+
 void ov96_021F4688(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #4]
-    // add r6, r1, #0
-    // add r4, r2, #0
-    // bl ov96_021E5F24
-    // cmp r4, r0
-    // bne _021F46B2
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    ov96_021E5F24(*((u32*)(r0 + 4)));
     // ldrb r0, [r5, r0]
-    // cmp r0, r6
-    // beq _021F46B2
-    // cmp r0, r6
-    // blo _021F46AC
-    // bl GF_AssertFail
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    GF_AssertFail((0x15 << 4));
     // strb r6, [r5, r0]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F46B4(void) {
-    // mov r1, #0x15
-    // lsl r1, r1, #4
     // ldrb r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F46BC(void) {
-    // push {r3, r4, r5, r6, r7}
-    // sub sp, #0xc
-    // mov r2, #0
     // add r3, sp, #0
-    // add r4, r2, #0
-    // mov r5, #1
     // ldrb r6, [r1, r2]
-    // cmp r6, #0
-    // beq _021F46DC
     // add r7, r0, r2
-    // ldrb r6, [r7, #8]
-    // cmp r6, #0
-    // bne _021F46DC
-    // strb r5, [r7, #8]
+    *((u8*)(r7 + 8)) = 1;
     // strb r5, [r3]
-    // b _021F46DE
     // strb r4, [r3]
-    // add r2, r2, #1
-    // add r3, r3, #1
-    // cmp r2, #0xc
-    // blt _021F46C8
-    // mov r0, #0
     // add r2, sp, #0
     // ldrb r1, [r2]
-    // cmp r1, #0
-    // bne _021F46FA
-    // add r0, r0, #1
-    // add r2, r2, #1
-    // cmp r0, #0xc
-    // blt _021F46EA
-    // mov r0, #0xc
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, r7}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F4700(void) {
@@ -27999,6 +21595,7 @@ void ov96_021F4700(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov96_021F4724(void) {
@@ -28053,68 +21650,28 @@ void ov96_021F4724(void) {
 }
 
 
+
 void ov96_021F4790(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r4, #0
-    // add r5, r0, #0
-    // mov r6, #1
-    // add r7, r4, #0
-    // lsl r0, r4, #2
     // add r0, r5, r0
     // add r0, #0xbc
-    // ldr r0, [r0]
-    // add r1, r6, #0
-    // add r2, r7, #0
-    // bl ov96_021EB52C
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _021F479A
-    // mov r4, #0
-    // mov r7, #1
-    // lsl r6, r4, #2
+    ov96_021EB52C(*((u32*)(0 << 2)), 1, 0);
     // add r0, r5, r6
     // add r0, #0xc8
-    // ldr r0, [r0]
-    // add r1, r7, #0
-    // mov r2, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(*((u32*)((r4 + 1) << 0x18)), 1, 0);
     // add r0, r5, r6
     // add r0, #0xd8
-    // ldr r0, [r0]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #4
-    // blo _021F47B8
+    ov96_021EB52C(*((u32*)r0), 1, 0);
     // add r5, #0xc4
-    // ldr r0, [r5]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EB52C(*((u32*)r5), 1, 0);
 }
+
 
 
 void ov96_021F47F0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl ov96_021F4700
-    // cmp r0, #0
-    // beq _021F4806
-    // add r0, r4, #0
-    // bl ov96_021F4724
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021F4700();
+    ov96_021F4724(r4);
 }
+
 
 
 void ov96_021F480C(void) {
@@ -28192,6 +21749,7 @@ void ov96_021F480C(void) {
 }
 
 
+
 void ov96_021F48A8(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -28232,6 +21790,7 @@ void ov96_021F48A8(void) {
     // _021F48F8: .word ov96_021F4AE0
     // TODO: decompile
 }
+
 
 
 void ov96_021F48FC(void) {
@@ -28302,6 +21861,7 @@ void ov96_021F48FC(void) {
     // _021F498C: .word ov96_021F4B34
     // TODO: decompile
 }
+
 
 
 void ov96_021F4990(void) {
@@ -28398,6 +21958,7 @@ void ov96_021F4990(void) {
 }
 
 
+
 void ov96_021F4A60(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -28426,6 +21987,7 @@ void ov96_021F4A60(void) {
     // _021F4A98: .word ov96_0221DC04
     // TODO: decompile
 }
+
 
 
 void ov96_021F4A9C(void) {
@@ -28461,6 +22023,7 @@ void ov96_021F4A9C(void) {
     // _021F4ADC: .word 0x00000151
     // TODO: decompile
 }
+
 
 
 void ov96_021F4AE0(void) {
@@ -28503,6 +22066,7 @@ void ov96_021F4AE0(void) {
     // _021F4B30: .word 0x04001018
     // TODO: decompile
 }
+
 
 
 void ov96_021F4B34(void) {
@@ -28564,6 +22128,7 @@ void ov96_021F4B34(void) {
     // _021F4BB0: .word ov96_0221C080
     // TODO: decompile
 }
+
 
 
 void ov96_021F4BB4(void) {
@@ -28675,6 +22240,7 @@ void ov96_021F4BB4(void) {
     // _021F4CA8: .word 0x04001050
     // TODO: decompile
 }
+
 
 
 void ov96_021F4CAC(void) {
@@ -28794,273 +22360,129 @@ void ov96_021F4CAC(void) {
 }
 
 
+
 void ov96_021F4DAC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // add r4, r1, #0
     // str r2, [sp]
-    // cmp r5, #5
-    // bhi _021F4DE0
-    // ldr r7, [r4]
-    // ldr r0, [r4, #0xc]
-    // ldr r6, [r4, #4]
     // sub r1, r0, r7
-    // add r0, r1, #0
     // mul r0, r5
-    // mov r1, #5
-    // bl _s32_div_f
+    _s32_div_f(r1, 5);
     // add r7, r7, r0
-    // ldr r0, [r4, #0x10]
     // sub r1, r0, r6
-    // add r0, r1, #0
     // mul r0, r5
-    // mov r1, #5
-    // bl _s32_div_f
+    _s32_div_f(r1, 5);
     // add r4, r6, r0
-    // b _021F4E3C
-    // bls _021F4E12
-    // cmp r5, #0x2d
-    // bhi _021F4E12
-    // sub r0, r5, #5
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // ldr r7, [r4, #0xc]
-    // ldr r0, [r4, #0x18]
-    // ldr r6, [r4, #0x10]
     // sub r1, r0, r7
-    // add r0, r1, #0
     // mul r0, r5
-    // mov r1, #0x28
-    // bl _s32_div_f
+    _s32_div_f(r1, 0x28);
     // add r7, r7, r0
-    // ldr r0, [r4, #0x1c]
     // sub r1, r0, r6
-    // add r0, r1, #0
     // mul r0, r5
-    // mov r1, #0x28
-    // bl _s32_div_f
+    _s32_div_f(r1, 0x28);
     // add r4, r6, r0
-    // b _021F4E3C
     // sub r5, #0x2d
-    // lsl r0, r5, #0x18
-    // lsr r5, r0, #0x18
-    // ldr r7, [r4, #0x18]
-    // ldr r0, [r4, #0x24]
-    // ldr r6, [r4, #0x1c]
     // sub r1, r0, r7
-    // add r0, r1, #0
     // mul r0, r5
-    // mov r1, #5
-    // bl _s32_div_f
+    _s32_div_f(r1, 5);
     // add r7, r7, r0
-    // ldr r0, [r4, #0x28]
     // sub r1, r0, r6
-    // add r0, r1, #0
     // mul r0, r5
-    // mov r1, #5
-    // bl _s32_div_f
+    _s32_div_f(r1, 5);
     // add r4, r6, r0
     // ldr r0, [sp]
-    // bl ov96_021EB5B8
-    // mov r1, #2
-    // lsl r1, r1, #0x14
+    ov96_021EB5B8();
     // add r1, r4, r1
     // str r1, [sp, #8]
-    // mov r1, #0
     // str r1, [sp, #0xc]
     // add r1, sp, #4
     // str r7, [sp, #4]
-    // bl Sprite_SetMatrix
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetMatrix(0);
 }
+
 
 
 void ov96_021F4E5C(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r2, r1, #0
-    // add r4, r0, #0
-    // mov r1, #0
-    // bl ov96_021F4504
-    // add r0, r4, #0
+    ov96_021F4504(0, r1);
     // add r0, #0x90
-    // ldr r0, [r0]
-    // bl ov96_021EB5B8
-    // mov r1, #2
-    // lsl r1, r1, #0x12
+    ov96_021EB5B8(*((u32*)r4));
     // str r1, [sp]
-    // mov r1, #0x76
-    // lsl r1, r1, #0xe
     // str r1, [sp, #4]
-    // mov r1, #0
     // str r1, [sp, #8]
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
+    Sprite_SetMatrix(0);
     // add r4, #0x90
-    // mov r1, #1
-    // ldr r0, [r4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov96_021EB52C(*((u32*)r4), 1, 1);
 }
+
 
 
 void ov96_021F4E9C(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r2, #0
-    // cmp r0, #0xf
-    // bhi _021F4EB8
-    // ldr r5, [r1]
-    // ldr r1, [r1, #4]
     // sub r1, r1, r5
     // mul r0, r1
-    // mov r1, #0xf
-    // bl _s32_div_f
+    _s32_div_f(0xf);
     // add r5, r5, r0
-    // b _021F4ED8
-    // bls _021F4EC2
-    // cmp r0, #0x3c
-    // bhi _021F4EC2
-    // ldr r5, [r1, #4]
-    // b _021F4ED8
-    // ldr r5, [r1, #4]
-    // ldr r1, [r1, #8]
     // sub r0, #0x3c
-    // lsl r0, r0, #0x18
     // sub r1, r1, r5
-    // lsr r0, r0, #0x18
     // mul r0, r1
-    // mov r1, #0xa
-    // bl _s32_div_f
+    _s32_div_f(((r0 << 0x18) >> 0x18), 0xa);
     // add r5, r5, r0
-    // add r0, r4, #0
-    // bl ov96_021EB5B8
-    // mov r1, #2
-    // lsl r1, r1, #0x12
+    ov96_021EB5B8(r4);
     // str r1, [sp]
-    // lsl r1, r1, #2
     // add r1, r5, r1
     // str r1, [sp, #4]
-    // mov r1, #0
     // str r1, [sp, #8]
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    Sprite_SetMatrix(0);
 }
 
 
+
 void ov96_021F4EF8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r5, r0, #0
     // add r0, #0xe8
     // ldrb r7, [r0]
-    // add r6, r1, #0
-    // mov r1, #0x64
-    // add r0, r7, #0
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r7, 0x64);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #3]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 3)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
     // strb r1, [r0]
-    // add r0, r7, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // mov r1, #0xa
+    _s32_div_f(r7, 0xa);
     // mul r1, r4
     // sub r0, r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #4]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 4)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #1]
-    // add r0, r7, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    *((u8*)(r0 + 1)) = (r0 << 3);
+    _s32_div_f(r7, 0xa);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #5]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 5)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #2]
-    // mov r4, #0
-    // mov r7, #4
+    *((u8*)(r0 + 2)) = (r0 << 3);
     // str r7, [sp]
-    // mov r0, #8
     // str r0, [sp, #4]
-    // add r0, r5, #0
     // add r0, #0xb0
-    // ldr r0, [r0]
-    // lsl r2, r4, #2
     // add r0, #0xc
     // str r0, [sp, #8]
     // add r0, sp, #0x1c
     // add r0, #3
     // ldrb r0, [r0, r4]
-    // add r2, r2, #3
-    // lsl r2, r2, #0x18
     // str r0, [sp, #0xc]
     // add r0, sp, #0x1c
     // ldrb r0, [r0, r4]
-    // mov r1, #6
-    // lsr r2, r2, #0x18
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
-    // mov r0, #0x10
     // str r0, [sp, #0x18]
-    // add r0, r6, #0
-    // mov r3, #7
-    // bl CopyRectToBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _021F4F86
-    // add r0, r5, #0
+    CopyRectToBgTilemapRect(r6, 6, ((((0 << 2) + 3) << 0x18) >> 0x18), 7);
     // add r0, #0xe8
     // ldrb r0, [r0]
     // add r5, #0xe9
     // strb r0, [r5]
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F4FD8(void) {
@@ -29097,6 +22519,7 @@ void ov96_021F4FD8(void) {
     // _021F5014: .word 0x00000FFF
     // TODO: decompile
 }
+
 
 
 void ov96_021F5018(void) {
@@ -29599,59 +23022,27 @@ void ov96_021F5018(void) {
 }
 
 
+
 u32 ov96_021F54C0(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EB5BC(*((u32*)(r0 + 0x60)));
-    thunk_UpdateCellTransferStateManager();
-    return 1;
 }
+
 
 
 void ov96_021F54D4(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetGraphicsSystem
-    // add r6, r0, #0
-    // bl ov96_021E9510
-    // mov r4, #0
-    // add r7, r4, #0
-    // lsl r1, r4, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl PokeathlonCourse_GetField5F0_AtIndex
-    // add r3, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
+    PokeathlonCourse_GetGraphicsSystem(r5);
+    ov96_021E9510();
+    PokeathlonCourse_GetField5F0_AtIndex(r5, ((0 << 0x18) >> 0x18));
     // str r7, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // mov r0, #0x4a
-    // lsl r0, r0, #2
     // str r0, [sp, #8]
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl ov96_021E95F8
-    // add r4, r4, #1
-    // cmp r4, #4
-    // blt _021F54EE
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl ov96_021E93B4
-    // add r0, r6, #0
-    // mov r1, #5
-    // bl ov96_0221A56C
-    // add r0, r6, #0
-    // bl ov96_021E952C
-    // add r0, r6, #0
-    // mov r1, #5
-    // bl ov96_021E9570
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E95F8(r5, r6, r4, r0);
+    ov96_021E93B4(r6, 1);
+    ov96_0221A56C(r6, 5);
+    ov96_021E952C(r6);
+    ov96_021E9570(r6, 5);
 }
+
 
 
 void ov96_021F553C(void) {
@@ -29750,106 +23141,51 @@ void ov96_021F553C(void) {
 }
 
 
+
 void ov96_021F5630(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021F5650(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #5
-    // bhi _021F5728
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _021F5670: ; jump table
-    // add r0, r5, #0
-    // bl ov96_021F5B60
-    // add r0, r5, #0
-    // mov r1, #0x14
-    // bl PokeathlonCourse_SetStateTransitionType
+    ov96_021F5B60(r5);
+    PokeathlonCourse_SetStateTransitionType(r5, 0x14);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F5728
-    // add r0, r5, #0
-    // bl ov96_021F5B60
-    // mov r0, #6
+    ov96_021F5B60(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x54]
-    // mov r1, #3
     // str r0, [sp, #8]
-    // mov r0, #2
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl BeginNormalPaletteFade
+    BeginNormalPaletteFade(2, 3, 3, 0);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F5728
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021F56C6
+    IsPaletteFadeFinished((r0 + 1));
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // add r0, r5, #0
-    // bl ov96_021F5B60
-    // b _021F5728
-    // add r0, r5, #0
-    // bl ov96_021F5B60
-    // add r0, r5, #0
-    // bl ov96_021E637C
-    // cmp r0, #0
-    // beq _021F5728
+    ov96_021F5B60(r5);
+    ov96_021F5B60(r5);
+    ov96_021E637C(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F5728
-    // add r0, r5, #0
-    // bl ov96_021F5BA0
-    // add r0, r5, #0
-    // bl ov96_021F5A88
-    // cmp r0, #0
-    // beq _021F5728
+    ov96_021F5BA0(r5);
+    ov96_021F5A88(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021F5728
-    // add r0, r5, #0
-    // bl ov96_021E667C
-    // cmp r0, #0
-    // beq _021F5728
-    // mov r0, #6
+    ov96_021E667C(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x54]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    PokeathlonCourse_SetStateField07(r5, 1);
 }
+
 
 
 void ov96_021F5730(void) {
@@ -29981,6 +23317,7 @@ void ov96_021F5730(void) {
     // _021F5848: .word 0x000003E7
     // TODO: decompile
 }
+
 
 
 void ov96_021F584C(void) {
@@ -30121,129 +23458,60 @@ void ov96_021F584C(void) {
 }
 
 
+
 void ov96_021F5980(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #7
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #2
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xa8, 7, *((u32*)r0), 2);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #1
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xa8, 5, *((u32*)r4), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #0xa
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #4
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xa8, 0xa, *((u32*)r4), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #0xc
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #5
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xa8, 0xc, *((u32*)r4), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #8
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xa8, 8, *((u32*)r4), 2);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #1
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xa8, 6, *((u32*)r4), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #0xb
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xa8, 0xb, *((u32*)r4), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #0xd
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xa8
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0x20
+    GfGfxLoader_LoadScrnData(0xa8, 0xd, *((u32*)r4), 5);
     // str r0, [sp]
-    // ldr r0, [r4, #0x54]
-    // mov r2, #0
     // str r0, [sp, #4]
-    // mov r0, #0xa8
-    // mov r1, #4
-    // add r3, r2, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r0, #0x40
+    GfGfxLoader_GXLoadPal(0xa8, 4, 0, 0);
     // str r0, [sp]
-    // ldr r0, [r4, #0x54]
-    // mov r1, #9
     // str r0, [sp, #4]
-    // mov r0, #0xa8
-    // mov r2, #4
-    // mov r3, #0
-    // bl GfGfxLoader_GXLoadPal
-    // ldr r0, [r4, #0x54]
-    // add r3, r4, #0
+    GfGfxLoader_GXLoadPal(0xa8, 9, 4, 0);
     // str r0, [sp]
-    // mov r0, #0xa8
-    // mov r1, #0xe
-    // mov r2, #0
     // add r3, #0x5c
-    // bl GfGfxLoader_GetScrnData
-    // str r0, [r4, #0x58]
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GetScrnData(0xa8, 0xe, 0, r4);
+    *((u32*)(r4 + 0x58)) = r0;
 }
+
 
 
 void ov96_021F5A88(void) {
@@ -30343,34 +23611,19 @@ void ov96_021F5A88(void) {
 }
 
 
+
 void ov96_021F5B60(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl ov96_021F5D3C
-    // mov r1, #0x4f
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
+    ov96_021F5D3C(r5);
     // ldr r1, [r4, r1]
-    // add r0, r4, #0
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x10
-    // bl ov96_021F6F3C
-    // add r0, r4, #0
-    // bl ov96_021F6E38
-    // add r0, r5, #0
-    // bl ov96_021F5EC4
-    // mov r1, #0x4f
-    // lsl r1, r1, #2
+    ov96_021F6F3C(r4, (((0x4f << 2) << 0x10) >> 0x10));
+    ov96_021F6E38(r4);
+    ov96_021F5EC4(r5);
     // ldr r1, [r4, r1]
-    // add r0, r5, #0
-    // bl ov96_021E6454
-    // add r0, r4, #0
-    // bl ov96_021F637C
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_021E6454(r5, (0x4f << 2));
+    ov96_021F637C(r4);
 }
+
 
 
 void ov96_021F5BA0(void) {
@@ -30566,6 +23819,7 @@ void ov96_021F5BA0(void) {
 }
 
 
+
 void ov96_021F5D3C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x20
@@ -30749,6 +24003,7 @@ void ov96_021F5D3C(void) {
 }
 
 
+
 void ov96_021F5EC4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -30801,33 +24056,17 @@ void ov96_021F5EC4(void) {
 }
 
 
+
 void ov96_021F5F34(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // lsl r0, r0, #0xc
     // str r0, [sp]
-    // mov r0, #3
-    // lsl r1, r1, #0xc
-    // lsl r0, r0, #0x12
     // add r0, r1, r0
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // add r4, r3, #0
-    // add r1, r2, #0
     // add r0, sp, #0
-    // add r2, r4, #0
-    // bl VEC_Subtract
-    // mov r0, #7
-    // ldr r1, [r4, #4]
-    // lsl r0, r0, #0x10
-    // cmp r1, r0
-    // ble _021F5F62
-    // str r0, [r4, #4]
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    VEC_Subtract(0, r2, r3);
+    *((u32*)(r4 + 4)) = (7 << 0x10);
 }
+
 
 
 void ov96_021F5F68(void) {
@@ -30953,27 +24192,15 @@ void ov96_021F5F68(void) {
 }
 
 
+
 void ov96_021F6060(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
-    // add r1, r2, #0
     // add r2, sp, #0
-    // add r4, r3, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r2);
     // add r0, sp, #0
-    // bl VEC_Mag
+    VEC_Mag();
     // add r1, r5, r4
-    // cmp r0, r1
-    // bgt _021F6082
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F6088(void) {
@@ -31059,6 +24286,7 @@ void ov96_021F6088(void) {
 }
 
 
+
 void ov96_021F6138(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -31123,6 +24351,7 @@ void ov96_021F6138(void) {
     // _021F61C4: .word 0x04000580
     // TODO: decompile
 }
+
 
 
 void ov96_021F61C8(void) {
@@ -31313,12 +24542,10 @@ void ov96_021F61C8(void) {
 }
 
 
+
 void ov96_021F637C(void) {
-    Thunk_G3X_Reset();
-    Camera_PushLookAtToNNSGlb();
-    ov96_021F61C8(r4);
-    RequestSwap3DBuffers(0, 0);
 }
+
 
 
 void ov96_021F6398(void) {
@@ -31390,137 +24617,46 @@ void ov96_021F6398(void) {
 }
 
 
+
 void ov96_021F6424(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r1, #0
-    // add r2, r1, #0
-    // mov r3, #1
-    // add r4, r0, #0
-    // bl ov96_021F6524
-    // mov r1, #1
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // mov r3, #2
-    // bl ov96_021F6524
-    // mov r1, #2
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl ov96_021F6524
-    // mov r2, #2
-    // lsl r2, r2, #0xa
-    // mov r3, #6
-    // mov r0, #0
-    // lsl r3, r3, #8
-    // lsr r5, r2, #2
-    // lsr r6, r2, #1
+    ov96_021F6524(0, 0, 1);
+    ov96_021F6524(r4, 1, 1, 2);
+    ov96_021F6524(r4, 2, 2, 0);
     // ldr r7, [r4, r5]
     // str r7, [r4]
     // ldr r1, [r4, r6]
-    // cmp r7, r1
-    // ble _021F6464
     // str r1, [r4]
     // ldr r7, [r4, r3]
-    // ldr r1, [r4]
-    // cmp r1, r7
-    // ble _021F646E
     // str r7, [r4]
     // ldr r7, [r4, r2]
-    // ldr r1, [r4]
-    // cmp r1, r7
-    // ble _021F6478
     // str r7, [r4]
-    // mov r1, #0xa
-    // lsl r1, r1, #8
     // ldr r7, [r4, r1]
-    // ldr r1, [r4]
-    // cmp r1, r7
-    // ble _021F6486
     // str r7, [r4]
-    // mov r1, #3
-    // lsl r1, r1, #0xa
     // ldr r7, [r4, r1]
-    // ldr r1, [r4]
-    // cmp r1, r7
-    // ble _021F6494
     // str r7, [r4]
-    // add r0, r0, #1
-    // add r4, r4, #4
-    // cmp r0, #0x80
-    // blt _021F6458
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F64A0(void) {
-    // push {r4, r5, r6, r7}
-    // mov r4, #1
-    // mov r5, #2
-    // mov r6, #4
-    // mov r3, #0
     // and r4, r1
     // and r5, r1
     // and r1, r6
-    // mov r6, #0
     // str r6, [r2]
-    // cmp r4, #0
-    // beq _021F64D4
-    // mov r6, #2
-    // lsl r6, r6, #8
     // ldr r7, [r0, r6]
-    // ldr r6, [r2]
-    // cmp r6, r7
-    // ble _021F64C6
     // str r7, [r2]
-    // mov r6, #2
-    // lsl r6, r6, #0xa
     // ldr r7, [r0, r6]
-    // ldr r6, [r2]
-    // cmp r6, r7
-    // ble _021F64D4
     // str r7, [r2]
-    // cmp r5, #0
-    // beq _021F64F4
-    // mov r6, #1
-    // lsl r6, r6, #0xa
     // ldr r7, [r0, r6]
-    // ldr r6, [r2]
-    // cmp r6, r7
-    // ble _021F64E6
     // str r7, [r2]
-    // mov r6, #0xa
-    // lsl r6, r6, #8
     // ldr r7, [r0, r6]
-    // ldr r6, [r2]
-    // cmp r6, r7
-    // ble _021F64F4
     // str r7, [r2]
-    // cmp r1, #0
-    // beq _021F6514
-    // mov r6, #6
-    // lsl r6, r6, #8
     // ldr r7, [r0, r6]
-    // ldr r6, [r2]
-    // cmp r6, r7
-    // ble _021F6506
     // str r7, [r2]
-    // mov r6, #3
-    // lsl r6, r6, #0xa
     // ldr r7, [r0, r6]
-    // ldr r6, [r2]
-    // cmp r6, r7
-    // ble _021F6514
     // str r7, [r2]
-    // add r3, r3, #1
-    // add r2, r2, #4
-    // add r0, r0, #4
-    // cmp r3, #0x80
-    // blt _021F64B0
-    // pop {r4, r5, r6, r7}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F6524(void) {
@@ -31616,6 +24752,7 @@ void ov96_021F6524(void) {
 }
 
 
+
 void ov96_021F65D8(void) {
     // ldrh r1, [r0, #0x24]
     // cmp r1, #5
@@ -31638,6 +24775,7 @@ void ov96_021F65D8(void) {
     // _021F65FC: .word 0x000003E7
     // TODO: decompile
 }
+
 
 
 void ov96_021F6600(void) {
@@ -31828,6 +24966,7 @@ void ov96_021F6600(void) {
     // _021F6794: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void ov96_021F6798(void) {
@@ -32240,79 +25379,36 @@ void ov96_021F6798(void) {
 }
 
 
+
 void ov96_021F6B28(void) {
-    // ldr r1, [r1, #8]
-    // cmp r1, #0
-    // ble _021F6B4C
-    // ldr r2, [r0, #8]
-    // ldr r1, [r0, #0x18]
     // add r2, r2, r1
-    // mov r1, #2
-    // lsl r1, r1, #0x10
-    // str r2, [r0, #0x1c]
-    // cmp r2, r1
-    // bge _021F6B42
-    // str r1, [r0, #0x1c]
-    // bx lr
-    // mov r1, #0xdf
-    // lsl r1, r1, #0xc
-    // cmp r2, r1
-    // ble _021F6B4C
-    // str r1, [r0, #0x1c]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x1c)) = *((u32*)(r0 + 8));
+    *((u32*)(r0 + 0x1c)) = (2 << 0x10);
+    *((u32*)(r0 + 0x1c)) = (0xdf << 0xc);
 }
+
 
 
 void ov96_021F6B50(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r7, r0, #0
     // neg r0, r1
     // str r0, [sp, #4]
-    // mov r0, #0x7f
     // str r2, [sp]
     // sub r4, r0, r7
-    // mov r6, #0
-    // cmp r7, #0
-    // ble _021F6B82
-    // add r5, r2, #0
-    // add r0, r6, #1
-    // lsl r0, r0, #0x18
     // ldr r1, [sp, #4]
-    // lsr r0, r0, #0x18
     // mul r0, r1
-    // add r1, r7, #1
-    // bl _s32_div_f
+    _s32_div_f((((0 + 1) << 0x18) >> 0x18), (r0 + 1));
     // neg r0, r0
-    // add r6, r6, #1
     // stmia r5!, {r0}
-    // cmp r6, r7
-    // blt _021F6B68
-    // mov r5, #0
-    // cmp r4, #0
-    // ble _021F6BAC
-    // add r6, r7, #1
     // sub r0, r4, r5
-    // lsl r0, r0, #0x18
     // ldr r1, [sp, #4]
-    // lsr r0, r0, #0x18
     // mul r0, r1
-    // add r1, r4, #1
-    // bl _s32_div_f
+    _s32_div_f(((r0 << 0x18) >> 0x18), (r4 + 1));
     // add r1, r6, r5
-    // lsl r1, r1, #0x18
-    // lsr r2, r1, #0x16
     // ldr r1, [sp]
     // neg r0, r0
-    // add r5, r5, #1
     // str r0, [r1, r2]
-    // cmp r5, r4
-    // blt _021F6B8A
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F6BB0(void) {
@@ -32345,67 +25441,29 @@ void ov96_021F6BB0(void) {
 }
 
 
+
 void ov96_021F6BE4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r0, #0
-    // lsl r6, r1, #9
-    // add r7, r3, #0
-    // mov r1, #0x3a
-    // mov r3, #0
-    // add r0, r2, #0
     // add r5, r4, r6
-    // add r2, r3, #0
-    // lsl r1, r1, #4
-    // add r3, r3, #1
     // str r2, [r5, r1]
-    // add r5, r5, #4
-    // cmp r3, #0x80
-    // blt _021F6BF8
-    // mov r1, #0x3a
-    // lsl r1, r1, #4
     // add r1, r4, r1
     // add r2, r1, r6
-    // lsl r1, r0, #2
     // str r7, [r2, r1]
     // ldr r1, [r2, r1]
-    // bl ov96_021F6B50
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021F6B50(r2, (r2 << 2), 0, (0 + 1));
 }
+
 
 
 void ov96_021F6C18(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // mov r2, #3
-    // mov r1, #0xa8
-    // mov r3, #0x65
-    // add r4, r0, #0
     // str r2, [sp]
-    // bl ov96_021EB2BC
-    // mov r0, #3
+    ov96_021EB2BC(0xa8, 3, 0x65);
     // str r0, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #0xa8
-    // mov r2, #0
-    // mov r3, #0x65
-    // bl ov96_021EB2F4
-    // add r0, r4, #0
-    // mov r1, #0xa8
-    // mov r2, #2
-    // mov r3, #0x65
-    // bl ov96_021EB334
-    // add r0, r4, #0
-    // mov r1, #0xa8
-    // mov r2, #1
-    // mov r3, #0x65
-    // bl ov96_021EB36C
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EB2F4(r4, 0xa8, 0, 0x65);
+    ov96_021EB334(r4, 0xa8, 2, 0x65);
+    ov96_021EB36C(r4, 0xa8, 1, 0x65);
 }
+
 
 
 void ov96_021F6C5C(void) {
@@ -32557,6 +25615,7 @@ void ov96_021F6C5C(void) {
 }
 
 
+
 void ov96_021F6DA4(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x34
@@ -32629,6 +25688,7 @@ void ov96_021F6DA4(void) {
 }
 
 
+
 void ov96_021F6E38(void) {
     // push {r4, lr}
     // mov r1, #0
@@ -32656,136 +25716,60 @@ void ov96_021F6E38(void) {
 }
 
 
+
 void ov96_021F6E68(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r1, 0x64);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #3]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 3)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
     // strb r1, [r0]
-    // mov r0, #0x64
     // mul r0, r4
     // sub r0, r6, r0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(0x64, 0xa);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #4]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 4)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #1]
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    *((u8*)(r0 + 1)) = (r0 << 3);
+    _s32_div_f(r6, 0xa);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #5]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 5)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #2]
-    // mov r4, #0
-    // mov r6, #4
-    // mov r7, #8
+    *((u8*)(r0 + 2)) = (r0 << 3);
     // str r6, [sp]
     // str r7, [sp, #4]
-    // ldr r0, [r5, #0x5c]
-    // lsl r2, r4, #2
     // add r0, #0xc
     // str r0, [sp, #8]
     // add r0, sp, #0x1c
     // add r0, #3
     // ldrb r0, [r0, r4]
-    // add r2, r2, #1
-    // lsl r2, r2, #0x18
     // str r0, [sp, #0xc]
     // add r0, sp, #0x1c
     // ldrb r0, [r0, r4]
-    // add r1, r6, #0
-    // lsr r2, r2, #0x18
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
-    // mov r0, #0x10
     // str r0, [sp, #0x18]
-    // ldr r0, [r5]
-    // mov r3, #0
-    // bl CopyRectToBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _021F6EF2
-    // ldr r0, [r5]
-    // mov r1, #4
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CopyRectToBgTilemapRect(*((u32*)r5), 4, ((((0 << 2) + 1) << 0x18) >> 0x18), 0);
+    ScheduleBgTilemapBufferTransfer(*((u32*)r5), 4);
 }
+
 
 
 void ov96_021F6F3C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // add r0, r5, #0
+    _s32_div_f(r1, 0x1e);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 0xa);
     // add r0, #0x84
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
+    Sprite_SetAnimCtrlSeq(*((u32*)r5), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0xa);
     // add r5, #0x88
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r5]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq(*((u32*)r5), (((r1 << 0x18) >> 0x18) + 1));
 }
+
 
 
 void ov96_021F6F80(void) {
@@ -32885,6 +25869,7 @@ void ov96_021F6F80(void) {
 }
 
 
+
 void ov96_021F7050(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -32928,6 +25913,7 @@ void ov96_021F7050(void) {
     // _021F70A8: .word ov96_0221C1CC
     // TODO: decompile
 }
+
 
 
 void ov96_021F70AC(void) {
@@ -32989,62 +25975,30 @@ void ov96_021F70AC(void) {
 }
 
 
+
 void ov96_021F7130(void) {
-    // ldr r2, [r0, #0x18]
-    // cmp r2, #0
-    // beq _021F715A
-    // ble _021F7148
-    // mov r1, #2
-    // lsl r1, r1, #0xc
     // sub r1, r2, r1
-    // str r1, [r0, #0x18]
+    *((u32*)(r0 + 0x18)) = (2 << 0xc);
     // bpl _021F715A
-    // mov r1, #0
-    // str r1, [r0, #0x18]
-    // bx lr
-    // bge _021F715A
-    // mov r1, #2
-    // lsl r1, r1, #0xc
+    *((u32*)(r0 + 0x18)) = 0;
     // add r1, r2, r1
-    // str r1, [r0, #0x18]
-    // cmp r1, #0
-    // ble _021F715A
-    // mov r1, #0
-    // str r1, [r0, #0x18]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x18)) = (2 << 0xc);
+    *((u32*)(r0 + 0x18)) = 0;
 }
+
 
 
 void ov96_021F715C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // add r7, r2, #0
-    // add r4, r3, #0
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // add r0, r6, #0
-    // add r2, r7, #0
-    // bl ov96_021E60D8
-    // ldrb r1, [r0, #2]
-    // lsl r1, r1, #2
+    ov96_021E5F24();
+    ov96_021E60D8(r6, ((r0 << 0x18) >> 0x18), r7);
     // ldr r1, [r5, r1]
-    // str r1, [r4, #0x2c]
-    // ldrb r1, [r0, #3]
-    // lsl r1, r1, #2
+    *((u32*)(r4 + 0x2c)) = (*((u8*)(r0 + 2)) << 2);
     // add r1, r5, r1
-    // ldr r1, [r1, #0x14]
-    // str r1, [r4, #0x30]
-    // ldrb r0, [r0, #4]
-    // lsl r0, r0, #2
+    *((u32*)(r4 + 0x30)) = *((u32*)((*((u8*)(r0 + 3)) << 2) + 0x14));
     // add r0, r5, r0
-    // ldr r0, [r0, #0x28]
-    // str r0, [r4, #0x34]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x34)) = *((u32*)((*((u8*)(r0 + 4)) << 2) + 0x28));
 }
+
 
 
 void ov96_021F7194(void) {
@@ -33423,83 +26377,38 @@ void ov96_021F7194(void) {
 }
 
 
+
 void ov96_021F74A4(void) {
-    // push {r4, lr}
-    // mov r1, #0x33
-    // lsl r1, r1, #4
-    // bl Heap_Alloc
-    // mov r2, #0x33
-    // mov r1, #0
-    // lsl r2, r2, #4
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // mov r0, #0xcb
-    // mov r1, #0
-    // lsl r0, r0, #2
+    Heap_Alloc((0x33 << 4));
+    MI_CpuFill8(0, (0x33 << 4));
     // str r1, [r4, r0]
-    // add r0, r4, #0
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F74C8(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_021F74D0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // mov r7, #0
-    // mov r0, #2
     // str r0, [sp]
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // mov r2, #3
-    // mov r3, #0x65
-    // bl ov96_021EB3E4
-    // mov r1, #1
-    // str r0, [r5, #0x10]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // ldr r0, [r5, #0x10]
-    // mov r1, #8
-    // bl ov96_021EB564
-    // mov r0, #5
+    ov96_021EB3E4(r1, r2, 3, 0x65);
+    *((u32*)(r5 + 0x10)) = r0;
+    ov96_021EB52C(1, 1);
+    ov96_021EB564(*((u32*)(r5 + 0x10)), 8);
     // str r0, [sp]
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // mov r2, #3
-    // mov r3, #0x65
-    // bl ov96_021EB3E4
-    // str r0, [r5, #0x14]
-    // mov r0, #6
+    ov96_021EB3E4(r4, r6, 3, 0x65);
+    *((u32*)(r5 + 0x14)) = r0;
     // str r0, [sp]
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // mov r2, #3
-    // mov r3, #0x65
-    // bl ov96_021EB3E4
-    // str r0, [r5, #0x18]
-    // ldr r0, [r5, #0x10]
-    // mov r1, #0x14
-    // bl ov96_021EB630
-    // ldr r0, [r5, #0x14]
-    // mov r1, #7
-    // bl ov96_021EB630
-    // ldr r0, [r5, #0x18]
-    // mov r1, #8
-    // bl ov96_021EB630
-    // add r7, r7, #1
+    ov96_021EB3E4(r4, r6, 3, 0x65);
+    *((u32*)(r5 + 0x18)) = r0;
+    ov96_021EB630(*((u32*)(r5 + 0x10)), 0x14);
+    ov96_021EB630(*((u32*)(r5 + 0x14)), 7);
+    ov96_021EB630(*((u32*)(r5 + 0x18)), 8);
     // add r5, #0x1c
-    // cmp r7, #0x1d
-    // blt _021F74DA
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F7544(void) {
@@ -33545,25 +26454,14 @@ void ov96_021F7544(void) {
 }
 
 
+
 void ov96_021F7598(void) {
-    // push {r4, lr}
-    // mov r1, #0xcb
-    // add r4, r0, #0
-    // lsl r1, r1, #2
     // ldr r2, [r4, r1]
-    // cmp r2, #0
-    // bne _021F75B4
-    // bl ov96_021F7620
-    // mov r0, #0xcb
-    // mov r1, #0xf0
-    // lsl r0, r0, #2
+    ov96_021F7620((0xcb << 2));
     // str r1, [r4, r0]
-    // pop {r4, pc}
-    // sub r0, r2, #1
     // str r0, [r4, r1]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F75BC(void) {
@@ -33582,121 +26480,65 @@ void ov96_021F75BC(void) {
 }
 
 
+
 void ov96_021F75D4(void) {
-    // mov r2, #0x1c
     // mul r2, r1
     // add r0, r0, r2
-    // add r0, r0, #4
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F75E0(void) {
-    // mov r2, #0x1c
     // mul r2, r1
     // ldr r0, [r0, r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F75E8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r0, #0x1c
-    // add r6, r5, #0
     // mul r4, r0
     // add r6, #0x18
     // ldr r0, [r6, r4]
-    // mov r1, #0xa
-    // add r7, r2, #0
-    // bl ov96_021EB564
-    // mov r1, #1
+    ov96_021EB564(0x1c, 0xa);
     // ldr r0, [r6, r4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(1, 1);
     // add r5, #0x14
     // ldr r0, [r5, r4]
-    // add r1, r7, #0
-    // bl ov96_021EB564
-    // mov r1, #1
+    ov96_021EB564(r7);
     // ldr r0, [r5, r4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EB52C(1, 1);
 }
+
 
 
 void ov96_021F7620(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x74
-    // mov r4, #0
-    // add r3, r4, #0
     // add r1, sp, #0
-    // ldr r2, [r0]
-    // cmp r2, #0
-    // bne _021F7636
-    // lsl r2, r4, #2
-    // add r4, r4, #1
     // str r0, [r1, r2]
-    // add r3, r3, #1
     // add r0, #0x1c
-    // cmp r3, #0x1d
-    // blt _021F762A
-    // lsl r1, r4, #2
     // add r0, sp, #0
-    // mov r7, #0
     // add r5, r0, r1
-    // cmp r4, #0
-    // ble _021F767E
-    // bl LCRandom
-    // add r1, r4, #0
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r6, r0, #0x16
+    LCRandom(((0 + 1) << 2), (0 << 2), (0 + 1));
+    _s32_div_f(r4);
     // add r0, sp, #0
     // ldr r1, [r0, r6]
-    // mov r0, #1
     // str r0, [r1]
     // add r0, sp, #0
     // ldr r0, [r0, r6]
-    // mov r1, #7
-    // ldr r0, [r0, #0x10]
-    // bl ov96_021EB564
-    // sub r0, r5, #4
-    // ldr r1, [r0]
+    ov96_021EB564(*((u32*)(1 + 0x10)), 7);
     // add r0, sp, #0
-    // add r7, r7, #1
     // str r1, [r0, r6]
-    // sub r5, r5, #4
-    // sub r4, r4, #1
-    // cmp r7, #0x19
-    // blt _021F7646
-    // add sp, #0x74
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021F7684(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r1, #0
     // ldr r1, [sp, #0x28]
-    // add r4, r3, #0
     // str r1, [sp, #0x28]
-    // mov r1, #0x24
-    // bl Heap_Alloc
+    Heap_Alloc(0x24);
     // str r0, [sp, #8]
-    // mov r1, #0
-    // mov r2, #0x24
-    // bl MI_CpuFill8
+    MI_CpuFill8(0, 0x24);
     // ldr r0, [sp, #8]
-    // strb r5, [r0, #0x1c]
-    // mov r0, #4
+    *((u8*)(r0 + 0x1c)) = r5;
     // sub r1, r0, r5
     // ldr r0, [sp, #8]
     // add r0, #0x21
@@ -33708,229 +26550,109 @@ void ov96_021F7684(void) {
     // add r0, #0x20
     // strb r1, [r0]
     // ldr r0, [sp, #8]
-    // mov r1, #3
-    // strb r1, [r0, #0x1f]
-    // str r4, [r0, #4]
-    // mov r0, #0
+    *((u8*)(4 + 0x1f)) = 3;
+    *((u32*)(4 + 4)) = r4;
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #8]
-    // ldrb r0, [r0, #0x1c]
-    // cmp r0, #0
-    // ble _021F7730
     // ldr r0, [sp, #8]
-    // mov r4, #0
     // add r0, #0x20
     // ldrb r1, [r0]
     // ldr r0, [sp, #0xc]
     // add r0, r1, r0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // lsl r1, r0, #1
     // str r0, [sp, #4]
     // add r1, r0, r1
     // ldr r0, [sp, #8]
     // add r5, r0, r1
-    // add r1, r0, #0
     // ldr r0, [sp, #4]
     // add r0, r1, r0
-    // add r6, r0, #0
-    // add r7, r0, #0
     // str r0, [sp]
     // add r6, #8
     // add r7, #0xc
     // ldr r0, [sp, #0x28]
     // ldr r1, [sp, #4]
-    // add r2, r4, #0
-    // bl ov96_021E60D8
+    ov96_021E60D8(((*((u8*)(0 + 0x1c)) << 0x18) >> 0x18), ((*((u8*)(0 + 0x1c)) << 0x18) >> 0x18), 0);
     // ldrb r2, [r6]
-    // ldrb r1, [r0, #2]
-    // add r4, r4, #1
     // add r1, r2, r1
     // strb r1, [r6]
     // ldrb r1, [r7]
-    // ldrb r0, [r0, #4]
     // add r0, r1, r0
     // strb r0, [r7]
     // ldr r0, [sp]
-    // ldrb r0, [r0, #8]
-    // strb r0, [r5, #0x10]
-    // add r5, r5, #1
-    // cmp r4, #3
-    // blt _021F76F8
+    *((u8*)(r5 + 0x10)) = *((u8*)(*((u8*)(r0 + 4)) + 8));
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #8]
-    // ldrb r1, [r0, #0x1c]
     // ldr r0, [sp, #0xc]
-    // cmp r0, r1
-    // blt _021F76CE
     // ldr r0, [sp, #8]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F7738(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_021F7740(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
     // str r0, [sp]
-    // mov r0, #4
-    // add r5, r1, #0
     // str r0, [sp, #4]
-    // add r0, r5, #0
     // add r0, #0x21
     // ldrb r0, [r0]
-    // cmp r0, #4
-    // bne _021F775C
-    // add sp, #8
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldrb r0, [r5, #0x1e]
-    // add r0, r0, #1
-    // strb r0, [r5, #0x1e]
-    // add r0, r5, #0
+    *((u8*)(r1 + 0x1e)) = (*((u8*)(r1 + 0x1e)) + 1);
     // add r0, #0x20
     // ldrb r6, [r0]
-    // cmp r6, #4
-    // bge _021F7788
-    // mov r0, #0x28
-    // add r4, r6, #0
     // mul r4, r0
-    // mov r7, #0
-    // ldr r0, [r5, #4]
     // add r0, #0x50
     // add r0, r0, r4
-    // bl ov96_021E8A20
-    // add r6, r6, #1
+    ov96_021E8A20(*((u32*)(r1 + 4)));
     // add r4, #0x28
     // str r7, [r0]
-    // cmp r6, #4
-    // blt _021F7774
-    // ldrb r1, [r5, #0x1e]
-    // ldrb r0, [r5, #0x1f]
-    // cmp r1, r0
-    // blo _021F7798
-    // mov r0, #1
     // str r0, [r5]
-    // mov r0, #0
-    // strb r0, [r5, #0x1e]
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // beq _021F77E6
-    // add r0, r5, #0
+    *((u8*)(r5 + 0x1e)) = 0;
     // add r0, #0x20
     // ldrb r1, [r0]
-    // ldrb r0, [r5, #0x1d]
     // add r4, r1, r0
-    // cmp r4, r1
-    // bge _021F77B0
-    // bl GF_AssertFail
-    // add r0, r5, #0
+    GF_AssertFail(*((u8*)(r5 + 0x1d)), *((u8*)(r5 + 0x1e)));
     // add r0, #0x20
     // ldrb r0, [r0]
-    // cmp r4, r0
-    // bge _021F77C0
-    // add sp, #8
-    // mov r0, #4
-    // pop {r3, r4, r5, r6, r7, pc}
-    // lsl r2, r4, #0x18
     // ldr r0, [sp]
-    // add r1, r5, #0
-    // lsr r2, r2, #0x18
-    // bl ov96_021F77EC
-    // lsl r0, r4, #0x18
-    // lsr r0, r0, #0x18
+    ov96_021F77EC(4, r5, ((r4 << 0x18) >> 0x18));
     // str r0, [sp, #4]
-    // ldrb r0, [r5, #0x1d]
-    // add r0, r0, #1
-    // strb r0, [r5, #0x1d]
-    // ldrb r1, [r5, #0x1d]
-    // ldrb r0, [r5, #0x1c]
-    // cmp r1, r0
-    // blo _021F77E6
-    // mov r0, #0
-    // strb r0, [r5, #0x1d]
+    *((u8*)(r5 + 0x1d)) = (*((u8*)(r5 + 0x1d)) + 1);
+    *((u8*)(r5 + 0x1d)) = 0;
     // str r0, [r5]
     // ldr r0, [sp, #4]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F77EC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r6, r1, #0
-    // ldr r1, [r6, #4]
     // str r0, [sp, #4]
-    // add r5, r2, #0
-    // mov r0, #0x28
     // add r1, #0x50
     // mul r0, r5
     // add r0, r1, r0
-    // bl ov96_021E8A20
-    // add r4, r6, #0
+    ov96_021E8A20(0x28, *((u32*)(r1 + 4)));
     // add r4, #8
-    // add r7, r0, #0
     // ldrb r0, [r4, r5]
-    // cmp r0, #0
-    // bne _021F7814
-    // mov r0, #0
-    // b _021F782A
-    // bl LCRandom
-    // mov r1, #0x65
-    // bl _s32_div_f
+    LCRandom(0);
+    _s32_div_f(0x65);
     // add r0, r6, r5
     // ldrb r2, [r4, r5]
-    // ldrb r0, [r0, #0xc]
-    // lsl r2, r2, #1
     // add r0, r0, r2
     // add r0, r0, r1
-    // cmp r0, #0x64
-    // blt _021F7874
-    // mov r0, #1
     // str r0, [r7]
-    // bl LCRandom
+    LCRandom(1, (r2 << 1));
     // ldrb r1, [r4, r5]
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsl r1, r5, #1
+    _s32_div_f();
     // add r1, r5, r1
-    // lsr r0, r0, #0x18
-    // mov r4, #0
     // add r1, r6, r1
     // add r2, r1, r4
-    // ldrb r2, [r2, #0x10]
-    // cmp r0, r2
-    // bhs _021F7862
-    // mov r0, #1
     // str r0, [sp]
     // ldr r0, [sp, #4]
-    // add r1, r5, #0
-    // add r2, r4, #0
-    // mov r3, #3
-    // bl ov96_021E8228
-    // b _021F786C
-    // add r2, r4, #1
-    // lsl r2, r2, #0x18
-    // lsr r4, r2, #0x18
-    // cmp r4, #3
-    // blo _021F7848
-    // cmp r4, #3
-    // blo _021F7874
-    // bl GF_AssertFail
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E8228(1, r5, 0, 3);
+    GF_AssertFail(((r4 + 1) << 0x18));
 }
+
 
 
 void ov96_021F7878(void) {
@@ -33968,6 +26690,7 @@ void ov96_021F7878(void) {
     // _021F78C0: .word ov96_0221C2A0
     // TODO: decompile
 }
+
 
 
 void ov96_021F78C4(void) {
@@ -34017,6 +26740,7 @@ void ov96_021F78C4(void) {
     // _021F7930: .word 0x00010200
     // TODO: decompile
 }
+
 
 
 void ov96_021F7934(void) {
@@ -34337,13 +27061,10 @@ void ov96_021F7934(void) {
 }
 
 
+
 u32 ov96_021F7C4C(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EB5BC(*((u32*)(r0 + 0x10)));
-    SpriteSystem_DrawSprites(r4);
-    ov96_021F87D0(*((u32*)(r4 + 0x1c)));
-    return 1;
 }
+
 
 
 void ov96_021F7C70(void) {
@@ -34410,9 +27131,10 @@ void ov96_021F7C70(void) {
 }
 
 
+
 void ov96_021F7D10(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021F7D30(void) {
@@ -34472,100 +27194,51 @@ void ov96_021F7D30(void) {
 }
 
 
+
 void ov96_021F7DA8(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #3
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0xc]
-    // mov r0, #0xa0
-    // mov r3, #4
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xa0, 3, *((u32*)(r0 + 0xc)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0xc]
-    // mov r0, #0xa0
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xa0, 5, *((u32*)(r4 + 0xc)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #3
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0xc]
-    // mov r0, #0xa0
-    // mov r3, #5
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xa0, 3, *((u32*)(r4 + 0xc)), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0xc]
-    // mov r0, #0xa0
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
+    GfGfxLoader_LoadScrnData(0xa0, 4, *((u32*)(r4 + 0xc)), 5);
     // str r1, [sp]
-    // ldr r0, [r4]
-    // mov r2, #4
     // str r0, [sp, #4]
-    // mov r0, #0xa0
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r3, #0
+    GfGfxLoader_GXLoadPal(0xa0, 0, 4, 0);
     // str r3, [sp]
     // str r3, [sp, #4]
     // str r3, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0xc]
-    // mov r0, #0xa0
-    // bl GfGfxLoader_LoadCharData
-    // mov r3, #0
+    GfGfxLoader_LoadCharData(0xa0, 2, *((u32*)(r4 + 0xc)), 0);
     // str r3, [sp]
     // str r3, [sp, #4]
     // str r3, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #1
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0xc]
-    // mov r0, #0xa0
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
+    GfGfxLoader_LoadScrnData(0xa0, 1, *((u32*)(r4 + 0xc)), 0);
     // str r1, [sp]
-    // ldr r0, [r4]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xa0
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0xa0, 0, 0, 0);
 }
+
 
 
 void ov96_021F7E64(void) {
-    PokeathlonCourse_GetDataCopyArea();
-    ov96_021E8A20();
 }
+
 
 
 void ov96_021F7E74(void) {
@@ -34804,72 +27477,41 @@ void ov96_021F7E74(void) {
 }
 
 
+
 void ov96_021F8094(void) {
-    ov96_021F86E8();
 }
+
 
 
 void ov96_021F80A8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r7, r0, #0
     // str r2, [sp, #4]
     // str r1, [sp]
-    // add r1, r7, #0
     // ldr r0, [sp, #4]
     // add r1, #0x59
     // strb r0, [r1]
-    // ldr r0, [r7]
-    // add r1, r3, #0
-    // bl ov96_021F87E0
-    // mov r5, #0
+    ov96_021F87E0(*((u32*)r0), r3);
     // str r5, [sp, #0xc]
-    // add r6, r5, #0
-    // mov r2, #1
-    // mov r3, #0x9c
-    // add r4, r5, #0
     // ldr r1, [sp]
-    // add r0, r7, #0
-    // lsl r2, r2, #8
     // sub r3, r3, r6
     // add r4, #0xa
-    // bl ov96_021F8378
+    ov96_021F8378(r7, (1 << 8), 0x9c);
     // str r0, [sp, #8]
-    // bl ov96_021F8978
-    // cmp r0, #0
-    // bne _021F80E8
+    ov96_021F8978();
     // add r4, #0xa
     // ldr r1, [sp, #8]
-    // add r0, r7, #0
-    // add r2, r4, #0
-    // bl ov96_021F82E4
+    ov96_021F82E4(r7, r4);
     // ldr r0, [sp, #0xc]
     // add r5, #0xa
-    // add r0, r0, #1
     // add r6, #0x28
     // str r0, [sp, #0xc]
-    // cmp r0, #4
-    // blt _021F80C8
     // ldr r0, [sp, #4]
-    // cmp r0, #4
-    // bls _021F811E
-    // mov r2, #1
     // ldr r1, [sp]
-    // add r0, r7, #0
-    // lsl r2, r2, #8
-    // mov r3, #0x28
-    // bl ov96_021F8378
-    // add r1, r0, #0
-    // add r0, r7, #0
-    // mov r2, #0
-    // bl ov96_021F8334
-    // mov r0, #1
+    ov96_021F8378(r7, (1 << 8), 0x28);
+    ov96_021F8334(r7, r0, 0);
     // add r7, #0x58
     // strb r0, [r7]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8128(void) {
@@ -34901,54 +27543,30 @@ void ov96_021F8128(void) {
 }
 
 
+
 void ov96_021F8160(void) {
-    ov96_021F8128(0);
 }
+
 
 
 void ov96_021F8180(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // ldr r0, [r5, #4]
-    // add r4, r1, #0
     // add r1, sp, #4
     // add r2, sp, #0
-    // mov r6, #0
-    // bl ov96_021F893C
-    // cmp r4, #0
-    // bne _021F81AC
+    ov96_021F893C(*((u32*)(r0 + 4)));
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // bgt _021F81B8
-    // ldr r0, [r5, #4]
     // ldr r2, [sp]
-    // add r1, r6, #0
-    // bl ov96_021F8948
-    // mov r6, #1
-    // b _021F81B8
-    // cmp r4, #1
-    // bne _021F81B8
+    ov96_021F8948(*((u32*)(r5 + 4)), r6);
     // ldr r0, [sp]
-    // cmp r0, #0xc0
-    // blt _021F81B8
-    // mov r6, #1
-    // add r0, r6, #0
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F81C0(void) {
-    // add r2, r0, #0
-    // mov r3, #3
     // add r2, #0x58
     // strb r3, [r2]
-    // str r1, [r0, #0x54]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x54)) = r1;
 }
+
 
 
 void ov96_021F81CC(void) {
@@ -35074,145 +27692,86 @@ void ov96_021F81CC(void) {
 }
 
 
+
 void ov96_021F82E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r1, r5, #0
     // add r1, #0x5b
     // ldrb r1, [r1]
-    // add r0, r5, #4
-    // add r7, r2, #0
-    // lsl r1, r1, #4
     // add r4, r0, r1
     // ldr r0, [r0, r1]
-    // cmp r0, #0
-    // beq _021F8302
-    // bl GF_AssertFail
-    // mov r0, #1
+    GF_AssertFail((r0 + 4), (r0 << 4));
     // str r0, [r4]
-    // str r6, [r4, #4]
-    // add r0, r5, #0
-    // str r7, [r4, #8]
+    *((u32*)(r4 + 4)) = r6;
+    *((u32*)(r4 + 8)) = r7;
     // add r0, #0x5b
     // ldrb r0, [r0]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1e
     // sub r1, r1, r2
-    // mov r0, #0x1e
     // ror r1, r0
-    // add r0, r5, #0
     // add r1, r2, r1
     // add r0, #0x5b
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0x5a
     // ldrb r0, [r0]
     // add r5, #0x5a
-    // add r0, r0, #1
     // strb r0, [r5]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8334(void) {
-    GF_AssertFail(1);
 }
+
 
 
 void ov96_021F8354(void) {
-    *(u32*)r0 = 0;
-    ((u32*)r0)[4] = 0;
-    ((u32*)r0)[8] = 0;
 }
 
 
+
 void ov96_021F8360(void) {
-    // add r1, r0, #0
     // add r1, #0x59
     // add r0, #0x5a
     // ldrb r1, [r1]
     // ldrb r0, [r0]
-    // mov r2, #0
-    // cmp r1, r0
-    // bls _021F8372
-    // mov r2, #1
-    // add r0, r2, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8378(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl PokeathlonCourse_GetGraphicsSystem
-    // add r7, r0, #0
-    // bl ov96_021E9524
-    // add r2, r5, #0
+    PokeathlonCourse_GetGraphicsSystem(r1);
+    ov96_021E9524();
     // add r2, #0x5c
-    // sub r1, r0, #1
     // ldrb r2, [r2]
-    // add r0, r7, #0
     // sub r1, r1, r2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_021E94EC
-    // add r3, r0, #0
-    // add r0, r5, #0
+    ov96_021E94EC(r7, (((r0 - 1) << 0x18) >> 0x18), r5);
     // add r0, #0x5c
     // ldrb r0, [r0]
-    // add r2, r6, #0
-    // add r1, r0, #1
-    // add r0, r5, #0
     // add r0, #0x5c
     // strb r1, [r0]
-    // ldr r0, [r5]
-    // add r1, r4, #0
-    // bl ov96_021F8830
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021F8830(*((u32*)r5), r4, r6, r0);
 }
+
 
 
 void ov96_021F83BC(void) {
-    ov96_021F8918(*((u32*)(r1 + 4)));
-    ov96_021F8354(r4);
 }
+
 
 
 void ov96_021F83D0(void) {
-    // add r1, r0, #4
     // add r0, #0x5b
     // ldrb r0, [r0]
-    // lsl r0, r0, #4
     // add r0, r1, r0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F83DC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetCurrentParticipantIndex
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetMode
-    // cmp r0, #0
-    // bne _021F83F4
+    PokeathlonCourse_GetCurrentParticipantIndex();
+    PokeathlonCourse_GetMode(r5);
     // add r4, #0xf6
-    // b _021F83F6
     // add r4, #0xf9
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F83FC(void) {
@@ -35250,6 +27809,7 @@ void ov96_021F83FC(void) {
     // _021F8444: .word 0x0000010F
     // TODO: decompile
 }
+
 
 
 void ov96_021F8448(void) {
@@ -35327,109 +27887,47 @@ void ov96_021F8448(void) {
 }
 
 
+
 void ov96_021F84E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r7, r4, #0
-    // lsl r6, r4, #2
     // add r0, r5, r6
     // add r0, #0x9c
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _021F8502
-    // bl Sprite_DeleteAndFreeResources
+    Sprite_DeleteAndFreeResources(*((u32*)r0));
     // add r0, r5, r6
     // add r0, #0x9c
     // str r7, [r0]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _021F84EC
-    // add r0, r5, #0
-    // add r1, r5, #0
     // add r0, #0x94
     // add r1, #0x98
-    // ldr r0, [r0]
-    // ldr r1, [r1]
-    // bl SpriteSystem_FreeResourcesAndManager
+    SpriteSystem_FreeResourcesAndManager(*((u32*)r5), *((u32*)r5));
     // add r5, #0x94
-    // ldr r0, [r5]
-    // bl SpriteSystem_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    SpriteSystem_Free(*((u32*)r5));
 }
+
 
 
 void ov96_021F8528(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r1, r0, #0
     // add r1, #0x94
     // add r0, #0x98
-    // ldr r5, [r0]
-    // ldr r4, [r1]
-    // mov r0, #1
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // mov r0, #0xfa
-    // lsl r0, r0, #2
     // str r0, [sp, #8]
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // mov r2, #0x9a
-    // mov r3, #9
-    // bl SpriteSystem_LoadCharResObj
-    // mov r0, #0
+    SpriteSystem_LoadCharResObj(*((u32*)r0), *((u32*)r0), 0x9a, 9);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // mov r0, #2
     // str r0, [sp, #8]
-    // mov r0, #0xfa
-    // lsl r0, r0, #2
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // mov r2, #0x9a
-    // mov r3, #8
-    // bl SpriteSystem_LoadPlttResObj
-    // mov r0, #1
+    SpriteSystem_LoadPlttResObj(r4, r5, 0x9a, 8);
     // str r0, [sp]
-    // mov r0, #0xfa
-    // lsl r0, r0, #2
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // mov r2, #0x9a
-    // mov r3, #0xa
-    // bl SpriteSystem_LoadCellResObj
-    // mov r0, #1
+    SpriteSystem_LoadCellResObj(r4, r5, 0x9a, 0xa);
     // str r0, [sp]
-    // mov r0, #0xfa
-    // lsl r0, r0, #2
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // mov r2, #0x9a
-    // mov r3, #0xb
-    // bl SpriteSystem_LoadAnimResObj
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    SpriteSystem_LoadAnimResObj(r4, r5, 0x9a, 0xb);
 }
 
 
+
 void ov96_021F85A0(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x34
-    // add r4, r0, #0
     // add r2, sp, #0
-    // mov r0, #0
-    // add r3, r2, #0
-    // add r1, r0, #0
     // stmia r3!, {r0, r1}
     // stmia r3!, {r0, r1}
     // stmia r3!, {r0, r1}
@@ -35437,256 +27935,131 @@ void ov96_021F85A0(void) {
     // stmia r3!, {r0, r1}
     // stmia r3!, {r0, r1}
     // str r0, [r3]
-    // mov r0, #0xfa
-    // lsl r0, r0, #2
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x18]
     // str r0, [sp, #0x1c]
     // str r0, [sp, #0x20]
-    // mov r0, #2
     // str r0, [sp, #0x10]
-    // mov r0, #1
     // str r0, [sp, #0x2c]
-    // mov r1, #0xe0
     // add r0, sp, #0
     // strh r1, [r0]
-    // mov r1, #0x70
-    // strh r1, [r0, #2]
-    // add r0, r4, #0
-    // add r1, r4, #0
+    *((u16*)(1 + 2)) = 0x70;
     // add r0, #0x94
     // add r1, #0x98
-    // ldr r0, [r0]
-    // ldr r1, [r1]
-    // bl SpriteSystem_NewSprite
+    SpriteSystem_NewSprite(*((u32*)r0), *((u32*)r0), r2);
     // add r4, #0x9c
     // str r0, [r4]
-    // add sp, #0x34
-    // pop {r3, r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F85F4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r7, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp, #0x14]
-    // add r0, r7, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea(r7);
     // str r0, [sp, #0x10]
     // add r0, #0x28
-    // bl ov96_021E8A20
+    ov96_021E8A20();
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x10]
     // add r0, #0xf0
-    // bl ov96_021E8A20
+    ov96_021E8A20();
     // str r0, [sp, #8]
-    // add r0, r7, #0
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
+    ov96_021E5F24(r7);
     // ldr r0, [sp, #0x14]
     // add r0, #0xa4
-    // ldr r0, [r0]
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // mov r0, #0
     // str r0, [sp, #4]
-    // cmp r1, #0
-    // bne _021F86AC
-    // mov r0, #1
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
-    // strb r6, [r0, #1]
+    *((u8*)(1 + 1)) = ((*((u32*)(r0 << 0x18)) << 0x18) >> 0x18);
     // ldr r0, [sp, #0x10]
     // add r0, #0x50
-    // bl ov96_021E8A20
-    // add r4, r0, #0
+    ov96_021E8A20(1, ((r0 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x10]
-    // bl ov96_021E8A20
-    // mov r2, #0x24
+    ov96_021E8A20();
     // ldrb r1, [r0]
-    // add r0, r0, #1
     // strb r1, [r4]
-    // add r4, r4, #1
-    // sub r2, r2, #1
-    // bne _021F8650
-    // add r0, r7, #0
-    // mov r4, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // cmp r0, #0
-    // ble _021F869A
+    PokeathlonCourse_GetParticipantCount(r7, (0x24 - 1));
     // ldr r5, [sp, #0x10]
     // add r5, #0x50
-    // add r0, r5, #0
-    // bl ov96_021E8A20
+    ov96_021E8A20(r5);
     // ldrb r1, [r0]
-    // cmp r1, r6
-    // blo _021F867E
-    // ldrb r1, [r0, #1]
-    // cmp r1, #1
-    // bne _021F8682
-    // mov r1, #1
     // str r1, [sp, #4]
-    // ldrb r0, [r0, #2]
-    // cmp r0, #0
-    // bne _021F868C
-    // mov r0, #0
     // str r0, [sp]
-    // add r0, r7, #0
     // add r5, #0x28
-    // add r4, r4, #1
-    // bl PokeathlonCourse_GetParticipantCount
-    // cmp r4, r0
-    // blt _021F866C
+    PokeathlonCourse_GetParticipantCount(r7, 1);
     // ldr r0, [sp]
-    // cmp r0, #0
-    // beq _021F86A6
     // ldr r0, [sp, #0xc]
-    // mov r1, #1
-    // strb r1, [r0, #2]
+    *((u8*)(r0 + 2)) = 1;
     // ldr r1, [sp, #4]
     // ldr r0, [sp, #0xc]
-    // strb r1, [r0, #3]
+    *((u8*)(r0 + 3)) = 1;
     // ldr r0, [sp, #0x10]
-    // bl ov96_021E8A20
-    // add r4, r0, #0
+    ov96_021E8A20(1);
     // ldr r0, [sp, #0x14]
     // strb r6, [r4]
-    // ldr r0, [r0, #0x18]
-    // bl ov96_021EEA80
-    // strb r0, [r4, #1]
+    ov96_021EEA80(*((u32*)(r0 + 0x18)));
+    *((u8*)(r4 + 1)) = r0;
     // ldr r0, [sp, #0x14]
     // add r0, #0xa8
     // str r0, [sp, #0x14]
-    // ldr r0, [r0]
-    // strb r0, [r4, #2]
+    *((u8*)(r4 + 2)) = *((u32*)r0);
     // ldr r0, [sp, #8]
-    // ldrb r0, [r0, #3]
-    // cmp r0, #0
-    // beq _021F86E0
     // ldr r0, [sp, #8]
-    // ldrb r0, [r0, #1]
-    // cmp r6, r0
-    // blo _021F86E0
-    // add sp, #0x18
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F86E8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // mov r1, #0xcd
-    // lsl r1, r1, #2
-    // add r7, r0, #0
-    // add r6, r2, #0
-    // bl Heap_Alloc
-    // mov r2, #0xcd
-    // mov r1, #0
-    // lsl r2, r2, #2
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // mov r0, #0xa
-    // add r1, r7, #0
+    Heap_Alloc((0xcd << 2));
+    MI_CpuFill8(0, (0xcd << 2));
     // str r7, [r4]
-    // bl FontSystem_NewInit
-    // str r0, [r4, #0x10]
-    // str r5, [r4, #8]
-    // str r6, [r4, #4]
-    // mov r0, #0
-    // add r1, r4, #0
-    // str r0, [r1, #0x48]
-    // add r0, r0, #1
+    FontSystem_NewInit(0xa, r7);
+    *((u32*)(r4 + 0x10)) = r0;
+    *((u32*)(r4 + 8)) = r5;
+    *((u32*)(r4 + 4)) = r6;
+    *((u32*)(r4 + 0x48)) = 0;
     // add r1, #0x48
-    // cmp r0, #5
-    // blt _021F8718
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8728(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r4, r0, #0
     // str r0, [sp]
-    // mov r7, #0
     // add r6, #0x24
     // add r4, #0x34
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // bl ov96_021F8E94
-    // add r0, r4, #0
-    // bl ov96_021F8E94
-    // ldr r0, [r5, #0x14]
-    // bl Sprite_Delete
-    // ldr r0, [r5, #0x18]
-    // bl Sprite_Delete
-    // ldr r0, [r5, #0x1c]
-    // bl Sprite_Delete
-    // ldr r0, [r5, #0x20]
-    // bl Sprite_Delete
-    // add r7, r7, #1
+    ov96_021F8E94(r0);
+    ov96_021F8E94(r4);
+    Sprite_Delete(*((u32*)(r5 + 0x14)));
+    Sprite_Delete(*((u32*)(r5 + 0x18)));
+    Sprite_Delete(*((u32*)(r5 + 0x1c)));
+    Sprite_Delete(*((u32*)(r5 + 0x20)));
     // add r6, #0x48
     // add r4, #0x48
     // add r5, #0x48
-    // cmp r7, #5
-    // blt _021F8738
-    // mov r1, #0xbf
     // ldr r0, [sp]
-    // lsl r1, r1, #2
-    // mov r4, #0
     // add r5, r0, r1
-    // ldr r0, [r5, #0x10]
-    // bl sub_02013938
-    // add r0, r5, #0
-    // bl RemoveWindow
-    // add r4, r4, #1
+    sub_02013938(*((u32*)(r5 + 0x10)), (0xbf << 2));
+    RemoveWindow(r5);
     // add r5, #0x18
-    // cmp r4, #2
-    // blt _021F8772
     // ldr r0, [sp]
-    // ldr r0, [r0, #0x10]
-    // bl sub_020135AC
-    // mov r1, #0xb
+    sub_020135AC(*((u32*)(r0 + 0x10)));
     // ldr r0, [sp]
-    // lsl r1, r1, #6
     // ldr r0, [r0, r1]
-    // bl sub_0200AEB0
-    // mov r1, #0xb1
+    sub_0200AEB0((0xb << 6));
     // ldr r0, [sp]
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // bl sub_0200B0A8
-    // mov r6, #0xaa
+    sub_0200B0A8((0xb1 << 2));
     // ldr r4, [sp]
-    // mov r5, #0
-    // lsl r6, r6, #2
     // ldr r0, [r4, r6]
-    // bl Destroy2DGfxResObjMan
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #6
-    // blt _021F87AE
-    // mov r1, #0x5f
+    Destroy2DGfxResObjMan();
     // ldr r0, [sp]
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // bl SpriteList_Delete
+    SpriteList_Delete((0x5f << 2));
     // ldr r0, [sp]
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
 }
+
 
 
 void ov96_021F87D0(void) {
@@ -35701,181 +28074,77 @@ void ov96_021F87D0(void) {
 }
 
 
+
 void ov96_021F87E0(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // bl ov96_021F8980
-    // add r0, r6, #0
-    // bl ov96_021F8A50
-    // add r5, r6, #0
-    // mov r4, #0
+    ov96_021F8980();
+    ov96_021F8A50(r6);
     // add r5, #0x14
-    // lsl r1, r4, #0x18
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // add r2, r5, #0
-    // bl ov96_021F8AFC
-    // add r4, r4, #1
+    ov96_021F8AFC(r6, ((0 << 0x18) >> 0x18), r6);
     // add r5, #0x48
-    // cmp r4, #5
-    // blt _021F87F4
-    // add r0, r6, #0
-    // bl ov96_021F8DD4
-    // mov r0, #6
-    // lsl r0, r0, #6
-    // mov r2, #0x4b
+    ov96_021F8DD4(r6);
     // add r0, r6, r0
-    // mov r1, #0
-    // lsl r2, r2, #0xe
-    // bl G2dRenderer_SetSubSurfaceCoords
-    // mov r0, #6
-    // lsl r0, r0, #6
-    // mov r1, #0
+    G2dRenderer_SetSubSurfaceCoords((6 << 6), 0, (0x4b << 0xe));
     // add r0, r6, r0
-    // add r2, r1, #0
-    // bl G2dRenderer_SetMainSurfaceCoords
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    G2dRenderer_SetMainSurfaceCoords((6 << 6), 0, 0);
 }
+
 
 
 void ov96_021F8830(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // mov r0, #0x33
-    // lsl r0, r0, #4
     // str r1, [sp]
     // ldr r1, [r5, r0]
     // str r2, [sp, #4]
-    // add r2, r5, #0
-    // mov r0, #0x48
     // add r2, #0x14
     // mul r0, r1
     // add r4, r2, r0
-    // ldr r0, [r4, #0x30]
-    // add r6, r3, #0
-    // cmp r0, #0
-    // beq _021F8856
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // ldr r1, [r6]
-    // bl PokeathlonCourse_GetParticipantData
+    GF_AssertFail(*((u32*)(r4 + 0x30)), r0);
+    PokeathlonCourse_GetParticipantData(*((u32*)(r5 + 4)), *((u32*)r6));
     // str r0, [sp, #8]
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // ble _021F886A
-    // mov r7, #1
-    // b _021F886C
-    // mov r7, #0
     // ldr r0, [sp]
-    // add r2, r4, #0
-    // str r0, [r4, #0x38]
+    *((u32*)(r4 + 0x38)) = *((u32*)r0);
     // ldr r0, [sp, #4]
-    // str r0, [r4, #0x3c]
-    // ldr r0, [r6]
-    // str r0, [r4, #0x40]
-    // add r0, r4, #0
-    // ldrb r1, [r6, #9]
+    *((u32*)(r4 + 0x3c)) = *((u32*)r0);
+    *((u32*)(r4 + 0x40)) = *((u32*)r6);
     // add r0, #0x44
     // strh r1, [r0]
-    // ldr r1, [r6, #0x10]
-    // add r0, r5, #0
-    // bl ov96_021F8C04
-    // ldr r1, [r6]
-    // add r0, r5, #0
-    // add r2, r4, #0
-    // bl ov96_021F8BC0
-    // add r0, r4, #0
+    ov96_021F8C04(r5, *((u32*)(r6 + 0x10)), r4);
+    ov96_021F8BC0(r5, *((u32*)r6), r4);
     // add r0, #0x44
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // bne _021F88A2
-    // mov r1, #1
-    // b _021F88A4
-    // mov r1, #0
-    // mov r0, #0xcb
-    // lsl r0, r0, #2
     // str r1, [r5, r0]
-    // ldr r0, [r4, #0x40]
-    // cmp r0, #4
-    // blt _021F88B4
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // beq _021F88D6
+    GF_AssertFail(*((u32*)(r4 + 0x40)), 0);
     // ldr r0, [sp, #8]
-    // ldr r0, [r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl ov96_021E8424
-    // bl ov96_021EEDCC
-    // add r1, r0, #0
-    // ldr r0, [r4, #0xc]
-    // ldr r3, [r5]
-    // mov r2, #0xb
-    // bl ov96_021EEA94
-    // b _021F88E6
-    // ldr r2, [r4, #0x40]
-    // ldr r0, [r4, #0xc]
-    // lsl r2, r2, #0x18
-    // ldr r1, [r5, #4]
-    // lsr r2, r2, #0x18
-    // mov r3, #0x1b
-    // bl ov96_021EEB84
-    // add r0, r4, #0
-    // bl ov96_021F8C2C
-    // mov r0, #0xcb
-    // lsl r0, r0, #2
+    ov96_021E8424(((*((u32*)r0) << 0x18) >> 0x18));
+    ov96_021EEDCC();
+    ov96_021EEA94(*((u32*)(r4 + 0xc)), r0, 0xb, *((u32*)r5));
+    ov96_021EEB84(*((u32*)(r4 + 0xc)), *((u32*)(r5 + 4)), ((*((u32*)(r4 + 0x40)) << 0x18) >> 0x18), 0x1b);
+    ov96_021F8C2C(r4);
     // ldr r0, [r5, r0]
-    // mov r1, #1
-    // add r2, r4, #0
-    // bl ov96_021F8C54
-    // mov r0, #1
-    // str r0, [r4, #0x30]
-    // mov r0, #0x33
-    // lsl r0, r0, #4
+    ov96_021F8C54((0xcb << 2), 1, r4);
+    *((u32*)(r4 + 0x30)) = 1;
     // ldr r0, [r5, r0]
-    // mov r1, #5
-    // add r0, r0, #1
-    // bl _s32_div_f
-    // mov r0, #0x33
-    // lsl r0, r0, #4
+    _s32_div_f(((0x33 << 4) + 1), 5);
     // str r1, [r5, r0]
-    // add r0, r4, #0
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8918(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x30]
-    // cmp r0, #0
-    // bne _021F8926
-    // bl GF_AssertFail
-    // mov r0, #0
-    // str r0, [r4, #0x30]
-    // add r0, r4, #0
+    GF_AssertFail(*((u32*)(r0 + 0x30)));
+    *((u32*)(r4 + 0x30)) = 0;
     // add r0, #0x10
-    // bl ov96_021F8E94
+    ov96_021F8E94(r4);
     // add r4, #0x20
-    // add r0, r4, #0
-    // bl ov96_021F8E94
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021F8E94(r4);
 }
+
 
 
 void ov96_021F893C(void) {
-    // ldr r3, [r0, #0x38]
     // str r3, [r1]
-    // ldr r0, [r0, #0x3c]
     // str r0, [r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8948(void) {
@@ -35890,6 +28159,7 @@ void ov96_021F8948(void) {
     // _021F8958: .word ov96_021F8C88
     // TODO: decompile
 }
+
 
 
 void ov96_021F895C(void) {
@@ -35910,139 +28180,71 @@ void ov96_021F895C(void) {
 }
 
 
+
 void ov96_021F8978(void) {
     // add r0, #0x44
     // ldrh r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8980(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // mov r1, #6
-    // lsl r1, r1, #6
-    // ldr r2, [r5]
-    // mov r0, #0x37
     // add r1, r5, r1
-    // bl G2dRenderer_Init
-    // mov r1, #0x5f
-    // lsl r1, r1, #2
-    // mov r7, #0xaa
+    G2dRenderer_Init(0x37, (6 << 6), *((u32*)r0));
     // str r0, [r5, r1]
-    // mov r6, #0
-    // add r4, r5, #0
-    // lsl r7, r7, #2
-    // ldr r2, [r5]
-    // mov r0, #1
-    // add r1, r6, #0
-    // bl Create2DGfxResObjMan
+    Create2DGfxResObjMan(1, 0, *((u32*)r5));
     // str r0, [r4, r7]
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #6
-    // blt _021F89A2
-    // mov r0, #0x67
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r5]
-    // mov r1, #0xa0
     // str r0, [sp, #8]
-    // mov r0, #0xaa
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // mov r2, #9
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // mov r1, #0xb
-    // lsl r1, r1, #6
+    AddCharResObjFromNarc((0xaa << 2), 0xa0, 9, 0);
     // str r0, [r5, r1]
-    // mov r0, #0x67
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // mov r2, #6
     // str r2, [sp, #8]
-    // ldr r0, [r5]
     // sub r1, #0x14
     // str r0, [sp, #0xc]
     // ldr r0, [r5, r1]
-    // mov r1, #0xa0
-    // mov r3, #0
-    // bl AddPlttResObjFromNarc
-    // mov r1, #0xb1
-    // lsl r1, r1, #2
+    AddPlttResObjFromNarc(*((u32*)r5), 0xa0, 6, 0);
     // str r0, [r5, r1]
-    // mov r0, #0x67
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // sub r1, #0x14
     // str r0, [sp, #8]
     // ldr r0, [r5, r1]
-    // mov r1, #0xa0
-    // mov r2, #8
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // mov r1, #0xb2
-    // lsl r1, r1, #2
+    AddCellOrAnimResObjFromNarc(*((u32*)r5), 0xa0, 8, 0);
     // str r0, [r5, r1]
-    // mov r0, #0x67
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // sub r1, #0x14
     // str r0, [sp, #8]
     // ldr r0, [r5, r1]
-    // mov r1, #0xa0
-    // mov r2, #7
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // mov r1, #0xb3
-    // lsl r1, r1, #2
+    AddCellOrAnimResObjFromNarc(*((u32*)r5), 0xa0, 7, 0);
     // str r0, [r5, r1]
     // sub r1, #0xc
     // ldr r0, [r5, r1]
-    // bl sub_0200ADA4
-    // mov r0, #0xb1
-    // lsl r0, r0, #2
+    sub_0200ADA4((0xb3 << 2));
     // ldr r0, [r5, r0]
-    // bl sub_0200AF94
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_0200AF94((0xb1 << 2));
 }
 
 
+
 void ov96_021F8A50(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x2c
-    // mov r1, #0x67
-    // add r2, r1, #0
     // str r1, [sp]
     // sub r2, #0x68
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
-    // mov r4, #0xaa
     // str r2, [sp, #0x10]
-    // lsl r4, r4, #2
     // ldr r3, [r0, r4]
     // str r3, [sp, #0x14]
-    // add r3, r4, #4
     // ldr r3, [r0, r3]
     // str r3, [sp, #0x18]
-    // add r3, r4, #0
     // add r3, #8
     // ldr r3, [r0, r3]
     // str r3, [sp, #0x1c]
-    // add r3, r4, #0
     // add r3, #0xc
     // ldr r3, [r0, r3]
     // add r4, #0x30
@@ -36050,230 +28252,125 @@ void ov96_021F8A50(void) {
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
     // add r0, r0, r4
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // add sp, #0x2c
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    CreateSpriteResourcesHeader(0x67, 0x67, 0x67);
 }
+
 
 
 void ov96_021F8A98(void) {
-    // push {r3, r4}
-    // mov r2, #0x5f
-    // lsl r2, r2, #2
     // ldr r2, [r1, r2]
-    // mov r4, #0
     // str r2, [r0]
-    // mov r2, #0xb6
-    // lsl r2, r2, #2
     // add r2, r1, r2
-    // str r2, [r0, #4]
-    // str r4, [r0, #8]
-    // str r4, [r0, #0xc]
-    // mov r2, #1
-    // str r4, [r0, #0x10]
-    // lsl r2, r2, #0xc
-    // str r2, [r0, #0x14]
-    // str r2, [r0, #0x18]
-    // str r2, [r0, #0x1c]
-    // strh r4, [r0, #0x20]
-    // mov r2, #2
-    // str r2, [r0, #0x24]
-    // str r3, [r0, #0x28]
-    // ldr r1, [r1]
-    // str r1, [r0, #0x2c]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = (0xb6 << 2);
+    *((u32*)(r0 + 8)) = 0;
+    *((u32*)(r0 + 0xc)) = 0;
+    *((u32*)(r0 + 0x10)) = 0;
+    *((u32*)(r0 + 0x14)) = (1 << 0xc);
+    *((u32*)(r0 + 0x18)) = (1 << 0xc);
+    *((u32*)(r0 + 0x1c)) = (1 << 0xc);
+    *((u16*)(r0 + 0x20)) = 0;
+    *((u32*)(r0 + 0x24)) = 2;
+    *((u32*)(r0 + 0x28)) = r3;
+    *((u32*)(r0 + 0x2c)) = *((u32*)r1);
 }
+
 
 
 void ov96_021F8ACC(void) {
-    Sprite_CreateAffine();
-    Sprite_SetAnimActiveFlag(1);
-    Sprite_SetAnimCtrlSeq(r4, r5);
-    Sprite_SetDrawFlag(r4, 0);
-    Sprite_SetDrawPriority(r4, r6);
 }
+
 
 
 void ov96_021F8AFC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x44
-    // add r4, r2, #0
-    // mov r2, #0xb6
-    // add r3, r0, #0
-    // lsl r2, r2, #2
-    // add r5, r1, #0
     // add r0, sp, #0x14
-    // add r1, r3, #0
     // add r2, r3, r2
-    // mov r3, #1
-    // bl ov96_021F8A98
+    ov96_021F8A98(r0, (0xb6 << 2), 1);
     // add r0, sp, #0x14
-    // mov r1, #0x11
-    // mov r2, #4
-    // bl ov96_021F8ACC
+    ov96_021F8ACC(0x11, 4);
     // str r0, [r4]
     // add r0, sp, #0x14
-    // mov r1, #5
-    // mov r2, #0
-    // bl ov96_021F8ACC
-    // str r0, [r4, #4]
+    ov96_021F8ACC(5, 0);
+    *((u32*)(r4 + 4)) = r0;
     // add r0, sp, #0x14
-    // mov r1, #0x12
-    // mov r2, #1
-    // bl ov96_021F8ACC
-    // str r0, [r4, #8]
+    ov96_021F8ACC(0x12, 1);
+    *((u32*)(r4 + 8)) = r0;
     // add r0, sp, #0x14
-    // mov r1, #0
-    // mov r2, #2
-    // bl ov96_021F8ACC
-    // str r0, [r4, #0xc]
-    // add r4, r0, #0
-    // bl Sprite_GetVramType
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // bl Sprite_GetImageProxy
-    // add r7, r0, #0
-    // add r0, r4, #0
-    // bl Sprite_GetPaletteProxy
+    ov96_021F8ACC(0, 2);
+    *((u32*)(r4 + 0xc)) = r0;
+    Sprite_GetVramType();
+    Sprite_GetImageProxy(r4);
+    Sprite_GetPaletteProxy(r4);
     // str r0, [sp]
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // bl NNS_G2dGetImageLocation
+    NNS_G2dGetImageLocation(r7, r6);
     // str r0, [sp, #4]
-    // lsl r0, r5, #9
     // str r0, [sp, #8]
-    // add r0, r7, #0
-    // bl NNS_G2dInitImageProxy
+    NNS_G2dInitImageProxy(r7);
     // ldr r3, [sp, #4]
     // ldr r2, [sp, #8]
-    // add r0, r7, #0
-    // add r1, r6, #0
     // add r2, r3, r2
-    // bl NNS_G2dSetImageLocation
+    NNS_G2dSetImageLocation(r7, r6);
     // ldr r0, [sp]
-    // add r1, r6, #0
-    // bl NNS_G2dGetImagePaletteLocation
+    NNS_G2dGetImagePaletteLocation(r6);
     // str r0, [sp, #0xc]
-    // add r0, r5, #6
-    // lsl r0, r0, #5
     // str r0, [sp, #0x10]
     // ldr r0, [sp]
-    // bl NNS_G2dInitImagePaletteProxy
+    NNS_G2dInitImagePaletteProxy(((r5 + 6) << 5));
     // ldr r3, [sp, #0xc]
     // ldr r2, [sp, #0x10]
     // ldr r0, [sp]
-    // add r1, r6, #0
     // add r2, r3, r2
-    // bl NNS_G2dSetImagePaletteLocation
-    // add r0, r4, #0
-    // add r1, r7, #0
-    // bl Sprite_SetImageProxy
+    NNS_G2dSetImagePaletteLocation(r6);
+    Sprite_SetImageProxy(r4, r7);
     // ldr r1, [sp]
-    // add r0, r4, #0
-    // bl Sprite_SetPaletteProxy
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl Sprite_SetPalOffset
-    // add sp, #0x44
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetPaletteProxy(r4);
+    Sprite_SetPalOffset(r4, r5);
 }
 
 
+
 void ov96_021F8BC0(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // ldr r0, [r5, #4]
-    // add r4, r2, #0
-    // bl PokeathlonCourse_GetPlayerProfileFromData
-    // ldr r1, [r5]
-    // bl PlayerProfile_GetPlayerName_NewString
-    // add r6, r0, #0
-    // mov r0, #0x37
+    PokeathlonCourse_GetPlayerProfileFromData(*((u32*)(r0 + 4)));
+    PlayerProfile_GetPlayerName_NewString(*((u32*)r5));
     // mvn r0, r0
     // str r0, [sp]
     // add r0, #0x28
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // mov r1, #0xbf
-    // lsl r1, r1, #2
     // str r0, [sp, #8]
     // add r4, #0x10
-    // add r0, r5, #0
     // add r1, r5, r1
-    // add r2, r6, #0
-    // mov r3, #0
     // str r4, [sp, #0xc]
-    // bl ov96_021F8DF4
-    // add r0, r6, #0
-    // bl String_Delete
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021F8DF4(r5, (0xbf << 2), r0, 0);
+    String_Delete(r6);
 }
+
 
 
 void ov96_021F8C04(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r1, #0
-    // mov r1, #0x37
     // mvn r1, r1
     // str r1, [sp]
-    // mov r3, #0
     // str r3, [sp, #4]
-    // ldr r1, [r2]
     // add r2, #0x20
     // str r1, [sp, #8]
-    // mov r1, #0xc5
-    // lsl r1, r1, #2
     // str r2, [sp, #0xc]
     // add r1, r0, r1
-    // add r2, r4, #0
-    // bl ov96_021F8DF4
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021F8DF4((0xc5 << 2), r1, 0);
 }
+
 
 
 void ov96_021F8C2C(void) {
-    ov96_021F8C88(*((u32*)(r0 + 0x38)), *((u32*)(r0 + 0x3c)), r0);
-    Sprite_SetPaletteOverride((*((u32*)(r4 + 0x40)) + 2));
-    Sprite_SetAnimCtrlSeq(*((u32*)(r4 + 4)), (r1 + 5));
 }
+
 
 
 void ov96_021F8C54(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r2, #0
-    // add r6, r0, #0
-    // ldr r0, [r4]
-    // add r5, r1, #0
-    // bl Sprite_SetDrawFlag
-    // ldr r0, [r4, #4]
-    // add r1, r5, #0
-    // bl Sprite_SetDrawFlag
-    // cmp r6, #0
-    // beq _021F8C76
-    // ldr r0, [r4, #8]
-    // add r1, r5, #0
-    // bl Sprite_SetDrawFlag
-    // ldr r0, [r4, #0x10]
-    // add r1, r5, #0
-    // bl TextOBJ_SetSpritesDrawFlag
-    // ldr r0, [r4, #0x20]
-    // add r1, r5, #0
-    // bl TextOBJ_SetSpritesDrawFlag
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag(*((u32*)r2));
+    Sprite_SetDrawFlag(*((u32*)(r4 + 4)), r5);
+    Sprite_SetDrawFlag(*((u32*)(r4 + 8)), r5);
+    TextOBJ_SetSpritesDrawFlag(*((u32*)(r4 + 0x10)), r5);
+    TextOBJ_SetSpritesDrawFlag(*((u32*)(r4 + 0x20)), r5);
 }
+
 
 
 void ov96_021F8C88(void) {
@@ -36332,22 +28429,13 @@ void ov96_021F8C88(void) {
 }
 
 
+
 void ov96_021F8CFC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r4, r2, #0
-    // add r5, r0, #0
-    // ldr r0, [r4]
-    // add r7, r1, #0
-    // bl Sprite_GetMatrixPtr
-    // add r3, r0, #0
+    Sprite_GetMatrixPtr(*((u32*)r2));
     // add r2, sp, #0
-    // lsl r6, r5, #0xc
     // ldmia r3!, {r0, r1}
     // mov ip, r2
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // lsl r5, r7, #0xc
     // str r0, [r2]
     // ldr r0, [sp]
     // mov r1, ip
@@ -36356,17 +28444,11 @@ void ov96_021F8CFC(void) {
     // ldr r0, [sp, #4]
     // add r0, r0, r5
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // bl Sprite_SetMatrix
-    // ldr r0, [r4, #4]
-    // bl Sprite_GetMatrixPtr
-    // add r3, r0, #0
+    Sprite_SetMatrix(*((u32*)r4), r0);
+    Sprite_GetMatrixPtr(*((u32*)(r4 + 4)));
     // add r2, sp, #0
     // ldmia r3!, {r0, r1}
-    // add r7, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // add r1, r7, #0
     // str r0, [r2]
     // ldr r0, [sp]
     // add r0, r0, r6
@@ -36374,16 +28456,10 @@ void ov96_021F8CFC(void) {
     // ldr r0, [sp, #4]
     // add r0, r0, r5
     // str r0, [sp, #4]
-    // ldr r0, [r4, #4]
-    // bl Sprite_SetMatrix
-    // ldr r0, [r4, #0xc]
-    // bl Sprite_GetMatrixPtr
-    // add r3, r0, #0
+    Sprite_SetMatrix(*((u32*)(r4 + 4)), r2, r0);
+    Sprite_GetMatrixPtr(*((u32*)(r4 + 0xc)));
     // ldmia r3!, {r0, r1}
-    // add r2, r7, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // add r1, r7, #0
     // str r0, [r2]
     // ldr r0, [sp]
     // add r0, r0, r6
@@ -36391,68 +28467,34 @@ void ov96_021F8CFC(void) {
     // ldr r0, [sp, #4]
     // add r0, r0, r5
     // str r0, [sp, #4]
-    // ldr r0, [r4, #0xc]
-    // bl Sprite_SetMatrix
-    // ldr r0, [r4, #8]
-    // add r1, r7, #0
-    // bl Sprite_SetMatrix
-    // ldr r0, [r4, #0x10]
-    // bl sub_02013728
-    // ldr r0, [r4, #0x20]
-    // bl sub_02013728
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetMatrix(*((u32*)(r4 + 0xc)), r7, r7, r0);
+    Sprite_SetMatrix(*((u32*)(r4 + 8)), r7);
+    sub_02013728(*((u32*)(r4 + 0x10)));
+    sub_02013728(*((u32*)(r4 + 0x20)));
 }
+
 
 
 void ov96_021F8D98(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // add r6, r2, #0
-    // bl InitWindow
-    // mov r0, #0
+    InitWindow(r1);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // lsl r2, r6, #0x18
-    // ldr r0, [r5, #8]
-    // add r1, r4, #0
-    // lsr r2, r2, #0x18
-    // mov r3, #2
-    // bl AddTextWindowTopLeftCorner
-    // ldr r1, [r5]
-    // add r0, r4, #0
-    // bl sub_02013910
-    // mov r1, #1
-    // str r0, [r4, #0x10]
-    // bl sub_02013948
-    // str r0, [r4, #0x14]
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    AddTextWindowTopLeftCorner(*((u32*)(r5 + 8)), r4, ((r6 << 0x18) >> 0x18), 2);
+    sub_02013910(r4, *((u32*)r5));
+    *((u32*)(r4 + 0x10)) = r0;
+    sub_02013948(1);
+    *((u32*)(r4 + 0x14)) = r0;
 }
+
 
 
 void ov96_021F8DD4(void) {
-    // push {r4, lr}
-    // mov r1, #0xbf
-    // add r4, r0, #0
-    // lsl r1, r1, #2
     // add r1, r4, r1
-    // mov r2, #8
-    // bl ov96_021F8D98
-    // mov r1, #0xc5
-    // lsl r1, r1, #2
-    // add r0, r4, #0
+    ov96_021F8D98((0xbf << 2), 8);
     // add r1, r4, r1
-    // mov r2, #0x18
-    // bl ov96_021F8D98
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021F8D98(r4, (0xc5 << 2), 0x18);
 }
+
 
 
 void ov96_021F8DF4(void) {
@@ -36533,211 +28575,98 @@ void ov96_021F8DF4(void) {
 }
 
 
+
 void ov96_021F8E94(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _021F8EAC
-    // bl TextOBJ_Destroy
-    // add r0, r4, #4
-    // bl sub_02021B5C
-    // mov r0, #0
+    TextOBJ_Destroy(*((u32*)r0));
+    sub_02021B5C((r4 + 4));
     // str r0, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F8EB0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r7, r1, #0
-    // mov r1, #0xc4
-    // add r6, r0, #0
-    // add r5, r2, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r1, #0
-    // mov r2, #0xc4
-    // bl MI_CpuFill8
+    Heap_Alloc(0xc4);
+    MI_CpuFill8(0, 0xc4);
     // str r6, [r4]
-    // mov r0, #4
-    // add r1, r6, #0
-    // bl FontSystem_NewInit
-    // str r0, [r4, #8]
-    // str r5, [r4, #4]
-    // add r5, r4, #0
+    FontSystem_NewInit(4, r6);
+    *((u32*)(r4 + 8)) = r0;
+    *((u32*)(r4 + 4)) = r5;
     // add r5, #0xc
-    // add r0, r5, #0
-    // bl InitWindow
-    // mov r0, #0
+    InitWindow(r4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // add r0, r7, #0
-    // add r1, r5, #0
-    // mov r2, #8
-    // mov r3, #2
-    // bl AddTextWindowTopLeftCorner
-    // ldr r1, [r4]
-    // add r0, r5, #0
-    // bl sub_02013910
-    // mov r1, #2
-    // str r0, [r5, #0x10]
-    // bl sub_02013948
-    // str r0, [r5, #0x14]
-    // add r0, r4, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    AddTextWindowTopLeftCorner(r7, r5, 8, 2);
+    sub_02013910(r5, *((u32*)r4));
+    *((u32*)(r5 + 0x10)) = r0;
+    sub_02013948(2);
+    *((u32*)(r5 + 0x14)) = r0;
 }
+
 
 
 void ov96_021F8F0C(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // add r5, r6, #0
-    // mov r4, #0
     // add r5, #0x34
-    // add r0, r5, #0
-    // bl ov96_021F91CC
-    // add r4, r4, #1
+    ov96_021F91CC(r0);
     // add r5, #0x28
-    // cmp r4, #4
-    // blt _021F8F16
-    // add r4, r6, #0
     // add r4, #0xc
-    // ldr r0, [r4, #0x10]
-    // bl sub_02013938
-    // add r0, r4, #0
-    // bl RemoveWindow
-    // ldr r0, [r6, #8]
-    // bl sub_020135AC
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_02013938(*((u32*)(r6 + 0x10)));
+    RemoveWindow(r4);
+    sub_020135AC(*((u32*)(r6 + 8)));
+    Heap_Free(r6);
 }
+
 
 
 void ov96_021F8F44(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // mov r2, #0x68
-    // bl ov96_021EB29C
-    // mov r0, #2
+    ov96_021EB29C(*((u32*)(r0 + 4)), 0x68);
     // str r0, [sp]
-    // ldr r0, [r4, #4]
-    // mov r1, #0xa1
-    // mov r2, #3
-    // mov r3, #0x68
-    // bl ov96_021EB2BC
-    // mov r0, #2
+    ov96_021EB2BC(*((u32*)(r4 + 4)), 0xa1, 3, 0x68);
     // str r0, [sp]
-    // mov r0, #5
     // str r0, [sp, #4]
-    // ldr r0, [r4, #4]
-    // mov r1, #0xa1
-    // mov r2, #0
-    // mov r3, #0x68
-    // bl ov96_021EB2F4
-    // ldr r0, [r4, #4]
-    // mov r1, #0xa1
-    // mov r2, #2
-    // mov r3, #0x68
-    // bl ov96_021EB334
-    // ldr r0, [r4, #4]
-    // mov r1, #0xa1
-    // mov r2, #1
-    // mov r3, #0x68
-    // bl ov96_021EB36C
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EB2F4(*((u32*)(r4 + 4)), 0xa1, 0, 0x68);
+    ov96_021EB334(*((u32*)(r4 + 4)), 0xa1, 2, 0x68);
+    ov96_021EB36C(*((u32*)(r4 + 4)), 0xa1, 1, 0x68);
 }
 
 
+
 void ov96_021F8F94(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x44
-    // add r6, r0, #0
-    // mov r0, #0
     // str r0, [sp, #0x34]
     // str r0, [sp, #0x28]
-    // mov r0, #8
     // str r0, [sp, #0x24]
-    // add r0, r2, #0
     // add r0, #0x10
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0x20]
-    // add r0, r2, #0
     // add r0, #0x18
-    // lsl r0, r0, #0xc
     // str r1, [sp, #0x10]
     // str r2, [sp, #0x14]
     // str r0, [sp, #0x1c]
-    // mov r0, #3
     // str r0, [sp]
-    // ldr r0, [r6, #4]
-    // mov r1, #0
-    // mov r2, #2
-    // mov r3, #0x68
-    // bl ov96_021EB408
-    // mov r1, #0
+    ov96_021EB408(*((u32*)(r0 + 4)), 0, 2, 0x68);
     // str r1, [sp, #0x40]
     // ldr r1, [sp, #0x28]
-    // add r4, r0, #0
-    // lsl r1, r1, #0xc
     // str r1, [sp, #0x38]
     // ldr r1, [sp, #0x20]
     // str r1, [sp, #0x3c]
     // add r1, sp, #0x38
-    // bl Sprite_SetMatrix
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl Sprite_SetAnimCtrlSeq
+    Sprite_SetMatrix((0 << 0xc));
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 0);
     // ldr r1, [sp, #0x34]
-    // add r0, r4, #0
-    // bl Sprite_SetPalIndexRespectVramOffset
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl Sprite_SetDrawPriority
+    Sprite_SetPalIndexRespectVramOffset(r4);
+    Sprite_SetDrawPriority(r4, 2);
     // ldr r5, [sp, #0x24]
-    // mov r7, #0
-    // mov r0, #4
     // str r0, [sp]
-    // ldr r0, [r6, #4]
-    // mov r1, #0
-    // mov r2, #2
-    // mov r3, #0x68
-    // bl ov96_021EB408
-    // mov r1, #0
+    ov96_021EB408(*((u32*)(r6 + 4)), 0, 2, 0x68);
     // str r1, [sp, #0x40]
-    // lsl r1, r5, #0xc
     // str r1, [sp, #0x38]
     // ldr r1, [sp, #0x1c]
-    // add r4, r0, #0
     // str r1, [sp, #0x3c]
     // add r1, sp, #0x38
-    // bl Sprite_SetMatrix
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Sprite_SetDrawPriority
-    // add r7, r7, #1
+    Sprite_SetMatrix((r5 << 0xc));
+    Sprite_SetAnimActiveFlag(r4, 1);
+    Sprite_SetAnimCtrlSeq(r4, 1);
+    Sprite_SetDrawPriority(r4, 1);
     // add r5, #0x10
-    // cmp r7, #3
-    // blt _021F9002
     // ldr r0, [sp, #0x28]
     // add r0, #0x40
     // str r0, [sp, #0x28]
@@ -36745,73 +28674,40 @@ void ov96_021F8F94(void) {
     // add r0, #0x40
     // str r0, [sp, #0x24]
     // ldr r0, [sp, #0x34]
-    // add r0, r0, #1
     // str r0, [sp, #0x34]
-    // cmp r0, #4
-    // blt _021F8FB8
-    // mov r0, #0
     // str r0, [sp, #0x18]
-    // add r0, r6, #0
     // str r0, [sp, #0x30]
     // add r0, #0x24
     // str r0, [sp, #0x30]
-    // add r0, r6, #0
     // str r0, [sp, #0x2c]
     // add r0, #0x34
-    // add r7, r6, #0
     // str r0, [sp, #0x2c]
-    // ldr r0, [r6, #4]
-    // mov r1, #0x68
-    // mov r2, #3
-    // bl ov96_021EB4F4
+    ov96_021EB4F4(*((u32*)(r6 + 4)), 0x68, 3);
     // ldr r1, [sp, #0x30]
     // str r0, [r1]
-    // mov r1, #1
-    // add r2, r1, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(1, 1);
     // ldr r4, [sp, #0x30]
-    // mov r5, #0
-    // ldr r0, [r6, #4]
-    // mov r1, #0x68
-    // mov r2, #4
-    // bl ov96_021EB4F4
-    // mov r1, #1
-    // add r2, r1, #0
-    // str r0, [r4, #4]
-    // bl ov96_021EB52C
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #3
-    // blt _021F908C
+    ov96_021EB4F4(*((u32*)(r6 + 4)), 0x68, 4);
+    *((u32*)(r4 + 4)) = r0;
+    ov96_021EB52C(1, 1);
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x18]
-    // bl PokeathlonCourse_GetPlayerProfileFromData
-    // ldr r1, [r6]
-    // bl PlayerProfile_GetPlayerName_NewString
-    // add r4, r0, #0
-    // ldr r0, [r7, #0x24]
-    // bl ov96_021EB5B8
-    // mov r1, #0
+    PokeathlonCourse_GetPlayerProfileFromData();
+    PlayerProfile_GetPlayerName_NewString(*((u32*)r6));
+    ov96_021EB5B8(*((u32*)(r7 + 0x24)));
     // str r1, [sp]
     // sub r1, #0x10
     // str r1, [sp, #4]
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x2c]
-    // add r1, r6, #0
     // str r0, [sp, #0xc]
-    // add r0, r6, #0
     // add r1, #0xc
-    // add r2, r4, #0
-    // mov r3, #2
-    // bl ov96_021F9134
-    // add r0, r4, #0
-    // bl String_Delete
-    // ldr r0, [r7, #0x34]
-    // mov r1, #1
-    // bl TextOBJ_SetSpritesDrawFlag
+    ov96_021F9134(r6, r6, r4, 2);
+    String_Delete(r4);
+    TextOBJ_SetSpritesDrawFlag(*((u32*)(r7 + 0x34)), 1);
     // ldr r0, [sp, #0x14]
     // add r0, #0x10
-    // str r0, [r7, #0x48]
+    *((u32*)(r7 + 0x48)) = r0;
     // ldr r0, [sp, #0x30]
     // add r7, #0x28
     // add r0, #0x28
@@ -36820,36 +28716,21 @@ void ov96_021F8F94(void) {
     // add r0, #0x28
     // str r0, [sp, #0x2c]
     // ldr r0, [sp, #0x18]
-    // add r0, r0, #1
     // str r0, [sp, #0x18]
-    // cmp r0, #4
-    // blt _021F9072
-    // add sp, #0x44
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F910C(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r2, #0
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // cmp r6, #4
-    // blo _021F911C
-    // bl GF_AssertFail
-    // mov r0, #0x28
-    // add r1, r6, #0
+    GF_AssertFail();
     // mul r1, r0
     // add r0, r5, r1
     // add r5, #0x24
-    // str r4, [r0, #0x44]
+    *((u32*)(0x28 + 0x44)) = r4;
     // add r0, r5, r1
-    // add r1, r4, #0
-    // bl ov96_021F91E8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021F91E8(0x28, r4);
 }
+
 
 
 void ov96_021F9134(void) {
@@ -36925,60 +28806,35 @@ void ov96_021F9134(void) {
 }
 
 
+
 void ov96_021F91CC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _021F91E4
-    // bl TextOBJ_Destroy
-    // add r0, r4, #4
-    // bl sub_02021B5C
-    // mov r0, #0
+    TextOBJ_Destroy(*((u32*)r0));
+    sub_02021B5C((r4 + 4));
     // str r0, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F91E8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // add r7, r0, #0
-    // mov r0, #0x64
+    _s32_div_f(r1, 0x64);
     // mul r0, r7
     // sub r6, r4, r0
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r4, r0, #0
-    // ldr r0, [r5, #4]
-    // bl ov96_021EB5B8
-    // add r1, r7, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // ldr r0, [r5, #8]
-    // bl ov96_021EB5B8
-    // add r1, r4, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // ldr r0, [r5, #0xc]
-    // bl ov96_021EB5B8
-    // mov r1, #0xa
+    _s32_div_f(r6, 0xa);
+    ov96_021EB5B8(*((u32*)(r5 + 4)));
+    Sprite_SetAnimCtrlSeq((r7 + 1));
+    ov96_021EB5B8(*((u32*)(r5 + 8)));
+    Sprite_SetAnimCtrlSeq((r4 + 1));
+    ov96_021EB5B8(*((u32*)(r5 + 0xc)));
     // mul r1, r4
     // sub r1, r6, r1
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq((0xa + 1));
 }
+
 
 
 void ov96_021F9234(void) {
-    PokeathlonCourse_SetStateField07();
 }
+
 
 
 void ov96_021F9240(void) {
@@ -37120,141 +28976,67 @@ void ov96_021F9240(void) {
 }
 
 
+
 void ov96_021F9380(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r4, r1, #0
     // str r0, [sp]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r7, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // bne _021F93A6
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021F93A0
-    // mov r0, #1
+    IsPaletteFadeFinished();
     // strb r0, [r4]
-    // add sp, #0x18
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
     // ldr r0, [sp]
-    // bl ov96_021E5F24
-    // add r4, r0, #0
-    // mov r0, #0
-    // add r2, r0, #0
-    // add r3, r7, #0
-    // add r1, r3, #0
+    ov96_021E5F24(0);
     // add r1, #0xe2
     // ldrh r1, [r1]
-    // add r2, r2, #1
     // add r3, #0x6c
     // add r0, r0, r1
-    // cmp r2, #3
-    // blt _021F93B4
-    // bl ov96_021FBDEC
-    // add r2, r0, #0
-    // lsl r1, r4, #0x18
-    // lsl r2, r2, #0x10
+    ov96_021FBDEC(0, r7, (0 + 1), r7);
     // ldr r0, [sp]
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x10
-    // bl PokeathlonCourse_SetField5E0_AtIndex
-    // cmp r4, #0
-    // bne _021F94A0
+    PokeathlonCourse_SetField5E0_AtIndex(((r4 << 0x18) >> 0x18), ((r0 << 0x10) >> 0x10));
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetParticipantCount
+    PokeathlonCourse_GetParticipantCount();
     // str r0, [sp, #8]
     // str r0, [sp, #0x10]
-    // cmp r0, #4
-    // bge _021F94A0
-    // mov r0, #0
     // str r0, [sp, #4]
     // str r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
     // ldr r0, [sp, #8]
     // sub r1, r1, r0
-    // lsl r0, r1, #1
     // add r6, r1, r0
-    // mov r0, #0x28
     // mul r0, r6
     // add r5, r7, r0
-    // mov r0, #0x25
-    // lsl r0, r0, #4
     // ldr r0, [r5, r0]
-    // cmp r0, #0
-    // bne _021F9466
-    // mov r0, #9
-    // lsl r0, r0, #6
-    // mov r1, #0x92
     // ldr r4, [r5, r0]
-    // lsl r1, r1, #2
     // ldr r1, [r5, r1]
-    // add r0, r4, #0
-    // bl _fls
-    // bhs _021F9424
-    // mov r0, #0x92
-    // lsl r0, r0, #2
+    _fls(r4, (0x92 << 2));
     // ldr r4, [r5, r0]
-    // mov r0, #0x96
-    // lsl r0, r0, #2
     // ldr r1, [r5, r0]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
     // sub r0, r0, r1
-    // bl _fflt
-    // add r1, r4, #0
-    // bl _fdiv
+    _fflt((1 << 0xc));
+    _fdiv(r4);
     // str r0, [sp, #0x14]
-    // bl _ffix
-    // add r4, r0, #0
-    // bl _fflt
-    // add r1, r0, #0
+    _ffix();
+    _fflt();
     // ldr r0, [sp, #0x14]
-    // bl _fsub
-    // mov r1, #0
-    // bl _fgr
-    // bls _021F9458
-    // add r4, r4, #1
-    // mov r0, #0x23
-    // lsl r0, r0, #4
+    _fsub(r0);
+    _fgr(0);
     // ldr r0, [r7, r0]
     // add r1, r0, r4
-    // mov r0, #0x95
-    // lsl r0, r0, #2
     // str r1, [r5, r0]
-    // mov r0, #0x95
-    // lsl r0, r0, #2
     // ldr r1, [r5, r0]
     // ldr r0, [sp, #4]
-    // add r6, r6, #1
     // add r0, r0, r1
     // str r0, [sp, #4]
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
     // str r0, [sp, #0xc]
-    // cmp r0, #3
-    // blt _021F93FA
     // ldr r0, [sp, #4]
-    // bl ov96_021FBDEC
-    // add r2, r0, #0
+    ov96_021FBDEC(((0x95 << 2) + 1));
     // ldr r1, [sp, #0x10]
-    // lsl r2, r2, #0x10
-    // lsl r1, r1, #0x18
     // ldr r0, [sp]
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x10
-    // bl PokeathlonCourse_SetField5E0_AtIndex
+    PokeathlonCourse_SetField5E0_AtIndex(((r1 << 0x18) >> 0x18), ((r0 << 0x10) >> 0x10));
     // ldr r0, [sp, #0x10]
-    // add r0, r0, #1
     // str r0, [sp, #0x10]
-    // cmp r0, #4
-    // blt _021F93EA
-    // mov r0, #1
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021F94A8(void) {
@@ -38141,22 +29923,15 @@ void ov96_021F94A8(void) {
 }
 
 
+
 void ov96_021F9CA4(void) {
-    // push {r4, lr}
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // mov r0, #0x8a
-    // lsl r0, r0, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldr r0, [r4, r0]
-    // bl ov96_021FC314
-    // mov r0, #0x89
-    // lsl r0, r0, #2
+    ov96_021FC314((0x8a << 2));
     // ldr r0, [r4, r0]
-    // bl ov96_021EB5BC
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EB5BC((0x89 << 2));
 }
+
 
 
 void ov96_021F9CC4(void) {
@@ -38223,6 +29998,7 @@ void ov96_021F9CC4(void) {
     // _021F9D54: .word 0x00000123
     // TODO: decompile
 }
+
 
 
 void ov96_021F9D58(void) {
@@ -38315,9 +30091,10 @@ void ov96_021F9D58(void) {
 }
 
 
+
 void ov96_021F9E3C(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021F9E5C(void) {
@@ -38496,130 +30273,66 @@ void ov96_021F9E5C(void) {
 }
 
 
+
 void ov96_021F9FE8(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // mov r3, #0
     // str r3, [sp]
-    // add r5, r0, #0
     // str r3, [sp, #4]
-    // add r4, r1, #0
     // str r3, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #1
-    // add r2, r5, #0
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0x9c, 1, r0, 0);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #1
-    // add r2, r5, #0
-    // mov r3, #4
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadCharData
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadCharData(0x9c, 1, r5, 4);
 }
+
 
 
 void ov96_021FA020(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // mov r3, #0
     // str r3, [sp]
-    // add r5, r0, #0
     // str r3, [sp, #4]
-    // add r4, r1, #0
     // str r3, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #2
-    // add r2, r5, #0
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0x9c, 2, r0, 0);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #3
-    // add r2, r5, #0
-    // mov r3, #1
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0x9c, 3, r5, 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #4
-    // add r2, r5, #0
-    // mov r3, #2
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0x9c, 4, r5, 2);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #2
-    // add r2, r5, #0
-    // mov r3, #4
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0x9c, 2, r5, 4);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #3
-    // add r2, r5, #0
-    // mov r3, #5
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0x9c, 3, r5, 5);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #4
-    // add r2, r5, #0
-    // mov r3, #6
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0x9c, 4, r5, 6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0x9c
-    // mov r1, #5
-    // add r2, r5, #0
-    // mov r3, #7
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
-    // mov r0, #0x20
+    GfGfxLoader_LoadScrnData(0x9c, 5, r5, 7);
     // str r0, [sp]
-    // mov r0, #0x9c
-    // add r2, r1, #0
-    // add r3, r1, #0
     // str r4, [sp, #4]
-    // bl GfGfxLoader_GXLoadPal
-    // mov r0, #0x20
+    GfGfxLoader_GXLoadPal(0x9c, 0, 0, 0);
     // str r0, [sp]
-    // mov r1, #0
-    // mov r0, #0x9c
-    // mov r2, #4
-    // add r3, r1, #0
     // str r4, [sp, #4]
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0x9c, 0, 4, 0);
 }
+
 
 
 void ov96_021FA0E8(void) {
@@ -38886,9 +30599,10 @@ void ov96_021FA0E8(void) {
 }
 
 
+
 void ov96_021FA340(void) {
-    ov96_021FBE44();
 }
+
 
 
 void ov96_021FA34C(void) {
@@ -39296,6 +31010,7 @@ void ov96_021FA34C(void) {
 }
 
 
+
 void ov96_021FA6D0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -39409,6 +31124,7 @@ void ov96_021FA6D0(void) {
 }
 
 
+
 void ov96_021FA7BC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r4, r3, #0
@@ -39466,6 +31182,7 @@ void ov96_021FA7BC(void) {
     // _021FA838: .word ov96_0221DC28
     // TODO: decompile
 }
+
 
 
 void ov96_021FA83C(void) {
@@ -39771,47 +31488,24 @@ void ov96_021FA83C(void) {
 }
 
 
+
 void ov96_021FAAE0(void) {
-    // push {r4, r5}
     // add r4, r0, r1
-    // mov r3, #2
     // sub r1, r0, r1
-    // mov r0, #6
     // ldrsh r3, [r2, r3]
     // ldrsh r0, [r2, r0]
-    // mov r5, #0
     // add r0, r3, r0
-    // cmp r1, r0
-    // bgt _021FAAFC
-    // cmp r3, r4
-    // bgt _021FAAFC
-    // mov r5, #1
-    // add r0, r5, #0
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021FAB04(void) {
-    // push {r3, r4}
-    // mov r2, #2
     // ldrsh r3, [r1, r2]
-    // mov r2, #6
     // ldrsh r1, [r1, r2]
-    // mov r4, #0
     // add r1, r3, r1
-    // cmp r0, r1
-    // blt _021FAB1E
     // sub r0, #0x18
-    // cmp r0, r1
-    // bge _021FAB1E
-    // mov r4, #1
-    // add r0, r4, #0
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021FAB24(void) {
@@ -40301,234 +31995,100 @@ void ov96_021FAB24(void) {
 }
 
 
+
 void ov96_021FAF1C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
     // str r0, [sp]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r5, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r4, r0, #0
-    // bl ov96_021E8A20
-    // mov r7, #0x23
-    // add r3, r0, #0
-    // mov r1, #0
-    // add r2, r5, #0
-    // mov r0, #1
-    // lsl r7, r7, #4
-    // add r6, r2, #0
+    PokeathlonCourse_GetDataCopyArea();
+    ov96_021E8A20();
     // add r6, #0xe0
     // ldrh r6, [r6]
     // strh r6, [r3]
-    // add r6, r2, #0
     // add r6, #0xe8
     // ldrb r6, [r6]
-    // cmp r6, #0
-    // beq _021FAF5E
-    // ldrh r6, [r3, #0x10]
-    // cmp r6, #0
-    // bne _021FAF5E
-    // strh r0, [r3, #0x10]
+    *((u16*)(r0 + 0x10)) = 1;
     // ldr r6, [r5, r7]
-    // strh r6, [r3, #0xa]
-    // add r1, r1, #1
+    *((u16*)(r0 + 0xa)) = *((u16*)(r0 + 0x10));
     // add r2, #0x6c
-    // add r3, r3, #2
-    // cmp r1, #3
-    // blt _021FAF40
     // ldr r0, [sp]
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021FAFF0
-    // add r0, r4, #0
+    ov96_021E5F24(1, (0 + 1), r5, (r0 + 2));
     // add r0, #0x28
-    // mov r7, #0
-    // bl ov96_021E8A20
+    ov96_021E8A20(r4);
     // str r0, [sp, #8]
-    // add r0, r4, #0
     // add r0, #0x50
-    // bl ov96_021E8A20
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl ov96_021E8A20
-    // mov r2, #0x12
+    ov96_021E8A20(r4);
+    ov96_021E8A20(r4);
     // ldrh r1, [r0]
-    // add r0, r0, #2
     // strh r1, [r5]
-    // add r5, r5, #2
-    // sub r2, r2, #1
-    // bne _021FAF90
-    // mov r0, #0
     // ldr r5, [sp, #8]
     // str r0, [sp, #4]
     // add r4, #0x50
-    // add r0, r4, #0
-    // bl ov96_021E8A20
-    // add r6, r0, #0
-    // mov r1, #0
-    // add r2, r6, #0
-    // add r3, r5, #0
+    ov96_021E8A20(r4, (0x12 - 1));
     // ldrh r0, [r2]
-    // add r1, r1, #1
-    // add r2, r2, #2
-    // strh r0, [r3, #4]
-    // add r3, r3, #2
-    // cmp r1, #3
-    // blt _021FAFB2
-    // ldrb r0, [r6, #9]
-    // cmp r0, #0
-    // beq _021FAFCC
-    // add r0, r7, #1
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
+    *((u16*)(r5 + 4)) = r0;
     // ldr r0, [sp, #4]
     // add r4, #0x28
-    // add r0, r0, #1
-    // add r5, r5, #6
     // str r0, [sp, #4]
-    // cmp r0, #4
-    // blt _021FAFA4
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetParticipantCount
-    // cmp r7, r0
-    // bne _021FAFEA
+    PokeathlonCourse_GetParticipantCount((((r7 + 1) << 0x18) + 1), (0 + 1), (r0 + 2), (r5 + 2));
     // ldr r0, [sp, #8]
-    // mov r1, #1
     // str r1, [r0]
     // ldr r0, [sp]
-    // bl ov96_021FB400
+    ov96_021FB400(1);
     // ldr r0, [sp]
-    // bl ov96_021FB0F4
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021FB0F4();
 }
 
 
+
 void ov96_021FAFFC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0xa0
     // str r0, [sp]
-    // add r7, r1, #0
-    // mov r0, #0
     // add r1, sp, #0x10
     // str r1, [sp, #8]
     // str r0, [sp, #4]
     // add r1, sp, #4
-    // strh r0, [r1, #8]
-    // strh r0, [r1, #0xa]
-    // add r2, r0, #1
-    // mov r1, #0xc
+    *((u16*)(r1 + 8)) = 0;
+    *((u16*)(r1 + 0xa)) = 0;
     // add r3, sp, #4
     // mul r1, r2
     // add r2, r3, r1
-    // lsr r1, r0, #0x1f
     // add r1, r0, r1
-    // lsl r1, r1, #0x17
-    // lsr r1, r1, #0x18
     // add r1, r7, r1
-    // ldrb r6, [r1, #0x1c]
-    // lsr r5, r0, #0x1f
-    // lsl r4, r0, #0x1f
     // sub r4, r4, r5
-    // mov r1, #0x1f
     // ror r4, r1
     // add r1, r5, r4
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x16
-    // add r4, r6, #0
     // asr r4, r1
-    // mov r1, #0xf
     // and r1, r4
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // strh r1, [r2, #8]
-    // mov r1, #0
-    // strh r0, [r2, #0xa]
-    // str r1, [r2, #4]
-    // cmp r0, #0
-    // ble _021FB088
-    // ldrh r4, [r2, #8]
-    // ldrh r5, [r2, #0xa]
-    // ldr r3, [r3, #4]
-    // ldrh r6, [r3, #8]
-    // cmp r6, r4
-    // bls _021FB06A
-    // ldr r4, [r3]
-    // str r2, [r4, #4]
-    // ldr r4, [r3]
+    *((u16*)((0 + 1) + 8)) = ((0xf << 0x18) >> 0x18);
+    *((u16*)((0 + 1) + 0xa)) = 0;
+    *((u32*)((0 + 1) + 4)) = 0;
+    *((u32*)(*((u32*)*((u32*)(r3 + 4))) + 4)) = (0 + 1);
     // str r4, [r2]
-    // str r3, [r2, #4]
+    *((u32*)((0 + 1) + 4)) = *((u32*)(r3 + 4));
     // str r2, [r3]
-    // b _021FB088
-    // cmp r6, r4
-    // bne _021FB082
-    // ldrh r6, [r3, #0xa]
-    // cmp r6, r5
-    // bls _021FB082
-    // ldr r4, [r3]
-    // str r2, [r4, #4]
-    // ldr r4, [r3]
+    *((u32*)(*((u32*)*((u32*)(r3 + 4))) + 4)) = (0 + 1);
     // str r4, [r2]
-    // str r3, [r2, #4]
+    *((u32*)((0 + 1) + 4)) = *((u32*)(r3 + 4));
     // str r2, [r3]
-    // b _021FB088
-    // add r1, r1, #1
-    // cmp r1, r0
-    // blt _021FB054
-    // cmp r1, r0
-    // bne _021FB090
-    // str r2, [r3, #4]
+    *((u32*)(*((u32*)(r3 + 4)) + 4)) = (0 + 1);
     // str r3, [r2]
-    // add r0, r0, #1
-    // cmp r0, #0xc
-    // blt _021FB012
-    // mov r1, #0x8a
     // ldr r0, [sp]
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // mov r1, #1
-    // bl ov96_021FC2B4
+    ov96_021FC2B4((0 + 1), 1, (0 + 1), *((u32*)(r3 + 4)));
     // add r4, sp, #4
-    // mov r7, #0
-    // mov r5, #0x10
-    // ldr r4, [r4, #4]
-    // ldrh r0, [r4, #8]
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // cmp r6, #8
-    // bls _021FB0B8
-    // mov r6, #8
-    // mov r0, #0x8a
     // ldr r1, [sp]
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // ldrh r1, [r4, #0xa]
-    // add r2, r5, #0
-    // bl ov96_021FC248
-    // mov r0, #0x8a
+    ov96_021FC248((0x8a << 2), *((u16*)(*((u32*)(r4 + 4)) + 0xa)), 0x10);
     // ldr r1, [sp]
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // ldrh r1, [r4, #0xa]
-    // add r2, r6, #0
-    // bl ov96_021FC28C
-    // mov r0, #0x8a
+    ov96_021FC28C((0x8a << 2), *((u16*)(r4 + 0xa)), r6);
     // ldr r1, [sp]
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // ldrh r1, [r4, #0xa]
-    // mov r2, #1
-    // bl ov96_021FC2E0
-    // add r7, r7, #1
+    ov96_021FC2E0((0x8a << 2), *((u16*)(r4 + 0xa)), 1);
     // add r5, #0x20
-    // cmp r7, #0xc
-    // blt _021FB0AA
-    // add sp, #0xa0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FB0F4(void) {
@@ -40875,25 +32435,23 @@ void ov96_021FB0F4(void) {
 }
 
 
+
 void ov96_021FB400(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x11c
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // str r0, [sp, #8]
     // add r0, #0x28
-    // bl ov96_021E8A20
+    ov96_021E8A20();
     // str r0, [sp, #0x14]
-    // mov r0, #0
     // str r0, [sp, #0x10]
     // str r0, [sp, #0x18]
     // add r0, sp, #0x2c
     // str r0, [sp, #0x1c]
     // ldr r0, [sp, #0x10]
     // add r1, sp, #0x18
-    // strh r0, [r1, #8]
-    // strh r0, [r1, #0xa]
-    // strh r0, [r1, #0xc]
-    // strh r0, [r1, #0xe]
+    *((u16*)(r1 + 8)) = 0;
+    *((u16*)(r1 + 0xa)) = 0;
+    *((u16*)(r1 + 0xc)) = 0;
+    *((u16*)(r1 + 0xe)) = 0;
     // str r0, [sp, #0x28]
     // ldr r0, [sp, #8]
     // add r0, #0x50
@@ -40901,336 +32459,148 @@ void ov96_021FB400(void) {
     // ldr r0, [sp, #0x10]
     // str r0, [sp, #4]
     // ldr r0, [sp, #8]
-    // bl ov96_021E8A20
+    ov96_021E8A20(0);
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #0xc]
     // ldr r1, [sp, #0xc]
     // ldr r0, [sp, #4]
     // add r5, sp, #0x18
     // add r7, r1, r0
-    // add r1, r7, #1
-    // mov r0, #0x14
-    // add r2, r1, #0
     // mul r2, r0
     // add r0, sp, #0x18
     // add r4, r0, r2
     // ldr r0, [sp]
     // ldrh r0, [r0]
-    // strh r0, [r4, #8]
+    *((u16*)(r4 + 8)) = 0x14;
     // ldr r0, [sp]
-    // ldrh r0, [r0, #0xa]
-    // strh r0, [r4, #0xc]
+    *((u16*)(r4 + 0xc)) = *((u16*)(0x14 + 0xa));
     // ldr r0, [sp]
-    // strh r7, [r4, #0xa]
-    // ldrh r0, [r0, #0x10]
-    // strh r0, [r4, #0xe]
-    // mov r0, #0
-    // str r0, [r4, #0x10]
-    // add r6, r0, #0
-    // str r0, [r4, #4]
-    // cmp r7, #0
-    // ble _021FB498
-    // ldrh r0, [r4, #0xe]
-    // ldr r5, [r5, #4]
-    // cmp r0, #0
-    // beq _021FB486
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_021FB514
-    // b _021FB48E
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_021FB56C
-    // cmp r0, #0
-    // bne _021FB498
-    // add r6, r6, #1
-    // cmp r6, r7
-    // blt _021FB474
-    // cmp r6, r7
-    // bne _021FB4A0
-    // str r4, [r5, #4]
+    *((u16*)(r4 + 0xa)) = r7;
+    *((u16*)(r4 + 0xe)) = *((u16*)(*((u16*)(0x14 + 0xa)) + 0x10));
+    *((u32*)(r4 + 0x10)) = 0;
+    *((u32*)(r4 + 4)) = 0;
+    ov96_021FB514(r4, *((u32*)(r5 + 4)), (r7 + 1));
+    ov96_021FB56C(r4, r5);
+    *((u32*)(r5 + 4)) = r4;
     // str r5, [r4]
     // ldr r0, [sp]
-    // add r0, r0, #2
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
     // str r0, [sp, #0xc]
-    // cmp r0, #3
-    // blt _021FB440
     // ldr r0, [sp, #8]
     // add r0, #0x28
     // str r0, [sp, #8]
     // ldr r0, [sp, #4]
-    // add r0, r0, #3
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x10]
-    // add r0, r0, #1
     // str r0, [sp, #0x10]
-    // cmp r0, #4
-    // blt _021FB434
-    // mov r7, #0
     // add r5, sp, #0x18
-    // mov r4, #1
-    // add r1, r7, #0
-    // add r6, r7, #0
     // ldr r0, [sp, #0x14]
     // add r0, r0, r1
-    // add r1, r1, #1
-    // strb r6, [r0, #0x1c]
-    // cmp r1, #6
-    // blt _021FB4D0
-    // ldr r5, [r5, #4]
-    // cmp r5, #0
-    // bne _021FB4E6
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // bne _021FB4F6
+    *((u8*)(((((r0 + 2) + 1) + 3) + 1) + 0x1c)) = 0;
+    GF_AssertFail(((((r0 + 2) + 1) + 3) + 1), (0 + 1));
     // add r0, r7, r4
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
-    // mov r4, #1
-    // b _021FB4FC
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // ldrh r1, [r5, #0xa]
     // ldr r0, [sp, #0x14]
-    // add r2, r7, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_021FB5C8
-    // add r6, r6, #1
-    // cmp r6, #0xc
-    // blt _021FB4DC
-    // add sp, #0x11c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021FB5C8(((1 + 1) << 0x18), ((*((u16*)(r5 + 0xa)) << 0x18) >> 0x18), ((*((u32*)(r5 + 0x10)) << 0x18) >> 0x18));
 }
+
 
 
 void ov96_021FB514(void) {
-    // ldrh r2, [r1, #0xe]
-    // cmp r2, #0
-    // beq _021FB556
-    // ldrh r3, [r0, #0xc]
-    // ldrh r2, [r1, #0xc]
-    // cmp r2, r3
-    // bls _021FB532
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)r1) + 4)) = r0;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(r0 + 4)) = r1;
     // str r0, [r1]
-    // mov r0, #1
-    // bx lr
-    // cmp r2, r3
-    // bne _021FB566
-    // ldrh r3, [r1, #0xa]
-    // ldrh r2, [r0, #0xa]
-    // cmp r3, r2
-    // bls _021FB550
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)r1) + 4)) = 1;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(1 + 4)) = r1;
     // str r0, [r1]
-    // mov r0, #1
-    // str r0, [r1, #0x10]
-    // bx lr
-    // mov r1, #1
-    // str r1, [r0, #0x10]
-    // b _021FB566
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(r1 + 0x10)) = 1;
+    *((u32*)(1 + 0x10)) = 1;
+    *((u32*)(*((u32*)1) + 4)) = 1;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(1 + 4)) = 1;
     // str r0, [r1]
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021FB56C(void) {
-    // ldrh r3, [r0, #8]
-    // ldrh r2, [r1, #8]
-    // cmp r2, r3
-    // bhs _021FB584
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)r1) + 4)) = r0;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(r0 + 4)) = r1;
     // str r0, [r1]
-    // mov r0, #1
-    // bx lr
-    // cmp r2, r3
-    // bne _021FB5C2
-    // ldrh r3, [r0, #0xc]
-    // ldrh r2, [r1, #0xc]
-    // cmp r2, r3
-    // bls _021FB5A0
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)r1) + 4)) = 1;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(1 + 4)) = r1;
     // str r0, [r1]
-    // mov r0, #1
-    // bx lr
-    // cmp r2, r3
-    // bne _021FB5C2
-    // ldrh r3, [r1, #0xa]
-    // ldrh r2, [r0, #0xa]
-    // cmp r3, r2
-    // bls _021FB5BE
-    // ldr r2, [r1]
-    // str r0, [r2, #4]
-    // ldr r2, [r1]
+    *((u32*)(*((u32*)r1) + 4)) = 1;
     // str r2, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(1 + 4)) = r1;
     // str r0, [r1]
-    // mov r0, #1
-    // str r0, [r1, #0x10]
-    // bx lr
-    // mov r1, #1
-    // str r1, [r0, #0x10]
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r1 + 0x10)) = 1;
+    *((u32*)(1 + 0x10)) = 1;
 }
+
 
 
 void ov96_021FB5C8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #0xc
-    // blo _021FB5D8
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // beq _021FB5E0
-    // cmp r6, #0xc
-    // bls _021FB5E4
-    // bl GF_AssertFail
-    // lsr r7, r4, #0x1f
-    // lsl r3, r4, #0x1f
+    GF_AssertFail();
+    GF_AssertFail();
     // sub r3, r3, r7
-    // mov r2, #0x1f
     // ror r3, r2
     // add r2, r7, r3
-    // lsl r2, r2, #0x18
-    // lsl r0, r4, #0x17
-    // lsr r2, r2, #0x16
-    // add r3, r6, #0
     // lsl r3, r2
-    // lsl r2, r3, #0x18
     // add r5, #0x1c
-    // lsr r1, r0, #0x18
     // ldrb r0, [r5, r1]
-    // lsr r2, r2, #0x18
     // orr r0, r2
     // strb r0, [r5, r1]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FB60C(void) {
-    // push {r3, r4}
-    // mov r4, #0
-    // mov r1, #0x42
-    // add r3, r4, #0
-    // lsl r1, r1, #2
     // ldr r2, [r0, r1]
-    // cmp r2, #4
-    // bne _021FB624
-    // add r3, r3, #1
     // add r0, #0x6c
-    // cmp r3, #3
-    // blt _021FB616
-    // cmp r3, #3
-    // bne _021FB62A
-    // mov r4, #1
-    // add r0, r4, #0
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_021FB630(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
     // str r0, [sp, #8]
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _021FB6B0
+    ov96_021E5F24();
     // ldr r0, [sp, #8]
-    // bl PokeathlonCourse_GetDataCopyArea
-    // add r4, r0, #0
+    PokeathlonCourse_GetDataCopyArea();
     // ldr r0, [sp, #8]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #8]
-    // bl PokeathlonCourse_GetParticipantCount
+    PokeathlonCourse_GetParticipantCount();
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x10]
-    // cmp r0, #4
-    // bge _021FB6B0
-    // mov r1, #0x28
     // add r4, #0x50
     // mul r1, r0
     // add r0, r4, r1
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0xc]
-    // bl ov96_021E8A20
-    // add r7, r0, #0
+    ov96_021E8A20(0x28);
     // ldr r1, [sp, #0x10]
     // ldr r0, [sp, #0x14]
-    // mov r4, #0
     // sub r1, r1, r0
-    // lsl r0, r1, #1
     // add r5, r1, r0
     // ldr r0, [sp, #0x10]
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // lsl r0, r4, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // lsl r0, r5, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
     // ldr r0, [sp, #8]
     // ldr r1, [sp, #0x18]
-    // add r2, r7, #0
-    // add r3, r6, #0
-    // bl ov96_021FBA3C
-    // add r4, r4, #1
-    // add r5, r5, #1
-    // cmp r4, #3
-    // blt _021FB680
+    ov96_021FBA3C(((r5 << 0x18) >> 0x18), r0, (((r1 << 1) << 0x18) >> 0x18));
     // ldr r0, [sp, #0xc]
     // add r0, #0x28
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x10]
-    // add r0, r0, #1
     // str r0, [sp, #0x10]
-    // cmp r0, #4
-    // blt _021FB666
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FB6B4(void) {
@@ -41245,6 +32615,7 @@ void ov96_021FB6B4(void) {
     // _021FB6C4: .word ov96_021FC0FC
     // TODO: decompile
 }
+
 
 
 void ov96_021FB6C8(void) {
@@ -41337,6 +32708,7 @@ void ov96_021FB6C8(void) {
 }
 
 
+
 void ov96_021FB784(void) {
     // push {r4, r5, r6}
     // sub sp, #0xc
@@ -41375,6 +32747,7 @@ void ov96_021FB784(void) {
 }
 
 
+
 void ov96_021FB7C8(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -41405,6 +32778,7 @@ void ov96_021FB7C8(void) {
     // _021FB804: .word ov96_0221C3FC
     // TODO: decompile
 }
+
 
 
 void ov96_021FB808(void) {
@@ -41483,6 +32857,7 @@ void ov96_021FB808(void) {
 }
 
 
+
 void ov96_021FB8B4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -41515,6 +32890,7 @@ void ov96_021FB8B4(void) {
     // _021FB8F8: .word 0x40590000
     // TODO: decompile
 }
+
 
 
 void ov96_021FB8FC(void) {
@@ -41582,81 +32958,28 @@ void ov96_021FB8FC(void) {
 }
 
 
+
 void ov96_021FB994(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // mov r0, #0x8b
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // mov r1, #0x1e
-    // lsl r0, r0, #0x10
-    // lsr r6, r0, #0x10
-    // add r0, r6, #0
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r6, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r1, r0, #0x18
-    // mov r0, #0x64
+    _s32_div_f((((0x8b << 2) << 0x10) >> 0x10), 0x1e);
+    _s32_div_f(r6, 0x1e);
     // mul r0, r1
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0x3c
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0xeb
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    _s32_div_f(0x64, 0x1e);
+    _s32_div_f(r4, 0x3c);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0x3c
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0xed
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    Sprite_SetAnimCtrlSeq((0xeb << 2), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0x3c);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // mov r0, #0xee
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    Sprite_SetAnimCtrlSeq((0xed << 2), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0xf
-    // lsl r0, r0, #6
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    Sprite_SetAnimCtrlSeq((0xee << 2), (((r1 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r6, 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq((0xf << 6), (((r0 << 0x18) >> 0x18) + 1));
 }
+
 
 
 void ov96_021FBA3C(void) {
@@ -41834,6 +33157,7 @@ void ov96_021FBA3C(void) {
 }
 
 
+
 void ov96_021FBBB4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -41952,6 +33276,7 @@ void ov96_021FBBB4(void) {
 }
 
 
+
 void ov96_021FBCB8(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #4
@@ -42063,129 +33388,68 @@ void ov96_021FBCB8(void) {
 }
 
 
+
 void ov96_021FBDBC(void) {
-    // mov r1, #0x23
-    // lsl r1, r1, #4
     // ldr r2, [r0, r1]
-    // add r3, r0, #0
-    // add r2, r2, #1
     // str r2, [r0, r1]
-    // mov r2, #0
-    // add r1, r3, #0
     // add r1, #0xe8
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // bne _021FBDE0
-    // mov r1, #0x8b
-    // lsl r1, r1, #2
     // ldr r2, [r0, r1]
-    // add r2, r2, #1
     // str r2, [r0, r1]
-    // bx lr
-    // add r2, r2, #1
     // add r3, #0x6c
-    // cmp r2, #3
-    // blt _021FBDCA
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021FBDEC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // mov r0, #0xa
+    _s32_div_f(0x1e);
+    _s32_div_f(r5, 0x1e);
     // mul r0, r1
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // mov r1, #0x1e
+    _s32_div_f(0xa, 0x1e);
     // mul r1, r0
-    // add r0, r1, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // mov r1, #0x1e
+    _s32_div_f(0x1e, 0xa);
     // mul r1, r4
     // add r0, r1, r0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FBE20(void) {
-    // push {r3, r4, r5, lr}
-    // lsl r5, r0, #4
-    // add r0, r1, #0
-    // add r1, r5, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r0, #0
-    // add r1, r4, #0
-    // add r2, r5, #0
-    // bl MIi_CpuClearFast
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Heap_Alloc(r1, (r0 << 4));
+    MIi_CpuClearFast(0, r0, r5);
 }
+
 
 
 void ov96_021FBE3C(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_021FBE44(void) {
-    // lsl r1, r1, #4
     // add r0, r0, r1
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021FBE4C(void) {
-    ((u32*)r0)[4] = r1;
-    ((u32*)r0)[8] = r2;
 }
+
 
 
 void ov96_021FBE54(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // cmp r1, #0
-    // beq _021FBE82
-    // mov r1, #1
     // str r1, [r4]
-    // str r1, [r4, #0xc]
-    // ldr r0, [r4, #4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // ldr r0, [r4, #8]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // ldr r0, [r4, #8]
-    // bl ov96_021EB5B8
-    // mov r1, #0
-    // bl Sprite_SetAnimActiveFlag
-    // pop {r4, pc}
-    // mov r1, #0
+    *((u32*)(r0 + 0xc)) = 1;
+    ov96_021EB52C(*((u32*)(r0 + 4)), 1, 1);
+    ov96_021EB52C(*((u32*)(r4 + 8)), 1, 0);
+    ov96_021EB5B8(*((u32*)(r4 + 8)));
+    Sprite_SetAnimActiveFlag(0);
     // str r1, [r4]
-    // str r1, [r4, #0xc]
-    // ldr r0, [r4, #4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // mov r1, #0
-    // ldr r0, [r4, #8]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0xc)) = 0;
+    ov96_021EB52C(*((u32*)(r4 + 4)), 0, 0);
+    ov96_021EB52C(*((u32*)(r4 + 8)), 0, 0);
 }
+
 
 
 void ov96_021FBE9C(void) {
@@ -42195,6 +33459,7 @@ void ov96_021FBE9C(void) {
 }
 
 
+
 void ov96_021FBEA0(void) {
     // ldr r0, [r0, #0xc]
     // bx lr
@@ -42202,98 +33467,55 @@ void ov96_021FBEA0(void) {
 }
 
 
+
 void ov96_021FBEA4(void) {
-    *((u32*)(r0 + 0xc)) = 0;
-    ov96_021EB5B8(*((u32*)(r0 + 8)));
-    ov96_021EB52C(*((u32*)(r4 + 4)), 1, 0);
-    ov96_021EB52C(*((u32*)(r4 + 8)), 1, 1);
-    Sprite_SetAnimActiveFlag(r5, 1);
-    Sprite_SetAnimCtrlSeq(r5, 1);
 }
+
 
 
 void ov96_021FBEDC(void) {
-    ov96_021EB5B8(*((u32*)(r0 + 4)));
-    Sprite_SetMatrix(r4);
-    ov96_021EB5B8(*((u32*)(r5 + 8)));
-    Sprite_SetMatrix(r4);
 }
+
 
 
 void ov96_021FBEFC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r1, #0
-    // cmp r0, #0
-    // beq _021FBF58
-    // ldr r0, [r5, #4]
-    // bl ov96_021EB5B8
-    // add r6, r0, #0
-    // ldr r0, [r5, #8]
-    // bl ov96_021EB5B8
+    ov96_021EB5B8(*((u32*)(r0 + 4)));
+    ov96_021EB5B8(*((u32*)(r5 + 8)));
     // str r0, [sp]
-    // add r0, r6, #0
-    // bl Sprite_GetMatrixPtr
-    // add r3, r0, #0
+    Sprite_GetMatrixPtr(r6);
     // add r2, sp, #4
     // ldmia r3!, {r0, r1}
-    // add r7, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
     // ldr r1, [sp, #8]
-    // lsl r0, r4, #0xc
     // add r0, r1, r0
     // str r0, [sp, #8]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl Sprite_SetMatrix
+    Sprite_SetMatrix(r6, r2, r0);
     // ldr r0, [sp]
-    // add r1, r7, #0
-    // bl Sprite_SetMatrix
-    // mov r0, #0x82
+    Sprite_SetMatrix(r7);
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // blt _021FBF58
-    // add r0, r5, #0
-    // mov r1, #0
-    // bl ov96_021FBE54
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021FBE54(r5, 0);
 }
 
 
+
 void ov96_021FBF5C(void) {
-    // push {r4, lr}
-    // ldr r0, [r0, #4]
-    // add r4, r1, #0
-    // bl ov96_021EB5B8
-    // bl Sprite_GetMatrixPtr
-    // mov r1, #0x40
-    // strh r1, [r4, #4]
-    // mov r1, #0x10
-    // strh r1, [r4, #6]
-    // ldr r2, [r0]
+    ov96_021EB5B8(*((u32*)(r0 + 4)));
+    Sprite_GetMatrixPtr();
+    *((u16*)(r4 + 4)) = 0x40;
+    *((u16*)(r4 + 6)) = 0x10;
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
     // asr r1, r1, #0xc
     // sub r1, #0x20
     // strh r1, [r4]
-    // ldr r1, [r0, #4]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // sub r0, #0x10
-    // strh r0, [r4, #2]
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u16*)(r4 + 2)) = (r0 >> 0x14);
 }
+
 
 
 void ov96_021FBF90(void) {
@@ -42371,6 +33593,7 @@ void ov96_021FBF90(void) {
 }
 
 
+
 void ov96_021FC028(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // ldr r1, _021FC058 ; =0x00000C24
@@ -42398,77 +33621,41 @@ void ov96_021FC028(void) {
 }
 
 
+
 void ov96_021FC05C(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5]
-    // bl ov96_021FBE3C
-    // add r4, r4, #1
+    ov96_021FBE3C(*((u32*)r0));
     // add r5, #8
-    // cmp r4, #3
-    // blt _021FC064
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Heap_Free(r6);
 }
 
 
+
 void ov96_021FC07C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
     // str r0, [sp]
-    // mov r0, #0
-    // add r5, r1, #0
     // str r0, [sp, #4]
-    // mov r4, #0
     // ldr r0, [sp]
-    // add r1, r4, #0
-    // ldr r0, [r0]
-    // bl ov96_021FBE44
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // mov r1, #0x65
-    // mov r2, #2
-    // bl ov96_021EB4F4
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // mov r1, #0x67
-    // mov r2, #6
-    // bl ov96_021EB4F4
-    // add r2, r0, #0
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // bl ov96_021FBE4C
-    // add r4, r4, #1
-    // cmp r4, #4
-    // blt _021FC08A
+    ov96_021FBE44(*((u32*)0), 0);
+    ov96_021EB4F4(r5, 0x65, 2);
+    ov96_021EB4F4(r5, 0x67, 6);
+    ov96_021FBE4C(r6, r7, r0);
     // ldr r0, [sp]
     // add r0, #8
     // str r0, [sp]
     // ldr r0, [sp, #4]
-    // add r0, r0, #1
     // str r0, [sp, #4]
-    // cmp r0, #3
-    // blt _021FC088
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FC0D0(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_021FC0E4(void) {
     // add r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021FC0E8(void) {
@@ -42481,9 +33668,10 @@ void ov96_021FC0E8(void) {
 }
 
 
+
 void ov96_021FC0F4(void) {
-    r0 = r0 << 8;
 }
+
 
 
 void ov96_021FC0FC(void) {
@@ -42524,21 +33712,14 @@ void ov96_021FC0FC(void) {
 }
 
 
+
 void ov96_021FC144(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bl LCRandom
-    // mov r1, #3
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
+    LCRandom();
+    _s32_div_f(3);
     // add r4, #0x18
-    // lsr r2, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xe4
-    // bl ReadWholeNarcMemberByIdPair
-    // pop {r4, pc}
-    // TODO: decompile
+    ReadWholeNarcMemberByIdPair(r4, 0xe4, ((r1 << 0x18) >> 0x18));
 }
+
 
 
 void ov96_021FC164(void) {
@@ -42563,727 +33744,366 @@ void ov96_021FC164(void) {
 }
 
 
+
 void ov96_021FC188(void) {
-    // push {r3, r4, r5, lr}
-    // mov r1, #0x91
-    // lsl r1, r1, #2
-    // add r5, r0, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r2, #0x91
-    // mov r0, #0
-    // add r1, r4, #0
-    // lsl r2, r2, #2
-    // bl MIi_CpuClearFast
+    Heap_Alloc((0x91 << 2));
+    MIi_CpuClearFast(0, r0, (0x91 << 2));
     // str r5, [r4]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FC1A8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r7, #0x62
-    // lsl r7, r7, #2
     // str r0, [sp]
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r6, r7, #4
-    // mov r0, #0x61
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // bl Sprite_Delete
+    Sprite_Delete((0x61 << 2));
     // ldr r0, [r5, r7]
-    // bl Sprite_Delete
+    Sprite_Delete();
     // ldr r0, [r5, r6]
-    // bl Sprite_Delete
-    // add r4, r4, #1
+    Sprite_Delete();
     // add r5, #0x10
-    // cmp r4, #0xc
-    // blt _021FC1B6
-    // mov r1, #0x52
     // ldr r0, [sp]
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // bl sub_0200AEB0
-    // mov r1, #0x53
+    sub_0200AEB0((0x52 << 2));
     // ldr r0, [sp]
-    // lsl r1, r1, #2
     // ldr r0, [r0, r1]
-    // bl sub_0200B0A8
-    // mov r6, #0x13
+    sub_0200B0A8((0x53 << 2));
     // ldr r4, [sp]
-    // mov r5, #0
-    // lsl r6, r6, #4
     // ldr r0, [r4, r6]
-    // bl Destroy2DGfxResObjMan
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #6
-    // blt _021FC1F4
+    Destroy2DGfxResObjMan();
     // ldr r0, [sp]
-    // ldr r0, [r0, #4]
-    // bl SpriteList_Delete
+    SpriteList_Delete(*((u32*)(r0 + 4)));
     // ldr r0, [sp]
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
 }
+
 
 
 void ov96_021FC214(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl ov96_021FC320
-    // add r0, r5, #0
-    // bl ov96_021FC404
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov96_021FC450
-    // add r0, r5, #0
-    // mov r1, #0
+    ov96_021FC320();
+    ov96_021FC404(r5);
+    ov96_021FC450(r5, r4);
     // add r0, #8
-    // add r2, r1, #0
-    // bl G2dRenderer_SetSubSurfaceCoords
+    G2dRenderer_SetSubSurfaceCoords(r5, 0, 0);
     // add r5, #8
-    // mov r2, #3
-    // add r0, r5, #0
-    // mov r1, #0
-    // lsl r2, r2, #0x12
-    // bl G2dRenderer_SetMainSurfaceCoords
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    G2dRenderer_SetMainSurfaceCoords(r5, 0, (3 << 0x12));
 }
+
 
 
 void ov96_021FC248(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // mov r0, #0
     // str r0, [sp, #8]
-    // lsl r0, r2, #0xc
     // str r0, [sp]
-    // mov r0, #0xe
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
-    // lsl r4, r1, #4
-    // mov r0, #0x61
     // add r1, r5, r4
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
-    // mov r0, #0x62
+    Sprite_SetMatrix((0x61 << 2));
     // add r1, r5, r4
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
-    // mov r0, #0x63
+    Sprite_SetMatrix((0x62 << 2));
     // add r1, r5, r4
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
     // add r1, sp, #0
-    // bl Sprite_SetMatrix
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    Sprite_SetMatrix((0x63 << 2));
 }
+
 
 
 void ov96_021FC28C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r4, r2, #0
-    // beq _021FC29A
-    // cmp r4, #8
-    // bls _021FC29E
-    // bl GF_AssertFail
-    // lsl r0, r6, #4
+    GF_AssertFail();
     // add r1, r5, r0
-    // mov r0, #0x63
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
     // add r4, #0xf
-    // add r1, r4, #0
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq((0x63 << 2), r4);
 }
+
 
 
 void ov96_021FC2B4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r7, #0x62
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r6, #0
-    // lsl r7, r7, #2
-    // mov r0, #0x61
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // add r1, r4, #0
-    // bl Sprite_SetDrawFlag
+    Sprite_SetDrawFlag((0x61 << 2), r1);
     // ldr r0, [r5, r7]
-    // add r1, r4, #0
-    // bl Sprite_SetDrawFlag
-    // add r6, r6, #1
+    Sprite_SetDrawFlag(r4);
     // add r5, #0x10
-    // cmp r6, #0xc
-    // blt _021FC2C0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FC2E0(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // lsl r4, r1, #4
-    // mov r0, #0x61
     // add r1, r5, r4
-    // lsl r0, r0, #2
-    // add r6, r2, #0
     // ldr r0, [r1, r0]
-    // add r1, r6, #0
-    // bl Sprite_SetDrawFlag
-    // mov r0, #0x62
+    Sprite_SetDrawFlag((0x61 << 2), r2);
     // add r1, r5, r4
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // add r1, r6, #0
-    // bl Sprite_SetDrawFlag
-    // mov r0, #0x63
+    Sprite_SetDrawFlag((0x62 << 2), r6);
     // add r1, r5, r4
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // add r1, r6, #0
-    // bl Sprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag((0x63 << 2), r6);
 }
+
 
 
 void ov96_021FC314(void) {
-    SpriteList_RenderAndAnimateSprites();
 }
+
 
 
 void ov96_021FC320(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // add r1, r5, #0
-    // ldr r2, [r5]
-    // mov r0, #0x24
     // add r1, #8
-    // bl G2dRenderer_Init
-    // mov r7, #0x13
-    // str r0, [r5, #4]
-    // mov r6, #0
-    // add r4, r5, #0
-    // lsl r7, r7, #4
-    // ldr r2, [r5]
-    // mov r0, #1
-    // add r1, r6, #0
-    // bl Create2DGfxResObjMan
+    G2dRenderer_Init(0x24, r0, *((u32*)r0));
+    *((u32*)(r5 + 4)) = r0;
+    Create2DGfxResObjMan(1, 0, *((u32*)r5));
     // str r0, [r4, r7]
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #6
-    // blt _021FC33C
-    // mov r1, #0x80
     // str r1, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // add r1, #0xb0
     // str r0, [sp, #8]
     // ldr r0, [r5, r1]
-    // mov r1, #0x9c
-    // mov r2, #0x18
-    // mov r3, #0
-    // bl AddCharResObjFromNarc
-    // mov r1, #0x52
-    // lsl r1, r1, #2
+    AddCharResObjFromNarc(*((u32*)r5), 0x9c, 0x18, 0);
     // str r0, [r5, r1]
-    // mov r1, #0x80
     // str r1, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r5]
     // add r1, #0xb4
     // str r0, [sp, #0xc]
     // ldr r0, [r5, r1]
-    // mov r1, #0x9c
-    // mov r2, #0x15
-    // mov r3, #0
-    // bl AddPlttResObjFromNarc
-    // mov r1, #0x53
-    // lsl r1, r1, #2
+    AddPlttResObjFromNarc(*((u32*)r5), 0x9c, 0x15, 0);
     // str r0, [r5, r1]
-    // mov r1, #0x80
     // str r1, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // add r1, #0xb8
     // str r0, [sp, #8]
     // ldr r0, [r5, r1]
-    // mov r1, #0x9c
-    // mov r2, #0x17
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // mov r1, #0x15
-    // lsl r1, r1, #4
+    AddCellOrAnimResObjFromNarc(*((u32*)r5), 0x9c, 0x17, 0);
     // str r0, [r5, r1]
-    // mov r1, #0x80
     // str r1, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // add r1, #0xbc
     // str r0, [sp, #8]
     // ldr r0, [r5, r1]
-    // mov r1, #0x9c
-    // mov r2, #0x16
-    // mov r3, #0
-    // bl AddCellOrAnimResObjFromNarc
-    // mov r1, #0x55
-    // lsl r1, r1, #2
+    AddCellOrAnimResObjFromNarc(*((u32*)r5), 0x9c, 0x16, 0);
     // str r0, [r5, r1]
     // sub r1, #0xc
     // ldr r0, [r5, r1]
-    // bl sub_0200ADA4
-    // mov r0, #0x53
-    // lsl r0, r0, #2
+    sub_0200ADA4((0x55 << 2));
     // ldr r0, [r5, r0]
-    // bl sub_0200AF94
-    // bl sub_02074490
-    // add r1, r0, #0
-    // mov r0, #0
+    sub_0200AF94((0x53 << 2));
+    sub_02074490();
     // str r0, [sp]
-    // ldr r0, [r5]
-    // mov r2, #5
     // str r0, [sp, #4]
-    // mov r0, #0x14
-    // mov r3, #0x60
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0x14, r0, 5, 0x60);
 }
 
 
+
 void ov96_021FC404(void) {
-    // push {lr}
-    // sub sp, #0x2c
-    // mov r1, #0x80
-    // add r2, r1, #0
     // str r1, [sp]
     // sub r2, #0x81
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
-    // add r3, r1, #0
     // str r2, [sp, #0x10]
     // add r3, #0xb0
     // ldr r3, [r0, r3]
     // str r3, [sp, #0x14]
-    // add r3, r1, #0
     // add r3, #0xb4
     // ldr r3, [r0, r3]
     // str r3, [sp, #0x18]
-    // add r3, r1, #0
     // add r3, #0xb8
     // ldr r3, [r0, r3]
     // str r3, [sp, #0x1c]
-    // add r3, r1, #0
     // add r3, #0xbc
     // ldr r3, [r0, r3]
     // str r3, [sp, #0x20]
     // str r2, [sp, #0x24]
     // str r2, [sp, #0x28]
-    // add r2, r1, #0
     // add r2, #0xe0
     // add r0, r0, r2
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl CreateSpriteResourcesHeader
-    // add sp, #0x2c
-    // pop {pc}
-    // TODO: decompile
+    CreateSpriteResourcesHeader(0x80, 0x80, 0x80);
 }
+
 
 
 void ov96_021FC450(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x54
     // str r0, [sp]
-    // add r7, r1, #0
     // ldr r1, [sp]
-    // mov r0, #0x14
-    // ldr r1, [r1]
-    // bl NARC_New
+    NARC_New(0x14, *((u32*)r1));
     // str r0, [sp, #0x14]
     // ldr r0, [sp]
-    // mov r1, #1
-    // ldr r0, [r0]
-    // lsl r1, r1, #0xc
-    // bl Heap_AllocAtEnd
+    Heap_AllocAtEnd(*((u32*)r0), (1 << 0xc));
     // ldr r1, [sp]
-    // mov r3, #0x16
     // str r0, [sp, #0x10]
-    // lsl r3, r3, #4
-    // add r2, r1, #0
     // add r2, r2, r3
     // add r0, sp, #0x24
-    // mov r3, #2
-    // bl ov96_021FC5E0
-    // mov r0, #2
-    // lsl r0, r0, #8
+    ov96_021FC5E0(r1, 2);
     // str r0, [sp, #8]
-    // mov r0, #0x10
     // str r0, [sp, #4]
     // ldr r0, [sp, #8]
     // ldr r5, [sp]
-    // mov r4, #0
     // str r0, [sp, #0x18]
     // str r0, [sp, #0x1c]
     // add r0, sp, #0x24
-    // bl Sprite_CreateAffine
-    // mov r1, #0x61
-    // lsl r1, r1, #2
+    Sprite_CreateAffine(0x10);
     // str r0, [r5, r1]
-    // add r0, r1, #0
     // ldr r0, [r5, r0]
-    // mov r1, #1
-    // bl Sprite_SetAnimActiveFlag
-    // mov r0, #0x61
-    // lsl r0, r0, #2
+    Sprite_SetAnimActiveFlag((0x61 << 2), 1);
     // ldr r0, [r5, r0]
-    // add r1, r4, #0
-    // bl Sprite_SetAnimCtrlSeq
+    Sprite_SetAnimCtrlSeq((0x61 << 2), r4);
     // add r0, sp, #0x24
-    // bl Sprite_CreateAffine
-    // mov r1, #0x62
-    // lsl r1, r1, #2
+    Sprite_CreateAffine();
     // str r0, [r5, r1]
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0x62
-    // lsl r0, r0, #2
+    _s32_div_f(r4, 3);
     // ldr r0, [r5, r0]
     // add r1, #0xc
-    // bl Sprite_SetAnimCtrlSeq
+    Sprite_SetAnimCtrlSeq((0x62 << 2), r0);
     // add r0, sp, #0x24
-    // bl Sprite_CreateAffine
-    // mov r1, #0x63
-    // lsl r1, r1, #2
+    Sprite_CreateAffine();
     // str r0, [r5, r1]
-    // cmp r4, #8
-    // bge _021FC4F8
-    // add r0, r1, #0
-    // add r1, r4, #0
     // ldr r0, [r5, r0]
     // add r1, #0x10
-    // bl Sprite_SetAnimCtrlSeq
-    // ldrh r0, [r7, #2]
+    Sprite_SetAnimCtrlSeq((0x63 << 2), r4);
     // ldrh r6, [r7]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0xc]
-    // cmp r6, #0
-    // bne _021FC52A
-    // mov r0, #0x61
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // mov r0, #0x62
-    // lsl r0, r0, #2
+    Sprite_SetDrawFlag((0x61 << 2), 0);
     // ldr r0, [r5, r0]
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // mov r0, #0x63
-    // lsl r0, r0, #2
+    Sprite_SetDrawFlag((0x62 << 2), 0);
     // ldr r0, [r5, r0]
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // mov r0, #0x61
-    // lsl r0, r0, #2
+    Sprite_SetDrawFlag((0x63 << 2), 0);
     // ldr r0, [r5, r0]
-    // mov r1, #2
-    // bl Sprite_SetDrawPriority
-    // mov r0, #0x62
-    // lsl r0, r0, #2
+    Sprite_SetDrawPriority((0x61 << 2), 2);
     // ldr r0, [r5, r0]
-    // mov r1, #3
-    // bl Sprite_SetDrawPriority
-    // mov r0, #0x63
-    // lsl r0, r0, #2
+    Sprite_SetDrawPriority((0x62 << 2), 3);
     // ldr r0, [r5, r0]
-    // mov r1, #1
-    // bl Sprite_SetDrawPriority
+    Sprite_SetDrawPriority((0x63 << 2), 1);
     // ldr r0, [sp]
     // ldr r2, [sp, #4]
-    // add r1, r4, #0
-    // bl ov96_021FC248
-    // mov r0, #0x63
-    // lsl r0, r0, #2
+    ov96_021FC248(r4);
     // ldr r0, [r5, r0]
-    // mov r1, #1
-    // bl Sprite_SetDrawFlag
+    Sprite_SetDrawFlag((0x63 << 2), 1);
     // ldr r2, [sp, #0xc]
-    // add r0, r6, #0
-    // mov r1, #0
-    // bl GetMonIconNaixEx
-    // add r1, r0, #0
+    GetMonIconNaixEx(r6, 0);
     // ldr r0, [sp, #0x14]
     // ldr r2, [sp, #0x10]
-    // bl NARC_ReadWholeMember
+    NARC_ReadWholeMember(r0);
     // ldr r0, [sp, #0x10]
     // add r1, sp, #0x20
-    // bl NNS_G2dGetUnpackedBGCharacterData
+    NNS_G2dGetUnpackedBGCharacterData();
     // ldr r1, [sp, #0xc]
-    // add r0, r6, #0
-    // mov r2, #0
-    // bl GetMonIconPaletteEx
-    // add r0, r0, #3
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
+    GetMonIconPaletteEx(r6, 0);
     // ldr r0, [sp, #0x20]
     // ldr r1, [sp, #0x18]
-    // ldr r0, [r0, #0x14]
-    // bl DC_FlushRange
+    DC_FlushRange(*((u32*)(((r0 + 3) << 0x18) + 0x14)));
     // ldr r0, [sp, #0x20]
     // ldr r1, [sp, #8]
-    // ldr r0, [r0, #0x14]
     // ldr r2, [sp, #0x1c]
-    // bl GXS_LoadOBJ
-    // mov r0, #0x61
-    // lsl r0, r0, #2
+    GXS_LoadOBJ(*((u32*)(r0 + 0x14)));
     // ldr r0, [r5, r0]
-    // add r1, r6, #0
-    // bl Sprite_SetPaletteOverride
-    // mov r0, #2
+    Sprite_SetPaletteOverride((0x61 << 2), r6);
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #8
     // add r0, r1, r0
     // str r0, [sp, #8]
     // ldr r0, [sp, #4]
-    // add r4, r4, #1
     // add r0, #0x20
     // add r5, #0x10
-    // add r7, r7, #4
     // str r0, [sp, #4]
-    // cmp r4, #0xc
-    // bge _021FC5CE
-    // b _021FC498
     // ldr r0, [sp, #0x10]
-    // bl Heap_Free
+    Heap_Free((2 << 8));
     // ldr r0, [sp, #0x14]
-    // bl NARC_Delete
-    // add sp, #0x54
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    NARC_Delete();
 }
+
 
 
 void ov96_021FC5E0(void) {
-    // push {r3, r4}
-    // ldr r2, [r1, #4]
-    // mov r4, #0
     // str r2, [r0]
-    // mov r2, #0x16
-    // lsl r2, r2, #4
     // add r2, r1, r2
-    // str r2, [r0, #4]
-    // mov r2, #0xf
-    // lsl r2, r2, #0x10
-    // str r2, [r0, #8]
-    // mov r2, #0xe
-    // lsl r2, r2, #0xc
-    // str r2, [r0, #0xc]
-    // mov r2, #1
-    // str r4, [r0, #0x10]
-    // lsl r2, r2, #0xc
-    // str r2, [r0, #0x14]
-    // str r2, [r0, #0x18]
-    // str r2, [r0, #0x1c]
-    // strh r4, [r0, #0x20]
-    // mov r2, #2
-    // str r2, [r0, #0x24]
-    // str r3, [r0, #0x28]
-    // ldr r1, [r1]
-    // str r1, [r0, #0x2c]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = (0x16 << 4);
+    *((u32*)(r0 + 8)) = (0xf << 0x10);
+    *((u32*)(r0 + 0xc)) = (0xe << 0xc);
+    *((u32*)(r0 + 0x10)) = 0;
+    *((u32*)(r0 + 0x14)) = (1 << 0xc);
+    *((u32*)(r0 + 0x18)) = (1 << 0xc);
+    *((u32*)(r0 + 0x1c)) = (1 << 0xc);
+    *((u16*)(r0 + 0x20)) = 0;
+    *((u32*)(r0 + 0x24)) = 2;
+    *((u32*)(r0 + 0x28)) = r3;
+    *((u32*)(r0 + 0x2c)) = *((u32*)r1);
 }
+
 
 
 void ov96_021FC618(void) {
-    Heap_Alloc(0x84);
-    MI_CpuFill8(0, 0x84);
 }
+
 
 
 void ov96_021FC630(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
     // str r0, [sp, #4]
     // str r2, [sp, #8]
-    // mov r0, #0
-    // add r7, r1, #0
     // str r0, [sp, #0xc]
     // ldr r1, [sp, #0xc]
-    // mov r0, #0x2c
-    // add r2, r1, #0
     // mul r2, r0
     // ldr r0, [sp, #4]
-    // mov r4, #0
     // add r6, r0, r2
-    // lsl r0, r4, #3
     // add r5, r6, r0
-    // mov r0, #0xa
     // str r0, [sp]
     // ldr r1, [sp, #8]
-    // add r0, r7, #0
-    // mov r2, #1
-    // mov r3, #0x6a
-    // bl ov96_021EB3E4
-    // str r0, [r5, #4]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // ldr r0, [r5, #4]
-    // mov r1, #5
-    // bl ov96_021EB630
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #5
-    // blo _021FC64C
+    ov96_021EB3E4(r1, 1, 0x6a);
+    *((u32*)(r5 + 4)) = r0;
+    ov96_021EB52C(1, 0);
+    ov96_021EB630(*((u32*)(r5 + 4)), 5);
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0xc]
-    // cmp r0, #3
-    // blo _021FC63E
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FC690(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_021FC698(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #3
-    // blo _021FC6A8
-    // bl GF_AssertFail
-    // mov r0, #0x2c
+    GF_AssertFail();
     // mul r0, r4
     // add r4, r5, r0
-    // ldr r0, [r4, #0x28]
-    // lsl r0, r0, #3
     // add r5, r4, r0
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // bne _021FC6E6
-    // mov r1, #1
-    // ldr r0, [r5, #4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // ldr r0, [r5, #4]
-    // mov r1, #1
-    // bl ov96_021EB564
-    // ldr r0, [r5, #4]
-    // add r1, r6, #0
-    // bl ov96_021EB588
-    // mov r0, #1
+    ov96_021EB52C(*((u32*)(r5 + 4)), 1, 1);
+    ov96_021EB564(*((u32*)(r5 + 4)), 1);
+    ov96_021EB588(*((u32*)(r5 + 4)), r6);
     // str r0, [r5]
-    // ldr r0, [r4, #0x28]
-    // mov r1, #5
-    // add r0, r0, #1
-    // bl _u32_div_f
-    // str r1, [r4, #0x28]
-    // pop {r4, r5, r6, pc}
-    // bl GF_AssertFail
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    _u32_div_f((*((u32*)(r4 + 0x28)) + 1), 5);
+    *((u32*)(r4 + 0x28)) = r1;
+    GF_AssertFail();
 }
 
 
+
 void ov96_021FC6EC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #3
-    // blo _021FC6FE
-    // bl GF_AssertFail
-    // mov r0, #0x2c
+    GF_AssertFail();
     // mul r0, r4
     // add r0, r5, r0
     // str r0, [sp]
-    // mov r4, #0
-    // lsl r7, r6, #0xc
     // ldr r0, [sp]
-    // lsl r1, r4, #3
     // add r5, r0, r1
     // ldr r0, [r0, r1]
-    // cmp r0, #0
-    // beq _021FC748
-    // ldr r0, [r5, #4]
-    // bl ov96_021EB594
-    // add r6, r0, #0
+    ov96_021EB594(*((u32*)(r5 + 4)), (0 << 3));
     // add r3, sp, #4
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
-    // add r1, r2, #0
     // str r0, [r3]
     // ldr r0, [sp, #8]
     // add r0, r0, r7
     // str r0, [sp, #8]
-    // ldr r0, [r5, #4]
-    // bl ov96_021EB588
-    // ldr r0, [r5, #4]
-    // bl ov96_021EB57C
-    // cmp r0, #0
-    // bne _021FC748
-    // add r0, r5, #0
-    // bl ov96_021FC758
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #5
-    // blo _021FC70A
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EB588(*((u32*)(r5 + 4)), r3, r3);
+    ov96_021EB57C(*((u32*)(r5 + 4)));
+    ov96_021FC758(r5);
 }
+
 
 
 void ov96_021FC758(void) {
@@ -43296,6 +34116,7 @@ void ov96_021FC758(void) {
     // _021FC764: .word ov96_021EB52C
     // TODO: decompile
 }
+
 
 
 void ov96_021FC768(void) {
@@ -43961,11 +34782,10 @@ void ov96_021FC768(void) {
 }
 
 
+
 u32 ov96_021FCD74(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EB5BC(*((u32*)(r0 + 0x18)));
-    return 1;
 }
+
 
 
 void ov96_021FCD84(void) {
@@ -44032,6 +34852,7 @@ void ov96_021FCD84(void) {
     // _021FCE0C: .word 0x00000129
     // TODO: decompile
 }
+
 
 
 void ov96_021FCE10(void) {
@@ -44115,9 +34936,10 @@ void ov96_021FCE10(void) {
 }
 
 
+
 void ov96_021FCEE0(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_021FCF00(void) {
@@ -44277,104 +35099,47 @@ void ov96_021FCF00(void) {
 }
 
 
+
 void ov96_021FD060(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // mov r3, #0
-    // str r3, [sp]
-    // str r3, [sp, #4]
-    // add r4, r0, #0
-    // str r3, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r1, #1
-    // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xb2
-    // bl GfGfxLoader_LoadCharData
-    // mov r3, #0
     // str r3, [sp]
     // str r3, [sp, #4]
     // str r3, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xb2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xb2, 1, *((u32*)r0), 0);
+    // str r3, [sp]
+    // str r3, [sp, #4]
+    // str r3, [sp, #8]
+    // str r0, [sp, #0xc]
+    GfGfxLoader_LoadScrnData(0xb2, 2, *((u32*)r4), 0);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r1, #3
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xb2
-    // mov r3, #1
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xb2, 3, *((u32*)r4), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xb2
-    // mov r3, #2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
-    // mov r0, #0x40
+    GfGfxLoader_LoadScrnData(0xb2, 4, *((u32*)r4), 2);
     // str r0, [sp]
-    // ldr r0, [r4, #0x14]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xb2
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r0, #0x3e
-    // lsl r0, r0, #4
+    GfGfxLoader_GXLoadPal(0xb2, 0, 0, 0);
     // ldr r0, [r4, r0]
-    // bl ov96_02200068
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_02200068((0x3e << 4));
 }
+
 
 
 void ov96_021FD0E4(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // mov r1, #1
     // str r1, [sp]
-    // mov r1, #0xb2
-    // mov r2, #0x11
-    // mov r3, #0x68
-    // add r4, r0, #0
-    // bl ov96_021EB2BC
-    // mov r0, #1
+    ov96_021EB2BC(0xb2, 0x11, 0x68);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #0xb2
-    // mov r2, #0xe
-    // mov r3, #0x68
-    // bl ov96_021EB2F4
-    // add r0, r4, #0
-    // mov r1, #0xb2
-    // mov r2, #0x10
-    // mov r3, #0x68
-    // bl ov96_021EB334
-    // add r0, r4, #0
-    // mov r1, #0xb2
-    // mov r2, #0xf
-    // mov r3, #0x68
-    // bl ov96_021EB36C
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EB2F4(r4, 0xb2, 0xe, 0x68);
+    ov96_021EB334(r4, 0xb2, 0x10, 0x68);
+    ov96_021EB36C(r4, 0xb2, 0xf, 0x68);
 }
+
 
 
 void ov96_021FD128(void) {
@@ -44575,6 +35340,7 @@ void ov96_021FD128(void) {
 }
 
 
+
 void ov96_021FD2E0(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x2c
@@ -44700,114 +35466,45 @@ void ov96_021FD2E0(void) {
 }
 
 
+
 void ov96_021FD3EC(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _021FD40A
-    // cmp r0, #1
-    // beq _021FD41C
-    // cmp r0, #2
-    // beq _021FD434
-    // b _021FD464
-    // add r0, r5, #0
-    // bl ov96_021E637C
-    // cmp r0, #0
-    // beq _021FD464
+    ov96_021E637C(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021FD464
-    // add r0, r5, #0
-    // bl ov96_021FD4D0
-    // add r0, r5, #0
-    // bl ov96_021FDB64
-    // cmp r0, #0
-    // beq _021FD464
+    ov96_021FD4D0(r5);
+    ov96_021FDB64(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _021FD464
-    // add r0, r5, #0
-    // bl ov96_021FD4D0
-    // add r0, r5, #0
-    // bl ov96_021E667C
-    // cmp r0, #0
-    // beq _021FD464
-    // mov r0, #6
+    ov96_021FD4D0(r5);
+    ov96_021E667C(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x14]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    PokeathlonCourse_SetStateField07(r5, 2);
 }
+
 
 
 void ov96_021FD46C(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r6, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r5, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // bne _021FD48E
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _021FD48A
-    // mov r0, #1
+    IsPaletteFadeFinished();
     // strb r0, [r4]
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // add r0, r6, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // beq _021FD49C
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r4, #0
+    ov96_021E5F24(r6);
     // add r5, #0x30
-    // ldr r2, [r5, #0x7c]
-    // lsl r1, r4, #0x18
     // asr r3, r2, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r2, r3
     // asr r2, r3, #0xc
-    // add r3, r5, #0
     // add r3, #0x9c
     // ldrb r3, [r3]
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // lsl r3, r3, #0xa
     // add r2, r2, r3
-    // lsl r2, r2, #0x10
-    // lsr r2, r2, #0x10
-    // bl PokeathlonCourse_SetField5E0_AtIndex
-    // add r4, r4, #1
+    PokeathlonCourse_SetField5E0_AtIndex(r6, ((0 << 0x18) >> 0x18), ((*((u32*)(r5 + 0x7c)) << 0x10) >> 0x10), (r5 << 0xa));
     // add r5, #0xd4
-    // cmp r4, #4
-    // blt _021FD4A0
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_021FD4D0(void) {
@@ -45456,6 +36153,7 @@ void ov96_021FD4D0(void) {
 }
 
 
+
 void ov96_021FDA30(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -45614,6 +36312,7 @@ void ov96_021FDA30(void) {
 }
 
 
+
 void ov96_021FDB64(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -45738,6 +36437,7 @@ void ov96_021FDB64(void) {
     // _021FDC78: .word gSystem + 0x40
     // TODO: decompile
 }
+
 
 
 void ov96_021FDC7C(void) {
@@ -45914,56 +36614,31 @@ void ov96_021FDC7C(void) {
 }
 
 
+
 void ov96_021FDE08(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r7, r2, #0
-    // mov r2, #0xd4
     // add r0, #0x30
     // mul r2, r1
     // add r4, r0, r2
-    // add r0, r4, #0
     // add r0, #0x8b
     // ldrb r0, [r0]
-    // add r6, r3, #0
-    // cmp r0, #3
-    // blo _021FDE26
-    // bl GF_AssertFail
-    // add r0, r4, #0
+    GF_AssertFail(r4, 0xd4);
     // add r0, #0x8b
     // ldrb r0, [r0]
-    // mov r1, #0x50
-    // lsl r0, r0, #2
     // ldr r5, [r4, r0]
     // add r0, sp, #4
     // str r0, [sp]
     // add r4, #0x80
-    // ldr r2, [r4]
-    // add r0, r5, #0
     // asr r3, r2, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r2, r3
     // asr r2, r3, #0xc
     // add r3, sp, #8
-    // bl ov96_021EB0A4
+    ov96_021EB0A4(r5, 0x50, *((u32*)r4), (r3 >> 0x14));
     // str r6, [sp]
     // ldr r1, [sp, #8]
     // ldr r2, [sp, #4]
-    // add r0, r5, #0
-    // lsl r1, r1, #0xc
-    // lsl r2, r2, #0xc
-    // add r3, r7, #0
-    // bl ov96_021EB0CC
-    // cmp r0, #0
-    // beq _021FDE66
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EB0CC(r5, (r1 << 0xc), (r2 << 0xc), r7);
 }
+
 
 
 void ov96_021FDE6C(void) {
@@ -45977,6 +36652,7 @@ void ov96_021FDE6C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov96_021FDE7C(void) {
@@ -46776,21 +37452,16 @@ void ov96_021FDE7C(void) {
 }
 
 
+
 void ov96_021FE538(void) {
-    // add r0, r2, #0
     // add r0, #0xa9
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _021FE54E
-    // add r0, r2, #0
     // add r0, #0xa9
     // ldrb r0, [r0]
     // add r2, #0xa9
-    // sub r0, r0, #1
     // strb r0, [r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_021FE550(void) {
@@ -47442,6 +38113,7 @@ void ov96_021FE550(void) {
 }
 
 
+
 void ov96_021FEAEC(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x14
@@ -47553,6 +38225,7 @@ void ov96_021FEAEC(void) {
     // _021FEBEC: .word 0x000004D8
     // TODO: decompile
 }
+
 
 
 void ov96_021FEBF0(void) {
@@ -47710,6 +38383,7 @@ void ov96_021FEBF0(void) {
 }
 
 
+
 void ov96_021FED3C(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -47846,6 +38520,7 @@ void ov96_021FED3C(void) {
 }
 
 
+
 void ov96_021FEE60(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -47898,145 +38573,75 @@ void ov96_021FEE60(void) {
 }
 
 
+
 void ov96_021FEECC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x2c
     // ldr r7, [sp, #0x40]
     // str r0, [sp, #0x10]
     // ldr r6, [sp, #0x44]
-    // mov r0, #0
     // str r0, [sp, #0x14]
-    // add r4, r1, #0
-    // ldrb r0, [r3, #0x1d]
-    // lsl r1, r7, #1
     // mov ip, r2
     // asr r0, r1
-    // mov r1, #3
     // and r0, r1
-    // add r1, r4, #0
     // add r1, #0x9f
-    // lsl r0, r0, #0x18
     // ldrb r1, [r1]
-    // lsr r0, r0, #0x18
     // ldr r5, [sp, #0x50]
-    // cmp r1, r0
-    // beq _021FEF0A
-    // add r1, r4, #0
     // add r1, #0x9f
     // strb r0, [r1]
-    // add r1, r4, #0
     // ldr r0, [sp, #0x14]
     // add r1, #0xa0
     // strb r0, [r1]
-    // mov r0, #1
     // str r0, [sp, #0x14]
     // add r0, sp, #0x18
     // str r0, [sp]
     // mov r1, ip
-    // ldr r2, [r1]
-    // lsl r0, r6, #2
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
     // mov r2, ip
-    // ldr r3, [r2, #4]
     // ldr r0, [r4, r0]
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
     // asr r1, r1, #0xc
     // asr r2, r2, #0xc
     // add r3, sp, #0x1c
-    // bl ov96_021EB0A4
+    ov96_021EB0A4((r6 << 2), (r1 >> 0x14), (*((u32*)r1) >> 0x14), *((u32*)(*((u32*)r1) + 4)));
     // ldr r0, [sp, #0x1c]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0x20]
     // ldr r0, [sp, #0x18]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0x24]
-    // mov r0, #0
     // str r0, [sp, #0x28]
-    // add r0, r4, #0
     // add r0, #0x9f
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _021FEFB0
-    // cmp r0, #1
-    // beq _021FEF56
-    // cmp r0, #2
-    // beq _021FEF82
-    // add sp, #0x2c
-    // pop {r4, r5, r6, r7, pc}
     // ldr r0, [sp, #0x4c]
-    // cmp r0, #0
-    // beq _021FEF66
     // ldr r0, [sp, #0x54]
-    // cmp r0, #0
-    // beq _021FEF66
-    // mov r1, #1
-    // b _021FEF68
-    // mov r1, #0
     // ldr r0, [sp, #0x48]
     // str r6, [sp]
     // str r0, [sp, #4]
     // str r1, [sp, #8]
     // ldr r0, [sp, #0x10]
-    // add r1, r4, #0
     // add r2, sp, #0x20
-    // add r3, r7, #0
     // str r5, [sp, #0xc]
-    // bl ov96_021FEBF0
-    // add sp, #0x2c
-    // pop {r4, r5, r6, r7, pc}
+    ov96_021FEBF0(r4, r4, r7);
     // ldr r0, [sp, #0x4c]
-    // cmp r0, #0
-    // beq _021FEF92
     // ldr r0, [sp, #0x54]
-    // cmp r0, #0
-    // beq _021FEF92
-    // mov r1, #1
-    // b _021FEF94
-    // mov r1, #0
     // ldr r0, [sp, #0x48]
-    // add r2, r7, #0
     // str r0, [sp]
-    // add r0, r1, #0
     // orr r0, r5
     // str r0, [sp, #4]
-    // add r0, r4, #0
     // add r1, sp, #0x20
-    // add r3, r6, #0
     // str r5, [sp, #8]
-    // bl ov96_021FED3C
-    // add sp, #0x2c
-    // pop {r4, r5, r6, r7, pc}
+    ov96_021FED3C(r4, 0, r7, r6);
     // ldr r0, [sp, #0x14]
-    // cmp r0, #0
-    // beq _021FEFDA
     // ldr r0, [sp, #0x4c]
-    // cmp r0, #0
-    // beq _021FEFC6
     // ldr r0, [sp, #0x54]
-    // cmp r0, #0
-    // beq _021FEFC6
-    // mov r0, #1
-    // b _021FEFC8
-    // mov r0, #0
     // orr r0, r5
     // str r0, [sp]
     // ldr r3, [sp, #0x48]
-    // add r0, r4, #0
-    // add r1, r7, #0
-    // add r2, r6, #0
     // str r5, [sp, #4]
-    // bl ov96_021FEE60
-    // ldr r0, [r4, #0x70]
+    ov96_021FEE60(r4, r7, r6);
     // add r1, sp, #0x20
-    // bl ov96_021EB588
-    // add sp, #0x2c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EB588(*((u32*)(r4 + 0x70)));
 }
+
 
 
 void ov96_021FEFE8(void) {
@@ -48132,6 +38737,7 @@ void ov96_021FEFE8(void) {
     // _021FF0B8: .word 0x40240000
     // TODO: decompile
 }
+
 
 
 void ov96_021FF0BC(void) {
@@ -48266,105 +38872,62 @@ void ov96_021FF0BC(void) {
 }
 
 
+
 void ov96_021FF1E0(void) {
-    // push {r4, r5}
-    // ldr r3, [r1]
-    // lsl r1, r3, #0x18
-    // lsr r4, r1, #0x18
     // asr r1, r3, #8
-    // lsl r1, r1, #0x18
     // asr r3, r3, #0x10
-    // lsr r1, r1, #0x18
-    // lsl r3, r3, #0x10
-    // lsr r5, r3, #0x10
     // add r1, #0x20
     // str r4, [r2]
-    // cmp r4, #3
-    // bne _021FF208
     // sub r5, #0x20
-    // str r5, [r2, #4]
+    *((u32*)(r2 + 4)) = ((*((u32*)r1) << 0x10) >> 0x10);
     // sub r1, #0x20
-    // str r1, [r2, #8]
-    // pop {r4, r5}
-    // bx lr
-    // cmp r4, #1
-    // bne _021FF210
-    // mov r3, #0x30
-    // b _021FF212
-    // mov r3, #0x20
-    // lsr r4, r3, #1
+    *((u32*)(r2 + 8)) = (((*((u32*)r1) << 0x18) << 0x18) >> 0x18);
     // sub r5, r5, r4
     // sub r4, r1, r4
-    // str r5, [r2, #4]
-    // str r4, [r2, #8]
+    *((u32*)(r2 + 4)) = ((*((u32*)r1) << 0x10) >> 0x10);
+    *((u32*)(r2 + 8)) = (0x20 >> 1);
     // add r1, r5, r3
-    // str r1, [r2, #0xc]
-    // str r4, [r2, #0x10]
-    // str r1, [r2, #0x14]
+    *((u32*)(r2 + 0xc)) = (((*((u32*)r1) << 0x18) << 0x18) >> 0x18);
+    *((u32*)(r2 + 0x10)) = (0x20 >> 1);
+    *((u32*)(r2 + 0x14)) = (((*((u32*)r1) << 0x18) << 0x18) >> 0x18);
     // add r1, r4, r3
-    // str r1, [r2, #0x18]
-    // str r5, [r2, #0x1c]
-    // str r1, [r2, #0x20]
-    // ldr r3, [r2, #4]
-    // ldr r1, [r2, #8]
-    // str r3, [r2, #0x24]
-    // str r1, [r2, #0x28]
-    // ldr r3, [r2, #0xc]
-    // ldr r1, [r2, #0x10]
-    // str r3, [r2, #0x2c]
-    // str r1, [r2, #0x30]
-    // ldr r3, [r2, #0xc]
-    // ldr r1, [r2, #0x10]
-    // str r3, [r2, #0x34]
-    // str r1, [r2, #0x38]
-    // ldr r3, [r2, #0x14]
-    // ldr r1, [r2, #0x18]
-    // str r3, [r2, #0x3c]
-    // str r1, [r2, #0x40]
-    // ldr r3, [r2, #0x14]
-    // ldr r1, [r2, #0x18]
-    // str r3, [r2, #0x44]
-    // str r1, [r2, #0x48]
-    // ldr r3, [r2, #0x1c]
-    // ldr r1, [r2, #0x20]
-    // str r3, [r2, #0x4c]
-    // str r1, [r2, #0x50]
-    // ldr r3, [r2, #0x1c]
-    // ldr r1, [r2, #0x20]
-    // str r3, [r2, #0x54]
-    // str r1, [r2, #0x58]
-    // ldr r3, [r2, #4]
-    // ldr r1, [r2, #8]
-    // str r3, [r2, #0x5c]
-    // str r1, [r2, #0x60]
-    // ldr r1, [r2, #0x28]
+    *((u32*)(r2 + 0x18)) = (((*((u32*)r1) << 0x18) << 0x18) >> 0x18);
+    *((u32*)(r2 + 0x1c)) = ((*((u32*)r1) << 0x10) >> 0x10);
+    *((u32*)(r2 + 0x20)) = (((*((u32*)r1) << 0x18) << 0x18) >> 0x18);
+    *((u32*)(r2 + 0x24)) = *((u32*)(r2 + 4));
+    *((u32*)(r2 + 0x28)) = *((u32*)(r2 + 8));
+    *((u32*)(r2 + 0x2c)) = *((u32*)(r2 + 0xc));
+    *((u32*)(r2 + 0x30)) = *((u32*)(r2 + 0x10));
+    *((u32*)(r2 + 0x34)) = *((u32*)(r2 + 0xc));
+    *((u32*)(r2 + 0x38)) = *((u32*)(r2 + 0x10));
+    *((u32*)(r2 + 0x3c)) = *((u32*)(r2 + 0x14));
+    *((u32*)(r2 + 0x40)) = *((u32*)(r2 + 0x18));
+    *((u32*)(r2 + 0x44)) = *((u32*)(r2 + 0x14));
+    *((u32*)(r2 + 0x48)) = *((u32*)(r2 + 0x18));
+    *((u32*)(r2 + 0x4c)) = *((u32*)(r2 + 0x1c));
+    *((u32*)(r2 + 0x50)) = *((u32*)(r2 + 0x20));
+    *((u32*)(r2 + 0x54)) = *((u32*)(r2 + 0x1c));
+    *((u32*)(r2 + 0x58)) = *((u32*)(r2 + 0x20));
+    *((u32*)(r2 + 0x5c)) = *((u32*)(r2 + 4));
+    *((u32*)(r2 + 0x60)) = *((u32*)(r2 + 8));
     // sub r1, r1, r0
-    // str r1, [r2, #0x28]
-    // ldr r1, [r2, #0x30]
+    *((u32*)(r2 + 0x28)) = *((u32*)(r2 + 0x28));
     // sub r1, r1, r0
-    // str r1, [r2, #0x30]
-    // ldr r1, [r2, #0x34]
+    *((u32*)(r2 + 0x30)) = *((u32*)(r2 + 0x30));
     // add r1, r1, r0
-    // str r1, [r2, #0x34]
-    // ldr r1, [r2, #0x3c]
+    *((u32*)(r2 + 0x34)) = *((u32*)(r2 + 0x34));
     // add r1, r1, r0
-    // str r1, [r2, #0x3c]
-    // ldr r1, [r2, #0x48]
+    *((u32*)(r2 + 0x3c)) = *((u32*)(r2 + 0x3c));
     // add r1, r1, r0
-    // str r1, [r2, #0x48]
-    // ldr r1, [r2, #0x50]
+    *((u32*)(r2 + 0x48)) = *((u32*)(r2 + 0x48));
     // add r1, r1, r0
-    // str r1, [r2, #0x50]
-    // ldr r1, [r2, #0x54]
+    *((u32*)(r2 + 0x50)) = *((u32*)(r2 + 0x50));
     // sub r1, r1, r0
-    // str r1, [r2, #0x54]
-    // ldr r1, [r2, #0x5c]
+    *((u32*)(r2 + 0x54)) = *((u32*)(r2 + 0x54));
     // sub r0, r1, r0
-    // str r0, [r2, #0x5c]
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r2 + 0x5c)) = r0;
 }
+
 
 
 void ov96_021FF2A0(void) {
@@ -48726,186 +39289,93 @@ void ov96_021FF2A0(void) {
 }
 
 
+
 void ov96_021FF574(void) {
-    // push {r3, r4}
-    // ldr r3, [r1, #4]
-    // ldr r2, [r0]
-    // ldr r1, [r1, #8]
-    // lsl r3, r3, #0xc
-    // ldr r0, [r0, #4]
-    // lsl r4, r1, #0xc
-    // cmp r3, r2
-    // bge _021FF5A0
-    // mov r1, #1
-    // lsl r1, r1, #0x12
     // add r3, r3, r1
-    // cmp r2, r3
-    // bge _021FF5A0
-    // cmp r4, r0
-    // bge _021FF5A0
     // add r1, r4, r1
-    // cmp r0, r1
-    // bge _021FF5A0
-    // mov r0, #1
-    // pop {r3, r4}
-    // bx lr
-    // mov r0, #0
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_021FF5A8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1dc
     // str r1, [sp, #8]
     // ldr r1, [sp, #0x1f0]
-    // add r7, r3, #0
     // str r1, [sp, #0x1f0]
     // ldr r1, [sp, #0x1f4]
-    // add r6, r2, #0
     // str r1, [sp, #0x1f4]
     // add r1, sp, #0x14
     // add r1, #1
     // str r1, [sp]
     // add r1, sp, #0x14
     // str r1, [sp, #4]
-    // ldr r1, [r7]
     // add r2, sp, #0x164
     // add r3, sp, #0xec
-    // bl ov96_021FF0BC
-    // mov r4, #0
+    ov96_021FF0BC(*((u32*)r3));
     // str r4, [sp, #0x10]
     // add r0, sp, #0x14
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // ble _021FF604
     // add r5, sp, #0xec
-    // ldr r1, [r5]
-    // add r0, r6, #0
     // add r2, sp, #0x88
-    // bl ov96_021FF1E0
-    // add r0, r7, #0
+    ov96_021FF1E0(r6, *((u32*)r5));
     // add r1, sp, #0x88
-    // bl ov96_021FF574
-    // cmp r0, #0
-    // beq _021FF5F8
-    // mov r0, #1
+    ov96_021FF574(r7);
     // str r0, [sp, #0x10]
-    // b _021FF604
     // add r0, sp, #0x14
     // ldrb r0, [r0]
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, r0
-    // blt _021FF5DC
-    // mov r5, #0
     // str r5, [sp, #0xc]
     // add r0, sp, #0x14
-    // ldrb r0, [r0, #1]
-    // cmp r0, #0
-    // ble _021FF66C
     // add r4, sp, #0x164
-    // ldr r1, [r4]
-    // add r0, r6, #0
     // add r2, sp, #0x24
-    // bl ov96_021FF1E0
+    ov96_021FF1E0(r6, *((u32*)(r4 + 1)));
     // add r0, sp, #0x18
     // str r0, [sp]
     // ldr r1, [sp, #0x1f0]
-    // add r0, r7, #0
-    // add r2, r6, #0
     // add r3, sp, #0x24
-    // bl ov96_021FF2A0
-    // cmp r0, #0
-    // beq _021FF660
-    // cmp r0, #0xa
-    // blt _021FF644
+    ov96_021FF2A0(r7, r6);
     // ldr r2, [sp, #0x18]
     // ldr r1, [sp, #0x1f4]
     // str r2, [r1]
     // ldr r2, [sp, #0x1c]
-    // str r2, [r1, #4]
-    // mov r2, #0
-    // str r2, [r1, #8]
-    // b _021FF658
+    *((u32*)(r1 + 4)) = r2;
+    *((u32*)(r1 + 8)) = 0;
     // ldr r1, [sp, #8]
-    // cmp r0, r1
-    // beq _021FF658
     // ldr r2, [sp, #0x18]
     // ldr r1, [sp, #0x1f4]
     // str r2, [r1]
     // ldr r2, [sp, #0x1c]
-    // str r2, [r1, #4]
-    // mov r2, #0
-    // str r2, [r1, #8]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
     // str r0, [sp, #0xc]
-    // b _021FF66C
     // add r0, sp, #0x14
-    // ldrb r0, [r0, #1]
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, r0
-    // blt _021FF612
     // ldr r0, [sp, #0x10]
-    // lsl r1, r0, #8
     // ldr r0, [sp, #0xc]
     // add r0, r1, r0
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // add sp, #0x1dc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_021FF67C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // add r6, r2, #0
-    // add r0, r1, #0
-    // add r1, r4, #0
     // add r2, sp, #0
-    // add r7, r3, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r1, r0);
     // add r0, sp, #0
-    // bl VEC_Mag
-    // add r5, r0, #0
+    VEC_Mag();
     // mul r5, r0
     // add r0, sp, #0
-    // add r1, r6, #0
-    // bl VEC_DotProduct
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl VEC_Mag
-    // add r1, r0, #0
+    VEC_DotProduct(r6);
+    VEC_Mag(r6);
     // mul r1, r0
-    // add r0, r7, #0
     // mul r0, r7
     // sub r0, r1, r0
     // mul r0, r5
     // sub r0, r4, r0
-    // bl FX_Sqrt
-    // add r7, r0, #0
+    FX_Sqrt(r7, r0);
     // sub r0, r7, r4
-    // add r1, r5, #0
-    // bl FX_Div
-    // add r6, r0, #0
+    FX_Div(r5);
     // add r0, r4, r7
     // neg r0, r0
-    // add r1, r5, #0
-    // bl FX_Div
-    // cmp r6, r0
-    // bgt _021FF6D8
-    // add r0, r6, #0
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FX_Div(r5);
 }
+
 
 
 void ov96_021FF6DC(void) {
@@ -48947,36 +39417,22 @@ void ov96_021FF6DC(void) {
 }
 
 
+
 void ov96_021FF72C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r2, #0
-    // ldr r3, [r0]
-    // ldr r2, [r1]
     // add r2, r3, r2
     // str r2, [r5]
-    // ldr r4, [r1, #4]
-    // ldr r6, [r0, #4]
     // asr r3, r4, #0x1f
     // asr r1, r6, #0x1f
-    // add r0, r6, #0
-    // add r2, r4, #0
-    // bl _ll_mul
-    // mov r2, #2
-    // mov r3, #0
-    // lsl r2, r2, #0xa
+    _ll_mul(*((u32*)(r0 + 4)), *((u32*)(r1 + 4)), *((u32*)r0));
     // add r2, r0, r2
     // adc r1, r3
-    // lsl r0, r1, #0x14
-    // lsr r1, r2, #0xc
     // orr r1, r0
     // bmi _021FF760
     // add r0, r6, r4
-    // str r0, [r5, #4]
-    // pop {r4, r5, r6, pc}
-    // str r4, [r5, #4]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 4)) = (r1 << 0x14);
+    *((u32*)(r5 + 4)) = r4;
 }
+
 
 
 void ov96_021FF764(void) {
@@ -49394,174 +39850,73 @@ void ov96_021FF764(void) {
 }
 
 
+
 void ov96_021FFAEC(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
-    // add r3, r0, #0
-    // add r4, r2, #0
     // ldmia r5!, {r0, r1}
     // add r2, sp, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r5]
     // str r0, [r2]
-    // ldrb r0, [r3, #8]
-    // cmp r0, #1
-    // beq _021FFB10
-    // cmp r0, #2
-    // beq _021FFB1C
-    // cmp r0, #3
-    // beq _021FFB28
-    // b _021FFB34
-    // mov r0, #5
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0xe
     // sub r0, r1, r0
     // str r0, [sp, #4]
-    // b _021FFB38
-    // mov r0, #2
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0x10
     // sub r0, r1, r0
     // str r0, [sp, #4]
-    // b _021FFB38
-    // mov r0, #0xa
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0xe
     // sub r0, r1, r0
     // str r0, [sp, #4]
-    // b _021FFB38
-    // bl GF_AssertFail
-    // add r0, r4, #0
+    GF_AssertFail((0xa << 0xe), r0);
     // add r1, sp, #0
-    // bl ov96_021EB588
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov96_021EB588(r4);
 }
+
 
 
 void ov96_021FFB44(void) {
-    // push {r3, lr}
-    // ldrb r1, [r0, #0xb]
-    // cmp r1, #3
-    // bne _021FFB58
-    // mov r1, #0x96
-    // ldr r0, [r0, #4]
-    // lsl r1, r1, #2
-    // bl ov96_021EB630
-    // pop {r3, pc}
-    // ldrb r2, [r0, #0xa]
-    // mov r1, #0xa0
+    ov96_021EB630(*((u32*)(r0 + 4)), (0x96 << 2));
     // add r2, #0x20
     // sub r2, r1, r2
     // bpl _021FFB64
-    // mov r2, #0
     // asr r1, r2, #2
-    // lsr r1, r1, #0x1d
     // add r1, r2, r1
     // asr r1, r1, #3
-    // add r2, r1, #1
-    // mov r1, #0x1e
     // mul r1, r2
-    // ldr r0, [r0, #4]
-    // add r1, r1, #3
-    // bl ov96_021EB630
-    // pop {r3, pc}
-    // TODO: decompile
+    ov96_021EB630(*((u32*)(r0 + 4)), (0x1e + 3), ((0xa0 >> 0x1d) + 1));
 }
+
 
 
 void ov96_021FFB7C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // mov r0, #0xa8
     // sub r1, r0, r1
     // bpl _021FFB88
-    // mov r1, #0
     // asr r0, r1, #2
-    // lsr r0, r0, #0x1d
     // add r0, r1, r0
     // asr r1, r0, #3
-    // cmp r2, #0
-    // beq _021FFB9C
-    // mov r0, #0x1e
     // mul r0, r1
-    // add r4, r0, #4
-    // b _021FFBA2
-    // mov r0, #0x1e
     // mul r0, r1
-    // add r4, r0, #7
-    // ldr r0, [r5, #0x70]
-    // add r1, r4, #0
-    // bl ov96_021EB630
-    // ldr r0, [r5, #0x78]
-    // add r1, r4, #1
-    // bl ov96_021EB630
-    // ldr r0, [r5, #0x6c]
-    // add r1, r4, #1
-    // bl ov96_021EB630
-    // ldr r0, [r5, #0x74]
-    // add r1, r4, #2
-    // bl ov96_021EB630
-    // mov r6, #0
-    // ldr r0, [r5]
-    // add r1, r4, #2
-    // bl ov96_021EABA8
-    // add r6, r6, #1
-    // add r5, r5, #4
-    // cmp r6, #3
-    // blt _021FFBC4
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021EB630(*((u32*)(r0 + 0x70)), (0x1e + 7));
+    ov96_021EB630(*((u32*)(r5 + 0x78)), (r4 + 1));
+    ov96_021EB630(*((u32*)(r5 + 0x6c)), (r4 + 1));
+    ov96_021EB630(*((u32*)(r5 + 0x74)), (r4 + 2));
+    ov96_021EABA8(*((u32*)r5), (r4 + 2));
 }
+
 
 
 void ov96_021FFBD8(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // mov r2, #0x11
-    // lsl r2, r2, #4
-    // add r4, r0, #0
-    // cmp r1, r2
-    // ble _021FFC0A
-    // mov r2, #3
-    // lsl r2, r2, #8
-    // cmp r1, r2
-    // bge _021FFC0A
-    // mov r1, #3
     // str r1, [sp]
-    // mov r1, #2
     // str r1, [sp, #4]
-    // mov r1, #0x15
     // str r1, [sp, #8]
-    // mov r1, #0x10
     // str r1, [sp, #0xc]
-    // mov r1, #0
-    // mov r2, #1
-    // mov r3, #0xa
-    // bl FillBgTilemapRect
-    // b _021FFC26
-    // mov r0, #3
+    FillBgTilemapRect(0, 1, 0xa);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // mov r0, #0x15
     // str r0, [sp, #8]
-    // mov r0, #0x10
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #0
-    // mov r2, #0x20
-    // mov r3, #0xa
-    // bl FillBgTilemapRect
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    FillBgTilemapRect(r4, 0, 0x20, 0xa);
+    ScheduleBgTilemapBufferTransfer(r4, 0);
 }
+
 
 
 void ov96_021FFC34(void) {
@@ -49689,6 +40044,7 @@ void ov96_021FFC34(void) {
 }
 
 
+
 void ov96_021FFD4C(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -49714,6 +40070,7 @@ void ov96_021FFD4C(void) {
     // _021FFD7C: .word ov96_0221C5C4
     // TODO: decompile
 }
+
 
 
 void ov96_021FFD80(void) {
@@ -49795,26 +40152,11 @@ void ov96_021FFD80(void) {
 }
 
 
+
 void ov96_021FFE38(void) {
-    // push {r3, lr}
-    // cmp r0, #0
-    // blt _021FFE5A
-    // mov r3, #1
-    // lsl r3, r3, #8
-    // cmp r0, r3
-    // bge _021FFE5A
-    // cmp r2, #0
-    // beq _021FFE4E
-    // mov r2, #3
-    // b _021FFE50
-    // mov r2, #4
-    // lsl r0, r1, #0x10
-    // lsr r0, r0, #0x10
-    // add r1, r2, #0
-    // bl sub_0200606C
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_0200606C(((r1 << 0x10) >> 0x10), 4, 4, (1 << 8));
 }
+
 
 
 void ov96_021FFE5C(void) {
@@ -49890,44 +40232,21 @@ void ov96_021FFE5C(void) {
 }
 
 
+
 void ov96_021FFEE8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r7, r0, #0
-    // add r0, r6, #0
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    ov96_021E8A20();
+    PokeathlonCourse_GetHeapAllocPtr4(r6);
+    ov96_021E5F24(r6);
     // add r1, r4, r0
-    // ldrb r2, [r1, #0x10]
-    // mov r1, #0x7f
-    // lsl r0, r0, #1
     // and r1, r2
-    // lsl r1, r1, #0x18
-    // lsr r5, r1, #0x18
     // ldrh r4, [r4, r0]
-    // cmp r5, #0x3c
-    // bls _021FFF20
-    // mov r5, #0x3c
-    // lsl r1, r5, #0xa
     // add r1, r4, r1
-    // lsl r1, r1, #0x10
-    // add r0, r6, #0
-    // lsr r1, r1, #0x10
-    // bl ov96_021E8318
-    // add r0, r7, #0
-    // add r1, r5, #0
-    // add r2, r4, #0
-    // bl ov96_021FFD80
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E8318(r6, (((0x3c << 0xa) << 0x10) >> 0x10), *((u8*)(r1 + 0x10)));
+    ov96_021FFD80(r7, r5, r4);
 }
+
 
 
 void ov96_021FFF3C(void) {
@@ -50009,123 +40328,63 @@ void ov96_021FFF3C(void) {
 }
 
 
+
 void ov96_021FFFE8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r7, #0x4a
-    // lsl r7, r7, #2
     // str r0, [sp]
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r6, r7, #4
     // ldr r0, [r5, r7]
-    // bl Heap_Free
+    Heap_Free();
     // ldr r0, [r5, r6]
-    // bl Heap_Free
-    // add r4, r4, #1
+    Heap_Free();
     // add r5, #8
-    // cmp r4, #3
-    // blt _021FFFF6
     // ldr r4, [sp]
-    // mov r5, #0
-    // add r0, r4, #0
     // add r0, #0xbc
-    // ldr r0, [r0]
-    // bl Heap_Free
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #0xc
-    // blt _0220000E
+    Heap_Free(*((u32*)(r4 + 1)));
     // ldr r0, [sp]
-    // ldr r0, [r0, #0x34]
-    // bl Heap_Free
-    // mov r6, #0x17
+    Heap_Free(*((u32*)(r0 + 0x34)));
     // ldr r4, [sp]
-    // mov r5, #0
-    // lsl r6, r6, #4
     // ldr r0, [r4, r6]
-    // bl String_Delete
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #3
-    // blt _02200030
+    String_Delete();
     // ldr r0, [sp]
-    // ldr r0, [r0, #0x30]
-    // bl MessageFormat_Delete
+    MessageFormat_Delete(*((u32*)(r0 + 0x30)));
     // ldr r0, [sp]
-    // ldr r0, [r0, #0x2c]
-    // bl DestroyMsgData
+    DestroyMsgData(*((u32*)(r0 + 0x2c)));
     // ldr r0, [sp]
     // add r0, #0xc
-    // bl RemoveWindow
+    RemoveWindow();
     // ldr r0, [sp]
     // add r0, #0x1c
-    // bl RemoveWindow
+    RemoveWindow();
     // ldr r0, [sp]
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
 }
+
 
 
 void ov96_02200068(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xb2
-    // add r3, r1, #0
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xb2, 6, *((u32*)(r0 + 8)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #7
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xb2
-    // mov r3, #6
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xb2, 7, *((u32*)(r4 + 8)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #8
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xb2
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // ldr r0, [r4]
-    // add r3, r4, #0
+    GfGfxLoader_LoadScrnData(0xb2, 8, *((u32*)(r4 + 8)), 5);
     // str r0, [sp]
-    // mov r0, #0xb2
-    // mov r1, #9
-    // mov r2, #0
     // add r3, #0x38
-    // bl GfGfxLoader_GetScrnData
-    // str r0, [r4, #0x34]
-    // mov r0, #0x40
+    GfGfxLoader_GetScrnData(0xb2, 9, 0, r4);
+    *((u32*)(r4 + 0x34)) = r0;
     // str r0, [sp]
-    // ldr r0, [r4]
-    // mov r1, #5
     // str r0, [sp, #4]
-    // mov r0, #0xb2
-    // mov r2, #4
-    // mov r3, #0
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0xb2, 5, 4, 0);
 }
+
 
 
 void ov96_022000E4(void) {
@@ -50200,6 +40459,7 @@ void ov96_022000E4(void) {
     // _0220017C: .word ov96_0221C728
     // TODO: decompile
 }
+
 
 
 void ov96_02200180(void) {
@@ -50371,262 +40631,122 @@ void ov96_02200180(void) {
 }
 
 
+
 void ov96_022002F8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // ldr r1, [r6]
-    // mov r0, #0x14
-    // bl NARC_New
+    NARC_New(0x14, *((u32*)r0));
     // str r0, [sp, #0x14]
-    // bl sub_02074490
-    // add r1, r0, #0
-    // mov r0, #0x60
+    sub_02074490();
     // str r0, [sp]
-    // ldr r0, [r6]
-    // mov r2, #5
     // str r0, [sp, #4]
-    // mov r0, #0x14
-    // mov r3, #0x20
-    // bl GfGfxLoader_GXLoadPal
-    // add r0, r6, #0
+    GfGfxLoader_GXLoadPal(0x14, r0, 5, 0x20);
     // str r0, [sp, #0x10]
     // add r0, #0xec
-    // mov r7, #0
-    // add r4, r6, #0
     // str r0, [sp, #0x10]
-    // mov r1, #1
-    // ldr r0, [r6]
-    // lsl r1, r1, #0xc
-    // bl Heap_AllocAtEnd
-    // add r1, r4, #0
+    Heap_AllocAtEnd(*((u32*)r6), (1 << 0xc));
     // add r1, #0xbc
     // str r0, [r1]
-    // ldrh r0, [r5, #2]
-    // mov r1, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0xc]
     // ldrh r0, [r5]
     // ldr r2, [sp, #0xc]
     // str r0, [sp, #8]
-    // bl GetMonIconNaixEx
-    // add r2, r4, #0
+    GetMonIconNaixEx(((*((u16*)(r5 + 2)) << 0x18) >> 0x18), 0);
     // add r2, #0xbc
-    // add r1, r0, #0
     // ldr r0, [sp, #0x14]
-    // ldr r2, [r2]
-    // bl NARC_ReadWholeMember
-    // add r0, r4, #0
+    NARC_ReadWholeMember(r0, *((u32*)r4));
     // add r0, #0xbc
-    // ldr r0, [r0]
     // ldr r1, [sp, #0x10]
-    // bl NNS_G2dGetUnpackedBGCharacterData
+    NNS_G2dGetUnpackedBGCharacterData(*((u32*)r4));
     // ldr r0, [sp, #8]
     // ldr r1, [sp, #0xc]
-    // mov r2, #0
-    // bl GetMonIconPaletteEx
-    // add r2, r0, #1
-    // mov r0, #0x47
+    GetMonIconPaletteEx(0);
     // add r1, r6, r7
-    // lsl r0, r0, #2
     // strb r2, [r1, r0]
     // ldr r0, [sp, #0x10]
-    // add r7, r7, #1
-    // add r0, r0, #4
-    // add r4, r4, #4
-    // add r5, r5, #4
     // str r0, [sp, #0x10]
-    // cmp r7, #0xc
-    // blt _0220032E
     // ldr r0, [sp, #0x14]
-    // bl NARC_Delete
-    // mov r5, #0
-    // add r4, r6, #0
+    NARC_Delete(((0x47 << 2) + 4), (r0 + 1));
     // add r7, sp, #0x18
-    // lsl r1, r5, #0x18
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // mov r2, #0
-    // bl ov96_022004B4
-    // mov r1, #1
-    // ldr r0, [r4, #0x48]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // mov r1, #1
-    // ldr r0, [r4, #0x54]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // mov r0, #0
+    ov96_022004B4(r6, ((0 << 0x18) >> 0x18), 0);
+    ov96_021EB52C(*((u32*)(r4 + 0x48)), 1, 1);
+    ov96_021EB52C(*((u32*)(r4 + 0x54)), 1, 1);
     // str r0, [sp, #0x20]
-    // mov r0, #0xa
-    // lsl r0, r0, #0x10
     // str r0, [sp, #0x18]
-    // mov r0, #0x2b
-    // lsl r0, r0, #0x10
     // str r0, [sp, #0x1c]
-    // ldr r0, [r4, #0x48]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // ldr r0, [r4, #0x54]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // add r5, r5, #1
+    ov96_021EB588(*((u32*)(r4 + 0x48)), r7);
+    ov96_021EB588(*((u32*)(r4 + 0x54)), r7);
     // add r4, #0x20
-    // cmp r5, #4
-    // blt _0220039C
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_022003E8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r6, r0, #0
-    // mov r0, #0
-    // add r5, r1, #0
     // str r0, [sp, #0xc]
-    // add r4, r6, #0
     // add r7, sp, #0x10
-    // ldrb r0, [r5, #6]
-    // mov r3, #2
     // str r0, [sp]
-    // ldrh r0, [r5, #2]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0xc]
     // str r0, [sp, #8]
     // ldrh r1, [r5]
-    // ldrb r2, [r5, #7]
     // add r0, sp, #0x10
-    // bl GetMonSpriteCharAndPlttNarcIdsEx
-    // mov r0, #0
+    GetMonSpriteCharAndPlttNarcIdsEx(*((u32*)(r1 + 0xc)), *((u8*)(r1 + 7)), 2);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // ldrh r0, [r5]
     // str r0, [sp, #8]
     // ldrh r0, [r7]
-    // ldrh r1, [r7, #2]
-    // ldr r2, [r6]
-    // ldr r3, [r5, #0xc]
-    // bl sub_0201457C
-    // mov r1, #0x4a
-    // lsl r1, r1, #2
+    sub_0201457C(2, *((u16*)(r7 + 2)), *((u32*)r6), *((u32*)(r5 + 0xc)));
     // str r0, [r4, r1]
     // ldrh r0, [r7]
-    // ldrh r1, [r7, #4]
-    // ldr r2, [r6]
-    // bl sub_02014450
-    // mov r1, #0x4b
-    // lsl r1, r1, #2
+    sub_02014450(*((u16*)(r7 + 4)), *((u32*)r6));
     // str r0, [r4, r1]
     // ldr r0, [sp, #0xc]
     // add r5, #0x10
-    // add r0, r0, #1
     // add r4, #8
     // str r0, [sp, #0xc]
-    // cmp r0, #3
-    // blt _022003F8
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02200454(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // cmp r6, #2
-    // blo _02200464
-    // bl GF_AssertFail
-    // cmp r4, #3
-    // blo _0220046C
-    // bl GF_AssertFail
-    // mov r0, #0x4a
-    // lsl r0, r0, #2
-    // lsl r4, r4, #3
-    // add r7, r5, r0
-    // mov r1, #0x32
-    // ldr r0, [r7, r4]
-    // lsl r1, r1, #6
-    // bl DC_FlushRange
-    // lsl r6, r6, #2
-    // mov r1, #5
-    // add r2, r5, r6
-    // lsl r1, r1, #6
-    // ldr r1, [r2, r1]
-    // mov r2, #0x32
-    // ldr r0, [r7, r4]
-    // lsl r2, r2, #6
-    // bl GXS_LoadOBJ
-    // mov r0, #0x4b
-    // lsl r0, r0, #2
+    GF_AssertFail();
+    GF_AssertFail();
     // add r7, r5, r0
     // ldr r0, [r7, r4]
-    // mov r1, #0x20
-    // bl DC_FlushRange
-    // mov r1, #0x52
+    DC_FlushRange((0x4a << 2), (0x32 << 6));
     // add r2, r5, r6
-    // lsl r1, r1, #2
     // ldr r1, [r2, r1]
     // ldr r0, [r7, r4]
-    // mov r2, #0x20
-    // bl GXS_LoadOBJPltt
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GXS_LoadOBJ((5 << 6), (0x32 << 6));
+    // add r7, r5, r0
+    // ldr r0, [r7, r4]
+    DC_FlushRange((0x4b << 2), 0x20);
+    // add r2, r5, r6
+    // ldr r1, [r2, r1]
+    // ldr r0, [r7, r4]
+    GXS_LoadOBJPltt((0x52 << 2), 0x20);
 }
+
 
 
 void ov96_022004B4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // lsl r0, r4, #5
     // add r0, r5, r0
-    // ldr r0, [r0, #0x48]
-    // add r6, r2, #0
-    // bl ov96_021EB5B8
+    ov96_021EB5B8(*((u32*)((r1 << 5) + 0x48)));
     // str r0, [sp]
-    // lsl r0, r4, #1
     // add r0, r4, r0
     // add r6, r6, r0
-    // add r7, r5, #0
-    // lsl r0, r6, #2
-    // mov r1, #2
     // add r7, #0xec
     // str r0, [sp, #4]
     // ldr r0, [r7, r0]
-    // lsl r1, r1, #8
-    // ldr r0, [r0, #0x14]
-    // bl DC_FlushRange
+    DC_FlushRange(*((u32*)((r6 << 2) + 0x14)), (2 << 8));
     // ldr r0, [sp, #4]
-    // mov r1, #6
     // ldr r0, [r7, r0]
-    // lsl r2, r4, #9
-    // lsl r1, r1, #8
     // add r1, r2, r1
-    // mov r2, #2
-    // ldr r0, [r0, #0x14]
-    // lsl r2, r2, #8
-    // bl GXS_LoadOBJ
-    // mov r1, #0x47
+    GXS_LoadOBJ(*((u32*)(r0 + 0x14)), (6 << 8), (2 << 8));
     // add r2, r5, r6
-    // lsl r1, r1, #2
     // ldrb r1, [r2, r1]
     // ldr r0, [sp]
-    // bl Sprite_SetPaletteOverride
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetPaletteOverride((0x47 << 2));
 }
+
 
 
 void ov96_0220050C(void) {
@@ -50706,6 +40826,7 @@ void ov96_0220050C(void) {
     // _022005B0: .word FX_SinCosTable_
     // TODO: decompile
 }
+
 
 
 void ov96_022005B4(void) {
@@ -50828,278 +40949,155 @@ void ov96_022005B4(void) {
 }
 
 
+
 void ov96_022006BC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // mov r5, #0x59
-    // add r4, r0, #0
-    // lsl r5, r5, #2
-    // add r6, r1, #0
     // ldr r1, [r4, r5]
-    // cmp r1, #3
-    // bhi _0220073A
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _022006DA: ; jump table
-    // add r0, r5, #4
     // ldr r0, [r4, r0]
-    // lsl r0, r0, #2
     // add r1, r4, r0
-    // add r0, r5, #0
     // sub r0, #0x14
     // ldr r0, [r1, r0]
-    // bl ov96_021EB594
-    // add r6, r0, #0
+    ov96_021EB594((0x59 << 2), (*((u16*)(r1 + 6)) << 0x10));
     // add r3, sp, #0x18
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
     // str r0, [r3]
-    // mov r0, #2
     // ldr r1, [sp, #0x1c]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp, #0x1c]
-    // add r0, r5, #4
     // ldr r1, [r4, r0]
     // sub r0, #0x18
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r2, #0
-    // bl ov96_021EB588
-    // add r0, r5, #4
+    ov96_021EB588((r5 + 4), r3, r3);
     // ldr r1, [r4, r0]
     // sub r0, #0x10
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0x18
-    // bl ov96_021EB588
-    // mov r0, #0x2e
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldr r1, [sp, #0x1c]
-    // lsl r0, r0, #0x10
-    // cmp r1, r0
-    // bge _0220073C
-    // b _022008FA
-    // mov r0, #0x76
-    // lsl r0, r0, #0xe
     // str r0, [sp, #0x1c]
-    // add r0, r5, #4
     // ldr r1, [r4, r0]
     // sub r0, #0x18
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0x18
-    // bl ov96_021EB588
-    // add r0, r5, #4
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldr r1, [r4, r0]
     // sub r0, #0x10
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0x18
-    // bl ov96_021EB588
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldr r0, [r4, r5]
-    // add r0, r0, #1
     // str r0, [r4, r5]
-    // b _022008FA
-    // add r1, r5, #4
     // ldr r1, [r4, r1]
-    // add r2, r6, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02200454
-    // sub r1, r5, #4
+    ov96_02200454((r0 + 1), (((r5 + 4) << 0x18) >> 0x18), r6);
     // add r0, r4, r1
     // add r1, #8
     // ldr r1, [r4, r1]
-    // lsl r2, r1, #1
     // ldrh r1, [r0, r2]
-    // cmp r1, #0
-    // bne _02200790
-    // mov r1, #2
-    // b _02200792
-    // sub r1, r1, #1
-    // mov r3, #0x5a
-    // lsl r3, r3, #2
     // strh r1, [r0, r2]
     // ldr r0, [r4, r3]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
     // str r0, [r4, r3]
     // ldr r0, [r4, r5]
-    // add r0, r0, #1
     // str r0, [r4, r5]
-    // b _022008FA
-    // add r0, r5, #4
     // ldr r0, [r4, r0]
-    // lsl r0, r0, #2
     // add r1, r4, r0
-    // add r0, r5, #0
     // sub r0, #0x14
     // ldr r0, [r1, r0]
-    // bl ov96_021EB594
-    // add r6, r0, #0
+    ov96_021EB594(r5, ((r0 + 1) << 0x1f), ((r0 + 1) >> 0x1f), (0x5a << 2));
     // add r3, sp, #0xc
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
     // str r0, [r3]
-    // mov r0, #2
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp, #0x10]
-    // add r0, r5, #4
     // ldr r1, [r4, r0]
     // sub r0, #0x18
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r2, #0
-    // bl ov96_021EB588
-    // add r0, r5, #4
+    ov96_021EB588((r5 + 4), r3, r3);
     // ldr r1, [r4, r0]
     // sub r0, #0x10
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0xc
-    // bl ov96_021EB588
-    // mov r0, #0xa2
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // blt _022008FA
     // str r0, [sp, #0x10]
-    // add r0, r5, #4
     // ldr r1, [r4, r0]
     // sub r0, #0x18
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0xc
-    // bl ov96_021EB588
-    // add r0, r5, #4
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldr r1, [r4, r0]
     // sub r0, #0x10
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0xc
-    // bl ov96_021EB588
-    // add r3, r5, #4
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldr r0, [r4, r3]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
     // str r0, [r4, r3]
     // ldr r0, [r4, r5]
-    // add r0, r0, #1
     // str r0, [r4, r5]
-    // b _022008FA
-    // add r0, r5, #4
     // ldr r0, [r4, r0]
-    // lsl r0, r0, #2
     // add r1, r4, r0
-    // add r0, r5, #0
     // sub r0, #0x14
     // ldr r0, [r1, r0]
-    // bl ov96_021EB594
-    // add r3, r0, #0
+    ov96_021EB594(r5, ((r0 + 1) << 0x1f), ((r0 + 1) >> 0x1f), (r5 + 4));
     // add r2, sp, #0
     // ldmia r3!, {r0, r1}
-    // add r7, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // mov r0, #2
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp, #4]
-    // add r0, r5, #4
     // ldr r1, [r4, r0]
     // sub r0, #0x18
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // add r0, r5, #4
+    ov96_021EB588((r5 + 4), r2, r0);
     // ldr r1, [r4, r0]
     // sub r0, #0x10
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // mov r0, #0x23
+    ov96_021EB588((r5 + 4), r7);
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0x10
-    // cmp r1, r0
-    // blt _022008FA
     // str r0, [sp, #4]
-    // add r0, r5, #4
     // ldr r1, [r4, r0]
     // sub r0, #0x18
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // add r0, r5, #4
+    ov96_021EB588((r5 + 4), r7);
     // ldr r1, [r4, r0]
     // sub r0, #0x10
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // add r3, r5, #4
+    ov96_021EB588((r5 + 4), r7);
     // ldr r0, [r4, r3]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
     // str r0, [r4, r3]
-    // add r0, r6, #2
-    // mov r1, #3
-    // bl _s32_div_f
-    // lsl r1, r1, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_02200BD8
-    // mov r0, #0
+    _s32_div_f((r6 + 2), 3, ((r0 + 1) >> 0x1f), (r5 + 4));
+    ov96_02200BD8(r4, ((r1 << 0x18) >> 0x18));
     // str r0, [r4, r5]
-    // add sp, #0x24
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02200900(void) {
@@ -51145,317 +41143,124 @@ void ov96_02200900(void) {
 }
 
 
+
 void ov96_02200950(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r3, [sp]
-    // mov r3, #0x5b
-    // add r5, r0, #0
-    // lsl r3, r3, #2
-    // add r4, r1, #0
     // add r7, r5, r3
     // ldrb r3, [r7, r4]
     // ldr r6, [sp, #0x18]
-    // cmp r2, r3
-    // beq _0220096C
     // strb r2, [r7, r4]
-    // bl ov96_022004B4
+    ov96_022004B4((0x5b << 2));
     // ldr r0, [sp]
-    // cmp r0, #0
-    // beq _0220099A
-    // lsl r4, r4, #5
     // add r0, r5, r4
-    // ldr r0, [r0, #0x48]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(*((u32*)(r0 + 0x48)), 1, 0);
     // add r0, r5, r4
-    // mov r1, #1
-    // ldr r0, [r0, #0x50]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(*((u32*)(r0 + 0x50)), 1, 1);
     // add r0, r5, r4
-    // ldr r0, [r0, #0x4c]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // b _02200A0E
-    // lsl r4, r4, #5
+    ov96_021EB52C(*((u32*)(r0 + 0x4c)), 1, 0);
     // add r0, r5, r4
-    // mov r1, #1
-    // ldr r0, [r0, #0x48]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(*((u32*)(r0 + 0x48)), 1, 1);
     // add r0, r5, r4
-    // ldr r0, [r0, #0x50]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // cmp r6, #1
-    // beq _022009BE
-    // cmp r6, #2
-    // beq _022009E0
-    // b _02200A02
+    ov96_021EB52C(*((u32*)(r0 + 0x50)), 1, 0);
     // add r0, r5, r4
     // add r0, #0x58
     // ldrb r0, [r0]
-    // cmp r6, r0
-    // beq _02200A0E
-    // add r7, r5, #0
     // add r7, #0x4c
-    // mov r1, #1
     // ldr r0, [r7, r4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(1, 1);
     // ldr r0, [r7, r4]
-    // mov r1, #8
-    // bl ov96_021EB564
-    // b _02200A0E
+    ov96_021EB564(8);
     // add r0, r5, r4
     // add r0, #0x58
     // ldrb r0, [r0]
-    // cmp r6, r0
-    // beq _02200A0E
-    // add r7, r5, #0
     // add r7, #0x4c
-    // mov r1, #1
     // ldr r0, [r7, r4]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(1, 1);
     // ldr r0, [r7, r4]
-    // mov r1, #9
-    // bl ov96_021EB564
-    // b _02200A0E
+    ov96_021EB564(9);
     // add r0, r5, r4
-    // ldr r0, [r0, #0x4c]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
+    ov96_021EB52C(*((u32*)(r0 + 0x4c)), 1, 0);
     // add r0, r5, r4
     // add r0, #0x58
     // strb r6, [r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02200A18(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // cmp r1, #1
-    // bne _02200A32
-    // mov r0, #0x56
-    // lsl r0, r0, #2
-    // mov r1, #1
     // ldr r0, [r5, r0]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // b _02200A40
-    // mov r0, #0x56
-    // lsl r0, r0, #2
+    ov96_021EB52C((0x56 << 2), 1, 1);
     // ldr r0, [r5, r0]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // cmp r4, #1
-    // bne _02200A54
-    // mov r0, #0x57
-    // lsl r0, r0, #2
-    // mov r1, #1
+    ov96_021EB52C((0x56 << 2), 1, 0);
     // ldr r0, [r5, r0]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0x57
-    // lsl r0, r0, #2
+    ov96_021EB52C((0x57 << 2), 1, 1);
     // ldr r0, [r5, r0]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_021EB52C((0x57 << 2), 1, 0);
 }
+
 
 
 void ov96_02200A64(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r6, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r1, r0, #0x18
-    // mov r0, #0x64
+    _s32_div_f(r1, 0x1e);
+    _s32_div_f(r6, 0x1e);
     // mul r0, r1
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0x3c
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0x5f
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    _s32_div_f(0x64, 0x1e);
+    _s32_div_f(r4, 0x3c);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0x3c
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0x61
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    Sprite_SetAnimCtrlSeq((0x5f << 2), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0x3c);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // mov r0, #0x62
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    Sprite_SetAnimCtrlSeq((0x61 << 2), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0x19
-    // lsl r0, r0, #4
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    Sprite_SetAnimCtrlSeq((0x62 << 2), (((r1 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r6, 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq((0x19 << 4), (((r0 << 0x18) >> 0x18) + 1));
 }
+
 
 
 void ov96_02200B04(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // mov r6, #0
-    // add r4, r5, #0
-    // mov r0, #0x5f
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // mov r1, #2
-    // bl Sprite_SetDrawPriority
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #6
-    // blt _02200B10
-    // mov r6, #0
-    // add r4, r5, #0
-    // mov r0, #0x15
-    // lsl r0, r0, #4
+    Sprite_SetDrawPriority((0x5f << 2), 2);
     // ldr r0, [r4, r0]
-    // bl ov96_021EB5B8
-    // mov r1, #2
-    // bl Sprite_SetDrawPriority
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #2
-    // blt _02200B28
-    // mov r0, #1
-    // mov r2, #0
+    ov96_021EB5B8((0x15 << 4));
+    Sprite_SetDrawPriority(2);
     // add r1, sp, #4
-    // cmp r2, r7
-    // bne _02200B4C
     // strb r2, [r1]
-    // add r2, r2, #1
-    // cmp r2, #4
-    // blt _02200B46
-    // mov r2, #0
     // add r4, sp, #4
     // add r3, sp, #4
     // ldrb r1, [r3]
-    // cmp r1, r2
-    // beq _02200B68
-    // add r1, r0, #0
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // strb r2, [r4, r1]
-    // add r2, r2, #1
-    // cmp r2, #4
-    // blt _02200B58
-    // mov r0, #4
-    // mov r7, #0
-    // mov r6, #3
     // add r4, sp, #4
     // str r0, [sp]
     // ldrb r0, [r4]
-    // add r1, r6, #0
-    // lsl r0, r0, #5
     // add r0, r5, r0
-    // ldr r0, [r0, #0x4c]
-    // bl ov96_021EB630
+    ov96_021EB630(*((u32*)((4 << 5) + 0x4c)), 3, (0 + 1));
     // ldrb r0, [r4]
-    // add r1, r6, #0
-    // lsl r0, r0, #5
     // add r0, r5, r0
-    // ldr r0, [r0, #0x50]
-    // bl ov96_021EB630
+    ov96_021EB630(*((u32*)((r0 << 5) + 0x50)), r6);
     // ldrb r0, [r4]
     // ldr r1, [sp]
-    // lsl r0, r0, #5
     // add r0, r5, r0
-    // ldr r0, [r0, #0x48]
-    // bl ov96_021EB630
+    ov96_021EB630(*((u32*)((r0 << 5) + 0x48)));
     // ldrb r0, [r4]
-    // add r1, r7, #0
     // add r1, #0xb
-    // lsl r0, r0, #5
     // add r0, r5, r0
-    // ldr r0, [r0, #0x54]
-    // bl ov96_021EB630
+    ov96_021EB630(*((u32*)((r0 << 5) + 0x54)), r7);
     // ldr r0, [sp]
-    // add r7, r7, #1
-    // add r0, r0, #2
-    // add r6, r6, #2
-    // add r4, r4, #1
     // str r0, [sp]
-    // cmp r7, #4
-    // blt _02200B78
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02200BC8(void) {
-    // lsl r1, r1, #1
     // add r1, r0, r1
-    // mov r0, #0x16
-    // lsl r0, r0, #4
     // ldrh r0, [r1, r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02200BD8(void) {
@@ -51508,6 +41313,7 @@ void ov96_02200BD8(void) {
 }
 
 
+
 void ov96_02200C40(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -51542,6 +41348,7 @@ void ov96_02200C40(void) {
     // _02200C88: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_02200C8C(void) {
@@ -51658,6 +41465,7 @@ void ov96_02200C8C(void) {
 }
 
 
+
 void ov96_02200D7C(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x14
@@ -51718,6 +41526,7 @@ void ov96_02200D7C(void) {
 }
 
 
+
 void ov96_02200DF8(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -51751,108 +41560,54 @@ void ov96_02200DF8(void) {
 }
 
 
+
 void ov96_02200E3C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // mov r1, #0xfa
-    // lsl r1, r1, #2
-    // bl Heap_Alloc
-    // mov r2, #0xfa
-    // mov r1, #0
-    // lsl r2, r2, #2
-    // add r4, r0, #0
-    // bl MI_CpuFill8
-    // mov r0, #0x3e
-    // lsl r0, r0, #4
-    // mov r1, #4
+    Heap_Alloc((0xfa << 2));
+    MI_CpuFill8(0, (0xfa << 2));
     // sub r2, r1, r5
     // strb r5, [r4, r0]
-    // add r1, r0, #5
     // strb r2, [r4, r1]
     // ldrb r2, [r4, r1]
-    // add r1, r0, #4
     // strb r2, [r4, r1]
-    // add r1, r0, #3
-    // mov r2, #0xa
     // strb r2, [r4, r1]
     // ldrb r1, [r4, r1]
-    // add r0, r0, #2
     // strb r1, [r4, r0]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02200E78(void) {
-    // lsl r1, r1, #4
     // str r2, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02200E80(void) {
-    // push {r4, r5, r6, r7}
-    // mov r5, #0
-    // mov r2, #1
-    // ldr r3, [r1]
-    // lsl r3, r3, #0x18
-    // lsr r4, r3, #0x18
-    // str r4, [r0, #0x4c]
-    // ldr r3, [r1]
+    *((u32*)(r0 + 0x4c)) = ((*((u32*)r1) << 0x18) >> 0x18);
     // asr r6, r3, #8
     // asr r3, r3, #0x10
-    // lsl r6, r6, #0x18
-    // lsl r3, r3, #0x10
-    // lsr r6, r6, #0x18
-    // lsr r3, r3, #0x10
-    // cmp r4, #0
-    // beq _02200ED8
-    // str r2, [r0, #0x40]
-    // ldr r4, [r0, #0x4c]
-    // cmp r4, #2
-    // bne _02200EAE
-    // mov r4, #0x20
-    // str r4, [r0, #0x50]
-    // b _02200EBC
-    // cmp r4, #1
-    // bne _02200EB8
-    // mov r4, #0x30
-    // str r4, [r0, #0x50]
-    // b _02200EBC
-    // mov r4, #0x40
-    // str r4, [r0, #0x50]
-    // ldr r7, [r0, #0x50]
+    *((u32*)(r0 + 0x40)) = 1;
+    *((u32*)(r0 + 0x50)) = 0x20;
+    *((u32*)(r0 + 0x50)) = 0x30;
+    *((u32*)(r0 + 0x50)) = 0x40;
     // add r6, #0x20
-    // lsr r4, r7, #0x1f
     // add r4, r7, r4
     // asr r4, r4, #1
     // sub r3, r3, r4
-    // str r3, [r0, #0x44]
-    // ldr r4, [r0, #0x50]
-    // lsr r3, r4, #0x1f
+    *((u32*)(r0 + 0x44)) = ((*((u32*)r1) << 0x10) >> 0x10);
     // add r3, r4, r3
     // asr r3, r3, #1
     // sub r3, r6, r3
-    // str r3, [r0, #0x48]
-    // b _02200EDC
-    // mov r3, #0
-    // str r3, [r0, #0x40]
-    // add r5, r5, #1
-    // add r1, r1, #4
+    *((u32*)(r0 + 0x48)) = (*((u32*)(r0 + 0x50)) >> 0x1f);
+    *((u32*)(r0 + 0x40)) = 0;
     // add r0, #0x14
-    // cmp r5, #0x1e
-    // blt _02200E86
-    // pop {r4, r5, r6, r7}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02200EEC(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_02200EF4(void) {
@@ -51926,6 +41681,7 @@ void ov96_02200EF4(void) {
     // _02200F80: .word 0x000003E1
     // TODO: decompile
 }
+
 
 
 void ov96_02200F84(void) {
@@ -52523,148 +42279,72 @@ void ov96_02200F84(void) {
 }
 
 
+
 void ov96_0220144C(void) {
-    // ldr r2, [r0]
     // add r2, r2, r1
-    // mov r1, #1
-    // lsl r1, r1, #0xa
     // str r2, [r0]
-    // cmp r2, r1
-    // blt _02201460
     // sub r1, r2, r1
     // str r1, [r0]
-    // bx lr
-    // cmp r2, #0
-    // bge _02201468
     // add r1, r2, r1
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220146C(void) {
-    // push {r4, lr}
-    // sub sp, #0x80
-    // mov r1, #0xa7
-    // lsl r1, r1, #2
     // add r0, r0, r1
-    // mov r2, #0
     // add r1, sp, #0
-    // add r2, r2, #1
     // stmia r1!, {r0}
     // add r0, #0x14
-    // cmp r2, #0x10
-    // blt _0220147A
     // add r0, sp, #0
     // add r1, sp, #0x40
-    // bl ov96_022014A4
-    // add r4, r0, #0
-    // bl LCRandom
-    // add r1, r4, #0
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r1, r0, #0x16
+    ov96_022014A4((0xa7 << 2), (0 + 1));
+    LCRandom();
+    _s32_div_f(r4);
     // add r0, sp, #0x40
     // ldr r0, [r0, r1]
-    // add sp, #0x80
-    // pop {r4, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_022014A4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0xd0
     // mov ip, r0
     // add r0, sp, #0x10
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #0xc]
     // ldr r0, [sp]
-    // add r7, r1, #0
-    // add r2, r0, #1
-    // mov r1, #0xc
     // mul r1, r2
     // add r2, sp, #4
-    // lsl r4, r0, #2
     // mov r3, ip
     // ldr r3, [r3, r4]
     // add r2, r2, r1
-    // str r3, [r2, #8]
-    // mov r3, #0
-    // str r3, [r2, #4]
-    // add r4, r3, #0
+    *((u32*)((0 + 1) + 8)) = r3;
+    *((u32*)((0 + 1) + 4)) = 0;
     // add r3, sp, #4
     // str r4, [r3, r1]
-    // add r1, r4, #0
-    // cmp r0, #0
-    // bls _02201506
-    // ldr r5, [r2, #8]
-    // mov r4, #0x10
     // ldrsh r4, [r5, r4]
-    // mov r6, #0x10
-    // ldr r3, [r3, #4]
-    // ldr r5, [r3, #8]
     // ldrsh r5, [r5, r6]
-    // cmp r5, r4
-    // bge _022014FC
-    // ldr r4, [r3]
-    // str r2, [r4, #4]
-    // ldr r4, [r3]
+    *((u32*)(*((u32*)*((u32*)(0 + 4))) + 4)) = (0 + 1);
     // str r4, [r2]
-    // str r3, [r2, #4]
+    *((u32*)((0 + 1) + 4)) = *((u32*)(0 + 4));
     // str r2, [r3]
-    // b _02201506
-    // add r1, r1, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // cmp r1, r0
-    // blo _022014E4
-    // cmp r1, r0
-    // bne _0220150E
-    // str r2, [r3, #4]
+    *((u32*)(*((u32*)(0 + 4)) + 4)) = (0 + 1);
     // str r3, [r2]
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // cmp r0, #0x10
-    // blo _022014BA
     // ldr r0, [sp, #8]
-    // mov r3, #0
-    // ldr r1, [r0, #8]
-    // mov r0, #0x10
     // ldrsh r2, [r1, r0]
     // add r1, sp, #4
-    // ldr r1, [r1, #4]
-    // lsl r5, r3, #2
-    // ldr r4, [r1, #8]
     // str r4, [r7, r5]
     // ldr r4, [r7, r5]
     // ldrsh r4, [r4, r0]
-    // cmp r2, r4
-    // bne _0220153E
     // ldr r4, [sp]
-    // add r4, r4, #1
-    // lsl r4, r4, #0x18
-    // lsr r4, r4, #0x18
     // str r4, [sp]
-    // add r3, r3, #1
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #0x18
-    // cmp r3, #0x10
-    // blo _02201524
     // ldr r0, [sp]
-    // cmp r0, #0
-    // bne _02201552
-    // bl GF_AssertFail
+    GF_AssertFail(0x10, *((u32*)(*((u32*)((((0 + 1) << 0x18) >> 0x18) + 8)) + 4)), (0 + 1), (((0 + 1) << 0x18) >> 0x18));
     // ldr r0, [sp]
-    // add sp, #0xd0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02201558(void) {
@@ -53289,20 +42969,14 @@ void ov96_02201558(void) {
 }
 
 
+
 void ov96_02201B18(void) {
-    // push {r4, lr}
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // mov r0, #0x5e
-    // lsl r0, r0, #4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldr r0, [r4, r0]
-    // bl ov96_02203CE4
-    // ldr r0, [r4, #0x48]
-    // bl ov96_021EB5BC
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_02203CE4((0x5e << 4));
+    ov96_021EB5BC(*((u32*)(r4 + 0x48)));
 }
+
 
 
 void ov96_02201B34(void) {
@@ -53349,6 +43023,7 @@ void ov96_02201B34(void) {
     // _02201B94: .word 0x0000012B
     // TODO: decompile
 }
+
 
 
 void ov96_02201B98(void) {
@@ -53446,9 +43121,10 @@ void ov96_02201B98(void) {
 }
 
 
+
 void ov96_02201C90(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_02201CB0(void) {
@@ -53608,114 +43284,44 @@ void ov96_02201CB0(void) {
 }
 
 
+
 void ov96_02201E10(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r1, #0
-    // mov r0, #1
     // str r1, [sp]
-    // lsl r0, r0, #0xe
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r5, #0x44]
-    // mov r1, #1
     // str r0, [sp, #0xc]
-    // ldr r2, [r5]
-    // mov r0, #0xdb
-    // add r3, r1, #0
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xdb, 1, *((u32*)r0), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0x44]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r5]
-    // mov r0, #0xdb
-    // mov r3, #1
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
-    // mov r0, #0x20
+    GfGfxLoader_LoadScrnData(0xdb, 2, *((u32*)r5), 1);
     // str r0, [sp]
-    // ldr r0, [r5, #0x44]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xdb
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r0, #0x5e
-    // lsl r0, r0, #4
+    GfGfxLoader_GXLoadPal(0xdb, 0, 0, 0);
     // ldr r0, [r5, r0]
-    // add r1, r4, #0
-    // bl ov96_02203A64
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_02203A64((0x5e << 4), r4);
 }
+
 
 
 void ov96_02201E70(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // mov r1, #3
     // str r1, [sp]
-    // mov r1, #0xdb
-    // mov r2, #0x15
-    // mov r3, #0x6a
-    // add r4, r0, #0
-    // bl ov96_021EB2BC
-    // mov r0, #3
+    ov96_021EB2BC(0xdb, 0x15, 0x6a);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0x12
-    // mov r3, #0x6a
-    // bl ov96_021EB2F4
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0x14
-    // mov r3, #0x6a
-    // bl ov96_021EB334
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0x13
-    // mov r3, #0x6a
-    // bl ov96_021EB36C
-    // mov r0, #1
+    ov96_021EB2F4(r4, 0xdb, 0x12, 0x6a);
+    ov96_021EB334(r4, 0xdb, 0x14, 0x6a);
+    ov96_021EB36C(r4, 0xdb, 0x13, 0x6a);
     // str r0, [sp]
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0x11
-    // mov r3, #0x69
-    // bl ov96_021EB2BC
-    // mov r0, #1
+    ov96_021EB2BC(r4, 0xdb, 0x11, 0x69);
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0xe
-    // mov r3, #0x69
-    // bl ov96_021EB2F4
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0x10
-    // mov r3, #0x69
-    // bl ov96_021EB334
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0xf
-    // mov r3, #0x69
-    // bl ov96_021EB36C
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EB2F4(r4, 0xdb, 0xe, 0x69);
+    ov96_021EB334(r4, 0xdb, 0x10, 0x69);
+    ov96_021EB36C(r4, 0xdb, 0xf, 0x69);
 }
+
 
 
 void ov96_02201EF0(void) {
@@ -53993,64 +43599,26 @@ void ov96_02201EF0(void) {
 }
 
 
+
 void ov96_02202154(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _02202172
-    // cmp r0, #1
-    // beq _02202184
-    // cmp r0, #2
-    // beq _0220219C
-    // b _022021CC
-    // add r0, r5, #0
-    // bl ov96_021E637C
-    // cmp r0, #0
-    // beq _022021CC
+    ov96_021E637C(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _022021CC
-    // add r0, r5, #0
-    // bl ov96_0220223C
-    // add r0, r5, #0
-    // bl ov96_022028BC
-    // cmp r0, #0
-    // beq _022021CC
+    ov96_0220223C(r5);
+    ov96_022028BC(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _022021CC
-    // add r0, r5, #0
-    // bl ov96_0220223C
-    // add r0, r5, #0
-    // bl ov96_021E667C
-    // cmp r0, #0
-    // beq _022021CC
-    // mov r0, #6
+    ov96_0220223C(r5);
+    ov96_021E667C(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x44]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    PokeathlonCourse_SetStateField07(r5, 1);
 }
+
 
 
 void ov96_022021D4(void) {
@@ -54101,6 +43669,7 @@ void ov96_022021D4(void) {
     // _02202238: .word 0x000003FF
     // TODO: decompile
 }
+
 
 
 void ov96_0220223C(void) {
@@ -54673,6 +44242,7 @@ void ov96_0220223C(void) {
 }
 
 
+
 void ov96_02202738(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x30
@@ -54865,6 +44435,7 @@ void ov96_02202738(void) {
 }
 
 
+
 void ov96_022028BC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -54931,6 +44502,7 @@ void ov96_022028BC(void) {
     // _02202954: .word gSystem + 0x40
     // TODO: decompile
 }
+
 
 
 void ov96_02202958(void) {
@@ -55886,6 +45458,7 @@ void ov96_02202958(void) {
 }
 
 
+
 void ov96_022031A8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x68
@@ -56001,6 +45574,7 @@ void ov96_022031A8(void) {
 }
 
 
+
 void ov96_0220329C(void) {
     // push {r4, r5, r6, lr}
     // add r5, r1, #0
@@ -56053,6 +45627,7 @@ void ov96_0220329C(void) {
 }
 
 
+
 void ov96_02203310(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r6, r0, #0
@@ -56101,6 +45676,7 @@ void ov96_02203310(void) {
     // _02203378: .word ov96_0221C7EC
     // TODO: decompile
 }
+
 
 
 void ov96_0220337C(void) {
@@ -56160,6 +45736,7 @@ void ov96_0220337C(void) {
 }
 
 
+
 void ov96_022033FC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // bl PokeathlonCourse_GetHeapAllocPtr4
@@ -56216,99 +45793,44 @@ void ov96_022033FC(void) {
 }
 
 
+
 void ov96_02203468(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // mov r0, #0
-    // add r5, r4, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r5, [sp]
     // add r5, #0xc8
-    // add r7, r4, #0
     // str r0, [sp, #8]
     // str r5, [sp]
     // add r7, #0xd4
-    // add r6, r0, #0
-    // mov r0, #0
     // str r0, [sp, #4]
-    // add r0, r4, #0
     // add r0, #0xc4
-    // ldr r0, [r0]
-    // cmp r0, #1
-    // bne _022034A2
-    // mov r0, #1
     // ldr r3, [sp]
-    // lsl r0, r0, #0xc
-    // add r1, r7, #0
-    // add r2, r5, #0
-    // bl VEC_MultAdd
-    // b _022034CC
-    // cmp r0, #3
-    // bne _022034CC
-    // add r0, r4, #0
+    VEC_MultAdd((1 << 0xc), r0, r0);
     // add r0, #0xf8
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0xf8
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xf8
     // ldrb r0, [r0]
-    // cmp r0, #8
-    // blo _022034CC
-    // add r1, r4, #0
     // add r1, #0xf8
-    // mov r0, #0
     // strb r0, [r1]
-    // add r1, r4, #0
     // add r1, #0xc4
     // str r0, [r1]
-    // add r0, r4, #0
     // add r0, #0xc8
-    // ldr r1, [r0]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
-    // cmp r1, r0
-    // blt _022034F4
-    // lsl r0, r0, #6
-    // cmp r1, r0
-    // bgt _022034F4
-    // add r0, r4, #0
     // add r0, #0xd0
-    // ldr r1, [r0]
-    // mov r0, #1
-    // lsl r0, r0, #0xc
-    // cmp r1, r0
-    // blt _022034F4
-    // lsl r0, r0, #6
-    // cmp r1, r0
-    // ble _022034F8
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // beq _02203528
-    // add r0, r4, #0
     // add r0, #0xc4
     // str r6, [r0]
-    // add r0, r4, #0
     // add r0, #0xd4
     // str r6, [r0]
-    // add r0, r4, #0
     // add r0, #0xdc
     // str r6, [r0]
-    // add r0, r4, #0
     // add r0, #0xd8
     // str r6, [r0]
-    // add r0, r4, #0
     // add r0, #0xe0
     // str r6, [r0]
-    // add r0, r4, #0
     // add r0, #0xe8
     // str r6, [r0]
-    // add r0, r4, #0
     // add r0, #0xe4
     // str r6, [r0]
     // ldr r0, [sp]
@@ -56317,15 +45839,10 @@ void ov96_02203468(void) {
     // str r0, [sp]
     // ldr r0, [sp, #8]
     // add r5, #0x48
-    // add r0, r0, #1
     // add r7, #0x48
     // str r0, [sp, #8]
-    // cmp r0, #0xc
-    // blt _02203484
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02203544(void) {
@@ -56568,20 +46085,13 @@ void ov96_02203544(void) {
 }
 
 
+
 void ov96_02203754(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x34
-    // mov r1, #0
     // str r0, [sp]
-    // add r0, r1, #0
     // add r2, sp, #0x28
     // str r0, [sp, #4]
     // ldr r0, [sp, #4]
-    // add r1, r1, #1
     // strb r0, [r2]
-    // add r2, r2, #1
-    // cmp r1, #0xc
-    // blt _02203762
     // ldr r0, [sp]
     // str r0, [sp, #0x10]
     // str r0, [sp, #0xc]
@@ -56595,46 +46105,21 @@ void ov96_02203754(void) {
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #0x10]
     // add r0, #0xc4
-    // ldr r0, [r0]
-    // cmp r0, #1
-    // beq _02203792
-    // cmp r0, #2
-    // bne _022037DC
     // ldr r7, [sp]
     // ldr r6, [sp, #0x14]
     // ldr r5, [sp, #0x18]
-    // mov r4, #0
     // ldr r0, [sp, #4]
-    // cmp r0, r4
-    // beq _022037D0
-    // add r0, r7, #0
     // add r0, #0xc4
-    // ldr r0, [r0]
-    // cmp r0, #1
-    // beq _022037AE
-    // cmp r0, #2
-    // bne _022037D0
     // ldr r0, [sp, #0xc]
-    // add r1, r6, #0
     // add r2, sp, #0x1c
-    // bl VEC_Subtract
+    VEC_Subtract(*((u32*)r7), r6, (r2 + 1));
     // add r0, sp, #0x1c
-    // bl VEC_Mag
-    // mov r1, #1
-    // lsl r1, r1, #0xe
-    // cmp r0, r1
-    // bge _022037D0
+    VEC_Mag();
     // ldr r0, [sp, #8]
-    // mov r1, #1
     // strb r1, [r0]
-    // add r0, r1, #0
     // strb r0, [r5]
-    // add r4, r4, #1
     // add r7, #0x48
     // add r6, #0x48
-    // add r5, r5, #1
-    // cmp r4, #0xc
-    // blt _0220379A
     // ldr r0, [sp, #0x10]
     // add r0, #0x48
     // str r0, [sp, #0x10]
@@ -56642,20 +46127,11 @@ void ov96_02203754(void) {
     // add r0, #0x48
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #8]
-    // add r0, r0, #1
     // str r0, [sp, #8]
     // ldr r0, [sp, #4]
-    // add r0, r0, #1
     // str r0, [sp, #4]
-    // cmp r0, #0xc
-    // blt _02203784
-    // mov r3, #0
     // add r2, sp, #0x28
-    // mov r1, #3
-    // add r0, r3, #0
     // ldrb r4, [r2]
-    // cmp r4, #0
-    // beq _02203818
     // ldr r4, [sp]
     // add r4, #0xc4
     // str r1, [r4]
@@ -56666,16 +46142,10 @@ void ov96_02203754(void) {
     // add r4, #0xfc
     // strh r0, [r4]
     // ldr r4, [sp]
-    // add r3, r3, #1
     // add r4, #0x48
-    // add r2, r2, #1
     // str r4, [sp]
-    // cmp r3, #0xc
-    // blt _02203800
-    // add sp, #0x34
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220382C(void) {
@@ -56734,31 +46204,14 @@ void ov96_0220382C(void) {
 }
 
 
+
 void ov96_022038A0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r5, #0x50]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r5, #0x54]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    _s32_div_f(((r1 << 0x18) >> 0x18), 0xa);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 0x50)), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0xa);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 0x54)), (((r1 << 0x18) >> 0x18) + 1));
 }
+
 
 
 void ov96_022038D4(void) {
@@ -56797,6 +46250,7 @@ void ov96_022038D4(void) {
     // _02203920: .word 0x000003FF
     // TODO: decompile
 }
+
 
 
 void ov96_02203924(void) {
@@ -56839,6 +46293,7 @@ void ov96_02203924(void) {
     // _0220396C: .word ov96_0221C95C
     // TODO: decompile
 }
+
 
 
 void ov96_02203970(void) {
@@ -56912,211 +46367,93 @@ void ov96_02203970(void) {
 }
 
 
+
 void ov96_02203A00(void) {
-    Heap_Alloc(0x74);
-    MI_CpuFill8(0, 0x74);
-    *((u32*)(r4 + 8)) = r6;
-    *((u32*)(r4 + 4)) = r7;
-    ov96_02203FBC(r4);
-    ov96_02203FFC(r4);
 }
+
 
 
 void ov96_02203A30(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x24]
-    // bl Heap_Free
-    // ldr r0, [r5, #0x28]
-    // bl Heap_Free
-    // add r4, r4, #1
+    Heap_Free(*((u32*)(r0 + 0x24)));
+    Heap_Free(*((u32*)(r5 + 0x28)));
     // add r5, #8
-    // cmp r4, #3
-    // blt _02203A38
-    // ldr r0, [r6, #0x1c]
-    // bl Heap_Free
-    // add r0, r6, #0
+    Heap_Free(*((u32*)(r6 + 0x1c)));
     // add r0, #0xc
-    // bl RemoveWindow
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    RemoveWindow(r6);
+    Heap_Free(r6);
 }
+
 
 
 void ov96_02203A64(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x1c
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r1, #0
-    // mov r0, #2
     // str r1, [sp]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r5]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r5, #8]
-    // mov r0, #0xdb
-    // mov r3, #7
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xdb, 4, *((u32*)(r0 + 8)), 7);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r5, #8]
-    // mov r0, #0xdb
-    // mov r3, #6
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xdb, 5, *((u32*)(r5 + 8)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r2, [r5, #8]
-    // mov r0, #0xdb
-    // mov r3, #7
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xdb, 6, *((u32*)(r5 + 8)), 7);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5]
-    // mov r1, #7
     // str r0, [sp, #0xc]
-    // ldr r2, [r5, #8]
-    // mov r0, #0xdb
-    // mov r3, #6
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xdb, 7, *((u32*)(r5 + 8)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r5]
-    // mov r1, #8
     // str r0, [sp, #0xc]
-    // ldr r2, [r5, #8]
-    // mov r0, #0xdb
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // ldr r0, [r5]
-    // add r3, r5, #0
+    GfGfxLoader_LoadScrnData(0xdb, 8, *((u32*)(r5 + 8)), 5);
     // str r0, [sp]
-    // mov r0, #0xdb
-    // mov r1, #9
-    // mov r2, #0
     // add r3, #0x20
-    // bl GfGfxLoader_GetScrnData
-    // str r0, [r5, #0x1c]
-    // mov r0, #0x80
-    // str r0, [sp]
-    // ldr r0, [r5]
-    // mov r1, #3
-    // str r0, [sp, #4]
-    // mov r0, #0xdb
-    // mov r2, #4
-    // mov r3, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r0, #4
+    GfGfxLoader_GetScrnData(0xdb, 9, 0, r5);
+    *((u32*)(r5 + 0x1c)) = r0;
     // str r0, [sp]
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x20]
-    // mov r1, #5
+    GfGfxLoader_GXLoadPal(0xdb, 3, 4, 0);
+    // str r0, [sp]
+    // str r0, [sp, #4]
     // add r0, #0xc
     // str r0, [sp, #8]
-    // lsl r0, r4, #0x1a
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0xc]
-    // mov r0, #0x10
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x18]
-    // ldr r0, [r5, #8]
-    // mov r2, #0
-    // mov r3, #0x12
-    // bl CopyRectToBgTilemapRect
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x1c
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    CopyRectToBgTilemapRect(*((u32*)(r5 + 8)), 5, 0, 0x12);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 8)), 5);
 }
+
 
 
 void ov96_02203B44(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r1, #0
-    // mov r0, #2
     // str r0, [sp]
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0xd
-    // mov r3, #0x65
-    // bl ov96_021EB2BC
-    // mov r0, #2
+    ov96_021EB2BC(r1, 0xdb, 0xd, 0x65);
     // str r0, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0xa
-    // mov r3, #0x65
-    // bl ov96_021EB2F4
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0xc
-    // mov r3, #0x65
-    // bl ov96_021EB334
-    // add r0, r4, #0
-    // mov r1, #0xdb
-    // mov r2, #0xb
-    // mov r3, #0x65
-    // bl ov96_021EB36C
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EB2F4(r4, 0xdb, 0xa, 0x65);
+    ov96_021EB334(r4, 0xdb, 0xc, 0x65);
+    ov96_021EB36C(r4, 0xdb, 0xb, 0x65);
 }
+
 
 
 void ov96_02203B8C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
     // str r0, [sp, #4]
-    // add r5, r1, #0
     // str r2, [sp, #8]
-    // mov r4, #0
-    // mov r6, #5
-    // mov r7, #3
-    // add r0, r5, #0
-    // add r1, r7, #0
-    // mov r2, #2
-    // mov r3, #0x65
     // str r6, [sp]
-    // bl ov96_021EB408
-    // add r4, r4, #1
-    // cmp r4, #3
-    // blt _02203B9C
+    ov96_021EB408(r1, 3, 2, 0x65);
     // ldr r1, [sp, #4]
     // ldr r2, [sp, #8]
-    // add r0, r5, #0
-    // bl ov96_02203E30
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_02203E30(r5);
 }
+
 
 
 void ov96_02203BC0(void) {
@@ -57131,122 +46468,58 @@ void ov96_02203BC0(void) {
 }
 
 
+
 void ov96_02203BD0(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r0, #0x10
-    // lsr r4, r0, #0x10
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r1, 0x64);
+    _s32_div_f(((r0 << 0x10) >> 0x10), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #3]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 3)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
     // strb r1, [r0]
-    // mov r0, #0x64
     // mul r0, r4
     // sub r0, r6, r0
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // mov r1, #0xa
-    // bl _u32_div_f
-    // lsl r0, r0, #0x10
-    // lsr r4, r0, #0x10
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _u32_div_f(((0x64 << 0x10) >> 0x10), 0xa);
+    _s32_div_f(((r0 << 0x10) >> 0x10), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #4]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 4)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #1]
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x10
-    // lsr r4, r0, #0x10
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    *((u8*)(r0 + 1)) = (r0 << 3);
+    _s32_div_f(r6, 0xa);
+    _s32_div_f(((r1 << 0x10) >> 0x10), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #5]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 5)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #2]
-    // mov r4, #0
-    // mov r6, #4
-    // mov r7, #8
+    *((u8*)(r0 + 2)) = (r0 << 3);
     // str r6, [sp]
     // str r7, [sp, #4]
-    // ldr r0, [r5, #0x20]
-    // lsl r2, r4, #2
     // add r0, #0xc
     // str r0, [sp, #8]
     // add r0, sp, #0x1c
     // add r0, #3
     // ldrb r0, [r0, r4]
     // add r2, #0x13
-    // lsl r2, r2, #0x18
     // str r0, [sp, #0xc]
     // add r0, sp, #0x1c
     // ldrb r0, [r0, r4]
-    // mov r1, #5
-    // lsr r2, r2, #0x18
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x18]
-    // ldr r0, [r5, #8]
-    // mov r3, #0x10
-    // bl CopyRectToBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _02203C5E
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CopyRectToBgTilemapRect(*((u32*)(r5 + 8)), 5, (((0 << 2) << 0x18) >> 0x18), 0x10);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 8)), 5);
 }
+
 
 
 void ov96_02203CA4(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #3
-    // blo _02203CB4
-    // bl GF_AssertFail
-    // lsl r0, r4, #2
+    GF_AssertFail();
     // add r0, r5, r0
-    // ldr r0, [r0, #0x54]
     // add r1, r6, r4
-    // bl ov96_021EB570
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021EB570(*((u32*)((r4 << 2) + 0x54)));
 }
+
 
 
 void ov96_02203CC4(void) {
@@ -57261,371 +46534,173 @@ void ov96_02203CC4(void) {
 }
 
 
+
 void ov96_02203CD4(void) {
-    // add r1, r0, #0
-    // mov r2, #1
     // add r1, #0x70
     // strb r2, [r1]
-    // mov r1, #0
     // add r0, #0x71
     // strb r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02203CE4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
     // add r0, #0x70
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02203D4C
-    // add r0, r5, #0
     // add r0, #0x71
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r5, #0
     // add r0, #0x71
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0x71
     // ldrb r0, [r0]
-    // mov r1, #0x1f
-    // lsr r3, r0, #0x1f
-    // lsl r2, r0, #0x1f
     // sub r2, r2, r3
     // ror r2, r1
     // add r1, r3, r2
-    // lsl r1, r1, #3
     // neg r4, r1
-    // cmp r0, #0xa
-    // blo _02203D26
-    // add r0, r5, #0
-    // mov r4, #0
     // add r0, #0x70
     // strb r4, [r0]
-    // add r0, r5, #0
     // add r0, #0x71
     // strb r4, [r0]
-    // ldr r0, [r5, #8]
-    // mov r1, #4
-    // mov r2, #3
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // mov r2, #3
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #8]
-    // mov r1, #6
-    // mov r2, #3
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // pop {r3, r4, r5, pc}
-    // ldr r0, [r5, #8]
-    // mov r1, #4
-    // mov r2, #3
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // mov r2, #3
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #8]
-    // mov r1, #6
-    // mov r2, #3
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ScheduleSetBgPosText(*((u32*)(r0 + 8)), 4, 3, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 8)), 5, 3, r4);
+    ScheduleSetBgPosText(*((u32*)(r5 + 8)), 6, 3, r4);
+    ScheduleSetBgPosText(*((u32*)(r5 + 8)), 4, 3, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 8)), 5, 3, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 8)), 6, 3, 0);
 }
+
 
 
 void ov96_02203D74(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r7, r0, #0
     // add r5, sp, #0x18
     // str r1, [sp, #0xc]
     // str r2, [sp, #0x10]
-    // mov r6, #0
-    // add r4, r7, #0
     // str r5, [sp, #0x14]
-    // ldr r0, [r4, #0x54]
-    // bl ov96_021EB594
-    // ldr r1, [r0]
+    ov96_021EB594(*((u32*)(r0 + 0x54)));
     // ldr r3, [sp, #0xc]
     // asr r2, r1, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r1, r2
     // asr r1, r2, #0xc
     // strh r1, [r5]
-    // ldr r1, [r0, #4]
     // ldr r2, [sp, #0x10]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
-    // strh r0, [r5, #2]
-    // mov r0, #2
+    *((u16*)(r5 + 2)) = (r0 >> 0x14);
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x14]
-    // mov r1, #0
     // str r0, [sp, #8]
-    // ldr r0, [r7, #4]
-    // bl ov96_021E634C
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // add r5, r5, #4
-    // cmp r6, #3
-    // blt _02203D86
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E634C(*((u32*)(r7 + 4)), 0, (r2 >> 0x14));
 }
 
 
+
 void ov96_02203DCC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r6, r0, #0
-    // mov r0, #0
-    // add r5, r1, #0
     // str r0, [sp, #0xc]
-    // add r4, r6, #0
     // add r7, sp, #0x10
-    // ldrb r0, [r5, #6]
-    // mov r3, #0
     // str r0, [sp]
-    // ldrh r0, [r5, #2]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0xc]
     // str r0, [sp, #8]
     // ldrh r1, [r5]
-    // ldrb r2, [r5, #7]
     // add r0, sp, #0x10
-    // bl GetMonSpriteCharAndPlttNarcIdsEx
-    // mov r0, #0
+    GetMonSpriteCharAndPlttNarcIdsEx(*((u32*)(r1 + 0xc)), *((u8*)(r1 + 7)), 0);
     // str r0, [sp]
     // str r0, [sp, #4]
     // ldrh r0, [r5]
     // str r0, [sp, #8]
     // ldrh r0, [r7]
-    // ldrh r1, [r7, #2]
-    // ldr r2, [r6]
-    // ldr r3, [r5, #0xc]
-    // bl sub_0201457C
-    // str r0, [r4, #0x24]
+    sub_0201457C(0, *((u16*)(r7 + 2)), *((u32*)r6), *((u32*)(r5 + 0xc)));
+    *((u32*)(r4 + 0x24)) = r0;
     // ldrh r0, [r7]
-    // ldrh r1, [r7, #4]
-    // ldr r2, [r6]
-    // bl sub_02014450
-    // str r0, [r4, #0x28]
+    sub_02014450(*((u16*)(r7 + 4)), *((u32*)r6));
+    *((u32*)(r4 + 0x28)) = r0;
     // ldr r0, [sp, #0xc]
     // add r5, #0x10
-    // add r0, r0, #1
     // add r4, #8
     // str r0, [sp, #0xc]
-    // cmp r0, #3
-    // blt _02203DDC
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02203E30(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r7, r0, #0
     // str r1, [sp, #4]
     // str r2, [sp, #8]
-    // mov r4, #0
-    // mov r5, #2
-    // mov r6, #3
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // mov r3, #0x65
     // str r5, [sp]
-    // bl ov96_021EB408
-    // add r4, r4, #1
-    // cmp r4, #3
-    // blt _02203E40
-    // mov r0, #0x10
+    ov96_021EB408(r0, 3, 2, 0x65);
     // ldr r6, [sp, #8]
     // ldr r4, [sp, #4]
-    // mov r5, #0
     // str r0, [sp, #0xc]
-    // add r0, r7, #0
-    // mov r1, #0x65
-    // mov r2, #2
-    // bl ov96_021EB4F4
-    // str r0, [r4, #0x54]
-    // mov r0, #0
+    ov96_021EB4F4(r7, 0x65, 2);
+    *((u32*)(r4 + 0x54)) = r0;
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #0xc]
-    // mov r2, #0
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0x10]
-    // ldr r0, [r6, #0xc]
     // str r0, [sp]
-    // ldrh r3, [r6, #2]
     // ldrh r0, [r6]
-    // ldrb r1, [r6, #7]
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #0x18
-    // bl GetMonPicHeightBySpeciesGenderForm
-    // mov r1, #0x5e
-    // lsl r1, r1, #2
+    GetMonPicHeightBySpeciesGenderForm(*((u32*)(r6 + 0xc)), *((u8*)(r6 + 7)), 0, ((*((u16*)(r6 + 2)) << 0x18) >> 0x18));
     // add r0, r0, r1
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0x14]
-    // ldr r0, [r4, #0x54]
     // add r1, sp, #0x10
-    // bl ov96_021EB588
-    // ldr r0, [r4, #0x54]
-    // add r1, r5, #1
-    // bl ov96_021EB564
-    // mov r1, #1
-    // ldr r0, [r4, #0x54]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // mov r1, #0x13
-    // ldr r0, [r4, #0x54]
+    ov96_021EB588(*((u32*)(r4 + 0x54)), (0x5e << 2));
+    ov96_021EB564(*((u32*)(r4 + 0x54)), (r5 + 1));
+    ov96_021EB52C(*((u32*)(r4 + 0x54)), 1, 1);
     // sub r1, r1, r5
-    // bl ov96_021EB630
-    // add r0, r7, #0
-    // mov r1, #0x65
-    // mov r2, #5
-    // bl ov96_021EB4F4
-    // str r0, [r4, #0x60]
-    // mov r1, #0
-    // bl ov96_021EB564
-    // mov r0, #1
+    ov96_021EB630(*((u32*)(r4 + 0x54)), 0x13);
+    ov96_021EB4F4(r7, 0x65, 5);
+    *((u32*)(r4 + 0x60)) = r0;
+    ov96_021EB564(0);
     // ldr r1, [sp, #0x14]
-    // lsl r0, r0, #0x10
     // sub r0, r1, r0
     // str r0, [sp, #0x14]
-    // ldr r0, [r4, #0x60]
     // add r1, sp, #0x10
-    // bl ov96_021EB588
-    // ldr r0, [r4, #0x60]
-    // mov r1, #4
-    // bl ov96_021EB630
+    ov96_021EB588(*((u32*)(r4 + 0x60)));
+    ov96_021EB630(*((u32*)(r4 + 0x60)), 4);
     // ldr r0, [sp, #0xc]
-    // add r5, r5, #1
     // add r0, #0x32
     // add r6, #0x10
-    // add r4, r4, #4
     // str r0, [sp, #0xc]
-    // cmp r5, #3
-    // blt _02203E5E
     // ldr r0, [sp, #4]
     // ldr r1, [sp, #8]
-    // bl ov96_02203DCC
+    ov96_02203DCC();
     // ldr r1, [sp, #4]
-    // add r0, r7, #0
-    // bl ov96_02203F50
+    ov96_02203F50(r7);
     // ldr r0, [sp, #4]
-    // bl ov96_02203F0C
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_02203F0C();
 }
+
 
 
 void ov96_02203F0C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // lsl r0, r4, #3
     // add r5, r6, r0
-    // mov r1, #0x32
-    // ldr r0, [r5, #0x24]
-    // lsl r1, r1, #6
-    // bl DC_FlushRange
-    // lsl r0, r4, #2
+    DC_FlushRange(*((u32*)(r5 + 0x24)), (0x32 << 6));
     // add r7, r6, r0
-    // mov r2, #0x32
-    // ldr r0, [r5, #0x24]
-    // ldr r1, [r7, #0x3c]
-    // lsl r2, r2, #6
-    // bl GXS_LoadOBJ
-    // ldr r0, [r5, #0x28]
-    // mov r1, #0x20
-    // bl DC_FlushRange
-    // ldr r0, [r5, #0x28]
-    // ldr r1, [r7, #0x48]
-    // mov r2, #0x20
-    // bl GXS_LoadOBJPltt
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _02203F12
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GXS_LoadOBJ(*((u32*)(r5 + 0x24)), *((u32*)(r7 + 0x3c)), (0x32 << 6));
+    DC_FlushRange(*((u32*)(r5 + 0x28)), 0x20);
+    GXS_LoadOBJPltt(*((u32*)(r5 + 0x28)), *((u32*)(r7 + 0x48)), 0x20);
 }
+
 
 
 void ov96_02203F50(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
-    // mov r1, #0x65
-    // mov r2, #0
-    // add r5, r0, #0
-    // bl ov96_021EB5EC
-    // ldr r4, [r0]
-    // add r0, r5, #0
-    // mov r1, #0x65
-    // mov r2, #1
-    // bl ov96_021EB5EC
-    // ldr r5, [r0]
-    // add r0, r4, #0
-    // bl sub_0200AF00
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // add r1, r7, #0
-    // bl SpriteTransfer_GetPaletteProxy
+    ov96_021EB5EC(0x65, 0);
+    ov96_021EB5EC(r5, 0x65, 1);
+    sub_0200AF00(r4);
+    SpriteTransfer_GetPaletteProxy(r5, r0);
     // str r0, [sp]
-    // mov r4, #0
-    // lsl r0, r4, #2
     // add r5, r6, r0
-    // add r0, r7, #0
-    // mov r1, #2
-    // bl NNS_G2dGetImageLocation
-    // mov r1, #0xd
-    // lsl r1, r1, #8
-    // add r2, r4, #0
+    NNS_G2dGetImageLocation(r7, 2);
     // mul r2, r1
-    // mov r1, #3
-    // lsl r1, r1, #8
     // add r1, r2, r1
     // add r0, r1, r0
-    // str r0, [r5, #0x3c]
+    *((u32*)(r5 + 0x3c)) = r0;
     // ldr r0, [sp]
-    // mov r1, #2
-    // bl NNS_G2dGetImagePaletteLocation
-    // lsl r1, r4, #5
+    NNS_G2dGetImagePaletteLocation(2, r4);
     // add r1, #0x20
     // add r0, r1, r0
-    // str r0, [r5, #0x48]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _02203F80
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 0x48)) = r0;
 }
+
 
 
 void ov96_02203FBC(void) {
@@ -57658,6 +46733,7 @@ void ov96_02203FBC(void) {
     // _02203FF8: .word ov96_0221CA28
     // TODO: decompile
 }
+
 
 
 void ov96_02203FFC(void) {
@@ -57696,6 +46772,7 @@ void ov96_02203FFC(void) {
     // _02204048: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_0220404C(void) {
@@ -57786,6 +46863,7 @@ void ov96_0220404C(void) {
     // _02204130: .word 0x3FD937A6
     // TODO: decompile
 }
+
 
 
 void ov96_02204134(void) {
@@ -57979,6 +47057,7 @@ void ov96_02204134(void) {
 }
 
 
+
 void ov96_02204320(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x30
@@ -58013,171 +47092,90 @@ void ov96_02204320(void) {
 }
 
 
+
 void ov96_02204364(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // mov r1, #0xcc
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r1, #0
-    // mov r2, #0xcc
-    // bl MI_CpuFill8
-    // add r0, r4, #0
+    Heap_Alloc(0xcc);
+    MI_CpuFill8(0, 0xcc);
     // add r0, #0xc4
     // strb r5, [r0]
-    // mov r0, #4
     // sub r1, r0, r5
-    // add r0, r4, #0
     // add r0, #0xc9
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xc9
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xc8
     // strb r1, [r0]
-    // add r0, r4, #0
-    // mov r1, #0x28
     // add r0, #0xc7
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xc7
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xc6
     // strb r1, [r0]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022043AC(void) {
-    // lsl r1, r1, #2
     // str r2, [r0, r1]
     // add r0, r0, r1
-    // str r3, [r0, #0x30]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x30)) = r3;
 }
+
 
 
 void ov96_022043B8(void) {
-    Heap_Free();
 }
 
 
+
 void ov96_022043C0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
     // add r0, #0xc9
     // ldrb r0, [r0]
-    // add r7, r1, #0
-    // mov r4, #0xc
-    // cmp r0, #4
-    // bne _022043D4
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r5, #0
     // add r0, #0xc6
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r5, #0
     // add r0, #0xc6
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xc6
     // ldrb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xc7
     // ldrb r0, [r0]
-    // cmp r1, r0
-    // blo _02204402
-    // add r0, r5, #0
-    // mov r1, #1
     // add r0, #0xc0
     // str r1, [r0]
-    // add r0, r5, #0
-    // mov r1, #0
     // add r0, #0xc6
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xc0
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // beq _0220449A
-    // add r0, r5, #0
-    // add r1, r5, #0
     // add r0, #0xc8
     // add r1, #0xc5
     // ldrb r0, [r0]
     // ldrb r1, [r1]
     // add r6, r0, r1
-    // add r1, r5, #0
     // add r1, #0xca
     // ldrb r2, [r1]
-    // lsl r1, r6, #1
     // add r1, r6, r1
     // add r4, r2, r1
-    // cmp r4, r0
-    // bge _0220442E
-    // bl GF_AssertFail
-    // lsl r0, r4, #2
+    GF_AssertFail(r0, (r6 << 1));
     // add r1, r5, r0
-    // ldr r1, [r1, #0x30]
-    // ldr r1, [r1, #0xc]
-    // cmp r1, #0
-    // beq _0220443E
-    // cmp r1, #2
-    // bne _02204456
     // ldr r0, [r5, r0]
-    // ldrb r0, [r0, #0x19]
-    // cmp r0, #1
-    // beq _02204456
-    // lsl r1, r6, #0x18
-    // lsl r2, r4, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x18
-    // add r3, r7, #0
-    // bl ov96_022044A0
-    // lsl r0, r4, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r5, #0
+    ov96_022044A0(r5, ((r6 << 0x18) >> 0x18), ((r4 << 0x18) >> 0x18), r7);
     // add r0, #0xc5
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r5, #0
     // add r0, #0xc5
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xc5
     // ldrb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xc4
     // ldrb r0, [r0]
-    // cmp r1, r0
-    // blo _0220449A
-    // add r0, r5, #0
-    // mov r1, #0
     // add r0, #0xc5
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xca
     // ldrb r0, [r0]
-    // mov r1, #3
-    // add r0, r0, #1
-    // bl _s32_div_f
-    // add r0, r5, #0
+    _s32_div_f((r5 + 1), 3);
     // add r0, #0xca
     // strb r1, [r0]
-    // mov r0, #0
     // add r5, #0xc0
     // str r0, [r5]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022044A0(void) {
@@ -58472,103 +47470,43 @@ void ov96_022044A0(void) {
 }
 
 
+
 void ov96_0220472C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x84
     // str r0, [sp]
     // add r0, sp, #0x18
     // str r0, [sp, #0xc]
     // str r0, [sp, #0x10]
-    // mov r0, #0
     // str r0, [sp, #8]
     // str r0, [sp, #0x14]
     // ldr r4, [sp, #8]
     // str r1, [sp, #4]
-    // add r7, r2, #0
-    // add r5, r4, #0
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(r4, 3);
     // ldr r1, [sp]
-    // cmp r0, r1
-    // beq _022047A4
-    // add r1, r4, #1
-    // mov r0, #0xc
     // mul r0, r1
     // add r3, sp, #0xc
     // ldr r1, [sp, #4]
-    // lsl r6, r5, #2
     // ldr r1, [r1, r6]
     // add r2, r3, r0
-    // str r1, [r2, #8]
-    // mov r1, #0
-    // str r1, [r2, #4]
+    *((u32*)(r2 + 8)) = (r4 + 1);
+    *((u32*)(r2 + 4)) = 0;
     // str r1, [r3, r0]
-    // cmp r4, #0
-    // bls _02204796
-    // ldr r0, [r2, #8]
-    // ldrh r0, [r0, #6]
-    // ldr r3, [r3, #4]
-    // ldr r6, [r3, #8]
-    // ldrh r6, [r6, #6]
-    // cmp r6, r0
-    // bhs _0220478C
-    // ldr r0, [r3]
-    // str r2, [r0, #4]
-    // ldr r0, [r3]
+    *((u32*)(*((u32*)*((u32*)(r3 + 4))) + 4)) = r2;
     // str r0, [r2]
-    // str r3, [r2, #4]
+    *((u32*)(r2 + 4)) = *((u32*)(r3 + 4));
     // str r2, [r3]
-    // b _02204796
-    // add r1, r1, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // cmp r1, r4
-    // blo _02204774
-    // cmp r1, r4
-    // bne _0220479E
-    // str r2, [r3, #4]
+    *((u32*)(*((u32*)(r3 + 4)) + 4)) = r2;
     // str r3, [r2]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // cmp r5, #0xc
-    // blo _02204746
     // ldr r0, [sp, #0x10]
-    // mov r2, #0
-    // ldr r0, [r0, #8]
-    // ldrh r1, [r0, #6]
     // add r0, sp, #0xc
-    // ldr r0, [r0, #4]
-    // lsl r4, r2, #2
-    // ldr r3, [r0, #8]
     // str r3, [r7, r4]
     // ldr r3, [r7, r4]
-    // ldrh r3, [r3, #6]
-    // cmp r1, r3
-    // bne _022047D2
     // ldr r3, [sp, #8]
-    // add r3, r3, #1
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #0x18
     // str r3, [sp, #8]
-    // add r2, r2, #1
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x18
-    // cmp r2, #9
-    // blo _022047B8
     // ldr r0, [sp, #8]
-    // cmp r0, #0
-    // bne _022047E6
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)(*((u32*)(((r5 + 1) << 0x18) + 8)) + 4)), *((u16*)(*((u32*)(((r5 + 1) << 0x18) + 8)) + 6)), (((0 + 1) << 0x18) >> 0x18), (((*((u16*)(*((u32*)(*((u32*)(*((u32*)(((r5 + 1) << 0x18) + 8)) + 4)) + 8)) + 6)) + 1) << 0x18) >> 0x18));
     // ldr r0, [sp, #8]
-    // add sp, #0x84
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022047EC(void) {
@@ -59228,56 +48166,26 @@ void ov96_022047EC(void) {
 }
 
 
+
 u32 ov96_02204DE8(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EB5BC(*((u32*)(r0 + 0x20)));
-    return 1;
 }
+
 
 
 void ov96_02204DF8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetGraphicsSystem
-    // add r6, r0, #0
-    // bl ov96_021E9510
-    // mov r4, #0
-    // add r7, r4, #0
-    // lsl r1, r4, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl PokeathlonCourse_GetField5F0_AtIndex
-    // add r3, r0, #0
+    PokeathlonCourse_GetGraphicsSystem();
+    ov96_021E9510();
+    PokeathlonCourse_GetField5F0_AtIndex(r5, ((0 << 0x18) >> 0x18));
     // str r7, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // mov r0, #0x49
-    // lsl r0, r0, #2
     // str r0, [sp, #8]
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl ov96_021E95F8
-    // add r4, r4, #1
-    // cmp r4, #4
-    // blt _02204E0C
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl ov96_021E93B4
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl ov96_0221A56C
-    // add r0, r6, #0
-    // bl ov96_021E952C
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl ov96_021E9570
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E95F8(r5, r6, r4, r0);
+    ov96_021E93B4(r6, 1);
+    ov96_0221A56C(r6, 1);
+    ov96_021E952C(r6);
+    ov96_021E9570(r6, 1);
 }
+
 
 
 void ov96_02204E58(void) {
@@ -59358,9 +48266,10 @@ void ov96_02204E58(void) {
 }
 
 
+
 void ov96_02204F20(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_02204F40(void) {
@@ -59482,92 +48391,42 @@ void ov96_02204F40(void) {
 }
 
 
+
 void ov96_02205048(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // mov r3, #0
     // str r3, [sp]
     // str r3, [sp, #4]
-    // add r4, r0, #0
     // str r3, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r1, #1
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xe2
-    // bl GfGfxLoader_LoadCharData
-    // mov r2, #0
+    GfGfxLoader_LoadCharData(0xe2, 1, *((u32*)r0), 0);
     // str r2, [sp]
-    // ldr r3, [r4, #0x14]
-    // mov r0, #0xe2
-    // mov r1, #3
-    // bl GfGfxLoader_LoadFromNarc
-    // add r1, r4, #0
+    GfGfxLoader_LoadFromNarc(0xe2, 3, 0, *((u32*)(r4 + 0x14)));
     // add r1, #0x1c
-    // str r0, [r4, #0x18]
-    // bl NNS_G2dGetUnpackedBGCharacterData
-    // mov r3, #0
+    *((u32*)(r4 + 0x18)) = r0;
+    NNS_G2dGetUnpackedBGCharacterData(r4);
     // str r3, [sp]
     // str r3, [sp, #4]
     // str r3, [sp, #8]
-    // ldr r0, [r4, #0x14]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r4]
-    // mov r0, #0xe2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
-    // mov r0, #0x40
+    GfGfxLoader_LoadScrnData(0xe2, 2, *((u32*)r4), 0);
     // str r0, [sp]
-    // ldr r0, [r4, #0x14]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xe2
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r0, #0x37
-    // lsl r0, r0, #4
+    GfGfxLoader_GXLoadPal(0xe2, 0, 0, 0);
     // ldr r0, [r4, r0]
-    // bl ov96_02207DDC
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_02207DDC((0x37 << 4));
 }
+
 
 
 void ov96_022050B4(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // mov r1, #1
     // str r1, [sp]
-    // mov r1, #0xe2
-    // mov r2, #0x11
-    // mov r3, #0x68
-    // add r4, r0, #0
-    // bl ov96_021EB2BC
-    // mov r0, #1
+    ov96_021EB2BC(0xe2, 0x11, 0x68);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #0xe2
-    // mov r2, #0xe
-    // mov r3, #0x68
-    // bl ov96_021EB2F4
-    // add r0, r4, #0
-    // mov r1, #0xe2
-    // mov r2, #0x10
-    // mov r3, #0x68
-    // bl ov96_021EB334
-    // add r0, r4, #0
-    // mov r1, #0xe2
-    // mov r2, #0xf
-    // mov r3, #0x68
-    // bl ov96_021EB36C
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_021EB2F4(r4, 0xe2, 0xe, 0x68);
+    ov96_021EB334(r4, 0xe2, 0x10, 0x68);
+    ov96_021EB36C(r4, 0xe2, 0xf, 0x68);
 }
+
 
 
 void ov96_022050F8(void) {
@@ -59768,6 +48627,7 @@ void ov96_022050F8(void) {
     // _022052AC: .word 0x00000568
     // TODO: decompile
 }
+
 
 
 void ov96_022052B0(void) {
@@ -59991,66 +48851,27 @@ void ov96_022052B0(void) {
 }
 
 
+
 void ov96_0220549C(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _022054BA
-    // cmp r0, #1
-    // beq _022054D2
-    // cmp r0, #2
-    // beq _022054EA
-    // b _0220551A
-    // add r0, r5, #0
-    // bl ov96_02205D30
-    // add r0, r5, #0
-    // bl ov96_021E637C
-    // cmp r0, #0
-    // beq _0220551A
+    ov96_02205D30(r5);
+    ov96_021E637C(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _0220551A
-    // add r0, r5, #0
-    // bl ov96_022055AC
-    // add r0, r5, #0
-    // bl ov96_02205C94
-    // cmp r0, #0
-    // beq _0220551A
+    ov96_022055AC(r5);
+    ov96_02205C94(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _0220551A
-    // add r0, r5, #0
-    // bl ov96_022055AC
-    // add r0, r5, #0
-    // bl ov96_021E667C
-    // cmp r0, #0
-    // beq _0220551A
-    // mov r0, #6
+    ov96_022055AC(r5);
+    ov96_021E667C(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x14]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    PokeathlonCourse_SetStateField07(r5, 2);
 }
+
 
 
 void ov96_02205520(void) {
@@ -60118,6 +48939,7 @@ void ov96_02205520(void) {
     // _022055A8: .word 0x000003E7
     // TODO: decompile
 }
+
 
 
 void ov96_022055AC(void) {
@@ -60757,6 +49579,7 @@ void ov96_022055AC(void) {
 }
 
 
+
 void ov96_02205AFC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -60964,6 +49787,7 @@ void ov96_02205AFC(void) {
 }
 
 
+
 void ov96_02205C94(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -61031,6 +49855,7 @@ void ov96_02205C94(void) {
     // _02205D2C: .word gSystem + 0x40
     // TODO: decompile
 }
+
 
 
 void ov96_02205D30(void) {
@@ -61106,51 +49931,27 @@ void ov96_02205D30(void) {
 }
 
 
+
 void ov96_02205DD4(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r6, r2, #0
-    // mov r2, #0xb8
     // add r0, #0x24
     // mul r2, r1
     // add r5, r0, r2
-    // add r0, r5, #0
     // add r0, #0xb1
     // ldrb r0, [r0]
-    // add r4, r3, #0
-    // cmp r0, #3
-    // blo _02205DF2
-    // bl GF_AssertFail
-    // add r0, r5, #0
+    GF_AssertFail(r5, 0xb8);
     // add r0, #0xb1
     // ldrb r0, [r0]
-    // mov r1, #0x80
-    // mov r2, #0x60
-    // lsl r0, r0, #2
     // ldr r5, [r5, r0]
     // add r0, sp, #4
     // str r0, [sp]
-    // add r0, r5, #0
     // add r3, sp, #8
-    // bl ov96_021EB0A4
+    ov96_021EB0A4(r5, 0x80, 0x60);
     // str r4, [sp]
     // ldr r1, [sp, #8]
     // ldr r2, [sp, #4]
-    // add r0, r5, #0
-    // lsl r1, r1, #0xc
-    // lsl r2, r2, #0xc
-    // add r3, r6, #0
-    // bl ov96_021EB0CC
-    // cmp r0, #0
-    // beq _02205E28
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021EB0CC(r5, (r1 << 0xc), (r2 << 0xc), r6);
 }
+
 
 
 void ov96_02205E30(void) {
@@ -61745,21 +50546,16 @@ void ov96_02205E30(void) {
 }
 
 
+
 void ov96_02206368(void) {
-    // add r0, r2, #0
     // add r0, #0xa4
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _0220637E
-    // add r0, r2, #0
     // add r0, #0xa4
     // ldrb r0, [r0]
     // add r2, #0xa4
-    // sub r0, r0, #1
     // strb r0, [r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02206380(void) {
@@ -62551,6 +51347,7 @@ void ov96_02206380(void) {
 }
 
 
+
 void ov96_02206A24(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -62628,6 +51425,7 @@ void ov96_02206A24(void) {
     // _02206ABC: .word 0x00000386
     // TODO: decompile
 }
+
 
 
 void ov96_02206AC0(void) {
@@ -62719,6 +51517,7 @@ void ov96_02206AC0(void) {
     // _02206B7C: .word 0x00000474
     // TODO: decompile
 }
+
 
 
 void ov96_02206B80(void) {
@@ -62848,256 +51647,132 @@ void ov96_02206B80(void) {
 }
 
 
+
 void ov96_02206C90(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
     // add r1, #0x9f
     // ldrb r1, [r1]
     // ldr r5, [sp, #0x10]
-    // cmp r1, #3
-    // bhi _02206D54
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02206CAA: ; jump table
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0xa0
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0x70
     // ldrsh r1, [r4, r0]
-    // add r0, r4, #0
     // add r0, #0x70
     // add r1, #8
     // strh r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xa0
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0xa0
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xa0
     // ldrb r0, [r0]
-    // cmp r0, #0x20
-    // blo _02206D54
-    // lsl r0, r3, #2
     // ldr r0, [r4, r0]
-    // mov r1, #0
-    // bl ov96_021EAB38
-    // add r0, r4, #0
+    ov96_021EAB38((r3 << 2), 0);
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r3, r4, r5, pc}
     // ldr r1, [sp, #0x18]
-    // cmp r1, #0
-    // beq _02206D26
-    // add r1, r3, #0
-    // bl ov96_02208448
-    // cmp r0, #0
-    // beq _02206D54
-    // mov r0, #1
-    // strb r0, [r5, #8]
-    // add r0, r4, #0
+    ov96_02208448((r4 + 1), r3);
+    *((u8*)(r5 + 8)) = 1;
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r3, r4, r5, pc}
     // ldr r1, [sp, #0x14]
-    // cmp r1, #0
-    // beq _02206D48
-    // add r1, r2, #0
-    // bl ov96_02208608
-    // cmp r0, #0
-    // beq _02206D54
-    // mov r0, #1
-    // strb r0, [r5, #8]
-    // add r0, r4, #0
+    ov96_02208608((r4 + 1), r2);
+    *((u8*)(r5 + 8)) = 1;
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // add r0, r4, #0
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02206D58(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
     // add r0, #0x9f
     // ldrb r0, [r0]
-    // cmp r0, #3
-    // bhi _02206DE8
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02206D70: ; jump table
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0xa0
     // strb r1, [r0]
-    // lsl r0, r2, #2
     // ldr r0, [r4, r0]
-    // mov r1, #1
-    // bl ov96_021EAB38
-    // add r0, r4, #0
+    ov96_021EAB38((r2 << 2), 1);
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r4, pc}
-    // mov r0, #0x70
     // ldrsh r1, [r4, r0]
-    // add r0, r4, #0
     // add r0, #0x70
     // sub r1, #8
     // strh r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xa0
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0xa0
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0xa0
     // ldrb r0, [r0]
-    // cmp r0, #0x20
-    // blo _02206DE8
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0x70
     // strh r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r4, pc}
     // ldr r0, [sp, #8]
-    // cmp r0, #0
-    // beq _02206DDC
-    // mov r0, #2
-    // strb r0, [r3, #8]
-    // add r0, r4, #0
+    *((u8*)(r3 + 8)) = 2;
     // add r0, #0x9f
     // ldrb r0, [r0]
     // add r4, #0x9f
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_02206DEC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // ldr r2, [r2, #0x10]
-    // lsr r2, r2, #0x17
-    // lsl r2, r2, #0x18
-    // lsr r4, r2, #0x18
-    // lsl r2, r3, #1
     // asr r4, r2
-    // mov r2, #3
     // and r2, r4
-    // lsl r2, r2, #0x18
-    // lsr r4, r2, #0x18
-    // add r2, r1, #0
     // add r2, #0x9e
     // ldrb r2, [r2]
-    // cmp r2, r4
-    // beq _02206E1C
-    // add r2, r1, #0
     // add r2, #0x9e
     // strb r4, [r2]
-    // add r2, r1, #0
-    // mov r4, #0
     // add r2, #0x9f
     // strb r4, [r2]
-    // add r2, r1, #0
     // add r2, #0x9e
     // ldrb r2, [r2]
-    // cmp r2, #0
-    // beq _02206E82
-    // cmp r2, #1
-    // beq _02206E32
-    // cmp r2, #2
-    // beq _02206E5C
-    // add sp, #0xc
-    // pop {r3, r4, pc}
     // ldr r2, [sp, #0x20]
-    // cmp r2, #0
-    // beq _02206E42
     // ldr r2, [sp, #0x28]
-    // cmp r2, #0
-    // beq _02206E42
-    // mov r4, #1
-    // b _02206E44
-    // mov r4, #0
     // ldr r2, [sp, #0x1c]
     // str r2, [sp]
     // ldr r2, [sp, #0x24]
     // str r4, [sp, #4]
     // str r2, [sp, #8]
-    // add r2, r3, #0
     // add r3, sp, #8
-    // ldrb r3, [r3, #0x10]
-    // bl ov96_02206C90
-    // add sp, #0xc
-    // pop {r3, r4, pc}
+    ov96_02206C90(r3, *((u8*)(r3 + 0x10)));
     // ldr r0, [sp, #0x20]
-    // cmp r0, #0
-    // beq _02206E6C
     // ldr r0, [sp, #0x28]
-    // cmp r0, #0
-    // beq _02206E6C
-    // mov r2, #1
-    // b _02206E6E
-    // mov r2, #0
     // ldr r0, [sp, #0x24]
     // orr r0, r2
     // str r0, [sp]
     // add r2, sp, #8
-    // add r0, r1, #0
-    // add r1, r3, #0
-    // ldrb r2, [r2, #0x10]
     // ldr r3, [sp, #0x1c]
-    // bl ov96_02206D58
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov96_02206D58(r1, r3, *((u8*)(0 + 0x10)));
 }
+
 
 
 void ov96_02206E88(void) {
@@ -63163,6 +51838,7 @@ void ov96_02206E88(void) {
     // _02206F18: .word 0x40240000
     // TODO: decompile
 }
+
 
 
 void ov96_02206F1C(void) {
@@ -63236,85 +51912,56 @@ void ov96_02206F1C(void) {
 }
 
 
+
 void ov96_02206FA4(void) {
-    // push {r4, r5}
     // ldrh r5, [r1]
-    // ldrh r4, [r1, #2]
-    // add r3, r5, #0
-    // add r1, r4, #0
     // sub r3, #0x10
     // str r3, [r2]
     // sub r1, #0x10
-    // str r1, [r2, #4]
+    *((u32*)(r2 + 4)) = *((u16*)(r1 + 2));
     // add r5, #0x10
-    // str r5, [r2, #8]
-    // str r1, [r2, #0xc]
-    // str r5, [r2, #0x10]
+    *((u32*)(r2 + 8)) = r5;
+    *((u32*)(r2 + 0xc)) = *((u16*)(r1 + 2));
+    *((u32*)(r2 + 0x10)) = r5;
     // add r4, #0x10
-    // str r4, [r2, #0x14]
-    // str r3, [r2, #0x18]
-    // str r4, [r2, #0x1c]
-    // ldr r3, [r2]
-    // ldr r1, [r2, #4]
-    // str r3, [r2, #0x20]
-    // str r1, [r2, #0x24]
-    // ldr r3, [r2, #8]
-    // ldr r1, [r2, #0xc]
-    // str r3, [r2, #0x28]
-    // str r1, [r2, #0x2c]
-    // ldr r3, [r2, #8]
-    // ldr r1, [r2, #0xc]
-    // str r3, [r2, #0x30]
-    // str r1, [r2, #0x34]
-    // ldr r3, [r2, #0x10]
-    // ldr r1, [r2, #0x14]
-    // str r3, [r2, #0x38]
-    // str r1, [r2, #0x3c]
-    // ldr r3, [r2, #0x10]
-    // ldr r1, [r2, #0x14]
-    // str r3, [r2, #0x40]
-    // str r1, [r2, #0x44]
-    // ldr r3, [r2, #0x18]
-    // ldr r1, [r2, #0x1c]
-    // str r3, [r2, #0x48]
-    // str r1, [r2, #0x4c]
-    // ldr r3, [r2, #0x18]
-    // ldr r1, [r2, #0x1c]
-    // str r3, [r2, #0x50]
-    // str r1, [r2, #0x54]
-    // ldr r3, [r2]
-    // ldr r1, [r2, #4]
-    // str r3, [r2, #0x58]
-    // str r1, [r2, #0x5c]
-    // ldr r1, [r2, #0x24]
+    *((u32*)(r2 + 0x14)) = *((u16*)(r1 + 2));
+    *((u32*)(r2 + 0x18)) = r5;
+    *((u32*)(r2 + 0x1c)) = *((u16*)(r1 + 2));
+    *((u32*)(r2 + 0x20)) = *((u32*)r2);
+    *((u32*)(r2 + 0x24)) = *((u32*)(r2 + 4));
+    *((u32*)(r2 + 0x28)) = *((u32*)(r2 + 8));
+    *((u32*)(r2 + 0x2c)) = *((u32*)(r2 + 0xc));
+    *((u32*)(r2 + 0x30)) = *((u32*)(r2 + 8));
+    *((u32*)(r2 + 0x34)) = *((u32*)(r2 + 0xc));
+    *((u32*)(r2 + 0x38)) = *((u32*)(r2 + 0x10));
+    *((u32*)(r2 + 0x3c)) = *((u32*)(r2 + 0x14));
+    *((u32*)(r2 + 0x40)) = *((u32*)(r2 + 0x10));
+    *((u32*)(r2 + 0x44)) = *((u32*)(r2 + 0x14));
+    *((u32*)(r2 + 0x48)) = *((u32*)(r2 + 0x18));
+    *((u32*)(r2 + 0x4c)) = *((u32*)(r2 + 0x1c));
+    *((u32*)(r2 + 0x50)) = *((u32*)(r2 + 0x18));
+    *((u32*)(r2 + 0x54)) = *((u32*)(r2 + 0x1c));
+    *((u32*)(r2 + 0x58)) = *((u32*)r2);
+    *((u32*)(r2 + 0x5c)) = *((u32*)(r2 + 4));
     // sub r1, r1, r0
-    // str r1, [r2, #0x24]
-    // ldr r1, [r2, #0x2c]
+    *((u32*)(r2 + 0x24)) = *((u32*)(r2 + 0x24));
     // sub r1, r1, r0
-    // str r1, [r2, #0x2c]
-    // ldr r1, [r2, #0x30]
+    *((u32*)(r2 + 0x2c)) = *((u32*)(r2 + 0x2c));
     // add r1, r1, r0
-    // str r1, [r2, #0x30]
-    // ldr r1, [r2, #0x38]
+    *((u32*)(r2 + 0x30)) = *((u32*)(r2 + 0x30));
     // add r1, r1, r0
-    // str r1, [r2, #0x38]
-    // ldr r1, [r2, #0x44]
+    *((u32*)(r2 + 0x38)) = *((u32*)(r2 + 0x38));
     // add r1, r1, r0
-    // str r1, [r2, #0x44]
-    // ldr r1, [r2, #0x4c]
+    *((u32*)(r2 + 0x44)) = *((u32*)(r2 + 0x44));
     // add r1, r1, r0
-    // str r1, [r2, #0x4c]
-    // ldr r1, [r2, #0x50]
+    *((u32*)(r2 + 0x4c)) = *((u32*)(r2 + 0x4c));
     // sub r1, r1, r0
-    // str r1, [r2, #0x50]
+    *((u32*)(r2 + 0x50)) = *((u32*)(r2 + 0x50));
     // add r2, #0x58
-    // ldr r1, [r2]
     // sub r0, r1, r0
     // str r0, [r2]
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220703C(void) {
@@ -63668,123 +52315,71 @@ void ov96_0220703C(void) {
 }
 
 
+
 void ov96_02207300(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xcc
     // str r1, [sp, #4]
     // ldr r1, [sp, #0xe0]
-    // add r7, r3, #0
     // str r1, [sp, #0xe0]
     // ldr r1, [sp, #0xe4]
-    // add r6, r2, #0
     // str r1, [sp, #0xe4]
     // add r1, sp, #0xc
     // str r1, [sp]
-    // ldr r1, [r7]
-    // ldr r2, [r7, #4]
     // add r3, sp, #0x7c
-    // bl ov96_02206F1C
-    // mov r4, #0
+    ov96_02206F1C(*((u32*)r3), *((u32*)(r3 + 4)));
     // str r4, [sp, #8]
     // add r0, sp, #0xc
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // ble _02207388
     // add r5, sp, #0x7c
-    // ldr r1, [r5]
-    // add r0, r6, #0
     // add r2, sp, #0x1c
-    // bl ov96_02206FA4
+    ov96_02206FA4(r6, *((u32*)r5));
     // add r0, sp, #0x10
     // str r0, [sp]
     // ldr r1, [sp, #0xe0]
-    // add r0, r7, #0
-    // add r2, r6, #0
     // add r3, sp, #0x1c
-    // bl ov96_0220703C
-    // cmp r0, #0
-    // beq _0220737C
-    // cmp r0, #9
-    // blt _02207360
+    ov96_0220703C(r7, r6);
     // ldr r2, [sp, #0x10]
     // ldr r1, [sp, #0xe4]
     // str r2, [r1]
     // ldr r2, [sp, #0x14]
-    // str r2, [r1, #4]
-    // mov r2, #0
-    // str r2, [r1, #8]
-    // b _02207374
+    *((u32*)(r1 + 4)) = r2;
+    *((u32*)(r1 + 8)) = 0;
     // ldr r1, [sp, #4]
-    // cmp r0, r1
-    // beq _02207374
     // ldr r2, [sp, #0x10]
     // ldr r1, [sp, #0xe4]
     // str r2, [r1]
     // ldr r2, [sp, #0x14]
-    // str r2, [r1, #4]
-    // mov r2, #0
-    // str r2, [r1, #8]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
     // str r0, [sp, #8]
-    // b _02207388
     // add r0, sp, #0xc
     // ldrb r0, [r0]
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, r0
-    // blt _0220732E
     // ldr r0, [sp, #8]
-    // add sp, #0xcc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_02207390(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // add r6, r2, #0
-    // add r0, r1, #0
-    // add r1, r4, #0
     // add r2, sp, #0
-    // add r7, r3, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r1, r0);
     // add r0, sp, #0
-    // bl VEC_Mag
-    // add r5, r0, #0
+    VEC_Mag();
     // mul r5, r0
     // add r0, sp, #0
-    // add r1, r6, #0
-    // bl VEC_DotProduct
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl VEC_Mag
-    // add r1, r0, #0
+    VEC_DotProduct(r6);
+    VEC_Mag(r6);
     // mul r1, r0
-    // add r0, r7, #0
     // mul r0, r7
     // sub r0, r1, r0
     // mul r0, r5
     // sub r0, r4, r0
-    // bl FX_Sqrt
-    // add r7, r0, #0
+    FX_Sqrt(r7, r0);
     // sub r0, r7, r4
-    // add r1, r5, #0
-    // bl FX_Div
-    // add r6, r0, #0
+    FX_Div(r5);
     // add r0, r4, r7
     // neg r0, r0
-    // add r1, r5, #0
-    // bl FX_Div
-    // cmp r6, r0
-    // bgt _022073EC
-    // add r0, r6, #0
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FX_Div(r5);
 }
+
 
 
 void ov96_022073F0(void) {
@@ -63799,93 +52394,60 @@ void ov96_022073F0(void) {
 }
 
 
+
 void ov96_02207400(void) {
-    // push {r3, r4}
-    // ldr r4, [r0]
-    // ldr r3, [r1]
     // add r3, r4, r3
     // str r3, [r2]
-    // ldr r3, [r0, #4]
-    // ldr r0, [r1, #4]
     // add r0, r3, r0
-    // str r0, [r2, #4]
-    // pop {r3, r4}
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r2 + 4)) = *((u32*)(r1 + 4));
 }
 
 
+
 void ov96_02207418(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x84
     // str r0, [sp, #8]
-    // mov r0, #0
     // str r1, [sp, #0xc]
     // str r2, [sp, #0x10]
     // str r0, [sp, #0x18]
     // str r0, [sp, #0x80]
     // str r0, [sp, #0x74]
-    // add r7, r0, #0
-    // add r6, r1, #0
-    // add r0, r6, #0
     // add r0, #0xb1
     // ldrb r1, [r0]
-    // add r0, r6, #0
     // add r0, #0xab
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02207440
-    // b _0220763C
-    // lsl r0, r1, #2
     // ldr r0, [r6, r0]
     // str r0, [sp, #0x20]
     // add r0, sp, #0x2c
     // str r0, [sp]
-    // ldr r2, [r6, #0x58]
-    // ldr r3, [r6, #0x5c]
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
     // ldr r0, [sp, #0x20]
     // asr r1, r1, #0xc
     // asr r2, r2, #0xc
     // add r3, sp, #0x30
-    // bl ov96_021EB0A4
+    ov96_021EB0A4((r1 << 2), (r1 >> 0x14), (*((u32*)(r1 + 0x58)) >> 0x14), *((u32*)(r1 + 0x5c)));
     // ldr r5, [sp, #0xc]
-    // mov r4, #0
-    // cmp r7, r4
-    // beq _02207500
-    // add r0, r5, #0
     // add r0, #0xab
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02207500
     // ldr r0, [sp, #0x30]
     // str r0, [sp, #0x14]
-    // add r0, r5, #0
     // add r0, #0xb1
     // ldrb r0, [r0]
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
     // str r0, [sp, #0x1c]
     // add r0, sp, #0x24
     // str r0, [sp]
-    // ldr r1, [r5, #0x58]
-    // ldr r3, [r5, #0x5c]
     // asr r2, r1, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r1, r2
     // asr r1, r2, #0xc
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
     // ldr r0, [sp, #0x1c]
     // asr r2, r2, #0xc
     // add r3, sp, #0x28
-    // bl ov96_021EB0A4
+    ov96_021EB0A4((r5 << 2), *((u32*)(r5 + 0x58)), ((r2 >> 0x14) >> 0x14), *((u32*)(r5 + 0x5c)));
     // add r0, sp, #0x70
     // str r0, [sp]
     // add r0, sp, #0x34
@@ -63893,10 +52455,8 @@ void ov96_02207418(void) {
     // ldr r1, [sp, #0x28]
     // ldr r2, [sp, #0x24]
     // ldr r0, [sp, #0x1c]
-    // lsl r1, r1, #0xc
-    // lsl r2, r2, #0xc
     // add r3, sp, #0x6c
-    // bl ov96_021EAF78
+    ov96_021EAF78((r1 << 0xc), (r2 << 0xc));
     // add r0, sp, #0x7c
     // str r0, [sp]
     // add r0, sp, #0x38
@@ -63904,182 +52464,105 @@ void ov96_02207418(void) {
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x2c]
     // ldr r0, [sp, #0x20]
-    // lsl r1, r1, #0xc
-    // lsl r2, r2, #0xc
     // add r3, sp, #0x78
-    // bl ov96_021EAF78
+    ov96_021EAF78((r1 << 0xc), (r2 << 0xc));
     // add r0, sp, #0x78
     // add r1, sp, #0x6c
     // add r2, sp, #0x60
-    // bl VEC_Subtract
+    VEC_Subtract();
     // add r0, sp, #0x60
-    // bl VEC_Mag
+    VEC_Mag();
     // ldr r2, [sp, #0x34]
     // ldr r1, [sp, #0x38]
     // add r1, r2, r1
-    // lsl r1, r1, #0xc
-    // cmp r0, r1
-    // blt _022074F6
-    // b _02207624
     // add r0, r6, r4
     // add r0, #0x94
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02207502
-    // b _02207632
     // ldr r0, [sp, #8]
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // bl ov96_02207A34
-    // cmp r0, #0
-    // bne _0220751E
-    // add r0, r6, #0
-    // mov r1, #6
+    ov96_02207A34(r6, r5);
     // add r0, #0xa4
     // strb r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xa4
     // strb r1, [r0]
-    // add r0, r6, #0
     // add r0, #0x64
-    // bl VEC_Mag
-    // mov r1, #0xb
-    // lsl r1, r1, #0xc
-    // cmp r0, r1
-    // ble _02207552
+    VEC_Mag(r6, 6);
     // add r1, sp, #0x54
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // add r0, r6, #0
+    *((u32*)((0xb << 0xc) + 4)) = 0;
+    *((u32*)((0xb << 0xc) + 8)) = 0;
     // add r0, #0x64
-    // add r1, r0, #0
-    // bl VEC_Normalize
-    // add r1, r6, #0
-    // mov r0, #0xb
+    VEC_Normalize(r6, r6);
     // add r1, #0x64
-    // lsl r0, r0, #0xc
     // add r2, sp, #0x54
-    // add r3, r1, #0
-    // bl VEC_MultAdd
-    // add r0, r5, #0
+    VEC_MultAdd((0xb << 0xc), r6, r6);
     // add r0, #0x64
-    // bl VEC_Mag
-    // mov r1, #0xb
-    // lsl r1, r1, #0xc
-    // cmp r0, r1
-    // ble _02207586
+    VEC_Mag(r5);
     // add r1, sp, #0x48
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // add r0, r5, #0
+    *((u32*)((0xb << 0xc) + 4)) = 0;
+    *((u32*)((0xb << 0xc) + 8)) = 0;
     // add r0, #0x64
-    // add r1, r0, #0
-    // bl VEC_Normalize
-    // add r1, r5, #0
-    // mov r0, #0xb
+    VEC_Normalize(r5, r5);
     // add r1, #0x64
-    // lsl r0, r0, #0xc
     // add r2, sp, #0x48
-    // add r3, r1, #0
-    // bl VEC_MultAdd
+    VEC_MultAdd((0xb << 0xc), r5, r5);
     // add r0, r6, r4
     // add r0, #0x94
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02207594
-    // bl GF_AssertFail
+    GF_AssertFail();
     // add r0, r5, r7
     // add r0, #0x94
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _022075A2
-    // bl GF_AssertFail
+    GF_AssertFail();
     // add r1, r6, r4
-    // mov r0, #1
     // add r1, #0x94
     // strb r0, [r1]
     // add r1, r5, r7
     // add r1, #0x94
     // strb r0, [r1]
     // ldr r1, [sp, #0x18]
-    // cmp r1, #0
-    // bne _022075EC
     // add r2, sp, #0x3c
-    // mov r1, #0
     // str r1, [r2]
-    // str r1, [r2, #4]
-    // str r1, [r2, #8]
+    *((u32*)(r2 + 4)) = 0;
+    *((u32*)(r2 + 8)) = 0;
     // str r0, [sp, #0x18]
     // add r0, sp, #0x6c
     // add r1, sp, #0x78
-    // bl VEC_Subtract
+    VEC_Subtract(1, 0);
     // add r0, sp, #0x3c
-    // add r1, r0, #0
-    // bl VEC_Normalize
+    VEC_Normalize(r0);
     // ldr r0, [sp, #0x38]
     // add r1, sp, #0x3c
-    // lsl r0, r0, #0xc
     // add r2, sp, #0x78
-    // add r3, r1, #0
-    // bl VEC_MultAdd
+    VEC_MultAdd((r0 << 0xc), r1);
     // add r3, sp, #0x3c
     // ldr r2, [sp, #0x10]
     // ldmia r3!, {r0, r1}
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // mov r0, #1
-    // add r1, r6, #0
     // str r0, [sp]
     // add r1, #0x98
-    // add r2, r6, #0
-    // ldr r1, [r1]
     // add r2, #0xb1
-    // lsl r1, r1, #0x18
     // ldrb r2, [r2]
     // ldr r0, [sp, #8]
-    // lsr r1, r1, #0x18
-    // mov r3, #4
-    // bl ov96_021E8228
-    // add r1, r5, #0
-    // mov r0, #1
+    ov96_021E8228(1, ((*((u32*)r6) << 0x18) >> 0x18), r6, 4);
     // str r0, [sp]
     // add r1, #0x98
-    // ldr r1, [r1]
     // add r5, #0xb1
-    // lsl r1, r1, #0x18
     // ldrb r2, [r5]
     // ldr r0, [sp, #8]
-    // lsr r1, r1, #0x18
-    // mov r3, #4
-    // bl ov96_021E8228
-    // b _0220763C
+    ov96_021E8228(1, ((*((u32*)r5) << 0x18) >> 0x18), 4);
     // add r1, r6, r4
     // add r1, #0x94
-    // mov r0, #0
     // strb r0, [r1]
     // add r1, r7, r5
     // add r1, #0x94
     // strb r0, [r1]
-    // add r4, r4, #1
     // add r5, #0xb8
-    // cmp r4, #4
-    // bge _0220763C
-    // b _0220746A
-    // add r7, r7, #1
     // add r6, #0xb8
-    // cmp r7, #4
-    // bge _02207646
-    // b _0220742E
     // ldr r0, [sp, #0x18]
-    // add sp, #0x84
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220764C(void) {
@@ -64137,61 +52620,31 @@ void ov96_0220764C(void) {
 }
 
 
+
 void ov96_022076C0(void) {
-    ov96_02207BD8(r1);
-    ov96_021EB630(*((u32*)(r5 + 4)), r0);
-    ov96_021EB630(*((u32*)(r5 + 8)), r4);
 }
+
 
 
 void ov96_022076E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r7, #0xd7
-    // lsl r7, r7, #2
-    // add r5, r0, #0
-    // mov r4, #0
-    // add r6, r7, #0
     // ldr r0, [r5, r7]
-    // bl ov96_021EB594
-    // ldr r1, [r0, #4]
+    ov96_021EB594();
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
-    // bl ov96_02207BD8
-    // add r1, r0, #0
+    ov96_02207BD8((r0 >> 0x14), *((u32*)(r0 + 4)));
     // ldr r0, [r5, r6]
-    // add r1, r1, #2
-    // bl ov96_021EB630
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _022076F0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EB630((r0 + 2));
 }
+
 
 
 void ov96_02207718(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // bl ov96_02207BD8
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x48]
-    // add r1, r6, #3
-    // bl ov96_021EB630
-    // mov r4, #0
-    // ldr r0, [r5]
-    // add r1, r6, #4
-    // bl ov96_021EABA8
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #3
-    // blt _0220772E
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_02207BD8(r1);
+    ov96_021EB630(*((u32*)(r5 + 0x48)), (r0 + 3));
+    ov96_021EABA8(*((u32*)r5), (r6 + 4));
 }
+
 
 
 void ov96_02207740(void) {
@@ -64219,6 +52672,7 @@ void ov96_02207740(void) {
     // _02207770: .word ov96_0221CAC0
     // TODO: decompile
 }
+
 
 
 void ov96_02207774(void) {
@@ -64278,6 +52732,7 @@ void ov96_02207774(void) {
 }
 
 
+
 void ov96_022077F4(void) {
     // ldr r1, _022077FC ; =0x00000618
     // mov r2, #0
@@ -64288,56 +52743,36 @@ void ov96_022077F4(void) {
 }
 
 
+
 void ov96_02207800(void) {
-    _s32_div_f(0x14);
 }
+
 
 
 void ov96_02207818(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r1, #0
-    // add r2, r5, #0
-    // ldr r0, [r2]
-    // cmp r0, #0
-    // bne _02207862
-    // mov r0, #0x14
-    // add r4, r1, #0
     // mul r4, r0
-    // add r0, r5, #0
     // add r0, #0xb4
     // ldrh r1, [r0]
     // add r0, r5, r4
-    // str r1, [r0, #0xc]
-    // add r1, r5, #0
+    *((u32*)(r0 + 0xc)) = 0;
     // add r1, #0xb4
     // ldrh r1, [r1]
-    // lsl r1, r1, #2
     // add r1, r5, r1
     // add r1, #0x64
     // ldrh r1, [r1]
-    // strh r1, [r0, #0x10]
-    // add r1, r5, #0
+    *((u16*)(r0 + 0x10)) = (r0 << 2);
     // add r1, #0xb4
     // ldrh r1, [r1]
-    // lsl r1, r1, #2
     // add r1, r5, r1
     // add r1, #0x66
     // ldrh r1, [r1]
-    // strh r1, [r0, #0x12]
-    // add r0, r5, #0
-    // bl ov96_02207800
-    // mov r0, #1
+    *((u16*)(r0 + 0x12)) = (r0 << 2);
+    ov96_02207800(r0, (r0 << 2), r0);
     // str r0, [r5, r4]
-    // pop {r3, r4, r5, pc}
-    // add r1, r1, #1
     // add r2, #0x14
-    // cmp r1, #5
-    // blt _02207820
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail(1, (r1 + 1));
 }
+
 
 
 void ov96_02207870(void) {
@@ -64373,139 +52808,71 @@ void ov96_02207870(void) {
 }
 
 
+
 void ov96_022078B0(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r7, r0, #0
-    // add r5, r1, #0
-    // mov r6, #0
-    // add r0, r2, #0
     // strb r6, [r0]
-    // add r0, r5, #0
     // str r0, [sp, #4]
     // add r0, #0x58
     // str r2, [sp]
-    // add r4, r7, #0
     // str r0, [sp, #4]
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _02207978
-    // ldr r0, [r4, #0xc]
-    // lsl r0, r0, #2
     // add r0, r7, r0
     // add r0, #0x64
     // ldrh r0, [r0]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0xc]
-    // lsl r0, r0, #2
     // add r0, r7, r0
     // add r0, #0x66
     // ldrh r0, [r0]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0xc]
-    // mov r0, #0
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
     // add r0, #0xb1
     // ldrb r0, [r0]
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
-    // bl ov96_021EAF8C
-    // add r2, r0, #0
-    // mov r3, #2
+    ov96_021EAF8C((r1 << 2));
     // ldr r0, [sp, #4]
     // add r1, sp, #8
-    // lsl r2, r2, #0xc
-    // lsl r3, r3, #0xe
-    // bl ov96_02207990
-    // cmp r0, #0
-    // beq _0220796E
-    // add r0, r5, #0
+    ov96_02207990((r0 << 0xc), (2 << 0xe));
     // add r0, #0xaa
     // ldrb r0, [r0]
-    // cmp r0, #9
-    // blo _02207932
     // add r5, #0xb3
     // ldrb r0, [r5, r6]
-    // cmp r0, #0
-    // bne _0220792C
     // ldr r0, [sp]
-    // mov r1, #1
     // strb r1, [r0]
     // strb r1, [r5, r6]
-    // add sp, #0x14
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
     // add r0, r5, r6
-    // mov r1, #1
     // add r0, #0xb3
     // strb r1, [r0]
-    // mov r0, #0x14
-    // mov r1, #0
     // mul r0, r6
     // str r1, [r7, r0]
-    // add r0, r5, #0
     // add r0, #0xaa
     // ldrb r0, [r0]
     // add r5, #0xaa
-    // add r0, r0, #1
     // strb r0, [r5]
-    // add r0, r7, #0
     // add r0, #0xb6
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // bne _0220795C
-    // bl GF_AssertFail
-    // add r0, r7, #0
+    GF_AssertFail(r7, 0);
     // add r0, #0xb6
     // ldrh r0, [r0]
     // add r7, #0xb6
-    // add sp, #0x14
-    // sub r0, r0, #1
     // strh r0, [r7]
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
     // add r1, r5, r6
     // add r1, #0xb3
-    // mov r0, #0
     // strb r0, [r1]
-    // b _02207980
     // add r1, r5, r6
     // add r1, #0xb3
-    // mov r0, #0
     // strb r0, [r1]
-    // add r6, r6, #1
     // add r4, #0x14
-    // cmp r6, #5
-    // blt _022078CA
-    // mov r0, #0
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02207990(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r2, #0
     // add r2, sp, #0
-    // add r4, r3, #0
-    // bl VEC_Subtract
+    VEC_Subtract();
     // add r0, sp, #0
-    // bl VEC_Mag
+    VEC_Mag();
     // add r1, r5, r4
-    // cmp r0, r1
-    // bge _022079B0
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022079B8(void) {
@@ -64569,6 +52936,7 @@ void ov96_022079B8(void) {
     // _02207A30: .word ov96_0221CAC8
     // TODO: decompile
 }
+
 
 
 void ov96_02207A34(void) {
@@ -64739,44 +53107,14 @@ void ov96_02207A34(void) {
 }
 
 
+
 void ov96_02207B8C(void) {
-    // mov r1, #0x66
-    // ldr r2, [r0, #0x5c]
-    // lsl r1, r1, #0xe
-    // mov r3, #0
-    // cmp r2, r1
-    // ble _02207BAC
-    // mov r1, #0xd
-    // ldr r2, [r0, #0x58]
-    // lsl r1, r1, #0x10
-    // cmp r2, r1
-    // blt _02207BAC
-    // mov r1, #0x13
-    // lsl r1, r1, #0x10
-    // cmp r2, r1
-    // bgt _02207BAC
-    // mov r3, #1
-    // cmp r3, #0
-    // bne _02207BB4
-    // mov r0, #0
-    // bx lr
-    // add r1, r0, #0
     // add r1, #0xaa
     // ldrb r1, [r1]
-    // cmp r1, #0
-    // bne _02207BC2
-    // mov r0, #0
-    // bx lr
     // add r0, #0xa6
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02207BCE
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02207BD4(void) {
@@ -64785,15 +53123,11 @@ void ov96_02207BD4(void) {
 }
 
 
+
 void ov96_02207BD8(void) {
-    // mov r1, #1
-    // lsl r1, r1, #8
     // sub r0, r1, r0
-    // lsl r0, r0, #3
-    // add r0, r0, #5
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02207BE4(void) {
@@ -64838,29 +53172,11 @@ void ov96_02207BE4(void) {
 }
 
 
+
 void ov96_02207C38(void) {
-    // push {r4, lr}
-    // cmp r0, #0
-    // blt _02207C60
-    // mov r4, #1
-    // lsl r4, r4, #8
-    // cmp r0, r4
-    // bge _02207C60
-    // cmp r1, #0
-    // blt _02207C60
-    // cmp r1, #0xc0
-    // bge _02207C60
-    // cmp r3, #0
-    // beq _02207C56
-    // mov r1, #3
-    // b _02207C58
-    // mov r1, #4
-    // lsl r0, r2, #0x10
-    // lsr r0, r0, #0x10
-    // bl sub_0200606C
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_0200606C(((r2 << 0x10) >> 0x10), 4);
 }
+
 
 
 void ov96_02207C64(void) {
@@ -64911,6 +53227,7 @@ void ov96_02207C64(void) {
     // _02207CC8: .word 0x000003FF
     // TODO: decompile
 }
+
 
 
 void ov96_02207CCC(void) {
@@ -64983,136 +53300,66 @@ void ov96_02207CCC(void) {
 }
 
 
+
 void ov96_02207D64(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r7, #0x42
-    // lsl r7, r7, #2
     // str r0, [sp]
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r6, r7, #4
     // ldr r0, [r5, r7]
-    // bl Heap_Free
+    Heap_Free();
     // ldr r0, [r5, r6]
-    // bl Heap_Free
-    // add r4, r4, #1
+    Heap_Free();
     // add r5, #8
-    // cmp r4, #3
-    // blt _02207D72
     // ldr r4, [sp]
-    // mov r5, #0
-    // add r0, r4, #0
     // add r0, #0x9c
-    // ldr r0, [r0]
-    // bl Heap_Free
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #0xc
-    // blt _02207D8A
+    Heap_Free(*((u32*)(r4 + 1)));
     // ldr r0, [sp]
-    // ldr r0, [r0, #0x24]
-    // bl Heap_Free
-    // mov r6, #0x6a
+    Heap_Free(*((u32*)(r0 + 0x24)));
     // ldr r4, [sp]
-    // mov r5, #0
-    // lsl r6, r6, #2
     // ldr r0, [r4, r6]
-    // bl String_Delete
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #3
-    // blt _02207DAC
+    String_Delete();
     // ldr r0, [sp]
-    // ldr r0, [r0, #0x20]
-    // bl MessageFormat_Delete
+    MessageFormat_Delete(*((u32*)(r0 + 0x20)));
     // ldr r0, [sp]
-    // ldr r0, [r0, #0x1c]
-    // bl DestroyMsgData
+    DestroyMsgData(*((u32*)(r0 + 0x1c)));
     // ldr r0, [sp]
     // add r0, #0xc
-    // bl RemoveWindow
+    RemoveWindow();
     // ldr r0, [sp]
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
 }
+
 
 
 void ov96_02207DDC(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xe2
-    // add r3, r1, #0
-    // bl GfGfxLoader_LoadCharData
-    // mov r1, #0
-    // mov r0, #2
+    GfGfxLoader_LoadCharData(0xe2, 5, *((u32*)(r0 + 8)), 5);
     // str r1, [sp]
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xe2
-    // add r3, r1, #0
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xe2, 6, *((u32*)(r4 + 8)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #7
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xe2
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xe2, 7, *((u32*)(r4 + 8)), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #8
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xe2
-    // mov r3, #6
-    // bl GfGfxLoader_LoadScrnData
-    // ldr r0, [r4]
-    // add r3, r4, #0
+    GfGfxLoader_LoadScrnData(0xe2, 8, *((u32*)(r4 + 8)), 6);
     // str r0, [sp]
-    // mov r0, #0xe2
-    // mov r1, #9
-    // mov r2, #0
     // add r3, #0x28
-    // bl GfGfxLoader_GetScrnData
-    // str r0, [r4, #0x24]
-    // mov r0, #0x40
+    GfGfxLoader_GetScrnData(0xe2, 9, 0, r4);
+    *((u32*)(r4 + 0x24)) = r0;
     // str r0, [sp]
-    // ldr r0, [r4]
-    // mov r1, #4
     // str r0, [sp, #4]
-    // mov r0, #0xe2
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl GfGfxLoader_GXLoadPal
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ov96_02208374
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0xe2, 4, 4, 0);
+    ov96_02208374(r4, 0);
 }
+
 
 
 void ov96_02207E7C(void) {
@@ -65187,6 +53434,7 @@ void ov96_02207E7C(void) {
     // _02207F14: .word ov96_0221CBCC
     // TODO: decompile
 }
+
 
 
 void ov96_02207F18(void) {
@@ -65403,146 +53651,77 @@ void ov96_02207F18(void) {
 }
 
 
+
 void ov96_022080F4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x30
     // str r0, [sp, #8]
-    // add r5, r1, #0
     // ldr r1, [sp, #8]
-    // mov r0, #0x14
-    // ldr r1, [r1]
-    // bl NARC_New
+    NARC_New(0x14, *((u32*)r1));
     // str r0, [sp, #0x20]
-    // bl sub_02074490
-    // add r1, r0, #0
-    // mov r0, #0x60
+    sub_02074490();
     // str r0, [sp]
     // ldr r0, [sp, #8]
-    // mov r2, #5
-    // ldr r0, [r0]
-    // mov r3, #0xc0
     // str r0, [sp, #4]
-    // mov r0, #0x14
-    // bl GfGfxLoader_GXLoadPal
+    GfGfxLoader_GXLoadPal(0x14, r0, 5, 0xc0);
     // ldr r4, [sp, #8]
-    // mov r7, #0
-    // add r6, r4, #0
     // add r6, #0xcc
     // ldr r0, [sp, #8]
-    // mov r1, #1
-    // ldr r0, [r0]
-    // lsl r1, r1, #0xc
-    // bl Heap_AllocAtEnd
-    // add r1, r4, #0
+    Heap_AllocAtEnd(*((u32*)r0), (1 << 0xc));
     // add r1, #0x9c
     // str r0, [r1]
-    // ldrh r0, [r5, #2]
-    // mov r1, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0x14]
     // ldrh r0, [r5]
     // ldr r2, [sp, #0x14]
     // str r0, [sp, #0x10]
-    // bl GetMonIconNaixEx
-    // add r2, r4, #0
+    GetMonIconNaixEx(((*((u16*)(r5 + 2)) << 0x18) >> 0x18), 0);
     // add r2, #0x9c
-    // add r1, r0, #0
     // ldr r0, [sp, #0x20]
-    // ldr r2, [r2]
-    // bl NARC_ReadWholeMember
-    // add r0, r4, #0
+    NARC_ReadWholeMember(r0, *((u32*)r4));
     // add r0, #0x9c
-    // ldr r0, [r0]
-    // add r1, r6, #0
-    // bl NNS_G2dGetUnpackedBGCharacterData
+    NNS_G2dGetUnpackedBGCharacterData(*((u32*)r4), r6);
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // mov r2, #0
-    // bl GetMonIconPaletteEx
-    // add r1, r0, #6
+    GetMonIconPaletteEx(0);
     // ldr r0, [sp, #8]
-    // add r4, r4, #4
     // add r0, r0, r7
     // add r0, #0xfc
-    // add r7, r7, #1
     // strb r1, [r0]
-    // add r5, r5, #4
-    // add r6, r6, #4
-    // cmp r7, #0xc
-    // blt _0220812A
     // ldr r0, [sp, #0x20]
-    // bl NARC_Delete
-    // mov r0, #0
+    NARC_Delete((r0 + 6));
     // ldr r6, [sp, #8]
     // str r0, [sp, #0xc]
-    // mov r0, #0x70
     // str r0, [sp, #0x1c]
-    // add r0, r6, #0
     // str r0, [sp, #0x18]
-    // add r7, r6, #0
     // ldr r1, [sp, #0xc]
     // ldr r0, [sp, #8]
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // mov r2, #0
-    // bl ov96_0220831C
-    // mov r1, #1
-    // ldr r0, [r6, #0x38]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // mov r1, #1
-    // ldr r0, [r6, #0x40]
-    // add r2, r1, #0
-    // bl ov96_021EB52C
-    // mov r0, #0
+    ov96_0220831C(r6, ((r1 << 0x18) >> 0x18), 0);
+    ov96_021EB52C(*((u32*)(r6 + 0x38)), 1, 1);
+    ov96_021EB52C(*((u32*)(r6 + 0x40)), 1, 1);
     // str r0, [sp, #0x2c]
     // ldr r0, [sp, #0x1c]
     // add r1, sp, #0x24
-    // lsl r0, r0, #0xc
     // str r0, [sp, #0x24]
-    // mov r0, #0x35
-    // lsl r0, r0, #0x10
     // str r0, [sp, #0x28]
-    // ldr r0, [r6, #0x38]
-    // bl ov96_021EB588
-    // ldr r0, [r6, #0x40]
+    ov96_021EB588(*((u32*)(r6 + 0x38)));
     // add r1, sp, #0x24
-    // bl ov96_021EB588
-    // ldr r0, [r6, #0x3c]
+    ov96_021EB588(*((u32*)(r6 + 0x40)));
     // add r1, sp, #0x24
-    // bl ov96_021EB588
+    ov96_021EB588(*((u32*)(r6 + 0x3c)));
     // ldr r5, [sp, #0x18]
-    // mov r4, #0
-    // mov r0, #0x5f
-    // lsl r0, r0, #2
     // ldr r0, [r5, r0]
     // add r1, sp, #0x24
-    // bl ov96_021EB588
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _022081EE
-    // mov r0, #2
+    ov96_021EB588((0x5f << 2));
     // ldr r1, [sp, #0x28]
-    // lsl r0, r0, #0x10
     // sub r0, r1, r0
     // str r0, [sp, #0x28]
-    // mov r0, #0x4f
-    // lsl r0, r0, #2
     // ldr r0, [r7, r0]
     // add r1, sp, #0x24
-    // bl ov96_021EB588
-    // mov r0, #5
-    // lsl r0, r0, #6
+    ov96_021EB588((0x4f << 2));
     // ldr r0, [r7, r0]
     // add r1, sp, #0x24
-    // bl ov96_021EB588
-    // mov r0, #0x51
-    // lsl r0, r0, #2
+    ov96_021EB588((5 << 6));
     // ldr r0, [r7, r0]
     // add r1, sp, #0x24
-    // bl ov96_021EB588
+    ov96_021EB588((0x51 << 2));
     // ldr r0, [sp, #0x1c]
     // add r6, #0x1c
     // add r0, #0x28
@@ -65552,473 +53731,236 @@ void ov96_022080F4(void) {
     // add r0, #8
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
     // str r0, [sp, #0xc]
-    // cmp r0, #4
-    // blt _022081A0
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_02208250(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r6, r0, #0
-    // mov r0, #0
-    // add r5, r1, #0
     // str r0, [sp, #0xc]
-    // add r4, r6, #0
     // add r7, sp, #0x10
-    // ldrb r0, [r5, #6]
-    // mov r3, #2
     // str r0, [sp]
-    // ldrh r0, [r5, #2]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0xc]
     // str r0, [sp, #8]
     // ldrh r1, [r5]
-    // ldrb r2, [r5, #7]
     // add r0, sp, #0x10
-    // bl GetMonSpriteCharAndPlttNarcIdsEx
-    // mov r0, #0
+    GetMonSpriteCharAndPlttNarcIdsEx(*((u32*)(r1 + 0xc)), *((u8*)(r1 + 7)), 2);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // ldrh r0, [r5]
     // str r0, [sp, #8]
     // ldrh r0, [r7]
-    // ldrh r1, [r7, #2]
-    // ldr r2, [r6]
-    // ldr r3, [r5, #0xc]
-    // bl sub_0201457C
-    // mov r1, #0x42
-    // lsl r1, r1, #2
+    sub_0201457C(2, *((u16*)(r7 + 2)), *((u32*)r6), *((u32*)(r5 + 0xc)));
     // str r0, [r4, r1]
     // ldrh r0, [r7]
-    // ldrh r1, [r7, #4]
-    // ldr r2, [r6]
-    // bl sub_02014450
-    // mov r1, #0x43
-    // lsl r1, r1, #2
+    sub_02014450(*((u16*)(r7 + 4)), *((u32*)r6));
     // str r0, [r4, r1]
     // ldr r0, [sp, #0xc]
     // add r5, #0x10
-    // add r0, r0, #1
     // add r4, #8
     // str r0, [sp, #0xc]
-    // cmp r0, #3
-    // blt _02208260
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022082BC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // cmp r6, #2
-    // blo _022082CC
-    // bl GF_AssertFail
-    // cmp r4, #3
-    // blo _022082D4
-    // bl GF_AssertFail
-    // mov r0, #0x42
-    // lsl r0, r0, #2
-    // lsl r4, r4, #3
-    // add r7, r5, r0
-    // mov r1, #0x32
-    // ldr r0, [r7, r4]
-    // lsl r1, r1, #6
-    // bl DC_FlushRange
-    // lsl r6, r6, #2
-    // mov r1, #0x12
-    // add r2, r5, r6
-    // lsl r1, r1, #4
-    // ldr r1, [r2, r1]
-    // mov r2, #0x32
-    // ldr r0, [r7, r4]
-    // lsl r2, r2, #6
-    // bl GXS_LoadOBJ
-    // mov r0, #0x43
-    // lsl r0, r0, #2
+    GF_AssertFail();
+    GF_AssertFail();
     // add r7, r5, r0
     // ldr r0, [r7, r4]
-    // mov r1, #0x20
-    // bl DC_FlushRange
-    // mov r1, #0x4a
+    DC_FlushRange((0x42 << 2), (0x32 << 6));
     // add r2, r5, r6
-    // lsl r1, r1, #2
     // ldr r1, [r2, r1]
     // ldr r0, [r7, r4]
-    // mov r2, #0x20
-    // bl GXS_LoadOBJPltt
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GXS_LoadOBJ((0x12 << 4), (0x32 << 6));
+    // add r7, r5, r0
+    // ldr r0, [r7, r4]
+    DC_FlushRange((0x43 << 2), 0x20);
+    // add r2, r5, r6
+    // ldr r1, [r2, r1]
+    // ldr r0, [r7, r4]
+    GXS_LoadOBJPltt((0x4a << 2), 0x20);
 }
 
 
+
 void ov96_0220831C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // mov r0, #0x1c
     // mul r0, r4
     // add r0, r5, r0
-    // ldr r0, [r0, #0x38]
-    // add r6, r2, #0
-    // bl ov96_021EB5B8
+    ov96_021EB5B8(*((u32*)(0x1c + 0x38)));
     // str r0, [sp]
-    // lsl r0, r4, #1
     // add r0, r4, r0
     // add r6, r6, r0
-    // add r7, r5, #0
-    // lsl r0, r6, #2
-    // mov r1, #2
     // add r7, #0xcc
     // str r0, [sp, #4]
     // ldr r0, [r7, r0]
-    // lsl r1, r1, #8
-    // ldr r0, [r0, #0x14]
-    // bl DC_FlushRange
+    DC_FlushRange(*((u32*)((r6 << 2) + 0x14)), (2 << 8));
     // ldr r0, [sp, #4]
-    // mov r1, #6
     // ldr r0, [r7, r0]
-    // lsl r2, r4, #9
-    // lsl r1, r1, #0xa
     // add r1, r2, r1
-    // mov r2, #2
-    // ldr r0, [r0, #0x14]
-    // lsl r2, r2, #8
-    // bl GXS_LoadOBJ
+    GXS_LoadOBJ(*((u32*)(r0 + 0x14)), (6 << 0xa), (2 << 8));
     // add r1, r5, r6
     // add r1, #0xfc
     // ldrb r1, [r1]
     // ldr r0, [sp]
-    // bl Sprite_SetPaletteOverride
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetPaletteOverride();
 }
 
 
+
 void ov96_02208374(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r1, 0x64);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #3]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 3)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
     // strb r1, [r0]
-    // mov r0, #0x64
     // mul r0, r4
     // sub r0, r6, r0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(0x64, 0xa);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #4]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 4)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #1]
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    *((u8*)(r0 + 1)) = (r0 << 3);
+    _s32_div_f(r6, 0xa);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #5]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 5)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #2]
-    // mov r4, #0
-    // mov r6, #4
-    // mov r7, #8
+    *((u8*)(r0 + 2)) = (r0 << 3);
     // str r6, [sp]
     // str r7, [sp, #4]
-    // ldr r0, [r5, #0x28]
-    // lsl r2, r4, #2
     // add r0, #0xc
     // str r0, [sp, #8]
     // add r0, sp, #0x1c
     // add r0, #3
     // ldrb r0, [r0, r4]
     // add r2, #0xe
-    // lsl r2, r2, #0x18
     // str r0, [sp, #0xc]
     // add r0, sp, #0x1c
     // ldrb r0, [r0, r4]
-    // mov r1, #5
-    // lsr r2, r2, #0x18
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
-    // mov r0, #0x10
     // str r0, [sp, #0x18]
-    // ldr r0, [r5, #8]
-    // mov r3, #3
-    // bl CopyRectToBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _022083FE
-    // ldr r0, [r5, #8]
-    // mov r1, #5
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CopyRectToBgTilemapRect(*((u32*)(r5 + 8)), 5, (((0 << 2) << 0x18) >> 0x18), 3);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 8)), 5);
 }
+
 
 
 void ov96_02208448(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // mov r5, #0x67
-    // add r4, r0, #0
-    // lsl r5, r5, #2
-    // add r6, r1, #0
     // ldr r1, [r4, r5]
-    // cmp r1, #3
-    // bhi _022084B4
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02208466: ; jump table
-    // add r0, r5, #4
     // ldrh r0, [r4, r0]
-    // lsl r0, r0, #2
     // add r1, r4, r0
-    // add r0, r5, #0
     // sub r0, #0x6c
     // ldr r0, [r1, r0]
-    // bl ov96_021EB594
-    // add r6, r0, #0
+    ov96_021EB594((0x67 << 2), (*((u16*)(r1 + 6)) << 0x10));
     // add r3, sp, #0x18
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
     // str r0, [r3]
-    // mov r0, #2
     // ldr r1, [sp, #0x1c]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp, #0x1c]
-    // add r0, r5, #4
     // ldrh r1, [r4, r0]
     // sub r0, #0x70
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r2, #0
-    // bl ov96_021EB588
-    // mov r0, #0xe7
+    ov96_021EB588((r5 + 4), r3, r3);
     // ldr r1, [sp, #0x1c]
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // bge _022084B6
-    // b _02208600
-    // mov r0, #0xa5
-    // lsl r0, r0, #0xe
     // str r0, [sp, #0x1c]
-    // add r0, r5, #4
     // ldrh r1, [r4, r0]
     // sub r0, #0x70
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0x18
-    // bl ov96_021EB588
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldr r0, [r4, r5]
-    // add r0, r0, #1
     // str r0, [r4, r5]
-    // b _02208600
-    // add r1, r5, #4
     // ldrh r1, [r4, r1]
-    // add r2, r6, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_022082BC
-    // add r3, r5, #4
+    ov96_022082BC((r0 + 1), (((r5 + 4) << 0x18) >> 0x18), r6);
     // ldrh r0, [r4, r3]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
     // strh r0, [r4, r3]
     // ldr r0, [r4, r5]
-    // add r0, r0, #1
     // str r0, [r4, r5]
-    // b _02208600
-    // add r0, r5, #4
     // ldrh r0, [r4, r0]
-    // lsl r0, r0, #2
     // add r1, r4, r0
-    // add r0, r5, #0
     // sub r0, #0x6c
     // ldr r0, [r1, r0]
-    // bl ov96_021EB594
-    // add r6, r0, #0
+    ov96_021EB594(r5, ((r0 + 1) << 0x1f), ((r0 + 1) >> 0x1f), (r5 + 4));
     // add r3, sp, #0xc
     // ldmia r6!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r6]
     // str r0, [r3]
-    // mov r0, #2
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp, #0x10]
-    // add r0, r5, #4
     // ldrh r1, [r4, r0]
     // sub r0, #0x70
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r2, #0
-    // bl ov96_021EB588
-    // mov r0, #0xd1
+    ov96_021EB588((r5 + 4), r3, r3);
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // blt _02208600
     // str r0, [sp, #0x10]
-    // add r0, r5, #4
     // ldrh r1, [r4, r0]
     // sub r0, #0x70
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
     // add r1, sp, #0xc
-    // bl ov96_021EB588
-    // add r3, r5, #4
+    ov96_021EB588((r5 + 4), (r1 << 2));
     // ldrh r0, [r4, r3]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
     // strh r0, [r4, r3]
     // ldr r0, [r4, r5]
-    // add r0, r0, #1
     // str r0, [r4, r5]
-    // b _02208600
-    // add r0, r5, #4
     // ldrh r0, [r4, r0]
-    // lsl r0, r0, #2
     // add r1, r4, r0
-    // add r0, r5, #0
     // sub r0, #0x6c
     // ldr r0, [r1, r0]
-    // bl ov96_021EB594
-    // add r3, r0, #0
+    ov96_021EB594(r5, ((r0 + 1) << 0x1f), ((r0 + 1) >> 0x1f), (r5 + 4));
     // add r2, sp, #0
     // ldmia r3!, {r0, r1}
-    // add r7, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // mov r0, #2
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0x10
     // add r0, r1, r0
     // str r0, [sp, #4]
-    // add r0, r5, #4
     // ldrh r1, [r4, r0]
     // sub r0, #0x70
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // mov r0, #0xbb
+    ov96_021EB588((r5 + 4), r2, r0);
     // ldr r1, [sp, #4]
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // blt _02208600
     // str r0, [sp, #4]
-    // add r0, r5, #4
     // ldrh r1, [r4, r0]
     // sub r0, #0x70
-    // lsl r1, r1, #2
     // add r1, r4, r1
     // ldr r0, [r1, r0]
-    // add r1, r7, #0
-    // bl ov96_021EB588
-    // add r3, r5, #4
+    ov96_021EB588((r5 + 4), r7);
     // ldrh r0, [r4, r3]
-    // add r0, r0, #1
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
     // strh r0, [r4, r3]
-    // add r0, r6, #2
-    // mov r1, #3
-    // bl _s32_div_f
-    // lsl r1, r1, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_022088AC
-    // mov r0, #0
+    _s32_div_f((r6 + 2), 3, ((r0 + 1) >> 0x1f), (r5 + 4));
+    ov96_022088AC(r4, ((r1 << 0x18) >> 0x18));
     // str r0, [r4, r5]
-    // add sp, #0x24
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02208608(void) {
@@ -66062,6 +54004,7 @@ void ov96_02208608(void) {
     // _02208654: .word 0x000001BE
     // TODO: decompile
 }
+
 
 
 void ov96_02208658(void) {
@@ -66174,151 +54117,61 @@ void ov96_02208658(void) {
 }
 
 
+
 void ov96_02208740(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r0, r1, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // mov r0, #0x6d
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    _s32_div_f(r1, 0x1e);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // mov r0, #0x6e
-    // lsl r0, r0, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    Sprite_SetAnimCtrlSeq((0x6d << 2), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0xa);
     // ldr r0, [r5, r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq((0x6e << 2), (((r1 << 0x18) >> 0x18) + 1));
 }
+
 
 
 void ov96_02208784(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // mov r6, #0
-    // add r4, r5, #0
-    // mov r0, #0x6d
-    // lsl r0, r0, #2
     // ldr r0, [r4, r0]
-    // mov r1, #2
-    // bl Sprite_SetDrawPriority
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #2
-    // blt _02208790
-    // mov r6, #0
-    // add r4, r5, #0
-    // mov r0, #0x13
-    // lsl r0, r0, #4
+    Sprite_SetDrawPriority((0x6d << 2), 2);
     // ldr r0, [r4, r0]
-    // bl ov96_021EB5B8
-    // mov r1, #2
-    // bl Sprite_SetDrawPriority
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #2
-    // blt _022087A8
-    // mov r0, #1
-    // mov r2, #0
+    ov96_021EB5B8((0x13 << 4));
+    Sprite_SetDrawPriority(2);
     // add r1, sp, #4
-    // cmp r2, r7
-    // bne _022087CC
     // strb r2, [r1]
-    // add r2, r2, #1
-    // cmp r2, #4
-    // blt _022087C6
-    // mov r2, #0
     // add r4, sp, #4
     // add r3, sp, #4
     // ldrb r1, [r3]
-    // cmp r1, r2
-    // beq _022087E8
-    // add r1, r0, #0
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // strb r2, [r4, r1]
-    // add r2, r2, #1
-    // cmp r2, #4
-    // blt _022087D8
-    // mov r0, #3
-    // mov r6, #0
     // str r0, [sp]
     // add r4, sp, #4
-    // mov r7, #4
     // ldrb r1, [r4]
-    // mov r0, #0x1c
     // mul r0, r1
     // add r0, r5, r0
-    // ldr r0, [r0, #0x3c]
     // ldr r1, [sp]
-    // bl ov96_021EB630
+    ov96_021EB630(*((u32*)(0x1c + 0x3c)), 1, (0 + 1));
     // ldrb r1, [r4]
-    // mov r0, #0x1c
     // mul r0, r1
     // add r0, r5, r0
-    // ldr r0, [r0, #0x38]
-    // add r1, r7, #0
-    // bl ov96_021EB630
+    ov96_021EB630(*((u32*)(0x1c + 0x38)), r7);
     // ldrb r1, [r4]
-    // mov r0, #0x1c
     // mul r0, r1
     // add r0, r5, r0
-    // add r1, r6, #0
-    // ldr r0, [r0, #0x40]
     // add r1, #0xb
-    // bl ov96_021EB630
+    ov96_021EB630(*((u32*)(0x1c + 0x40)), r6);
     // ldr r0, [sp]
-    // add r6, r6, #1
-    // add r0, r0, #2
     // str r0, [sp]
-    // add r4, r4, #1
-    // add r7, r7, #2
-    // cmp r6, #4
-    // blt _022087F8
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02208840(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r2, #0
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // cmp r6, #9
-    // bls _02208850
-    // bl GF_AssertFail
-    // lsl r0, r4, #4
+    GF_AssertFail();
     // add r1, r5, r0
-    // mov r0, #5
-    // lsl r0, r0, #6
     // ldr r0, [r1, r0]
     // add r6, #9
-    // add r1, r6, #0
-    // bl ov96_021EB564
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021EB564((5 << 6), r6);
 }
+
 
 
 void ov96_02208864(void) {
@@ -66357,6 +54210,7 @@ void ov96_02208864(void) {
     // _022088A8: .word 0x000001A2
     // TODO: decompile
 }
+
 
 
 void ov96_022088AC(void) {
@@ -66407,6 +54261,7 @@ void ov96_022088AC(void) {
     // _02208910: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_02208914(void) {
@@ -66501,6 +54356,7 @@ void ov96_02208914(void) {
 }
 
 
+
 void ov96_022089D0(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x14
@@ -66561,6 +54417,7 @@ void ov96_022089D0(void) {
 }
 
 
+
 void ov96_02208A4C(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -66588,11 +54445,10 @@ void ov96_02208A4C(void) {
 }
 
 
+
 void ov96_02208A80(void) {
-    ov96_021EB52C(1, r1);
-    ov96_021EB52C(*((u32*)(r5 + 8)), 1, r4);
-    ov96_021EB52C(*((u32*)(r5 + 4)), 1, r4);
 }
+
 
 
 void ov96_02208AA8(void) {
@@ -66628,57 +54484,33 @@ void ov96_02208AA8(void) {
 }
 
 
+
 void ov96_02208AE8(void) {
-    // lsl r1, r1, #3
     // str r2, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02208AF0(void) {
-    // mov r2, #0x62
-    // lsl r2, r2, #2
     // str r1, [r0, r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02208AF8(void) {
-    // push {r3, r4, r5, r6}
-    // mov r3, #0
-    // add r5, r3, #0
-    // mov r6, #1
     // ldrb r2, [r1]
-    // ldrb r4, [r1, #1]
-    // lsl r2, r2, #0x13
-    // lsl r4, r4, #0x13
-    // lsr r2, r2, #0x10
-    // lsr r4, r4, #0x10
-    // cmp r2, #0
-    // beq _02208B1C
-    // cmp r4, #0
-    // beq _02208B1C
-    // str r6, [r0, #0x20]
-    // str r2, [r0, #0x24]
-    // str r4, [r0, #0x28]
-    // b _02208B1E
-    // str r5, [r0, #0x20]
-    // add r3, r3, #1
-    // add r1, r1, #2
+    *((u32*)(r0 + 0x20)) = 1;
+    *((u32*)(r0 + 0x24)) = ((r2 << 0x13) >> 0x10);
+    *((u32*)(r0 + 0x28)) = ((*((u8*)(r1 + 1)) << 0x13) >> 0x10);
+    *((u32*)(r0 + 0x20)) = 0;
     // add r0, #0xc
-    // cmp r3, #0x14
-    // blt _02208B00
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02208B2C(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_02208B34(void) {
@@ -66746,6 +54578,7 @@ void ov96_02208B34(void) {
     // _02208BB4: .word 0x00000555
     // TODO: decompile
 }
+
 
 
 void ov96_02208BB8(void) {
@@ -67250,207 +55083,77 @@ void ov96_02208BB8(void) {
 }
 
 
+
 void ov96_02208FB8(void) {
-    // push {r4, lr}
-    // sub sp, #0x180
-    // mov r1, #0x19
-    // lsl r1, r1, #4
     // add r0, r0, r1
-    // mov r2, #0
     // add r1, sp, #0
-    // add r2, r2, #1
     // stmia r1!, {r0}
     // add r0, #0x14
-    // cmp r2, #0x30
-    // blt _02208FC6
     // add r0, sp, #0
     // add r1, sp, #0xc0
-    // bl ov96_02208FF0
-    // add r4, r0, #0
-    // bl LCRandom
-    // add r1, r4, #0
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r1, r0, #0x16
+    ov96_02208FF0((0x19 << 4), (0 + 1));
+    LCRandom();
+    _s32_div_f(r4);
     // add r0, sp, #0xc0
     // ldr r0, [r0, r1]
-    // add sp, #0x180
-    // pop {r4, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_02208FF0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x1fc
-    // sub sp, #0x54
     // mov ip, r0
     // add r0, sp, #0x10
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #0xc]
     // ldr r0, [sp]
-    // add r7, r1, #0
-    // add r2, r0, #1
-    // mov r1, #0xc
     // mul r1, r2
     // add r2, sp, #4
-    // lsl r4, r0, #2
     // mov r3, ip
     // ldr r3, [r3, r4]
     // add r2, r2, r1
-    // str r3, [r2, #8]
-    // mov r3, #0
-    // str r3, [r2, #4]
-    // add r4, r3, #0
+    *((u32*)((0 + 1) + 8)) = r3;
+    *((u32*)((0 + 1) + 4)) = 0;
     // add r3, sp, #4
     // str r4, [r3, r1]
-    // add r1, r4, #0
-    // cmp r0, #0
-    // bls _02209054
-    // ldr r5, [r2, #8]
-    // mov r4, #0x10
     // ldrsh r4, [r5, r4]
-    // mov r6, #0x10
-    // ldr r3, [r3, #4]
-    // ldr r5, [r3, #8]
     // ldrsh r5, [r5, r6]
-    // cmp r5, r4
-    // bge _0220904A
-    // ldr r4, [r3]
-    // str r2, [r4, #4]
-    // ldr r4, [r3]
+    *((u32*)(*((u32*)*((u32*)(0 + 4))) + 4)) = (0 + 1);
     // str r4, [r2]
-    // str r3, [r2, #4]
+    *((u32*)((0 + 1) + 4)) = *((u32*)(0 + 4));
     // str r2, [r3]
-    // b _02209054
-    // add r1, r1, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // cmp r1, r0
-    // blo _02209032
-    // cmp r1, r0
-    // bne _0220905C
-    // str r2, [r3, #4]
+    *((u32*)(*((u32*)(0 + 4)) + 4)) = (0 + 1);
     // str r3, [r2]
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // cmp r0, #0x30
-    // blo _02209008
     // ldr r0, [sp, #8]
-    // mov r3, #0
-    // ldr r1, [r0, #8]
-    // mov r0, #0x10
     // ldrsh r2, [r1, r0]
     // add r1, sp, #4
-    // ldr r1, [r1, #4]
-    // lsl r5, r3, #2
-    // ldr r4, [r1, #8]
     // str r4, [r7, r5]
     // ldr r4, [r7, r5]
     // ldrsh r4, [r4, r0]
-    // cmp r2, r4
-    // bne _0220908C
     // ldr r4, [sp]
-    // add r4, r4, #1
-    // lsl r4, r4, #0x18
-    // lsr r4, r4, #0x18
     // str r4, [sp]
-    // add r3, r3, #1
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #0x18
-    // cmp r3, #0x30
-    // blo _02209072
     // ldr r0, [sp]
-    // cmp r0, #0
-    // bne _022090A0
-    // bl GF_AssertFail
+    GF_AssertFail(0x10, *((u32*)(*((u32*)((((0 + 1) << 0x18) >> 0x18) + 8)) + 4)), (0 + 1), (((0 + 1) << 0x18) >> 0x18));
     // ldr r0, [sp]
-    // add sp, #0x1fc
-    // add sp, #0x54
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_022090A8(void) {
-    // push {r4, r5}
-    // ldr r5, [r0, #8]
-    // ldr r3, [r0, #0xc]
-    // add r4, r5, #0
-    // add r0, r3, #0
     // sub r5, #0x10
     // add r4, #0x10
     // sub r0, #0x10
     // add r3, #0x10
-    // cmp r5, r1
-    // bgt _022090D0
-    // cmp r1, r4
-    // bge _022090D0
-    // cmp r0, r2
-    // bgt _022090D0
-    // cmp r2, r3
-    // bge _022090D0
-    // mov r0, #1
-    // pop {r4, r5}
-    // bx lr
-    // mov r0, #0
-    // pop {r4, r5}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_022090D8(void) {
-    // ldr r2, [r0, #0xc]
-    // cmp r2, #0x68
-    // bge _022090E2
-    // mov r0, #0
-    // bx lr
-    // mov r1, #0x62
-    // lsl r1, r1, #2
-    // cmp r2, r1
-    // ldr r1, [r0, #8]
-    // bgt _0220910C
-    // cmp r1, #0x90
-    // blt _022090F4
-    // mov r2, #1
-    // b _022090F6
-    // mov r2, #0
-    // mov r0, #0x17
-    // lsl r0, r0, #4
-    // cmp r1, r0
-    // bgt _02209102
-    // mov r0, #1
-    // b _02209104
-    // mov r0, #0
     // tst r0, r2
-    // beq _0220912C
-    // mov r0, #1
-    // bx lr
-    // cmp r1, #0xd0
-    // blt _02209114
-    // mov r2, #1
-    // b _02209116
-    // mov r2, #0
-    // mov r0, #0x13
-    // lsl r0, r0, #4
-    // cmp r1, r0
-    // bgt _02209122
-    // mov r0, #1
-    // b _02209124
-    // mov r0, #0
     // tst r0, r2
-    // beq _0220912C
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02209130(void) {
@@ -67514,293 +55217,101 @@ void ov96_02209130(void) {
 }
 
 
+
 void ov96_022091B4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetHeapAllocPtr4();
+    PokeathlonCourse_GetDataCopyArea(r5);
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // ldr r0, [r0, #0x10]
-    // lsl r0, r0, #0xf
-    // lsr r0, r0, #0x1f
-    // cmp r0, #1
-    // bne _0220920C
-    // ldr r0, [r4, #0x40]
-    // bl ov96_0220AD4C
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl ov96_0220A5DC
-    // add r0, r4, #0
-    // bl ov96_02209BF8
-    // ldr r0, [r4, #0x4c]
-    // mov r1, #0
-    // bl ov96_0220B708
-    // ldr r0, [r4, #0x44]
-    // bl ov96_0220B8F0
-    // ldr r0, [r4, #0x40]
-    // bl ov96_0220A87C
-    // ldr r0, [r4, #0x10]
-    // mov r1, #1
-    // bl ov96_021EB144
-    // add sp, #0x10
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl System_GetTouchNew
-    // cmp r0, #0
-    // beq _0220922E
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // add r1, r0, #0
-    // mov r0, #1
-    // lsl r1, r1, #0x18
+    ov96_021E8A20();
+    ov96_0220AD4C(*((u32*)(r4 + 0x40)));
+    ov96_0220A5DC(r5, r0);
+    ov96_02209BF8(r4);
+    ov96_0220B708(*((u32*)(r4 + 0x4c)), 0);
+    ov96_0220B8F0(*((u32*)(r4 + 0x44)));
+    ov96_0220A87C(*((u32*)(r4 + 0x40)));
+    ov96_021EB144(*((u32*)(r4 + 0x10)), 1);
+    System_GetTouchNew(1);
+    ov96_021E5F24(r5);
     // str r0, [sp]
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // mov r2, #3
-    // mov r3, #0
-    // bl ov96_021E8228
-    // add r0, r4, #0
-    // bl ov96_02209E70
-    // ldr r0, [r4, #0x40]
-    // bl ov96_0220A840
-    // ldr r0, [r4, #0x40]
-    // bl ov96_0220AD34
-    // add r6, r0, #0
-    // cmp r6, #1
-    // bne _0220924A
-    // mov r1, #1
-    // b _0220924C
-    // mov r1, #0
-    // ldr r0, [r4, #0x4c]
-    // bl ov96_0220B528
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _02209262
-    // ldr r0, [r4, #0x48]
-    // bl ov96_0220C9A0
-    // ldr r0, [r4, #0x44]
-    // bl ov96_0220B8D8
-    // ldr r0, [r4, #0x40]
-    // bl ov96_0220A910
-    // add r7, r0, #0
-    // add r0, r4, #0
-    // add r1, r7, #0
-    // bl ov96_0220A298
-    // ldr r0, [r4, #0x4c]
-    // bl ov96_0220B7CC
-    // cmp r0, #0
-    // beq _02209312
-    // cmp r6, #2
-    // bne _02209312
-    // cmp r7, #0
-    // beq _02209312
-    // ldr r0, [r4, #0x4c]
-    // bl ov96_0220B758
-    // add r6, r0, #0
-    // ldr r0, [r4, #0x4c]
-    // bl ov96_0220B774
-    // ldr r1, [r6]
+    ov96_021E8228(r5, ((r0 << 0x18) >> 0x18), 3, 0);
+    ov96_02209E70(r4);
+    ov96_0220A840(*((u32*)(r4 + 0x40)));
+    ov96_0220AD34(*((u32*)(r4 + 0x40)));
+    ov96_0220B528(*((u32*)(r4 + 0x4c)), 0);
+    ov96_021E5F24(r5);
+    ov96_0220C9A0(*((u32*)(r4 + 0x48)));
+    ov96_0220B8D8(*((u32*)(r4 + 0x44)));
+    ov96_0220A910(*((u32*)(r4 + 0x40)));
+    ov96_0220A298(r4, r0);
+    ov96_0220B7CC(*((u32*)(r4 + 0x4c)));
+    ov96_0220B758(*((u32*)(r4 + 0x4c)));
+    ov96_0220B774(*((u32*)(r4 + 0x4c)));
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x40]
-    // lsr r1, r1, #0x1a
-    // bl ov96_0220A8CC
-    // add r7, r0, #0
-    // ldr r0, [r4, #0x4c]
-    // bl ov96_0220B7B4
-    // add r1, r0, #0
+    ov96_0220A8CC(*((u32*)(r4 + 0x40)), (*((u32*)r6) >> 0x1a));
+    ov96_0220B7B4(*((u32*)(r4 + 0x4c)));
     // ldr r0, [sp, #8]
-    // add r3, r7, #0
     // str r0, [sp]
     // add r0, sp, #0xc
     // str r0, [sp, #4]
-    // ldr r2, [r6]
-    // ldr r0, [r4, #0x40]
-    // lsl r2, r2, #0x17
-    // lsr r2, r2, #0x17
-    // lsl r2, r2, #0x10
-    // lsr r2, r2, #0x10
-    // lsl r2, r2, #0x10
     // asr r2, r2, #0x10
-    // bl ov96_0220AAEC
-    // add r2, r0, #0
-    // ldr r0, [r4, #0x4c]
-    // add r1, r7, #0
-    // bl ov96_0220B634
-    // add r0, r4, #0
-    // bl ov96_02209BB0
-    // cmp r7, #0
-    // beq _022092EC
-    // add r0, r4, #0
-    // mov r1, #0x10
-    // mov r2, #2
-    // bl ov96_0220A704
-    // b _02209312
+    ov96_0220AAEC(*((u32*)(r4 + 0x40)), r0, (((((*((u32*)r6) << 0x17) >> 0x17) << 0x10) >> 0x10) << 0x10), r7);
+    ov96_0220B634(*((u32*)(r4 + 0x4c)), r7, r0);
+    ov96_02209BB0(r4);
+    ov96_0220A704(r4, 0x10, 2);
     // ldr r0, [sp, #0xc]
-    // cmp r0, #0
-    // beq _022092FE
-    // add r0, r4, #0
-    // mov r1, #4
-    // mov r2, #1
-    // bl ov96_0220A704
-    // b _02209312
-    // ldr r0, [r4, #0x4c]
-    // bl ov96_0220B774
-    // cmp r0, #0
-    // beq _02209312
-    // add r0, r4, #0
-    // mov r1, #4
-    // mov r2, #1
-    // bl ov96_0220A704
-    // mov r0, #0x26
-    // lsl r0, r0, #4
+    ov96_0220A704(r4, 4, 1);
+    ov96_0220B774(*((u32*)(r4 + 0x4c)));
+    ov96_0220A704(r4, 4, 1);
     // ldr r1, [r4, r0]
-    // cmp r1, #0
-    // ble _02209320
-    // sub r1, r1, #1
     // str r1, [r4, r0]
-    // mov r1, #0x26
-    // lsl r1, r1, #4
     // ldr r1, [r4, r1]
-    // add r0, r5, #0
-    // bl ov96_021E6454
-    // mov r0, #0x26
-    // lsl r0, r0, #4
+    ov96_021E6454(r5, (0x26 << 4));
     // ldr r0, [r4, r0]
-    // cmp r0, #0
-    // bne _02209356
-    // add r0, r5, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _02209356
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    ov96_021E5F24(r5);
+    PokeathlonCourse_GetDataCopyArea(r5);
     // add r0, #0x28
-    // bl ov96_021E8A20
-    // mov r1, #1
-    // ldr r2, [r0, #0x10]
-    // lsl r1, r1, #0x10
+    ov96_021E8A20();
     // orr r1, r2
-    // str r1, [r0, #0x10]
-    // mov r0, #0
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r0 + 0x10)) = (1 << 0x10);
 }
+
 
 
 void ov96_0220935C(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _02209376
-    // cmp r0, #1
-    // beq _02209394
-    // b _022093C8
-    // add r0, r5, #0
-    // bl ov96_0220A4DC
-    // add r0, r5, #0
-    // bl ov96_0220A14C
-    // add r0, r5, #0
-    // bl ov96_022091B4
-    // cmp r0, #0
-    // beq _022093C8
+    ov96_0220A4DC(r5);
+    ov96_0220A14C(r5);
+    ov96_022091B4(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _022093C8
-    // add r0, r5, #0
-    // bl ov96_021E667C
-    // cmp r0, #0
-    // beq _022093C8
-    // mov r0, #0x9a
-    // lsl r0, r0, #2
+    ov96_021E667C(r5);
     // ldr r0, [r6, r0]
-    // cmp r0, #0
-    // bne _022093C8
-    // mov r0, #6
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add r0, r5, #0
-    // mov r1, #2
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    PokeathlonCourse_SetStateField07(r5, 2);
 }
+
 
 
 void ov96_022093D0(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r5, r0, #0
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _02209442
-    // add r0, r6, #0
-    // bl ov96_021E5F24
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x40]
-    // bl ov96_0220AD4C
-    // lsl r1, r4, #0x18
-    // add r2, r0, #0
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // bl PokeathlonCourse_SetField5E0_AtIndex
-    // cmp r4, #0
-    // bne _0220943E
-    // add r0, r6, #0
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r4, r0, #0
-    // cmp r4, #4
-    // bge _0220943E
-    // mov r0, #0x28
-    // add r5, r4, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
+    IsPaletteFadeFinished();
+    ov96_021E5F24(r6);
+    ov96_0220AD4C(*((u32*)(r5 + 0x40)));
+    PokeathlonCourse_SetField5E0_AtIndex(r6, ((r4 << 0x18) >> 0x18), r0);
+    PokeathlonCourse_GetParticipantCount(r6);
     // mul r5, r0
-    // add r0, r6, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea(r6);
     // add r0, #0x50
     // add r0, r0, r5
-    // bl ov96_021E8A20
-    // add r2, r0, #0
-    // ldr r2, [r2]
-    // lsl r1, r4, #0x18
-    // lsl r2, r2, #0x18
-    // lsr r2, r2, #0x18
-    // lsl r2, r2, #0x10
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x10
-    // bl PokeathlonCourse_SetField5E0_AtIndex
-    // add r4, r4, #1
+    ov96_021E8A20();
+    PokeathlonCourse_SetField5E0_AtIndex(r6, ((r4 << 0x18) >> 0x18), ((((*((u32*)r0) << 0x18) >> 0x18) << 0x10) >> 0x10));
     // add r5, #0x28
-    // cmp r4, #4
-    // blt _02209412
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02209448(void) {
@@ -68113,11 +55624,10 @@ void ov96_02209448(void) {
 }
 
 
+
 u32 ov96_02209738(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    SpriteSystem_DrawSprites(*((u32*)(r0 + 0xc)));
-    return 1;
 }
+
 
 
 void ov96_02209748(void) {
@@ -68166,6 +55676,7 @@ void ov96_02209748(void) {
 }
 
 
+
 void ov96_022097AC(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -68212,9 +55723,10 @@ void ov96_022097AC(void) {
 }
 
 
+
 void ov96_02209820(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_02209840(void) {
@@ -68293,136 +55805,60 @@ void ov96_02209840(void) {
 }
 
 
+
 void ov96_022098E8(void) {
-    NARC_Delete(*((u32*)(r0 + 0x50)));
-    ov96_021EA894(*((u32*)(r4 + 0x10)));
-    ov96_021E9C0C(*((u32*)(r4 + 0x14)));
-    SpriteSystem_FreeResourcesAndManager(*((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)));
-    SpriteSystem_Free(*((u32*)(r4 + 8)));
 }
+
 
 
 void ov96_02209910(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r5, r0, #0
-    // mov r7, #0
     // add r0, sp, #0x14
     // str r7, [r0]
-    // str r7, [r0, #4]
-    // mov r6, #2
-    // str r7, [r0, #8]
-    // lsl r6, r6, #0xe
-    // add r4, r5, #0
-    // mov r0, #0xb
-    // lsl r0, r0, #0x10
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 8)) = 0;
     // str r6, [sp, #0x14]
     // str r0, [sp, #0x18]
-    // ldr r0, [r5, #0xc]
-    // bl SpriteManager_GetSpriteList
-    // add r1, r0, #0
-    // ldr r0, [r5, #0x14]
-    // ldr r3, [r5]
-    // mov r2, #0
-    // bl ov96_021EA584
-    // str r0, [r4, #0x2c]
+    SpriteManager_GetSpriteList(*((u32*)(r0 + 0xc)));
+    ov96_021EA584(*((u32*)(r5 + 0x14)), r0, 0, *((u32*)r5));
+    *((u32*)(r4 + 0x2c)) = r0;
     // add r1, sp, #0x14
-    // bl Sprite_SetMatrix
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #2
-    // bl Sprite_SetDrawPriority
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // ldr r0, [r4, #0x2c]
-    // mov r1, #1
-    // bl Sprite_SetDrawFlag
-    // mov r0, #1
-    // lsl r0, r0, #0x10
-    // add r7, r7, #1
+    Sprite_SetMatrix();
+    Sprite_SetDrawPriority(*((u32*)(r4 + 0x2c)), 2);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r4 + 0x2c)), 1);
+    Sprite_SetDrawFlag(*((u32*)(r4 + 0x2c)), 1);
     // add r6, r6, r0
-    // add r4, r4, #4
-    // cmp r7, #3
-    // blt _02209926
-    // mov r0, #0x19
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r5, #8]
-    // ldr r1, [r5, #0xc]
-    // mov r2, #0xc0
-    // mov r3, #0xb8
-    // bl ov96_0220D13C
-    // str r0, [r5, #0x24]
-    // mov r7, #0
-    // add r4, r5, #0
-    // mov r6, #0xd4
-    // mov r1, #0
+    ov96_0220D13C(*((u32*)(r5 + 8)), *((u32*)(r5 + 0xc)), 0xc0, 0xb8);
+    *((u32*)(r5 + 0x24)) = r0;
     // add r0, sp, #8
     // str r1, [r0]
-    // str r1, [r0, #4]
-    // str r1, [r0, #8]
-    // ldr r0, [r5, #0xc]
-    // bl SpriteManager_GetSpriteList
-    // add r1, r0, #0
-    // ldr r0, [r5, #0x14]
-    // ldr r3, [r5]
-    // mov r2, #2
-    // bl ov96_021EA374
-    // str r0, [r4, #0x38]
-    // lsl r0, r6, #0xc
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 8)) = 0;
+    SpriteManager_GetSpriteList(*((u32*)(r5 + 0xc)), 0);
+    ov96_021EA374(*((u32*)(r5 + 0x14)), r0, 2, *((u32*)r5));
+    *((u32*)(r4 + 0x38)) = r0;
     // str r0, [sp, #8]
-    // mov r0, #0x2e
-    // lsl r0, r0, #0xe
     // str r0, [sp, #0xc]
-    // mov r0, #0
     // str r0, [sp, #0x10]
-    // ldr r0, [r4, #0x38]
     // add r1, sp, #8
-    // bl Sprite_SetMatrix
-    // ldr r0, [r4, #0x38]
-    // mov r1, #1
-    // bl Sprite_SetDrawFlag
-    // add r7, r7, #1
-    // add r4, r4, #4
+    Sprite_SetMatrix(*((u32*)(r4 + 0x38)));
+    Sprite_SetDrawFlag(*((u32*)(r4 + 0x38)), 1);
     // add r6, #0x10
-    // cmp r7, #2
-    // blt _0220998A
-    // mov r0, #0x13
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // ldr r0, [r5, #8]
-    // ldr r1, [r5, #0xc]
-    // mov r2, #0x20
-    // mov r3, #0x10
-    // bl ov96_0220D13C
-    // str r0, [r5, #0x28]
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_0220D13C(*((u32*)(r5 + 8)), *((u32*)(r5 + 0xc)), 0x20, 0x10);
+    *((u32*)(r5 + 0x28)) = r0;
 }
+
 
 
 void ov96_022099EC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // bne _022099F6
-    // bl GF_AssertFail
-    // mov r4, #0
-    // ldr r0, [r5, #0x24]
-    // cmp r0, #0
-    // bne _02209A02
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x24]
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _022099F8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)(r5 + 0x24)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 0x24)));
 }
+
 
 
 void ov96_02209A14(void) {
@@ -68537,6 +55973,7 @@ void ov96_02209A14(void) {
 }
 
 
+
 void ov96_02209B04(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -68619,45 +56056,22 @@ void ov96_02209B04(void) {
 }
 
 
+
 void ov96_02209BB0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // bne _02209BBA
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0x40]
-    // bl ov96_0220AD4C
-    // add r5, r0, #0
-    // mov r4, #0
-    // mov r7, #2
-    // add r0, r5, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
+    GF_AssertFail();
+    ov96_0220AD4C(*((u32*)(r6 + 0x40)));
+    _s32_div_f(r0, 0xa);
     // sub r0, r7, r4
-    // lsl r0, r0, #2
     // add r0, r6, r0
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x10
-    // ldr r0, [r0, #0x2c]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // cmp r5, #0xa
-    // blo _02209BF6
-    // add r0, r5, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x10
-    // add r4, r4, #1
-    // lsr r5, r0, #0x10
-    // cmp r4, #3
-    // blt _02209BC6
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq(*((u32*)((r0 << 2) + 0x2c)), (((r1 << 0x10) >> 0x10) + 1));
+    _s32_div_f(r5, 0xa);
 }
+
 
 
 void ov96_02209BF8(void) {
-    ManagedSprite_SetAnimateFlag(0);
 }
+
 
 
 void ov96_02209C14(void) {
@@ -68729,6 +56143,7 @@ void ov96_02209C14(void) {
 }
 
 
+
 void ov96_02209CA8(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -68780,104 +56195,47 @@ void ov96_02209CA8(void) {
 }
 
 
+
 void ov96_02209D14(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // mov r3, #0
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r1, #1
-    // add r4, r0, #0
     // str r1, [sp, #8]
-    // ldr r0, [r4]
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xea
-    // bl GfGfxLoader_LoadCharData
-    // mov r3, #0
+    GfGfxLoader_LoadCharData(0xea, 1, *((u32*)(r0 + 4)), 0);
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xea
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
+    GfGfxLoader_LoadScrnData(0xea, 2, *((u32*)(r4 + 4)), 0);
     // str r1, [sp]
-    // ldr r0, [r4]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xea
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r1, #0x1e
-    // ldr r2, [r4]
-    // mov r0, #0
-    // lsl r1, r1, #4
-    // bl LoadFontPal0
-    // mov r0, #0
+    GfGfxLoader_GXLoadPal(0xea, 0, 0, 0);
+    LoadFontPal0(0, (0x1e << 4), *((u32*)r4));
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xea
-    // add r3, r1, #0
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xea, 4, *((u32*)(r4 + 4)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xea
-    // mov r3, #5
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xea, 4, *((u32*)(r4 + 4)), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xea
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xea, 5, *((u32*)(r4 + 4)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xea
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // mov r3, #0
+    GfGfxLoader_LoadScrnData(0xea, 6, *((u32*)(r4 + 4)), 5);
     // str r3, [sp]
-    // ldr r0, [r4]
-    // mov r1, #3
     // str r0, [sp, #4]
-    // mov r0, #0xea
-    // mov r2, #4
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0xea, 3, 4, 0);
 }
+
 
 
 void ov96_02209DE4(void) {
@@ -68943,90 +56301,36 @@ void ov96_02209DE4(void) {
 }
 
 
+
 void ov96_02209E70(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // bne _02209E7C
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x4c]
-    // cmp r0, #0
-    // bne _02209E86
-    // bl GF_AssertFail
-    // mov r0, #0x26
-    // lsl r0, r0, #4
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)(r5 + 0x4c)));
     // ldr r0, [r5, r0]
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // cmp r0, #0
-    // bge _02209E98
-    // mov r0, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r5, #0x38]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r5, #0x3c]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // ldr r0, [r5, #0x4c]
-    // bl ov96_0220B7B4
-    // add r0, r0, #1
-    // mov r1, #3
-    // bl _s32_div_f
-    // lsl r2, r1, #0x18
-    // mov r0, #1
+    _s32_div_f((0x26 << 4), 0x1e);
+    _s32_div_f(0, 0x64);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 0xa);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 0x38)), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0xa);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 0x3c)), (((r1 << 0x18) >> 0x18) + 1));
+    ov96_0220B7B4(*((u32*)(r5 + 0x4c)));
+    _s32_div_f((r0 + 1), 3);
     // str r0, [sp]
-    // mov r3, #2
-    // mov r0, #0x97
-    // lsr r2, r2, #0x16
     // str r3, [sp, #4]
-    // lsl r0, r0, #2
     // add r2, r5, r2
     // ldr r0, [r5, r0]
-    // ldr r2, [r2, #0x18]
-    // mov r1, #0
-    // bl BufferString
-    // mov r2, #0x92
-    // ldr r0, [r5]
-    // lsl r2, r2, #2
-    // add r1, r2, #0
+    BufferString((0x97 << 2), 0, *((u32*)(((r1 << 0x18) >> 0x16) + 0x18)), 2);
     // str r0, [sp]
     // add r0, r5, r2
     // add r1, #0x14
     // add r2, #0x10
     // ldr r1, [r5, r1]
     // ldr r2, [r5, r2]
-    // mov r3, #0x9a
-    // bl ov96_02209F40
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_02209F40(*((u32*)r5), (0x92 << 2), (0x92 << 2), 0x9a);
 }
 
 
+
 void ov96_02209F14(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r0, #0
-    // mov r3, #0x86
-    // lsl r3, r3, #2
-    // ldr r0, [r4]
-    // add r1, r3, #0
-    // add r2, r3, #0
     // str r0, [sp]
     // add r1, #0x44
     // add r2, #0x40
@@ -69034,13 +56338,10 @@ void ov96_02209F14(void) {
     // ldr r1, [r4, r1]
     // ldr r2, [r4, r2]
     // sub r3, #0xeb
-    // bl ov96_02209F40
-    // add r0, r4, #0
-    // bl ov96_02209E70
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov96_02209F40(*((u32*)r0), (0x86 << 2), (0x86 << 2), (0x86 << 2));
+    ov96_02209E70(r4);
 }
+
 
 
 void ov96_02209F40(void) {
@@ -69078,6 +56379,7 @@ void ov96_02209F40(void) {
     // _02209F88: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_02209F8C(void) {
@@ -69241,209 +56543,79 @@ void ov96_02209F8C(void) {
 }
 
 
+
 void ov96_0220A0E0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // mov r7, #0
     // add r6, #0x54
-    // ldr r0, [r6, #4]
-    // cmp r0, #0
-    // bne _0220A0F2
-    // bl GF_AssertFail
-    // ldr r0, [r6, #4]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r6, #8]
-    // cmp r0, #0
-    // bne _0220A102
-    // bl GF_AssertFail
-    // ldr r0, [r6, #8]
-    // bl Sprite_DeleteAndFreeResources
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0xc]
-    // cmp r0, #0
-    // bne _0220A116
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0xc]
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #0x14
-    // blt _0220A10C
-    // mov r5, #0
-    // add r4, r6, #0
-    // ldr r0, [r4, #0x5c]
-    // cmp r0, #0
-    // bne _0220A132
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x5c]
-    // bl Sprite_DeleteAndFreeResources
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #5
-    // blt _0220A128
-    // add r7, r7, #1
+    GF_AssertFail(*((u32*)(r0 + 4)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 4)));
+    GF_AssertFail(*((u32*)(r6 + 8)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 8)));
+    GF_AssertFail(*((u32*)(r6 + 0xc)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 0xc)));
+    GF_AssertFail(*((u32*)(r6 + 0x5c)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r4 + 0x5c)));
     // add r6, #0x70
-    // cmp r7, #4
-    // blt _0220A0E8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220A14C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
     // str r0, [sp]
-    // cmp r0, #0
-    // bne _0220A15A
-    // bl GF_AssertFail
+    GF_AssertFail();
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r7, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
+    ov96_021E8A20();
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
     // add r7, #0x54
     // ldr r0, [sp, #4]
-    // mov r1, #5
-    // ldr r0, [r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bl _u32_div_f
-    // add r6, r0, #0
-    // cmp r6, #0x14
-    // ble _0220A1BE
-    // ldr r0, [r7, #0x5c]
-    // bl ManagedSprite_GetDrawFlag
-    // cmp r0, #0
-    // bne _0220A1BC
-    // mov r4, #0
-    // add r5, r7, #0
-    // ldr r0, [r5, #0x5c]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #5
-    // blt _0220A198
-    // mov r5, #0
-    // add r4, r7, #0
-    // ldr r0, [r4, #0xc]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #0x14
-    // blt _0220A1AC
+    _u32_div_f(((*((u32*)0) << 0x18) >> 0x18), 5);
+    ManagedSprite_GetDrawFlag(*((u32*)(r7 + 0x5c)));
+    ManagedSprite_SetDrawFlag(*((u32*)(r7 + 0x5c)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r7 + 0xc)), 0);
     // sub r6, #0x14
-    // cmp r6, #0x14
-    // ble _0220A1C4
-    // mov r6, #0x14
-    // mov r4, #0
-    // cmp r6, #0
-    // ble _0220A1EC
-    // add r5, r7, #0
-    // ldr r0, [r5, #0xc]
-    // bl ManagedSprite_GetDrawFlag
-    // cmp r0, #0
-    // bne _0220A1E4
-    // ldr r0, [r5, #0xc]
-    // bl ManagedSprite_ResetSpriteAnimCtrlState
-    // ldr r0, [r5, #0xc]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, r6
-    // blt _0220A1CC
+    ManagedSprite_GetDrawFlag(*((u32*)(r7 + 0xc)));
+    ManagedSprite_ResetSpriteAnimCtrlState(*((u32*)(r5 + 0xc)));
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0xc)), 1);
     // ldr r0, [sp, #4]
-    // ldr r0, [r0]
-    // lsl r1, r0, #4
-    // lsr r1, r1, #0x1f
-    // beq _0220A22C
-    // lsl r0, r0, #6
-    // lsr r2, r0, #0x1e
     // ldrb r0, [r7]
-    // cmp r2, r0
-    // beq _0220A21A
     // ldr r1, [sp, #8]
-    // lsl r2, r2, #0x18
-    // lsl r1, r1, #0x18
     // ldr r0, [sp]
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x18
-    // bl ov96_0220A254
+    ov96_0220A254((*((u32*)r0) << 6), ((((*((u32*)r0) << 4) >> 0x1f) << 0x18) >> 0x18), ((((*((u32*)r0) << 6) >> 0x1e) << 0x18) >> 0x18));
     // ldr r0, [sp, #4]
-    // ldr r0, [r0]
-    // lsl r0, r0, #6
-    // lsr r0, r0, #0x1e
     // strb r0, [r7]
-    // ldr r0, [r7, #4]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r7, #8]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // b _0220A23C
-    // ldr r0, [r7, #8]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r7, #4]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
+    ManagedSprite_SetDrawFlag(*((u32*)(r7 + 4)), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r7 + 8)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r7 + 8)), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r7 + 4)), 1);
     // ldr r0, [sp, #4]
     // add r7, #0x70
-    // add r0, r0, #4
     // str r0, [sp, #4]
     // ldr r0, [sp, #8]
-    // add r0, r0, #1
     // str r0, [sp, #8]
-    // cmp r0, #4
-    // blt _0220A176
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220A254(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
     // str r2, [sp, #8]
-    // add r7, r0, #0
-    // add r5, r1, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
-    // add r4, r6, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldr r2, [sp, #8]
-    // add r0, r7, #0
-    // add r1, r5, #0
     // add r3, sp, #0xc
     // add r4, #0x50
-    // bl ov96_021E6168
-    // lsl r0, r5, #9
+    ov96_021E6168(r7, r5);
     // str r0, [sp]
-    // ldr r0, [r6]
-    // mov r2, #0x71
     // str r0, [sp, #4]
-    // mov r0, #0x70
     // mul r0, r5
-    // lsl r2, r2, #2
     // add r0, r4, r0
     // ldrh r2, [r4, r2]
-    // ldr r0, [r0, #8]
-    // ldr r3, [r6, #0x50]
     // add r1, sp, #0xc
-    // bl ov96_021EECB8
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EECB8(*((u32*)(0x70 + 8)), (0x71 << 2), *((u32*)(r6 + 0x50)));
 }
+
 
 
 void ov96_0220A298(void) {
@@ -69626,6 +56798,7 @@ void ov96_0220A298(void) {
 }
 
 
+
 void ov96_0220A424(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -69707,6 +56880,7 @@ void ov96_0220A424(void) {
     // _0220A4D8: .word 0xFCFFFFFF
     // TODO: decompile
 }
+
 
 
 void ov96_0220A4DC(void) {
@@ -69826,6 +57000,7 @@ void ov96_0220A4DC(void) {
 }
 
 
+
 void ov96_0220A5DC(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x14
@@ -69886,6 +57061,7 @@ void ov96_0220A5DC(void) {
     // _0220A65C: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_0220A660(void) {
@@ -69965,6 +57141,7 @@ void ov96_0220A660(void) {
 }
 
 
+
 void ov96_0220A704(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -69998,229 +57175,104 @@ void ov96_0220A704(void) {
 }
 
 
+
 void ov96_0220A744(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r6, r1, #0
-    // mov r1, #0x61
-    // lsl r1, r1, #2
     // str r0, [sp, #8]
-    // add r7, r2, #0
-    // add r4, r3, #0
-    // bl Heap_Alloc
-    // mov r2, #0x61
+    Heap_Alloc((0x61 << 2));
     // str r0, [sp, #0xc]
-    // mov r1, #0
-    // lsl r2, r2, #2
-    // bl MI_CpuFill8
-    // mov r0, #6
+    MI_CpuFill8(0, (0x61 << 2));
     // ldr r1, [sp, #0xc]
-    // lsl r0, r0, #6
     // ldr r2, [r1, r0]
-    // mov r1, #0xf
     // bic r2, r1
-    // add r3, r2, #0
-    // mov r1, #1
     // ldr r2, [sp, #0xc]
     // orr r3, r1
     // str r3, [r2, r0]
     // ldr r2, [r2, r0]
-    // mov r3, #0xf0
     // bic r2, r3
     // ldr r3, [sp, #0xc]
     // str r2, [r3, r0]
-    // add r0, r3, #0
-    // str r6, [r0, #4]
-    // str r7, [r0, #8]
+    *((u32*)(0xf0 + 4)) = r6;
+    *((u32*)(0xf0 + 8)) = r7;
     // str r4, [r0]
-    // mov r0, #7
     // str r0, [sp]
-    // mov r2, #0
     // str r1, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // add r3, r2, #0
-    // bl ov96_0220D13C
+    ov96_0220D13C(r6, r7, 0, 0);
     // ldr r1, [sp, #0xc]
-    // str r0, [r1, #0xc]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #0x12
+    *((u32*)(r1 + 0xc)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // str r0, [sp]
-    // mov r0, #1
-    // mov r2, #0
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // add r3, r2, #0
-    // bl ov96_0220D13C
+    ov96_0220D13C(r6, r7, 0, 0);
     // ldr r1, [sp, #0xc]
-    // str r0, [r1, #0x10]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
+    *((u32*)(r1 + 0x10)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // ldr r5, [sp, #0xc]
-    // mov r4, #0
-    // lsl r3, r4, #0x10
     // ldr r0, [sp, #8]
-    // add r1, r6, #0
-    // add r2, r7, #0
-    // lsr r3, r3, #0x10
-    // bl ov96_0220AE40
-    // mov r1, #0x55
-    // lsl r1, r1, #2
+    ov96_0220AE40(r6, r7, ((0 << 0x10) >> 0x10));
     // str r0, [r5, r1]
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #0xa
-    // blt _0220A7CA
     // ldr r0, [sp, #0xc]
-    // add r1, r6, #0
     // add r0, #0x14
-    // add r2, r7, #0
-    // bl ov96_0220B178
+    ov96_0220B178(r6, r7);
     // ldr r0, [sp, #0xc]
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220A7F8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // bne _0220A802
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0xc]
-    // cmp r0, #0
-    // bne _0220A80C
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0xc]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r6, #0x10]
-    // bl Sprite_DeleteAndFreeResources
-    // mov r7, #0x55
-    // mov r4, #0
-    // add r5, r6, #0
-    // lsl r7, r7, #2
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)(r6 + 0xc)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 0xc)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 0x10)));
     // ldr r0, [r5, r7]
-    // bl ov96_0220AF30
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #0xa
-    // blt _0220A820
-    // add r0, r6, #0
+    ov96_0220AF30();
     // add r0, #0x14
-    // bl ov96_0220B1B8
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_0220B1B8(r6);
+    Heap_Free(r6);
 }
+
 
 
 void ov96_0220A840(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _0220A84A
-    // bl GF_AssertFail
-    // mov r0, #6
-    // lsl r0, r0, #6
+    GF_AssertFail();
     // ldr r0, [r4, r0]
-    // lsl r0, r0, #0x1c
-    // lsr r0, r0, #0x1c
-    // cmp r0, #1
-    // beq _0220A85E
-    // cmp r0, #2
-    // beq _0220A866
-    // b _0220A86E
-    // add r0, r4, #0
-    // bl ov96_0220AD64
-    // b _0220A872
-    // add r0, r4, #0
-    // bl ov96_0220AE28
-    // b _0220A872
-    // bl GF_AssertFail
+    ov96_0220AD64(r4);
+    ov96_0220AE28(r4);
+    GF_AssertFail();
     // add r4, #0x14
-    // add r0, r4, #0
-    // bl ov96_0220B324
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_0220B324(r4);
 }
+
 
 
 void ov96_0220A87C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
-    // ldr r0, [r0, #0x10]
-    // mov r1, #0
-    // bl ManagedSprite_SetAnimateFlag
+    ManagedSprite_SetAnimateFlag(*((u32*)(r0 + 0x10)), 0);
     // ldr r0, [sp]
-    // mov r1, #0
-    // ldr r0, [r0, #0xc]
-    // bl ManagedSprite_SetAnimateFlag
-    // mov r7, #0x55
-    // lsl r7, r7, #2
+    ManagedSprite_SetAnimateFlag(*((u32*)(r0 + 0xc)), 0);
     // ldr r5, [sp]
-    // mov r4, #0
-    // add r6, r7, #0
     // ldr r0, [r5, r6]
-    // ldr r1, [r0, #0x10]
-    // lsl r1, r1, #4
-    // lsr r1, r1, #0x1f
-    // beq _0220A8B8
-    // ldr r0, [r0]
-    // mov r1, #0
-    // bl ManagedSprite_SetAnimateFlag
+    ManagedSprite_SetAnimateFlag(*((u32*)r0), 0);
     // ldr r0, [r5, r7]
-    // mov r1, #0
-    // ldr r0, [r0, #4]
-    // bl ManagedSprite_SetAnimateFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #0xa
-    // blt _0220A89C
+    ManagedSprite_SetAnimateFlag(*((u32*)(r0 + 4)), 0);
     // ldr r0, [sp]
     // add r0, #0x14
     // str r0, [sp]
-    // bl ov96_0220B354
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_0220B354();
 }
+
 
 
 void ov96_0220A8CC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // cmp r5, #0
-    // bne _0220A8DA
-    // bl GF_AssertFail
-    // mov r0, #6
-    // lsl r0, r0, #6
+    GF_AssertFail();
     // ldr r0, [r5, r0]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x1c
-    // bne _0220A8EA
-    // bl GF_AssertFail
-    // mov r0, #6
-    // lsl r0, r0, #6
+    GF_AssertFail((((6 << 6) << 0x18) >> 0x1c));
     // ldr r1, [r5, r0]
     // sub r0, #0x30
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x1c
-    // lsl r1, r1, #2
     // add r1, r5, r1
     // ldr r0, [r1, r0]
-    // add r1, r4, #0
-    // bl ov96_0220B0A4
-    // cmp r0, #0
-    // beq _0220A90A
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_0220B0A4((6 << 6), r4);
 }
+
 
 
 void ov96_0220A910(void) {
@@ -70435,6 +57487,7 @@ void ov96_0220A910(void) {
     // _0220AAE8: .word ov96_0221CDD8
     // TODO: decompile
 }
+
 
 
 void ov96_0220AAEC(void) {
@@ -70707,14 +57760,15 @@ void ov96_0220AAEC(void) {
 }
 
 
+
 void ov96_0220AD34(void) {
-    GF_AssertFail(6);
 }
+
 
 
 void ov96_0220AD4C(void) {
-    GF_AssertFail(0x5f);
 }
+
 
 
 void ov96_0220AD64(void) {
@@ -70812,21 +57866,14 @@ void ov96_0220AD64(void) {
 }
 
 
+
 void ov96_0220AE28(void) {
-    // mov r2, #6
-    // lsl r2, r2, #6
     // ldr r3, [r0, r2]
-    // lsl r1, r3, #0x18
-    // lsr r1, r1, #0x1c
-    // bne _0220AE3E
-    // mov r1, #0xf
     // bic r3, r1
-    // mov r1, #1
     // orr r1, r3
     // str r1, [r0, r2]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220AE40(void) {
@@ -70898,6 +57945,7 @@ void ov96_0220AE40(void) {
 }
 
 
+
 void ov96_0220AED4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -70940,28 +57988,16 @@ void ov96_0220AED4(void) {
 }
 
 
+
 void ov96_0220AF30(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _0220AF3A
-    // bl GF_AssertFail
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // bne _0220AF44
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // bne _0220AF4E
-    // bl GF_AssertFail
-    // ldr r0, [r4]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r4, #4]
-    // bl Sprite_DeleteAndFreeResources
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)r4));
+    GF_AssertFail(*((u32*)(r4 + 4)));
+    Sprite_DeleteAndFreeResources(*((u32*)r4));
+    Sprite_DeleteAndFreeResources(*((u32*)(r4 + 4)));
+    Heap_Free(r4);
 }
+
 
 
 void ov96_0220AF64(void) {
@@ -71035,6 +58071,7 @@ void ov96_0220AF64(void) {
 }
 
 
+
 void ov96_0220AFF8(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -71088,36 +58125,27 @@ void ov96_0220AFF8(void) {
 }
 
 
+
 void ov96_0220B068(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bne _0220B072
-    // bl GF_AssertFail
+    GF_AssertFail();
     // add r1, sp, #0
-    // add r0, r4, #0
     // add r1, #2
     // add r2, sp, #0
-    // bl ov96_0220B148
-    // mov r0, #0xa
+    ov96_0220B148(r4);
     // add r2, sp, #0
-    // mov r1, #2
     // ldrsh r3, [r2, r1]
     // ldrsh r0, [r4, r0]
     // add r0, r3, r0
-    // strh r0, [r2, #2]
-    // mov r3, #0
-    // mov r0, #0xc
+    *((u16*)(r2 + 2)) = 0xa;
     // ldrsh r5, [r2, r3]
     // ldrsh r0, [r4, r0]
     // add r0, r5, r0
     // strh r0, [r2]
     // ldrsh r1, [r2, r1]
     // ldrsh r2, [r2, r3]
-    // ldr r0, [r4, #4]
-    // bl ManagedSprite_SetPositionXY
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXY(*((u32*)(r4 + 4)), 2, 0);
 }
+
 
 
 void ov96_0220B0A4(void) {
@@ -71202,481 +58230,233 @@ void ov96_0220B0A4(void) {
 }
 
 
+
 void ov96_0220B148(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // cmp r5, #0
-    // bne _0220B158
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ManagedSprite_GetPositionXY
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    ManagedSprite_GetPositionXY(*((u32*)r5), r4, r6);
 }
+
 
 
 void ov96_0220B164(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_0220B178(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r7, r2, #0
-    // mov r4, #0
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(0, 3);
     // add r1, #0x1c
-    // lsl r0, r1, #0x10
-    // lsr r0, r0, #0x10
     // str r0, [sp]
-    // mov r0, #1
-    // mov r2, #0
     // str r0, [sp, #4]
-    // add r0, r6, #0
-    // add r1, r7, #0
-    // add r3, r2, #0
-    // bl ov96_0220D13C
-    // mov r1, #0
+    ov96_0220D13C(r6, r7, 0, 0);
     // str r0, [r5]
-    // bl ManagedSprite_SetDrawFlag
-    // add r4, r4, #1
+    ManagedSprite_SetDrawFlag(0);
     // add r5, #0x14
-    // cmp r4, #0x10
-    // blt _0220B184
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B1B8(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r4, #0
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // bne _0220B1C8
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
+    GF_AssertFail(*((u32*)r0));
+    Sprite_DeleteAndFreeResources(*((u32*)r5));
     // add r5, #0x14
-    // cmp r4, #0x10
-    // blt _0220B1BE
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B1D8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
     // str r1, [sp]
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r7, r2, #0
     // str r3, [sp, #4]
-    // add r6, r4, #0
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // bne _0220B2C0
-    // mov r0, #1
-    // str r0, [r5, #4]
-    // strh r7, [r5, #0x10]
+    *((u32*)(r0 + 4)) = 1;
+    *((u16*)(r0 + 0x10)) = r2;
     // ldr r0, [sp, #4]
-    // strh r0, [r5, #0x12]
-    // bl MTRandom
-    // mov r1, #7
+    *((u16*)(r0 + 0x12)) = 1;
+    MTRandom(1);
     // and r0, r1
-    // add r0, r0, #4
-    // beq _0220B220
-    // bl MTRandom
-    // mov r1, #7
+    MTRandom((r0 + 4), 7);
     // and r0, r1
-    // add r0, r0, #4
-    // lsl r0, r0, #0xc
-    // bl _ffltu
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0220B238
-    // bl MTRandom
-    // mov r1, #7
+    _ffltu(((r0 + 4) << 0xc), 7);
+    _fadd((0x3f << 0x18), r0);
+    MTRandom();
     // and r0, r1
-    // add r0, r0, #4
-    // lsl r0, r0, #0xc
-    // bl _ffltu
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // lsr r2, r6, #0x1f
-    // lsl r1, r6, #0x1f
-    // add r3, r0, #0
+    _ffltu(((r0 + 4) << 0xc), 7);
+    _fsub((0x3f << 0x18));
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
-    // bne _0220B24E
-    // mov r0, #1
     // str r0, [sp, #8]
-    // b _0220B254
-    // mov r0, #0
     // mvn r0, r0
     // str r0, [sp, #8]
-    // add r0, r3, #0
-    // bl _ffix
+    _ffix(r0, (r6 << 0x1f), (r6 >> 0x1f), r0);
     // ldr r1, [sp, #8]
     // mul r0, r1
-    // str r0, [r5, #8]
-    // bl MTRandom
-    // mov r1, #7
+    *((u32*)(r5 + 8)) = r0;
+    MTRandom();
     // and r0, r1
     // add r0, #8
-    // beq _0220B288
-    // bl MTRandom
-    // mov r1, #7
+    MTRandom(7);
     // and r0, r1
     // add r0, #8
-    // lsl r0, r0, #0xc
-    // bl _ffltu
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0220B2A0
-    // bl MTRandom
-    // mov r1, #7
+    _ffltu((r0 << 0xc), 7);
+    _fadd((0x3f << 0x18), r0);
+    MTRandom();
     // and r0, r1
     // add r0, #8
-    // lsl r0, r0, #0xc
-    // bl _ffltu
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // str r0, [r5, #0xc]
-    // ldr r0, [r5]
+    _ffltu((r0 << 0xc), 7);
+    _fsub((0x3f << 0x18));
+    _ffix();
+    *((u32*)(r5 + 0xc)) = r0;
     // ldr r2, [sp, #4]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetPositionXY
-    // ldr r0, [r5]
-    // bl ManagedSprite_ResetSpriteAnimCtrlState
-    // ldr r0, [r5]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // add r4, r4, #1
+    ManagedSprite_SetPositionXY(*((u32*)r5), r7);
+    ManagedSprite_ResetSpriteAnimCtrlState(*((u32*)r5));
+    ManagedSprite_SetDrawFlag(*((u32*)r5), 1);
     // ldr r0, [sp]
-    // cmp r4, r0
-    // bge _0220B2CE
-    // add r6, r6, #1
     // add r5, #0x14
-    // cmp r6, #0x10
-    // blt _0220B1E8
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B2D4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #0x10
     // ldrsh r1, [r4, r0]
-    // ldr r0, [r4, #8]
     // asr r0, r0, #0xc
     // add r0, r1, r0
-    // strh r0, [r4, #0x10]
-    // ldr r0, [r4, #8]
-    // mov r1, #3
-    // lsl r0, r0, #2
-    // bl _s32_div_f
-    // str r0, [r4, #8]
-    // mov r2, #0x12
-    // ldr r0, [r4, #0xc]
+    *((u16*)(r0 + 0x10)) = *((u32*)(r0 + 8));
+    _s32_div_f((*((u32*)(r0 + 8)) << 2), 3);
+    *((u32*)(r4 + 8)) = r0;
     // ldrsh r1, [r4, r2]
     // asr r0, r0, #0xc
     // sub r0, r1, r0
-    // strh r0, [r4, #0x12]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #0x10
-    // sub r0, r0, #4
-    // str r0, [r4, #0xc]
+    *((u16*)(r4 + 0x12)) = *((u32*)(r4 + 0xc));
+    *((u32*)(r4 + 0xc)) = (*((u32*)(r4 + 0xc)) - 4);
     // ldrsh r1, [r4, r1]
     // ldrsh r2, [r4, r2]
-    // ldr r0, [r4]
-    // bl ManagedSprite_SetPositionXY
-    // mov r0, #0x10
+    ManagedSprite_SetPositionXY(*((u32*)r4), 0x10, 0x12);
     // ldrsh r1, [r4, r0]
-    // cmp r1, #0
-    // blt _0220B31C
     // add r0, #0xf0
-    // cmp r1, r0
-    // ble _0220B320
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B324(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r7, r4, #0
-    // add r6, r4, #0
-    // ldr r0, [r5, #4]
-    // cmp r0, #1
-    // bne _0220B348
-    // add r0, r5, #0
-    // bl ov96_0220B2D4
-    // cmp r0, #0
-    // beq _0220B348
-    // ldr r0, [r5]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetDrawFlag
-    // str r6, [r5, #4]
-    // add r4, r4, #1
+    ov96_0220B2D4(r0);
+    ManagedSprite_SetDrawFlag(*((u32*)r5), r7);
+    *((u32*)(r5 + 4)) = r6;
     // add r5, #0x14
-    // cmp r4, #0x10
-    // blt _0220B32E
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B354(void) {
-    // push {r4, r5, r6, lr}
-    // mov r4, #0
-    // add r5, r0, #0
-    // add r6, r4, #0
-    // ldr r0, [r5, #4]
-    // cmp r0, #1
-    // bne _0220B36A
-    // ldr r0, [r5]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetAnimateFlag
-    // add r4, r4, #1
+    ManagedSprite_SetAnimateFlag(*((u32*)r0), 0);
     // add r5, #0x14
-    // cmp r4, #0x10
-    // blt _0220B35C
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B374(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r7, r0, #0
-    // add r0, r3, #0
-    // add r5, r1, #0
-    // add r6, r2, #0
     // str r3, [sp, #8]
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    ov96_021E5F24(r3);
     // str r0, [sp, #0xc]
-    // add r0, r7, #0
-    // mov r1, #0x48
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r1, #0
-    // mov r2, #0x48
-    // bl MI_CpuFill8
+    Heap_Alloc(r7, 0x48);
+    MI_CpuFill8(0, 0x48);
     // str r7, [r4]
-    // str r5, [r4, #4]
+    *((u32*)(r4 + 4)) = r5;
     // ldr r0, [sp, #8]
-    // str r6, [r4, #8]
-    // str r0, [r4, #0xc]
-    // ldr r1, [r4, #0x44]
-    // mov r0, #0xff
+    *((u32*)(r4 + 8)) = r6;
+    *((u32*)(r4 + 0xc)) = r0;
     // bic r1, r0
-    // str r1, [r4, #0x44]
-    // add r0, r4, #0
+    *((u32*)(r4 + 0x44)) = *((u32*)(r4 + 0x44));
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #8]
     // add r0, #0x34
-    // bl ov96_0220D200
-    // add r0, r4, #0
-    // ldr r1, [r4, #4]
-    // ldr r2, [r4, #8]
+    ov96_0220D200(r4, *((u32*)(r4 + 0x44)));
     // add r0, #0x10
-    // bl ov96_0220C490
+    ov96_0220C490(r4, *((u32*)(r4 + 4)), *((u32*)(r4 + 8)));
     // add r1, sp, #0x14
-    // mov r3, #1
-    // ldr r0, [r4, #0x24]
     // add r1, #2
     // add r2, sp, #0x14
-    // lsl r3, r3, #0x14
-    // bl ManagedSprite_GetPositionXYWithSubscreenOffset
+    ManagedSprite_GetPositionXYWithSubscreenOffset(*((u32*)(r4 + 0x24)), (1 << 0x14));
     // add r3, sp, #0x10
-    // mov r7, #4
     // ldrsh r0, [r3, r7]
-    // mov r2, #6
-    // add r1, r6, #0
     // sub r0, #0x18
-    // strh r0, [r3, #4]
-    // mov r0, #0x11
+    *((u16*)(r3 + 4)) = r0;
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
     // ldrsh r2, [r3, r2]
     // ldrsh r3, [r3, r7]
-    // add r0, r5, #0
-    // bl ov96_0220D1A0
-    // str r0, [r4, #0x2c]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
+    ov96_0220D1A0(r5, r6, 6);
+    *((u32*)(r4 + 0x2c)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // add r1, sp, #0x14
-    // ldr r0, [r4, #0x28]
     // add r1, #2
     // add r2, sp, #0x14
-    // lsl r3, r7, #0x12
-    // bl ManagedSprite_GetPositionXYWithSubscreenOffset
+    ManagedSprite_GetPositionXYWithSubscreenOffset(*((u32*)(r4 + 0x28)), (r7 << 0x12));
     // add r3, sp, #0x10
     // ldrsh r0, [r3, r7]
-    // mov r2, #6
-    // add r1, r6, #0
     // sub r0, #0x18
-    // strh r0, [r3, #4]
-    // mov r0, #0x11
+    *((u16*)(r3 + 4)) = r0;
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
     // ldrsh r2, [r3, r2]
     // ldrsh r3, [r3, r7]
-    // add r0, r5, #0
-    // bl ov96_0220D1A0
-    // str r0, [r4, #0x30]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
+    ov96_0220D1A0(r5, r6, 6);
+    *((u32*)(r4 + 0x30)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // add r1, sp, #0x10
-    // ldr r0, [r4, #0x10]
     // add r1, #2
     // add r2, sp, #0x10
-    // bl ManagedSprite_GetPositionXY
-    // mov r0, #0x11
+    ManagedSprite_GetPositionXY(*((u32*)(r4 + 0x10)));
     // str r0, [sp]
-    // mov r0, #0x1a
     // str r0, [sp, #4]
     // add r7, sp, #0x10
-    // mov r2, #2
-    // mov r3, #0
     // ldrsh r2, [r7, r2]
     // ldrsh r3, [r7, r3]
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl ov96_0220D13C
-    // mov r1, #0
-    // str r0, [r4, #0x14]
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #0xf
+    ov96_0220D13C(r5, r6, 2, 0);
+    *((u32*)(r4 + 0x14)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // str r0, [sp]
-    // mov r0, #0x17
     // str r0, [sp, #4]
-    // mov r2, #2
-    // mov r3, #0
     // ldrsh r2, [r7, r2]
     // ldrsh r3, [r7, r3]
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl ov96_0220D13C
-    // mov r1, #0
-    // str r0, [r4, #0x1c]
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #0x1b
+    ov96_0220D13C(r5, r6, 2, 0);
+    *((u32*)(r4 + 0x1c)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // str r0, [sp]
-    // mov r0, #0x18
     // str r0, [sp, #4]
-    // mov r2, #2
-    // mov r3, #0
     // ldrsh r2, [r7, r2]
     // ldrsh r3, [r7, r3]
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl ov96_0220D13C
-    // mov r1, #0
-    // str r0, [r4, #0x20]
-    // bl ManagedSprite_SetDrawFlag
-    // add r3, r7, #0
-    // mov r7, #0
+    ov96_0220D13C(r5, r6, 2, 0);
+    *((u32*)(r4 + 0x20)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // ldrsh r0, [r3, r7]
-    // mov r2, #2
-    // add r1, r6, #0
     // sub r0, #0x18
     // strh r0, [r3]
-    // mov r0, #0x18
     // str r0, [sp]
-    // mov r0, #0x19
     // str r0, [sp, #4]
     // ldrsh r2, [r3, r2]
     // ldrsh r3, [r3, r7]
-    // add r0, r5, #0
-    // bl ov96_0220D13C
-    // add r1, r7, #0
-    // str r0, [r4, #0x18]
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #1
-    // str r0, [sp]
-    // add r1, r7, #0
-    // ldr r2, [sp, #0xc]
-    // add r0, r4, #0
-    // add r3, r1, #0
-    // bl ov96_0220C54C
-    // add r0, r7, #0
+    ov96_0220D13C(r5, r6, 2, r7);
+    *((u32*)(r4 + 0x18)) = r0;
+    ManagedSprite_SetDrawFlag(r7);
     // str r0, [sp]
     // ldr r2, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #5
-    // mov r3, #2
-    // bl ov96_0220C54C
-    // add r0, r7, #0
+    ov96_0220C54C(r4, r7, r7);
     // str r0, [sp]
     // ldr r2, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #6
-    // mov r3, #1
-    // bl ov96_0220C54C
-    // add r0, r4, #0
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_0220C54C(r4, 5, 2);
+    // str r0, [sp]
+    // ldr r2, [sp, #0xc]
+    ov96_0220C54C(r4, 6, 1);
 }
+
 
 
 void ov96_0220B500(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // bne _0220B50A
-    // bl GF_AssertFail
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // beq _0220B518
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #9
-    // blt _0220B50E
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 0x10)));
+    Heap_Free(r6);
 }
+
 
 
 void ov96_0220B528(void) {
@@ -71797,6 +58577,7 @@ void ov96_0220B528(void) {
 }
 
 
+
 void ov96_0220B634(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -71884,48 +58665,24 @@ void ov96_0220B634(void) {
 }
 
 
+
 void ov96_0220B6EC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x40]
-    // lsl r0, r0, #0x16
-    // lsr r0, r0, #0x18
-    // cmp r0, #3
-    // bne _0220B6FE
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl ov96_0220C578
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail(((*((u32*)(r0 + 0x40)) << 0x16) >> 0x18));
+    ov96_0220C578(r4, 3);
 }
+
 
 
 void ov96_0220B708(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // cmp r5, #0
-    // bne _0220B716
-    // bl GF_AssertFail
-    // mov r4, #0
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // beq _0220B724
-    // add r1, r6, #0
-    // bl ManagedSprite_SetAnimateFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #9
-    // blt _0220B718
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    ManagedSprite_SetAnimateFlag(*((u32*)(r5 + 0x10)), r6);
 }
+
 
 
 void ov96_0220B730(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_0220B744(void) {
@@ -71943,114 +58700,70 @@ void ov96_0220B744(void) {
 }
 
 
+
 void ov96_0220B758(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_0220B774(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_0220B788(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_0220B79C(void) {
-    GF_AssertFail();
 }
+
 
 
 void ov96_0220B7B4(void) {
+}
+
+
+
+void ov96_0220B7CC(void) {
     GF_AssertFail();
 }
 
 
-void ov96_0220B7CC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _0220B7D6
-    // bl GF_AssertFail
-    // ldr r1, [r4, #0x40]
-    // mov r0, #1
-    // lsl r1, r1, #0x16
-    // lsr r1, r1, #0x18
-    // beq _0220B7F0
-    // cmp r1, #1
-    // bne _0220B7EE
-    // ldr r1, [r4, #0x44]
-    // lsl r1, r1, #8
-    // lsr r1, r1, #0x18
-    // cmp r1, #2
-    // bhs _0220B7F0
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
-}
-
 
 void ov96_0220B7F4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x68
-    // add r7, r3, #0
-    // add r4, r0, #0
-    // add r0, r7, #0
     // str r1, [sp, #0xc]
     // str r2, [sp, #0x10]
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    ov96_021E5F24(r3);
     // str r0, [sp, #0x14]
     // add r0, sp, #0x2c
-    // mov r1, #0xaa
-    // mov r2, #5
-    // bl ReadWholeNarcMemberByIdPair
-    // add r0, r4, #0
-    // mov r1, #0xc8
-    // bl Heap_Alloc
+    ReadWholeNarcMemberByIdPair(((r0 << 0x18) >> 0x18), 0xaa, 5);
+    Heap_Alloc(r4, 0xc8);
     // str r0, [sp, #0x1c]
-    // mov r1, #0
-    // mov r2, #0xc8
-    // bl MI_CpuFill8
+    MI_CpuFill8(0, 0xc8);
     // ldr r0, [sp, #0x1c]
     // ldr r1, [sp, #0xc]
     // str r4, [r0]
-    // str r1, [r0, #4]
+    *((u32*)(r0 + 4)) = r1;
     // ldr r1, [sp, #0x10]
-    // str r1, [r0, #8]
-    // str r7, [r0, #0xc]
+    *((u32*)(r0 + 8)) = r1;
+    *((u32*)(r0 + 0xc)) = r7;
     // ldr r0, [sp, #0x80]
     // ldr r1, [sp, #0x1c]
-    // str r0, [r1, #0x10]
+    *((u32*)(r1 + 0x10)) = r0;
     // ldr r1, [sp, #0x14]
-    // bl ov96_0220C844
+    ov96_0220C844();
     // ldr r0, [sp, #0x1c]
-    // mov r6, #0
     // str r0, [sp, #0x18]
     // add r0, #0x14
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #0x14]
-    // cmp r6, r0
-    // beq _0220B892
-    // mov r4, #0
     // add r5, sp, #0x20
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl ov96_021E60D8
-    // ldrb r0, [r0, #3]
-    // add r4, r4, #1
-    // lsl r1, r0, #2
+    ov96_021E60D8(r7, 0, 0);
     // add r0, sp, #0x2c
     // add r0, r0, r1
-    // ldr r0, [r0, #0x14]
-    // cmp r4, #3
     // stmia r5!, {r0}
-    // blt _0220B856
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
     // str r7, [sp, #4]
     // add r0, sp, #0x20
@@ -72059,111 +58772,52 @@ void ov96_0220B7F4(void) {
     // ldr r0, [sp, #0x18]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // ldr r3, [r3, #0x10]
-    // bl ov96_0220BE28
+    ov96_0220BE28(((r6 << 0x18) >> 0x18), (*((u8*)(r0 + 3)) << 2), *((u32*)(r3 + 0x10)));
     // ldr r0, [sp, #0x18]
     // add r0, #0x3c
     // str r0, [sp, #0x18]
-    // add r6, r6, #1
-    // cmp r6, #4
-    // blt _0220B84C
     // ldr r0, [sp, #0x1c]
-    // add sp, #0x68
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B8A0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
-    // cmp r0, #0
-    // bne _0220B8AC
-    // bl GF_AssertFail
+    GF_AssertFail();
     // ldr r6, [sp]
-    // mov r7, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x30]
-    // cmp r0, #0
-    // beq _0220B8BE
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #6
-    // blt _0220B8B4
-    // add r7, r7, #1
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 0x30)));
     // add r6, #0x3c
-    // cmp r7, #3
-    // blt _0220B8B0
     // ldr r0, [sp]
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
 }
+
 
 
 void ov96_0220B8D8(void) {
-    ov96_0220C40C(0);
 }
+
 
 
 void ov96_0220B8F0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r1, #0
-    // add r6, r0, #0
     // str r1, [sp]
     // add r6, #0x14
-    // add r7, r1, #0
-    // ldr r0, [r6, #0x38]
-    // mov r1, #0xc
-    // lsl r0, r0, #7
-    // lsr r0, r0, #0x1e
-    // lsl r0, r0, #2
     // add r0, r6, r0
-    // ldr r0, [r0, #4]
-    // bl ov96_021EAC5C
-    // ldr r0, [r6, #0x34]
-    // cmp r0, #0
-    // beq _0220B91C
-    // bl SysTask_Destroy
-    // mov r0, #0
-    // str r0, [r6, #0x34]
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x1c]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetAnimateFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #6
-    // blt _0220B920
+    ov96_021EAC5C(*((u32*)((((*((u32*)(r0 + 0x38)) << 7) >> 0x1e) << 2) + 4)), 0xc);
+    SysTask_Destroy(*((u32*)(r6 + 0x34)));
+    *((u32*)(r6 + 0x34)) = 0;
+    ManagedSprite_SetAnimateFlag(*((u32*)(r6 + 0x1c)), r7);
     // ldr r0, [sp]
     // add r6, #0x3c
-    // add r0, r0, #1
     // str r0, [sp]
-    // cmp r0, #3
-    // blt _0220B8FC
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220B940(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // cmp r1, #0
-    // bne _0220B95A
-    // ldr r0, [r4, #0x10]
-    // bl ManagedSprite_IsAnimated
-    // cmp r0, #0
-    // bne _0220B95A
-    // ldr r0, [r4, #0x10]
-    // mov r1, #1
-    // bl ManagedSprite_SetAnim
-    // pop {r4, pc}
-    // TODO: decompile
+    ManagedSprite_IsAnimated(*((u32*)(r0 + 0x10)));
+    ManagedSprite_SetAnim(*((u32*)(r4 + 0x10)), 1);
 }
+
 
 
 void ov96_0220B95C(void) {
@@ -72191,9 +58845,10 @@ void ov96_0220B95C(void) {
 }
 
 
+
 void ov96_0220B988(void) {
-    ov96_0220C578(0);
 }
+
 
 
 void ov96_0220B9A8(void) {
@@ -72611,6 +59266,7 @@ void ov96_0220B9A8(void) {
 }
 
 
+
 void ov96_0220BD38(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -72723,6 +59379,7 @@ void ov96_0220BD38(void) {
     // _0220BE24: .word 0xFFFFFDFF
     // TODO: decompile
 }
+
 
 
 void ov96_0220BE28(void) {
@@ -72906,143 +59563,43 @@ void ov96_0220BE28(void) {
 }
 
 
+
 void ov96_0220BFB4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // ldr r2, [r0, #0x38]
-    // add r7, r1, #0
-    // lsl r1, r2, #3
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #6
     // add r1, #0x48
-    // lsl r1, r1, #0x10
     // asr r6, r1, #0x10
-    // lsl r1, r2, #7
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #2
-    // ldr r5, [r0, #0x24]
     // add r0, r0, r1
-    // ldr r0, [r0, #4]
-    // mov r4, #0x28
-    // bl ov96_021EAA20
-    // bl ov96_021E8BB0
-    // ldrh r0, [r0, #4]
-    // cmp r0, #0
-    // beq _0220BFE8
+    ov96_021EAA20(*((u32*)(r0 + 4)), (((*((u32*)(r0 + 0x38)) << 7) >> 0x1e) << 2), *((u32*)(r0 + 0x38)));
+    ov96_021E8BB0();
     // sub r4, #0x10
-    // lsl r0, r4, #0x10
     // asr r4, r0, #0x10
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl ManagedSprite_SetPositionXY
-    // add r0, r5, #0
-    // add r1, r7, #0
-    // bl ManagedSprite_SetAnimNoRestart
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXY(r5, r6, r4);
+    ManagedSprite_SetAnimNoRestart(r5, r7);
+    ManagedSprite_SetDrawFlag(r5, 1);
 }
+
 
 
 void ov96_0220C004(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // ldr r0, [r4]
-    // lsl r1, r0, #5
-    // lsr r1, r1, #0x1f
-    // beq _0220C024
-    // ldr r0, [r5, #0x28]
-    // mov r1, #0x10
-    // bl ManagedSprite_SetAnimNoRestart
-    // ldr r0, [r5, #0x28]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // b _0220C040
-    // lsl r0, r0, #8
-    // lsr r1, r0, #0x18
-    // cmp r1, #0x32
-    // ldr r0, [r5, #0x28]
-    // blo _0220C03A
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x10
-    // mov r2, #0
-    // bl ov96_0220C8B8
-    // b _0220C040
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r4]
-    // lsl r0, r0, #0x10
-    // lsr r1, r0, #0x18
-    // bne _0220C06C
-    // add r0, r5, #0
-    // mov r1, #0x1a
-    // bl ov96_0220BFB4
-    // ldr r0, [r5, #0x28]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0x38]
-    // mov r1, #0xc
-    // lsl r0, r0, #7
-    // lsr r0, r0, #0x1e
-    // lsl r0, r0, #2
+    ManagedSprite_SetAnimNoRestart(*((u32*)(r0 + 0x28)), 0x10);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x28)), 1);
+    ov96_0220C8B8(*((u32*)(r5 + 0x28)), ((((r0 << 8) >> 0x18) << 0x10) >> 0x10), 0);
+    ManagedSprite_SetDrawFlag(0);
+    ov96_0220BFB4(r5, 0x1a);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x28)), 0);
     // add r0, r5, r0
-    // ldr r0, [r0, #4]
-    // bl ov96_021EAC5C
-    // pop {r3, r4, r5, pc}
-    // ldr r2, [r5, #0x38]
-    // ldr r0, [r5, #0x24]
-    // lsl r2, r2, #7
-    // lsr r2, r2, #0x1e
-    // lsl r2, r2, #2
+    ov96_021EAC5C(*((u32*)((((*((u32*)(r5 + 0x38)) << 7) >> 0x1e) << 2) + 4)), 0xc);
     // add r2, r5, r2
-    // ldr r2, [r2, #0x10]
-    // lsl r1, r1, #0xc
-    // lsl r2, r2, #0xc
-    // bl ov96_0220C768
-    // cmp r0, #0
-    // beq _0220C0A2
-    // add r0, r5, #0
-    // mov r1, #0x18
-    // bl ov96_0220BFB4
-    // ldr r0, [r5, #0x38]
-    // mov r1, #0
-    // lsl r0, r0, #7
-    // lsr r0, r0, #0x1e
-    // lsl r0, r0, #2
+    ov96_0220C768(*((u32*)(r5 + 0x24)), (r1 << 0xc), (*((u32*)((((*((u32*)(r5 + 0x38)) << 7) >> 0x1e) << 2) + 0x10)) << 0xc));
+    ov96_0220BFB4(r5, 0x18);
     // add r0, r5, r0
-    // ldr r0, [r0, #4]
-    // bl ov96_021EAC5C
-    // pop {r3, r4, r5, pc}
-    // ldr r0, [r4]
-    // lsl r0, r0, #5
-    // lsr r0, r0, #0x1f
-    // beq _0220C0BE
-    // ldr r0, [r5, #0x38]
-    // mov r1, #8
-    // lsl r0, r0, #7
-    // lsr r0, r0, #0x1e
-    // lsl r0, r0, #2
+    ov96_021EAC5C(*((u32*)((((*((u32*)(r5 + 0x38)) << 7) >> 0x1e) << 2) + 4)), 0);
     // add r0, r5, r0
-    // ldr r0, [r0, #4]
-    // bl ov96_021EAC5C
-    // pop {r3, r4, r5, pc}
-    // ldr r0, [r5, #0x24]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0x38]
-    // mov r1, #4
-    // lsl r0, r0, #7
-    // lsr r0, r0, #0x1e
-    // lsl r0, r0, #2
+    ov96_021EAC5C(*((u32*)((((*((u32*)(r5 + 0x38)) << 7) >> 0x1e) << 2) + 4)), 8);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x24)), 0);
     // add r0, r5, r0
-    // ldr r0, [r0, #4]
-    // bl ov96_021EAC5C
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_021EAC5C(*((u32*)((((*((u32*)(r5 + 0x38)) << 7) >> 0x1e) << 2) + 4)), 4);
 }
+
 
 
 void ov96_0220C0DC(void) {
@@ -73105,6 +59662,7 @@ void ov96_0220C0DC(void) {
     // _0220C158: .word 0xFF807FFF
     // TODO: decompile
 }
+
 
 
 void ov96_0220C15C(void) {
@@ -73407,6 +59965,7 @@ void ov96_0220C15C(void) {
 }
 
 
+
 void ov96_0220C3E0(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -73431,67 +59990,28 @@ void ov96_0220C3E0(void) {
 }
 
 
+
 void ov96_0220C40C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea(*((u32*)r0));
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x38]
-    // lsl r1, r0, #5
-    // lsr r1, r1, #0x1e
-    // lsl r4, r1, #2
-    // lsl r0, r0, #7
-    // lsr r1, r0, #0x1e
+    ov96_021E8A20();
     // ldr r0, [r6, r4]
-    // lsl r0, r0, #6
-    // lsr r0, r0, #0x1e
-    // cmp r1, r0
-    // bne _0220C43E
-    // add r0, r5, #0
     // add r1, r6, r4
-    // bl ov96_0220C004
-    // b _0220C44E
-    // ldr r0, [r5, #0x24]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0x28]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // add r0, r5, #0
+    ov96_0220C004(r5, ((*((u32*)(r5 + 0x38)) << 7) >> 0x1e));
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x24)), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x28)), 0);
     // add r1, r6, r4
-    // bl ov96_0220C0DC
-    // ldr r2, [r5, #0x38]
-    // lsl r0, r2, #0x11
-    // lsr r0, r0, #0x1f
-    // bne _0220C48E
+    ov96_0220C0DC(r5);
     // ldr r0, [r6, r4]
-    // lsl r0, r0, #6
-    // lsr r1, r0, #0x1e
-    // lsl r0, r2, #7
-    // lsr r0, r0, #0x1e
-    // cmp r0, r1
-    // beq _0220C48E
-    // cmp r1, #3
-    // blo _0220C474
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x38]
-    // mov r1, #3
+    GF_AssertFail(((*((u32*)(r5 + 0x38)) << 7) >> 0x1e), ((((*((u32*)(r5 + 0x38)) << 0x11) >> 0x1f) << 6) >> 0x1e), *((u32*)(r5 + 0x38)));
     // bic r0, r1
     // ldr r1, [r6, r4]
-    // lsl r1, r1, #6
-    // lsr r2, r1, #0x1e
-    // mov r1, #3
     // and r1, r2
     // orr r0, r1
-    // str r0, [r5, #0x38]
-    // add r0, r5, #0
-    // bl ov96_0220C3E0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 0x38)) = *((u32*)(r5 + 0x38));
+    ov96_0220C3E0(r5, 3, ((3 << 6) >> 0x1e));
 }
+
 
 
 void ov96_0220C490(void) {
@@ -73584,28 +60104,17 @@ void ov96_0220C490(void) {
 }
 
 
+
 void ov96_0220C54C(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
-    // lsl r1, r1, #2
     // add r1, r0, r1
-    // ldr r4, [r0]
-    // ldr r5, [r1, #0x10]
-    // add r1, r2, #0
-    // add r2, r3, #0
-    // ldr r0, [r0, #0xc]
     // add r3, sp, #4
-    // bl ov96_021E6168
+    ov96_021E6168(*((u32*)(r0 + 0xc)), r2, r3);
     // ldr r2, [sp, #0x20]
-    // add r0, r5, #0
     // add r1, sp, #4
-    // mov r3, #0
     // str r4, [sp]
-    // bl ov96_021EEBE4
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov96_021EEBE4(r5, 0);
 }
+
 
 
 void ov96_0220C578(void) {
@@ -73734,6 +60243,7 @@ void ov96_0220C578(void) {
 }
 
 
+
 void ov96_0220C680(void) {
     // push {r4, lr}
     // ldr r3, [r0, #0x40]
@@ -73809,90 +60319,35 @@ void ov96_0220C680(void) {
 }
 
 
+
 void ov96_0220C714(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x44]
-    // add r5, r1, #0
-    // lsl r0, r0, #0x17
-    // lsr r0, r0, #0x1f
-    // beq _0220C726
-    // bl GF_AssertFail
-    // cmp r5, #0
-    // beq _0220C740
-    // ldr r2, [r4, #0x44]
-    // mov r1, #0xff
-    // add r0, r2, #0
+    GF_AssertFail(((*((u32*)(r0 + 0x44)) << 0x17) >> 0x1f));
     // bic r0, r1
-    // lsl r1, r2, #0x18
-    // lsr r1, r1, #0x18
     // add r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
     // orr r0, r1
-    // str r0, [r4, #0x44]
-    // ldr r1, [r4, #0x44]
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x18
-    // cmp r0, #0x64
-    // bls _0220C754
-    // mov r0, #0xff
+    *((u32*)(r4 + 0x44)) = *((u32*)(r4 + 0x44));
     // bic r1, r0
-    // mov r0, #0x64
     // orr r0, r1
-    // str r0, [r4, #0x44]
-    // ldr r0, [r4, #0x44]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // cmp r0, #0x64
-    // blo _0220C764
-    // add r0, r4, #0
-    // bl ov96_0220C7C4
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 0x44)) = 0x64;
+    ov96_0220C7C4(r4, *((u32*)(r4 + 0x44)), *((u32*)(r4 + 0x44)));
 }
+
 
 
 void ov96_0220C768(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r0, r1, #0
-    // add r1, r2, #0
-    // bl FX_Div
-    // mov r1, #0x64
-    // add r2, r0, #0
+    FX_Div(r1, r2);
     // mul r2, r1
     // asr r0, r2, #0xc
-    // cmp r0, #0x28
-    // bgt _0220C7BE
     // sub r0, r1, r0
-    // lsl r0, r0, #1
-    // cmp r0, #0
-    // ble _0220C79A
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0220C7A8
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // bl ManagedSprite_SetAnimSpeed
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    _fflt(((r0 << 1) << 0xc), 0x64, r0);
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r0 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
+    _s32_div_f(0x64);
+    ManagedSprite_SetAnimSpeed(r4, r0);
 }
+
 
 
 void ov96_0220C7C4(void) {
@@ -73921,6 +60376,7 @@ void ov96_0220C7C4(void) {
     // _0220C7F8: .word 0x000008BF
     // TODO: decompile
 }
+
 
 
 void ov96_0220C7FC(void) {
@@ -73961,60 +60417,26 @@ void ov96_0220C7FC(void) {
 }
 
 
+
 void ov96_0220C844(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // mov r5, #0
     // str r0, [sp]
     // str r1, [sp, #4]
     // str r5, [sp, #8]
-    // mov r7, #0x48
     // ldr r1, [sp, #8]
     // ldr r0, [sp, #4]
-    // cmp r1, r0
-    // beq _0220C8A8
-    // mov r6, #0
     // add r1, r6, r5
-    // lsl r1, r1, #0x18
     // ldr r0, [sp]
-    // lsr r1, r1, #0x18
-    // bl ov96_021EAA04
-    // add r4, r0, #0
-    // mov r1, #0x20
-    // bl ov96_021EABA8
-    // add r0, r4, #0
-    // add r1, r7, #0
-    // mov r2, #0x30
-    // bl ov96_021EAF94
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl ov96_021EAC0C
-    // cmp r6, #0
-    // bne _0220C88A
-    // mov r1, #1
-    // b _0220C88C
-    // mov r1, #0
-    // lsl r1, r1, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_021EAB38
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ov96_021EAB74
-    // add r6, r6, #1
-    // cmp r6, #3
-    // blt _0220C85C
-    // add r5, r5, #3
+    ov96_021EAA04(((r1 << 0x18) >> 0x18));
+    ov96_021EABA8(0x20);
+    ov96_021EAF94(r4, r7, 0x30);
+    ov96_021EAC0C(r4, 2);
+    ov96_021EAB38(r4, ((0 << 0x18) >> 0x18));
+    ov96_021EAB74(r4, 0);
     // add r7, #0x40
     // ldr r0, [sp, #8]
-    // add r0, r0, #1
     // str r0, [sp, #8]
-    // cmp r0, #4
-    // blt _0220C852
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220C8B8(void) {
@@ -74057,130 +60479,57 @@ void ov96_0220C8B8(void) {
 }
 
 
+
 void ov96_0220C90C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // lsl r6, r1, #2
     // add r0, r5, r6
-    // add r7, r2, #0
-    // add r4, r3, #0
-    // mov r3, #1
-    // ldr r0, [r0, #0x10]
-    // add r1, r7, #0
-    // add r2, r4, #0
-    // lsl r3, r3, #0x14
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r0 + 0x10)), r2, r3, (1 << 0x14));
     // add r0, r5, r6
     // sub r4, #0x18
-    // lsl r2, r4, #0x10
-    // mov r3, #1
-    // ldr r0, [r0, #0x18]
-    // add r1, r7, #0
     // asr r2, r2, #0x10
-    // lsl r3, r3, #0x14
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r0 + 0x18)), r7, (r4 << 0x10), (1 << 0x14));
 }
+
 
 
 void ov96_0220C93C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
     // str r0, [sp]
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0x78
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #0x78
-    // add r6, r0, #0
-    // bl MI_CpuFill8
+    PokeathlonCourse_GetParticipantCount();
+    Heap_Alloc(r4, 0x78);
+    MI_CpuFill8(0, 0x78);
     // ldr r0, [sp]
     // str r4, [r6]
-    // str r0, [r6, #4]
-    // mov r0, #4
+    *((u32*)(r6 + 4)) = r0;
     // sub r0, r0, r5
-    // str r0, [r6, #0x74]
-    // cmp r0, #3
-    // bls _0220C96E
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0x74]
-    // mov r7, #0
-    // cmp r0, #0
-    // bls _0220C992
-    // add r4, r6, #0
+    *((u32*)(r6 + 0x74)) = 4;
+    GF_AssertFail(4);
     // add r4, #8
-    // lsl r1, r5, #0x18
     // ldr r2, [sp]
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_0220C9F4
-    // ldr r0, [r6, #0x74]
-    // add r7, r7, #1
-    // add r5, r5, #1
+    ov96_0220C9F4(r6, ((r5 << 0x18) >> 0x18));
     // add r4, #0x24
-    // cmp r7, r0
-    // blo _0220C97A
-    // add r0, r6, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220C998(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_0220C9A0(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x74]
-    // mov r6, #0
-    // cmp r0, #0
-    // bls _0220C9CA
-    // add r4, r5, #0
     // add r4, #8
-    // add r0, r4, #0
-    // bl ov96_0220CA28
-    // add r1, r0, #0
-    // ldr r2, [r5, #4]
-    // add r0, r4, #0
-    // bl ov96_0220CF50
-    // ldr r0, [r5, #0x74]
-    // add r6, r6, #1
+    ov96_0220CA28(r0);
+    ov96_0220CF50(r4, r0, *((u32*)(r5 + 4)));
     // add r4, #0x24
-    // cmp r6, r0
-    // blo _0220C9B0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220C9CC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x74]
-    // mov r6, #0
-    // cmp r0, #0
-    // bls _0220C9F2
-    // add r4, r5, #0
     // add r4, #8
-    // add r7, r6, #0
-    // ldr r2, [r5, #4]
-    // add r0, r4, #0
-    // add r1, r7, #0
-    // bl ov96_0220CF50
-    // ldr r0, [r5, #0x74]
-    // add r6, r6, #1
+    ov96_0220CF50(r0, 0, *((u32*)(r0 + 4)));
     // add r4, #0x24
-    // cmp r6, r0
-    // blo _0220C9DE
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220C9F4(void) {
@@ -74209,6 +60558,7 @@ void ov96_0220C9F4(void) {
     // _0220CA24: .word 0x3FFFFFFF
     // TODO: decompile
 }
+
 
 
 void ov96_0220CA28(void) {
@@ -74279,6 +60629,7 @@ void ov96_0220CA28(void) {
     // _0220CAC0: .word 0xFFFFF800
     // TODO: decompile
 }
+
 
 
 void ov96_0220CAC4(void) {
@@ -74399,6 +60750,7 @@ void ov96_0220CAC4(void) {
 }
 
 
+
 void ov96_0220CBC0(void) {
     // push {r3, lr}
     // ldr r2, [r0, #0x14]
@@ -74422,6 +60774,7 @@ void ov96_0220CBC0(void) {
     // _0220CBE8: .word 0xFFFF00FF
     // TODO: decompile
 }
+
 
 
 void ov96_0220CBEC(void) {
@@ -74449,9 +60802,10 @@ void ov96_0220CBEC(void) {
 }
 
 
+
 void ov96_0220CC18(void) {
-    ov96_0220CD84(0, 0);
 }
+
 
 
 void ov96_0220CC38(void) {
@@ -74518,6 +60872,7 @@ void ov96_0220CC38(void) {
 }
 
 
+
 void ov96_0220CCBC(void) {
     // push {r4, r5, r6, lr}
     // add r5, r0, #0
@@ -74551,6 +60906,7 @@ void ov96_0220CCBC(void) {
     // _0220CCFC: .word ov96_0221CE08
     // TODO: decompile
 }
+
 
 
 void ov96_0220CD00(void) {
@@ -74617,6 +60973,7 @@ void ov96_0220CD00(void) {
 }
 
 
+
 void ov96_0220CD84(void) {
     // push {r4, r5}
     // cmp r1, #1
@@ -74679,6 +61036,7 @@ void ov96_0220CD84(void) {
     // _0220CE00: .word 0xFFFF00FF
     // TODO: decompile
 }
+
 
 
 void ov96_0220CE04(void) {
@@ -74841,6 +61199,7 @@ void ov96_0220CE04(void) {
 }
 
 
+
 void ov96_0220CF50(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -74936,6 +61295,7 @@ void ov96_0220CF50(void) {
 }
 
 
+
 void ov96_0220D014(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -74988,6 +61348,7 @@ void ov96_0220D014(void) {
     // _0220D078: .word 0xFFC007FF
     // TODO: decompile
 }
+
 
 
 void ov96_0220D07C(void) {
@@ -75054,6 +61415,7 @@ void ov96_0220D07C(void) {
 }
 
 
+
 void ov96_0220D0F8(void) {
     // push {r3, r4}
     // ldr r4, [r0, #0x1c]
@@ -75087,6 +61449,7 @@ void ov96_0220D0F8(void) {
     // _0220D138: .word 0xFC03FFFF
     // TODO: decompile
 }
+
 
 
 void ov96_0220D13C(void) {
@@ -75139,6 +61502,7 @@ void ov96_0220D13C(void) {
 }
 
 
+
 void ov96_0220D1A0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x38
@@ -75185,6 +61549,7 @@ void ov96_0220D1A0(void) {
     // _0220D1FC: .word ov96_0221CEB8
     // TODO: decompile
 }
+
 
 
 void ov96_0220D200(void) {
@@ -75268,6 +61633,7 @@ void ov96_0220D200(void) {
 }
 
 
+
 void ov96_0220D2AC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -75342,6 +61708,7 @@ void ov96_0220D2AC(void) {
 }
 
 
+
 void ov96_0220D33C(void) {
     // push {r3, r4, r5, lr}
     // add r5, r1, #0
@@ -75363,95 +61730,46 @@ void ov96_0220D33C(void) {
 }
 
 
+
 void ov96_0220D360(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // add r6, r0, #0
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // bne _0220D370
-    // mov r1, #1
-    // b _0220D374
-    // mov r1, #0
     // mvn r1, r1
-    // mov r0, #0xc
     // ldrsb r0, [r5, r0]
-    // mov r2, #3
-    // add r4, r0, #0
     // mul r4, r1
-    // add r3, r4, #0
-    // ldr r0, [r5, #4]
-    // mov r1, #1
     // add r3, #8
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #0
-    // mov r2, #3
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5]
-    // bl SpriteSystem_GetRenderer
+    ScheduleSetBgPosText(*((u32*)(r1 + 4)), 1, 3, 0xc);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 0, 3, r4);
+    SpriteSystem_GetRenderer(*((u32*)r5));
     // neg r2, r4
-    // mov r1, #0
-    // lsl r2, r2, #0xc
-    // bl G2dRenderer_SetMainSurfaceCoords
-    // mov r0, #0xd
+    G2dRenderer_SetMainSurfaceCoords(0, (r2 << 0xc));
     // ldrsb r0, [r5, r0]
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1f
     // sub r1, r1, r2
-    // mov r0, #0x1f
     // ror r1, r0
     // add r0, r2, r1
-    // cmp r0, #1
-    // bne _0220D3C2
-    // mov r0, #0xc
     // ldrsb r0, [r5, r0]
-    // sub r0, r0, #1
-    // strb r0, [r5, #0xc]
-    // ldr r0, [r5, #0x10]
-    // mov r1, #1
+    *((u8*)(r5 + 0xc)) = (0xc - 1);
     // eor r0, r1
-    // str r0, [r5, #0x10]
-    // mov r0, #0xd
+    *((u32*)(r5 + 0x10)) = *((u32*)(r5 + 0x10));
     // ldrsb r2, [r5, r0]
-    // sub r2, r2, #1
-    // strb r2, [r5, #0xd]
+    *((u8*)(r5 + 0xd)) = ((0xd >> 0x1f) - 1);
     // ldrsb r0, [r5, r0]
-    // cmp r0, #0
-    // bgt _0220D406
-    // ldr r0, [r5, #4]
-    // mov r2, #3
-    // mov r3, #8
-    // bl ScheduleSetBgPosText
-    // mov r1, #0
-    // ldr r0, [r5, #4]
-    // mov r2, #3
-    // add r3, r1, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5]
-    // bl SpriteSystem_GetRenderer
-    // mov r1, #0
-    // add r2, r1, #0
-    // bl G2dRenderer_SetMainSurfaceCoords
-    // mov r0, #0
-    // str r0, [r5, #8]
-    // add r0, r6, #0
-    // bl SysTask_Destroy
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 1, 3, 8);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 0, 3, 0);
+    SpriteSystem_GetRenderer(*((u32*)r5));
+    G2dRenderer_SetMainSurfaceCoords(0, 0);
+    *((u32*)(r5 + 8)) = 0;
+    SysTask_Destroy(r6);
 }
+
 
 
 void ov96_0220D408(void) {
-    GF_AssertFail(0, 1);
 }
+
 
 
 void ov96_0220D420(void) {
-    ((u32*)r0)[4] = r1;
-    *(u32*)r0 = r2;
 }
+
 
 
 void ov96_0220D428(void) {
@@ -75484,6 +61802,7 @@ void ov96_0220D428(void) {
     // _0220D464: .word ov96_0220D360
     // TODO: decompile
 }
+
 
 
 void ov96_0220D468(void) {
@@ -75573,6 +61892,7 @@ void ov96_0220D468(void) {
 }
 
 
+
 void ov96_0220D52C(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -75595,112 +61915,61 @@ void ov96_0220D52C(void) {
 }
 
 
+
 void ov96_0220D554(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r6, r0, #0
-    // add r7, r1, #0
-    // bl ov96_021EAA20
-    // add r5, r0, #0
-    // bl ov96_021E90FC
-    // add r4, r0, #0
+    ov96_021EAA20();
+    ov96_021E90FC();
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // add r0, r5, #0
-    // bl ov96_021E8BB0
-    // ldrh r0, [r0, #4]
-    // cmp r0, #0
-    // beq _0220D58A
-    // add r0, r6, #0
-    // mov r1, #1
-    // mov r5, #0x40
-    // bl ov96_021EABE0
-    // b _0220D594
-    // add r0, r6, #0
-    // mov r1, #2
-    // mov r5, #0x20
-    // bl ov96_021EABE0
-    // cmp r7, #0
-    // beq _0220D5B2
-    // lsr r0, r5, #0x1f
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    ov96_021E8BB0(r5);
+    ov96_021EABE0(r6, 1);
+    ov96_021EABE0(r6, 2);
     // add r0, r5, r0
     // asr r0, r0, #1
-    // lsl r0, r0, #0xc
     // sub r1, r5, r4
     // str r0, [sp]
-    // lsr r0, r1, #0x1f
     // add r0, r1, r0
     // asr r0, r0, #1
     // add r0, r4, r0
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
-    // b _0220D5C2
-    // lsr r0, r5, #0x1f
     // add r0, r5, r0
     // asr r0, r0, #1
-    // lsl r0, r0, #0xc
     // str r0, [sp]
-    // sub r0, r5, #1
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
-    // add r0, r6, #0
     // add r1, sp, #0
-    // bl ov96_021EABF4
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EABF4(r6);
 }
 
 
+
 void ov96_0220D5D0(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0x34
-    // add r2, r0, #0
     // add r0, sp, #0x20
     // str r0, [sp]
     // add r0, sp, #0xc
     // str r0, [sp, #4]
-    // add r4, r1, #0
-    // ldr r0, [r2, #4]
-    // ldr r1, [r2, #0x1c]
-    // ldr r2, [r2, #0x20]
     // add r3, sp, #0x1c
-    // bl ov96_021EAF78
+    ov96_021EAF78(*((u32*)(r0 + 4)), *((u32*)(r0 + 0x1c)), *((u32*)(r0 + 0x20)));
     // add r0, sp, #0x14
     // str r0, [sp]
     // add r0, sp, #8
     // str r0, [sp, #4]
-    // ldr r0, [r4, #4]
-    // ldr r1, [r4, #0x1c]
-    // ldr r2, [r4, #0x20]
     // add r3, sp, #0x10
-    // bl ov96_021EAF78
+    ov96_021EAF78(*((u32*)(r4 + 4)), *((u32*)(r4 + 0x1c)), *((u32*)(r4 + 0x20)));
     // ldr r1, [sp, #0xc]
     // ldr r0, [sp, #8]
     // add r2, sp, #0x28
     // add r0, r1, r0
-    // lsl r4, r0, #0xc
-    // mov r0, #0
     // str r0, [sp, #0x24]
     // str r0, [sp, #0x18]
     // add r0, sp, #0x1c
     // add r1, sp, #0x10
-    // bl VEC_Subtract
+    VEC_Subtract(0);
     // add r0, sp, #0x28
-    // bl VEC_Mag
-    // cmp r0, r4
-    // bgt _0220D628
-    // add sp, #0x34
-    // mov r0, #1
-    // pop {r3, r4, pc}
-    // mov r0, #0
-    // add sp, #0x34
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    VEC_Mag();
 }
+
 
 
 void ov96_0220D630(void) {
@@ -75754,28 +62023,21 @@ void ov96_0220D630(void) {
 }
 
 
+
 void ov96_0220D694(void) {
-    GF_AssertFail(0, 1);
 }
+
 
 
 void ov96_0220D6B0(void) {
-    // mov r2, #0
     // ldrsh r2, [r1, r2]
-    // lsl r2, r2, #0xc
-    // str r2, [r0, #0x10]
-    // mov r2, #2
+    *((u32*)(r0 + 0x10)) = (0 << 0xc);
     // ldrsh r1, [r1, r2]
-    // lsl r1, r1, #0xc
-    // str r1, [r0, #0x14]
-    // mov r1, #2
-    // ldr r2, [r0, #0x40]
-    // lsl r1, r1, #0x1a
+    *((u32*)(r0 + 0x14)) = (r1 << 0xc);
     // orr r1, r2
-    // str r1, [r0, #0x40]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x40)) = (2 << 0x1a);
 }
+
 
 
 void ov96_0220D6CC(void) {
@@ -75839,6 +62101,7 @@ void ov96_0220D6CC(void) {
     // _0220D740: .word ov96_0221CF00
     // TODO: decompile
 }
+
 
 
 void ov96_0220D744(void) {
@@ -76021,45 +62284,18 @@ void ov96_0220D744(void) {
 }
 
 
+
 void ov96_0220D8C4(void) {
-    // push {lr}
-    // sub sp, #0xc
     // add r3, sp, #4
     // str r3, [sp]
-    // ldr r0, [r0, #4]
     // asr r1, r1, #0xc
     // asr r2, r2, #0xc
     // add r3, sp, #8
-    // bl ov96_021EB06C
+    ov96_021EB06C(*((u32*)(r0 + 4)));
     // ldr r1, [sp, #8]
-    // cmp r1, #0
-    // ble _0220D8EC
     // ldr r0, [sp, #4]
-    // cmp r0, #0
-    // ble _0220D8EC
-    // cmp r1, #0xff
-    // bge _0220D8EC
-    // cmp r0, #0xff
-    // blt _0220D8F2
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {pc}
-    // cmp r1, #8
-    // blt _0220D902
-    // cmp r1, #0xf8
-    // bge _0220D902
-    // cmp r0, #8
-    // blt _0220D902
-    // cmp r0, #0xb4
-    // blt _0220D908
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220D910(void) {
@@ -76132,6 +62368,7 @@ void ov96_0220D910(void) {
     // _0220D9A0: .word 0xFBFFFFFF
     // TODO: decompile
 }
+
 
 
 void ov96_0220D9A4(void) {
@@ -76252,6 +62489,7 @@ void ov96_0220D9A4(void) {
 }
 
 
+
 void ov96_0220DAA0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x30
@@ -76332,111 +62570,39 @@ void ov96_0220DAA0(void) {
 }
 
 
+
 void ov96_0220DB3C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // cmp r1, #0
-    // beq _0220DB50
-    // cmp r1, #1
-    // beq _0220DB7C
-    // cmp r1, #2
-    // beq _0220DBA8
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r5]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // cmp r4, #0
-    // bne _0220DB60
-    // mov r6, #1
-    // b _0220DB62
-    // mov r6, #0
-    // ldr r0, [r5, #4]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #8]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0xc]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // cmp r4, #0
-    // bne _0220DB84
-    // mov r6, #1
-    // b _0220DB86
-    // mov r6, #0
-    // ldr r0, [r5]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #4]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #8]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0xc]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // ldr r0, [r5]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #4]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #8]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0xc]
-    // add r1, r4, #0
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ManagedSprite_SetDrawFlag(*((u32*)r0), r2);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 4)), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 8)), r4);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0xc)), r6);
+    ManagedSprite_SetDrawFlag(*((u32*)r5), 0);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 4)), r4);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 8)), r6);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0xc)), r4);
+    ManagedSprite_SetDrawFlag(*((u32*)r5), r4);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 4)), r4);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 8)), r4);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0xc)), r4);
 }
+
 
 
 void ov96_0220DBCC(void) {
-    ManagedSprite_SetAffineScale(r1);
-    ManagedSprite_SetAffineScale(*((u32*)(r5 + 4)), r4, r4);
 }
+
 
 
 void ov96_0220DBE8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub r7, r1, #3
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // cmp r7, #4
-    // blt _0220DBFA
-    // bl GF_AssertFail
-    // mov r3, #0x1e
-    // ldr r0, [r5, #0x10]
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // mov r3, #0x1e
-    // ldr r0, [r5, #0x14]
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // ldr r0, [r5, #0x10]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetAnim
-    // ldr r0, [r5, #0x14]
-    // bl ManagedSprite_ResetSpriteAnimCtrlState
-    // ldr r0, [r5, #0x10]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // ldr r0, [r5, #0x14]
-    // mov r1, #1
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r5 + 0x10)), r4, r6, (0x1e << 0x10));
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r5 + 0x14)), r4, r6, (0x1e << 0x10));
+    ManagedSprite_SetAnim(*((u32*)(r5 + 0x10)), r7);
+    ManagedSprite_ResetSpriteAnimCtrlState(*((u32*)(r5 + 0x14)));
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x10)), 1);
+    ManagedSprite_SetDrawFlag(*((u32*)(r5 + 0x14)), 1);
 }
+
 
 
 void ov96_0220DC38(void) {
@@ -76467,6 +62633,7 @@ void ov96_0220DC38(void) {
     // _0220DC78: .word 0x0000088D
     // TODO: decompile
 }
+
 
 
 void ov96_0220DC7C(void) {
@@ -76706,22 +62873,13 @@ void ov96_0220DC7C(void) {
 }
 
 
+
 void ov96_0220DE90(void) {
     // ldrb r1, [r1]
     // ldrb r0, [r0]
-    // cmp r0, r1
-    // bne _0220DE9C
-    // mov r0, #0
-    // bx lr
-    // cmp r0, r1
-    // bhs _0220DEA4
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220DEAC(void) {
@@ -77124,6 +63282,7 @@ void ov96_0220DEAC(void) {
 }
 
 
+
 void ov96_0220E22C(void) {
     // push {r3, r4, r5, r6, lr}
     // sub sp, #0xc
@@ -77182,28 +63341,18 @@ void ov96_0220E22C(void) {
 }
 
 
+
 void ov96_0220E2A8(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    ov96_021E8A20();
+    PokeathlonCourse_GetHeapAllocPtr4(r4);
     // add r0, #0xc4
-    // ldr r0, [r0]
-    // bl ov96_022104C4
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_021E8318
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_0220E9A0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_022104C4(*((u32*)r0));
+    ov96_021E8318(r4, ((r0 << 0x18) >> 0x18));
+    ov96_0220E9A0(r4, r5);
 }
+
 
 
 void ov96_0220E2DC(void) {
@@ -77288,48 +63437,19 @@ void ov96_0220E2DC(void) {
 }
 
 
+
 void ov96_0220E394(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r6, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // bne _0220E3E6
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _0220E3EA
-    // add r0, r6, #0
-    // bl ov96_021E5F24
-    // add r4, r0, #0
-    // add r0, r6, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // cmp r4, #0
-    // bne _0220E3E2
-    // mov r1, #0x8f
-    // lsl r1, r1, #2
-    // mov r4, #0
+    IsPaletteFadeFinished();
+    ov96_021E5F24(r6);
+    PokeathlonCourse_GetHeapAllocPtr4(r6);
     // add r5, r0, r1
-    // ldr r2, [r5]
-    // lsl r1, r4, #0x18
-    // lsl r2, r2, #0xe
-    // lsr r2, r2, #0x10
-    // lsl r2, r2, #0x10
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x10
-    // bl PokeathlonCourse_SetField5E0_AtIndex
-    // add r4, r4, #1
+    PokeathlonCourse_SetField5E0_AtIndex(r6, ((0 << 0x18) >> 0x18), ((((*((u32*)r5) << 0xe) >> 0x10) << 0x10) >> 0x10));
     // add r5, #0xe4
-    // cmp r4, #4
-    // blt _0220E3C6
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(1);
 }
+
 
 
 void ov96_0220E3F0(void) {
@@ -77538,18 +63658,13 @@ void ov96_0220E3F0(void) {
 }
 
 
+
 void ov96_0220E5F4(void) {
-    // push {r4, lr}
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // bne _0220E602
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x10]
-    // bl SpriteSystem_DrawSprites
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetHeapAllocPtr4();
+    GF_AssertFail();
+    SpriteSystem_DrawSprites(*((u32*)(r4 + 0x10)));
 }
+
 
 
 void ov96_0220E60C(void) {
@@ -77598,6 +63713,7 @@ void ov96_0220E60C(void) {
 }
 
 
+
 void ov96_0220E670(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -77643,177 +63759,81 @@ void ov96_0220E670(void) {
 }
 
 
+
 void ov96_0220E6DC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // sub r0, r1, #7
-    // add r1, r5, #0
     // mul r1, r0
-    // mov r0, #0x26
     // mul r0, r1
-    // mov r1, #0xfa
-    // lsl r1, r1, #2
-    // bl _s32_div_f
+    _s32_div_f(0x26, (0xfa << 2));
     // add r0, #0x80
-    // lsl r0, r0, #0x10
     // asr r4, r0, #0x10
-    // lsl r0, r5, #0x11
-    // lsr r0, r0, #0x10
-    // bl GF_SinDeg
-    // lsl r0, r0, #6
+    GF_SinDeg(((r5 << 0x11) >> 0x10));
     // asr r0, r0, #0x10
     // add r0, r4, r0
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_0220E70C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // cmp r5, #0
-    // bne _0220E71C
-    // bl GF_AssertFail
-    // cmp r4, #4
-    // blo _0220E724
-    // bl GF_AssertFail
-    // cmp r6, #3
-    // blo _0220E72C
-    // bl GF_AssertFail
-    // mov r2, #0xe4
-    // add r1, r4, #0
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // mul r1, r2
     // add r3, r5, r1
-    // mov r1, #0x48
     // mul r1, r6
     // add r1, r3, r1
     // add r2, #0x8c
     // ldr r1, [r1, r2]
-    // mov r0, #1
-    // cmp r1, #2
-    // beq _0220E74A
-    // cmp r1, #1
-    // beq _0220E74A
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220E74C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // cmp r5, #0
-    // bne _0220E75A
-    // bl GF_AssertFail
-    // cmp r4, #2
-    // blo _0220E762
-    // bl GF_AssertFail
-    // mov r0, #0x4f
-    // lsl r0, r0, #4
+    GF_AssertFail();
+    GF_AssertFail();
     // add r1, r5, r0
-    // mov r0, #0xc
     // mul r0, r4
     // add r0, r1, r0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220E770(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // cmp r5, #0
-    // bne _0220E782
-    // bl GF_AssertFail
-    // cmp r4, #4
-    // blo _0220E78A
-    // bl GF_AssertFail
-    // cmp r6, #3
-    // blo _0220E792
-    // bl GF_AssertFail
-    // mov r0, #0x59
-    // lsl r0, r0, #2
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r1, r5, r0
-    // mov r0, #0xe4
     // mul r0, r4
     // add r1, r1, r0
-    // mov r0, #0x48
     // mul r0, r6
     // add r1, r1, r0
-    // ldr r0, [r1, #0x1c]
     // asr r0, r0, #0xc
     // strh r0, [r7]
-    // ldr r0, [r1, #0x20]
     // asr r0, r0, #0xc
-    // strh r0, [r7, #2]
-    // ldr r0, [r1, #4]
-    // bl ov96_021EAF8C
+    *((u16*)(r7 + 2)) = *((u32*)(r1 + 0x20));
+    ov96_021EAF8C(*((u32*)(r1 + 4)));
     // ldr r1, [sp, #0x18]
     // str r0, [r1]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220E7BC(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // mov r4, #0
-    // cmp r6, #0
-    // bne _0220E7CC
-    // bl GF_AssertFail
-    // add r0, r6, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
-    // bne _0220E7DA
-    // bl GF_AssertFail
-    // mov r1, #0xe4
+    GF_AssertFail();
+    PokeathlonCourse_GetHeapAllocPtr4(r6);
+    GF_AssertFail();
     // mul r1, r5
-    // mov r2, #0x8f
     // add r1, r6, r1
-    // lsl r2, r2, #2
     // ldr r1, [r1, r2]
-    // mov r0, #0
-    // lsl r1, r1, #0xe
-    // lsr r1, r1, #0x10
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x10
     // add r2, r6, r2
-    // ldr r3, [r2]
-    // lsl r3, r3, #0xe
-    // lsr r3, r3, #0x10
-    // lsl r3, r3, #0x10
-    // lsr r3, r3, #0x10
-    // cmp r0, r5
-    // beq _0220E80A
-    // cmp r1, r3
-    // bhs _0220E80A
-    // add r3, r4, #1
-    // lsl r3, r3, #0x18
-    // lsr r4, r3, #0x18
-    // add r0, r0, #1
     // add r2, #0xe4
-    // cmp r0, #4
-    // blt _0220E7F2
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220E818(void) {
-    ov96_0220D6B0(0x48, 0xe4, 0x59);
 }
+
 
 
 void ov96_0220E834(void) {
@@ -77834,62 +63854,35 @@ void ov96_0220E834(void) {
 }
 
 
+
 void ov96_0220E850(void) {
-    // mov r2, #0xe4
     // mul r2, r1
     // add r1, r0, r2
-    // mov r0, #0x8f
-    // lsl r0, r0, #2
     // ldr r0, [r1, r0]
-    // lsl r0, r0, #0xe
-    // lsr r0, r0, #0x10
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220E868(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_0220E888(void) {
-    // add r1, r0, #0
     // mul r1, r0
-    // add r0, r1, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220E890(void) {
-    // ldr r2, [r0]
-    // cmp r2, #0
-    // beq _0220E8BC
-    // bge _0220E89C
     // neg r3, r2
-    // b _0220E89E
-    // add r3, r2, #0
-    // cmp r3, r1
-    // bge _0220E8A8
-    // mov r1, #0
     // str r1, [r0]
-    // bx lr
-    // cmp r2, #0
-    // ble _0220E8B0
-    // mov r2, #1
-    // b _0220E8B4
-    // mov r2, #0
     // mvn r2, r2
-    // ldr r3, [r0]
     // mul r2, r1
     // sub r1, r3, r2
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220E8C0(void) {
@@ -77962,37 +63955,20 @@ void ov96_0220E8C0(void) {
 }
 
 
+
 void ov96_0220E960(void) {
-    ov96_0220E890();
-    ov96_0220E890((r5 + 4), r4);
 }
+
 
 
 void ov96_0220E974(void) {
-    // ldr r2, [r0]
     // neg r3, r1
-    // cmp r2, #0
-    // ble _0220E984
-    // cmp r2, r1
-    // ble _0220E98A
     // str r1, [r0]
-    // b _0220E98A
-    // cmp r2, r3
-    // bge _0220E98A
     // str r3, [r0]
-    // ldr r2, [r0, #4]
-    // cmp r2, #0
-    // ble _0220E998
-    // cmp r2, r1
-    // ble _0220E99E
-    // str r1, [r0, #4]
-    // bx lr
-    // cmp r2, r3
-    // bge _0220E99E
-    // str r3, [r0, #4]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = r1;
+    *((u32*)(r0 + 4)) = r3;
 }
+
 
 
 void ov96_0220E9A0(void) {
@@ -78042,6 +64018,7 @@ void ov96_0220E9A0(void) {
     // _0220EA04: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_0220EA08(void) {
@@ -78115,12 +64092,10 @@ void ov96_0220EA08(void) {
 }
 
 
+
 void ov96_0220EAA4(void) {
-    ov96_021EA894(*((u32*)(r0 + 0x20)));
-    ov96_021E9C0C(*((u32*)(r4 + 0x1c)));
-    SpriteSystem_FreeResourcesAndManager(*((u32*)(r4 + 0xc)), *((u32*)(r4 + 0x10)));
-    SpriteSystem_Free(*((u32*)(r4 + 0xc)));
 }
+
 
 
 void ov96_0220EAC4(void) {
@@ -78179,6 +64154,7 @@ void ov96_0220EAC4(void) {
     // _0220EB38: .word 0x00000514
     // TODO: decompile
 }
+
 
 
 void ov96_0220EB3C(void) {
@@ -78346,6 +64322,7 @@ void ov96_0220EB3C(void) {
 }
 
 
+
 void ov96_0220ECA4(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x6c
@@ -78415,6 +64392,7 @@ void ov96_0220ECA4(void) {
 }
 
 
+
 void ov96_0220ED34(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x38
@@ -78464,6 +64442,7 @@ void ov96_0220ED34(void) {
     // _0220ED98: .word ov96_0221D054
     // TODO: decompile
 }
+
 
 
 void ov96_0220ED9C(void) {
@@ -78547,6 +64526,7 @@ void ov96_0220ED9C(void) {
 }
 
 
+
 void ov96_0220EE4C(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -78577,210 +64557,91 @@ void ov96_0220EE4C(void) {
 }
 
 
+
 void ov96_0220EE8C(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // mov r3, #0
     // str r3, [sp]
-    // add r4, r0, #0
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xed, 4, *((u32*)(r0 + 8)), 0);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r3, #1
     // str r3, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // bl GfGfxLoader_LoadCharData
-    // mov r3, #0
+    GfGfxLoader_LoadCharData(0xed, 2, *((u32*)(r4 + 8)), 1);
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xed, 5, *((u32*)(r4 + 8)), 0);
     // str r0, [sp]
-    // mov r1, #1
     // str r0, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r0, [r4]
-    // add r3, r1, #0
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
+    GfGfxLoader_LoadScrnData(0xed, 1, *((u32*)(r4 + 8)), 1);
     // str r1, [sp]
-    // ldr r0, [r4]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xed
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // ldr r0, [r4, #8]
-    // mov r1, #1
-    // mov r2, #4
-    // mov r3, #8
-    // bl ScheduleSetBgPosText
-    // mov r1, #0x1e
-    // ldr r2, [r4]
-    // mov r0, #0
-    // lsl r1, r1, #4
-    // bl LoadFontPal0
-    // mov r0, #0
+    GfGfxLoader_GXLoadPal(0xed, 0, 0, 0);
+    ScheduleSetBgPosText(*((u32*)(r4 + 8)), 1, 4, 8);
+    LoadFontPal0(0, (0x1e << 4), *((u32*)r4));
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // add r3, r1, #0
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xed, 4, *((u32*)(r4 + 8)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0xb
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // mov r3, #5
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xed, 0xb, *((u32*)(r4 + 8)), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0xb
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // mov r3, #6
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xed, 0xb, *((u32*)(r4 + 8)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xed, 5, *((u32*)(r4 + 8)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0xc
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xed, 0xc, *((u32*)(r4 + 8)), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0xd
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #8]
-    // mov r0, #0xed
-    // mov r3, #6
-    // bl GfGfxLoader_LoadScrnData
-    // mov r3, #0
+    GfGfxLoader_LoadScrnData(0xed, 0xd, *((u32*)(r4 + 8)), 6);
     // str r3, [sp]
-    // ldr r0, [r4]
-    // mov r1, #3
     // str r0, [sp, #4]
-    // mov r0, #0xed
-    // mov r2, #4
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0xed, 3, 4, 0);
 }
+
 
 
 void ov96_0220EFD0(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // cmp r5, #0
-    // bne _0220EFE2
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _0220EFEA
-    // bl GF_AssertFail
+    GF_AssertFail();
+    GF_AssertFail();
     // ldrb r0, [r5]
-    // add r0, r0, #1
     // strb r0, [r5]
     // ldrb r0, [r5]
-    // cmp r0, #4
-    // blo _0220F038
-    // mov r3, #0
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r6, [sp, #0xc]
-    // ldrb r1, [r5, #1]
-    // mov r0, #0xed
-    // add r2, r4, #0
-    // add r1, r1, #5
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xed, (*((u8*)(r5 + 1)) + 5), r4, 0);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r6, [sp, #0xc]
-    // ldrb r1, [r5, #1]
-    // mov r0, #0xed
-    // add r2, r4, #0
-    // add r1, r1, #5
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnData
-    // ldrb r0, [r5, #1]
-    // mov r1, #6
-    // add r0, r0, #1
-    // bl _s32_div_f
-    // strb r1, [r5, #1]
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xed, (*((u8*)(r5 + 1)) + 5), r4, 4);
+    _s32_div_f((*((u8*)(r5 + 1)) + 1), 6);
+    *((u8*)(r5 + 1)) = r1;
     // strb r0, [r5]
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220F03C(void) {
@@ -78966,6 +64827,7 @@ void ov96_0220F03C(void) {
 }
 
 
+
 void ov96_0220F1CC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -79046,206 +64908,96 @@ void ov96_0220F1CC(void) {
 }
 
 
+
 void ov96_0220F280(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x58
-    // add r7, r0, #0
     // add r0, sp, #8
-    // mov r1, #0xaa
-    // mov r2, #7
-    // bl ReadWholeNarcMemberByIdPair
-    // mov r0, #0
+    ReadWholeNarcMemberByIdPair(0xaa, 7);
     // str r0, [sp]
     // ldr r0, [sp]
-    // mov r6, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
     // ldr r1, [sp]
-    // add r0, r7, #0
-    // add r2, r6, #0
-    // bl ov96_021E60D8
-    // lsl r2, r6, #0x18
-    // add r4, r0, #0
+    ov96_021E60D8(r7, 0);
     // ldr r1, [sp, #4]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x18
-    // bl ov96_0220F378
-    // add r5, r0, #0
-    // ldrb r0, [r4, #2]
-    // cmp r0, #5
-    // blo _0220F2C2
-    // bl GF_AssertFail
+    ov96_0220F378(r7, ((r6 << 0x18) >> 0x18));
+    GF_AssertFail(*((u8*)(r4 + 2)));
     // ldrb r0, [r4]
-    // cmp r0, #5
-    // blo _0220F2CC
-    // bl GF_AssertFail
-    // ldrb r0, [r4, #1]
-    // cmp r0, #5
-    // blo _0220F2D6
-    // bl GF_AssertFail
-    // ldrb r0, [r4, #2]
-    // strb r0, [r5, #2]
-    // ldrb r0, [r4, #2]
-    // lsl r1, r0, #2
+    GF_AssertFail();
+    GF_AssertFail(*((u8*)(r4 + 1)));
+    *((u8*)(r5 + 2)) = *((u8*)(r4 + 2));
     // add r0, sp, #8
     // ldr r0, [r0, r1]
     // strb r0, [r5]
-    // ldrb r0, [r4, #2]
-    // lsl r1, r0, #2
     // add r0, sp, #8
     // add r0, r0, r1
-    // ldr r0, [r0, #0x14]
-    // strb r0, [r5, #1]
+    *((u8*)(r5 + 1)) = *((u32*)(*((u8*)(r4 + 2)) + 0x14));
     // ldrb r0, [r4]
-    // lsl r1, r0, #2
     // add r0, sp, #8
     // add r0, r0, r1
-    // ldr r0, [r0, #0x28]
-    // cmp r0, #0
-    // ble _0220F310
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0220F31E
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // str r0, [r5, #4]
-    // ldrb r0, [r4, #1]
-    // lsl r1, r0, #2
+    _fflt((*((u32*)(*((u32*)(*((u8*)(r4 + 2)) + 0x14)) + 0x28)) << 0xc), (*((u32*)(*((u8*)(r4 + 2)) + 0x14)) << 2));
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r0 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
+    _s32_div_f(0xa);
+    *((u32*)(r5 + 4)) = r0;
     // add r0, sp, #8
     // add r0, r0, r1
-    // ldr r0, [r0, #0x3c]
-    // cmp r0, #0
-    // ble _0220F34A
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0220F358
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r6, r6, #1
-    // str r0, [r5, #8]
-    // cmp r6, #3
-    // blt _0220F29E
+    _fflt((*((u32*)(*((u8*)(r4 + 1)) + 0x3c)) << 0xc), (*((u8*)(r4 + 1)) << 2));
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r0 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
+    _s32_div_f(0xa);
+    *((u32*)(r5 + 8)) = r0;
     // ldr r0, [sp]
-    // add r0, r0, #1
     // str r0, [sp]
-    // cmp r0, #4
-    // blt _0220F294
-    // add sp, #0x58
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0220F378(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // add r6, r2, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // bne _0220F38A
-    // bl GF_AssertFail
-    // cmp r5, #4
-    // blo _0220F392
-    // bl GF_AssertFail
-    // cmp r6, #3
-    // blo _0220F39A
-    // bl GF_AssertFail
-    // lsl r0, r5, #1
+    PokeathlonCourse_GetHeapAllocPtr4();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r0, r5, r0
     // add r1, r6, r0
-    // mov r0, #0xc
     // add r4, #0x34
     // mul r0, r1
     // add r4, r4, r0
-    // bne _0220F3AE
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(0xc);
 }
+
 
 
 void ov96_0220F3B4(void) {
     // ldrb r0, [r0]
-    // lsl r0, r0, #0x11
-    // lsr r0, r0, #0x10
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220F3BC(void) {
-    // push {r3, lr}
-    // ldr r0, [r0, #4]
-    // lsl r0, r0, #0x1b
-    // lsr r0, r0, #0x1d
-    // cmp r0, #6
-    // bhi _0220F3F2
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0220F3D4: ; jump table
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #2
-    // pop {r3, pc}
-    // mov r0, #3
-    // pop {r3, pc}
-    // mov r0, #5
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(5);
 }
 
 
+
 void ov96_0220F3FC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x118
     // str r0, [sp, #8]
-    // ldr r0, [r0, #0x10]
-    // bl SpriteManager_GetSpriteList
+    SpriteManager_GetSpriteList(*((u32*)(r0 + 0x10)));
     // str r0, [sp]
     // ldr r0, [sp, #8]
     // ldr r3, [sp, #8]
-    // ldr r0, [r0]
-    // ldr r3, [r3, #0x1c]
-    // mov r1, #0xc
-    // mov r2, #7
-    // bl ov96_021EA854
+    ov96_021EA854(*((u32*)r0), 0xc, 7, *((u32*)(r3 + 0x1c)));
     // ldr r1, [sp, #8]
-    // str r0, [r1, #0x20]
-    // bl ov96_021EB138
-    // mov r4, #0
+    *((u32*)(r1 + 0x20)) = r0;
+    ov96_021EB138();
     // add r5, sp, #0x14
-    // add r2, r5, #0
-    // add r0, r4, #0
-    // add r1, r4, #0
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
@@ -79257,49 +65009,30 @@ void ov96_0220F3FC(void) {
     // str r0, [r2]
     // ldr r0, [sp, #8]
     // add r6, sp, #0x58
-    // ldr r0, [r0, #4]
     // str r0, [sp, #0xc]
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r7, r1, #0
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(0, 3, r5);
+    _s32_div_f(r4, 3);
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r2, r7, #0
-    // add r3, r6, #0
-    // bl ov96_021E6168
+    ov96_021E6168(r7, r6);
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r2, r7, #0
-    // bl ov96_021E60C0
-    // bl ov96_021E6108
-    // str r0, [r5, #0x14]
-    // add r4, r4, #1
+    ov96_021E60C0(r7);
+    ov96_021E6108();
+    *((u32*)(r5 + 0x14)) = r0;
     // add r6, #0x10
-    // add r5, r5, #4
-    // cmp r4, #0xc
-    // blt _0220F446
-    // mov r0, #1
     // str r0, [sp, #0x18]
     // str r0, [sp, #0x20]
     // str r0, [sp, #0x24]
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // ldr r0, [sp, #8]
-    // mov r1, #0xc
-    // ldr r0, [r0, #0x20]
     // add r2, sp, #0x58
     // add r3, sp, #0x14
-    // bl ov96_021EA8A8
-    // add sp, #0x118
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EA8A8(*((u32*)(0 + 0x20)), 0xc);
 }
+
 
 
 void ov96_0220F4A0(void) {
@@ -79580,6 +65313,7 @@ void ov96_0220F4A0(void) {
 }
 
 
+
 void ov96_0220F710(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x30
@@ -79787,6 +65521,7 @@ void ov96_0220F710(void) {
 }
 
 
+
 void ov96_0220F8C8(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r1, #0
@@ -79946,6 +65681,7 @@ void ov96_0220F8C8(void) {
     // _0220FA14: .word 0xDFFFFFFF
     // TODO: decompile
 }
+
 
 
 void ov96_0220FA18(void) {
@@ -80135,6 +65871,7 @@ void ov96_0220FA18(void) {
 }
 
 
+
 void ov96_0220FB98(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -80171,73 +65908,43 @@ void ov96_0220FB98(void) {
 }
 
 
+
 void ov96_0220FBDC(void) {
-    // ldr r2, [r0, #4]
-    // mov r1, #0x20
     // bic r2, r1
-    // mov r1, #0x1c
     // bic r2, r1
-    // str r2, [r0, #4]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = *((u32*)(r0 + 4));
 }
 
 
+
 void ov96_0220FBEC(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x2c
     // str r1, [sp, #8]
-    // mov r1, #2
     // ldrsh r1, [r0, r1]
     // str r0, [sp, #4]
-    // mov r0, #0x12
-    // lsl r0, r0, #4
     // str r2, [sp, #0xc]
-    // cmp r1, r0
-    // bge _0220FC08
-    // add sp, #0x2c
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
     // sub r0, r1, r0
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
-    // mov r4, #0
     // str r0, [sp, #0x10]
-    // mov r1, #0
     // add r0, sp, #0x20
     // str r1, [r0]
-    // str r1, [r0, #4]
-    // str r1, [r0, #8]
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r6, r1, #0
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // mov r1, #0xe4
+    *((u32*)((0 << 0x10) + 4)) = 0;
+    *((u32*)((0 << 0x10) + 8)) = 0;
+    _s32_div_f(0, 3);
+    _s32_div_f(r4, 3);
     // str r0, [sp, #0x14]
     // mul r1, r0
     // ldr r0, [sp, #8]
     // add r1, r0, r1
-    // mov r0, #0x48
     // add r1, #8
     // mul r0, r6
     // add r5, r1, r0
-    // ldr r0, [r5, #0xc]
-    // cmp r0, #1
-    // bne _0220FCA2
     // add r0, sp, #0x18
     // str r0, [sp]
-    // ldr r1, [r5, #0x1c]
-    // ldr r2, [r5, #0x20]
-    // ldr r0, [r5, #4]
     // asr r1, r1, #0xc
     // asr r2, r2, #0xc
     // add r3, sp, #0x1c
-    // bl ov96_021EB06C
+    ov96_021EB06C(*((u32*)(r5 + 4)), *((u32*)(r5 + 0x1c)), *((u32*)(r5 + 0x20)));
     // ldr r1, [sp, #4]
-    // mov r0, #0
     // ldrsh r0, [r1, r0]
     // ldr r2, [sp, #0x1c]
     // ldr r1, [sp, #0x18]
@@ -80245,104 +65952,32 @@ void ov96_0220FBEC(void) {
     // ldr r0, [sp, #0x10]
     // str r2, [sp, #0x20]
     // sub r1, r1, r0
-    // lsl r0, r2, #0xc
     // str r0, [sp, #0x20]
     // str r1, [sp, #0x24]
-    // lsl r0, r1, #0xc
     // str r0, [sp, #0x24]
     // add r0, sp, #0x20
-    // bl VEC_Mag
-    // add r7, r0, #0
-    // ldr r0, [r5, #4]
-    // bl ov96_021EAF8C
+    VEC_Mag((r1 << 0xc));
+    ov96_021EAF8C(*((u32*)(r5 + 4)));
     // add r0, #0xe
-    // lsl r0, r0, #0xc
-    // cmp r7, r0
-    // bgt _0220FCA2
     // ldr r1, [sp, #0x14]
     // ldr r0, [sp, #0xc]
-    // strb r1, [r0, #4]
-    // strb r6, [r0, #5]
+    *((u8*)((r0 << 0xc) + 4)) = r1;
+    *((u8*)((r0 << 0xc) + 5)) = r6;
     // ldr r1, [sp, #0x1c]
     // strh r1, [r0]
     // ldr r1, [sp, #0x18]
-    // add sp, #0x2c
-    // strh r1, [r0, #2]
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
-    // add r4, r4, #1
-    // cmp r4, #0xc
-    // blt _0220FC12
-    // mov r0, #0
-    // add sp, #0x2c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u16*)((r0 << 0xc) + 2)) = r1;
 }
+
 
 
 void ov96_0220FCB0(void) {
-    // push {r4, r5, r6, r7}
-    // mov r5, #2
     // ldrsh r5, [r0, r5]
-    // mov r2, #1
-    // sub r6, r1, #1
-    // add r3, r2, #0
-    // mov r4, #0
-    // cmp r5, r6
-    // bne _0220FCD6
     // ldrsh r6, [r0, r4]
-    // add r7, r2, #0
-    // cmp r6, #8
-    // blt _0220FCD0
-    // cmp r6, #0x17
-    // bgt _0220FCD0
-    // add r7, r4, #0
-    // cmp r7, #0
-    // beq _0220FCD6
-    // mov r4, #1
-    // cmp r4, #0
-    // bne _0220FCFC
-    // sub r4, r1, #2
-    // mov r6, #0
-    // cmp r5, r4
-    // bne _0220FCF6
     // ldrsh r4, [r0, r6]
-    // mov r7, #1
-    // cmp r4, #5
-    // blt _0220FCF0
-    // cmp r4, #0x1a
-    // bgt _0220FCF0
-    // add r7, r6, #0
-    // cmp r7, #0
-    // beq _0220FCF6
-    // mov r6, #1
-    // cmp r6, #0
-    // bne _0220FCFC
-    // mov r3, #0
-    // cmp r3, #0
-    // bne _0220FD22
-    // sub r1, r1, #3
-    // mov r3, #0
-    // cmp r5, r1
-    // bne _0220FD1C
     // ldrsh r0, [r0, r3]
-    // mov r1, #1
-    // cmp r0, #2
-    // blt _0220FD16
-    // cmp r0, #0x1d
-    // bgt _0220FD16
-    // add r1, r3, #0
-    // cmp r1, #0
-    // beq _0220FD1C
-    // mov r3, #1
-    // cmp r3, #0
-    // bne _0220FD22
-    // mov r2, #0
-    // add r0, r2, #0
-    // pop {r4, r5, r6, r7}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0220FD28(void) {
@@ -80478,6 +66113,7 @@ void ov96_0220FD28(void) {
     // _0220FE34: .word 0xFFFC0003
     // TODO: decompile
 }
+
 
 
 void ov96_0220FE38(void) {
@@ -80619,9 +66255,10 @@ void ov96_0220FE38(void) {
 }
 
 
+
 void ov96_0220FF64(void) {
-    *(u32*)r0 = r1;
 }
+
 
 
 void ov96_0220FF68(void) {
@@ -80642,6 +66279,7 @@ void ov96_0220FF68(void) {
     // _0220FF84: .word ov96_0221CF1C
     // TODO: decompile
 }
+
 
 
 void ov96_0220FF88(void) {
@@ -80726,254 +66364,105 @@ void ov96_0220FF88(void) {
 }
 
 
+
 void ov96_02210030(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // add r1, #0x28
-    // add r7, r0, #0
-    // add r0, r1, #0
-    // add r5, r2, #0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
-    // ldr r0, [r7, #0x1c]
-    // lsl r1, r0, #0x18
-    // lsr r2, r1, #0x18
-    // bne _02210052
-    // add r0, r7, #0
-    // add r1, r5, #0
-    // bl ov96_0220FF88
-    // b _02210060
-    // mov r1, #0xff
+    ov96_021E8A20(r1);
+    ov96_0220FF88(r7, r5, ((*((u32*)(r7 + 0x1c)) << 0x18) >> 0x18));
     // bic r0, r1
-    // sub r1, r2, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
     // orr r0, r1
-    // str r0, [r7, #0x1c]
-    // mov r6, #0
-    // add r5, r7, #4
-    // ldr r2, [r7]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov96_0220FE38
-    // add r6, r6, #1
-    // add r4, r4, #2
+    *((u32*)(r7 + 0x1c)) = r0;
+    ov96_0220FE38((r7 + 4), r4, *((u32*)r7));
     // add r5, #0xc
-    // cmp r6, #2
-    // blt _02210064
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221007C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
     // str r0, [sp, #0xc]
-    // add r7, r1, #0
     // str r2, [sp, #0x10]
     // str r3, [r0]
-    // mov r5, #0
-    // add r4, r0, #0
-    // mov r6, #5
-    // mov r2, #0
     // str r6, [sp]
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // add r3, r2, #0
     // str r6, [sp, #4]
-    // bl ov96_0220ED34
-    // str r0, [r4, #0x3c]
-    // add r5, r5, #1
+    ov96_0220ED34(r1, 0, 0);
+    *((u32*)(r4 + 0x3c)) = r0;
     // add r4, #0x1c
-    // cmp r5, #0xc
-    // blt _0221008E
-    // mov r0, #0
     // str r0, [sp, #0x14]
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #4
     // str r0, [sp, #0x18]
     // ldr r4, [sp, #0x18]
-    // mov r6, #0
-    // cmp r6, #1
-    // bne _022100BE
-    // mov r5, #1
-    // b _022100C0
-    // mov r5, #0
-    // mov r0, #0
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // mov r2, #0
     // ldr r1, [sp, #0x10]
     // str r5, [sp, #8]
-    // add r0, r7, #0
-    // add r3, r2, #0
-    // bl ov96_0220ECA4
+    ov96_0220ECA4(r7, 0, 0);
     // str r0, [r4]
-    // mov r0, #2
     // str r0, [sp]
-    // mov r0, #0x14
     // str r0, [sp, #4]
-    // mov r2, #0
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // add r3, r2, #0
     // str r5, [sp, #8]
-    // bl ov96_0220ECA4
-    // str r0, [r4, #8]
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // cmp r6, #2
-    // blt _022100B6
-    // mov r0, #0
+    ov96_0220ECA4(r7, 0, 0);
+    *((u32*)(r4 + 8)) = r0;
     // str r0, [sp]
-    // mov r0, #1
-    // mov r2, #0
     // str r0, [sp, #4]
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // add r3, r2, #0
-    // bl ov96_0220ED34
+    ov96_0220ED34(r7, 0, 0);
     // ldr r1, [sp, #0x18]
-    // mov r2, #0
-    // str r0, [r1, #0x10]
-    // mov r0, #4
+    *((u32*)(r1 + 0x10)) = r0;
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // add r3, r2, #0
-    // bl ov96_0220ED34
+    ov96_0220ED34(r7, 0, 0);
     // ldr r1, [sp, #0x18]
-    // str r0, [r1, #0x14]
-    // add r0, r1, #0
+    *((u32*)(r1 + 0x14)) = r0;
     // add r0, #0x1c
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #0x14]
-    // add r0, r0, #1
     // str r0, [sp, #0x14]
-    // cmp r0, #2
-    // blt _022100B2
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221013C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r0, r1, #0
     // str r1, [sp]
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea(r1);
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r4, r0, #0
+    ov96_021E8A20();
     // ldr r0, [sp]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp, #4]
     // ldr r2, [sp]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov96_0220DC7C
+    ov96_0220DC7C(r5, r4);
     // ldr r2, [sp]
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov96_0220DEAC
-    // ldr r0, [r4, #0x1c]
-    // lsr r0, r0, #0x1e
-    // lsl r0, r0, #0x18
-    // lsr r1, r0, #0x18
-    // mov r0, #0x63
-    // lsl r0, r0, #2
+    ov96_0220DEAC(r5, r4);
     // add r6, r5, r0
-    // ldr r0, [r4, #0x20]
-    // lsl r7, r1, #1
-    // lsl r0, r0, #0x19
-    // lsr r2, r0, #0x19
     // ldrh r0, [r6, r7]
-    // cmp r2, r0
-    // beq _02210194
-    // lsl r2, r2, #0x10
-    // ldr r0, [r5]
-    // lsr r2, r2, #0x10
-    // bl ov96_02210390
-    // ldr r0, [r4, #0x20]
-    // lsl r0, r0, #0x19
-    // lsr r0, r0, #0x19
+    ov96_02210390(*((u32*)r5), (((*((u32*)(r4 + 0x1c)) >> 0x1e) << 0x18) >> 0x18), ((((*((u32*)(r4 + 0x20)) << 0x19) >> 0x19) << 0x10) >> 0x10));
     // strh r0, [r6, r7]
-    // ldr r0, [r4, #0x1c]
-    // lsl r0, r0, #2
-    // lsr r0, r0, #0x1a
-    // sub r1, r0, #1
-    // cmp r1, #0
-    // bgt _022101AA
-    // mov r1, #0
-    // cmp r1, #0
-    // bgt _022101B0
-    // mov r1, #0
     // ldr r0, [sp, #4]
     // add r0, #0xc4
     // str r0, [sp, #4]
-    // ldr r0, [r0]
-    // bl ov96_0221040C
-    // ldr r1, [r4, #0x1c]
+    ov96_0221040C(*((u32*)((*((u32*)(r4 + 0x1c)) << 2) >> 0x1a)), 0);
     // ldr r0, [sp]
-    // lsl r1, r1, #2
-    // lsr r2, r1, #0x1a
-    // mov r1, #0x1e
     // mul r1, r2
-    // bl ov96_021E6454
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E6454(0x1e, ((*((u32*)(r4 + 0x1c)) << 2) >> 0x1a));
 }
+
 
 
 void ov96_022101D0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x3c]
-    // cmp r0, #0
-    // bne _022101E2
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x3c]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r5, #0x44]
-    // cmp r0, #0
-    // beq _022101F2
-    // bl SysTask_Destroy
-    // add r4, r4, #1
+    GF_AssertFail(*((u32*)(r0 + 0x3c)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 0x3c)));
+    SysTask_Destroy(*((u32*)(r5 + 0x44)));
     // add r5, #0x1c
-    // cmp r4, #0xc
-    // blt _022101D8
-    // mov r7, #0
-    // add r6, r6, #4
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r5, #8]
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _02210202
-    // ldr r0, [r6, #0x10]
-    // bl Sprite_DeleteAndFreeResources
-    // ldr r0, [r6, #0x14]
-    // bl Sprite_DeleteAndFreeResources
-    // add r7, r7, #1
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 4)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r5 + 8)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 0x10)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 0x14)));
     // add r6, #0x1c
-    // cmp r7, #2
-    // blt _022101FE
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221022C(void) {
@@ -80989,112 +66478,59 @@ void ov96_0221022C(void) {
 }
 
 
+
 void ov96_02210240(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r6, r1, #0
     // ldr r0, [sp, #0x28]
-    // mov r1, #0xe8
-    // add r7, r2, #0
     // str r3, [sp, #8]
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r1, #0
-    // mov r2, #0xe8
-    // bl MI_CpuFill8
-    // str r5, [r4, #8]
-    // str r6, [r4, #0xc]
+    Heap_Alloc(0xe8);
+    MI_CpuFill8(0, 0xe8);
+    *((u32*)(r4 + 8)) = r5;
+    *((u32*)(r4 + 0xc)) = r6;
     // add r0, sp, #0x10
-    // ldrb r0, [r0, #0x14]
-    // strb r0, [r4, #0x1c]
+    *((u8*)(r4 + 0x1c)) = *((u8*)(r0 + 0x14));
     // ldr r0, [sp, #0x28]
-    // str r0, [r4, #4]
+    *((u32*)(r4 + 4)) = *((u8*)(r0 + 0x14));
     // ldr r0, [sp, #8]
-    // str r7, [r4, #0x10]
-    // str r0, [r4, #0x14]
+    *((u32*)(r4 + 0x10)) = r7;
+    *((u32*)(r4 + 0x14)) = *((u8*)(r0 + 0x14));
     // ldr r0, [sp, #0x20]
-    // str r0, [r4, #0x18]
+    *((u32*)(r4 + 0x18)) = *((u8*)(r0 + 0x14));
     // ldr r0, [sp, #0x2c]
     // str r0, [r4]
-    // add r0, r4, #0
-    // bl ov96_02210538
-    // mov r0, #8
+    ov96_02210538(r4);
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // ldr r0, [r4, #8]
-    // ldr r1, [r4, #0xc]
-    // mov r2, #0xd2
-    // mov r3, #0x4c
-    // bl ov96_022104D8
-    // str r0, [r4, #0x68]
-    // add r0, r4, #0
-    // bl ov96_0221075C
-    // add r0, r4, #0
-    // bl ov96_0221065C
-    // add r0, r4, #0
-    // bl ov96_0221069C
-    // ldr r0, [r4, #4]
-    // add r3, r4, #0
+    ov96_022104D8(*((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)), 0xd2, 0x4c);
+    *((u32*)(r4 + 0x68)) = r0;
+    ov96_0221075C(r4);
+    ov96_0221065C(r4);
+    ov96_0221069C(r4);
     // str r0, [sp]
-    // mov r0, #0xed
-    // mov r1, #0xe
-    // mov r2, #1
     // add r3, #0x24
-    // bl GfGfxLoader_GetScrnData
-    // str r0, [r4, #0x20]
-    // add r0, r4, #0
-    // mov r1, #0x3c
-    // bl ov96_0221040C
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ov96_0221058C
-    // add r0, r4, #0
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GfGfxLoader_GetScrnData(0xed, 0xe, 1, r4);
+    *((u32*)(r4 + 0x20)) = r0;
+    ov96_0221040C(r4, 0x3c);
+    ov96_0221058C(r4, 0);
 }
+
 
 
 void ov96_022102D4(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // bne _022102DE
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0x20]
-    // bl Heap_Free
-    // add r5, r6, #0
-    // mov r4, #0
+    GF_AssertFail();
+    Heap_Free(*((u32*)(r6 + 0x20)));
     // add r5, #0x28
-    // add r0, r5, #0
-    // bl RemoveWindow
-    // add r4, r4, #1
+    RemoveWindow(r6);
     // add r5, #0x10
-    // cmp r4, #4
-    // blt _022102EA
-    // mov r5, #0
-    // add r4, r6, #0
-    // ldr r0, [r4, #0x68]
-    // cmp r0, #0
-    // bne _02210306
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x68]
-    // bl Sprite_DeleteAndFreeResources
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #0x1f
-    // blt _022102FC
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)(r6 + 0x68)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r4 + 0x68)));
+    Heap_Free(r6);
 }
+
 
 
 void ov96_0221031C(void) {
-    ov96_022107D4();
 }
+
 
 
 void ov96_02210324(void) {
@@ -81151,6 +66587,7 @@ void ov96_02210324(void) {
     // _0221038C: .word 0x000003E7
     // TODO: decompile
 }
+
 
 
 void ov96_02210390(void) {
@@ -81211,107 +66648,46 @@ void ov96_02210390(void) {
 }
 
 
+
 void ov96_0221040C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r6, r0, #0
-    // add r0, r1, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    _s32_div_f(r1, 0x64);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 0xa);
     // str r0, [sp, #4]
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x18
+    _s32_div_f(r4, 0xa);
     // str r0, [sp]
-    // add r0, r6, #0
     // add r0, #0xe4
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _0221044E
-    // cmp r0, #1
-    // beq _02210478
-    // cmp r0, #2
-    // beq _022104A6
-    // b _022104A2
-    // cmp r4, #0x14
-    // bhi _022104A6
-    // mov r4, #0
-    // add r5, r6, #0
-    // mov r7, #2
-    // ldr r0, [r5, #0x6c]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetPaletteOverride
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _02210458
-    // add r0, r6, #0
+    ManagedSprite_SetPaletteOverride(*((u32*)(r6 + 0x6c)), 2);
     // add r0, #0xe4
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r6, #0
     // add r0, #0xe4
     // strb r1, [r0]
-    // b _022104A6
-    // cmp r4, #3
-    // bhi _022104A6
-    // mov r4, #0
-    // add r5, r6, #0
-    // mov r7, #3
-    // ldr r0, [r5, #0x6c]
-    // add r1, r7, #0
-    // bl ManagedSprite_SetPaletteOverride
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _02210482
-    // add r0, r6, #0
+    ManagedSprite_SetPaletteOverride(*((u32*)(r6 + 0x6c)), 3);
     // add r0, #0xe4
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r6, #0
     // add r0, #0xe4
     // strb r1, [r0]
-    // b _022104A6
-    // bl GF_AssertFail
+    GF_AssertFail(r6, (r6 + 1));
     // ldr r1, [sp, #4]
-    // ldr r0, [r6, #0x6c]
     // add r1, #9
     // str r1, [sp, #4]
-    // bl ManagedSprite_SetAnim
+    ManagedSprite_SetAnim(*((u32*)(r6 + 0x6c)));
     // ldr r1, [sp]
-    // ldr r0, [r6, #0x70]
     // add r1, #9
     // str r1, [sp]
-    // bl ManagedSprite_SetAnim
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_SetAnim(*((u32*)(r6 + 0x70)));
 }
 
 
+
 void ov96_022104C4(void) {
-    // add r1, r0, #0
     // add r0, #0xe5
     // add r1, #0xe6
     // ldrb r0, [r0]
     // ldrh r1, [r1]
-    // lsl r0, r0, #7
     // add r0, r1, r0
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_022104D8(void) {
@@ -81362,6 +66738,7 @@ void ov96_022104D8(void) {
 }
 
 
+
 void ov96_02210538(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -81403,135 +66780,61 @@ void ov96_02210538(void) {
 }
 
 
+
 void ov96_0221058C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r1, 0x64);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #3]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 3)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
     // strb r1, [r0]
-    // mov r0, #0x64
     // mul r0, r4
     // sub r0, r6, r0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(0x64, 0xa);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #4]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 4)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #1]
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    *((u8*)(r0 + 1)) = (r0 << 3);
+    _s32_div_f(r6, 0xa);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #5]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 5)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #2]
-    // mov r4, #0
-    // mov r6, #4
-    // mov r7, #8
+    *((u8*)(r0 + 2)) = (r0 << 3);
     // str r6, [sp]
     // str r7, [sp, #4]
-    // ldr r0, [r5, #0x24]
-    // lsl r2, r4, #0x1a
     // add r0, #0xc
     // str r0, [sp, #8]
     // add r0, sp, #0x1c
     // add r0, #3
     // ldrb r0, [r0, r4]
-    // mov r1, #6
-    // lsr r2, r2, #0x18
     // str r0, [sp, #0xc]
     // add r0, sp, #0x1c
     // ldrb r0, [r0, r4]
-    // mov r3, #0
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
-    // mov r0, #0x10
     // str r0, [sp, #0x18]
-    // ldr r0, [r5, #0x10]
-    // bl CopyRectToBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _02210616
-    // ldr r0, [r5, #0x10]
-    // mov r1, #6
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CopyRectToBgTilemapRect(*((u32*)(r5 + 0x10)), 6, ((0 << 0x1a) >> 0x18), 0);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 0x10)), 6);
 }
+
 
 
 void ov96_0221065C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r7, r0, #0
-    // mov r6, #0
-    // mov r4, #0xe6
-    // add r5, r7, #0
-    // add r0, r6, #0
     // add r0, #9
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
     // str r0, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // lsl r2, r4, #0x10
-    // ldr r0, [r7, #8]
-    // ldr r1, [r7, #0xc]
     // asr r2, r2, #0x10
-    // mov r3, #0x4c
-    // bl ov96_022104D8
-    // mov r1, #1
-    // str r0, [r5, #0x6c]
-    // bl ManagedSprite_SetPaletteOverride
-    // add r6, r6, #1
+    ov96_022104D8(*((u32*)(r0 + 8)), *((u32*)(r0 + 0xc)), (0xe6 << 0x10), 0x4c);
+    *((u32*)(r5 + 0x6c)) = r0;
+    ManagedSprite_SetPaletteOverride(1);
     // add r4, #0x10
-    // add r5, r5, #4
-    // cmp r6, #2
-    // blt _02210668
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221069C(void) {
@@ -81624,206 +66927,104 @@ void ov96_0221069C(void) {
 }
 
 
+
 void ov96_0221075C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // mov r0, #0
     // str r0, [sp, #0x10]
-    // mov r0, #8
-    // mov r7, #7
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x10]
-    // mov r4, #0
-    // add r0, r0, #4
-    // lsl r0, r0, #3
     // str r0, [sp, #8]
     // ldr r0, [sp, #0xc]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // str r0, [sp, #0x14]
     // add r0, r4, r7
-    // cmp r4, #0
-    // bne _02210788
-    // mov r2, #1
-    // b _0221078C
-    // mov r2, #0
     // mvn r2, r2
     // ldr r1, [sp, #8]
-    // lsl r0, r0, #2
     // mul r2, r1
-    // mov r1, #0x80
     // add r6, r5, r0
-    // mov r0, #0x14
     // add r1, r1, r2
     // str r0, [sp]
-    // mov r0, #0x40
-    // lsl r1, r1, #0x10
     // str r0, [sp, #4]
     // asr r2, r1, #0x10
-    // ldr r0, [r5, #8]
-    // ldr r1, [r5, #0xc]
     // ldr r3, [sp, #0x14]
-    // bl ov96_022104D8
-    // mov r1, #3
-    // str r0, [r6, #0x68]
-    // bl ManagedSprite_SetPriority
-    // add r4, r4, #1
-    // cmp r4, #2
-    // blt _0221077E
+    ov96_022104D8(*((u32*)(r0 + 8)), *((u32*)(r0 + 0xc)), 0);
+    *((u32*)(r6 + 0x68)) = r0;
+    ManagedSprite_SetPriority(3);
     // ldr r0, [sp, #0xc]
-    // add r7, r7, #2
     // add r0, #0x10
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #0x10]
-    // add r0, r0, #1
     // str r0, [sp, #0x10]
-    // cmp r0, #0xc
-    // blt _0221076C
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022107D4(void) {
-    ManagedSprite_SetAnimateFlag(0);
 }
+
 
 
 void ov96_022107F0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
     // str r0, [sp]
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0xc0
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #0xc0
-    // add r7, r0, #0
-    // bl MI_CpuFill8
+    PokeathlonCourse_GetParticipantCount();
+    Heap_Alloc(r4, 0xc0);
+    MI_CpuFill8(0, 0xc0);
     // str r4, [r7]
     // ldr r0, [sp]
-    // mov r4, #0
-    // str r0, [r7, #4]
-    // mov r0, #4
+    *((u32*)(r7 + 4)) = r0;
     // sub r1, r0, r5
-    // add r0, r7, #0
     // add r0, #0xbc
     // strb r1, [r0]
-    // add r0, r7, #0
     // add r0, #0xbc
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // ble _0221084A
-    // add r6, r7, #0
     // add r6, #8
-    // lsl r1, r5, #0x18
     // ldr r2, [sp]
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_022108BC
-    // add r0, r7, #0
+    ov96_022108BC(r7, ((r5 << 0x18) >> 0x18));
     // add r0, #0xbc
     // ldrb r0, [r0]
-    // add r4, r4, #1
-    // add r5, r5, #1
     // add r6, #0x3c
-    // cmp r4, r0
-    // blt _0221082E
-    // add r0, r7, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02210850(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_02210858(void) {
-    // push {r3, r4, r5, r6, r7, lr}
     // str r0, [sp]
-    // ldr r0, [r0, #4]
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r7, #0
-    // add r6, r0, #0
-    // add r4, r7, #0
-    // lsl r1, r4, #0x18
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_0220E850
-    // add r4, r4, #1
+    PokeathlonCourse_GetHeapAllocPtr4(*((u32*)(r0 + 4)));
+    ov96_0220E850(r0, ((0 << 0x18) >> 0x18));
     // add r7, r7, r0
-    // cmp r4, #4
-    // blt _02210868
     // ldr r0, [sp]
-    // mov r5, #0
     // add r0, #0xbc
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // ble _022108BA
     // asr r0, r7, #1
-    // lsr r0, r0, #0x1e
     // ldr r4, [sp]
     // add r0, r7, r0
-    // lsl r0, r0, #0xe
     // add r4, #8
-    // lsr r7, r0, #0x10
-    // lsl r1, r5, #0x18
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_0220E850
-    // add r2, r0, #0
-    // lsl r2, r2, #0x10
-    // add r0, r4, #0
-    // add r1, r7, #0
-    // lsr r2, r2, #0x10
-    // bl ov96_022108EC
+    ov96_0220E850(r6, ((0 << 0x18) >> 0x18));
+    ov96_022108EC(r4, r7, ((r0 << 0x10) >> 0x10));
     // ldr r0, [sp]
-    // add r5, r5, #1
     // add r0, #0xbc
     // ldrb r0, [r0]
     // add r4, #0x3c
-    // cmp r5, r0
-    // blt _02210894
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022108BC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r7, r2, #0
-    // mov r1, #0
-    // mov r2, #0x3c
-    // add r5, r0, #0
-    // bl MI_CpuFill8
-    // lsl r0, r4, #1
-    // mov r6, #0
+    MI_CpuFill8(0, 0x3c);
     // add r4, r4, r0
-    // lsl r2, r4, #0x18
-    // add r0, r5, #0
-    // add r1, r7, #0
-    // lsr r2, r2, #0x18
-    // bl ov96_02210980
-    // add r6, r6, #1
-    // add r4, r4, #1
+    ov96_02210980(r5, r7, ((r4 << 0x18) >> 0x18));
     // add r5, #0x14
-    // cmp r6, #3
-    // blt _022108D2
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022108EC(void) {
-    ov96_02210AE0(0);
 }
+
 
 
 void ov96_0221090C(void) {
@@ -81881,6 +67082,7 @@ void ov96_0221090C(void) {
 }
 
 
+
 void ov96_02210980(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r7, r2, #0
@@ -81924,6 +67126,7 @@ void ov96_02210980(void) {
     // _022109D4: .word 0xFFF807FF
     // TODO: decompile
 }
+
 
 
 void ov96_022109D8(void) {
@@ -82052,6 +67255,7 @@ void ov96_022109D8(void) {
 }
 
 
+
 void ov96_02210AE0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -82166,64 +67370,28 @@ void ov96_02210AE0(void) {
 }
 
 
+
 void ov96_02210BD0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // add r5, r1, #0
-    // add r6, r2, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // lsl r1, r5, #0x18
-    // lsr r1, r1, #0x18
-    // add r7, r0, #0
-    // bl ov96_0220E74C
-    // add r5, r0, #0
-    // mov r0, #2
+    PokeathlonCourse_GetHeapAllocPtr4(*((u32*)r0));
+    ov96_0220E74C(((r5 << 0x18) >> 0x18));
     // ldrsh r1, [r5, r0]
-    // mov r0, #0x12
-    // lsl r0, r0, #4
-    // cmp r1, r0
-    // bge _02210BFE
-    // add sp, #0x10
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
     // add r0, sp, #8
     // str r0, [sp]
-    // ldr r2, [r4, #0xc]
-    // add r0, r7, #0
-    // lsl r1, r2, #0x1b
-    // lsl r2, r2, #0x19
-    // lsr r1, r1, #0x1e
-    // lsr r2, r2, #0x1e
-    // lsl r1, r1, #0x18
-    // lsl r2, r2, #0x18
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x18
     // add r3, sp, #0xc
-    // bl ov96_0220E770
-    // mov r0, #2
+    ov96_0220E770(r7, ((((*((u32*)(r4 + 0xc)) << 0x1b) >> 0x1e) << 0x18) >> 0x18), ((((*((u32*)(r4 + 0xc)) << 0x19) >> 0x1e) << 0x18) >> 0x18));
     // ldrsh r1, [r5, r0]
-    // mov r0, #0x12
-    // lsl r0, r0, #4
     // sub r0, r1, r0
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // str r0, [sp]
     // str r6, [sp, #4]
-    // mov r3, #0
     // add r2, sp, #8
-    // mov r0, #4
-    // mov r1, #6
     // ldrsh r0, [r2, r0]
     // ldrsh r1, [r2, r1]
     // ldrsh r3, [r5, r3]
     // ldr r2, [sp, #8]
-    // bl ov96_02210C48
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_02210C48(4, 6, 0);
 }
+
 
 
 void ov96_02210C48(void) {
@@ -82268,6 +67436,7 @@ void ov96_02210C48(void) {
     // _02210C94: .word 0xFFFFFFF8
     // TODO: decompile
 }
+
 
 
 void ov96_02210C98(void) {
@@ -83339,58 +68508,27 @@ void ov96_02210C98(void) {
 }
 
 
+
 u32 ov96_02211650(void) {
-    PokeathlonCourse_GetHeapAllocPtr4();
-    ov96_021EB5BC();
-    return 1;
 }
+
 
 
 void ov96_02211660(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetGraphicsSystem
-    // add r6, r0, #0
-    // bl ov96_021E9510
-    // mov r4, #0
-    // add r7, r4, #0
-    // lsl r1, r4, #0x18
-    // add r0, r5, #0
-    // lsr r1, r1, #0x18
-    // bl PokeathlonCourse_GetField5F0_AtIndex
-    // add r3, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
+    PokeathlonCourse_GetGraphicsSystem(r5);
+    ov96_021E9510();
+    PokeathlonCourse_GetField5F0_AtIndex(r5, ((0 << 0x18) >> 0x18));
     // str r7, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // mov r0, #0x4b
-    // lsl r0, r0, #2
     // str r0, [sp, #8]
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // add r2, r4, #0
-    // bl ov96_021E95F8
-    // add r4, r4, #1
-    // cmp r4, #4
-    // blt _0221167A
-    // add r0, r6, #0
-    // mov r1, #1
-    // bl ov96_021E93B4
-    // add r0, r6, #0
-    // mov r1, #9
-    // bl ov96_0221A56C
-    // add r0, r6, #0
-    // bl ov96_021E952C
-    // add r0, r6, #0
-    // mov r1, #9
-    // bl ov96_021E9570
-    // mov r0, #1
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E95F8(r5, r6, r4, r0);
+    ov96_021E93B4(r6, 1);
+    ov96_0221A56C(r6, 9);
+    ov96_021E952C(r6);
+    ov96_021E9570(r6, 9);
 }
+
 
 
 void ov96_022116C8(void) {
@@ -83492,71 +68630,32 @@ void ov96_022116C8(void) {
 }
 
 
+
 void ov96_022117CC(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_022117EC(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // beq _0221180A
-    // cmp r0, #1
-    // beq _0221181C
-    // cmp r0, #2
-    // beq _02211834
-    // b _0221186A
-    // add r0, r5, #0
-    // bl ov96_021E637C
-    // cmp r0, #0
-    // beq _0221186A
+    ov96_021E637C(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _0221186A
-    // add r0, r5, #0
-    // bl ov96_02211B94
-    // add r0, r5, #0
-    // bl ov96_02211AF0
-    // cmp r0, #0
-    // beq _0221186A
+    ov96_02211B94(r5);
+    ov96_02211AF0(r5);
     // ldrb r0, [r4]
-    // add r0, r0, #1
     // strb r0, [r4]
-    // b _0221186A
-    // add r0, r5, #0
-    // bl ov96_02211B94
-    // add r0, r5, #0
-    // bl ov96_0221236C
-    // add r0, r5, #0
-    // bl ov96_021E667C
-    // cmp r0, #0
-    // beq _0221186A
-    // mov r0, #6
+    ov96_02211B94(r5);
+    ov96_0221236C(r5);
+    ov96_021E667C(r5);
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #0x58]
     // str r0, [sp, #8]
-    // mov r0, #0
-    // add r1, r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // bl BeginNormalPaletteFade
-    // add r0, r5, #0
-    // mov r1, #1
-    // bl PokeathlonCourse_SetStateField07
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    BeginNormalPaletteFade(0, 0, 0, 0);
+    PokeathlonCourse_SetStateField07(r5, 1);
 }
+
 
 
 void ov96_02211870(void) {
@@ -83599,6 +68698,7 @@ void ov96_02211870(void) {
     // _022118C0: .word 0x000006F4
     // TODO: decompile
 }
+
 
 
 void ov96_022118C4(void) {
@@ -83758,102 +68858,48 @@ void ov96_022118C4(void) {
 }
 
 
+
 void ov96_02211A24(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x58]
-    // mov r1, #1
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xec
-    // add r3, r1, #0
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xec, 1, *((u32*)(r0 + 4)), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x58]
-    // mov r1, #3
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xec
-    // mov r3, #2
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xec, 3, *((u32*)(r4 + 4)), 2);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x58]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xec
-    // mov r3, #5
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xec, 6, *((u32*)(r4 + 4)), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x58]
-    // mov r1, #7
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xec
-    // mov r3, #6
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xec, 7, *((u32*)(r4 + 4)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x58]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xec
-    // mov r3, #1
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xec, 2, *((u32*)(r4 + 4)), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #0x58]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xec
-    // mov r3, #2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0x75
-    // lsl r0, r0, #4
+    GfGfxLoader_LoadScrnData(0xec, 4, *((u32*)(r4 + 4)), 2);
     // ldr r0, [r4, r0]
-    // bl ov96_022146C0
-    // mov r1, #0
-    // mov r0, #0x80
+    ov96_022146C0((0x75 << 4));
     // str r0, [sp]
-    // ldr r0, [r4, #0x58]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xec
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r0, #0x40
+    GfGfxLoader_GXLoadPal(0xec, 0, 0, 0);
     // str r0, [sp]
-    // ldr r0, [r4, #0x58]
-    // mov r1, #5
     // str r0, [sp, #4]
-    // mov r0, #0xec
-    // mov r2, #4
-    // mov r3, #0
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0xec, 5, 4, 0);
 }
+
 
 
 void ov96_02211AF0(void) {
@@ -83925,6 +68971,7 @@ void ov96_02211AF0(void) {
     // _02211B90: .word gSystem + 0x40
     // TODO: decompile
 }
+
 
 
 void ov96_02211B94(void) {
@@ -84198,6 +69245,7 @@ void ov96_02211B94(void) {
 }
 
 
+
 void ov96_02211DE4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -84365,6 +69413,7 @@ void ov96_02211DE4(void) {
     // _02211F34: .word 0x0000073E
     // TODO: decompile
 }
+
 
 
 void ov96_02211F38(void) {
@@ -84847,6 +69896,7 @@ void ov96_02211F38(void) {
 }
 
 
+
 void ov96_0221236C(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -84879,6 +69929,7 @@ void ov96_0221236C(void) {
     // _022123AC: .word 0x00000814
     // TODO: decompile
 }
+
 
 
 void ov96_022123B0(void) {
@@ -85024,6 +70075,7 @@ void ov96_022123B0(void) {
     // _022124F4: .word 0x000008CB
     // TODO: decompile
 }
+
 
 
 void ov96_022124F8(void) {
@@ -85395,6 +70447,7 @@ void ov96_022124F8(void) {
     // _022127F0: .word ov96_0221D25C
     // TODO: decompile
 }
+
 
 
 void ov96_022127F4(void) {
@@ -85843,6 +70896,7 @@ void ov96_022127F4(void) {
 }
 
 
+
 void ov96_02212B94(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x28
@@ -86269,74 +71323,51 @@ void ov96_02212B94(void) {
 }
 
 
+
 void ov96_02212F0C(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x4c
-    // add r2, r0, #0
-    // add r5, r2, #0
     // add r5, #0x14
-    // add r4, r1, #0
     // ldmia r5!, {r0, r1}
     // add r3, sp, #0x14
     // stmia r3!, {r0, r1}
-    // ldr r0, [r5]
-    // add r5, r2, #0
     // str r0, [r3]
     // add r5, #0x20
     // ldmia r5!, {r0, r1}
     // add r3, sp, #0x20
     // stmia r3!, {r0, r1}
-    // ldr r0, [r5]
     // add r1, sp, #0x20
     // str r0, [r3]
-    // add r0, r2, #0
     // add r0, #0x39
     // ldrb r0, [r0]
-    // add r5, r2, #0
     // add r5, #8
-    // strb r0, [r1, #0x19]
-    // add r0, r2, #0
+    *((u8*)(r1 + 0x19)) = r0;
     // add r0, #0x3b
     // ldrb r0, [r0]
     // add r3, sp, #8
-    // strb r0, [r1, #0x1b]
-    // add r0, r2, #0
+    *((u8*)(r1 + 0x1b)) = r0;
     // add r0, #0x3c
     // ldrb r0, [r0]
-    // strb r0, [r1, #0x1c]
-    // add r0, r2, #0
+    *((u8*)(r1 + 0x1c)) = r0;
     // add r0, #0x3d
     // ldrb r0, [r0]
-    // strb r0, [r1, #0x1d]
-    // add r0, r2, #0
+    *((u8*)(r1 + 0x1d)) = r0;
     // add r0, #0x3e
     // ldrb r0, [r0]
-    // strb r0, [r1, #0x1e]
-    // add r0, r2, #0
+    *((u8*)(r1 + 0x1e)) = r0;
     // add r0, #0x40
     // ldrb r0, [r0]
     // add r1, sp, #0x40
     // strb r0, [r1]
-    // add r0, r2, #0
     // add r0, #0x41
     // ldrb r0, [r0]
-    // strb r0, [r1, #1]
+    *((u8*)(r1 + 1)) = r0;
     // ldmia r5!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // ldr r0, [r5]
-    // add r1, r4, #0
     // str r0, [r3]
-    // add r0, r2, #0
-    // mov r2, #0
-    // bl ov96_02212F94
-    // add r0, r4, #0
+    ov96_02212F94(r0, r1, 0);
     // add r1, sp, #0
-    // mov r2, #1
-    // bl ov96_02212F94
-    // add sp, #0x4c
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov96_02212F94(r4, 1);
 }
+
 
 
 void ov96_02212F94(void) {
@@ -86508,6 +71539,7 @@ void ov96_02212F94(void) {
     // _022130E8: .word ov96_0221D280
     // TODO: decompile
 }
+
 
 
 void ov96_022130EC(void) {
@@ -86759,292 +71791,148 @@ void ov96_022130EC(void) {
 }
 
 
+
 void ov96_022132FC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
-    // mov r5, #0
-    // mov r7, #3
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r6, #0x5c
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // mov r0, #0x5d
-    // lsl r0, r0, #2
+    _s32_div_f(0, 3);
+    _s32_div_f(r5, 3);
     // mul r0, r4
     // add r2, r6, r0
-    // mov r0, #0x7c
     // mul r0, r1
     // add r0, r2, r0
-    // ldr r2, [r0, #0x78]
-    // cmp r2, #2
-    // beq _02213346
-    // add r1, r0, #0
     // add r1, #0x71
     // ldrb r1, [r1]
-    // cmp r1, #0x1e
-    // bhs _0221333E
-    // str r7, [r0, #0x78]
-    // b _02213346
-    // cmp r2, #1
-    // beq _02213346
-    // mov r1, #0
-    // str r1, [r0, #0x78]
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // cmp r5, #0xc
-    // blo _0221330A
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(0x7c + 0x78)) = r7;
+    *((u32*)(0x7c + 0x78)) = 0;
 }
+
 
 
 void ov96_02213354(void) {
-    r0 = r0 << 0xc;
-    *(u32*)r2 = None;
-    r0 = r1 << 0xc;
-    ((u32*)r2)[4] = None;
-    ((u32*)r2)[8] = 0;
 }
 
 
+
 void ov96_02213364(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x2c
     // str r1, [sp, #8]
     // str r2, [sp, #0xc]
     // str r3, [sp, #0x10]
-    // add r7, r0, #0
-    // bl ov96_021E6104
-    // mov r1, #0x5d
-    // mov r5, #0
+    ov96_021E6104();
     // str r0, [sp, #0x14]
-    // lsl r6, r0, #0xc
     // ldr r0, [sp, #8]
-    // lsl r1, r1, #2
     // add r7, #0x5c
     // mul r1, r0
-    // add r4, r5, #0
     // add r7, r7, r1
-    // mov r0, #0x7c
     // mul r0, r4
     // add r1, r7, r0
     // ldr r0, [sp, #0x14]
     // str r0, [sp]
     // add r0, sp, #0x18
     // str r0, [sp, #4]
-    // ldr r0, [r1, #0x30]
-    // ldr r1, [r1, #0x34]
     // asr r2, r0, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r0, r2
     // asr r0, r2, #0xc
     // asr r2, r1, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r1, r2
     // asr r1, r2, #0xc
     // ldr r2, [sp, #0xc]
     // ldr r3, [sp, #0x10]
-    // bl ov96_021E872C
-    // cmp r0, #0
+    ov96_021E872C(*((u32*)((0x5d << 2) + 0x30)), *((u32*)((0x5d << 2) + 0x34)), ((r2 >> 0x14) >> 0x14));
     // add r0, sp, #0x20
-    // beq _022133CC
     // ldr r2, [sp, #0x18]
-    // lsl r1, r4, #2
     // str r2, [r0, r1]
-    // mov r1, #1
     // add r0, sp, #0x1c
     // strb r1, [r0, r4]
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // b _022133D6
-    // lsl r2, r4, #2
-    // mov r1, #0
     // str r1, [r0, r2]
     // add r0, sp, #0x1c
     // strb r1, [r0, r4]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _02213388
-    // cmp r5, #0
-    // bne _022133EA
-    // add sp, #0x2c
-    // mov r0, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // mov r0, #3
-    // mov r3, #0
     // add r1, sp, #0x20
     // add r2, sp, #0x1c
     // ldrb r4, [r2, r3]
-    // cmp r4, #0
-    // beq _02213404
-    // lsl r4, r3, #2
     // ldr r4, [r1, r4]
-    // cmp r4, r6
-    // bge _02213404
-    // add r0, r3, #0
-    // add r6, r4, #0
-    // add r3, r3, #1
-    // lsl r3, r3, #0x18
-    // lsr r3, r3, #0x18
-    // cmp r3, #3
-    // blo _022133F2
-    // cmp r0, #3
-    // bne _02213418
-    // bl GF_AssertFail
-    // mov r0, #0xc
-    // add sp, #0x2c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail(0, 0, (r4 << 2), (((0 + 1) << 0x18) >> 0x18));
 }
+
 
 
 void ov96_0221341C(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
-    // add r1, r2, #0
     // add r2, sp, #0
-    // add r4, r3, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r2);
     // add r0, sp, #0
-    // bl VEC_Mag
+    VEC_Mag();
     // add r1, r5, r4
-    // cmp r0, r1
-    // bgt _0221343E
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02213444(void) {
-    // push {r4, r5, r6}
-    // sub sp, #0xc
     // add r2, sp, #0
-    // mov r3, #0
     // str r3, [r2]
-    // str r3, [r2, #4]
-    // add r4, r0, #0
-    // add r5, r4, #0
-    // str r3, [r2, #8]
-    // add r6, r2, #0
+    *((u32*)(r2 + 4)) = 0;
+    *((u32*)(r2 + 8)) = 0;
     // ldmia r6!, {r0, r1}
     // add r5, #0x14
     // stmia r5!, {r0, r1}
-    // ldr r0, [r6]
     // str r0, [r5]
-    // add r5, r4, #0
     // ldmia r2!, {r0, r1}
     // add r5, #0x20
     // stmia r5!, {r0, r1}
-    // ldr r0, [r2]
-    // mov r1, #3
     // str r0, [r5]
-    // add r0, r4, #0
     // add r0, #0x38
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x39
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x3a
     // strb r3, [r0]
-    // add r0, r4, #0
-    // mov r1, #0xc
     // add r0, #0x3b
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x3c
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x3d
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x3e
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x40
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x41
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x43
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x45
     // strb r3, [r0]
-    // add r0, r4, #0
     // add r0, #0x46
     // strh r3, [r0]
-    // add r1, r3, #0
     // add r0, r4, r3
     // add r0, #0x2c
     // strb r1, [r0]
-    // add r0, r3, #1
-    // lsl r0, r0, #0x18
-    // lsr r3, r0, #0x18
-    // cmp r3, #0xc
-    // blo _022134BC
-    // add sp, #0xc
-    // pop {r4, r5, r6}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_022134D4(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r4, r1, #0
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // add r1, r4, #0
-    // add r0, r2, #0
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
     // add r1, #0x20
-    // bl VEC_Normalize
-    // add r5, r4, #0
-    // add r2, r4, #0
+    VEC_Normalize(r2, r1);
     // add r5, #0x20
     // add r2, #0x14
     // ldmia r5!, {r0, r1}
-    // add r3, r2, #0
     // stmia r2!, {r0, r1}
-    // ldr r0, [r5]
     // add r4, #0x40
     // str r0, [r2]
     // ldrb r0, [r4]
-    // add r1, r3, #0
     // add r2, sp, #0
-    // lsl r0, r0, #0xc
-    // bl VEC_MultAdd
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    VEC_MultAdd((*((u32*)r4) << 0xc), r4, r4, r4);
 }
+
 
 
 void ov96_02213514(void) {
-    VEC_Normalize();
-    VEC_Normalize(r4);
-    VEC_DotProduct();
 }
+
 
 
 void ov96_02213534(void) {
@@ -87068,117 +71956,64 @@ void ov96_02213534(void) {
 }
 
 
+
 void ov96_02213558(void) {
-    // add r1, r0, #0
     // add r1, #0x61
     // ldrb r1, [r1]
-    // add r2, r1, #1
-    // add r1, r0, #0
     // add r1, #0x61
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x61
     // ldrb r1, [r1]
-    // cmp r1, #0xa
-    // blo _0221359A
-    // add r1, r0, #0
-    // mov r2, #0
     // add r1, #0x61
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x71
     // ldrb r1, [r1]
-    // add r2, r1, #2
-    // add r1, r0, #0
     // add r1, #0x71
     // strb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x70
     // ldrb r2, [r1]
-    // add r1, r0, #0
     // add r1, #0x71
     // ldrb r1, [r1]
-    // cmp r1, r2
-    // bls _0221359A
     // add r0, #0x71
     // strb r2, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_0221359C(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // add r1, r2, #0
-    // add r2, r3, #0
     // ldr r5, [sp, #0x10]
-    // bl ov96_021E60D8
-    // add r4, r0, #0
-    // ldrb r0, [r4, #4]
-    // lsl r0, r0, #2
+    ov96_021E60D8(r2, r3);
     // ldr r1, [r6, r0]
-    // add r0, r5, #0
     // add r0, #0x6c
     // strh r1, [r0]
-    // ldrb r0, [r4, #4]
-    // lsl r0, r0, #2
     // add r0, r6, r0
-    // ldr r1, [r0, #0x14]
-    // add r0, r5, #0
     // add r0, #0x6e
     // strh r1, [r0]
-    // ldrb r0, [r4, #3]
-    // lsl r0, r0, #2
     // add r0, r6, r0
-    // ldr r1, [r0, #0x28]
-    // add r0, r5, #0
     // add r0, #0x70
     // strb r1, [r0]
-    // ldrb r0, [r4, #3]
-    // lsl r0, r0, #2
     // add r0, r6, r0
-    // ldr r1, [r0, #0x28]
-    // add r0, r5, #0
     // add r0, #0x71
     // strb r1, [r0]
-    // ldrb r0, [r4, #1]
-    // mov r1, #0xa
-    // lsl r0, r0, #2
     // add r0, r6, r0
-    // ldr r0, [r0, #0x3c]
-    // lsl r0, r0, #0xc
-    // bl _s32_div_f
-    // str r0, [r5, #0x64]
-    // ldrb r0, [r4, #1]
-    // mov r1, #0xa
-    // lsl r0, r0, #2
+    _s32_div_f((*((u32*)((*((u8*)(r0 + 1)) << 2) + 0x3c)) << 0xc), 0xa);
+    *((u32*)(r5 + 0x64)) = r0;
     // add r0, r6, r0
-    // ldr r0, [r0, #0x50]
-    // lsl r0, r0, #0xc
-    // bl _s32_div_f
-    // str r0, [r5, #0x68]
+    _s32_div_f((*((u32*)((*((u8*)(r4 + 1)) << 2) + 0x50)) << 0xc), 0xa);
+    *((u32*)(r5 + 0x68)) = r0;
     // ldrb r0, [r4]
-    // lsl r0, r0, #2
     // add r0, r6, r0
-    // ldr r1, [r0, #0x64]
-    // add r0, r5, #0
     // add r0, #0x72
     // strb r1, [r0]
-    // add r0, r5, #0
-    // ldrb r1, [r4, #4]
     // add r0, #0x73
     // strb r1, [r0]
-    // add r0, r5, #0
     // ldrb r1, [r4]
     // add r0, #0x75
     // add r5, #0x74
     // strb r1, [r0]
-    // ldrb r0, [r4, #3]
     // strb r0, [r5]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221362C(void) {
@@ -87238,6 +72073,7 @@ void ov96_0221362C(void) {
 }
 
 
+
 void ov96_022136A4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -87295,6 +72131,7 @@ void ov96_022136A4(void) {
     // _02213724: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_02213728(void) {
@@ -88020,180 +72857,105 @@ void ov96_02213728(void) {
 }
 
 
+
 void ov96_02213D00(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
-    // ldr r5, [r3]
     // asr r4, r5, #0xb
-    // lsr r4, r4, #0x14
     // add r4, r5, r4
     // asr r4, r4, #0xc
     // str r4, [sp, #0xc]
-    // ldr r4, [r3, #4]
     // asr r3, r4, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r4, r3
     // asr r3, r3, #0xc
     // str r3, [sp, #0x10]
     // add r3, sp, #4
     // str r3, [sp]
     // add r3, sp, #0xc
-    // bl sub_02020F4C
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    sub_02020F4C((r3 >> 0x14));
 }
 
 
+
 void ov96_02213D2C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x38
-    // add r5, r0, #0
-    // add r6, r1, #0
     // add r1, sp, #0x2c
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // ldr r1, [r5]
-    // add r4, r2, #0
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp, #0x18]
-    // ldr r1, [r5, #4]
-    // add r7, r3, #0
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp, #0x1c]
-    // ldr r1, [r6]
     // add r2, sp, #8
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp, #0x10]
-    // ldr r1, [r6, #4]
     // add r3, sp, #0
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp, #0x14]
-    // ldr r1, [r4]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp, #8]
-    // ldr r1, [r4, #4]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp, #0xc]
-    // ldr r1, [r7]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp]
-    // ldr r1, [r7, #4]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
     // str r0, [sp, #4]
     // add r0, sp, #0x18
     // add r1, sp, #0x10
-    // bl sub_02020EB0
-    // cmp r0, #0
-    // bne _02213DB8
-    // add sp, #0x38
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // add r0, r6, #0
-    // add r1, r5, #0
+    sub_02020EB0(((((((((0 >> 0x14) >> 0x14) >> 0x14) >> 0x14) >> 0x14) >> 0x14) >> 0x14) >> 0x14), *((u32*)(r3 + 4)));
     // add r2, sp, #0x20
-    // bl VEC_Subtract
+    VEC_Subtract(r6, r5);
     // add r0, sp, #0x20
-    // add r1, r0, #0
-    // bl VEC_Normalize
-    // ldr r1, [r5, #4]
-    // ldr r0, [r6, #4]
-    // cmp r1, r0
-    // bne _02213E10
-    // ldr r0, [r4, #4]
+    VEC_Normalize(r0);
     // sub r0, r1, r0
     // bpl _02213DDE
-    // mov r2, #0
     // mvn r2, r2
     // mul r0, r2
-    // ldr r2, [r7, #4]
     // sub r3, r1, r2
     // bpl _02213DEA
-    // mov r2, #0
     // mvn r2, r2
     // mul r3, r2
-    // cmp r3, #0
-    // bne _02213DF4
-    // add sp, #0x38
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r2, [r4]
     // str r1, [sp, #0x30]
     // add r1, r0, r3
     // str r2, [sp, #0x2c]
-    // bl FX_Div
+    FX_Div(0, *((u32*)(r5 + 4)), *((u32*)r4));
     // ldr r3, [sp, #0x50]
     // add r1, sp, #0x20
     // add r2, sp, #0x2c
-    // bl VEC_MultAdd
-    // add sp, #0x38
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r5]
-    // ldr r0, [r6]
-    // cmp r1, r0
-    // bne _02213E56
-    // ldr r0, [r4]
+    VEC_MultAdd();
     // sub r0, r1, r0
     // bpl _02213E24
-    // mov r2, #0
     // mvn r2, r2
     // mul r0, r2
-    // ldr r2, [r7]
     // sub r3, r1, r2
     // bpl _02213E30
-    // mov r2, #0
     // mvn r2, r2
     // mul r3, r2
-    // cmp r3, #0
-    // bne _02213E3A
-    // add sp, #0x38
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
     // str r1, [sp, #0x2c]
-    // ldr r1, [r4, #4]
     // str r1, [sp, #0x30]
     // add r1, r0, r3
-    // bl FX_Div
+    FX_Div(0, *((u32*)(r4 + 4)), 0);
     // ldr r3, [sp, #0x50]
     // add r1, sp, #0x20
     // add r2, sp, #0x2c
-    // bl VEC_MultAdd
-    // add sp, #0x38
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // add sp, #0x38
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    VEC_MultAdd();
+    GF_AssertFail(1);
 }
+
 
 
 void ov96_02213E60(void) {
@@ -88246,81 +73008,38 @@ void ov96_02213E60(void) {
 }
 
 
+
 void ov96_02213EC4(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r1, r5, #0
     // add r1, #0x39
     // ldrb r1, [r1]
-    // cmp r1, #3
-    // bne _02213F14
-    // mov r0, #0x16
-    // ldr r1, [r5, #0xc]
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // bne _02213EE4
     // add r5, #0x43
     // ldrb r0, [r5]
     // add r0, #0xc0
-    // b _02213F56
-    // mov r0, #0x1a
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // bne _02213EF4
     // add r5, #0x43
     // ldrb r0, [r5]
     // add r0, #0xc8
-    // b _02213F56
-    // mov r0, #0x1e
-    // lsl r0, r0, #0xe
-    // cmp r1, r0
-    // bne _02213F04
     // add r5, #0x43
     // ldrb r0, [r5]
     // add r0, #0xd0
-    // b _02213F56
-    // bl GF_AssertFail
-    // ldr r1, [r5, #0xc]
+    GF_AssertFail((0x1e << 0xe), *((u32*)(r0 + 0xc)));
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
-    // b _02213F56
-    // cmp r1, #1
-    // bne _02213F4C
-    // add r1, r5, #0
     // add r1, #0x3b
     // ldrb r1, [r1]
-    // cmp r1, #0xc
-    // bne _02213F2E
-    // ldr r1, [r5, #0xc]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
-    // b _02213F56
-    // bl ov96_022143DC
+    ov96_022143DC(((r0 >> 0x14) >> 0x14), *((u32*)(r5 + 0xc)));
     // add r5, #0x3b
-    // add r4, r0, #0
     // ldrb r0, [r5]
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // lsl r1, r1, #0x18
-    // add r0, r4, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_02214394
-    // b _02213F56
-    // ldr r1, [r5, #0xc]
+    _s32_div_f(3);
+    ov96_02214394(r4, ((r0 << 0x18) >> 0x18));
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r0, r0, #0xc
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02213F5C(void) {
@@ -88370,37 +73089,25 @@ void ov96_02213F5C(void) {
 }
 
 
+
 void ov96_02213FB4(void) {
-    // add r1, r0, #0
     // add r1, #0x5c
     // ldrh r1, [r1]
-    // cmp r1, #4
-    // bhi _02213FF2
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02213FCA: ; jump table
-    // mov r1, #4
     // add r0, #0x5c
     // strh r1, [r0]
-    // bx lr
-    // mov r1, #2
     // add r0, #0x5c
     // strh r1, [r0]
-    // bx lr
-    // mov r1, #3
     // add r0, #0x5c
     // strh r1, [r0]
-    // bx lr
-    // mov r1, #1
     // add r0, #0x5c
     // strh r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02213FF4(void) {
@@ -88441,6 +73148,7 @@ void ov96_02213FF4(void) {
     // _02214040: .word 0x000008C9
     // TODO: decompile
 }
+
 
 
 void ov96_02214044(void) {
@@ -88526,6 +73234,7 @@ void ov96_02214044(void) {
 }
 
 
+
 void ov96_022140F4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x10
@@ -88606,6 +73315,7 @@ void ov96_022140F4(void) {
 }
 
 
+
 void ov96_022141B0(void) {
     // push {r4, r5, r6, lr}
     // bl PokeathlonCourse_GetHeapAllocPtr4
@@ -88637,6 +73347,7 @@ void ov96_022141B0(void) {
     // _022141F4: .word 0x000007C4
     // TODO: decompile
 }
+
 
 
 void ov96_022141F8(void) {
@@ -88671,6 +73382,7 @@ void ov96_022141F8(void) {
 }
 
 
+
 void ov96_02214234(void) {
     // push {r4, r5, r6, lr}
     // ldr r6, _02214254 ; =0x000007D8
@@ -88692,6 +73404,7 @@ void ov96_02214234(void) {
 }
 
 
+
 void ov96_02214258(void) {
     // push {r4, r5}
     // lsl r1, r1, #4
@@ -88710,6 +73423,7 @@ void ov96_02214258(void) {
     // _02214274: .word 0x000007D4
     // TODO: decompile
 }
+
 
 
 void ov96_02214278(void) {
@@ -88850,39 +73564,18 @@ void ov96_02214278(void) {
 }
 
 
+
 void ov96_02214394(void) {
-    // push {r3, lr}
-    // cmp r0, #3
-    // bhi _022143BE
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _022143A6: ; jump table
-    // mov r0, #0xd8
-    // b _022143C6
-    // mov r0, #0xdc
-    // b _022143C6
-    // mov r0, #0xe0
-    // b _022143C6
-    // mov r0, #0xe4
-    // b _022143C6
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
-    // cmp r1, #4
-    // blo _022143D2
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, pc}
+    GF_AssertFail(0xe4);
+    GF_AssertFail(0);
     // add r0, r0, r1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r3, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022143DC(void) {
@@ -88905,6 +73598,7 @@ void ov96_022143DC(void) {
 }
 
 
+
 void ov96_022143FC(void) {
     // cmp r0, #0x80
     // bge _0221440C
@@ -88922,6 +73616,7 @@ void ov96_022143FC(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov96_02214418(void) {
@@ -88986,6 +73681,7 @@ void ov96_02214418(void) {
 }
 
 
+
 void ov96_02214490(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // mov r4, #0
@@ -89013,107 +73709,52 @@ void ov96_02214490(void) {
 }
 
 
+
 void ov96_022144C0(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r6, r1, #0
-    // mov r5, #0
     // add r4, sp, #0xc
-    // mov r7, #0x7c
-    // lsl r2, r5, #3
     // add r1, r6, r5
     // str r1, [r4, r2]
-    // add r1, r5, #0
     // mul r1, r7
     // add r3, r4, r2
     // add r1, r0, r1
-    // str r1, [r3, #4]
-    // add r1, r5, #1
-    // lsl r1, r1, #0x18
-    // lsr r5, r1, #0x18
-    // cmp r5, #3
-    // blo _022144CC
+    *((u32*)(r3 + 4)) = 0;
     // ldr r0, [sp, #0xc]
     // ldrb r1, [r0]
     // ldr r0, [sp, #0x14]
     // ldrb r0, [r0]
-    // cmp r1, r0
-    // blo _022144F8
-    // add r0, r4, #0
     // add r4, sp, #0x14
-    // b _022144FA
     // add r0, sp, #0x14
     // ldr r1, [sp, #0x1c]
     // ldrb r2, [r1]
-    // ldr r1, [r0]
     // ldrb r1, [r1]
-    // cmp r1, r2
-    // blo _02214522
-    // ldr r1, [r4]
     // ldrb r1, [r1]
-    // cmp r1, r2
-    // blo _02214518
     // str r0, [sp]
     // add r0, sp, #0x1c
     // str r4, [sp, #4]
     // str r0, [sp, #8]
-    // b _0221452A
     // str r0, [sp]
     // add r0, sp, #0x1c
     // str r0, [sp, #4]
     // str r4, [sp, #8]
-    // b _0221452A
     // add r1, sp, #0x1c
     // str r1, [sp]
     // str r0, [sp, #4]
     // str r4, [sp, #8]
-    // mov r5, #0
     // add r4, sp, #0
-    // lsl r0, r5, #2
     // ldr r0, [r4, r0]
-    // add r1, r5, #0
-    // ldr r0, [r0, #4]
     // add r1, #8
-    // ldr r0, [r0]
-    // bl ov96_021EABA8
-    // add r0, r5, #1
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // cmp r5, #3
-    // blo _0221452E
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EABA8(*((u32*)*((u32*)((0 << 2) + 4))), 0, (0 << 3));
 }
+
 
 
 void ov96_0221454C(void) {
-    // ldrh r3, [r1, #2]
-    // ldrh r2, [r0, #2]
-    // cmp r2, r3
-    // bls _0221455A
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // cmp r2, r3
-    // bhs _02214562
-    // mov r0, #1
-    // bx lr
     // ldrh r1, [r1]
     // ldrh r0, [r0]
-    // cmp r0, r1
-    // bhs _02214570
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // cmp r0, r1
-    // bls _02214578
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_0221457C(void) {
@@ -89192,29 +73833,18 @@ void ov96_0221457C(void) {
 }
 
 
+
 void ov96_02214618(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r0, r5, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r6, r0, #0
-    // mov r0, #0x75
-    // lsl r0, r0, #4
+    ov96_021E8A20();
+    PokeathlonCourse_GetHeapAllocPtr4(r5);
     // ldr r0, [r6, r0]
-    // bl ov96_02214904
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl ov96_021E8318
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl ov96_022136A4
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_02214904((0x75 << 4));
+    ov96_021E8318(r5, r0);
+    ov96_022136A4(r6, r4);
 }
+
 
 
 void ov96_0221464C(void) {
@@ -89250,58 +73880,30 @@ void ov96_0221464C(void) {
 }
 
 
+
 void ov96_02214690(void) {
-    Heap_Free(*((u32*)(r0 + 0x40)));
-    MessageFormat_Delete(*((u32*)(r4 + 0x38)));
-    DestroyMsgData(*((u32*)(r4 + 0x34)));
-    RemoveWindow(r4);
-    RemoveWindow(r4);
-    Heap_Free(r4);
 }
+
 
 
 void ov96_022146C0(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // add r4, r0, #0
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #8
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0x10]
-    // mov r0, #0xec
-    // mov r3, #5
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xec, 8, *((u32*)(r0 + 0x10)), 5);
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #9
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #0x10]
-    // mov r0, #0xec
-    // mov r3, #6
-    // bl GfGfxLoader_LoadScrnData
-    // ldr r0, [r4]
-    // add r3, r4, #0
+    GfGfxLoader_LoadScrnData(0xec, 9, *((u32*)(r4 + 0x10)), 6);
     // str r0, [sp]
-    // mov r0, #0xec
-    // mov r1, #0xa
-    // mov r2, #0
     // add r3, #0x3c
-    // bl GfGfxLoader_GetScrnData
-    // str r0, [r4, #0x40]
-    // add r0, r4, #0
-    // mov r1, #0
-    // bl ov96_0221497C
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GetScrnData(0xec, 0xa, 0, r4);
+    *((u32*)(r4 + 0x40)) = r0;
+    ov96_0221497C(r4, 0);
 }
+
 
 
 void ov96_02214718(void) {
@@ -89405,6 +74007,7 @@ void ov96_02214718(void) {
 }
 
 
+
 void ov96_022147FC(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -89446,6 +74049,7 @@ void ov96_022147FC(void) {
 }
 
 
+
 void ov96_02214854(void) {
     // push {r3, r4, r5, lr}
     // sub sp, #0x10
@@ -89484,6 +74088,7 @@ void ov96_02214854(void) {
 }
 
 
+
 void ov96_022148A4(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -89517,9 +74122,10 @@ void ov96_022148A4(void) {
 }
 
 
+
 void ov96_022148E8(void) {
-    ov96_021E5F24();
 }
+
 
 
 void ov96_02214904(void) {
@@ -89531,221 +74137,99 @@ void ov96_02214904(void) {
 }
 
 
+
 void ov96_0221490C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r0, #0xe1
-    // lsl r0, r0, #2
-    // cmp r1, r0
-    // bgt _02214944
-    // ldr r0, [r5, #8]
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // ldr r0, [r5, #0xc]
-    // mov r1, #0
-    // bl Sprite_SetDrawFlag
-    // ldr r0, [r5, #0x4c]
-    // mov r1, #1
-    // mov r2, #0
-    // bl ov96_021EB52C
-    // ldr r0, [r5, #0x48]
-    // cmp r0, #0
-    // bne _0221497A
-    // add r0, r5, #0
-    // bl ov96_02214854
-    // mov r0, #1
-    // str r0, [r5, #0x48]
-    // pop {r3, r4, r5, pc}
-    // add r0, r1, #0
-    // mov r1, #0x1e
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // add r1, r0, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r5, #8]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add r0, r4, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // ldr r0, [r5, #0xc]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    Sprite_SetDrawFlag(*((u32*)(r0 + 8)), 0);
+    Sprite_SetDrawFlag(*((u32*)(r5 + 0xc)), 0);
+    ov96_021EB52C(*((u32*)(r5 + 0x4c)), 1, 0);
+    ov96_02214854(r5);
+    *((u32*)(r5 + 0x48)) = 1;
+    _s32_div_f(r1, 0x1e);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 0xa);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 8)), (((r0 << 0x18) >> 0x18) + 1));
+    _s32_div_f(r4, 0xa);
+    Sprite_SetAnimCtrlSeq(*((u32*)(r5 + 0xc)), (((r1 << 0x18) >> 0x18) + 1));
 }
 
 
+
 void ov96_0221497C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r1, 0xa);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #2]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 2)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
     // strb r1, [r0]
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r6, 0xa);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #3]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 3)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #1]
-    // mov r4, #0
-    // mov r6, #4
-    // mov r7, #8
+    *((u8*)(r0 + 1)) = (r0 << 3);
     // str r6, [sp]
     // str r7, [sp, #4]
-    // ldr r0, [r5, #0x3c]
-    // lsl r2, r4, #2
     // add r0, #0xc
     // str r0, [sp, #8]
     // add r0, sp, #0x1c
     // add r0, #2
     // ldrb r0, [r0, r4]
-    // add r2, r2, #6
-    // lsl r2, r2, #0x18
     // str r0, [sp, #0xc]
     // add r0, sp, #0x1c
     // ldrb r0, [r0, r4]
-    // mov r1, #6
-    // lsr r2, r2, #0x18
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
-    // mov r0, #0x10
     // str r0, [sp, #0x18]
-    // ldr r0, [r5, #0x10]
-    // mov r3, #0xa
-    // bl CopyRectToBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _022149DA
-    // ldr r0, [r5, #0x10]
-    // mov r1, #6
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CopyRectToBgTilemapRect(*((u32*)(r5 + 0x10)), 6, ((((0 << 2) + 6) << 0x18) >> 0x18), 0xa);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 0x10)), 6);
 }
+
 
 
 void ov96_02214A24(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // mov r1, #0xa0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r1, #0
-    // mov r2, #0xa0
-    // bl MI_CpuFill8
-    // add r0, r4, #0
+    Heap_Alloc(0xa0);
+    MI_CpuFill8(0, 0xa0);
     // add r0, #0x98
     // strb r5, [r0]
-    // mov r0, #4
     // sub r1, r0, r5
-    // add r0, r4, #0
     // add r0, #0x9e
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9e
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9d
     // strb r1, [r0]
-    // add r0, r4, #0
-    // mov r1, #3
     // add r0, #0x9b
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9b
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9a
     // strb r1, [r0]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02214A6C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // mov r1, #3
-    // add r6, r2, #0
-    // bl _s32_div_f
-    // add r7, r0, #0
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // lsl r0, r7, #0x18
-    // lsr r2, r0, #0x18
-    // mov r0, #0x24
+    _s32_div_f(r1, 3);
+    _s32_div_f(r4, 3);
     // mul r0, r2
     // add r2, r5, r0
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x16
     // add r0, r2, r0
-    // str r6, [r0, #0x18]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(((r1 << 0x18) >> 0x16) + 0x18)) = r6;
 }
+
 
 
 void ov96_02214A9C(void) {
-    ov96_02214ABC(0, 0x24);
 }
 
 
+
 void ov96_02214ABC(void) {
-    // push {r3, r4, r5, r6}
-    // sub sp, #8
     // add r1, sp, #0
-    // add r5, r0, #0
-    // mov r4, #0
     // add r1, #3
     // add r0, sp, #0
-    // lsl r2, r4, #2
     // add r2, r5, r2
-    // ldr r3, [r2, #0x18]
-    // add r2, r3, #0
-    // add r6, r3, #0
     // add r2, #0x73
     // add r6, #0x70
     // ldrb r2, [r2]
@@ -89756,373 +74240,171 @@ void ov96_02214ABC(void) {
     // ldrb r3, [r3]
     // add r2, r2, r3
     // strb r2, [r0, r4]
-    // add r2, r4, #1
-    // lsl r2, r2, #0x18
-    // lsr r4, r2, #0x18
-    // cmp r4, #3
-    // blo _02214ACA
     // add r3, sp, #0
-    // mov r0, #0
-    // mov r4, #1
     // add r3, #3
     // add r1, r3, r4
-    // sub r1, r1, #1
     // ldrb r2, [r1]
     // ldrb r1, [r3, r4]
-    // cmp r2, r1
-    // bhs _02214B08
-    // add r0, r4, #0
-    // add r1, r4, #1
-    // lsl r1, r1, #0x18
-    // lsr r4, r1, #0x18
-    // cmp r4, #3
-    // blo _02214AFA
-    // cmp r0, #0
     // add r1, sp, #0
-    // bne _02214B2C
-    // ldrb r2, [r1, #1]
-    // ldrb r1, [r1, #2]
-    // cmp r2, r1
-    // blo _02214B26
-    // mov r2, #1
-    // mov r1, #2
-    // b _02214B56
-    // mov r2, #2
-    // mov r1, #1
-    // b _02214B56
-    // cmp r0, #1
-    // bne _02214B44
     // ldrb r2, [r1]
-    // ldrb r1, [r1, #2]
-    // cmp r2, r1
-    // blo _02214B3E
-    // mov r2, #0
-    // mov r1, #2
-    // b _02214B56
-    // mov r2, #2
-    // mov r1, #0
-    // b _02214B56
     // ldrb r2, [r1]
-    // ldrb r1, [r1, #1]
-    // cmp r2, r1
-    // blo _02214B52
-    // mov r2, #0
-    // mov r1, #1
-    // b _02214B56
-    // mov r2, #1
-    // mov r1, #0
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x18]
-    // str r0, [r5, #4]
-    // lsl r0, r2, #2
+    *((u32*)(r0 + 4)) = *((u32*)((1 << 2) + 0x18));
     // add r0, r5, r0
-    // ldr r0, [r0, #0x18]
-    // str r0, [r5, #0xc]
-    // lsl r0, r1, #2
+    *((u32*)(r0 + 0xc)) = *((u32*)((1 << 2) + 0x18));
     // add r0, r5, r0
-    // ldr r0, [r0, #0x18]
-    // str r0, [r5, #0x14]
-    // add sp, #8
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x14)) = *((u32*)((0 << 2) + 0x18));
 }
+
 
 
 void ov96_02214B74(void) {
     // add r0, #0x90
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02214B7C(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_02214B84(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
     // add r1, #0x9e
     // ldrb r1, [r1]
-    // cmp r1, #4
-    // beq _02214C38
-    // add r1, r4, #0
     // add r1, #0x9a
     // ldrb r1, [r1]
-    // add r2, r1, #1
-    // add r1, r4, #0
     // add r1, #0x9a
     // strb r2, [r1]
-    // add r1, r4, #0
     // add r1, #0x9a
     // ldrb r2, [r1]
-    // add r1, r4, #0
     // add r1, #0x9b
     // ldrb r1, [r1]
-    // cmp r2, r1
-    // blo _02214BBE
-    // add r1, r4, #0
-    // mov r2, #1
     // add r1, #0x94
     // str r2, [r1]
-    // add r1, r4, #0
-    // mov r2, #0
     // add r1, #0x9a
     // strb r2, [r1]
-    // add r1, r4, #0
     // add r1, #0x94
-    // ldr r1, [r1]
-    // cmp r1, #0
-    // beq _02214C38
-    // add r1, r4, #0
     // add r1, #0x9d
     // ldrb r2, [r1]
-    // add r1, r4, #0
     // add r1, #0x99
     // ldrb r1, [r1]
     // add r2, r2, r1
-    // mov r1, #0x24
     // mul r1, r2
     // add r2, r4, r1
-    // add r1, r4, #0
     // add r1, #0x9c
     // ldrb r1, [r1]
-    // lsl r3, r1, #3
     // ldr r1, [r2, r3]
-    // cmp r1, #0
-    // bne _02214BF4
-    // add r1, r4, #0
     // add r2, r2, r3
-    // bl ov96_022155A0
-    // b _02214BF8
-    // sub r0, r1, #1
+    ov96_022155A0(r1, 0, (r1 << 3));
     // str r0, [r2, r3]
-    // add r0, r4, #0
     // add r0, #0x99
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x99
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x99
     // ldrb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x98
     // ldrb r0, [r0]
-    // cmp r1, r0
-    // blo _02214C38
-    // add r0, r4, #0
-    // mov r1, #0
     // add r0, #0x99
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // mov r1, #3
-    // add r0, r0, #1
-    // bl _s32_div_f
-    // add r0, r4, #0
+    _s32_div_f((r4 + 1), 3);
     // add r0, #0x9c
     // strb r1, [r0]
-    // mov r0, #0
     // add r4, #0x94
     // str r0, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
 
 
+
 void ov96_02214C3C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
     // str r0, [sp, #8]
     // str r1, [sp, #0xc]
     // ldr r0, [sp, #0x38]
     // str r2, [sp, #0x10]
-    // add r6, r3, #0
     // str r0, [sp, #0x38]
-    // ldr r0, [r6, #0x78]
-    // cmp r0, #0
-    // beq _02214C58
-    // add sp, #0x24
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // ldr r0, [r6, #0x48]
-    // cmp r0, #0
-    // beq _02214C64
-    // add sp, #0x24
-    // mov r0, #0
-    // pop {r4, r5, r6, r7, pc}
-    // ldr r3, [r6, #0x30]
-    // ldr r4, [r6, #0x34]
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
     // asr r3, r4, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r4, r3
-    // mov r0, #0x80
-    // mov r1, #0x60
     // asr r2, r2, #0xc
     // asr r3, r3, #0xc
-    // bl ov96_02215614
+    ov96_02215614(0x80, 0x60, (r2 >> 0x14), (*((u32*)(r3 + 0x30)) >> 0x14));
     // str r0, [sp, #0x14]
-    // add r0, r6, #0
     // str r0, [sp, #0x1c]
     // add r0, #0x30
-    // mov r4, #0
     // str r0, [sp, #0x1c]
-    // mov r0, #0x4c
-    // add r1, r4, #0
     // mul r1, r0
     // ldr r0, [sp, #0x38]
     // add r5, r0, r1
-    // add r0, r5, #0
     // add r0, #0x39
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02214CCA
-    // add r0, r5, #0
     // add r0, #0x38
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02214CCA
-    // ldr r2, [r5, #8]
-    // ldr r7, [r5, #0xc]
     // asr r3, r2, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r2, r3
     // asr r2, r3, #0xc
     // asr r3, r7, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r7, r3
-    // mov r0, #0x80
-    // mov r1, #0x60
     // asr r3, r3, #0xc
-    // bl ov96_02215614
-    // add r7, r0, #0
-    // b _02214CCC
-    // mov r7, #4
-    // cmp r7, #4
-    // beq _02214D68
-    // mov r0, #0
+    ov96_02215614(0x80, 0x60, *((u32*)(r5 + 8)), ((r3 >> 0x14) >> 0x14));
     // str r0, [sp, #0x18]
-    // add r0, r5, #0
     // add r0, #0x38
     // ldrb r0, [r0]
-    // cmp r0, #1
-    // bne _02214CE4
-    // mov r0, #8
     // str r0, [sp, #0x18]
-    // b _02214CF2
-    // cmp r0, #2
-    // bne _02214CEE
-    // mov r0, #0xc
     // str r0, [sp, #0x18]
-    // b _02214CF2
-    // bl GF_AssertFail
-    // ldr r0, [r6]
-    // bl ov96_021EAF8C
-    // add r1, r0, #0
+    GF_AssertFail(0xc);
+    ov96_021EAF8C(*((u32*)r6));
     // ldr r3, [sp, #0x18]
-    // add r2, r5, #0
     // ldr r0, [sp, #0x1c]
-    // lsl r1, r1, #0xc
     // add r2, #8
-    // lsl r3, r3, #0xc
-    // bl ov96_022156E8
-    // cmp r0, #0
-    // beq _02214D16
-    // mov r1, #1
+    ov96_022156E8((r0 << 0xc), r5, (r3 << 0xc));
     // add r0, sp, #0x20
     // strb r1, [r0, r4]
-    // b _02214D6E
     // ldr r0, [sp, #0x14]
-    // cmp r0, r7
-    // bne _02214D60
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
     // str r0, [sp, #4]
-    // ldr r1, [r5, #8]
-    // ldr r2, [r5, #0xc]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
-    // ldr r3, [r6, #0x30]
     // asr r0, r0, #0xc
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
-    // ldr r3, [r6, #0x34]
     // asr r1, r1, #0xc
     // asr r5, r3, #0xb
-    // lsr r5, r5, #0x14
     // add r5, r3, r5
     // asr r2, r2, #0xc
     // asr r3, r5, #0xc
-    // bl ov96_02215650
-    // cmp r0, #0
-    // add r0, sp, #0x20
-    // beq _02214D5A
-    // mov r1, #4
-    // strb r1, [r0, r4]
-    // b _02214D6E
-    // mov r1, #3
-    // strb r1, [r0, r4]
-    // b _02214D6E
-    // mov r1, #2
+    ov96_02215650((r0 >> 0x14), (*((u32*)(r5 + 8)) >> 0x14), (*((u32*)(r5 + 0xc)) >> 0x14), *((u32*)(r6 + 0x34)));
     // add r0, sp, #0x20
     // strb r1, [r0, r4]
-    // b _02214D6E
-    // mov r1, #0
+    // strb r1, [r0, r4]
     // add r0, sp, #0x20
     // strb r1, [r0, r4]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _02214C8C
     // add r0, sp, #0x20
-    // ldrb r3, [r0, #1]
+    // strb r1, [r0, r4]
+    // add r0, sp, #0x20
     // ldrb r2, [r0]
-    // cmp r2, r3
-    // blo _02214D8E
     // ldr r1, [sp, #0x38]
     // ldr r3, [sp, #0x14]
-    // add r0, r6, #0
-    // bl ov96_02214DBC
-    // b _02214D9E
+    ov96_02214DBC(r6, 0, *((u8*)(((r4 + 1) << 0x18) + 1)));
     // ldr r1, [sp, #0x38]
-    // add r2, r3, #0
     // add r1, #0x4c
     // ldr r3, [sp, #0x14]
-    // add r0, r6, #0
     // str r1, [sp, #0x38]
-    // bl ov96_02214DBC
-    // add r4, r0, #0
-    // ldr r0, [r6, #0x78]
-    // cmp r0, #1
-    // bne _02214DB6
-    // mov r0, #1
+    ov96_02214DBC(r6, r3);
     // str r0, [sp]
     // ldr r0, [sp, #8]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // mov r3, #6
-    // bl ov96_021E8228
-    // add r0, r4, #0
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E8228(1, 6);
 }
+
 
 
 void ov96_02214DBC(void) {
@@ -90235,207 +74517,103 @@ void ov96_02214DBC(void) {
 }
 
 
+
 void ov96_02214EB4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x28
     // str r0, [sp, #8]
     // str r1, [sp, #0xc]
     // ldr r0, [sp, #0x40]
     // str r2, [sp, #0x10]
-    // add r6, r3, #0
     // str r0, [sp, #0x40]
-    // ldr r0, [r6, #0x78]
-    // cmp r0, #0
-    // beq _02214ED0
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r6, #0x48]
-    // cmp r0, #0
-    // beq _02214EDC
-    // add sp, #0x28
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r3, [r6, #0x30]
-    // ldr r4, [r6, #0x34]
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
     // asr r3, r4, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r4, r3
-    // mov r0, #0x80
-    // mov r1, #0x60
     // asr r2, r2, #0xc
     // asr r3, r3, #0xc
-    // bl ov96_02215614
+    ov96_02215614(0x80, 0x60, (r2 >> 0x14), (*((u32*)(r3 + 0x30)) >> 0x14));
     // str r0, [sp, #0x14]
-    // mov r4, #0
-    // mov r0, #0x4c
-    // add r1, r4, #0
     // mul r1, r0
     // ldr r0, [sp, #0x40]
     // add r5, r0, r1
-    // add r0, r5, #0
     // add r0, #0x39
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02214F38
-    // add r0, r5, #0
     // add r0, #0x38
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02214F38
-    // ldr r2, [r5, #8]
-    // ldr r7, [r5, #0xc]
     // asr r3, r2, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r2, r3
     // asr r2, r3, #0xc
     // asr r3, r7, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r7, r3
-    // mov r0, #0x80
-    // mov r1, #0x60
     // asr r3, r3, #0xc
-    // bl ov96_02215614
-    // b _02214F3A
-    // mov r0, #4
-    // cmp r0, #4
-    // beq _02214F92
+    ov96_02215614(0x80, 0x60, *((u32*)(r5 + 8)), ((r3 >> 0x14) >> 0x14));
     // ldr r1, [sp, #0xc]
-    // cmp r1, r0
-    // bne _02214F8A
     // ldr r0, [sp, #0x14]
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
     // str r0, [sp, #4]
-    // ldr r1, [r5, #8]
-    // ldr r2, [r5, #0xc]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
-    // ldr r3, [r6, #0x30]
     // asr r0, r0, #0xc
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
-    // ldr r3, [r6, #0x34]
     // asr r1, r1, #0xc
     // asr r5, r3, #0xb
-    // lsr r5, r5, #0x14
     // add r5, r3, r5
     // asr r2, r2, #0xc
     // asr r3, r5, #0xc
-    // bl ov96_0221567C
-    // cmp r0, #0
-    // add r0, sp, #0x18
-    // beq _02214F84
-    // mov r1, #7
-    // strb r1, [r0, r4]
-    // b _02214F98
-    // mov r1, #6
-    // strb r1, [r0, r4]
-    // b _02214F98
-    // mov r1, #6
+    ov96_0221567C((4 >> 0x14), (*((u32*)(r5 + 8)) >> 0x14), (*((u32*)(r5 + 0xc)) >> 0x14), *((u32*)(r6 + 0x34)));
     // add r0, sp, #0x18
     // strb r1, [r0, r4]
-    // b _02214F98
-    // mov r1, #5
+    // strb r1, [r0, r4]
     // add r0, sp, #0x18
     // strb r1, [r0, r4]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _02214EFC
     // add r0, sp, #0x18
-    // ldrb r4, [r0, #1]
+    // strb r1, [r0, r4]
+    // add r0, sp, #0x18
     // ldrb r0, [r0]
-    // cmp r0, #7
-    // bne _02214FB0
-    // mov r0, #1
-    // b _02214FB2
-    // mov r0, #0
-    // cmp r4, #7
-    // bne _02214FBA
-    // mov r1, #1
-    // b _02214FBC
-    // mov r1, #0
-    // cmp r0, r1
-    // bne _02215014
     // ldr r1, [sp, #0x40]
-    // add r0, r6, #0
     // add r0, #0x30
     // add r1, #8
     // add r2, sp, #0x1c
-    // bl VEC_Subtract
+    VEC_Subtract(r6, 0);
     // add r0, sp, #0x1c
-    // bl VEC_Mag
+    VEC_Mag();
     // ldr r1, [sp, #0x40]
-    // add r5, r0, #0
-    // add r0, r6, #0
     // add r0, #0x30
     // add r1, #0x54
     // add r2, sp, #0x1c
-    // bl VEC_Subtract
+    VEC_Subtract(r6);
     // add r0, sp, #0x1c
-    // bl VEC_Mag
-    // cmp r5, r0
-    // blt _02215000
+    VEC_Mag();
     // add r2, sp, #0x18
     // ldrb r2, [r2]
     // ldr r1, [sp, #0x40]
     // ldr r3, [sp, #0xc]
-    // add r0, r6, #0
-    // bl ov96_02215058
-    // add r4, r0, #0
-    // b _0221503C
+    ov96_02215058(r6);
     // ldr r1, [sp, #0x40]
     // ldr r3, [sp, #0xc]
     // add r1, #0x4c
-    // add r0, r6, #0
-    // add r2, r4, #0
     // str r1, [sp, #0x40]
-    // bl ov96_02215058
-    // add r4, r0, #0
-    // b _0221503C
+    ov96_02215058(r6, r0);
     // add r0, sp, #0x18
     // ldrb r2, [r0]
-    // cmp r2, r4
-    // blo _0221502A
     // ldr r1, [sp, #0x40]
     // ldr r3, [sp, #0xc]
-    // add r0, r6, #0
-    // bl ov96_02215058
-    // add r4, r0, #0
-    // b _0221503C
+    ov96_02215058(r6);
     // ldr r1, [sp, #0x40]
     // ldr r3, [sp, #0xc]
     // add r1, #0x4c
-    // add r0, r6, #0
-    // add r2, r4, #0
     // str r1, [sp, #0x40]
-    // bl ov96_02215058
-    // add r4, r0, #0
-    // ldr r0, [r6, #0x78]
-    // cmp r0, #1
-    // bne _02215052
-    // mov r0, #1
+    ov96_02215058(r6, r0);
     // str r0, [sp]
     // ldr r0, [sp, #8]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // mov r3, #6
-    // bl ov96_021E8228
-    // add r0, r4, #0
-    // add sp, #0x28
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E8228(1, 6);
 }
+
 
 
 void ov96_02215058(void) {
@@ -90568,606 +74746,293 @@ void ov96_02215058(void) {
 }
 
 
+
 void ov96_02215184(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x30
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x48]
     // str r1, [sp, #0xc]
     // str r0, [sp, #0x48]
     // ldr r0, [sp, #0x4c]
     // str r2, [sp, #0x10]
-    // add r5, r3, #0
     // str r0, [sp, #0x4c]
-    // ldr r0, [r5, #0x78]
-    // cmp r0, #0
-    // beq _022151A4
-    // add sp, #0x30
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5, #0x48]
-    // cmp r0, #0
-    // beq _022151B0
-    // add sp, #0x30
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r3, [r5, #0x30]
-    // ldr r4, [r5, #0x34]
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
     // asr r3, r4, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r4, r3
-    // mov r0, #0x80
-    // mov r1, #0x60
     // asr r2, r2, #0xc
     // asr r3, r3, #0xc
-    // bl ov96_02215614
+    ov96_02215614(0x80, 0x60, (r2 >> 0x14), (*((u32*)(r3 + 0x30)) >> 0x14));
     // str r0, [sp, #0x14]
-    // mov r4, #0
     // add r7, sp, #0x20
-    // mov r0, #0x4c
-    // add r1, r4, #0
     // mul r1, r0
     // ldr r0, [sp, #0x48]
     // add r3, r0, r1
-    // add r0, r3, #0
     // add r0, #0x39
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // bne _02215210
-    // add r0, r3, #0
     // add r0, #0x38
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _02215210
-    // ldr r2, [r3, #8]
-    // ldr r3, [r3, #0xc]
     // asr r6, r2, #0xb
-    // lsr r6, r6, #0x14
     // add r6, r2, r6
     // asr r2, r6, #0xc
     // asr r6, r3, #0xb
-    // lsr r6, r6, #0x14
     // add r6, r3, r6
-    // mov r0, #0x80
-    // mov r1, #0x60
     // asr r3, r6, #0xc
-    // bl ov96_02215614
+    ov96_02215614(0x80, 0x60, *((u32*)(r3 + 8)), *((u32*)(r3 + 0xc)));
     // strb r0, [r7, r4]
-    // b _02215214
-    // mov r0, #4
     // strb r0, [r7, r4]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _022151D2
-    // add r0, r5, #0
     // str r0, [sp, #0x1c]
     // add r0, #0x30
-    // mov r4, #0
     // str r0, [sp, #0x1c]
-    // mov r0, #0x4c
-    // add r1, r4, #0
     // mul r1, r0
     // ldr r0, [sp, #0x48]
     // add r6, r0, r1
     // add r0, sp, #0x20
-    // mov r1, #8
     // add r0, #2
     // strb r1, [r0, r4]
     // add r0, sp, #0x20
     // ldrb r0, [r0, r4]
     // str r0, [sp, #0x18]
-    // cmp r0, #4
-    // beq _022152CC
-    // add r0, r6, #0
     // add r0, #0x38
     // ldrb r0, [r0]
-    // mov r7, #0
-    // cmp r0, #1
-    // bne _02215254
-    // add r7, r1, #0
-    // b _02215260
-    // cmp r0, #2
-    // bne _0221525C
-    // mov r7, #0xc
-    // b _02215260
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // bl ov96_021EAF8C
-    // add r1, r0, #0
-    // add r2, r6, #0
+    GF_AssertFail(r6, 8);
+    ov96_021EAF8C(*((u32*)r5));
     // ldr r0, [sp, #0x1c]
-    // lsl r1, r1, #0xc
     // add r2, #8
-    // lsl r3, r7, #0xc
-    // bl ov96_022156E8
-    // cmp r0, #0
-    // beq _02215284
+    ov96_022156E8((r0 << 0xc), r6, (r7 << 0xc));
     // add r0, sp, #0x20
-    // mov r1, #8
     // add r0, #2
     // strb r1, [r0, r4]
-    // b _022152CC
     // ldr r1, [sp, #0x14]
     // ldr r0, [sp, #0x18]
-    // cmp r1, r0
-    // bne _022152CC
-    // add r0, r1, #0
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
     // str r0, [sp, #4]
-    // ldr r1, [r6, #8]
-    // ldr r2, [r6, #0xc]
     // asr r0, r1, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r1, r0
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
-    // ldr r3, [r5, #0x30]
     // asr r0, r0, #0xc
     // asr r2, r3, #0xb
-    // lsr r2, r2, #0x14
     // add r2, r3, r2
-    // ldr r3, [r5, #0x34]
     // asr r1, r1, #0xc
     // asr r6, r3, #0xb
-    // lsr r6, r6, #0x14
     // add r6, r3, r6
     // asr r2, r2, #0xc
     // asr r3, r6, #0xc
-    // bl ov96_02215650
-    // cmp r0, #0
-    // beq _022152CC
+    ov96_02215650((8 >> 0x14), (*((u32*)(r6 + 8)) >> 0x14), (*((u32*)(r6 + 0xc)) >> 0x14), *((u32*)(r5 + 0x34)));
     // add r0, sp, #0x20
-    // mov r1, #0xd
     // add r0, #2
     // strb r1, [r0, r4]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _02215228
     // add r0, sp, #0x20
-    // ldrb r2, [r0, #2]
-    // cmp r2, #0xd
-    // bne _022152EC
     // ldr r1, [sp, #0x48]
     // ldr r3, [sp, #0x14]
-    // add r0, r5, #0
-    // bl ov96_02214DBC
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldrb r2, [r0, #3]
-    // cmp r2, #0xd
-    // bne _02215304
+    ov96_02214DBC(r5, 0xd, *((u8*)(((r4 + 1) << 0x18) + 2)));
     // ldr r1, [sp, #0x48]
     // ldr r3, [sp, #0x14]
     // add r1, #0x4c
-    // add r0, r5, #0
     // str r1, [sp, #0x48]
-    // bl ov96_02214DBC
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
+    ov96_02214DBC(r5, *((u8*)(r0 + 3)));
     // ldr r0, [sp, #0xc]
-    // mov r1, #0x24
     // mul r1, r0
     // ldr r0, [sp, #0x4c]
     // add r0, r0, r1
-    // ldr r0, [r0, #4]
     // add r0, #0x71
     // ldrb r0, [r0]
-    // cmp r0, #0x32
-    // blo _02215326
     // ldr r1, [sp, #0x4c]
     // ldr r2, [sp, #0xc]
-    // add r0, r5, #0
-    // bl ov96_02215478
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
+    ov96_02215478(r5, 0x24);
     // add r6, sp, #0x20
-    // mov r4, #0
     // add r6, #2
-    // mov r0, #0x4c
-    // add r1, r4, #0
     // mul r1, r0
     // ldr r0, [sp, #0x48]
     // add r1, r0, r1
     // add r0, sp, #0x20
     // ldrb r2, [r0, r4]
-    // cmp r2, #4
-    // beq _0221538E
     // ldr r0, [sp, #0xc]
-    // cmp r0, r2
-    // bne _02215388
     // ldr r0, [sp, #0x14]
     // str r0, [sp]
     // ldr r0, [sp, #0xc]
     // str r0, [sp, #4]
-    // ldr r2, [r1, #8]
-    // ldr r7, [r5, #0x34]
     // asr r0, r2, #0xb
-    // lsr r0, r0, #0x14
     // add r0, r2, r0
-    // ldr r2, [r1, #0xc]
     // asr r0, r0, #0xc
     // asr r1, r2, #0xb
-    // lsr r1, r1, #0x14
     // add r1, r2, r1
-    // ldr r2, [r5, #0x30]
     // asr r1, r1, #0xc
     // asr r3, r2, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r2, r3
     // asr r2, r3, #0xc
     // asr r3, r7, #0xb
-    // lsr r3, r3, #0x14
     // add r3, r7, r3
     // asr r3, r3, #0xc
-    // bl ov96_02215650
-    // cmp r0, #0
-    // beq _02215382
-    // mov r0, #0xc
+    ov96_02215650((0x4c >> 0x14), (0 >> 0x14), *((u32*)(r5 + 0x30)), ((r3 >> 0x14) >> 0x14));
     // strb r0, [r6, r4]
-    // b _02215392
-    // mov r0, #0xb
     // strb r0, [r6, r4]
-    // b _02215392
-    // mov r0, #0xb
     // strb r0, [r6, r4]
-    // b _02215392
-    // mov r0, #0xa
     // strb r0, [r6, r4]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #2
-    // blo _0221532C
     // add r0, sp, #0x20
-    // ldrb r2, [r0, #2]
-    // ldrb r4, [r0, #3]
-    // cmp r2, #7
-    // bne _022153AA
-    // mov r0, #1
-    // b _022153AC
-    // mov r0, #0
-    // cmp r4, #7
-    // bne _022153B4
-    // mov r1, #1
-    // b _022153B6
-    // mov r1, #0
-    // cmp r0, r1
-    // bne _02215416
     // ldr r1, [sp, #0x48]
-    // add r0, r5, #0
     // add r0, #0x30
     // add r1, #8
     // add r2, sp, #0x24
-    // bl VEC_Subtract
+    VEC_Subtract(r5, 0, *((u8*)(((r4 + 1) << 0x18) + 2)));
     // add r0, sp, #0x24
-    // bl VEC_Mag
+    VEC_Mag();
     // ldr r1, [sp, #0x48]
-    // add r6, r0, #0
-    // add r0, r5, #0
     // add r0, #0x30
     // add r1, #0x54
     // add r2, sp, #0x24
-    // bl VEC_Subtract
+    VEC_Subtract(r5);
     // add r0, sp, #0x24
-    // bl VEC_Mag
-    // cmp r6, r0
-    // blt _022153FE
+    VEC_Mag();
     // ldr r0, [sp, #0x4c]
     // add r2, sp, #0x20
     // str r0, [sp]
-    // ldrb r2, [r2, #2]
     // ldr r1, [sp, #0x48]
     // ldr r3, [sp, #0xc]
-    // add r0, r5, #0
-    // bl ov96_02215460
-    // add r4, r0, #0
-    // b _02215442
+    ov96_02215460(r5, *((u8*)(r2 + 2)));
     // ldr r0, [sp, #0x4c]
     // ldr r1, [sp, #0x48]
     // str r0, [sp]
     // ldr r3, [sp, #0xc]
     // add r1, #0x4c
-    // add r0, r5, #0
-    // add r2, r4, #0
     // str r1, [sp, #0x48]
-    // bl ov96_02215460
-    // add r4, r0, #0
-    // b _02215442
-    // cmp r2, r4
-    // blo _0221542C
+    ov96_02215460(r5, r0);
     // ldr r0, [sp, #0x4c]
     // ldr r1, [sp, #0x48]
     // str r0, [sp]
     // ldr r3, [sp, #0xc]
-    // add r0, r5, #0
-    // bl ov96_02215460
-    // add r4, r0, #0
-    // b _02215442
+    ov96_02215460(r5);
     // ldr r0, [sp, #0x4c]
     // ldr r1, [sp, #0x48]
     // str r0, [sp]
     // ldr r3, [sp, #0xc]
     // add r1, #0x4c
-    // add r0, r5, #0
-    // add r2, r4, #0
     // str r1, [sp, #0x48]
-    // bl ov96_02215460
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x78]
-    // cmp r0, #1
-    // bne _02215458
-    // mov r0, #1
+    ov96_02215460(r5, r0);
     // str r0, [sp]
     // ldr r0, [sp, #8]
     // ldr r1, [sp, #0xc]
     // ldr r2, [sp, #0x10]
-    // mov r3, #6
-    // bl ov96_021E8228
-    // add r0, r4, #0
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021E8228(1, 6);
 }
+
 
 
 void ov96_02215460(void) {
-    // push {r3, lr}
-    // cmp r2, #0xa
-    // bne _02215470
     // ldr r1, [sp, #8]
-    // add r2, r3, #0
-    // bl ov96_02215478
-    // pop {r3, pc}
-    // bl ov96_02215058
-    // pop {r3, pc}
-    // TODO: decompile
+    ov96_02215478(r3);
+    ov96_02215058();
 }
 
 
+
 void ov96_02215478(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
     // str r0, [sp]
     // str r2, [sp, #8]
-    // mov r0, #0
     // add r7, sp, #0x10
     // str r0, [sp, #0xc]
     // strb r0, [r7]
     // ldr r0, [sp, #0xc]
     // str r1, [sp, #4]
-    // strb r0, [r7, #1]
+    *((u8*)(r7 + 1)) = 0;
     // ldr r0, [sp, #0xc]
-    // strb r0, [r7, #2]
+    *((u8*)(r7 + 2)) = 0;
     // ldr r0, [sp, #0xc]
-    // strb r0, [r7, #3]
+    *((u8*)(r7 + 3)) = 0;
     // ldr r1, [sp, #0xc]
-    // mov r0, #0x24
-    // add r2, r1, #0
     // mul r2, r0
     // ldr r0, [sp, #4]
-    // mov r4, #0
     // add r6, r0, r2
-    // lsl r0, r4, #3
     // add r0, r6, r0
-    // ldr r3, [r0, #4]
-    // mov r0, #0x80
-    // ldr r2, [r3, #0x30]
-    // ldr r3, [r3, #0x34]
     // asr r5, r2, #0xb
-    // lsr r5, r5, #0x14
     // add r5, r2, r5
     // asr r2, r5, #0xc
     // asr r5, r3, #0xb
-    // lsr r5, r5, #0x14
     // add r5, r3, r5
-    // mov r1, #0x60
     // asr r3, r5, #0xc
-    // bl ov96_02215614
-    // cmp r0, #4
-    // beq _022154D0
+    ov96_02215614(0x80, 0x60, *((u32*)(*((u32*)((0 << 3) + 4)) + 0x30)), *((u32*)(*((u32*)((0 << 3) + 4)) + 0x34)));
     // ldrb r1, [r7, r0]
-    // add r1, r1, #1
     // strb r1, [r7, r0]
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _022154A4
     // ldr r0, [sp, #0xc]
-    // add r0, r0, #1
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #0xc]
-    // cmp r0, #4
-    // blo _02215496
-    // mov r4, #0
-    // mov r1, #1
     // add r0, sp, #0x10
     // add r2, r0, r1
-    // sub r2, r2, #1
     // ldrb r3, [r2]
     // ldrb r2, [r0, r1]
-    // cmp r3, r2
-    // bls _02215502
     // ldr r2, [sp, #8]
-    // cmp r1, r2
-    // beq _02215502
-    // add r4, r1, #0
-    // add r1, r1, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // cmp r1, #4
-    // blo _022154EE
-    // bl LCRandom
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1a
+    LCRandom((((((r4 + 1) << 0x18) + 1) << 0x18) >> 0x18), (((1 + 1) << 0x18) >> 0x18), (r2 - 1));
     // sub r1, r1, r2
-    // mov r0, #0x1a
     // ror r1, r0
     // add r5, r2, r1
-    // bl LCRandom
-    // lsr r2, r0, #0x1f
-    // lsl r1, r0, #0x1b
+    LCRandom(0x1a, (r0 << 0x1a), (r0 >> 0x1f));
     // sub r1, r1, r2
-    // mov r0, #0x1b
     // ror r1, r0
     // add r0, r2, r1
-    // cmp r4, #3
-    // bhi _02215594
     // add r1, r4, r4
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _0221553C: ; jump table
-    // mov r1, #0x80
     // sub r1, r1, r5
-    // lsl r2, r1, #0xc
     // ldr r1, [sp]
-    // str r2, [r1, #0x24]
-    // mov r1, #0x60
+    *((u32*)(0x80 + 0x24)) = (0x80 << 0xc);
     // sub r0, r1, r0
-    // lsl r1, r0, #0xc
     // ldr r0, [sp]
-    // str r1, [r0, #0x28]
-    // b _02215598
+    *((u32*)(0x1b + 0x28)) = (0x1b << 0xc);
     // add r5, #0x80
     // ldr r1, [sp]
-    // lsl r2, r5, #0xc
-    // str r2, [r1, #0x24]
-    // mov r1, #0x60
+    *((u32*)((0x1b << 0xc) + 0x24)) = (r5 << 0xc);
     // sub r0, r1, r0
-    // lsl r1, r0, #0xc
     // ldr r0, [sp]
-    // str r1, [r0, #0x28]
-    // b _02215598
-    // mov r1, #0x80
+    *((u32*)(0x1b + 0x28)) = (0x1b << 0xc);
     // sub r1, r1, r5
-    // lsl r2, r1, #0xc
     // ldr r1, [sp]
     // add r0, #0x60
-    // str r2, [r1, #0x24]
-    // lsl r1, r0, #0xc
+    *((u32*)(0x80 + 0x24)) = (0x80 << 0xc);
     // ldr r0, [sp]
-    // str r1, [r0, #0x28]
-    // b _02215598
+    *((u32*)(0x1b + 0x28)) = (0x1b << 0xc);
     // add r5, #0x80
     // ldr r1, [sp]
-    // lsl r2, r5, #0xc
     // add r0, #0x60
-    // str r2, [r1, #0x24]
-    // lsl r1, r0, #0xc
+    *((u32*)((0x1b << 0xc) + 0x24)) = (r5 << 0xc);
     // ldr r0, [sp]
-    // str r1, [r0, #0x28]
-    // b _02215598
-    // bl GF_AssertFail
-    // mov r0, #0xa
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(0x1b + 0x28)) = (0x1b << 0xc);
+    GF_AssertFail(0x1b, (0x1b << 0xc), (r5 << 0xc));
 }
+
 
 
 void ov96_022155A0(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r4, r2, #0
-    // add r2, r1, #0
     // add r2, #0x9d
     // ldrb r3, [r2]
-    // add r2, r1, #0
     // add r2, #0x99
     // ldrb r2, [r2]
     // add r2, r3, r2
-    // lsl r2, r2, #0x18
-    // lsr r3, r2, #0x18
-    // add r2, r1, #0
     // add r2, #0x9c
     // ldrb r2, [r2]
-    // cmp r2, #0
-    // beq _022155CC
-    // cmp r2, #1
-    // beq _022155E0
-    // cmp r2, #2
-    // beq _022155F4
-    // b _0221560C
     // add r1, #0x90
-    // ldr r1, [r1]
     // str r1, [sp]
-    // add r1, r3, #0
-    // ldr r3, [r4, #4]
-    // bl ov96_02214EB4
-    // add sp, #8
+    ov96_02214EB4(((r1 << 0x18) >> 0x18), r1, *((u32*)(r2 + 4)));
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
     // add r1, #0x90
-    // ldr r1, [r1]
     // str r1, [sp]
-    // add r1, r3, #0
-    // ldr r3, [r4, #4]
-    // bl ov96_02214C3C
-    // add sp, #8
+    ov96_02214C3C(r3, *((u32*)(r4 + 4)));
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // add r5, r1, #0
     // add r5, #0x90
-    // ldr r5, [r5]
     // str r5, [sp]
     // str r1, [sp, #4]
-    // add r1, r3, #0
-    // ldr r3, [r4, #4]
-    // bl ov96_02215184
-    // add sp, #8
+    ov96_02215184(r3, *((u32*)(r4 + 4)));
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // bl GF_AssertFail
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail();
 }
+
 
 
 void ov96_02215614(void) {
-    // push {r3, lr}
-    // cmp r2, r0
-    // bge _02215622
-    // cmp r3, r1
-    // bge _02215622
-    // mov r0, #0
-    // pop {r3, pc}
-    // cmp r2, r0
-    // blt _0221562E
-    // cmp r3, r1
-    // bge _0221562E
-    // mov r0, #1
-    // pop {r3, pc}
-    // cmp r2, r0
-    // bge _0221563A
-    // cmp r3, r1
-    // blt _0221563A
-    // mov r0, #2
-    // pop {r3, pc}
-    // cmp r2, r0
-    // blt _02215646
-    // cmp r3, r1
-    // blt _02215646
-    // mov r0, #3
-    // pop {r3, pc}
-    // bl GF_AssertFail
-    // mov r0, #4
-    // pop {r3, pc}
-    // TODO: decompile
+    GF_AssertFail(3);
 }
+
 
 
 void ov96_02215650(void) {
@@ -91195,6 +75060,7 @@ void ov96_02215650(void) {
 }
 
 
+
 void ov96_0221567C(void) {
     // push {r3, lr}
     // bl ov96_02215614
@@ -91220,225 +75086,80 @@ void ov96_0221567C(void) {
 }
 
 
+
 void ov96_022156A8(void) {
-    // push {r4, r5, r6, r7}
-    // mov r7, #0
-    // add r3, r7, #0
-    // add r4, r7, #0
     // sub r3, #8
     // sub r4, #8
-    // lsl r5, r7, #2
     // add r6, r2, r5
     // ldrh r5, [r2, r5]
-    // ldrh r6, [r6, #2]
     // sub r5, r0, r5
     // sub r6, r1, r6
-    // cmp r5, r4
-    // blt _022156D6
-    // cmp r5, #8
-    // bgt _022156D6
-    // cmp r6, r3
-    // blt _022156D6
-    // cmp r6, #8
-    // bgt _022156D6
-    // mov r0, #1
-    // pop {r4, r5, r6, r7}
-    // bx lr
-    // add r5, r7, #1
-    // lsl r5, r5, #0x18
-    // lsr r7, r5, #0x18
-    // cmp r7, #3
-    // blo _022156B4
-    // mov r0, #0
-    // pop {r4, r5, r6, r7}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_022156E8(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
-    // add r1, r2, #0
     // add r2, sp, #0
-    // add r4, r3, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r2);
     // add r0, sp, #0
-    // bl VEC_Mag
+    VEC_Mag();
     // add r1, r5, r4
-    // cmp r0, r1
-    // bge _0221570A
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02215710(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r1, #0
-    // add r7, r0, #0
-    // ldr r0, [r5, #0x18]
-    // cmp r0, #0
-    // bne _02215720
-    // mov r1, #1
-    // b _02215724
-    // mov r1, #0
     // mvn r1, r1
-    // ldr r0, [r5, #0xc]
     // asr r0, r0, #0xc
-    // add r6, r0, #0
     // mul r6, r1
-    // lsr r0, r6, #0x1f
     // add r0, r6, r0
     // asr r4, r0, #1
-    // mov r0, #0x14
     // ldrsb r0, [r5, r0]
-    // mov r1, #3
-    // bl _s32_div_f
-    // cmp r1, #0
-    // beq _0221574A
-    // cmp r1, #1
-    // beq _02215752
-    // cmp r1, #2
-    // beq _0221575A
-    // b _02215756
-    // mov r0, #0
+    _s32_div_f(0x14, 3);
     // mvn r0, r0
     // mul r4, r0
-    // b _0221575A
-    // mov r4, #0
-    // b _0221575A
-    // bl GF_AssertFail
-    // mov r1, #0
-    // ldr r0, [r5, #4]
-    // add r2, r1, #0
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #1
-    // mov r2, #0
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #2
-    // mov r2, #0
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #3
-    // mov r2, #0
-    // add r3, r4, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #0
-    // mov r2, #3
-    // add r3, r6, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #1
-    // mov r2, #3
-    // add r3, r6, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #2
-    // mov r2, #3
-    // add r3, r6, #0
-    // bl ScheduleSetBgPosText
-    // mov r1, #3
-    // ldr r0, [r5, #4]
-    // add r2, r1, #0
-    // add r3, r6, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5]
-    // bl SpriteSystem_GetRenderer
-    // lsl r1, r4, #0xc
-    // lsl r2, r6, #0xc
-    // bl G2dRenderer_SetMainSurfaceCoords
-    // ldr r1, [r5, #0xc]
-    // ldr r0, [r5, #0x10]
+    GF_AssertFail(0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 0, 0, r4);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 1, 0, r4);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 2, 0, r4);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 3, 0, r4);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 0, 3, r6);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 1, 3, r6);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 2, 3, r6);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 3, 3, r6);
+    SpriteSystem_GetRenderer(*((u32*)r5));
+    G2dRenderer_SetMainSurfaceCoords((r4 << 0xc), (r6 << 0xc));
     // sub r0, r1, r0
-    // str r0, [r5, #0xc]
-    // ldr r1, [r5, #0x18]
-    // mov r0, #1
+    *((u32*)(r5 + 0xc)) = *((u32*)(r5 + 0x10));
     // eor r0, r1
-    // str r0, [r5, #0x18]
-    // mov r0, #0x14
+    *((u32*)(r5 + 0x18)) = 1;
     // ldrsb r1, [r5, r0]
-    // add r1, r1, #1
-    // strb r1, [r5, #0x14]
+    *((u8*)(r5 + 0x14)) = (*((u32*)(r5 + 0x18)) + 1);
     // ldrsb r1, [r5, r0]
-    // ldrb r0, [r5, #0x15]
-    // cmp r1, r0
-    // blt _02215860
-    // mov r1, #0
-    // ldr r0, [r5, #4]
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl ScheduleSetBgPosText
-    // mov r2, #0
-    // ldr r0, [r5, #4]
-    // mov r1, #1
-    // add r3, r2, #0
-    // bl ScheduleSetBgPosText
-    // mov r2, #0
-    // ldr r0, [r5, #4]
-    // mov r1, #2
-    // add r3, r2, #0
-    // bl ScheduleSetBgPosText
-    // mov r2, #0
-    // ldr r0, [r5, #4]
-    // mov r1, #3
-    // add r3, r2, #0
-    // bl ScheduleSetBgPosText
-    // mov r1, #0
-    // ldr r0, [r5, #4]
-    // mov r2, #3
-    // add r3, r1, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #1
-    // mov r2, #3
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5, #4]
-    // mov r1, #2
-    // mov r2, #3
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // mov r1, #3
-    // ldr r0, [r5, #4]
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl ScheduleSetBgPosText
-    // ldr r0, [r5]
-    // bl SpriteSystem_GetRenderer
-    // mov r1, #0
-    // add r2, r1, #0
-    // bl G2dRenderer_SetMainSurfaceCoords
-    // mov r0, #0
-    // str r0, [r5, #8]
-    // add r0, r7, #0
-    // bl SysTask_Destroy
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 0, 0, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 1, 0, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 2, 0, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 3, 0, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 0, 3, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 1, 3, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 2, 3, 0);
+    ScheduleSetBgPosText(*((u32*)(r5 + 4)), 3, 3, 0);
+    SpriteSystem_GetRenderer(*((u32*)r5));
+    G2dRenderer_SetMainSurfaceCoords(0, 0);
+    *((u32*)(r5 + 8)) = 0;
+    SysTask_Destroy(r7);
 }
+
 
 
 void ov96_02215864(void) {
-    GF_AssertFail(0, 1);
 }
+
 
 
 void ov96_0221587C(void) {
-    ((u32*)r0)[4] = r1;
-    *(u32*)r0 = r2;
 }
+
 
 
 void ov96_02215884(void) {
@@ -91480,6 +75201,7 @@ void ov96_02215884(void) {
 }
 
 
+
 void ov96_022158D4(void) {
     // cmp r0, #0x68
     // blt _022158E8
@@ -91497,88 +75219,40 @@ void ov96_022158D4(void) {
 }
 
 
+
 void ov96_022158EC(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r3, r0, #0
-    // add r4, r2, #0
-    // add r0, r1, #0
-    // add r1, r3, #0
     // add r2, sp, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r1, r0, r0);
     // add r0, sp, #0
-    // bl VEC_Mag
-    // cmp r0, r4
-    // bgt _0221590E
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r3, r4, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    VEC_Mag();
 }
+
 
 
 void ov96_02215914(void) {
-    // ldr r2, [r0]
-    // cmp r2, #0
-    // beq _02215940
-    // bge _02215920
     // neg r3, r2
-    // b _02215922
-    // add r3, r2, #0
-    // cmp r3, r1
-    // bge _0221592C
-    // mov r1, #0
     // str r1, [r0]
-    // bx lr
-    // cmp r2, #0
-    // ble _02215934
-    // mov r2, #1
-    // b _02215938
-    // mov r2, #0
     // mvn r2, r2
-    // ldr r3, [r0]
     // mul r2, r1
     // sub r1, r3, r2
     // str r1, [r0]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02215944(void) {
-    ov96_02215914();
-    ov96_02215914((r5 + 4), r4);
 }
+
 
 
 void ov96_02215958(void) {
-    // ldr r2, [r0]
     // neg r3, r1
-    // cmp r2, #0
-    // ble _02215968
-    // cmp r2, r1
-    // ble _0221596E
     // str r1, [r0]
-    // b _0221596E
-    // cmp r2, r3
-    // bge _0221596E
     // str r3, [r0]
-    // ldr r2, [r0, #4]
-    // cmp r2, #0
-    // ble _0221597C
-    // cmp r2, r1
-    // ble _02215982
-    // str r1, [r0, #4]
-    // bx lr
-    // cmp r2, r3
-    // bge _02215982
-    // str r3, [r0, #4]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 4)) = r1;
+    *((u32*)(r0 + 4)) = r3;
 }
+
 
 
 void ov96_02215984(void) {
@@ -91631,6 +75305,7 @@ void ov96_02215984(void) {
     // _022159EC: .word 0x00007FFF
     // TODO: decompile
 }
+
 
 
 void ov96_022159F0(void) {
@@ -91692,46 +75367,18 @@ void ov96_022159F0(void) {
 }
 
 
+
 void ov96_02215A70(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r6, r0, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r5, r0, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // ldrb r0, [r4]
-    // cmp r0, #0
-    // bne _02215ABC
-    // bl IsPaletteFadeFinished
-    // cmp r0, #0
-    // beq _02215AC0
-    // add r0, r6, #0
-    // bl ov96_021E5F24
-    // cmp r0, #0
-    // bne _02215AB8
-    // mov r0, #0x81
-    // lsl r0, r0, #2
-    // mov r4, #0
+    IsPaletteFadeFinished();
+    ov96_021E5F24(r6);
     // add r5, r5, r0
-    // ldr r2, [r5]
-    // lsl r1, r4, #0x18
-    // lsl r2, r2, #0x14
-    // lsr r2, r2, #0x14
-    // lsl r2, r2, #0x10
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // lsr r2, r2, #0x10
-    // bl PokeathlonCourse_SetField5E0_AtIndex
-    // add r4, r4, #1
+    PokeathlonCourse_SetField5E0_AtIndex(r6, ((0 << 0x18) >> 0x18), ((((*((u32*)r5) << 0x14) >> 0x14) << 0x10) >> 0x10));
     // add r5, #0xa8
-    // cmp r4, #4
-    // blt _02215A9C
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(1);
 }
+
 
 
 void ov96_02215AC4(void) {
@@ -91944,18 +75591,13 @@ void ov96_02215AC4(void) {
 }
 
 
+
 void ov96_02215CD0(void) {
-    // push {r4, lr}
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // bne _02215CDE
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0xc]
-    // bl SpriteSystem_DrawSprites
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    PokeathlonCourse_GetHeapAllocPtr4();
+    GF_AssertFail();
+    SpriteSystem_DrawSprites(*((u32*)(r4 + 0xc)));
 }
+
 
 
 void ov96_02215CE8(void) {
@@ -92004,6 +75646,7 @@ void ov96_02215CE8(void) {
 }
 
 
+
 void ov96_02215D4C(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -92050,219 +75693,139 @@ void ov96_02215D4C(void) {
 }
 
 
+
 void ov96_02215DBC(void) {
-    PokeathlonCourse_GetHeapAllocPtr4(0x6e, 0xa8);
 }
+
 
 
 void ov96_02215DD4(void) {
-    PokeathlonCourse_GetHeapAllocPtr4(0xa8, 0x69);
 }
 
 
+
 void ov96_02215DEC(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0xc
-    // add r5, r1, #0
-    // add r4, r2, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0x69
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r1, r0, r1
-    // mov r0, #0xa8
     // mul r0, r5
     // add r2, r1, r0
     // add r0, sp, #4
     // str r0, [sp]
-    // ldr r0, [r2, #4]
-    // ldr r1, [r2, #0x2c]
-    // ldr r2, [r2, #0x30]
-    // ldr r0, [r0]
     // asr r1, r1, #0xc
     // asr r2, r2, #0xc
     // add r3, sp, #8
-    // bl ov96_021EB06C
+    ov96_021EB06C(*((u32*)*((u32*)(r2 + 4))), *((u32*)(r2 + 0x2c)), *((u32*)(r2 + 0x30)));
     // ldr r0, [sp, #8]
-    // lsl r0, r0, #0xc
     // str r0, [r4]
     // ldr r0, [sp, #4]
-    // lsl r0, r0, #0xc
-    // str r0, [r4, #4]
-    // add sp, #0xc
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 4)) = ((r0 << 0xc) << 0xc);
 }
+
 
 
 void ov96_02215E2C(void) {
-    PokeathlonCourse_GetHeapAllocPtr4(0x81, 0xa8);
 }
+
 
 
 void ov96_02215E48(void) {
-    PokeathlonCourse_GetHeapAllocPtr4(0x6a, 0xa8);
 }
+
 
 
 void ov96_02215E68(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0xa8
+    PokeathlonCourse_GetHeapAllocPtr4();
     // mul r1, r4
     // add r1, r0, r1
-    // mov r0, #0x6a
-    // lsl r0, r0, #2
     // ldr r1, [r1, r0]
-    // ldr r0, [r1, #8]
-    // ldr r1, [r1, #4]
-    // ldr r1, [r1, #8]
-    // bl FX_Div
-    // mov r1, #0x64
+    FX_Div(*((u32*)(0xa8 + 8)), *((u32*)(*((u32*)(0xa8 + 4)) + 8)));
     // mul r1, r0
     // asr r0, r1, #0xc
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02215E94(void) {
-    PokeathlonCourse_GetHeapAllocPtr4(0x81, 0xa8);
 }
+
 
 
 void ov96_02215EB0(void) {
-    PokeathlonCourse_GetHeapAllocPtr4(0x81, 0xa8);
 }
+
 
 
 void ov96_02215ECC(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0x69
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r1, r0, r1
-    // mov r0, #0xa8
     // mul r0, r4
     // add r0, r1, r0
-    // bl ov96_02218688
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_02218688(0xa8, (0x69 << 2));
 }
+
 
 
 void ov96_02215EE8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r7, r0, #0
-    // mov r0, #0xa8
-    // add r5, r4, #0
+    PokeathlonCourse_GetHeapAllocPtr4();
     // mul r5, r0
-    // mov r0, #0x81
-    // lsl r0, r0, #2
     // add r4, r7, r0
     // ldr r0, [r4, r5]
-    // lsl r0, r0, #3
-    // lsr r0, r0, #0x1f
-    // beq _02215F0C
-    // bl GF_AssertFail
-    // mov r0, #1
+    GF_AssertFail((((0x81 << 2) << 3) >> 0x1f));
     // ldr r1, [r4, r5]
-    // lsl r0, r0, #0x1e
     // orr r0, r1
     // str r0, [r4, r5]
-    // mov r0, #0
     // ldrsh r1, [r6, r0]
-    // mov r0, #7
     // add r2, r7, r5
-    // lsl r0, r0, #6
     // strh r1, [r2, r0]
-    // mov r1, #2
     // ldrsh r1, [r6, r1]
-    // add r0, r0, #2
     // strh r1, [r2, r0]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02215F2C(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0x81
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r5, r0, r1
-    // mov r0, #0xa8
-    // add r4, r6, #0
     // mul r4, r0
     // ldr r0, [r5, r4]
-    // lsl r0, r0, #3
-    // lsr r0, r0, #0x1f
-    // beq _02215F4C
-    // bl GF_AssertFail
+    GF_AssertFail(((0xa8 << 3) >> 0x1f), (0x81 << 2));
     // ldr r0, [r5, r4]
-    // lsl r0, r0, #5
-    // lsr r0, r0, #0x1f
-    // beq _02215F58
-    // bl GF_AssertFail
-    // mov r0, #2
+    GF_AssertFail(((r0 << 5) >> 0x1f));
     // ldr r1, [r5, r4]
-    // lsl r0, r0, #0x1c
     // orr r0, r1
     // str r0, [r5, r4]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02215F64(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0x69
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r1, r0, r1
-    // mov r0, #0xa8
     // mul r0, r4
     // add r0, r1, r0
-    // bl ov96_0221910C
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_0221910C(0xa8, (0x69 << 2));
 }
+
 
 
 void ov96_02215F80(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r1, #0
-    // add r4, r2, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0x69
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r1, r0, r1
-    // mov r0, #0xa8
     // mul r0, r5
     // add r0, r1, r0
-    // add r1, r4, #0
-    // bl ov96_022186B8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_022186B8(0xa8, r4);
 }
+
 
 
 void ov96_02215FA0(void) {
-    ov96_022186CC();
 }
+
 
 
 void ov96_02215FA8(void) {
-    GfGfx_SetBanks(5);
 }
+
 
 
 void ov96_02215FC8(void) {
@@ -92526,29 +76089,18 @@ void ov96_02215FC8(void) {
 }
 
 
+
 void ov96_02216200(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bl PokeathlonCourse_GetDataCopyArea
+    PokeathlonCourse_GetDataCopyArea();
     // add r0, #0xf0
-    // bl ov96_021E8A20
-    // add r0, r4, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #6
-    // lsl r1, r1, #6
+    ov96_021E8A20();
+    PokeathlonCourse_GetHeapAllocPtr4(r4);
     // ldr r0, [r0, r1]
-    // bl ov96_0221978C
-    // lsl r0, r0, #0x18
-    // lsr r5, r0, #0x18
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_021E8318
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_022193F8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov96_0221978C((6 << 6));
+    ov96_021E8318(r4, ((r0 << 0x18) >> 0x18));
+    ov96_022193F8(r4, r5);
 }
+
 
 
 void ov96_02216234(void) {
@@ -92635,6 +76187,7 @@ void ov96_02216234(void) {
 }
 
 
+
 void ov96_022162F4(void) {
     // push {r3, r4, lr}
     // sub sp, #0x4c
@@ -92706,11 +76259,10 @@ void ov96_022162F4(void) {
 }
 
 
+
 void ov96_02216390(void) {
-    ov96_021E9C0C(*((u32*)(r0 + 0x18)));
-    SpriteSystem_FreeResourcesAndManager(*((u32*)(r4 + 8)), *((u32*)(r4 + 0xc)));
-    SpriteSystem_Free(*((u32*)(r4 + 8)));
 }
+
 
 
 void ov96_022163AC(void) {
@@ -92861,6 +76413,7 @@ void ov96_022163AC(void) {
 }
 
 
+
 void ov96_022164EC(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x38
@@ -92907,6 +76460,7 @@ void ov96_022164EC(void) {
     // _02216548: .word ov96_0221D79C
     // TODO: decompile
 }
+
 
 
 void ov96_0221654C(void) {
@@ -92990,6 +76544,7 @@ void ov96_0221654C(void) {
 }
 
 
+
 void ov96_022165FC(void) {
     // push {r4, r5, r6, lr}
     // add r6, r0, #0
@@ -93020,150 +76575,67 @@ void ov96_022165FC(void) {
 }
 
 
+
 void ov96_0221663C(void) {
-    // push {r4, lr}
-    // sub sp, #0x10
-    // mov r3, #0
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r1, #1
-    // add r4, r0, #0
     // str r1, [sp, #8]
-    // ldr r0, [r4]
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xf2, 1, *((u32*)(r0 + 4)), 0);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r3, #1
     // str r3, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #3
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xf2, 3, *((u32*)(r4 + 4)), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #5
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // mov r3, #2
-    // bl GfGfxLoader_LoadCharData
-    // mov r3, #0
+    GfGfxLoader_LoadCharData(0xf2, 5, *((u32*)(r4 + 4)), 2);
     // str r3, [sp]
     // str r3, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #2
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xf2, 2, *((u32*)(r4 + 4)), 0);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r3, #1
     // str r3, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #4
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xf2, 4, *((u32*)(r4 + 4)), 1);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #6
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // mov r3, #2
-    // bl GfGfxLoader_LoadScrnData
-    // mov r1, #0
+    GfGfxLoader_LoadScrnData(0xf2, 6, *((u32*)(r4 + 4)), 2);
     // str r1, [sp]
-    // ldr r0, [r4]
-    // add r2, r1, #0
     // str r0, [sp, #4]
-    // mov r0, #0xf2
-    // add r3, r1, #0
-    // bl GfGfxLoader_GXLoadPal
-    // mov r1, #0x1e
-    // ldr r2, [r4]
-    // mov r0, #0
-    // lsl r1, r1, #4
-    // bl LoadFontPal0
-    // mov r0, #0
+    GfGfxLoader_GXLoadPal(0xf2, 0, 0, 0);
+    LoadFontPal0(0, (0x1e << 4), *((u32*)r4));
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #9
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // mov r3, #6
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xf2, 9, *((u32*)(r4 + 4)), 6);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0xb
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // mov r3, #4
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0xf2, 0xb, *((u32*)(r4 + 4)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0xc
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // mov r3, #4
-    // bl GfGfxLoader_LoadScrnData
-    // mov r0, #0
+    GfGfxLoader_LoadScrnData(0xf2, 0xc, *((u32*)(r4 + 4)), 4);
     // str r0, [sp]
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
-    // ldr r0, [r4]
-    // mov r1, #0xa
     // str r0, [sp, #0xc]
-    // ldr r2, [r4, #4]
-    // mov r0, #0xf2
-    // mov r3, #6
-    // bl GfGfxLoader_LoadScrnData
-    // mov r3, #0
+    GfGfxLoader_LoadScrnData(0xf2, 0xa, *((u32*)(r4 + 4)), 6);
     // str r3, [sp]
-    // ldr r0, [r4]
-    // mov r1, #8
     // str r0, [sp, #4]
-    // mov r0, #0xf2
-    // mov r2, #4
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0xf2, 8, 4, 0);
 }
+
 
 
 void ov96_02216770(void) {
@@ -93378,6 +76850,7 @@ void ov96_02216770(void) {
 }
 
 
+
 void ov96_02216934(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -93515,6 +76988,7 @@ void ov96_02216934(void) {
 }
 
 
+
 void ov96_02216A54(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -93551,6 +77025,7 @@ void ov96_02216A54(void) {
     // _02216AA0: .word 0xFFF9FFFF
     // TODO: decompile
 }
+
 
 
 void ov96_02216AA4(void) {
@@ -93719,40 +77194,21 @@ void ov96_02216AA4(void) {
 }
 
 
+
 void ov96_02216C00(void) {
     // ldrb r1, [r1]
     // ldrb r0, [r0]
-    // cmp r0, r1
-    // bne _02216C0C
-    // mov r0, #0
-    // bx lr
-    // cmp r0, r1
-    // bhs _02216C14
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02216C1C(void) {
     // ldrb r1, [r1]
     // ldrb r0, [r0]
-    // cmp r0, r1
-    // bne _02216C28
-    // mov r0, #0
-    // bx lr
-    // cmp r0, r1
-    // bhs _02216C30
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
     // mvn r0, r0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov96_02216C38(void) {
@@ -94801,9 +78257,8 @@ void ov96_02216C38(void) {
 }
 
 
+
 void ov96_02217544(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x38]
     // str r1, [sp, #0xc]
@@ -94811,22 +78266,15 @@ void ov96_02217544(void) {
     // ldr r0, [sp, #8]
     // str r2, [sp, #0x10]
     // str r3, [r0]
-    // str r1, [r0, #4]
-    // add r1, r2, #0
-    // str r1, [r0, #8]
-    // mov r0, #3
+    *((u32*)(r0 + 4)) = r1;
+    *((u32*)(r0 + 8)) = r2;
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #0xc]
-    // mov r2, #0x80
-    // mov r3, #0x10
-    // bl ov96_022164EC
+    ov96_022164EC(1, r2, 0x80, 0x10);
     // ldr r1, [sp, #8]
-    // str r0, [r1, #0xc]
-    // mov r0, #0
+    *((u32*)(r1 + 0xc)) = r0;
     // str r0, [sp, #0x1c]
-    // add r0, r1, #0
     // add r0, #0x10
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x1c]
@@ -94834,121 +78282,71 @@ void ov96_02217544(void) {
     // ldr r0, [sp, #0x3c]
     // str r0, [sp, #0x14]
     // ldr r0, [sp, #0x18]
-    // lsl r0, r0, #0x18
-    // lsr r6, r0, #0x18
     // ldr r0, [sp, #0x38]
-    // add r1, r6, #0
-    // bl ov96_021EAA04
+    ov96_021EAA04((r1 << 0x18), ((r1 << 0x18) >> 0x18));
     // ldr r1, [sp, #8]
-    // mov r7, #0
-    // add r4, r1, #0
-    // add r5, r1, #0
     // str r0, [r1]
     // add r4, #0x1c
     // add r5, #0x3c
-    // lsl r1, r6, #0x18
     // ldr r0, [sp, #0x38]
-    // lsr r1, r1, #0x18
-    // bl ov96_021EAA04
-    // bl ov96_021EAA20
-    // bl ov96_021E8BB0
+    ov96_021EAA04(((r6 << 0x18) >> 0x18));
+    ov96_021EAA20();
+    ov96_021E8BB0();
     // ldr r1, [sp, #0x14]
-    // add r2, r4, #0
-    // bl ov96_021E8BB4
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // mov r2, #0x20
-    // bl MI_CpuCopy8
-    // add r0, r5, #0
-    // mov r1, #0x10
-    // bl TintPalette_GrayScale
-    // add r7, r7, #1
-    // add r6, r6, #1
+    ov96_021E8BB4(r4);
+    MI_CpuCopy8(r4, r5, 0x20);
+    TintPalette_GrayScale(r5, 0x10);
     // add r4, #0x40
     // add r5, #0x40
-    // cmp r7, #3
-    // blt _022175A0
-    // mov r0, #7
     // str r0, [sp]
-    // mov r0, #3
     // str r0, [sp, #4]
-    // mov r2, #0
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r3, r2, #0
-    // bl ov96_022164EC
+    ov96_022164EC(3, 0, 0);
     // ldr r1, [sp, #8]
-    // str r0, [r1, #0x14]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #1
+    *((u32*)(r1 + 0x14)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // str r0, [sp]
-    // mov r0, #5
     // str r0, [sp, #4]
-    // mov r2, #0
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r3, r2, #0
-    // bl ov96_022164EC
+    ov96_022164EC(5, 0, 0);
     // ldr r1, [sp, #8]
-    // str r0, [r1, #8]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #0xb
+    *((u32*)(r1 + 8)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // str r0, [sp]
-    // mov r0, #4
     // str r0, [sp, #4]
-    // mov r2, #0
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r3, r2, #0
-    // bl ov96_022164EC
+    ov96_022164EC(4, 0, 0);
     // ldr r1, [sp, #8]
-    // str r0, [r1, #4]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #0x15
+    *((u32*)(r1 + 4)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // str r0, [sp]
-    // mov r0, #6
     // str r0, [sp, #4]
-    // mov r2, #0
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r3, r2, #0
-    // bl ov96_022164EC
+    ov96_022164EC(6, 0, 0);
     // ldr r1, [sp, #8]
-    // str r0, [r1, #0xc]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
-    // mov r0, #8
+    *((u32*)(r1 + 0xc)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // str r0, [sp]
-    // mov r0, #2
     // str r0, [sp, #4]
-    // mov r2, #0
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r3, r2, #0
-    // bl ov96_022164EC
+    ov96_022164EC(2, 0, 0);
     // ldr r1, [sp, #8]
-    // str r0, [r1, #0x10]
-    // mov r1, #0
-    // bl ManagedSprite_SetDrawFlag
+    *((u32*)(r1 + 0x10)) = r0;
+    ManagedSprite_SetDrawFlag(0);
     // ldr r0, [sp, #8]
     // add r0, #0xe8
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x18]
-    // add r0, r0, #3
     // str r0, [sp, #0x18]
     // ldr r0, [sp, #0x1c]
-    // add r0, r0, #1
     // str r0, [sp, #0x1c]
-    // cmp r0, #4
-    // bge _02217686
-    // b _02217584
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221768C(void) {
@@ -95098,73 +78496,31 @@ void ov96_0221768C(void) {
 }
 
 
+
 void ov96_022177D8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // ldr r0, [r6, #4]
-    // cmp r0, #0
-    // bne _022177E6
-    // bl GF_AssertFail
-    // ldr r0, [r6, #8]
-    // cmp r0, #0
-    // bne _022177F0
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0xc]
-    // cmp r0, #0
-    // bne _022177FA
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0xc]
-    // bl Sprite_DeleteAndFreeResources
-    // mov r7, #0
+    GF_AssertFail(*((u32*)(r0 + 4)));
+    GF_AssertFail(*((u32*)(r6 + 8)));
+    GF_AssertFail(*((u32*)(r6 + 0xc)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 0xc)));
     // add r6, #0x10
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #4]
-    // bl Sprite_DeleteAndFreeResources
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #5
-    // blt _02217808
-    // add r7, r7, #1
+    Sprite_DeleteAndFreeResources(*((u32*)(r6 + 4)));
     // add r6, #0xe8
-    // cmp r7, #4
-    // blt _02217804
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02217820(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
     // str r0, [sp]
-    // mov r0, #0
     // ldr r7, [sp]
     // str r0, [sp, #4]
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r7, #0
-    // ldr r0, [r5, #0x14]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetAnimateFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #5
-    // blt _02217832
+    ManagedSprite_SetAnimateFlag(*((u32*)(r7 + 0x14)), 0);
     // ldr r0, [sp, #4]
     // add r7, #0xe8
-    // add r0, r0, #1
     // str r0, [sp, #4]
-    // cmp r0, #4
-    // blt _0221782E
     // ldr r0, [sp]
-    // mov r1, #0
-    // ldr r0, [r0, #0xc]
-    // bl ManagedSprite_SetAnimateFlag
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_SetAnimateFlag(*((u32*)((r0 + 1) + 0xc)), 0);
 }
+
 
 
 void ov96_0221785C(void) {
@@ -95176,6 +78532,7 @@ void ov96_0221785C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov96_02217868(void) {
@@ -95201,6 +78558,7 @@ void ov96_02217868(void) {
 }
 
 
+
 void ov96_02217890(void) {
     // cmp r0, #6
     // beq _02217898
@@ -95212,6 +78570,7 @@ void ov96_02217890(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void ov96_022178A0(void) {
@@ -95483,28 +78842,18 @@ void ov96_022178A0(void) {
 }
 
 
+
 void ov96_02217AE4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x118
     // str r0, [sp, #8]
-    // ldr r0, [r0, #0xc]
     // str r1, [sp, #0xc]
-    // bl SpriteManager_GetSpriteList
+    SpriteManager_GetSpriteList(*((u32*)(r0 + 0xc)));
     // str r0, [sp]
     // ldr r0, [sp, #8]
     // ldr r3, [sp, #8]
-    // ldr r0, [r0]
-    // ldr r3, [r3, #0x18]
-    // mov r1, #0xc
-    // mov r2, #7
-    // bl ov96_021EA854
+    ov96_021EA854(*((u32*)r0), 0xc, 7, *((u32*)(r3 + 0x18)));
     // ldr r1, [sp, #8]
     // add r5, sp, #0x14
-    // mov r4, #0
-    // str r0, [r1, #0x1c]
-    // add r2, r5, #0
-    // add r0, r4, #0
-    // add r1, r4, #0
+    *((u32*)(r1 + 0x1c)) = r0;
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
     // stmia r2!, {r0, r1}
@@ -95515,48 +78864,29 @@ void ov96_02217AE4(void) {
     // stmia r2!, {r0, r1}
     // str r0, [r2]
     // add r6, sp, #0x58
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
-    // add r7, r1, #0
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl _s32_div_f
+    _s32_div_f(0, 3, r5);
+    _s32_div_f(r4, 3);
     // str r0, [sp, #0x10]
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r2, r7, #0
-    // add r3, r6, #0
-    // bl ov96_021E6168
+    ov96_021E6168(r7, r6);
     // ldr r0, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r2, r7, #0
-    // bl ov96_021E60C0
-    // bl ov96_021E6108
-    // str r0, [r5, #0x14]
-    // add r4, r4, #1
+    ov96_021E60C0(r7);
+    ov96_021E6108();
+    *((u32*)(r5 + 0x14)) = r0;
     // add r6, #0x10
-    // add r5, r5, #4
-    // cmp r4, #0xc
-    // blt _02217B26
-    // mov r0, #3
     // str r0, [sp, #0x18]
-    // mov r0, #1
     // str r0, [sp, #0x20]
     // str r0, [sp, #0x24]
-    // mov r0, #0
     // str r0, [sp]
     // str r0, [sp, #4]
     // ldr r0, [sp, #8]
-    // mov r1, #0xc
-    // ldr r0, [r0, #0x1c]
     // add r2, sp, #0x58
     // add r3, sp, #0x14
-    // bl ov96_021EA8A8
-    // add sp, #0x118
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EA8A8(*((u32*)(0 + 0x1c)), 0xc);
 }
+
 
 
 void ov96_02217B84(void) {
@@ -95819,247 +79149,129 @@ void ov96_02217B84(void) {
 }
 
 
+
 void ov96_02217DBC(void) {
-    ov96_021EA894();
 }
+
 
 
 void ov96_02217DC8(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // cmp r1, #3
-    // bhi _02217E00
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _02217DDC: ; jump table
-    // mov r1, #1
-    // bl ov96_02218578
-    // pop {r4, pc}
-    // mov r1, #7
-    // bl ov96_02218578
-    // mov r0, #1
+    ov96_02218578(1);
+    ov96_02218578(7);
     // add r4, #0x59
     // strb r0, [r4]
-    // pop {r4, pc}
-    // bl ov96_02218FFC
-    // pop {r4, pc}
-    // bl GF_AssertFail
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_02218FFC(1);
+    GF_AssertFail();
 }
+
 
 
 void ov96_02217E08(void) {
-    // push {r4, lr}
-    // ldr r2, [r0, #0x14]
-    // ldr r1, [r0, #0x18]
-    // ldr r0, [r0, #0x60]
-    // mov r4, #0
-    // lsl r0, r0, #4
-    // lsr r0, r0, #0x1f
-    // bne _02217E1C
-    // add r0, r4, #0
-    // pop {r4, pc}
-    // cmp r2, #0xc
-    // bhi _02217E72
     // add r0, r2, r2
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _02217E2C: ; jump table
-    // b _02217E76
-    // cmp r1, #0xb
-    // beq _02217E50
-    // cmp r1, #6
-    // bne _02217E54
-    // mov r4, #3
-    // b _02217E76
-    // cmp r2, #6
-    // bne _02217E5C
-    // mov r4, #2
-    // b _02217E76
-    // mov r4, #1
-    // b _02217E76
-    // cmp r1, #0xb
-    // beq _02217E68
-    // cmp r1, #6
-    // bne _02217E76
-    // mov r4, #3
-    // b _02217E76
-    // bl GF_AssertFail
-    // b _02217E76
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail((*((u16*)(0 + 6)) << 0x10), *((u32*)(r0 + 0x18)), *((u32*)(r0 + 0x14)));
+    GF_AssertFail();
 }
 
 
+
 void ov96_02217E7C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x30
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0x62
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // str r0, [sp, #8]
     // add r0, r0, r1
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #0xc]
     // ldr r0, [sp, #8]
     // add r1, #0x1c
     // ldr r7, [sp, #4]
     // add r4, r0, r1
-    // add r0, r4, #0
-    // bl ov96_02218744
-    // cmp r0, #0
-    // beq _02217EB4
-    // mov r0, #0x5d
+    ov96_02218744(r4, (0x62 << 2));
     // ldrsb r0, [r4, r0]
-    // cmp r0, #0
-    // bgt _02217EB4
     // ldr r0, [sp, #0xc]
-    // add r6, r0, #1
-    // cmp r6, #4
-    // blt _02217EB6
-    // b _02217FBC
-    // mov r1, #0x69
     // ldr r0, [sp, #8]
-    // lsl r1, r1, #2
     // add r1, r0, r1
-    // mov r0, #0xa8
     // mul r0, r6
     // add r5, r1, r0
     // ldr r1, [sp, #4]
     // ldr r0, [sp, #0xc]
     // add r1, r1, r0
-    // lsl r0, r6, #2
     // add r0, r1, r0
     // str r0, [sp]
-    // add r0, r4, #0
     // str r0, [sp, #0x10]
     // add r0, #0x2c
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl ov96_02218744
-    // cmp r0, #0
-    // beq _02217FAE
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // bl ov96_02218598
-    // cmp r0, #0
-    // beq _02217FAE
-    // mov r1, #0
+    ov96_02218744(r5, (0x69 << 2));
+    ov96_02218598(r4, r5);
     // add r0, sp, #0x24
     // str r1, [r0]
-    // str r1, [r0, #4]
-    // str r1, [r0, #8]
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 8)) = 0;
     // ldrb r0, [r7, r6]
-    // cmp r0, #0
-    // beq _02217F0E
-    // ldr r0, [r4, #0x60]
-    // lsl r0, r0, #4
-    // lsr r0, r0, #0x1f
-    // bne _02217F0E
     // ldr r0, [sp]
     // strb r1, [r0]
     // ldrb r0, [r0]
     // strb r0, [r7, r6]
     // ldrb r0, [r7, r6]
-    // cmp r0, #0
-    // bne _02217FAE
-    // add r1, r5, #0
     // ldr r0, [sp, #0x10]
     // add r1, #0x2c
     // add r2, sp, #0x24
-    // bl VEC_Subtract
+    VEC_Subtract(((*((u32*)(r4 + 0x60)) << 4) >> 0x1f), r5);
     // ldr r0, [sp, #0x24]
-    // cmp r0, #0
-    // bne _02217F44
     // ldr r0, [sp, #0x28]
-    // cmp r0, #0
-    // bne _02217F44
-    // bl MTRandom
-    // mov r1, #0x3f
+    MTRandom();
     // and r0, r1
     // sub r0, #0x20
     // str r0, [sp, #0x24]
-    // bl MTRandom
-    // mov r1, #0x3f
+    MTRandom(0x3f);
     // and r0, r1
     // sub r0, #0x20
     // str r0, [sp, #0x28]
     // add r0, sp, #0x24
-    // add r1, r0, #0
-    // bl VEC_Normalize
-    // add r0, r4, #0
-    // add r1, r5, #0
+    VEC_Normalize(r0);
     // add r2, sp, #0x24
-    // bl ov96_022178A0
+    ov96_022178A0(r4, r5);
     // str r0, [sp, #0x14]
-    // mov r0, #0
     // ldr r1, [sp, #0x24]
     // mvn r0, r0
     // mul r0, r1
     // str r0, [sp, #0x24]
-    // mov r0, #0
     // ldr r1, [sp, #0x28]
     // mvn r0, r0
     // mul r0, r1
     // str r0, [sp, #0x28]
-    // add r0, r5, #0
-    // add r1, r4, #0
     // add r2, sp, #0x24
-    // bl ov96_022178A0
+    ov96_022178A0(r5, r4);
     // str r0, [sp, #0x18]
-    // add r0, r4, #0
-    // bl ov96_02217E08
+    ov96_02217E08(r4);
     // str r0, [sp, #0x1c]
-    // add r0, r5, #0
-    // bl ov96_02217E08
+    ov96_02217E08(r5);
     // str r0, [sp, #0x20]
     // ldr r1, [sp, #0x1c]
-    // add r0, r4, #0
-    // bl ov96_02217DC8
+    ov96_02217DC8(r4);
     // ldr r1, [sp, #0x20]
-    // add r0, r5, #0
-    // bl ov96_02217DC8
+    ov96_02217DC8(r5);
     // ldr r0, [sp, #0x14]
-    // cmp r0, #0
-    // bne _02217FA4
     // ldr r0, [sp, #0x18]
-    // cmp r0, #0
-    // beq _02217FAE
     // ldr r0, [sp]
-    // mov r1, #1
     // strb r1, [r0]
     // ldrb r0, [r0]
     // strb r0, [r7, r6]
     // ldr r0, [sp]
-    // add r6, r6, #1
-    // add r0, r0, #4
     // add r5, #0xa8
     // str r0, [sp]
-    // cmp r6, #4
-    // blt _02217ED8
     // ldr r0, [sp, #0xc]
     // add r4, #0xa8
-    // add r0, r0, #1
-    // add r7, r7, #4
     // str r0, [sp, #0xc]
-    // cmp r0, #4
-    // bge _02217FCC
-    // b _02217E9A
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02217FD0(void) {
@@ -96183,6 +79395,7 @@ void ov96_02217FD0(void) {
     // _022180C8: .word 0x444CC000
     // TODO: decompile
 }
+
 
 
 void ov96_022180CC(void) {
@@ -96456,6 +79669,7 @@ void ov96_022180CC(void) {
 }
 
 
+
 void ov96_02218330(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x24
@@ -96694,126 +79908,62 @@ void ov96_02218330(void) {
 }
 
 
+
 void ov96_02218510(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // bl ov96_021EAA20
-    // add r7, r0, #0
-    // bl ov96_021E90FC
-    // add r4, r0, #0
+    ov96_021EAA20();
+    ov96_021E90FC();
     // add r1, sp, #0
-    // mov r0, #0
     // str r0, [r1]
-    // str r0, [r1, #4]
-    // str r0, [r1, #8]
-    // add r0, r7, #0
-    // bl ov96_021E8BB0
-    // ldrh r0, [r0, #4]
-    // cmp r0, #0
-    // beq _0221853E
-    // mov r0, #0x40
-    // b _02218540
-    // mov r0, #0x20
-    // cmp r5, #0
-    // beq _0221855E
-    // lsr r1, r0, #0x1f
+    *((u32*)(r1 + 4)) = 0;
+    *((u32*)(r1 + 8)) = 0;
+    ov96_021E8BB0(r7);
     // add r1, r0, r1
     // asr r1, r1, #1
-    // lsl r1, r1, #0xc
     // str r1, [sp]
     // sub r1, r0, r4
-    // lsr r0, r1, #0x1f
     // add r0, r1, r0
     // asr r0, r0, #1
     // add r0, r4, r0
-    // lsl r0, r0, #0xc
     // str r0, [sp, #4]
-    // b _0221856C
-    // lsr r1, r0, #0x1f
     // add r1, r0, r1
     // asr r1, r1, #1
-    // lsl r1, r1, #0xc
-    // lsl r0, r0, #0xc
     // str r1, [sp]
     // str r0, [sp, #4]
-    // add r0, r6, #0
     // add r1, sp, #0
-    // bl ov96_021EABF4
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov96_021EABF4(r6, ((((((0x20 >> 0x1f) << 0xc) >> 0x1f) << 0xc) >> 0x1f) << 0xc));
 }
+
 
 
 void ov96_02218578(void) {
-    // cmp r1, #4
-    // bne _02218580
-    // mov r3, #0x3c
-    // b _02218582
-    // mov r3, #0
-    // add r2, r0, #0
     // add r2, #0x5e
     // strb r3, [r2]
-    // cmp r1, #7
-    // bne _02218594
-    // add r2, r0, #0
-    // mov r3, #0x10
     // add r2, #0x59
     // strb r3, [r2]
-    // str r1, [r0, #0x14]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x14)) = r1;
 }
 
 
+
 void ov96_02218598(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x34
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // ldr r1, [r5, #0x50]
-    // ldr r0, [r4, #0x50]
     // sub r1, r1, r0
     // bpl _022185AA
     // neg r1, r1
-    // mov r0, #5
-    // lsl r0, r0, #0xc
-    // cmp r1, r0
-    // ble _022185B8
-    // add sp, #0x34
-    // mov r0, #0
-    // pop {r4, r5, pc}
     // add r0, sp, #0x20
     // str r0, [sp]
     // add r0, sp, #0xc
     // str r0, [sp, #4]
-    // ldr r0, [r5, #4]
-    // ldr r1, [r5, #0x2c]
-    // ldr r0, [r0]
-    // ldr r2, [r5, #0x30]
     // add r3, sp, #0x1c
-    // bl ov96_021EAF78
+    ov96_021EAF78(*((u32*)*((u32*)(r0 + 4))), *((u32*)(r0 + 0x2c)), *((u32*)(r0 + 0x30)));
     // add r0, sp, #0x14
     // str r0, [sp]
     // add r0, sp, #8
     // str r0, [sp, #4]
-    // ldr r0, [r4, #4]
-    // ldr r1, [r4, #0x2c]
-    // ldr r0, [r0]
-    // ldr r2, [r4, #0x30]
     // add r3, sp, #0x10
-    // bl ov96_021EAF78
-    // ldr r0, [r5, #0x14]
-    // cmp r0, #6
-    // bne _022185F0
+    ov96_021EAF78(*((u32*)*((u32*)(r4 + 4))), *((u32*)(r4 + 0x2c)), *((u32*)(r4 + 0x30)));
     // ldr r0, [sp, #0xc]
     // add r0, #8
     // str r0, [sp, #0xc]
-    // ldr r0, [r4, #0x14]
-    // cmp r0, #6
-    // bne _022185FC
     // ldr r0, [sp, #8]
     // add r0, #8
     // str r0, [sp, #8]
@@ -96821,25 +79971,15 @@ void ov96_02218598(void) {
     // ldr r0, [sp, #8]
     // add r2, sp, #0x28
     // add r0, r1, r0
-    // lsl r4, r0, #0xc
-    // mov r0, #0
     // str r0, [sp, #0x24]
     // str r0, [sp, #0x18]
     // add r0, sp, #0x1c
     // add r1, sp, #0x10
-    // bl VEC_Subtract
+    VEC_Subtract(0);
     // add r0, sp, #0x28
-    // bl VEC_Mag
-    // cmp r0, r4
-    // bgt _02218624
-    // add sp, #0x34
-    // mov r0, #1
-    // pop {r4, r5, pc}
-    // mov r0, #0
-    // add sp, #0x34
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    VEC_Mag();
 }
+
 
 
 void ov96_0221862C(void) {
@@ -96888,6 +80028,7 @@ void ov96_0221862C(void) {
 }
 
 
+
 void ov96_02218688(void) {
     // ldr r2, [r0, #0x60]
     // lsl r1, r2, #4
@@ -96916,18 +80057,14 @@ void ov96_02218688(void) {
 }
 
 
+
 void ov96_022186B8(void) {
-    // mov r2, #0
     // ldrsh r2, [r1, r2]
-    // lsl r2, r2, #0xc
-    // str r2, [r0, #0x20]
-    // mov r2, #2
+    *((u32*)(r0 + 0x20)) = (0 << 0xc);
     // ldrsh r1, [r1, r2]
-    // lsl r1, r1, #0xc
-    // str r1, [r0, #0x24]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x24)) = (r1 << 0xc);
 }
+
 
 
 void ov96_022186CC(void) {
@@ -96993,60 +80130,21 @@ void ov96_022186CC(void) {
 }
 
 
+
 void ov96_02218744(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // bne _0221874E
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x14]
-    // cmp r0, #0
-    // bne _02218758
-    // bl GF_AssertFail
-    // ldr r5, [r4, #0x14]
-    // mov r0, #0
-    // add r2, r0, #0
-    // add r3, r0, #0
-    // cmp r5, #0xa
-    // beq _0221876E
-    // ldr r1, [r4, #0x60]
-    // lsl r1, r1, #5
-    // lsr r1, r1, #0x1f
-    // bne _0221876E
-    // mov r3, #1
-    // cmp r3, #0
-    // beq _02218778
-    // cmp r5, #4
-    // beq _02218778
-    // mov r2, #1
-    // cmp r2, #0
-    // beq _02218782
-    // cmp r5, #3
-    // beq _02218782
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)(r4 + 0x14)));
 }
+
 
 
 void ov96_02218784(void) {
-    // push {r4, lr}
-    // add r4, r1, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // mov r1, #0x62
-    // lsl r1, r1, #2
+    PokeathlonCourse_GetHeapAllocPtr4();
     // add r1, r0, r1
-    // lsl r0, r4, #2
-    // mov r2, #0
     // add r1, r1, r0
-    // add r0, r2, #0
-    // add r2, r2, #1
     // strb r0, [r1]
-    // add r1, r1, #1
-    // cmp r2, #4
-    // blt _0221879A
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022187A8(void) {
@@ -97237,6 +80335,7 @@ void ov96_022187A8(void) {
 }
 
 
+
 void ov96_02218934(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x3c
@@ -97368,11 +80467,10 @@ void ov96_02218934(void) {
 }
 
 
+
 void ov96_02218A50(void) {
-    *((u32*)(*((u32*)(r0 + 4)) + 8)) = *((u32*)(*((u32*)(*((u32*)(r0 + 4)) + 4)) + 8));
-    ov96_02219398(*((u32*)(*((u32*)(*((u32*)(r0 + 4)) + 4)) + 8)), *((u32*)(r0 + 4)));
-    ov96_02218A68(r4);
 }
+
 
 
 void ov96_02218A68(void) {
@@ -97441,31 +80539,18 @@ void ov96_02218A68(void) {
 }
 
 
+
 void ov96_02218AF0(void) {
-    // ldr r1, [r0, #0x14]
     // sub r1, #9
-    // cmp r1, #2
-    // bls _02218B1A
-    // ldr r2, [r0, #0x50]
-    // cmp r2, #0
-    // bgt _02218B04
-    // mov r1, #0
-    // str r1, [r0, #0x54]
-    // bx lr
-    // ldr r1, [r0, #0x54]
+    *((u32*)(r0 + 0x54)) = 0;
     // sub r1, r2, r1
-    // str r1, [r0, #0x50]
+    *((u32*)(r0 + 0x50)) = *((u32*)(r0 + 0x54));
     // bpl _02218B10
-    // mov r1, #0
-    // str r1, [r0, #0x50]
-    // mov r1, #2
-    // ldr r2, [r0, #0x54]
-    // lsl r1, r1, #0xc
+    *((u32*)(r0 + 0x50)) = 0;
     // add r1, r2, r1
-    // str r1, [r0, #0x54]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(r0 + 0x54)) = (2 << 0xc);
 }
+
 
 
 void ov96_02218B1C(void) {
@@ -97784,6 +80869,7 @@ void ov96_02218B1C(void) {
 }
 
 
+
 void ov96_02218DF8(void) {
     // push {r4, r5, lr}
     // sub sp, #0xc
@@ -97875,52 +80961,27 @@ void ov96_02218DF8(void) {
 }
 
 
+
 void ov96_02218EB8(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r4, r0, #0
-    // ldr r0, [r4, #0x14]
-    // mov r1, #1
-    // cmp r0, #7
-    // beq _02218ECC
-    // cmp r0, #6
-    // beq _02218ECC
-    // mov r1, #0
-    // cmp r1, #0
-    // bne _02218ED4
-    // bl GF_AssertFail
+    GF_AssertFail(*((u32*)(r0 + 0x14)), 0);
     // add r3, sp, #0
-    // mov r0, #0
     // str r0, [r3]
-    // str r0, [r3, #4]
-    // str r0, [r3, #8]
-    // add r2, r4, #0
+    *((u32*)(r3 + 4)) = 0;
+    *((u32*)(r3 + 8)) = 0;
     // ldmia r3!, {r0, r1}
     // add r2, #0x44
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // add r3, r4, #0
     // str r0, [r2]
     // add r3, #0x2c
-    // add r2, r4, #0
     // ldmia r3!, {r0, r1}
     // add r2, #0x20
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
-    // mov r1, #1
     // str r0, [r2]
-    // add r0, r4, #0
-    // bl ov96_02218578
-    // add r0, r4, #0
-    // bl ov96_02218934
-    // cmp r0, #0
-    // beq _02218F12
-    // add r0, r4, #0
-    // bl ov96_02219030
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov96_02218578(r4, 1, r4, r4);
+    ov96_02218934(r4);
+    ov96_02219030(r4);
 }
+
 
 
 void ov96_02218F18(void) {
@@ -97954,6 +81015,7 @@ void ov96_02218F18(void) {
     // _02218F54: .word 0x00000B33
     // TODO: decompile
 }
+
 
 
 void ov96_02218F58(void) {
@@ -98017,55 +81079,32 @@ void ov96_02218F58(void) {
 }
 
 
+
 void ov96_02218FD4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r1, #0xc
-    // bl ov96_02218578
-    // add r0, r4, #0
-    // add r2, r4, #0
-    // mov r1, #0xa
+    ov96_02218578(0xc);
     // add r0, #0x5a
     // strb r1, [r0]
-    // mov r0, #0
-    // str r0, [r4, #0x50]
+    *((u32*)(r4 + 0x50)) = 0;
     // add r2, #0x2c
     // ldmia r2!, {r0, r1}
     // add r4, #0x20
     // stmia r4!, {r0, r1}
-    // ldr r0, [r2]
     // str r0, [r4]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02218FFC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4, #4]
-    // ldr r0, [r1, #8]
-    // ldr r1, [r1, #4]
-    // ldr r1, [r1, #8]
-    // bl FX_Div
-    // mov r1, #1
-    // lsl r1, r1, #0xc
+    FX_Div(*((u32*)(*((u32*)(r0 + 4)) + 8)), *((u32*)(*((u32*)(*((u32*)(r0 + 4)) + 4)) + 8)));
     // sub r1, r1, r0
-    // mov r0, #0xa
     // mul r0, r1
-    // sub r0, r0, #3
     // bpl _0221901C
-    // mov r0, #0
     // asr r1, r0, #0xc
-    // add r0, r4, #0
     // add r0, #0x58
     // strb r1, [r0]
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl ov96_02218578
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_02218578(r4, 2);
 }
+
 
 
 void ov96_02219030(void) {
@@ -98177,6 +81216,7 @@ void ov96_02219030(void) {
 }
 
 
+
 void ov96_0221910C(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -98230,243 +81270,112 @@ void ov96_0221910C(void) {
 }
 
 
+
 void ov96_02219174(void) {
-    // ldr r3, [r0, #4]
-    // ldr r2, [r3, #8]
     // sub r1, r2, r1
-    // str r1, [r3, #8]
-    // ldr r1, [r0, #4]
-    // ldr r0, [r1, #8]
-    // cmp r0, #0
-    // bge _02219188
-    // mov r0, #0
-    // str r0, [r1, #8]
-    // bx lr
-    // TODO: decompile
+    *((u32*)(*((u32*)(r0 + 4)) + 8)) = r1;
+    *((u32*)(*((u32*)(r0 + 4)) + 8)) = 0;
 }
+
 
 
 void ov96_0221918C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x84
     // str r0, [sp]
-    // mov r0, #0
     // add r3, sp, #0xc
-    // add r1, r0, #0
-    // mov r2, #7
     // stmia r3!, {r0, r1}
     // stmia r3!, {r0, r1}
-    // sub r2, r2, #1
-    // bne _0221919A
     // stmia r3!, {r0, r1}
     // add r0, sp, #0xc
-    // mov r1, #0xaa
-    // mov r2, #9
-    // bl ReadWholeNarcMemberByIdPair
-    // mov r0, #0
+    ReadWholeNarcMemberByIdPair(0, 0xaa, 9);
     // str r0, [sp, #4]
     // ldr r0, [sp, #4]
-    // mov r6, #0x3f
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
-    // mov r7, #0
-    // lsl r6, r6, #0x18
     // str r0, [sp, #8]
     // ldr r0, [sp]
     // ldr r1, [sp, #4]
-    // add r2, r7, #0
-    // bl ov96_021E60D8
-    // add r4, r0, #0
-    // lsl r2, r7, #0x18
+    ov96_021E60D8(((0 << 0x18) >> 0x18), 0);
     // ldr r0, [sp]
     // ldr r1, [sp, #8]
-    // lsr r2, r2, #0x18
-    // bl ov96_0221935C
-    // add r5, r0, #0
+    ov96_0221935C(((r7 << 0x18) >> 0x18));
     // ldrb r0, [r4]
-    // cmp r0, #5
-    // blo _022191E4
-    // bl GF_AssertFail
-    // ldrb r0, [r4, #3]
-    // cmp r0, #5
-    // blo _022191EE
-    // bl GF_AssertFail
-    // ldrb r0, [r4, #1]
-    // cmp r0, #5
-    // blo _022191F8
-    // bl GF_AssertFail
-    // ldrb r0, [r4, #2]
-    // cmp r0, #5
-    // blo _02219202
-    // bl GF_AssertFail
+    GF_AssertFail();
+    GF_AssertFail(*((u8*)(r4 + 3)));
+    GF_AssertFail(*((u8*)(r4 + 1)));
+    GF_AssertFail(*((u8*)(r4 + 2)));
     // ldrb r0, [r4]
-    // lsl r1, r0, #2
     // add r0, sp, #0xc
     // ldr r0, [r0, r1]
-    // cmp r0, #0
-    // ble _0221921E
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // bl _fadd
-    // b _0221922A
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r6, #0
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0xa
-    // bl _s32_div_f
+    _fflt((r0 << 0xc), (r0 << 2));
+    _fadd(r6, r0);
+    _fflt((r0 << 0xc));
+    _fsub(r6);
+    _ffix();
+    _s32_div_f(0xa);
     // str r0, [r5]
     // ldrb r0, [r4]
-    // lsl r1, r0, #2
     // add r0, sp, #0xc
     // add r0, r0, r1
-    // ldr r0, [r0, #0x14]
-    // cmp r0, #0
-    // ble _02219254
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // bl _fadd
-    // b _02219260
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r6, #0
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // str r0, [r5, #4]
-    // ldrb r0, [r4, #3]
-    // lsl r1, r0, #2
+    _fflt((*((u32*)(r0 + 0x14)) << 0xc), (r0 << 2));
+    _fadd(r6, r0);
+    _fflt((r0 << 0xc));
+    _fsub(r6);
+    _ffix();
+    _s32_div_f(0xa);
+    *((u32*)(r5 + 4)) = r0;
     // add r0, sp, #0xc
     // add r0, r0, r1
-    // ldr r0, [r0, #0x28]
-    // cmp r0, #0
-    // ble _0221928A
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // bl _fadd
-    // b _02219296
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r6, #0
-    // bl _fsub
-    // bl _ffix
-    // str r0, [r5, #8]
-    // ldrb r0, [r4, #1]
-    // lsl r1, r0, #2
+    _fflt((*((u32*)(*((u8*)(r4 + 3)) + 0x28)) << 0xc), (*((u8*)(r4 + 3)) << 2));
+    _fadd(r6, r0);
+    _fflt((r0 << 0xc));
+    _fsub(r6);
+    _ffix();
+    *((u32*)(r5 + 8)) = r0;
     // add r0, sp, #0xc
     // add r0, r0, r1
-    // ldr r0, [r0, #0x3c]
-    // cmp r0, #0
-    // ble _022192BA
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // bl _fadd
-    // b _022192C6
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r6, #0
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // str r0, [r5, #0xc]
-    // ldrb r0, [r4, #2]
-    // lsl r1, r0, #2
+    _fflt((*((u32*)(*((u8*)(r4 + 1)) + 0x3c)) << 0xc), (*((u8*)(r4 + 1)) << 2));
+    _fadd(r6, r0);
+    _fflt((r0 << 0xc));
+    _fsub(r6);
+    _ffix();
+    _s32_div_f(0xa);
+    *((u32*)(r5 + 0xc)) = r0;
     // add r0, sp, #0xc
     // add r0, r0, r1
-    // ldr r0, [r0, #0x64]
-    // cmp r0, #0
-    // ble _022192F0
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // bl _fadd
-    // b _022192FC
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r6, #0
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // str r0, [r5, #0x10]
-    // ldrb r0, [r4, #2]
-    // lsl r1, r0, #2
+    _fflt((*((u32*)(*((u8*)(r4 + 2)) + 0x64)) << 0xc), (*((u8*)(r4 + 2)) << 2));
+    _fadd(r6, r0);
+    _fflt((r0 << 0xc));
+    _fsub(r6);
+    _ffix();
+    _s32_div_f(0xa);
+    *((u32*)(r5 + 0x10)) = r0;
     // add r0, sp, #0xc
     // add r0, r0, r1
-    // ldr r0, [r0, #0x64]
-    // cmp r0, #0
-    // ble _02219326
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // add r0, r6, #0
-    // bl _fadd
-    // b _02219332
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r6, #0
-    // bl _fsub
-    // bl _ffix
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // str r0, [r5, #0x14]
-    // ldrb r0, [r4, #2]
-    // add r7, r7, #1
-    // cmp r7, #3
-    // strb r0, [r5, #0x18]
-    // bge _0221934A
-    // b _022191C0
+    _fflt((*((u32*)(*((u8*)(r4 + 2)) + 0x64)) << 0xc), (*((u8*)(r4 + 2)) << 2));
+    _fadd(r6, r0);
+    _fflt((r0 << 0xc));
+    _fsub(r6);
+    _ffix();
+    _s32_div_f(0xa);
+    *((u32*)(r5 + 0x14)) = r0;
+    *((u8*)(r5 + 0x18)) = *((u8*)(r4 + 2));
     // ldr r0, [sp, #4]
-    // add r0, r0, #1
     // str r0, [sp, #4]
-    // cmp r0, #4
-    // bge _02219356
-    // b _022191B2
-    // add sp, #0x84
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221935C(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r1, #0
-    // add r6, r2, #0
-    // bl PokeathlonCourse_GetHeapAllocPtr4
-    // add r4, r0, #0
-    // bne _0221936E
-    // bl GF_AssertFail
-    // cmp r5, #4
-    // blo _02219376
-    // bl GF_AssertFail
-    // cmp r6, #3
-    // blo _0221937E
-    // bl GF_AssertFail
-    // lsl r0, r5, #1
+    PokeathlonCourse_GetHeapAllocPtr4();
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // add r0, r5, r0
     // add r1, r6, r0
-    // mov r0, #0x1c
     // add r4, #0x30
     // mul r0, r1
     // add r4, r4, r0
-    // bne _02219392
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(0x1c);
 }
+
 
 
 void ov96_02219398(void) {
@@ -98498,6 +81407,7 @@ void ov96_02219398(void) {
 }
 
 
+
 void ov96_022193CC(void) {
     // cmp r1, #0
     // beq _022193D4
@@ -98514,6 +81424,7 @@ void ov96_022193CC(void) {
 }
 
 
+
 void ov96_022193E4(void) {
     // ldr r3, _022193F0 ; =AddWindow
     // add r1, r0, #0
@@ -98525,6 +81436,7 @@ void ov96_022193E4(void) {
     // _022193F4: .word ov96_0221D6A4
     // TODO: decompile
 }
+
 
 
 void ov96_022193F8(void) {
@@ -98576,57 +81488,18 @@ void ov96_022193F8(void) {
 }
 
 
+
 void ov96_02219460(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r1, #0
-    // ldr r1, [r0, #4]
-    // add r4, r0, #0
-    // ldr r1, [r1, #8]
-    // add r7, r2, #0
     // asr r1, r1, #0xc
     // add r4, #0x5f
-    // cmp r1, #0x1e
-    // bge _02219478
-    // mov r5, #1
-    // b _0221947A
-    // mov r5, #0
-    // bl ov96_0221862C
-    // cmp r0, #0
-    // beq _0221948E
-    // cmp r5, #0
-    // beq _0221948A
-    // mov r0, #1
-    // b _02219490
-    // mov r0, #0
-    // b _02219490
-    // mov r0, #3
-    // cmp r7, #0
-    // bne _02219498
+    ov96_0221862C(*((u32*)(*((u32*)(r0 + 4)) + 8)));
     // strb r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r1, [r6]
-    // lsl r2, r1, #0x11
-    // lsr r2, r2, #0x1f
-    // beq _022194BA
-    // cmp r0, #1
-    // bhi _022194AA
-    // mov r0, #2
     // strb r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // cmp r0, #3
-    // bne _022194B4
-    // mov r0, #4
     // strb r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // pop {r3, r4, r5, r6, r7, pc}
-    // lsl r1, r1, #0x10
-    // lsr r1, r1, #0x1f
-    // bne _022194C2
+    GF_AssertFail(4, *((u32*)r6), ((*((u32*)r6) << 0x11) >> 0x1f));
     // strb r0, [r4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022194C4(void) {
@@ -98746,465 +81619,204 @@ void ov96_022194C4(void) {
 }
 
 
+
 void ov96_022195C8(void) {
-    ov96_02219C30();
-    ov96_022196E4(r4, 0x3c);
-    ov96_02219A5C(r4, 0);
-    ov96_02219B30(r4);
 }
+
 
 
 void ov96_022195E8(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // bne _022195F2
-    // bl GF_AssertFail
-    // ldr r0, [r6, #0x24]
-    // bl NARC_Delete
-    // mov r4, #0
-    // add r5, r6, #0
-    // add r0, r5, #0
+    GF_AssertFail();
+    NARC_Delete(*((u32*)(r6 + 0x24)));
     // add r0, #0xb0
-    // ldr r0, [r0]
-    // bl String_Delete
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #3
-    // blt _022195FC
-    // ldr r0, [r6, #0x28]
-    // bl Heap_Free
-    // add r4, r6, #0
-    // mov r5, #0
+    String_Delete(*((u32*)r6));
+    Heap_Free(*((u32*)(r6 + 0x28)));
     // add r4, #0x30
-    // add r0, r4, #0
-    // bl RemoveWindow
-    // add r5, r5, #1
+    RemoveWindow(r6);
     // add r4, #0x10
-    // cmp r5, #3
-    // blt _0221961A
-    // mov r5, #0
-    // add r4, r6, #0
-    // ldr r0, [r4, #0x60]
-    // cmp r0, #0
-    // bne _02219636
-    // bl GF_AssertFail
-    // ldr r0, [r4, #0x60]
-    // bl Sprite_DeleteAndFreeResources
-    // add r5, r5, #1
-    // add r4, r4, #4
-    // cmp r5, #0x12
-    // blt _0221962C
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail(*((u32*)(r6 + 0x60)));
+    Sprite_DeleteAndFreeResources(*((u32*)(r4 + 0x60)));
+    Heap_Free(r6);
 }
+
 
 
 void ov96_0221964C(void) {
-    ManagedSprite_SetAnimateFlag(0);
 }
+
 
 
 void ov96_0221966C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
     // str r1, [sp]
-    // add r6, r0, #0
-    // add r5, r3, #0
     // str r2, [sp, #4]
-    // cmp r6, #0
-    // bne _02219680
-    // bl GF_AssertFail
+    GF_AssertFail();
     // ldr r0, [sp]
-    // cmp r0, #4
-    // blo _0221968A
-    // bl GF_AssertFail
-    // mov r7, #0
-    // add r4, r7, #0
-    // ldrb r0, [r5, #1]
-    // add r1, r7, #6
-    // lsl r0, r0, #2
+    GF_AssertFail();
     // add r0, r6, r0
     // add r0, #0x88
-    // ldr r0, [r0]
-    // bl ManagedSprite_SetAnimNoRestart
-    // cmp r4, #3
-    // beq _022196AC
+    ManagedSprite_SetAnimNoRestart(*((u32*)(*((u8*)(r5 + 1)) << 2)), (0 + 6));
     // ldrb r1, [r5]
-    // ldrb r0, [r5, #2]
-    // cmp r1, r0
-    // beq _022196AC
-    // add r7, r4, #1
-    // add r4, r4, #1
-    // add r5, r5, #2
-    // cmp r4, #4
-    // blt _0221968E
-    // ldr r0, [r6]
-    // bl ov96_021E5F24
+    ov96_021E5F24(*((u32*)r6));
     // ldr r1, [sp]
-    // cmp r1, r0
-    // bne _022196DE
-    // add r0, r6, #0
     // add r0, #0xc2
     // ldrh r1, [r0]
     // ldr r0, [sp, #4]
-    // cmp r0, r1
-    // beq _022196DE
     // ldr r1, [sp, #4]
-    // add r0, r6, #0
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02219A5C
+    ov96_02219A5C(r6, ((r1 << 0x18) >> 0x18));
     // ldr r0, [sp, #4]
     // add r6, #0xc2
     // strh r0, [r6]
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_022196E4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r4, r1, #0
-    // add r6, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r5, r0, #0x18
-    // add r0, r5, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
+    _s32_div_f(r1, 0x64);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 0xa);
     // str r0, [sp, #4]
-    // add r0, r5, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r0, r0, #0x18
+    _s32_div_f(r5, 0xa);
     // str r0, [sp]
-    // cmp r4, #0xa
-    // blt _0221971C
-    // cmp r4, #0x37
-    // ble _02219720
-    // mov r1, #1
-    // b _02219722
-    // mov r1, #0
-    // add r0, r6, #0
     // add r0, #0xc4
     // str r1, [r0]
-    // mov r4, #0
-    // add r5, r6, #0
-    // mov r7, #1
-    // add r0, r6, #0
     // add r0, #0xc4
-    // ldr r0, [r0]
-    // cmp r0, #0
-    // bne _0221973C
-    // add r1, r7, #0
-    // b _0221973E
-    // mov r1, #0
-    // add r0, r5, #0
     // add r0, #0x88
-    // ldr r0, [r0]
-    // bl ManagedSprite_SetDrawFlag
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _0221972E
-    // add r0, r6, #0
+    ManagedSprite_SetDrawFlag(*((u32*)r6), 0);
     // add r0, #0xa8
     // ldr r1, [sp, #4]
-    // ldr r0, [r0]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
+    Sprite_SetAnimCtrlSeq(*((u32*)r6), (r1 + 1));
     // add r6, #0xac
     // ldr r1, [sp]
-    // ldr r0, [r6]
-    // add r1, r1, #1
-    // bl Sprite_SetAnimCtrlSeq
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Sprite_SetAnimCtrlSeq(*((u32*)r6), (r1 + 1));
 }
+
 
 
 void ov96_02219770(void) {
-    ManagedSprite_SetDrawFlag();
-    ManagedSprite_SetDrawFlag(r4);
 }
+
 
 
 void ov96_0221978C(void) {
     // add r0, #0xc2
     // ldrh r0, [r0]
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void ov96_02219794(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r2, #0
-    // bl ov96_021E5F24
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
-    // add r0, r4, #1
-    // mov r1, #3
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r6, r0, #0x18
-    // add r0, r5, #0
+    ov96_021E5F24(*((u32*)r0));
+    _s32_div_f((r4 + 1), 3);
     // add r0, #0xc0
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _022197C8
-    // cmp r0, #1
-    // beq _02219856
-    // cmp r0, #2
-    // bne _022197C6
-    // b _0221992A
-    // b _02219936
-    // add r0, r5, #0
     // add r0, #0x9c
     // add r1, sp, #8
-    // mov r3, #0x1e
-    // ldr r0, [r0]
     // add r1, #2
     // add r2, sp, #8
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_GetPositionXYWithSubscreenOffset
+    ManagedSprite_GetPositionXYWithSubscreenOffset(*((u32*)r5), (0x1e << 0x10));
     // add r0, sp, #4
-    // mov r1, #4
     // ldrsh r1, [r0, r1]
-    // cmp r1, #0xd8
-    // bge _0221981C
-    // mov r0, #0x11
-    // lsl r0, r0, #4
     // sub r0, r0, r1
     // bpl _022197F0
     // neg r0, r0
     // add r2, sp, #4
-    // mov r1, #4
-    // lsl r0, r0, #0xe
     // ldrsh r3, [r2, r1]
     // asr r0, r0, #0x10
     // add r0, r3, r0
-    // strh r0, [r2, #4]
+    *((u16*)(r2 + 4)) = ((0x11 << 4) << 0xe);
     // ldrsh r0, [r2, r1]
-    // cmp r0, #0xd8
-    // ble _02219808
-    // mov r0, #0xd8
-    // strh r0, [r2, #4]
+    *((u16*)(r2 + 4)) = 0xd8;
     // add r4, sp, #4
-    // mov r2, #6
-    // mov r3, #4
     // ldrsh r2, [r4, r2]
     // ldrsh r3, [r4, r3]
-    // add r0, r5, #0
-    // mov r1, #0xf
-    // bl ov96_02219F20
-    // b _0221993A
-    // mov r2, #0x28
-    // add r3, r2, #0
-    // strh r2, [r0, #6]
+    ov96_02219F20(r5, 0xf, 6, 4);
+    *((u16*)(r0 + 6)) = 0x28;
     // sub r3, #0x50
-    // strh r3, [r0, #4]
-    // add r0, r5, #0
-    // mov r1, #0xf
-    // bl ov96_02219F20
+    *((u16*)(r0 + 4)) = 0x28;
+    ov96_02219F20(r5, 0xf, 0x28, 0x28);
     // str r4, [sp]
-    // add r2, r5, #0
     // add r2, #0x9c
-    // ldr r0, [r5]
-    // ldr r1, [r5, #4]
-    // ldr r2, [r2]
-    // add r3, r7, #0
-    // bl ov96_02219DA8
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl ov96_02219EE0
-    // add r0, r5, #0
+    ov96_02219DA8(*((u32*)r5), *((u32*)(r5 + 4)), *((u32*)r5), r7);
+    ov96_02219EE0(r5, r6);
     // add r0, #0xc0
     // ldrb r0, [r0]
     // add r5, #0xc0
-    // add r0, r0, #1
     // strb r0, [r5]
-    // b _0221993A
-    // add r0, r5, #0
     // add r0, #0x98
     // add r1, sp, #4
-    // mov r3, #0x1e
-    // ldr r0, [r0]
     // add r1, #2
     // add r2, sp, #4
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_GetPositionXYWithSubscreenOffset
+    ManagedSprite_GetPositionXYWithSubscreenOffset(*((u32*)r5), (0x1e << 0x10));
     // add r1, sp, #4
-    // mov r0, #0
     // ldrsh r0, [r1, r0]
-    // mov r1, #0x88
     // sub r2, r1, r0
     // bpl _02219878
     // neg r2, r2
-    // lsl r1, r2, #1
     // add r2, r2, r1
     // asr r1, r2, #1
-    // lsr r1, r1, #0x1e
     // add r1, r2, r1
-    // lsl r1, r1, #0xe
     // asr r4, r1, #0x10
-    // cmp r0, #0x88
-    // bgt _022198D4
-    // cmp r4, #0
-    // bne _02219890
-    // mov r4, #1
     // add r6, sp, #4
-    // mov r3, #0
     // ldrsh r0, [r6, r3]
-    // mov r2, #2
-    // mov r1, #0xe
     // add r0, r0, r4
     // strh r0, [r6]
     // ldrsh r2, [r6, r2]
     // ldrsh r3, [r6, r3]
-    // add r0, r5, #0
-    // bl ov96_02219F20
-    // add r0, r5, #0
+    ov96_02219F20(r5, 0xe, 2, 0);
     // add r0, #0x9c
     // add r1, sp, #4
-    // mov r3, #0x1e
-    // ldr r0, [r0]
     // add r1, #2
     // add r2, sp, #4
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_GetPositionXYWithSubscreenOffset
-    // mov r3, #0
+    ManagedSprite_GetPositionXYWithSubscreenOffset(*((u32*)r5), (0x1e << 0x10));
     // ldrsh r0, [r6, r3]
-    // mov r2, #2
-    // mov r1, #0xf
     // add r0, r0, r4
     // strh r0, [r6]
     // ldrsh r2, [r6, r2]
     // ldrsh r3, [r6, r3]
-    // add r0, r5, #0
-    // bl ov96_02219F20
-    // b _0221993A
-    // add r0, r5, #0
+    ov96_02219F20(r5, 0xf, 2, 0);
     // add r0, #0x98
-    // ldr r2, [r0]
-    // add r0, r5, #0
     // add r0, #0x9c
-    // ldr r1, [r0]
-    // add r0, r5, #0
     // add r0, #0x98
     // str r1, [r0]
-    // add r0, r5, #0
     // add r0, #0x9c
     // str r2, [r0]
-    // add r0, r5, #0
     // add r0, #0xa0
-    // ldr r2, [r0]
-    // add r0, r5, #0
     // add r0, #0xa4
-    // ldr r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xa0
     // str r1, [r0]
-    // add r0, r5, #0
     // add r0, #0xa4
     // str r2, [r0]
-    // add r0, r5, #0
-    // mov r1, #0xe
-    // mov r2, #0x28
-    // mov r3, #0x30
-    // bl ov96_02219F20
-    // add r0, r5, #0
-    // mov r1, #0xf
-    // mov r2, #0x28
-    // mov r3, #0x88
-    // bl ov96_02219F20
-    // add r0, r5, #0
+    ov96_02219F20(r5, 0xe, 0x28, 0x30);
+    ov96_02219F20(r5, 0xf, 0x28, 0x88);
     // add r0, #0xc0
     // ldrb r0, [r0]
     // add r5, #0xc0
-    // add r0, r0, #1
     // strb r0, [r5]
-    // b _0221993A
-    // mov r0, #0
     // add r5, #0xc0
     // strb r0, [r5]
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r4, r5, r6, r7, pc}
-    // bl GF_AssertFail
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail(1);
 }
+
 
 
 void ov96_02219940(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // beq _0221994C
-    // cmp r4, #4
-    // blo _02219950
-    // bl GF_AssertFail
+    GF_AssertFail();
     // add r5, #0xbc
     // ldrsb r0, [r5, r4]
-    // add r0, r0, #1
     // strb r0, [r5, r4]
     // ldrsb r0, [r5, r4]
-    // cmp r0, #0xc
-    // ble _02219966
-    // mov r0, #0
     // strb r0, [r5, r4]
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221996C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // cmp r5, #0
-    // bne _0221997E
-    // bl GF_AssertFail
-    // cmp r4, #4
-    // blo _02219986
-    // bl GF_AssertFail
-    // cmp r6, #3
-    // blo _0221998E
-    // bl GF_AssertFail
-    // cmp r7, #0
-    // bne _0221999C
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // add r2, r6, #0
-    // bl ov96_02219DD0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // add r2, r7, #0
-    // bl ov96_02219F50
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
+    ov96_02219DD0(r5, r4, r6);
+    ov96_02219F50(r5, r4, r7);
 }
+
 
 
 void ov96_022199A8(void) {
@@ -99255,6 +81867,7 @@ void ov96_022199A8(void) {
 }
 
 
+
 void ov96_02219A08(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -99296,103 +81909,49 @@ void ov96_02219A08(void) {
 }
 
 
+
 void ov96_02219A5C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0x64
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(r1, 0x64);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #3]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 3)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
     // strb r1, [r0]
-    // mov r0, #0x64
     // mul r0, r4
     // sub r0, r6, r0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    _s32_div_f(0x64, 0xa);
+    _s32_div_f(((r0 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #4]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 4)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #1]
-    // add r0, r6, #0
-    // mov r1, #0xa
-    // bl _s32_div_f
-    // lsl r0, r1, #0x18
-    // lsr r4, r0, #0x18
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r1, #2
+    *((u8*)(r0 + 1)) = (r0 << 3);
+    _s32_div_f(r6, 0xa);
+    _s32_div_f(((r1 << 0x18) >> 0x18), 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #5]
-    // add r0, r4, #0
-    // mov r1, #5
-    // bl _s32_div_f
-    // lsl r1, r0, #3
+    *((u8*)(r0 + 5)) = (r1 << 2);
+    _s32_div_f(r4, 5);
     // add r0, sp, #0x1c
-    // strb r1, [r0, #2]
-    // mov r4, #0
-    // mov r6, #4
-    // mov r7, #8
+    *((u8*)(r0 + 2)) = (r0 << 3);
     // str r6, [sp]
     // str r7, [sp, #4]
-    // ldr r0, [r5, #0x2c]
-    // lsl r2, r4, #2
     // add r0, #0xc
     // str r0, [sp, #8]
     // add r0, sp, #0x1c
     // add r0, #3
     // ldrb r0, [r0, r4]
     // add r2, #0x10
-    // lsl r2, r2, #0x18
     // str r0, [sp, #0xc]
     // add r0, sp, #0x1c
     // ldrb r0, [r0, r4]
-    // mov r1, #6
-    // lsr r2, r2, #0x18
     // str r0, [sp, #0x10]
-    // mov r0, #0x14
     // str r0, [sp, #0x14]
-    // mov r0, #0x10
     // str r0, [sp, #0x18]
-    // ldr r0, [r5, #0x14]
-    // mov r3, #0xb
-    // bl CopyRectToBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x18
-    // lsr r4, r0, #0x18
-    // cmp r4, #3
-    // blo _02219AE6
-    // ldr r0, [r5, #0x14]
-    // mov r1, #6
-    // bl ScheduleBgTilemapBufferTransfer
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CopyRectToBgTilemapRect(*((u32*)(r5 + 0x14)), 6, (((0 << 2) << 0x18) >> 0x18), 0xb);
+    ScheduleBgTilemapBufferTransfer(*((u32*)(r5 + 0x14)), 6);
 }
+
 
 
 void ov96_02219B30(void) {
@@ -99464,9 +82023,10 @@ void ov96_02219B30(void) {
 }
 
 
+
 void ov96_02219BC4(void) {
-    ov96_02219BDC(0);
 }
+
 
 
 void ov96_02219BDC(void) {
@@ -99508,6 +82068,7 @@ void ov96_02219BDC(void) {
     // _02219C2C: .word 0x000F0E00
     // TODO: decompile
 }
+
 
 
 void ov96_02219C30(void) {
@@ -99688,53 +82249,28 @@ void ov96_02219C30(void) {
 }
 
 
+
 void ov96_02219DA8(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
-    // add r4, r2, #0
     // add r2, sp, #0x10
-    // ldrb r2, [r2, #0x10]
-    // add r5, r1, #0
-    // add r1, r3, #0
     // add r3, sp, #4
-    // bl ov96_021E6168
-    // mov r2, #0
-    // add r0, r4, #0
+    ov96_021E6168(r3, *((u8*)(r2 + 0x10)));
     // add r1, sp, #4
-    // add r3, r2, #0
     // str r5, [sp]
-    // bl ov96_021EEBE4
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    ov96_021EEBE4(r4, 0, 0);
 }
+
 
 
 void ov96_02219DD0(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x18
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r0, r4, #2
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r6, [r0, #0x60]
-    // ldr r0, [r5]
     // add r3, sp, #8
-    // bl ov96_021E6168
-    // lsl r0, r4, #9
+    ov96_021E6168(*((u32*)r0));
     // str r0, [sp]
-    // ldr r0, [r5, #4]
     // add r1, sp, #8
     // str r0, [sp, #4]
-    // ldrh r2, [r5, #0x20]
-    // ldr r3, [r5, #0x24]
-    // add r0, r6, #0
-    // bl ov96_021EECB8
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov96_021EECB8(r6, *((u16*)(r5 + 0x20)), *((u32*)(r5 + 0x24)));
 }
+
 
 
 void ov96_02219E00(void) {
@@ -99785,300 +82321,138 @@ void ov96_02219E00(void) {
 }
 
 
+
 void ov96_02219E60(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
-    // add r6, r0, #0
-    // mov r0, #0x14
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // ldr r0, [r6, #8]
-    // ldr r1, [r6, #0xc]
-    // mov r2, #0x72
-    // mov r3, #0xb4
-    // bl ov96_02219E00
-    // mov r1, #0xe
-    // str r0, [r6, #0x64]
-    // bl ManagedSprite_SetPaletteOverride
-    // mov r7, #0
-    // add r4, r6, #0
-    // mov r5, #0x86
-    // mov r1, #0
+    ov96_02219E00(*((u32*)(r0 + 8)), *((u32*)(r0 + 0xc)), 0x72, 0xb4);
+    *((u32*)(r6 + 0x64)) = r0;
+    ManagedSprite_SetPaletteOverride(0xe);
     // add r0, sp, #8
     // str r1, [r0]
-    // str r1, [r0, #4]
-    // str r1, [r0, #8]
-    // ldr r0, [r6, #0xc]
-    // bl SpriteManager_GetSpriteList
-    // add r1, r0, #0
-    // ldr r0, [r6, #0x10]
-    // ldr r3, [r6, #4]
-    // mov r2, #1
-    // bl ov96_021EA374
-    // add r1, r4, #0
+    *((u32*)(r0 + 4)) = 0;
+    *((u32*)(r0 + 8)) = 0;
+    SpriteManager_GetSpriteList(*((u32*)(r6 + 0xc)), 0);
+    ov96_021EA374(*((u32*)(r6 + 0x10)), r0, 1, *((u32*)(r6 + 4)));
     // add r1, #0xa8
     // str r0, [r1]
-    // lsl r0, r5, #0xc
     // str r0, [sp, #8]
-    // mov r0, #0x2d
-    // lsl r0, r0, #0xe
     // str r0, [sp, #0xc]
-    // mov r0, #0
     // str r0, [sp, #0x10]
-    // add r0, r4, #0
     // add r0, #0xa8
-    // ldr r0, [r0]
     // add r1, sp, #8
-    // bl Sprite_SetMatrix
-    // add r0, r4, #0
+    Sprite_SetMatrix(*((u32*)r4), r4);
     // add r0, #0xa8
-    // ldr r0, [r0]
-    // mov r1, #1
-    // bl Sprite_SetDrawFlag
-    // add r7, r7, #1
-    // add r4, r4, #4
+    Sprite_SetDrawFlag(*((u32*)r4), 1);
     // add r5, #0x10
-    // cmp r7, #2
-    // blt _02219E88
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02219EE0(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // add r0, r1, #1
-    // mov r1, #3
-    // bl _s32_div_f
-    // lsl r2, r1, #0x18
-    // mov r0, #1
-    // lsr r2, r2, #0x16
+    _s32_div_f((r1 + 1), 3);
     // add r2, r4, r2
     // str r0, [sp]
-    // mov r3, #2
     // str r3, [sp, #4]
     // add r2, #0xb0
-    // ldr r0, [r4, #0x1c]
-    // ldr r2, [r2]
-    // mov r1, #0
-    // bl BufferString
-    // ldr r0, [r4, #4]
-    // mov r3, #0x9a
+    BufferString(*((u32*)(r4 + 0x1c)), 0, *((u32*)((r1 << 0x18) >> 0x16)), 2);
     // str r0, [sp]
-    // add r0, r4, #0
-    // ldr r1, [r4, #0x1c]
-    // ldr r2, [r4, #0x18]
     // add r0, #0x40
-    // bl ov96_02219BC4
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    ov96_02219BC4(r4, *((u32*)(r4 + 0x1c)), *((u32*)(r4 + 0x18)), 0x9a);
 }
+
 
 
 void ov96_02219F20(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // lsl r6, r1, #2
     // add r0, r5, r6
-    // add r7, r2, #0
-    // add r4, r3, #0
-    // mov r3, #0x1e
-    // ldr r0, [r0, #0x60]
-    // add r1, r7, #0
-    // add r2, r4, #0
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r0 + 0x60)), r2, r3, (0x1e << 0x10));
     // add r0, r5, r6
     // sub r4, #0x18
-    // lsl r2, r4, #0x10
-    // mov r3, #0x1e
-    // ldr r0, [r0, #0x68]
-    // add r1, r7, #0
     // asr r2, r2, #0x10
-    // lsl r3, r3, #0x10
-    // bl ManagedSprite_SetPositionXYWithSubscreenOffset
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ManagedSprite_SetPositionXYWithSubscreenOffset(*((u32*)(r0 + 0x68)), r7, (r4 << 0x10), (0x1e << 0x10));
 }
+
 
 
 void ov96_02219F50(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // bne _02219F5E
-    // mov r1, #1
-    // b _02219F60
-    // mov r1, #0
-    // add r0, r4, #2
-    // lsl r0, r0, #2
     // add r0, r5, r0
-    // ldr r0, [r0, #0x60]
-    // bl ManagedSprite_SetDrawFlag
-    // add r0, r4, #6
-    // lsl r0, r0, #2
+    ManagedSprite_SetDrawFlag(*((u32*)(((r1 + 2) << 2) + 0x60)), 0);
     // add r0, r5, r0
-    // ldr r0, [r0, #0x60]
-    // add r1, r6, #0
-    // bl ManagedSprite_SetDrawFlag
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ManagedSprite_SetDrawFlag(*((u32*)(((r4 + 6) << 2) + 0x60)), r6);
 }
+
 
 
 void ov96_02219F7C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r4, r1, #0
     // str r0, [sp]
-    // bl PokeathlonCourse_GetParticipantCount
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // mov r1, #0x30
-    // bl Heap_Alloc
-    // mov r1, #0
-    // mov r2, #0x30
-    // add r7, r0, #0
-    // bl MI_CpuFill8
+    PokeathlonCourse_GetParticipantCount();
+    Heap_Alloc(r4, 0x30);
+    MI_CpuFill8(0, 0x30);
     // str r4, [r7]
     // ldr r0, [sp]
-    // mov r4, #0
-    // str r0, [r7, #4]
-    // mov r0, #4
+    *((u32*)(r7 + 4)) = r0;
     // sub r1, r0, r5
-    // add r0, r7, #0
     // add r0, #0x2c
     // strb r1, [r0]
-    // add r0, r7, #0
     // add r0, #0x2c
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // ble _02219FD6
-    // add r6, r7, #0
     // add r6, #8
-    // lsl r1, r5, #0x18
     // ldr r2, [sp]
-    // add r0, r6, #0
-    // lsr r1, r1, #0x18
-    // bl ov96_0221A00C
-    // add r0, r7, #0
+    ov96_0221A00C(r7, ((r5 << 0x18) >> 0x18));
     // add r0, #0x2c
     // ldrb r0, [r0]
-    // add r4, r4, #1
-    // add r5, r5, #1
     // add r6, #0xc
-    // cmp r4, r0
-    // blt _02219FBA
-    // add r0, r7, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_02219FDC(void) {
-    Heap_Free();
 }
+
 
 
 void ov96_02219FE4(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
     // add r0, #0x2c
     // ldrb r0, [r0]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _0221A00A
-    // add r5, r6, #0
     // add r5, #8
-    // add r0, r5, #0
-    // bl ov96_0221A400
-    // add r0, r6, #0
+    ov96_0221A400(r0);
     // add r0, #0x2c
     // ldrb r0, [r0]
-    // add r4, r4, #1
     // add r5, #0xc
-    // cmp r4, r0
-    // blt _02219FF6
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov96_0221A00C(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // add r5, r0, #0
-    // mov r1, #0
-    // mov r2, #0xc
-    // bl MI_CpuFill8
+    MI_CpuFill8(0, 0xc);
     // str r6, [r5]
-    // ldr r1, [r5, #8]
-    // mov r0, #3
     // bic r1, r0
-    // mov r0, #3
     // and r0, r4
     // orr r1, r0
-    // mov r0, #0xc
     // bic r1, r0
-    // str r1, [r5, #8]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 8)) = *((u32*)(r5 + 8));
 }
+
 
 
 void ov96_0221A034(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r3, r0, #0
-    // add r4, r2, #0
-    // add r0, r1, #0
-    // add r1, r3, #0
     // add r2, sp, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r1, r0, r0);
     // add r0, sp, #0
-    // bl VEC_Mag
-    // cmp r0, r4
-    // bgt _0221A056
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r3, r4, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    VEC_Mag();
 }
+
 
 
 void ov96_0221A05C(void) {
-    // push {r3, r4, lr}
-    // sub sp, #0xc
-    // add r3, r0, #0
-    // add r4, r2, #0
-    // add r0, r1, #0
-    // add r1, r3, #0
     // add r2, sp, #0
-    // bl VEC_Subtract
+    VEC_Subtract(r1, r0, r0);
     // add r0, sp, #0
-    // add r1, r0, #0
-    // bl VEC_Normalize
+    VEC_Normalize(r0);
     // add r0, sp, #0
-    // bl ov96_02215FA0
-    // cmp r4, r0
-    // bne _0221A086
-    // add sp, #0xc
-    // mov r0, #1
-    // pop {r3, r4, pc}
-    // mov r0, #0
-    // add sp, #0xc
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov96_02215FA0();
 }
+
 
 
 void ov96_0221A08C(void) {
@@ -100380,6 +82754,7 @@ void ov96_0221A08C(void) {
 }
 
 
+
 void ov96_0221A314(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #0x18
@@ -100455,219 +82830,63 @@ void ov96_0221A314(void) {
 }
 
 
+
 void ov96_0221A3AC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // bl MTRandom
-    // mov r1, #0x64
-    // bl _u32_div_f
-    // add r6, r1, #0
-    // ldr r1, [r5, #8]
-    // ldr r0, [r5]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // mov r4, #0
-    // bl ov96_02215E68
-    // cmp r0, #0xa
-    // bhs _0221A3D6
-    // mov r4, #0x64
-    // b _0221A3F4
-    // cmp r0, #0x14
-    // bhs _0221A3DE
-    // mov r4, #0x46
-    // b _0221A3F4
-    // cmp r0, #0x1e
-    // bhs _0221A3E6
-    // mov r4, #0x32
-    // b _0221A3F4
-    // cmp r0, #0x28
-    // bhs _0221A3EE
-    // mov r4, #0x1e
-    // b _0221A3F4
-    // cmp r0, #0x32
-    // bhs _0221A3F4
-    // mov r4, #0xa
-    // cmp r6, r4
-    // bge _0221A3FC
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    MTRandom();
+    _u32_div_f(0x64);
+    ov96_02215E68(*((u32*)r5), ((((*((u32*)(r5 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
 }
+
 
 
 void ov96_0221A400(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r0, #0
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02215E94
-    // cmp r0, #0
-    // beq _0221A41A
-    // b _0221A568
-    // ldr r1, [r4, #8]
-    // lsl r0, r1, #0x1a
-    // lsr r0, r0, #0x1f
-    // beq _0221A4C4
-    // lsl r0, r1, #0x1b
-    // lsr r0, r0, #0x1f
-    // bne _0221A4C4
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // ldr r0, [r4]
-    // lsr r1, r1, #0x18
-    // bl ov96_02215DBC
-    // ldrb r1, [r4, #7]
-    // ldr r0, [r4]
-    // bl ov96_02215DBC
-    // cmp r0, #3
-    // beq _0221A462
-    // ldrb r1, [r4, #7]
-    // ldr r0, [r4]
-    // bl ov96_02215E94
-    // cmp r0, #0
-    // bne _0221A462
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02215EB0
-    // cmp r0, #0
-    // beq _0221A49C
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02215DD4
-    // ldr r1, [r0]
+    ov96_02215E94(*((u32*)r0), ((((*((u32*)(r0 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
+    ov96_02215DBC(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
+    ov96_02215DBC(*((u32*)r4), *((u8*)(r4 + 7)));
+    ov96_02215E94(*((u32*)r4), *((u8*)(r4 + 7)));
+    ov96_02215EB0(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
+    ov96_02215DD4(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
     // asr r2, r1, #0xc
     // add r1, sp, #0
     // strh r2, [r1]
-    // ldr r0, [r0, #4]
     // add r2, sp, #0
     // asr r0, r0, #0xc
-    // strh r0, [r1, #2]
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02215F80
-    // ldr r1, [r4, #8]
-    // mov r0, #0x20
+    *((u16*)(*((u32*)r0) + 2)) = *((u32*)(r0 + 4));
+    ov96_02215F80(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
     // bic r1, r0
-    // str r1, [r4, #8]
-    // b _0221A4C4
-    // ldrb r1, [r4, #7]
-    // ldr r0, [r4]
-    // bl ov96_02215DD4
-    // ldr r1, [r0]
+    *((u32*)(r4 + 8)) = *((u32*)(r4 + 8));
+    ov96_02215DD4(*((u32*)r4), *((u8*)(r4 + 7)));
     // asr r2, r1, #0xc
     // add r1, sp, #0
     // strh r2, [r1]
-    // ldr r0, [r0, #4]
     // add r2, sp, #0
     // asr r0, r0, #0xc
-    // strh r0, [r1, #2]
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02215F80
-    // ldr r1, [r4, #8]
-    // lsl r0, r1, #0x1b
-    // lsr r0, r0, #0x1f
-    // beq _0221A504
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // ldr r0, [r4]
-    // lsr r1, r1, #0x18
-    // bl ov96_02215ECC
-    // cmp r0, #0
-    // beq _0221A568
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02215DBC
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl ov96_0221A314
-    // cmp r5, #3
-    // bne _0221A568
-    // ldr r1, [r4, #8]
-    // mov r0, #0x10
+    *((u16*)(*((u32*)r0) + 2)) = *((u32*)(r0 + 4));
+    ov96_02215F80(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
+    ov96_02215ECC(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
+    ov96_02215DBC(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
+    ov96_0221A314(r4);
     // bic r1, r0
-    // str r1, [r4, #8]
-    // pop {r3, r4, r5, pc}
-    // mov r0, #4
+    *((u32*)(r4 + 8)) = *((u32*)(r4 + 8));
     // ldrsb r1, [r4, r0]
-    // sub r1, r1, #1
-    // strb r1, [r4, #4]
+    *((u8*)(r4 + 4)) = (*((u32*)(r4 + 8)) - 1);
     // ldrsb r0, [r4, r0]
-    // cmp r0, #0
-    // bgt _0221A568
-    // bge _0221A518
-    // mov r0, #0
-    // strb r0, [r4, #4]
-    // mov r0, #6
+    *((u8*)(r4 + 4)) = 0;
     // ldrsb r1, [r4, r0]
-    // sub r1, r1, #1
-    // strb r1, [r4, #6]
+    *((u8*)(r4 + 6)) = ((*((u32*)(r4 + 8)) - 1) - 1);
     // ldrsb r0, [r4, r0]
-    // cmp r0, #0
-    // bgt _0221A568
-    // mov r0, #3
-    // strb r0, [r4, #6]
-    // ldr r1, [r4, #8]
-    // ldr r0, [r4]
-    // lsl r1, r1, #0x1e
-    // lsr r1, r1, #0x1e
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // bl ov96_02215ECC
-    // cmp r0, #0
-    // beq _0221A568
-    // add r0, r4, #0
-    // bl ov96_0221A08C
-    // mov r0, #5
+    *((u8*)(r4 + 6)) = 3;
+    ov96_02215ECC(*((u32*)r4), ((((*((u32*)(r4 + 8)) << 0x1e) >> 0x1e) << 0x18) >> 0x18));
+    ov96_0221A08C(r4);
     // ldrsb r1, [r4, r0]
-    // sub r1, r1, #1
-    // strb r1, [r4, #5]
+    *((u8*)(r4 + 5)) = (r1 - 1);
     // ldrsb r0, [r4, r0]
-    // cmp r0, #0
-    // bgt _0221A568
-    // add r0, r4, #0
-    // bl ov96_0221A3AC
-    // cmp r0, #0
-    // beq _0221A564
-    // ldr r1, [r4, #8]
-    // mov r0, #0x10
+    ov96_0221A3AC(r4, (r1 - 1));
     // orr r0, r1
-    // str r0, [r4, #8]
-    // mov r0, #0
-    // strb r0, [r4, #5]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 8)) = 0x10;
+    *((u8*)(r4 + 5)) = 0;
 }
+
 
 
 void ov96_0221A56C(void) {
@@ -100680,6 +82899,7 @@ void ov96_0221A56C(void) {
     // _0221A578: .word ov96_0221D9A0
     // TODO: decompile
 }
+
 
 
 void ov96_0221A57C(void) {
@@ -100714,6 +82934,7 @@ void ov96_0221A57C(void) {
 }
 
 
+
 void ov96_0221A5B8(void) {
     // push {r3, lr}
     // lsl r2, r1, #2
@@ -100728,6 +82949,7 @@ void ov96_0221A5B8(void) {
     // _0221A5D0: .word ov96_0221D9C8
     // TODO: decompile
 }
+
 
 
 void ov96_0221A5D4(void) {
@@ -100761,6 +82983,7 @@ void ov96_0221A5D4(void) {
 }
 
 
+
 void ov96_0221A61C(void) {
     // push {r4, lr}
     // bl _ffixu
@@ -100778,6 +83001,7 @@ void ov96_0221A61C(void) {
     // _0221A63C: .word 0x40690000
     // TODO: decompile
 }
+
 
 
 void ov96_0221A640(void) {
@@ -100801,32 +83025,26 @@ void ov96_0221A640(void) {
 }
 
 
+
 void ov96_0221A670(void) {
-    // push {r3, lr}
-    // lsl r1, r0, #1
     // add r0, r0, r1
-    // bl _fflt
-    // bl ov96_0221A61C
-    // pop {r3, pc}
-    // TODO: decompile
+    _fflt((r0 << 1));
+    ov96_0221A61C();
 }
+
 
 
 void ov96_0221A680(void) {
-    // push {r3, lr}
-    // lsl r1, r0, #1
     // add r0, r0, r1
-    // bl _fflt
-    // bl ov96_0221A61C
-    // pop {r3, pc}
-    // TODO: decompile
+    _fflt((r0 << 1));
+    ov96_0221A61C();
 }
+
 
 
 void ov96_0221A690(void) {
-    _ffltu();
-    ov96_0221A61C();
 }
+
 
 
 void ov96_0221A69C(void) {
@@ -100839,6 +83057,7 @@ void ov96_0221A69C(void) {
     // _0221A6AC: .word 0x3DA3D70A
     // TODO: decompile
 }
+
 
 
 void ov96_0221A6B0(void) {
@@ -100854,6 +83073,7 @@ void ov96_0221A6B0(void) {
     // _0221A6CC: .word 0x400C0000
     // TODO: decompile
 }
+
 
 
 void ov96_0221A6D0(void) {
@@ -100877,6 +83097,7 @@ void ov96_0221A6D0(void) {
 }
 
 
+
 void ov96_0221A700(void) {
     // push {r3, lr}
     // bl _ffltu
@@ -100892,15 +83113,13 @@ void ov96_0221A700(void) {
 }
 
 
+
 void ov96_0221A720(void) {
-    // push {r3, lr}
-    // lsl r1, r0, #1
     // add r0, r0, r1
-    // bl _fflt
-    // bl ov96_0221A61C
-    // pop {r3, pc}
-    // TODO: decompile
+    _fflt((r0 << 1));
+    ov96_0221A61C();
 }
+
 
 
 void ov96_0221A730(void) {
@@ -100984,4 +83203,5 @@ void ov96_0221A730(void) {
     // _0221A7D4: .word 0x40690000
     // TODO: decompile
 }
+
 

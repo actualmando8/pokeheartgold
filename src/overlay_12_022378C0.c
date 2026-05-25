@@ -208,6 +208,7 @@ void ov12_02237D00(void) {
 
 
 
+
 void ov12_02237ED0(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -239,6 +240,7 @@ void ov12_02237ED0(void) {
     // _02237F14: .word FS_OVERLAY_ID(OVY_7)
     // TODO: decompile
 }
+
 
 
 
@@ -693,6 +695,7 @@ void ov12_02237F18(void) {
 
 
 
+
 void ov12_02238358(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // bl OverlayManager_GetData
@@ -796,6 +799,7 @@ void ov12_02238358(void) {
     // _02238438: .word 0x000023FE
     // TODO: decompile
 }
+
 
 
 
@@ -1166,6 +1170,7 @@ void ov12_0223843C(void) {
 
 
 
+
 void ov12_022387AC(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x9c
@@ -1395,60 +1400,23 @@ void ov12_022387AC(void) {
 
 
 
+
 void ov12_022389B8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // bl BattleSystem_GetTerrainId
-    // add r4, r0, #0
-    // mov r0, #0x5f
-    // lsl r0, r0, #2
+    BattleSystem_GetTerrainId();
     // add r0, r5, r0
-    // add r1, r5, #0
-    // mov r2, #0
-    // add r3, r4, #0
-    // bl ov12_02265FD4
-    // mov r0, #0x63
-    // lsl r0, r0, #2
+    ov12_02265FD4((0x5f << 2), r5, 0, r0);
     // add r0, r5, r0
-    // add r1, r5, #0
-    // mov r2, #1
-    // add r3, r4, #0
-    // bl ov12_02265FD4
-    // add r0, r5, #0
-    // bl BattleSystem_GetBattleContext
+    ov12_02265FD4((0x63 << 2), r5, 1, r4);
+    BattleSystem_GetBattleContext(r5);
     // str r0, [sp]
-    // ldr r0, [r5, #0x44]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _02238A2A
-    // add r6, r5, #0
     // ldr r1, [sp]
-    // add r0, r5, #0
-    // mov r2, #2
-    // add r3, r4, #0
-    // bl ov12_022581D4
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // add r2, r7, #0
-    // bl BattleSystem_GetPartyMon
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl BattleSystem_GetMonBall
-    // add r2, r0, #0
-    // ldr r1, [r6, #0x34]
-    // add r0, r5, #0
-    // add r3, r7, #0
-    // bl ov12_02258DB0
-    // ldr r0, [r5, #0x44]
-    // add r4, r4, #1
-    // add r6, r6, #4
-    // cmp r4, r0
-    // blt _022389F4
-    // bl ov12_0223A7A0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov12_022581D4(r5, 2, 0);
+    BattleSystem_GetPartyMon(r5, r4, r0);
+    BattleSystem_GetMonBall(r5, r0);
+    ov12_02258DB0(r5, *((u32*)(r6 + 0x34)), r0, r7);
+    ov12_0223A7A0(*((u32*)(r5 + 0x44)));
 }
+
 
 
 
@@ -1457,10 +1425,12 @@ void ov12_02238A30(void) {
 
 
 
+
 void ov12_02238A64(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 
@@ -2767,59 +2737,22 @@ void ov12_02238A68(void) {
 
 
 
+
 void ov12_022395BC(void) {
-    // cmp r0, #0x69
-    // bgt _0223961A
-    // bge _0223963C
-    // cmp r0, #0x62
-    // bgt _0223960C
-    // bge _0223963C
-    // add r1, r0, #0
     // sub r1, #0x42
-    // cmp r1, #0x17
-    // bhi _02239640
     // add r1, r1, r1
     // add r1, pc
-    // ldrh r1, [r1, #6]
-    // lsl r1, r1, #0x10
     // asr r1, r1, #0x10
     // add pc, r1
     // _022395DC: ; jump table
-    // cmp r0, #0x67
-    // bgt _02239614
-    // beq _0223963C
-    // b _02239640
-    // cmp r0, #0x68
-    // beq _0223963C
-    // b _02239640
-    // cmp r0, #0x6b
-    // bgt _02239626
-    // bge _0223963C
-    // cmp r0, #0x6a
-    // beq _0223963C
-    // b _02239640
-    // cmp r0, #0x6c
-    // bgt _0223962E
-    // beq _0223963C
-    // b _02239640
-    // cmp r0, #0x70
-    // bgt _02239640
-    // cmp r0, #0x6e
-    // blt _02239640
-    // beq _0223963C
-    // cmp r0, #0x70
-    // bne _02239640
-    // mov r0, #1
-    // bx lr
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 
 void ov12_02239644(void) {
 }
+
 
 
 
@@ -2886,8 +2819,10 @@ void ov12_02239664(void) {
 
 
 
+
 void ov12_022396E8(void) {
 }
+
 
 
 
@@ -2921,6 +2856,7 @@ void ov12_022396F0(void) {
     // _0223972C: .word NNS_GfdDefaultFuncAllocPlttVram
     // TODO: decompile
 }
+
 
 
 
@@ -3006,6 +2942,7 @@ void ov12_02239730(void) {
 
 
 
+
 void ov12_022397E4(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -3026,6 +2963,7 @@ void ov12_022397E4(void) {
     // _0223980C: .word 0x00003FF8
     // TODO: decompile
 }
+
 
 
 
@@ -3059,6 +2997,7 @@ void ov12_02239810(void) {
     // _02239850: .word 0x000023FD
     // TODO: decompile
 }
+
 
 
 
@@ -3197,6 +3136,7 @@ void ov12_02239854(void) {
 
 
 
+
 void ov12_0223998C(void) {
     // push {r3, r4, r5, lr}
     // ldr r3, _022399B8 ; =0x00002438
@@ -3224,6 +3164,7 @@ void ov12_0223998C(void) {
 
 
 
+
 void ov12_022399BC(void) {
     // push {r3, lr}
     // bl sub_02039998
@@ -3236,6 +3177,7 @@ void ov12_022399BC(void) {
     // _022399D0: .word FS_OVERLAY_ID(OVY_18)
     // TODO: decompile
 }
+
 
 
 
@@ -3491,6 +3433,7 @@ void ov12_022399D4(void) {
     // _02239C24: .word 0x00001024
     // TODO: decompile
 }
+
 
 
 
@@ -3959,18 +3902,10 @@ void ov12_02239C28(void) {
 
 
 
+
 void ov12_0223A088(void) {
-    OverlayManager_GetData();
-    Main_SetVBlankIntrCB(0, 0);
-    sub_0200FBF4(0, 0);
-    PaletteData_FreeBuffers(*((u32*)(r4 + 0xc)), 0);
-    PaletteData_Free(*((u32*)(r4 + 0xc)));
-    WindowArray_Delete(*((u32*)(r4 + 8)), 1);
-    GfGfx_EngineATogglePlanes(2, 0);
-    FreeBgTilemapBuffer(*((u32*)(r4 + 4)), 1);
-    Heap_Free(*((u32*)(r4 + 4)));
-    Heap_Free(r4);
 }
+
 
 
 
@@ -4119,41 +4054,19 @@ void ov12_0223A0D4(void) {
 
 
 
+
 void ov12_0223A218(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // bl OverlayManager_GetData
-    // add r6, r0, #0
-    // mov r0, #0x71
-    // lsl r0, r0, #2
+    OverlayManager_GetData();
     // ldr r0, [r6, r0]
     // add r0, #0x2b
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _0223A25A
-    // mov r4, #0
-    // mov r7, #0x71
-    // add r5, r4, #0
-    // lsl r7, r7, #2
     // ldr r0, [r6, r7]
     // add r0, r0, r5
-    // ldr r0, [r0, #0x14]
-    // cmp r0, #0
-    // beq _0223A244
-    // bl Heap_Free
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _0223A236
-    // mov r0, #0x71
-    // lsl r0, r0, #2
+    Heap_Free(*((u32*)((0x71 << 2) + 0x14)));
     // ldr r0, [r6, r0]
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free((0x71 << 2));
 }
+
 
 
 
@@ -4310,41 +4223,19 @@ void ov12_0223A260(void) {
 
 
 
+
 void ov12_0223A3A8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // bl OverlayManager_GetData
-    // add r6, r0, #0
-    // mov r0, #0x71
-    // lsl r0, r0, #2
+    OverlayManager_GetData();
     // ldr r0, [r6, r0]
     // add r0, #0x2b
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _0223A3EA
-    // mov r4, #0
-    // mov r7, #0x71
-    // add r5, r4, #0
-    // lsl r7, r7, #2
     // ldr r0, [r6, r7]
     // add r0, r0, r5
-    // ldr r0, [r0, #0x14]
-    // cmp r0, #0
-    // beq _0223A3D4
-    // bl Heap_Free
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _0223A3C6
-    // mov r0, #0x71
-    // lsl r0, r0, #2
+    Heap_Free(*((u32*)((0x71 << 2) + 0x14)));
     // ldr r0, [r6, r0]
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free((0x71 << 2));
 }
+
 
 
 
@@ -4573,35 +4464,16 @@ void ov12_0223A3F0(void) {
 
 
 
+
 void ov12_0223A5E4(void) {
-    // push {r4, r5, r6, lr}
-    // bl OverlayManager_GetArgs
-    // mov r1, #0x66
-    // lsl r1, r1, #2
+    OverlayManager_GetArgs();
     // ldr r6, [r0, r1]
-    // add r0, r6, #0
     // add r0, #0x2b
     // ldrb r0, [r0]
-    // cmp r0, #0
-    // beq _0223A61A
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5, #0x14]
-    // cmp r0, #0
-    // beq _0223A608
-    // bl Heap_Free
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #4
-    // blt _0223A5FE
-    // add r0, r6, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)(r6 + 0x14)), (0x66 << 2));
+    Heap_Free(r6);
 }
+
 
 
 
@@ -4634,6 +4506,7 @@ void ov12_0223A620(void) {
     // _0223A660: .word 0x0000240C
     // TODO: decompile
 }
+
 
 
 
@@ -4792,26 +4665,18 @@ void ov12_0223A664(void) {
 
 
 
+
 void ov12_0223A7A0(void) {
-    // push {r3, lr}
-    // bl sub_0203A880
-    // bl sub_02039998
-    // cmp r0, #0
-    // beq _0223A7BC
-    // bl ov00_021EC9D4
-    // mov r1, #3
+    sub_0203A880();
+    sub_02039998();
+    ov00_021EC9D4();
     // sub r0, r1, r0
-    // bl sub_0203A930
-    // pop {r3, pc}
-    // bl sub_02035650
-    // cmp r0, #0
-    // beq _0223A7D0
-    // bl WM_GetLinkLevel
-    // mov r1, #3
+    sub_0203A930(3);
+    sub_02035650();
+    WM_GetLinkLevel();
     // sub r0, r1, r0
-    // bl sub_0203A930
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_0203A930(3);
 }
+
 
 

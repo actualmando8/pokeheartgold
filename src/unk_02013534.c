@@ -1,522 +1,232 @@
 /* Decompiled from asm/unk_02013534.s */
 #include "global.h"
 
-void FontSystem_NewInit(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r7, r1, #0
+UnkStruct_02013534 * FontSystem_NewInit(void) {
     // str r0, [sp, #4]
-    // add r0, r7, #0
-    // mov r1, #0x68
-    // bl Heap_Alloc
+    Heap_Alloc(r1, 0x68);
     // str r0, [sp, #8]
-    // cmp r0, #0
-    // bne _0201354E
-    // bl GF_AssertFail
+    GF_AssertFail();
     // ldr r4, [sp, #8]
     // ldr r5, [sp, #8]
-    // mov r6, #0
     // add r4, #0x30
-    // mov r0, #0x23
-    // add r1, r6, #0
-    // mov r2, #0
-    // add r3, r4, #0
     // str r7, [sp]
-    // bl GfGfxLoader_GetCellBank
+    GfGfxLoader_GetCellBank(0x23, 0, 0, r4);
     // str r0, [r5]
-    // cmp r0, #0
-    // bne _0201356E
-    // bl GF_AssertFail
-    // add r6, r6, #1
-    // add r4, r4, #4
-    // add r5, r5, #4
-    // cmp r6, #0xc
-    // blt _02013556
+    GF_AssertFail();
     // ldr r0, [sp, #4]
-    // mov r1, #0x14
-    // add r4, r0, #0
     // mul r4, r1
-    // add r0, r7, #0
-    // add r1, r4, #0
-    // bl Heap_Alloc
+    Heap_Alloc(r7, r0);
     // ldr r1, [sp, #8]
-    // cmp r0, #0
-    // str r0, [r1, #0x60]
-    // bne _02013594
-    // bl GF_AssertFail
+    *((u32*)(r1 + 0x60)) = r0;
+    GF_AssertFail();
     // ldr r1, [sp, #4]
     // ldr r0, [sp, #8]
-    // add r2, r4, #0
-    // str r1, [r0, #0x64]
-    // ldr r0, [r0, #0x60]
-    // mov r1, #0
-    // bl memset
+    *((u32*)(r0 + 0x64)) = r1;
+    memset(*((u32*)(r0 + 0x60)), 0, r4);
     // ldr r0, [sp, #8]
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_020135AC(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // bne _020135B6
-    // bl GF_AssertFail
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5]
-    // bl Heap_Free
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #0xc
-    // blt _020135BA
-    // ldr r0, [r6, #0x60]
-    // bl Heap_Free
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    Heap_Free(*((u32*)r6));
+    Heap_Free(*((u32*)(r6 + 0x60)));
+    Heap_Free(r6);
 }
 
 
 
-void sub_020135D8(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r5, r0, #0
-    // bne _020135E4
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // bl sub_02013AD0
-    // add r4, r0, #0
-    // bne _020135F2
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x10]
+
+TextOBJ * sub_020135D8(void) {
+    GF_AssertFail();
+    sub_02013AD0(*((u32*)r5));
+    GF_AssertFail();
     // add r3, sp, #8
-    // str r0, [r4, #8]
-    // ldr r0, [r5, #0x18]
-    // str r0, [r4, #0xc]
-    // ldr r0, [r5, #0x1c]
-    // str r0, [r4, #0x10]
+    *((u32*)(r4 + 8)) = *((u32*)(r5 + 0x10));
+    *((u32*)(r4 + 0xc)) = *((u32*)(r5 + 0x18));
+    *((u32*)(r4 + 0x10)) = *((u32*)(r5 + 0x1c));
     // str r3, [sp, #0x14]
     // str r3, [sp, #0x18]
-    // ldr r1, [r5, #4]
-    // ldr r2, [r5, #0x2c]
-    // ldrb r0, [r1, #7]
-    // ldrb r1, [r1, #8]
-    // bl sub_02013BD4
-    // add r6, r0, #0
-    // mov r1, #0x24
-    // ldr r0, [r5, #0x2c]
+    sub_02013BD4(*((u8*)(*((u32*)(r5 + 4)) + 7)), *((u8*)(*((u32*)(r5 + 4)) + 8)), *((u32*)(r5 + 0x2c)));
     // mul r1, r6
-    // bl Heap_AllocAtEnd
-    // add r7, r0, #0
-    // mov r1, #0xc
-    // ldr r0, [r5, #0x2c]
+    Heap_AllocAtEnd(*((u32*)(r5 + 0x2c)), 0x24);
     // mul r1, r6
-    // bl Heap_Alloc
+    Heap_Alloc(*((u32*)(r5 + 0x2c)), 0xc);
     // str r0, [r4]
-    // str r6, [r4, #4]
-    // ldr r0, [r5, #0x28]
+    *((u32*)(r4 + 4)) = r6;
     // add r1, sp, #8
     // str r0, [sp]
-    // ldr r0, [r5, #0x2c]
-    // add r2, r7, #0
     // str r0, [sp, #4]
-    // ldr r0, [r5, #4]
-    // ldr r3, [r5, #0x14]
-    // bl sub_02013C5C
-    // add r0, r5, #0
+    sub_02013C5C(*((u32*)(r5 + 4)), r7, *((u32*)(r5 + 0x14)));
     // add r1, sp, #8
-    // add r2, r7, #0
-    // add r3, r4, #0
-    // bl sub_02013E78
-    // add r0, r7, #0
-    // bl Heap_Free
+    sub_02013E78(r5, r7, r4);
+    Heap_Free(r7);
     // add r0, sp, #8
-    // bl sub_02013FA8
-    // add r0, r4, #0
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02013FA8();
 }
+
 
 
 
 void FontOAM_Delete(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _0201366A
-    // bl GF_AssertFail
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // bne _02013674
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // bl sub_02013ECC
-    // ldr r0, [r4]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // bl sub_02013AC0
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    GF_AssertFail(*((u32*)r4));
+    sub_02013ECC(r4);
+    Heap_Free(*((u32*)r4));
+    sub_02013AC0(r4);
 }
 
 
 
-void sub_02013688(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x14
+
+int sub_02013688(void) {
     // add r3, sp, #0
-    // add r5, r0, #0
     // str r3, [sp, #0xc]
     // str r3, [sp, #0x10]
-    // add r4, r1, #0
-    // ldrb r0, [r5, #7]
-    // ldrb r1, [r5, #8]
-    // bl sub_02013BD4
+    sub_02013BD4(*((u8*)(r0 + 7)), *((u8*)(r0 + 8)));
     // add r0, sp, #0
-    // add r1, r4, #0
-    // bl sub_02013E24
-    // add r4, r0, #0
+    sub_02013E24(r4);
     // add r0, sp, #0
-    // bl sub_02013FA8
-    // add r0, r4, #0
-    // add sp, #0x14
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    sub_02013FA8();
 }
+
 
 
 
 void sub_020136B4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // add r7, r2, #0
     // str r1, [sp]
-    // cmp r5, #0
-    // bne _020136C6
-    // bl GF_AssertFail
+    GF_AssertFail();
     // ldr r0, [sp]
-    // str r0, [r5, #0xc]
-    // str r7, [r5, #0x10]
-    // lsl r0, r0, #0xc
+    *((u32*)(r5 + 0xc)) = r0;
+    *((u32*)(r5 + 0x10)) = r7;
     // str r0, [sp]
-    // ldr r0, [r5, #8]
-    // lsl r7, r7, #0xc
-    // cmp r0, #0
-    // beq _020136E8
-    // bl Sprite_GetMatrixPtr
-    // ldr r2, [r0]
+    Sprite_GetMatrixPtr(*((u32*)(r5 + 8)));
     // ldr r1, [sp]
-    // ldr r0, [r0, #4]
     // add r1, r1, r2
     // str r1, [sp]
     // add r7, r7, r0
-    // mov r6, #0
     // str r6, [sp, #0xc]
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // ble _02013722
-    // add r4, r6, #0
-    // ldr r0, [r5]
     // add r0, r0, r4
-    // ldr r0, [r0, #4]
-    // lsl r1, r0, #0xc
     // ldr r0, [sp]
     // add r0, r0, r1
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // add r1, sp, #4
     // add r0, r0, r4
-    // ldr r0, [r0, #8]
-    // lsl r0, r0, #0xc
     // add r0, r7, r0
     // str r0, [sp, #8]
-    // ldr r0, [r5]
     // ldr r0, [r0, r4]
-    // bl Sprite_SetMatrix
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetMatrix(*((u32*)r5), (*((u32*)(*((u32*)r5) + 4)) << 0xc), *((u32*)r0));
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _020136F4
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_02013728(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // bne _02013734
-    // bl GF_AssertFail
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _0201378E
-    // ldr r1, [r5, #0xc]
-    // lsl r1, r1, #0xc
+    GF_AssertFail();
     // str r1, [sp]
-    // ldr r1, [r5, #0x10]
-    // lsl r7, r1, #0xc
-    // bl Sprite_GetMatrixPtr
-    // ldr r2, [r0]
-    // ldr r0, [r0, #4]
-    // mov r6, #0
+    Sprite_GetMatrixPtr(*((u32*)(r5 + 8)), *((u32*)(r5 + 0x10)));
     // ldr r1, [sp]
     // str r6, [sp, #0xc]
     // add r7, r7, r0
     // add r1, r1, r2
-    // ldr r0, [r5, #4]
     // str r1, [sp]
-    // cmp r0, #0
-    // ble _0201378E
-    // add r4, r6, #0
-    // ldr r0, [r5]
     // add r0, r0, r4
-    // ldr r0, [r0, #4]
-    // lsl r1, r0, #0xc
     // ldr r0, [sp]
     // add r0, r0, r1
     // str r0, [sp, #4]
-    // ldr r0, [r5]
     // add r1, sp, #4
     // add r0, r0, r4
-    // ldr r0, [r0, #8]
-    // lsl r0, r0, #0xc
     // add r0, r7, r0
     // str r0, [sp, #8]
-    // ldr r0, [r5]
     // ldr r0, [r0, r4]
-    // bl Sprite_SetMatrix
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetMatrix(*((u32*)r5), (*((u32*)(*((u32*)r5) + 4)) << 0xc), *((u32*)r0));
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _02013760
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_02013794(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // cmp r5, #0
-    // bne _020137A4
-    // bl GF_AssertFail
-    // cmp r4, #0
-    // bne _020137AC
-    // bl GF_AssertFail
-    // cmp r6, #0
-    // bne _020137B4
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0xc]
+    GF_AssertFail();
+    GF_AssertFail();
+    GF_AssertFail();
     // str r0, [r4]
-    // ldr r0, [r5, #0x10]
     // str r0, [r6]
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 
 void TextOBJ_SetSpritesDrawFlag(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // cmp r5, #0
-    // bne _020137CE
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _020137EC
-    // add r4, r6, #0
-    // ldr r0, [r5]
-    // add r1, r7, #0
+    GF_AssertFail();
     // ldr r0, [r0, r4]
-    // bl Sprite_SetDrawFlag
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetDrawFlag(*((u32*)r5), r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _020137D8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_020137F0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // cmp r5, #0
-    // bne _020137FE
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _0201381C
-    // add r4, r6, #0
-    // ldr r0, [r5]
-    // add r1, r7, #0
+    GF_AssertFail();
     // ldr r0, [r0, r4]
-    // bl Sprite_SetPriority
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetPriority(*((u32*)r5), r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _02013808
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_02013820(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // cmp r5, #0
-    // bne _0201382E
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _0201384C
-    // add r4, r6, #0
-    // ldr r0, [r5]
-    // add r1, r7, #0
+    GF_AssertFail();
     // ldr r0, [r0, r4]
-    // bl Sprite_SetDrawPriority
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetDrawPriority(*((u32*)r5), r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _02013838
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void TextOBJ_SetPaletteNum(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // cmp r5, #0
-    // bne _0201385E
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _0201387C
-    // add r4, r6, #0
-    // ldr r0, [r5]
-    // add r1, r7, #0
+    GF_AssertFail();
     // ldr r0, [r0, r4]
-    // bl Sprite_SetPaletteOverride
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetPaletteOverride(*((u32*)r5), r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _02013868
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_02013880(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // cmp r5, #0
-    // bne _0201388E
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _020138AC
-    // add r4, r6, #0
-    // ldr r0, [r5]
-    // add r1, r7, #0
+    GF_AssertFail();
     // ldr r0, [r0, r4]
-    // bl Sprite_SetPalIndexRespectVramOffset
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetPalIndexRespectVramOffset(*((u32*)r5), r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _02013898
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_020138B0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // cmp r5, #0
-    // bne _020138BE
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _020138DC
-    // add r4, r6, #0
-    // ldr r0, [r5]
-    // add r1, r7, #0
+    GF_AssertFail();
     // ldr r0, [r0, r4]
-    // bl Sprite_SetPalOffset
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetPalOffset(*((u32*)r5), r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _020138C8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_020138E0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // add r7, r1, #0
-    // cmp r5, #0
-    // bne _020138EE
-    // bl GF_AssertFail
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _0201390C
-    // add r4, r6, #0
-    // ldr r0, [r5]
-    // add r1, r7, #0
+    GF_AssertFail();
     // ldr r0, [r0, r4]
-    // bl Sprite_SetPalOffsetRespectVramOffset
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_SetPalOffsetRespectVramOffset(*((u32*)r5), r7);
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _020138F8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
@@ -525,8 +235,10 @@ void sub_02013910(void) {
 
 
 
+
 void sub_02013938(void) {
 }
+
 
 
 
@@ -535,60 +247,27 @@ void sub_02013948(void) {
 
 
 
-void TextOBJ_Create(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // cmp r5, #0
-    // bne _02013960
-    // bl GF_AssertFail
-    // ldr r0, [r5]
-    // bl sub_02013AD0
-    // add r4, r0, #0
-    // bne _0201396E
-    // bl GF_AssertFail
-    // ldr r0, [r5, #0x10]
-    // mov r1, #0x24
-    // str r0, [r4, #8]
-    // ldr r0, [r5, #0x18]
-    // str r0, [r4, #0xc]
-    // ldr r0, [r5, #0x1c]
-    // str r0, [r4, #0x10]
-    // ldr r2, [r6, #0x14]
-    // ldr r0, [r5, #0x2c]
+
+TextOBJ * TextOBJ_Create(void) {
+    GF_AssertFail();
+    sub_02013AD0(*((u32*)r5));
+    GF_AssertFail();
+    *((u32*)(r4 + 8)) = *((u32*)(r5 + 0x10));
+    *((u32*)(r4 + 0xc)) = *((u32*)(r5 + 0x18));
+    *((u32*)(r4 + 0x10)) = *((u32*)(r5 + 0x1c));
     // mul r1, r2
-    // bl Heap_AllocAtEnd
-    // add r7, r0, #0
-    // ldr r2, [r6, #0x14]
-    // mov r1, #0xc
-    // ldr r0, [r5, #0x2c]
+    Heap_AllocAtEnd(*((u32*)(r5 + 0x2c)), 0x24, *((u32*)(r6 + 0x14)));
     // mul r1, r2
-    // bl Heap_Alloc
+    Heap_Alloc(*((u32*)(r5 + 0x2c)), 0xc, *((u32*)(r6 + 0x14)));
     // str r0, [r4]
-    // ldr r0, [r6, #0x14]
-    // add r1, r6, #0
-    // str r0, [r4, #4]
-    // ldr r0, [r5, #0x28]
-    // add r2, r7, #0
+    *((u32*)(r4 + 4)) = *((u32*)(r6 + 0x14));
     // str r0, [sp]
-    // ldr r0, [r5, #0x2c]
     // str r0, [sp, #4]
-    // ldr r0, [r5, #4]
-    // ldr r3, [r5, #0x14]
-    // bl sub_02013C5C
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // add r2, r7, #0
-    // add r3, r4, #0
-    // bl sub_02013E78
-    // add r0, r7, #0
-    // bl Heap_Free
-    // add r0, r4, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02013C5C(*((u32*)(r5 + 4)), r6, r7, *((u32*)(r5 + 0x14)));
+    sub_02013E78(r5, r6, r7, r4);
+    Heap_Free(r7);
 }
+
 
 
 
@@ -597,158 +276,79 @@ void TextOBJ_Destroy(void) {
 
 
 
+
 void TextOBJ_CopyFromBGWindow(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // ldr r0, [r0]
-    // add r7, r1, #0
-    // ldr r0, [r0]
     // str r2, [sp, #4]
-    // add r5, r3, #0
     // str r0, [sp, #8]
-    // bl Sprite_GetVramType
+    Sprite_GetVramType(*((u32*)*((u32*)r0)));
     // str r0, [sp, #0xc]
     // ldr r1, [sp, #0xc]
-    // add r0, r7, #0
-    // bl sub_02013948
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // add r1, r6, #0
-    // bl Heap_AllocAtEnd
-    // mov r1, #0
-    // add r2, r6, #0
-    // add r4, r0, #0
-    // bl memset
+    sub_02013948(r7);
+    Heap_AllocAtEnd(r5, r0);
+    memset(0, r6);
     // ldr r0, [sp, #4]
     // ldr r3, [sp, #0xc]
-    // add r1, r4, #0
-    // add r2, r7, #0
     // str r5, [sp]
-    // bl sub_02013D88
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // bl DC_FlushRange
+    sub_02013D88(r4, r7);
+    DC_FlushRange(r4, r6);
     // ldr r0, [sp, #8]
-    // bl Sprite_GetImageProxy
+    Sprite_GetImageProxy();
     // ldr r1, [sp, #0xc]
-    // cmp r1, #1
-    // bne _02013A36
-    // mov r1, #1
-    // bl NNS_G2dGetImageLocation
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // add r2, r6, #0
-    // bl GX_LoadOBJ
-    // b _02013A46
-    // mov r1, #2
-    // bl NNS_G2dGetImageLocation
-    // add r1, r0, #0
-    // add r0, r4, #0
-    // add r2, r6, #0
-    // bl GXS_LoadOBJ
-    // add r0, r4, #0
-    // bl Heap_Free
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    NNS_G2dGetImageLocation(1);
+    GX_LoadOBJ(r4, r0, r6);
+    NNS_G2dGetImageLocation(2);
+    GXS_LoadOBJ(r4, r0, r6);
+    Heap_Free(r4);
 }
+
 
 
 
 void sub_02013A50(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0xc
-    // add r6, r0, #0
     // ldr r0, [sp, #0x20]
-    // add r7, r1, #0
     // str r0, [sp, #0x20]
     // ldr r0, [sp, #0x24]
-    // ldrb r1, [r6, #7]
     // str r0, [sp, #0x24]
-    // add r0, r3, #0
     // add r0, r7, r0
     // str r2, [sp]
     // str r3, [sp, #4]
-    // cmp r1, r0
-    // bge _02013A72
-    // bl GF_AssertFail
-    // ldrb r2, [r6, #8]
+    GF_AssertFail(r3, *((u8*)(r0 + 7)));
     // ldr r1, [sp]
     // ldr r0, [sp, #0x20]
     // add r0, r1, r0
-    // cmp r2, r0
-    // bge _02013A82
-    // bl GF_AssertFail
+    GF_AssertFail(*((u8*)(r6 + 8)));
     // ldr r0, [sp]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _02013ABA
-    // lsl r0, r7, #5
-    // add r5, r4, #0
     // str r0, [sp, #8]
-    // ldrb r1, [r6, #7]
     // ldr r0, [sp, #0x20]
-    // add r2, r1, #0
     // add r0, r4, r0
     // mul r2, r0
     // ldr r0, [sp, #4]
-    // lsl r1, r5, #5
     // add r2, r2, r0
     // ldr r0, [sp, #0x24]
-    // lsl r2, r2, #5
     // add r0, r0, r1
-    // ldr r1, [r6, #0xc]
     // add r1, r1, r2
     // ldr r2, [sp, #8]
-    // bl memcpy
+    memcpy((r7 << 5), *((u32*)(r6 + 0xc)), (*((u8*)(r6 + 7)) << 5));
     // ldr r0, [sp]
-    // add r4, r4, #1
     // add r5, r5, r7
-    // cmp r4, r0
-    // blt _02013A90
-    // add sp, #0xc
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_02013AC0(void) {
-    // mov r2, #0x14
-    // mov r1, #0
     // strb r1, [r0]
-    // add r0, r0, #1
-    // sub r2, r2, #1
-    // bne _02013AC4
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 
 void sub_02013AD0(void) {
-    // ldr r1, [r0, #0x64]
-    // mov r2, #0
-    // cmp r1, #0
-    // ble _02013AF4
-    // ldr r3, [r0, #0x60]
-    // ldr r1, [r3]
-    // cmp r1, #0
-    // bne _02013AEA
-    // ldr r1, [r0, #0x60]
-    // mov r0, #0x14
     // mul r0, r2
     // add r0, r1, r0
-    // bx lr
-    // ldr r1, [r0, #0x64]
-    // add r2, r2, #1
     // add r3, #0x14
-    // cmp r2, r1
-    // blt _02013ADA
-    // mov r0, #0
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 
@@ -776,6 +376,7 @@ void sub_02013AF8(void) {
     // _02013B20: .word _020F5F2C
     // TODO: decompile
 }
+
 
 
 
@@ -867,6 +468,7 @@ void sub_02013B24(void) {
 
 
 
+
 void sub_02013BD4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x38
@@ -936,6 +538,7 @@ void sub_02013BD4(void) {
 
 
 
+
 void sub_02013C5C(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x1c
@@ -992,6 +595,7 @@ void sub_02013C5C(void) {
     // _02013CCC: .word 0x00300010
     // TODO: decompile
 }
+
 
 
 
@@ -1082,6 +686,7 @@ void sub_02013CD0(void) {
 
 
 
+
 void sub_02013D88(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #0x18
@@ -1128,6 +733,7 @@ void sub_02013D88(void) {
 
 
 
+
 void sub_02013DE0(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // sub sp, #8
@@ -1162,6 +768,7 @@ void sub_02013DE0(void) {
     // _02013E20: .word _020F5F2D
     // TODO: decompile
 }
+
 
 
 
@@ -1209,172 +816,92 @@ void sub_02013E24(void) {
 
 
 
+
 void sub_02013E78(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
     // str r0, [sp]
-    // add r0, r1, #0
-    // ldr r4, [r0, #0xc]
     // str r1, [sp, #4]
-    // add r7, r2, #0
-    // add r6, r3, #0
-    // cmp r4, r0
-    // beq _02013EC8
-    // mov r5, #0
     // ldr r0, [sp]
-    // add r1, r4, #0
-    // add r2, r7, #0
-    // bl sub_02013EF0
-    // ldr r1, [r6]
+    sub_02013EF0(r1, *((u32*)(r1 + 0xc)), r2);
     // str r0, [r1, r5]
-    // ldr r0, [r6]
     // ldr r0, [r0, r5]
-    // cmp r0, #0
-    // bne _02013EA8
-    // bl GF_AssertFail
-    // ldr r0, [r4]
+    GF_AssertFail(*((u32*)r6), *((u32*)r6));
     // add r7, #0x24
-    // lsl r1, r0, #3
-    // ldr r0, [r6]
     // add r0, r0, r5
-    // str r1, [r0, #4]
-    // ldr r0, [r4, #4]
-    // lsl r1, r0, #3
-    // ldr r0, [r6]
+    *((u32*)(*((u32*)r6) + 4)) = (*((u32*)r4) << 3);
     // add r0, r0, r5
-    // str r1, [r0, #8]
-    // ldr r4, [r4, #0xc]
+    *((u32*)(*((u32*)r6) + 8)) = (*((u32*)(r4 + 4)) << 3);
     // ldr r0, [sp, #4]
     // add r5, #0xc
-    // cmp r4, r0
-    // bne _02013E8E
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 
 void sub_02013ECC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #4]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _02013EEC
-    // add r4, r6, #0
-    // ldr r0, [r5]
     // ldr r0, [r0, r4]
-    // bl Sprite_Delete
-    // ldr r0, [r5, #4]
-    // add r6, r6, #1
+    Sprite_Delete(*((u32*)r0));
     // add r4, #0xc
-    // cmp r6, r0
-    // blt _02013EDA
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
 
 
 
+
 void sub_02013EF0(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x44
-    // add r5, r0, #0
-    // mov r0, #0
     // str r2, [sp]
     // str r0, [sp, #4]
-    // add r4, r1, #0
-    // ldr r1, [r5, #0xc]
     // str r1, [sp, #8]
-    // ldr r1, [r4, #8]
-    // ldr r2, [r5]
-    // lsl r1, r1, #2
     // add r1, r2, r1
-    // ldr r1, [r1, #0x30]
     // str r1, [sp, #0xc]
     // str r0, [sp, #0x10]
     // str r0, [sp, #0x14]
     // str r0, [sp, #0x18]
     // str r0, [sp, #0x1c]
-    // ldr r2, [r5, #0x20]
     // add r1, sp, #0x20
     // strb r2, [r1]
-    // ldr r1, [r5, #8]
     // str r1, [sp, #0x24]
     // add r1, sp, #0
     // str r1, [sp, #0x28]
-    // ldr r1, [r5, #0x24]
     // str r1, [sp, #0x38]
-    // ldr r1, [r5, #0x28]
     // str r1, [sp, #0x3c]
-    // ldr r1, [r5, #0x2c]
     // str r1, [sp, #0x40]
     // str r0, [sp, #0x2c]
     // str r0, [sp, #0x30]
     // str r0, [sp, #0x34]
-    // ldr r0, [r5, #0x10]
-    // cmp r0, #0
-    // beq _02013F4C
-    // bl Sprite_GetMatrixPtr
-    // add r3, r0, #0
+    Sprite_GetMatrixPtr(*((u32*)(r0 + 0x10)), *((u32*)(r0 + 0x2c)), *((u32*)(r0 + 0x20)));
     // ldmia r3!, {r0, r1}
     // add r2, sp, #0x2c
     // stmia r2!, {r0, r1}
-    // ldr r0, [r3]
     // str r0, [r2]
-    // ldr r1, [r4]
-    // ldr r2, [r5, #0x18]
-    // lsl r1, r1, #3
     // add r1, r2, r1
     // ldr r0, [sp, #0x2c]
-    // lsl r1, r1, #0xc
     // add r0, r0, r1
     // str r0, [sp, #0x2c]
-    // ldr r1, [r4, #4]
-    // ldr r2, [r5, #0x1c]
-    // lsl r1, r1, #3
     // add r1, r2, r1
     // ldr r0, [sp, #0x30]
-    // lsl r1, r1, #0xc
     // add r0, r0, r1
     // str r0, [sp, #0x30]
     // add r0, sp, #0x24
-    // bl Sprite_Create
-    // add sp, #0x44
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    Sprite_Create(*((u32*)r0), ((*((u32*)(r4 + 4)) << 3) << 0xc), *((u32*)(r5 + 0x1c)), r0);
 }
+
 
 
 
 void sub_02013F78(void) {
-    // push {r4, lr}
-    // mov r1, #0x14
-    // bl Heap_AllocAtEnd
-    // add r4, r0, #0
-    // bne _02013F88
-    // bl GF_AssertFail
-    // mov r0, #0
-    // str r0, [r4, #0xc]
-    // str r0, [r4, #0x10]
-    // add r0, r4, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    Heap_AllocAtEnd(0x14);
+    GF_AssertFail();
+    *((u32*)(r4 + 0xc)) = 0;
+    *((u32*)(r4 + 0x10)) = 0;
 }
+
 
 
 
 void sub_02013F94(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // bne _02013F9E
-    // bl GF_AssertFail
-    // add r0, r4, #0
-    // bl Heap_Free
-    // pop {r4, pc}
-    // TODO: decompile
+    GF_AssertFail();
+    Heap_Free(r4);
 }
+
 
 
 
@@ -1383,16 +910,15 @@ void sub_02013FA8(void) {
 
 
 
+
 void sub_02013FC0(void) {
-    *((u32*)(r0 + 0xc)) = *((u32*)(r1 + 0xc));
-    *((u32*)(r0 + 0x10)) = r1;
-    *((u32*)(*((u32*)(r1 + 0xc)) + 0x10)) = r0;
-    *((u32*)(r1 + 0xc)) = r0;
 }
+
 
 
 
 void sub_02013FD0(void) {
 }
+
 
 

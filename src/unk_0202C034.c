@@ -2,8 +2,8 @@
 #include "global.h"
 
 void sub_0202C034(void) {
-    r0 = r0 << 6;
 }
+
 
 
 void sub_0202C03C(void) {
@@ -46,10 +46,12 @@ void sub_0202C03C(void) {
 }
 
 
+
 void sub_0202C08C(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_0202C090(void) {
@@ -165,6 +167,7 @@ void sub_0202C090(void) {
 }
 
 
+
 void sub_0202C190(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r4, r1, #0
@@ -238,120 +241,62 @@ void sub_0202C190(void) {
 }
 
 
+
 void sub_0202C23C(void) {
-    GF_AssertFail(0xc);
 }
+
 
 
 void sub_0202C254(void) {
-    GF_AssertFail(0x1d, 0x38);
 }
+
 
 
 void sub_0202C270(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #0x20
-    // blt _0202C280
-    // bl GF_AssertFail
-    // mov r1, #0x1d
-    // lsl r1, r1, #4
+    GF_AssertFail();
     // add r2, r5, r1
-    // mov r1, #0x38
     // mul r1, r4
     // add r1, r2, r1
-    // add r0, r6, #0
-    // mov r2, #0x10
-    // bl CopyStringToU16Array
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    CopyStringToU16Array(r6, 0x38, 0x10);
 }
+
 
 
 void sub_0202C298(void) {
-    GF_AssertFail(0x38, 7);
 }
+
 
 
 void sub_0202C2B4(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r6, r2, #0
-    // cmp r4, #0x20
-    // blt _0202C2C4
-    // bl GF_AssertFail
-    // mov r1, #7
-    // lsl r1, r1, #6
+    GF_AssertFail();
     // add r2, r5, r1
-    // mov r1, #0x38
     // mul r1, r4
     // add r1, r2, r1
-    // add r0, r6, #0
-    // mov r2, #0x10
-    // bl CopyStringToU16Array
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    CopyStringToU16Array(r6, 0x38, 0x10);
 }
+
 
 
 void sub_0202C2DC(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // cmp r4, #0x20
-    // blt _0202C2EA
-    // bl GF_AssertFail
-    // mov r0, #0xc
+    GF_AssertFail();
     // add r5, #0x40
     // mul r0, r4
     // add r0, r5, r0
-    // bl DWC_IsValidFriendData
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    DWC_IsValidFriendData(0xc);
 }
 
 
-void sub_0202C2F8(void) {
-    // push {r4, r5, r6, lr}
-    // mov r5, #0
-    // add r6, r0, #0
-    // add r4, r5, #0
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl sub_0202C2DC
-    // cmp r0, #0
-    // beq _0202C30E
-    // add r5, r5, #1
-    // add r4, r4, #1
-    // cmp r4, #0x20
-    // blt _0202C300
-    // add r0, r5, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+
+int sub_0202C2F8(void) {
+    sub_0202C2DC(r0, 0);
 }
+
 
 
 void sub_0202C318(void) {
-    // push {r4, r5, r6, lr}
-    // mov r6, #0
-    // add r5, r0, #0
-    // add r4, r6, #0
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl sub_0202C2DC
-    // cmp r0, #0
-    // beq _0202C32E
-    // add r6, r4, #1
-    // add r4, r4, #1
-    // cmp r4, #0x20
-    // blt _0202C320
-    // add r0, r6, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0202C2DC(r0, 0);
 }
+
 
 
 void sub_0202C338(void) {
@@ -440,6 +385,7 @@ void sub_0202C338(void) {
 }
 
 
+
 void sub_0202C3E8(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -506,40 +452,15 @@ void sub_0202C3E8(void) {
 }
 
 
+
 void sub_0202C46C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r5, #0
     // mvn r5, r5
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r7, r5, #0
-    // add r0, r6, #0
-    // add r1, r4, #0
-    // bl sub_0202C2DC
-    // cmp r0, #0
-    // beq _0202C49C
-    // mov r0, #0
+    sub_0202C2DC(r0, 0);
     // mvn r0, r0
-    // cmp r5, r0
-    // beq _0202C4A6
-    // add r0, r6, #0
-    // add r1, r5, #0
-    // add r2, r4, #0
-    // bl sub_0202C3E8
-    // add r4, r7, #0
-    // add r5, r7, #0
-    // b _0202C4A6
-    // mov r0, #0
+    sub_0202C3E8(r6, r5, r4);
     // mvn r0, r0
-    // cmp r5, r0
-    // bne _0202C4A6
-    // add r5, r4, #0
-    // add r4, r4, #1
-    // cmp r4, #0x20
-    // blt _0202C478
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0202C4B0(void) {
@@ -575,6 +496,7 @@ void sub_0202C4B0(void) {
     // _0202C4EC: .word 0x000001EA
     // TODO: decompile
 }
+
 
 
 void sub_0202C4F0(void) {
@@ -629,6 +551,7 @@ void sub_0202C4F0(void) {
 }
 
 
+
 void sub_0202C554(void) {
     // push {r3, r4, r5, lr}
     // cmp r1, #0
@@ -653,6 +576,7 @@ void sub_0202C554(void) {
     // _0202C580: .word 0x0000270F
     // TODO: decompile
 }
+
 
 
 void sub_0202C584(void) {
@@ -682,6 +606,7 @@ void sub_0202C584(void) {
 }
 
 
+
 void sub_0202C5B4(void) {
     // push {r3, r4, r5, lr}
     // cmp r1, #0
@@ -706,6 +631,7 @@ void sub_0202C5B4(void) {
     // _0202C5E0: .word 0x0000270F
     // TODO: decompile
 }
+
 
 
 void sub_0202C5E4(void) {
@@ -842,12 +768,14 @@ void sub_0202C5E4(void) {
 }
 
 
+
 void sub_0202C6F4(void) {
     // ldr r0, _0202C6F8 ; =_021D2230
     // bx lr
     // _0202C6F8: .word _021D2230
     // TODO: decompile
 }
+
 
 
 void sub_0202C6FC(void) {
@@ -864,6 +792,7 @@ void sub_0202C6FC(void) {
 }
 
 
+
 void sub_0202C714(void) {
     // push {r3, lr}
     // mov r1, #0x19
@@ -878,4 +807,5 @@ void sub_0202C714(void) {
     // _0202C72C: .word _021D2230
     // TODO: decompile
 }
+
 

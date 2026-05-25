@@ -45,132 +45,46 @@ void ov01_021FAD1C(void) {
 }
 
 
+
 void ov01_021FAD6C(void) {
-    void *r4;
-    void *r5;
-    /* lsl r3, r1, #3 */
-    /* ldr r1, [r0] */
-    /* ldr r5, [r0, #0x10] */
-    /* ldrh r1, [r1, r3] */
-    /* lsl r4, r1, #3 */
-    /* add r1, r5, r4 */
-    /* ldr r4, [r5, r4] */
-    /* ldr r1, [r1, #4] */
-    *(u32*)r2 = r4;
-    ((u32*)r2)[4] = r1;
-    /* ldr r1, [r0, #0x10] */
-    /* ldr r0, [r0] */
-    /* add r0, r0, r3 */
-    /* ldrh r0, [r0, #2] */
-    /* lsl r3, r0, #3 */
-    /* add r0, r1, r3 */
-    /* ldr r1, [r1, r3] */
-    /* ldr r0, [r0, #4] */
-    ((u32*)r2)[8] = r1;
-    ((u32*)r2)[0xc] = r0;
 }
+
 
 
 void ov01_021FAD9C(void) {
-    void *r3;
-    void *r4;
-    /* ldr r4, [r0] */
-    /* ldr r3, [r0, #0x14] */
-    /* lsl r0, r1, #3 */
-    /* add r0, r4, r0 */
-    /* ldrh r1, [r0, #4] */
-    r0 = 0xc;
-    /* mul r0, r1 */
-    /* add r3, r3, r0 */
-    /* ldmia r3!, {r0, r1} */
-    /* stmia r2!, {r0, r1} */
-    /* ldr r0, [r3] */
-    *(u32*)r2 = 0xc;
 }
+
 
 
 void ov01_021FADBC(void) {
-    void *r3;
-    void *r4;
-    /* ldr r4, [r0] */
-    /* ldr r3, [r0, #4] */
-    /* lsl r0, r1, #3 */
-    /* add r0, r4, r0 */
-    /* ldrh r0, [r0, #6] */
-    /* lsl r0, r0, #2 */
-    /* ldr r0, [r3, r0] */
-    *(u32*)r2 = r0;
 }
+
 
 
 void ov01_021FADD4(void) {
-    // mov r3, #0
-    // add r2, r3, #0
-    // sub r1, r3, #1
     // str r2, [r0]
-    // str r1, [r0, #4]
-    // str r1, [r0, #8]
-    // add r3, r3, #1
+    *((u32*)(r0 + 4)) = (0 - 1);
+    *((u32*)(r0 + 8)) = (0 - 1);
     // add r0, #0xc
-    // cmp r3, #0xa
-    // blt _021FADDA
-    // bx lr
-    // TODO: decompile
 }
 
 
-void ov01_021FADEC(void) {
-    // push {r3, r4, r5, r6}
-    // cmp r1, #0
-    // bne _021FADF8
-    // mov r0, #0
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // cmp r1, #1
-    // bne _021FAE06
-    // mov r0, #0
+
+u32 ov01_021FADEC(void) {
     // strh r0, [r3]
-    // mov r0, #1
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // sub r1, r1, #1
-    // lsr r5, r1, #0x1f
     // add r5, r1, r5
-    // mov r4, #0
     // asr r5, r5, #1
-    // lsl r6, r5, #3
     // ldr r6, [r0, r6]
-    // cmp r6, r2
-    // ble _021FAE32
-    // sub r1, r1, #1
-    // cmp r1, r4
-    // ble _021FAE2A
     // add r6, r4, r5
-    // add r1, r5, #0
-    // lsr r5, r6, #0x1f
     // add r5, r6, r5
     // asr r5, r5, #1
-    // b _021FAE10
     // strh r5, [r3]
-    // mov r0, #1
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // add r4, r4, #1
-    // cmp r4, r1
-    // bge _021FAE44
     // add r6, r5, r1
-    // add r4, r5, #0
-    // lsr r5, r6, #0x1f
     // add r5, r6, r5
     // asr r5, r5, #1
-    // b _021FAE10
-    // add r0, r5, #1
     // strh r0, [r3]
-    // mov r0, #1
-    // pop {r3, r4, r5, r6}
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void ov01_021FAE50(void) {
@@ -416,4 +330,5 @@ void ov01_021FAE50(void) {
     // _021FB048: .word 0x00000000
     // TODO: decompile
 }
+
 

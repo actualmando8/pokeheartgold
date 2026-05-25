@@ -2,79 +2,29 @@
 #include "global.h"
 
 void sub_02012DD8(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x20]
-    // add r4, r1, #0
-    // mov r1, #0x4c
-    // bl Heap_Alloc
-    // str r0, [r5, #0x14]
-    // ldr r0, [r5, #0x10]
-    // add r1, r4, #0
+    Heap_Alloc(*((u32*)(r0 + 0x20)), 0x4c);
+    *((u32*)(r5 + 0x14)) = r0;
     // str r0, [sp]
-    // ldr r0, [r5, #0x18]
     // str r0, [sp, #4]
-    // ldr r0, [r5, #0x1c]
     // str r0, [sp, #8]
-    // ldr r0, [r5, #0x20]
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #0x14]
-    // ldr r2, [r5, #4]
-    // ldr r3, [r5, #8]
-    // bl sub_02012E6C
-    // ldr r0, [r5, #0xc]
-    // add r0, r0, #1
-    // str r0, [r5, #0xc]
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02012E6C(*((u32*)(r5 + 0x14)), r4, *((u32*)(r5 + 4)), *((u32*)(r5 + 8)));
+    *((u32*)(r5 + 0xc)) = (*((u32*)(r5 + 0xc)) + 1);
 }
+
 
 
 void sub_02012E10(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0xc]
-    // mov r6, #0
-    // ldr r4, [r5, #0x14]
-    // cmp r0, #1
-    // beq _02012E28
-    // cmp r0, #2
-    // beq _02012E44
-    // cmp r0, #3
-    // beq _02012E5E
-    // b _02012E62
-    // add r0, r4, #0
-    // bl sub_02012F54
-    // cmp r0, #1
-    // bne _02012E66
-    // ldr r0, [r4, #0x34]
-    // ldr r1, [r4, #0x44]
-    // ldr r2, [r5, #0x10]
-    // bl sub_02010F34
-    // ldr r0, [r5, #0xc]
-    // add r0, r0, #1
-    // str r0, [r5, #0xc]
-    // b _02012E66
-    // add r0, r4, #0
-    // bl sub_02010EC8
-    // ldr r0, [r5, #0x14]
-    // bl Heap_Free
-    // add r0, r6, #0
-    // str r0, [r5, #0x14]
-    // ldr r0, [r5, #0xc]
-    // mov r6, #1
-    // add r0, r0, #1
-    // str r0, [r5, #0xc]
-    // b _02012E66
-    // mov r6, #1
-    // b _02012E66
-    // bl GF_AssertFail
-    // add r0, r6, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_02012F54(*((u32*)(r0 + 0x14)));
+    sub_02010F34(*((u32*)(r4 + 0x34)), *((u32*)(r4 + 0x44)), *((u32*)(r5 + 0x10)));
+    *((u32*)(r5 + 0xc)) = (*((u32*)(r5 + 0xc)) + 1);
+    sub_02010EC8(r4);
+    Heap_Free(*((u32*)(r5 + 0x14)));
+    *((u32*)(r5 + 0x14)) = r6;
+    *((u32*)(r5 + 0xc)) = (*((u32*)(r5 + 0xc)) + 1);
+    GF_AssertFail((*((u32*)(r5 + 0xc)) + 1));
 }
+
 
 
 void sub_02012E6C(void) {
@@ -185,6 +135,7 @@ void sub_02012E6C(void) {
 }
 
 
+
 void sub_02012F54(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -268,6 +219,7 @@ void sub_02012F54(void) {
     // _02013000: .word 0x000003FF
     // TODO: decompile
 }
+
 
 
 void sub_02013004(void) {
@@ -481,43 +433,22 @@ void sub_02013004(void) {
 }
 
 
+
 void sub_020131AC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // mov r1, #0
-    // add r5, r0, #0
-    // bl sub_02010EE0
-    // add r4, r0, #0
-    // mov r6, #0
+    sub_02010EE0(0);
     // add r7, sp, #0x14
-    // ldr r0, [r5, #0x18]
-    // add r3, r6, #0
     // str r0, [sp]
-    // ldr r0, [r5, #0x1c]
     // str r0, [sp, #4]
     // str r7, [sp, #8]
     // add r0, sp, #0x10
     // str r0, [sp, #0xc]
-    // ldr r0, [r5, #0x14]
-    // ldr r1, [r5, #0xc]
-    // ldr r2, [r5, #0x10]
-    // bl sub_02013004
-    // mov r0, #3
+    sub_02013004(*((u32*)(r5 + 0x14)), *((u32*)(r5 + 0xc)), *((u32*)(r5 + 0x10)), 0);
     // ldr r1, [sp, #0x14]
-    // lsl r0, r0, #8
     // strh r1, [r4, r0]
-    // mov r0, #0x12
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #6
     // strh r1, [r4, r0]
-    // add r6, r6, #1
-    // add r4, r4, #2
-    // cmp r6, #0xc0
-    // blt _020131BE
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_020131F4(void) {
@@ -543,6 +474,7 @@ void sub_020131F4(void) {
     // _0201321C: .word 0x04001000
     // TODO: decompile
 }
+
 
 
 void sub_02013220(void) {
@@ -615,6 +547,7 @@ void sub_02013220(void) {
 }
 
 
+
 void sub_020132A8(void) {
     // cmp r2, #0
     // bne _020132C6
@@ -648,6 +581,7 @@ void sub_020132A8(void) {
     // _020132E4: .word 0x0400104A
     // TODO: decompile
 }
+
 
 
 void sub_020132E8(void) {
@@ -693,6 +627,7 @@ void sub_020132E8(void) {
 }
 
 
+
 void sub_0201333C(void) {
     // push {r3}
     // sub sp, #4
@@ -714,6 +649,7 @@ void sub_0201333C(void) {
     // _02013360: .word 0x0400104A
     // TODO: decompile
 }
+
 
 
 void sub_02013364(void) {
@@ -813,9 +749,10 @@ void sub_02013364(void) {
 }
 
 
+
 void sub_02013424(void) {
-    SysTask_CreateOnVWaitQueue(1);
 }
+
 
 
 void sub_02013440(void) {
@@ -841,9 +778,10 @@ void sub_02013440(void) {
 }
 
 
+
 void sub_02013468(void) {
-    SysTask_CreateOnVWaitQueue(1, 0xc);
 }
+
 
 
 void sub_02013488(void) {
@@ -875,52 +813,34 @@ void sub_02013488(void) {
 }
 
 
+
 void sub_020134BC(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
     // ldmia r1!, {r0, r1}
-    // bl sub_020131F4
-    // add r0, r4, #0
-    // bl SysTask_Destroy
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_020131F4();
+    SysTask_Destroy(r4);
 }
+
 
 
 void sub_020134D0(void) {
-    sub_02013220(*((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
-    SysTask_Destroy(r4);
 }
+
 
 
 void sub_020134EC(void) {
-    sub_020132A8(*((u32*)(r1 + 4)), *((u32*)(r1 + 8)));
-    SysTask_Destroy(r4);
 }
 
 
+
 void sub_02013504(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r3, r1, #0
-    // add r4, r0, #0
-    // ldr r0, [r3, #8]
-    // mov r1, #2
     // str r0, [sp]
-    // ldr r0, [r3, #0xc]
-    // mov r2, #4
     // str r0, [sp, #4]
-    // mov r0, #0
-    // mov r5, #6
     // ldrsh r0, [r3, r0]
     // ldrsh r1, [r3, r1]
     // ldrsh r2, [r3, r2]
     // ldrsh r3, [r3, r5]
-    // bl sub_02013364
-    // add r0, r4, #0
-    // bl SysTask_Destroy
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02013364(0, 2, 4, r1);
+    SysTask_Destroy(r4);
 }
+
 

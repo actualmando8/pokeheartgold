@@ -2,111 +2,48 @@
 #include "global.h"
 
 void ov80_022357B4(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x18
-    // add r4, r0, #0
-    // ldrb r2, [r4, #0xf]
-    // cmp r2, #6
-    // bhi _02235870
     // add r2, r2, r2
     // add r2, pc
-    // ldrh r2, [r2, #6]
-    // lsl r2, r2, #0x10
     // asr r2, r2, #0x10
     // add pc, r2
     // _022357CC: ; jump table
-    // ldrb r2, [r4, #0xc]
-    // add r0, r1, #0
-    // add r1, r4, #0
-    // sub r2, r2, #1
-    // lsl r2, r2, #0x18
     // add r1, #0x78
-    // lsr r2, r2, #0x18
-    // bl ov80_02236698
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // mov r1, #0
+    ov80_02236698(r1, r0, (((*((u8*)(r0 + 0xc)) - 1) << 0x18) >> 0x18));
     // str r1, [sp]
     // str r1, [sp, #4]
     // str r1, [sp, #8]
-    // ldr r1, [r4, #4]
     // str r1, [sp, #0xc]
-    // ldrb r2, [r4, #0xc]
-    // add r1, r4, #0
-    // ldrb r3, [r4, #0xe]
-    // sub r2, r2, #1
-    // lsl r2, r2, #2
     // add r2, r4, r2
-    // ldrh r2, [r2, #0x3e]
     // add r1, #0x78
-    // bl ov80_02236450
-    // ldrb r3, [r4, #0xe]
-    // mov r0, #0
-    // cmp r3, #0
-    // ble _02235842
-    // add r1, r4, #0
+    ov80_02236450(r4, *((u16*)(((*((u8*)(r4 + 0xc)) - 1) << 2) + 0x3e)), *((u8*)(r4 + 0xe)));
     // add r1, #0xa8
     // add r2, sp, #0x14
-    // add r5, r4, #0
     // add r6, sp, #0x10
     // ldrh r3, [r1]
-    // add r0, r0, #1
     // add r1, #0x38
-    // lsl r3, r3, #0x15
-    // lsr r3, r3, #0x15
     // strh r3, [r2]
-    // add r3, r5, #0
     // add r3, #0xaa
     // ldrh r3, [r3]
-    // add r2, r2, #2
     // add r5, #0x38
     // strh r3, [r6]
-    // ldrb r3, [r4, #0xe]
-    // add r6, r6, #2
-    // cmp r0, r3
-    // blt _02235822
     // add r0, sp, #0x14
     // str r0, [sp]
     // add r0, sp, #0x10
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
-    // ldr r0, [r4, #4]
-    // mov r1, #0x62
     // str r0, [sp, #0xc]
-    // ldrb r2, [r4, #0xc]
-    // lsl r1, r1, #2
-    // add r0, r4, #0
-    // sub r2, r2, #1
-    // lsl r2, r2, #1
-    // add r2, r2, #1
-    // lsl r2, r2, #1
     // add r2, r4, r2
-    // ldrh r2, [r2, #0x3e]
     // add r1, r4, r1
-    // bl ov80_02236450
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
+    ov80_02236450(r4, (0x62 << 2), *((u16*)(((((*((u8*)(r4 + 0xc)) - 1) << 1) + 1) << 1) + 0x3e)), *((u8*)(r4 + 0xe)));
     // str r0, [sp]
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // ldr r0, [r4, #4]
-    // add r1, r4, #0
     // str r0, [sp, #0xc]
-    // ldrb r2, [r4, #0xc]
-    // ldrb r3, [r4, #0xe]
-    // add r0, r4, #0
-    // sub r2, r2, #1
-    // lsl r2, r2, #1
     // add r2, r4, r2
-    // ldrh r2, [r2, #0x3e]
     // add r1, #0x78
-    // bl ov80_02236450
-    // add sp, #0x18
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov80_02236450(r4, r4, *((u16*)(((*((u8*)(r4 + 0xc)) - 1) << 1) + 0x3e)), *((u8*)(r4 + 0xe)));
 }
+
 
 
 void ov80_02235898(void) {
@@ -125,38 +62,19 @@ void ov80_02235898(void) {
 }
 
 
+
 void ov80_022358B0(void) {
-    /* lsl r1, r1, #0x18 */
-    /* lsr r1, r1, #0x18 */
-    /* lsl r1, r1, #0x1e */
-    /* ldrb r3, [r0, #0x10] */
-    r2 = 6;
-    /* lsr r1, r1, #0x1d */
-    /* bic r3, r2 */
-    /* orr r1, r3 */
-    ((u8*)r0)[0x10] = r1;
 }
+
 
 
 void ov80_022358C4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // ldrb r0, [r4, #0xd]
-    // add r0, r0, #1
-    // strb r0, [r4, #0xd]
-    // ldrb r0, [r4, #0xf]
-    // cmp r0, #6
-    // beq _022358DC
-    // ldr r0, [r4, #8]
-    // bl sub_020674A4
-    // str r0, [r4, #8]
-    // ldrb r0, [r4, #0xc]
-    // add r0, r0, #1
-    // strb r0, [r4, #0xc]
-    // ldrb r0, [r4, #0xc]
-    // pop {r4, pc}
-    // TODO: decompile
+    *((u8*)(r0 + 0xd)) = (*((u8*)(r0 + 0xd)) + 1);
+    sub_020674A4(*((u32*)(r0 + 8)));
+    *((u32*)(r4 + 8)) = r0;
+    *((u8*)(r4 + 0xc)) = (*((u8*)(r4 + 0xc)) + 1);
 }
+
 
 
 void ov80_022358E8(void) {
@@ -173,4 +91,5 @@ void ov80_022358E8(void) {
     // _022358FC: .word 0x0000FFFF
     // TODO: decompile
 }
+
 

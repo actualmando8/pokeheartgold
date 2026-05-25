@@ -16,27 +16,15 @@ void ov02_02245B80(void) {
 }
 
 
+
 void ov02_02245B9C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r0, #4
-    // mov r1, #0xd0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _02245BB4
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // mov r1, #0
-    // mov r2, #0xd0
-    // bl MI_CpuFill8
-    // str r5, [r4, #4]
-    // mov r0, #4
+    Heap_Alloc(4, 0xd0);
+    GF_AssertFail();
+    MI_CpuFill8(0, 0, 0xd0);
+    *((u32*)(r4 + 4)) = r5;
     // str r0, [r4]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_02245BC8(void) {
@@ -189,431 +177,219 @@ void ov02_02245BC8(void) {
 }
 
 
+
 void ov02_02245D18(void) {
-    // push {r4, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // ldr r1, [r4]
     // add r0, #0xbc
-    // mov r2, #0x20
-    // bl HeapExp_FndInitAllocator
-    // add r0, r4, #0
-    // ldr r3, [r4]
+    HeapExp_FndInitAllocator(*((u32*)r0), 0x20);
     // add r0, #0xc
-    // mov r1, #0xae
-    // mov r2, #0
-    // bl Field3dModel_LoadFromFilesystem
-    // ldr r0, [r4]
-    // add r1, r4, #0
+    Field3dModel_LoadFromFilesystem(r4, 0xae, 0, *((u32*)r4));
     // str r0, [sp]
-    // add r0, r4, #0
     // add r0, #0xbc
     // str r0, [sp, #4]
-    // add r0, r4, #0
     // add r0, #0x1c
     // add r1, #0xc
-    // mov r2, #0xae
-    // mov r3, #1
-    // bl Field3dModelAnimation_LoadFromFilesystem
-    // ldr r0, [r4]
-    // add r1, r4, #0
+    Field3dModelAnimation_LoadFromFilesystem(r4, r4, 0xae, 1);
     // str r0, [sp]
-    // add r0, r4, #0
     // add r0, #0xbc
     // str r0, [sp, #4]
-    // add r0, r4, #0
     // add r0, #0x30
     // add r1, #0xc
-    // mov r2, #0xae
-    // mov r3, #2
-    // bl Field3dModelAnimation_LoadFromFilesystem
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dModelAnimation_LoadFromFilesystem(r4, r4, 0xae, 2);
     // add r0, #0x44
     // add r1, #0xc
-    // bl Field3dObject_InitFromModel
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dObject_InitFromModel(r4, r4);
     // add r0, #0x44
     // add r1, #0x1c
-    // bl Field3dObject_AddAnimation
-    // add r0, r4, #0
-    // add r1, r4, #0
+    Field3dObject_AddAnimation(r4, r4);
     // add r0, #0x44
     // add r1, #0x30
-    // bl Field3dObject_AddAnimation
-    // add r0, r4, #0
-    // mov r1, #0x22
-    // mov r3, #0xa
+    Field3dObject_AddAnimation(r4, r4);
     // add r0, #0x44
-    // lsl r1, r1, #0xe
-    // mov r2, #0
-    // lsl r3, r3, #0x10
-    // bl Field3dObject_SetPosEx
+    Field3dObject_SetPosEx(r4, (0x22 << 0xe), 0, (0xa << 0x10));
     // add r4, #0x44
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl Field3dObject_SetActiveFlag
-    // add sp, #8
-    // pop {r4, pc}
-    // TODO: decompile
+    Field3dObject_SetActiveFlag(r4, 1);
 }
+
 
 
 void ov02_02245DB0(void) {
-    Field3dObject_SetActiveFlag(0);
-    Field3dModelAnimation_Unload(r4, r4);
-    Field3dModelAnimation_Unload(r4, r4);
-    Field3dModel_Unload(r4);
 }
+
 
 
 void ov02_02245DE0(void) {
-    // push {r4, lr}
-    // mov r1, #1
-    // add r4, r0, #0
     // add r0, #0x1c
-    // lsl r1, r1, #0xc
-    // bl Field3dModelAnimation_FrameAdvanceAndLoop
-    // add r0, r4, #0
-    // mov r1, #1
+    Field3dModelAnimation_FrameAdvanceAndLoop((1 << 0xc));
     // add r0, #0x30
-    // lsl r1, r1, #0xc
-    // bl Field3dModelAnimation_FrameAdvanceAndLoop
+    Field3dModelAnimation_FrameAdvanceAndLoop(r4, (1 << 0xc));
     // add r4, #0x44
-    // add r0, r4, #0
-    // bl Field3dObject_Draw
-    // pop {r4, pc}
-    // TODO: decompile
+    Field3dObject_Draw(r4);
 }
+
 
 
 void ov02_02245E04(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r1, #0
-    // add r5, r0, #0
-    // add r0, r6, #0
-    // mov r1, #0xa4
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // mov r1, #0
-    // mov r2, #0xa4
-    // bl MI_CpuFill8
-    // add r0, r4, #0
+    Heap_Alloc(r1, 0xa4);
+    MI_CpuFill8(0, 0xa4);
     // add r0, #0xa0
     // str r6, [r0]
-    // add r0, r4, #0
     // add r0, #0x8c
-    // add r1, r6, #0
-    // mov r2, #0x20
-    // bl HeapExp_FndInitAllocator
+    HeapExp_FndInitAllocator(r4, r6, 0x20);
     // ldrh r1, [r5]
-    // ldrb r2, [r5, #2]
-    // add r0, r4, #0
-    // add r3, r6, #0
-    // bl Field3dModel_LoadFromFilesystem
-    // add r0, r4, #0
+    Field3dModel_LoadFromFilesystem(r4, *((u8*)(r5 + 2)), r6);
     // add r0, #0x10
-    // add r1, r4, #0
-    // bl Field3dObject_InitFromModel
+    Field3dObject_InitFromModel(r4, r4);
     // ldrh r1, [r5]
-    // ldrb r3, [r5, #3]
-    // ldr r2, [r5, #4]
-    // add r0, r4, #0
-    // bl ov02_02245ED8
-    // add r0, r4, #0
+    ov02_02245ED8(r4, *((u32*)(r5 + 4)), *((u8*)(r5 + 3)));
     // add r0, #0x10
-    // mov r1, #1
-    // bl Field3dObject_SetActiveFlag
-    // add r0, r4, #0
-    // mov r1, #1
+    Field3dObject_SetActiveFlag(r4, 1);
     // add r0, #0x9e
     // strh r1, [r0]
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_02245E68(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
     // add r0, #0x10
-    // mov r1, #0
-    // bl Field3dObject_SetActiveFlag
-    // add r0, r5, #0
+    Field3dObject_SetActiveFlag(0);
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _02245EB8
-    // add r0, r5, #0
-    // add r7, r5, #0
     // str r0, [sp]
     // add r0, #0x8c
-    // add r4, r6, #0
     // add r7, #0x10
     // str r0, [sp]
-    // add r1, r5, #0
     // add r1, #0x88
-    // ldr r1, [r1]
-    // add r0, r7, #0
     // add r1, r1, r4
-    // bl Field3dObject_RemoveAnimation
-    // add r0, r5, #0
+    Field3dObject_RemoveAnimation(r5, *((u32*)r5));
     // add r0, #0x88
-    // ldr r0, [r0]
     // ldr r1, [sp]
     // add r0, r0, r4
-    // bl Field3dModelAnimation_Unload
-    // add r0, r5, #0
+    Field3dModelAnimation_Unload(*((u32*)r5));
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // add r6, r6, #1
     // add r4, #0x14
-    // cmp r6, r0
-    // blt _02245E8E
-    // add r0, r5, #0
-    // mov r1, #0
     // add r0, #0x9c
     // strb r1, [r0]
-    // add r0, r5, #0
-    // bl Field3dModel_Unload
-    // add r0, r5, #0
+    Field3dModel_Unload(r5, 0);
     // add r0, #0x88
-    // ldr r0, [r0]
-    // bl Heap_Free
-    // add r0, r5, #0
-    // bl Heap_Free
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free(*((u32*)r5));
+    Heap_Free(r5);
 }
+
 
 
 void ov02_02245ED8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r5, r0, #0
     // str r3, [sp, #0xc]
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // add r7, r2, #0
     // str r1, [sp, #8]
-    // cmp r0, #0
-    // beq _02245F38
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _02245F2E
-    // add r0, r5, #0
     // str r0, [sp, #0x10]
     // add r0, #0x10
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
     // str r0, [sp, #0x14]
     // add r0, #0x8c
-    // add r4, r6, #0
     // str r0, [sp, #0x14]
-    // add r1, r5, #0
     // add r1, #0x88
-    // ldr r1, [r1]
     // ldr r0, [sp, #0x10]
     // add r1, r1, r4
-    // bl Field3dObject_RemoveAnimation
-    // add r0, r5, #0
+    Field3dObject_RemoveAnimation(r0, *((u32*)r0));
     // add r0, #0x88
-    // ldr r0, [r0]
     // ldr r1, [sp, #0x14]
     // add r0, r0, r4
-    // bl Field3dModelAnimation_Unload
-    // add r0, r5, #0
+    Field3dModelAnimation_Unload(*((u32*)r5));
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // add r6, r6, #1
     // add r4, #0x14
-    // cmp r6, r0
-    // blt _02245F04
-    // add r0, r5, #0
     // add r0, #0x88
-    // ldr r0, [r0]
-    // bl Heap_Free
-    // add r1, r5, #0
+    Heap_Free(*((u32*)r5));
     // ldr r0, [sp, #0xc]
     // add r1, #0x9c
     // strb r0, [r1]
-    // add r1, r5, #0
     // add r1, #0x9c
-    // add r0, r5, #0
     // ldrb r2, [r1]
     // add r0, #0xa0
-    // mov r1, #0x14
-    // ldr r0, [r0]
     // mul r1, r2
-    // bl Heap_Alloc
-    // add r1, r5, #0
+    Heap_Alloc(*((u32*)r5), 0x14);
     // add r1, #0x88
     // str r0, [r1]
-    // add r2, r5, #0
     // add r2, #0x9c
-    // add r0, r5, #0
     // ldrb r3, [r2]
     // add r0, #0x88
-    // mov r2, #0x14
-    // ldr r0, [r0]
-    // mov r1, #0
     // mul r2, r3
-    // bl MI_CpuFill8
-    // add r0, r5, #0
+    MI_CpuFill8(*((u32*)r5), 0, 0x14);
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // mov r6, #0
-    // cmp r0, #0
-    // ble _02245FCA
-    // add r0, r5, #0
     // str r0, [sp, #0x18]
     // add r0, #0x8c
     // str r0, [sp, #0x18]
-    // add r0, r5, #0
     // str r0, [sp, #0x1c]
     // add r0, #0x10
-    // add r4, r6, #0
     // str r0, [sp, #0x1c]
-    // add r0, r5, #0
     // add r0, #0xa0
-    // ldr r0, [r0]
     // ldr r2, [sp, #8]
     // str r0, [sp]
     // ldr r0, [sp, #0x18]
-    // add r1, r5, #0
     // str r0, [sp, #4]
-    // add r0, r5, #0
     // add r0, #0x88
-    // ldr r0, [r0]
     // ldrh r3, [r7]
     // add r0, r0, r4
-    // bl Field3dModelAnimation_LoadFromFilesystem
-    // add r1, r5, #0
+    Field3dModelAnimation_LoadFromFilesystem(*((u32*)r5), r5);
     // add r1, #0x88
-    // ldr r1, [r1]
     // ldr r0, [sp, #0x1c]
     // add r1, r1, r4
-    // bl Field3dObject_AddAnimation
-    // add r0, r5, #0
+    Field3dObject_AddAnimation(*((u32*)r5));
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // add r6, r6, #1
-    // add r7, r7, #2
     // add r4, #0x14
-    // cmp r6, r0
-    // blt _02245F8E
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_02245FD0(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // mov r7, #0
-    // add r6, r7, #0
-    // cmp r0, #0
-    // ble _0224602E
-    // add r4, r7, #0
-    // add r0, r5, #0
     // add r0, #0x9e
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // beq _02245FFE
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0224600C
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // add r1, r0, #0
-    // add r0, r5, #0
+    _fflt((r0 << 0xc));
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r0 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
     // add r0, #0x88
-    // ldr r0, [r0]
     // add r0, r0, r4
-    // bl Field3dModelAnimation_FrameAdvanceAndCheck
+    Field3dModelAnimation_FrameAdvanceAndCheck(*((u32*)r5), r0);
     // add r7, r7, r0
-    // add r0, r5, #0
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // add r6, r6, #1
     // add r4, #0x14
-    // cmp r6, r0
-    // blt _02245FE2
-    // add r0, r5, #0
     // add r0, #0x10
-    // bl Field3dObject_Draw
+    Field3dObject_Draw(r5);
     // add r5, #0x9c
     // ldrb r0, [r5]
-    // cmp r7, r0
-    // bne _02246042
-    // mov r0, #1
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_02246048(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // mov r4, #0
-    // cmp r0, #0
-    // ble _022460A2
-    // mov r7, #0x3f
-    // add r6, r4, #0
-    // lsl r7, r7, #0x18
-    // add r0, r5, #0
     // add r0, #0x9e
     // ldrh r0, [r0]
-    // cmp r0, #0
-    // beq _02246076
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // add r0, r7, #0
-    // bl _fadd
-    // b _02246082
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r7, #0
-    // bl _fsub
-    // bl _ffix
-    // add r1, r0, #0
-    // add r0, r5, #0
+    _fflt((r0 << 0xc));
+    _fadd(r7, r0);
+    _fflt((r0 << 0xc));
+    _fsub(r7);
+    _ffix();
     // add r0, #0x88
-    // ldr r0, [r0]
     // add r0, r0, r6
-    // bl Field3dModelAnimation_FrameAdvanceAndLoop
-    // add r0, r5, #0
+    Field3dModelAnimation_FrameAdvanceAndLoop(*((u32*)r5), r0);
     // add r0, #0x9c
     // ldrb r0, [r0]
-    // add r4, r4, #1
     // add r6, #0x14
-    // cmp r4, r0
-    // blt _0224605C
     // add r5, #0x10
-    // add r0, r5, #0
-    // bl Field3dObject_Draw
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Field3dObject_Draw(r5);
 }
+
 
 
 void ov02_022460AC(void) {
@@ -633,29 +409,16 @@ void ov02_022460AC(void) {
 }
 
 
+
 void ov02_022460CC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r0, #4
-    // mov r1, #0x14
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _022460E6
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // mov r1, #0
-    // mov r2, #0x14
-    // bl MI_CpuFill8
-    // str r5, [r4, #4]
-    // strh r6, [r4, #0x10]
-    // mov r0, #4
+    Heap_Alloc(4, 0x14);
+    GF_AssertFail();
+    MI_CpuFill8(0, 0, 0x14);
+    *((u32*)(r4 + 4)) = r5;
+    *((u16*)(r4 + 0x10)) = r6;
     // str r0, [r4]
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_022460FC(void) {
@@ -725,6 +488,7 @@ void ov02_022460FC(void) {
 }
 
 
+
 void ShowLegendaryWing(void) {
     // push {r3, r4, r5, lr}
     // add r4, r1, #0
@@ -742,29 +506,16 @@ void ShowLegendaryWing(void) {
 }
 
 
+
 void ov02_022461AC(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r0, #4
-    // mov r1, #0x18
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _022461C6
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // mov r1, #0
-    // mov r2, #0x18
-    // bl MI_CpuFill8
-    // str r5, [r4, #4]
-    // strb r6, [r4, #0x10]
-    // mov r0, #4
+    Heap_Alloc(4, 0x18);
+    GF_AssertFail();
+    MI_CpuFill8(0, 0, 0x18);
+    *((u32*)(r4 + 4)) = r5;
+    *((u8*)(r4 + 0x10)) = r6;
     // str r0, [r4]
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_022461DC(void) {
@@ -876,9 +627,10 @@ void ov02_022461DC(void) {
 }
 
 
+
 void ov02_022462DC(void) {
-    ov02_02246048();
 }
+
 
 
 void ov02_022462E8(void) {
@@ -896,27 +648,15 @@ void ov02_022462E8(void) {
 }
 
 
+
 void ov02_02246304(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r0, #4
-    // mov r1, #0x10
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _0224631C
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // mov r1, #0
-    // mov r2, #0x10
-    // bl MI_CpuFill8
-    // str r5, [r4, #4]
-    // mov r0, #4
+    Heap_Alloc(4, 0x10);
+    GF_AssertFail();
+    MI_CpuFill8(0, 0, 0x10);
+    *((u32*)(r4 + 4)) = r5;
     // str r0, [r4]
-    // add r0, r4, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_02246330(void) {
@@ -966,6 +706,7 @@ void ov02_02246330(void) {
     // _02246394: .word SEQ_SE_GS_AJITO_SIREN
     // TODO: decompile
 }
+
 
 
 void ov02_02246398(void) {
@@ -1047,6 +788,7 @@ void ov02_02246398(void) {
 }
 
 
+
 void ov02_02246444(void) {
     // push {r3, r4, lr}
     // sub sp, #4
@@ -1081,6 +823,7 @@ void ov02_02246444(void) {
     // _0224648C: .word 0x04000050
     // TODO: decompile
 }
+
 
 
 void ov02_02246490(void) {
@@ -1148,117 +891,57 @@ void ov02_02246490(void) {
 }
 
 
+
 void ov02_0224650C(void) {
-    Heap_Alloc(r1, 0x38);
-    MI_CpuFill8(0, 0x38);
-    *((u32*)(r4 + 4)) = r5;
-    Camera_New(r6);
-    *((u32*)(r4 + 0x18)) = r0;
 }
+
 
 
 void ov02_02246534(void) {
-    Camera_Delete(*((u32*)(r0 + 0x18)));
-    Heap_Free(r4);
 }
+
 
 
 void ov02_02246548(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #0xc
-    // add r5, r0, #0
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // cmp r1, #0
-    // ble _02246568
-    // lsl r0, r1, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _02246576
-    // lsl r0, r1, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // strh r0, [r5, #8]
-    // cmp r4, #0
-    // ble _02246592
-    // lsl r0, r4, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _022465A0
-    // lsl r0, r4, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // strh r0, [r5, #0xa]
-    // strh r6, [r5, #0xe]
+    _fflt((r1 << 0xc));
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r1 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
+    *((u16*)(r5 + 8)) = r0;
+    _fflt((r4 << 0xc));
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r4 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
+    *((u16*)(r5 + 0xa)) = r0;
+    *((u16*)(r5 + 0xe)) = r6;
     // add r0, sp, #0x10
-    // ldrh r0, [r0, #0x10]
-    // strh r0, [r5, #0x12]
-    // mov r0, #0
-    // strh r0, [r5, #0x10]
-    // ldrh r0, [r5, #0x12]
-    // cmp r0, #0
-    // beq _022465CA
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _022465D8
-    // lsl r0, r0, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // add r1, r0, #0
-    // mov r0, #0x5a
-    // lsl r0, r0, #0xe
-    // bl FX_Div
-    // str r0, [r5, #0x14]
-    // ldr r0, [r5, #4]
-    // ldr r1, [r5, #0x18]
-    // ldr r0, [r0, #0x24]
-    // bl Camera_Copy
-    // ldr r1, [r5, #0x18]
+    *((u16*)(r5 + 0x12)) = *((u16*)(r0 + 0x10));
+    *((u16*)(r5 + 0x10)) = 0;
+    _fflt((*((u16*)(r5 + 0x12)) << 0xc));
+    _fadd((0x3f << 0x18), r0);
+    _fflt((r0 << 0xc));
+    _fsub((0x3f << 0x18));
+    _ffix();
+    FX_Div((0x5a << 0xe), r0);
+    *((u32*)(r5 + 0x14)) = r0;
+    Camera_Copy(*((u32*)(*((u32*)(r5 + 4)) + 0x24)), *((u32*)(r5 + 0x18)));
     // add r0, sp, #0
-    // bl Camera_GetLookAtCamTarget
+    Camera_GetLookAtCamTarget(*((u32*)(r5 + 0x18)));
     // add r4, sp, #0
-    // add r3, r5, #0
     // add r3, #0x20
     // ldmia r4!, {r0, r1}
-    // add r2, r3, #0
     // stmia r3!, {r0, r1}
-    // ldr r0, [r4]
-    // add r4, r2, #0
     // str r0, [r3]
-    // add r3, r5, #0
     // ldmia r4!, {r0, r1}
     // add r3, #0x2c
     // stmia r3!, {r0, r1}
-    // ldr r0, [r4]
     // str r0, [r3]
-    // ldr r1, [r5, #0x18]
-    // add r0, r2, #0
-    // bl Camera_SetFixedTarget
-    // ldr r0, [r5, #0x18]
-    // bl Camera_SetStaticPtr
-    // add sp, #0xc
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    Camera_SetFixedTarget(r5, *((u32*)(r5 + 0x18)), r5, r5);
+    Camera_SetStaticPtr(*((u32*)(r5 + 0x18)));
 }
+
 
 
 void ov02_0224662C(void) {
@@ -1273,108 +956,49 @@ void ov02_0224662C(void) {
 }
 
 
+
 void ov02_0224663C(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
-    // ldrh r2, [r5, #0x10]
     // add r0, #0x10
-    // add r1, r2, #1
-    // strh r1, [r5, #0x10]
-    // cmp r2, #0
-    // ldrh r2, [r5, #0x10]
-    // beq _02246666
+    *((u16*)(r0 + 0x10)) = (*((u16*)(r0 + 0x10)) + 1);
     // ldrh r1, [r0]
-    // add r1, r1, #1
     // strh r1, [r0]
-    // lsl r0, r2, #0xc
-    // bl _fflt
-    // add r1, r0, #0
-    // mov r0, #0x3f
-    // lsl r0, r0, #0x18
-    // bl _fadd
-    // b _0224667A
+    _fflt((*((u16*)(r0 + 0x10)) << 0xc), ((*((u16*)(r0 + 0x10)) + 1) + 1), *((u16*)(r0 + 0x10)));
+    _fadd((0x3f << 0x18), r0);
     // ldrh r1, [r0]
-    // add r1, r1, #1
     // strh r1, [r0]
-    // lsl r0, r2, #0xc
-    // bl _fflt
-    // mov r1, #0x3f
-    // lsl r1, r1, #0x18
-    // bl _fsub
-    // bl _ffix
-    // add r2, r0, #0
-    // ldr r0, [r5, #0x14]
+    _fflt((r2 << 0xc), (r1 + 1));
+    _fsub((0x3f << 0x18));
+    _ffix();
     // asr r3, r2, #0x1f
     // asr r1, r0, #0x1f
-    // bl _ll_mul
-    // mov r2, #2
-    // mov r3, #0
-    // lsl r2, r2, #0xa
+    _ll_mul(*((u32*)(r5 + 0x14)), r0);
     // add r0, r0, r2
     // adc r1, r3
-    // lsl r1, r1, #0x14
-    // lsr r0, r0, #0xc
     // orr r0, r1
-    // bl GF_SinDegFX32
-    // mov r2, #8
+    GF_SinDegFX32((r0 >> 0xc), (r1 << 0x14), (2 << 0xa), 0);
     // ldrsh r2, [r5, r2]
-    // add r4, r0, #0
     // asr r6, r4, #0x1f
-    // add r1, r6, #0
     // asr r3, r2, #0x1f
-    // bl _ll_mul
-    // add r2, r0, #0
-    // mov r0, #2
-    // add r3, r1, #0
-    // mov r7, #0
-    // lsl r0, r0, #0xa
+    _ll_mul(r6, 8);
     // add r0, r2, r0
     // adc r3, r7
-    // ldr r1, [r5, #0x2c]
-    // lsl r2, r3, #0x14
-    // lsr r0, r0, #0xc
     // orr r0, r2
     // add r0, r1, r0
-    // str r0, [r5, #0x20]
-    // mov r2, #0xa
+    *((u32*)(r5 + 0x20)) = ((2 << 0xa) >> 0xc);
     // ldrsh r2, [r5, r2]
-    // add r0, r4, #0
-    // add r1, r6, #0
     // asr r3, r2, #0x1f
-    // bl _ll_mul
-    // mov r4, #2
-    // add r3, r7, #0
-    // lsl r4, r4, #0xa
+    _ll_mul(r4, r6, 0xa, r1);
     // add r4, r0, r4
     // adc r1, r3
-    // lsl r0, r1, #0x14
-    // lsr r1, r4, #0xc
-    // ldr r2, [r5, #0x30]
     // orr r1, r0
     // add r0, r2, r1
-    // str r0, [r5, #0x24]
-    // ldrh r1, [r5, #0x10]
-    // ldrh r0, [r5, #0x12]
-    // cmp r1, r0
-    // bhs _022466F8
-    // add r0, r3, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // ldr r0, [r5, #0x2c]
-    // str r0, [r5, #0x20]
-    // ldr r0, [r5, #0x30]
-    // str r0, [r5, #0x24]
-    // strh r3, [r5, #0x10]
-    // ldrh r0, [r5, #0xe]
-    // sub r0, r0, #1
-    // strh r0, [r5, #0xe]
-    // ldrh r0, [r5, #0xe]
-    // cmp r0, #0
-    // bne _02246710
-    // mov r3, #1
-    // add r0, r3, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r5 + 0x24)) = (r1 << 0x14);
+    *((u32*)(r5 + 0x20)) = *((u32*)(r5 + 0x2c));
+    *((u32*)(r5 + 0x24)) = *((u32*)(r5 + 0x30));
+    *((u16*)(r5 + 0x10)) = r7;
+    *((u16*)(r5 + 0xe)) = (*((u16*)(r5 + 0xe)) - 1);
 }
+
 
 
 void ov02_02246714(void) {
@@ -1402,68 +1026,34 @@ void ov02_02246714(void) {
 }
 
 
+
 void ov02_02246744(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r0, #4
-    // mov r1, #0xc
-    // add r7, r2, #0
     // str r3, [sp, #4]
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _02246766
-    // bl GF_AssertFail
-    // add sp, #8
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r1, #0
-    // mov r2, #0xc
-    // bl MI_CpuFill8
-    // str r5, [r4, #4]
-    // mov r1, #4
+    Heap_Alloc(4, 0xc);
+    GF_AssertFail();
+    MI_CpuFill8(0, 0, 0xc);
+    *((u32*)(r4 + 4)) = r5;
     // str r1, [r4]
-    // ldr r0, [r4, #4]
-    // bl ov02_0224650C
-    // str r0, [r4, #8]
+    ov02_0224650C(*((u32*)(r4 + 4)), 4);
+    *((u32*)(r4 + 8)) = r0;
     // add r0, sp, #0x10
-    // ldrh r0, [r0, #0x10]
-    // lsl r1, r6, #0x10
-    // lsl r2, r7, #0x10
     // str r0, [sp]
-    // ldr r0, [r4, #8]
     // ldr r3, [sp, #4]
     // asr r1, r1, #0x10
     // asr r2, r2, #0x10
-    // bl ov02_02246548
-    // add r0, r4, #0
-    // add sp, #8
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    ov02_02246548(*((u32*)(r4 + 8)), (r6 << 0x10), (r7 << 0x10));
 }
+
 
 
 void ov02_02246798(void) {
-    // push {r4, lr}
-    // bl TaskManager_GetEnvironment
-    // add r4, r0, #0
-    // ldr r0, [r4, #8]
-    // bl ov02_0224663C
-    // cmp r0, #0
-    // bne _022467AE
-    // mov r0, #0
-    // pop {r4, pc}
-    // ldr r0, [r4, #8]
-    // bl ov02_0224662C
-    // ldr r0, [r4, #8]
-    // bl ov02_02246534
-    // add r0, r4, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
+    TaskManager_GetEnvironment();
+    ov02_0224663C(*((u32*)(r0 + 8)));
+    ov02_0224662C(*((u32*)(r4 + 8)));
+    ov02_02246534(*((u32*)(r4 + 8)));
+    Heap_Free(r4);
 }
+
 
 
 void OpenAlphHiddenRoom(void) {
@@ -1485,29 +1075,16 @@ void OpenAlphHiddenRoom(void) {
 }
 
 
+
 void ov02_022467E8(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r0, #4
-    // mov r1, #0x1c
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _02246802
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // mov r1, #0
-    // mov r2, #0x1c
-    // bl MI_CpuFill8
-    // str r5, [r4, #4]
-    // strb r6, [r4, #0x19]
-    // mov r0, #4
+    Heap_Alloc(4, 0x1c);
+    GF_AssertFail();
+    MI_CpuFill8(0, 0, 0x1c);
+    *((u32*)(r4 + 4)) = r5;
+    *((u8*)(r4 + 0x19)) = r6;
     // str r0, [r4]
-    // add r0, r4, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov02_02246818(void) {
@@ -1547,6 +1124,7 @@ void ov02_02246818(void) {
     // _02246868: .word 0x000005DC
     // TODO: decompile
 }
+
 
 
 void ov02_0224686C(void) {
@@ -1659,33 +1237,18 @@ void ov02_0224686C(void) {
 }
 
 
+
 void ov02_02246964(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // mov r0, #2
-    // mov r1, #0
-    // bl GfGfx_EngineATogglePlanes
-    // ldrb r1, [r4, #0x1a]
-    // mov r0, #1
-    // bl SetBgPriority
-    // add r0, r4, #0
+    GfGfx_EngineATogglePlanes(2, 0);
+    SetBgPriority(1, *((u8*)(r4 + 0x1a)));
     // add r0, #8
-    // bl ClearWindowTilemapAndScheduleTransfer
-    // add r0, r4, #0
+    ClearWindowTilemapAndScheduleTransfer(r4);
     // add r0, #8
-    // bl RemoveWindow
-    // ldr r0, [r4, #4]
-    // mov r1, #1
-    // ldr r0, [r0, #8]
-    // bl BgClearTilemapBufferAndCommit
-    // mov r0, #1
-    // ldr r3, [r4]
-    // lsl r1, r0, #0xc
-    // mov r2, #0
-    // bl BG_ClearCharDataRange
-    // pop {r4, pc}
-    // TODO: decompile
+    RemoveWindow(r4);
+    BgClearTilemapBufferAndCommit(*((u32*)(*((u32*)(r4 + 4)) + 8)), 1);
+    BG_ClearCharDataRange(1, (1 << 0xc), 0, *((u32*)r4));
 }
+
 
 
 void ov02_022469A0(void) {
@@ -1700,6 +1263,7 @@ void ov02_022469A0(void) {
     // _022469B0: .word gSystem
     // TODO: decompile
 }
+
 
 
 void ov02_022469B4(void) {
@@ -1721,84 +1285,36 @@ void ov02_022469B4(void) {
 }
 
 
+
 void ov02_022469D8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // mov r0, #4
-    // mov r1, #0x1c
-    // add r7, r2, #0
-    // bl Heap_Alloc
-    // add r4, r0, #0
-    // bne _022469F8
-    // bl GF_AssertFail
-    // add sp, #0x10
-    // mov r0, #0
-    // pop {r3, r4, r5, r6, r7, pc}
-    // mov r1, #0
-    // mov r2, #0x1c
-    // bl MI_CpuFill8
-    // str r5, [r4, #8]
-    // str r6, [r4, #0x10]
-    // str r7, [r4, #0x14]
-    // mov r0, #4
+    Heap_Alloc(4, 0x1c);
+    GF_AssertFail();
+    MI_CpuFill8(0, 0, 0x1c);
+    *((u32*)(r4 + 8)) = r5;
+    *((u32*)(r4 + 0x10)) = r6;
+    *((u32*)(r4 + 0x14)) = r7;
     // str r0, [r4]
-    // bl AllocMonZeroed
-    // str r0, [r4, #0xc]
-    // bl ZeroMonData
-    // mov r1, #0
+    AllocMonZeroed(4);
+    *((u32*)(r4 + 0xc)) = r0;
+    ZeroMonData();
     // str r1, [sp]
     // str r1, [sp, #4]
-    // mov r0, #2
     // str r0, [sp, #8]
     // str r1, [sp, #0xc]
-    // ldr r0, [r4, #0xc]
-    // mov r1, #0x95
-    // mov r2, #0x64
-    // mov r3, #0x20
-    // bl CreateMon
-    // add r0, r4, #0
-    // add sp, #0x10
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CreateMon(*((u32*)(r4 + 0xc)), 0x95, 0x64, 0x20);
 }
+
 
 
 void ov02_02246A34(void) {
-    // push {r4, lr}
-    // bl TaskManager_GetEnvironment
-    // add r4, r0, #0
-    // ldr r0, [r4, #4]
-    // cmp r0, #0
-    // beq _02246A48
-    // cmp r0, #1
-    // beq _02246A5E
-    // b _02246A7E
-    // ldr r0, [r4, #8]
-    // ldr r1, [r4, #0xc]
-    // ldr r2, [r4, #0x10]
-    // ldr r3, [r4, #0x14]
-    // bl ov02_022494C4
-    // str r0, [r4, #0x18]
-    // ldr r0, [r4, #4]
-    // add r0, r0, #1
-    // str r0, [r4, #4]
-    // b _02246A7E
-    // ldr r0, [r4, #0x18]
-    // bl ov02_0224953C
-    // cmp r0, #0
-    // beq _02246A7E
-    // ldr r0, [r4, #0x18]
-    // bl ov02_02249548
-    // ldr r0, [r4, #0xc]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // bl Heap_Free
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
+    TaskManager_GetEnvironment();
+    ov02_022494C4(*((u32*)(r0 + 8)), *((u32*)(r0 + 0xc)), *((u32*)(r0 + 0x10)), *((u32*)(r0 + 0x14)));
+    *((u32*)(r4 + 0x18)) = r0;
+    *((u32*)(r4 + 4)) = (*((u32*)(r4 + 4)) + 1);
+    ov02_0224953C(*((u32*)(r4 + 0x18)));
+    ov02_02249548(*((u32*)(r4 + 0x18)));
+    Heap_Free(*((u32*)(r4 + 0xc)));
+    Heap_Free(r4);
 }
+
 

@@ -34,11 +34,10 @@ void ov80_02239D74(void) {
 }
 
 
+
 void ov80_02239DB8(void) {
-    ov80_02239EC4();
-    ov80_02239F94(*((u32*)(r4 + 4)));
-    Heap_Free(r4);
 }
+
 
 
 void ov80_02239DD0(void) {
@@ -146,10 +145,10 @@ void ov80_02239DD0(void) {
 }
 
 
+
 void ov80_02239EC4(void) {
-    SysTask_Destroy();
-    Heap_Free(r4);
 }
+
 
 
 void ov80_02239ED8(void) {
@@ -207,6 +206,7 @@ void ov80_02239ED8(void) {
 }
 
 
+
 void ov80_02239F48(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -243,61 +243,35 @@ void ov80_02239F48(void) {
 }
 
 
+
 void ov80_02239F94(void) {
-    SysTask_Destroy();
-    Heap_Free(r4);
 }
+
 
 
 void ov80_02239FA8(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r1, #0
-    // add r0, r4, #0
     // add r0, #0x69
     // ldrb r0, [r0]
-    // cmp r0, #8
-    // bhs _02239FC8
-    // add r0, r4, #0
     // add r0, #0x69
     // ldrb r0, [r0]
     // add r4, #0x69
-    // add sp, #4
-    // add r0, r0, #1
     // strb r0, [r4]
-    // pop {r3, r4, pc}
-    // add r0, r4, #0
-    // mov r2, #0
     // add r0, #0x69
     // strb r2, [r0]
-    // mov r0, #0x20
     // str r0, [sp]
     // add r1, #0x68
     // ldrb r1, [r1]
-    // add r3, r4, #0
-    // ldr r0, [r4, #4]
     // add r3, #8
-    // lsl r1, r1, #5
     // add r1, r3, r1
-    // mov r3, #0x60
-    // bl PaletteData_LoadPalette
-    // add r0, r4, #0
+    PaletteData_LoadPalette(*((u32*)(r1 + 4)), (r1 << 5), 0, 0x60);
     // add r0, #0x68
     // ldrb r0, [r0]
-    // add r1, r0, #1
-    // add r0, r4, #0
     // add r0, #0x68
     // strb r1, [r0]
-    // add r0, r4, #0
     // add r0, #0x68
     // ldrb r0, [r0]
-    // cmp r0, #3
-    // blo _0223A006
-    // mov r0, #0
     // add r4, #0x68
     // strb r0, [r4]
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
 }
+
 

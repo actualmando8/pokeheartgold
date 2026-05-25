@@ -3,36 +3,25 @@
 
 void ov93_0225EE98(void) {
     // stmdb sp!, {r4, r5, r6, lr}
-    // sub sp, sp, #0x80
     // add r3, sp, #0
-    // mov r6, #0
-    // mov r0, r6, lsl #1
-    // add r5, r0, #1
     // smull r1, r0, r5, r5
     // umull ip, r2, r5, r1
     // mla r2, r5, r0, r2
-    // mov r4, r5, asr #0x1f
     // umull lr, r0, r5, ip
     // mla r2, r4, r1, r2
     // mla r0, r5, r2, r0
     // mla r0, r4, ip, r0
     // mov r1, lr, lsr #0x18
     // orr r1, r1, r0, lsl #8
-    // add r0, r6, #1
     // strb r1, [r3, r6]
     // and r6, r0, #0xff
-    // cmp r6, #0x7f
-    // blo _0225EEA8
     // mov ip, #0xff
     // add r1, sp, #0
-    // mov r0, #0x34
-    // mov r2, #0x20
     // strb ip, [r3, #0x7f]
-    // bl NNS_G3dGeBufferOP_N
-    // add sp, sp, #0x80
+    NNS_G3dGeBufferOP_N(0x34, 0x20);
     // ldmia sp!, {r4, r5, r6, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_0225EF0C(void) {
@@ -40,24 +29,19 @@ void ov93_0225EF0C(void) {
     // mov lr, #0
     // mov r4, lr
     // mov ip, lr
-    // mov r1, #0x80000
     // add r3, r0, lr, lsl #5
     // str ip, [r3, #0xc]
-    // str r4, [r3, #0x10]
+    *((u32*)(r3 + 0x10)) = r4;
     // str ip, [r3, #0x14]
-    // sub r2, r4, #0x10000
-    // str r2, [r3, #0x18]
-    // str r1, [r3, #0x1c]
-    // str r4, [r3, #0x20]
-    // str r1, [r3, #0x24]
+    *((u32*)(r3 + 0x18)) = (r4 - 0x10000);
+    *((u32*)(r3 + 0x1c)) = 0x80000;
+    *((u32*)(r3 + 0x20)) = r4;
+    *((u32*)(r3 + 0x24)) = 0x80000;
     // add lr, lr, #1
-    // str r2, [r3, #0x28]
-    // cmp lr, #8
-    // sub r4, r4, #0x10000
-    // blt _0225EF20
+    *((u32*)(r3 + 0x28)) = (r4 - 0x10000);
     // ldmia sp!, {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_0225EF5C(void) {
@@ -65,24 +49,19 @@ void ov93_0225EF5C(void) {
     // mov lr, #0
     // mov r4, lr
     // mov ip, lr
-    // mov r1, #0x80000
     // add r3, r0, lr, lsl #5
     // str ip, [r3, #0x10c]
-    // str r4, [r3, #0x110]
+    *((u32*)(r3 + 0x110)) = r4;
     // str ip, [r3, #0x114]
-    // add r2, r4, #0x10000
-    // str r2, [r3, #0x118]
-    // str r1, [r3, #0x11c]
-    // str r4, [r3, #0x120]
-    // str r1, [r3, #0x124]
+    *((u32*)(r3 + 0x118)) = r4;
+    *((u32*)(r3 + 0x11c)) = 0x80000;
+    *((u32*)(r3 + 0x120)) = r4;
+    *((u32*)(r3 + 0x124)) = 0x80000;
     // add lr, lr, #1
-    // mov r4, r2
-    // str r2, [r3, #0x128]
-    // cmp lr, #8
-    // blt _0225EF70
+    *((u32*)(r3 + 0x128)) = r4;
     // ldmia sp!, {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_0225EFAC(void) {
@@ -265,6 +244,7 @@ void ov93_0225EFAC(void) {
 }
 
 
+
 void ov93_0225F268(void) {
     // stmdb sp!, {r3, r4, r5, r6, r7, lr}
     // mov r4, r0, asr #0x1f
@@ -336,6 +316,7 @@ void ov93_0225F268(void) {
 }
 
 
+
 void ov93_0225F370(void) {
     // stmdb sp!, {r3, r4, r5, lr}
     // mov r4, r0
@@ -394,6 +375,7 @@ void ov93_0225F370(void) {
     // _0225F448: .word ov93_02262C08
     // TODO: decompile
 }
+
 
 
 void ov93_0225F44C(void) {
@@ -462,6 +444,7 @@ void ov93_0225F44C(void) {
     // _0225F544: .word ov93_02262C07
     // TODO: decompile
 }
+
 
 
 void ov93_0225F548(void) {
@@ -686,20 +669,10 @@ void ov93_0225F548(void) {
 }
 
 
+
 void ov93_0225F8AC(void) {
-    /* moveq r0, #0 */
-    /* bxeq lr */
-    /* ldr r2, [r0, #0x21c] */
-    /* ldr r1, [r0, #0x224] */
-    /* sub r0, r2, #0x10 */
-    /* cmp r1, r0 */
-    /* movlt r0, #1 */
-    /* bxlt lr */
-    r0 = r2 + 0x10;
-    /* cmp r1, r0 */
-    /* movgt r0, #2 */
-    /* movle r0, #0 */
 }
+
 
 
 void ov93_0225F8E4(void) {
@@ -733,17 +706,13 @@ void ov93_0225F8E4(void) {
 }
 
 
+
 void ov93_0225F94C(void) {
     // stmdb sp!, {r3, r4, r5, lr}
-    // ldr r5, [r0, #0x20]
-    // ldr r1, [r0, #0x10]
-    // ldr r4, [r0, #0x1c]
     // sub r1, r1, r5
     // add r1, r1, r1, lsr #31
     // ldr lr, [r0, #0xc]
     // ldr ip, [r0, #0xe4]
-    // ldr r3, [r0, #0xd4]
-    // ldr r2, [r0, #0xd8]
     // add r0, r5, r1, asr #1
     // sub r0, r2, r0
     // sub r2, r4, lr
@@ -753,28 +722,16 @@ void ov93_0225F94C(void) {
     // smull r2, r0, r1, r0
     // adds r1, r2, #0x800
     // adc r0, r0, #0
-    // mov r1, r1, lsr #0xc
     // orr r1, r1, r0, lsl #20
     // add r0, r1, r1, lsr #31
-    // mov r0, r0, asr #1
     // ldmia sp!, {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov93_0225F9AC(void) {
-    /* stmdb sp!, {r3, lr} */
-    ov93_0225F94C();
-    r2 = 0x64;
-    /* umull r3, r1, r0, r2 */
-    r0 = r0;
-    /* mla r1, r0, r2, r1 */
-    r0 = r3;
-    r3 = 0;
-    r2 = 0x3200000;
-    _ll_sdiv(r3);
-    /* ldmia sp!, {r3, pc} */
 }
+
 
 
 void ov93_0225F9D8(void) {
@@ -839,6 +796,7 @@ void ov93_0225F9D8(void) {
 }
 
 
+
 void ov93_0225FABC(void) {
     // stmdb sp!, {r4, lr}
     // mov r4, r0
@@ -859,6 +817,7 @@ void ov93_0225FABC(void) {
     // _0225FAFC: .word 0x00002715
     // TODO: decompile
 }
+
 
 
 void ov93_0225FB00(void) {
@@ -891,6 +850,7 @@ void ov93_0225FB00(void) {
     // _0225FB68: .word ov93_02262C38
     // TODO: decompile
 }
+
 
 
 void ov93_0225FB6C(void) {
@@ -928,8 +888,8 @@ void ov93_0225FB6C(void) {
 }
 
 
+
 void ov93_0225FBE4(void) {
-    /* ldr ip, _0225FBEC ; =Sprite_DeleteAndFreeResources */
-    /* _0225FBEC: .word Sprite_DeleteAndFreeResources */
 }
+
 

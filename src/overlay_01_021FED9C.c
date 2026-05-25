@@ -2,44 +2,28 @@
 #include "global.h"
 
 void ov01_021FED9C(void) {
-    ov01_021F1430(0x3c, 0, 0);
-    ov01_021FEDC8();
 }
+
 
 
 void ov01_021FEDB8(void) {
-    ov01_021FEDF0();
-    ov01_021F1448(r4);
 }
+
 
 
 void ov01_021FEDC8(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // mov r2, #0
-    // add r4, r0, #0
     // str r2, [sp]
-    // ldr r0, [r4]
-    // add r1, r4, #4
-    // mov r3, #0x1e
-    // bl ov01_021F19F4
-    // mov r2, #0
+    ov01_021F19F4(*((u32*)r0), (r0 + 4), 0, 0x1e);
     // str r2, [sp]
-    // ldr r0, [r4]
     // add r4, #0x18
-    // add r1, r4, #0
-    // mov r3, #0x87
-    // bl ov01_021F1A18
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    ov01_021F1A18(*((u32*)r4), r4, 0, 0x87);
 }
+
 
 
 void ov01_021FEDF0(void) {
-    sub_02069784((r0 + 4));
-    sub_020698D0(r4);
 }
+
 
 
 void ov01_021FEE04(void) {
@@ -88,63 +72,34 @@ void ov01_021FEE04(void) {
 }
 
 
+
 void ov01_021FEE64(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r1, #0
-    // bl sub_02068D98
-    // ldr r3, [r0, #4]
-    // ldr r1, [r0]
-    // mov r0, #0
-    // str r1, [r4, #0x78]
-    // str r3, [r4, #0x7c]
+    sub_02068D98();
+    *((u32*)(r4 + 0x78)) = *((u32*)r0);
+    *((u32*)(r4 + 0x7c)) = *((u32*)(r0 + 4));
     // str r0, [sp]
-    // add r2, r3, #4
-    // ldr r0, [r4, #0x78]
-    // add r1, r4, #0
     // add r3, #0x18
-    // bl ov01_021F1A34
-    // ldr r1, [r4, #0x7c]
-    // add r0, r4, #0
+    ov01_021F1A34(*((u32*)(r4 + 0x78)), r4, (*((u32*)(r0 + 4)) + 4), *((u32*)(r0 + 4)));
     // add r0, #0x24
-    // add r1, r1, #4
-    // add r2, r4, #0
-    // bl sub_02069998
-    // mov r0, #1
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_02069998(r4, (*((u32*)(r4 + 0x7c)) + 4), r4);
 }
+
 
 
 void ov01_021FEE9C(void) {
-    sub_020698D0();
 }
+
 
 
 void ov01_021FEEA8(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl sub_02069948
-    // cmp r0, #1
-    // bne _021FEEC0
-    // add r0, r5, #0
-    // bl ov01_021F1640
-    // pop {r3, r4, r5, pc}
-    // mov r1, #1
-    // add r0, r4, #0
-    // lsl r1, r1, #0xc
-    // mov r2, #0
-    // bl sub_020698E8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02069948(r1);
+    ov01_021F1640(r5);
+    sub_020698E8(r4, (1 << 0xc), 0);
 }
+
 
 
 void ov01_021FEED0(void) {
-    sub_02068DB8();
-    sub_020699BC(r4);
 }
+
 

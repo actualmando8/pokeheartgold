@@ -114,6 +114,7 @@ void BeginNormalPaletteFade(void) {
 }
 
 
+
 void HandleFadeUpdateFrame(void) {
     // push {r4, lr}
     // ldr r0, _0200FB54 ; =_021D1034
@@ -139,6 +140,7 @@ void HandleFadeUpdateFrame(void) {
 }
 
 
+
 void IsPaletteFadeFinished(void) {
     // ldr r0, _0200FB6C ; =_021D1034
     // ldrh r0, [r0, #0xc]
@@ -151,6 +153,7 @@ void IsPaletteFadeFinished(void) {
     // _0200FB6C: .word _021D1034
     // TODO: decompile
 }
+
 
 
 void sub_0200FB70(void) {
@@ -199,14 +202,15 @@ void sub_0200FB70(void) {
 }
 
 
+
 void sub_0200FBDC(void) {
-    sub_020131F4();
 }
+
 
 
 void SetMasterBrightnessNeutral(void) {
-    SetMasterBrightness();
 }
+
 
 
 void sub_0200FBF4(void) {
@@ -230,6 +234,7 @@ void sub_0200FBF4(void) {
     // _0200FC1C: .word SetMasterBrightness
     // TODO: decompile
 }
+
 
 
 void sub_0200FC20(void) {
@@ -262,6 +267,7 @@ void sub_0200FC20(void) {
     // _0200FC5C: .word 0x00007FFF
     // TODO: decompile
 }
+
 
 
 void sub_0200FC60(void) {
@@ -322,10 +328,10 @@ void sub_0200FC60(void) {
 }
 
 
+
 void sub_0200FCDC(void) {
-    GX_LoadBGPltt(0, 2);
-    GXS_LoadBGPltt(0, 2);
 }
+
 
 
 void SetMasterBrightness(void) {
@@ -345,6 +351,7 @@ void SetMasterBrightness(void) {
     // _0200FD18: .word 0x0400106C
     // TODO: decompile
 }
+
 
 
 void HandleEndFade(void) {
@@ -391,63 +398,24 @@ void HandleEndFade(void) {
 }
 
 
+
 void DoFadeUpdateFrame(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5]
-    // add r4, r2, #0
-    // cmp r0, #0
-    // beq _0200FD8A
-    // cmp r0, #1
-    // beq _0200FD9C
-    // cmp r0, #2
-    // beq _0200FDB6
-    // b _0200FDCE
-    // add r0, r5, #4
-    // bl FadeWork_UpdateFrame
-    // add r0, r5, #0
+    FadeWork_UpdateFrame((r0 + 4));
     // add r0, #8
-    // add r1, r4, #0
-    // bl FadeWork_UpdateFrame
-    // b _0200FDCE
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // beq _0200FDAA
-    // add r0, r5, #4
-    // bl FadeWork_UpdateFrame
-    // b _0200FDCE
-    // add r0, r5, #0
+    FadeWork_UpdateFrame(r5, r4);
+    FadeWork_UpdateFrame((r5 + 4));
     // add r0, #8
-    // add r1, r4, #0
-    // bl FadeWork_UpdateFrame
-    // b _0200FDCE
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // beq _0200FDC8
-    // add r0, r5, #0
+    FadeWork_UpdateFrame(r5, r4);
     // add r0, #8
-    // add r1, r4, #0
-    // bl FadeWork_UpdateFrame
-    // b _0200FDCE
-    // add r0, r5, #4
-    // bl FadeWork_UpdateFrame
-    // ldr r0, [r5, #4]
-    // cmp r0, #0
-    // bne _0200FDDE
-    // ldr r0, [r5, #8]
-    // cmp r0, #0
-    // bne _0200FDDE
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    FadeWork_UpdateFrame(r5, r4);
+    FadeWork_UpdateFrame((r5 + 4));
 }
+
 
 
 void FadeWork_UpdateFrame(void) {
-    CallFadeFunc(0);
 }
+
 
 
 void CallFadeFunc(void) {
@@ -464,58 +432,25 @@ void CallFadeFunc(void) {
 }
 
 
+
 void sub_0200FE14(void) {
-    // push {r3, lr}
-    // cmp r0, #4
-    // bhi _0200FE74
     // add r0, r0, r0
     // add r0, pc
-    // ldrh r0, [r0, #6]
-    // lsl r0, r0, #0x10
     // asr r0, r0, #0x10
     // add pc, r0
     // _0200FE26: ; jump table
-    // mov r2, #1
-    // add r0, r1, #0
-    // mov r1, #0
-    // add r3, r2, #0
-    // bl sub_0200FE78
-    // pop {r3, pc}
-    // add r0, r1, #0
-    // mov r1, #1
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl sub_0200FE78
-    // pop {r3, pc}
-    // mov r2, #1
-    // add r0, r1, #0
-    // mov r1, #2
-    // add r3, r2, #0
-    // bl sub_0200FE78
-    // pop {r3, pc}
-    // add r0, r1, #0
-    // mov r1, #1
-    // add r2, r1, #0
-    // mov r3, #0
-    // bl sub_0200FE78
-    // pop {r3, pc}
-    // add r0, r1, #0
-    // mov r1, #2
-    // mov r2, #0
-    // mov r3, #1
-    // bl sub_0200FE78
-    // pop {r3, pc}
-    // TODO: decompile
+    sub_0200FE78(r1, 0, 1, 1);
+    sub_0200FE78(r1, 1, 1, 1);
+    sub_0200FE78(r1, 2, 1, 1);
+    sub_0200FE78(r1, 1, 1, 0);
+    sub_0200FE78(r1, 2, 0, 1);
 }
+
 
 
 void sub_0200FE78(void) {
-    *(u32*)r0 = r1;
-    ((u32*)r0)[4] = r2;
-    ((u32*)r0)[8] = r3;
-    ((u32*)r0)[0xc] = r2;
-    ((u32*)r0)[0x10] = r3;
 }
+
 
 
 void sub_0200FE84(void) {
@@ -544,6 +479,7 @@ void sub_0200FE84(void) {
 }
 
 
+
 void sub_0200FEB0(void) {
     // mov r3, #0
     // ldr r1, _0200FEC8 ; =sub_02010014
@@ -562,20 +498,11 @@ void sub_0200FEB0(void) {
 }
 
 
+
 void sub_0200FECC(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r4, #0
-    // ldr r0, [r5]
-    // ldr r1, [r5, #8]
     // blx r1
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #2
-    // blt _0200FED2
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0200FEE4(void) {
@@ -637,6 +564,7 @@ void sub_0200FEE4(void) {
 }
 
 
+
 void sub_0200FF5C(void) {
     // push {r3, r4, r5, lr}
     // lsl r4, r1, #2
@@ -660,6 +588,7 @@ void sub_0200FF5C(void) {
     // _0200FF84: .word sub_02010014
     // TODO: decompile
 }
+
 
 
 void sub_0200FF88(void) {
@@ -686,6 +615,7 @@ void sub_0200FF88(void) {
 }
 
 
+
 void sub_0200FFB4(void) {
     // push {r3, r4, r5, lr}
     // add r5, r0, #0
@@ -706,24 +636,22 @@ void sub_0200FFB4(void) {
 }
 
 
+
 void sub_0200FFD8(void) {
-    sub_0200FEE4(*((u32*)(r1 + 4)), *((u32*)(r1 + 8)), *((u32*)(r1 + 0xc)));
-    SysTask_Destroy(r5);
-    Heap_Free(r4);
 }
+
 
 
 void sub_0200FFF8(void) {
-    sub_0200FF5C(*((u32*)(r1 + 4)));
-    SysTask_Destroy(r5);
-    Heap_Free(r4);
 }
+
 
 
 void sub_02010014(void) {
     // bx lr
     // TODO: decompile
 }
+
 
 
 void sub_02010018(void) {
@@ -740,32 +668,18 @@ void sub_02010018(void) {
 }
 
 
+
 void sub_0201002C(void) {
-    // ldr r1, [r0, #0xc]
-    // cmp r1, #1
-    // bne _02010038
-    // add r2, r0, #0
     // add r2, #0x14
-    // b _0201003C
-    // add r2, r0, #0
     // add r2, #0x44
-    // ldr r1, [r2, #0x28]
-    // cmp r1, #1
-    // bne _02010046
-    // ldrh r0, [r2, #0x24]
-    // bx lr
-    // mov r1, #0x15
-    // lsl r1, r1, #4
     // ldrh r0, [r0, r1]
-    // bx lr
-    // TODO: decompile
 }
+
 
 
 void sub_02010050(void) {
-    SetMasterBrightness(*((u32*)(r1 + 0x10)), 0);
-    SysTask_Destroy(r4);
 }
+
 
 
 void sub_02010064(void) {
@@ -794,6 +708,7 @@ void sub_02010064(void) {
 }
 
 
+
 void sub_02010094(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -820,40 +735,17 @@ void sub_02010094(void) {
 }
 
 
+
 void sub_020100C4(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r2, r4, #0
-    // mov r1, #0x14
-    // mov r0, #0
     // strb r0, [r2]
-    // add r2, r2, #1
-    // sub r1, r1, #1
-    // bne _020100CE
-    // add r0, r4, #0
     // add r0, #0x14
-    // mov r1, #0
-    // mov r2, #0x30
-    // bl memset
-    // add r0, r4, #0
+    memset(r0, 0, 0x30);
     // add r0, #0x44
-    // mov r1, #0
-    // mov r2, #0x30
-    // bl memset
-    // add r2, r4, #0
+    memset(r4, 0, 0x30);
     // add r2, #0x74
-    // mov r1, #0x18
-    // mov r0, #0
     // strb r0, [r2]
-    // add r2, r2, #1
-    // sub r1, r1, #1
-    // bne _020100F6
     // add r4, #0x8c
-    // add r0, r4, #0
-    // mov r1, #0
-    // mov r2, #0xc0
-    // bl memset
-    // pop {r4, pc}
-    // TODO: decompile
+    memset(r4, 0, 0xc0);
 }
+
 

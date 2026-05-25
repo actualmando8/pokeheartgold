@@ -2,31 +2,15 @@
 #include "global.h"
 
 void ov80_02239960(void) {
-    Heap_Alloc(0x24);
-    MI_CpuFill8(0, 0x24);
-    *((u16*)(r4 + 0x20)) = r5;
-    sub_02014DA0();
 }
+
 
 
 void ov80_02239980(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r0, #0
-    // mov r4, #0
-    // add r5, r6, #0
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // beq _02239992
-    // bl ov80_02239A98
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #8
-    // blt _02239988
-    // add r0, r6, #0
-    // bl Heap_Free
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    ov80_02239A98(*((u32*)r0));
+    Heap_Free(r6);
 }
+
 
 
 void ov80_022399A4(void) {
@@ -84,74 +68,41 @@ void ov80_022399A4(void) {
 }
 
 
+
 void ov80_02239A1C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // lsl r4, r1, #2
     // ldr r0, [r5, r4]
-    // cmp r0, #0
-    // bne _02239A2C
-    // bl GF_AssertFail
+    GF_AssertFail();
     // ldr r0, [r5, r4]
-    // bl ov80_02239A98
-    // mov r0, #0
+    ov80_02239A98();
     // str r0, [r5, r4]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void ov80_02239A38(void) {
-    // push {r3, lr}
-    // bl Thunk_G3X_Reset
-    // bl sub_02015420
-    // cmp r0, #0
-    // bne _02239A4A
-    // mov r0, #0
-    // pop {r3, pc}
-    // bl sub_0201543C
-    // cmp r0, #0
-    // ble _02239A56
-    // bl Thunk_G3X_Reset
-    // bl sub_02015460
-    // mov r0, #1
-    // pop {r3, pc}
-    // TODO: decompile
+    Thunk_G3X_Reset();
+    sub_02015420();
+    sub_0201543C(0);
+    Thunk_G3X_Reset();
+    sub_02015460();
 }
+
 
 
 void ov80_02239A60(void) {
-    GF_AssertFail();
 }
 
 
-void ov80_02239A74(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // mov r4, #0
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // beq _02239A8C
-    // bl sub_020154B0
-    // cmp r0, #0
-    // ble _02239A8C
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r4, r4, #1
-    // add r5, r5, #4
-    // cmp r4, #8
-    // blt _02239A7A
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+
+u32 ov80_02239A74(void) {
+    sub_020154B0(*((u32*)r0));
 }
+
 
 
 void ov80_02239A98(void) {
-    sub_020154D0();
-    sub_02014EBC(r5);
-    Heap_Free(r4);
 }
+
 
 
 void ov80_02239AB0(void) {
@@ -174,6 +125,7 @@ void ov80_02239AB0(void) {
 }
 
 
+
 void ov80_02239AD4(void) {
     // push {r4, lr}
     // ldr r3, _02239AF4 ; =NNS_GfdDefaultFuncAllocPlttVram
@@ -192,4 +144,5 @@ void ov80_02239AD4(void) {
     // _02239AF4: .word NNS_GfdDefaultFuncAllocPlttVram
     // TODO: decompile
 }
+
 

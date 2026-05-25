@@ -14,6 +14,7 @@ void sub_0208FB64(void) {
 }
 
 
+
 void sub_0208FB78(void) {
     // ldr r0, _0208FB84 ; =0x00004A08
     // ldr r1, [r3, r0]
@@ -26,6 +27,7 @@ void sub_0208FB78(void) {
 }
 
 
+
 void sub_0208FB88(void) {
     // cmp r0, #0
     // bne _0208FB92
@@ -36,6 +38,7 @@ void sub_0208FB88(void) {
     // _0208FB94: .word 0x00004A10
     // TODO: decompile
 }
+
 
 
 void sub_0208FB98(void) {
@@ -71,6 +74,7 @@ void sub_0208FB98(void) {
 }
 
 
+
 void sub_0208FBE0(void) {
     // add r0, r3, #0
     // ldr r3, _0208FBEC ; =ov73_021E705C
@@ -81,6 +85,7 @@ void sub_0208FBE0(void) {
     // _0208FBEC: .word ov73_021E705C
     // TODO: decompile
 }
+
 
 
 void sub_0208FBF0(void) {
@@ -192,23 +197,14 @@ void sub_0208FBF0(void) {
 }
 
 
+
 void sub_0208FCDC(void) {
-    // push {r4, lr}
     // ldrb r2, [r2]
-    // add r4, r3, #0
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl ov73_021E7120
-    // bl sub_0203769C
-    // cmp r0, #0
-    // bne _0208FCFA
-    // mov r0, #0xe1
-    // mov r1, #0
-    // lsl r0, r0, #2
+    ov73_021E7120(r3, 1);
+    sub_0203769C();
     // str r1, [r4, r0]
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_0208FCFC(void) {
@@ -217,44 +213,29 @@ void sub_0208FCFC(void) {
 }
 
 
+
 void sub_0208FD00(void) {
     // bx lr
     // TODO: decompile
 }
 
 
+
 void sub_0208FD04(void) {
-    // push {r4, lr}
-    // add r4, r3, #0
-    // bl sub_0203769C
-    // cmp r0, #0
-    // beq _0208FD1A
-    // add r0, r4, #0
-    // mov r1, #0xd
-    // mov r2, #0
-    // bl ov73_021E705C
-    // pop {r4, pc}
-    // TODO: decompile
+    sub_0203769C();
+    ov73_021E705C(r4, 0xd, 0);
 }
+
 
 
 void sub_0208FD1C(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r0, #0
-    // bl sub_0203769C
-    // cmp r0, #0
-    // bne _0208FD38
+    sub_0203769C();
     // add r0, sp, #0
     // strb r4, [r0]
-    // mov r0, #0x6e
     // add r1, sp, #0
-    // mov r2, #1
-    // bl sub_02037030
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_02037030(0x6e, 1);
 }
+
 
 
 void sub_0208FD3C(void) {
@@ -291,19 +272,20 @@ void sub_0208FD3C(void) {
 }
 
 
+
 u8 sub_0208FD7C(void) {
-    return 0;
 }
+
 
 
 u8 sub_0208FD80(void) {
-    return 1;
 }
+
 
 
 u8 sub_0208FD84(void) {
-    return 4;
 }
+
 
 
 void sub_0208FD88(void) {
@@ -318,4 +300,5 @@ void sub_0208FD88(void) {
     // _0208FD98: .word 0x00000F48
     // TODO: decompile
 }
+
 

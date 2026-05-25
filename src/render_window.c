@@ -2,340 +2,175 @@
 #include "global.h"
 
 void sub_0200E398(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // cmp r3, #0
     // str r2, [sp]
-    // bne _0200E3BE
-    // mov r1, #0
     // str r1, [sp, #4]
     // ldr r0, [sp, #0x20]
     // str r1, [sp, #8]
     // str r0, [sp, #0xc]
-    // mov r0, #0x26
-    // add r2, r5, #0
-    // add r3, r4, #0
-    // bl GfGfxLoader_LoadCharData
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
+    GfGfxLoader_LoadCharData(0x26, 0, r0, r1);
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x20]
-    // mov r1, #1
     // str r0, [sp, #0xc]
-    // mov r0, #0x26
-    // add r2, r5, #0
-    // add r3, r4, #0
-    // bl GfGfxLoader_LoadCharData
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadCharData(0x26, 1, r5, r4);
 }
+
 
 
 u8 sub_0200E3D8(void) {
-    return 0x19;
 }
+
 
 
 void LoadUserFrameGfx1(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #0x10
-    // add r6, r0, #0
     // add r0, sp, #0x10
-    // ldrb r0, [r0, #0x10]
-    // add r5, r1, #0
-    // add r4, r3, #0
-    // cmp r0, #0
-    // beq _0200E3F2
-    // mov r1, #1
-    // b _0200E3F4
-    // mov r1, #0
     // str r2, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x24]
-    // add r2, r6, #0
     // str r0, [sp, #0xc]
-    // mov r0, #0x26
-    // add r3, r5, #0
-    // bl GfGfxLoader_LoadCharData
+    GfGfxLoader_LoadCharData(0x26, 0, r0, r1);
     // add r0, sp, #0x10
-    // ldrb r0, [r0, #0x10]
-    // cmp r0, #2
-    // bne _0200E416
-    // mov r1, #0x2e
-    // b _0200E418
-    // mov r1, #0x19
-    // cmp r5, #4
-    // bhs _0200E432
-    // mov r0, #0x20
     // str r0, [sp]
     // ldr r0, [sp, #0x24]
-    // mov r2, #0
     // str r0, [sp, #4]
-    // mov r0, #0x26
-    // lsl r3, r4, #5
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0x20
+    GfGfxLoader_GXLoadPal(0x26, 0x19, 0, (r4 << 5));
     // str r0, [sp]
     // ldr r0, [sp, #0x24]
-    // mov r2, #4
     // str r0, [sp, #4]
-    // mov r0, #0x26
-    // lsl r3, r4, #5
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x10
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0x26, 4, (r4 << 5));
 }
 
 
+
 void sub_0200E448(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x24
     // str r1, [sp, #0x14]
     // str r2, [sp, #0x18]
     // str r3, [sp, #0x1c]
     // ldr r2, [sp, #0x1c]
     // ldr r5, [sp, #0x40]
-    // sub r7, r2, #1
     // ldr r2, [sp, #0x18]
     // str r0, [sp, #0x10]
-    // sub r6, r2, #1
-    // lsl r2, r7, #0x18
-    // lsr r2, r2, #0x18
     // str r2, [sp]
-    // mov r2, #1
     // str r2, [sp, #4]
     // str r2, [sp, #8]
-    // lsl r3, r6, #0x18
     // str r5, [sp, #0xc]
     // add r2, sp, #0x28
-    // ldrh r2, [r2, #0x1c]
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(*((u16*)(1 + 0x1c)), (((r2 - 1) << 0x18) >> 0x18));
     // add r1, sp, #0x28
-    // ldrh r4, [r1, #0x1c]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // ldrb r0, [r1, #0x10]
-    // add r2, r4, #1
-    // lsl r2, r2, #0x10
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
     // ldr r3, [sp, #0x18]
-    // lsr r2, r2, #0x10
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, (((*((u16*)(r1 + 0x1c)) + 1) << 0x10) >> 0x10));
     // add r0, sp, #0x28
-    // ldrb r1, [r0, #0x10]
     // ldr r0, [sp, #0x18]
-    // add r2, r4, #2
     // add r0, r0, r1
     // str r0, [sp, #0x20]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x20]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, *((u8*)(r0 + 0x10)), (((r4 + 2) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
-    // add r2, r4, #3
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // add r0, sp, #0x28
-    // ldrb r0, [r0, #0x14]
-    // lsl r2, r2, #0x10
-    // lsl r3, r6, #0x18
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(*((u8*)(1 + 0x14)), (((r4 + 3) << 0x10) >> 0x10), ((r6 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
     // ldr r3, [sp, #0x20]
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // add r0, sp, #0x28
-    // ldrb r0, [r0, #0x14]
-    // add r2, r4, #5
-    // lsl r2, r2, #0x10
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(*((u8*)(1 + 0x14)), (((r4 + 5) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // add r0, sp, #0x28
-    // ldrb r1, [r0, #0x14]
     // ldr r0, [sp, #0x1c]
-    // add r2, r4, #6
     // add r7, r0, r1
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r6, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(1, *((u8*)(r0 + 0x14)), (((r4 + 6) << 0x10) >> 0x10), ((r6 << 0x18) >> 0x18));
     // str r0, [sp]
     // add r0, sp, #0x28
-    // ldrb r0, [r0, #0x10]
-    // add r2, r4, #7
-    // lsl r2, r2, #0x10
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
     // ldr r3, [sp, #0x18]
-    // lsr r2, r2, #0x10
-    // bl FillBgTilemapRect
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(1, (((r4 + 7) << 0x10) >> 0x10));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x20]
     // str r5, [sp, #0xc]
     // add r4, #8
-    // lsl r2, r4, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // add sp, #0x24
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
 }
 
 
+
 void DrawFrameAndWindow1(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x20
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl GetWindowBgId
+    GetWindowBgId();
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl GetWindowX
+    GetWindowX(r5);
     // str r0, [sp, #0x14]
-    // add r0, r5, #0
-    // bl GetWindowY
+    GetWindowY(r5);
     // str r0, [sp, #0x18]
-    // add r0, r5, #0
-    // bl GetWindowWidth
+    GetWindowWidth(r5);
     // str r0, [sp, #0x1c]
-    // add r0, r5, #0
-    // bl GetWindowHeight
+    GetWindowHeight(r5);
     // ldr r1, [sp, #0x1c]
     // ldr r2, [sp, #0x14]
     // str r1, [sp]
     // str r0, [sp, #4]
     // str r7, [sp, #8]
     // str r6, [sp, #0xc]
-    // ldr r0, [r5]
     // ldr r1, [sp, #0x10]
     // ldr r3, [sp, #0x18]
-    // bl sub_0200E448
-    // cmp r4, #0
-    // bne _0200E5D0
-    // add r0, r5, #0
-    // bl CopyWindowToVram
-    // add sp, #0x20
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_0200E448(*((u32*)r5));
+    CopyWindowToVram(r5);
 }
+
 
 
 void sub_0200E5D4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl GetWindowBgId
+    GetWindowBgId();
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl GetWindowX
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl GetWindowY
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl GetWindowWidth
+    GetWindowX(r5);
+    GetWindowY(r5);
+    GetWindowWidth(r5);
     // str r0, [sp, #0x14]
-    // add r0, r5, #0
-    // bl GetWindowHeight
-    // sub r1, r7, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    GetWindowHeight(r5);
     // str r1, [sp]
     // ldr r1, [sp, #0x14]
-    // add r0, r0, #2
-    // add r1, r1, #2
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // lsl r0, r0, #0x18
     // str r1, [sp, #4]
-    // lsr r0, r0, #0x18
-    // sub r3, r6, #1
-    // lsl r3, r3, #0x18
     // str r0, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
-    // ldr r0, [r5]
     // ldr r1, [sp, #0x10]
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // cmp r4, #0
-    // bne _0200E636
-    // add r0, r5, #0
-    // bl ClearWindowTilemapAndCopyToVram
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FillBgTilemapRect(*((u32*)r5), ((((((r7 - 1) << 0x18) >> 0x18) + 2) << 0x18) >> 0x18), 0, (((r6 - 1) << 0x18) >> 0x18));
+    ClearWindowTilemapAndCopyToVram(r5);
 }
+
 
 
 void sub_0200E63C(void) {
@@ -345,628 +180,339 @@ void sub_0200E63C(void) {
 }
 
 
+
 void sub_0200E640(void) {
     // add r0, #0x1a
-    // bx lr
-    // TODO: decompile
 }
 
 
+
 void LoadUserFrameGfx2(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
     // str r0, [sp, #0x10]
     // add r0, sp, #0x18
-    // ldrb r7, [r0, #0x10]
-    // add r6, r2, #0
-    // add r5, r1, #0
-    // add r0, r7, #0
-    // add r4, r3, #0
-    // bl sub_0200E63C
-    // add r1, r0, #0
+    sub_0200E63C(*((u8*)(r0 + 0x10)));
     // str r6, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x2c]
     // ldr r2, [sp, #0x10]
     // str r0, [sp, #0xc]
-    // mov r0, #0x26
-    // add r3, r5, #0
-    // bl GfGfxLoader_LoadCharData
-    // cmp r5, #4
-    // bhs _0200E694
-    // add r0, r7, #0
-    // bl sub_0200E640
-    // add r1, r0, #0
-    // mov r0, #0x20
+    GfGfxLoader_LoadCharData(0x26, r0, r5);
+    sub_0200E640(r7);
     // str r0, [sp]
     // ldr r0, [sp, #0x2c]
-    // mov r2, #0
     // str r0, [sp, #4]
-    // mov r0, #0x26
-    // lsl r3, r4, #5
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // add r0, r7, #0
-    // bl sub_0200E640
-    // add r1, r0, #0
-    // mov r0, #0x20
+    GfGfxLoader_GXLoadPal(0x26, r0, 0, (r4 << 5));
+    sub_0200E640(r7);
     // str r0, [sp]
     // ldr r0, [sp, #0x2c]
-    // mov r2, #4
     // str r0, [sp, #4]
-    // mov r0, #0x26
-    // lsl r3, r4, #5
-    // bl GfGfxLoader_GXLoadPal
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    GfGfxLoader_GXLoadPal(0x26, r0, 4, (r4 << 5));
 }
 
 
+
 void sub_0200E6B4(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x30
     // str r1, [sp, #0x10]
     // str r2, [sp, #0x14]
     // str r3, [sp, #0x18]
     // ldr r2, [sp, #0x4c]
-    // add r7, r0, #0
     // str r2, [sp, #0x4c]
     // ldr r2, [sp, #0x18]
     // ldr r5, [sp, #0x50]
-    // sub r6, r2, #1
     // ldr r2, [sp, #0x14]
-    // sub r2, r2, #2
     // str r2, [sp, #0x28]
-    // lsl r2, r6, #0x18
-    // lsr r2, r2, #0x18
     // str r2, [sp]
-    // mov r2, #1
     // str r2, [sp, #4]
     // str r2, [sp, #8]
     // ldr r3, [sp, #0x28]
     // str r5, [sp, #0xc]
     // add r2, sp, #0x38
-    // lsl r3, r3, #0x18
-    // ldrh r2, [r2, #0x1c]
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(*((u16*)(1 + 0x1c)), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x14]
-    // sub r0, r0, #1
     // str r0, [sp, #0x24]
     // add r0, sp, #0x38
-    // ldrh r4, [r0, #0x1c]
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x24]
     // str r5, [sp, #0xc]
-    // add r2, r4, #1
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(r7, (((*((u16*)((r0 - 1) + 0x1c)) + 1) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
     // add r0, sp, #0x38
-    // ldrb r0, [r0, #0x10]
-    // add r2, r4, #2
-    // lsl r2, r2, #0x10
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // ldr r1, [sp, #0x10]
     // ldr r3, [sp, #0x14]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, (((r4 + 2) << 0x10) >> 0x10));
     // add r0, sp, #0x38
-    // ldrb r1, [r0, #0x10]
     // ldr r0, [sp, #0x14]
-    // add r2, r4, #3
     // add r0, r0, r1
     // str r0, [sp, #0x2c]
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x2c]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, *((u8*)(r0 + 0x10)), (((r4 + 3) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x2c]
-    // add r2, r4, #4
-    // add r0, r0, #1
     // str r0, [sp, #0x20]
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x20]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, (((r4 + 4) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x2c]
-    // add r2, r4, #5
-    // add r0, r0, #2
     // str r0, [sp, #0x1c]
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x1c]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, (((r4 + 5) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x18]
     // ldr r3, [sp, #0x28]
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x4c]
-    // add r2, r4, #6
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, (((r4 + 6) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x18]
     // ldr r3, [sp, #0x24]
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x4c]
-    // add r2, r4, #7
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, (((r4 + 7) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x18]
-    // add r2, r4, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x4c]
     // ldr r3, [sp, #0x2c]
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // add r2, #9
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x18]
-    // add r2, r4, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x4c]
     // ldr r3, [sp, #0x20]
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // add r2, #0xa
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x18]
-    // add r2, r4, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // ldr r0, [sp, #0x4c]
     // ldr r3, [sp, #0x1c]
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // add r2, #0xb
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // add r2, r4, #0
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r3, [sp, #0x28]
     // add r2, #0xc
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x18]
     // ldr r0, [sp, #0x4c]
-    // lsr r2, r2, #0x10
     // add r6, r1, r0
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // add r2, r4, #0
     // ldr r3, [sp, #0x24]
     // str r5, [sp, #0xc]
     // add r2, #0xd
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
     // add r0, sp, #0x38
-    // ldrb r0, [r0, #0x10]
-    // add r2, r4, #0
     // add r2, #0xe
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
     // ldr r1, [sp, #0x10]
     // ldr r3, [sp, #0x14]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // add r2, r4, #0
     // ldr r3, [sp, #0x2c]
     // str r5, [sp, #0xc]
     // add r2, #0xf
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // add r2, r4, #0
     // ldr r3, [sp, #0x20]
     // str r5, [sp, #0xc]
     // add r2, #0x10
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x1c]
     // str r5, [sp, #0xc]
     // add r4, #0x11
-    // lsl r2, r4, #0x10
-    // lsl r3, r3, #0x18
     // ldr r1, [sp, #0x10]
-    // add r0, r7, #0
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // add sp, #0x30
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FillBgTilemapRect(r7, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
 }
+
 
 
 void sub_0200E948(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // add r5, r0, #0
-    // add r6, r1, #0
-    // add r7, r2, #0
-    // bl GetWindowBgId
+    GetWindowBgId();
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl GetWindowX
+    GetWindowX(r5);
     // str r0, [sp, #0x14]
-    // add r0, r5, #0
-    // bl GetWindowY
+    GetWindowY(r5);
     // str r0, [sp, #0x18]
-    // add r0, r5, #0
-    // bl GetWindowWidth
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl GetWindowHeight
+    GetWindowWidth(r5);
+    GetWindowHeight(r5);
     // str r4, [sp]
     // str r0, [sp, #4]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #8]
-    // lsl r0, r6, #0x10
-    // lsr r0, r0, #0x10
     // str r0, [sp, #0xc]
-    // ldr r0, [r5]
     // ldr r1, [sp, #0x10]
     // ldr r2, [sp, #0x14]
     // ldr r3, [sp, #0x18]
-    // bl sub_0200E6B4
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_0200E6B4(*((u32*)r5));
 }
+
 
 
 void DrawFrameAndWindow2(void) {
-    // push {r4, r5, r6, lr}
-    // add r6, r2, #0
-    // add r4, r1, #0
-    // add r1, r6, #0
-    // add r2, r3, #0
-    // add r5, r0, #0
-    // bl sub_0200E948
-    // cmp r4, #0
-    // bne _0200E9B2
-    // add r0, r5, #0
-    // bl CopyWindowToVram
-    // add r0, r6, #0
-    // bl TextPrinter_SetDownArrowBaseTile
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_0200E948(r2, r3);
+    CopyWindowToVram(r5);
+    TextPrinter_SetDownArrowBaseTile(r6);
 }
+
 
 
 void ClearFrameAndWindow2(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x18
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl GetWindowBgId
+    GetWindowBgId();
     // str r0, [sp, #0x10]
-    // add r0, r5, #0
-    // bl GetWindowX
-    // add r6, r0, #0
-    // add r0, r5, #0
-    // bl GetWindowY
-    // add r7, r0, #0
-    // add r0, r5, #0
-    // bl GetWindowWidth
+    GetWindowX(r5);
+    GetWindowY(r5);
+    GetWindowWidth(r5);
     // str r0, [sp, #0x14]
-    // add r0, r5, #0
-    // bl GetWindowHeight
-    // sub r1, r7, #1
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
+    GetWindowHeight(r5);
     // str r1, [sp]
     // ldr r1, [sp, #0x14]
-    // add r0, r0, #2
-    // add r1, r1, #5
-    // lsl r1, r1, #0x18
-    // lsr r1, r1, #0x18
-    // lsl r0, r0, #0x18
     // str r1, [sp, #4]
-    // lsr r0, r0, #0x18
-    // sub r3, r6, #2
-    // lsl r3, r3, #0x18
     // str r0, [sp, #8]
-    // mov r2, #0
     // str r2, [sp, #0xc]
-    // ldr r0, [r5]
     // ldr r1, [sp, #0x10]
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // cmp r4, #0
-    // bne _0200EA1E
-    // add r0, r5, #0
-    // bl ClearWindowTilemapAndCopyToVram
-    // add sp, #0x18
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FillBgTilemapRect(*((u32*)r5), ((((((r7 - 1) << 0x18) >> 0x18) + 5) << 0x18) >> 0x18), 0, (((r6 - 2) << 0x18) >> 0x18));
+    ClearWindowTilemapAndCopyToVram(r5);
 }
+
 
 
 void sub_0200EA24(void) {
-    // push {r4, r5, lr}
-    // sub sp, #0x24
-    // add r5, r1, #0
     // str r0, [sp, #0x1c]
     // add r1, sp, #0x14
-    // strh r3, [r1, #0xc]
-    // add r4, r2, #0
+    *((u16*)(r1 + 0xc)) = r3;
     // add r0, sp, #0x20
-    // ldrh r2, [r0, #0x10]
-    // add r3, r4, #0
-    // strh r2, [r1, #0xe]
+    *((u16*)(r1 + 0xe)) = *((u16*)(r0 + 0x10));
     // ldr r2, [sp, #0x34]
     // str r2, [sp, #0x14]
-    // ldrh r2, [r0, #0x18]
-    // strh r2, [r1, #4]
-    // ldrh r2, [r0, #0x1c]
-    // strh r2, [r1, #6]
-    // ldrh r1, [r0, #0x20]
-    // add r2, r5, #0
+    *((u16*)(r1 + 4)) = *((u16*)(r0 + 0x18));
+    *((u16*)(r1 + 6)) = *((u16*)(r0 + 0x1c));
     // str r1, [sp]
-    // ldrh r1, [r0, #0x24]
     // str r1, [sp, #4]
-    // ldrh r1, [r0, #0x28]
     // str r1, [sp, #8]
-    // ldrh r0, [r0, #0x2c]
     // add r1, sp, #0x14
     // str r0, [sp, #0xc]
-    // mov r0, #0
     // str r0, [sp, #0x10]
     // add r0, sp, #0x1c
-    // bl BlitBitmapRect4Bit
-    // add sp, #0x24
-    // pop {r4, r5, pc}
-    // TODO: decompile
+    BlitBitmapRect4Bit(0, *((u16*)(r0 + 0x28)), r1, r2);
 }
 
 
+
 void sub_0200EA68(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x48
     // str r2, [sp, #0x24]
     // str r3, [sp, #0x28]
     // str r0, [sp, #0x20]
-    // ldr r0, [r0]
-    // add r7, r1, #0
-    // bl BgConfig_GetHeapId
-    // add r6, r0, #0
+    BgConfig_GetHeapId(*((u32*)r0));
     // ldr r0, [sp, #0x20]
-    // bl GetWindowBgId
+    GetWindowBgId();
     // str r0, [sp, #0x2c]
     // ldr r0, [sp, #0x28]
-    // lsl r0, r0, #7
     // str r0, [sp, #0x30]
     // ldr r1, [sp, #0x30]
-    // add r0, r6, #0
-    // bl Heap_Alloc
-    // add r5, r0, #0
+    Heap_Alloc(r6);
     // ldr r0, [sp, #0x2c]
-    // bl BgGetCharPtr
-    // add r4, r0, #0
+    BgGetCharPtr();
     // str r6, [sp]
-    // mov r0, #0x26
-    // add r1, r7, #0
-    // mov r2, #0
     // add r3, sp, #0x44
-    // bl GfGfxLoader_GetCharData
+    GfGfxLoader_GetCharData(0x26, r7, 0);
     // str r0, [sp, #0x34]
     // ldr r0, [sp, #0x44]
-    // mov r7, #0
-    // ldr r0, [r0, #0x14]
     // str r0, [sp, #0x38]
     // ldr r0, [sp, #0x28]
-    // cmp r0, #0
-    // ble _0200EB12
     // ldr r0, [sp, #0x24]
     // add r0, #0xa
-    // lsl r0, r0, #5
     // str r0, [sp, #0x3c]
     // ldr r0, [sp, #0x24]
     // add r0, #0xb
-    // lsl r0, r0, #5
     // str r0, [sp, #0x40]
     // ldr r1, [sp, #0x3c]
-    // lsl r6, r7, #7
     // add r0, r5, r6
     // add r1, r4, r1
-    // mov r2, #0x20
-    // bl memcpy
-    // add r0, r6, #0
+    memcpy(((*((u32*)(r0 + 0x14)) << 5) << 5), 0x20);
     // ldr r1, [sp, #0x40]
     // add r0, #0x20
     // add r0, r5, r0
     // add r1, r4, r1
-    // mov r2, #0x20
-    // bl memcpy
-    // add r0, r6, #0
+    memcpy(r6, 0x20);
     // ldr r1, [sp, #0x3c]
     // add r0, #0x40
     // add r0, r5, r0
     // add r1, r4, r1
-    // mov r2, #0x20
-    // bl memcpy
+    memcpy(r6, 0x20);
     // ldr r1, [sp, #0x40]
     // add r6, #0x60
     // add r0, r5, r6
     // add r1, r4, r1
-    // mov r2, #0x20
-    // bl memcpy
-    // add r0, r7, #1
-    // lsl r0, r0, #0x18
-    // lsr r7, r0, #0x18
+    memcpy(0x20);
     // ldr r0, [sp, #0x28]
-    // cmp r7, r0
-    // blt _0200EACA
     // add r1, sp, #0x50
-    // ldrb r2, [r1, #0x14]
-    // mov r3, #0x10
     // ldr r0, [sp, #0x28]
     // sub r4, r3, r2
     // mul r0, r4
-    // ldrb r1, [r1, #0x10]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // sub r3, r3, r1
-    // lsl r3, r3, #0x18
     // str r0, [sp]
-    // lsr r3, r3, #0x18
     // str r5, [sp, #4]
     // str r3, [sp, #8]
     // str r0, [sp, #0xc]
-    // mov r4, #0
     // str r4, [sp, #0x10]
     // str r4, [sp, #0x14]
     // str r3, [sp, #0x18]
     // str r0, [sp, #0x1c]
     // ldr r0, [sp, #0x38]
-    // bl sub_0200EA24
+    sub_0200EA24(((((r7 + 1) << 0x18) << 0x18) >> 0x18), *((u8*)(r1 + 0x10)), *((u8*)(r1 + 0x14)), ((0x10 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x24]
     // ldr r3, [sp, #0x30]
     // add r0, #0x12
@@ -974,557 +520,305 @@ void sub_0200EA68(void) {
     // str r0, [sp]
     // ldr r0, [sp, #0x20]
     // ldr r1, [sp, #0x2c]
-    // ldr r0, [r0]
-    // add r2, r5, #0
-    // bl BG_LoadCharTilesData
+    BG_LoadCharTilesData(*((u32*)r0), r5);
     // ldr r0, [sp, #0x34]
-    // bl Heap_Free
-    // add r0, r5, #0
-    // bl Heap_Free
-    // add sp, #0x48
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
+    Heap_Free(r5);
 }
+
 
 
 void sub_0200EB68(void) {
-    sub_0200EA68(0, 0x16, 3);
 }
+
 
 
 void sub_0200EB80(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x14
     // str r0, [sp, #4]
     // str r1, [sp, #8]
     // add r0, sp, #0x18
-    // ldrb r0, [r0, #0x10]
-    // add r7, r2, #0
-    // add r5, r3, #0
-    // bl sub_0200E63C
-    // add r1, r0, #0
+    sub_0200E63C(*((u8*)(r0 + 0x10)));
     // ldr r0, [sp, #0x2c]
-    // mov r2, #0
     // str r0, [sp]
-    // mov r0, #0x26
     // add r3, sp, #0x10
-    // bl GfGfxLoader_GetCharData
+    GfGfxLoader_GetCharData(0x26, r0, 0);
     // str r0, [sp, #0xc]
-    // mov r1, #9
     // ldr r0, [sp, #0x2c]
-    // lsl r1, r1, #6
-    // bl Heap_Alloc
+    Heap_Alloc((9 << 6));
     // ldr r1, [sp, #0x10]
-    // mov r2, #9
-    // ldr r1, [r1, #0x14]
-    // lsl r2, r2, #6
-    // add r4, r0, #0
-    // bl memcpy
-    // mov r0, #9
-    // mov r3, #0
-    // lsl r0, r0, #6
-    // mov r1, #0xf
+    memcpy(*((u32*)(r1 + 0x14)), (9 << 6));
     // ldrb r2, [r4, r3]
-    // lsl r6, r2, #0x14
     // and r2, r1
-    // lsl r2, r2, #0x18
-    // lsr r6, r6, #0x18
-    // lsr r2, r2, #0x18
-    // cmp r6, #0
-    // bne _0200EBD8
-    // add r6, r5, #0
-    // cmp r2, #0
-    // bne _0200EBDE
-    // add r2, r5, #0
-    // lsl r6, r6, #4
     // orr r2, r6
     // strb r2, [r4, r3]
-    // add r3, r3, #1
-    // cmp r3, r0
-    // blo _0200EBC6
     // str r7, [sp]
-    // mov r3, #9
     // ldr r0, [sp, #4]
     // ldr r1, [sp, #8]
-    // add r2, r4, #0
-    // lsl r3, r3, #6
-    // bl BG_LoadCharTilesData
+    BG_LoadCharTilesData((9 << 6), 0xf, r4, (9 << 6));
     // ldr r0, [sp, #0xc]
-    // bl Heap_Free
-    // add r0, r4, #0
-    // bl Heap_Free
-    // add sp, #0x14
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    Heap_Free();
+    Heap_Free(r4);
 }
+
 
 
 void sub_0200EC0C(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
     // str r0, [sp, #0x10]
-    // add r5, r2, #0
-    // mov r0, #0xf
-    // add r6, r1, #0
-    // add r7, r3, #0
     // str r5, [sp]
-    // lsl r0, r0, #6
     // str r0, [sp, #4]
-    // mov r1, #0
     // ldr r4, [sp, #0x38]
     // str r1, [sp, #8]
     // ldr r2, [sp, #0x10]
-    // mov r0, #0x24
-    // add r3, r6, #0
     // str r4, [sp, #0xc]
-    // bl GfGfxLoader_LoadCharData
-    // mov r0, #0x24
-    // mov r1, #1
-    // add r2, r4, #0
-    // bl AllocAndReadWholeNarcMemberByIdPair
+    GfGfxLoader_LoadCharData(0x24, 0, r1);
+    AllocAndReadWholeNarcMemberByIdPair(0x24, 1, r4);
     // add r1, sp, #0x18
     // str r0, [sp, #0x14]
-    // bl NNS_G2dGetUnpackedPaletteData
+    NNS_G2dGetUnpackedPaletteData();
     // add r2, sp, #0x20
     // ldr r1, [sp, #0x18]
-    // ldrb r2, [r2, #0x10]
-    // lsl r3, r7, #0x15
-    // ldr r1, [r1, #0xc]
-    // lsl r2, r2, #5
     // add r1, r1, r2
-    // add r0, r6, #0
-    // mov r2, #0x20
-    // lsr r3, r3, #0x10
-    // bl BG_LoadPlttData
+    BG_LoadPlttData(r6, *((u32*)(r1 + 0xc)), 0x20, ((r7 << 0x15) >> 0x10));
     // ldr r1, [sp, #0x14]
-    // add r0, r4, #0
-    // bl Heap_FreeExplicit
+    Heap_FreeExplicit(r4);
     // add r0, sp, #0x20
-    // ldrb r3, [r0, #0x10]
-    // cmp r3, #1
-    // bhi _0200EC80
-    // ldrh r0, [r0, #0x14]
     // add r5, #0x1e
-    // lsl r2, r5, #0x10
     // str r0, [sp]
     // ldr r0, [sp, #0x10]
-    // add r1, r6, #0
-    // lsr r2, r2, #0x10
     // str r4, [sp, #4]
-    // bl sub_0200EC84
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_0200EC84(*((u16*)(r0 + 0x14)), r6, ((r5 << 0x10) >> 0x10), *((u8*)(r0 + 0x10)));
 }
+
 
 
 void sub_0200EC84(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #0x10
-    // add r4, r1, #0
-    // add r5, r0, #0
     // ldr r1, [sp, #0x20]
-    // cmp r3, #0
-    // bne _0200EC98
     // add r1, #0x21
-    // lsl r0, r1, #0x10
-    // b _0200EC9C
-    // add r0, r1, #2
-    // lsl r0, r0, #0x10
-    // lsr r1, r0, #0x10
-    // mov r0, #3
     // str r2, [sp]
-    // lsl r0, r0, #8
     // str r0, [sp, #4]
-    // mov r0, #0
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x24]
-    // add r2, r5, #0
     // str r0, [sp, #0xc]
-    // mov r0, #0x24
-    // add r3, r4, #0
-    // bl GfGfxLoader_LoadCharData
-    // add sp, #0x10
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    GfGfxLoader_LoadCharData(0x24, (((r1 + 2) << 0x10) >> 0x10), r0, r1);
 }
 
 
+
 void sub_0200ECBC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x40
     // str r1, [sp, #0x14]
     // str r2, [sp, #0x18]
     // str r3, [sp, #0x1c]
     // ldr r2, [sp, #0x1c]
     // ldr r6, [sp, #0x5c]
-    // sub r7, r2, #1
     // ldr r2, [sp, #0x18]
     // ldr r5, [sp, #0x60]
     // str r2, [sp, #0x34]
     // sub r2, #9
     // str r2, [sp, #0x34]
-    // lsl r2, r7, #0x18
-    // lsr r2, r2, #0x18
     // str r2, [sp]
-    // mov r2, #1
     // str r2, [sp, #4]
     // str r2, [sp, #8]
     // ldr r3, [sp, #0x34]
     // str r5, [sp, #0xc]
     // add r2, sp, #0x48
-    // lsl r3, r3, #0x18
-    // ldrh r2, [r2, #0x1c]
-    // lsr r3, r3, #0x18
     // str r0, [sp, #0x10]
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(*((u16*)(1 + 0x1c)), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x18]
     // str r0, [sp, #0x30]
     // sub r0, #8
     // str r0, [sp, #0x30]
     // add r0, sp, #0x48
-    // ldrh r4, [r0, #0x1c]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x30]
     // str r5, [sp, #0xc]
-    // add r2, r4, #1
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, (((*((u16*)(r0 + 0x1c)) + 1) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // add r0, sp, #0x48
-    // ldrb r0, [r0, #0x10]
-    // add r2, r4, #2
-    // lsl r2, r2, #0x10
     // str r0, [sp, #0x3c]
-    // add r0, r0, #7
     // str r0, [sp, #0x24]
     // ldr r0, [sp, #0x18]
-    // lsr r2, r2, #0x10
-    // sub r0, r0, #7
     // str r0, [sp, #0x20]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
     // ldr r0, [sp, #0x24]
     // ldr r3, [sp, #0x20]
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // str r5, [sp, #0xc]
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // add r2, r4, #3
-    // lsl r2, r2, #0x10
+    FillBgTilemapRect(1, (((r4 + 2) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r1, [sp, #0x18]
     // ldr r0, [sp, #0x3c]
-    // lsr r2, r2, #0x10
     // add r0, r1, r0
     // str r0, [sp, #0x38]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x38]
     // str r5, [sp, #0xc]
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, (((r4 + 3) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x38]
-    // add r2, r4, #4
-    // add r0, r0, #1
     // str r0, [sp, #0x2c]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x2c]
     // str r5, [sp, #0xc]
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, (((r4 + 4) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x38]
-    // add r0, r0, #2
     // str r0, [sp, #0x28]
-    // lsl r0, r7, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x28]
     // str r5, [sp, #0xc]
-    // add r2, r4, #5
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, (((r4 + 5) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
     // ldr r3, [sp, #0x34]
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r6, [sp, #8]
     // str r5, [sp, #0xc]
-    // add r2, r4, #6
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, (((r4 + 6) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
     // ldr r3, [sp, #0x30]
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r6, [sp, #8]
     // str r5, [sp, #0xc]
-    // add r2, r4, #7
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, (((r4 + 7) << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
-    // add r2, r4, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r6, [sp, #8]
     // str r5, [sp, #0xc]
     // ldr r3, [sp, #0x18]
     // add r2, #8
-    // sub r3, r3, #1
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), (((r3 - 1) << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
-    // add r2, r4, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r6, [sp, #8]
     // ldr r3, [sp, #0x38]
     // str r5, [sp, #0xc]
     // add r2, #9
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
-    // add r2, r4, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r6, [sp, #8]
     // ldr r3, [sp, #0x2c]
     // str r5, [sp, #0xc]
     // add r2, #0xa
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
-    // add r2, r4, #0
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r6, [sp, #8]
     // ldr r3, [sp, #0x28]
     // str r5, [sp, #0xc]
     // add r2, #0xb
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x1c]
-    // add r2, r4, #0
     // add r6, r0, r6
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x34]
     // str r5, [sp, #0xc]
     // add r2, #0xc
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // add r2, r4, #0
     // ldr r3, [sp, #0x30]
     // str r5, [sp, #0xc]
     // add r2, #0xd
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
     // ldr r0, [sp, #0x24]
-    // add r2, r4, #0
-    // lsl r0, r0, #0x18
-    // lsr r0, r0, #0x18
     // str r0, [sp, #4]
-    // mov r0, #1
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x20]
     // str r5, [sp, #0xc]
     // add r2, #0xe
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // add r2, r4, #0
     // ldr r3, [sp, #0x38]
     // str r5, [sp, #0xc]
     // add r2, #0xf
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
-    // add r2, r4, #0
     // ldr r3, [sp, #0x2c]
     // str r5, [sp, #0xc]
     // add r2, #0x10
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // lsl r0, r6, #0x18
-    // lsr r0, r0, #0x18
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
     // str r0, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r3, [sp, #0x28]
     // str r5, [sp, #0xc]
     // add r4, #0x11
-    // lsl r2, r4, #0x10
-    // lsl r3, r3, #0x18
     // ldr r0, [sp, #0x10]
     // ldr r1, [sp, #0x14]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // add sp, #0x40
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    FillBgTilemapRect(1, ((r4 << 0x10) >> 0x10), ((r3 << 0x18) >> 0x18));
 }
 
 
+
 void sub_0200EF84(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x28
     // str r1, [sp, #0x10]
-    // add r7, r0, #0
     // str r2, [sp, #0x14]
-    // bl GetWindowBgId
+    GetWindowBgId();
     // str r0, [sp, #0x20]
-    // add r0, r7, #0
-    // bl GetWindowX
-    // sub r0, r0, #7
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
+    GetWindowX(r7);
     // str r0, [sp, #0x18]
-    // add r0, r7, #0
-    // bl GetWindowY
+    GetWindowY(r7);
     // str r0, [sp, #0x1c]
-    // mov r0, #0
     // str r0, [sp, #0x24]
     // ldr r2, [sp, #0x24]
     // ldr r1, [sp, #0x1c]
     // ldr r0, [sp, #0x24]
-    // add r3, r2, #0
     // add r0, r1, r0
-    // mov r1, #6
     // mul r3, r1
     // ldr r1, [sp, #0x10]
-    // lsl r0, r0, #0x18
-    // mov r4, #0
     // add r5, r1, r3
-    // lsr r6, r0, #0x18
     // str r6, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
     // str r0, [sp, #8]
     // ldr r0, [sp, #0x14]
@@ -1532,103 +826,54 @@ void sub_0200EF84(void) {
     // str r0, [sp, #0xc]
     // add r2, r4, r5
     // add r3, r3, r4
-    // lsl r2, r2, #0x10
-    // lsl r3, r3, #0x18
-    // ldr r0, [r7]
     // ldr r1, [sp, #0x20]
-    // lsr r2, r2, #0x10
-    // lsr r3, r3, #0x18
-    // bl FillBgTilemapRect
-    // add r0, r4, #1
-    // lsl r0, r0, #0x10
-    // lsr r4, r0, #0x10
-    // cmp r4, #6
-    // blo _0200EFC6
+    FillBgTilemapRect(*((u32*)r7), 6, ((r2 << 0x10) >> 0x10), ((r2 << 0x18) >> 0x18));
     // ldr r0, [sp, #0x24]
-    // add r0, r0, #1
-    // lsl r0, r0, #0x10
-    // lsr r0, r0, #0x10
     // str r0, [sp, #0x24]
-    // cmp r0, #4
-    // blo _0200EFAE
-    // add sp, #0x28
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void DrawFrameAndWindow3(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // sub sp, #0x28
-    // add r4, r0, #0
     // str r1, [sp, #0x10]
-    // add r6, r2, #0
-    // add r7, r3, #0
-    // bl GetWindowBgId
+    GetWindowBgId();
     // str r0, [sp, #0x14]
     // add r0, sp, #0x30
-    // ldrb r0, [r0, #0x10]
-    // cmp r0, #1
-    // bhi _0200F062
-    // add r0, r4, #0
-    // bl GetWindowX
+    GetWindowX(r4);
     // str r0, [sp, #0x18]
-    // add r0, r4, #0
-    // bl GetWindowY
+    GetWindowY(r4);
     // str r0, [sp, #0x1c]
-    // add r0, r4, #0
-    // bl GetWindowWidth
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl GetWindowHeight
+    GetWindowWidth(r4);
+    GetWindowHeight(r4);
     // str r5, [sp]
     // str r0, [sp, #4]
     // str r7, [sp, #8]
     // str r6, [sp, #0xc]
-    // ldr r0, [r4]
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x18]
     // ldr r3, [sp, #0x1c]
-    // bl sub_0200ECBC
-    // add r1, r6, #0
+    sub_0200ECBC(*((u32*)r4));
     // add r1, #0x1e
-    // lsl r1, r1, #0x10
-    // add r0, r4, #0
-    // lsr r1, r1, #0x10
-    // add r2, r7, #0
-    // bl sub_0200EF84
-    // b _0200F094
-    // add r0, r4, #0
-    // bl GetWindowX
+    sub_0200EF84(r4, ((r6 << 0x10) >> 0x10), r7);
+    GetWindowX(r4);
     // str r0, [sp, #0x20]
-    // add r0, r4, #0
-    // bl GetWindowY
+    GetWindowY(r4);
     // str r0, [sp, #0x24]
-    // add r0, r4, #0
-    // bl GetWindowWidth
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl GetWindowHeight
+    GetWindowWidth(r4);
+    GetWindowHeight(r4);
     // str r5, [sp]
     // str r0, [sp, #4]
     // str r7, [sp, #8]
     // str r6, [sp, #0xc]
-    // ldr r0, [r4]
     // ldr r1, [sp, #0x14]
     // ldr r2, [sp, #0x20]
     // ldr r3, [sp, #0x24]
-    // bl sub_0200E6B4
+    sub_0200E6B4(*((u32*)r4));
     // ldr r0, [sp, #0x10]
-    // cmp r0, #0
-    // bne _0200F0A0
-    // add r0, r4, #0
-    // bl CopyWindowToVram
-    // add r0, r6, #0
-    // bl TextPrinter_SetDownArrowBaseTile
-    // add sp, #0x28
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    CopyWindowToVram(r4);
+    TextPrinter_SetDownArrowBaseTile(r6);
 }
+
 
 
 void WaitingIcon_New(void) {
@@ -1761,6 +1006,7 @@ void WaitingIcon_New(void) {
     // _0200F1D0: .word sub_0200F3D0
     // TODO: decompile
 }
+
 
 
 void sub_0200F1D4(void) {
@@ -2005,6 +1251,7 @@ void sub_0200F1D4(void) {
 }
 
 
+
 void sub_0200F3D0(void) {
     // push {r3, r4, r5, lr}
     // add r4, r0, #0
@@ -2060,10 +1307,10 @@ void sub_0200F3D0(void) {
 }
 
 
+
 void sub_0200F43C(void) {
-    Heap_Free(r1);
-    SysTask_Destroy(r4);
 }
+
 
 
 void sub_0200F450(void) {
@@ -2088,6 +1335,7 @@ void sub_0200F450(void) {
 }
 
 
+
 void sub_0200F478(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -2108,6 +1356,7 @@ void sub_0200F478(void) {
     // _0200F49C: .word 0x00000488
     // TODO: decompile
 }
+
 
 
 void DrawPokemonPicFromSpecies(void) {
@@ -2151,6 +1400,7 @@ void DrawPokemonPicFromSpecies(void) {
 }
 
 
+
 void DrawPokemonPicFromMon(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0xc
@@ -2188,6 +1438,7 @@ void DrawPokemonPicFromMon(void) {
     // _0200F548: .word 0x0000016F
     // TODO: decompile
 }
+
 
 
 void sub_0200F54C(void) {
@@ -2246,6 +1497,7 @@ void sub_0200F54C(void) {
 }
 
 
+
 void sub_0200F5C4(void) {
     // push {r3, r4, r5, r6, r7, lr}
     // add r5, r0, #0
@@ -2277,6 +1529,7 @@ void sub_0200F5C4(void) {
 }
 
 
+
 void sub_0200F600(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #0x18
@@ -2300,6 +1553,7 @@ void sub_0200F600(void) {
     // _0200F628: .word _020F5C60
     // TODO: decompile
 }
+
 
 
 void sub_0200F62C(void) {
@@ -2346,6 +1600,7 @@ void sub_0200F62C(void) {
 }
 
 
+
 void sub_0200F684(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x34
@@ -2387,6 +1642,7 @@ void sub_0200F684(void) {
 }
 
 
+
 void sub_0200F6D4(void) {
     // push {r4, r5, r6, r7, lr}
     // sub sp, #0x1c
@@ -2419,6 +1675,7 @@ void sub_0200F6D4(void) {
 }
 
 
+
 void sub_0200F714(void) {
     // push {r4, r5, r6, lr}
     // sub sp, #0x10
@@ -2443,6 +1700,7 @@ void sub_0200F714(void) {
     // _0200F744: .word 0x00000162
     // TODO: decompile
 }
+
 
 
 void sub_0200F748(void) {
@@ -2542,6 +1800,7 @@ void sub_0200F748(void) {
     // _0200F828: .word 0x00015CD5
     // TODO: decompile
 }
+
 
 
 void sub_0200F82C(void) {
@@ -2754,6 +2013,7 @@ void sub_0200F82C(void) {
 }
 
 
+
 void sub_0200F9DC(void) {
     // push {r4, lr}
     // sub sp, #0x10
@@ -2790,4 +2050,5 @@ void sub_0200F9DC(void) {
     // _0200FA20: .word 0x0000016E
     // TODO: decompile
 }
+
 

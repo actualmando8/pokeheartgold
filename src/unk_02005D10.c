@@ -2,364 +2,165 @@
 #include "global.h"
 
 void sub_02005D10(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // bl GF_GetPlayerNoBySeq
-    // bl GF_GetSndHandleByPlayerNo
+    GF_GetPlayerNoBySeq();
+    GF_GetSndHandleByPlayerNo();
     // str r5, [sp]
-    // mov r1, #1
     // str r1, [sp, #4]
-    // sub r1, r1, #2
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // add r4, r0, #0
-    // bl sub_02006C14
-    // add r6, r0, #0
-    // bne _02005D3A
-    // add r0, r5, #0
-    // bl sub_02004920
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl sub_02005DA0
-    // add r0, r6, #0
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_02006C14((1 - 2), (1 - 2), (1 - 2));
+    sub_02004920(r5);
+    sub_02005DA0(r5, r4);
 }
+
 
 
 void PlayBGM(void) {
-    // push {r4, r5, r6, lr}
-    // add r4, r0, #0
-    // bl GF_GetPlayerNoBySeq
-    // add r5, r0, #0
-    // bl GF_GetSndHandleByPlayerNo
-    // add r6, r0, #0
-    // cmp r5, #7
-    // bne _02005D6A
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // add r2, r6, #0
-    // bl sub_02005DC4
-    // add r5, r0, #0
-    // b _02005D84
-    // cmp r5, #1
-    // bne _02005D7C
-    // add r0, r4, #0
-    // add r1, r5, #0
-    // add r2, r6, #0
-    // bl sub_02005DF4
-    // add r5, r0, #0
-    // b _02005D84
-    // bl GF_AssertFail
-    // mov r0, #0
-    // pop {r4, r5, r6, pc}
-    // mov r0, #0
-    // bl sub_020059E0
-    // cmp r5, #0
-    // bne _02005D94
-    // add r0, r4, #0
-    // bl sub_02004920
-    // add r0, r4, #0
-    // add r1, r6, #0
-    // bl sub_02005DA0
-    // add r0, r5, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    GF_GetPlayerNoBySeq();
+    GF_GetSndHandleByPlayerNo();
+    sub_02005DC4(r4, r5, r0);
+    sub_02005DF4(r4, r0, r6);
+    GF_AssertFail();
+    sub_020059E0(0);
+    sub_02004920(r4);
+    sub_02005DA0(r4, r6);
 }
+
 
 
 void sub_02005DA0(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl sub_02004A60
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl sub_02005464
-    // mov r0, #1
-    // bl GF_SndSetState
-    // cmp r4, #0
-    // bne _02005DC2
-    // mov r0, #0x80
-    // bl GF_SndWorkSetGbSoundsVolume
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02004A60();
+    sub_02005464(r5, r4);
+    GF_SndSetState(1);
+    GF_SndWorkSetGbSoundsVolume(0x80);
 }
+
 
 
 void sub_02005DC4(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // mov r0, #3
-    // add r4, r2, #0
-    // bl sub_02005328
-    // bl GF_Snd_LoadState
-    // add r0, r5, #0
-    // bl GF_Snd_LoadSeq
+    sub_02005328(3);
+    GF_Snd_LoadState();
+    GF_Snd_LoadSeq(r5);
     // str r5, [sp]
-    // mov r1, #1
     // str r1, [sp, #4]
-    // sub r1, r1, #2
-    // add r0, r4, #0
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl sub_02006C14
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02006C14(r4, (1 - 2), (1 - 2), (1 - 2));
 }
+
 
 
 void sub_02005DF4(void) {
-    // push {r4, r5, r6, lr}
-    // sub sp, #8
-    // add r5, r0, #0
-    // mov r0, #0x13
-    // add r6, r2, #0
-    // bl GF_SdatGetAttrPtr
-    // mov r0, #0x20
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // mov r0, #0
-    // bl GF_GetSoundHandle
-    // bl GF_NNS_SndPlayerGetSeqNo
-    // bl GF_GetBankBySeqNo
-    // add r1, r0, #0
-    // add r0, r5, #0
-    // bl sub_020051A4
-    // mov r0, #0
-    // bl SndRadio_StopSeq
+    GF_SdatGetAttrPtr(0x13);
+    GF_SdatGetAttrPtr(0x20);
+    GF_GetSoundHandle(0);
+    GF_NNS_SndPlayerGetSeqNo();
+    GF_GetBankBySeqNo();
+    sub_020051A4(r5, r0);
+    SndRadio_StopSeq(0);
     // ldrh r0, [r4]
-    // bl GF_GetBankBySeqNo
-    // add r2, r0, #0
+    GF_GetBankBySeqNo();
     // str r5, [sp]
-    // mov r1, #1
     // str r1, [sp, #4]
-    // sub r1, r1, #2
-    // add r0, r6, #0
-    // add r3, r1, #0
-    // bl sub_02006C14
-    // add sp, #8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_02006C14(r6, (1 - 2), r0, (1 - 2));
 }
+
 
 
 void sub_02005E44(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // mov r0, #0x15
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x15);
     // ldrb r0, [r0]
-    // cmp r0, #4
-    // beq _02005E60
-    // bl GF_AssertFail
-    // add sp, #8
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r0, r4, #0
-    // bl GF_GetPlayerNoBySeq
-    // cmp r0, #7
-    // beq _02005E74
-    // bl GF_AssertFail
-    // add sp, #8
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // add r0, r4, #0
-    // mov r1, #1
-    // bl GF_Snd_LoadSeqEx
+    GF_AssertFail();
+    GF_GetPlayerNoBySeq(r4);
+    GF_AssertFail();
+    GF_Snd_LoadSeqEx(r4, 1);
     // str r4, [sp]
-    // mov r0, #1
     // str r0, [sp, #4]
-    // mov r0, #7
-    // add r1, r0, #0
     // sub r1, #8
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl sub_02006C14
-    // add r5, r0, #0
-    // bne _02005E9A
-    // add r0, r4, #0
-    // bl sub_02004920
-    // mov r0, #0
-    // bl SndRadio_StopSeq
-    // add r0, r4, #0
-    // bl sub_02004A60
-    // mov r0, #1
-    // bl GF_SndSetState
-    // add r0, r5, #0
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02006C14(7, 7, 7, 7);
+    sub_02004920(r4);
+    SndRadio_StopSeq(0);
+    sub_02004A60(r4);
+    GF_SndSetState(1);
 }
+
 
 
 void StopBGM(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl NNS_SndPlayerStopSeqBySeqNo
-    // add r0, r5, #0
-    // bl GBSounds_GetGBSeqNoByDSSeqNo
-    // cmp r5, r0
-    // beq _02005ECE
-    // add r1, r4, #0
-    // bl NNS_SndPlayerStopSeqBySeqNo
-    // add r0, r5, #0
-    // bl GF_GetPlayerNoBySeq
-    // cmp r0, #0xff
-    // beq _02005EE4
-    // bl GF_GetSndHandleByPlayerNo
-    // bl GF_GetSoundHandle
-    // bl NNS_SndHandleReleaseSeq
-    // bl sub_02005EEC
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    NNS_SndPlayerStopSeqBySeqNo();
+    GBSounds_GetGBSeqNoByDSSeqNo(r5);
+    NNS_SndPlayerStopSeqBySeqNo(r4);
+    GF_GetPlayerNoBySeq(r5);
+    GF_GetSndHandleByPlayerNo();
+    GF_GetSoundHandle();
+    NNS_SndHandleReleaseSeq();
+    sub_02005EEC();
 }
 
 
+
 void sub_02005EEC(void) {
-    SndRadio_StopSeq(0);
-    sub_02004A60(0);
-    GF_SetCurrentPlayingBGM(0);
-    sub_02004AB8(0);
+}
+
+
+
+void GF_SndStartFadeInBGM(void) {
+    GF_GetCurrentPlayingBGM();
+    GF_GetPlayerNoBySeq();
+    GF_GetSndHandleByPlayerNo();
+    GF_SndHandleMoveVolume(0, 0);
+    GF_SndHandleMoveVolume(r7, r6, r5);
+    sub_02005990(r5);
+    GF_SndSetState(3);
+}
+
+
+
+void GF_SndStartFadeOutBGM(void) {
+    GF_GetCurrentPlayingBGM();
+    GF_GetPlayerNoBySeq();
+    GF_SndGetFadeTimer();
+    GF_GetSndHandleByPlayerNo(r6);
+    GF_SndHandleMoveVolume(r5, r4);
+    sub_02005990(r4);
+    GF_SndSetState(4);
+}
+
+
+
+void GF_SndGetFadeTimer(void) {
+}
+
+
+
+void sub_02005F94(void) {
+}
+
+
+
+void Sound_Stop(void) {
+    GF_SdatGetAttrPtr(0x10);
+    GF_SdatGetAttrPtr(0x11);
+    NNS_SndPlayerStopSeqAll(0);
+    // ldrb r0, [r5]
+    sub_02005728(0xe);
+    // ldrb r0, [r4]
+    sub_02005728(0xf);
     GF_SndSetState(0);
 }
 
 
-void GF_SndStartFadeInBGM(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r6, r0, #0
-    // add r5, r1, #0
-    // add r4, r2, #0
-    // bl GF_GetCurrentPlayingBGM
-    // bl GF_GetPlayerNoBySeq
-    // cmp r0, #0xff
-    // beq _02005F4C
-    // bl GF_GetSndHandleByPlayerNo
-    // add r7, r0, #0
-    // cmp r4, #0
-    // bne _02005F36
-    // mov r1, #0
-    // add r2, r1, #0
-    // bl GF_SndHandleMoveVolume
-    // add r0, r7, #0
-    // add r1, r6, #0
-    // add r2, r5, #0
-    // bl GF_SndHandleMoveVolume
-    // add r0, r5, #0
-    // bl sub_02005990
-    // mov r0, #3
-    // bl GF_SndSetState
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
-}
-
-
-void GF_SndStartFadeOutBGM(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl GF_GetCurrentPlayingBGM
-    // bl GF_GetPlayerNoBySeq
-    // add r6, r0, #0
-    // cmp r6, #0xff
-    // beq _02005F86
-    // bl GF_SndGetFadeTimer
-    // cmp r0, #0
-    // bne _02005F80
-    // add r0, r6, #0
-    // bl GF_GetSndHandleByPlayerNo
-    // add r1, r5, #0
-    // add r2, r4, #0
-    // bl GF_SndHandleMoveVolume
-    // add r0, r4, #0
-    // bl sub_02005990
-    // mov r0, #4
-    // bl GF_SndSetState
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
-}
-
-
-void GF_SndGetFadeTimer(void) {
-    GF_SdatGetAttrPtr();
-}
-
-
-void sub_02005F94(void) {
-    GF_GetPlayerNoBySeq();
-    GF_SndPlayerCountPlayingSeqByPlayerNo();
-}
-
-
-void Sound_Stop(void) {
-    // push {r3, r4, r5, lr}
-    // mov r0, #0x10
-    // bl GF_SdatGetAttrPtr
-    // add r5, r0, #0
-    // mov r0, #0x11
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // mov r0, #0
-    // bl NNS_SndPlayerStopSeqAll
-    // ldrb r0, [r5]
-    // cmp r0, #1
-    // bne _02005FC4
-    // mov r0, #0xe
-    // bl sub_02005728
-    // ldrb r0, [r4]
-    // cmp r0, #1
-    // bne _02005FD0
-    // mov r0, #0xf
-    // bl sub_02005728
-    // mov r0, #0
-    // bl GF_SndSetState
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
-}
-
 
 void sub_02005FD8(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // mov r0, #0x10
-    // bl GF_SdatGetAttrPtr
-    // add r7, r0, #0
-    // mov r0, #0x11
-    // bl GF_SdatGetAttrPtr
-    // add r6, r0, #0
-    // mov r0, #7
-    // bl GF_GetSoundHandle
-    // mov r1, #0
-    // bl NNS_SndPlayerStopSeq
-    // bl sub_02005EEC
-    // mov r5, #0
-    // add r4, r5, #0
-    // add r0, r5, #3
-    // add r1, r4, #0
-    // bl sub_0200615C
-    // add r5, r5, #1
-    // cmp r5, #4
-    // blt _02005FFE
-    // mov r0, #0
-    // bl sub_02006300
+    GF_SdatGetAttrPtr(0x10);
+    GF_SdatGetAttrPtr(0x11);
+    GF_GetSoundHandle(7);
+    NNS_SndPlayerStopSeq(0);
+    sub_02005EEC();
+    sub_0200615C((0 + 3), 0);
+    sub_02006300(0);
     // ldrb r0, [r7]
-    // cmp r0, #1
-    // bne _0200601E
-    // mov r0, #0xe
-    // bl sub_02005728
+    sub_02005728(0xe);
     // ldrb r0, [r6]
-    // cmp r0, #1
-    // bne _0200602A
-    // mov r0, #0xf
-    // bl sub_02005728
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    sub_02005728(0xf);
 }
+
 
 
 void sub_0200602C(void) {
@@ -380,65 +181,37 @@ void sub_0200602C(void) {
 }
 
 
+
 void PlaySE(void) {
-    // push {r3, r4, lr}
-    // sub sp, #4
-    // add r4, r0, #0
-    // bl GF_GetPlayerNoBySeq
-    // bl GF_GetSndHandleByPlayerNo
-    // mov r1, #0
+    GF_GetPlayerNoBySeq();
+    GF_GetSndHandleByPlayerNo();
     // mvn r1, r1
-    // add r2, r1, #0
-    // add r3, r1, #0
     // str r4, [sp]
-    // bl sub_020060BC
-    // add sp, #4
-    // pop {r3, r4, pc}
-    // TODO: decompile
+    sub_020060BC(0, 0, 0);
 }
+
 
 
 void sub_0200606C(void) {
-    // push {r3, r4, r5, lr}
-    // add r4, r1, #0
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // bl GF_GetSndHandleByPlayerNo
-    // mov r2, #0
+    GF_GetSndHandleByPlayerNo(r1);
     // mvn r2, r2
-    // add r1, r4, #0
-    // add r3, r2, #0
     // str r5, [sp]
-    // bl sub_020060BC
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_020060BC(r4, 0, 0);
 }
+
 
 
 void sub_02006088(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r5, r0, #0
-    // mov r0, #0x20
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl GF_GetPlayerNoBySeq
-    // bl GF_GetSndHandleByPlayerNo
-    // add r6, r0, #0
+    GF_SdatGetAttrPtr(0x20);
+    GF_GetPlayerNoBySeq(r5);
+    GF_GetSndHandleByPlayerNo();
     // ldrh r0, [r4]
-    // bl GF_GetBankBySeqNo
-    // mov r1, #0
+    GF_GetBankBySeqNo();
     // mvn r1, r1
-    // add r2, r0, #0
-    // add r0, r6, #0
-    // add r3, r1, #0
     // str r5, [sp]
-    // bl sub_020060BC
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    sub_020060BC(r6, 0, r0, 0);
 }
+
 
 
 void sub_020060BC(void) {
@@ -487,20 +260,12 @@ void sub_020060BC(void) {
 }
 
 
+
 void sub_02006118(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // add r4, r1, #0
-    // bl PlaySE
-    // add r6, r0, #0
-    // beq _0200612E
-    // add r0, r5, #0
-    // add r1, r4, #0
-    // bl GF_SetVolumeBySeqNo
-    // add r0, r6, #0
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    PlaySE();
+    GF_SetVolumeBySeqNo(r5, r4);
 }
+
 
 
 void PlaySE_SetPitch(void) {
@@ -521,44 +286,40 @@ void PlaySE_SetPitch(void) {
 }
 
 
+
 void StopSE(void) {
-    NNS_SndPlayerStopSeqBySeqNo();
 }
+
 
 
 void sub_0200615C(void) {
-    GF_GetSoundHandle();
-    NNS_SndPlayerStopSeq(r4);
 }
+
 
 
 void sub_0200616C(void) {
-    sub_0200615C(0);
 }
+
 
 
 void IsSEPlaying(void) {
-    GF_GetPlayerNoBySeq();
-    GF_SndPlayerCountPlayingSeqByPlayerNo();
 }
+
 
 
 void sub_02006190(void) {
-    GF_SndPlayerCountPlayingSeqByPlayerNo();
 }
+
 
 
 void GF_IsAnySEPlaying(void) {
-    GF_SndPlayerCountPlayingSeqByPlayerNo(0, 1, 0);
 }
+
 
 
 void sub_020061B4(void) {
-    GF_GetPlayerNoBySeq();
-    GF_GetSndHandleByPlayerNo();
-    GF_GetSoundHandle();
-    NNS_SndPlayerSetTrackPan(r5, r4);
 }
+
 
 
 void sub_020061D0(void) {
@@ -574,6 +335,7 @@ void sub_020061D0(void) {
     // _020061E8: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void sub_020061EC(void) {
@@ -597,6 +359,7 @@ void sub_020061EC(void) {
     // _02006214: .word 0x0000FFFF
     // TODO: decompile
 }
+
 
 
 void PlayCry(void) {
@@ -690,80 +453,44 @@ void PlayCry(void) {
 }
 
 
+
 void sub_020062E0(void) {
-    sub_02006920(0, 0xb, 1, 0x7f);
 }
+
 
 
 void sub_02006300(void) {
-    // push {r4, r5, r6, lr}
-    // add r5, r0, #0
-    // mov r0, #0x10
-    // bl GF_SdatGetAttrPtr
-    // add r6, r0, #0
-    // mov r0, #0x11
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // mov r0, #0xf
-    // bl GF_SdatGetAttrPtr
-    // mov r0, #1
-    // bl GF_GetSoundHandle
-    // add r1, r5, #0
-    // bl NNS_SndPlayerStopSeq
-    // mov r0, #8
-    // bl GF_GetSoundHandle
-    // add r1, r5, #0
-    // bl NNS_SndPlayerStopSeq
+    GF_SdatGetAttrPtr(0x10);
+    GF_SdatGetAttrPtr(0x11);
+    GF_SdatGetAttrPtr(0xf);
+    GF_GetSoundHandle(1);
+    NNS_SndPlayerStopSeq(r5);
+    GF_GetSoundHandle(8);
+    NNS_SndPlayerStopSeq(r5);
     // ldrb r0, [r6]
-    // cmp r0, #1
-    // bne _02006344
-    // mov r0, #0xe
-    // bl sub_020058B8
-    // mov r0, #0xe
-    // bl sub_02005680
+    sub_020058B8(0xe);
+    sub_02005680(0xe);
     // ldrb r0, [r4]
-    // cmp r0, #1
-    // bne _02006356
-    // mov r0, #0xf
-    // bl sub_020058B8
-    // mov r0, #0xf
-    // bl sub_02005680
-    // bl sub_02006DB8
-    // bl sub_02006A30
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_020058B8(0xf);
+    sub_02005680(0xf);
+    sub_02006DB8();
+    sub_02006A30();
 }
 
 
-void IsCryFinished(void) {
-    // push {r3, r4, r5, lr}
-    // mov r0, #0x10
-    // bl GF_SdatGetAttrPtr
-    // add r5, r0, #0
-    // mov r0, #0x11
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // mov r0, #0xf
-    // bl GF_SdatGetAttrPtr
-    // mov r0, #0x2e
-    // bl GF_SdatGetAttrPtr
+
+BOOL IsCryFinished(void) {
+    GF_SdatGetAttrPtr(0x10);
+    GF_SdatGetAttrPtr(0x11);
+    GF_SdatGetAttrPtr(0xf);
+    GF_SdatGetAttrPtr(0x2e);
     // ldrb r0, [r5]
-    // cmp r0, #1
-    // bne _0200638C
-    // mov r0, #0xe
-    // bl sub_02005738
-    // pop {r3, r4, r5, pc}
+    sub_02005738(0xe);
     // ldrb r0, [r4]
-    // cmp r0, #1
-    // bne _0200639A
-    // mov r0, #0xf
-    // bl sub_02005738
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // bl GF_SndPlayerCountPlayingSeqByPlayerNo
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02005738(0xf);
+    GF_SndPlayerCountPlayingSeqByPlayerNo(0);
 }
+
 
 
 void PlayCryEx(void) {
@@ -1222,10 +949,10 @@ void PlayCryEx(void) {
 }
 
 
+
 void sub_02006820(void) {
-    GF_SndHandleSetInitialVolume(r1, r2);
-    sub_02005464(r5, r4);
 }
+
 
 
 void sub_02006838(void) {
@@ -1265,77 +992,35 @@ void sub_02006838(void) {
 }
 
 
+
 void sub_02006884(void) {
-    // push {r4, r5, r6, lr}
-    // mov r0, #0x10
-    // add r5, r1, #0
-    // bl GF_SdatGetAttrPtr
-    // add r6, r0, #0
-    // mov r0, #0x11
-    // bl GF_SdatGetAttrPtr
-    // ldr r2, [r5]
-    // add r4, r0, #0
-    // cmp r2, #0xa
-    // bne _020068B0
-    // mov r0, #1
-    // mov r1, #0
-    // bl GF_SndHandleMoveVolume
-    // ldr r2, [r5]
-    // mov r0, #8
-    // mov r1, #0
-    // bl GF_SndHandleMoveVolume
-    // ldr r0, [r5]
-    // sub r0, r0, #1
+    GF_SdatGetAttrPtr(0x10);
+    GF_SdatGetAttrPtr(0x11);
+    GF_SndHandleMoveVolume(1, 0, *((u32*)r5));
+    GF_SndHandleMoveVolume(8, 0, *((u32*)r5));
     // str r0, [r5]
-    // bl IsCryFinished
-    // cmp r0, #0
-    // bne _020068C2
-    // mov r0, #0
+    IsCryFinished((*((u32*)r5) - 1));
     // str r0, [r5]
-    // ldr r0, [r5]
-    // cmp r0, #0
-    // bgt _020068F6
-    // mov r0, #0
-    // bl sub_02006300
+    sub_02006300(0);
     // ldrb r0, [r6]
-    // cmp r0, #1
-    // bne _020068E0
-    // mov r0, #0xe
-    // bl sub_020058B8
-    // mov r0, #0xe
-    // bl sub_02005680
+    sub_020058B8(0xe);
+    sub_02005680(0xe);
     // ldrb r0, [r4]
-    // cmp r0, #1
-    // bne _020068F2
-    // mov r0, #0xf
-    // bl sub_020058B8
-    // mov r0, #0xf
-    // bl sub_02005680
-    // bl sub_020068F8
-    // pop {r4, r5, r6, pc}
-    // TODO: decompile
+    sub_020058B8(0xf);
+    sub_02005680(0xf);
+    sub_020068F8();
 }
+
 
 
 void sub_020068F8(void) {
-    // push {r3, r4, r5, lr}
-    // mov r0, #0x23
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // ldr r0, [r4]
-    // cmp r0, #0
-    // beq _0200691A
-    // bl SysTask_GetData
-    // add r5, r0, #0
-    // ldr r0, [r4]
-    // bl SysTask_Destroy
-    // add r0, r5, #0
-    // bl Heap_Free
-    // mov r0, #0
+    GF_SdatGetAttrPtr(0x23);
+    SysTask_GetData(*((u32*)r0));
+    SysTask_Destroy(*((u32*)r4));
+    Heap_Free(r5);
     // str r0, [r4]
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02006920(void) {
@@ -1444,6 +1129,7 @@ void sub_02006920(void) {
 }
 
 
+
 void sub_02006A0C(void) {
     // mov r2, #0x7b
     // lsl r2, r2, #2
@@ -1466,45 +1152,27 @@ void sub_02006A0C(void) {
 }
 
 
+
 void sub_02006A30(void) {
-    // push {r4, r5, r6, r7, lr}
-    // sub sp, #0x1c
-    // mov r0, #0x29
-    // bl GF_SdatGetAttrPtr
-    // add r5, r0, #0
-    // mov r0, #0x2d
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // mov r0, #0x2a
-    // bl GF_SdatGetAttrPtr
-    // add r6, r0, #0
-    // mov r0, #0x2b
-    // bl GF_SdatGetAttrPtr
-    // add r7, r0, #0
-    // mov r0, #0x2c
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x29);
+    GF_SdatGetAttrPtr(0x2d);
+    GF_SdatGetAttrPtr(0x2a);
+    GF_SdatGetAttrPtr(0x2b);
+    GF_SdatGetAttrPtr(0x2c);
     // str r0, [sp]
-    // mov r0, #0x2e
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x2e);
     // str r0, [sp, #4]
-    // mov r0, #0x2f
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x2f);
     // str r0, [sp, #8]
-    // mov r0, #0x33
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x33);
     // str r0, [sp, #0xc]
-    // mov r0, #0x30
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x30);
     // str r0, [sp, #0x10]
-    // mov r0, #0x31
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x31);
     // str r0, [sp, #0x14]
-    // mov r0, #0x32
-    // bl GF_SdatGetAttrPtr
+    GF_SdatGetAttrPtr(0x32);
     // str r0, [sp, #0x18]
-    // mov r0, #0x34
-    // bl GF_SdatGetAttrPtr
-    // mov r1, #0
+    GF_SdatGetAttrPtr(0x34);
     // str r1, [r5]
     // strh r1, [r4]
     // str r1, [r6]
@@ -1524,10 +1192,8 @@ void sub_02006A30(void) {
     // ldr r2, [sp, #0x18]
     // str r1, [r2]
     // strb r1, [r0]
-    // add sp, #0x1c
-    // pop {r4, r5, r6, r7, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02006AC0(void) {
@@ -1556,132 +1222,65 @@ void sub_02006AC0(void) {
 }
 
 
+
 void sub_02006AF4(void) {
-    // push {r3, r4, r5, r6, lr}
-    // sub sp, #4
-    // add r5, r0, #0
-    // mov r0, #0x12
-    // add r4, r2, #0
-    // add r6, r3, #0
-    // bl GF_SdatGetAttrPtr
-    // mov r1, #1
+    GF_SdatGetAttrPtr(0x12);
     // strb r1, [r0]
-    // mov r0, #0xf
-    // bl sub_02005600
+    sub_02005600(0xf, 1);
     // ldr r0, [sp, #0x18]
-    // add r1, r4, #0
     // str r0, [sp]
-    // add r0, r5, #0
-    // add r2, r6, #0
-    // mov r3, #0xf
-    // bl sub_020057AC
-    // add sp, #4
-    // pop {r3, r4, r5, r6, pc}
-    // TODO: decompile
+    sub_020057AC(r5, r4, r6, 0xf);
 }
+
 
 
 void PlayFanfare(void) {
-    // push {r3, r4, r5, lr}
-    // sub sp, #8
-    // add r4, r0, #0
-    // bl GF_GetBankInfoBySeqNo
-    // add r0, r4, #0
-    // bl sub_02006C04
-    // bl GF_GetCurrentPlayingBGM
-    // bl GF_GetPlayerNoBySeq
-    // cmp r0, #0xff
-    // beq _02006B48
-    // mov r1, #1
-    // bl sub_020053A8
-    // b _02006B4E
-    // mov r0, #1
-    // bl SndRadio_PausePlayer
-    // mov r0, #0x1d
-    // bl GF_SdatGetAttrPtr
-    // bl GF_Snd_SaveState
-    // add r0, r4, #0
-    // mov r1, #3
-    // bl GF_Snd_LoadSeqEx
+    GF_GetBankInfoBySeqNo();
+    sub_02006C04(r4);
+    GF_GetCurrentPlayingBGM();
+    GF_GetPlayerNoBySeq();
+    sub_020053A8(1);
+    SndRadio_PausePlayer(1);
+    GF_SdatGetAttrPtr(0x1d);
+    GF_Snd_SaveState();
+    GF_Snd_LoadSeqEx(r4, 3);
     // str r4, [sp]
-    // mov r0, #0
     // str r0, [sp, #4]
-    // mov r0, #2
-    // sub r1, r0, #3
-    // add r2, r1, #0
-    // add r3, r1, #0
-    // bl sub_02006C14
-    // add r5, r0, #0
-    // add r0, r4, #0
-    // mov r1, #2
-    // bl sub_02005464
-    // add r0, r5, #0
-    // add sp, #8
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    sub_02006C14(2, (2 - 3), (2 - 3), (2 - 3));
+    sub_02005464(r4, 2);
 }
+
 
 
 void sub_02006B84(void) {
-    // push {r4, lr}
-    // mov r0, #0xe
-    // bl GF_SdatGetAttrPtr
-    // add r4, r0, #0
-    // mov r0, #2
-    // bl GF_SndPlayerCountPlayingSeqByPlayerNo
-    // cmp r0, #0
-    // beq _02006B9C
-    // mov r0, #1
-    // pop {r4, pc}
+    GF_SdatGetAttrPtr(0xe);
+    GF_SndPlayerCountPlayingSeqByPlayerNo(2);
     // ldrh r0, [r4]
-    // cmp r0, #0
-    // beq _02006BAA
-    // sub r0, r0, #1
     // strh r0, [r4]
-    // mov r0, #1
-    // pop {r4, pc}
-    // mov r0, #0
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
 
 void sub_02006BB0(void) {
-    GF_GetSoundHandle(2);
-    NNS_SndPlayerStopSeq(r4);
-    sub_02005328(6);
-    GF_Snd_LoadState();
 }
 
 
-void IsFanfarePlaying(void) {
-    // push {r3, lr}
-    // mov r0, #0xe
-    // bl GF_SdatGetAttrPtr
-    // bl sub_02006B84
-    // cmp r0, #1
-    // bne _02006BE0
-    // mov r0, #1
-    // pop {r3, pc}
-    // mov r0, #0
-    // bl sub_02006BB0
-    // bl GF_GetCurrentPlayingBGM
-    // bl GF_GetPlayerNoBySeq
-    // cmp r0, #0xff
-    // beq _02006BF8
-    // mov r1, #0
-    // bl sub_020053A8
-    // mov r0, #0
-    // bl SndRadio_PausePlayer
-    // mov r0, #0
-    // pop {r3, pc}
-    // TODO: decompile
+
+BOOL IsFanfarePlaying(void) {
+    GF_SdatGetAttrPtr(0xe);
+    sub_02006B84();
+    sub_02006BB0(0);
+    GF_GetCurrentPlayingBGM();
+    GF_GetPlayerNoBySeq();
+    sub_020053A8(0);
+    SndRadio_PausePlayer(0);
 }
+
 
 
 void sub_02006C04(void) {
-    GF_SdatGetAttrPtr();
 }
+
 
 
 void sub_02006C14(void) {
@@ -1738,4 +1337,5 @@ void sub_02006C14(void) {
     // _02006C88: .word 0x000002BD
     // TODO: decompile
 }
+
 

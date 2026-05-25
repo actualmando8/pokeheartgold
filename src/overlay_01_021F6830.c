@@ -2,8 +2,8 @@
 #include "global.h"
 
 void ov01_021F6830(void) {
-    ov35_02259D80();
 }
+
 
 
 void ov01_021F6840(void) {
@@ -26,6 +26,7 @@ void ov01_021F6840(void) {
 }
 
 
+
 void ov01_021F6864(void) {
     // add r1, r0, #0
     // ldr r0, [r1, #8]
@@ -36,6 +37,7 @@ void ov01_021F6864(void) {
     // _021F6870: .word ov30_0225D64C
     // TODO: decompile
 }
+
 
 
 void ov01_021F6874(void) {
@@ -54,6 +56,7 @@ void ov01_021F6874(void) {
     // _021F6890: .word FS_OVERLAY_ID(OVY_27)
     // TODO: decompile
 }
+
 
 
 void ov01_021F6894(void) {
@@ -76,9 +79,10 @@ void ov01_021F6894(void) {
 }
 
 
+
 void ov01_021F68B8(void) {
-    ov01_021F690C();
 }
+
 
 
 void ov01_021F68C0(void) {
@@ -95,6 +99,7 @@ void ov01_021F68C0(void) {
     // _021F68D8: .word FS_OVERLAY_ID(OVY_27)
     // TODO: decompile
 }
+
 
 
 void ov01_021F68DC(void) {
@@ -123,6 +128,7 @@ void ov01_021F68DC(void) {
 }
 
 
+
 void ov01_021F690C(void) {
     // push {r4, lr}
     // add r4, r0, #0
@@ -142,6 +148,7 @@ void ov01_021F690C(void) {
     // _021F692C: .word ov01_02206C60 + 4
     // TODO: decompile
 }
+
 
 
 void ov01_021F6930(void) {
@@ -171,6 +178,7 @@ void ov01_021F6930(void) {
     // _021F6964: .word ov01_02206C60 + 8
     // TODO: decompile
 }
+
 
 
 void ov01_021F6968(void) {
@@ -205,9 +213,10 @@ void ov01_021F6968(void) {
 }
 
 
+
 void ov01_021F69A4(void) {
-    UnloadOverlayByID(0);
 }
+
 
 
 void ov01_021F69C0(void) {
@@ -309,103 +318,78 @@ void ov01_021F69C0(void) {
 }
 
 
+
 void ov01_021F6A9C(void) {
-    SysTask_GetData(2);
 }
+
 
 
 void ov01_021F6ABC(void) {
-    // push {r3, r4, r5, r6, r7, lr}
-    // add r5, r0, #0
     // add r0, #0xd8
-    // ldr r0, [r0]
-    // add r6, r1, #0
-    // add r7, r2, #0
     // str r3, [sp]
-    // bl SysTask_GetData
-    // ldr r0, [r0, #4]
-    // bl SysTask_GetData
-    // add r4, r0, #0
-    // add r0, r5, #0
-    // bl ov01_021F6B00
-    // cmp r6, r0
-    // beq _021F6AE4
-    // bl GF_AssertFail
+    SysTask_GetData(*((u32*)r0));
+    SysTask_GetData(*((u32*)(r0 + 4)));
+    ov01_021F6B00(r5);
+    GF_AssertFail();
     // ldr r0, [sp]
     // str r7, [r4]
-    // str r0, [r4, #4]
-    // pop {r3, r4, r5, r6, r7, pc}
-    // TODO: decompile
+    *((u32*)(r4 + 4)) = r0;
 }
+
 
 
 void ov01_021F6AEC(void) {
-    SysTask_GetData();
-    SysTask_GetData(*((u32*)(r0 + 4)));
 }
+
 
 
 void ov01_021F6B00(void) {
-    SysTask_GetData();
 }
+
 
 
 void ov01_021F6B10(void) {
-    SysTask_GetData();
 }
+
 
 
 void ov01_021F6B20(void) {
-    SysTask_GetData();
-    SysTask_GetData(*((u32*)(r0 + 4)));
 }
+
 
 
 void ov01_021F6B34(void) {
-    SysTask_GetData();
-    ov27_0225C41C(*((u32*)(r0 + 4)), r5, r4);
 }
+
 
 
 void ov01_021F6B50(void) {
-    SysTask_GetData();
-    ov27_0225A2CC(*((u32*)(r0 + 4)));
 }
+
 
 
 void ov01_021F6B64(void) {
-    // push {r3, r4, r5, lr}
     // add r0, #0xd8
-    // ldr r0, [r0]
-    // add r5, r1, #0
-    // bl SysTask_GetData
-    // add r4, r0, #0
-    // cmp r5, #0
-    // ble _021F6B7A
-    // cmp r5, #3
-    // blt _021F6B7E
-    // bl GF_AssertFail
-    // ldr r0, [r4, #4]
-    // add r1, r5, #0
-    // bl ov27_0225A2EC
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    SysTask_GetData(*((u32*)r0));
+    GF_AssertFail();
+    ov27_0225A2EC(*((u32*)(r4 + 4)), r5);
 }
+
 
 
 void ov01_021F6B88(void) {
-    ov34_0225D7A8();
 }
+
 
 
 void ov01_021F6BA0(void) {
-    ov34_0225D87C();
 }
+
 
 
 u8 ov01_021F6BAC(void) {
-    return 1;
 }
+
 
 
 void ov01_021F6BB0(void) {
@@ -426,6 +410,7 @@ void ov01_021F6BB0(void) {
     // _021F6BCC: .word ov01_02206C08
     // TODO: decompile
 }
+
 
 
 void ov01_021F6BD0(void) {
@@ -473,115 +458,46 @@ void ov01_021F6BD0(void) {
 }
 
 
+
 void ov01_021F6C28(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x30]
-    // bl ov01_021F6B00
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x30]
-    // bl ov01_021F6B10
-    // cmp r4, #6
-    // bne _021F6C46
-    // cmp r0, #1
-    // bne _021F6C46
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov01_021F6B00(*((u32*)(r0 + 0x30)));
+    ov01_021F6B10(*((u32*)(r5 + 0x30)));
 }
+
 
 
 void ov01_021F6C4C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x30]
-    // bl ov01_021F6B00
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x30]
-    // bl ov01_021F6B10
-    // cmp r4, #3
-    // bne _021F6C78
-    // cmp r0, #1
-    // bne _021F6C78
-    // ldr r0, [r5, #0x30]
-    // mov r1, #3
+    ov01_021F6B00(*((u32*)(r0 + 0x30)));
+    ov01_021F6B10(*((u32*)(r5 + 0x30)));
     // add r5, #0x90
-    // add r2, r1, #0
-    // add r3, r5, #0
-    // bl ov01_021F6ABC
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov01_021F6ABC(*((u32*)(r5 + 0x30)), 3, 3, r5);
 }
+
 
 
 void ov01_021F6C7C(void) {
-    // push {r3, r4, r5, lr}
-    // add r5, r0, #0
-    // ldr r0, [r5, #0x30]
-    // bl ov01_021F6B00
-    // add r4, r0, #0
-    // ldr r0, [r5, #0x30]
-    // bl ov01_021F6AEC
-    // cmp r4, #3
-    // bne _021F6C9A
-    // cmp r0, #6
-    // bne _021F6C9A
-    // mov r0, #1
-    // pop {r3, r4, r5, pc}
-    // mov r0, #0
-    // pop {r3, r4, r5, pc}
-    // TODO: decompile
+    ov01_021F6B00(*((u32*)(r0 + 0x30)));
+    ov01_021F6AEC(*((u32*)(r5 + 0x30)));
 }
+
 
 
 void ov01_021F6CA0(void) {
-    // push {r4, lr}
-    // add r4, r0, #0
-    // add r1, r4, #0
     // add r1, #0x98
     // ldrh r1, [r1]
-    // cmp r1, #0
-    // beq _021F6CB8
-    // cmp r1, #1
-    // beq _021F6CD0
-    // cmp r1, #2
-    // beq _021F6CE6
-    // b _021F6CF6
-    // ldr r0, [r4, #0x30]
-    // mov r1, #3
-    // mov r2, #0
-    // bl ov01_021F6A9C
-    // add r0, r4, #0
+    ov01_021F6A9C(*((u32*)(r0 + 0x30)), 3, 0);
     // add r0, #0x98
     // ldrh r0, [r0]
     // add r4, #0x98
-    // add r0, r0, #1
     // strh r0, [r4]
-    // b _021F6CF6
-    // bl ov01_021F6C4C
-    // cmp r0, #1
-    // bne _021F6CF6
-    // add r0, r4, #0
+    ov01_021F6C4C((r4 + 1));
     // add r0, #0x98
     // ldrh r0, [r0]
     // add r4, #0x98
-    // add r0, r0, #1
     // strh r0, [r4]
-    // b _021F6CF6
-    // bl ov01_021F6C7C
-    // cmp r0, #1
-    // bne _021F6CF6
-    // mov r0, #0
+    ov01_021F6C7C((r4 + 1));
     // add r4, #0x98
     // strh r0, [r4]
-    // pop {r4, pc}
-    // mov r0, #1
-    // pop {r4, pc}
-    // TODO: decompile
 }
+
 
