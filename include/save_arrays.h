@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_SAVE_ARRAYS_H
 #define POKEHEARTGOLD_SAVE_ARRAYS_H
 
+#include "global.h"
 #include "hall_of_fame.h"
 #include "mystery_gift.h"
 #include "palPark_migration.h"
@@ -32,6 +33,7 @@ extern const int gNumSaveChunkHeaders;
 extern const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[];
 extern const int gNumExtraSaveChunkHeaders;
 
+typedef struct UnkStruct_0202E474 UnkStruct_0202E474;
 UnkStruct_0202E474 *sub_020270C4(SaveData *saveData);
 PCStorage *SaveArray_PCStorage_Get(SaveData *saveData);
 MysteryGiftSave *Save_MysteryGift_Get(SaveData *saveData);

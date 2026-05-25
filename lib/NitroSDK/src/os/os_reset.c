@@ -1,4 +1,5 @@
 #include <nitro.h>
+#include <nitro/os/common/reset_shared.h>
 
 extern void SDK_IRQ_STACKSIZE(void);
 
