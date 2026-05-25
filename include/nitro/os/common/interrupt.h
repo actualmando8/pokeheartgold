@@ -229,6 +229,7 @@ void    OSi_EnterTimerCallback(u32 timerNo, void (*callback) (void *), void *arg
 //                  IE/IF flags
 //----------------------------------------------------------------------
 #define OS_IE_V_BLANK       (1UL << REG_OS_IE_VB_SHIFT) // VBlank
+#define OS_IE_VBLANK        OS_IE_V_BLANK               // Alias for SDK compatibility
 #define OS_IE_H_BLANK       (1UL << REG_OS_IE_HB_SHIFT) // HBlank
 #define OS_IE_V_COUNT       (1UL << REG_OS_IE_VE_SHIFT) // VCounter
 #define OS_IE_TIMER0        (1UL << REG_OS_IE_T0_SHIFT) // timer0
