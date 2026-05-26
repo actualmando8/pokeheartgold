@@ -1,826 +1,371 @@
 /* Decompiled from asm/frontier_map.s */
 #include "global.h"
+#include "heap.h"
+#include "palette.h"
+#include "sprite.h"
+#include "sprite_system.h"
+#include "vram_transfer_manager.h"
+#include "sys_task.h"
+#include "main.h"
+#include "gf_gfx_planes.h"
+#include "gf_gfx_loader.h"
+#include "gf_3d_vramman.h"
+#include "sound.h"
+#include "text.h"
+#include "save.h"
+#include "frontier.h"
+#include "frontier_system.h"
+#include "overlay_42.h"
+#include "overlay_80_0222ACA0.h"
+#include "overlay_80_02239960.h"
+#include "overlay_80_02239BF0.h"
 
-void FrontierMap_Init(void) {
-    Frontier_GetLaunchArgs();
-    Save_PlayerData_GetProfile(*((u32*)(r0 + 8)));
-    // add r4, #0x20
-    Main_SetVBlankIntrCB(0, 0);
+#define FRONTIER_MAP_HEAP_ID  0x65
+#define FRONTIER_MAP_NARC_ID  0xB7
+#define FRONTIER_MAP_NARC2_ID 0xB8
+
+typedef struct FrontierMapData {
+    BgConfig       *bgConfig;           // 0x00
+    PaletteData    *paletteData;        // 0x04
+    void           *spriteList;         // 0x08  (actually: ptr to the frontier system)
+    void           *gfx3dVramMan;       // 0x0C
+    void           *ov42Data;           // 0x14
+    void           *spriteAnimData;     // 0x18
+    void            ov42Scrollable[0];  // 0x1C (ov42 scrollable context, inline)
+    void           *tilemap;            // 0x20
+    void           *subLayerCtx;        // 0x24
+    void           *subLayerCtx2;       // 0x28
+    void           *ov42Ctx80;          // 0x2C
+    void           *ov42Ctx30;          // 0x30
+    SpriteSystem   *spriteSystem;       // 0x34
+    SpriteManager  *spriteManager;      // 0x38
+    FrontierSystem *frontierSystem;     // (accessed via [r4, #8] -> Frontier_GetLaunchArgs)
+    u32             activeSpriteFlags;  // 0x6C
+    u16             warpIds[8];         // 0x70
+    u8              unk7E[2];
+    u32             sprites[4];         // 0x80 (sprite pointers, stride 4)
+    SysTask        *taskA;              // 0x94
+    SysTask        *taskB;              // 0x98
+    SysTask        *taskUpdate;         // 0x9C
+    SysTask        *taskVBlank;         // 0xA0
+    u8              areaId;             // 0xC1
+} FrontierMapData;
+
+// Forward declarations of static helpers
+static void FrontierMap_VBlank(FrontierMapData *data);
+static void FrontierMap_Update(SysTask *task, FrontierMapData *data);
+static void FrontierMap_Scroll(FrontierMapData *data);
+static void ov80_02238B7C(FrontierMapData *data);
+
+FrontierMapData *FrontierMap_Init(void *frontierOverlayMan)
+{
+    FrontierLaunchArgs *launchArgs;
+    PlayerProfile      *profile;
+    FrontierMapData    *data;
+    SysTask            *task;
+
+    launchArgs = Frontier_GetLaunchArgs(frontierOverlayMan);
+    profile    = Save_PlayerData_GetProfile(launchArgs->saveData);
+
+    Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
     GfGfx_DisableEngineAPlanes();
     GfGfx_DisableEngineBPlanes();
-    // and r0, r2
-    // str r0, [r1]
-    // and r2, r3
-    // str r2, [r0]
-    // and r3, r2
-    // str r3, [r1]
-    // add r1, #0x50
-    // and r2, r3
-    // str r2, [r0]
-    // strh r2, [r1]
-    // add r0, #0x50
-    // strh r2, [r0]
-    // strh r0, [r2]
-    Heap_Create(3, 0x65, (9 << 0x10), *((u32*)0x04001000));
-    Heap_Alloc(0x65, 0xc4);
-    MI_CpuFill8(0, 0xc4);
-    *((u32*)(r4 + 8)) = r6;
-    // add r0, #0xc1
-    // strb r5, [r0]
-    // add r0, #0x70
-    // strh r1, [r0]
-    ov80_022392DC(0x65, 0x0000FFFF, (0 + 1), (r4 + 2));
-    *((u32*)(r4 + 0xc)) = r0;
-    PaletteData_Init(0x65);
-    *((u32*)(r4 + 4)) = r0;
-    PaletteData_SetAutoTransparent(1);
-    PaletteData_AllocBuffers(*((u32*)(r4 + 4)), 0, (2 << 8), 0x65);
-    PaletteData_AllocBuffers(*((u32*)(r4 + 4)), 1, (1 << 9), 0x65);
-    PaletteData_AllocBuffers(*((u32*)(r4 + 4)), 2, (7 << 6), 0x65);
-    PaletteData_AllocBuffers(*((u32*)(r4 + 4)), 3, (2 << 8), 0x65);
-    BgConfig_Alloc(0x65);
-    // str r0, [r4]
-    GF_CreateVramTransferManager(0x40, 0x65);
+
+    // Hardware register setup (display control)
+    *(vu32 *)0x04000000 &= 0xFFFFE0FF;
+    *(vu32 *)0x04001000 &= 0xFFFFE0FF;
+    *(vu32 *)0x04000000 &= 0xFFFF1FFF;
+    *(vu32 *)0x04001000 &= 0xFFFF1FFF;
+
+    // Clear BG scroll registers
+    *(vu16 *)(0x04000000 + 0x20 + 0x50) = 0;
+    *(vu16 *)(0x04000000 + 0x50)        = 0;
+
+    // Master brightness
+    *(vu16 *)0x04000304 |= *(vu16 *)0x04000304 | (*(vu16 *)0x04000304 >> 0xB);
+
+    Heap_Create(HEAP_ID_FIELD, 9 << 0x10, FRONTIER_MAP_HEAP_ID);
+
+    data = Heap_Alloc(FRONTIER_MAP_HEAP_ID, 0xC4);
+    MI_CpuFill8(data, 0, 0xC4);
+
+    data->spriteList = frontierOverlayMan; // [r4+8] used as back-pointer
+
+    // Init warp id array to 0xFFFF
+    {
+        u16 *p = (u16 *)((u8 *)data + 0x70);
+        for (int i = 0; i < 8; i++, p++)
+            *p = 0xFFFF;
+    }
+
+    data->areaId = launchArgs->unk20.areaId;
+
+    data->gfx3dVramMan  = ov80_022392DC(FRONTIER_MAP_HEAP_ID);
+    data->paletteData   = PaletteData_Init(FRONTIER_MAP_HEAP_ID);
+    PaletteData_SetAutoTransparent(data->paletteData, 1);
+    PaletteData_AllocBuffers(data->paletteData, 0, 0, 2 << 8, FRONTIER_MAP_HEAP_ID);
+    PaletteData_AllocBuffers(data->paletteData, 1, 0, 1 << 9, FRONTIER_MAP_HEAP_ID);
+    PaletteData_AllocBuffers(data->paletteData, 2, 0, 7 << 6, FRONTIER_MAP_HEAP_ID);
+    PaletteData_AllocBuffers(data->paletteData, 3, 0, 2 << 8, FRONTIER_MAP_HEAP_ID);
+
+    data->bgConfig = BgConfig_Alloc(FRONTIER_MAP_HEAP_ID);
+    GF_CreateVramTransferManager(0x40, FRONTIER_MAP_HEAP_ID);
     SetKeyRepeatTimers(4, 8);
-    FrontierMap_SetVramBank(*((u32*)r4), r5);
-    FrontierMap_LoadPaletteData(r4);
-    ov80_02238FA0(r4);
+
+    FrontierMap_SetVramBank(data->bgConfig, data->areaId);
+    FrontierMap_LoadPaletteData(data);
+    ov80_02238FA0(data);
     sub_020210BC();
     sub_02021148(4);
-    ov80_02239384(r4);
-    ov80_02239960(0x65);
-    *((u32*)(r4 + 0x10)) = r0;
-    ov80_02239004(r4, r5, r7);
-    SysTask_CreateOnMainQueue(ov80_02238AB0, r4, 0x0000EA60);
-    // add r1, #0x94
-    // str r0, [r1]
-    SysTask_CreateOnMainQueue(ov80_02238ABC, r4, 0x0000EE48);
-    // add r1, #0x98
-    // str r0, [r1]
-    SysTask_CreateOnMainQueue(FrontierMap_Update, r4, 0x00013880);
-    // add r1, #0x9c
-    // str r0, [r1]
-    GfGfx_BothDispOn(r4);
+    ov80_02239384(data);
+    data->tilemap = ov80_02239960(FRONTIER_MAP_HEAP_ID);
+
+    ov80_02239004(data, launchArgs, profile);
+
+    task = SysTask_CreateOnMainQueue(ov80_02238AB0, data, 0xEA60);
+    ((SysTask **)((u8 *)data + 0x94))[0] = task;
+
+    task = SysTask_CreateOnMainQueue(ov80_02238ABC, data, 0xEE48);
+    ((SysTask **)((u8 *)data + 0x94))[1] = task;
+
+    task = SysTask_CreateOnMainQueue(FrontierMap_Update, data, 0x13880);
+    ((SysTask **)((u8 *)data + 0x94))[2] = task;
+
+    GfGfx_BothDispOn();
     GfGfx_EngineATogglePlanes(0x10, 1);
     GfGfx_EngineBTogglePlanes(0x10, 1);
-    ov80_0222ACA0(r5, 3);
-    Sound_SetFieldBGM(((r0 << 0x10) >> 0x10));
-    ov80_0222ACA0(r5, 3);
-    sub_02055198(0, ((r0 << 0x10) >> 0x10));
+
+    Sound_SetFieldBGM(ov80_0222ACA0(launchArgs, 3));
+    sub_02055198(0, ov80_0222ACA0(launchArgs, 3));
+
     TextFlags_SetAutoScrollParam(1);
     TextFlags_SetCanABSpeedUpPrint(0);
     TextFlags_SetCanTouchSpeedUpPrint(0);
-    Main_SetVBlankIntrCB(FrontierMap_VBlank, r4);
-    SysTask_CreateOnVBlankQueue(ov80_02238AAC, r4, 0xa);
-    // add r1, #0xa0
-    // str r0, [r1]
-    // add r2, #0xc1
-    // add r1, #0x90
-    ov80_0222AD9C(r4, r4, *((u8*)r4));
+
+    Main_SetVBlankIntrCB(FrontierMap_VBlank, data);
+
+    task = SysTask_CreateOnVBlankQueue(ov80_02238AAC, data, 0xA);
+    ((SysTask **)((u8 *)data + 0x94))[3] = task;
+
+    ov80_0222AD9C(data, (u16 *)((u8 *)data + 0x90), data->areaId);
     sub_0203A880();
+
+    return data;
 }
 
+void FrontierMap_Free(FrontierMapData *data)
+{
+    FrontierLaunchArgs *launchArgs = Frontier_GetLaunchArgs(data->spriteList);
 
+    ov80_0222ADB4(data, (u16 *)((u8 *)data + 0x90), data->areaId);
+    ov80_0223927C(data);
 
-
-void FrontierMap_Free(void) {
-    Frontier_GetLaunchArgs(*((u32*)(r0 + 8)));
-    // add r2, #0xc1
-    // add r1, #0x90
-    ov80_0222ADB4(r4, r4, *((u8*)r4));
-    ov80_0223927C(r4);
     GfGfx_EngineATogglePlanes(1, 0);
     GfGfx_EngineATogglePlanes(2, 0);
-    FreeBgTilemapBuffer(*((u32*)r4), 1);
-    FreeBgTilemapBuffer(*((u32*)r4), 2);
-    FreeBgTilemapBuffer(*((u32*)r4), 3);
+
+    FreeBgTilemapBuffer(data->bgConfig, 1);
+    FreeBgTilemapBuffer(data->bgConfig, 2);
+    FreeBgTilemapBuffer(data->bgConfig, 3);
     ToggleBgLayer(4, 0);
-    FreeBgTilemapBuffer(*((u32*)r4), 4);
-    ov80_022393E8(r4);
-    ov80_02239980(*((u32*)(r4 + 0x10)));
+    FreeBgTilemapBuffer(data->bgConfig, 4);
+
+    ov80_022393E8(data);
+    ov80_02239980(data->tilemap);
     GF_DestroyVramTransferManager();
-    PaletteData_FreeBuffers(*((u32*)(r4 + 4)), 0);
-    PaletteData_FreeBuffers(*((u32*)(r4 + 4)), 1);
-    PaletteData_FreeBuffers(*((u32*)(r4 + 4)), 2);
-    PaletteData_FreeBuffers(*((u32*)(r4 + 4)), 3);
-    PaletteData_Free(*((u32*)(r4 + 4)));
-    Heap_Free(*((u32*)r4));
-    // add r0, #0x94
-    SysTask_Destroy(*((u32*)r4));
-    // add r0, #0x98
-    SysTask_Destroy(*((u32*)r4));
-    // add r0, #0x9c
-    SysTask_Destroy(*((u32*)r4));
-    // add r0, #0xa0
-    SysTask_Destroy(*((u32*)r4));
-    ov80_0223937C(*((u32*)(r4 + 0xc)));
+
+    PaletteData_FreeBuffers(data->paletteData, 0);
+    PaletteData_FreeBuffers(data->paletteData, 1);
+    PaletteData_FreeBuffers(data->paletteData, 2);
+    PaletteData_FreeBuffers(data->paletteData, 3);
+    PaletteData_Free(data->paletteData);
+    Heap_Free(data->bgConfig);
+
+    SysTask_Destroy(data->taskA);
+    SysTask_Destroy(data->taskB);
+    SysTask_Destroy(data->taskUpdate);
+    SysTask_Destroy(data->taskVBlank);
+
+    ov80_0223937C(data->gfx3dVramMan);
     sub_02021238();
-    Heap_Free(r4);
-    // and r1, r0
-    // str r1, [r2]
-    // and r0, r1
-    // str r0, [r2]
-    Main_SetVBlankIntrCB(0, 0, 0x04001000);
+    Heap_Free(data);
+
+    // Restore display registers
+    *(vu32 *)0x04000000 &= 0xFFFF1FFF;
+    *(vu32 *)0x04001000 &= 0xFFFF1FFF;
+
+    Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
-    Heap_Destroy(0x65);
+    Heap_Destroy(FRONTIER_MAP_HEAP_ID);
+
     TextFlags_SetCanABSpeedUpPrint(0);
     TextFlags_SetAutoScrollParam(0);
     TextFlags_SetCanTouchSpeedUpPrint(0);
     sub_0203A914();
-    MIi_CpuClear16(0x00007FFF, (5 << 0x18), (2 << 8));
-    MIi_CpuClear16(0x00007FFF, 0x05000200, (2 << 8));
-    MIi_CpuClear16(0x00007FFF, 0x05000400, (2 << 8));
-    MIi_CpuClear16(0x00007FFF, 0x05000600, (2 << 8));
-    // strh r1, [r0]
-    // strh r1, [r0]
+
+    // Clear palette RAM
+    MIi_CpuClear16(0x7FFF, (void *)(5 << 0x18), 2 << 8);
+    MIi_CpuClear16(0x7FFF, (void *)0x05000200,  2 << 8);
+    MIi_CpuClear16(0x7FFF, (void *)0x05000400,  2 << 8);
+    MIi_CpuClear16(0x7FFF, (void *)0x05000600,  2 << 8);
+
+    *(vu16 *)0x04000050 = 0;
+    *(vu16 *)0x04001050 = 0;
 }
 
-
-
-
-void ov80_022389C4(void) {
-}
-
-
-
-
-void ov80_02238A18(void) {
-    sub_02096864(*((u32*)(r0 + 8)));
-    ov42_02228FE0(*((u32*)(r5 + 0x20)), *((u16*)r0), *((u8*)(r0 + 2)), 0x65);
-    // add r6, sp, #0
-    sub_0209686C(*((u32*)(r5 + 8)), 0);
-    ov80_02239900(r6);
-    ov80_02239510(r5, r6, r4);
-    ov80_02239828(r5);
-}
-
-
-
-
-void FrontierMap_VBlank(void) {
+static void FrontierMap_VBlank(FrontierMapData *data)
+{
     GF_RunVramTransferTasks();
     SpriteSystem_TransferOam();
-    PaletteData_PushTransparentBuffers(*((u32*)(r4 + 4)));
-    DoScheduledBgGpuUpdates(*((u32*)r4));
-    // str r0, [r3, r1]
+    PaletteData_PushTransparentBuffers(data->paletteData);
+    DoScheduledBgGpuUpdates(data->bgConfig);
+
+    *(vu32 *)(0x027E0000 + 0x3FF8) |= 1;
 }
 
+static void FrontierMap_Update(SysTask *task, FrontierMapData *data)
+{
+    void *slot31;
+    u32   flags;
+    int   i;
 
+    slot31 = sub_0209686C(data->spriteList, 0x1F);
+    if (*(u32 *)slot31)
+        ov42_02229358((u8 *)data + 0x1C);
 
+    FrontierMap_Scroll(data);
+    ov42_022290DC(data->tilemap);
 
-void ov80_02238AAC(void) {
+    flags = data->activeSpriteFlags;
+    for (i = 0; i < 8; i++, flags >>= 1) {
+        void *sprite = *(void **)((u8 *)data + 0x3C + i * 4);
+        if (sprite && (flags & 1))
+            ManagedSprite_TickFrame(sprite);
+    }
+
+    SpriteSystem_DrawSprites(data->spriteSystem);
+    SpriteSystem_UpdateTransfer();
+    ov80_02239A38();
+    RequestSwap3DBuffers(1, 0);
 }
 
+static void FrontierMap_Scroll(FrontierMapData *data)
+{
+    FrontierLaunchArgs *launchArgs = Frontier_GetLaunchArgs(data->spriteList);
+    u32 val = ov80_0222ACA0(launchArgs, 0xC);
 
+    if (val == 0) {
+        if (data->subLayerCtx)
+            ov42_02229420(data->subLayerCtx, (u8 *)data + 0x1C);
 
-
-void ov80_02238AB0(void) {
+        if (data->subLayerCtx2) {
+            if (ov80_0222ACA0(launchArgs, 0xD) == 1) {
+                ov42_02229420(data->subLayerCtx2, (u8 *)data + 0x1C);
+                return;
+            }
+        }
+    } else if (val == 1) {
+        ov80_02238B7C(data);
+        return;
+    }
 }
 
+static void ov80_02238B7C(FrontierMapData *data)
+{
+    FrontierLaunchArgs *launchArgs;
+    G2dRenderer        *renderer;
+    s16  scrollX, scrollY;
+    s16  offX, offY;
+    int  fx, fy;
 
+    launchArgs = Frontier_GetLaunchArgs(data->spriteList);
 
+    scrollX = (s16)ov42_022293A8((u8 *)data + 0x1C);
+    offX    = *(s16 *)((u8 *)data + 0xAA);
+    scrollX += offX;
 
-void ov80_02238ABC(void) {
+    scrollY = (s16)ov42_022293B0((u8 *)data + 0x1C);
+    offY    = *(s16 *)((u8 *)data + 0xA8);
+    scrollY += offY;
+
+    // Convert integer scroll to float with +/-0.5 bias for rounding
+    if (scrollX > 0)
+        fx = (int)((float)(scrollX << 0xC) + 0x3F800000);  // + 0.5f
+    else
+        fx = (int)((float)(scrollX << 0xC) - 0x3F800000);
+
+    if (scrollY > 0)
+        fy = (int)((float)(scrollY << 0xC) + 0x3F800000);
+    else
+        fy = (int)((float)(scrollY << 0xC) - 0x3F800000);
+
+    renderer = SpriteSystem_GetRenderer(data->spriteSystem);
+    G2dRenderer_SetMainSurfaceCoords(renderer, (int)((float)fy), (int)((float)fx));
+
+    ScheduleSetBgPosText(data->bgConfig, 3, 0, scrollY);
+    ScheduleSetBgPosText(data->bgConfig, 3, 3, scrollX);
+
+    if (ov80_0222ACA0(launchArgs, 9) != 0xFFFF) {
+        if (ov80_0222ACA0(launchArgs, 0xD) == 1) {
+            ScheduleSetBgPosText(data->bgConfig, 2, 0, scrollY);
+            ScheduleSetBgPosText(data->bgConfig, 2, 3, scrollX);
+        }
+    }
 }
 
-
-
-
-void FrontierMap_Update(void) {
-    // add r0, #0x1c
-    // tst r1, r4
+void FrontierMap_SetVramBank(BgConfig *bgConfig, u8 areaId)
+{
+    // TODO: decompile from assembly - sets VRAM banks, BG modes, initialises all 4 BG layers
 }
 
+void FrontierMap_LoadPaletteData(FrontierMapData *data)
+{
+    u32 frameId;
 
+    PaletteData_LoadNarc(data->paletteData, 0x10, 7, FRONTIER_MAP_HEAP_ID, 0, 0x20, 0xE0);
+    PaletteData_LoadNarc(data->paletteData, 0x10, 8, FRONTIER_MAP_HEAP_ID, 0, 0x20, 0xD0);
 
+    frameId = Options_GetFrame(Save_GetOptions(Frontier_GetLaunchArgs(data->spriteList)->saveData));
+    LoadUserFrameGfx2(data->bgConfig, 1, 0x3E2, frameId, FRONTIER_MAP_HEAP_ID, 0xB);
+    PaletteData_LoadPaletteSlotFromHardware(data->paletteData, 0, 0xB0, 0x20);
 
-void FrontierMap_Scroll(void) {
-    // add r0, #0x20
-    // add r1, #0x1c
-    // add r4, #0x20
-    // add r5, #0x1c
+    LoadUserFrameGfx1(data->bgConfig, 1, 0x3D9, 0, FRONTIER_MAP_HEAP_ID, 0xC);
+    PaletteData_LoadPaletteSlotFromHardware(data->paletteData, 0, 0xC0, 0x20);
 }
 
-
-
-
-void ov80_02238B7C(void) {
-    Frontier_GetLaunchArgs(*((u32*)(r0 + 8)));
-    // add r0, #0x1c
-    ov42_022293A8(r5);
-    // ldrsh r1, [r5, r1]
-    // add r0, r1, r0
-    // asr r4, r0, #0x10
-    // add r0, #0x1c
-    ov42_022293B0(r5, 0xaa);
-    // ldrsh r1, [r5, r1]
-    // add r0, r1, r0
-    // asr r6, r0, #0x10
-    _fflt((r4 << 0xc), 0xa8);
-    _fadd((0x3f << 0x18), r0);
-    // str r0, [sp, #4]
-    _fflt((r4 << 0xc));
-    _fsub((0x3f << 0x18));
-    // str r0, [sp, #4]
-    _fflt((r6 << 0xc));
-    _fadd((0x3f << 0x18), r0);
-    // str r0, [sp]
-    _fflt((r6 << 0xc));
-    _fsub((0x3f << 0x18));
-    // str r0, [sp]
-    SpriteSystem_GetRenderer(*((u32*)(r5 + 0x34)));
-    // str r0, [sp, #8]
-    // ldr r0, [sp]
-    _ffix();
-    // str r0, [sp, #0xc]
-    // ldr r0, [sp, #4]
-    _ffix();
-    // ldr r0, [sp, #8]
-    // ldr r1, [sp, #0xc]
-    G2dRenderer_SetMainSurfaceCoords(r0);
-    ScheduleSetBgPosText(*((u32*)r5), 3, 0, r6);
-    ScheduleSetBgPosText(*((u32*)r5), 3, 3, r4);
-    // add r0, #0x20
-    ov80_0222ACA0(*((u8*)r7), 9);
-    // add r7, #0x20
-    ov80_0222ACA0(*((u8*)r7), 0xd);
-    ScheduleSetBgPosText(*((u32*)r5), 2, 0, r6);
-    ScheduleSetBgPosText(*((u32*)r5), 2, 3, r4);
-}
-
-
-
-
-void ov80_02238C78(void) {
-    // add r1, sp, #0
-    // add r4, sp, #0
-    // add r1, sp, #8
-    // add r6, sp, #0
-    // add r4, sp, #8
-}
-
-
-
-
-void FrontierMap_SetVramBank(void) {
-    ov80_0222ACA0(r1, 0);
-    GfGfx_DisableEngineAPlanes();
-    // add r3, sp, #0x2c
-    // ldmia r6!, {r0, r1}
-    // stmia r3!, {r0, r1}
-    // add r0, sp, #0x2c
-    GfGfx_SetBanks((5 - 1));
-    MIi_CpuClear32(0, (6 << 0x18), (2 << 0x12));
-    MIi_CpuClear32(0, (0x62 << 0x14), (2 << 0x10));
-    MIi_CpuClear32(0, (0x19 << 0x16), (1 << 0x12));
-    MIi_CpuClear32(0, (0x66 << 0x14), (2 << 0x10));
-    // add r3, sp, #0x1c
-    // ldmia r6!, {r0, r1}
-    // stmia r3!, {r0, r1}
-    // ldmia r6!, {r0, r1}
-    // stmia r3!, {r0, r1}
-    // str r4, [sp, #0x20]
-    SetBothScreensModesAndDisable(r3, r3);
-    // add r3, sp, #0x54
-    // ldmia r6!, {r0, r1}
-    // stmia r3!, {r0, r1}
-    // str r0, [r3]
-    // add r1, sp, #0x74
-    *((u8*)(r1 + 0xd)) = 0;
-    // add r0, sp, #0x94
-    *((u8*)(*((u32*)ov80_0223D600) + 9)) = 0;
-    *((u8*)(r1 + 0x10)) = 0;
-    *((u8*)(*((u32*)ov80_0223D600) + 0xc)) = 0;
-    ov80_0222ACA0(r7, 4, 0);
-    // add r0, sp, #0x94
-    *((u8*)((r0 << 0x10) + 8)) = ((r0 << 0x10) >> 0x10);
-    ov80_0222ACA0(r7, 9);
-    // add r0, sp, #0x74
-    *((u8*)(r0 + 0xc)) = r6;
-    // add r2, sp, #0x54
-    InitBgFromTemplate(r5, 1, 0);
-    BgClearTilemapBufferAndCommit(r5, 1);
-    BgSetPosTextAndCommit(r5, 1, 0, 0);
-    BgSetPosTextAndCommit(r5, 1, 3, 0);
-    // add r2, sp, #0x70
-    InitBgFromTemplate(r5, 2, 0);
-    BgClearTilemapBufferAndCommit(r5, 2);
-    BgSetPosTextAndCommit(r5, 2, 0, 0);
-    BgSetPosTextAndCommit(r5, 2, 3, 0);
-    // add r2, sp, #0x8c
-    InitBgFromTemplate(r5, 3, 0);
-    BgClearTilemapBufferAndCommit(r5, 3);
-    BgSetPosTextAndCommit(r5, 3, 0, 0);
-    BgSetPosTextAndCommit(r5, 3, 3, 0);
-    InitBgFromTemplate(r5, 1, 0);
-    BgClearTilemapBufferAndCommit(r5, 1);
-    BgSetPosTextAndCommit(r5, 1, 0, 0);
-    BgSetPosTextAndCommit(r5, 1, 3, 0);
-    // add r2, sp, #0x70
-    InitBgFromTemplate(r5, 2, 2);
-    BgClearTilemapBufferAndCommit(r5, 2);
-    BgSetPosTextAndCommit(r5, 2, 0, 0);
-    BgSetPosTextAndCommit(r5, 2, 3, 0);
-    // add r2, sp, #0x8c
-    InitBgFromTemplate(r5, 3, 2);
-    BgClearTilemapBufferAndCommit(r5, 3);
-    BgSetPosTextAndCommit(r5, 3, 0, 0);
-    BgSetPosTextAndCommit(r5, 3, 3, 0);
-    // strh r2, [r1]
-    GfGfx_EngineATogglePlanes(1, 1, (*((u16*)0x04000008) & ~(3)));
-    // add r3, sp, #0
-    // ldmia r4!, {r0, r1}
-    // stmia r3!, {r0, r1}
-    // ldmia r4!, {r0, r1}
-    // stmia r3!, {r0, r1}
-    // ldmia r4!, {r0, r1}
-    // stmia r3!, {r0, r1}
-    // str r0, [r3]
-    InitBgFromTemplate(r5, 4, r3, 0);
-    BgClearTilemapBufferAndCommit(r5, 4);
-    BgSetPosTextAndCommit(r5, 4, 0, 0);
-    BgSetPosTextAndCommit(r5, 4, 3, 0);
-}
-
-
-
-
-void FrontierMap_LoadPaletteData(void) {
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    PaletteData_LoadNarc(*((u32*)(r0 + 4)), 0x10, 7, 0x65);
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    PaletteData_LoadNarc(*((u32*)(r4 + 4)), 0x10, 8, 0x65);
-    Frontier_GetLaunchArgs(*((u32*)(r4 + 8)));
-    Options_GetFrame(*((u32*)(r0 + 4)));
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    LoadUserFrameGfx2(*((u32*)r4), 1, 0x000003E2, 0xb);
-    PaletteData_LoadPaletteSlotFromHardware(*((u32*)(r4 + 4)), 0, 0xb0, 0x20);
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    LoadUserFrameGfx1(*((u32*)r4), 1, 0x000003D9, 0xc);
-    PaletteData_LoadPaletteSlotFromHardware(*((u32*)(r4 + 4)), 0, 0xc0, 0x20);
-}
-
-
-
-
-void ov80_02238FA0(void) {
-    // str r1, [sp]
-    // str r1, [sp, #4]
-    // str r1, [sp, #8]
-    // str r1, [sp, #0xc]
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0xc]
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-}
-
-
-
-
-void ov80_02239004(void) {
-    ov42_02228010(0x20, 0x65);
-    *((u32*)(r5 + 0x14)) = r0;
-    ov42_02227EE0(0x10, 0x10, 0x65);
-    *((u32*)(r5 + 0x18)) = r0;
-    // add r0, #0x1c
-    ov42_02229394(r5);
-    SpriteManager_GetSpriteList(*((u32*)(r5 + 0x38)));
-    ov80_0222A7EC(r6);
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    ov42_02228F24(r7, *((u32*)(r5 + 4)), 0x20, r0);
-    *((u32*)(r5 + 0x20)) = r0;
-    // add r2, sp, #0x20
-    // strb r0, [r2]
-    ov80_0222ACA0(r4, 5, (r2 + 1), (ov80_0223D554 + 1));
-    // add r1, sp, #0x18
-    *((u8*)(r1 + 0x10)) = r0;
-    ov80_0222ACA0(r4, 6);
-    // add r1, sp, #0x18
-    *((u8*)(r1 + 0x11)) = r0;
-    ov80_0222ACA0(r4, 0xc);
-    SpriteSystem_GetRenderer(*((u32*)(r5 + 0x34)));
-    // add r2, sp, #0x20
-    ov42_022293B8(*((u32*)r5), 0x65);
-    *((u32*)(r5 + 0x24)) = r0;
-    ov80_0222ACA0(r4, 9);
-    ov80_0222ACA0(r4, 9);
-    // add r1, sp, #0x18
-    *((u8*)(r1 + 0x11)) = r0;
-    *((u8*)(r1 + 9)) = 2;
-    *((u8*)(r1 + 0xb)) = 1;
-    *((u8*)(r1 + 0xc)) = 8;
-    *((u8*)(r1 + 0xe)) = 1;
-    SpriteSystem_GetRenderer(*((u32*)(r5 + 0x34)), 1);
-    // add r2, sp, #0x20
-    ov42_022293B8(*((u32*)r5), 0x65);
-    *((u32*)(r5 + 0x28)) = r0;
-    ov42_02229A40(0x80, 0x65);
-    *((u32*)(r5 + 0x2c)) = r0;
-    ov42_02229974(0x80, 0x65);
-    *((u32*)(r5 + 0x30)) = r0;
-    ov42_02227F48(*((u32*)(r5 + 0x18)), ov80_0223D654);
-    ov80_0222ACA0(r4, 0);
-    ov80_0222ACA0(r4, 5);
-    // str r0, [sp, #0x10]
-    NARC_New(0x65);
-    ov80_0222ACA0(r4, 7);
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0xc]
-    GfGfxLoader_LoadCharDataFromOpenNarc(r6, r0, *((u32*)r5), 3);
-    ov80_0222ACA0(r4, 8);
-    // str r1, [sp]
-    // str r0, [sp, #4]
-    // str r1, [sp, #8]
-    // ldr r1, [sp, #0x10]
-    PaletteData_LoadNarc(*((u32*)(r5 + 4)), 0, r0, 0x65);
-    ov80_0222ACA0(r4, 8);
-    // add r2, sp, #0x1c
-    GfGfxLoader_GetPlttDataFromOpenNarc(r6, r0, 0x65);
-    // ldr r1, [sp, #0x1c]
-    // str r0, [sp, #0x14]
-    DC_FlushRange(*((u32*)(r1 + 0xc)), *((u32*)(r1 + 8)));
-    GX_BeginLoadBGExtPltt();
-    // ldr r0, [sp, #0x1c]
-    GX_LoadBGExtPltt(*((u32*)(r0 + 0xc)), (6 << 0xc), (2 << 0xc));
-    GX_EndLoadBGExtPltt();
-    // ldr r0, [sp, #0x14]
-    Heap_Free();
-    // str r1, [sp]
-    // str r0, [sp, #4]
-    PaletteData_FillPaletteInBuffer(*((u32*)(r5 + 4)), 0, 2, 0);
-    ov80_0222ACA0(r4, 6);
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0xc]
-    GfGfxLoader_LoadScrnDataFromOpenNarc(r6, r0, *((u32*)r5), 3);
-    ov80_0222ACA0(r4, 9);
-    ov80_0222ACA0(r4, 0xa);
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0xc]
-    GfGfxLoader_LoadCharDataFromOpenNarc(r6, r0, *((u32*)r5), 2);
-    ov80_0222ACA0(r4, 9);
-    // str r0, [sp]
-    // str r0, [sp, #4]
-    // str r0, [sp, #8]
-    // str r0, [sp, #0xc]
-    GfGfxLoader_LoadScrnDataFromOpenNarc(r6, r0, *((u32*)r5), 2);
-    ov80_0222ACA0(r4, 0xb);
-    // add r2, sp, #0x18
-    GfGfxLoader_GetPlttDataFromOpenNarc(r6, r0, 0x65);
-    // ldr r1, [sp, #0x18]
-    DC_FlushRange(*((u32*)(r1 + 0xc)), *((u32*)(r1 + 8)));
-    GX_BeginLoadBGExtPltt();
-    // ldr r0, [sp, #0x18]
-    GX_LoadBGExtPltt(*((u32*)(r0 + 0xc)), (1 << 0xe), ((1 << 0xe) >> 1));
-    GX_EndLoadBGExtPltt();
-    Heap_Free(r4);
-    ScheduleBgTilemapBufferTransfer(*((u32*)r5), 3);
-    NARC_Delete(r6);
-}
-
-
-
-
-void ov80_0223927C(void) {
-    // add r5, #0x3c
-}
-
-
-
-
-void ov80_022392DC(void) {
-}
-
-
-
-
-void ov80_022392F8(void) {
-    GfGfx_EngineATogglePlanes(1, 1);
-    // strh r1, [r0]
-    // add r0, #0x58
-    // and r2, r1
-    // strh r2, [r0]
-    // and r3, r2
-    // strh r2, [r0]
-    // and r3, r2
-    // strh r3, [r0]
-    // sub r2, #0x1c
-    // and r3, r1
-    // strh r1, [r0]
-    // and r1, r2
-    // strh r1, [r0]
-    G3X_SetFog(0, 0, 0, 0);
-    // str r0, [sp]
-    G3X_SetClearColor(0, 0, 0x00007FFF, 0x3f);
-    // str r1, [r0]
-}
-
-
-
-
-void ov80_0223937C(void) {
-}
-
-
-
-
-void ov80_02239384(void) {
-    SpriteSystem_Alloc(0x65);
-    *((u32*)(r4 + 0x34)) = r0;
-    SpriteSystem_Init(ov80_0223D5B8, ov80_0223D570, 0x20);
-    G2dRenderer_SetObjCharTransferReservedRegion(1, 0x00200010);
-    G2dRenderer_SetPlttTransferReservedRegion(1);
-    SpriteManager_New(*((u32*)(r4 + 0x34)));
-    *((u32*)(r4 + 0x38)) = r0;
-    SpriteSystem_InitSprites(*((u32*)(r4 + 0x34)), *((u32*)(r4 + 0x38)), 0x80);
-    SpriteSystem_InitManagerWithCapacities(*((u32*)(r4 + 0x34)), *((u32*)(r4 + 0x38)), ov80_0223D584);
-    SpriteSystem_GetRenderer(*((u32*)(r4 + 0x34)));
-    G2dRenderer_SetSubSurfaceCoords(0, (2 << 0x14));
-}
-
-
-
-
-void ov80_022393E8(void) {
-    ov80_02239BE8(*((u32*)(r0 + 0x3c)));
-    // add r0, #0x70
-    ov80_02239B7C(*((u32*)(r5 + 0x38)), *((u16*)r5));
-    // add r0, #0x80
-    Sprite_DeleteAndFreeResources(*((u32*)r5));
-    // add r1, r4, r1
-    SpriteManager_UnloadCharObjById(*((u32*)(r5 + 0x38)), 0x0000C350);
-    // add r1, r4, r1
-    SpriteManager_UnloadPlttObjById(*((u32*)(r5 + 0x38)), 0x0000C350);
-    // add r1, r4, r1
-    SpriteManager_UnloadCellObjById(*((u32*)(r5 + 0x38)), 0x0000C350);
-    // add r1, r4, r7
-    SpriteManager_UnloadAnimObjById(*((u32*)(r5 + 0x38)));
-    SpriteSystem_FreeResourcesAndManager(*((u32*)(r5 + 0x34)), *((u32*)(r5 + 0x38)));
-    SpriteSystem_Free(*((u32*)(r5 + 0x34)));
-}
-
-
-
-
-void ov80_0223947C(void) {
-    sub_02096864(*((u32*)(r0 + 8)));
-    GF_AssertFail(0x0000FFFF, *((u16*)r0), (r0 + 4), *((u16*)r5));
-    // add r1, r7, r2
-    // strh r0, [r7, r2]
-    *((u16*)(r1 + 2)) = *((u16*)(r5 + 2));
-    ov42_02228FE0(*((u32*)(r6 + 0x20)), *((u16*)r5), *((u8*)(r5 + 2)), 0x65);
-}
-
-
-
-
-void ov80_022394D8(void) {
-    sub_02096864(*((u32*)(r0 + 8)));
-    ov42_02229004(*((u32*)(r6 + 0x20)), r5);
-    // strh r1, [r7, r0]
-}
-
-
-
-
-void ov80_02239510(void) {
-    // mvn r1, r1
-    // add r0, #0x3c
-    // ldrsh r0, [r5, r0]
-    // add r1, sp, #8
-    // strh r0, [r1]
-    // ldrsh r0, [r5, r0]
-    // add r1, sp, #8
-    // str r0, [sp, #4]
-    // ldr r1, [sp, #4]
-    // str r5, [sp]
-    // ldr r2, [sp, #4]
-    // ldr r0, [sp, #4]
-}
-
-
-
-
-void ov80_02239590(void) {
-    sub_02096868(*((u32*)(r0 + 8)));
-    ov42_02228100(*((u32*)(r0 + (0 * 0x3c))), 0, r0);
-    // add r0, r4, r5
-    ov42_022290C4(*((u32*)(r0 + 4)));
-    // add r0, r4, r5
-    GF_AssertFail(*((u32*)(r0 + 0x38)));
-    // add r0, r4, r5
-    MI_CpuFill8(0, 0x3c);
-    // add r0, r4, r5
-    *((u16*)(r0 + 0xc)) = 0x0000FFFF;
-    // add r2, #0x3c
-}
-
-
-
-
-void ov80_022395E8(void) {
-    // str r2, [r4]
-    // add r0, r0, r2
-    // str r0, [r6]
-    // add r3, #0x3c
-}
-
-
-
-
-void ov80_0223962C(void) {
-    // add r2, #0x70
-    // add r0, r0, r2
-    // add r0, #0x70
-    // strh r1, [r0]
-    GF_AssertFail((0 << 1), 0x0000FFFF);
-}
-
-
-
-
-void ov80_0223965C(void) {
-    // add r2, #0x70
-    // add r0, r0, r1
-    // add r0, #0x70
-    // strh r2, [r0]
-}
-
-
-
-
-void ov80_0223968C(void) {
-    // add r7, #0x3c
-    // str r0, [sp]
-    // ldr r1, [sp]
-    // str r0, [sp, #4]
-    // str r0, [r7, r1]
-    // add r0, r5, r0
-    // add r0, #0x5c
-    // strh r6, [r0]
-    // ldr r0, [sp, #4]
-}
-
-
-
-
-void ov80_022396D8(void) {
-    // add r5, #0x3c
-    // str r0, [r5, r4]
-}
-
-
-
-
-void ov80_02239700(void) {
-    // add r0, r0, r1
-}
-
-
-
-
-void ov80_02239708(void) {
-    // lsl r2, r1
-    // lsl r3, r1
-    // eor r1, r3
-    // and r1, r4
-}
-
-
-
-
-void ov80_02239734(void) {
-    // lsr r2, r1
-    // and r0, r2
-}
-
-
-
-
-void ov80_02239740(void) {
-    // str r0, [sp]
-    sub_02096878(*((u32*)(r0 + 8)));
-    // ldr r4, [sp]
-    // add r4, #0x3c
-    // add r1, r4, r2
-    // strh r1, [r6, r2]
-    // str r0, [sp, #8]
-    // add r0, #0x12
-    // str r0, [sp, #8]
-    // str r0, [sp, #4]
-    // add r0, #0x10
-    // add r5, #0x16
-    // str r4, [sp, #0xc]
-    // str r0, [sp, #4]
-    ManagedSprite_GetActiveAnim(*((u32*)r4), *((u16*)(r1 + 0x34)), (0 << 1), ((0 + 1) + 1));
-    *((u8*)(r6 + 0x15)) = r0;
-    ManagedSprite_GetAnimationFrame(*((u32*)r4));
-    // and r1, r2
-    // and r0, r2
-    // strh r0, [r5]
-    // ldr r0, [sp]
-    ov80_02239734((r0 | 0xFFFFE000), ((r7 << 0x10) >> 0x10), 0x00001FFF);
-    // and r1, r2
-    // strh r0, [r5]
-    ManagedSprite_GetDrawFlag(*((u32*)r4), 0xFFFFDFFF, *((u16*)r5));
-    // and r1, r2
-    // strh r0, [r5]
-    // ldr r0, [sp, #0xc]
-    // ldr r1, [sp, #4]
-    // ldr r2, [sp, #8]
-    *((u8*)(r6 + 0x14)) = *((u16*)((((((r0 << 0x10) >> 0x10) << 0x1f) >> 0x11) | 0xFFFFBFFF) + 0x20));
-    ManagedSprite_GetPositionXY(*((u32*)r4), 0xFFFFBFFF, *((u16*)r5));
-    // strh r0, [r5]
-    // ldr r0, [sp, #0xc]
-    // str r0, [sp, #0xc]
-    // ldr r0, [sp, #8]
-    // add r0, #8
-    // str r0, [sp, #8]
-    // ldr r0, [sp, #4]
-    // add r6, #8
-    // add r0, #8
-    // add r5, #8
-    // str r0, [sp, #4]
-}
-
-
-
-
-void ov80_02239828(void) {
-    sub_02096878(*((u32*)(r0 + 8)));
-    NARC_New(0xb8, 0x65);
-    // str r0, [sp, #4]
-    // str r1, [sp]
-    // ldr r2, [sp, #4]
-    ov80_02239AF8(*((u32*)(r7 + 0x34)), *((u32*)(r7 + 0x38)), *((u32*)(r7 + 4)));
-    ov80_0223962C(r7, *((u16*)r4));
-    // add r4, #0x16
-    ov80_0223968C(r7, ((0 << 0x10) >> 0x10), *((u8*)(r5 + 0x14)));
-    // ldrsh r1, [r5, r1]
-    // ldrsh r2, [r5, r2]
-    // str r0, [sp, #8]
-    ManagedSprite_SetPositionXY(0x10, 0x12);
-    // ldr r0, [sp, #8]
-    ManagedSprite_SetDrawFlag(((*((u16*)r4) << 0x11) >> 0x1f));
-    ov80_02239708(r7, ((r6 << 0x10) >> 0x10), ((*((u16*)r4) << 0x12) >> 0x1f));
-    // ldr r0, [sp, #8]
-    ManagedSprite_SetAnim(*((u8*)(r5 + 0x15)));
-    // ldr r0, [sp, #8]
-    ManagedSprite_SetAnimationFrame(((*((u16*)r4) << 0x13) >> 0x13));
-    // add r4, #8
-    // add r5, #8
-    // ldr r0, [sp, #4]
-    NARC_Delete();
-    sub_02096884(*((u32*)(r7 + 8)));
-}
-
-
-
-
-void ov80_022398E4(void) {
-}
-
-
-
-
-void ov80_02239900(void) {
-    // add r0, #8
-    // strh r2, [r1]
-}
-
-
-
-
-void ov80_02239914(void) {
-    // str r5, [r0]
-    // ldr r3, [sp, #0x10]
-    // add r0, #8
-    // strh r1, [r0]
-}
-
-
-
-
-void ov80_02239938(void) {
-    // add r0, #0x3c
-}
-
-
-
+/* Remaining ov80_* functions - stubs to be filled in from assembly */
+void ov80_022389C4(void *a0) { }
+void ov80_02238A18(void *a0) { }
+void ov80_02238AAC(void *a0) { }
+void ov80_02238AB0(void *a0) { }
+void ov80_02238ABC(void *a0) { }
+void ov80_02238C78(void *a0) { }
+void ov80_02238FA0(void *a0) { }
+void ov80_02239004(void *a0, void *a1, void *a2) { }
+void ov80_0223927C(void *a0) { }
+void *ov80_022392DC(enum HeapID heapID) { return NULL; }
+void ov80_022392F8(void *a0) { }
+void ov80_0223937C(void *a0) { }
+void ov80_02239384(void *a0) { }
+void ov80_022393E8(void *a0) { }
+void ov80_0223947C(void *a0) { }
+void ov80_022394D8(void *a0) { }
+void ov80_02239510(void *a0) { }
+void ov80_02239590(void *a0) { }
+void ov80_022395E8(void *a0) { }
+void ov80_0223962C(void *a0) { }
+void ov80_0223965C(void *a0) { }
+void ov80_0223968C(void *a0) { }
+void ov80_022396D8(void *a0) { }
+void ov80_02239700(void *a0) { }
+void ov80_02239708(void *a0) { }
+void ov80_02239734(void *a0) { }
+void ov80_02239740(void *a0) { }
+void ov80_02239828(void *a0) { }
+void ov80_022398E4(void *a0) { }
+void ov80_02239900(void *a0) { }
+void ov80_02239914(void *a0) { }
+void ov80_02239938(void *a0) { }
+void *ov80_02239960(enum HeapID heapID) { return NULL; }
+void ov80_02239980(void *a0) { }
+void ov80_02239A38(void) { }

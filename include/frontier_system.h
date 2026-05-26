@@ -1,6 +1,8 @@
 #ifndef GUARD_FRONTIER_SYSTEM_H
 #define GUARD_FRONTIER_SYSTEM_H
 
+#include "heap.h"
+
 /* Forward declarations */
 typedef struct FrontierScriptContext FrontierScriptContext;
 
