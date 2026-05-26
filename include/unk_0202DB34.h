@@ -3,7 +3,7 @@
 
 #include "global.h"
 
-void *sub_0202DB34(void);
+void sub_0202DB34(void);
 u32 sub_0202DB40(void);
 void sub_0202DB44(void *dest);
 u16 sub_0202DB54(u16 *src);

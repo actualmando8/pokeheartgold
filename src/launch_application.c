@@ -7,17 +7,6 @@ extern const u8 _02102830[];
 extern void BugContestSwapMon_Main(OverlayManager *, int *);
 extern void PokeathlonMedals_Init(OverlayManager *, int *);
 extern void PokeathlonMedals_Main(OverlayManager *, int *);
-extern void PokeathlonEventRecord_Init(OverlayManager *, int *);
-extern void PokeathlonEventRecord_Main(OverlayManager *, int *);
-extern void ov99_021E677C(OverlayManager *, int *);
-extern void ov99_021E6888(OverlayManager *, int *);
-extern void sub_0202DB34(SaveData *);
-
-/* Missing forward declarations */
-extern const u8 _02102830[];
-extern void BugContestSwapMon_Main(OverlayManager *, int *);
-extern void PokeathlonMedals_Init(OverlayManager *, int *);
-extern void PokeathlonMedals_Main(OverlayManager *, int *);
 extern void PokeathlonMedals_Exit(OverlayManager *, int *);
 extern void PokeathlonEventRecord_Init(OverlayManager *, int *);
 extern void PokeathlonEventRecord_Main(OverlayManager *, int *);
@@ -1197,7 +1186,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
     OverlayManagerTemplate template = _020FA264;
 
     UnkStruct_0203F844 *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0203F844));
-    args->unk0 = sub_0202DB34();
+    sub_0202DB34();
     args->sysInfo = Save_SysInfo_Get(fieldSystem->saveData);
     args->party = (Party *)SaveArray_Get(fieldSystem->saveData, SAVE_PARTY);
     args->pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
