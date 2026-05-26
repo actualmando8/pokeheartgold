@@ -13,6 +13,19 @@ extern void ov99_021E677C(OverlayManager *, int *);
 extern void ov99_021E6888(OverlayManager *, int *);
 extern void sub_0202DB34(SaveData *);
 
+/* Missing forward declarations */
+extern const u8 _02102830[];
+extern void BugContestSwapMon_Main(OverlayManager *, int *);
+extern void PokeathlonMedals_Init(OverlayManager *, int *);
+extern void PokeathlonMedals_Main(OverlayManager *, int *);
+extern void PokeathlonMedals_Exit(OverlayManager *, int *);
+extern void PokeathlonEventRecord_Init(OverlayManager *, int *);
+extern void PokeathlonEventRecord_Main(OverlayManager *, int *);
+extern void PokeathlonEventRecord_Exit(OverlayManager *, int *);
+extern void ov99_021E677C(OverlayManager *, int *);
+extern void ov99_021E6888(OverlayManager *, int *);
+extern void ov99_021E6840(OverlayManager *, int *);
+
 #include "constants/flags.h"
 
 #include "application/pokegear/pokegear_main.h"
@@ -186,7 +199,7 @@ BOOL Battle_Exit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-const OverlayManagerTemplate gOverlayTemplate_Battle = { Battle_Init, Battle_Main, Battle_Exit, FS_OVERLAY_ID(OVY_12) };
+const OverlayManagerTemplate gOverlayTemplate_Battle = { (OverlayFunction)Battle_Init, (OverlayFunction)Battle_Main, (OverlayFunction)Battle_Exit, FS_OVERLAY_ID(OVY_12) };
 
 void Battle_LaunchApp(FieldSystem *fieldSystem, BattleSetup *args) {
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_Battle, args);
@@ -195,7 +208,7 @@ void Battle_LaunchApp(FieldSystem *fieldSystem, BattleSetup *args) {
 static const u8 sAllPockets[] = { POCKET_ITEMS, POCKET_MEDICINE, POCKET_BALLS, POCKET_TMHMS, POCKET_BERRIES, POCKET_MAIL, POCKET_BATTLE_ITEMS, POCKET_KEY_ITEMS, 0xFF };
 
 void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_Bag = { Bag_Init, Bag_Main, Bag_Exit, FS_OVERLAY_ID(OVY_15) };
+    static const OverlayManagerTemplate sOverlayTemplate_Bag = { (OverlayFunction)Bag_Init, (OverlayFunction)Bag_Main, (OverlayFunction)Bag_Exit, FS_OVERLAY_ID(OVY_15) };
     OverlayManagerTemplate template = sOverlayTemplate_Bag;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -415,7 +428,7 @@ u16 sub_0203E864(UnkStruct_0203E600 *a0) {
 }
 
 void PCBox_LaunchApp(FieldSystem *fieldSystem, PCBoxArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_PCBox = { PCBox_Init, PCBox_Main, PCBox_Exit, FS_OVERLAY_ID(OVY_14) };
+    static const OverlayManagerTemplate sOverlayTemplate_PCBox = { (OverlayFunction)PCBox_Init, (OverlayFunction)PCBox_Main, (OverlayFunction)PCBox_Exit, FS_OVERLAY_ID(OVY_14) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PCBox, args);
 }
 
@@ -502,18 +515,18 @@ void sub_0203E960(TaskManager *taskman, int a1, UnkStruct_0203E8C8 *a2, u16 *a3,
 }
 
 void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_EasyChat = { EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
+    static const OverlayManagerTemplate sOverlayTemplate_EasyChat = { (OverlayFunction)EasyChat_Init, (OverlayFunction)EasyChat_Main, (OverlayFunction)EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_EasyChat, args);
 }
 
 static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_Pokegear = { Pokegear_Init, Pokegear_Main, Pokegear_Exit, FS_OVERLAY_ID(pokegear) };
+    static const OverlayManagerTemplate sOverlayTemplate_Pokegear = { (OverlayFunction)Pokegear_Init, (OverlayFunction)Pokegear_Main, (OverlayFunction)Pokegear_Exit, FS_OVERLAY_ID(pokegear) };
     OverlayManagerTemplate template = sOverlayTemplate_Pokegear;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_TownMap = { FlyMap_Init, FlyMap_Main, FlyMap_Exit, FS_OVERLAY_ID(pokegear_app) };
+    static const OverlayManagerTemplate sOverlayTemplate_TownMap = { (OverlayFunction)FlyMap_Init, (OverlayFunction)FlyMap_Main, (OverlayFunction)FlyMap_Exit, FS_OVERLAY_ID(pokegear_app) };
     OverlayManagerTemplate template = sOverlayTemplate_TownMap;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -538,7 +551,7 @@ PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind) {
 }
 
 static void SafariAreaCustomizer_LaunchApp_Impl(FieldSystem *fieldSystem, SafariAreaCustomizerArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_SafariAreaCustomizer = { SafariAreaCustomizer_Init, SafariAreaCustomizer_Main, SafariAreaCustomizer_Exit, FS_OVERLAY_ID(OVY_108) };
+    static const OverlayManagerTemplate sOverlayTemplate_SafariAreaCustomizer = { (OverlayFunction)SafariAreaCustomizer_Init, (OverlayFunction)SafariAreaCustomizer_Main, (OverlayFunction)SafariAreaCustomizer_Exit, FS_OVERLAY_ID(OVY_108) };
     OverlayManagerTemplate template = sOverlayTemplate_SafariAreaCustomizer;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -553,7 +566,7 @@ SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSyste
 }
 
 static void SafariDecoration_LaunchApp_Impl(FieldSystem *fieldSystem, SafariDecorationArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_SafariDecoration = { SafariDecoration_Init, SafariDecoration_Main, SafariDecoration_Exit, FS_OVERLAY_ID(OVY_108) };
+    static const OverlayManagerTemplate sOverlayTemplate_SafariDecoration = { (OverlayFunction)SafariDecoration_Init, (OverlayFunction)SafariDecoration_Main, (OverlayFunction)SafariDecoration_Exit, FS_OVERLAY_ID(OVY_108) };
     OverlayManagerTemplate template = sOverlayTemplate_SafariDecoration;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -565,7 +578,7 @@ SafariDecorationArgs *SafariDecoration_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void PhotoAlbum_LaunchApp_Impl(FieldSystem *fieldSystem, PhotoAlbumArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_PhotoAlbum = { PhotoAlbum_Init, PhotoAlbum_Main, PhotoAlbum_Exit, FS_OVERLAY_ID(OVY_109) };
+    static const OverlayManagerTemplate sOverlayTemplate_PhotoAlbum = { (OverlayFunction)PhotoAlbum_Init, (OverlayFunction)PhotoAlbum_Main, (OverlayFunction)PhotoAlbum_Exit, FS_OVERLAY_ID(OVY_109) };
     OverlayManagerTemplate template = sOverlayTemplate_PhotoAlbum;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -581,7 +594,7 @@ PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int i
 }
 
 static void AlphPuzzle_LaunchApp_Impl(FieldSystem *fieldSystem, AlphPuzzleArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_AlphPuzzle = { AlphPuzzle_Init, AlphPuzzle_Main, AlphPuzzle_Exit, FS_OVERLAY_ID(OVY_110) };
+    static const OverlayManagerTemplate sOverlayTemplate_AlphPuzzle = { (OverlayFunction)AlphPuzzle_Init, (OverlayFunction)AlphPuzzle_Main, (OverlayFunction)AlphPuzzle_Exit, FS_OVERLAY_ID(OVY_110) };
     OverlayManagerTemplate template = sOverlayTemplate_AlphPuzzle;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -597,7 +610,7 @@ AlphPuzzleArgs *AlphPuzzle_LaunchApp(FieldSystem *fieldSystem, u8 puzzle) {
 }
 
 static void UnownReport_LaunchApp_Impl(FieldSystem *fieldSystem, UnownReportArgs *args) {
-    static const OverlayManagerTemplate gOverlayTemplate_UnownReport = { UnownReport_Init, UnownReport_Main, UnownReport_Exit, FS_OVERLAY_ID(OVY_113) };
+    static const OverlayManagerTemplate gOverlayTemplate_UnownReport = { (OverlayFunction)UnownReport_Init, (OverlayFunction)UnownReport_Main, (OverlayFunction)UnownReport_Exit, FS_OVERLAY_ID(OVY_113) };
     OverlayManagerTemplate template = gOverlayTemplate_UnownReport;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -612,7 +625,7 @@ UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void BerryPots_LaunchApp_Impl(FieldSystem *fieldSystem, BerryPotsArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_BerryPots = { BerryPots_Init, BerryPots_Main, BerryPots_Exit, FS_OVERLAY_ID(OVY_16) };
+    static const OverlayManagerTemplate sOverlayTemplate_BerryPots = { (OverlayFunction)BerryPots_Init, (OverlayFunction)BerryPots_Main, (OverlayFunction)BerryPots_Exit, FS_OVERLAY_ID(OVY_16) };
     OverlayManagerTemplate template = sOverlayTemplate_BerryPots;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -628,7 +641,7 @@ BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void ApricornBox_LaunchApp_Impl(FieldSystem *fieldSystem, ApricornBoxArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_ApricornBox = { ApricornBox_Init, ApricornBox_Main, ApricornBox_Exit, FS_OVERLAY_ID(OVY_58) };
+    static const OverlayManagerTemplate sOverlayTemplate_ApricornBox = { (OverlayFunction)ApricornBox_Init, (OverlayFunction)ApricornBox_Main, (OverlayFunction)ApricornBox_Exit, FS_OVERLAY_ID(OVY_58) };
     OverlayManagerTemplate template = sOverlayTemplate_ApricornBox;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -662,7 +675,7 @@ ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2) {
 }
 
 static void BugContestSwapMon_LaunchApp_Impl(FieldSystem *fieldSystem, BugContestSwapMonArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_BugContestSwapMon = { BugContestSwapMon_Init, BugContestSwapMon_Main, BugContestSwapMon_Exit, FS_OVERLAY_ID(OVY_111) };
+    static const OverlayManagerTemplate sOverlayTemplate_BugContestSwapMon = { (OverlayFunction)BugContestSwapMon_Init, (OverlayFunction)BugContestSwapMon_Main, (OverlayFunction)BugContestSwapMon_Exit, FS_OVERLAY_ID(OVY_111) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_BugContestSwapMon, args);
 }
 
@@ -678,7 +691,7 @@ BugContestSwapMonArgs *BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, Pok
 }
 
 static void OptionsMenu_LaunchApp_Impl(FieldSystem *fieldSystem, OptionsMenuArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_OptionsMenu = { OptionsMenu_Init, OptionsMenu_Main, OptionsMenu_Exit, FS_OVERLAY_ID(options_app) };
+    static const OverlayManagerTemplate sOverlayTemplate_OptionsMenu = { (OverlayFunction)OptionsMenu_Init, (OverlayFunction)OptionsMenu_Main, (OverlayFunction)OptionsMenu_Exit, FS_OVERLAY_ID(options_app) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_OptionsMenu, args);
 }
 
@@ -695,7 +708,7 @@ static BOOL sub_0203EE54(SaveData *saveData) {
 }
 
 static void PokeathlonCourseRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonCourseRecordArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonCourseRecord = { PokeathlonCourseRecord_Init, PokeathlonCourseRecord_Main, PokeathlonCourseRecord_Exit, FS_OVERLAY_ID(OVY_99) };
+    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonCourseRecord = { (OverlayFunction)PokeathlonCourseRecord_Init, (OverlayFunction)PokeathlonCourseRecord_Main, (OverlayFunction)PokeathlonCourseRecord_Exit, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonCourseRecord, args);
 }
 
@@ -710,7 +723,7 @@ PokeathlonCourseRecordArgs *PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldS
 }
 
 static void PokeathlonMedals_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonMedalsArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonMedals = { PokeathlonMedals_Init, PokeathlonMedals_Main, PokeathlonMedals_Exit, FS_OVERLAY_ID(OVY_99) };
+    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonMedals = { (OverlayFunction)PokeathlonMedals_Init, (OverlayFunction)PokeathlonMedals_Main, (OverlayFunction)PokeathlonMedals_Exit, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonMedals, args);
 }
 
@@ -720,7 +733,7 @@ PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem) {
     PokeathlonSave *pokeathlonSave = Save_Pokeathlon_Get(saveData);
     Pokedex *pokedex = Save_Pokedex_Get(saveData);
     args->pokedex = pokedex;
-    args->unk4 = PokeathlonSave_GetUnkDC(pokeathlonSave);
+    args->unk4 = (u32)PokeathlonSave_GetUnkDC(pokeathlonSave);
     args->natDexEnabled = Pokedex_GetNatDexFlag(pokedex);
     args->unkC = sub_0203EE54(saveData);
     PokeathlonMedals_LaunchApp_Impl(fieldSystem, args);
@@ -728,7 +741,7 @@ PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void PokeathlonEventRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonEventRecordArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonEventRecord = { PokeathlonEventRecord_Init, PokeathlonEventRecord_Main, PokeathlonEventRecord_Exit, FS_OVERLAY_ID(OVY_99) };
+    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonEventRecord = { (OverlayFunction)PokeathlonEventRecord_Init, (OverlayFunction)PokeathlonEventRecord_Main, (OverlayFunction)PokeathlonEventRecord_Exit, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonEventRecord, args);
 }
 
@@ -746,7 +759,7 @@ PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSys
 }
 
 static void PokeathlonUnk_LaunchApp_Impl(FieldSystem *fieldSystem, UnkStruct_0203EFA0 *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonUnkApp = { ov99_021E677C, ov99_021E6888, ov99_021E6840, FS_OVERLAY_ID(OVY_99) };
+    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonUnkApp = { (OverlayFunction)ov99_021E677C, (OverlayFunction)ov99_021E6888, (OverlayFunction)ov99_021E6840, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonUnkApp, args);
 }
 
@@ -761,7 +774,7 @@ UnkStruct_0203EFA0 *PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void sub_0203EFD4(FieldSystem *fieldSystem, UseMailArgs *args) {
-    static const OverlayManagerTemplate _020FA434 = { ov55_UnkApp_Init, ov55_UnkApp_Main, ov55_UnkApp_Exit, FS_OVERLAY_ID(OVY_55) };
+    static const OverlayManagerTemplate _020FA434 = { (OverlayFunction)ov55_UnkApp_Init, (OverlayFunction)ov55_UnkApp_Main, (OverlayFunction)ov55_UnkApp_Exit, FS_OVERLAY_ID(OVY_55) };
     args->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_020FA434, args);
 }
@@ -791,7 +804,7 @@ UseMailArgs *sub_0203F050(FieldSystem *fieldSystem, Pokemon *mon, enum HeapID he
 }
 
 UnkStruct_0203F074 *sub_0203F074(FieldSystem *fieldSystem, enum HeapID heapID) {
-    static const OverlayManagerTemplate _020FA2F4 = { ov103_021EC940, ov103_021EC988, ov103_021EC9A4, FS_OVERLAY_ID(OVY_103) };
+    static const OverlayManagerTemplate _020FA2F4 = { (OverlayFunction)ov103_021EC940, (OverlayFunction)ov103_021EC988, (OverlayFunction)ov103_021EC9A4, FS_OVERLAY_ID(OVY_103) };
     UnkStruct_0203F074 *args = Heap_Alloc(heapID, sizeof(UnkStruct_0203F074));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->fieldSystem = fieldSystem;
@@ -801,7 +814,7 @@ UnkStruct_0203F074 *sub_0203F074(FieldSystem *fieldSystem, enum HeapID heapID) {
 }
 
 void sub_0203F0A8(FieldSystem *fieldSystem, UnkOv67Args *args) {
-    static const OverlayManagerTemplate _020FA2E4 = { ov67_021E5900, ov67_021E5984, ov67_021E5968, FS_OVERLAY_ID(OVY_67) };
+    static const OverlayManagerTemplate _020FA2E4 = { (OverlayFunction)ov67_021E5900, (OverlayFunction)ov67_021E5984, (OverlayFunction)ov67_021E5968, FS_OVERLAY_ID(OVY_67) };
     OverlayManagerTemplate template = _020FA2E4;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -860,21 +873,21 @@ void sub_0203F198(TaskManager *taskman, u16 *ret, SaveData *saveData, u16 a3, u1
 }
 
 static BOOL sub_0203F1E8(FieldSystem *fieldSystem, UnkStruct_0203F0D0 *args) {
-    static OverlayManagerTemplate _0210F9AC = { ov41_02246DE0, ov41_02246F08, ov41_02247150, FS_OVERLAY_ID(OVY_41) };
+    static OverlayManagerTemplate _0210F9AC = { (OverlayFunction)ov41_02246DE0, (OverlayFunction)ov41_02246F08, (OverlayFunction)ov41_02247150, FS_OVERLAY_ID(OVY_41) };
     args->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_0210F9AC, args);
     return TRUE;
 }
 
 BOOL AccessoryPortrait_LaunchApp(FieldSystem *fieldSystem, FashionAppData *args) {
-    static OverlayManagerTemplate sOverlayTemplate_AccessoryPortrait = { AccessoryPortrait_Init, AccessoryPortrait_Main, AccessoryPortrait_Exit, FS_OVERLAY_ID(OVY_41) };
+    static OverlayManagerTemplate sOverlayTemplate_AccessoryPortrait = { (OverlayFunction)AccessoryPortrait_Init, (OverlayFunction)AccessoryPortrait_Main, (OverlayFunction)AccessoryPortrait_Exit, FS_OVERLAY_ID(OVY_41) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_AccessoryPortrait, args);
     return TRUE;
 }
 
-static OverlayManagerTemplate sOverlayTemplate_WirelessTradeSelectMon = { WirelessTradeSelectMon_Init, WirelessTradeSelectMon_Main, WirelessTradeSelectMon_Exit, FS_OVERLAY_ID(OVY_65) };
+static OverlayManagerTemplate sOverlayTemplate_WirelessTradeSelectMon = { (OverlayFunction)WirelessTradeSelectMon_Init, (OverlayFunction)WirelessTradeSelectMon_Main, (OverlayFunction)WirelessTradeSelectMon_Exit, FS_OVERLAY_ID(OVY_65) };
 
-static const OverlayManagerTemplate sOverlayTemplate_TradeSequence = { TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71) };
+static const OverlayManagerTemplate sOverlayTemplate_TradeSequence = { (OverlayFunction)TradeSequence_Init, (OverlayFunction)TradeSequence_Main, (OverlayFunction)TradeSequence_Exit, FS_OVERLAY_ID(OVY_71) };
 
 static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, FieldSystem *fieldSystem) {
     args->profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
@@ -1002,8 +1015,8 @@ void CallTask_WirelessTrade(TaskManager *taskman) {
     TaskManager_Call(taskman, Task_WirelessTrade, data);
 }
 
-static const OverlayManagerTemplate _020FA2C4 = { ov37_021E5900, ov37_021E5A84, ov37_021E5B94, FS_OVERLAY_ID(OVY_37) };
-static const OverlayManagerTemplate _020FA2B4 = { ov73_021E5900, ov73_021E5AB8, ov73_021E5BAC, FS_OVERLAY_ID(OVY_73) };
+static const OverlayManagerTemplate _020FA2C4 = { (OverlayFunction)ov37_021E5900, (OverlayFunction)ov37_021E5A84, (OverlayFunction)ov37_021E5B94, FS_OVERLAY_ID(OVY_37) };
+static const OverlayManagerTemplate _020FA2B4 = { (OverlayFunction)ov73_021E5900, (OverlayFunction)ov73_021E5AB8, (OverlayFunction)ov73_021E5BAC, FS_OVERLAY_ID(OVY_73) };
 
 void sub_0203F4C8(FieldSystem *fieldSystem) {
     UnkStruct_0203F4C8 *args = Heap_Alloc(HEAP_ID_FIELD3, sizeof(UnkStruct_0203F4C8));
@@ -1023,7 +1036,7 @@ UnkStruct_0203F4F8 *sub_0203F4F8(FieldSystem *fieldSystem) {
     return args;
 }
 
-static const OverlayManagerTemplate sOverlayTemplate_PalPad = { PalPad_Init, PalPad_Main, PalPad_Exit, FS_OVERLAY_ID(OVY_43) };
+static const OverlayManagerTemplate sOverlayTemplate_PalPad = { (OverlayFunction)PalPad_Init, (OverlayFunction)PalPad_Main, (OverlayFunction)PalPad_Exit, FS_OVERLAY_ID(OVY_43) };
 
 PalPadArgs *PalPad_LaunchApp(FieldSystem *fieldSystem, SaveData *saveData, enum HeapID heapID) {
     PalPadArgs *args = Heap_Alloc(heapID, sizeof(PalPadArgs));
@@ -1035,7 +1048,7 @@ PalPadArgs *PalPad_LaunchApp(FieldSystem *fieldSystem, SaveData *saveData, enum 
 }
 
 void sub_0203F570(FieldSystem *fieldSystem, SaveData *args) {
-    FieldSystem_LaunchApplication(fieldSystem, &_02102830, fieldSystem);
+    FieldSystem_LaunchApplication(fieldSystem, (const OverlayManagerTemplate *)&_02102830, fieldSystem);
 }
 
 static BOOL Task_NamingScreen(TaskManager *taskman) {
@@ -1106,7 +1119,7 @@ static void SetName(TaskManager *taskman) {
         break;
     case NAME_SCREEN_GROUP:
         SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
-        sub_0202C7F8(friendGroup, 0, 0, data->args->nameInputString);
+        sub_0202C7F8(friendGroup, 0, 0, (u16 *)data->args->nameInputString);
         break;
     case NAME_SCREEN_BOX:
     case NAME_SCREEN_UNK4:
@@ -1152,7 +1165,7 @@ void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int specie
 }
 
 void TrainerCard_LaunchApp(FieldSystem *fieldSystem, TrainerCardAppArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_TrainerCard = { TrainerCard_Init, TrainerCard_Main, TrainerCard_Exit, FS_OVERLAY_ID(trainer_card) };
+    static const OverlayManagerTemplate sOverlayTemplate_TrainerCard = { (OverlayFunction)TrainerCard_Init, (OverlayFunction)TrainerCard_Main, (OverlayFunction)TrainerCard_Exit, FS_OVERLAY_ID(trainer_card) };
     args->unk66C.menuInputStatePtr = &fieldSystem->menuInputState;
     args->unk66C.saveData = fieldSystem->saveData;
     args->unk66C.gameCleared = CheckGameClearFlag(Save_VarsFlags_Get(fieldSystem->saveData));
@@ -1161,30 +1174,30 @@ void TrainerCard_LaunchApp(FieldSystem *fieldSystem, TrainerCardAppArgs *args) {
 }
 
 int Pokedex_LaunchApp(FieldSystem *fieldSystem, PokedexArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_Pokedex = { Pokedex_Init, Pokedex_Main, Pokedex_Exit, FS_OVERLAY_ID(OVY_18) };
+    static const OverlayManagerTemplate sOverlayTemplate_Pokedex = { (OverlayFunction)Pokedex_Init, (OverlayFunction)Pokedex_Main, (OverlayFunction)Pokedex_Exit, FS_OVERLAY_ID(OVY_18) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_Pokedex, args);
     return 1;
 }
 
 void ChooseStarter_LaunchApp(FieldSystem *fieldSystem, ChooseStarterArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_ChooseStarter = { ChooseStarter_Init, ChooseStarter_Main, ChooseStarter_Exit, FS_OVERLAY_ID(OVY_61) };
+    static const OverlayManagerTemplate sOverlayTemplate_ChooseStarter = { (OverlayFunction)ChooseStarter_Init, (OverlayFunction)ChooseStarter_Main, (OverlayFunction)ChooseStarter_Exit, FS_OVERLAY_ID(OVY_61) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_ChooseStarter, args);
 }
 
 void TrainerCardSignature_LaunchApp(FieldSystem *fieldSystem) {
     Save_TrainerCard_Get(fieldSystem->saveData); // unused
 
-    static const OverlayManagerTemplate sOverlayTemplate_TrainerCardSignature = { TrainerCardSignature_Init, TrainerCardSignature_Main, TrainerCardSignature_Exit, FS_OVERLAY_ID(trainer_card_signature) };
+    static const OverlayManagerTemplate sOverlayTemplate_TrainerCardSignature = { (OverlayFunction)TrainerCardSignature_Init, (OverlayFunction)TrainerCardSignature_Main, (OverlayFunction)TrainerCardSignature_Exit, FS_OVERLAY_ID(trainer_card_signature) };
     OverlayManagerTemplate template = sOverlayTemplate_TrainerCardSignature;
     FieldSystem_LaunchApplication(fieldSystem, &template, fieldSystem->saveData);
 }
 
 void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
-    static const OverlayManagerTemplate _020FA264 = { ov70_02238430, ov70_022385C0, ov70_022386F4, FS_OVERLAY_ID(OVY_70) };
+    static const OverlayManagerTemplate _020FA264 = { (OverlayFunction)ov70_02238430, (OverlayFunction)ov70_022385C0, (OverlayFunction)ov70_022386F4, FS_OVERLAY_ID(OVY_70) };
     OverlayManagerTemplate template = _020FA264;
 
     UnkStruct_0203F844 *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0203F844));
-    args->unk0 = sub_0202DB34(fieldSystem->saveData);
+    args->unk0 = sub_0202DB34();
     args->sysInfo = Save_SysInfo_Get(fieldSystem->saveData);
     args->party = (Party *)SaveArray_Get(fieldSystem->saveData, SAVE_PARTY);
     args->pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
@@ -1204,7 +1217,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
 }
 
 NintendoWifiConnectArgs *NintendoWifiConnection_LaunchApp(FieldSystem *fieldSystem, u16 a1, u16 a2) {
-    static const OverlayManagerTemplate sOverlayTemplate_NintendoWifiConnect = { NintendoWfc_Init, NintendoWfc_Main, NintendoWfc_Exit, FS_OVERLAY_ID(OVY_72) };
+    static const OverlayManagerTemplate sOverlayTemplate_NintendoWifiConnect = { (OverlayFunction)NintendoWfc_Init, (OverlayFunction)NintendoWfc_Main, (OverlayFunction)NintendoWfc_Exit, FS_OVERLAY_ID(OVY_72) };
     OverlayManagerTemplate template = sOverlayTemplate_NintendoWifiConnect;
 
     NintendoWifiConnectArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(NintendoWifiConnectArgs));
@@ -1223,23 +1236,23 @@ NintendoWifiConnectArgs *NintendoWifiConnection_LaunchApp(FieldSystem *fieldSyst
 }
 
 void LaunchApplication_DeadstrippedFunction(FieldSystem *fieldSystem) {
-    static const OverlayManagerTemplate _020FA444 = { ov73_021E7E4C, ov73_021E7FB8, ov73_021E808C, FS_OVERLAY_ID(OVY_72) };
+    static const OverlayManagerTemplate _020FA444 = { (OverlayFunction)ov73_021E7E4C, (OverlayFunction)ov73_021E7FB8, (OverlayFunction)ov73_021E808C, FS_OVERLAY_ID(OVY_72) };
     FieldSystem_LaunchApplication(fieldSystem, &_020FA444, NULL);
 }
 
-static const OverlayManagerTemplate sOverlayTemplate_GeonetGlobe = { GeonetGlobe_Init, GeonetGlobe_Main, GeonetGlobe_Exit, FS_OVERLAY_ID(OVY_69) };
+static const OverlayManagerTemplate sOverlayTemplate_GeonetGlobe = { (OverlayFunction)GeonetGlobe_Init, (OverlayFunction)GeonetGlobe_Main, (OverlayFunction)GeonetGlobe_Exit, FS_OVERLAY_ID(OVY_69) };
 
 void GeonetGlobe_LaunchApp(FieldSystem *fieldSystem) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_GeonetGlobe, fieldSystem->saveData);
 }
 
 void RegisterHallOfFame_LaunchApp(FieldSystem *fieldSystem, RegisterHallOfFameArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_RegisterHallOfFame = { RegisterHallOfFame_Init, RegisterHallOfFame_Main, RegisterHallOfFame_Exit, FS_OVERLAY_ID(OVY_63) };
+    static const OverlayManagerTemplate sOverlayTemplate_RegisterHallOfFame = { (OverlayFunction)RegisterHallOfFame_Init, (OverlayFunction)RegisterHallOfFame_Main, (OverlayFunction)RegisterHallOfFame_Exit, FS_OVERLAY_ID(OVY_63) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_RegisterHallOfFame, args);
 }
 
 HallOfFame *HallOfFameShowcase_LaunchApp(FieldSystem *fieldSystem) {
-    static const OverlayManagerTemplate sOverlayTemplate_HallOfFameShowcase = { HallOfFameShowcase_Init, HallOfFameShowcase_Main, HallOfFameShowcase_Exit, FS_OVERLAY_ID(OVY_64) };
+    static const OverlayManagerTemplate sOverlayTemplate_HallOfFameShowcase = { (OverlayFunction)HallOfFameShowcase_Init, (OverlayFunction)HallOfFameShowcase_Main, (OverlayFunction)HallOfFameShowcase_Exit, FS_OVERLAY_ID(OVY_64) };
     int loadResult;
     HallOfFame *hallOfFame = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD2, &loadResult);
     if (loadResult == 2) {
@@ -1251,12 +1264,12 @@ HallOfFame *HallOfFameShowcase_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 void Credits_LaunchApp(FieldSystem *fieldSystem, CreditsArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_Credits = { Credits_Init, Credits_Main, Credits_Exit, FS_OVERLAY_ID(credits) };
+    static const OverlayManagerTemplate sOverlayTemplate_Credits = { (OverlayFunction)Credits_Init, (OverlayFunction)Credits_Main, (OverlayFunction)Credits_Exit, FS_OVERLAY_ID(credits) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_Credits, args);
 }
 
 void MoveRelearner_LaunchApp(FieldSystem *menuInputStatePtr, MoveRelearnerArgs *args) {
-    OverlayManagerTemplate template = { MoveRelearner_Init, MoveRelearner_Main, MoveRelearner_Exit, FS_OVERLAY_ID(OVY_68) };
+    OverlayManagerTemplate template = { (OverlayFunction)MoveRelearner_Init, (OverlayFunction)MoveRelearner_Main, (OverlayFunction)MoveRelearner_Exit, FS_OVERLAY_ID(OVY_68) };
     args->menuInputStatePtr = &menuInputStatePtr->menuInputState;
     FieldSystem_LaunchApplication(menuInputStatePtr, &template, args);
 }
@@ -1275,7 +1288,7 @@ void HatchEggInParty(FieldSystem *fieldSystem) {
 }
 
 VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck) {
-    static const OverlayManagerTemplate sOverlayTemplate_VoltorbFlip = { VoltorbFlip_Init, VoltorbFlip_Main, VoltorbFlip_Exit, FS_OVERLAY_ID(voltorb_flip) };
+    static const OverlayManagerTemplate sOverlayTemplate_VoltorbFlip = { (OverlayFunction)VoltorbFlip_Init, (OverlayFunction)VoltorbFlip_Main, (OverlayFunction)VoltorbFlip_Exit, FS_OVERLAY_ID(voltorb_flip) };
     VoltorbFlipArgs *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(VoltorbFlipArgs));
     MI_CpuFill8(args, 0, sizeof(VoltorbFlipArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
@@ -1289,7 +1302,7 @@ VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck) {
 }
 
 CertificatesArgs *Certificates_LaunchApp(FieldSystem *fieldSystem, enum HeapID heapID, u16 certificateId) {
-    static const OverlayManagerTemplate sOverlayTemplate_Certificates = { Certificates_Init, Certificates_Main, Certificates_Exit, FS_OVERLAY_ID(certificates_app) };
+    static const OverlayManagerTemplate sOverlayTemplate_Certificates = { (OverlayFunction)Certificates_Init, (OverlayFunction)Certificates_Main, (OverlayFunction)Certificates_Exit, FS_OVERLAY_ID(certificates_app) };
     CertificatesArgs *args = Heap_Alloc(heapID, sizeof(CertificatesArgs));
     args->certificateId = certificateId;
     args->saveData = fieldSystem->saveData;
@@ -1298,7 +1311,7 @@ CertificatesArgs *Certificates_LaunchApp(FieldSystem *fieldSystem, enum HeapID h
 }
 
 UnkStruct_0203FAB4 *sub_0203FAB4(FieldSystem *fieldSystem, u8 a1, u8 a2, u16 a3, enum HeapID heapID) {
-    static OverlayManagerTemplate _0210F9BC = { ov86_021E5900, ov86_021E5A40, ov86_021E5AA4, FS_OVERLAY_ID(OVY_86) };
+    static OverlayManagerTemplate _0210F9BC = { (OverlayFunction)ov86_021E5900, (OverlayFunction)ov86_021E5A40, (OverlayFunction)ov86_021E5AA4, FS_OVERLAY_ID(OVY_86) };
     UnkStruct_0203FAB4 *args = Heap_Alloc(heapID, sizeof(UnkStruct_0203FAB4));
     args->unk4 = a1;
     args->unk5 = a2;
@@ -1331,7 +1344,7 @@ ScratchOffCardsArgs *ScratchOffCards_LaunchApp(FieldSystem *fieldSystem, enum He
     u32 size;
     u8 *ptr;
 
-    static OverlayManagerTemplate sOverlayTemplate_ScratchOffCards = { ScratchOffCards_Init, ScratchOffCards_Main, ScratchOffCards_Exit, FS_OVERLAY_ID(OVY_87) };
+    static OverlayManagerTemplate sOverlayTemplate_ScratchOffCards = { (OverlayFunction)ScratchOffCards_Init, (OverlayFunction)ScratchOffCards_Main, (OverlayFunction)ScratchOffCards_Exit, FS_OVERLAY_ID(OVY_87) };
 
     ScratchOffCardsArgs *args = Heap_Alloc(heapID, sizeof(ScratchOffCardsArgs));
 
@@ -1367,7 +1380,7 @@ PokemonSummaryArgs *PokemonSummary_LaunchApp(enum HeapID heapID, FieldSystem *fi
 }
 
 void sub_0203FC14(FieldSystem *fieldSystem, u16 a1, u16 a2) {
-    static const OverlayManagerTemplate _020FA1C4 = { sub_020192D0, sub_0201935C, sub_02019490, FS_OVERLAY_ID(OVY_39) };
+    static const OverlayManagerTemplate _020FA1C4 = { (OverlayFunction)sub_020192D0, (OverlayFunction)sub_0201935C, (OverlayFunction)sub_02019490, FS_OVERLAY_ID(OVY_39) };
     OverlayManagerTemplate template = _020FA1C4;
 
     UnkStruct_0203FC14 *args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0203FC14));
@@ -1380,24 +1393,24 @@ void sub_0203FC14(FieldSystem *fieldSystem, u16 a1, u16 a2) {
 }
 
 void PokeathlonCourse_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonCourse = { PokeathlonCourse_Init, PokeathlonCourse_Main, PokeathlonCourse_Exit, FS_OVERLAY_ID(OVY_96) };
+    static const OverlayManagerTemplate sOverlayTemplate_PokeathlonCourse = { (OverlayFunction)PokeathlonCourse_Init, (OverlayFunction)PokeathlonCourse_Main, (OverlayFunction)PokeathlonCourse_Exit, FS_OVERLAY_ID(OVY_96) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonCourse, args);
 }
 
 void sub_0203FC68(FieldSystem *fieldSystem, void *args) {
-    static const OverlayManagerTemplate _020FA454 = { ov104_021E5900, ov104_021E59E4, ov104_021E5B14, FS_OVERLAY_ID(OVY_104) };
+    static const OverlayManagerTemplate _020FA454 = { (OverlayFunction)ov104_021E5900, (OverlayFunction)ov104_021E59E4, (OverlayFunction)ov104_021E5B14, FS_OVERLAY_ID(OVY_104) };
     OverlayManagerTemplate template = _020FA454;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 void sub_0203FC90(FieldSystem *fieldSystem, void *args) {
-    static const OverlayManagerTemplate _020FA1D4 = { ov105_021E5900, ov105_021E59DC, ov105_021E5B14, FS_OVERLAY_ID(OVY_105) };
+    static const OverlayManagerTemplate _020FA1D4 = { (OverlayFunction)ov105_021E5900, (OverlayFunction)ov105_021E59DC, (OverlayFunction)ov105_021E5B14, FS_OVERLAY_ID(OVY_105) };
     OverlayManagerTemplate template = _020FA1D4;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, UnkStruct_0203FCC4 *a1, u16 a2, u16 a3, enum HeapID heapID) {
-    static const OverlayManagerTemplate sOverlayTemplate_LegendaryCinematic = { LegendaryCinematic_Init, LegendaryCinematic_Main, LegendaryCinematic_Exit, FS_OVERLAY_ID(OVY_106) };
+    static const OverlayManagerTemplate sOverlayTemplate_LegendaryCinematic = { (OverlayFunction)LegendaryCinematic_Init, (OverlayFunction)LegendaryCinematic_Main, (OverlayFunction)LegendaryCinematic_Exit, FS_OVERLAY_ID(OVY_106) };
     LegendaryCinematicArgs *args = Heap_Alloc(heapID, sizeof(LegendaryCinematicArgs));
     memset(args, 0, sizeof(LegendaryCinematicArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
@@ -1409,6 +1422,6 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
 }
 
 void LaunchApp_ViewRankings(FieldSystem *fieldSystem, ViewRankingsArgs *args) {
-    static const OverlayManagerTemplate sViewRankingsAppTemplate = { ViewRankingsApp_Init, ViewRankingsApp_Main, ViewRankingsApp_Exit, FS_OVERLAY_ID(view_rankings_app) };
+    static const OverlayManagerTemplate sViewRankingsAppTemplate = { (OverlayFunction)ViewRankingsApp_Init, (OverlayFunction)ViewRankingsApp_Main, (OverlayFunction)ViewRankingsApp_Exit, FS_OVERLAY_ID(view_rankings_app) };
     FieldSystem_LaunchApplication(fieldSystem, &sViewRankingsAppTemplate, args);
 }
