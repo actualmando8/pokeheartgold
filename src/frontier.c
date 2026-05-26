@@ -7,19 +7,28 @@ FS_EXTERN_OVERLAY(OVY_80);
 FS_EXTERN_OVERLAY(OVY_81);
 FS_EXTERN_OVERLAY(OVY_42);
 
-/* Forward declarations for functions defined in frontier_map.c */
+/* Forward declarations */
 void *FrontierMap_Init(void *saveData);
 void FrontierMap_Free(void *map);
-
-/* Forward declarations for overlay_80 functions */
 void ov80_022389C4(void *a0);
 void ov80_02238A18(void *a0);
+void *HandleLoadOverlay(u32 overlayId, u8 priority);
+void UnloadOverlayByID(u32 overlayId);
+void *OverlayManager_CreateAndGetData(void *overlayManager, u32 dataSize, u32 overlayId);
+void *OverlayManager_GetData(void *overlayManager);
+void OverlayManager_FreeData(void *overlayManager);
+void *OverlayManager_GetArgs(void *overlayManager);
+void *OverlayManager_New(void *overlayManager, const OverlayManagerTemplate *template, u32 overlayId);
+u8 OverlayManager_Run(void *overlay);
+void OverlayManager_Delete(void *overlay);
+void MI_CpuFill8(void *dst, u8 value, u32 size);
+void Heap_Free(void *ptr);
 
 struct FrontierData {
     /* 0x00 */ void *launchArgs;
     /* 0x04 */ void *overlayManager;
     /* 0x08 */ void *heapPtr;
-    /* 0x0C */ void *callback;
+    /* 0x0C */ void (*callback)(void *);
     /* 0x10 */ u8 flag;
     /* 0x11 */ u8 padding_11[3];
     /* 0x14 */ void *frontierSystem;
@@ -29,7 +38,8 @@ struct FrontierData {
     /* 0x1E */ u8 battleType;
     /* 0x1F */ u8 padding_1F;
     /* 0x20 */ u16 frontierMapId;
-    /* 0x22 */ u8 padding_22[2];
+    /* 0x22 */ u8 unk_22;
+    /* 0x23 */ u8 padding_23;
     /* 0x24 */ u16 results[0x18];
     /* 0x84 */ u16 scores[0x20];
     /* 0xA4 */ u8 padding_A4[4];
@@ -74,7 +84,7 @@ u8 Frontier_Main(void *overlayManager, u8 *stateOut) {
         *stateOut = 1;
         return 0;
     case 1:
-        if (((u8 *)data)[0x22] != 0) {
+        if (data->unk_22 != 0) {
             *stateOut = 2;
             return 0;
         }
@@ -107,7 +117,7 @@ u8 Frontier_Main(void *overlayManager, u8 *stateOut) {
         OverlayManager_Delete(data->overlayManager);
         Frontier_LoadOverlays();
         if (data->callback != NULL) {
-            ((void (*)(void *))data->callback)(data->heapPtr);
+            data->callback(data->heapPtr);
         }
         if (data->heapPtr != NULL && data->flag == 1) {
             Heap_Free(data->heapPtr);
@@ -206,7 +216,7 @@ void Frontier_SetData(void *overlayManager, void *data) {
     *(void **)*(void **)overlayManager = data;
 }
 
-void Frontier_LaunchApplication(void *data, const OverlayManagerTemplate *ovyTemp, void *args, u8 flag, void *callback) {
+void Frontier_LaunchApplication(void *data, const OverlayManagerTemplate *ovyTemp, void *args, u8 flag, void (*callback)(void *)) {
     struct FrontierData *d = (struct FrontierData *)data;
 
     if (d->overlayManager != NULL) {
