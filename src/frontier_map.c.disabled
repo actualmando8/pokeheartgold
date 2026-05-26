@@ -1,6 +1,7 @@
 /* Decompiled from asm/frontier_map.s */
 #include "global.h"
 #include "heap.h"
+#include "constants/heap.h"
 #include "palette.h"
 #include "sprite.h"
 #include "sprite_system.h"
@@ -13,33 +14,31 @@
 #include "sound.h"
 #include "text.h"
 #include "save.h"
-#include "frontier.h"
+#include "player_data.h"
+#include "frontier/frontier.h"
 #include "frontier_system.h"
 #include "overlay_42.h"
 #include "overlay_80_0222ACA0.h"
 #include "overlay_80_02239960.h"
 #include "overlay_80_02239BF0.h"
 
-#define FRONTIER_MAP_HEAP_ID  0x65
-#define FRONTIER_MAP_NARC_ID  0xB7
-#define FRONTIER_MAP_NARC2_ID 0xB8
+#define FRONTIER_MAP_HEAP_ID  HEAP_ID_101
 
 typedef struct FrontierMapData {
     BgConfig       *bgConfig;           // 0x00
     PaletteData    *paletteData;        // 0x04
-    void           *spriteList;         // 0x08  (actually: ptr to the frontier system)
+    void           *spriteList;         // 0x08  (back-pointer to frontier overlay manager)
     void           *gfx3dVramMan;       // 0x0C
     void           *ov42Data;           // 0x14
     void           *spriteAnimData;     // 0x18
-    void            ov42Scrollable[0];  // 0x1C (ov42 scrollable context, inline)
-    void           *tilemap;            // 0x20
-    void           *subLayerCtx;        // 0x24
-    void           *subLayerCtx2;       // 0x28
-    void           *ov42Ctx80;          // 0x2C
-    void           *ov42Ctx30;          // 0x30
-    SpriteSystem   *spriteSystem;       // 0x34
-    SpriteManager  *spriteManager;      // 0x38
-    FrontierSystem *frontierSystem;     // (accessed via [r4, #8] -> Frontier_GetLaunchArgs)
+    u8              scrollableCtx[0x08];// 0x1C - inline scrollable context
+    void           *tilemap;            // 0x24
+    void           *subLayerCtx;        // 0x28
+    void           *subLayerCtx2;       // 0x2C
+    void           *ov42Ctx80;          // 0x30
+    void           *ov42Ctx30;          // 0x34
+    SpriteSystem   *spriteSystem;       // 0x38
+    SpriteManager  *spriteManager;      // 0x3C
     u32             activeSpriteFlags;  // 0x6C
     u16             warpIds[8];         // 0x70
     u8              unk7E[2];
@@ -56,6 +55,8 @@ static void FrontierMap_VBlank(FrontierMapData *data);
 static void FrontierMap_Update(SysTask *task, FrontierMapData *data);
 static void FrontierMap_Scroll(FrontierMapData *data);
 static void ov80_02238B7C(FrontierMapData *data);
+static void FrontierMap_SetVramBank(BgConfig *bgConfig, u8 areaId);
+static void FrontierMap_LoadPaletteData(FrontierMapData *data);
 
 FrontierMapData *FrontierMap_Init(void *frontierOverlayMan)
 {
@@ -85,12 +86,12 @@ FrontierMapData *FrontierMap_Init(void *frontierOverlayMan)
     // Master brightness
     *(vu16 *)0x04000304 |= *(vu16 *)0x04000304 | (*(vu16 *)0x04000304 >> 0xB);
 
-    Heap_Create(HEAP_ID_FIELD, 9 << 0x10, FRONTIER_MAP_HEAP_ID);
+    Heap_Create(HEAP_ID_FIELD1, FRONTIER_MAP_HEAP_ID, 9 << 0x10);
 
-    data = Heap_Alloc(FRONTIER_MAP_HEAP_ID, 0xC4);
+    data = Heap_Alloc((enum HeapID)FRONTIER_MAP_HEAP_ID, 0xC4);
     MI_CpuFill8(data, 0, 0xC4);
 
-    data->spriteList = frontierOverlayMan; // [r4+8] used as back-pointer
+    data->spriteList = frontierOverlayMan;
 
     // Init warp id array to 0xFFFF
     {
@@ -99,18 +100,18 @@ FrontierMapData *FrontierMap_Init(void *frontierOverlayMan)
             *p = 0xFFFF;
     }
 
-    data->areaId = launchArgs->unk20.areaId;
+    data->areaId = launchArgs->unk20;
 
     data->gfx3dVramMan  = ov80_022392DC(FRONTIER_MAP_HEAP_ID);
-    data->paletteData   = PaletteData_Init(FRONTIER_MAP_HEAP_ID);
+    data->paletteData   = PaletteData_Init((enum HeapID)FRONTIER_MAP_HEAP_ID);
     PaletteData_SetAutoTransparent(data->paletteData, 1);
-    PaletteData_AllocBuffers(data->paletteData, 0, 0, 2 << 8, FRONTIER_MAP_HEAP_ID);
-    PaletteData_AllocBuffers(data->paletteData, 1, 0, 1 << 9, FRONTIER_MAP_HEAP_ID);
-    PaletteData_AllocBuffers(data->paletteData, 2, 0, 7 << 6, FRONTIER_MAP_HEAP_ID);
-    PaletteData_AllocBuffers(data->paletteData, 3, 0, 2 << 8, FRONTIER_MAP_HEAP_ID);
+    PaletteData_AllocBuffers(data->paletteData, (PaletteBufferId)0, 2 << 8, FRONTIER_MAP_HEAP_ID);
+    PaletteData_AllocBuffers(data->paletteData, (PaletteBufferId)1, 1 << 9, FRONTIER_MAP_HEAP_ID);
+    PaletteData_AllocBuffers(data->paletteData, (PaletteBufferId)2, 7 << 6, FRONTIER_MAP_HEAP_ID);
+    PaletteData_AllocBuffers(data->paletteData, (PaletteBufferId)3, 2 << 8, FRONTIER_MAP_HEAP_ID);
 
-    data->bgConfig = BgConfig_Alloc(FRONTIER_MAP_HEAP_ID);
-    GF_CreateVramTransferManager(0x40, FRONTIER_MAP_HEAP_ID);
+    data->bgConfig = BgConfig_Alloc((enum HeapID)FRONTIER_MAP_HEAP_ID);
+    GF_CreateVramTransferManager(0x40, (enum HeapID)FRONTIER_MAP_HEAP_ID);
     SetKeyRepeatTimers(4, 8);
 
     FrontierMap_SetVramBank(data->bgConfig, data->areaId);
@@ -119,7 +120,7 @@ FrontierMapData *FrontierMap_Init(void *frontierOverlayMan)
     sub_020210BC();
     sub_02021148(4);
     ov80_02239384(data);
-    data->tilemap = ov80_02239960(FRONTIER_MAP_HEAP_ID);
+    data->tilemap = ov80_02239960((enum HeapID)FRONTIER_MAP_HEAP_ID);
 
     ov80_02239004(data, launchArgs, profile);
 
@@ -196,7 +197,7 @@ void FrontierMap_Free(FrontierMapData *data)
 
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
-    Heap_Destroy(FRONTIER_MAP_HEAP_ID);
+    Heap_Destroy((enum HeapID)FRONTIER_MAP_HEAP_ID);
 
     TextFlags_SetCanABSpeedUpPrint(0);
     TextFlags_SetAutoScrollParam(0);
@@ -288,9 +289,8 @@ static void ov80_02238B7C(FrontierMapData *data)
     offY    = *(s16 *)((u8 *)data + 0xA8);
     scrollY += offY;
 
-    // Convert integer scroll to float with +/-0.5 bias for rounding
     if (scrollX > 0)
-        fx = (int)((float)(scrollX << 0xC) + 0x3F800000);  // + 0.5f
+        fx = (int)((float)(scrollX << 0xC) + 0x3F800000);
     else
         fx = (int)((float)(scrollX << 0xC) - 0x3F800000);
 
@@ -315,7 +315,7 @@ static void ov80_02238B7C(FrontierMapData *data)
 
 void FrontierMap_SetVramBank(BgConfig *bgConfig, u8 areaId)
 {
-    // TODO: decompile from assembly - sets VRAM banks, BG modes, initialises all 4 BG layers
+    // TODO: decompile from assembly
 }
 
 void FrontierMap_LoadPaletteData(FrontierMapData *data)
@@ -333,7 +333,7 @@ void FrontierMap_LoadPaletteData(FrontierMapData *data)
     PaletteData_LoadPaletteSlotFromHardware(data->paletteData, 0, 0xC0, 0x20);
 }
 
-/* Remaining ov80_* functions - stubs to be filled in from assembly */
+/* Remaining ov80_* functions - stubs */
 void ov80_022389C4(void *a0) { }
 void ov80_02238A18(void *a0) { }
 void ov80_02238AAC(void *a0) { }

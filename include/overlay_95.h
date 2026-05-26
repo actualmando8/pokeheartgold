@@ -2,9 +2,12 @@
 #define POKEHEARTGOLD_OVERLAY_95_H
 
 #include <global.h>
+#include "overlay_manager.h"
 
 // Unknown structure used by overlay 95 (Hatch Egg app)
 // Based on function analysis at addresses starting 0x021E5900
+#ifndef GUARD_UNKSTRUCT_021E5900
+#define GUARD_UNKSTRUCT_021E5900
 struct UnkStruct_021E5900 {
     u32 field_0x0;
     u32 field_0x4;
@@ -71,6 +74,7 @@ struct UnkStruct_021E5900 {
     u32 field_0xf8;
     u32 field_0xfc;
 };
+#endif // GUARD_UNKSTRUCT_021E5900
 
 // ov95_021E5900 - Assembly: asm/overlay_95.s
 void ov95_021E5900(void);
@@ -209,15 +213,15 @@ void ov95_021E6B74(void);
 
 // HatchEggApp_Init - Assembly: asm/overlay_95.s
 // Initializes the Hatch Egg application
-int HatchEggApp_Init(UnkStruct_021E5900 *structPtr);
+int HatchEggApp_Init(OverlayManager *manager, int *state);
 
 // HatchEggApp_Main - Assembly: asm/overlay_95.s
 // Main loop for Hatch Egg application
-void HatchEggApp_Main(void *task);
+int HatchEggApp_Main(OverlayManager *manager, int *state);
 
 // HatchEggApp_Exit - Assembly: asm/overlay_95.s
 // Cleanup for Hatch Egg application
-void HatchEggApp_Exit(UnkStruct_021E5900 *structPtr);
+int HatchEggApp_Exit(OverlayManager *manager, int *state);
 
 // ov95_021E6FC4 - Assembly: asm/overlay_95.s
 void ov95_021E6FC4(void);

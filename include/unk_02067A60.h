@@ -31,7 +31,7 @@ struct UnkStruct_02067BF8 {
 };
 
 struct UnkStruct_02067A60 *sub_02067A60(enum HeapID heapID);
-void sub_02067A78(FieldSystem *fieldSystem);
+void sub_02067A78(struct UnkStruct_02067A60 *ptr);
 void sub_02067A80(FieldSystem *fieldSystem, int a1);
 void sub_02067A88(FieldSystem *fieldSystem);
 void sub_02067AE4(FieldSystem *fieldSystem);

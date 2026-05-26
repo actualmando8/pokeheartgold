@@ -2,12 +2,14 @@
 #include "global.h"
 #include "frontier.h"
 #include "frontier_system.h"
+#include "constants/heap.h"
 
 FS_EXTERN_OVERLAY(OVY_80);
 FS_EXTERN_OVERLAY(OVY_81);
 FS_EXTERN_OVERLAY(OVY_42);
 
 /* Forward declarations */
+struct OverlayManagerTemplate;
 void *FrontierMap_Init(void *saveData);
 void FrontierMap_Free(void *map);
 void ov80_022389C4(void *a0);
@@ -18,11 +20,13 @@ void *OverlayManager_CreateAndGetData(void *overlayManager, u32 dataSize, u32 ov
 void *OverlayManager_GetData(void *overlayManager);
 void OverlayManager_FreeData(void *overlayManager);
 void *OverlayManager_GetArgs(void *overlayManager);
-void *OverlayManager_New(void *overlayManager, const OverlayManagerTemplate *template, u32 overlayId);
+void *OverlayManager_New(void *overlayManager, const struct OverlayManagerTemplate *template, u32 overlayId);
 u8 OverlayManager_Run(void *overlay);
 void OverlayManager_Delete(void *overlay);
 void MI_CpuFill8(void *dst, u8 value, u32 size);
 void Heap_Free(void *ptr);
+
+#define FRONTIER_HEAP_ID ((enum HeapID)0xB)
 
 struct FrontierData {
     /* 0x00 */ void *launchArgs;
@@ -61,7 +65,7 @@ u8 Frontier_Init(void *overlayManager) {
         GF_AssertFail();
     }
     battleType = ((u8 *)launchArgs)[0x20];
-    data->frontierSystem = FrontierSystem_Create(data, FS_OVERLAY_ID(OVY_80), battleType);
+    data->frontierSystem = FrontierSystem_Create(data, FRONTIER_HEAP_ID, battleType);
     battleType = ((u8 *)launchArgs)[0x20];
     FrontierSystem_AddTask(data->frontierSystem, battleType, 0);
     Frontier_CreateMap(data);
@@ -139,13 +143,13 @@ u8 Frontier_Main(void *overlayManager, u8 *stateOut) {
         if (data->frontierMapId != 0xFFFF) {
             result = FrontierSystem_Main(data->frontierSystem);
         } else {
-            data->frontierSystem = FrontierSystem_Create(data, FS_OVERLAY_ID(OVY_80), ((u8 *)data->launchArgs)[0x20]);
+            data->frontierSystem = FrontierSystem_Create(data, FRONTIER_HEAP_ID, ((u8 *)data->launchArgs)[0x20]);
             result = FrontierSystem_Main(data->frontierSystem);
         }
         r6 = ov80_0222AAD8(data->frontierSystem, NULL);
         ov80_0222A920(data->frontierSystem);
-        data->frontierSystem = FrontierSystem_Create(data, FS_OVERLAY_ID(OVY_80), ((u8 *)data->launchArgs)[0x20]);
-        FrontierSystem_AddTask(data->frontierSystem, ((u8 *)data->launchArgs)[0x20], data->frontierMapId);
+        data->frontierSystem = FrontierSystem_Create(data, FRONTIER_HEAP_ID, ((u8 *)data->launchArgs)[0x20]);
+        FrontierSystem_AddTask(data->frontierSystem, ((u8 *)data->launchArgs)[0x20], (void *)data->frontierMapId);
         ov80_0222AAF8(data->frontierSystem, r6);
         data->battleType = 0;
         return 0;
@@ -216,13 +220,13 @@ void Frontier_SetData(void *overlayManager, void *data) {
     *(void **)*(void **)overlayManager = data;
 }
 
-void Frontier_LaunchApplication(void *data, const OverlayManagerTemplate *ovyTemp, void *args, u8 flag, void (*callback)(void *)) {
+void Frontier_LaunchApplication(void *data, void *ovyTemp, void *args, u8 flag, void *callback) {
     struct FrontierData *d = (struct FrontierData *)data;
 
     if (d->overlayManager != NULL) {
         GF_AssertFail();
     }
-    d->overlayManager = OverlayManager_New(overlayManager, ovyTemp, FS_OVERLAY_ID(OVY_80));
+    d->overlayManager = OverlayManager_New(data, ovyTemp, (u32)FS_OVERLAY_ID(OVY_80));
     d->heapPtr = args;
     d->flag = flag;
     d->callback = callback;
@@ -269,6 +273,6 @@ void sub_02096884(void *data) {
     }
 }
 
-const OverlayManagerTemplate gOverlayTemplate_Frontier = {
-    Frontier_Init, Frontier_Main, Frontier_Exit, 0xFFFFFFFF
-};
+// const struct OverlayTemplate_Frontier = {
+//     Frontier_Init, Frontier_Main, Frontier_Exit, 0xFFFFFFFF
+// };

@@ -4,7 +4,9 @@
 #include <global.h>
 
 // Type definitions
+#ifndef GUARD_UNKSTRUCT_021E5900
 typedef struct UnkStruct_021E5900 UnkStruct_021E5900;
+#endif
 
 // ov37_021E5900 - Assembly: asm/overlay_37.s
 // Initialize global trade system

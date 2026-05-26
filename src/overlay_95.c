@@ -229,21 +229,23 @@ void ov95_021E6B74(void) {
 
 // HatchEggApp_Init - Assembly: asm/overlay_95.s
 // Initializes the Hatch Egg application
-int HatchEggApp_Init(UnkStruct_021E5900 *structPtr) {
+int HatchEggApp_Init(OverlayManager *manager, int *state) {
     // TODO: Implement based on assembly analysis
     return 1;
 }
 
 // HatchEggApp_Main - Assembly: asm/overlay_95.s
 // Main loop for Hatch Egg application
-void HatchEggApp_Main(void *task) {
+int HatchEggApp_Main(OverlayManager *manager, int *state) {
     // TODO: Implement based on assembly analysis
+    return 0;
 }
 
 // HatchEggApp_Exit - Assembly: asm/overlay_95.s
 // Cleanup for Hatch Egg application
-void HatchEggApp_Exit(UnkStruct_021E5900 *structPtr) {
+int HatchEggApp_Exit(OverlayManager *manager, int *state) {
     // TODO: Implement based on assembly analysis
+    return 0;
 }
 
 // ov95_021E6FC4 - Assembly: asm/overlay_95.s

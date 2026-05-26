@@ -6,6 +6,8 @@
 // Unknown structure used by overlay 87 (Scratch-off Cards mini-game)
 // Based on analysis at 0x021E5900
 #ifndef UNKSTRUCT_021E5900_DEFINED
+#ifndef GUARD_UNKSTRUCT_021E5900
+#define GUARD_UNKSTRUCT_021E5900
 typedef struct UnkStruct_021E5900 {
     u32 field_0x0;          // Heap ID
     void *args;             // offset 0x4: OverlayManager_GetArgs()
@@ -23,6 +25,7 @@ typedef struct UnkStruct_021E5900 {
     u32 field_0x208;        // Total prizes won
     u32 field_0x20c;        // Game state
 } UnkStruct_021E5900;
+#endif // GUARD_UNKSTRUCT_021E5900
 #define UNKSTRUCT_021E5900_DEFINED
 #endif
 
