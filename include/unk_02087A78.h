@@ -1,7 +1,7 @@
 #ifndef UNK_02087A78_H
 #define UNK_02087A78_H
 
-#include "types.h"
+#include "global.h"
 
 void *sub_02087A78(void);
 void sub_02087A84(u32 *dst, u32 v1, u32 v2);

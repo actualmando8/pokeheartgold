@@ -1,17 +1,6 @@
 #ifndef POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
 #define POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
 
-// Forward declarations for types not yet defined in this project
-typedef struct ApricornBoxArgs ApricornBoxArgs;
-typedef struct UnownReportArgs UnownReportArgs;
-typedef struct BugContestSwapMonArgs BugContestSwapMonArgs;
-typedef struct UnkStruct_0203F074 UnkStruct_0203F074;
-typedef struct UnkStruct_0203FAB4 UnkStruct_0203FAB4;
-typedef struct UnkStruct_0203FCC4 UnkStruct_0203FCC4;
-typedef struct ScratchOffCardsArgs ScratchOffCardsArgs;
-typedef struct LegendaryCinematicArgs LegendaryCinematicArgs;
-typedef struct PokeathlonMedalsArgs PokeathlonMedalsArgs;
-
 #include "battle/battle_setup.h"
 #include "credits/credits.h"
 #include "pokeathlon/pokeathlon.h"
@@ -57,6 +46,65 @@ typedef struct PokeathlonMedalsArgs PokeathlonMedalsArgs;
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"
 #include "unk_02097D3C.h"
+
+// Struct definitions for launch application args
+typedef struct UnownReportArgs {
+    SaveData *saveData;                // 0x00
+    MenuInputStateMgr *menuInputStatePtr; // 0x04
+} UnownReportArgs;
+
+typedef struct ApricornBoxArgs {
+    u32 unk0;                          // 0x00
+    u16 *unk8;                         // 0x08
+    u32 unkC;                          // 0x0C
+    SaveData *saveData;                // 0x10
+    MenuInputStateMgr *menuInputStatePtr; // 0x14
+    u32 unk10;                         // 0x18  (named unk10 in source)
+    u32 unk1C;                         // 0x1C
+} ApricornBoxArgs;
+
+typedef struct BugContestSwapMonArgs {
+    Pokemon *newlyCaughtMon;           // 0x00
+    Pokemon *currentMon;               // 0x04
+    BOOL    noPokemonCaught;           // 0x08
+    Options *options;                  // 0x0C
+} BugContestSwapMonArgs;
+
+typedef struct UnkStruct_0203F074 {
+    SaveData *saveData;                // 0x00
+    FieldSystem *fieldSystem;          // 0x04
+    MenuInputStateMgr *menuInputStatePtr; // 0x08
+} UnkStruct_0203F074;
+
+typedef struct UnkStruct_0203FAB4 {
+    SaveData *unk0;                // 0x00
+    u8 unk4;                       // 0x04
+    u8 unk5;                       // 0x05
+    u16 unk6;                      // 0x06
+} UnkStruct_0203FAB4;
+
+typedef struct UnkStruct_0203FCC4 {
+    u8 field0;
+} UnkStruct_0203FCC4;
+
+typedef struct ScratchOffCardsArgs {
+    SaveData *saveData;            // 0x00
+} ScratchOffCardsArgs;
+
+typedef struct LegendaryCinematicArgs {
+    SaveData         *saveData;    // 0x00
+    UnkStruct_0203FCC4 unk4;       // 0x04
+    u8 field4C[0x48];              // 0x04 - padding to 0x4C
+    u16 unk4C;                     // 0x4C
+    u16 unk4E;                     // 0x4E
+} LegendaryCinematicArgs;
+
+typedef struct PokeathlonMedalsArgs {
+    Pokedex *pokedex;              // 0x00
+    u32 unk4;                      // 0x04
+    u32 natDexEnabled;             // 0x08
+    u32 unkC;                      // 0x0C
+} PokeathlonMedalsArgs;
 
 typedef enum NameScreenType {
     NAME_SCREEN_PLAYER,

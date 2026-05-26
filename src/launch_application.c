@@ -2,6 +2,17 @@
 
 #include "global.h"
 
+/* Missing forward declarations */
+extern const u8 _02102830[];
+extern void BugContestSwapMon_Main(OverlayManager *, int *);
+extern void PokeathlonMedals_Init(OverlayManager *, int *);
+extern void PokeathlonMedals_Main(OverlayManager *, int *);
+extern void PokeathlonEventRecord_Init(OverlayManager *, int *);
+extern void PokeathlonEventRecord_Main(OverlayManager *, int *);
+extern void ov99_021E677C(OverlayManager *, int *);
+extern void ov99_021E6888(OverlayManager *, int *);
+extern void sub_0202DB34(SaveData *);
+
 #include "constants/flags.h"
 
 #include "application/pokegear/pokegear_main.h"
