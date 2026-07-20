@@ -3,7 +3,15 @@
 
 #include "global.h"
 
-typedef struct ApricornBoxContext ApricornBoxContext;
+typedef struct ApricornBoxArgs {
+    u8 unk0;
+    u8 unk1[0x7];
+    u16 *unk8;
+    u32 unkC;
+    u32 steps;
+    MenuInputStateMgr *menuInputStatePtr;
+    SaveData *saveData;
+} ApricornBoxArgs;
 
 u32 ov58_022378C0(u32 *overlayPtr);
 u32 ApricornBox_Init(void *a1);

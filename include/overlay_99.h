@@ -1,10 +1,11 @@
 #ifndef POKEHEARTGOLD_OVERLAY_99_H
 #define POKEHEARTGOLD_OVERLAY_99_H
 
+#include "pokeathlon/pokeathlon_save.h"
+
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "pokedex.h"
-#include "pokeathlon/pokeathlon_save.h"
 
 // PokeathlonCourseRecord functions
 void PokeathlonCourseRecord_Init(void *args);
